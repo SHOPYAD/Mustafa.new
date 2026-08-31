@@ -1,0 +1,12 @@
+# استورد هذا الملف في تطبيق WireGuard الرسمي على أندرويد.
+
+[Interface]
+Address = 10.88.0.2/24
+PrivateKey = PHONE_PRIVATE_KEY_HERE
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY_HERE
+Endpoint = YOUR_VPS_PUBLIC_IP:51831
+AllowedIPs = 10.88.0.1/32
+PersistentKeepalive = 25

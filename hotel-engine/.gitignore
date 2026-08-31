@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+storage/
+storage_state/
+wg/*.key
+wg/wg-lonaliza.conf
+wg/phone.conf
+*.log

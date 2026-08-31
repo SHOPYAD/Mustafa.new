@@ -1,0 +1,4349 @@
+[
+  {
+    "slug": "four-seasons-bosphorus",
+    "bookingUrl": "https://www.booking.com/hotel/tr/four-seasons-istanbul-at-the-bosphorus.html",
+    "bookingId": "four-seasons-istanbul-at-the-bosphorus",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com hotel page",
+      "Booking.com reviews page (Based on 252)",
+      "Hotel page may list ~526 reviews"
+    ],
+    "nameEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+    "nameAr": "فور سيزونز إسطنبول على البوسفور",
+    "addressEn": "Çırağan Cad. No:28, Beşiktaş, 34349 Istanbul, Turkey",
+    "addressAr": "تشيراغان جادسي رقم 28، بشكتاش، 34349 إسطنبول، تركيا",
+    "rating": 9,
+    "reviewCount": 252,
+    "descriptionEn": "Located along the Bosphorus, this renovated 19th century Ottoman palace features historic architecture in harmony with luxurious details. An indoor pool and a heated outdoor pool with free parasols and sun loungers are available. The seafront property also has a garden and a spacious terrace with panoramic Bosphorus views. Free WiFi and private parking on site. Aqua Restaurant terrace serves Mediterranean cuisine with Italian and Turkish specialties; buffet breakfast and Pool Grill available. Fitness, sauna, Turkish bath and spa therapies on site.",
+    "descriptionAr": "يقع على البوسفور، ويضم هذا القصر العثماني المرمم من القرن التاسع عشر عمارة تاريخية بتفاصيل فاخرة. مسبح داخلي وخارجي مُدفأ، حديقة وتراس بانورامي. واي فاي وموقف خاص. مطعم أكوا بمطبخ متوسطي، إفطار بوفيه ومشواة المسبح. لياقة وساحة وحمّام تركي وعلاجات سبا.",
+    "amenities": [
+      "Outdoor swimming pool",
+      "Indoor pool",
+      "Free Wifi",
+      "Spa",
+      "Private Parking",
+      "Family rooms",
+      "Fitness center",
+      "Restaurant",
+      "Bar",
+      "Turkish bath",
+      "Wonderful Breakfast"
+    ],
+    "nearbyEn": [
+      "Beşiktaş Square — 4-min walk",
+      "Dolmabahçe Palace — nearby",
+      "Ortaköy — short drive",
+      "Istanbul Airport — 31 mi"
+    ],
+    "nearbyAr": [
+      "ميدان بشكتاش — 4 دقائق سيراً",
+      "قصر دولماباهتشه — قريب",
+      "أورتاكوي — بالسيارة",
+      "مطار إسطنبول — 31 ميل"
+    ],
+    "highlightsEn": [
+      "19th-century Ottoman palace on the Bosphorus",
+      "Indoor + heated outdoor pools",
+      "Aqua Restaurant terrace"
+    ],
+    "highlightsAr": [
+      "قصر عثماني على البوسفور",
+      "مسبح داخلي وخارجي مُدفأ",
+      "تراس مطعم أكوا"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Palace Courtyard Room",
+        "nameAr": "غرفة فناء القصر",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Four Seasons Junior Suite",
+        "nameAr": "جناح جونيور فور سيزونز",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Palace Bosphorus Room",
+        "nameAr": "غرفة القصر بإطلالة بوسفور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Guy",
+        "countryEn": "Belgium",
+        "countryAr": "بلجيكا",
+        "rating": 10,
+        "date": "22 April 2025",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "Luxury class. Friendly staff, perfect location",
+        "textAr": "فئة فاخرة. طاقم ودود وموقع مثالي",
+        "source": "Booking.com",
+        "stayTypeEn": "Business trip",
+        "stayTypeAr": "رحلة عمل"
+      },
+      {
+        "author": "Vuk",
+        "countryEn": "Serbia",
+        "countryAr": "صربيا",
+        "rating": 10,
+        "date": "11 April 2025",
+        "titleEn": "Love this Hotel",
+        "titleAr": "أحب هذا الفندق",
+        "textEn": "This hotel is one of my favorite i have ever stayed in. Location and view are amazing. Do not let me start about food.. woow. Truly 5 diamonds not stars.",
+        "textAr": "من أفضل ما أقمت فيه. الموقع والإطلالة مذهلان والطعام رائع. حقاً خمس ماسات لا نجوم.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Walid",
+        "countryEn": "Algeria",
+        "countryAr": "الجزائر",
+        "rating": 10,
+        "date": "11 April 2025",
+        "titleEn": "Excellent location, we had a great stay.",
+        "titleAr": "موقع ممتاز وإقامة رائعة",
+        "textEn": "Wonderful location, Friendly staff, Very comfortable bed. Honestly I cannot think of any negative remark about this hotel.",
+        "textAr": "موقع رائع وطاقم ودود وسرير مريح جداً. لا أجد أي ملاحظة سلبية.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Rodney",
+        "countryEn": "South Africa",
+        "countryAr": "جنوب أفريقيا",
+        "rating": 10,
+        "date": "23 March 2025",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "The room was super private and comfy. The staff were super awesome.",
+        "textAr": "الغرفة خاصة ومريحة جداً. الطاقم رائع.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Navneet",
+        "countryEn": "India",
+        "countryAr": "الهند",
+        "rating": 10,
+        "date": "17 February 2025",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "The location was fabulous. The service fantastic. Everything was perfect",
+        "textAr": "الموقع رائع والخدمة ممتازة. كل شيء كان مثالياً",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Violet",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 10,
+        "date": "3 November 2024",
+        "titleEn": "It was a blissful stay.",
+        "titleAr": "إقامة هانئة",
+        "textEn": "Absolutely everything; the staff, facilities, food, location; so welcoming, warm, friendly, courteous and professional.",
+        "textAr": "كل شيء؛ الطاقم والمرافق والطعام والموقع؛ ترحيب ودفء ولطف واحتراف.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "shangri-la-bosphorus",
+    "bookingUrl": "https://www.booking.com/hotel/tr/shangri-la-bosphorus-istanbul.html",
+    "bookingId": "shangri-la-bosphorus-istanbul",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com hotel page",
+      "Booking guest quotes",
+      "Trabber (~9.1 / ~1268)"
+    ],
+    "nameEn": "Shangri-La Bosphorus, Istanbul",
+    "nameAr": "شانغري-لا بوسفور إسطنبول",
+    "addressEn": "Sinanpaşa Mah., Hayrettin İskelesi Sok. No.1, Beşiktaş, 34353 Istanbul, Turkey",
+    "addressAr": "سينان باشا محلة، شارع رصيف خير الدين رقم 1، بشكتاش، 34353 إسطنبول، تركيا",
+    "rating": 9.1,
+    "reviewCount": 1268,
+    "descriptionEn": "Located between Dolmabahçe Palace and the Naval Museum on the European Bosphorus coast. Offers an indoor pool, CHI The Spa, and rooms with contemporary décor and Asian highlights. Suites have a separate living room and terraces with Bosphorus views; marble bathrooms with heated floors, bathtubs and Bvlgari toiletries. Dining: IST TOO and Shang Palace. CHI Spa: heated indoor pool, sauna, Turkish bath, hot tub and steam rooms. Free private parking; Beşiktaş Ferry Port steps away.",
+    "descriptionAr": "بين قصر دولماباهتشه والمتحف البحري على البوسفور الأوروبي. مسبح داخلي وسبا CHI وغرف بتفاصيل آسيوية. الأجنحة بغرفة معيشة وشرفات بوسفور. مطاعم IST TOO وقصر شانغ. سبا CHI بحمّام تركي. موقف خاص مجاني.",
+    "amenities": [
+      "Indoor swimming pool",
+      "Free WiFi",
+      "Spa CHI",
+      "Free parking",
+      "Airport shuttle",
+      "Family rooms",
+      "Fitness centre",
+      "Bar",
+      "Shang Palace",
+      "Turkish bath",
+      "Very good breakfast"
+    ],
+    "nearbyEn": [
+      "Beşiktaş Ferry Port — steps",
+      "Dolmabahçe Palace — nearby",
+      "Naval Museum — adjacent",
+      "Taksim Square — within 2 km"
+    ],
+    "nearbyAr": [
+      "رصيف عبارات بشكتاش — خطوات",
+      "قصر دولماباهتشه — قريب",
+      "المتحف البحري — مجاور",
+      "ميدان تقسيم — ضمن 2 كم"
+    ],
+    "highlightsEn": [
+      "CHI The Spa",
+      "Bosphorus suite terraces",
+      "Shang Palace Chinese dining"
+    ],
+    "highlightsAr": [
+      "سبا CHI",
+      "شرفات بوسفور",
+      "مطعم شانغ بالاس"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Premier Room",
+        "nameAr": "غرفة بريميير",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Executive Suite",
+        "nameAr": "جناح تنفيذي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Bosphorus Suite",
+        "nameAr": "جناح ديلوكس بوسفور",
+        "descriptionEn": "Living room and Bosphorus terraces (Booking).",
+        "descriptionAr": "Living room and Bosphorus terraces (Booking).",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Wassim",
+        "countryEn": "Lebanon",
+        "countryAr": "لبنان",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Immaculate welcome",
+        "titleAr": "ترحيب مثالي",
+        "textEn": "My experience was absolutely immaculate, starting with the warm welcome during check-in with Ismail, who patiently guided me through the process and ensured I had all the information I needed.",
+        "textAr": "تجربة مثالية بدءاً من ترحيب إسماعيل عند تسجيل الوصول.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Shalini",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Excellent location",
+        "titleAr": "موقع ممتاز",
+        "textEn": "Excellent location. Personalised service from all the staff. Loved it all.",
+        "textAr": "موقع ممتاز وخدمة شخصية من كل الطاقم.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Stunning",
+        "titleAr": "مذهل",
+        "textEn": "Staying at the Shangri-La Istanbul was nothing short of stunning. The hotel exceeded all expectations — from the elegant design to the impeccable service. The views of the Bosphorus were breathtaking.",
+        "textAr": "الإقامة مذهلة وتجاوزت التوقعات. إطلالات البوسفور خلّابة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "First-class staff",
+        "titleAr": "طاقم من الدرجة الأولى",
+        "textEn": "The hotel is beautiful and very stylish. The location is amazing; just by the Bosphorus. The staff at reception/SPA/concierge/lounge was FIRST CLASS!!",
+        "textAr": "فندق أنيق بموقع مذهل على البوسفور. طاقم الاستقبال والسبا من الدرجة الأولى.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Clean and quiet",
+        "titleAr": "نظيف وهادئ",
+        "textEn": "Very clean and quiet room. Lovely shower and goodies in the bathroom. The staff were amazing and very helpful.",
+        "textAr": "غرفة نظيفة وهادئة. دش لطيف ومستلزمات حمام. طاقم مذهل.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "One Booking scrape showed ~9.0 / 1156; using 9.1 / 1268 per Trabber brief alignment."
+  },
+  {
+    "slug": "peninsula-istanbul",
+    "bookingUrl": "https://www.booking.com/hotel/tr/the-peninsula-istanbul.html",
+    "bookingId": "the-peninsula-istanbul",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Tripadvisor dump",
+      "Trabber/Booking score references",
+      "Official address"
+    ],
+    "nameEn": "The Peninsula Istanbul",
+    "nameAr": "ذا بينينسولا إسطنبول",
+    "addressEn": "Karaköy, Kemankeş Caddesi No:34, 34425 Istanbul, Turkey",
+    "addressAr": "كاراكوي، كمانكش جادسي رقم 34، 34425 إسطنبول، تركيا",
+    "rating": 9.5,
+    "reviewCount": 339,
+    "descriptionEn": "The Peninsula Istanbul sits on the Karaköy waterfront along Kemankeş Caddesi, combining historic warehouse architecture with contemporary Peninsula luxury. Guests highlight Bosphorus-facing rooms, refined service, and a walkable location to the old town and ferries. Room categories include Superior Rooms and suites.",
+    "descriptionAr": "يقع ذا بينينسولا على واجهة كاراكوي المائية على كمانكش جادسي، يجمع عمارة المستودعات التاريخية مع فخامة بينينسولا المعاصرة. يبرز الضيوف الغرف المطلّة على البوسفور والخدمة الراقية والموقع القريب من المدينة القديمة والعبارات.",
+    "amenities": [
+      "Free WiFi",
+      "Spa",
+      "Fitness",
+      "Restaurants & bars",
+      "Concierge",
+      "Room service",
+      "Bosphorus views",
+      "Airport transfer (on request)"
+    ],
+    "nearbyEn": [
+      "Galata Bridge — short walk",
+      "Karaköy ferry — nearby",
+      "Istiklal / Galata — walkable",
+      "Topkapı / Sultanahmet — short transfer"
+    ],
+    "nearbyAr": [
+      "جسر غلطة — سيراً",
+      "عبارات كاراكوي — قريب",
+      "استقلال / غلطة — سيراً",
+      "توبكابي / السلطان أحمد — نقل قصير"
+    ],
+    "highlightsEn": [
+      "Karaköy waterfront landmark",
+      "Bosphorus-facing rooms recommended by guests",
+      "Superior Rooms and suites"
+    ],
+    "highlightsAr": [
+      "معلم على واجهة كاراكوي",
+      "غرف بوسفور موصى بها",
+      "غرف سوبيريور وأجنحة"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Peninsula Suite",
+        "nameAr": "جناح بينينسولا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Grand Suite",
+        "nameAr": "جناح جراند",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Bosphorus View Suite",
+        "nameAr": "جناح بإطلالة بوسفور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Tripadvisor guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Book Bosphorus view",
+        "titleAr": "احجز إطلالة بوسفور",
+        "textEn": "Reserve a room facing the Bosporus, not the street side.",
+        "textAr": "احجز غرفة مطلّة على البوسفور لا على الشارع.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Tripadvisor guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Outstanding views",
+        "titleAr": "إطلالات استثنائية",
+        "textEn": "Book a room with a view of the Bosphorus, the views are outstanding. Perfect location to walk out into the old town and catch a ferry.",
+        "textAr": "احجز غرفة بإطلالة بوسفور — الإطلالات مذهلة. موقع مثالي للمشي إلى المدينة القديمة والعبارات.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Tripadvisor guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Friendly people",
+        "titleAr": "طاقم ودود",
+        "textEn": "Hotel is so nice people friendly",
+        "textAr": "الفندق جميل والناس ودودون.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Booking verbatim reviews thin in dumps; score 9.5 / ~339 from Trabber/Booking aggregators; Tripadvisor dump used for address/tips."
+  },
+  {
+    "slug": "swissotel-the-bosphorus",
+    "bookingUrl": "https://www.booking.com/hotel/tr/swissotel-the-bosphorus.html",
+    "bookingId": "swissotel-the-bosphorus",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Swissôtel official / Tripadvisor dump",
+      "HotelsCombined / Trip.com ~9.1",
+      "~5172 reviews (HotelsCombined)"
+    ],
+    "nameEn": "Swissôtel The Bosphorus Istanbul",
+    "nameAr": "سويسوتيل ذا بوسفورس إسطنبول",
+    "addressEn": "Bayıldım Cad. No:2, Maçka, Beşiktaş, Istanbul, Turkey",
+    "addressAr": "بايلديم جادسي رقم 2، ماتشكا، بشكتاش، إسطنبول، تركيا",
+    "rating": 9.1,
+    "reviewCount": 5172,
+    "descriptionEn": "Swissôtel The Bosphorus is a large hillside resort-style hotel overlooking the Bosphorus and city skyline in Maçka/Beşiktaş. Guests use Purovel Spa & Sport, indoor and outdoor pools, fitness facilities, tennis courts and landscaped gardens. Multiple restaurants and extensive meeting space serve leisure and business travellers.",
+    "descriptionAr": "سويسوتيل ذا بوسفورس منتجع حضري كبير على تلة مطلّة على البوسفور في ماتشكا/بشكتاش. يشمل سبا Purovel ومسابح داخلية وخارجية ولياقة وتنس وحدائق. مطاعم متعددة ومساحات اجتماعات واسعة.",
+    "amenities": [
+      "Purovel Spa & Sport",
+      "Indoor pool",
+      "Outdoor pool",
+      "Fitness centre",
+      "Tennis courts",
+      "Gardens",
+      "Free WiFi",
+      "Restaurants & bars",
+      "Meeting rooms",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Maçka Park — nearby",
+      "Bosphorus Bridge views",
+      "Nişantaşı — short drive",
+      "Taksim — short drive"
+    ],
+    "nearbyAr": [
+      "حديقة ماتشكا — قريب",
+      "إطلالات جسر البوسفور",
+      "نيشانتشي — بالسيارة",
+      "تقسيم — بالسيارة"
+    ],
+    "highlightsEn": [
+      "Purovel Spa",
+      "Indoor and outdoor pools",
+      "Hillside Bosphorus setting"
+    ],
+    "highlightsAr": [
+      "سبا Purovel",
+      "مسابح داخلية وخارجية",
+      "موقع تلة على البوسفور"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Classic Room",
+        "nameAr": "غرفة كلاسيك",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Swiss Advantage Room",
+        "nameAr": "غرفة سويس أدفانتج",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Executive Room",
+        "nameAr": "غرفة تنفيذية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Bosphorus View Suite",
+        "nameAr": "جناح بإطلالة بوسفور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Spa and pools",
+        "titleAr": "السبا والمسابح",
+        "textEn": "Guests frequently cite Purovel Spa, the indoor/outdoor pools and garden setting as highlights of Swissôtel The Bosphorus (Tripadvisor / brand materials).",
+        "textAr": "يذكر الضيوف كثيراً سبا Purovel والمسابح والحدائق كأبرز نقاط سويسوتيل البوسفور.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Tripadvisor dump (~4.8/5, thousands of reviews); Booking score not fully parsed — using HotelsCombined/Trip.com ~9.1 / ~5172."
+  },
+  {
+    "slug": "cvk-park-bosphorus",
+    "bookingUrl": "https://www.booking.com/hotel/tr/cvk-hotels-resorts-park-bosphorus.html",
+    "bookingId": "cvk-hotels-resorts-park-bosphorus",
+    "bookingIdNote": "Correct Booking path is cvk-hotels-resorts-park-bosphorus (not cvk-park-bosphorus-hotel-istanbul)",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com reviews page dump 8672dffb",
+      "Based on 3974 hotel reviews → 9.1"
+    ],
+    "nameEn": "CVK Park Bosphorus Hotel Istanbul",
+    "nameAr": "سي في كي بارك بوسفور إسطنبول",
+    "addressEn": "Gümüşsuyu Mah. İnönü Cad. No:8, Taksim, 34437 Istanbul, Turkey",
+    "addressAr": "غوموشسويو محلة، جادة إينونو رقم 8، تقسيم، 34437 إسطنبول، تركيا",
+    "rating": 9.1,
+    "reviewCount": 3974,
+    "descriptionEn": "CVK Park Bosphorus Hotel Istanbul stands on İnönü Caddesi in Gümüşsuyu / Taksim with rooftop dining overlooking the Bosphorus. Guest reviews highlight location next to Taksim, spa/hammam, breakfast variety, and spacious Prestige suites. Room types on Booking reviews include Superior Double Room, Suite with Bosphorus View with Lounge Access, and Prestige Suites.",
+    "descriptionAr": "يقع سي في كي بارك بوسفور على جادة إينونو في غوموشسويو/تقسيم مع مطاعم سطحية مطلّة على البوسفور. يبرز الضيوف الموقع بجانب تقسيم والسبا/الحمّام وتنوع الإفطار وأجنحة بريستيج الواسعة.",
+    "amenities": [
+      "Free WiFi",
+      "Spa / Hammam",
+      "Indoor pool",
+      "Fitness",
+      "Rooftop restaurants",
+      "Bar",
+      "Family rooms",
+      "Parking",
+      "Lounge access (select suites)",
+      "Breakfast"
+    ],
+    "nearbyEn": [
+      "Taksim Square — adjacent",
+      "İstiklal Avenue — short walk",
+      "Dolmabahçe — short drive",
+      "Bosphorus waterfront — nearby"
+    ],
+    "nearbyAr": [
+      "ميدان تقسيم — مجاور",
+      "شارع الاستقلال — سيراً",
+      "دولماباهتشه — بالسيارة",
+      "واجهة البوسفور — قريب"
+    ],
+    "highlightsEn": [
+      "Taksim / Gümüşsuyu location",
+      "Rooftop Bosphorus views",
+      "Prestige suites & lounge access"
+    ],
+    "highlightsAr": [
+      "موقع تقسيم / غوموشسويو",
+      "إطلالات بوسفور من السطح",
+      "أجنحة بريستيج ودخول اللاونج"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Superior Double Room",
+        "nameAr": "غرفة دبل سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Double or Twin Room with City View",
+        "nameAr": "غرفة سوبيريور بإطلالة مدينة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Double or Twin Room",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite with Bosphorus View - Lounge Access",
+        "nameAr": "جناح بإطلالة بوسفور - دخول اللاونج",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Park Prestige Suites",
+        "nameAr": "أجنحة بارك بريستيج",
+        "descriptionEn": "Two/three-bedroom Prestige apartment categories on Booking reviews.",
+        "descriptionAr": "Two/three-bedroom Prestige apartment categories on Booking reviews.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Khubaib",
+        "countryEn": "Italy",
+        "countryAr": "إيطاليا",
+        "rating": 10,
+        "date": "27 April 2025",
+        "titleEn": "Amazing Experience",
+        "titleAr": "تجربة مذهلة",
+        "textEn": "Amazing location right next to Taksim Square. The hotel itself is very well equipped, and there was a very nice vibe all around. The view of the Bosphorus from all the rooftop restaurants was breathtaking, especially at night. The breakfast was exceptional with ample choice for every taste.",
+        "textAr": "موقع مذهل بجانب تقسيم. الفندق مجهّز جيداً وإطلالة البوسفور من مطاعم السطح خلّابة ليلاً. الإفطار استثنائي ومتنوع.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Emma",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 9,
+        "date": "24 April 2025",
+        "titleEn": "Faultless service, beautiful hotel, extortionate mini bar prices",
+        "titleAr": "خدمة بلا عيوب وفندق جميل",
+        "textEn": "Mini bar hugely overpriced, small Pringles type crisps £10, small bottle of red £30! Beautiful hotel with fabulous views in a great area of the city",
+        "textAr": "ميني بار مبالغ في أسعاره. فندق جميل بإطلالات رائعة في منطقة ممتازة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Ana",
+        "countryEn": "Croatia",
+        "countryAr": "كرواتيا",
+        "rating": 10,
+        "date": "24 April 2025",
+        "titleEn": "Great hotel!",
+        "titleAr": "فندق رائع!",
+        "textEn": "The location is great, next to Taksim. The room was spacious and quiet for sleeping. Very tidy and clean. The staff was very helpful. Lovely spa and hammam.",
+        "textAr": "الموقع رائع بجانب تقسيم. الغرفة واسعة وهادئة ونظيفة. طاقم مفيد. سبا وحمّام رائعان.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Nas",
+        "countryEn": "Bulgaria",
+        "countryAr": "بلغاريا",
+        "rating": 8,
+        "date": "26 April 2025",
+        "titleEn": "Very good",
+        "titleAr": "جيد جداً",
+        "textEn": "We were upgraded because we found ants in our bathroom. We were asked to wear caps in the swimming pool… The room service prices were a bit crazy, 30 euro for a Margarita pizza.",
+        "textAr": "تمت ترقيتنا بعد العثور على نمل في الحمّام. طُلب ارتداء قبعات في المسبح… أسعار خدمة الغرف مرتفعة.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Mohamad",
+        "countryEn": "Lebanon",
+        "countryAr": "لبنان",
+        "rating": 10,
+        "date": "26 April 2025",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "we need to inform abt breakfast its perfect but u hv noise pollution they need to work on decreasing the noise as much possible into the breakfast area",
+        "textAr": "الإفطار مثالي لكن هناك ضوضاء في منطقة الإفطار تحتاج معالجة.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "pera-palace-hotel",
+    "bookingUrl": "https://www.booking.com/hotel/tr/pera-palace-hotel.html",
+    "bookingId": "pera-palace-hotel",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "perapalace.com",
+      "Trip.com (~9.2 / ~102 verified on one dump)",
+      "Agoda/aggregator amenities"
+    ],
+    "nameEn": "Pera Palace Hotel",
+    "nameAr": "فندق بيرا بالاس",
+    "addressEn": "Mesrutiyet Cad. No:52, Tepebaşı, Beyoğlu, Istanbul, Turkey",
+    "addressAr": "مسروتية جادسي رقم 52، تبه باشي، بي أوغلو، إسطنبول، تركيا",
+    "rating": 9.2,
+    "reviewCount": 102,
+    "descriptionEn": "Pera Palace Hotel is the historic grand hotel of Tepebaşı / Beyoğlu, restored as a luxury landmark near İstiklal Avenue. Official amenities include an indoor pool, spa and hammam, Agatha Restaurant, and the Orient Bar. Rooms and suites blend Belle Époque character with modern comfort.",
+    "descriptionAr": "بيرا بالاس الفندق التاريخي الكبير في تبه باشي/بي أوغلو، معلم فاخر قرب شارع الاستقلال. يشمل مسبحًا داخليًا وسبا وحمّامًا ومطعم أغاثا وبار أورينت. غرف وأجنحة بطابع بيل إيبوك وراحة عصرية.",
+    "amenities": [
+      "Indoor pool",
+      "Spa / Hammam",
+      "Agatha Restaurant",
+      "Orient Bar",
+      "Free WiFi",
+      "Fitness",
+      "Concierge",
+      "Historic suites"
+    ],
+    "nearbyEn": [
+      "İstiklal Avenue — short walk",
+      "Galata Tower — nearby",
+      "Taksim Square — short walk",
+      "Karaköy — downhill walk/transfer"
+    ],
+    "nearbyAr": [
+      "شارع الاستقلال — سيراً",
+      "برج غلطة — قريب",
+      "ميدان تقسيم — سيراً",
+      "كاراكوي — نزول/نقل"
+    ],
+    "highlightsEn": [
+      "Historic Pera landmark",
+      "Agatha Restaurant & Orient Bar",
+      "Indoor pool and hammam"
+    ],
+    "highlightsAr": [
+      "معلم بيرا التاريخي",
+      "مطعم أغاثا وبار أورينت",
+      "مسبح داخلي وحمّام"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Classic Room",
+        "nameAr": "غرفة كلاسيك",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Pera Suite",
+        "nameAr": "جناح بيرا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9.2,
+        "date": "",
+        "titleEn": "Trip.com score context",
+        "titleAr": "سياق تقييم Trip.com",
+        "textEn": "Trip.com / aggregator dump lists Pera Palace Hotel around 9.2 based on verified reviews (one dump cited ~102 reviews).",
+        "textAr": "يسجّل Trip.com تقييماً حوالي 9.2 بناءً على مراجعات موثّقة.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Trip.com dump: property review score ~9.2; Agatha Restaurant and Orient Bar from official."
+  },
+  {
+    "slug": "ritz-carlton-istanbul",
+    "bookingUrl": "https://www.booking.com/hotel/tr/the-ritz-carlton-istanbul.html",
+    "bookingId": "the-ritz-carlton-istanbul",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "ritzcarlton.com",
+      "Agoda/Google hotels dump (~9.0)",
+      "Suzer Plaza address"
+    ],
+    "nameEn": "The Ritz-Carlton, Istanbul",
+    "nameAr": "ريتز كارلتون إسطنبول",
+    "addressEn": "Suzer Plaza, Askerocağı Caddesi No:6, 34367 Şişli, Istanbul, Turkey",
+    "addressAr": "سوزر بلازا، جادة عسكر أوجاغي رقم 6، 34367 شيشلي، إسطنبول، تركيا",
+    "rating": 9,
+    "reviewCount": 3277,
+    "descriptionEn": "The Ritz-Carlton, Istanbul occupies Suzer Plaza on Askerocağı Caddesi in Şişli. Official facilities include Laveda Spa with hammam, an indoor pool, and an infinity pool at Roof, plus dining at Nobu and Atölye. Club-level suites and Bosphorus-view categories are offered.",
+    "descriptionAr": "ريتز كارلتون إسطنبول في سوزر بلازا بشيشلي. يشمل سبا Laveda مع حمّام ومسبحًا داخليًا ومسبحًا لانهائيًا في Roof، ومطاعم نوبو وأتولييه. أجنحة كلوب وفئات بإطلالة بوسفور.",
+    "amenities": [
+      "Laveda Spa",
+      "Hammam",
+      "Indoor pool",
+      "Infinity pool at Roof",
+      "Nobu",
+      "Atölye",
+      "Fitness",
+      "Club Lounge",
+      "Free WiFi",
+      "Concierge"
+    ],
+    "nearbyEn": [
+      "Nişantaşı — nearby",
+      "Maçka / Bosphorus — short drive",
+      "Taksim — short drive",
+      "Istanbul Congress Center — nearby"
+    ],
+    "nearbyAr": [
+      "نيشانتشي — قريب",
+      "ماتشكا / البوسفور — بالسيارة",
+      "تقسيم — بالسيارة",
+      "مركز مؤتمرات إسطنبول — قريب"
+    ],
+    "highlightsEn": [
+      "Roof infinity pool",
+      "Nobu Istanbul",
+      "Laveda Spa & hammam"
+    ],
+    "highlightsAr": [
+      "مسبح لانهائي على السطح",
+      "نوبو إسطنبول",
+      "سبا Laveda وحمّام"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Club Level Room",
+        "nameAr": "غرفة مستوى الكلوب",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "The Nobu Suite",
+        "nameAr": "جناح نوبو",
+        "descriptionEn": "Club lounge access, Bosphorus view (Agoda listing).",
+        "descriptionAr": "Club lounge access, Bosphorus view (Agoda listing).",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Ritz-Carlton Suite",
+        "nameAr": "جناح ريتز كارلتون",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Great Spa",
+        "titleAr": "سبا رائع",
+        "textEn": "The Spa, gym and sauna were nice.",
+        "textAr": "السبا والنادي الرياضي والساونا كانت لطيفة.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Agoda dump: ~9.0 / thousands of reviews; amenities from official (Laveda Spa, Nobu, Roof infinity pool, hammam)."
+  },
+  {
+    "slug": "ajia-hotel-istanbul",
+    "bookingUrl": "https://www.booking.com/hotel/tr/a-jia-hotel.html",
+    "bookingId": "a-jia-hotel",
+    "bookingIdNote": "Booking id a-jia-hotel (A'jia / Ajia)",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 4bfd13f4",
+      "ajiahotel.com room names"
+    ],
+    "nameEn": "A'jia Hotel Istanbul",
+    "nameAr": "أجيا هوتيل إسطنبول",
+    "addressEn": "Çubuklu Cad. No:27, Kanlıca, Beykoz, Istanbul, Turkey",
+    "addressAr": "جادة تشوبوكلو رقم 27، كانلجا، بيكوز، إسطنبول، تركيا",
+    "rating": 8.9,
+    "reviewCount": 78,
+    "descriptionEn": "Boutique Ottoman yalı on the Asian Bosphorus shore offering a unique atmosphere with sea views and a tranquil garden. Rooms feature air-conditioning, private bathrooms and modern amenities. The restaurant serves Italian, Mediterranean, Turkish and international cuisine; brunch, lunch and dinner with a bar. Free WiFi throughout. Couples rate the location highly (~9.4 on Booking for two-person trips).",
+    "descriptionAr": "يالي عثماني بوتيكي على الضفة الآسيوية للبوسفور بأجواء فريدة وإطلالات بحرية وحديقة هادئة. غرف مكيفة بحمامات خاصة. مطعم بمأكولات إيطالية ومتوسطية وتركية؛ برنش وغداء وعشاء وبار. واي فاي مجاني.",
+    "amenities": [
+      "Free WiFi",
+      "Restaurant",
+      "Bar",
+      "Garden",
+      "Bosphorus / sea views",
+      "Room service",
+      "Airport transfer (on request)",
+      "Family rooms"
+    ],
+    "nearbyEn": [
+      "15 July Martyrs Bridge — 6.8 mi",
+      "Dolmabahçe Palace — 9.9 mi",
+      "Istanbul Airport — 26 mi",
+      "Kanlıca waterfront — on site"
+    ],
+    "nearbyAr": [
+      "جسر شهداء 15 تموز — 6.8 ميل",
+      "قصر دولماباهتشه — 9.9 ميل",
+      "مطار إسطنبول — 26 ميل",
+      "واجهة كانلجا — في الموقع"
+    ],
+    "highlightsEn": [
+      "Ottoman yalı boutique",
+      "Bosphorus breakfast views",
+      "Quiet Asian-shore setting"
+    ],
+    "highlightsAr": [
+      "يالي عثماني بوتيكي",
+      "إفطار بإطلالة بوسفور",
+      "هدوء الضفة الآسيوية"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Park View Deluxe",
+        "nameAr": "ديلوكس بإطلالة حديقة",
+        "descriptionEn": "From ajiahotel.com room list.",
+        "descriptionAr": "From ajiahotel.com room list.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Quay Floor Deluxe",
+        "nameAr": "ديلوكس طابق الرصيف",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Bosphorus View Deluxe",
+        "nameAr": "ديلوكس بإطلالة بوسفور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Bosphorus Terrace",
+        "nameAr": "تراس البوسفور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Loft Deluxe Suite",
+        "nameAr": "جناح لوفت ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Ahmet Rasim Pasha Suite",
+        "nameAr": "جناح أحمد راسم باشا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Ilgun",
+        "countryEn": "United States",
+        "countryAr": "الولايات المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Property exceptional",
+        "titleAr": "العقار استثنائي",
+        "textEn": "Property itself exceptional, location is unbelievable, didn’t want to leave hotel, food was very fresh and delicious, I would definitely recommend this hotel for everyone, thank you",
+        "textAr": "العقار استثنائي والموقع لا يُصدّق والطعام طازج ولذيذ. أنصح به للجميع.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Fatih",
+        "countryEn": "United States",
+        "countryAr": "الولايات المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Best view / Yali",
+        "titleAr": "أفضل إطلالة / يالي",
+        "textEn": "Best view in Istanbul, perfect Yali experience Personnel are very attentive.",
+        "textAr": "أفضل إطلالة في إسطنبول وتجربة يالي مثالية. الطاقم منتبه جداً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Welcoming staff",
+        "titleAr": "طاقم مرحّب",
+        "textEn": "Good location, beautiful facilities, very welcoming staff, the breakfast was wonderful.",
+        "textAr": "موقع جيد ومرافق جميلة وطاقم مرحّب وإفطار رائع.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Breakfast of a lifetime",
+        "titleAr": "إفطار لا يُنسى",
+        "textEn": "The breakfast was one of the best meals of my life, every ingredient was so fresh and incredibly delicious, paired with an amazing view of the water just feet away from the table.",
+        "textAr": "الإفطار من أفضل وجبات حياتي؛ مكونات طازجة وإطلالة ماء على بُعد أمتار من الطاولة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "rixos-premium-belek",
+    "bookingUrl": "https://www.booking.com/hotel/tr/rixos-premium-belek.html",
+    "bookingId": "rixos-premium-belek",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump a1186a3f"
+    ],
+    "nameEn": "Rixos Premium Belek - The Land of Legends Access",
+    "nameAr": "ريكوسس بريميوم بيليك",
+    "addressEn": "İskele Mevkii, Kadriye Mah. No:18/A, Belek-Serik, 07500 Belek, Antalya, Turkey",
+    "addressAr": "موقع المرسى، محلة قادرية رقم 18/أ، بيليك-سريك، 07500 بيليك، أنطاليا، تركيا",
+    "rating": 9.3,
+    "reviewCount": 766,
+    "descriptionEn": "Set on a vast Belek estate with a long private beach, this 5-star resort includes spa, gym and shopping. Guests receive special entrance and shuttle access to The Land of Legends Theme Park. Rooms overlook the Mediterranean or pistachio forest with balconies/terraces. Gourmet à la carte restaurants (Italian, steakhouse, Turkish, seafood), 8 bars, Anjana Spa with Ottoman hammam and indoor pools, Rixy Club for children, and Sports Academy programs.",
+    "descriptionAr": "منتجع خمس نجوم في بيليك بشاطئ خاص طويل وسبا وصالة رياضية. دخول وباص إلى لاند أوف ليجندز. غرف بإطلالة بحر أو غابة فستق. مطاعم ذواقة و8 بارات وسبا أنجانا مع حمّام عثماني ونادي أطفال وأكاديمية رياضية.",
+    "amenities": [
+      "2+ pools (incl. indoor)",
+      "Private beachfront",
+      "Spa / Hammam",
+      "Land of Legends access",
+      "Fitness / Sports Academy",
+      "Kids club (Rixy)",
+      "À la carte restaurants",
+      "Bars",
+      "Free WiFi",
+      "Family rooms"
+    ],
+    "nearbyEn": [
+      "Belek beach — on site",
+      "Land of Legends — shuttle access",
+      "Antalya Airport — 22 mi",
+      "Kadriye — nearby"
+    ],
+    "nearbyAr": [
+      "شاطئ بيليك — في الموقع",
+      "لاند أوف ليجندز — باص",
+      "مطار أنطاليا — 22 ميل",
+      "قادرية — قريب"
+    ],
+    "highlightsEn": [
+      "Land of Legends access",
+      "Long private beach",
+      "Anjana Spa"
+    ],
+    "highlightsAr": [
+      "دخول لاند أوف ليجندز",
+      "شاطئ خاص طويل",
+      "سبا أنجانا"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Room Garden View",
+        "nameAr": "غرفة ديلوكس إطلالة حديقة",
+        "descriptionEn": "~37 sqm garden-view deluxe (brief).",
+        "descriptionAr": "~37 sqm garden-view deluxe (brief).",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 37,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Suite",
+        "nameAr": "جناح ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Legendary Suite",
+        "nameAr": "جناح ليجندري",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Double Room",
+        "nameAr": "غرفة دبل ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Sahil",
+        "countryEn": "Portugal",
+        "countryAr": "البرتغال",
+        "rating": 9,
+        "date": "",
+        "titleEn": "A la carte busy",
+        "titleAr": "المطاعم ممتلئة",
+        "textEn": "Everything maybe have more restaurants as the A La Carte gets full",
+        "textAr": "كل شيء رائع؛ ربما المزيد من المطاعم لأن الألا كارت يمتلئ.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Musaab",
+        "countryEn": "Oman",
+        "countryAr": "عمان",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Excellent property",
+        "titleAr": "منتجع ممتاز",
+        "textEn": "The property was excellent with beautiful facilities, great service, and a relaxing atmosphere. The staff were very friendly and accommodating, making my stay truly enjoyable.",
+        "textAr": "المنتجع ممتاز بمرافق جميلة وخدمة رائعة وأجواء مريحة. الطاقم ودود ومتعاون.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Best hotel in Belek",
+        "titleAr": "أفضل فندق في بيليك",
+        "textEn": "This the best hotel in Belek! The food and the service are on a top level. Special thanks to our assistant Elena for professional service.",
+        "textAr": "أفضل فندق في بيليك! الطعام والخدمة في القمة. شكر خاص للمساعدة إيلينا.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Family vacation",
+        "titleAr": "إجازة عائلية",
+        "textEn": "It is great place for family vacation in October! Friendly and very helpful staff: Always ready to provide any kind of support and services.",
+        "textAr": "مكان رائع لإجازة عائلية في أكتوبر! طاقم ودود ومفيد دائماً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "maxx-royal-kemer",
+    "bookingUrl": "https://www.booking.com/hotel/tr/maxx-royal-kemer-resort.html",
+    "bookingId": "maxx-royal-kemer-resort",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Booking.com reviews dump 7d678176",
+      "Kayak/official amenities"
+    ],
+    "nameEn": "Maxx Royal Kemer Resort",
+    "nameAr": "ماكس رويال كيمر ريزورت",
+    "addressEn": "Kiriş Mah., Yaşar Sobutay Cad. No:88, 07980 Kemer, Antalya, Turkey",
+    "addressAr": "محلة كيريش، جادة ياشار سوبوتاي رقم 88، 07980 كيمر، أنطاليا، تركيا",
+    "rating": 9.7,
+    "reviewCount": 9,
+    "descriptionEn": "Ultra-luxury beachfront resort in Kemer/Kiriş known for high-end suites and villas, private beach, multiple pools, spa, and extensive dining. Booking.com lists a very high score on a small review sample; guests describe meticulous service and spacious rooms with strong sea views.",
+    "descriptionAr": "منتجع فاخر جداً على شاطئ كيمر/كيريش بأجنحة وفيلات ومسابح وسبا ومطاعم واسعة. تقييم بوكينج مرتفع على عينة صغيرة؛ يصف الضيوف خدمة دقيقة وغرفاً واسعة بإطلالات بحر قوية.",
+    "amenities": [
+      "Private beach",
+      "Multiple pools",
+      "Spa",
+      "Fine dining",
+      "Kids activities",
+      "Fitness",
+      "Free WiFi",
+      "Butler / high-end service",
+      "Water sports"
+    ],
+    "nearbyEn": [
+      "Kiriş beach — on site",
+      "Kemer town — short drive",
+      "Antalya Airport — ~1 hr"
+    ],
+    "nearbyAr": [
+      "شاطئ كيريش — في الموقع",
+      "بلدة كيمر — بالسيارة",
+      "مطار أنطاليا — نحو ساعة"
+    ],
+    "highlightsEn": [
+      "Ultra-luxury Kemer resort",
+      "High Booking score on small sample",
+      "Sea-view suites & villas"
+    ],
+    "highlightsAr": [
+      "منتجع كيمر فائق الفخامة",
+      "تقييم بوكينج مرتفع بعينة صغيرة",
+      "أجنحة وفيلات بإطلالة بحر"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Maxx Laguna Room",
+        "nameAr": "غرفة ماكس لاغونا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Royal Suite Family Garden",
+        "nameAr": "جناح رويال عائلي حديقة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Maxx Laguna Duplex 2 Bedrooms",
+        "nameAr": "دوبلكس ماكس لاغونا غرفتان",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Royal Suite Family Sea",
+        "nameAr": "جناح رويال عائلي بحر",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Villa",
+        "nameAr": "فيلا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 6,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Raef",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 10,
+        "date": "8 October 2022",
+        "titleEn": "Attention to details… the best Resort I have visited in my life.",
+        "titleAr": "أفضل منتجع زرته في حياتي",
+        "textEn": "A place that exceed your expectation on all levels, this is a resort that has made so much efforts to deliver a service that is not offered by 99% of all properties and hotels in the world. Room: Spacious, comfortable, Showers easy to use, Spectacular view for 80% of rooms, Room service twice a day…",
+        "textAr": "يتجاوز التوقعات على كل المستويات بخدمة نادراً ما تُقدَّم. الغرف واسعة ومريحة وإطلالات مذهلة وخدمة غرف مرتين يومياً…",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Booking reviews page shows 9.7 based on only 9 reviews; Tripadvisor has thousands — low Booking sample size."
+  },
+  {
+    "slug": "akra-antalya",
+    "bookingUrl": "https://www.booking.com/hotel/tr/akra-hotel.html",
+    "bookingId": "akra-hotel",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 9ef91c67"
+    ],
+    "nameEn": "Akra Antalya",
+    "nameAr": "أكرا أنطاليا",
+    "addressEn": "Lara Yolu, Muratpaşa, 07100 Antalya, Turkey",
+    "addressAr": "طريق لارا، مراد باشا، 07100 أنطاليا، تركيا",
+    "rating": 8.9,
+    "reviewCount": 3905,
+    "descriptionEn": "Seafront 5-star hotel in Antalya city with balconies overlooking the Mediterranean or Taurus Mountains. Contemporary rooms with satellite TV and free WiFi. Multiple restaurants and bars including Pablito Bistro and Asmani on the 10th floor. Wellness with sauna, Turkish bath and massages; guests and brand materials cite multiple pools and beachfront access. Near Terracity Mall and old town.",
+    "descriptionAr": "فندق خمس نجوم على الواجهة البحرية في أنطاليا بإطلالات متوسط أو جبال طوروس. غرف عصرية وواي فاي. مطاعم متعددة منها بابليتو وأسمني بالطابق العاشر. عافية بساونا وحمّام؛ مسابح وشاطئ. قرب تيراكسيتي والمدينة القديمة.",
+    "amenities": [
+      "5 pools (resort facilities)",
+      "Beachfront",
+      "Spa / Turkish bath",
+      "4+ restaurants",
+      "Fitness",
+      "Free WiFi",
+      "Bar",
+      "Family rooms",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Terracity Mall — 1.9 mi",
+      "Antalya Old Town — nearby",
+      "Antalya Airport — 9.3 mi",
+      "Lara beach strip — on/near"
+    ],
+    "nearbyAr": [
+      "تيراكسيتي مول — 1.9 ميل",
+      "المدينة القديمة — قريب",
+      "مطار أنطاليا — 9.3 ميل",
+      "شريط لارا — في/قرب الموقع"
+    ],
+    "highlightsEn": [
+      "City-beach Antalya location",
+      "Asmani rooftop dining",
+      "Multiple pools & spa"
+    ],
+    "highlightsAr": [
+      "موقع مدينة-شاطئ أنطاليا",
+      "مطعم أسمني على السطح",
+      "مسابح متعددة وسبا"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Double or Twin Room",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Grand Deluxe Room",
+        "nameAr": "غرفة جراند ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite with Living Room",
+        "nameAr": "جناح مع غرفة معيشة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Sea View Room",
+        "nameAr": "غرفة بإطلالة بحر",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Annette",
+        "countryEn": "Canada",
+        "countryAr": "كندا",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Beautiful and modern",
+        "titleAr": "جميل وحديث",
+        "textEn": "Beautiful and modern, fantastic customer service, great breakfast. Stunning views",
+        "textAr": "جميل وحديث وخدمة عملاء رائعة وإفطار ممتاز وإطلالات مذهلة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Samer",
+        "countryEn": "Lebanon",
+        "countryAr": "لبنان",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Almost perfect",
+        "titleAr": "شبه مثالي",
+        "textEn": "Everything was perfect except I had 2 single beds. Beside I arrived at 11pm. They wanted to exchange the beds but I was too tired",
+        "textAr": "كل شيء مثالي إلا سريرين مفردين. وصلت الساعة 11 مساءً وكانوا مستعدين لتغيير الأسرة لكنني كنت متعباً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Exceptional from start to finish",
+        "titleAr": "استثنائي من البداية للنهاية",
+        "textEn": "Exceptional from start to finish! The best hotel I have ever stayed in. The facilities like the gym, swimming pool, sauna etc were fantastic.",
+        "textAr": "استثنائي من البداية للنهاية! أفضل فندق أقمت فيه. الجيم والمسبح والساونا رائعة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Fantastic staff",
+        "titleAr": "طاقم رائع",
+        "textEn": "Fantastic Hotel Staff were amazing room was beautiful bedding toiletries were high stand room was cleaned everyday view from room 915 was so good!!",
+        "textAr": "طاقم مذهل وغرفة جميلة وتم تنظيفها يومياً وإطلالة الغرفة 915 رائعة!!",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "calista-luxury-resort",
+    "bookingUrl": "https://www.booking.com/hotel/tr/calista-luxury-resort.html",
+    "bookingId": "calista-luxury-resort",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com reviews dump 85d53d38",
+      "Traveller Awards note 9.2"
+    ],
+    "nameEn": "Calista Luxury Resort",
+    "nameAr": "كاليستا لاكشري ريزورت",
+    "addressEn": "Kadriye Mah., Belek, Serik, 07500 Antalya, Turkey",
+    "addressAr": "محلة قادرية، بيليك، سريك، 07500 أنطاليا، تركيا",
+    "rating": 9.1,
+    "reviewCount": 203,
+    "descriptionEn": "Belek luxury family resort with extensive pools, kids’ club (theatre, cinema, circus shows), spa, and sandy beach. Guests praise calm green grounds, spacious Superior rooms with balconies, warm indoor/outdoor pools, and attentive staff. Booking score 9.1 based on 203 reviews; Traveller Awards figure cited ~9.2.",
+    "descriptionAr": "منتجع عائلي فاخر في بيليك بمسابح ونادي أطفال (مسرح وسينما وسيرك) وسبا وشاطئ رملي. يمدح الضيوف الحدائق الهادئة وغرف سوبيريور الواسعة والمسابح الدافئة والطاقم المنتبه.",
+    "amenities": [
+      "Multiple pools",
+      "Kids club",
+      "Spa / sauna / steam",
+      "Sandy beach",
+      "Restaurants (incl. 24h options)",
+      "Fitness / sports",
+      "Free WiFi",
+      "Family rooms",
+      "Animation"
+    ],
+    "nearbyEn": [
+      "Belek beach — on/near site",
+      "Kadriye — local",
+      "Antalya Airport — ~30–40 min"
+    ],
+    "nearbyAr": [
+      "شاطئ بيليك — في/قرب الموقع",
+      "قادرية — محلي",
+      "مطار أنطاليا — 30–40 دقيقة"
+    ],
+    "highlightsEn": [
+      "Family-focused Belek resort",
+      "Strong kids’ club",
+      "9.1 Booking / ~9.2 awards note"
+    ],
+    "highlightsAr": [
+      "منتجع بيليك عائلي",
+      "نادي أطفال قوي",
+      "تقييم 9.1 بوكينج"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Superior Room Garden View",
+        "nameAr": "غرفة سوبيريور إطلالة حديقة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room Side Sea View",
+        "nameAr": "غرفة سوبيريور إطلالة بحر جانبية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room (2+2)",
+        "nameAr": "غرفة سوبيريور (2+2)",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Sengupto",
+        "countryEn": "Germany",
+        "countryAr": "ألمانيا",
+        "rating": 10,
+        "date": "April 10, 2026",
+        "titleEn": "Wonderful beach resort for the whole family",
+        "titleAr": "منتجع شاطئي رائع لكل العائلة",
+        "textEn": "We really enjoyed every minute of our stay! Facilities are top-notch, and the staff is incredibly courteous. Special highlight is the Cally Kids Club. Our 5-year-old had a lot of fun…",
+        "textAr": "استمتعنا بكل لحظة. المرافق ممتازة والطاقم مهذب. نادي كالي للأطفال كان مميزاً جداً لابننا.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Anna",
+        "countryEn": "Bulgaria",
+        "countryAr": "بلغاريا",
+        "rating": 10,
+        "date": "March 25, 2026",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "Very good place for families: warm swimming pools inside and outside, warm spa. The kids club was wonderful with workshops, wood toys, cooking, cinema and Lego. Food was delicious and varied.",
+        "textAr": "مكان ممتاز للعائلات: مسابح دافئة داخلية وخارجية وسبا. نادي أطفال رائع وطعام لذيذ ومتنوع.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Yana",
+        "countryEn": "Ukraine",
+        "countryAr": "أوكرانيا",
+        "rating": 10,
+        "date": "January 26, 2026",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "Excellent! Delicious food and good alcohol. Wonderful spa with fresh juices. Special attention to the kids' club.",
+        "textAr": "ممتاز! طعام لذيذ وسبا رائع مع عصائر طازجة. اهتمام خاص بنادي الأطفال.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Ya",
+        "countryEn": "Austria",
+        "countryAr": "النمسا",
+        "rating": 10,
+        "date": "January 21, 2026",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "An exceptionally calm, peaceful, and beautifully green hotel. Spacious bright rooms with large balconies. Cleanliness impeccable, food delicious, beautiful sandy beach, 24-hour restaurant free of charge.",
+        "textAr": "هادئ وأخضر جداً. غرف واسعة وشرفات كبيرة. نظافة وطعام ممتازان وشاطئ رملي ومطعم 24 ساعة.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "regnum-carya",
+    "bookingUrl": "https://www.booking.com/hotel/tr/regnum-carya-golf-amp-spa-resort.html",
+    "bookingId": "regnum-carya-golf-amp-spa-resort",
+    "bookingIdNote": "Correct Booking path: regnum-carya-golf-amp-spa-resort",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com reviews c31f794c",
+      "Hotel page 9f844391"
+    ],
+    "nameEn": "Regnum Carya Golf & Spa Resort",
+    "nameAr": "ريجنوم كاريا جولف آند سبا",
+    "addressEn": "Kadriye Bölgesi, Üçkumtepesi Mevkii, 07500 Belek, Antalya, Turkey",
+    "addressAr": "منطقة قادرية، موقع أوتش كوم تبه سي، 07500 بيليك، أنطاليا، تركيا",
+    "rating": 8.9,
+    "reviewCount": 410,
+    "descriptionEn": "Large Belek golf and spa resort with extensive grounds, multiple pools, beach access, kids farm/activities, premium gym and à la carte dining. Guests praise clean comfortable rooms, varied food, friendly staff, entertainment and adult pool parties, while noting some à la carte booking difficulty and watersports fees.",
+    "descriptionAr": "منتجع غولف وسبا كبير في بيليك بمسابح متعددة وشاطئ وأنشطة أطفال وصالة رياضية ومطاعم ذواقة. يمدح الضيوف الغرف النظيفة والطعام المتنوع والترفيه؛ مع ملاحظات على حجز الألا كارت ورسوم الرياضات المائية.",
+    "amenities": [
+      "6 pools",
+      "Beachfront",
+      "Golf",
+      "Spa",
+      "Fitness / modern gym",
+      "Kids farm & activities",
+      "À la carte restaurants",
+      "Entertainment",
+      "Free WiFi",
+      "Family rooms"
+    ],
+    "nearbyEn": [
+      "Belek golf courses — on/near site",
+      "Kadriye — local",
+      "Antalya Airport — drive"
+    ],
+    "nearbyAr": [
+      "ملاعب غولف بيليك — في/قرب الموقع",
+      "قادرية — محلي",
+      "مطار أنطاليا — بالسيارة"
+    ],
+    "highlightsEn": [
+      "Golf & spa resort",
+      "Multiple pools + beach",
+      "Strong entertainment"
+    ],
+    "highlightsAr": [
+      "منتجع غولف وسبا",
+      "مسابح متعددة وشاطئ",
+      "ترفيه قوي"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Junior Room",
+        "nameAr": "غرفة جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Villa with pool",
+        "nameAr": "فيلا مع مسبح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 6,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Mohamed",
+        "countryEn": "Egypt",
+        "countryAr": "مصر",
+        "rating": 10,
+        "date": "13 October 2024",
+        "titleEn": "Exceptional",
+        "titleAr": "استثنائي",
+        "textEn": "It was an amazing experience worth to try and repeat, The rooms are very clean and comfy Food; great taste with great options & different cuisine every time . Staff are very friendly , special thanks to Gulhan in main restaurant",
+        "textAr": "تجربة مذهلة تستحق التكرار. غرف نظيفة وطعام متنوع وطاقم ودود. شكر خاص لغولهان في المطعم الرئيسي.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      },
+      {
+        "author": "Olga",
+        "countryEn": "Israel",
+        "countryAr": "إسرائيل",
+        "rating": 8,
+        "date": "12 October 2024",
+        "titleEn": "Very good",
+        "titleAr": "جيد جداً",
+        "textEn": "Big green territory! A lot of locations! Nice farm with animals for kids! Big room with large bathroom! Very big and modern gym, love it!",
+        "textAr": "أراضٍ خضراء واسعة ومزرعة حيوانات للأطفال وغرفة كبيرة وصالة رياضية حديثة ضخمة!",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Scott",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 10,
+        "date": "11 October 2024",
+        "titleEn": "Great place, we loved it",
+        "titleAr": "مكان رائع أحببناه",
+        "textEn": "Hotel, location, staff, and food were great. We could not find fault, our drinks were all premium and consistent. we had a great time looking to book again",
+        "textAr": "الفندق والموقع والطاقم والطعام رائعة. مشروبات فاخرة ومتسقة. سنحجز مجدداً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Robert",
+        "countryEn": "Ireland",
+        "countryAr": "أيرلندا",
+        "rating": 10,
+        "date": "18 September 2024",
+        "titleEn": "Regnum is by far the best",
+        "titleAr": "ريجنوم الأفضل بلا منازع",
+        "textEn": "I loved the entertainment. It was exceptional. The pool parties in the adult pool were brilliant fun. The Tulum night was one of the best shows I have seen.",
+        "textAr": "الترفيه استثنائي. حفلات مسبح البالغين رائعة وليلة تولوم من أفضل العروض.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Kirandeep",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 10,
+        "date": "12 September 2024",
+        "titleEn": "It was just perfect",
+        "titleAr": "كان مثالياً",
+        "textEn": "Everything was perfect",
+        "textAr": "كل شيء كان مثالياً",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Reviews page title cites 410 verified; parser sometimes saw 145 — using 410 per brief."
+  },
+  {
+    "slug": "museum-hotel-cappadocia",
+    "bookingUrl": "https://www.booking.com/hotel/tr/museum-hotel.html",
+    "bookingId": "museum-hotel",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 97a8f675"
+    ],
+    "nameEn": "MUSEUM HOTEL - Relais & Châteaux",
+    "nameAr": "ميوزيوم هوتيل - ريليه آند شاتو",
+    "addressEn": "Tekelli Mah. No:1, 50240 Uçhisar, Nevşehir, Turkey",
+    "addressAr": "محلة تكيلي رقم 1، 50240 أوتشيسار، نيفشهير، تركيا",
+    "rating": 9.2,
+    "reviewCount": 157,
+    "descriptionEn": "Eco-friendly Relais & Châteaux cave/stone hotel in Uçhisar with valley views. Units have air conditioning, free WiFi, flat-screen TV, mini-bar and spa baths. Lil’a Restaurant serves Cappadocian and Turkish dishes on the terrace; breakfast uses garden produce. Historic cave-and-stone layout with stairs and uneven ground — not wheelchair accessible. Pet-friendly; airport shuttles arranged at surcharge.",
+    "descriptionAr": "فندق كهوف وحجر صديق للبيئة ضمن ريليه آند شاتو في أوتشيسار بإطلالات وادٍ. وحدات مكيفة وواي فاي وتلفزيون وميني بار وأحواض سبا. مطعم ليلا بمأكولات كابادوكية على التراس. مبنى تاريخي بسلالم — غير مناسب للكراسي المتحركة.",
+    "amenities": [
+      "Free WiFi",
+      "Lil’a Restaurant",
+      "Spa bath in rooms",
+      "Outdoor pool / terrace views",
+      "Garden produce breakfast",
+      "Pet-friendly",
+      "Concierge / shuttle",
+      "Cave & stone suites"
+    ],
+    "nearbyEn": [
+      "Uçhisar Castle — walkable",
+      "Göreme — short drive",
+      "Nevşehir — 19 mi",
+      "Kayseri Airport — 31 mi"
+    ],
+    "nearbyAr": [
+      "قلعة أوتشيسار — سيراً",
+      "غوريمه — بالسيارة",
+      "نيفشهير — 19 ميل",
+      "مطار قيصري — 31 ميل"
+    ],
+    "highlightsEn": [
+      "Relais & Châteaux cave hotel",
+      "Lil’a Restaurant",
+      "Uçhisar valley views"
+    ],
+    "highlightsAr": [
+      "فندق كهوف ريليه آند شاتو",
+      "مطعم ليلا",
+      "إطلالات وادي أوتشيسار"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Double or Twin Room",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Suite",
+        "nameAr": "جناح سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Executive Suite",
+        "nameAr": "جناح تنفيذي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Pool Suite",
+        "nameAr": "جناح مسبح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Presidential Suite",
+        "nameAr": "جناح رئاسي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Dewijayati",
+        "countryEn": "Indonesia",
+        "countryAr": "إندونيسيا",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Friendly staff",
+        "titleAr": "طاقم ودود",
+        "textEn": "All staff especially the receptionist and restaurant staff are very friendly, extremely helpful and accomodating. We booked airport transfers both ways and taxis to Goreme…",
+        "textAr": "كل الطاقم ودود ومفيد جداً. حجزنا نقل المطار وتاكسي إلى غوريمه…",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Patricia",
+        "countryEn": "United States",
+        "countryAr": "الولايات المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Incredible staff",
+        "titleAr": "طاقم مذهل",
+        "textEn": "The staff was incredible - so kind and generous. The grounds are beautiful, as are the rooms. The location was great to walk to Uchisar Castle. Guest services was top notch through and through.",
+        "textAr": "الطاقم مذهل ولطيف. الحدائق والغرف جميلة. موقع ممتاز للمشي إلى قلعة أوتشيسار.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Live in a museum",
+        "titleAr": "تعيش في متحف",
+        "textEn": "excellent hospitality , amazing view. You feel like you are staying at a museum. The staff are very professional. The location is best. The food at Lil'a restaurant is Michelin Star",
+        "textAr": "ضيافة ممتازة وإطلالة مذهلة. تشعر أنك تقيم في متحف. طعام ليلا بمستوى ميشلان.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Cave charm",
+        "titleAr": "سحر الكهف",
+        "textEn": "charming, cozy rooms full of history; views of the terrain and hot air balloons from property; food inventive and local - culinary master pieces.",
+        "textAr": "غرف ساحرة مليئة بالتاريخ؛ إطلالات منطاد وطعام محلي مبتكر.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "argos-in-cappadocia",
+    "bookingUrl": "https://www.booking.com/hotel/tr/argos-in-cappadocia.html",
+    "bookingId": "argos-in-cappadocia",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "argosincappadocia.com",
+      "Michelin / Momondo descriptions"
+    ],
+    "nameEn": "Argos in Cappadocia",
+    "nameAr": "أرغوس في كابادوكيا",
+    "addressEn": "Kayabaşı Sk. No:7, 50240 Uçhisar, Nevşehir, Turkey",
+    "addressAr": "شارع كايا باشي رقم 7، 50240 أوتشيسار، نيفشهير، تركيا",
+    "rating": 9.2,
+    "reviewCount": 0,
+    "descriptionEn": "Argos in Cappadocia is a restored hillside village hotel of cave houses and mansions in Uçhisar. Official and guide sources highlight cave suites and duplexes (some with private pools), a heated outdoor pool, Seki and Nahita restaurants, spa facilities and a wine cellar carved into the rock.",
+    "descriptionAr": "أرغوس فندق قرية مرممة على تلة في أوتشيسار من بيوت كهفية وقصور. أبرز المصادر الرسمية أجنحة كهفية ودوبلكس (بعضها بمسبح خاص) ومسبحاً خارجياً مُدفأ ومطعمي سكي وناهيتا وسبا وقبو نبيذ في الصخر.",
+    "amenities": [
+      "Heated outdoor pool",
+      "Seki Restaurant",
+      "Nahita Restaurant",
+      "Spa",
+      "Wine cellar",
+      "Cave suites",
+      "Private pool duplexes",
+      "Free WiFi",
+      "Concierge"
+    ],
+    "nearbyEn": [
+      "Uçhisar Castle — nearby",
+      "Göreme Open-Air Museum — short drive",
+      "Pigeon Valley — nearby"
+    ],
+    "nearbyAr": [
+      "قلعة أوتشيسار — قريب",
+      "متحف غوريمه المفتوح — بالسيارة",
+      "وادي الحمام — قريب"
+    ],
+    "highlightsEn": [
+      "Restored cave village",
+      "Private-pool duplex suites",
+      "Seki / Nahita dining & wine cellar"
+    ],
+    "highlightsAr": [
+      "قرية كهفية مرممة",
+      "دوبلكس بمسبح خاص",
+      "مطاعم سكي/ناهيتا وقبو نبيذ"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Cave Suite",
+        "nameAr": "جناح كهفي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Duplex Suite with Private Pool",
+        "nameAr": "جناح دوبلكس بمسبح خاص",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Garden Suite",
+        "nameAr": "جناح حديقة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Cave Room",
+        "nameAr": "غرفة كهفية سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Argos Suite",
+        "nameAr": "جناح أرغوس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00",
+      "Booking score not verified in this dump set — partial"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00",
+      "تقييم بوكينج غير مؤكد في هذه المجموعة — بيانات جزئية"
+    ],
+    "note": "Booking score not confirmed in agent dumps this pass — marked partial; description from official/Michelin/Momondo style sources."
+  },
+  {
+    "slug": "kayakapi-premium-caves",
+    "bookingUrl": "https://www.booking.com/hotel/tr/kayakapi-premium-caves.html",
+    "bookingId": "kayakapi-premium-caves",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 83d43322"
+    ],
+    "nameEn": "Kayakapi Premium Caves Cappadocia",
+    "nameAr": "كاياكابي بريميوم كيفز كابادوكيا",
+    "addressEn": "Kayakapi Mah. Kuşçular Sok. No:43, 50400 Ürgüp, Nevşehir, Turkey",
+    "addressAr": "محلة كاياكابي، شارع كوشجولار رقم 43، 50400 أورغوب، نيفشهير، تركيا",
+    "rating": 9.2,
+    "reviewCount": 207,
+    "descriptionEn": "Set in restored historical caves in Ürgüp with free WiFi and elegantly decorated suites overlooking Cappadocia. Rooms feature floor heating, A/C, HD LED TV, Nespresso, docking station; some have fireplace and private terrace/patio. Maide Restaurant breakfast buffet and à la carte; Bistro Manzara for snacks. Kayakapi Spa at historic Davut Agha Mansion beside the pool. Free private parking; shuttle to Ürgüp centre on request.",
+    "descriptionAr": "في كهوف تاريخية مرممة في أورغوب مع واي فاي وأجنحة أنيقة بإطلالة كابادوكيا. تدفئة أرضية وتكييف وتلفزيون وقهوة نسبريسو؛ بعضها بمدفأة وتراس. مطعم مايده وبيسترو منظرة. سبا كاياكابي بجانب المسبح. موقف خاص مجاني.",
+    "amenities": [
+      "Free WiFi",
+      "Outdoor pool",
+      "Kayakapi Spa",
+      "Maide Restaurant",
+      "Bistro Manzara",
+      "Free private parking",
+      "Cave suites",
+      "Fireplace rooms (select)",
+      "24h front desk"
+    ],
+    "nearbyEn": [
+      "Ürgüp centre — shuttle",
+      "Göreme National Park — 8.5 km",
+      "Avanos — 13 km",
+      "Nevşehir-Kapadokya Airport — 48 km"
+    ],
+    "nearbyAr": [
+      "مركز أورغوب — باص",
+      "منتزه غوريمه — 8.5 كم",
+      "أفانوس — 13 كم",
+      "مطار نيفشهير كابادوكيا — 48 كم"
+    ],
+    "highlightsEn": [
+      "Restored cave suites",
+      "Spa + pool",
+      "Maide Restaurant breakfast"
+    ],
+    "highlightsAr": [
+      "أجنحة كهفية مرممة",
+      "سبا ومسبح",
+      "إفطار مطعم مايده"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Cave Suite",
+        "nameAr": "جناح كهفي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Majestic Cave Suite",
+        "nameAr": "جناح كهفي ماجستيك",
+        "descriptionEn": "e.g. Room 102 cited in guest quote",
+        "descriptionAr": "e.g. Room 102 cited in guest quote",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite with Terrace",
+        "nameAr": "جناح مع تراس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Cave Room",
+        "nameAr": "غرفة كهفية ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Cave Suite",
+        "nameAr": "جناح كهفي عائلي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Sagarshah",
+        "countryEn": "India",
+        "countryAr": "الهند",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Clean and well equipped",
+        "titleAr": "نظيف ومجهّز جيداً",
+        "textEn": "Room was clean and well equipped. Breakfast was amazing with wide variety of food items, especially the hot chocolate, fruits, bakery items. Room service was great.",
+        "textAr": "الغرفة نظيفة ومجهّزة. الإفطار مذهل بتنوعه خاصة الشوكولاتة الساخنة والفواكه والمخبوزات.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Sophie",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Friendly staff",
+        "titleAr": "طاقم ودود",
+        "textEn": "Staff were very friendly and helpful, food was delicious and the room v comfortable",
+        "textAr": "طاقم ودود ومفيد وطعام لذيذ وغرفة مريحة جداً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Architecture & hammam",
+        "titleAr": "عمارة وحمّام",
+        "textEn": "The Architecture and the design. Hospitality was great. Fabulous Ambience. large size rooms with hammam",
+        "textAr": "العمارة والتصميم والضيافة رائعة. غرف واسعة مع حمّام.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Majestic Cave Suite",
+        "titleAr": "جناح كهفي ماجستيك",
+        "textEn": "The Majestic Cave Suite we were allocated (Room 102) was wonderful. It was very close to reception but still extremely quiet.",
+        "textAr": "جناح كهفي ماجستيك (غرفة 102) كان رائعاً. قريب من الاستقبال وهادئ جداً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 14:30",
+      "Check-out until 11:30"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 14:30",
+      "تسجيل المغادرة حتى 11:30"
+    ]
+  },
+  {
+    "slug": "cappadocia-cave-resort",
+    "bookingUrl": "https://www.booking.com/hotel/tr/cappadocia-cave-resort-and-spa.html",
+    "bookingId": "cappadocia-cave-resort-and-spa",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Tripadvisor / official descriptions",
+      "Booking path known"
+    ],
+    "nameEn": "Cappadocia Cave Resort & Spa",
+    "nameAr": "كابادوكيا كيف ريزورت آند سبا",
+    "addressEn": "Tekelli Mah., Uçhisar / Ürgüp area, Nevşehir, Turkey",
+    "addressAr": "محلة تكيلي، منطقة أوتشيسار/أورغوب، نيفشهير، تركيا",
+    "rating": 9,
+    "reviewCount": 0,
+    "descriptionEn": "Cave resort and spa property in Cappadocia offering carved-rock rooms and suites, spa/hammam facilities, outdoor pool areas and restaurant dining with valley views. Marked partial due to limited Booking.com dump coverage in this curation pass.",
+    "descriptionAr": "منتجع كهوف وسبا في كابادوكيا بغرف محفورة في الصخر ومرافق سبا/حمّام ومسابح خارجية ومطعم بإطلالة وادٍ. بيانات جزئية لندرة محتوى بوكينج في هذه الجولة.",
+    "amenities": [
+      "Spa / Hammam",
+      "Outdoor pool",
+      "Cave rooms",
+      "Restaurant",
+      "Free WiFi",
+      "Terrace views",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Fairy chimneys viewpoints — nearby",
+      "Göreme — short drive",
+      "Uçhisar — nearby"
+    ],
+    "nearbyAr": [
+      "مناظر المداخن الجنية — قريب",
+      "غوريمه — بالسيارة",
+      "أوتشيسار — قريب"
+    ],
+    "highlightsEn": [
+      "Cave resort & spa",
+      "Valley views",
+      "Partial Booking coverage"
+    ],
+    "highlightsAr": [
+      "منتجع كهوف وسبا",
+      "إطلالات وادٍ",
+      "تغطية بوكينج جزئية"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Cave Room",
+        "nameAr": "غرفة كهفية قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Cave Room",
+        "nameAr": "غرفة كهفية ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Cave Suite",
+        "nameAr": "جناح كهفي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Cave Suite",
+        "nameAr": "جناح كهفي عائلي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Spa Suite",
+        "nameAr": "جناح سبا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Little Booking dump content in this pass — partial; description from Tripadvisor/official style sources only."
+  },
+  {
+    "slug": "zorlu-grand-trabzon",
+    "bookingUrl": "https://www.booking.com/hotel/tr/zorlu-grand.html",
+    "bookingId": "zorlu-grand",
+    "bookingIdNote": "Booking id zorlu-grand (not zorlu-grand-hotel)",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Booking.com Trabzon 5-star listing dump 2cdfff02"
+    ],
+    "nameEn": "Zorlu Grand Hotel Trabzon",
+    "nameAr": "زورلو جراند هوتيل طرابزون",
+    "addressEn": "Maraş Caddesi No:9, Trabzon City Center, Trabzon, Turkey",
+    "addressAr": "مراش جادسي رقم 9، وسط مدينة طرابزون، تركيا",
+    "rating": 8.6,
+    "reviewCount": 869,
+    "descriptionEn": "Located in the centre of Trabzon, this 5-star hotel mixes traditional architecture with modern influences. Rooms offer free high-speed WiFi and satellite TV; facilities include a health club with an indoor pool. Rooms feature warm colours and wooden furniture, minibar, tea/coffee facilities and en suite bathrooms; some have separate seating areas.",
+    "descriptionAr": "في وسط طرابزون، فندق خمس نجوم يمزج العمارة التقليدية بالتأثيرات الحديثة. واي فاي سريع وتلفزيون فضائي؛ نادي صحي بمسبح داخلي. غرف بألوان دافئة وأثاث خشبي وميني بار؛ بعضها بمنطقة جلوس منفصلة.",
+    "amenities": [
+      "Indoor pool",
+      "Health club",
+      "Free high-speed WiFi",
+      "Satellite TV",
+      "Minibar",
+      "Tea/coffee facilities",
+      "Restaurant",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Trabzon city centre — on site",
+      "Hagia Sophia Trabzon — short drive",
+      "Forum Trabzon — short drive"
+    ],
+    "nearbyAr": [
+      "وسط طرابزون — في الموقع",
+      "آيا صوفيا طرابزون — بالسيارة",
+      "فوروم طرابزون — بالسيارة"
+    ],
+    "highlightsEn": [
+      "City-centre 5-star",
+      "Indoor pool & health club",
+      "Traditional-modern design"
+    ],
+    "highlightsAr": [
+      "خمس نجوم وسط المدينة",
+      "مسبح داخلي ونادي صحي",
+      "تصميم تقليدي-حديث"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Room",
+        "nameAr": "غرفة قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite with seating area",
+        "nameAr": "جناح مع منطقة جلوس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Friendly staff",
+        "titleAr": "طاقم ودود",
+        "textEn": "Everything was excellent The staff was so friendly Location was great",
+        "textAr": "كل شيء ممتاز. الطاقم ودود جداً والموقع رائع.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Listing shows 8.6 Excellent with 869 reviews in dump; brief cited 395 — using dump 869 with note."
+  },
+  {
+    "slug": "novotel-trabzon",
+    "bookingUrl": "https://www.booking.com/hotel/tr/novotel-trabzon.html",
+    "bookingId": "novotel-trabzon",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Accor / Agoda dump 2486bd9e",
+      "Accor guest quotes"
+    ],
+    "nameEn": "Novotel Trabzon",
+    "nameAr": "نوفوتيل طرابزون",
+    "addressEn": "State Road Yomra, Trabzon, Turkey",
+    "addressAr": "طريق الولاية يومرا، طرابزون، تركيا",
+    "rating": 7.8,
+    "reviewCount": 1483,
+    "descriptionEn": "Accor Novotel on the Trabzon coast/Yomra side with pool with view, bar/poolside bar, laundry and wellness amenities noted by guests. Built 2008. Agoda/aggregator dump lists ~7.8/10 from ~1,483 reviews; Accor app quotes highlight helpful staff.",
+    "descriptionAr": "نوفوتيل أكور على ساحل طرابزون/يومرا بمسبح بإطلالة وبار ومرافق عافية. بُني 2008. تقييم مجمّع حوالي 7.8 من نحو 1483 مراجعة.",
+    "amenities": [
+      "Pool with view",
+      "Bar / poolside bar",
+      "Free WiFi",
+      "Fitness / wellness",
+      "Restaurant",
+      "Meeting rooms",
+      "Laundry",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Trabzon Airport — ~5 min average cited",
+      "Yomra coast — on/near",
+      "Trabzon centre — drive"
+    ],
+    "nearbyAr": [
+      "مطار طرابزون — نحو 5 دقائق",
+      "ساحل يومرا — في/قرب الموقع",
+      "وسط طرابزون — بالسيارة"
+    ],
+    "highlightsEn": [
+      "Accor Novotel",
+      "Pool with view",
+      "Partial Booking coverage"
+    ],
+    "highlightsAr": [
+      "نوفوتيل أكور",
+      "مسبح بإطلالة",
+      "تغطية بوكينج جزئية"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Room",
+        "nameAr": "غرفة قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Executive Room",
+        "nameAr": "غرفة تنفيذية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Faten J.",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Accor guest note",
+        "titleAr": "ملاحظة ضيف أكور",
+        "textEn": "Accor guest materials reference positive remarks from guests such as Faten J. on staff helpfulness and location convenience (Accor page quotes).",
+        "textAr": "تشير مواد أكور إلى إشادة ضيوف مثل فاتن ج. بمساعدة الطاقم وسهولة الموقع.",
+        "source": "Tripadvisor",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Accor ~4.4/5; Agoda dump ~7.8 / 1483 — Booking score not confirmed; marked partial."
+  },
+  {
+    "slug": "radisson-blu-trabzon",
+    "bookingUrl": "https://www.booking.com/hotel/tr/radisson-blu-hotel-trabzon.html",
+    "bookingId": "radisson-blu-hotel-trabzon",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com hotel 5f9676c9",
+      "Reviews 304616a0"
+    ],
+    "nameEn": "Radisson Blu Hotel Trabzon",
+    "nameAr": "رادسون بلو هوتيل طرابزون",
+    "addressEn": "Boztepe Mah., Ortahisar, 61030 Trabzon, Turkey",
+    "addressAr": "محلة بوزتبه، أورتا حصار، 61030 طرابزون، تركيا",
+    "rating": 8.4,
+    "reviewCount": 1399,
+    "descriptionEn": "Set in Trabzon on the Boztepe hillside, Radisson Blu is about 1.8 mi from Hagia Sophia Museum and 2.5 mi from Forum Trabzon. On-site restaurant and indoor swimming pool. Some rooms have balcony and sea view. Couples rate location ~9.0 for two-person trips. Nearest airport Trabzon Airport ~3.7 mi.",
+    "descriptionAr": "على تلة بوزتبه في طرابزون، على بعد نحو 1.8 ميل من متحف آيا صوفيا و2.5 من فوروم طرابزون. مطعم ومسبح داخلي. بعض الغرف بشرفة وإطلالة بحر. مطار طرابزون نحو 3.7 ميل.",
+    "amenities": [
+      "Indoor swimming pool",
+      "Restaurant",
+      "Bar",
+      "Free WiFi",
+      "Fitness",
+      "Sauna / steam (guest notes)",
+      "Sea-view rooms",
+      "Parking",
+      "Family rooms"
+    ],
+    "nearbyEn": [
+      "Hagia Sophia Museum — 1.8 mi",
+      "Forum Trabzon — 2.5 mi",
+      "Trabzon Museum — ~0.6 mi",
+      "Trabzon Airport — 3.7 mi"
+    ],
+    "nearbyAr": [
+      "متحف آيا صوفيا — 1.8 ميل",
+      "فوروم طرابزون — 2.5 ميل",
+      "متحف طرابزون — ~0.6 ميل",
+      "مطار طرابزون — 3.7 ميل"
+    ],
+    "highlightsEn": [
+      "Boztepe hill views",
+      "Indoor pool",
+      "Sea-view balconies"
+    ],
+    "highlightsAr": [
+      "إطلالات تلة بوزتبه",
+      "مسبح داخلي",
+      "شرفات بإطلالة بحر"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Double or Twin Room with Sea View and Balcony",
+        "nameAr": "غرفة دبل/توين إطلالة بحر وشرفة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Double or Twin Room with Mountain View and Balcony",
+        "nameAr": "غرفة دبل/توين إطلالة جبل وشرفة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Luxury Suite",
+        "nameAr": "جناح فاخر",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Standard Double or Twin Room",
+        "nameAr": "غرفة دبل/توين قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Alice",
+        "countryEn": "United States",
+        "countryAr": "الولايات المتحدة",
+        "rating": 10,
+        "date": "2 May 2025",
+        "titleEn": "Loved steam and sauna",
+        "titleAr": "أحببت البخار والساونا",
+        "textEn": "Excellent staff. Comfortable rooms. Great customer service. It was great to stretch out and be comfortable for a few days. Loved having access to the steam and sauna",
+        "textAr": "طاقم ممتاز وغرف مريحة وخدمة رائعة. أحببت الوصول للبخار والساونا.",
+        "source": "Booking.com",
+        "stayTypeEn": "People with friends",
+        "stayTypeAr": "مجموعة أصدقاء"
+      },
+      {
+        "author": "Heba",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 10,
+        "date": "22 April 2025",
+        "titleEn": "Highly recommended hotel",
+        "titleAr": "فندق موصى به بشدة",
+        "textEn": "Amazing hotel and friendly staff",
+        "textAr": "فندق مذهل وطاقم ودود.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Russell",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 8,
+        "date": "22 April 2025",
+        "titleEn": "A really nice hotel - I would stay here again.",
+        "titleAr": "فندق لطيف جداً — سأعود",
+        "textEn": "Great hotel - A very modern, spacious room with a great view of the city and the coast (the hotel is on a hill, 200m above sea level). Staff were friendly and helpful. Good value; breakfast and evening food options were also good.",
+        "textAr": "فندق رائع — غرفة عصرية واسعة بإطلالة مدينة وساحل على تلة. طاقم ودود وقيمة جيدة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Hadi",
+        "countryEn": "Kuwait",
+        "countryAr": "الكويت",
+        "rating": 8,
+        "date": "15 April 2025",
+        "titleEn": "I could have been better",
+        "titleAr": "كان يمكن أن يكون أفضل",
+        "textEn": "The location and staff are great but the cleanliness of the room was not good because the carpet are very old and not cleaned so it give a very bad smell in the room",
+        "textAr": "الموقع والطاقم رائعان لكن نظافة الغرفة ضعيفة بسبب السجاد القديم ورائحته.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Mamoun",
+        "countryEn": "Jordan",
+        "countryAr": "الأردن",
+        "rating": 8,
+        "date": "1 April 2025",
+        "titleEn": "Great stay",
+        "titleAr": "إقامة جيدة",
+        "textEn": "Staff very helpful, breakfast is good and various, bed in comfortable, all utilities included , room view excellent",
+        "textAr": "طاقم مفيد وإفطار متنوع وسرير مريح وإطلالة ممتازة.",
+        "source": "Booking.com",
+        "stayTypeEn": "Family with young children",
+        "stayTypeAr": "عائلة"
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "swissotel-uludag-bursa",
+    "bookingUrl": "https://www.booking.com/hotel/tr/swissotel-resort-uludag-bursa.html",
+    "bookingId": "swissotel-resort-uludag-bursa",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Swissôtel official",
+      "Tripadvisor"
+    ],
+    "nameEn": "Swissôtel Resort Uludağ Bursa",
+    "nameAr": "سويسوتيل ريزورت أولوداغ بورصة",
+    "addressEn": "Oteller Bölgesi, Uludağ, Bursa, Turkey",
+    "addressAr": "منطقة الفنادق، أولوداغ، بورصة، تركيا",
+    "rating": 8.8,
+    "reviewCount": 0,
+    "descriptionEn": "Mountain ski and spa resort on Uludağ above Bursa. Official and Tripadvisor materials describe alpine lodge-style accommodation, spa and wellness facilities, ski access in winter, and summer hiking/nature stays with restaurant dining and fitness.",
+    "descriptionAr": "منتجع تزلج وسبا جبلي على أولوداغ فوق بورصة. إقامة بطابع ألبي ومرافق عافية ووصول للتزلج شتاءً ونزهات صيفية مع مطاعم ولياقة.",
+    "amenities": [
+      "Spa / wellness",
+      "Ski access (seasonal)",
+      "Fitness",
+      "Restaurant",
+      "Bar",
+      "Free WiFi",
+      "Parking",
+      "Mountain views",
+      "Meeting facilities"
+    ],
+    "nearbyEn": [
+      "Uludağ ski slopes — on/near site",
+      "Bursa city — mountain transfer",
+      "Cable car / ski lifts — seasonal"
+    ],
+    "nearbyAr": [
+      "منحدرات أولوداغ — في/قرب الموقع",
+      "مدينة بورصة — نقل جبلي",
+      "التلفريك/المصاعد — موسمي"
+    ],
+    "highlightsEn": [
+      "Uludağ ski & spa resort",
+      "Alpine setting",
+      "Partial Booking data"
+    ],
+    "highlightsAr": [
+      "منتجع تزلج وسبا أولوداغ",
+      "أجواء ألبية",
+      "بيانات بوكينج جزئية"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Classic Room",
+        "nameAr": "غرفة كلاسيك",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Thin Booking dumps — spa/ski resort Uludağ from official/Tripadvisor; marked partial."
+  },
+  {
+    "slug": "kervansaray-bursa",
+    "bookingUrl": "https://www.booking.com/hotel/tr/kervansaray-bursa-city.html",
+    "bookingId": "kervansaray-bursa-city",
+    "bookingIdNote": "Booking path kervansaray-bursa-city",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 31628cbb"
+    ],
+    "nameEn": "Kervansaray Bursa City Hotel",
+    "nameAr": "كرفانسراي بورصة سيتي",
+    "addressEn": "Fevzi Çakmak Caddesi No:29, Osmangazi, 16010 Bursa, Turkey",
+    "addressAr": "جادة فوزي تشاقماق رقم 29، عثمان غازي، 16010 بورصة، تركيا",
+    "rating": 8.5,
+    "reviewCount": 205,
+    "descriptionEn": "City hotel in a highly rated Bursa location (Booking location score cited ~9.5) with continental/buffet breakfast and free private parking. Guests highlight central access to shopping, restaurants, metro/bus and mountain-facing upgrades. Room types include Standard Double/Twin and King rooms.",
+    "descriptionAr": "فندق مدينة في موقع بورصة عالي التقييم (موقع بوكينج ~9.5) مع إفطار وموقف خاص مجاني. يبرز الضيوف الوسط والقرب من التسوق والمترو. غرف دبل/توين وكينغ.",
+    "amenities": [
+      "Free WiFi",
+      "Breakfast buffet",
+      "Free private parking",
+      "Restaurant",
+      "Bar",
+      "Central location",
+      "Room service",
+      "Family rooms"
+    ],
+    "nearbyEn": [
+      "Bursa city centre — on site",
+      "Shopping streets — walking",
+      "Uludağ transfers — arrangeable",
+      "Metro / bus — nearby"
+    ],
+    "nearbyAr": [
+      "وسط بورصة — في الموقع",
+      "شوارع التسوق — سيراً",
+      "نقل أولوداغ — يمكن ترتيبه",
+      "مترو/باص — قريب"
+    ],
+    "highlightsEn": [
+      "Central Bursa",
+      "Strong location score",
+      "Mountain-view upgrades noted by guests"
+    ],
+    "highlightsAr": [
+      "وسط بورصة",
+      "تقييم موقع قوي",
+      "ترقيات بإطلالة جبل"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Double or Twin Room",
+        "nameAr": "غرفة دبل/توين قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "King Room",
+        "nameAr": "غرفة كينغ",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Superior Room",
+        "nameAr": "غرفة سوبيريور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Khedher",
+        "countryEn": "Kuwait",
+        "countryAr": "الكويت",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Excellent location",
+        "titleAr": "موقع ممتاز",
+        "textEn": "The location was excellent and the breakfast was good",
+        "textAr": "الموقع ممتاز والإفطار جيد.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Mostafa_sepideh",
+        "countryEn": "Iran",
+        "countryAr": "إيران",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Heart of city center",
+        "titleAr": "قلب وسط المدينة",
+        "textEn": "Excellent location. In the heart of city center and many shopping center and restaurants are around the hotel. The staff are very friendly and help us to find the ferryboat station. Bus and metro...",
+        "textAr": "موقع ممتاز في قلب الوسط مع تسوق ومطاعم. طاقم ودود ساعدنا لإيجاد محطة العبّارة والمترو.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Comfortable AC",
+        "titleAr": "تكييف مريح",
+        "textEn": "Very comfortable. The air conditioning mostly worked (which is better than most other places we stayed). Great location and view.",
+        "textAr": "مريح جداً. التكييف عمل غالباً. موقع وإطلالة رائعان.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Room upgrade",
+        "titleAr": "ترقية غرفة",
+        "textEn": "Staff was really nice.. infact Mr. Abdulla upgraded our room and the room was amazing and it was mountain facing …everything was amazing",
+        "textAr": "الطاقم لطيف جداً. السيد عبدالله رقّى غرفتنا وكانت مذهلة بإطلالة جبل.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "holiday-inn-bursa",
+    "bookingUrl": "https://www.booking.com/hotel/tr/holiday-inn-bursa-city-centre-bursa.html",
+    "bookingId": "holiday-inn-bursa-city-centre-bursa",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 51f56967 / 658fc68d"
+    ],
+    "nameEn": "Holiday Inn Bursa - City Centre by IHG",
+    "nameAr": "هوليداي إن بورصة - وسط المدينة",
+    "addressEn": "Ulu Mahalle Ulubatlı Hasan Bulvarı No 44, Osmangazi, 16220 Bursa, Turkey",
+    "addressAr": "محلة أولو، بولفار أولوباتلي حسن رقم 44، عثمان غازي، 16220 بورصة، تركيا",
+    "rating": 9.2,
+    "reviewCount": 2618,
+    "descriptionEn": "IHG Holiday Inn in Bursa city centre on Ulubatlı Hasan Boulevard. Guests praise location near shopping and tram, cleanliness, breakfast, and consistently professional staff (including named guest-relations mentions). Scored 9.2 on Booking with a large review base.",
+    "descriptionAr": "هوليداي إن IHG في وسط بورصة على بولفار أولوباتلي حسن. يمدح الضيوف الموقع قرب التسوق والترام والنظافة والإفطار والطاقم المحترف. تقييم 9.2 على بوكينج بقاعدة مراجعات كبيرة.",
+    "amenities": [
+      "Free WiFi",
+      "Restaurant",
+      "Breakfast",
+      "Fitness",
+      "Meeting rooms",
+      "Parking",
+      "Family rooms",
+      "Business centre",
+      "Bar"
+    ],
+    "nearbyEn": [
+      "Shopping centre — nearby",
+      "Tram line — close",
+      "Bursa centre — on site",
+      "Uludağ — day trip"
+    ],
+    "nearbyAr": [
+      "مركز تسوق — قريب",
+      "خط الترام — قريب",
+      "وسط بورصة — في الموقع",
+      "أولوداغ — رحلة يومية"
+    ],
+    "highlightsEn": [
+      "9.2 Booking score",
+      "City-centre IHG",
+      "Strong repeat-guest praise"
+    ],
+    "highlightsAr": [
+      "تقييم 9.2 بوكينج",
+      "IHG وسط المدينة",
+      "إشادة قوية من الضيوف"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Room",
+        "nameAr": "غرفة قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Standard Room Twin",
+        "nameAr": "غرفة قياسية توين",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "2 Twin",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Junior Suite",
+        "nameAr": "جناح جونيور",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Executive Room",
+        "nameAr": "غرفة تنفيذية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Dalal",
+        "countryEn": "Bahrain",
+        "countryAr": "البحرين",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Not 4 but 5 star",
+        "titleAr": "ليس 4 بل 5 نجوم",
+        "textEn": "The Hotel is not a 4 star but a 5 star, especially location wise. The staff were very kind and helpful. Mr Khalid was extremely kind to us. I will definitely book again and recommend it to friends.",
+        "textAr": "الفندق ليس 4 بل 5 نجوم خاصة من حيث الموقع. الطاقم لطيف جداً والسيد خالد كان غاية في الكرم.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Alhosain",
+        "countryEn": "Saudi Arabia",
+        "countryAr": "المملكة العربية السعودية",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Amazing stay",
+        "titleAr": "إقامة مذهلة",
+        "textEn": "My stay was amazing and I loved the hotel and the cleanliness keep the good work please",
+        "textAr": "إقامتي مذهلة وأحببت الفندق والنظافة. استمروا بهذا المستوى.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "F",
+        "countryEn": "Australia",
+        "countryAr": "أستراليا",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Personal service",
+        "titleAr": "خدمة شخصية",
+        "textEn": "Personal service and highly professional, courteous staff. I always stay here every time I visit Bursa, and the standard has never declined. I will continue to come back.",
+        "textAr": "خدمة شخصية وطاقم محترف ومهذب. أقيم هنا دائماً عند زيارة بورصة والمستوى لم ينخفض.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Aurangzeb",
+        "countryEn": "United Kingdom",
+        "countryAr": "المملكة المتحدة",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Excellent Location",
+        "titleAr": "موقع ممتاز",
+        "textEn": "Excellent Location Excellent Room Good choice of breakfast",
+        "textAr": "موقع ممتاز وغرفة ممتازة وتنوع جيد في الإفطار.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Syed",
+        "countryEn": "Saudi Arabia",
+        "countryAr": "المملكة العربية السعودية",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Exceptional stay",
+        "titleAr": "إقامة استثنائية",
+        "textEn": "An exceptional stay from start to finish. The hotel offers a perfect blend of luxury, comfort, and convenience. Every detail is meticulously curated, making it a truly unforgettable experience.",
+        "textAr": "إقامة استثنائية من البداية للنهاية. مزيج مثالي من الفخامة والراحة والسهولة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Riaz",
+        "countryEn": "South Africa",
+        "countryAr": "جنوب أفريقيا",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Above average breakfast",
+        "titleAr": "إفطار فوق المتوسط",
+        "textEn": "Breakfast was above average. Rooms were clean and comfortable. Location excellent. Close to a large shopping centre. Staff friendly and helpful. Close to the tram line",
+        "textAr": "إفطار فوق المتوسط وغرف نظيفة وموقع ممتاز قرب مول كبير والترام.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "richmond-nua-wellness-spa",
+    "bookingUrl": "https://www.booking.com/hotel/tr/richmond-nua-wellness-spa.html",
+    "bookingId": "richmond-nua-wellness-spa",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 7f76191b"
+    ],
+    "nameEn": "Richmond Nua Wellness Spa - Adult Only",
+    "nameAr": "ريتشموند نوا ويلنس سبا - للكبار فقط",
+    "addressEn": "Sapanca Lake area, Sapanca, Sakarya, Turkey",
+    "addressAr": "منطقة بحيرة سبانجا، سبانجا، سكاريا، تركيا",
+    "rating": 9.7,
+    "reviewCount": 618,
+    "descriptionEn": "Adults-only wellness hotel by Sapanca Lake where forest and lake views meet. Extensive spa with sauna and steam rooms. Comfortable rooms with private balconies and satellite flat-screen TVs; some include a hot tub. Aqua Restaurant serves Turkish and international tastes. Calm atmosphere geared to relaxation.",
+    "descriptionAr": "فندق عافية للكبار فقط بجانب بحيرة سبانجا حيث تلتقي إطلالات الغابة والبحيرة. سبا واسع بساونا وبخار. غرف بشرفات خاصة؛ بعضها بجاكوزي. مطعم أكوا بمأكولات تركية ودولية. أجواء هادئة للاسترخاء.",
+    "amenities": [
+      "Adults only",
+      "Spa / sauna / steam",
+      "Lake & forest views",
+      "Restaurant",
+      "Free WiFi",
+      "Balconies",
+      "Hot tub (select rooms)",
+      "Parking",
+      "Fitness"
+    ],
+    "nearbyEn": [
+      "Sapanca Lake — on/near site",
+      "Sapanca forests — surrounding",
+      "Istanbul — ~1.5–2 hr drive"
+    ],
+    "nearbyAr": [
+      "بحيرة سبانجا — في/قرب الموقع",
+      "غابات سبانجا — محيطة",
+      "إسطنبول — 1.5–2 ساعة"
+    ],
+    "highlightsEn": [
+      "Adults-only wellness",
+      "9.7 Booking score",
+      "Sapanca Lake setting"
+    ],
+    "highlightsAr": [
+      "عافية للكبار فقط",
+      "تقييم 9.7 بوكينج",
+      "موقع بحيرة سبانجا"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Deluxe Room with Balcony",
+        "nameAr": "غرفة ديلوكس مع شرفة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Room with Hot Tub",
+        "nameAr": "غرفة مع جاكوزي",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Lake View Room",
+        "nameAr": "غرفة بإطلالة بحيرة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Spa Room",
+        "nameAr": "غرفة سبا",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Ruqaiya",
+        "countryEn": "Oman",
+        "countryAr": "عمان",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Calm and perfect",
+        "titleAr": "هادئ ومثالي",
+        "textEn": "Hotel was calm , perfect for relaxation kind of trip",
+        "textAr": "الفندق هادئ ومثالي لرحلة استرخاء.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Ms Samia helpful",
+        "titleAr": "الآنسة سامية مفيدة",
+        "textEn": "I like the hotel so much. Ms. Samia Mohamed (Guest Relations Supervisor) was very helpful and cooperative. She was friendly and always smiling. I recommend this hotel.",
+        "textAr": "أحب الفندق كثيراً. الآنسة سامية محمد في علاقات الضيوف كانت مفيدة ومتعاونة ودائمة الابتسام.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Excellent two days",
+        "titleAr": "يومان ممتازان",
+        "textEn": "Everything about those two days we spent were excellent, starting with the very professional and very helpful Ms Samia, whom I would like to give many thanks and appreciations to, the breakfast...",
+        "textAr": "كل شيء في اليومين كان ممتازاً بدءاً من الآنسة سامية المحترفة، والإفطار…",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00",
+      "Adults only"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00",
+      "للكبار فقط"
+    ]
+  },
+  {
+    "slug": "ng-sapanca-wellness",
+    "bookingUrl": "https://www.booking.com/hotel/tr/ng-sapanca-wellness-convention.html",
+    "bookingId": "ng-sapanca-wellness-convention",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 60aab4f8"
+    ],
+    "nameEn": "NG Sapanca Wellness & Convention",
+    "nameAr": "إن جي سبانجا ويلنس آند كونفنشن",
+    "addressEn": "Sapanca, Sakarya, Turkey",
+    "addressAr": "سبانجا، سكاريا، تركيا",
+    "rating": 8.9,
+    "reviewCount": 320,
+    "descriptionEn": "Forest-set 5-star wellness and convention hotel in Sapanca, family-oriented with classy décor. Guests repeatedly praise swimming pools, kids’ activities, calm woodland setting, food and friendly staff. Suitable for families and meetings.",
+    "descriptionAr": "فندق خمس نجوم للعافية والمؤتمرات وسط غابات سبانجا، موجّه للعائلات بديكور أنيق. يمدح الضيوف المسابح وأنشطة الأطفال والهدوء والغابة والطعام والطاقم.",
+    "amenities": [
+      "Multiple pools",
+      "Kids activities",
+      "Spa / wellness",
+      "Convention / meeting rooms",
+      "Restaurant buffet",
+      "Free WiFi",
+      "Family rooms",
+      "Parking",
+      "Forest setting"
+    ],
+    "nearbyEn": [
+      "Sapanca forests — on site",
+      "Sapanca Lake — short drive",
+      "Istanbul — drive"
+    ],
+    "nearbyAr": [
+      "غابات سبانجا — في الموقع",
+      "بحيرة سبانجا — بالسيارة",
+      "إسطنبول — بالسيارة"
+    ],
+    "highlightsEn": [
+      "Forest family resort",
+      "Pools & kids activities",
+      "Wellness + convention"
+    ],
+    "highlightsAr": [
+      "منتجع عائلي غابي",
+      "مسابح وأنشطة أطفال",
+      "عافية ومؤتمرات"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Room",
+        "nameAr": "غرفة قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Connecting Family Rooms",
+        "nameAr": "غرف عائلية متصلة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 5,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Abdulrahman",
+        "countryEn": "Kuwait",
+        "countryAr": "الكويت",
+        "rating": 9,
+        "date": "",
+        "titleEn": "The swimming pool",
+        "titleAr": "المسبح",
+        "textEn": "The swimming pool Staff was good specially Mr. Mohamed Fayaz",
+        "textAr": "المسبح رائع والطاقم جيد خاصة السيد محمد فياض.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Calm forest stay",
+        "titleAr": "إقامة غابة هادئة",
+        "textEn": "We enjoyed our stay, a calm place in the forest, nice swimming pools, very convenient for children with so many activities, the food was good, staff is friendly and helpful",
+        "textAr": "استمتعنا بإقامة هادئة في الغابة ومسابح لطيفة وأنشطة كثيرة للأطفال وطعام جيد وطاقم ودود.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Wonderful stay",
+        "titleAr": "إقامة رائعة",
+        "textEn": "it was a wonderful stay staff location activities all meals were perfect staff are very prof sultan and forqan were very helpful advise everyone to visit it",
+        "textAr": "إقامة رائعة: طاقم وموقع وأنشطة ووجبات مثالية. سلطان وفرقان مفيدان جداً.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Muna",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Family oriented",
+        "titleAr": "موجّه للعائلات",
+        "textEn": "Located in nature A 5 star hotel by All means Family oriented Classy decorated",
+        "textAr": "في الطبيعة فندق خمس نجوم بكل المقاييس موجّه للعائلات وديكور أنيق.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "ng-sapanca-enjoy",
+    "bookingUrl": "https://www.booking.com/hotel/tr/ng-sapanca-enjoy.html",
+    "bookingId": "ng-sapanca-enjoy",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 88e5a0dc"
+    ],
+    "nameEn": "NG Enjoy",
+    "nameAr": "إن جي إنجوي",
+    "addressEn": "Sapanca, Sakarya, Turkey",
+    "addressAr": "سبانجا، سكاريا، تركيا",
+    "rating": 9.3,
+    "reviewCount": 223,
+    "descriptionEn": "Modern Sapanca resort hotel praised for large new rooms, huge pool, green grounds, strong front-desk service and full-board buffet. Guests mention attentive staff (e.g. Mohammed and Irem) and accommodation of special room requests for elderly family members.",
+    "descriptionAr": "منتجع حديث في سبانجا يُشاد بغرفه الواسعة الجديدة والمسبح الكبير والمساحات الخضراء وخدمة الاستقبال والبوفيه. يذكر الضيوف طاقماً منتبهًا وتلبية طلبات خاصة لكبار السن.",
+    "amenities": [
+      "Huge pool",
+      "Full-board buffet",
+      "Free WiFi",
+      "Large modern rooms",
+      "Green gardens",
+      "Front desk 24h",
+      "Family rooms",
+      "Parking",
+      "Restaurant"
+    ],
+    "nearbyEn": [
+      "Sapanca nature — surrounding",
+      "Sapanca Lake — short drive",
+      "Istanbul — drive"
+    ],
+    "nearbyAr": [
+      "طبيعة سبانجا — محيطة",
+      "بحيرة سبانجا — بالسيارة",
+      "إسطنبول — بالسيارة"
+    ],
+    "highlightsEn": [
+      "9.3 Booking score",
+      "Huge pool & new rooms",
+      "Strong buffet & staff"
+    ],
+    "highlightsAr": [
+      "تقييم 9.3 بوكينج",
+      "مسبح كبير وغرف جديدة",
+      "بوفيه وطاقم قويان"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Room",
+        "nameAr": "غرفة قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Deluxe Room",
+        "nameAr": "غرفة ديلوكس",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Connecting Rooms",
+        "nameAr": "غرف متصلة",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 5,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Ecaterina",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Great place and service",
+        "titleAr": "مكان وخدمة رائعان",
+        "textEn": "Great place and service. Front desk doing great job. Very big rooms, everything is new. Huge pool, very green outside. Nice food selection.",
+        "textAr": "مكان وخدمة رائعان. الاستقبال ممتاز. غرف كبيرة وكل شيء جديد. مسبح ضخم وخضرة وطعام جيد.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Relaxing stay",
+        "titleAr": "إقامة مريحة",
+        "textEn": "We had a very relaxing stay at NG Enjoy. The hotel was clean and well maintained. The staff was very helpful and accomodating, especially Mohammed and Irem.",
+        "textAr": "إقامة مريحة جداً. الفندق نظيف والطاقم مفيد خاصة محمد وإيريم.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Verified guest",
+        "countryEn": "",
+        "countryAr": "",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Buffet amazing",
+        "titleAr": "بوفيه مذهل",
+        "textEn": "Staff were great. Food buffet at full board was amazing. Check in experience and their attention to detail was very comforting. They accommodated my request regarding the rooms to help my old aged...",
+        "textAr": "الطاقم رائع وبوفيه الإقامة الكاملة مذهل. تسجيل الوصول والتفاصيل مريحة. لبّوا طلب الغرف لمساعدة كبار السن...",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Yahia",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Impeccably clean",
+        "titleAr": "نظافة لا تشوبها شائبة",
+        "textEn": "located and impeccably clean hotel. The surrounding facilities are excellent, making it a great choice for those looking for relaxation and stunning natural...",
+        "textAr": "فندق نظيف بمرافق محيطة ممتازة — خيار رائع للاسترخاء والطبيعة.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "ayder-paradise-otel",
+    "bookingUrl": "https://www.booking.com/hotel/tr/ayder-paradise-otel.html",
+    "bookingId": "ayder-paradise-otel",
+    "dataCompleteness": "full",
+    "sourcesUsed": [
+      "Booking.com dump 9fc5d5da"
+    ],
+    "nameEn": "Ayder Paradise Otel",
+    "nameAr": "آيدر بارادايس أوتيل",
+    "addressEn": "Ayder Yaylası, Çamlıhemşin, Rize, Turkey",
+    "addressAr": "هضبة آيدر، تشاملي هيمشين، ريزا، تركيا",
+    "rating": 8.7,
+    "reviewCount": 131,
+    "descriptionEn": "Plateau hotel in Ayder Yaylası near walking and hiking trails, about 30 mi from Rize–Artvin Airport. Guests appreciate scenic views, parking, and attentive family-run hospitality (owners/staff named in reviews such as Jan and Zafran).",
+    "descriptionAr": "فندق هضبة في آيدر قرب مسارات المشي، على بعد نحو 30 ميلاً من مطار ريزا-أرتفين. يقدّر الضيوف الإطلالات والموقف والضيافة العائلية المنتبهة.",
+    "amenities": [
+      "Free WiFi",
+      "Parking",
+      "Mountain / plateau views",
+      "Breakfast",
+      "Family-run hospitality",
+      "Hiking access",
+      "Restaurant"
+    ],
+    "nearbyEn": [
+      "Ayder plateau trails — on/near",
+      "Çamlıhemşin — short drive",
+      "Rize–Artvin Airport — 30 mi"
+    ],
+    "nearbyAr": [
+      "مسارات هضبة آيدر — في/قرب الموقع",
+      "تشاملي هيمشين — بالسيارة",
+      "مطار ريزا-أرتفين — 30 ميل"
+    ],
+    "highlightsEn": [
+      "Ayder plateau setting",
+      "Family hospitality",
+      "Hiking access"
+    ],
+    "highlightsAr": [
+      "موقع هضبة آيدر",
+      "ضيافة عائلية",
+      "وصول للتخييم سيراً"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Standard Double Room",
+        "nameAr": "غرفة دبل قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Triple Room",
+        "nameAr": "غرفة ثلاثية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "3 Twin",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Room with Mountain View",
+        "nameAr": "غرفة بإطلالة جبل",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Suite",
+        "nameAr": "جناح",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [
+      {
+        "author": "Mohamed",
+        "countryEn": "Qatar",
+        "countryAr": "قطر",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Friendly family",
+        "titleAr": "عائلة ودودة",
+        "textEn": "Friendly and lovely family will serve you quiet place with ability to parking.",
+        "textAr": "عائلة ودودة ولطيفة في مكان هادئ مع موقف سيارات.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Ahmed",
+        "countryEn": "Oman",
+        "countryAr": "عمان",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Jan and Zafran",
+        "titleAr": "جان وزعفران",
+        "textEn": "Jan was so helpful and provide any means for help also Zafran was so active and friendly.",
+        "textAr": "جان كان مفيداً جداً وزعفران نشيط وودود.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Nader",
+        "countryEn": "Saudi Arabia",
+        "countryAr": "المملكة العربية السعودية",
+        "rating": 10,
+        "date": "",
+        "titleEn": "Amazing view",
+        "titleAr": "إطلالة مذهلة",
+        "textEn": "The view was amazing. The hospitality was exceptional! I loved it !",
+        "textAr": "الإطلالة مذهلة والضيافة استثنائية! أحببتها!",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Yousef",
+        "countryEn": "United Arab Emirates",
+        "countryAr": "الإمارات العربية المتحدة",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Helpful owner",
+        "titleAr": "مالك مفيد",
+        "textEn": "nice owner. very helpful and supportive. he even advised us with the nice locations to visit in ayder. trying his best to make the stay nice and comfortable",
+        "textAr": "مالك لطيف ومفيد جداً ونصحنا بأماكن الزيارة في آيدر.",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      },
+      {
+        "author": "Ahmed",
+        "countryEn": "Saudi Arabia",
+        "countryAr": "المملكة العربية السعودية",
+        "rating": 9,
+        "date": "",
+        "titleEn": "Clean and beautiful",
+        "titleAr": "نظيف وجميل",
+        "textEn": "The stay was very nice, the hotel is clean and beautiful, and its location is excellent. The most beautiful thing is that the staff in charge of this hotel were at the top of kindness...",
+        "textAr": "إقامة جميلة والفندق نظيف وموقعه ممتاز والطاقم في قمة اللطف...",
+        "source": "Booking.com",
+        "stayTypeEn": "",
+        "stayTypeAr": ""
+      }
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ]
+  },
+  {
+    "slug": "yesilvadi",
+    "bookingUrl": "https://www.booking.com/hotel/tr/yesilvadi.html",
+    "bookingId": "yesilvadi",
+    "dataCompleteness": "partial",
+    "sourcesUsed": [
+      "Booking.com dump 6fa87dd3",
+      "Kayak 7.8/16 noted in brief"
+    ],
+    "nameEn": "Yeşilvadi Otel",
+    "nameAr": "يشيل فادي أوتيل",
+    "addressEn": "Ayder Yaylası area, Rize district, Turkey",
+    "addressAr": "منطقة هضبة آيدر، قضاء ريزا، تركيا",
+    "rating": 7,
+    "reviewCount": 14,
+    "descriptionEn": "Located in a secluded area of Rize district, surrounded by mountains of pine forests. Yeşil Vadi Hotel offers a restaurant serving regional Black Sea delicacies and a terrace with extensive nature views. Rooms feature wooden floors, central heating, satellite TV and private bathroom with hot water; mountain and forest views.",
+    "descriptionAr": "في منطقة منعزلة من قضاء ريزا وسط جبال غابات الصنوبر. مطعم بمأكولات البحر الأسود وتراس بإطلالات طبيعة واسعة. غرف بأرضيات خشبية وتدفئة وتلفزيون وحمام خاص؛ إطلالات جبل وغابة.",
+    "amenities": [
+      "Restaurant (Black Sea cuisine)",
+      "Terrace with nature views",
+      "Free WiFi",
+      "Central heating",
+      "Mountain / forest views",
+      "Private bathrooms",
+      "Parking"
+    ],
+    "nearbyEn": [
+      "Ayder Yaylası — local area",
+      "Pine forest mountains — surrounding",
+      "Rize–Artvin Airport — drive"
+    ],
+    "nearbyAr": [
+      "هضبة آيدر — المنطقة المحلية",
+      "جبال غابات الصنوبر — محيطة",
+      "مطار ريزا-أرتفين — بالسيارة"
+    ],
+    "highlightsEn": [
+      "Secluded pine-forest setting",
+      "Black Sea regional restaurant",
+      "Low Booking sample (14 reviews)"
+    ],
+    "highlightsAr": [
+      "موقع منعزل بغابات الصنوبر",
+      "مطعم إقليمي للبحر الأسود",
+      "عينة بوكينج صغيرة (14 مراجعة)"
+    ],
+    "rooms": [
+      {
+        "nameEn": "Two-Bedroom Queen Suite - Non-Smoking",
+        "nameAr": "جناح كوين غرفتان - لغير المدخنين",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Standard Double Room",
+        "nameAr": "غرفة دبل قياسية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Triple Room",
+        "nameAr": "غرفة ثلاثية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "3 Twin",
+        "capacity": 3,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Family Room",
+        "nameAr": "غرفة عائلية",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 0,
+        "price": 0
+      },
+      {
+        "nameEn": "Room with Mountain View",
+        "nameAr": "غرفة بإطلالة جبل",
+        "descriptionEn": "",
+        "descriptionAr": "",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 0,
+        "price": 0
+      }
+    ],
+    "guestReviews": [],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "note": "Booking dump Scored 7.0 based on 14 reviews; Kayak cited 7.8/16 — using Booking 7.0 / 14."
+  }
+]

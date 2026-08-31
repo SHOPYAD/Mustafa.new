@@ -1,0 +1,5656 @@
+[
+  {
+    "id": "ciragan-palace-kempinski-istanbul",
+    "slug": "ciragan-palace-kempinski-istanbul",
+    "nameAr": "قصر تشراغان كمبينسكي إسطنبول",
+    "nameEn": "Çırağan Palace Kempinski Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "بشكتاش / البوسفور",
+    "neighborhoodEn": "Beşiktaş / Bosphorus",
+    "stars": 5,
+    "rating": 9.4,
+    "reviewCount": 570,
+    "addressAr": "تشراغان جادسي 32، بشكتاش، 34349 إسطنبول، تركيا",
+    "addressEn": "Çırağan Caddesi 32, Beşiktaş, 34349 Istanbul, Turkey",
+    "descriptionAr": "بوصفه القصر العثماني الإمبراطوري الوحيد وفندق الخمس نجوم الفاخر على البوسفور، توفر غرفه الـ317 أجواء منتجع داخل المدينة. مع مساحات للفعاليات ومطاعم وبارات راقية، إضافة إلى مرافق السبا ومسبح لانهائي خارجي.",
+    "descriptionEn": "As the only Ottoman imperial palace and luxury 5-star hotel on the Bosphorus, the 317 rooms offer a resort atmosphere in the city. With event space for every occasion and a delicious selection of restaurants and bars, the luxurious offering also includes spa facilities and an outdoor infinity pool.",
+    "highlightsAr": [
+      "القصر العثماني الوحيد كفندق على البوسفور",
+      "مسبح لانهائي مطل على المضيق",
+      "سبا سانيتاس مع حمّام تركي"
+    ],
+    "highlightsEn": [
+      "Only Ottoman palace hotel on the Bosphorus",
+      "Infinity pool overlooking the strait",
+      "Sanitas Spa with hammam"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Outdoor infinity pool",
+      "Indoor pool",
+      "Sanitas Spa / Hammam",
+      "Fitness center",
+      "Free Wi-Fi",
+      "Restaurants & bars",
+      "Room service",
+      "Valet parking",
+      "Concierge",
+      "Butler service"
+    ],
+    "lat": 41.00373871546168,
+    "lng": 28.982924851401417,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00",
+      "رقم الترخيص: 2530"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00",
+      "License number: 2530"
+    ],
+    "rooms": [
+      {
+        "id": "1-r1",
+        "nameAr": "غرفة كينغ بإطلالة بوسفور تشراغان",
+        "nameEn": "Ciragan Bosphorus View King Room",
+        "descriptionAr": "King room with Bosphorus views (room type named on Booking.com guest reviews).",
+        "descriptionEn": "King room with Bosphorus views (room type named on Booking.com guest reviews).",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 40,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "1-r2",
+        "nameAr": "غرفة يلدز كينغ",
+        "nameEn": "Yildiz King Room",
+        "descriptionAr": "Yildiz King Room category listed on Booking.com reviews.",
+        "descriptionEn": "Yildiz King Room category listed on Booking.com reviews.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 520,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "1-r1",
+        "nameAr": "غرفة يلدز توين",
+        "nameEn": "Yildiz Twin Room",
+        "descriptionAr": "Twin configuration of the Yildiz room category.",
+        "descriptionEn": "Twin configuration of the Yildiz room category.",
+        "beds": "2 Twin",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 680,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "1-r1",
+        "nameAr": "جناح القصر",
+        "nameEn": "Palace Suite",
+        "descriptionAr": "Historic palace suite category at Çırağan Palace Kempinski.",
+        "descriptionEn": "Historic palace suite category at Çırağan Palace Kempinski.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 80,
+        "price": 920,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "1-r1",
+        "nameAr": "جناح الفندق",
+        "nameEn": "Hotel Suite",
+        "descriptionAr": "Hotel suite category within the palace hotel wing.",
+        "descriptionEn": "Hotel suite category within the palace hotel wing.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 1200,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "ciragan-palace-kempinski-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/ciragan-palace-kempinski-istanbul.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "raffles-istanbul",
+    "slug": "raffles-istanbul",
+    "nameAr": "رافلز إسطنبول",
+    "nameEn": "Raffles Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "زولرو سنتر / ليفنت",
+    "neighborhoodEn": "Zorlu Center / Levent",
+    "stars": 5,
+    "rating": 9.3,
+    "reviewCount": 410,
+    "addressAr": "مركز زورلو، لافازيم محلة، كورود سوكاك رقم 2، بشكتاش، إسطنبول، تركيا",
+    "addressEn": "Zorlu Center, Levazım Mahallesi, Koru Sokak No:2, Beşiktaş, Istanbul, Turkey",
+    "descriptionAr": "بجانب الفندق يقع مركز زورلو بنبض المدينة من مطاعم وتسوق ومركز فنون. يوفر رافلز إسطنبول غرفاً وأجنحة واسعة بنوافذ من الأرض للسقف وشرفات خاصة وخدمة خادم شخصي وسبا حاصل على تصنيف فوربس خمس نجوم مع مسابح وحمّام ومرافق عافية. المطاعم تشمل إيسوكيو وروكا جريل ولونغ بار وشامبانيا بار ورايترز بار.",
+    "descriptionEn": "Adjacent to the hotel is the Zorlu Center, where the heart of the city beats to the rhythm of an array of dining outlets, high fashion retailers and a performing arts centre. Raffles Istanbul offers spacious rooms and suites with floor-to-ceiling windows and private balconies, butler service, and a Forbes Five-Star spa with pools, hammam and wellness facilities. Dining includes İsokyo, Rocca Grill & Terrace, Long Bar, Champagne Bar and Writers Bar.",
+    "highlightsAr": [
+      "خدمة خادم شخصي",
+      "سبا فوربس خمس نجوم",
+      "موقع مركز زورلو"
+    ],
+    "highlightsEn": [
+      "Butler service",
+      "Forbes Five-Star spa",
+      "Zorlu Center location"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor swimming pool",
+      "Free WiFi",
+      "Airport shuttle",
+      "Spa and wellness centre",
+      "On-site parking",
+      "Family rooms",
+      "Fitness centre",
+      "Tea/coffee maker in rooms",
+      "Bar",
+      "Very good breakfast"
+    ],
+    "lat": 40.99532215814883,
+    "lng": 28.973898432262214,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "2-r1",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "55 م² بنوافذ من الأرض للسقف وشرفة خاصة.",
+        "descriptionEn": "55 sqm with floor-to-ceiling windows and private balcony.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 55,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "2-r2",
+        "nameAr": "غرفة بريميير",
+        "nameEn": "Premier Room",
+        "descriptionAr": "بريميير 65 م² بإطلالة بوسفور أو مدينة.",
+        "descriptionEn": "65 sqm Premier with Bosphorus or city views.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 65,
+        "price": 520,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "2-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "جناح جونيور 85 م² بمنطقة معيشة.",
+        "descriptionEn": "85 sqm Junior Suite with living area.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 85,
+        "price": 680,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "2-r1",
+        "nameAr": "جناح بيرسوناليتي",
+        "nameEn": "Personality Suite",
+        "descriptionAr": "جناح توقيعي مع خدمة خادم شخصي.",
+        "descriptionEn": "Signature suite with butler service.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 120,
+        "price": 920,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "2-r1",
+        "nameAr": "جناح رافلز",
+        "nameEn": "Raffles Suite",
+        "descriptionAr": "جناح علوي بإطلالات بانورامية.",
+        "descriptionEn": "Top-tier suite with panoramic views.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 150,
+        "price": 1200,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "raffles-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/raffles-istanbul.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "four-seasons-bosphorus",
+    "slug": "four-seasons-bosphorus",
+    "nameAr": "فور سيزونز إسطنبول على البوسفور",
+    "nameEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "البوسفور",
+    "neighborhoodEn": "Bosphorus",
+    "stars": 5,
+    "rating": 9,
+    "reviewCount": 252,
+    "addressAr": "تشيراغان جادسي رقم 28، بشكتاش، 34349 إسطنبول، تركيا",
+    "addressEn": "Çırağan Cad. No:28, Beşiktaş, 34349 Istanbul, Turkey",
+    "descriptionAr": "يقع على البوسفور، ويضم هذا القصر العثماني المرمم من القرن التاسع عشر عمارة تاريخية بتفاصيل فاخرة. مسبح داخلي وخارجي مُدفأ، حديقة وتراس بانورامي. واي فاي وموقف خاص. مطعم أكوا بمطبخ متوسطي، إفطار بوفيه ومشواة المسبح. لياقة وساحة وحمّام تركي وعلاجات سبا.",
+    "descriptionEn": "Located along the Bosphorus, this renovated 19th century Ottoman palace features historic architecture in harmony with luxurious details. An indoor pool and a heated outdoor pool with free parasols and sun loungers are available. The seafront property also has a garden and a spacious terrace with panoramic Bosphorus views. Free WiFi and private parking on site. Aqua Restaurant terrace serves Mediterranean cuisine with Italian and Turkish specialties; buffet breakfast and Pool Grill available. Fitness, sauna, Turkish bath and spa therapies on site.",
+    "highlightsAr": [
+      "قصر عثماني على البوسفور",
+      "مسبح داخلي وخارجي مُدفأ",
+      "تراس مطعم أكوا"
+    ],
+    "highlightsEn": [
+      "19th-century Ottoman palace on the Bosphorus",
+      "Indoor + heated outdoor pools",
+      "Aqua Restaurant terrace"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Outdoor swimming pool",
+      "Indoor pool",
+      "Free Wifi",
+      "Spa",
+      "Private Parking",
+      "Family rooms",
+      "Fitness center",
+      "Restaurant",
+      "Bar",
+      "Turkish bath",
+      "Wonderful Breakfast"
+    ],
+    "lat": 40.99074918752157,
+    "lng": 28.973172401711313,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "3-r1",
+        "nameAr": "غرفة فناء القصر",
+        "nameEn": "Palace Courtyard Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "3-r2",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 520,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "3-r1",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 680,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "3-r1",
+        "nameAr": "جناح جونيور فور سيزونز",
+        "nameEn": "Four Seasons Junior Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 920,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "3-r1",
+        "nameAr": "غرفة القصر بإطلالة بوسفور",
+        "nameEn": "Palace Bosphorus Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 1200,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "four-seasons-istanbul-at-the-bosphorus",
+    "sourceUrl": "https://www.booking.com/hotel/tr/four-seasons-istanbul-at-the-bosphorus.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "shangri-la-bosphorus",
+    "slug": "shangri-la-bosphorus",
+    "nameAr": "شانغري-لا بوسفور إسطنبول",
+    "nameEn": "Shangri-La Bosphorus, Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "بشكتاش",
+    "neighborhoodEn": "Beşiktaş",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 1268,
+    "addressAr": "سينان باشا محلة، شارع رصيف خير الدين رقم 1، بشكتاش، 34353 إسطنبول، تركيا",
+    "addressEn": "Sinanpaşa Mah., Hayrettin İskelesi Sok. No.1, Beşiktaş, 34353 Istanbul, Turkey",
+    "descriptionAr": "بين قصر دولماباهتشه والمتحف البحري على البوسفور الأوروبي. مسبح داخلي وسبا CHI وغرف بتفاصيل آسيوية. الأجنحة بغرفة معيشة وشرفات بوسفور. مطاعم IST TOO وقصر شانغ. سبا CHI بحمّام تركي. موقف خاص مجاني.",
+    "descriptionEn": "Located between Dolmabahçe Palace and the Naval Museum on the European Bosphorus coast. Offers an indoor pool, CHI The Spa, and rooms with contemporary décor and Asian highlights. Suites have a separate living room and terraces with Bosphorus views; marble bathrooms with heated floors, bathtubs and Bvlgari toiletries. Dining: IST TOO and Shang Palace. CHI Spa: heated indoor pool, sauna, Turkish bath, hot tub and steam rooms. Free private parking; Beşiktaş Ferry Port steps away.",
+    "highlightsAr": [
+      "سبا CHI",
+      "شرفات بوسفور",
+      "مطعم شانغ بالاس"
+    ],
+    "highlightsEn": [
+      "CHI The Spa",
+      "Bosphorus suite terraces",
+      "Shang Palace Chinese dining"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor swimming pool",
+      "Free WiFi",
+      "Spa CHI",
+      "Free parking",
+      "Airport shuttle",
+      "Family rooms",
+      "Fitness centre",
+      "Bar",
+      "Shang Palace",
+      "Turkish bath",
+      "Very good breakfast"
+    ],
+    "lat": 40.99520445834661,
+    "lng": 28.987277376514687,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "4-r1",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "4-r2",
+        "nameAr": "غرفة بريميير",
+        "nameEn": "Premier Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "4-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "4-r1",
+        "nameAr": "جناح تنفيذي",
+        "nameEn": "Executive Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "4-r1",
+        "nameAr": "جناح ديلوكس بوسفور",
+        "nameEn": "Deluxe Bosphorus Suite",
+        "descriptionAr": "Living room and Bosphorus terraces (Booking).",
+        "descriptionEn": "Living room and Bosphorus terraces (Booking).",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "shangri-la-bosphorus-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/shangri-la-bosphorus-istanbul.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "peninsula-istanbul",
+    "slug": "peninsula-istanbul",
+    "nameAr": "ذا بينينسولا إسطنبول",
+    "nameEn": "The Peninsula Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "كاراكوي",
+    "neighborhoodEn": "Karaköy",
+    "stars": 5,
+    "rating": 9.5,
+    "reviewCount": 339,
+    "addressAr": "كاراكوي، كمانكش جادسي رقم 34، 34425 إسطنبول، تركيا",
+    "addressEn": "Karaköy, Kemankeş Caddesi No:34, 34425 Istanbul, Turkey",
+    "descriptionAr": "يقع ذا بينينسولا على واجهة كاراكوي في غالا بورت، من أربعة مبانٍ — ثلاثة تاريخية مرممة وفخامة بينينسولا. يمدح الضيوف الغرف المطلّة على البوسفور والخدمة الراقية والمطاعم والسبا والموقع القريب من غلطة والعبارات والمدينة القديمة.",
+    "descriptionEn": "The Peninsula Istanbul sits on the Karaköy waterfront at Galataport, comprising four buildings — three restored historic structures and contemporary Peninsula luxury. Guests praise Bosphorus-facing rooms, discreet housekeeping, rooftop and waterfront dining, spa facilities, and walkable access to Galata, ferries and the old town.",
+    "highlightsAr": [
+      "واجهة كاراكوي / غالا بورت",
+      "غرف بوسفور موصى بها",
+      "معلم فاخر 4.8/5 تريب أدفايزر"
+    ],
+    "highlightsEn": [
+      "Karaköy / Galataport waterfront",
+      "Bosphorus-facing rooms recommended",
+      "Tripadvisor 4.8/5 luxury landmark"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Spa",
+      "Fitness",
+      "Rooftop & waterfront restaurants",
+      "Afternoon tea",
+      "Concierge",
+      "Room service",
+      "Bosphorus views",
+      "Pool terrace",
+      "House car",
+      "High-tech in-room controls",
+      "Valet parking"
+    ],
+    "lat": 40.99327770874506,
+    "lng": 28.979479459754344,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "5-r1",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "غرفة سوبيريور؛ يُنصح بفئات مطلّة على البوسفور.",
+        "descriptionEn": "Superior room; guests recommend Bosphorus-facing categories.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 45,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "5-r2",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "ديلوكس بمساحة أكبر ومرافق بينينسولا.",
+        "descriptionEn": "Deluxe with enhanced space and Peninsula amenities.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 55,
+        "price": 520,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "5-r1",
+        "nameAr": "جراند ديلوكس بإطلالة بوسفور",
+        "nameEn": "Grand Deluxe Bosphorus View",
+        "descriptionAr": "غرفة أكبر مطلّة على البوسفور — الأكثر توصية.",
+        "descriptionEn": "Larger room facing the Bosphorus — top guest recommendation.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 65,
+        "price": 680,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "5-r1",
+        "nameAr": "جناح بينينسولا",
+        "nameEn": "Peninsula Suite",
+        "descriptionAr": "جناح بمنطقة معيشة وإطلالة بوسفور.",
+        "descriptionEn": "Suite with separate living area and Bosphorus views.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 90,
+        "price": 920,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "5-r1",
+        "nameAr": "جناح جراند",
+        "nameEn": "Grand Suite",
+        "descriptionAr": "فئة جناح جراند بإطلالة مائية مميزة.",
+        "descriptionEn": "Grand suite category with premium waterfront outlook.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 120,
+        "price": 1200,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "the-peninsula-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/the-peninsula-istanbul.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "swissotel-the-bosphorus",
+    "slug": "swissotel-the-bosphorus",
+    "nameAr": "سويسوتيل ذا بوسفورس إسطنبول",
+    "nameEn": "Swissôtel The Bosphorus Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "معمار سنان",
+    "neighborhoodEn": "Maçka / Bosphorus",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 3694,
+    "addressAr": "بايلديم جادسي رقم 2، ماتشكا، بشكتاش، إسطنبول، تركيا",
+    "addressEn": "Bayıldım Cad. No:2, Maçka, Beşiktaş, Istanbul, Turkey",
+    "descriptionAr": "سويسوتيل ذا بوسفورس منتجع حضري كبير على تلة مطلّة على البوسفور في ماتشكا/بشكتاش. يشمل سبا Purovel ومسابح داخلية وخارجية ولياقة وتنس وحدائق. مطاعم متعددة ومساحات اجتماعات واسعة.",
+    "descriptionEn": "Swissôtel The Bosphorus is a large hillside resort-style hotel overlooking the Bosphorus and city skyline in Maçka/Beşiktaş. Guests use Purovel Spa & Sport, indoor and outdoor pools, fitness facilities, tennis courts and landscaped gardens. Multiple restaurants and extensive meeting space serve leisure and business travellers.",
+    "highlightsAr": [
+      "سبا Purovel",
+      "منتجع تلة على البوسفور",
+      "تقييم موقع ~9.3 على بوكينج"
+    ],
+    "highlightsEn": [
+      "Purovel Spa",
+      "Hillside Bosphorus resort scale",
+      "Location score ~9.3 on Booking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Purovel Spa & Sport",
+      "Indoor pool",
+      "Outdoor pool",
+      "Fitness centre",
+      "Tennis courts",
+      "Gardens",
+      "Free WiFi",
+      "Restaurants & bars",
+      "Meeting rooms",
+      "Parking"
+    ],
+    "lat": 41.00303399377027,
+    "lng": 28.971655694151075,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "6-r1",
+        "nameAr": "غرفة كلاسيك",
+        "nameEn": "Classic Room",
+        "descriptionAr": "غرفة كلاسيك بإطلالة حديقة أو بوسفور جزئية.",
+        "descriptionEn": "Classic room with garden or partial Bosphorus outlook.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 32,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "6-r2",
+        "nameAr": "غرفة سويس أدفانتج",
+        "nameEn": "Swiss Advantage Room",
+        "descriptionAr": "فئة سويس أدفانتج بمرافق محسّنة.",
+        "descriptionEn": "Swiss Advantage category with upgraded amenities.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "6-r1",
+        "nameAr": "غرفة تنفيذية",
+        "nameEn": "Executive Room",
+        "descriptionAr": "غرفة تنفيذية مع خيارات دخول اللاونج.",
+        "descriptionEn": "Executive room with lounge access options.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 42,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "6-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "جناح جونيور بجلوس منفصل وإطلالة بوسفور.",
+        "descriptionEn": "Junior Suite with separate seating and Bosphorus views.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 65,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "6-r1",
+        "nameAr": "جناح بإطلالة بوسفور",
+        "nameEn": "Bosphorus View Suite",
+        "descriptionAr": "جناح مطل على البوسفور والجسر.",
+        "descriptionEn": "Suite overlooking the Bosphorus and bridge.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 80,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "swissotel-the-bosphorus",
+    "sourceUrl": "https://www.booking.com/hotel/tr/swissotel-the-bosphorus.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "cvk-park-bosphorus",
+    "slug": "cvk-park-bosphorus",
+    "nameAr": "سي في كي بارك بوسفور إسطنبول",
+    "nameEn": "CVK Park Bosphorus Hotel Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "غوموشوي",
+    "neighborhoodEn": "Gümüşsuyu",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 3974,
+    "addressAr": "غوموشسويو محلة، جادة إينونو رقم 8، تقسيم، 34437 إسطنبول، تركيا",
+    "addressEn": "Gümüşsuyu Mah. İnönü Cad. No:8, Taksim, 34437 Istanbul, Turkey",
+    "descriptionAr": "يقع سي في كي بارك بوسفور على جادة إينونو في غوموشسويو/تقسيم مع مطاعم سطحية مطلّة على البوسفور. يبرز الضيوف الموقع بجانب تقسيم والسبا/الحمّام وتنوع الإفطار وأجنحة بريستيج الواسعة.",
+    "descriptionEn": "CVK Park Bosphorus Hotel Istanbul stands on İnönü Caddesi in Gümüşsuyu / Taksim with rooftop dining overlooking the Bosphorus. Guest reviews highlight location next to Taksim, spa/hammam, breakfast variety, and spacious Prestige suites. Room types on Booking reviews include Superior Double Room, Suite with Bosphorus View with Lounge Access, and Prestige Suites.",
+    "highlightsAr": [
+      "موقع تقسيم / غوموشسويو",
+      "إطلالات بوسفور من السطح",
+      "أجنحة بريستيج ودخول اللاونج"
+    ],
+    "highlightsEn": [
+      "Taksim / Gümüşsuyu location",
+      "Rooftop Bosphorus views",
+      "Prestige suites & lounge access"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Spa / Hammam",
+      "Indoor pool",
+      "Fitness",
+      "Rooftop restaurants",
+      "Bar",
+      "Family rooms",
+      "Parking",
+      "Lounge access (select suites)",
+      "Breakfast"
+    ],
+    "lat": 41.00866178595765,
+    "lng": 28.963208906482375,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "7-r1",
+        "nameAr": "غرفة دبل سوبيريور",
+        "nameEn": "Superior Double Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "7-r2",
+        "nameAr": "غرفة سوبيريور بإطلالة مدينة",
+        "nameEn": "Superior Double or Twin Room with City View",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "7-r1",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "nameEn": "Deluxe Double or Twin Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "7-r1",
+        "nameAr": "جناح بإطلالة بوسفور - دخول اللاونج",
+        "nameEn": "Suite with Bosphorus View - Lounge Access",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "7-r1",
+        "nameAr": "أجنحة بارك بريستيج",
+        "nameEn": "Park Prestige Suites",
+        "descriptionAr": "Two/three-bedroom Prestige apartment categories on Booking reviews.",
+        "descriptionEn": "Two/three-bedroom Prestige apartment categories on Booking reviews.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "cvk-park-bosphorus-hotel-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/cvk-park-bosphorus-hotel-istanbul.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "pera-palace-hotel",
+    "slug": "pera-palace-hotel",
+    "nameAr": "فندق بيرا بالاس",
+    "nameEn": "Pera Palace Hotel",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "بيرا / تكسم",
+    "neighborhoodEn": "Pera / Tepebaşı",
+    "stars": 5,
+    "rating": 9.2,
+    "reviewCount": 102,
+    "addressAr": "مسروتية جادسي رقم 52، تبه باشي، بي أوغلو، إسطنبول، تركيا",
+    "addressEn": "Mesrutiyet Cad. No:52, Tepebaşı, Beyoğlu, Istanbul, Turkey",
+    "descriptionAr": "بيرا بالاس الفندق التاريخي الكبير في تبه باشي/بي أوغلو، معلم فاخر قرب شارع الاستقلال. يشمل مسبحًا داخليًا وسبا وحمّامًا ومطعم أغاثا وبار أورينت. غرف وأجنحة بطابع بيل إيبوك وراحة عصرية.",
+    "descriptionEn": "Pera Palace Hotel is the historic grand hotel of Tepebaşı / Beyoğlu, restored as a luxury landmark near İstiklal Avenue. Official amenities include an indoor pool, spa and hammam, Agatha Restaurant, and the Orient Bar. Rooms and suites blend Belle Époque character with modern comfort.",
+    "highlightsAr": [
+      "معلم بيرا التاريخي",
+      "مطعم أغاثا وبار أورينت",
+      "مسبح داخلي وحمّام"
+    ],
+    "highlightsEn": [
+      "Historic Pera landmark",
+      "Agatha Restaurant & Orient Bar",
+      "Indoor pool and hammam"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor pool",
+      "Spa / Hammam",
+      "Agatha Restaurant",
+      "Orient Bar",
+      "Free WiFi",
+      "Fitness",
+      "Concierge",
+      "Historic suites",
+      "Meeting facilities",
+      "Airport shuttle",
+      "Room service"
+    ],
+    "lat": 41.017210043844486,
+    "lng": 28.95922454506616,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "8-r1",
+        "nameAr": "غرفة كلاسيك",
+        "nameEn": "Classic Room",
+        "descriptionAr": "غرفة كلاسيك تاريخية بطابع بيل إيبوك.",
+        "descriptionEn": "Historic Classic room with Belle Époque character.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 30,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "8-r2",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "غرفة سوبيريور قرب الاستقلال بتفاصيل عصرية.",
+        "descriptionEn": "Superior room near İstiklal with period details.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 35,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "8-r1",
+        "nameAr": "ديلوكس إطلالة القرن الذهبي",
+        "nameEn": "Deluxe Golden Horn Room",
+        "descriptionAr": "ديلوكس بإطلالة القرن الذهبي.",
+        "descriptionEn": "Deluxe with Golden Horn outlook.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 40,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "8-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "جناح جونيور بمساحة معيشة وديكور تاريخي.",
+        "descriptionEn": "Junior Suite with living space and historic décor.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 55,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "8-r1",
+        "nameAr": "غرفة غريتا غاربو",
+        "nameEn": "Greta Garbo Corner Room",
+        "descriptionAr": "فئة غرفة الزاوية المذكورة في المراجعات.",
+        "descriptionEn": "Named corner room category cited in guest reviews.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 45,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "pera-palace-hotel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/pera-palace-hotel.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "ritz-carlton-istanbul",
+    "slug": "ritz-carlton-istanbul",
+    "nameAr": "ريتز كارلتون إسطنبول",
+    "nameEn": "The Ritz-Carlton, Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "بشكتاش",
+    "neighborhoodEn": "Beşiktaş",
+    "stars": 5,
+    "rating": 9,
+    "reviewCount": 3277,
+    "addressAr": "سوزر بلازا، جادة عسكر أوجاغي رقم 6، 34367 شيشلي، إسطنبول، تركيا",
+    "addressEn": "Suzer Plaza, Askerocağı Caddesi No:6, 34367 Şişli, Istanbul, Turkey",
+    "descriptionAr": "ريتز كارلتون إسطنبول في سوزر بلازا بشيشلي. يشمل سبا Laveda مع حمّام ومسبحًا داخليًا ومسبحًا لانهائيًا في Roof، ومطاعم نوبو وأتولييه. أجنحة كلوب وفئات بإطلالة بوسفور.",
+    "descriptionEn": "The Ritz-Carlton, Istanbul occupies Suzer Plaza on Askerocağı Caddesi in Şişli. Official facilities include Laveda Spa with hammam, an indoor pool, and an infinity pool at Roof, plus dining at Nobu and Atölye. Club-level suites and Bosphorus-view categories are offered.",
+    "highlightsAr": [
+      "مسبح لانهائي على السطح",
+      "نوبو إسطنبول",
+      "سبا Laveda وحمّام"
+    ],
+    "highlightsEn": [
+      "Roof infinity pool",
+      "Nobu Istanbul",
+      "Laveda Spa & hammam"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Laveda Spa",
+      "Hammam",
+      "Indoor pool",
+      "Infinity pool at Roof",
+      "Nobu",
+      "Atölye",
+      "Fitness",
+      "Club Lounge",
+      "Free WiFi",
+      "Concierge"
+    ],
+    "lat": 40.99076918275015,
+    "lng": 28.959606994402325,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "9-r1",
+        "nameAr": "غرفة كينغ إطلالة حديقة",
+        "nameEn": "King Room Park View",
+        "descriptionAr": "غرفة ضيف 34 م² بإطلالة حديقة.",
+        "descriptionEn": "34 sqm guest room with park view.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 34,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "9-r2",
+        "nameAr": "غرفة بريميوم بإطلالة بوسفور",
+        "nameEn": "Premium Bosphorus View Room",
+        "descriptionAr": "غرفة ضيف أكبر بإطلالة بوسفور كاملة.",
+        "descriptionEn": "Larger guest room with full Bosphorus outlook.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 40,
+        "price": 520,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "9-r1",
+        "nameAr": "كلوب كينغ إطلالة حديقة",
+        "nameEn": "Club King Park View",
+        "descriptionAr": "مستوى كلوب 34 م² مع دخول اللاونج.",
+        "descriptionEn": "34 sqm Club level with lounge access.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 34,
+        "price": 680,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "9-r1",
+        "nameAr": "جناح بوسفور",
+        "nameEn": "Bosphorus Suite",
+        "descriptionAr": "جناح 51 م² بأريكة وإطلالة بحر.",
+        "descriptionEn": "51 sqm suite with sofa bed and sea view.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 51,
+        "price": 920,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "9-r1",
+        "nameAr": "جناح نوبو",
+        "nameEn": "The Nobu Suite",
+        "descriptionAr": "جناح توقيعي 117 م² مع كلوب وإطلالة بوسفور.",
+        "descriptionEn": "117 sqm signature suite with Club lounge and Bosphorus view.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 117,
+        "price": 1200,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "the-ritz-carlton-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/the-ritz-carlton-istanbul.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "ajia-hotel-istanbul",
+    "slug": "ajia-hotel-istanbul",
+    "nameAr": "أجيا هوتيل إسطنبول",
+    "nameEn": "A'jia Hotel Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "كانديلي / الجانب الآسيوي",
+    "neighborhoodEn": "Kandilli / Asian side",
+    "stars": 5,
+    "rating": 8.9,
+    "reviewCount": 78,
+    "addressAr": "جادة تشوبوكلو رقم 27، كانلجا، بيكوز، إسطنبول، تركيا",
+    "addressEn": "Çubuklu Cad. No:27, Kanlıca, Beykoz, Istanbul, Turkey",
+    "descriptionAr": "يالي عثماني بوتيكي على الضفة الآسيوية للبوسفور بأجواء فريدة وإطلالات بحرية وحديقة هادئة. غرف مكيفة بحمامات خاصة. مطعم بمأكولات إيطالية ومتوسطية وتركية؛ برنش وغداء وعشاء وبار. واي فاي مجاني.",
+    "descriptionEn": "Boutique Ottoman yalı on the Asian Bosphorus shore offering a unique atmosphere with sea views and a tranquil garden. Rooms feature air-conditioning, private bathrooms and modern amenities. The restaurant serves Italian, Mediterranean, Turkish and international cuisine; brunch, lunch and dinner with a bar. Free WiFi throughout. Couples rate the location highly (~9.4 on Booking for two-person trips).",
+    "highlightsAr": [
+      "يالي عثماني بوتيكي",
+      "إفطار بإطلالة بوسفور",
+      "هدوء الضفة الآسيوية"
+    ],
+    "highlightsEn": [
+      "Ottoman yalı boutique",
+      "Bosphorus breakfast views",
+      "Quiet Asian-shore setting"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Restaurant",
+      "Bar",
+      "Garden",
+      "Bosphorus / sea views",
+      "Room service",
+      "Airport transfer (on request)",
+      "Family rooms"
+    ],
+    "lat": 41.01047180289591,
+    "lng": 28.98102483645226,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "10-r1",
+        "nameAr": "ديلوكس بإطلالة حديقة",
+        "nameEn": "Park View Deluxe",
+        "descriptionAr": "From ajiahotel.com room list.",
+        "descriptionEn": "From ajiahotel.com room list.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "10-r2",
+        "nameAr": "ديلوكس طابق الرصيف",
+        "nameEn": "Quay Floor Deluxe",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "10-r1",
+        "nameAr": "ديلوكس بإطلالة بوسفور",
+        "nameEn": "Bosphorus View Deluxe",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "10-r1",
+        "nameAr": "تراس البوسفور",
+        "nameEn": "Bosphorus Terrace",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "10-r1",
+        "nameAr": "جناح لوفت ديلوكس",
+        "nameEn": "Loft Deluxe Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "10-r1",
+        "nameAr": "جناح أحمد راسم باشا",
+        "nameEn": "Ahmet Rasim Pasha Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "a-jia-hotel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/a-jia-hotel.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "rixos-premium-belek",
+    "slug": "rixos-premium-belek",
+    "nameAr": "ريكوسس بريميوم بيليك",
+    "nameEn": "Rixos Premium Belek - The Land of Legends Access",
+    "city": "Antalya",
+    "country": "Turkey",
+    "neighborhoodAr": "بيليك",
+    "neighborhoodEn": "Belek",
+    "stars": 5,
+    "rating": 9.3,
+    "reviewCount": 766,
+    "addressAr": "موقع المرسى، محلة قادرية رقم 18/أ، بيليك-سريك، 07500 بيليك، أنطاليا، تركيا",
+    "addressEn": "İskele Mevkii, Kadriye Mah. No:18/A, Belek-Serik, 07500 Belek, Antalya, Turkey",
+    "descriptionAr": "منتجع خمس نجوم في بيليك بشاطئ خاص طويل وسبا وصالة رياضية. دخول وباص إلى لاند أوف ليجندز. غرف بإطلالة بحر أو غابة فستق. مطاعم ذواقة و8 بارات وسبا أنجانا مع حمّام عثماني ونادي أطفال وأكاديمية رياضية.",
+    "descriptionEn": "Set on a vast Belek estate with a long private beach, this 5-star resort includes spa, gym and shopping. Guests receive special entrance and shuttle access to The Land of Legends Theme Park. Rooms overlook the Mediterranean or pistachio forest with balconies/terraces. Gourmet à la carte restaurants (Italian, steakhouse, Turkish, seafood), 8 bars, Anjana Spa with Ottoman hammam and indoor pools, Rixy Club for children, and Sports Academy programs.",
+    "highlightsAr": [
+      "دخول لاند أوف ليجندز",
+      "شاطئ خاص طويل",
+      "سبا أنجانا"
+    ],
+    "highlightsEn": [
+      "Land of Legends access",
+      "Long private beach",
+      "Anjana Spa"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "2+ pools (incl. indoor)",
+      "Private beachfront",
+      "Spa / Hammam",
+      "Land of Legends access",
+      "Fitness / Sports Academy",
+      "Kids club (Rixy)",
+      "À la carte restaurants",
+      "Bars",
+      "Free WiFi",
+      "Family rooms"
+    ],
+    "lat": 36.88760211101737,
+    "lng": 30.721956680059336,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "11-r1",
+        "nameAr": "غرفة ديلوكس إطلالة حديقة",
+        "nameEn": "Deluxe Room Garden View",
+        "descriptionAr": "~37 sqm garden-view deluxe (brief).",
+        "descriptionEn": "~37 sqm garden-view deluxe (brief).",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 37,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "11-r2",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 63,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "11-r1",
+        "nameAr": "جناح ديلوكس",
+        "nameEn": "Deluxe Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "11-r1",
+        "nameAr": "جناح ليجندري",
+        "nameEn": "Legendary Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "11-r1",
+        "nameAr": "غرفة دبل ديلوكس",
+        "nameEn": "Deluxe Double Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "rixos-premium-belek",
+    "sourceUrl": "https://www.booking.com/hotel/tr/rixos-premium-belek.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "maxx-royal-kemer",
+    "slug": "maxx-royal-kemer",
+    "nameAr": "ماكس رويال كيمر ريزورت",
+    "nameEn": "Maxx Royal Kemer Resort",
+    "city": "Antalya",
+    "country": "Turkey",
+    "neighborhoodAr": "كيمر",
+    "neighborhoodEn": "Kemer",
+    "stars": 5,
+    "rating": 9.7,
+    "reviewCount": 9,
+    "addressAr": "محلة كيريش، جادة ياشار سوبوتاي رقم 88، 07980 كيمر، أنطاليا، تركيا",
+    "addressEn": "Kiriş Mah., Yaşar Sobutay Cad. No:88, 07980 Kemer, Antalya, Turkey",
+    "descriptionAr": "منتجع فاخر جداً على شاطئ كيمر/كيريش بأجنحة وفيلات ومسابح وسبا ومطاعم واسعة. تقييم بوكينج مرتفع على عينة صغيرة؛ يصف الضيوف خدمة دقيقة وغرفاً واسعة بإطلالات بحر قوية.",
+    "descriptionEn": "Ultra-luxury beachfront resort in Kemer/Kiriş known for high-end suites and villas, private beach, multiple pools, spa, and extensive dining. Booking.com lists a very high score on a small review sample; guests describe meticulous service and spacious rooms with strong sea views.",
+    "highlightsAr": [
+      "منتجع كيمر فائق الفخامة",
+      "تقييم بوكينج مرتفع بعينة صغيرة",
+      "أجنحة وفيلات بإطلالة بحر"
+    ],
+    "highlightsEn": [
+      "Ultra-luxury Kemer resort",
+      "High Booking score on small sample",
+      "Sea-view suites & villas"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Private beach",
+      "Multiple pools",
+      "Spa / Hammam",
+      "Fine dining",
+      "Kids club",
+      "Fitness",
+      "Free WiFi",
+      "Butler service",
+      "Water sports",
+      "Tennis",
+      "Beach service"
+    ],
+    "lat": 36.90566495977876,
+    "lng": 30.71024131558901,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "12-r1",
+        "nameAr": "غرفة ماكس لاغونا",
+        "nameEn": "Maxx Laguna Room",
+        "descriptionAr": "فئة لاغونا في ماكس رويال كيمر.",
+        "descriptionEn": "Laguna room category at Maxx Royal Kemer.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 45,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "12-r2",
+        "nameAr": "جناح بحر",
+        "nameEn": "Suite Sea",
+        "descriptionAr": "جناح بإطلالة بحر مذكور في مراجعات بوكينج.",
+        "descriptionEn": "Sea-view suite cited in Booking reviews.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 70,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "12-r1",
+        "nameAr": "جناح رويال عائلي حديقة",
+        "nameEn": "Royal Suite Family Garden",
+        "descriptionAr": "جناح عائلي حديقة حتى 4 ضيوف.",
+        "descriptionEn": "Family garden suite for up to 4 guests.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 90,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "12-r1",
+        "nameAr": "دوبلكس ماكس لاغونا غرفتان",
+        "nameEn": "Maxx Laguna Duplex 2 Bedrooms",
+        "descriptionAr": "دوبلكس غرفتين بإطلالة لاغون.",
+        "descriptionEn": "Two-bedroom duplex with lagoon outlook.",
+        "beds": "2 King",
+        "capacity": 4,
+        "sizeSqm": 120,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "12-r1",
+        "nameAr": "جناح رويال عائلي بحر",
+        "nameEn": "Royal Suite Family Sea",
+        "descriptionAr": "جناح عائلي بحر فاخر.",
+        "descriptionEn": "Premium family sea suite.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 95,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "maxx-royal-kemer-resort",
+    "sourceUrl": "https://www.booking.com/hotel/tr/maxx-royal-kemer-resort.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "akra-antalya",
+    "slug": "akra-antalya",
+    "nameAr": "أكرا أنطاليا",
+    "nameEn": "Akra Antalya",
+    "city": "Antalya",
+    "country": "Turkey",
+    "neighborhoodAr": "لارا / وسط أنطاليا",
+    "neighborhoodEn": "Lara / City",
+    "stars": 5,
+    "rating": 8.9,
+    "reviewCount": 3905,
+    "addressAr": "طريق لارا، مراد باشا، 07100 أنطاليا، تركيا",
+    "addressEn": "Lara Yolu, Muratpaşa, 07100 Antalya, Turkey",
+    "descriptionAr": "فندق خمس نجوم على الواجهة البحرية في أنطاليا بإطلالات متوسط أو جبال طوروس. غرف عصرية وواي فاي. مطاعم متعددة منها بابليتو وأسمني بالطابق العاشر. عافية بساونا وحمّام؛ مسابح وشاطئ. قرب تيراكسيتي والمدينة القديمة.",
+    "descriptionEn": "Seafront 5-star hotel in Antalya city with balconies overlooking the Mediterranean or Taurus Mountains. Contemporary rooms with satellite TV and free WiFi. Multiple restaurants and bars including Pablito Bistro and Asmani on the 10th floor. Wellness with sauna, Turkish bath and massages; guests and brand materials cite multiple pools and beachfront access. Near Terracity Mall and old town.",
+    "highlightsAr": [
+      "موقع مدينة-شاطئ أنطاليا",
+      "مطعم أسمني على السطح",
+      "مسابح متعددة وسبا"
+    ],
+    "highlightsEn": [
+      "City-beach Antalya location",
+      "Asmani rooftop dining",
+      "Multiple pools & spa"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "5 pools (resort facilities)",
+      "Beachfront",
+      "Spa / Turkish bath",
+      "4+ restaurants",
+      "Fitness",
+      "Free WiFi",
+      "Bar",
+      "Family rooms",
+      "Parking"
+    ],
+    "lat": 36.89734283074573,
+    "lng": 30.73038927638642,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "13-r1",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "nameEn": "Deluxe Double or Twin Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "13-r2",
+        "nameAr": "غرفة جراند ديلوكس",
+        "nameEn": "Grand Deluxe Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "13-r1",
+        "nameAr": "جناح مع غرفة معيشة",
+        "nameEn": "Suite with Living Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "13-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "13-r1",
+        "nameAr": "غرفة بإطلالة بحر",
+        "nameEn": "Sea View Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "akra-hotel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/akra-hotel.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "calista-luxury-resort",
+    "slug": "calista-luxury-resort",
+    "nameAr": "كاليستا لاكشري ريزورت",
+    "nameEn": "Calista Luxury Resort",
+    "city": "Antalya",
+    "country": "Turkey",
+    "neighborhoodAr": "بيليك",
+    "neighborhoodEn": "Belek",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 203,
+    "addressAr": "محلة قادرية، بيليك، سريك، 07500 أنطاليا، تركيا",
+    "addressEn": "Kadriye Mah., Belek, Serik, 07500 Antalya, Turkey",
+    "descriptionAr": "منتجع عائلي فاخر في بيليك بمسابح ونادي أطفال (مسرح وسينما وسيرك) وسبا وشاطئ رملي. يمدح الضيوف الحدائق الهادئة وغرف سوبيريور الواسعة والمسابح الدافئة والطاقم المنتبه.",
+    "descriptionEn": "Belek luxury family resort with extensive pools, kids’ club (theatre, cinema, circus shows), spa, and sandy beach. Guests praise calm green grounds, spacious Superior rooms with balconies, warm indoor/outdoor pools, and attentive staff. Booking score 9.1 based on 203 reviews; Traveller Awards figure cited ~9.2.",
+    "highlightsAr": [
+      "منتجع بيليك عائلي",
+      "نادي أطفال قوي",
+      "تقييم 9.1 بوكينج"
+    ],
+    "highlightsEn": [
+      "Family-focused Belek resort",
+      "Strong kids’ club",
+      "9.1 Booking / ~9.2 awards note"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Multiple pools",
+      "Kids club",
+      "Spa / sauna / steam",
+      "Sandy beach",
+      "Restaurants (incl. 24h options)",
+      "Fitness / sports",
+      "Free WiFi",
+      "Family rooms",
+      "Animation"
+    ],
+    "lat": 36.89971911845323,
+    "lng": 30.720857863277267,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "14-r1",
+        "nameAr": "غرفة سوبيريور إطلالة حديقة",
+        "nameEn": "Superior Room Garden View",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "14-r2",
+        "nameAr": "غرفة سوبيريور إطلالة بحر جانبية",
+        "nameEn": "Superior Room Side Sea View",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 63,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "14-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "14-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "14-r1",
+        "nameAr": "غرفة سوبيريور (2+2)",
+        "nameEn": "Superior Room (2+2)",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "calista-luxury-resort",
+    "sourceUrl": "https://www.booking.com/hotel/tr/calista-luxury-resort.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "regnum-carya",
+    "slug": "regnum-carya",
+    "nameAr": "ريجنوم كاريا جولف آند سبا",
+    "nameEn": "Regnum Carya Golf & Spa Resort",
+    "city": "Antalya",
+    "country": "Turkey",
+    "neighborhoodAr": "بيليك",
+    "neighborhoodEn": "Belek",
+    "stars": 5,
+    "rating": 8.9,
+    "reviewCount": 410,
+    "addressAr": "منطقة قادرية، موقع أوتش كوم تبه سي، 07500 بيليك، أنطاليا، تركيا",
+    "addressEn": "Kadriye Bölgesi, Üçkumtepesi Mevkii, 07500 Belek, Antalya, Turkey",
+    "descriptionAr": "منتجع غولف وسبا كبير في بيليك بمسابح متعددة وشاطئ وأنشطة أطفال وصالة رياضية ومطاعم ذواقة. يمدح الضيوف الغرف النظيفة والطعام المتنوع والترفيه؛ مع ملاحظات على حجز الألا كارت ورسوم الرياضات المائية.",
+    "descriptionEn": "Large Belek golf and spa resort with extensive grounds, multiple pools, beach access, kids farm/activities, premium gym and à la carte dining. Guests praise clean comfortable rooms, varied food, friendly staff, entertainment and adult pool parties, while noting some à la carte booking difficulty and watersports fees.",
+    "highlightsAr": [
+      "منتجع غولف وسبا",
+      "مسابح متعددة وشاطئ",
+      "ترفيه قوي"
+    ],
+    "highlightsEn": [
+      "Golf & spa resort",
+      "Multiple pools + beach",
+      "Strong entertainment"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "6 pools",
+      "Beachfront",
+      "Golf",
+      "Spa",
+      "Fitness / modern gym",
+      "Kids farm & activities",
+      "À la carte restaurants",
+      "Entertainment",
+      "Free WiFi",
+      "Family rooms"
+    ],
+    "lat": 36.89864897986272,
+    "lng": 30.702594915200706,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "15-r1",
+        "nameAr": "غرفة جونيور",
+        "nameEn": "Junior Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "15-r2",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "15-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "15-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "15-r1",
+        "nameAr": "فيلا مع مسبح",
+        "nameEn": "Villa with pool",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 6,
+        "sizeSqm": 38,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "regnum-carya-golf-spa-resort",
+    "sourceUrl": "https://www.booking.com/hotel/tr/regnum-carya-golf-spa-resort.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "museum-hotel-cappadocia",
+    "slug": "museum-hotel-cappadocia",
+    "nameAr": "ميوزيوم هوتيل - ريليه آند شاتو",
+    "nameEn": "MUSEUM HOTEL - Relais & Châteaux",
+    "city": "Cappadocia",
+    "country": "Turkey",
+    "neighborhoodAr": "أوتشيسار",
+    "neighborhoodEn": "Uçhisar",
+    "stars": 5,
+    "rating": 9.2,
+    "reviewCount": 157,
+    "addressAr": "محلة تكيلي رقم 1، 50240 أوتشيسار، نيفشهير، تركيا",
+    "addressEn": "Tekelli Mah. No:1, 50240 Uçhisar, Nevşehir, Turkey",
+    "descriptionAr": "فندق كهوف وحجر صديق للبيئة ضمن ريليه آند شاتو في أوتشيسار بإطلالات وادٍ. وحدات مكيفة وواي فاي وتلفزيون وميني بار وأحواض سبا. مطعم ليلا بمأكولات كابادوكية على التراس. مبنى تاريخي بسلالم — غير مناسب للكراسي المتحركة.",
+    "descriptionEn": "Eco-friendly Relais & Châteaux cave/stone hotel in Uçhisar with valley views. Units have air conditioning, free WiFi, flat-screen TV, mini-bar and spa baths. Lil’a Restaurant serves Cappadocian and Turkish dishes on the terrace; breakfast uses garden produce. Historic cave-and-stone layout with stairs and uneven ground — not wheelchair accessible. Pet-friendly; airport shuttles arranged at surcharge.",
+    "highlightsAr": [
+      "فندق كهوف ريليه آند شاتو",
+      "مطعم ليلا",
+      "إطلالات وادي أوتشيسار"
+    ],
+    "highlightsEn": [
+      "Relais & Châteaux cave hotel",
+      "Lil’a Restaurant",
+      "Uçhisar valley views"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Lil’a Restaurant",
+      "Spa bath in rooms",
+      "Outdoor pool / terrace views",
+      "Garden produce breakfast",
+      "Pet-friendly",
+      "Concierge / shuttle",
+      "Cave & stone suites"
+    ],
+    "lat": 38.635296664777734,
+    "lng": 34.8422060008354,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "16-r1",
+        "nameAr": "غرفة دبل/توين ديلوكس",
+        "nameEn": "Deluxe Double or Twin Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "16-r2",
+        "nameAr": "جناح سوبيريور",
+        "nameEn": "Superior Suite",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "16-r1",
+        "nameAr": "جناح تنفيذي",
+        "nameEn": "Executive Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "16-r1",
+        "nameAr": "جناح مسبح",
+        "nameEn": "Pool Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "16-r1",
+        "nameAr": "جناح رئاسي",
+        "nameEn": "Presidential Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "museum-hotel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/museum-hotel.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "argos-in-cappadocia",
+    "slug": "argos-in-cappadocia",
+    "nameAr": "أرغوس في كابادوكيا",
+    "nameEn": "Argos in Cappadocia",
+    "city": "Cappadocia",
+    "country": "Turkey",
+    "neighborhoodAr": "أوتشيسار",
+    "neighborhoodEn": "Uçhisar",
+    "stars": 5,
+    "rating": 9.6,
+    "reviewCount": 237,
+    "addressAr": "شارع كايا باشي رقم 7، 50240 أوتشيسار، نيفشهير، تركيا",
+    "addressEn": "Kayabaşı Sk. No:7, 50240 Uçhisar, Nevşehir, Turkey",
+    "descriptionAr": "أرغوس الحائز جوائز يمتد عبر مبانٍ كهفية في أوتشيسار. مطعما سكي وناهيتا ومسبح خارجي مُدفأ وسبا وقبو نبيذ وأجنحة دوبلكس بمسابح خاصة.",
+    "descriptionEn": "Once a monastery, award-winning Argos in Cappadocia spreads individually appointed cave rooms and mansions across Uçhisar hillside buildings. Official sources highlight Seki and Nahita restaurants, heated outdoor pool, spa, wine cellar and duplex suites with private pools.",
+    "highlightsAr": [
+      "قرية كهفية مرممة",
+      "دوبلكس بمسبح خاص",
+      "مطاعم سكي/ناهيتا وقبو نبيذ"
+    ],
+    "highlightsEn": [
+      "Restored cave village",
+      "Private-pool duplex suites",
+      "Seki / Nahita dining & wine cellar"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Heated outdoor pool",
+      "Seki Restaurant",
+      "Nahita Restaurant",
+      "Spa",
+      "Wine cellar",
+      "Cave suites",
+      "Private pool duplexes",
+      "Free WiFi",
+      "Concierge",
+      "Parking"
+    ],
+    "lat": 38.657069107908285,
+    "lng": 34.81894737041919,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "17-r1",
+        "nameAr": "غرفة كهفية سوبيريور",
+        "nameEn": "Superior Cave Room",
+        "descriptionAr": "غرفة كهفية محفورة في الصخر بإطلالة وادٍ.",
+        "descriptionEn": "Cave room carved into natural stone with valley views.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 35,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "17-r2",
+        "nameAr": "جناح كهفي",
+        "nameEn": "Cave Suite",
+        "descriptionAr": "جناح بمنطقة معيشة في كهف تاريخي.",
+        "descriptionEn": "Suite with separate living area in historic cave.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 50,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "17-r1",
+        "nameAr": "جناح حديقة",
+        "nameEn": "Garden Suite",
+        "descriptionAr": "جناح مطل على الحديقة مع تراس.",
+        "descriptionEn": "Garden-facing suite with terrace.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 55,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "17-r1",
+        "nameAr": "جناح دوبلكس بمسبح خاص",
+        "nameEn": "Duplex Suite with Private Pool",
+        "descriptionAr": "دوبلكس بطابقين ومسبح خاص — فئة توقيعية.",
+        "descriptionEn": "Two-level duplex with private pool — signature category.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 80,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "17-r1",
+        "nameAr": "جناح أرغوس",
+        "nameEn": "Argos Suite",
+        "descriptionAr": "جناح أرغوس العلوي بإطلالة بانورامية على كابادوكيا.",
+        "descriptionEn": "Top Argos suite with panoramic Cappadocia views.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 90,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "argos-in-cappadocia",
+    "sourceUrl": "https://www.booking.com/hotel/tr/argos-in-cappadocia.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "kayakapi-premium-caves",
+    "slug": "kayakapi-premium-caves",
+    "nameAr": "كاياكابي بريميوم كيفز كابادوكيا",
+    "nameEn": "Kayakapi Premium Caves Cappadocia",
+    "city": "Cappadocia",
+    "country": "Turkey",
+    "neighborhoodAr": "أورغوب",
+    "neighborhoodEn": "Ürgüp",
+    "stars": 5,
+    "rating": 9.2,
+    "reviewCount": 207,
+    "addressAr": "محلة كاياكابي، شارع كوشجولار رقم 43، 50400 أورغوب، نيفشهير، تركيا",
+    "addressEn": "Kayakapi Mah. Kuşçular Sok. No:43, 50400 Ürgüp, Nevşehir, Turkey",
+    "descriptionAr": "في كهوف تاريخية مرممة في أورغوب مع واي فاي وأجنحة أنيقة بإطلالة كابادوكيا. تدفئة أرضية وتكييف وتلفزيون وقهوة نسبريسو؛ بعضها بمدفأة وتراس. مطعم مايده وبيسترو منظرة. سبا كاياكابي بجانب المسبح. موقف خاص مجاني.",
+    "descriptionEn": "Set in restored historical caves in Ürgüp with free WiFi and elegantly decorated suites overlooking Cappadocia. Rooms feature floor heating, A/C, HD LED TV, Nespresso, docking station; some have fireplace and private terrace/patio. Maide Restaurant breakfast buffet and à la carte; Bistro Manzara for snacks. Kayakapi Spa at historic Davut Agha Mansion beside the pool. Free private parking; shuttle to Ürgüp centre on request.",
+    "highlightsAr": [
+      "أجنحة كهفية مرممة",
+      "سبا ومسبح",
+      "إفطار مطعم مايده"
+    ],
+    "highlightsEn": [
+      "Restored cave suites",
+      "Spa + pool",
+      "Maide Restaurant breakfast"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Outdoor pool",
+      "Kayakapi Spa",
+      "Maide Restaurant",
+      "Bistro Manzara",
+      "Free private parking",
+      "Cave suites",
+      "Fireplace rooms (select)",
+      "24h front desk"
+    ],
+    "lat": 38.63647794685192,
+    "lng": 34.835582976467315,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 14:30",
+      "تسجيل المغادرة حتى 11:30"
+    ],
+    "policiesEn": [
+      "Check-in from 14:30",
+      "Check-out until 11:30"
+    ],
+    "rooms": [
+      {
+        "id": "18-r1",
+        "nameAr": "جناح كهفي",
+        "nameEn": "Cave Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "18-r2",
+        "nameAr": "جناح كهفي ماجستيك",
+        "nameEn": "Majestic Cave Suite",
+        "descriptionAr": "e.g. Room 102 cited in guest quote",
+        "descriptionEn": "e.g. Room 102 cited in guest quote",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "18-r1",
+        "nameAr": "جناح مع تراس",
+        "nameEn": "Suite with Terrace",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "18-r1",
+        "nameAr": "غرفة كهفية ديلوكس",
+        "nameEn": "Deluxe Cave Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "18-r1",
+        "nameAr": "جناح كهفي عائلي",
+        "nameEn": "Family Cave Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "kayakapi-premium-caves",
+    "sourceUrl": "https://www.booking.com/hotel/tr/kayakapi-premium-caves.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "cappadocia-cave-resort",
+    "slug": "cappadocia-cave-resort",
+    "nameAr": "كابادوكيا كيف ريزورت آند سبا",
+    "nameEn": "Cappadocia Cave Resort & Spa",
+    "city": "Cappadocia",
+    "country": "Turkey",
+    "neighborhoodAr": "أورغوب",
+    "neighborhoodEn": "Ürgüp",
+    "stars": 5,
+    "rating": 8,
+    "reviewCount": 61,
+    "addressAr": "محلة تكيلي، منطقة أوتشيسار/أورغوب، نيفشهير، تركيا",
+    "addressEn": "Tekelli Mah., Uçhisar / Ürgüp area, Nevşehir, Turkey",
+    "descriptionAr": "منتجع كهوف وسبا خمس نجوم في أوتشيسار بـ121 غرفة وجناح محفورة في التلة، سبا وحمّام ومسبح خارجي ومطعمان وقبو نبيذ وإطلالات وادٍ على المداخن الجنية والمناطيد.",
+    "descriptionEn": "CCR Cappadocia Cave Resort & Spa is a 5-star cave resort in Uçhisar with 121 rooms and suites carved into the hillside, spa/hammam, outdoor pool, two restaurants, cave wine cellar and panoramic valley views toward fairy chimneys and balloon flights.",
+    "highlightsAr": [
+      "إطلالات وادٍ ومناطيد",
+      "قبو نبيذ وسبا كهفي",
+      "121 غرفة وجناح كهفي"
+    ],
+    "highlightsEn": [
+      "Panoramic balloon-valley views",
+      "Cave wine cellar & spa",
+      "121 cave rooms & suites"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Spa / Hammam",
+      "Outdoor pool",
+      "Cave rooms & suites",
+      "Restaurant",
+      "Cave wine cellar",
+      "Free WiFi",
+      "Terrace valley views",
+      "Parking",
+      "Fitness",
+      "Meeting rooms",
+      "Room service",
+      "Airport shuttle"
+    ],
+    "lat": 38.65068658557829,
+    "lng": 34.81485628373954,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 14:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 14:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "19-r1",
+        "nameAr": "غرفة كهفية قياسية",
+        "nameEn": "Standard Cave Room",
+        "descriptionAr": "غرفة قياسية محفورة بإطلالة وادٍ.",
+        "descriptionEn": "Carved-rock standard room with valley outlook.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 28,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "19-r2",
+        "nameAr": "غرفة كهفية ديلوكس",
+        "nameEn": "Deluxe Cave Room",
+        "descriptionAr": "غرفة كهفية ديلوكس بمساحة أكبر.",
+        "descriptionEn": "Deluxe cave room with enhanced space.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 35,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "19-r1",
+        "nameAr": "جناح كهفي",
+        "nameEn": "Cave Suite",
+        "descriptionAr": "جناح بمنطقة معيشة وتراس.",
+        "descriptionEn": "Suite with living area and terrace.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 55,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "19-r1",
+        "nameAr": "جناح كهفي عائلي",
+        "nameEn": "Family Cave Suite",
+        "descriptionAr": "جناح عائلي حتى 4 ضيوف.",
+        "descriptionEn": "Family suite for up to 4 guests.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 70,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "19-r1",
+        "nameAr": "جناح سبا",
+        "nameEn": "Spa Suite",
+        "descriptionAr": "جناح بمرافق سبا وحمام.",
+        "descriptionEn": "Suite with spa bath / wellness features.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 60,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "cappadocia-cave-resort-and-spa",
+    "sourceUrl": "https://www.booking.com/hotel/tr/cappadocia-cave-resort-and-spa.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "zorlu-grand-trabzon",
+    "slug": "zorlu-grand-trabzon",
+    "nameAr": "زورلو جراند هوتيل طرابزون",
+    "nameEn": "Zorlu Grand Hotel Trabzon",
+    "city": "Trabzon",
+    "country": "Turkey",
+    "neighborhoodAr": "وسط طرابزون",
+    "neighborhoodEn": "Trabzon Center",
+    "stars": 5,
+    "rating": 8.6,
+    "reviewCount": 869,
+    "addressAr": "مراش جادسي رقم 9، وسط مدينة طرابزون، تركيا",
+    "addressEn": "Maraş Caddesi No:9, Trabzon City Center, Trabzon, Turkey",
+    "descriptionAr": "في وسط طرابزون، فندق خمس نجوم يمزج العمارة التقليدية بالتأثيرات الحديثة. واي فاي سريع وتلفزيون فضائي؛ نادي صحي بمسبح داخلي. غرف بألوان دافئة وأثاث خشبي وميني بار؛ بعضها بمنطقة جلوس منفصلة.",
+    "descriptionEn": "Located in the centre of Trabzon, this 5-star hotel mixes traditional architecture with modern influences. Rooms offer free high-speed WiFi and satellite TV; facilities include a health club with an indoor pool. Rooms feature warm colours and wooden furniture, minibar, tea/coffee facilities and en suite bathrooms; some have separate seating areas.",
+    "highlightsAr": [
+      "خمس نجوم وسط المدينة",
+      "مسبح داخلي ونادي صحي",
+      "تصميم تقليدي-حديث"
+    ],
+    "highlightsEn": [
+      "City-centre 5-star",
+      "Indoor pool & health club",
+      "Traditional-modern design"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor pool",
+      "Health club / hammam",
+      "Free high-speed WiFi",
+      "Satellite TV",
+      "Minibar",
+      "Tea/coffee facilities",
+      "Restaurant",
+      "Parking",
+      "Room service",
+      "Fitness",
+      "Business centre"
+    ],
+    "lat": 41.00020868273182,
+    "lng": 39.73060929735387,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "20-r1",
+        "nameAr": "غرفة قياسية",
+        "nameEn": "Standard Room",
+        "descriptionAr": "غرفة بألوان دافئة وأثاث خشبي وميني بار وحمام.",
+        "descriptionEn": "Warm-coloured room with wooden furniture, minibar and en suite.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 28,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "20-r2",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "فئة سوبيريور مع تلفزيون فضائي وشاي/قهوة.",
+        "descriptionEn": "Superior category with satellite TV and tea/coffee.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 32,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "20-r1",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "غرفة ديلوكس؛ بعضها بمنطقة جلوس منفصلة.",
+        "descriptionEn": "Deluxe room; some with separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "20-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "جناح جونيور بمساحة جلوس.",
+        "descriptionEn": "Junior suite with lounge space.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 50,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "20-r1",
+        "nameAr": "جناح مع منطقة جلوس",
+        "nameEn": "Suite with seating area",
+        "descriptionAr": "جناح بجلوس منفصل وإطلالة وسط المدينة.",
+        "descriptionEn": "Suite with separate seating and city-centre views.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 55,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "zorlu-grand-hotel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/zorlu-grand-hotel.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "novotel-trabzon",
+    "slug": "novotel-trabzon",
+    "nameAr": "نوفوتيل طرابزون",
+    "nameEn": "Novotel Trabzon",
+    "city": "Trabzon",
+    "country": "Turkey",
+    "neighborhoodAr": "يومرا / المطار",
+    "neighborhoodEn": "Yomra / Airport area",
+    "stars": 4,
+    "rating": 8,
+    "reviewCount": 1376,
+    "addressAr": "طريق الولاية يومرا، طرابزون، تركيا",
+    "addressEn": "State Road Yomra, Trabzon, Turkey",
+    "descriptionAr": "نوفوتيل طرابزون يطل على البحر الأسود في يومرا، 8 دقائق من الوسط وقرب مول جواهير. غرف عصرية ومسبح بإطلالة ومطعم وعافية وطاقم استقبال مفيد.",
+    "descriptionEn": "Novotel Trabzon overlooks the Black Sea on the Yomra coast, 8 minutes from the city centre and walking distance to Cevahir Shopping Mall. Modern rooms, pool with view, restaurant, wellness facilities and helpful front-desk team noted by guests.",
+    "highlightsAr": [
+      "موقع يومرا على البحر",
+      "قرب مول جواهير",
+      "مسبح مناسب للعائلات"
+    ],
+    "highlightsEn": [
+      "Seafront Yomra location",
+      "Near Cevahir Mall",
+      "Family-friendly pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Pool with view",
+      "Indoor pool",
+      "Bar / poolside bar",
+      "Free WiFi",
+      "Fitness / wellness",
+      "Restaurant",
+      "Meeting rooms",
+      "Laundry",
+      "Parking",
+      "Kids play area",
+      "Room service"
+    ],
+    "lat": 40.99622875230796,
+    "lng": 39.72780969926473,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "21-r1",
+        "nameAr": "غرفة دبل سوبيريور",
+        "nameEn": "Superior Double Room",
+        "descriptionAr": "سوبيريور 25 م² بإطلالة حديقة.",
+        "descriptionEn": "25 sqm superior with garden view.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 25,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "21-r2",
+        "nameAr": "غرفة توين سوبيريور",
+        "nameEn": "Superior Twin Room",
+        "descriptionAr": "توين سوبيريور قرب البحر/المول.",
+        "descriptionEn": "Twin superior near sea/mall.",
+        "beds": "2 Twin",
+        "capacity": 2,
+        "sizeSqm": 25,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "21-r1",
+        "nameAr": "غرفة تنفيذية دبل",
+        "nameEn": "Executive Room with 1 Double Bed",
+        "descriptionAr": "تنفيذية 26 م² بإطلالة حديقة.",
+        "descriptionEn": "26 sqm executive with garden view.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 26,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "21-r1",
+        "nameAr": "تنفيذية إطلالة بحر",
+        "nameEn": "Executive Room Sea View",
+        "descriptionAr": "تنفيذية 26 م² مطلّة على البحر.",
+        "descriptionEn": "26 sqm executive facing the sea.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 26,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "21-r1",
+        "nameAr": "جناح مع غرفة معيشة",
+        "nameEn": "Suite with living room",
+        "descriptionAr": "جناح 75 م² بأريكة وإطلالة بحر.",
+        "descriptionEn": "75 sqm suite with sofa and sea view.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 75,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "novotel-trabzon",
+    "sourceUrl": "https://www.booking.com/hotel/tr/novotel-trabzon.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "radisson-blu-trabzon",
+    "slug": "radisson-blu-trabzon",
+    "nameAr": "رادسون بلو هوتيل طرابزون",
+    "nameEn": "Radisson Blu Hotel Trabzon",
+    "city": "Trabzon",
+    "country": "Turkey",
+    "neighborhoodAr": "وسط المدينة",
+    "neighborhoodEn": "City center",
+    "stars": 5,
+    "rating": 8.4,
+    "reviewCount": 1399,
+    "addressAr": "محلة بوزتبه، أورتا حصار، 61030 طرابزون، تركيا",
+    "addressEn": "Boztepe Mah., Ortahisar, 61030 Trabzon, Turkey",
+    "descriptionAr": "على تلة بوزتبه في طرابزون، على بعد نحو 1.8 ميل من متحف آيا صوفيا و2.5 من فوروم طرابزون. مطعم ومسبح داخلي. بعض الغرف بشرفة وإطلالة بحر. مطار طرابزون نحو 3.7 ميل.",
+    "descriptionEn": "Set in Trabzon on the Boztepe hillside, Radisson Blu is about 1.8 mi from Hagia Sophia Museum and 2.5 mi from Forum Trabzon. On-site restaurant and indoor swimming pool. Some rooms have balcony and sea view. Couples rate location ~9.0 for two-person trips. Nearest airport Trabzon Airport ~3.7 mi.",
+    "highlightsAr": [
+      "إطلالات تلة بوزتبه",
+      "مسبح داخلي",
+      "شرفات بإطلالة بحر"
+    ],
+    "highlightsEn": [
+      "Boztepe hill views",
+      "Indoor pool",
+      "Sea-view balconies"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor swimming pool",
+      "Restaurant",
+      "Bar",
+      "Free WiFi",
+      "Fitness",
+      "Sauna / steam (guest notes)",
+      "Sea-view rooms",
+      "Parking",
+      "Family rooms"
+    ],
+    "lat": 40.98818256255607,
+    "lng": 39.70471906281942,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "22-r1",
+        "nameAr": "غرفة دبل/توين إطلالة بحر وشرفة",
+        "nameEn": "Double or Twin Room with Sea View and Balcony",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "22-r2",
+        "nameAr": "غرفة دبل/توين إطلالة جبل وشرفة",
+        "nameEn": "Double or Twin Room with Mountain View and Balcony",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "22-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "22-r1",
+        "nameAr": "جناح فاخر",
+        "nameEn": "Luxury Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "22-r1",
+        "nameAr": "غرفة دبل/توين قياسية",
+        "nameEn": "Standard Double or Twin Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "radisson-blu-hotel-trabzon",
+    "sourceUrl": "https://www.booking.com/hotel/tr/radisson-blu-hotel-trabzon.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "swissotel-uludag-bursa",
+    "slug": "swissotel-uludag-bursa",
+    "nameAr": "سويسوتيل ريزورت أولوداغ بورصة",
+    "nameEn": "Swissôtel Resort Uludağ Bursa",
+    "city": "Bursa",
+    "country": "Turkey",
+    "neighborhoodAr": "أولوداغ",
+    "neighborhoodEn": "Uludağ",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 74,
+    "addressAr": "منطقة الفنادق، أولوداغ، بورصة، تركيا",
+    "addressEn": "Oteller Bölgesi, Uludağ, Bursa, Turkey",
+    "descriptionAr": "سويسوتيل أولوداغ بورصة منتجع ألبي في منتزه أولوداغ بين غابات الصنوبر، نحو 12 دقيقة من منحدرات التزلج. يبرز الضيوف السبا والغرف الدافئة والمشي في الغابة والمطعم.",
+    "descriptionEn": "Swissôtel Uludağ Bursa is an alpine lodge-style resort in Uludağ National Park among pine forests, ~12 minutes from ski slopes. Guests highlight spa facilities, cozy rooms, forest walks, restaurant and attentive ski-season service.",
+    "highlightsAr": [
+      "منتجع تزلج وسبا أولوداغ",
+      "أجواء ألبية بين الصنوبر",
+      "تقييم موقع 9.4 على بوكينج"
+    ],
+    "highlightsEn": [
+      "Uludağ ski & spa resort",
+      "Pine-forest alpine setting",
+      "Location score 9.4 on Booking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Spa / wellness",
+      "Ski access (seasonal)",
+      "Fitness",
+      "Restaurant",
+      "Bar",
+      "Free WiFi",
+      "Parking",
+      "Mountain views",
+      "Meeting facilities",
+      "Forest trails",
+      "Room service"
+    ],
+    "lat": 40.17508250442887,
+    "lng": 29.053987419582263,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "23-r1",
+        "nameAr": "غرفة كلاسيك",
+        "nameEn": "Classic Room",
+        "descriptionAr": "غرفة كلاسيك دافئة بإطلالة جبل/غابة.",
+        "descriptionEn": "Cozy classic room with mountain/forest outlook.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 28,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "23-r2",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "سوبيريور بأثاث ألبي محسّن.",
+        "descriptionEn": "Superior with upgraded alpine furnishings.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 32,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "23-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "جناح جونيور بجلوس وقرب السبا.",
+        "descriptionEn": "Junior suite with seating and spa access nearby.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 45,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "23-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة عائلية لعطلات التزلج.",
+        "descriptionEn": "Family room for ski holidays.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 40,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "23-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "جناح بأفضل إطلالات جبلية.",
+        "descriptionEn": "Suite with best mountain views.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 55,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "swissotel-resort-uludag-bursa",
+    "sourceUrl": "https://www.booking.com/hotel/tr/swissotel-resort-uludag-bursa.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "kervansaray-bursa",
+    "slug": "kervansaray-bursa",
+    "nameAr": "كرفانسراي بورصة سيتي",
+    "nameEn": "Kervansaray Bursa City Hotel",
+    "city": "Bursa",
+    "country": "Turkey",
+    "neighborhoodAr": "وسط بورصة",
+    "neighborhoodEn": "Bursa Center",
+    "stars": 4,
+    "rating": 8.5,
+    "reviewCount": 205,
+    "addressAr": "جادة فوزي تشاقماق رقم 29، عثمان غازي، 16010 بورصة، تركيا",
+    "addressEn": "Fevzi Çakmak Caddesi No:29, Osmangazi, 16010 Bursa, Turkey",
+    "descriptionAr": "فندق مدينة في موقع بورصة عالي التقييم (موقع بوكينج ~9.5) مع إفطار وموقف خاص مجاني. يبرز الضيوف الوسط والقرب من التسوق والمترو. غرف دبل/توين وكينغ.",
+    "descriptionEn": "City hotel in a highly rated Bursa location (Booking location score cited ~9.5) with continental/buffet breakfast and free private parking. Guests highlight central access to shopping, restaurants, metro/bus and mountain-facing upgrades. Room types include Standard Double/Twin and King rooms.",
+    "highlightsAr": [
+      "وسط بورصة",
+      "تقييم موقع قوي",
+      "ترقيات بإطلالة جبل"
+    ],
+    "highlightsEn": [
+      "Central Bursa",
+      "Strong location score",
+      "Mountain-view upgrades noted by guests"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Breakfast buffet",
+      "Free private parking",
+      "Restaurant",
+      "Bar",
+      "Central location",
+      "Room service",
+      "Family rooms"
+    ],
+    "lat": 40.2059112490996,
+    "lng": 29.050798629335585,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "24-r1",
+        "nameAr": "غرفة دبل/توين قياسية",
+        "nameEn": "Standard Double or Twin Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "24-r2",
+        "nameAr": "غرفة كينغ",
+        "nameEn": "King Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "24-r1",
+        "nameAr": "غرفة سوبيريور",
+        "nameEn": "Superior Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "24-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "24-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "kervansaray-bursa",
+    "sourceUrl": "https://www.booking.com/hotel/tr/kervansaray-bursa.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "holiday-inn-bursa",
+    "slug": "holiday-inn-bursa",
+    "nameAr": "هوليداي إن بورصة - وسط المدينة",
+    "nameEn": "Holiday Inn Bursa - City Centre by IHG",
+    "city": "Bursa",
+    "country": "Turkey",
+    "neighborhoodAr": "نيلوفر",
+    "neighborhoodEn": "Nilüfer / Center",
+    "stars": 4,
+    "rating": 9.2,
+    "reviewCount": 2618,
+    "addressAr": "محلة أولو، بولفار أولوباتلي حسن رقم 44، عثمان غازي، 16220 بورصة، تركيا",
+    "addressEn": "Ulu Mahalle Ulubatlı Hasan Bulvarı No 44, Osmangazi, 16220 Bursa, Turkey",
+    "descriptionAr": "هوليداي إن IHG في وسط بورصة على بولفار أولوباتلي حسن. يمدح الضيوف الموقع قرب التسوق والترام والنظافة والإفطار والطاقم المحترف. تقييم 9.2 على بوكينج بقاعدة مراجعات كبيرة.",
+    "descriptionEn": "IHG Holiday Inn in Bursa city centre on Ulubatlı Hasan Boulevard. Guests praise location near shopping and tram, cleanliness, breakfast, and consistently professional staff (including named guest-relations mentions). Scored 9.2 on Booking with a large review base.",
+    "highlightsAr": [
+      "تقييم 9.2 بوكينج",
+      "IHG وسط المدينة",
+      "إشادة قوية من الضيوف"
+    ],
+    "highlightsEn": [
+      "9.2 Booking score",
+      "City-centre IHG",
+      "Strong repeat-guest praise"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Restaurant",
+      "Breakfast",
+      "Fitness",
+      "Meeting rooms",
+      "Parking",
+      "Family rooms",
+      "Business centre",
+      "Bar"
+    ],
+    "lat": 40.174666333978614,
+    "lng": 29.05168489725955,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "25-r1",
+        "nameAr": "غرفة قياسية",
+        "nameEn": "Standard Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "25-r2",
+        "nameAr": "غرفة قياسية توين",
+        "nameEn": "Standard Room Twin",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "2 Twin",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "25-r1",
+        "nameAr": "جناح جونيور",
+        "nameEn": "Junior Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "25-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "25-r1",
+        "nameAr": "غرفة تنفيذية",
+        "nameEn": "Executive Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "holiday-inn-bursa-city-centre",
+    "sourceUrl": "https://www.booking.com/hotel/tr/holiday-inn-bursa-city-centre.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "richmond-nua-wellness-spa",
+    "slug": "richmond-nua-wellness-spa",
+    "nameAr": "ريتشموند نوا ويلنس سبا - للكبار فقط",
+    "nameEn": "Richmond Nua Wellness Spa - Adult Only",
+    "city": "Sapanca",
+    "country": "Turkey",
+    "neighborhoodAr": "ضفاف البحيرة",
+    "neighborhoodEn": "Lake shore",
+    "stars": 4,
+    "rating": 9.7,
+    "reviewCount": 618,
+    "addressAr": "منطقة بحيرة سبانجا، سبانجا، سكاريا، تركيا",
+    "addressEn": "Sapanca Lake area, Sapanca, Sakarya, Turkey",
+    "descriptionAr": "فندق عافية للكبار فقط بجانب بحيرة سبانجا حيث تلتقي إطلالات الغابة والبحيرة. سبا واسع بساونا وبخار. غرف بشرفات خاصة؛ بعضها بجاكوزي. مطعم أكوا بمأكولات تركية ودولية. أجواء هادئة للاسترخاء.",
+    "descriptionEn": "Adults-only wellness hotel by Sapanca Lake where forest and lake views meet. Extensive spa with sauna and steam rooms. Comfortable rooms with private balconies and satellite flat-screen TVs; some include a hot tub. Aqua Restaurant serves Turkish and international tastes. Calm atmosphere geared to relaxation.",
+    "highlightsAr": [
+      "عافية للكبار فقط",
+      "تقييم 9.7 بوكينج",
+      "موقع بحيرة سبانجا"
+    ],
+    "highlightsEn": [
+      "Adults-only wellness",
+      "9.7 Booking score",
+      "Sapanca Lake setting"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Adults only",
+      "Spa / sauna / steam",
+      "Lake & forest views",
+      "Restaurant",
+      "Free WiFi",
+      "Balconies",
+      "Hot tub (select rooms)",
+      "Parking",
+      "Fitness"
+    ],
+    "lat": 40.68381920077121,
+    "lng": 30.281458811911627,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00",
+      "للكبار فقط"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00",
+      "Adults only"
+    ],
+    "rooms": [
+      {
+        "id": "26-r1",
+        "nameAr": "غرفة ديلوكس مع شرفة",
+        "nameEn": "Deluxe Room with Balcony",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "26-r2",
+        "nameAr": "غرفة مع جاكوزي",
+        "nameEn": "Room with Hot Tub",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 350,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "26-r1",
+        "nameAr": "غرفة بإطلالة بحيرة",
+        "nameEn": "Lake View Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 450,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "26-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 620,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "26-r1",
+        "nameAr": "غرفة سبا",
+        "nameEn": "Spa Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 850,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "richmond-nua-wellness-spa",
+    "sourceUrl": "https://www.booking.com/hotel/tr/richmond-nua-wellness-spa.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "ng-sapanca-wellness",
+    "slug": "ng-sapanca-wellness",
+    "nameAr": "إن جي سبانجا ويلنس آند كونفنشن",
+    "nameEn": "NG Sapanca Wellness & Convention",
+    "city": "Sapanca",
+    "country": "Turkey",
+    "neighborhoodAr": "سبانجا",
+    "neighborhoodEn": "Sapanca",
+    "stars": 5,
+    "rating": 8.9,
+    "reviewCount": 320,
+    "addressAr": "سبانجا، سكاريا، تركيا",
+    "addressEn": "Sapanca, Sakarya, Turkey",
+    "descriptionAr": "فندق خمس نجوم للعافية والمؤتمرات وسط غابات سبانجا، موجّه للعائلات بديكور أنيق. يمدح الضيوف المسابح وأنشطة الأطفال والهدوء والغابة والطعام والطاقم.",
+    "descriptionEn": "Forest-set 5-star wellness and convention hotel in Sapanca, family-oriented with classy décor. Guests repeatedly praise swimming pools, kids’ activities, calm woodland setting, food and friendly staff. Suitable for families and meetings.",
+    "highlightsAr": [
+      "منتجع عائلي غابي",
+      "مسابح وأنشطة أطفال",
+      "عافية ومؤتمرات"
+    ],
+    "highlightsEn": [
+      "Forest family resort",
+      "Pools & kids activities",
+      "Wellness + convention"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Multiple pools",
+      "Kids activities",
+      "Spa / wellness",
+      "Convention / meeting rooms",
+      "Restaurant buffet",
+      "Free WiFi",
+      "Family rooms",
+      "Parking",
+      "Forest setting"
+    ],
+    "lat": 40.68815963848933,
+    "lng": 30.28760065283464,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "27-r1",
+        "nameAr": "غرفة قياسية",
+        "nameEn": "Standard Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "27-r2",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "27-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "27-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "27-r1",
+        "nameAr": "غرف عائلية متصلة",
+        "nameEn": "Connecting Family Rooms",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 5,
+        "sizeSqm": 38,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "ng-sapanca-wellness-convention",
+    "sourceUrl": "https://www.booking.com/hotel/tr/ng-sapanca-wellness-convention.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "ng-sapanca-enjoy",
+    "slug": "ng-sapanca-enjoy",
+    "nameAr": "إن جي إنجوي",
+    "nameEn": "NG Enjoy",
+    "city": "Sapanca",
+    "country": "Turkey",
+    "neighborhoodAr": "غابات سبانجا",
+    "neighborhoodEn": "Sapanca forest",
+    "stars": 4,
+    "rating": 9.3,
+    "reviewCount": 223,
+    "addressAr": "سبانجا، سكاريا، تركيا",
+    "addressEn": "Sapanca, Sakarya, Turkey",
+    "descriptionAr": "منتجع حديث في سبانجا يُشاد بغرفه الواسعة الجديدة والمسبح الكبير والمساحات الخضراء وخدمة الاستقبال والبوفيه. يذكر الضيوف طاقماً منتبهًا وتلبية طلبات خاصة لكبار السن.",
+    "descriptionEn": "Modern Sapanca resort hotel praised for large new rooms, huge pool, green grounds, strong front-desk service and full-board buffet. Guests mention attentive staff (e.g. Mohammed and Irem) and accommodation of special room requests for elderly family members.",
+    "highlightsAr": [
+      "تقييم 9.3 بوكينج",
+      "مسبح كبير وغرف جديدة",
+      "بوفيه وطاقم قويان"
+    ],
+    "highlightsEn": [
+      "9.3 Booking score",
+      "Huge pool & new rooms",
+      "Strong buffet & staff"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Huge pool",
+      "Full-board buffet",
+      "Free WiFi",
+      "Large modern rooms",
+      "Green gardens",
+      "Front desk 24h",
+      "Family rooms",
+      "Parking",
+      "Restaurant"
+    ],
+    "lat": 40.70528027802241,
+    "lng": 30.265034534656465,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "28-r1",
+        "nameAr": "غرفة قياسية",
+        "nameEn": "Standard Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "28-r2",
+        "nameAr": "غرفة ديلوكس",
+        "nameEn": "Deluxe Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 63,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "28-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 340,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "28-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 420,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "28-r1",
+        "nameAr": "غرف متصلة",
+        "nameEn": "Connecting Rooms",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 5,
+        "sizeSqm": 38,
+        "price": 550,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "ng-sapanca-enjoy",
+    "sourceUrl": "https://www.booking.com/hotel/tr/ng-sapanca-enjoy.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "ayder-paradise-otel",
+    "slug": "ayder-paradise-otel",
+    "nameAr": "آيدر بارادايس أوتيل",
+    "nameEn": "Ayder Paradise Otel",
+    "city": "Ayder",
+    "country": "Turkey",
+    "neighborhoodAr": "آيدر",
+    "neighborhoodEn": "Ayder Plateau",
+    "stars": 4,
+    "rating": 8.7,
+    "reviewCount": 131,
+    "addressAr": "هضبة آيدر، تشاملي هيمشين، ريزا، تركيا",
+    "addressEn": "Ayder Yaylası, Çamlıhemşin, Rize, Turkey",
+    "descriptionAr": "فندق هضبة في آيدر قرب مسارات المشي، على بعد نحو 30 ميلاً من مطار ريزا-أرتفين. يقدّر الضيوف الإطلالات والموقف والضيافة العائلية المنتبهة.",
+    "descriptionEn": "Plateau hotel in Ayder Yaylası near walking and hiking trails, about 30 mi from Rize–Artvin Airport. Guests appreciate scenic views, parking, and attentive family-run hospitality (owners/staff named in reviews such as Jan and Zafran).",
+    "highlightsAr": [
+      "موقع هضبة آيدر",
+      "ضيافة عائلية",
+      "وصول للتخييم سيراً"
+    ],
+    "highlightsEn": [
+      "Ayder plateau setting",
+      "Family hospitality",
+      "Hiking access"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Free WiFi",
+      "Parking",
+      "Mountain / plateau views",
+      "Breakfast",
+      "Family-run hospitality",
+      "Hiking access",
+      "Restaurant"
+    ],
+    "lat": 40.94644582908829,
+    "lng": 41.10774021614746,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 15:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "29-r1",
+        "nameAr": "غرفة دبل قياسية",
+        "nameEn": "Standard Double Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 95,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "29-r2",
+        "nameAr": "غرفة ثلاثية",
+        "nameEn": "Triple Room",
+        "descriptionAr": "جناح فسيح مع منطقة جلوس منفصلة.",
+        "descriptionEn": "Spacious suite with a separate seating area.",
+        "beds": "3 Twin",
+        "capacity": 3,
+        "sizeSqm": 63,
+        "price": 120,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "29-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 38,
+        "price": 150,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "29-r1",
+        "nameAr": "غرفة بإطلالة جبل",
+        "nameEn": "Room with Mountain View",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 185,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "29-r1",
+        "nameAr": "جناح",
+        "nameEn": "Suite",
+        "descriptionAr": "غرفة واسعة مع إطلالة مميزة وخدمة يومية.",
+        "descriptionEn": "Spacious room with a notable view and daily housekeeping.",
+        "beds": "1 King",
+        "capacity": 3,
+        "sizeSqm": 38,
+        "price": 220,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "ayder-paradise-otel",
+    "sourceUrl": "https://www.booking.com/hotel/tr/ayder-paradise-otel.html",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "id": "yesilvadi",
+    "slug": "yesilvadi",
+    "nameAr": "يشيل فادي أوتيل",
+    "nameEn": "Yeşilvadi Otel",
+    "city": "Rize",
+    "country": "Turkey",
+    "neighborhoodAr": "ريزا",
+    "neighborhoodEn": "Rize",
+    "stars": 4,
+    "rating": 7,
+    "reviewCount": 14,
+    "addressAr": "منطقة هضبة آيدر، قضاء ريزا، تركيا",
+    "addressEn": "Ayder Yaylası area, Rize district, Turkey",
+    "descriptionAr": "يشيل فادي أوتيل عائلي في هضبة آيدر المنعزلة وسط جبال الصنوبر. غرف بأرضيات خشبية ومطعم إقليمي للبحر الأسود وتراس بإطلالات طبيعة وقرب ينابيع آيدر الحارة (50 م).",
+    "descriptionEn": "Family-run Yeşilvadi Otel in a secluded Ayder plateau setting surrounded by pine mountains. Wooden-floor rooms with central heating, regional Black Sea restaurant, terrace with nature views, and proximity to Ayder hot springs (50 m).",
+    "highlightsAr": [
+      "آيدر بين غابات الصنوبر",
+      "مطعم إقليمي للبحر الأسود",
+      "عائلي منذ 1906"
+    ],
+    "highlightsEn": [
+      "Secluded pine-forest Ayder",
+      "Black Sea regional restaurant",
+      "Family-run since 1906 heritage"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
+    ],
+    "amenities": [
+      "Restaurant (Black Sea cuisine)",
+      "Terrace with nature views",
+      "Free WiFi",
+      "Central heating",
+      "Mountain / forest views",
+      "Private bathrooms",
+      "Airport shuttle",
+      "Room service",
+      "Family rooms",
+      "Non-smoking rooms",
+      "Ping-pong / game room",
+      "Breakfast buffet"
+    ],
+    "lat": 41.02786608127135,
+    "lng": 40.526032019628616,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من 14:00",
+      "تسجيل المغادرة حتى 12:00"
+    ],
+    "policiesEn": [
+      "Check-in from 14:00",
+      "Check-out until 12:00"
+    ],
+    "rooms": [
+      {
+        "id": "30-r1",
+        "nameAr": "غرفة دبل قياسية",
+        "nameEn": "Standard Double Room",
+        "descriptionAr": "سرير مزدوج، أرضيات خشبية، إطلالة جبل.",
+        "descriptionEn": "1 full bed, wooden floors, mountain view.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 22,
+        "price": 65,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "30-r2",
+        "nameAr": "غرفة توين قياسية",
+        "nameEn": "Standard Twin Room",
+        "descriptionAr": "سريران توين مع تلفزيون وتدفئة.",
+        "descriptionEn": "2 twin beds with satellite TV and heating.",
+        "beds": "2 Twin",
+        "capacity": 2,
+        "sizeSqm": 22,
+        "price": 85,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      },
+      {
+        "id": "30-r1",
+        "nameAr": "غرفة ثلاثية قياسية",
+        "nameEn": "Standard Triple Room",
+        "descriptionAr": "غرفة ثلاثية لمجموعات صغيرة.",
+        "descriptionEn": "Triple room for small groups.",
+        "beds": "3 Twin",
+        "capacity": 3,
+        "sizeSqm": 28,
+        "price": 105,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "30-r1",
+        "nameAr": "جناح كوين غرفتان",
+        "nameEn": "Two-Bedroom Queen Suite - Non-Smoking",
+        "descriptionAr": "جناح غرفتين بمساحة معيشة (فئة بوكينج).",
+        "descriptionEn": "Two-bedroom suite with living space (Booking category).",
+        "beds": "1 King",
+        "capacity": 4,
+        "sizeSqm": 45,
+        "price": 130,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "30-r1",
+        "nameAr": "غرفة عائلية",
+        "nameEn": "Family Room (2 Adults + 3 Children)",
+        "descriptionAr": "غرفة عائلية كبيرة حتى 5 أشخاص.",
+        "descriptionEn": "Large family room sleeping up to 5.",
+        "beds": "1 King",
+        "capacity": 5,
+        "sizeSqm": 40,
+        "price": 155,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      }
+    ],
+    "bookingId": "yesilvadi",
+    "sourceUrl": "https://www.booking.com/hotel/tr/yesilvadi.html",
+    "isActive": true,
+    "isFeatured": false
+  },
+  {
+    "id": "rixos-tersane-istanbul",
+    "slug": "rixos-tersane-istanbul",
+    "nameAr": "ريكسوس ترسانه إسطنبول",
+    "nameEn": "Rixos Tersane Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhoodAr": "القرن الذهبي / كاسیم باشا",
+    "neighborhoodEn": "Golden Horn / Kasımpaşa",
+    "stars": 5,
+    "rating": 9.1,
+    "reviewCount": 420,
+    "addressAr": "منطقة ترسانه، كاسیم باشا، القرن الذهبي، إسطنبول، تركيا",
+    "addressEn": "Tersane Istanbul, Kasımpaşa, Golden Horn, Istanbul, Turkey",
+    "descriptionAr": "فندق خمس نجوم على القرن الذهبي في موقع ترسانه التاريخي: غرف حديثة، إطلالات على الخليج، مطاعم، سبا، ومسبح. تسجيل الوصول 15:00 والمغادرة 12:00. هذا إدراج فندقي فقط — ليس برنامج عطلة.",
+    "descriptionEn": "A five-star hotel on the Golden Horn at the historic Tersane site: contemporary rooms, gulf views, restaurants, spa, and a pool. Check-in 15:00, check-out 12:00. Hotel listing only — not a holiday program.",
+    "highlightsAr": [
+      "موقع على القرن الذهبي",
+      "سبا ومسبح",
+      "مطاعم داخل الفندق"
+    ],
+    "highlightsEn": [
+      "Golden Horn waterfront",
+      "Spa and pool",
+      "On-site restaurants"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80"
+    ],
+    "amenities": [
+      "Indoor pool",
+      "Spa / Hammam",
+      "Fitness center",
+      "Free Wi-Fi",
+      "Restaurants & bars",
+      "Room service",
+      "Concierge",
+      "Valet parking"
+    ],
+    "lat": 41.0298,
+    "lng": 28.9614,
+    "checkInTime": "15:00",
+    "checkOutTime": "12:00",
+    "policiesAr": [
+      "تسجيل الوصول من الساعة 15:00",
+      "المغادرة حتى الساعة 12:00",
+      "الأسعار تقريبية بالدولار لليلة وليست حجزاً حياً"
+    ],
+    "policiesEn": [
+      "Check-in from 15:00",
+      "Check-out until 12:00",
+      "Nightly USD rates are approximate — not a live booking quote"
+    ],
+    "rooms": [
+      {
+        "id": "rixos-tersane-r1",
+        "nameAr": "غرفة ديلوكس كينغ",
+        "nameEn": "Deluxe King Room",
+        "descriptionAr": "غرفة كينغ مع إطلالة مدينة أو خليج حسب التوفر.",
+        "descriptionEn": "King room with city or gulf view depending on availability.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 38,
+        "price": 280,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Mini Bar",
+          "Safe",
+          "Smart TV"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": true
+      },
+      {
+        "id": "rixos-tersane-r2",
+        "nameAr": "غرفة تنفيذية بإطلالة الخليج",
+        "nameEn": "Executive Gulf View Room",
+        "descriptionAr": "غرفة أوسع بإطلالة على القرن الذهبي.",
+        "descriptionEn": "Larger room overlooking the Golden Horn.",
+        "beds": "1 King",
+        "capacity": 2,
+        "sizeSqm": 46,
+        "price": 360,
+        "currency": "USD",
+        "amenities": [
+          "WiFi",
+          "Lounge access",
+          "Bathrobe",
+          "Espresso"
+        ],
+        "images": [
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+        ],
+        "breakfastIncluded": true,
+        "freeCancellation": false
+      }
+    ],
+    "bookingId": "rixos-tersane-istanbul",
+    "sourceUrl": "https://www.booking.com/hotel/tr/rixos-tersane-istanbul.html",
+    "isActive": true,
+    "isFeatured": true
+  }
+]

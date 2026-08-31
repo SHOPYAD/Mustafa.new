@@ -1,0 +1,28 @@
+import { NextRequest, NextResponse } from "next/server";
+import { assertAdminApi } from "@/lib/server/admin-auth";
+import { saveUploadedImage } from "@/lib/server/branding-files";
+
+export const runtime = "nodejs";
+
+export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
+
+  try {
+    const form = await req.formData();
+    const file = form.get("file");
+    if (!(file instanceof File)) {
+      return NextResponse.json(
+        { ok: false, error: "file required" },
+        { status: 400 }
+      );
+    }
+    const saved = await saveUploadedImage({ file, folder: "email" });
+    return NextResponse.json({ ok: true, ...saved });
+  } catch (e) {
+    return NextResponse.json(
+      { ok: false, error: e instanceof Error ? e.message : "Upload failed" },
+      { status: 500 }
+    );
+  }
+}

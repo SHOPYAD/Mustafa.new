@@ -1,0 +1,762 @@
+[
+  {
+    "id": "old-tour-1732534618",
+    "title": "ريكسوس ترسان إسطنبول",
+    "image": "/migrated/pkg-1732534618-4baf8cfae499.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 100,
+    "price": 230,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 270
+  },
+  {
+    "id": "old-tour-1688394894",
+    "title": "بحيرة سبنجا و شلالات المعشوقية",
+    "image": "/migrated/pkg-1688394894-48791cb2f864.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 117,
+    "price": 270,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 320
+  },
+  {
+    "id": "old-tour-1683538259",
+    "title": "السياحة في طرابزون",
+    "image": "/migrated/pkg-1683538259-e47e43b9c73d.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 134,
+    "price": 300,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 355
+  },
+  {
+    "id": "old-tour-1682501858",
+    "title": "أجمل الاماكن السياحية في بورصة تركيا",
+    "image": "/migrated/pkg-1682501858-6d8bdf5e560f.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 151,
+    "price": 275,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 325
+  },
+  {
+    "id": "old-tour-1678190624",
+    "title": "السياحة في اسطنبول",
+    "image": "/migrated/pkg-1678190624-e45fcf5f2ace.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 168,
+    "price": 205,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 240
+  },
+  {
+    "id": "old-tour-1674893255",
+    "title": "افضل الاماكن السياحية في اسطنبول",
+    "image": "/migrated/pkg-1674893255-bd616b3e447d.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 185,
+    "price": 205,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 240
+  },
+  {
+    "id": "old-tour-1674288016",
+    "title": "اجمل الاماكن السياحية في اسطنبول",
+    "image": "/migrated/pkg-1674288016-f9ad5c8052df.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 202,
+    "price": 235,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 275
+  },
+  {
+    "id": "old-tour-1673437570",
+    "title": "افضل الفنادق في سابنجا",
+    "image": "/migrated/pkg-1673437570-e3ad691dd5a5.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 219,
+    "price": 240,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": true,
+    "isActive": true,
+    "originalPrice": 285
+  },
+  {
+    "id": "old-tour-1672825011",
+    "title": "رحلة سابنجا والمعشوقية",
+    "image": "/migrated/pkg-1672825011-86cbd5c00c26.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 236,
+    "price": 275,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 325
+  },
+  {
+    "id": "old-tour-1669709302",
+    "title": "The Ritz-Carlton, Istanbul",
+    "image": "/migrated/pkg-1669709302-04a12be8883d.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 253,
+    "price": 235,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 275
+  },
+  {
+    "id": "old-tour-1669366923",
+    "title": "    The Grand Tarabya Hotel",
+    "image": "/migrated/pkg-1669366923-92c1587e698b.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 270,
+    "price": 255,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 300
+  },
+  {
+    "id": "old-tour-1669277864",
+    "title": "Radisson Residences, Vadistanbul",
+    "image": "/migrated/pkg-1669277864-7c63e7c4339a.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 287,
+    "price": 210,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 250
+  },
+  {
+    "id": "old-tour-1669274445",
+    "title": "Swissôtel The Bosphorus Istanbul",
+    "image": "/migrated/pkg-1669274445-65747812dabc.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 304,
+    "price": 235,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 275
+  },
+  {
+    "id": "old-tour-1668516600",
+    "title": "Wyndham Grand Istanbul Levent",
+    "image": "/migrated/pkg-1668516600-b8eb2ec083e0.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 321,
+    "price": 235,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 275
+  },
+  {
+    "id": "old-tour-1668503317",
+    "title": "Fairmont Quasar Istanbul",
+    "image": "/migrated/pkg-1668503317-56e1c4491fb1.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 338,
+    "price": 210,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 250
+  },
+  {
+    "id": "old-tour-1668499563",
+    "title": "Ramada by Wyndham Istanbul Alibeykoy",
+    "image": "/migrated/pkg-1668499563-3b055520731a.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 355,
+    "price": 220,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 260
+  },
+  {
+    "id": "old-tour-1668428860",
+    "title": "Hilton Bursa Convention Center and Spa",
+    "image": "/migrated/pkg-1668428860-4ef16af6d7b4.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 372,
+    "price": 300,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 355
+  },
+  {
+    "id": "old-tour-1668426823",
+    "title": "Elite world Sapanca",
+    "image": "/migrated/pkg-1668426823-f32091484022.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 389,
+    "price": 250,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 295
+  },
+  {
+    "id": "old-tour-1667562946",
+    "title": "Clarion Hotel Golden Horn",
+    "image": "/migrated/pkg-1667562946-8c12e874f87c.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 406,
+    "price": 245,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 290
+  },
+  {
+    "id": "old-tour-1667559849",
+    "title": "Hilton Istanbul Bomonti Hotel & Conference Center",
+    "image": "/migrated/pkg-1667559849-a9e0c5ec6129.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 423,
+    "price": 230,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 270
+  },
+  {
+    "id": "old-tour-1667294496",
+    "title": "Radisson Collection Hotel, Vadistanbul",
+    "image": "/migrated/pkg-1667294496-14c6700bbc6f.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 440,
+    "price": 230,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 270
+  },
+  {
+    "id": "old-tour-1519207320",
+    "title": "بارك ديديمان طرابزون (Park Dedeman Trabzon) ",
+    "image": "/migrated/pkg-1519207320-b5f07eea877f.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 457,
+    "price": 345,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 405
+  },
+  {
+    "id": "old-tour-1515426034",
+    "title": "فندق نوفوتيل ترابزون (Novotel Trabzon Hotel) ",
+    "image": "/migrated/pkg-1515426034-424b028dc271.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 474,
+    "price": 160,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Hotels",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 190
+  },
+  {
+    "id": "old-tour-1511868106",
+    "title": "جولة اوردو لؤلؤة البحر الاسود",
+    "image": "/migrated/pkg-1511868106-d606db60a551.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 491,
+    "price": 245,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 290
+  },
+  {
+    "id": "old-tour-1511863884",
+    "title": "جولة مدينة ايدر ",
+    "image": "/migrated/pkg-1511863884-ac0b39523d39.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 508,
+    "price": 330,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 390
+  },
+  {
+    "id": "old-tour-1511528546",
+    "title": "فندق ماي بادا ( My Bade Hotel )",
+    "image": "/migrated/pkg-1511528546-047be14bfad7.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 525,
+    "price": 150,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Hotels",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 175
+  },
+  {
+    "id": "old-tour-1510133791",
+    "title": "متحف بودروم للأثار البحرية",
+    "image": "/migrated/pkg-1510133791-b8650042d8ea.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 542,
+    "price": 250,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 295
+  },
+  {
+    "id": "old-tour-1510128349",
+    "title": "أكواريوم أنطاليا",
+    "image": "/migrated/pkg-1510128349-b505f6e5b0b5.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 559,
+    "price": 255,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 300
+  },
+  {
+    "id": "old-tour-1510128262",
+    "title": "حديقة أتاتورك",
+    "image": "/migrated/pkg-1510128262-a83de28f5c23.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 576,
+    "price": 260,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 305
+  },
+  {
+    "id": "old-tour-1510128199",
+    "title": "شلالات كورشونلو",
+    "image": "/migrated/pkg-1510128199-1d75ab23580f.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 593,
+    "price": 225,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 265
+  },
+  {
+    "id": "old-tour-1510127846",
+    "title": "متحف هاليجي أحمد أوركاي",
+    "image": "/migrated/pkg-1510127846-fce5ac3db0fe.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 610,
+    "price": 255,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 300
+  },
+  {
+    "id": "old-tour-1510127741",
+    "title": "أتلنتيس ووتر بارك",
+    "image": "/migrated/pkg-1510127741-5b435765296a.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 627,
+    "price": 255,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 300
+  },
+  {
+    "id": "old-tour-1510127673",
+    "title": "أكوا دريم",
+    "image": "/migrated/pkg-1510127673-c62e2165ef4b.png",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 644,
+    "price": 225,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "Day Trips",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 265
+  },
+  {
+    "id": "old-tour-1510069295",
+    "title": "جولة مدينة انطاليا",
+    "image": "/migrated/pkg-1510069295-a0a40cc23793.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 661,
+    "price": 250,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 295
+  },
+  {
+    "id": "old-tour-1510069148",
+    "title": "جولة رافتنج",
+    "image": "/migrated/pkg-1510069148-4b83f5385164.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 678,
+    "price": 245,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 290
+  },
+  {
+    "id": "old-tour-1510069081",
+    "title": "جولة تلفريك اوليمبوس",
+    "image": "/migrated/pkg-1510069081-46426e594af2.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 695,
+    "price": 255,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 300
+  },
+  {
+    "id": "old-tour-1510067105",
+    "title": "جولة مدينة ريزا ",
+    "image": "/migrated/pkg-1510067105-a09badd8212f.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 712,
+    "price": 345,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 405
+  },
+  {
+    "id": "old-tour-1510067024",
+    "title": "جولة مرتفعات أوفيت",
+    "image": "/migrated/pkg-1510067024-9886b8f73bad.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 729,
+    "price": 225,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 265
+  },
+  {
+    "id": "old-tour-1510066932",
+    "title": "جولة أوزنجول",
+    "image": "/migrated/pkg-1510066932-dd0e14581953.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 746,
+    "price": 260,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 305
+  },
+  {
+    "id": "old-tour-1510066775",
+    "title": "جولة حيدر نبي",
+    "image": "/migrated/pkg-1510066775-b3a883118b64.jpg",
+    "duration": "Full Day",
+    "timing": "morning",
+    "rating": 4.7,
+    "reviewCount": 763,
+    "price": 230,
+    "highlights": [
+      "Hotel",
+      "Transfer",
+      "Private car"
+    ],
+    "category": "City Tours",
+    "popular": false,
+    "isActive": true,
+    "originalPrice": 270
+  }
+]

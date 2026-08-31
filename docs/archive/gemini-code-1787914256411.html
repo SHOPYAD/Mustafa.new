@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلات كروز كندا ونيو إنجلاند | عروض حصرية ومباشرة 2026 - 2029</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .glass-header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full font-bold text-[10px]">مباشر ومحدث</span>
+        <span>باقات رحلات الكروز البحرية لكندا ونيو إنجلاند لمواسم 2026 - 2029 بأسعار تفضيلية وضمان أفضل سعر</span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="glass-header sticky top-0 z-40 text-white border-b border-slate-700/50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-ship"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent">GLOBAL CRUISE</span>
+                    <span class="text-[10px] block text-cyan-300 font-semibold tracking-wider uppercase">محرك عروض الكروز والرحلات البحرية</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-print"></i> طباعة العرض
+                </button>
+                <div class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="resultsCountHeader">13 رحلة مطابقة</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Search & Summary Banner -->
+    <section class="bg-gradient-to-b from-slate-900 via-slate-850 to-slate-900 text-white pt-10 pb-16 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/70 border border-cyan-700/40 text-cyan-300 text-xs font-semibold mb-3">
+                    <i class="fa-solid fa-map-location-dot"></i> كندا وساحل نيو إنجلاند | Canada & New England
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight mb-3">
+                    عروض وباقات رحلات الكروز البحرية
+                </h1>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    استكشف أفخم السفن العالمية مع تفاصيل المسارات، تواريخ الإبحار، وأفضل أسعار الكبائن المحدثة.
+                </p>
+            </div>
+
+            <!-- Fast Search & Filter Toolbar -->
+            <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-200 text-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 flex items-center gap-1">
+                        <i class="fa-solid fa-magnifying-glass text-cyan-600"></i> بحث سريع بالاسم أو الميناء:
+                    </label>
+                    <input type="text" id="searchInput" oninput="applyFilters()" placeholder="مثال: Boston, Montreal, Vista, Breakaway..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 flex items-center gap-1">
+                        <i class="fa-solid fa-anchor text-cyan-600"></i> خط الكروز (Cruise Line):
+                    </label>
+                    <select id="cruiseLineFilter" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition">
+                        <option value="ALL">جميع الخطوط المتاحة (8 شركات)</option>
+                        <option value="Oceania Cruises">Oceania Cruises</option>
+                        <option value="Royal Caribbean International">Royal Caribbean</option>
+                        <option value="Norwegian Cruise Line">Norwegian Cruise Line (NCL)</option>
+                        <option value="Holland America Line">Holland America Line</option>
+                        <option value="Princess Cruises">Princess Cruises</option>
+                        <option value="Cunard Line">Cunard Line (Queen Mary 2)</option>
+                        <option value="Carnival Cruise Line">Carnival Cruise Line</option>
+                        <option value="Viking Expeditions">Viking Expeditions (فاخر)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 flex items-center gap-1">
+                        <i class="fa-solid fa-clock text-cyan-600"></i> مدة الرحلة (Duration):
+                    </label>
+                    <select id="durationFilter" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition">
+                        <option value="ALL">جميع المدد</option>
+                        <option value="SHORT">رحلات قصيرة (4 - 5 ليالي)</option>
+                        <option value="MEDIUM">رحلات أسبوعية (7 ليالي)</option>
+                        <option value="LONG">رحلات ممتدة (9 - 11 ليالي)</option>
+                        <option value="GRAND">رحلات كبرى (12 - 14 ليلة)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1 flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-down-wide-short text-cyan-600"></i> ترتيب النتائج:
+                    </label>
+                    <select id="sortBy" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition font-semibold text-slate-700">
+                        <option value="PRICE_ASC">الأقل سعراً أولاً</option>
+                        <option value="PRICE_DESC">الأعلى سعراً أولاً</option>
+                        <option value="DURATION_DESC">المدة الأطول</option>
+                        <option value="DURATION_ASC">المدة الأقصر</option>
+                        <option value="RATING_DESC">الأعلى تقييماً</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Metric Cards -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-ship"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 block">إجمالي المسارات</span>
+                    <span class="text-xl font-black text-slate-800">13 كروز رئيسي</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-tag"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 block">تبدأ الأسعار من</span>
+                    <span class="text-xl font-black text-emerald-600">$445 <span class="text-xs font-normal text-slate-500">/شخص</span></span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 block">موانئ المغادرة</span>
+                    <span class="text-xl font-black text-slate-800">NYC, Boston, YUL</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 block">فترة الإبحار</span>
+                    <span class="text-xl font-black text-slate-800">2026 - 2029</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cruise Offers List Container -->
+    <main id="results" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+                    <span>قائمة الرحلات المتاحة</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">انقر على أي كروز لعرض تفاصيل خط السير يوماً بيوم ومقارنة أسعار فئات الكبائن</p>
+            </div>
+            <span id="resultsFoundText" class="text-xs sm:text-sm font-bold text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm">
+                عرض 13 من أصل 13 كروز
+            </span>
+        </div>
+
+        <div id="cruiseCardsContainer" class="space-y-6"></div>
+
+        <!-- Empty state -->
+        <div id="noResultsState" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-sm">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 text-2xl mx-auto mb-3">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-1">لم يتم العثور على رحلات مطابقة</h3>
+            <p class="text-sm text-slate-500 mb-4">يرجى تعديل خيارات الفلترة أو مسح كلمات البحث للمحاولة مجدداً</p>
+            <button onclick="resetFilters()" class="px-4 py-2 bg-cyan-600 text-white rounded-xl text-xs font-bold hover:bg-cyan-700 transition">
+                إعادة ضبط الفلاتر
+            </button>
+        </div>
+    </main>
+
+    <!-- Itinerary Modal -->
+    <div id="itineraryModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl border border-slate-200">
+            <div class="p-5 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center text-white text-lg">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <div>
+                        <h3 id="modalTitle" class="text-base font-bold text-white leading-snug">تفاصيل خط السير اليومي</h3>
+                        <p id="modalSubtitle" class="text-xs text-cyan-300">السفينة والمسار الكامل</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="modalContent" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4"></div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data & Script Logic -->
+    <script>
+        const cruisesData = [
+          {
+            "id": 264914,
+            "title": "11 NIGHT Canada CRUISE",
+            "length": 11,
+            "cruiseLine": { "name": "Oceania Cruises" },
+            "ship": {
+              "name": "Oceania Vista",
+              "imageUrl": "https://cruise-images.tacdn.comship/1030/7667_288x223_.jpg",
+              "passengerCapacity": 1200,
+              "reviewSummaryInfo": { "overallRatings": 4.5, "numberReviews": 84 },
+              "amenities": { "results": ["Luxury Dining", "Culinary Arts Center", "Spa & Wellness", "Piano Bar", "Adult Centric", "Wifi Available"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "Montreal" },
+            "portArrival": { "name": "Boston" },
+            "itinerary": [
+              { "day": 1, "port": "Montreal" }, { "day": 2, "port": "Montreal (Overnight)" },
+              { "day": 3, "port": "Saguenay Fjord (Scenic Cruising)" }, { "day": 4, "port": "Baie-Comeau" },
+              { "day": 5, "port": "Sept-Iles" }, { "day": 6, "port": "Havre St. Pierre" },
+              { "day": 7, "port": "Corner Brook" }, { "day": 8, "port": "At Sea (Cruising)" },
+              { "day": 9, "port": "Halifax" }, { "day": 10, "port": "Saint John (New Brunswick)" },
+              { "day": 11, "port": "Portland (Maine)" }, { "day": 12, "port": "Boston (Disembarkation)" }
+            ],
+            "sailings": ["2027-09-18"],
+            "prices": {
+              "Inside": { "price": "N/A", "vendor": "Sold Out", "url": "#" },
+              "Outside": { "price": "$6,999", "vendor": "CruisesOnly", "url": "https://www.cruisesonly.com" },
+              "Balcony": { "price": "$6,929", "vendor": "Panache Cruises", "url": "https://www.panachecruises.com" },
+              "Suite": { "price": "$9,128", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 255641,
+            "title": "4 NIGHT CANADA GETAWAY CRUISE",
+            "length": 4,
+            "cruiseLine": { "name": "Royal Caribbean International" },
+            "ship": {
+              "name": "Independence of the Seas",
+              "imageUrl": "https://cruise-images.tacdn.comship/414/7511_288x223_.jpg",
+              "passengerCapacity": 3634,
+              "reviewSummaryInfo": { "overallRatings": 3.5, "numberReviews": 232 },
+              "amenities": { "results": ["Mega ship", "Casino Royale", "Climbing Wall", "Kids Clubs", "Nightly Shows", "Ice Skating Rink", "FlowRider Surf"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "Bayonne (Cape Liberty, NJ)" },
+            "portArrival": { "name": "Bayonne (Cape Liberty, NJ)" },
+            "itinerary": [
+              { "day": 1, "port": "Bayonne (Cape Liberty, NJ)" }, { "day": 2, "port": "At Sea (Cruising)" },
+              { "day": 3, "port": "Halifax (Nova Scotia)" }, { "day": 4, "port": "At Sea (Cruising)" },
+              { "day": 5, "port": "Bayonne (Cape Liberty, NJ)" }
+            ],
+            "sailings": ["2027-06-01", "2027-06-29", "2027-07-27", "2027-08-24"],
+            "prices": {
+              "Inside": { "price": "$519", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Outside": { "price": "$597", "vendor": "Cruises.com", "url": "https://www.cruises.com" },
+              "Balcony": { "price": "$657", "vendor": "Priceline", "url": "https://cruises.priceline.com" },
+              "Suite": { "price": "$1,320", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 264904,
+            "title": "12 NIGHT Canada & New England Explorer",
+            "length": 12,
+            "cruiseLine": { "name": "Oceania Cruises" },
+            "ship": {
+              "name": "Sirena",
+              "imageUrl": "https://cruise-images.tacdn.comship/1030/7667_288x223_.jpg",
+              "passengerCapacity": 684,
+              "reviewSummaryInfo": { "overallRatings": 3.5, "numberReviews": 96 },
+              "amenities": { "results": ["Small Boutique Ship", "Adult Centric", "Fine Dining", "Enrichment Lectures", "Spa Services", "Wifi Available"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "Montreal" },
+            "portArrival": { "name": "New York (Manhattan)" },
+            "itinerary": [
+              { "day": 1, "port": "Montreal" }, { "day": 2, "port": "Quebec City" },
+              { "day": 3, "port": "Saguenay Fjord" }, { "day": 4, "port": "Baie-Comeau" },
+              { "day": 5, "port": "Havre St. Pierre" }, { "day": 6, "port": "At Sea" },
+              { "day": 7, "port": "Corner Brook" }, { "day": 8, "port": "Sydney (Nova Scotia)" },
+              { "day": 9, "port": "Halifax" }, { "day": 10, "port": "Saint John" },
+              { "day": 11, "port": "Portland (Maine)" }, { "day": 12, "port": "At Sea" },
+              { "day": 13, "port": "New York (Manhattan)" }
+            ],
+            "sailings": ["2027-10-01", "2027-10-25"],
+            "prices": {
+              "Inside": { "price": "$4,804", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Outside": { "price": "$5,164", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Balcony": { "price": "$6,784", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Suite": { "price": "$9,574", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 257787,
+            "title": "7 Night Canada & New England - Boston Roundtrip",
+            "length": 7,
+            "cruiseLine": { "name": "Norwegian Cruise Line" },
+            "ship": {
+              "name": "Norwegian Breakaway",
+              "imageUrl": "https://cruise-images.tacdn.comship/642/7579_288x223_.jpg",
+              "passengerCapacity": 4028,
+              "reviewSummaryInfo": { "overallRatings": 3.0, "numberReviews": 410 },
+              "amenities": { "results": ["Mega Ship", "Alfresco Dining", "Waterfront Boardwalk", "Aqua Park & Waterslides", "The Haven Suites", "Solo Cabins"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "Boston" },
+            "portArrival": { "name": "Boston" },
+            "itinerary": [
+              { "day": 1, "port": "Boston" }, { "day": 2, "port": "Portland (Maine)" },
+              { "day": 3, "port": "At Sea" }, { "day": 4, "port": "Bar Harbor" },
+              { "day": 5, "port": "Saint John (Bay of Fundy)" }, { "day": 6, "port": "Halifax" },
+              { "day": 7, "port": "At Sea" }, { "day": 8, "port": "Boston" }
+            ],
+            "sailings": ["2026-09-13", "2026-09-20", "2026-10-04"],
+            "prices": {
+              "Inside": { "price": "$770", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Outside": { "price": "$1,478", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Balcony": { "price": "$1,570", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Suite": { "price": "$1,948", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 260055,
+            "title": "4 & 5-Day Canada Getaway Cruises",
+            "length": 5,
+            "cruiseLine": { "name": "Carnival Cruise Line" },
+            "ship": {
+              "name": "Carnival Firenze",
+              "imageUrl": "https://cruise-images.tacdn.comship/642/7579_288x223_.jpg",
+              "passengerCapacity": 4126,
+              "reviewSummaryInfo": { "overallRatings": 4.0, "numberReviews": 120 },
+              "amenities": { "results": ["Italian Theme Piazza", "WaterWorks Aqua Park", "Guy's Burger Joint", "Punchliner Comedy Club", "Casino"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "New York (Manhattan)" },
+            "portArrival": { "name": "New York (Manhattan)" },
+            "itinerary": [
+              { "day": 1, "port": "New York (Manhattan)" }, { "day": 2, "port": "At Sea" },
+              { "day": 3, "port": "Portland (Maine) / Halifax" }, { "day": 4, "port": "Saint John (New Brunswick)" },
+              { "day": 5, "port": "At Sea" }, { "day": 6, "port": "New York (Manhattan)" }
+            ],
+            "sailings": ["2027-05-27", "2027-06-17", "2027-07-29", "2027-08-19", "2027-10-25"],
+            "prices": {
+              "Inside": { "price": "$445", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Outside": { "price": "$571", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Balcony": { "price": "$697", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Suite": { "price": "$1,726", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 234816,
+            "title": "7-DAY CANADA & NEW ENGLAND: UNESCO SITES",
+            "length": 7,
+            "cruiseLine": { "name": "Holland America Line" },
+            "ship": {
+              "name": "Zuiderdam",
+              "imageUrl": "https://cruise-images.tacdn.comship/266/7434_288x223_.jpg",
+              "passengerCapacity": 1970,
+              "reviewSummaryInfo": { "overallRatings": 3.5, "numberReviews": 78 },
+              "amenities": { "results": ["Mid-sized Premium Ship", "Lido Retractable Pool", "Greenhouse Spa", "Lincoln Center Stage", "Pinnacle Grill"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "Boston" },
+            "portArrival": { "name": "Quebec City" },
+            "itinerary": [
+              { "day": 1, "port": "Boston" }, { "day": 2, "port": "Portland (Maine)" },
+              { "day": 3, "port": "Halifax" }, { "day": 4, "port": "Sydney (Cape Breton)" },
+              { "day": 5, "port": "Charlottetown (PEI)" }, { "day": 6, "port": "St. Lawrence River" },
+              { "day": 7, "port": "Quebec City (Overnight)" }, { "day": 8, "port": "Quebec City" }
+            ],
+            "sailings": ["2026-09-12", "2026-10-10", "2027-09-04", "2027-09-11", "2027-09-25", "2027-10-02"],
+            "prices": {
+              "Inside": { "price": "$1,284", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Outside": { "price": "$1,468", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Balcony": { "price": "$2,112", "vendor": "OLAVacations", "url": "https://www.olavacations.com" },
+              "Suite": { "price": "$2,724", "vendor": "OLAVacations", "url": "https://www.olavacations.com" }
+            }
+          },
+          {
+            "id": 236212,
+            "title": "7 Night Canada & New England with Saint John",
+            "length": 7,
+            "cruiseLine": { "name": "Princess Cruises" },
+            "ship": {
+              "name": "Majestic Princess",
+              "imageUrl": "https://cruise-images.tacdn.comship/987/7600_288x223_.jpg",
+              "passengerCapacity": 3560,
+              "reviewSummaryInfo": { "overallRatings": 3.5, "numberReviews": 150 },
+              "amenities": { "results": ["The SeaWalk Glass Bridge", "Princess MedallionClass", "Hollywood Conservatory", "Lotus Spa", "Crown Grill"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "New York (Manhattan)" },
+            "portArrival": { "name": "New York (Manhattan)" },
+            "itinerary": [
+              { "day": 1, "port": "New York City" }, { "day": 2, "port": "Newport (RI)" },
+              { "day": 3, "port": "Boston" }, { "day": 4, "port": "Portland (Maine)" },
+              { "day": 5, "port": "Saint John (NB)" }, { "day": 6, "port": "Halifax" },
+              { "day": 7, "port": "At Sea" }, { "day": 8, "port": "New York City" }
+            ],
+            "sailings": ["2026-10-10", "2026-10-17", "2026-10-24", "2026-10-31"],
+            "prices": {
+              "Inside": { "price": "$876", "vendor": "CruisesOnly", "url": "https://www.cruisesonly.com" },
+              "Outside": { "price": "$1,634", "vendor": "Cruise.com", "url": "http://cs.cruise.com" },
+              "Balcony": { "price": "$1,316", "vendor": "Cruises.com", "url": "https://www.cruises.com" },
+              "Suite": { "price": "$1,756", "vendor": "CheapCruises", "url": "https://www.cheapcruises.com" }
+            }
+          },
+          {
+            "id": 235347,
+            "title": "7 & 8 Night New England & Canada Ocean Liner Voyage",
+            "length": 7,
+            "cruiseLine": { "name": "Cunard Line" },
+            "ship": {
+              "name": "Queen Mary 2 (QM2)",
+              "imageUrl": "https://cruise-images.tacdn.comship/294/7464_288x223_.jpg",
+              "passengerCapacity": 2691,
+              "reviewSummaryInfo": { "overallRatings": 3.5, "numberReviews": 564 },
+              "amenities": { "results": ["Legendary Ocean Liner", "Full Planetarium", "Queens Room Ballroom", "Royal Court Theatre", "SpaClub"] }
+            },
+            "destination": { "name": "Canada & New England" },
+            "portDeparture": { "name": "New York (Manhattan)" },
+            "portArrival": { "name": "Quebec City" },
+            "itinerary": [
+              { "day": 1, "port": "New York City" }, { "day": 2, "port": "At Sea" },
+              { "day": 3, "port": "Boston" }, { "day": 4, "port": "At Sea" },
+              { "day": 5, "port": "Sydney (Nova Scotia)" }, { "day": 6, "port": "Charlottetown (PEI)" },
+              { "day": 7, "port": "St. Lawrence River" }, { "day": 8, "port": "Quebec City" }
+            ],
+            "sailings": ["2026-09-26", "2027-09-17"],
+            "prices": {
+              "Inside": { "price": "$869", "vendor": "CruisesOnly", "url": "https://www.cruisesonly.com" },
+              "Outside": { "price": "$1,199", "vendor": "LuxuryOnly", "url": "https://www.luxuryonlycruises.com" },
+              "Balcony": { "price": "$1,199", "vendor": "Cruises.com", "url": "https://www.cruises.com" },
+              "Suite": { "price": "$4,778", "vendor": "American Discount", "url": "https://deals.americandiscountcruises.com" }
+            }
+          },
+          {
+            "id": 242520,
+            "title": "12 Night Canadian Discovery (Ultra-Luxury Expedition)",
+            "length": 12,
+            "cruiseLine": { "name": "Viking Expeditions" },
+            "ship": {
+              "name": "Viking Octantis",
+              "imageUrl": "https://cruise-images.tacdn.comship/294/7464_288x223_.jpg",
+              "passengerCapacity": 378,
+              "reviewSummaryInfo": { "overallRatings": 4.8, "numberReviews": 45 },
+              "amenities": { "results": ["Submarines & Zodiacs", "The Aula Auditorium", "Nordic Spa & Snow Grotto", "All Balcony Staterooms", "All Inclusive"] }
+            },
+            "destination": { "name": "Canada & St. Lawrence Seaway" },
+            "portDeparture": { "name": "New York (Manhattan)" },
+            "portArrival": { "name": "Toronto (Great Lakes)" },
+            "itinerary": [
+              { "day": 1, "port": "New York City" }, { "day": 2, "port": "Charleston" },
+              { "day": 3, "port": "Halifax" }, { "day": 4, "port": "Halifax" },
+              { "day": 5, "port": "Cape Breton Coast" }, { "day": 6, "port": "Woody Point (Gros Morne)" },
+              { "day": 7, "port": "Havre St. Pierre" }, { "day": 8, "port": "Tadoussac" },
+              { "day": 9, "port": "Quebec City" }, { "day": 10, "port": "Trois-Rivieres" },
+              { "day": 11, "port": "Toronto (Lock transit)" }, { "day": 12, "port": "Toronto" },
+              { "day": 13, "port": "Toronto (Disembark)" }
+            ],
+            "sailings": ["2028-04-27", "2029-05-01"],
+            "prices": {
+              "Inside": { "price": "N/A", "vendor": "All-Veranda Ship", "url": "#" },
+              "Outside": { "price": "N/A", "vendor": "All-Veranda Ship", "url": "#" },
+              "Balcony": { "price": "$7,999", "vendor": "Viking Direct", "url": "https://www.vikingcruises.com" },
+              "Suite": { "price": "$11,999", "vendor": "Viking Direct", "url": "https://www.vikingcruises.com" }
+            }
+          }
+        ];
+
+        function getMinPrice(cruise) {
+            const prices = Object.values(cruise.prices)
+                .map(p => p.price)
+                .filter(p => p && p !== 'N/A')
+                .map(p => parseFloat(p.replace(/[^0-9.]/g, '')));
+            return prices.length > 0 ? Math.min(...prices) : 999999;
+        }
+
+        function renderCruises(cruises) {
+            const container = document.getElementById('cruiseCardsContainer');
+            const noResults = document.getElementById('noResultsState');
+            const resultsHeader = document.getElementById('resultsFoundText');
+            const resultsCountHeader = document.getElementById('resultsCountHeader');
+
+            resultsHeader.innerText = `عرض ${cruises.length} من أصل ${cruisesData.length} كروز`;
+            resultsCountHeader.innerText = `${cruises.length} رحلة مطابقة`;
+
+            if (cruises.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+
+            container.innerHTML = cruises.map((c) => {
+                const minPrice = getMinPrice(c);
+                const minPriceFormatted = minPrice < 999999 ? `$${minPrice.toLocaleString()}` : 'استفسر';
+                
+                const amenitiesHtml = (c.ship.amenities.results || []).slice(0, 5).map(a => `
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200">
+                        <i class="fa-solid fa-check text-emerald-600 text-[9px]"></i> ${a}
+                    </span>
+                `).join('');
+
+                const sailingsHtml = (c.sailings || []).map(s => `
+                    <span class="px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 rounded-md text-[11px] font-bold">
+                        <i class="fa-regular fa-calendar text-[10px]"></i> ${s}
+                    </span>
+                `).join('');
+
+                const cabinTypes = [
+                    { key: 'Inside', label: 'داخلي (Inside)', icon: 'fa-door-closed', desc: 'اقتصادي ومريح' },
+                    { key: 'Outside', label: 'إطلالة بحرية (Oceanview)', icon: 'fa-water', desc: 'نافذة على المحيط' },
+                    { key: 'Balcony', label: 'شرفة خاصة (Balcony)', icon: 'fa-umbrella-beach', desc: 'الخيار الأكثر طلباً' },
+                    { key: 'Suite', label: 'جناح فاخر (Suite)', icon: 'fa-crown', desc: 'مساحات فندقية VIP' }
+                ];
+
+                const cabinPricesHtml = cabinTypes.map(ct => {
+                    const p = c.prices[ct.key] || { price: 'N/A', vendor: 'غير متاح', url: '#' };
+                    const isAvailable = p.price && p.price !== 'N/A';
+                    return `
+                        <div class="p-2.5 rounded-xl ${isAvailable ? 'bg-white border-slate-200' : 'bg-slate-50/70 border-slate-100 opacity-60'} border flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-0.5">
+                                    <span class="flex items-center gap-1"><i class="fa-solid ${ct.icon} text-cyan-600 text-[10px]"></i> ${ct.label}</span>
+                                </div>
+                                <span class="text-[9px] text-slate-400 block">${ct.desc}</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-sm font-black ${isAvailable ? 'text-slate-900' : 'text-slate-400'}">${p.price || 'N/A'}</span>
+                                    <span class="text-[9px] text-slate-400 block">${p.vendor || ''}</span>
+                                </div>
+                                ${isAvailable && p.url !== '#' ? `
+                                    <a href="${p.url}" target="_blank" class="px-2 py-1 bg-cyan-50 text-cyan-700 hover:bg-cyan-600 hover:text-white rounded-lg text-[10px] font-bold transition">
+                                        حجز <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                const itineraryStops = c.itinerary.map(it => it.port).slice(0, 4).join(' ➔ ');
+                const totalPorts = c.itinerary.length;
+
+                return `
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm card-hover flex flex-col lg:flex-row">
+                    <div class="lg:w-72 bg-slate-900 relative flex flex-col justify-between overflow-hidden">
+                        <img src="${c.ship.imageUrl || 'https://cruise-images.tacdn.comship/642/7579_288x223_.jpg'}" alt="${c.ship.name}" class="w-full h-48 lg:h-full object-cover object-center opacity-85 hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                        
+                        <div class="absolute top-3 right-3 flex flex-wrap gap-1.5 z-10">
+                            <span class="px-2.5 py-1 rounded-full bg-cyan-600 text-white text-[11px] font-bold shadow-md">
+                                <i class="fa-solid fa-moon"></i> ${c.length} ليالي
+                            </span>
+                        </div>
+
+                        <div class="absolute bottom-3 right-3 left-3 text-white z-10">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-cyan-300">${c.cruiseLine.name}</span>
+                            </div>
+                            <h4 class="text-lg font-black text-white leading-tight">${c.ship.name}</h4>
+                            <div class="flex items-center gap-3 text-[11px] text-slate-300 mt-1">
+                                <span><i class="fa-solid fa-users text-cyan-400"></i> ${c.ship.passengerCapacity ? c.ship.passengerCapacity.toLocaleString() + ' راكب' : 'سفينة مميزة'}</span>
+                                <span><i class="fa-solid fa-star text-amber-400"></i> ${c.ship.reviewSummaryInfo ? c.ship.reviewSummaryInfo.overallRatings + ' (' + c.ship.reviewSummaryInfo.numberReviews + ' تقييم)' : 'تقييم ممتاز'}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between border-t lg:border-t-0 lg:border-r border-slate-100">
+                        <div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-400 tracking-wide uppercase block">${c.destination.name}</span>
+                                    <h3 class="text-base sm:text-lg font-black text-slate-900 hover:text-cyan-600 transition">
+                                        ${c.title}
+                                    </h3>
+                                </div>
+                                <div class="text-left sm:text-right flex sm:flex-col items-center sm:items-end justify-between">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase">تبدأ الأسعار من</span>
+                                    <span class="text-xl sm:text-2xl font-black text-emerald-600">${minPriceFormatted}</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 mb-4">
+                                <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                                    <div class="flex items-center gap-1.5 text-cyan-700">
+                                        <i class="fa-solid fa-circle-dot text-[10px]"></i>
+                                        <span>الانطلاق: <strong>${c.portDeparture.name}</strong></span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 text-slate-700">
+                                        <i class="fa-solid fa-flag-checkered text-[10px]"></i>
+                                        <span>الوصول: <strong>${c.portArrival.name}</strong></span>
+                                    </div>
+                                </div>
+                                <div class="text-[11px] text-slate-500 truncate mt-1">
+                                    <i class="fa-solid fa-signs-post text-slate-400"></i> محطات المسار: ${itineraryStops} ... (${totalPorts} محطات توقف)
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${amenitiesHtml}
+                            </div>
+
+                            <div class="mb-4">
+                                <span class="text-xs font-bold text-slate-500 block mb-1.5"><i class="fa-regular fa-calendar-days text-cyan-600"></i> تواريخ الإبحار المتاحة:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${sailingsHtml}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-xs font-bold text-slate-700 mb-2 flex items-center justify-between">
+                                <span><i class="fa-solid fa-bed text-cyan-600"></i> باقات الكبائن والأسعار المتاحة:</span>
+                                <span class="text-[10px] font-normal text-slate-400">شاملة الوجبات والأنشطة</span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+                                ${cabinPricesHtml}
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                                <div class="flex items-center gap-2 text-xs text-slate-500">
+                                    <i class="fa-solid fa-shield-check text-emerald-500"></i>
+                                    <span>حجز مؤكد مع الموردين الرسميين المعتمدين</span>
+                                </div>
+                                <div class="flex items-center gap-2 w-full sm:w-auto">
+                                    <button onclick="openItineraryModal(${c.id})" class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-list-check"></i> جدول خط السير
+                                    </button>
+                                    <a href="${Object.values(c.prices).find(p => p.url && p.url !== '#')?.url || '#'}" target="_blank" class="flex-1 sm:flex-initial px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold shadow-md shadow-cyan-600/20 transition flex items-center justify-center gap-1.5">
+                                        <span>اختيار وحجز الكروز</span>
+                                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function openItineraryModal(cruiseId) {
+            const cruise = cruisesData.find(c => c.id === cruiseId);
+            if (!cruise) return;
+
+            document.getElementById('modalTitle').innerText = cruise.title;
+            document.getElementById('modalSubtitle').innerText = `${cruise.ship.name} (${cruise.cruiseLine.name}) | ${cruise.length} ليالي`;
+
+            const timelineHtml = cruise.itinerary.map(it => `
+                <div class="flex items-start gap-3 relative pb-4 border-r-2 border-slate-200 pr-4 last:border-transparent">
+                    <div class="absolute -right-2 top-0 w-4 h-4 rounded-full bg-cyan-600 border-2 border-white shadow"></div>
+                    <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200/70 flex-1">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-black text-cyan-700">اليوم ${it.day}</span>
+                            <span class="text-[10px] text-slate-400">${it.port.includes('Cruising') || it.port.includes('Sea') ? 'إبحار بحري ممتع' : 'ميناء وتوقف سياحي'}</span>
+                        </div>
+                        <h5 class="text-sm font-bold text-slate-900">${it.port}</h5>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('modalContent').innerHTML = `
+                <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-between text-xs">
+                    <div><span class="font-bold text-blue-950">ميناء الانطلاق:</span> ${cruise.portDeparture.name}</div>
+                    <div><span class="font-bold text-blue-950">ميناء الوصول:</span> ${cruise.portArrival.name}</div>
+                </div>
+                <div class="space-y-1">${timelineHtml}</div>
+            `;
+
+            document.getElementById('itineraryModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('itineraryModal').classList.add('hidden');
+        }
+
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const line = document.getElementById('cruiseLineFilter').value;
+            const duration = document.getElementById('durationFilter').value;
+            const sort = document.getElementById('sortBy').value;
+
+            let filtered = cruisesData.filter(c => {
+                const matchSearch = !search || 
+                    c.title.toLowerCase().includes(search) || 
+                    c.ship.name.toLowerCase().includes(search) || 
+                    c.cruiseLine.name.toLowerCase().includes(search) ||
+                    c.portDeparture.name.toLowerCase().includes(search) ||
+                    c.portArrival.name.toLowerCase().includes(search) ||
+                    c.itinerary.some(it => it.port.toLowerCase().includes(search));
+
+                const matchLine = line === 'ALL' || c.cruiseLine.name === line;
+
+                let matchDuration = true;
+                if (duration === 'SHORT') matchDuration = c.length <= 5;
+                else if (duration === 'MEDIUM') matchDuration = c.length >= 6 && c.length <= 8;
+                else if (duration === 'LONG') matchDuration = c.length >= 9 && c.length <= 11;
+                else if (duration === 'GRAND') matchDuration = c.length >= 12;
+
+                return matchSearch && matchLine && matchDuration;
+            });
+
+            filtered.sort((a, b) => {
+                const pA = getMinPrice(a);
+                const pB = getMinPrice(b);
+                if (sort === 'PRICE_ASC') return pA - pB;
+                if (sort === 'PRICE_DESC') return pB - pA;
+                if (sort === 'DURATION_DESC') return b.length - a.length;
+                if (sort === 'DURATION_ASC') return a.length - b.length;
+                if (sort === 'RATING_DESC') return (b.ship.reviewSummaryInfo?.overallRatings || 0) - (a.ship.reviewSummaryInfo?.overallRatings || 0);
+                return 0;
+            });
+
+            renderCruises(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('cruiseLineFilter').value = 'ALL';
+            document.getElementById('durationFilter').value = 'ALL';
+            document.getElementById('sortBy').value = 'PRICE_ASC';
+            applyFilters();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyFilters();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+name: lonaliza-hotel
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: lonaliza-hotel-redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --requirepass ${REDIS_PASSWORD}
+      --appendonly yes
+      --bind 0.0.0.0
+    ports:
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - lonaliza-hotel-redis-data:/data
+    networks:
+      - lonaliza-hotel-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 8
+
+  engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lonaliza-hotel-engine:local
+    container_name: lonaliza-hotel-engine
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      ENGINE_HOST: "127.0.0.1"
+      ENGINE_PORT: "3051"
+      REDIS_HOST: "127.0.0.1"
+      REDIS_PORT: "6380"
+      CRAWLEE_STORAGE_DIR: /app/storage
+      CRAWLEE_PURGE_ON_START: "0"
+    volumes:
+      - lonaliza-hotel-crawlee-storage:/app/storage
+    depends_on:
+      redis:
+        condition: service_healthy
+
+networks:
+  lonaliza-hotel-net:
+    name: lonaliza-hotel-net
+    driver: bridge
+
+volumes:
+  lonaliza-hotel-redis-data:
+    name: lonaliza-hotel-redis-data
+  lonaliza-hotel-crawlee-storage:
+    name: lonaliza-hotel-crawlee-storage
