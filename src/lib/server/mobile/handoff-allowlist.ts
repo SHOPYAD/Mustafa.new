@@ -1,9 +1,7 @@
-export const MOBILE_HANDOFF_PATHS = ["/ai-chat", "/community", "/community/reels"] as const;
-
-export function isHandoffPath(raw: string): raw is (typeof MOBILE_HANDOFF_PATHS)[number] {
-  const path = raw.trim().split("?")[0]?.split("#")[0] || "";
-  return (MOBILE_HANDOFF_PATHS as readonly string[]).includes(path);
-}
+export {
+  MOBILE_HANDOFF_PATHS,
+  isHandoffPath,
+} from "@/lib/server/mobile/app-surfaces";
 
 export function isEmbeddedWebViewUserAgent(ua: string): boolean {
   const value = ua.toLowerCase();

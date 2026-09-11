@@ -37,6 +37,28 @@ class MobileAuthApi {
     );
   }
 
+  Future<({String url, String verifier, String redirectUri})> googleStart() async {
+    final res = await _dio.get<Map<String, dynamic>>('$_base/api/mobile/v1/auth/google');
+    final data = res.data ?? const {};
+    return (
+      url: '${data['url'] ?? ''}',
+      verifier: '${data['verifier'] ?? ''}',
+      redirectUri: '${data['redirectUri'] ?? 'lonaliza://auth/callback'}',
+    );
+  }
+
+  Future<AuthSession> googleFinish({
+    required String code,
+    required String verifier,
+    required String redirectUri,
+  }) async {
+    final res = await _dio.post<Map<String, dynamic>>(
+      '$_base/api/mobile/v1/auth/google',
+      data: {'code': code, 'verifier': verifier, 'redirectUri': redirectUri},
+    );
+    return AuthSession.fromLoginJson(res.data ?? const {});
+  }
+
   Future<HandoffTicket> mintHandoff({required String token, required String path}) async {
     final res = await _dio.post<Map<String, dynamic>>(
       '$_base/api/mobile/v1/session/handoff',

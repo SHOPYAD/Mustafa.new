@@ -1,0 +1,15 @@
+name: mobile-ios
+on:
+  workflow_dispatch:
+jobs:
+  ipa:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+        working-directory: Lonalizamobilapp
+      - name: iOS build requires signing secrets
+        run: echo "IPA is produced only on macOS CI after first manual App Store upload."

@@ -1,0 +1,15 @@
+name: mobile-android
+on:
+  workflow_dispatch:
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+        working-directory: Lonalizamobilapp
+      - run: flutter build apk --release --flavor lonaliza --dart-define=MOBILE_API_BASE=https://lonaliza.com
+        working-directory: Lonalizamobilapp

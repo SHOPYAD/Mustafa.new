@@ -13,6 +13,10 @@ import '../features/flights/views/flight_info_page.dart';
 import '../features/flights/views/flight_addons_page.dart';
 import '../features/flights/views/flight_payment_page.dart';
 import '../features/account/all_bookings/views/all_bookings_page.dart';
+import '../features/account/views/account_remote_page.dart';
+import '../features/account/views/account_coupon_page.dart';
+import '../features/catalog/views/live_catalog_page.dart';
+import '../../core/constants/app_constants.dart';
 import '../features/account/my_cards/views/my_cards_page.dart';
 import '../features/account/manage_account/views/manage_account_page.dart';
 import '../features/account/settings/views/settings_page.dart';
@@ -203,6 +207,63 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/account/bookings',
         name: 'account-all-bookings',
         builder: (context, state) => const AllBookingsPage(),
+      ),
+      GoRoute(
+        path: '/account/wallet',
+        name: 'account-wallet',
+        builder: (context, state) => const AccountRemotePage(
+          title: 'Wallet',
+          path: AppConstants.accountWalletUrl,
+        ),
+      ),
+      GoRoute(
+        path: '/account/payments',
+        name: 'account-payments',
+        builder: (context, state) => const AccountRemotePage(
+          title: 'Payments',
+          path: AppConstants.accountPaymentsUrl,
+          listKey: 'payments',
+        ),
+      ),
+      GoRoute(
+        path: '/account/affiliate',
+        name: 'account-affiliate',
+        builder: (context, state) => const AccountRemotePage(
+          title: 'Affiliate',
+          path: AppConstants.accountAffiliateUrl,
+        ),
+      ),
+      GoRoute(
+        path: '/account/coupons',
+        name: 'account-coupons',
+        builder: (context, state) => const AccountCouponPage(),
+      ),
+      GoRoute(
+        path: '/catalog/cars',
+        name: 'catalog-cars',
+        builder: (context, state) => const LiveCatalogPage(
+          title: 'Cars',
+          url: AppConstants.carsCatalogUrl,
+          listKey: 'cars',
+        ),
+      ),
+      GoRoute(
+        path: '/catalog/packages',
+        name: 'catalog-packages',
+        builder: (context, state) => const LiveCatalogPage(
+          title: 'Packages',
+          url: AppConstants.packagesCatalogUrl,
+          listKey: 'packages',
+        ),
+      ),
+      GoRoute(
+        path: '/catalog/tours',
+        name: 'catalog-tours',
+        builder: (context, state) => const LiveCatalogPage(
+          title: 'Tours',
+          url: AppConstants.toursCatalogUrl,
+          listKey: 'tours',
+        ),
       ),
       GoRoute(
         path: '/account/upcoming',

@@ -1,4 +1,17 @@
-const ALLOWED_HOST_PATHS = ["/ai-chat", "/community", "/community/reels"];
+const ALLOWED_HOST_PATHS = [
+  "/ai-chat",
+  "/community",
+  "/community/reels",
+  "/visa",
+  "/search",
+  "/blog",
+  "/about",
+  "/contact",
+  "/privacy",
+  "/terms",
+  "/gdpr",
+  "/account",
+];
 
 export type MobileBridgeMessage = {
   type: "navigate" | "filter" | "book";

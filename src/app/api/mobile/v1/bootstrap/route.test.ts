@@ -48,6 +48,8 @@ describe("GET /api/mobile/v1/bootstrap", () => {
     expect(body.offers).toBeUndefined();
     expect(body.flights).toBeUndefined();
     expect(body.hotels).toBeUndefined();
+    expect(body.surfaces.some((s: { key: string }) => s.key === "hotel")).toBe(true);
+    expect(body.surfaces.some((s: { key: string }) => s.key === "ai-chat")).toBe(true);
   });
 
   it("returns an empty services array when every app flag is false", async () => {

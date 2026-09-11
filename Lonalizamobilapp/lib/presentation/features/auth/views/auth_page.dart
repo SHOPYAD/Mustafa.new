@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:liotrip/presentation/features/auth/widgets/email_auth_sheet.dart';
@@ -133,12 +134,26 @@ class AuthPage extends ConsumerWidget {
                         iconColor: Colors.white,
                         bgColor: const Color(0xFF4285F4),
                         isGoogle: true,
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Google opens in the system browser, not inside the app WebView.'),
-                            ),
-                          );
+                        onTap: () async {
+                          try {
+                            final start = await ref.read(mobileAuthApiProvider).googleStart();
+                            final result = await FlutterWebAuth2.authenticate(
+                              url: start.url,
+                              callbackUrlScheme: 'lonaliza',
+                            );
+                            final code = Uri.parse(result).queryParameters['code'] ?? '';
+                            await ref.read(authSessionProvider.notifier).googleFinish(
+                                  code: code,
+                                  verifier: start.verifier,
+                                  redirectUri: start.redirectUri,
+                                );
+                            if (context.mounted) context.go('/account');
+                          } catch (e) {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())),
+                            );
+                          }
                         },
                       ),
                       Positioned(

@@ -32,6 +32,12 @@ class AuthSession {
   }
 
   String? get bearerToken => token.isEmpty ? null : token;
+
+  Map<String, dynamic> toJson() => {
+        'ok': true,
+        'token': token,
+        'user': {'id': user.id, 'email': user.email, 'name': user.name},
+      };
 }
 
 class MemoryAuthStore {

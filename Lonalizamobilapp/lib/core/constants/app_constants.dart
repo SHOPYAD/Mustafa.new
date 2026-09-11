@@ -64,6 +64,18 @@ abstract final class AppConstants {
   static const String iyzicoStatusUrl =
       '$mobileApiBase/api/mobile/v1/payments/iyzico/status';
 
+  static const String accountWalletUrl =
+      '$mobileApiBase/api/mobile/v1/account/wallet';
+
+  static const String accountPaymentsUrl =
+      '$mobileApiBase/api/mobile/v1/account/payments';
+
+  static const String loyaltyApplyUrl =
+      '$mobileApiBase/api/mobile/v1/account/loyalty/apply';
+
+  static const String toursCatalogUrl =
+      '$mobileApiBase/api/mobile/v1/catalog/tours';
+
   /// Local-network webhook endpoint for airline dictionary lookup.
   static const String airlinesUrl = '$urlAddress/webhook/airlines';
 

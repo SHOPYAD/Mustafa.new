@@ -9,7 +9,20 @@ import '../../../core/constants/app_constants.dart';
 import '../../providers/auth_session_provider.dart';
 import '../../providers/dio_provider.dart';
 
-const _allowed = {'/ai-chat', '/community', '/community/reels'};
+const _allowed = {
+  '/ai-chat',
+  '/community',
+  '/community/reels',
+  '/visa',
+  '/search',
+  '/blog',
+  '/about',
+  '/contact',
+  '/privacy',
+  '/terms',
+  '/gdpr',
+  '/account',
+};
 
 class SiteWebViewPage extends ConsumerStatefulWidget {
   const SiteWebViewPage({super.key, required this.path});
@@ -43,7 +56,7 @@ class _SiteWebViewPageState extends ConsumerState<SiteWebViewPage> {
         final client = ref.read(appDioClientProvider);
         final ticket = await client.post<Map<String, dynamic>>(
           '${AppConstants.mobileApiBase}/api/mobile/v1/session/handoff',
-          data: {'path': _safePath},
+          data: {'path': widget.path.startsWith('/') ? widget.path : _safePath},
           includeAuth: true,
         );
         final handoff = ticket.data?['url']?.toString();

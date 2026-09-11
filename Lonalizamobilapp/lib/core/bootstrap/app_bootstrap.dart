@@ -1,8 +1,17 @@
+class AppSurface {
+  const AppSurface({required this.key, required this.mode, this.path});
+
+  final String key;
+  final String mode;
+  final String? path;
+}
+
 class AppBootstrap {
   const AppBootstrap({
     required this.services,
     required this.locales,
     required this.currencies,
+    this.surfaces = const [],
     this.primaryColor,
     this.accentColor,
     this.brandName = 'Lonaliza',
@@ -11,6 +20,7 @@ class AppBootstrap {
   final List<String> services;
   final List<String> locales;
   final List<String> currencies;
+  final List<AppSurface> surfaces;
   final String? primaryColor;
   final String? accentColor;
   final String brandName;
@@ -32,10 +42,25 @@ class AppBootstrap {
         if (row is String) services.add(row);
       }
     }
+    final surfaces = <AppSurface>[];
+    final rawSurfaces = json['surfaces'];
+    if (rawSurfaces is List) {
+      for (final row in rawSurfaces) {
+        if (row is! Map) continue;
+        surfaces.add(
+          AppSurface(
+            key: '${row['key'] ?? ''}',
+            mode: '${row['mode'] ?? 'native'}',
+            path: row['path']?.toString(),
+          ),
+        );
+      }
+    }
     return AppBootstrap(
       services: services,
       locales: (json['locales'] as List?)?.map((e) => '$e').toList() ?? const ['ar', 'en', 'tr', 'fr'],
       currencies: (json['currencies'] as List?)?.map((e) => '$e').toList() ?? const ['USD'],
+      surfaces: surfaces,
       primaryColor: colors['primary']?.toString(),
       accentColor: colors['accent']?.toString(),
       brandName: '${branding['brandNameEn'] ?? branding['siteName'] ?? 'Lonaliza'}',
