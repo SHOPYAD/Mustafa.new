@@ -30,6 +30,40 @@ abstract final class AppConstants {
   static const String flightSearchUrl =
       '$mobileApiBase/api/mobile/v1/flights/search';
 
+  static const String flightBookUrl = '$mobileApiBase/api/mobile/v1/flights/book';
+
+  static const String hotelSearchUrl = '$mobileApiBase/api/mobile/v1/hotels/search';
+
+  static const String hotelQuoteUrl = '$mobileApiBase/api/mobile/v1/hotels/quote';
+
+  static const String hotelBookUrl = '$mobileApiBase/api/mobile/v1/hotels/book';
+
+  static const String carsCatalogUrl = '$mobileApiBase/api/mobile/v1/catalog/cars';
+
+  static const String packagesCatalogUrl =
+      '$mobileApiBase/api/mobile/v1/catalog/packages';
+
+  static const String transfersCatalogUrl =
+      '$mobileApiBase/api/mobile/v1/catalog/transfers';
+
+  static const String catalogEnquireUrl =
+      '$mobileApiBase/api/mobile/v1/catalog/enquire';
+
+  static const String accountBookingsUrl =
+      '$mobileApiBase/api/mobile/v1/account/bookings';
+
+  static const String accountProfileUrl =
+      '$mobileApiBase/api/mobile/v1/account/profile';
+
+  static const String accountAffiliateUrl =
+      '$mobileApiBase/api/mobile/v1/account/affiliate';
+
+  static const String iyzicoInitUrl =
+      '$mobileApiBase/api/mobile/v1/payments/iyzico/init';
+
+  static const String iyzicoStatusUrl =
+      '$mobileApiBase/api/mobile/v1/payments/iyzico/status';
+
   /// Local-network webhook endpoint for airline dictionary lookup.
   static const String airlinesUrl = '$urlAddress/webhook/airlines';
 

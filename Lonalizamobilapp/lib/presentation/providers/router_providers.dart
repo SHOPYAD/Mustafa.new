@@ -20,7 +20,6 @@ import '../features/account/recently_viewed/views/recently_viewed_page.dart';
 import '../features/account/upcoming/views/upcoming_page.dart';
 import '../features/account/views/account_page.dart';
 import '../features/auth/views/auth_page.dart';
-import '../features/messages/views/messages_page.dart';
 import '../features/my_trips/views/my_trips_page.dart';
 import '../features/packages/views/package_page.dart';
 import '../features/packages/views/package_search_results_page.dart';
@@ -45,6 +44,9 @@ import '../features/hotels/views/hotel_booking_guest_page.dart';
 import '../features/hotels/views/hotel_details_page.dart';
 import '../features/splash/views/splash_page.dart';
 import '../features/transfers/views/transfers_page.dart';
+import '../features/pay/iyzico_checkout_args.dart';
+import '../features/pay/iyzico_checkout_page.dart';
+import '../features/site/site_webview_page.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -114,7 +116,24 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/flights/payment',
         name: 'flight-payment',
-        builder: (context, state) => const FlightPaymentPage(),
+        builder: (context, state) {
+          final extra = state.extra;
+          if (extra is IyzicoCheckoutArgs) {
+            return IyzicoCheckoutPage(args: extra);
+          }
+          return const FlightPaymentPage();
+        },
+      ),
+      GoRoute(
+        path: '/pay/iyzico',
+        name: 'iyzico-checkout',
+        builder: (context, state) {
+          final extra = state.extra;
+          final args = extra is IyzicoCheckoutArgs
+              ? extra
+              : const IyzicoCheckoutArgs(bookingId: '');
+          return IyzicoCheckoutPage(args: args);
+        },
       ),
       GoRoute(
         path: '/auth',
@@ -124,7 +143,15 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/messages',
         name: 'messages',
-        builder: (context, state) => const MessagesPage(),
+        builder: (context, state) => const SiteWebViewPage(path: '/ai-chat'),
+      ),
+      GoRoute(
+        path: '/site',
+        name: 'site-webview',
+        builder: (context, state) {
+          final path = state.uri.queryParameters['path'] ?? '/community';
+          return SiteWebViewPage(path: path);
+        },
       ),
       GoRoute(
         path: '/my-trips',
@@ -253,6 +280,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         name: 'cars-booking-payment',
         builder: (context, state) {
           final extra = state.extra;
+          if (extra is IyzicoCheckoutArgs) {
+            return IyzicoCheckoutPage(args: extra);
+          }
           final label = extra is String && extra.isNotEmpty ? extra : r'$173.1 Total';
           return CheckoutPaymentPage(totalAmountLabel: label);
         },
@@ -277,6 +307,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         name: 'hotel-booking-payment',
         builder: (context, state) {
           final extra = state.extra;
+          if (extra is IyzicoCheckoutArgs) {
+            return IyzicoCheckoutPage(args: extra);
+          }
           final label = extra is String && extra.isNotEmpty ? extra : 'USD105.12';
           return CheckoutPaymentPage(totalAmountLabel: label);
         },

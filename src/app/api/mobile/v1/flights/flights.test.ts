@@ -74,3 +74,37 @@ describe("GET /api/mobile/v1/flights/search", () => {
     expect(runFlightSearch).not.toHaveBeenCalled();
   });
 });
+
+const initFlightBooking = vi.fn();
+
+vi.mock("@/lib/server/flights-bookings", () => ({
+  initFlightBooking,
+}));
+
+vi.mock("@/lib/server/mobile/require-mobile-customer", () => ({
+  isMobileAuthDenied: (value: unknown) => value instanceof Response && (value as Response).status === 401,
+  requireMobileCustomer: vi.fn(async (req: Request) => {
+    if (!req.headers.get("authorization")) {
+      return new Response(JSON.stringify({ ok: false }), { status: 401 });
+    }
+    return { customer: { id: "user-42", email: "a@b.com", name: "Guest" }, token: "jwt" };
+  }),
+}));
+
+vi.mock("@/lib/server/email/recipient-locale", () => ({
+  localeFromRequest: () => "ar",
+}));
+
+describe("POST /api/mobile/v1/flights/book", () => {
+  afterEach(() => {
+    vi.resetModules();
+    initFlightBooking.mockReset();
+  });
+
+  it("requires a Bearer customer before persisting a flight booking", async () => {
+    const { POST } = await import("./book/route");
+    const res = await POST(new NextRequest("http://localhost/api/mobile/v1/flights/book", { method: "POST" }));
+    expect(res.status).toBe(401);
+    expect(initFlightBooking).not.toHaveBeenCalled();
+  });
+});

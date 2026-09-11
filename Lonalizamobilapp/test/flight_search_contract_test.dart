@@ -25,4 +25,11 @@ void main() {
     expect(parsed.offers.single.id, 'offer-77');
     expect(parsed.offers.single.pricing.total, 108);
   });
+
+  test('catalog and pay URLs stay on the mobile BFF', () {
+    expect(AppConstants.hotelSearchUrl.contains('/api/mobile/v1/hotels/search'), isTrue);
+    expect(AppConstants.iyzicoInitUrl.contains('/api/mobile/v1/payments/iyzico/init'), isTrue);
+    expect(AppConstants.accountBookingsUrl.contains('/api/mobile/v1/account/bookings'), isTrue);
+    expect(AppConstants.carsCatalogUrl.contains('/api/mobile/v1/catalog/cars'), isTrue);
+  });
 }
