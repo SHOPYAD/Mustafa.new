@@ -1,0 +1,198 @@
+{
+  "@@locale": "en",
+  "appTitle": "Lonaliza",
+  "settingsTitle": "Settings",
+  "languageLabel": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "countryLabel": "Country or Region",
+  "currencyLabel": "Currency",
+  "unitsLabel": "Units",
+  "temperatureLabel": "Temperature Scale",
+  "timeFormatLabel": "Time format",
+  "manageAccountLabel": "Manage my account",
+  "scanQrLabel": "Scan QR Code",
+  "darkThemeLabel": "Dark Theme",
+  "notificationsLabel": "Notifications",
+  "tripGenieLabel": "TripGenie",
+  "accessibilityLabel": "Accessibility",
+  "termsLabel": "Terms & Conditions",
+  "privacyLabel": "Privacy Statement",
+  "flights": "Flights",
+  "oneWay": "One-way",
+  "roundTrip": "Round-trip",
+  "multiCity": "Multi-city",
+  "whereFrom": "Where from?",
+  "whereTo": "Where to?",
+  "selectDate": "Select Date",
+  "selectDates": "Select Dates",
+  "addAnotherFlight": "Add another flight",
+  "adults": "Adults",
+  "children": "Children",
+  "infants": "Infants",
+  "cabinEconomy": "Economy",
+  "cabinPremiumEconomy": "Premium Economy",
+  "cabinBusiness": "Business",
+  "cabinFirst": "First Class",
+  "search": "Search",
+  "searchHint": "Enter a destination or property",
+  "currentLocation": "Current Location",
+  "clear": "Clear",
+  "recentSearches": "Recent Searches",
+  "popularDestinations": "Popular Destinations",
+  "typeMinChars": "Type at least 3 characters",
+  "noMatches": "No matches for \"{query}\"",
+  "searchFooter": "Can't find what you're looking for? Try a more specific search (e.g. by adding the country or region).",
+  "passengersTitle": "Passengers",
+  "adultsSub": "years old +12",
+  "childrenSub": "years old 2-11",
+  "infantsSub": "Under 2 years old",
+  "passengersNotice": "Results show avg. price/passenger (incl. taxes). Prices may vary by passenger type",
+  "bookingInstructions": "Booking instructions for children/infants",
+  "confirm": "Confirm",
+  "retry": "Retry",
+  "errorNetwork": "Check your connection and try again.",
+  "errorServer": "The search service is temporarily unavailable.",
+  "errorGeneric": "An unexpected error occurred. Please try again.",
+  "errorNotFound": "The requested resource was not found.",
+  "login": "Login",
+  "loginRequired": "Please login to continue.",
+  "flightNumber": "Flight {number}",
+  "pleaseSelectOrigin": "Please select departure city",
+  "pleaseSelectDestination": "Please select destination city",
+  "atLeastOneAdult": "At least one adult is required",
+  "dateMustBeAfterPrevious": "Date must be after previous flight",
+  "noFlightsAvailable": "No flights available for this date",
+  "showMoreFlights": "Show more ({count} flights)",
+  "@showMoreFlights": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "flightOutbound": "OUTBOUND",
+  "flightInbound": "RETURN",
+  "flightNonstop": "Nonstop",
+  "flightStop": "{count} stop",
+  "@flightStop": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "flightStops": "{count} stops",
+  "@flightStops": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "flightStopVia": "{count} stop via {code}",
+  "@flightStopVia": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "code": {}
+    }
+  },
+  "flightLayover": "{duration} layover at {code}",
+  "@flightLayover": {
+    "placeholders": {
+      "duration": {},
+      "code": {}
+    }
+  },
+  "flightTerminal": "Terminal {terminal}",
+  "@flightTerminal": {
+    "placeholders": {
+      "terminal": {}
+    }
+  },
+  "flightEconomy": "Economy",
+  "farePackages": "FARE PACKAGES",
+  "compareInclusions": "Compare inclusions below",
+  "continueWithThisFare": "Continue with this fare",
+  "baggage": "BAGGAGE",
+  "flexibility": "FLEXIBILITY",
+  "otherBenefits": "OTHER BENEFITS",
+  "cabinBaggage": "CABIN BAGGAGE",
+  "checkedBaggage": "CHECKED BAGGAGE",
+  "cancellation": "CANCELLATION",
+  "changes": "CHANGES",
+  "seatSelection": "SEAT SELECTION",
+  "meals": "MEALS",
+  "fareRules": "FARE RULES",
+  "nonRefundable": "Non-refundable",
+  "refundableFeesApply": "Refundable (fees apply)",
+  "freeCancellation": "Free cancellation",
+  "nonExchangeable": "Non-exchangeable",
+  "changesFeesApply": "Changes permitted (fees may apply)",
+  "freeChanges": "Free changes",
+  "seatSelectionIncluded": "Seat selection included",
+  "paidSeatSelection": "Paid / at airline discretion",
+  "mealsIncluded": "Meals included",
+  "mealsNotIncluded": "Buy on board / not included",
+  "flexibleConditions": "Flexible conditions",
+  "viewRules": "View rules",
+  "optionsAvailable": "{count} options available",
+  "@optionsAvailable": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "oneOptionAvailable": "1 option available",
+  "fallbackCabinBag1": "1 piece",
+  "fallbackCabinBag2": "2 pieces",
+  "fallbackCheckedBag1": "1 piece",
+  "fallbackCheckedBag2": "2 pieces",
+  "recommended": "RECOMMENDED",
+  "notIncluded": "Not included",
+  "searchingFaresTitle": "Searching...",
+  "searchingFaresSubtitle": "Finding the best fares for your dates.",
+  "refreshSearchTitle": "Refresh your search",
+  "refreshSearchMessage": "Prices may have moved up or down, or this fare may no longer be available. Run the search again for current offers.",
+  "refreshSearchButton": "Refresh search",
+  "selectFare": "Select fare",
+  "details": "Details",
+  "cheapestDirectFlight": "CHEAPEST DIRECT FLIGHT",
+  "bestValuedFlight": "BEST VALUED FLIGHT",
+  "tenPercentOff": "10% Off",
+  "selectFlight": "SELECT FLIGHT",
+  "layoverForIn": "Layover for {duration} in {city}",
+  "@layoverForIn": {
+    "placeholders": {
+      "duration": {},
+      "city": {}
+    }
+  },
+  "stops": "{count} stop(s)",
+  "@stops": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "aiAssistantBaggageTitle": "Got any questions about baggage? Ask me!",
+  "aiQuestion1": "Do my handbag and laptop bag count as two carry-on items?",
+  "aiQuestion2": "How much baggage can I check in?",
+  "aiQuestion3": "Will I need to re-check my baggage during the transfer?",
+  "askAiAssistant": "Ask our AI assistant",
+  "bookWithConfidence": "Book with confidence on Lonaliza",
+  "awardWinning": "Award-winning",
+  "supportApprox30s": "Support in approx. 30s",
+  "rewardsForBooking": "Rewards for booking",
+  "totalTraveler": "Total (1 traveler)",
+  "totalTravelers": "Total ({count} travelers)",
+  "@totalTravelers": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "savedAmount": "Saved {amount}",
+  "@savedAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "continueLabel": "Continue",
+  "ticketUpgradedViewDetails": "View details"
+}
+
+

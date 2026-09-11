@@ -206,7 +206,7 @@ class AuthPage extends ConsumerWidget {
                 text: const TextSpan(
                   style: TextStyle(fontSize: 12, color: Color(0xFF6B7280), height: 1.5),
                   children: [
-                    TextSpan(text: 'By proceeding, I acknowledge that I have read and agree to Trip.com\'s '),
+                    TextSpan(text: 'By proceeding, I acknowledge that I have read and agree to Lonaliza\'s '),
                     TextSpan(text: 'Terms & Conditions', style: TextStyle(decoration: TextDecoration.underline)),
                     TextSpan(text: ' and '),
                     TextSpan(text: 'Privacy Statement', style: TextStyle(decoration: TextDecoration.underline)),

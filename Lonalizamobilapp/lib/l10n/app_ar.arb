@@ -1,0 +1,197 @@
+{
+  "@@locale": "ar",
+  "appTitle": "لوناليزا",
+  "settingsTitle": "الإعدادات",
+  "languageLabel": "اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "countryLabel": "البلد أو المنطقة",
+  "currencyLabel": "العملة",
+  "unitsLabel": "الوحدات",
+  "temperatureLabel": "مقياس الحرارة",
+  "timeFormatLabel": "تنسيق الوقت",
+  "manageAccountLabel": "إدارة حسابي",
+  "scanQrLabel": "مسح رمز QR",
+  "darkThemeLabel": "المظهر الداكن",
+  "notificationsLabel": "التنبيهات",
+  "tripGenieLabel": "تريب جيني",
+  "accessibilityLabel": "سهولة الوصول",
+  "termsLabel": "الشروط والأحكام",
+  "privacyLabel": "بيان الخصوصية",
+  "flights": "رحلات الطيران",
+  "oneWay": "ذهاب فقط",
+  "roundTrip": "ذهاب وعودة",
+  "multiCity": "وجهات متعددة",
+  "whereFrom": "من أين؟",
+  "whereTo": "إلى أين؟",
+  "selectDate": "اختر التاريخ",
+  "selectDates": "اختر التواريخ",
+  "addAnotherFlight": "إضافة رحلة أخرى",
+  "adults": "بالغون",
+  "children": "أطفال",
+  "infants": "رضع",
+  "cabinEconomy": "سياحية",
+  "cabinPremiumEconomy": "سياحية ممتازة",
+  "cabinBusiness": "درجة الأعمال",
+  "cabinFirst": "الدرجة الأولى",
+  "search": "بحث",
+  "searchHint": "أدخل وجهة أو اسم فندق",
+  "currentLocation": "الموقع الحالي",
+  "clear": "مسح",
+  "recentSearches": "عمليات البحث الأخيرة",
+  "popularDestinations": "الوجهات الشائعة",
+  "typeMinChars": "اكتب 3 أحرف على الأقل",
+  "noMatches": "لا توجد نتائج لـ \"{query}\"",
+  "searchFooter": "لا تجد ما تبحث عنه؟ جرب بحثاً أكثر تحديداً (مثلاً بإضافة اسم البلد أو المنطقة).",
+  "passengersTitle": "الركاب",
+  "adultsSub": "أكبر من 12 سنة",
+  "childrenSub": "من 2 إلى 11 سنة",
+  "infantsSub": "أقل من سنتين",
+  "passengersNotice": "النتائج تعرض متوسط السعر للراكب (شامل الضرائب). الأسعار قد تختلف حسب نوع الراكب",
+  "bookingInstructions": "تعليمات الحجز للأطفال/الرضع",
+  "confirm": "تأكيد",
+  "retry": "إعادة المحاولة",
+  "errorNetwork": "تأكد من اتصالك بالإنترنت وحاول مرة أخرى.",
+  "errorServer": "خدمة البحث غير متوفرة حالياً.",
+  "errorGeneric": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+  "errorNotFound": "العنصر المطلوب غير موجود.",
+  "login": "تسجيل الدخول",
+  "loginRequired": "يرجى تسجيل الدخول للمتابعة.",
+  "flightNumber": "الرحلة {number}",
+  "pleaseSelectOrigin": "يرجى اختيار مدينة الإقلاع",
+  "pleaseSelectDestination": "يرجى اختيار وجهة السفر",
+  "atLeastOneAdult": "يجب وجود بالغ واحد على الأقل",
+  "dateMustBeAfterPrevious": "التاريخ يجب أن يكون بعد الرحلة السابقة",
+  "noFlightsAvailable": "لا توجد رحلات متاحة لهذا التاريخ",
+  "showMoreFlights": "عرض المزيد ({count} رحلة)",
+  "@showMoreFlights": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "flightOutbound": "ذهاب",
+  "flightInbound": "عودة",
+  "flightNonstop": "بدون توقف",
+  "flightStop": "توقف واحد",
+  "@flightStop": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "flightStops": "{count} توقفات",
+  "@flightStops": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "flightStopVia": "{count} توقف عبر {code}",
+  "@flightStopVia": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "code": {}
+    }
+  },
+  "flightLayover": "توقف {duration} في {code}",
+  "@flightLayover": {
+    "placeholders": {
+      "duration": {},
+      "code": {}
+    }
+  },
+  "flightTerminal": "مبنى {terminal}",
+  "@flightTerminal": {
+    "placeholders": {
+      "terminal": {}
+    }
+  },
+  "flightEconomy": "اقتصادية",
+  "farePackages": "باقات الأسعار",
+  "compareInclusions": "قارن المزايا والمشمولات أدناه",
+  "continueWithThisFare": "المتابعة بهذا السعر",
+  "baggage": "الأمتعة والحقائب",
+  "flexibility": "المرونة",
+  "otherBenefits": "مزايا أخرى",
+  "cabinBaggage": "حقيبة مقصورة الطائرة",
+  "checkedBaggage": "الحقائب المشحونة",
+  "cancellation": "الإلغاء والاسترداد",
+  "changes": "التغيير والتعديل",
+  "seatSelection": "اختيار المقاعد",
+  "meals": "الوجبات",
+  "fareRules": "قواعد وأحكام التذكرة",
+  "nonRefundable": "غير قابلة للاسترداد",
+  "refundableFeesApply": "قابلة للاسترداد (تطبق رسوم)",
+  "freeCancellation": "استرداد مجاني",
+  "nonExchangeable": "غير قابلة للتغيير",
+  "changesFeesApply": "تغيير مسموح (تطبق رسوم)",
+  "freeChanges": "تغيير مجاني",
+  "seatSelectionIncluded": "اختيار المقعد مشمول",
+  "paidSeatSelection": "مدفوع / حسب تقدير شركة الطيران",
+  "mealsIncluded": "وجبات مشمولة",
+  "mealsNotIncluded": "شراء على متن الطائرة / غير مشمولة",
+  "flexibleConditions": "شروط مرنة",
+  "viewRules": "عرض القواعد والسياسات",
+  "optionsAvailable": "{count} باقات متاحة",
+  "@optionsAvailable": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "oneOptionAvailable": "باقة واحدة متاحة",
+  "fallbackCabinBag1": "حقيبة مقصورة (1 قطعة)",
+  "fallbackCabinBag2": "حقيبة مقصورة (2 قطعة)",
+  "fallbackCheckedBag1": "حقيبة واحدة (1 قطعة)",
+  "fallbackCheckedBag2": "حقيبتين مشحونتين (2 قطعة)",
+  "recommended": "موصى به",
+  "notIncluded": "غير مشمولة",
+  "searchingFaresTitle": "جاري البحث...",
+  "searchingFaresSubtitle": "نبحث عن أفضل الأسعار لتواريخك.",
+  "refreshSearchTitle": "تحديث البحث",
+  "refreshSearchMessage": "قد تكون الأسعار قد تغيرت ارتفاعاً أو انخفاضاً، أو قد لا تكون هذه الباقة متاحة بعد الآن. أعد البحث للحصول على العروض الحالية.",
+  "refreshSearchButton": "تحديث البحث",
+  "selectFare": "اختر السعر",
+  "details": "التفاصيل",
+  "cheapestDirectFlight": "أرخص رحلة مباشرة",
+  "bestValuedFlight": "أفضل قيمة للرحلة",
+  "tenPercentOff": "خصم 10%",
+  "selectFlight": "اختر الرحلة",
+  "layoverForIn": "توقف لمدة {duration} في {city}",
+  "@layoverForIn": {
+    "placeholders": {
+      "duration": {},
+      "city": {}
+    }
+  },
+  "stops": "{count} توقف(ات)",
+  "@stops": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "aiAssistantBaggageTitle": "لديك أي أسئلة حول الأمتعة؟ اسألني!",
+  "aiQuestion1": "هل تحتسب حقيبة اليد وحقيبة الكمبيوتر المحمول كحقيبتين داخل المقصورة؟",
+  "aiQuestion2": "ما هو وزن الأمتعة التي يمكنني شحنها؟",
+  "aiQuestion3": "هل سأحتاج إلى إعادة شحن أمتعتي أثناء الانتقال؟",
+  "askAiAssistant": "اسأل مساعد الذكاء الاصطناعي",
+  "bookWithConfidence": "احجز بثقة على لوناليزا",
+  "awardWinning": "حائز على جوائز",
+  "supportApprox30s": "الدعم في حوالي 30 ثانية",
+  "rewardsForBooking": "مكافآت على الحجز",
+  "totalTraveler": "الإجمالي (مسافر واحد)",
+  "totalTravelers": "الإجمالي ({count} مسافرين)",
+  "@totalTravelers": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "savedAmount": "وفرت {amount}",
+  "@savedAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "continueLabel": "متابعة",
+  "ticketUpgradedViewDetails": "عرض التفاصيل"
+}
+
