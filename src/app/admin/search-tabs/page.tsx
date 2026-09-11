@@ -9,6 +9,7 @@ import {
   GripVertical,
   ChevronUp,
   ChevronDown,
+  Smartphone,
 } from "lucide-react";
 import {
   getSearchTabVisibility,
@@ -19,6 +20,7 @@ import {
   moveSearchTabOrderItem,
   reorderSearchTabs,
   SEARCH_TAB_KEYS,
+  defaultSearchTabVisibility,
   type SearchTabKey,
   type SearchTabVisibility,
 } from "@/data/search-tabs";
@@ -26,8 +28,16 @@ import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
 export default function AdminSearchTabsPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const websiteLabel = locale === "ar" ? "الموقع" : "Website";
+  const appLabel = locale === "ar" ? "التطبيق" : "App";
+  const resetAppLabel = locale === "ar" ? "إعادة تبويبات التطبيق" : "Reset app tabs";
+  const channelHint =
+    locale === "ar"
+      ? "يمكن تفعيل الخدمة للموقع وللتطبيق بشكل مستقل."
+      : "Website and app can be enabled independently.";
   const [tabs, setTabs] = useState<SearchTabVisibility | null>(null);
+  const [appTabs, setAppTabs] = useState<SearchTabVisibility | null>(null);
   const [order, setOrder] = useState<SearchTabKey[]>([]);
   const [dragKey, setDragKey] = useState<SearchTabKey | null>(null);
   const [dropKey, setDropKey] = useState<SearchTabKey | null>(null);
@@ -49,6 +59,7 @@ export default function AdminSearchTabsPage() {
     const localVis = getSearchTabVisibility();
     const localOrder = getSearchTabOrder();
     setTabs(localVis);
+    setAppTabs(localVis);
     setOrder(localOrder);
 
     void fetch("/api/admin/search-tabs", {
@@ -58,19 +69,28 @@ export default function AdminSearchTabsPage() {
       .then((res) => res.json())
       .then(async (data) => {
         if (cancelled || !data?.ok) return;
+        const website = data.websiteEnabled ?? data.visibility;
         const localHasHides = SEARCH_TAB_KEYS.some((key) => localVis[key] === false);
         if (!data.updatedAt && localHasHides) {
           await fetch("/api/admin/search-tabs", {
             method: "PUT",
             credentials: "same-origin",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ visibility: localVis, order: localOrder }),
+            body: JSON.stringify({
+              visibility: localVis,
+              websiteEnabled: localVis,
+              appEnabled: data.appEnabled ?? localVis,
+              order: localOrder,
+            }),
           });
           return;
         }
-        if (data.visibility) {
-          const next = saveSearchTabVisibility(data.visibility);
+        if (website) {
+          const next = saveSearchTabVisibility(website);
           setTabs(next);
+        }
+        if (data.appEnabled) {
+          setAppTabs({ ...defaultSearchTabVisibility, ...data.appEnabled });
         }
         if (Array.isArray(data.order) && data.order.length) {
           setOrder(saveSearchTabOrder(data.order));
@@ -85,30 +105,43 @@ export default function AdminSearchTabsPage() {
 
   const persistServer = (
     visibility: SearchTabVisibility,
+    appEnabled: SearchTabVisibility,
     nextOrder: SearchTabKey[]
   ) => {
     void fetch("/api/admin/search-tabs", {
       method: "PUT",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ visibility, order: nextOrder }),
+      body: JSON.stringify({
+        visibility,
+        websiteEnabled: visibility,
+        appEnabled,
+        order: nextOrder,
+      }),
     }).catch(() => {});
   };
 
-  const toggle = (key: SearchTabKey) => {
-    if (!tabs) return;
+  const toggleWebsite = (key: SearchTabKey) => {
+    if (!tabs || !appTabs) return;
     const next = saveSearchTabVisibility({ ...tabs, [key]: !tabs[key] });
     setTabs(next);
-    persistServer(next, order);
+    persistServer(next, appTabs, order);
+  };
+
+  const toggleApp = (key: SearchTabKey) => {
+    if (!tabs || !appTabs) return;
+    const next = { ...appTabs, [key]: !appTabs[key] };
+    setAppTabs(next);
+    persistServer(tabs, next, order);
   };
 
   const moveItem = (key: SearchTabKey, direction: "up" | "down") => {
     const next = moveSearchTabOrderItem(key, direction);
     setOrder(next);
-    if (tabs) persistServer(tabs, next);
+    if (tabs && appTabs) persistServer(tabs, appTabs, next);
   };
 
-  const handleReset = () => {
+  const handleResetWebsite = () => {
     const next = resetSearchTabVisibility();
     const nextOrder = getSearchTabOrder();
     setTabs(next);
@@ -117,7 +150,18 @@ export default function AdminSearchTabsPage() {
       method: "PUT",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reset: true }),
+      body: JSON.stringify({ reset: true, appEnabled: appTabs ?? next }),
+    }).catch(() => {});
+  };
+
+  const handleResetApp = () => {
+    const seeded = tabs ?? defaultSearchTabVisibility;
+    setAppTabs(seeded);
+    void fetch("/api/admin/search-tabs", {
+      method: "PUT",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ resetApp: true }),
     }).catch(() => {});
   };
 
@@ -129,7 +173,7 @@ export default function AdminSearchTabsPage() {
     }
     const next = reorderSearchTabs(dragKey, targetKey);
     setOrder(next);
-    if (tabs) persistServer(tabs, next);
+    if (tabs && appTabs) persistServer(tabs, appTabs, next);
     setDragKey(null);
     setDropKey(null);
   };
@@ -139,25 +183,36 @@ export default function AdminSearchTabsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <Search className="text-emerald-400" size={28} />
+            <Search className="text-amber-400" size={28} />
             {t.admin.searchTabs}
           </h1>
           <p className="text-white/50 mt-1">{t.admin.searchTabsSubtitle}</p>
-          <p className="text-xs text-white/30 mt-1">{t.admin.searchTabsOrderHint}</p>
+          <p className="text-xs text-white/30 mt-1">{channelHint}</p>
         </div>
-        <button
-          type="button"
-          onClick={handleReset}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08] text-sm font-medium"
-        >
-          <RotateCcw size={14} />
-          {t.admin.resetDefaultsShort}
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={handleResetWebsite}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08] text-sm font-medium"
+          >
+            <RotateCcw size={14} />
+            {t.admin.resetDefaultsShort}
+          </button>
+          <button
+            type="button"
+            onClick={handleResetApp}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08] text-sm font-medium"
+          >
+            <Smartphone size={14} />
+            {resetAppLabel}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-3 min-w-0 sm:grid-cols-2">
         {order.map((key, index) => {
-          const on = Boolean(tabs?.[key]);
+          const websiteOn = Boolean(tabs?.[key]);
+          const appOn = Boolean(appTabs?.[key]);
           return (
             <div
               key={key}
@@ -175,9 +230,9 @@ export default function AdminSearchTabsPage() {
               className={cn(
                 "flex items-center gap-3 px-4 py-3 rounded-xl border bg-white/[0.03] text-start transition-colors",
                 dragKey === key
-                  ? "border-emerald-400/40 bg-emerald-400/10 opacity-70"
+                  ? "border-purple-400/40 bg-purple-500/15 opacity-70"
                   : dropKey === key
-                    ? "border-emerald-400/50 bg-emerald-400/5"
+                    ? "border-purple-400/50 bg-purple-500/10"
                     : "border-white/10"
               )}
             >
@@ -227,16 +282,31 @@ export default function AdminSearchTabsPage() {
 
               <button
                 type="button"
-                onClick={() => toggle(key)}
-                aria-pressed={on}
+                onClick={() => toggleWebsite(key)}
+                aria-pressed={websiteOn}
                 className="shrink-0 flex h-9 w-9 items-center justify-center rounded-lg hover:bg-white/10"
-                aria-label={tabLabels[key]}
+                aria-label={`${websiteLabel}: ${tabLabels[key]}`}
+                title={websiteLabel}
               >
-                {on ? (
-                  <Eye size={18} className="text-emerald-400" />
+                {websiteOn ? (
+                  <Eye size={18} className="text-amber-400" />
                 ) : (
                   <EyeOff size={18} className="text-white/30" />
                 )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => toggleApp(key)}
+                aria-pressed={appOn}
+                className="shrink-0 flex h-9 w-9 items-center justify-center rounded-lg hover:bg-white/10"
+                aria-label={`${appLabel}: ${tabLabels[key]}`}
+                title={appLabel}
+              >
+                <Smartphone
+                  size={18}
+                  className={appOn ? "text-violet-300" : "text-white/30"}
+                />
               </button>
             </div>
           );

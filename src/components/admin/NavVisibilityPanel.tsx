@@ -52,6 +52,21 @@ export default function NavVisibilityPanel({
   useEffect(() => {
     setNavVis(getNavVisibility());
     setNavOrder(getNavOrder());
+    void fetch("/api/admin/search-tabs", {
+      cache: "no-store",
+      credentials: "same-origin",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data?.ok) return;
+        if (data.navVisibility) {
+          setNavVis(saveNavVisibility({ ...data.navVisibility }));
+        }
+        if (Array.isArray(data.navOrder) && data.navOrder.length) {
+          setNavOrder(data.navOrder);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const navLabel = (key: NavServiceKey): string => {
@@ -66,24 +81,41 @@ export default function NavVisibilityPanel({
       visa: t.nav.visa,
       uaeTours: t.nav.uaeTours,
       blog: t.nav.blog,
+      community: t.nav.community,
       aiChat: t.nav.aiChat,
       contact: t.nav.contact,
     };
     return map[key];
   };
 
+  const persistNav = (visibility: NavVisibility, order: NavServiceKey[]) => {
+    void fetch("/api/admin/search-tabs", {
+      method: "PUT",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ navVisibility: visibility, navOrder: order }),
+    }).catch(() => {});
+  };
+
   const setPlacement = (key: NavServiceKey, placement: NavPlacement) => {
     if (!navVis) return;
-    setNavVis(saveNavVisibility({ ...navVis, [key]: placement }));
+    const next = saveNavVisibility({ ...navVis, [key]: placement });
+    setNavVis(next);
+    persistNav(next, navOrder);
   };
 
   const moveItem = (key: NavServiceKey, direction: "up" | "down") => {
-    setNavOrder(moveNavOrderItem(key, direction));
+    const next = moveNavOrderItem(key, direction);
+    setNavOrder(next);
+    if (navVis) persistNav(navVis, next);
   };
 
   const handleReset = () => {
-    setNavVis(resetNavVisibility());
-    setNavOrder(getNavOrder());
+    const next = resetNavVisibility();
+    const nextOrder = getNavOrder();
+    setNavVis(next);
+    setNavOrder(nextOrder);
+    persistNav(next, nextOrder);
   };
 
   if (!navVis) return null;

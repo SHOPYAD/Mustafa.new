@@ -23,6 +23,15 @@ export function useNavVisibility(): NavVisibility {
     };
     window.addEventListener(NAV_VISIBILITY_UPDATED_EVENT, onUpdate);
     window.addEventListener("storage", onStorage);
+
+    void fetch("/api/search-tabs", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data?.ok || !data.navVisibility) return;
+        setVisibility({ ...defaultNavVisibility, ...data.navVisibility });
+      })
+      .catch(() => {});
+
     return () => {
       window.removeEventListener(NAV_VISIBILITY_UPDATED_EVENT, onUpdate);
       window.removeEventListener("storage", onStorage);

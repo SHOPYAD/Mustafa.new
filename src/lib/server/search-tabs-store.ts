@@ -1,6 +1,7 @@
 /**
- * Server source of truth for public search-tab visibility + order.
- * localStorage alone hid tabs on the admin desktop browser but not on phones.
+ * Server source of truth for public *website* search-tab visibility + order.
+ * App-channel flags live in channel-services-store and must never be written
+ * into `visibility` — folding them here would hide website tabs.
  */
 
 import { promises as fs } from "fs";

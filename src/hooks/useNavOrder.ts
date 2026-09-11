@@ -23,6 +23,15 @@ export function useNavOrder(): NavServiceKey[] {
     };
     window.addEventListener(NAV_ORDER_UPDATED_EVENT, onUpdate);
     window.addEventListener("storage", onStorage);
+
+    void fetch("/api/search-tabs", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data?.ok || !Array.isArray(data.navOrder) || !data.navOrder.length) return;
+        setOrder(data.navOrder);
+      })
+      .catch(() => {});
+
     return () => {
       window.removeEventListener(NAV_ORDER_UPDATED_EVENT, onUpdate);
       window.removeEventListener("storage", onStorage);

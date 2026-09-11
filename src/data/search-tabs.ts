@@ -1,4 +1,8 @@
-/** Homepage search widget tab visibility — localStorage CMS */
+/**
+ * Homepage search widget tab visibility — website channel.
+ * App-channel enablement is `appEnabled` in the channel-services store.
+ * Do not reuse `visibility` as the app switch.
+ */
 
 export type SearchTabKey =
   | "flight"

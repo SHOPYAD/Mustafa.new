@@ -1,4 +1,8 @@
-/** Public header / footer service placement — localStorage CMS */
+/**
+ * Public header / footer service placement.
+ * localStorage is a cache; the server channel-services store is the source of
+ * truth after hydrate. App catalog flags are independent of these placements.
+ */
 
 export type NavServiceKey =
   | "home"
@@ -11,6 +15,7 @@ export type NavServiceKey =
   | "visa"
   | "uaeTours"
   | "blog"
+  | "community"
   | "aiChat"
   | "contact";
 
@@ -41,23 +46,25 @@ export const defaultNavVisibility: NavVisibility = {
   visa: "header-footer",
   uaeTours: "hidden",
   blog: "footer",
+  community: "header-footer",
   aiChat: "header",
   contact: "header-footer",
 };
 
 export const NAV_SERVICE_KEYS: NavServiceKey[] = [
   "home",
-  "holidays",
   "flights",
   "hotels",
-  "vipDailyTours",
-  "transfers",
   "cars",
+  "transfers",
+  "holidays",
+  "vipDailyTours",
   "visa",
-  "uaeTours",
-  "blog",
+  "community",
   "aiChat",
   "contact",
+  "uaeTours",
+  "blog",
 ];
 
 /** Items shown in the header bar before overflow moves into «More». */
@@ -335,6 +342,7 @@ export function navKeyFromHref(href: string): NavServiceKey | null {
   if (href.startsWith("/visa")) return "visa";
   if (href.startsWith("/uae-tours")) return "vipDailyTours";
   if (href.startsWith("/blog")) return "blog";
+  if (href.startsWith("/community")) return "community";
   if (href.startsWith("/ai-chat")) return "aiChat";
   if (href.startsWith("/contact")) return "contact";
   return null;
