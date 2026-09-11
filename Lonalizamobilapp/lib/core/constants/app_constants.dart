@@ -26,8 +26,9 @@ abstract final class AppConstants {
   /// Local-network webhook endpoint for place search.
   static const String nominatimSearchUrl = '$urlAddress/webhook/get-locations';
 
-  /// Local-network webhook endpoint for flight search.
-  static const String flightSearchUrl = '$urlAddress/webhook/flight-search';
+  /// Live flight search on the Lonaliza mobile BFF (website engine + markup).
+  static const String flightSearchUrl =
+      '$mobileApiBase/api/mobile/v1/flights/search';
 
   /// Local-network webhook endpoint for airline dictionary lookup.
   static const String airlinesUrl = '$urlAddress/webhook/airlines';
