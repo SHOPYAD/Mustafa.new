@@ -10,6 +10,8 @@ import TransferCard from "@/components/transfers/TransferCard";
 import { getActiveTransfers } from "@/data/transfers";
 import type { TransferService } from "@/types/transfer";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import SeeruRideLiveSearch from "@/components/transfers/SeeruRideLiveSearch";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
 
 function matchesRoute(
   item: TransferService,
@@ -92,6 +94,17 @@ export default function InternalTransfersContent() {
           )}
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <SearchAgentResultsDock
+          tab="transfers"
+          page="hero"
+          replace
+          tone="light"
+          context={`Transfer ${fromParam} → ${toParam}`}
+        />
+      </div>
+      <SeeruRideLiveSearch />
 
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

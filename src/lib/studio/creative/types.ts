@@ -38,8 +38,10 @@ export type GenerateStudioImagesResult = {
 };
 
 export type StudioNotifyPayload = {
-  channel: "paths-only";
+  channel: "telegram" | "paths-only";
   message: string;
   paths: string[];
   urls: string[];
+  sent?: boolean;
+  error?: string;
 };

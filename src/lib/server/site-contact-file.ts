@@ -69,3 +69,39 @@ export async function mergeSupportContact(
     mode: 0o600,
   });
 }
+
+export async function getSiteContact(): Promise<SiteContact> {
+  const current = await readExisting();
+  const currentSocial = Array.isArray(current.social) ? current.social : [];
+  const socialMap = new Map(currentSocial.map((s) => [s.id, s]));
+  const fullSocial = defaultSiteContact.social.map((d) => {
+    const found = socialMap.get(d.id);
+    return found ? { ...d, ...found } : { ...d };
+  });
+
+  return {
+    ...defaultSiteContact,
+    ...current,
+    social: fullSocial,
+  };
+}
+
+export async function saveSiteContactFile(contact: SiteContact): Promise<SiteContact> {
+  const currentSocial = Array.isArray(contact.social) ? contact.social : [];
+  const socialMap = new Map(currentSocial.map((s) => [s.id, s]));
+  const fullSocial = defaultSiteContact.social.map((d) => {
+    const found = socialMap.get(d.id);
+    return found ? { ...d, ...found } : { ...d };
+  });
+
+  const next: SiteContact = {
+    ...defaultSiteContact,
+    ...contact,
+    social: fullSocial,
+  };
+  await fs.mkdir(path.dirname(getStoreFile()), { recursive: true });
+  await fs.writeFile(getStoreFile(), JSON.stringify(next, null, 2), {
+    mode: 0o600,
+  });
+  return next;
+}

@@ -117,6 +117,7 @@ export default function InvoiceTemplatesPanel() {
   const services = useMemo(() => serviceCopy(locale), [locale]);
   const [service, setService] = useState<InvoiceService>("flight");
   const [templates, setTemplates] = useState<Record<InvoiceService, InvoiceTemplate> | null>(null);
+  const [viewType, setViewType] = useState<"invoice" | "ticket">("invoice");
   const [draft, setDraft] = useState<InvoiceTemplate>(() => defaultInvoiceTemplate("flight"));
   const [previewHtml, setPreviewHtml] = useState("");
   const [loading, setLoading] = useState(true);
@@ -166,7 +167,7 @@ export default function InvoiceTemplatesPanel() {
         const res = await fetch("/api/admin/invoice-templates/preview", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ service, template: draft }),
+          body: JSON.stringify({ service, template: draft, viewType }),
         });
         const data = await res.json();
         if (data?.ok && typeof data.html === "string") setPreviewHtml(data.html);
@@ -177,7 +178,7 @@ export default function InvoiceTemplatesPanel() {
       }
     }, 350);
     return () => window.clearTimeout(timer);
-  }, [draft, service]);
+  }, [draft, service, viewType]);
 
   const patchDraft = (partial: Partial<InvoiceTemplate>) => {
     setDraft((prev) => ({ ...prev, ...partial, service }));
@@ -318,16 +319,47 @@ export default function InvoiceTemplatesPanel() {
 
       <div className="grid xl:grid-cols-[minmax(0,1fr)_420px] gap-5 items-start">
         <section className={cardClass}>
-          <div className="flex items-center justify-between gap-3 mb-4">
-            <h2 className="text-sm font-semibold text-white/80">{t.admin.invoicePreview}</h2>
-            {previewing ? <Loader2 size={14} className="animate-spin text-white/40" /> : null}
+          <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm font-semibold text-white/80">{t.admin.invoicePreview}</h2>
+              {previewing ? <Loader2 size={14} className="animate-spin text-white/40" /> : null}
+            </div>
+
+            <div className="flex items-center gap-1 bg-slate-950/80 p-1 rounded-xl border border-white/10">
+              <button
+                type="button"
+                onClick={() => setViewType("invoice")}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  viewType === "invoice"
+                    ? "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black shadow-sm"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                {locale === "ar" ? "الفاتورة الضريبية" : "Tax Invoice"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewType("ticket")}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  viewType === "ticket"
+                    ? "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black shadow-sm"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                {service === "flight"
+                  ? locale === "ar" ? "تذكرة الطيران الإلكترونية (E-Ticket)" : "Flight E-Ticket"
+                  : service === "hotel"
+                  ? locale === "ar" ? "فوشر حجز الفندق (Hotel Voucher)" : "Hotel Voucher"
+                  : locale === "ar" ? "قسيمة الخدمة (Voucher)" : "Service Voucher"}
+              </button>
+            </div>
           </div>
-          <div className="rounded-xl overflow-hidden bg-[#f4efe6] min-h-[720px] border border-white/10">
+          <div className="rounded-xl overflow-hidden bg-[#f8fafc] min-h-[720px] border border-white/10">
             {previewHtml ? (
               <iframe
                 title={t.admin.invoicePreview}
                 srcDoc={previewHtml}
-                className="w-full min-h-[720px] bg-[#f4efe6]"
+                className="w-full min-h-[720px] bg-[#f8fafc]"
                 sandbox="allow-same-origin"
               />
             ) : (

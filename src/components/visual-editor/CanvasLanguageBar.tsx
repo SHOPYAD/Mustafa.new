@@ -38,7 +38,7 @@ export function CanvasLanguageBar() {
               className={cn(
                 "h-7 rounded-md px-2.5 text-xs font-bold uppercase",
                 active
-                  ? "bg-emerald-500 text-[#051741]"
+                  ? "bg-amber-500 text-slate-950 font-bold shadow-xs"
                   : "bg-white/10 text-white/70 hover:bg-white/15 hover:text-white"
               )}
             >

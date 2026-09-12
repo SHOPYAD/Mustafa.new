@@ -61,6 +61,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, record: result.record, reply: result.message });
     }
 
+    if (action === "delete" && approvalId) {
+      const { deleteApprovalRecord } = await import("@/lib/server/automation/approval-store");
+      await deleteApprovalRecord(approvalId);
+      return NextResponse.json({ ok: true, deleted: true });
+    }
+
     return NextResponse.json({ ok: false, error: "إجراء غير صالح" }, { status: 400 });
   } catch (error) {
     return NextResponse.json(

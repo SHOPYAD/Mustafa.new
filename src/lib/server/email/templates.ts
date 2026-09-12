@@ -277,7 +277,7 @@ ${cta(brand, "invoice_url", C("downloadInvoice"))}`,
             ? "A note from Alrayyan Tourism"
             : locale === "tr"
               ? "Alrayyan Turizm’den bir not"
-              : "رسالة من الريان للسياحة",
+              : "رسالة من لوناليزا للسياحة والسفر",
         html: `${heading(
           locale === "en" ? "Hello {{name}}" : locale === "tr" ? "Merhaba {{name}}" : "مرحباً {{name}}"
         )}

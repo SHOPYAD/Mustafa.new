@@ -1,69 +1,110 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   CheckCircle2,
   Facebook,
   Instagram,
-  Link2,
   Loader2,
   Music2,
   RefreshCw,
   Share2,
   Unplug,
   Youtube,
+  Zap,
+  Megaphone,
+  Settings2,
 } from "lucide-react";
-import {
-  AdminPage,
-  AdminPageHeader,
-} from "@/components/admin/layout";
-import type {
-  PublicSocialAccount,
-  SocialCredentialsStatus,
-} from "@/lib/social/types";
-import { SOCIAL_COPY } from "./copy";
+import { AdminPage, AdminPageHeader } from "@/components/admin/layout";
+import type { PublicSocialAccount, SocialCredentialsStatus, SocialPlatform } from "@/lib/social/types";
+import { OAuthSetupModal } from "@/components/admin/social/OAuthSetupModal";
 
-type DashboardResponse = {
-  ok: boolean;
-  accounts?: PublicSocialAccount[];
-  credentials?: SocialCredentialsStatus[];
-  error?: string;
+type CardItem = {
+  platform: SocialPlatform | "google_ads" | "meta_ads";
+  providerKey: "meta" | "tiktok" | "youtube" | "x";
+  label: string;
+  descriptionAr: string;
+  oauthUrl: string;
+  badge: string;
+  scopes: string[];
 };
 
-const statusClass: Record<PublicSocialAccount["status"], string> = {
-  connected: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  disconnected: "bg-white/5 text-white/50 border-white/10",
-  needs_reauth: "bg-amber-500/15 text-amber-300 border-amber-500/30",
-};
+const CARDS: CardItem[] = [
+  {
+    platform: "facebook",
+    providerKey: "meta",
+    label: "فيسبوك (صفحة الشركة)",
+    descriptionAr: "نشر البوستات والعروض السياحية التلقائية والتواصل المباشر مع العملاء.",
+    oauthUrl: "/api/oauth/meta",
+    badge: "Facebook Page API",
+    scopes: ["نشر المنشورات والصور", "إدارة التفاعلات والرسائل", "تحليلات المشاهدات والـ Reach"],
+  },
+  {
+    platform: "instagram",
+    providerKey: "meta",
+    label: "إنستغرام للأعمال",
+    descriptionAr: "نشر الريلز والقصص المصممة بواسطة الاستوديو ووكيل المحتوى.",
+    oauthUrl: "/api/oauth/meta",
+    badge: "Instagram Graph API",
+    scopes: ["نشر الفيديوهات والريلز (Reels)", "نشر القصص (Stories)", "الاستماع للتعليقات والرد الذكي"],
+  },
+  {
+    platform: "tiktok",
+    providerKey: "tiktok",
+    label: "تيك توك للأعمال (TikTok API)",
+    descriptionAr: "نشر الفيديوهات القصيرة والمونتاج التسويقي السياحي تلقائياً.",
+    oauthUrl: "/api/oauth/tiktok",
+    badge: "TikTok Commercial API",
+    scopes: ["نشر مقاطع الفيديو القصيرة", "جدولة المقاطع الترويجية", "إحصائيات الانتشار والـ Views"],
+  },
+  {
+    platform: "youtube",
+    providerKey: "youtube",
+    label: "يوتيوب (YouTube Shorts)",
+    descriptionAr: "رفع الفيديوهات والشورتس الترويجية وحفظها في قناة الشركة.",
+    oauthUrl: "/api/oauth/youtube",
+    badge: "YouTube Data v3",
+    scopes: ["رفع فيديوهات الشورتس (Shorts)", "إدارة قوائم التشغيل السياحية", "تتبع المشاهدات والمشتركين"],
+  },
+  {
+    platform: "x",
+    providerKey: "x",
+    label: "إكس (تويتر الرسمي)",
+    descriptionAr: "نشر التغريدات والعروض السياحية السريعة وتحديثات الأسعار.",
+    oauthUrl: "/api/oauth/x",
+    badge: "X API v2",
+    scopes: ["نشر التغريدات والعروض اليومية", "تحديثات أسعار الطيران والفنادق", "التفاعل مع الإشارات"],
+  },
+  {
+    platform: "meta_ads",
+    providerKey: "meta",
+    label: "إعلانات ميتا (Meta Ads & Reels)",
+    descriptionAr: "إطلاق حملات ممولة مستهدفة بدقة عبر وكيل الإعلانات وخادم Meta Ads MCP.",
+    oauthUrl: "/api/oauth/meta",
+    badge: "Meta Marketing MCP Server",
+    scopes: ["إنشاء وإطلاق الحملات الإعلانية", "الاستهداف الجغرافي للخليج وتركيا", "إدارة الميزانيات وتتبع الـ ROAS"],
+  },
+];
 
-function PlatformIcon({ platform }: { platform: PublicSocialAccount["platform"] }) {
+function Icon({ platform }: { platform: CardItem["platform"] }) {
   switch (platform) {
     case "facebook":
-      return <Facebook className="size-4" />;
+      return <Facebook className="size-5 text-blue-600 dark:text-blue-500" />;
     case "instagram":
-      return <Instagram className="size-4" />;
+      return <Instagram className="size-5 text-pink-600 dark:text-pink-500" />;
     case "youtube":
-      return <Youtube className="size-4" />;
+      return <Youtube className="size-5 text-red-600 dark:text-red-500" />;
     case "tiktok":
-      return <Music2 className="size-4" />;
+      return <Music2 className="size-5 text-teal-600 dark:text-teal-400" />;
     case "x":
-      return <Share2 className="size-4" />;
-    default: {
-      const _never: never = platform;
-      return <Share2 className="size-4" aria-label={String(_never)} />;
-    }
+      return <Share2 className="size-5 text-slate-900 dark:text-slate-200" />;
+    case "google_ads":
+    case "meta_ads":
+      return <Megaphone className="size-5 text-purple-600 dark:text-purple-400" />;
+    default:
+      return <Share2 className="size-5 text-slate-700 dark:text-slate-300" />;
   }
-}
-
-function formatDate(value?: string): string {
-  if (!value) return "—";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "—";
-  return new Intl.DateTimeFormat("ar", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(d);
 }
 
 export function SocialAccountsPanel() {
@@ -71,24 +112,25 @@ export function SocialAccountsPanel() {
   const [accounts, setAccounts] = useState<PublicSocialAccount[]>([]);
   const [credentials, setCredentials] = useState<SocialCredentialsStatus[]>([]);
   const [loading, setLoading] = useState(true);
-  const [busyId, setBusyId] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  const [testing, setTesting] = useState("");
+  const [disconnecting, setDisconnecting] = useState("");
+  const [activeSetupPlatform, setActiveSetupPlatform] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 4000);
+  };
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/social/accounts", { cache: "no-store" });
-      const data = (await res.json()) as DashboardResponse;
-      if (!data.ok) {
-        setError(data.error || "تعذر تحميل الحسابات");
-        return;
+      const data = (await res.json()) as { ok: boolean; accounts?: PublicSocialAccount[]; credentials?: SocialCredentialsStatus[] };
+      if (data.ok) {
+        setAccounts(data.accounts || []);
+        setCredentials(data.credentials || []);
       }
-      setAccounts(data.accounts || []);
-      setCredentials(data.credentials || []);
-      setError("");
-    } catch {
-      setError("تعذر تحميل الحسابات");
     } finally {
       setLoading(false);
     }
@@ -96,306 +138,302 @@ export function SocialAccountsPanel() {
 
   useEffect(() => {
     void load();
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data && event.data.type === "OAUTH_RESULT") {
+        if (event.data.ok) {
+          showToast(`✅ تم تسجيل الدخول وربط حسابك الرسمي بنجاح!`);
+          void load();
+        } else {
+          showToast(`⚠️ تعذر إتمام تسجيل الدخول: ${event.data.error || "تم إلغاء الطلب"}`);
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, [load]);
 
-  useEffect(() => {
-    const err = search.get("error");
-    const connected = search.get("connected");
-    const detail = search.get("detail");
-    if (err) {
-      setError(
-        [SOCIAL_COPY.errors[err] || err, detail].filter(Boolean).join(" — ")
-      );
-    }
-    if (connected) {
-      setNotice(SOCIAL_COPY.connected[connected] || `تم الربط: ${connected}`);
-    }
-  }, [search]);
+  const connectedAccountsFor = (platform: string) =>
+    accounts.filter(
+      (row) => row.platform === platform && row.hasAccessToken && row.status === "connected"
+    );
 
-  const banner = useMemo(() => notice || error, [notice, error]);
+  const accountFor = (platform: SocialPlatform) => {
+    const list = connectedAccountsFor(platform);
+    const primary = list.find((row) => row.isPrimary);
+    if (primary) return primary;
+    const lonaliza = list.find((row) =>
+      (row.displayName || "").toLowerCase().includes("lonaliza")
+    );
+    if (lonaliza) return lonaliza;
+    return list[0] || null;
+  };
 
-  async function disconnect(id: string) {
-    setBusyId(id);
+  const switchPrimaryAccount = async (id: string) => {
     try {
-      const res = await fetch("/api/social/accounts/disconnect", {
+      const res = await fetch("/api/social/accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accountId: id }),
+        body: JSON.stringify({ action: "set_primary", id }),
       });
-      const data = (await res.json()) as { ok: boolean; error?: string };
-      if (!data.ok) {
-        setError(data.error || "فشل قطع الاتصال");
-        return;
+      const data = (await res.json()) as { ok: boolean; accounts?: PublicSocialAccount[] };
+      if (data.ok) {
+        showToast("✅ تم اعتماد الصفحة للنشر بنجاح!");
+        if (data.accounts) setAccounts(data.accounts);
       }
-      setNotice("تم قطع الاتصال");
-      await load();
-    } finally {
-      setBusyId(null);
+    } catch {
+      showToast("حدث خطأ أثناء تغيير الصفحة المعتمدة");
     }
-  }
+  };
 
-  async function refresh(id: string) {
-    setBusyId(id);
+  const isProviderConfigured = (providerKey: string) =>
+    credentials.some((c) => c.provider === providerKey && c.configured);
+
+  const openOAuthPopup = (url: string) => {
+    const width = 640;
+    const height = 760;
+    const left = window.screen.width / 2 - width / 2;
+    const top = window.screen.height / 2 - height / 2;
+    window.open(
+      url,
+      "social_oauth_popup",
+      `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, width=${width}, height=${height}, top=${top}, left=${left}`
+    );
+  };
+
+  const handleConnectClick = (card: CardItem) => {
+    const configured = isProviderConfigured(card.providerKey);
+    if (!configured) {
+      setActiveSetupPlatform(card.platform);
+    } else {
+      openOAuthPopup(card.oauthUrl);
+    }
+  };
+
+  const testAccount = async (id: string) => {
+    setTesting(id);
     try {
-      const res = await fetch("/api/social/accounts/refresh", {
+      const res = await fetch("/api/social/accounts", {
         method: "POST",
+        credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accountId: id }),
+        body: JSON.stringify({ action: "test", id }),
       });
-      const data = (await res.json()) as { ok: boolean; error?: string };
-      if (!data.ok) {
-        setError(data.error || "فشل تحديث الرمز");
-        return;
-      }
-      setNotice("تم تحديث الرمز");
+      const data = (await res.json()) as { ok: boolean; message?: string };
+      showToast(data.message || "✅ الحساب نشط ومتصل بالكامل");
       await load();
     } finally {
-      setBusyId(null);
+      setTesting("");
     }
-  }
+  };
+
+  const disconnectAccount = async (id: string) => {
+    if (!confirm("هل تريد بالتأكيد فصل هذا الحساب؟")) return;
+    setDisconnecting(id);
+    try {
+      await fetch("/api/social/accounts", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "disconnect", id }),
+      });
+      showToast("تم فصل الحساب بنجاح");
+      await load();
+    } finally {
+      setDisconnecting("");
+    }
+  };
 
   return (
     <AdminPage>
       <AdminPageHeader
-        title={SOCIAL_COPY.title}
-        description={SOCIAL_COPY.description}
-        icon={<Share2 className="size-5" />}
+        title="حسابات النشر والإعلانات الرسمية"
+        description="تسجيل الدخول وربط حسابات الشركة الرسمية عبر نوافذ OAuth الرسمية وتفويض وكلاء الذكاء الاصطناعي."
+        icon={<Share2 className="size-5 text-purple-400" />}
         actions={
           <button
             type="button"
             onClick={() => void load()}
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-xs"
           >
-            <RefreshCw className="size-4" />
-            تحديث القائمة
+            <RefreshCw className="size-3.5" />
+            <span>تحديث الحالة</span>
           </button>
         }
       />
 
-      {banner ? (
-        <div
-          className={`mb-5 rounded-xl border px-4 py-3 text-sm ${
-            error
-              ? "border-rose-500/30 bg-rose-500/10 text-rose-200"
-              : "border-emerald-500/30 bg-emerald-500/10 text-emerald-200"
-          }`}
-        >
-          {banner}
-        </div>
-      ) : null}
+      <div className="space-y-6 pt-4" dir="rtl">
+        {/* Toast */}
+        {toastMessage && (
+          <div className="fixed bottom-6 left-6 z-50 px-4 py-3 rounded-2xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 border border-amber-400/40 font-bold text-xs shadow-2xl flex items-center gap-2 animate-in fade-in duration-300">
+            <CheckCircle2 className="size-4 text-amber-400" />
+            <span>{toastMessage}</span>
+          </div>
+        )}
 
-      <p className="mb-6 text-sm text-white/50">{SOCIAL_COPY.approvalHint}</p>
+        {/* In-App Setup Modal */}
+        {activeSetupPlatform && (
+          <OAuthSetupModal
+            platformKey={activeSetupPlatform}
+            isConfigured={isProviderConfigured(
+              CARDS.find((c) => c.platform === activeSetupPlatform)?.providerKey || "meta"
+            )}
+            onClose={() => setActiveSetupPlatform(null)}
+            onSuccess={() => {
+              void load();
+            }}
+          />
+        )}
 
-      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-        {credentials.map((cred) => (
-          <section
-            key={cred.provider}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
-          >
-            <div className="mb-3 flex items-center justify-between gap-2">
-              <h2 className="text-base font-semibold text-white">
-                {cred.provider === "meta"
-                  ? "ميتا"
-                  : cred.provider === "youtube"
-                    ? "يوتيوب"
-                    : "تيك توك"}
-              </h2>
-              <span
-                className={`rounded-full border px-2.5 py-0.5 text-xs ${
-                  cred.configured
-                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
-                    : "border-amber-500/30 bg-amber-500/10 text-amber-300"
-                }`}
-              >
-                {cred.configured ? SOCIAL_COPY.configured : SOCIAL_COPY.notConfigured}
-              </span>
+        {/* Hero banner - Daylight Luxury Radiant Design */}
+        <div className="p-6 rounded-3xl bg-gradient-to-r from-purple-50/90 via-indigo-50/70 to-purple-50/80 dark:from-purple-950/40 dark:via-indigo-950/30 dark:to-slate-900 border border-purple-200/70 dark:border-purple-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm backdrop-blur-sm">
+          <div className="flex items-center gap-4">
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-purple-900/40 text-purple-600 dark:text-purple-300 border border-purple-100 dark:border-purple-500/30 shadow-xs">
+              <Zap className="size-6" />
             </div>
-            <p className="mb-3 text-xs leading-relaxed text-white/50">{cred.noteAr}</p>
-            {!cred.configured && cred.missing.length > 0 ? (
-              <p className="mb-3 text-xs text-amber-300/90">
-                {SOCIAL_COPY.missingEnv}: {cred.missing.join(" · ")}
+            <div>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <h3 className="text-sm font-black text-slate-900 dark:text-white">الربط السحابي المركزي للمنصة (Master SaaS Multi-Tenant)</h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-purple-100/90 dark:bg-purple-500/20 text-purple-800 dark:text-amber-300 border border-purple-200 dark:border-purple-500/30 text-[10px] font-bold">
+                  بوابة المصادقة الموحدة
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                تطبيق المطورين الخاص بلوناليزا يتيح لك ولجميع وكلاء السفر تسجيل الدخول والمصادقة المباشرة بنقرة واحدة وتفويض الذكاء الاصطناعي للنشر.
               </p>
-            ) : null}
-            <p className="mb-3 break-all text-[11px] text-white/35">
-              {SOCIAL_COPY.redirectUri}: {cred.redirectUri}
-            </p>
-            <div className="mb-4 flex flex-wrap gap-1.5">
-              {cred.scopes.map((scope) => (
-                <span
-                  key={scope}
-                  className="rounded-md border border-white/10 bg-black/20 px-1.5 py-0.5 text-[10px] text-white/55"
-                >
-                  {scope}
-                </span>
-              ))}
             </div>
-            {cred.provider === "meta" ? (
-              <a
-                href="/api/oauth/meta"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-3 py-2.5 text-sm font-medium text-white hover:bg-blue-500"
-              >
-                <Link2 className="size-4" />
-                {SOCIAL_COPY.connectMeta}
-              </a>
-            ) : null}
-            {cred.provider === "youtube" ? (
-              <a
-                href="/api/oauth/youtube"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-3 py-2.5 text-sm font-medium text-white hover:bg-red-500"
-              >
-                <Youtube className="size-4" />
-                {SOCIAL_COPY.connectYoutube}
-              </a>
-            ) : null}
-            {cred.provider === "tiktok" ? (
-              cred.configured ? (
-                <a
-                  href="/api/oauth/tiktok"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-3 py-2.5 text-sm font-medium text-black hover:bg-white/90"
-                >
-                  <Music2 className="size-4" />
-                  {SOCIAL_COPY.connectTiktok}
-                </a>
-              ) : (
-                <span className="inline-flex w-full items-center justify-center rounded-xl border border-white/10 px-3 py-2.5 text-sm text-white/40">
-                  {SOCIAL_COPY.errors.tiktok_app_required}
-                </span>
-              )
-            ) : null}
-            {cred.provider === "x" ? (
-              cred.configured ? (
-                <a
-                  href="/api/oauth/x"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-3 py-2.5 text-sm font-medium text-white hover:bg-sky-500"
-                >
-                  <Share2 className="size-4" />
-                  {SOCIAL_COPY.connectX}
-                </a>
-              ) : (
-                <span className="inline-flex w-full items-center justify-center rounded-xl border border-white/10 px-3 py-2.5 text-sm text-white/40">
-                  أنشئوا تطبيقاً في developer.x.com ثم الصقوا X_CLIENT_ID و X_CLIENT_SECRET
-                </span>
-              )
-            ) : null}
-          </section>
-        ))}
-      </div>
-
-      <p className="mb-4 text-xs text-white/40">{SOCIAL_COPY.envHint}</p>
-
-      {loading ? (
-        <div className="flex items-center gap-2 text-sm text-white/60">
-          <Loader2 className="size-4 animate-spin" />
-          {SOCIAL_COPY.loading}
+          </div>
         </div>
-      ) : accounts.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-white/15 px-5 py-10 text-center text-sm text-white/45">
-          {SOCIAL_COPY.empty}
-        </div>
-      ) : (
-        <ul className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-          {accounts.map((account) => {
-            const busy = busyId === account.id;
+
+        {/* Cards Grid */}
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {CARDS.map((card) => {
+            const acc = accountFor(card.platform as SocialPlatform);
+            const connected = Boolean(acc);
+            const configured = isProviderConfigured(card.providerKey);
+
             return (
-              <li
-                key={account.id}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              <div
+                key={card.platform}
+                className="p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-4"
               >
-                <div className="mb-3 flex items-start justify-between gap-3">
-                  <div className="flex min-w-0 items-center gap-3">
-                    <span className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
-                      <PlatformIcon platform={account.platform} />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="truncate font-semibold text-white">
-                        {account.displayName}
-                      </p>
-                      <p className="truncate text-xs text-white/45">
-                        {account.username ? `@${account.username}` : account.externalId}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`shrink-0 rounded-full border px-2.5 py-0.5 text-xs ${statusClass[account.status]}`}
-                  >
-                    {account.statusLabel}
-                  </span>
-                </div>
-
-                <dl className="mb-3 grid grid-cols-2 gap-2 text-[11px] text-white/45">
-                  <div>
-                    <dt>{SOCIAL_COPY.connectedAt}</dt>
-                    <dd className="text-white/70">{formatDate(account.connectedAt)}</dd>
-                  </div>
-                  <div>
-                    <dt>{SOCIAL_COPY.lastRefresh}</dt>
-                    <dd className="text-white/70">
-                      {formatDate(account.lastRefreshedAt)}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>{SOCIAL_COPY.expires}</dt>
-                    <dd className="text-white/70">{formatDate(account.tokenExpiresAt)}</dd>
-                  </div>
-                  <div>
-                    <dt>ID</dt>
-                    <dd className="truncate text-white/70">{account.externalId}</dd>
-                  </div>
-                </dl>
-
-                {account.lastError ? (
-                  <p className="mb-3 text-xs text-amber-300">{account.lastError}</p>
-                ) : null}
-
-                <div className="mb-4">
-                  <p className="mb-1.5 text-[11px] uppercase tracking-wider text-white/35">
-                    {SOCIAL_COPY.scopes}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {account.scopes.length === 0 ? (
-                      <span className="text-xs text-white/35">—</span>
-                    ) : (
-                      account.scopes.map((scope) => (
-                        <span
-                          key={scope}
-                          className="rounded-md border border-white/10 bg-black/20 px-1.5 py-0.5 text-[10px] text-white/60"
-                        >
-                          {scope}
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                        <Icon platform={card.platform} />
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold text-slate-900 dark:text-white">{card.label}</h4>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
+                          {acc ? `@${acc.displayName || acc.username || acc.platform}` : card.badge}
                         </span>
-                      ))
-                    )}
+                      </div>
+                    </div>
+                    <span
+                      className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
+                        connected
+                          ? "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-amber-300 border border-purple-200 dark:border-purple-800"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700"
+                      }`}
+                    >
+                      {connected ? <CheckCircle2 className="size-3 text-amber-500" /> : null}
+                      {connected ? "متصل ونشط" : "غير مرتبط"}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-3">
+                    {connected && acc
+                      ? `الحساب مرتبط باسم: ${acc.displayName || acc.platform} ومفوض للوكلاء الأذكياء.`
+                      : card.descriptionAr}
+                  </p>
+
+                  {/* Page Selector if multiple pages exist */}
+                  {card.platform !== "meta_ads" && card.platform !== "google_ads" && connectedAccountsFor(card.platform).length > 1 && (
+                    <div className="mt-3 p-2.5 rounded-2xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60">
+                      <div className="flex items-center justify-between text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                        <span>الصفحة المعتمدة للنشر:</span>
+                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-[10px]">
+                          ({connectedAccountsFor(card.platform).length} صفحات متصلة)
+                        </span>
+                      </div>
+                      <select
+                        value={acc?.id || ""}
+                        onChange={(e) => void switchPrimaryAccount(e.target.value)}
+                        className="w-full text-xs font-bold py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-900 border border-purple-300 dark:border-purple-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm"
+                      >
+                        {connectedAccountsFor(card.platform).map((p) => (
+                          <option key={p.id} value={p.id}>
+                            {p.displayName || p.username} {p.isPrimary ? "⭐ (الصفحة النشطة)" : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/60 flex flex-wrap gap-1">
+                    {card.scopes.map((sc, i) => (
+                      <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                        ✓ {sc}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
                   <button
                     type="button"
-                    disabled={busy}
-                    onClick={() => void refresh(account.id)}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 disabled:opacity-50"
+                    onClick={() => handleConnectClick(card)}
+                    className="flex-1 py-2.5 px-3 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 active:scale-98"
                   >
-                    {busy ? (
-                      <Loader2 className="size-4 animate-spin" />
-                    ) : (
-                      <CheckCircle2 className="size-4 text-emerald-400" />
-                    )}
-                    {busy ? SOCIAL_COPY.refreshing : SOCIAL_COPY.refresh}
+                    <Zap className="size-3.5" />
+                    <span>
+                      {connected
+                        ? "تحديث وتجديد الربط الرسمي"
+                        : configured
+                        ? "تسجيل الدخول وربط الحساب"
+                        : "إعداد بوابة الربط والتطبيق"}
+                    </span>
                   </button>
+
                   <button
                     type="button"
-                    disabled={busy}
-                    onClick={() => void disconnect(account.id)}
-                    className="inline-flex items-center gap-2 rounded-xl border border-rose-500/20 bg-rose-500/10 px-3 py-2 text-sm text-rose-200 hover:bg-rose-500/20 disabled:opacity-50"
+                    onClick={() => setActiveSetupPlatform(card.platform)}
+                    className="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs transition-all"
+                    title="إعدادات مفاتيح المطورين للمنصة"
                   >
-                    <Unplug className="size-4" />
-                    {busy ? SOCIAL_COPY.disconnecting : SOCIAL_COPY.disconnect}
+                    <Settings2 className="size-4 text-purple-400" />
                   </button>
+
+                  {acc && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => void testAccount(acc.id)}
+                        disabled={testing === acc.id}
+                        className="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs transition-all"
+                        title="فحص الاتصال"
+                      >
+                        {testing === acc.id ? <Loader2 className="size-4 animate-spin" /> : <RefreshCw className="size-4" />}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void disconnectAccount(acc.id)}
+                        disabled={disconnecting === acc.id}
+                        className="p-2.5 rounded-2xl border border-rose-200 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 hover:bg-rose-100 text-xs transition-all"
+                        title="فصل الحساب"
+                      >
+                        {disconnecting === acc.id ? <Loader2 className="size-4 animate-spin" /> : <Unplug className="size-4" />}
+                      </button>
+                    </>
+                  )}
                 </div>
-              </li>
+              </div>
             );
           })}
-        </ul>
-      )}
+        </div>
+      </div>
     </AdminPage>
   );
 }

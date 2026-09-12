@@ -1,6 +1,6 @@
 import type { InvoiceService } from "@/lib/booking-service";
 
-export const INVOICE_LANGUAGES = ["ar", "en", "tr"] as const;
+export const INVOICE_LANGUAGES = ["ar", "en", "tr", "fr"] as const;
 export type InvoiceLanguage = (typeof INVOICE_LANGUAGES)[number];
 
 export const INVOICE_CURRENCY_FORMATS = ["western", "localized"] as const;

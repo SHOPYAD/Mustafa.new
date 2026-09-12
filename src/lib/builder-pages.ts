@@ -9,6 +9,7 @@
 
 export const BUILTIN_PAGE_IDS = [
   "home",
+  "home-b2c",
   "flights",
   "flights-search",
   "flights-booking",
@@ -183,6 +184,7 @@ function entry(
 export function pageEditable(id: BuiltinPageId): EditorPageEditable {
   switch (id) {
     case "home":
+    case "home-b2c":
       return "homepage";
     case "flights":
     case "flights-search":
@@ -214,6 +216,7 @@ export function pageEditable(id: BuiltinPageId): EditorPageEditable {
 export function pageKind(id: BuiltinPageId): EditorPageKind {
   switch (id) {
     case "home":
+    case "home-b2c":
       return "home";
     case "flights":
     case "hotels":
@@ -253,6 +256,7 @@ export function pageGeminiCapabilities(id: string): PageGeminiCapability[] {
   if (!isBuiltinPageId(id)) return [];
   switch (id) {
     case "home":
+    case "home-b2c":
       return ["homepage-template"];
     case "flights":
     case "flights-search":
@@ -284,7 +288,9 @@ export function pageGeminiCapabilities(id: string): PageGeminiCapability[] {
 export function getBuiltinPage(id: BuiltinPageId): EditorPageEntry {
   switch (id) {
     case "home":
-      return entry(id, "home", "home", "/", "الرئيسية", "Home", "Ana sayfa", "home");
+      return entry(id, "home", "home", "/demo", "الرئيسية (بوابة حجوزات السفر B2C)", "Home (B2C Travel Portal & Booking)", "Ana Sayfa (Seyahat)", "home");
+    case "home-b2c":
+      return entry(id, "home", "home", "/demo", "الرئيسية (بوابة حجوزات السفر B2C)", "Home (B2C Travel Portal & Booking)", "Ana Sayfa (Seyahat)", "home");
     case "flights":
       return entry(id, "hub", "flights", "/flights", "الطيران", "Flights", "Uçuşlar", "plane");
     case "flights-search":
@@ -421,7 +427,7 @@ export function getBuiltinPage(id: BuiltinPageId): EditorPageEntry {
 }
 
 export function listBuiltinEditorPages(): EditorPageEntry[] {
-  return BUILTIN_PAGE_IDS.map((id) => getBuiltinPage(id));
+  return BUILTIN_PAGE_IDS.filter((id) => id !== "home-b2c").map((id) => getBuiltinPage(id));
 }
 
 export function editorPageGroups(): EditorPageGroup[] {

@@ -170,11 +170,26 @@ export async function notifyIyzicoPaymentSuccess(bookingId: string): Promise<voi
     const pdf = await buildBookingPdfBuffer(view);
     attachments = [
       {
-        filename: `alrayyan-invoice-${view.id}.pdf`,
+        filename: `lonaliza-invoice-${view.id}.pdf`,
         content: pdf,
         contentType: "application/pdf",
       },
     ];
+
+    // Check and attach official signed GİB e-Arşiv PDF if available
+    try {
+      const { getParasutInvoicePdfBuffer } = await import("@/lib/server/parasut/parasut-invoices-store");
+      const eFile = await getParasutInvoicePdfBuffer(view.id);
+      if (eFile && eFile.buffer) {
+        attachments.push({
+          filename: eFile.filename || `TC-GIB-E-Arsiv-${view.id}.pdf`,
+          content: eFile.buffer,
+          contentType: "application/pdf",
+        });
+      }
+    } catch {
+      /* non-fatal */
+    }
   } catch {
     try {
       const invoiceTpl = await getInvoiceTemplate(view.service);

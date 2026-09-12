@@ -122,30 +122,42 @@ export default function FlightSearchBar({
             )
       )}
     >
-      <div className="mb-2.5 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-start">
         <SegmentPills
           value={query.tripType}
           options={tripTypes.map(([value, label]) => ({ value, label }))}
-          onChange={(tripType) =>
+          onChange={(tripType) => {
+            const currentLegs = Array.isArray(query.multiLegs) && query.multiLegs.length >= 2 ? query.multiLegs : null;
+            const nextLegs =
+              tripType === "multi-city"
+                ? currentLegs || [
+                    { origin: query.origin, destination: query.destination, date: query.date },
+                    { origin: query.destination, destination: null, date: "" },
+                  ]
+                : query.multiLegs || [
+                    { origin: null, destination: null, date: "" },
+                    { origin: null, destination: null, date: "" },
+                  ];
             onChange({
               ...query,
               tripType,
               returnDate: tripType === "one-way" ? "" : query.returnDate,
-            })
-          }
-          className="w-full max-w-full"
-        />
-        <PillToggle
-          checked={query.directOnly}
-          onChange={(directOnly) => onChange({ ...query, directOnly })}
-          label={copy.nonstopOnly}
-          className="self-start sm:self-auto"
+              multiLegs: nextLegs,
+            });
+          }}
+          className="max-w-full"
         />
       </div>
 
       {query.tripType === "multi-city" ? (
         <div className="space-y-2">
-          {query.multiLegs.map((leg, index) => (
+          {(Array.isArray(query.multiLegs) && query.multiLegs.length >= 2
+            ? query.multiLegs
+            : [
+                { origin: query.origin, destination: query.destination, date: query.date },
+                { origin: query.destination, destination: null, date: "" },
+              ]
+          ).map((leg, index) => (
             <div key={`leg-${index}`} className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_1fr_200px_auto]">
               <AirportAutocomplete
                 label={`${copy.departureAirport} ${index + 1}`}
@@ -213,18 +225,21 @@ export default function FlightSearchBar({
             </div>
           ))}
           <div className="flex flex-col gap-2 pt-1 sm:flex-row sm:items-center sm:justify-between">
-            {query.multiLegs.length < 4 ? (
+            {(query.multiLegs?.length || 0) < 5 ? (
               <button
                 type="button"
-                className="inline-flex items-center gap-1 text-sm font-bold text-[#10b981] hover:text-[#059669]"
-                onClick={() =>
+                className="inline-flex items-center gap-1.5 rounded-xl border border-purple-200 bg-purple-50 px-3.5 py-2 text-xs font-black text-purple-950 hover:bg-purple-100 transition-colors"
+                onClick={() => {
+                  const current = Array.isArray(query.multiLegs) ? query.multiLegs : [];
+                  const lastLeg = current[current.length - 1];
                   onChange({
                     ...query,
-                    multiLegs: [...query.multiLegs, { origin: null, destination: null, date: "" }],
-                  })
-                }
+                    multiLegs: [...current, { origin: lastLeg?.destination || null, destination: null, date: "" }],
+                  });
+                }}
               >
-                <Plus size={14} /> {copy.addLeg}
+                <Plus size={14} className="text-purple-700 stroke-[3]" />
+                <span>{copy.addLeg || "+ إضافة رحلة أخرى"}</span>
               </button>
             ) : (
               <span />
@@ -242,10 +257,10 @@ export default function FlightSearchBar({
               <button
                 type="submit"
                 disabled={!isSearchReady(query)}
-                className={cn(searchSubmitClass, "h-[3.25rem] w-full min-w-0 px-6 sm:w-auto sm:min-w-[8.25rem]")}
+                className={cn(searchSubmitClass, "h-[3.4rem] w-full min-w-0 px-7 sm:w-auto sm:min-w-[8.5rem]")}
               >
-                <Search size={16} className="text-white" />
-                {copy.searchShort}
+                <Search size={18} className="text-slate-950 stroke-[2.5]" />
+                <span className="text-slate-950 font-black">{copy.searchShort}</span>
               </button>
             </div>
           </div>
@@ -264,9 +279,10 @@ export default function FlightSearchBar({
                 type="button"
                 onClick={swap}
                 aria-label={copy.swap}
-                className="mx-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[var(--navy)] shadow-sm hover:border-[var(--brand-primary)] hover:bg-emerald-50 md:absolute md:left-1/2 md:top-1/2 md:z-10 md:-translate-x-1/2 md:-translate-y-1/2"
+                title={copy.swap}
+                className="group mx-auto my-1 md:my-0 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white hover:bg-amber-50 text-slate-700 hover:text-amber-600 border border-slate-200 hover:border-amber-300 shadow-xs hover:shadow transition-all duration-200 cursor-pointer md:absolute md:left-1/2 md:top-1/2 md:z-20 md:-translate-x-1/2 md:-translate-y-1/2"
               >
-                <ArrowRightLeft size={14} className="rotate-90 md:rotate-0" />
+                <ArrowRightLeft size={14} className="text-slate-600 group-hover:text-amber-600 transition-transform group-hover:rotate-180" />
               </button>
               <AirportAutocomplete
                 label={copy.arrivalAirport}
@@ -285,7 +301,7 @@ export default function FlightSearchBar({
               }}
               className={cn(
                 fieldShell,
-                "h-[3.25rem] w-full min-w-0 flex-col items-start justify-center gap-0.5 lg:flex-[1.05]",
+                "h-[3.4rem] w-full min-w-0 flex-col items-start justify-center gap-0.5 lg:flex-[1.05]",
                 dateOpen && fieldShellActive
               )}
             >
@@ -307,7 +323,7 @@ export default function FlightSearchBar({
               }}
               className={cn(
                 fieldShell,
-                "h-[3.25rem] w-full min-w-0 sm:min-w-[11rem] lg:flex-[0.75]",
+                "h-[3.4rem] w-full min-w-0 sm:min-w-[11rem] lg:flex-[0.75]",
                 paxOpen && fieldShellActive
               )}
             >
@@ -316,14 +332,14 @@ export default function FlightSearchBar({
             </button>
           </div>
 
-          <div className="mt-2.5 flex justify-stretch sm:justify-end">
+          <div className="mt-3 flex justify-stretch sm:justify-end">
             <button
               type="submit"
               disabled={!isSearchReady(query)}
-              className={cn(searchSubmitClass, "w-full min-w-0 sm:w-auto sm:min-w-[8.25rem]")}
+              className={cn(searchSubmitClass, "w-full min-w-0 sm:w-auto sm:min-w-[9.5rem]")}
             >
-              <Search size={16} className="text-white" />
-              {copy.searchShort}
+              <Search size={18} className="text-slate-950 stroke-[2.5]" />
+              <span className="text-slate-950 font-black">{copy.searchShort}</span>
             </button>
           </div>
         </>

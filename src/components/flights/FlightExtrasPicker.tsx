@@ -11,9 +11,11 @@ import {
   Star,
 } from "lucide-react";
 import type { FlightCopy } from "@/components/flights/copy";
+import { useState } from "react";
 import {
   extraLineAmount,
   extraLocalizedDesc,
+  extraLocalizedTerms,
   extraLocalizedTitle,
 } from "@/lib/agency-extras";
 import type { Locale } from "@/lib/i18n/types";
@@ -64,17 +66,26 @@ export default function FlightExtrasPicker({
   formatPrice,
   onToggle,
 }: Props) {
+  const [termsOpen, setTermsOpen] = useState<string | null>(null);
   if (!packages.length) return null;
   const chosen = new Set(selectedIds);
+  const termsLabel = locale === "ar" ? "الشروط" : locale === "tr" ? "Koşullar" : "Terms";
+  const byLonaliza = locale === "ar" ? "من لوناليزا" : locale === "tr" ? "Lonaliza" : "by Lonaliza";
 
   return (
-    <div>
-      <h3 className="text-base font-bold text-[#051741]">{copy.extrasTitle}</h3>
-      <p className="mt-1 text-xs text-slate-500">{copy.extrasHint}</p>
+    <div className="rounded-3xl border border-purple-100 bg-gradient-to-b from-purple-50/40 to-white p-4">
+      <div className="flex items-center gap-2">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[#2e1065] text-white">
+          <Sparkles size={16} />
+        </span>
+        <h3 className="text-base font-black text-[#1e1b4b]">{copy.extrasTitle}</h3>
+      </div>
+      <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{copy.extrasHint}</p>
       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {packages.map((pkg) => {
           const selected = chosen.has(pkg.id);
           const amount = extraLineAmount(pkg, fareSubtotal);
+          const terms = extraLocalizedTerms(pkg, locale);
           const priceLabel =
             pkg.priceType === "percent"
               ? `${pkg.priceValue}% · ${formatPrice(amount)}`
@@ -110,7 +121,35 @@ export default function FlightExtrasPicker({
                   <p className="mt-1 text-xs leading-relaxed text-slate-500">
                     {extraLocalizedDesc(pkg, locale)}
                   </p>
-                  <p className="mt-2 text-sm font-bold tabular-nums text-amber-800">{priceLabel}</p>
+                  <div className="mt-2 flex items-center justify-between gap-2">
+                    <p className="text-sm font-bold tabular-nums text-amber-800">{priceLabel}</p>
+                    <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-bold text-purple-900">{byLonaliza}</span>
+                  </div>
+                  {terms ? (
+                    <div className="mt-2">
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTermsOpen(termsOpen === pkg.id ? null : pkg.id);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setTermsOpen(termsOpen === pkg.id ? null : pkg.id);
+                          }
+                        }}
+                        className="text-[11px] font-bold text-purple-800 underline-offset-2 hover:underline"
+                      >
+                        {termsLabel}
+                      </span>
+                      {termsOpen === pkg.id ? (
+                        <p className="mt-1 whitespace-pre-line text-[11px] leading-relaxed text-slate-500">{terms}</p>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </button>

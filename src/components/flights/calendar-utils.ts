@@ -45,16 +45,18 @@ export function mergeCalendarDays(current: CalendarDayPrice[], incoming: Calenda
   return Array.from(map.values()).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-export function sliderWindow(centerYmd: string, days: CalendarDayPrice[], span = 10): string[] {
+export function sliderWindow(centerYmd: string, days: CalendarDayPrice[], afterDays = 45): string[] {
   const center = parseYmd(centerYmd) || new Date();
-  const start = new Date(center.getFullYear(), center.getMonth(), center.getDate() - 3);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const start = today.getTime() < center.getTime() ? today : new Date(center.getFullYear(), center.getMonth(), center.getDate());
+  const end = new Date(center.getFullYear(), center.getMonth(), center.getDate() + afterDays);
   const out: string[] = [];
-  for (let i = 0; i < span; i += 1) {
-    const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+  for (let d = new Date(start); d.getTime() <= end.getTime(); d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1)) {
     out.push(ymdOf(d));
   }
   if (!days.length) return out;
-  const priced = new Set(days.map((row) => row.date));
+  const priced = new Set(days.filter((row) => row.price > 0).map((row) => row.date));
   if (out.some((d) => priced.has(d))) return out;
-  return days.slice(0, span).map((row) => row.date);
+  return days.filter((row) => row.price > 0).slice(0, afterDays).map((row) => row.date);
 }

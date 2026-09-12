@@ -63,6 +63,11 @@ async function main() {
       "--release",
       "--flavor",
       "lonaliza",
+      "--target-platform",
+      "android-arm64",
+      "--obfuscate",
+      "--split-debug-info=build/app/outputs/symbols",
+      "--tree-shake-icons",
       `--dart-define=MOBILE_API_BASE=${settings.apiBase || "https://lonaliza.com"}`,
     ], APP_DIR);
     const artifact = path.join(APP_DIR, "build/app/outputs/flutter-apk/app-lonaliza-release.apk");

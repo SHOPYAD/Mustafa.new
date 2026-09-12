@@ -492,9 +492,7 @@ export function dashboardCopy(locale: Locale): DashboardCopy {
       return tr;
     case "en":
       return en;
-    default: {
-      const _never: never = locale;
-      return _never;
-    }
+    default:
+      return en;
   }
 }

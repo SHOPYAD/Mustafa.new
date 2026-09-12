@@ -522,6 +522,20 @@ export function createEmptyMarkupRule(): FlightMarkupRule {
   };
 }
 
+export function defaultFlightMarkupRule(): FlightMarkupRule {
+  return {
+    id: "mk_default_all_18",
+    enabled: true,
+    priority: 100,
+    scope: "all",
+    origin: "",
+    destination: "",
+    type: "percent",
+    value: 18,
+    currency: "USD",
+  };
+}
+
 export function defaultFlightsRuntime(
   provider: FlightProvider = "live"
 ): FlightsRuntimeSettings {
@@ -530,7 +544,7 @@ export function defaultFlightsRuntime(
     mode: modeFromCompressed(compressed),
     providers: providersFromCompressed(compressed),
     endpoints: endpointStatesFromCatalog(),
-    markupRules: [],
+    markupRules: [defaultFlightMarkupRule()],
     dealsSource: compressed === "live" || compressed === "internal" ? "live" : "travelpayouts",
   };
 }
@@ -565,10 +579,13 @@ export function sanitizeFlightsRuntime(
     providers = unique.slice(0, 2);
   }
   const markupRaw = Array.isArray(rec.markupRules) ? rec.markupRules : [];
-  const markupRules = markupRaw
-    .map((item) => sanitizeFlightMarkupRule(item))
-    .filter((item): item is FlightMarkupRule => item !== null)
-    .sort((a, b) => a.priority - b.priority);
+  const markupRules = (
+    markupRaw
+      .map((item) => sanitizeFlightMarkupRule(item))
+      .filter((item): item is FlightMarkupRule => item !== null)
+      .sort((a, b) => a.priority - b.priority)
+  );
+  const resolvedMarkup = markupRules.length ? markupRules : [defaultFlightMarkupRule()];
   return {
     mode,
     providers,
@@ -577,7 +594,7 @@ export function sanitizeFlightsRuntime(
         ? (rec.endpoints as Record<string, FlightEndpointState>)
         : undefined
     ),
-    markupRules,
+    markupRules: resolvedMarkup,
     dealsSource:
       parseFlightDealsSource(rec.dealsSource) ||
       resolveFlightDealsSource(providers, undefined),

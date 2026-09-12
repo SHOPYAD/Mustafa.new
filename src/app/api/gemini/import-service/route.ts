@@ -163,32 +163,43 @@ export async function POST(req: NextRequest) {
 
     const schema = importSchemaPrompt(serviceType);
 
-    const system = `أنت مساعد استيراد خدمات لوكالة الريان للسياحة / Alrayyan Tourism (لوحة التحكم).
-مهمتك: من رابط أو وصف يزوّده الأدمن، استخرج بيانات ${serviceType} كاملة وأعد كائناً جاهزاً للحفظ.
+    const system = `أنت وكيل استيراد ذكي عالي الدقة لوكالة السياحة والسفر (لوحة التحكم).
+مهمتك: من الرابط أو الوصف الذي يقدمه الأدمن، استخراج أو إنشاء بيانات ${serviceType} باحترافية كاملة ومطابقة لأعلى معايير الـ SEO وتجربة المستخدم.
 
-قواعد صارمة:
-1) أعد دائماً JSON داخل \`\`\`json بالشكل:
+القواعد الصارمة والواجبات الإلزامية:
+1) إرجاع JSON نقي داخل \`\`\`json فقط بالهيكل:
 {
-  "reply": "ملخص عربي قصير بما تم استخراجه",
+  "reply": "ملخص عربي احترافي ودقيق للخدمة المستخرجة",
   "action": "create",
   "serviceType": "${serviceType}",
   "item": { ... حسب المخطط أدناه ... }
 }
-2) انسخ كل التفاصيل الممكنة: صور، غرف، أسعار، تقييمات، مميزات، سياسات.
-3) إن وُجدت صور في سياق الصفحة استخدم روابطها الحقيقية https.
-4) إن حُجبت الصفحة، استخدم معرفتك + بحث Google عن نفس المنشأة/الخدمة واملأ أفضل تقدير واقعي، واذكر ذلك في reply.
-5) الاسم والوصف ثنائي اللغة (Ar/En) قدر الإمكان.
-6) لا تترك item فارغاً إذا طُلبت الإضافة.
-7) whatsappNumber الافتراضي إن لم يوجد: 905321796763
-8) isActive: true
+
+2) الفصل اللغوي التام والمطلق (Strict Multilingual Separation):
+   - حقول اللغة العربية (titleAr, destinationAr, descriptionAr, inclusionsAr, exclusionsAr, itineraryAr, highlightsAr, amenitiesAr): يجب أن تكون 100% باللغة العربية الفصحى السليمة والراقية فقط! يُمنع منعاً باتاً دمج أو كتابة أي فقرة أو جملة أو كلمة إنجليزية داخل الحقول العربية.
+   - حقول اللغة الإنجليزية (titleEn, destinationEn, descriptionEn, inclusionsEn, exclusionsEn, itineraryEn, highlightsEn, amenitiesEn): يجب أن تكون 100% باللغة الإنجليزية السليمة فقط! يُمنع دمج أي نص عربي داخلها.
+   - حقول اللغة التركية (titleTr, destinationTr, descriptionTr, countryTr): باللغة التركية الصحيحة.
+   - الحقل الرئيسي (description و title): يكون باللغة العربية حصراً.
+
+3) الصور الحقيقية والمطابقة بدقة للوجهة (Destination-Accurate Images):
+   - يجب أن تكون صور الخدمة مرتبطة 100% بالوجهة المحددة (مثلاً: إن كانت الرحلة إلى كبادوكيا تكون الصور لمناطيد كبادوكيا ومداخن الجنيات وفنادق الكهوف؛ إن كانت إلى إسطنبول تكون لمعالم إسطنبول والبوسفور وآيا صوفيا؛ إن كانت طرابزون وأوزنجول تكون لبحيرة أوزنجول ودير سوميلا ومرتفعات آيدر؛ إن كانت أنطاليا تكون لشواطئ وشلالات أنطاليا).
+   - يُمنع تماماً وضع صور أهرامات أو معالم من دول أو مدن أخرى غير وجهة البرنامج.
+   - استخدم صور عالية الجودة بدقة عالية (Unsplash HQ بدقة 1200x800 على الأقل).
+
+4) إثراء البرنامج السياحي:
+   - اكتب خطة يومية (itinerary) مفصلة وجذابة لكل يوم من أيام الرحلة.
+   - حدد بوضوح ما يشمله وما لا يشمله البرنامج.
+   - ضع أسعاراً واقعية بالدولار الأمريكي (USD).
+
+5) رقم الواتساب الافتراضي للحجز: 905321796763
 
 مخطط item لـ ${serviceType}:
 ${schema}
 
 رابط المصدر: ${primaryUrl || "(لا يوجد)"}
 ملاحظة الجلب: ${pageNote}
-صور مكتشفة (${pageImages.length}): ${JSON.stringify(pageImages.slice(0, 25))}
-مقتطف الصفحة (قد يكون فارغاً):
+صور مكتشفة من الصفحة (${pageImages.length}): ${JSON.stringify(pageImages.slice(0, 15))}
+مقتطف محتوى الصفحة:
 ${pageText || "(غير متاح)"}
 `;
 
@@ -203,7 +214,7 @@ ${pageText || "(غير متاح)"}
       const payload: Record<string, unknown> = {
         systemInstruction: { parts: [{ text: system }] },
         contents,
-        generationConfig: { temperature: 0.35, maxOutputTokens: 8192 },
+        generationConfig: { temperature: 0.3, maxOutputTokens: 8192 },
       };
       if (withSearch) {
         payload.tools = [{ google_search: {} }];
@@ -240,19 +251,12 @@ ${pageText || "(غير متاح)"}
     const reply =
       (typeof parsed?.reply === "string" && parsed.reply) ||
       text.replace(/```json[\s\S]*?```/g, "").trim() ||
-      "تم التحليل.";
+      "تم التحليل بنجاح.";
 
     const item =
       parsed?.item && typeof parsed.item === "object"
         ? (parsed.item as Record<string, unknown>)
         : null;
-
-    // Merge discovered images if model returned few
-    if (item && Array.isArray(item.images) && pageImages.length) {
-      const imgs = item.images as string[];
-      const merged = [...new Set([...imgs, ...pageImages])].slice(0, 50);
-      item.images = merged;
-    }
 
     return NextResponse.json({
       ok: true,

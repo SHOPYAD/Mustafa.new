@@ -93,6 +93,11 @@ export type FlightCopy = {
   whySupportBody: string;
   whyEasy: string;
   whyEasyBody: string;
+  smartSubtitle: string;
+  smartVoiceTitle: string;
+  smartVoiceBody: string;
+  smartCtaType: string;
+  smartCtaVoice: string;
   stepSelect: string;
   stepPassengers: string;
   stepReview: string;
@@ -135,6 +140,8 @@ export type FlightCopy = {
   addCalendar: string;
   backFlights: string;
   fareChanged: string;
+  fareUnavailable: string;
+  quoteFailed: string;
   acceptFare: string;
   clearFilters: string;
   modifySearch: string;
@@ -156,6 +163,21 @@ export type FlightCopy = {
   priceRange: string;
   originAirports: string;
   destAirports: string;
+  layoverAirports: string;
+  baggageNone: string;
+  baggageKg: (n: number) => string;
+  changeableFilter: string;
+  overnightFilter: string;
+  fareBrandFilter: string;
+  addBag: string;
+  addBagTitle: string;
+  addBagHint: string;
+  addBagEmpty: string;
+  addBagLoading: string;
+  addBagClose: string;
+  addBagSelected: string;
+  addBagTotal: string;
+  addBagPlusFlight: string;
   morning: string;
   afternoon: string;
   evening: string;
@@ -333,13 +355,18 @@ export function flightCopy(locale: Locale): FlightCopy {
         directFrom: "رحلات مباشرة من",
         startingFrom: "يبدأ من",
         anytime: "تواريخ مرنة",
-        whyTitle: "لماذا تحجزون معنا؟",
-        whyPrice: "أسعار واضحة",
-        whyPriceBody: "السعر المعروض بعد الرسوم المعتمدة في النظام.",
-        whySupport: "دعم متواصل",
-        whySupportBody: "فريق الريان معكم قبل السفر وبعده.",
-        whyEasy: "حجز بخطوات قصيرة",
-        whyEasyBody: "اختيار الرحلة، بيانات المسافرين، ثم الدفع.",
+        whyTitle: "الحجز الذكي مع لوناليزا",
+        whyPrice: "أرخص سعر حقيقي",
+        whyPriceBody: "البحث يقارن الرحلات الحية ويعرض أقل سعر متاح لنفس المسار والتاريخ فوراً.",
+        whySupport: "بحث ذكي بالكتابة",
+        whySupportBody: "اكتب وجهتك وتاريخك وعدد المسافرين لوكيل لوناليزا، فيفتح النتائج ويحجز بسرعة.",
+        whyEasy: "حجز سهل بخطوات قصيرة",
+        whyEasyBody: "اختاروا الرحلة، أكملوا بيانات المسافرين، ثم ادفعوا. الوكيل يتابع الطلب حتى التأكيد.",
+        smartSubtitle: "وكيل لوناليزا الذكي يفهم طلبك بالصوت أو الكتابة، يبحث عن الرحلة، ويعرض أرخص سعر حقيقي خلال ثوانٍ.",
+        smartVoiceTitle: "تحدث مع الوكيل",
+        smartVoiceBody: "اضغط زر الصوت وقل وجهتك وتاريخ السفر. الوكيل يسمعك ويفتح النتائج مباشرة.",
+        smartCtaType: "اكتب للوكيل الآن",
+        smartCtaVoice: "تحدث مع الوكيل",
         stepSelect: "الرحلة",
         stepPassengers: "المسافرون",
         stepReview: "المراجعة",
@@ -382,6 +409,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         addCalendar: "إضافة إلى التقويم",
         backFlights: "العودة إلى بحث الطيران",
         fareChanged: "تغيّر السعر قبل الدفع. راجعوا المبلغ الجديد قبل المتابعة.",
+        fareUnavailable: "هذه التعرفة لم تعد متاحة لدى شركة الطيران. اختاروا رحلة أو باقة أخرى.",
+        quoteFailed: "تعذّر التحقق من السعر لدى المورد الآن. حاولوا مجدداً بعد لحظات.",
         acceptFare: "المتابعة بالمبلغ الجديد",
         clearFilters: "مسح التصفية",
         modifySearch: "تعديل البحث",
@@ -403,6 +432,21 @@ export function flightCopy(locale: Locale): FlightCopy {
         priceRange: "نطاق السعر",
         originAirports: "مطارات المغادرة",
         destAirports: "مطارات الوصول",
+        layoverAirports: "مطارات التوقف",
+        baggageNone: "بدون أمتعة مسجلة",
+        baggageKg: (n) => `${n} كجم`,
+        changeableFilter: "قابلة للتعديل",
+        overnightFilter: "رحلات ليلية / وصول في اليوم التالي",
+        fareBrandFilter: "الباقات",
+        addBag: "إضافة حقيبة",
+        addBagTitle: "أوزان إضافية",
+        addBagHint: "اختر بطاقة الوزن. يُضاف سعرها فوراً إلى إجمالي الرحلة.",
+        addBagEmpty: "لا تتوفر إضافة وزن لهذه الرحلة.",
+        addBagLoading: "جاري تحميل خيارات الوزن…",
+        addBagClose: "إغلاق",
+        addBagSelected: "تم الاختيار",
+        addBagTotal: "الإجمالي مع الوزن",
+        addBagPlusFlight: "الرحلة + الوزن",
         morning: "صباح",
         afternoon: "ظهر",
         evening: "مساء",
@@ -436,7 +480,7 @@ export function flightCopy(locale: Locale): FlightCopy {
         power: "مقبس كهرباء",
         mealOnBoard: "وجبة",
         entertainment: "ترفيه",
-        invoiceNote: "هذه فاتورة / إيصال رسمي من الريان للسياحة. تفاصيل الرحلة حسب الحجز المدفوع.",
+        invoiceNote: "هذه فاتورة / إيصال رسمي من لوناليزا للسياحة والسفر. تفاصيل الرحلة حسب الحجز المدفوع.",
         changeFee: "رسوم التغيير",
         cancelFee: "رسوم الإلغاء",
         freeCancellation: "رحلات قابلة للإلغاء المجاني",
@@ -445,8 +489,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         gateLabel: "بوابة",
         fareRules: "شروط الأجرة",
         fareBrand: "الباقة",
-        extrasTitle: "خدمات الوكالة الاختيارية",
-        extrasHint: "لن تُضاف إلى الإجمالي إلا بعد اختيارها.",
+        extrasTitle: "خدمات لوناليزا",
+        extrasHint: "خدمات تقدّمها لوناليزا وتنفّذها بنفسها، مستقلة عن شركة الطيران ولا تُرسل للمورد. لن تُضاف إلى الإجمالي إلا بعد اختيارها.",
         addExtra: "إضافة",
         selectedExtra: "مختارة",
         discount: "الخصم / القسيمة",
@@ -556,13 +600,18 @@ export function flightCopy(locale: Locale): FlightCopy {
         directFrom: "Direct flights from",
         startingFrom: "Starting from",
         anytime: "Flexible dates",
-        whyTitle: "Why book with us?",
-        whyPrice: "Clear prices",
-        whyPriceBody: "The displayed price already includes the system markup.",
-        whySupport: "Ongoing support",
-        whySupportBody: "Alrayyan is with you before and after travel.",
-        whyEasy: "A short booking path",
-        whyEasyBody: "Choose a flight, add passengers, then pay.",
+        whyTitle: "Smart booking with Lonaliza",
+        whyPrice: "Real lowest fares",
+        whyPriceBody: "Live search compares available flights and shows the cheapest fare for your route and date.",
+        whySupport: "Smart search by text",
+        whySupportBody: "Type your destination, dates, and passengers to the Lonaliza agent. It opens results and books fast.",
+        whyEasy: "A short, easy booking path",
+        whyEasyBody: "Pick the flight, add passenger details, then pay. The agent stays with the request until it is confirmed.",
+        smartSubtitle: "The Lonaliza agent understands voice or text, searches live flights, and surfaces the cheapest real fare in seconds.",
+        smartVoiceTitle: "Talk to the agent",
+        smartVoiceBody: "Tap the microphone, say your destination and date, and the agent opens the matching results.",
+        smartCtaType: "Type to the agent",
+        smartCtaVoice: "Speak to the agent",
         stepSelect: "Flight",
         stepPassengers: "Passengers",
         stepReview: "Review",
@@ -605,6 +654,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         addCalendar: "Add to calendar",
         backFlights: "Back to flight search",
         fareChanged: "The fare changed before payment. Review the new amount before you continue.",
+        fareUnavailable: "This fare is no longer available from the airline. Please choose another flight or fare package.",
+        quoteFailed: "We could not verify the price with the supplier right now. Please try again in a moment.",
         acceptFare: "Continue with the new amount",
         clearFilters: "Clear filters",
         modifySearch: "Modify search",
@@ -626,6 +677,21 @@ export function flightCopy(locale: Locale): FlightCopy {
         priceRange: "Price range",
         originAirports: "Departure airports",
         destAirports: "Arrival airports",
+        layoverAirports: "Layover airports",
+        baggageNone: "No checked bag",
+        baggageKg: (n) => `${n} kg`,
+        changeableFilter: "Changeable fares",
+        overnightFilter: "Overnight / next-day arrival",
+        fareBrandFilter: "Fare brands",
+        addBag: "Add a bag",
+        addBagTitle: "Extra baggage weights",
+        addBagHint: "Tap a weight card. Its price is added to the flight total immediately.",
+        addBagEmpty: "Extra weight is not available on this flight.",
+        addBagLoading: "Loading weight options…",
+        addBagClose: "Close",
+        addBagSelected: "Selected",
+        addBagTotal: "Total with bag",
+        addBagPlusFlight: "Flight + bag",
         morning: "Morning",
         afternoon: "Afternoon",
         evening: "Evening",
@@ -668,8 +734,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         gateLabel: "Gate",
         fareRules: "Fare rules",
         fareBrand: "Fare",
-        extrasTitle: "Optional agency services",
-        extrasHint: "Not added to the total until you select them.",
+        extrasTitle: "Lonaliza services",
+        extrasHint: "Provided and fulfilled by Lonaliza, independent of the airline and never sent to the supplier. Not added to the total until you select them.",
         addExtra: "Add",
         selectedExtra: "Selected",
         discount: "Discount / voucher",
@@ -779,13 +845,18 @@ export function flightCopy(locale: Locale): FlightCopy {
         directFrom: "Direkt uçuşlar",
         startingFrom: "Başlayan fiyat",
         anytime: "Esnek tarihler",
-        whyTitle: "Neden bizimle rezervasyon?",
-        whyPrice: "Net fiyatlar",
-        whyPriceBody: "Görünen fiyat sistemdeki artıştan sonradır.",
-        whySupport: "Kesintisiz destek",
-        whySupportBody: "Alrayyan seyahatten önce ve sonra yanınızda.",
-        whyEasy: "Kısa rezervasyon yolu",
-        whyEasyBody: "Uçuş seçin, yolcuları ekleyin, sonra ödeyin.",
+        whyTitle: "Lonaliza ile akıllı rezervasyon",
+        whyPrice: "Gerçek en düşük fiyat",
+        whyPriceBody: "Canlı arama aynı güzergah ve tarih için mevcut uçuşları karşılaştırır ve en ucuz ücreti gösterir.",
+        whySupport: "Yazarak akıllı arama",
+        whySupportBody: "Varış, tarih ve yolcu sayısını Lonaliza ajanına yazın; sonuçları açar ve hızlı rezervasyon yapar.",
+        whyEasy: "Kısa ve kolay rezervasyon",
+        whyEasyBody: "Uçuşu seçin, yolcu bilgilerini girin, ödeyin. Ajan onaylanana kadar talebi takip eder.",
+        smartSubtitle: "Lonaliza ajanı sesi veya yazıyı anlar, canlı uçuşları arar ve saniyeler içinde gerçek en ucuz ücreti gösterir.",
+        smartVoiceTitle: "Ajanla konuşun",
+        smartVoiceBody: "Mikrofonu açın, varış ve tarihi söyleyin; ajan eşleşen sonuçları açar.",
+        smartCtaType: "Ajana yazın",
+        smartCtaVoice: "Ajana konuşun",
         stepSelect: "Uçuş",
         stepPassengers: "Yolcular",
         stepReview: "Özet",
@@ -828,6 +899,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         addCalendar: "Takvime ekle",
         backFlights: "Uçuş aramasına dön",
         fareChanged: "Ödemeden önce fiyat değişti. Devam etmeden yeni tutarı kontrol edin.",
+        fareUnavailable: "Bu tarife artık havayolunda mevcut değil. Lütfen başka bir uçuş veya paket seçin.",
+        quoteFailed: "Fiyat şu anda tedarikçiden doğrulanamadı. Lütfen biraz sonra tekrar deneyin.",
         acceptFare: "Yeni tutarla devam",
         clearFilters: "Filtreleri temizle",
         modifySearch: "Aramayı düzenle",
@@ -849,6 +922,21 @@ export function flightCopy(locale: Locale): FlightCopy {
         priceRange: "Fiyat aralığı",
         originAirports: "Kalkış havalimanları",
         destAirports: "Varış havalimanları",
+        layoverAirports: "Aktarma havalimanları",
+        baggageNone: "Kayıtlı bagaj yok",
+        baggageKg: (n) => `${n} kg`,
+        changeableFilter: "Değiştirilebilir",
+        overnightFilter: "Gece / ertesi gün varış",
+        fareBrandFilter: "Paketler",
+        addBag: "Bagaj ekle",
+        addBagTitle: "Ek bagaj ağırlıkları",
+        addBagHint: "Ağırlık kartını seçin. Ücreti uçuş toplamına hemen eklenir.",
+        addBagEmpty: "Bu uçuşta ekstra ağırlık yok.",
+        addBagLoading: "Ağırlık seçenekleri yükleniyor…",
+        addBagClose: "Kapat",
+        addBagSelected: "Seçildi",
+        addBagTotal: "Bagajlı toplam",
+        addBagPlusFlight: "Uçuş + bagaj",
         morning: "Sabah",
         afternoon: "Öğleden sonra",
         evening: "Akşam",
@@ -891,8 +979,8 @@ export function flightCopy(locale: Locale): FlightCopy {
         gateLabel: "Kapı",
         fareRules: "Tarife kuralları",
         fareBrand: "Tarife",
-        extrasTitle: "İsteğe bağlı acente hizmetleri",
-        extrasHint: "Seçene kadar toplama eklenmez.",
+        extrasTitle: "Lonaliza hizmetleri",
+        extrasHint: "Lonaliza tarafından sunulur ve yerine getirilir; havayolundan bağımsızdır ve tedarikçiye gönderilmez. Seçmeden toplam tutara eklenmez.",
         addExtra: "Ekle",
         selectedExtra: "Seçildi",
         discount: "İndirim / kupon",
@@ -905,10 +993,7 @@ export function flightCopy(locale: Locale): FlightCopy {
         reviewPassengers: "Yolcular",
         eticketIssuanceNote: eticketIssuanceNote("tr"),
       };
-    default: {
-      const _exhaustive: never = locale;
-      void _exhaustive;
-      return flightCopy("ar");
-    }
+    default:
+      return flightCopy("en");
   }
 }

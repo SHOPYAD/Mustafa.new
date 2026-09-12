@@ -25,10 +25,8 @@ function localizedName(
       return tr;
     case "en":
       return en;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
+    default:
+      return en;
   }
 }
 
@@ -56,39 +54,39 @@ function TpDealCard({ deal, light }: { deal: HomepageFlightDeal; light?: boolean
     <article
       className={
         light
-          ? "group flex h-full min-w-0 flex-col overflow-hidden rounded-[1.15rem] border border-[color:color-mix(in_srgb,var(--brand-accent)_10%,transparent)] bg-white shadow-[0_14px_32px_-24px_rgba(5,23,65,0.4)] transition hover:-translate-y-0.5"
-          : "group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
+          ? "group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1"
+          : "group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-purple-900/40 bg-[#120324]/80 shadow-lg"
       }
     >
       <div className="relative h-28 w-full shrink-0 overflow-hidden sm:h-32">
         {deal.destImage ? (
           <SafeImage src={deal.destImage} alt={destName} fill className="object-cover transition duration-500 group-hover:scale-105" />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-sky-800 to-amber-600" />
+          <div className="h-full w-full bg-gradient-to-br from-purple-900 to-indigo-950" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#051741]/80 via-[#051741]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent" />
         <div className="absolute inset-x-3 bottom-2 flex items-end justify-between gap-2">
-          <p className="min-w-0 truncate text-sm font-bold text-white">{destName}</p>
+          <p className="min-w-0 truncate text-sm font-black text-white">{destName}</p>
           {priceLabel ? (
-            <span className="shrink-0 rounded-full bg-white/95 px-2.5 py-1 text-xs font-extrabold text-[#051741] shadow-sm">
+            <span className="shrink-0 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-2.5 py-0.5 text-xs font-black text-slate-950 shadow-sm">
               {priceLabel}
             </span>
           ) : null}
         </div>
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-3 p-3.5 sm:p-4">
+      <div className="flex min-w-0 flex-1 flex-col gap-3 p-4">
         <div className="min-w-0">
           <p
             className={
               light
-                ? "truncate text-base font-bold text-[var(--brand-accent)]"
-                : "truncate text-base font-bold text-white"
+                ? "truncate text-base font-black text-slate-900 group-hover:text-purple-700 transition-colors"
+                : "truncate text-base font-black text-white"
             }
           >
             {originName}
           </p>
-          <p className={light ? "mt-0.5 text-xs text-slate-500" : "mt-0.5 text-xs text-white/45"}>
+          <p className={light ? "mt-0.5 text-xs font-bold text-purple-700" : "mt-0.5 text-xs text-amber-300"}>
             {deal.originIata} → {deal.destIata}
           </p>
         </div>
@@ -100,11 +98,11 @@ function TpDealCard({ deal, light }: { deal: HomepageFlightDeal; light?: boolean
               : "flex items-center gap-2 text-sm font-semibold text-white/80"
           }
         >
-          <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs tracking-wide text-slate-700">
+          <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold tracking-wide text-slate-800">
             {deal.originIata}
           </span>
-          <ArrowRight size={14} className="text-[var(--brand-primary)] rtl:rotate-180" />
-          <span className="rounded-md bg-[color-mix(in_srgb,var(--brand-primary)_12%,white)] px-2 py-0.5 text-xs tracking-wide text-[var(--brand-accent)]">
+          <ArrowRight size={14} className="text-purple-700 rtl:rotate-180" />
+          <span className="rounded-md bg-purple-100 px-2 py-0.5 text-xs font-black tracking-wide text-purple-950">
             {deal.destIata}
           </span>
         </div>
@@ -112,10 +110,9 @@ function TpDealCard({ deal, light }: { deal: HomepageFlightDeal; light?: boolean
         <button
           type="button"
           onClick={() => router.push(deal.href)}
-          className="sc-btn mt-auto inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap py-2.5 text-sm font-bold text-white transition hover:brightness-110"
-          style={{ backgroundColor: "var(--brand-button)", borderRadius: "var(--radius-button)" }}
+          className="sc-btn mt-auto inline-flex w-full items-center justify-center gap-2 whitespace-nowrap py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer"
         >
-          <Search size={14} />
+          <Search size={14} className="text-slate-950" />
           {t.home.flightDealsCta}
         </button>
       </div>
@@ -131,16 +128,16 @@ function LiveDealCard({ deal }: { deal: HomepageFlightDeal }) {
   const priceLabel = formatDealPrice(deal.price, deal.currency, locale);
 
   return (
-    <article className="group relative flex min-h-[220px] min-w-0 flex-col overflow-hidden rounded-[1.35rem] bg-[#071a36] shadow-[0_18px_40px_-28px_rgba(5,23,65,0.7)]">
+    <article className="group relative flex min-h-[220px] min-w-0 flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-[#120324] via-[#240a4a] to-[#3b1275] border border-amber-400/20 shadow-xl">
       <div className="absolute inset-0">
         {deal.destImage ? (
-          <SafeImage src={deal.destImage} alt={destName} fill className="object-cover transition duration-700 group-hover:scale-105" />
+          <SafeImage src={deal.destImage} alt={destName} fill className="object-cover transition duration-700 group-hover:scale-105 opacity-40" />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-[#0b3b6e] to-teal-800" />
+          <div className="h-full w-full bg-gradient-to-br from-purple-950 to-indigo-950" />
         )}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,23,65,0.15)_0%,rgba(5,23,65,0.78)_72%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#120324] via-[#120324]/60 to-transparent" />
       </div>
-      <div className="relative z-10 flex h-full flex-1 flex-col justify-between p-4">
+      <div className="relative z-10 flex h-full flex-1 flex-col justify-between p-5">
         <div className="flex items-start justify-between gap-3">
           {deal.airlineLogo ? (
             <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md ring-2 ring-white/70">
@@ -152,24 +149,24 @@ function LiveDealCard({ deal }: { deal: HomepageFlightDeal }) {
             </span>
           )}
           {priceLabel ? (
-            <span className="rounded-full bg-emerald-400 px-2.5 py-1 text-xs font-extrabold text-[#051741] shadow-sm">
+            <span className="rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1 text-xs font-black text-slate-950 shadow-sm">
               {t.home.flightDealsPriceFrom} {priceLabel}
             </span>
           ) : null}
         </div>
-        <div className="mt-10">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-teal-200">
+        <div className="mt-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-amber-300">
             {originName} · {deal.originIata}
           </p>
-          <h3 className="mt-1 truncate text-xl font-bold text-white">{destName}</h3>
-          <p className="mt-1 text-sm text-white/75">
+          <h3 className="mt-1 truncate text-xl font-black text-white">{destName}</h3>
+          <p className="mt-1 text-sm text-slate-200">
             {deal.originIata} → {deal.destIata}
             {deal.direct ? ` · ${t.home.flightDealsDirect}` : ""}
           </p>
           <button
             type="button"
             onClick={() => router.push(deal.href)}
-            className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-white/95 py-2.5 text-sm font-bold text-[#051741] transition hover:bg-white"
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 py-2.5 text-sm font-black text-slate-950 transition shadow-md cursor-pointer"
           >
             {t.home.flightDealsCta}
           </button>
@@ -187,17 +184,17 @@ function TpGroups({ groups, light }: { groups: HomepageFlightDealGroup[]; light?
       {groups.map((group) => (
         <div key={group.destIata} className="min-w-0">
           <div className="mb-4 flex items-center gap-3">
-            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-[color:color-mix(in_srgb,var(--brand-accent)_12%,transparent)]">
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-purple-200">
               <SafeImage src={group.destImage} alt={group.destNameEn} fill className="object-cover" />
             </div>
             <div className="min-w-0">
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--brand-accent)] md:text-xl">
-                <Plane size={16} className="text-[var(--brand-primary)]" />
+              <h3 className="flex items-center gap-2 text-lg font-black text-slate-900 md:text-xl">
+                <Plane size={18} className="text-purple-700" />
                 {t.home[
                   group.destIata === "TZX" ? "flightDealsToTrabzon" : "flightDealsToIstanbul"
                 ]}
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs font-bold text-slate-500">
                 {localizedName(locale, group.destNameAr, group.destNameEn, group.destNameTr)} · {group.destIata}
               </p>
             </div>
@@ -297,25 +294,21 @@ export default function FlightDealsSection({ embedded = false }: { embedded?: bo
   }
 
   return (
-    <section className="relative overflow-x-hidden overflow-y-hidden bg-[color-mix(in_srgb,var(--brand-secondary)_70%,#dbeafe)] py-12 md:py-16">
+    <section className="relative overflow-x-hidden overflow-y-hidden bg-slate-50/60 py-12 md:py-16 border-t border-slate-100">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 start-1/4 h-80 w-80 rounded-full bg-amber-500/10 blur-[100px]" />
-        <div className="absolute bottom-0 end-0 h-72 w-72 rounded-full bg-amber-400/8 blur-[90px]" />
+        <div className="absolute bottom-0 end-0 h-72 w-72 rounded-full bg-purple-600/10 blur-[90px]" />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 start-0 w-1 bg-gradient-to-b from-amber-300 via-amber-500 to-amber-700"
-      />
 
       <div className="home-container relative z-10 mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--brand-primary)] md:text-sm">
+          <p className="mb-3 text-xs font-black uppercase tracking-[0.22em] text-purple-700 md:text-sm">
             {payload?.source === "live" ? t.home.flightDealsLiveEyebrow : t.nav.flights}
           </p>
-          <h2 className="text-2xl font-bold leading-tight text-[var(--brand-accent)] md:text-3xl lg:text-4xl">
+          <h2 className="text-2xl font-black leading-tight text-slate-900 md:text-3xl lg:text-4xl">
             {t.home.flightDealsTitle}
           </h2>
-          <p className="mt-3 text-base text-slate-600 md:text-lg">{t.home.flightDealsSubtitle}</p>
+          <p className="mt-3 text-base text-slate-600 font-medium md:text-lg">{t.home.flightDealsSubtitle}</p>
           <p className="mt-2 text-sm text-slate-500">{t.home.flightDealsSupport}</p>
         </div>
         {body}

@@ -67,6 +67,7 @@ export type StoredSocialAccount = {
   connectedAt: string;
   lastRefreshedAt?: string;
   lastError?: string;
+  isPrimary?: boolean;
 };
 
 export type PublicSocialAccount = {
@@ -86,6 +87,7 @@ export type PublicSocialAccount = {
   hasAccessToken: boolean;
   hasRefreshToken: boolean;
   tokenExpiresAt?: string;
+  isPrimary?: boolean;
 };
 
 export type TokenStoreFile = {

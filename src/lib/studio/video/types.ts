@@ -54,10 +54,12 @@ export type GenerateStudioVideoResult = {
   video: StudioVideoArtifact | null;
   ffmpeg: { available: boolean; path: string | null };
   notify: {
-    channel: "paths-only";
+    channel: "telegram" | "paths-only";
     message: string;
     paths: string[];
     urls: string[];
+    sent?: boolean;
+    error?: string;
   };
   error?: string;
 };

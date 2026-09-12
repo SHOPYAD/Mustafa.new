@@ -50,8 +50,8 @@ export async function GET(req: NextRequest) {
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   const q = req.nextUrl.searchParams;
-  const originSkyId = (q.get("originSkyId") || q.get("origin") || "").trim().toUpperCase();
-  const destinationSkyId = (q.get("destinationSkyId") || q.get("destination") || "").trim().toUpperCase();
+  const originSkyId = (q.get("originSkyId") || q.get("origin") || q.get("originCode") || "").trim().toUpperCase().split(",")[0];
+  const destinationSkyId = (q.get("destinationSkyId") || q.get("destination") || q.get("destinationCode") || "").trim().toUpperCase().split(",")[0];
   let originEntityId = (q.get("originEntityId") || "").trim();
   let destinationEntityId = (q.get("destinationEntityId") || "").trim();
   const date = (q.get("date") || q.get("departureDate") || "").trim();

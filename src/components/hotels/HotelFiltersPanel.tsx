@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import { localizeHotelLabel } from "@/lib/hotel-i18n";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import type { Locale } from "@/lib/i18n/types";
 import type {
   TravelAdvisorAppliedFilter,
   TravelAdvisorFilterGroup,
@@ -46,7 +47,7 @@ function groupTitle(
 function optionLabel(
   groupId: string,
   opt: { value: string; label: string },
-  locale: "ar" | "en" | "tr"
+  locale: Locale
 ): string {
   if (groupId === "rating") {
     const n = Number(opt.value);
@@ -107,14 +108,6 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
     });
   }, [groups]);
 
-  if (!ordered.length) {
-    return (
-      <div className="space-y-3">
-        <h2 className="text-lg font-bold text-slate-900">{t.hotels.filters}</h2>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between gap-2">
@@ -123,7 +116,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
           <button
             type="button"
             onClick={() => onChange([])}
-            className="text-xs font-semibold text-emerald-700"
+            className="text-xs font-semibold text-[#2e1065] hover:underline"
           >
             {t.hotels.clearFilters}
           </button>
@@ -133,11 +126,22 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
         <button
           type="button"
           onClick={() => onApplyRemote(value)}
-          className="w-full rounded-xl bg-[#051741] px-3 py-2 text-xs font-bold text-white"
+          className="w-full rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] px-3 py-2 text-xs font-bold text-white shadow-xs"
         >
           {t.hotels.applyToAllResults}
         </button>
       ) : null}
+
+      <section className="border-t border-slate-100 pt-4">
+        <p className="text-sm font-semibold text-slate-800 mb-2">{locale === "ar" ? "اسم الفندق" : locale === "tr" ? "Otel adı" : "Hotel name"}</p>
+        <input
+          type="search"
+          value={selectedValues(value, "name")[0] || ""}
+          onChange={(e) => onChange(upsert(value, "name", e.target.value.trim() ? [e.target.value] : []))}
+          placeholder={locale === "ar" ? "اكتب اسم الفندق…" : locale === "tr" ? "Otel adı yazın…" : "Type a hotel name…"}
+          className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-purple-500 focus:outline-none"
+        />
+      </section>
 
       {ordered.map((group) => {
         const selected = selectedValues(value, group.id);
@@ -151,7 +155,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
             <section key={group.id} className="border-t border-slate-100 pt-4">
               <p className="text-sm font-semibold text-slate-800 mb-2">{title}</p>
               <p className="text-xs text-slate-500 mb-2">
-                {formatPrice(min, "USD")} – {formatPrice(currentMax, "USD")}
+                {formatPrice(min, group.unit || "USD")} – {formatPrice(currentMax, group.unit || "USD")}
               </p>
               <input
                 type="range"
@@ -159,9 +163,13 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
                 max={max}
                 value={currentMax}
                 onChange={(e) =>
-                  onChange(upsert(value, group.id, [String(min), e.target.value]))
+                  onChange(
+                    Number(e.target.value) >= max
+                      ? upsert(value, group.id, [])
+                      : upsert(value, group.id, [String(min), e.target.value, String(max)])
+                  )
                 }
-                className="w-full accent-emerald-600"
+                className="w-full accent-purple-700"
               />
             </section>
           );
@@ -181,7 +189,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
                       name={`dist-${group.id}`}
                       checked={loc === opt.value}
                       onChange={() => onChange(upsert(value, group.id, [opt.value, km]))}
-                      className="accent-emerald-600"
+                      className="accent-purple-700"
                     />
                     <span className="leading-snug">{localizeHotelLabel(opt.label, locale)}</span>
                   </label>
@@ -196,7 +204,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
                     onChange={(e) =>
                       onChange(upsert(value, group.id, [loc, e.target.value]))
                     }
-                    className="w-full accent-emerald-600"
+                    className="w-full accent-purple-700"
                   />
                 ) : null}
               </div>
@@ -272,7 +280,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
                                 : [...selected, opt.value];
                           onChange(upsert(value, group.id, next));
                         }}
-                        className="mt-0.5 rounded border-slate-300 text-emerald-600 accent-emerald-600"
+                        className="mt-0.5 rounded border-slate-300 text-purple-700 accent-purple-700"
                       />
                       <span className="leading-snug">{optionLabel(group.id, opt, locale)}</span>
                     </label>
@@ -284,7 +292,7 @@ export default function HotelFiltersPanel({ groups, value, onChange, onApplyRemo
                     onClick={() =>
                       setOpenExtra((s) => ({ ...s, [group.id]: !s[group.id] }))
                     }
-                    className="text-xs font-semibold text-emerald-700 pt-1"
+                    className="text-xs font-semibold text-[#2e1065] pt-1 hover:underline"
                   >
                     {extraOpen ? t.common.cancel : t.hotels.showMore}
                   </button>

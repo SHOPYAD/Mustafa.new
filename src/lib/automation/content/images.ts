@@ -206,7 +206,7 @@ export async function resolveArticlePhotos(input: {
 
   if (!photos.length) {
     limitations.push(
-      "لا مفاتيح Unsplash/Pexels أو فشل البحث — استخدام صورة كتالوج الريان المعروفة + غلاف علامة تجارية"
+      "لا مفاتيح Unsplash/Pexels أو فشل البحث — استخدام صورة كتالوج لوناليزا المعروفة + غلاف علامة تجارية"
     );
     photos.push(fromCatalog(input.topic));
   }

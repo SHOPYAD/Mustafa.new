@@ -65,6 +65,18 @@ class GoRouterNavigationRepository implements NavigationRepository {
   void goMessages() => _router.go('/messages');
 
   @override
+  void goCommunity() => _router.go('/community');
+
+  @override
+  void goReels() => _router.go('/community/reels');
+
+  @override
+  void goAi() => _router.go('/ai');
+
+  @override
+  void goGiftCards() => _router.go('/gift-cards');
+
+  @override
   void goMyTrips() => _router.go('/my-trips');
 
   @override
@@ -95,5 +107,5 @@ class GoRouterNavigationRepository implements NavigationRepository {
   void goHotelBookingGuest() => _router.push('/hotels/booking/guest');
 
   @override
-  void goHotelBookingPayment() => _router.push('/hotels/booking/payment', extra: 'USD105.12');
+  void goHotelBookingPayment() => _router.push('/hotels/search');
 }

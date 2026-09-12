@@ -81,7 +81,7 @@ export async function notifyOfferToContact(input: {
     const result = await sendCommsEmail({
       to: input.email,
       name: input.name,
-      subject: locale === "en" ? "Your Alrayyan offer" : "عرض من الريان",
+      subject: locale === "en" ? "Your Alrayyan offer" : "عرض من لوناليزا",
       text,
       locale,
     });

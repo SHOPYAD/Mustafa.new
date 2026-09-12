@@ -20,13 +20,25 @@ type AgentPayload = {
 };
 
 async function postAction(body: Record<string, unknown>): Promise<AgentPayload> {
-  const res = await fetch("/api/admin/builder-agent", {
-    method: "POST",
-    credentials: "same-origin",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...body, scope: "editor" }),
-  });
-  return (await res.json()) as AgentPayload;
+  try {
+    const res = await fetch("/api/admin/builder-agent", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body, scope: "editor" }),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      try {
+        return JSON.parse(text);
+      } catch {
+        return { ok: false, error: "تعذر الاتصال بخادم الوكيل" };
+      }
+    }
+    return (await res.json()) as AgentPayload;
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : "خطأ في الاتصال" };
+  }
 }
 
 export function EditorAgentSettingsPanel() {
@@ -50,12 +62,22 @@ export function EditorAgentSettingsPanel() {
   useEffect(() => {
     let cancelled = false;
     void fetch("/api/admin/builder-agent?scope=editor", { credentials: "same-origin", cache: "no-store" })
-      .then((res) => res.json())
-      .then((data: AgentPayload) => {
-        if (!cancelled) apply(data);
+      .then(async (res) => {
+        if (!res.ok) {
+          const text = await res.text();
+          try {
+            return JSON.parse(text);
+          } catch {
+            return { ok: false };
+          }
+        }
+        return res.json();
       })
-      .catch((e) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : copy.saveFailed);
+      .then((data: AgentPayload) => {
+        if (!cancelled && data && data.ok) apply(data);
+      })
+      .catch(() => {
+        // Safe fallback without raw parse error
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -63,7 +85,7 @@ export function EditorAgentSettingsPanel() {
     return () => {
       cancelled = true;
     };
-  }, [apply, copy.saveFailed]);
+  }, [apply]);
 
   const run = async (body: Record<string, unknown>) => {
     setError("");

@@ -1,14 +1,14 @@
 /**
- * Runtime image uploads for branding + email templates.
+ * Runtime image uploads for branding, email templates, and provider logos.
  * Next.js production does not serve files added to `public/` after `next build`,
  * and `.data/` is blocked from direct HTTP — so files are stored on disk and
- * served through `/api/branding/file`.
+ * served through `/api/branding/file` (also via `/uploads/:path*` rewrite).
  */
 
 import { promises as fs } from "fs";
 import path from "path";
 
-export const UPLOAD_FOLDERS = ["email", "branding", "pwa", "media"] as const;
+export const UPLOAD_FOLDERS = ["email", "branding", "pwa", "media", "providers"] as const;
 export type UploadFolder = (typeof UPLOAD_FOLDERS)[number];
 
 export const UPLOAD_TYPES: Record<string, string> = {
@@ -60,7 +60,9 @@ export function parseUploadName(
     .replace(/^\/+/, "")
     .replace(/^uploads\//i, "")
     .replace(/^api\/branding\/file\/?/i, "")
-    .replace(/^name=/i, "");
+    .replace(/^name=/i, "")
+    .split("?")[0]
+    .split("#")[0];
   const parts = cleaned.split("/").filter(Boolean);
   if (parts.length !== 2) return null;
   const [folder, file] = parts;
@@ -176,6 +178,12 @@ export async function readUploadedImage(rawName: string): Promise<{
     path.join(dataDir(parsed.folder), parsed.file),
     path.join(publicDir(parsed.folder), parsed.file),
   ];
+  // Legacy provider logos written to public/providers/custom before runtime API serving
+  if (parsed.folder === "providers") {
+    candidates.push(
+      path.join(process.cwd(), "public", "providers", "custom", parsed.file)
+    );
+  }
   for (const filePath of candidates) {
     try {
       const buffer = await fs.readFile(filePath);
@@ -192,4 +200,51 @@ export async function readUploadedImage(rawName: string): Promise<{
     }
   }
   return null;
+}
+
+/**
+ * Fixed-name upload (provider logos). Overwrites prior extension variants.
+ * Served via `/uploads/providers/...` rewrite → `/api/branding/file`.
+ */
+export async function saveFixedUpload(input: {
+  folder: UploadFolder;
+  filename: string;
+  buffer: Buffer;
+}): Promise<{ path: string; url: string; mtimeMs: number }> {
+  const { folder, filename, buffer } = input;
+  if (!FILE_RE.test(filename)) {
+    throw new Error("اسم الملف غير صالح");
+  }
+  const ext = path.extname(filename).toLowerCase();
+  if (!EXT_TYPES[ext]) {
+    throw new Error("نوع الملف غير مدعوم");
+  }
+  if (buffer.length <= 0 || buffer.length > MAX_BYTES) {
+    throw new Error("حجم الملف غير صالح");
+  }
+
+  const base = filename.slice(0, -ext.length);
+  const destinations = [dataDir(folder), publicDir(folder)];
+  for (const dir of destinations) {
+    await fs.mkdir(dir, { recursive: true });
+    try {
+      const existing = await fs.readdir(dir);
+      await Promise.all(
+        existing
+          .filter((name) => name === filename || name.startsWith(`${base}.`))
+          .map((name) => fs.unlink(path.join(dir, name)).catch(() => undefined))
+      );
+    } catch {
+      /* empty ok */
+    }
+    await fs.writeFile(path.join(dir, filename), buffer, { mode: 0o644 });
+  }
+
+  const mtimeMs = Date.now();
+  const urls = publicUploadUrls(folder, filename);
+  return {
+    path: `${urls.path}?v=${mtimeMs}`,
+    url: `${urls.url}&v=${mtimeMs}`,
+    mtimeMs,
+  };
 }

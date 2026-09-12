@@ -4,6 +4,16 @@ import { rateLimit } from "@/lib/server/rate-limit";
 export type TelegramSendInput = {
   chatId: string;
   text: string;
+  replyMarkup?: Record<string, unknown>;
+  parseMode?: "Markdown" | "HTML";
+};
+
+export type TelegramEditInput = {
+  chatId: string;
+  messageId: string | number;
+  text: string;
+  replyMarkup?: Record<string, unknown>;
+  parseMode?: "Markdown" | "HTML";
 };
 
 export type TelegramMediaInput = {
@@ -13,6 +23,8 @@ export type TelegramMediaInput = {
   buffer?: Buffer;
   filePath?: string;
   url?: string;
+  replyMarkup?: Record<string, unknown>;
+  parseMode?: "Markdown" | "HTML";
 };
 
 type TelegramApiResult = { ok: boolean; error?: string; providerId?: string };
@@ -40,6 +52,21 @@ async function telegramToken(): Promise<string> {
   return settings.telegramBotToken;
 }
 
+export async function sendTelegramAdminMessage(
+  text: string,
+  options?: { replyMarkup?: Record<string, unknown>; parseMode?: "Markdown" | "HTML" }
+): Promise<TelegramApiResult> {
+  const settings = await getCommsSettings();
+  const chatId = settings.telegramDefaultChatId?.trim();
+  if (!chatId) return { ok: false, error: "telegram_no_default_chat_id" };
+  return sendTelegramMessage({
+    chatId,
+    text,
+    replyMarkup: options?.replyMarkup,
+    parseMode: options?.parseMode || "Markdown",
+  });
+}
+
 export async function sendTelegramMessage(
   input: TelegramSendInput
 ): Promise<TelegramApiResult> {
@@ -50,14 +77,18 @@ export async function sendTelegramMessage(
   const token = await telegramToken();
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   try {
+    const payload: Record<string, unknown> = {
+      chat_id: chatId,
+      text: String(input.text || "").slice(0, 3900),
+      disable_web_page_preview: true,
+    };
+    if (input.parseMode) payload.parse_mode = input.parseMode;
+    if (input.replyMarkup) payload.reply_markup = input.replyMarkup;
+
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: String(input.text || "").slice(0, 3900),
-        disable_web_page_preview: true,
-      }),
+      body: JSON.stringify(payload),
     });
     const data = (await res.json().catch(() => ({}))) as {
       ok?: boolean;
@@ -67,6 +98,67 @@ export async function sendTelegramMessage(
     return parseTelegramResponse(res, data);
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "telegram_failed" };
+  }
+}
+
+export async function editTelegramMessageText(
+  input: TelegramEditInput
+): Promise<TelegramApiResult> {
+  const chatId = String(input.chatId || "").trim();
+  if (!chatId || !input.messageId) return { ok: false, error: "invalid_chat_or_message" };
+  const token = await telegramToken();
+  const url = `https://api.telegram.org/bot${token}/editMessageText`;
+  try {
+    const payload: Record<string, unknown> = {
+      chat_id: chatId,
+      message_id: Number(input.messageId),
+      text: String(input.text || "").slice(0, 3900),
+      disable_web_page_preview: true,
+    };
+    if (input.parseMode) payload.parse_mode = input.parseMode;
+    if (input.replyMarkup) payload.reply_markup = input.replyMarkup;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      description?: string;
+      result?: { message_id?: number };
+    };
+    return parseTelegramResponse(res, data);
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "telegram_failed" };
+  }
+}
+
+export async function answerTelegramCallbackQuery(input: {
+  callbackQueryId: string;
+  text?: string;
+  showAlert?: boolean;
+}): Promise<TelegramApiResult> {
+  if (!input.callbackQueryId) return { ok: false, error: "invalid_callback_query_id" };
+  const token = await telegramToken();
+  const url = `https://api.telegram.org/bot${token}/answerCallbackQuery`;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        callback_query_id: input.callbackQueryId,
+        text: input.text,
+        show_alert: Boolean(input.showAlert),
+      }),
+    });
+    const data = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      description?: string;
+    };
+    return { ok: Boolean(data.ok), error: data.description };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "answer_callback_failed" };
   }
 }
 

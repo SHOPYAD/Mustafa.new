@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Trip.com–style service shortcut.
+/// Lonaliza–style service shortcut.
 ///
 /// - **Primary row** ([isFeatured]: `true`): light-blue disc, blue icon, **blue label** + yellow dot.
 /// - **Secondary grid row** ([isFeatured]: `false`): blue icon only, dark label.

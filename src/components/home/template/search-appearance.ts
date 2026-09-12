@@ -63,11 +63,17 @@ export function parseSearchAppearance(
     if (icon) tabIcons[tab] = icon;
   }
 
+  const rawTabBarBg = settingString(settings, "tabBarBg", "var(--brand-header)");
+  const rawTabActiveBg = settingString(settings, "tabActiveBg", "var(--brand-button)");
+
   return {
-    tabBarBg: settingString(settings, "tabBarBg", "var(--brand-header)"),
-    tabActiveBg: settingString(settings, "tabActiveBg", "var(--brand-button)"),
+    tabBarBg: rawTabBarBg === "#051741" ? "var(--brand-header)" : rawTabBarBg,
+    tabActiveBg: rawTabActiveBg === "#10b981" ? "var(--theme-tab-active-bg)" : rawTabActiveBg,
     tabActiveText: settingString(settings, "tabActiveText", "#ffffff"),
-    tabIdleText: settingString(settings, "tabIdleText", "rgba(255,255,255,0.78)"),
+    tabIdleText: (() => {
+      const raw = settingString(settings, "tabIdleText", "#1e1b4b");
+      return raw.includes("255,255,255") || raw.includes("245, 243, 255") ? "#1e1b4b" : raw;
+    })(),
     panelBg: settingString(settings, "panelBg", "#ffffff"),
     tabVisibility,
     tabIcons,

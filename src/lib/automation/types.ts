@@ -21,6 +21,8 @@ export const AUTOMATION_JOB_TYPES = [
   "studio.schedule_publish",
   "admin.weekly_digest",
   "places.reviews",
+  "ads.lookalike",
+  "ads.ctwa",
   "ads.ctwa_lookalike",
 ] as const;
 
@@ -252,6 +254,8 @@ export const OTP_PURPOSES = [
   "booking_confirm",
   "register",
   "login_verify",
+  "phone_update",
+  "account_verify",
   "generic",
 ] as const;
 

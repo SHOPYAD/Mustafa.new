@@ -21,9 +21,9 @@ export async function saveBrandedCover(input: {
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="48" y="48" width="1104" height="534" rx="28" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
   <text x="80" y="140" fill="#f4e4b4" font-family="Georgia, Times, serif" font-size="28" letter-spacing="4">ALRAYYAN TOURISM</text>
-  <text x="80" y="178" fill="#ffffff" font-family="Tahoma, Arial, sans-serif" font-size="22">الريان للسياحة · تركيا</text>
+  <text x="80" y="178" fill="#ffffff" font-family="Tahoma, Arial, sans-serif" font-size="22">لوناليزا للسياحة · تركيا</text>
   <text x="80" y="300" fill="#ffffff" font-family="Georgia, Times, serif" font-size="46">${title}</text>
-  <text x="80" y="520" fill="#f8f1d8" font-family="Tahoma, Arial, sans-serif" font-size="24">${dest} · دليل أصلي من فريق الريان</text>
+  <text x="80" y="520" fill="#f8f1d8" font-family="Tahoma, Arial, sans-serif" font-size="24">${dest} · دليل أصلي من فريق لوناليزا</text>
 </svg>`;
 
   if (input.dryRun) {

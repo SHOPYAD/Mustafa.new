@@ -69,13 +69,13 @@ export function resolveFlightBookingRefs(
   bookingId: string,
   snap: Record<string, unknown> = {}
 ): FlightBookingRefs {
+  // Never invent a locator: without a supplier PNR the booking is shown with its own reference only.
+  void bookingId;
   const realPnr = readRealPnr(snap);
-  const storedDummy = snapStr(snap, "dummy_pnr").toUpperCase();
-  const dummy = storedDummy || dummyPnrFromId(bookingId);
   const ticket = readTicketNumber(snap);
   const issued = Boolean(snap.ticket_issued) || (Boolean(ticket) && !isPlaceholderTicket(ticket));
   return {
-    pnr: realPnr || dummy,
+    pnr: realPnr,
     pnrIsDummy: !realPnr,
     ticketNumber: issued ? ticket : ticket && !isPlaceholderTicket(ticket) ? ticket : "PENDING",
     ticketIssued: issued,
@@ -86,11 +86,8 @@ export function snapshotWithFlightRefs(
   bookingId: string,
   snap: Record<string, unknown>
 ): Record<string, unknown> {
-  const refs = resolveFlightBookingRefs(bookingId, snap);
+  void resolveFlightBookingRefs(bookingId, snap);
   const next = { ...snap };
-  if (refs.pnrIsDummy && !snapStr(next, "dummy_pnr")) {
-    next.dummy_pnr = refs.pnr;
-  }
   if (!readTicketNumber(next)) {
     next.ticket_number = "PENDING";
   }

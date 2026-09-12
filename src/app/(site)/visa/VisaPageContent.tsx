@@ -27,10 +27,12 @@ import {
 } from "@/data/visa";
 import { createBooking } from "@/data/bookings";
 import { trackLeadEnquiry } from "@/lib/tracking";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
+import { SEARCH_AGENT_EVENT, type SearchAgentEventDetail } from "@/lib/search-agent";
 
 export default function VisaPageContent() {
     const searchParams = useSearchParams();
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
     const [selectedCountry, setSelectedCountry] = useState<string | null>(
         searchParams.get("type")?.split("-")[0] || null
     );
@@ -50,6 +52,24 @@ export default function VisaPageContent() {
         };
         window.addEventListener("storage", handleStorage);
         return () => window.removeEventListener("storage", handleStorage);
+    }, []);
+
+    useEffect(() => {
+        const q = searchParams.get("q");
+        if (q) setSearchQuery(q);
+    }, [searchParams]);
+
+    useEffect(() => {
+        const onAgent = (event: Event) => {
+            const detail = (event as CustomEvent<SearchAgentEventDetail>).detail;
+            if (detail?.filters?.hotelName) setSearchQuery(detail.filters.hotelName);
+            if (detail?.intent === "visa" && detail.href) {
+                const next = new URL(detail.href, window.location.origin).searchParams.get("q");
+                if (next) setSearchQuery(next);
+            }
+        };
+        window.addEventListener(SEARCH_AGENT_EVENT, onAgent);
+        return () => window.removeEventListener(SEARCH_AGENT_EVENT, onAgent);
     }, []);
 
     const filteredVisa = visaData.filter((v) =>
@@ -95,19 +115,27 @@ export default function VisaPageContent() {
                         We handle 50+ countries worldwide.
                     </p>
 
-                    {/* Search Bar */}
-                    <div className="max-w-2xl mx-auto relative">
-                        <Search
-                            size={20}
-                            className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"
-                        />
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Search by country..."
-                            className="w-full pl-14 pr-6 py-5 bg-white rounded-2xl shadow-xl text-slate-800 placeholder:text-slate-400 outline-none focus:ring-4 focus:ring-blue-500/30"
-                        />
+                    <div className="max-w-2xl mx-auto">
+                        <SearchAgentResultsDock
+                            tab="visa"
+                            page="hero"
+                            replace
+                            context={`Visa search ${searchQuery}`}
+                        >
+                            <div className="relative">
+                                <Search
+                                    size={20}
+                                    className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"
+                                />
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Search by country..."
+                                    className="w-full pl-14 pr-6 py-5 bg-white rounded-2xl shadow-xl text-slate-800 placeholder:text-slate-400 outline-none focus:ring-4 focus:ring-blue-500/30"
+                                />
+                            </div>
+                        </SearchAgentResultsDock>
                     </div>
                 </div>
             </section>

@@ -71,22 +71,22 @@ function RailButton({
           aria-pressed={active}
           className={cn(
             "group relative flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 ease-out",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70",
-            !active && "text-white/70 hover:bg-white/10 hover:text-white hover:scale-110 active:scale-95",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
+            !active && "text-slate-200 hover:bg-white/10 hover:text-amber-300 hover:scale-110 active:scale-95",
             active &&
               !item.premium &&
-              "bg-emerald-500 text-[#051741] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_20px_-4px_rgba(16,185,129,0.55)] scale-110",
+              "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_20px_-4px_rgba(245,158,11,0.55)] scale-110",
             active &&
               item.premium &&
-              "bg-emerald-500 text-[#051741] shadow-[0_10px_28px_-6px_rgba(16,185,129,0.6)] scale-110",
-            !active && item.premium && "bg-white/[0.08] text-white hover:bg-white/15"
+              "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-[0_10px_28px_-6px_rgba(245,158,11,0.6)] scale-110",
+            !active && item.premium && "bg-white/[0.08] text-amber-300 hover:bg-white/15"
           )}
         >
-          <Icon className={cn("h-[19px] w-[19px]", active && "scale-110 drop-shadow-sm")} strokeWidth={active ? 2.4 : 2.1} />
+          <Icon className={cn("h-[19px] w-[19px]", active && "scale-110 drop-shadow-sm text-slate-950")} strokeWidth={active ? 2.6 : 2.1} />
           {showAgentPulse && (
             <span aria-hidden="true" className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-80" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white ring-2 ring-[#051741]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-80" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-amber-400 ring-2 ring-[#2e1065]" />
             </span>
           )}
         </button>
@@ -116,8 +116,8 @@ export function LeftRail() {
       )}
       aria-label={t.editor.panels}
     >
-      <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500 text-[#051741] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6)]">
-        <span className="text-[15px] font-black tracking-tight">A</span>
+      <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-[0_8px_24px_-8px_rgba(245,158,11,0.5)] font-black">
+        <span className="text-[15px] font-black tracking-tight">L</span>
       </div>
       <div aria-hidden="true" className="my-1 h-px w-7 bg-white/10" />
       <div className="flex flex-col items-center gap-1.5">
@@ -146,7 +146,7 @@ export function LeftRail() {
       <div className="mt-auto flex flex-col items-center gap-2">
         <div aria-hidden="true" className="h-px w-7 bg-white/10" />
         <span className="rotate-180 py-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/45 [writing-mode:vertical-rl]">
-          Alrayyan
+          Lonaliza
         </span>
       </div>
     </nav>

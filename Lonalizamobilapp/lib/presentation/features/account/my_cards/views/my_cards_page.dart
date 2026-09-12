@@ -1,74 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../my_cards_theme.dart';
-import '../widgets/my_cards_add_card_button.dart';
-import '../widgets/my_cards_add_card_sheet.dart';
-import '../widgets/my_cards_china_promo_banner.dart';
-import '../widgets/my_cards_empty_state.dart';
-import '../widgets/my_cards_tab_bar.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/network/mobile_json.dart';
+import '../../../../providers/auth_session_provider.dart';
+import '../../../../providers/dio_provider.dart';
 
-class MyCardsPage extends StatefulWidget {
+class MyCardsPage extends ConsumerWidget {
   const MyCardsPage({super.key});
 
   @override
-  State<MyCardsPage> createState() => _MyCardsPageState();
-}
-
-class _MyCardsPageState extends State<MyCardsPage> {
-  int _tabIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final session = ref.watch(authSessionProvider);
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.grey.shade900),
-          onPressed: () => context.pop(),
-        ),
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.shield_outlined, size: 22, color: MyCardsTheme.navy),
-            const SizedBox(width: 8),
-            Text('My Cards', style: MyCardsTheme.appBarTitle),
-          ],
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(height: 8),
-          MyCardsTabBar(
-            selectedIndex: _tabIndex,
-            onChanged: (i) => setState(() => _tabIndex = i),
-          ),
-          Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-          Expanded(
-            child: _tabIndex == 0
-                ? const MyCardsEmptyState()
-                : Center(
-                    child: Text(
-                      'No other payment methods',
-                      style: MyCardsTheme.emptyTitle,
-                    ),
-                  ),
-          ),
-          const MyCardsChinaPromoBanner(),
-          MyCardsAddCardButton(
-            onPressed: () => MyCardsAddCardSheet.show(context),
-          ),
-        ],
-      ),
+      backgroundColor: const Color(0xFFF7F4FC),
+      appBar: AppBar(title: const Text('بطاقاتي')),
+      body: session == null
+          ? Center(
+              child: TextButton(
+                onPressed: () => context.push('/auth'),
+                child: const Text('سجّل الدخول'),
+              ),
+            )
+          : FutureBuilder<List<Map<String, dynamic>>>(
+              future: ref
+                  .read(appDioClientProvider)
+                  .get<Map<String, dynamic>>(AppConstants.accountCardsUrl)
+                  .then((r) => mapList(r.data?['cards'])),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final cards = snapshot.data ?? const [];
+                if (cards.isEmpty) {
+                  return const Center(child: Text('لا بطاقات محفوظة. أضف بطاقة عبر الدفع الحي.'));
+                }
+                return ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: cards.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) {
+                    final card = cards[index];
+                    return Card(
+                      child: ListTile(
+                        title: Text(asText(card['brand'] ?? card['last4'], 'بطاقة')),
+                        subtitle: Text(asText(card['last4'] ?? card['note'] ?? card['id'])),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
     );
   }
 }

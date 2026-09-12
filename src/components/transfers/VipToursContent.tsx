@@ -9,6 +9,7 @@ import TransferCard from "@/components/transfers/TransferCard";
 import { getFeaturedVipDailyTours } from "@/data/transfers";
 import type { TransferService } from "@/types/transfer";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
 
 function matchesQuery(item: TransferService, q: string): boolean {
   if (!q) return true;
@@ -90,6 +91,16 @@ export default function VipToursContent() {
           )}
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <SearchAgentResultsDock
+          tab="tours"
+          page="hero"
+          replace
+          tone="light"
+          context={`VIP tours ${q}`}
+        />
+      </div>
 
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

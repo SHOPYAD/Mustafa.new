@@ -296,7 +296,7 @@ export default function HotelFormModal({
       whatsappNumber: formData.whatsappNumber.replace(/[^\d]/g, "") || DEFAULT_WA,
       whatsappMessageAr:
         formData.whatsappMessageAr ||
-        `مرحباً الريان للسياحة، أرغب بحجز إقامة في ${formData.nameAr}.`,
+        `مرحباً لوناليزا للسياحة والسفر، أرغب بحجز إقامة في ${formData.nameAr}.`,
       whatsappMessageEn:
         formData.whatsappMessageEn ||
         `Hello Alrayyan Tourism, I would like to book a stay at ${formData.nameEn}.`,
@@ -380,7 +380,7 @@ export default function HotelFormModal({
                         formData.whatsappMessageAr ||
                         (editHotel
                           ? formData.whatsappMessageAr
-                          : `مرحباً الريان للسياحة، أرغب بحجز إقامة في ${nameAr}.`),
+                          : `مرحباً لوناليزا للسياحة والسفر، أرغب بحجز إقامة في ${nameAr}.`),
                     });
                   }}
                   placeholder="أتلانتس النخلة دبي"

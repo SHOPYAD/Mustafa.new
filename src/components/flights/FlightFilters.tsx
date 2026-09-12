@@ -20,6 +20,9 @@ type Props = {
   airlines: AirlineOpt[];
   originAirports: AirportOpt[];
   destAirports: AirportOpt[];
+  layoverAirports?: AirportOpt[];
+  fareBrands?: string[];
+  baggageKgs?: number[];
   maxDuration: number;
   priceBounds: { min: number; max: number; currency: string };
 };
@@ -46,9 +49,9 @@ function DualRange({
 }) {
   return (
     <div className="relative h-8">
-      <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-slate-200" />
+      <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-purple-100" />
       <div
-        className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-[#10b981]"
+        className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#2e1065] via-purple-700 to-amber-500 shadow-xs"
         style={{
           left: `${((start - min) / Math.max(1, max - min)) * 100}%`,
           right: `${((max - end) / Math.max(1, max - min)) * 100}%`,
@@ -60,7 +63,7 @@ function DualRange({
         max={max}
         value={start}
         onChange={(e) => onChange(Math.min(Number(e.target.value), end), end)}
-        className="pointer-events-none absolute inset-x-0 top-1/2 h-8 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-[#051741] [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-[#051741]"
+        className="pointer-events-none absolute inset-x-0 top-1/2 h-8 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-[#2e1065] [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-[#2e1065]"
       />
       <input
         type="range"
@@ -68,7 +71,7 @@ function DualRange({
         max={max}
         value={end}
         onChange={(e) => onChange(start, Math.max(Number(e.target.value), start))}
-        className="pointer-events-none absolute inset-x-0 top-1/2 h-8 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-[#10b981] [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-[#10b981]"
+        className="pointer-events-none absolute inset-x-0 top-1/2 h-8 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-amber-500 [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-amber-500"
       />
     </div>
   );
@@ -93,7 +96,12 @@ export function defaultFilters(
     priceMax: priceBounds.max || 0,
     originAirports: [],
     destAirports: [],
+    layoverAirports: [],
     freeCancellation: false,
+    changeableOnly: false,
+    overnightOnly: false,
+    fareBrands: [],
+    baggageKg: null,
   };
 }
 
@@ -124,6 +132,49 @@ export function airlineOptions(items: Itinerary[]): AirlineOpt[] {
     }
   }
   return Array.from(map.values()).sort((a, b) => a.minPrice - b.minPrice);
+}
+
+export function layoverOptions(items: Itinerary[]): AirportOpt[] {
+  const map = new Map<string, AirportOpt>();
+  for (const item of items) {
+    for (const code of new Set(
+      item.legs.flatMap((leg) => {
+        const via = (leg.layovers || []).map((s) => s.displayCode || s.airport).filter(Boolean);
+        const segs = leg.segments || [];
+        for (let i = 0; i < segs.length - 1; i += 1) {
+          const mid = segs[i]?.destination?.displayCode;
+          if (mid) via.push(mid);
+        }
+        return via;
+      })
+    )) {
+      const prev = map.get(code);
+      map.set(code, { code, name: code, count: (prev?.count || 0) + 1 });
+    }
+  }
+  return Array.from(map.values()).sort((a, b) => b.count - a.count);
+}
+
+export function fareBrandOptions(items: Itinerary[]): string[] {
+  const set = new Set<string>();
+  for (const item of items) {
+    for (const fare of item.fareFamilies) {
+      const name = String(fare.name || "").trim();
+      if (name) set.add(name);
+    }
+  }
+  return Array.from(set).sort((a, b) => a.localeCompare(b));
+}
+
+export function baggageKgOptions(items: Itinerary[]): number[] {
+  const set = new Set<number>();
+  for (const item of items) {
+    for (const fare of item.fareFamilies) {
+      const kg = fare.baggageDetail?.checked?.status === "included" ? fare.baggageDetail.checked.kg : undefined;
+      if (kg && kg > 0) set.add(kg);
+    }
+  }
+  return Array.from(set).sort((a, b) => a - b);
 }
 
 export function airportOptions(items: Itinerary[], end: "origin" | "destination"): AirportOpt[] {
@@ -160,8 +211,8 @@ function Chip({
       className={cn(
         "rounded-full px-3 py-1.5 text-xs font-bold transition",
         active
-          ? "bg-[#051741] text-white shadow-sm"
-          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-xs"
+          : "bg-slate-100 text-slate-700 hover:bg-purple-50 hover:text-purple-950 border border-slate-200/80"
       )}
     >
       {children}
@@ -176,6 +227,9 @@ export default function FlightFilters({
   airlines,
   originAirports,
   destAirports,
+  layoverAirports = [],
+  fareBrands = [],
+  baggageKgs = [],
   maxDuration,
   priceBounds,
 }: Props) {
@@ -203,7 +257,7 @@ export default function FlightFilters({
     });
   };
 
-  const toggleList = (key: "airlines" | "originAirports" | "destAirports", value: string) => {
+  const toggleList = (key: "airlines" | "originAirports" | "destAirports" | "layoverAirports" | "fareBrands", value: string) => {
     const current = filters[key];
     const has = current.includes(value);
     onChange({
@@ -213,12 +267,12 @@ export default function FlightFilters({
   };
 
   return (
-    <aside className="overflow-hidden rounded-3xl border border-[#051741]/10 bg-white shadow-[0_12px_40px_rgba(5,23,65,0.06)]">
-      <div className="flex items-center justify-between bg-[#051741] px-4 py-3 text-white">
-        <h2 className="text-sm font-bold">{copy.filters}</h2>
+    <aside className="overflow-hidden rounded-3xl border border-purple-900/15 bg-white shadow-[0_12px_40px_rgba(46,16,101,0.08)]">
+      <div className="flex items-center justify-between bg-gradient-to-r from-[#1b053a] via-[#2e1065] to-[#3b0764] px-4 py-3.5 text-white shadow-sm">
+        <h2 className="text-sm font-black">{copy.filters}</h2>
         <button
           type="button"
-          className="text-xs font-semibold text-[#34d399] hover:text-white"
+          className="text-xs font-black text-amber-400 hover:text-amber-300 transition-colors cursor-pointer"
           onClick={() =>
             onChange({
               ...defaultFilters(maxDuration, priceBounds),
@@ -231,31 +285,40 @@ export default function FlightFilters({
       </div>
 
       <div className="space-y-5 p-4">
-        <section>
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, freeCancellation: !filters.freeCancellation })}
-            className={cn(
-              "flex w-full items-center justify-between rounded-xl border px-3 py-2.5 text-start text-xs font-bold transition",
-              filters.freeCancellation
-                ? "border-[#10b981] bg-emerald-50 text-[#051741]"
-                : "border-slate-200 text-slate-600 hover:bg-slate-50"
-            )}
-          >
-            <span>{copy.freeCancellation}</span>
-            <span
+        <section className="space-y-2">
+          {(
+            [
+              ["freeCancellation", copy.freeCancellation],
+              ["changeableOnly", copy.changeableFilter],
+              ["overnightOnly", copy.overnightFilter],
+            ] as const
+          ).map(([key, label]) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => onChange({ ...filters, [key]: !filters[key] })}
               className={cn(
-                "inline-flex h-4 w-4 items-center justify-center rounded border",
-                filters.freeCancellation ? "border-[#10b981] bg-[#10b981] text-white" : "border-slate-300"
+                "flex w-full items-center justify-between rounded-xl border px-3 py-2.5 text-start text-xs font-bold transition",
+                filters[key]
+                  ? "border-purple-600 bg-purple-50 text-[#1e1b4b]"
+                  : "border-slate-200 text-slate-700 hover:bg-slate-50"
               )}
             >
-              {filters.freeCancellation ? <Check size={10} /> : null}
-            </span>
-          </button>
+              <span>{label}</span>
+              <span
+                className={cn(
+                  "inline-flex h-4 w-4 items-center justify-center rounded border",
+                  filters[key] ? "border-purple-600 bg-[#2e1065] text-white" : "border-slate-300"
+                )}
+              >
+                {filters[key] ? <Check size={10} /> : null}
+              </span>
+            </button>
+          ))}
         </section>
 
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.stops}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.stops}</p>
           <div className="flex flex-wrap gap-2">
             {stopOpts.map(([value, label]) => (
               <Chip key={value} active={filters.stops.includes(value)} onClick={() => toggleStop(value)}>
@@ -267,8 +330,8 @@ export default function FlightFilters({
 
         {priceBounds.max > priceBounds.min ? (
           <section>
-            <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.priceRange}</p>
-            <p className="mb-1 text-xs font-semibold text-[#051741]">
+            <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.priceRange}</p>
+            <p className="mb-1 text-xs font-bold text-[#2e1065]">
               {formatFlightPrice(filters.priceMin || priceBounds.min, priceBounds.currency)} —{" "}
               {formatFlightPrice(filters.priceMax || priceBounds.max, priceBounds.currency)}
             </p>
@@ -283,7 +346,7 @@ export default function FlightFilters({
         ) : null}
 
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.airlines}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.airlines}</p>
           <div className="max-h-56 space-y-1.5 overflow-auto">
             {airlines.map((row) => {
               const active = filters.airlines.includes(row.name);
@@ -294,12 +357,12 @@ export default function FlightFilters({
                   onClick={() => toggleList("airlines", row.name)}
                   className={cn(
                     "flex w-full items-center gap-2 rounded-xl px-2 py-2 text-start text-sm transition",
-                    active ? "bg-emerald-50 text-[#051741]" : "text-slate-500 hover:bg-slate-50"
+                    active ? "bg-purple-50 text-[#1e1b4b] font-bold" : "text-slate-700 hover:bg-slate-50"
                   )}
                 >
                   <AirlineLogo code={row.code} name={row.name} logoUrl={row.logoUrl} size="sm" className="rounded-md" />
-                  <span className="min-w-0 flex-1 truncate font-semibold">{row.name}</span>
-                  <span className="text-[11px] text-[#059669]">
+                  <span className="min-w-0 flex-1 truncate font-bold text-slate-800">{row.name}</span>
+                  <span className="text-[11px] font-extrabold text-[#2e1065]">
                     {formatFlightPrice(row.minPrice, row.currency)}
                   </span>
                 </button>
@@ -310,7 +373,7 @@ export default function FlightFilters({
 
         {originAirports.length > 1 ? (
           <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.originAirports}</p>
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.originAirports}</p>
             <div className="flex flex-wrap gap-2">
               {originAirports.map((row) => (
                 <Chip
@@ -327,7 +390,7 @@ export default function FlightFilters({
 
         {destAirports.length > 1 ? (
           <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.destAirports}</p>
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.destAirports}</p>
             <div className="flex flex-wrap gap-2">
               {destAirports.map((row) => (
                 <Chip
@@ -342,8 +405,25 @@ export default function FlightFilters({
           </section>
         ) : null}
 
+        {layoverAirports.length ? (
+          <section>
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.layoverAirports}</p>
+            <div className="flex flex-wrap gap-2">
+              {layoverAirports.map((row) => (
+                <Chip
+                  key={row.code}
+                  active={filters.layoverAirports.includes(row.code)}
+                  onClick={() => toggleList("layoverAirports", row.code)}
+                >
+                  {row.code} · {row.count}
+                </Chip>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.departWindow}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.departWindow}</p>
           <div className="mb-2 flex flex-wrap gap-1.5">
             {windows.map(([start, end, label]) => (
               <Chip
@@ -355,7 +435,7 @@ export default function FlightFilters({
               </Chip>
             ))}
           </div>
-          <p className="mb-1 text-xs text-slate-500">
+          <p className="mb-1 text-xs font-semibold text-slate-700">
             {hourLabel(filters.departStart)} — {hourLabel(filters.departEnd)}
           </p>
           <DualRange
@@ -368,7 +448,7 @@ export default function FlightFilters({
         </section>
 
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.arriveWindow}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.arriveWindow}</p>
           <div className="mb-2 flex flex-wrap gap-1.5">
             {windows.map(([start, end, label]) => (
               <Chip
@@ -380,7 +460,7 @@ export default function FlightFilters({
               </Chip>
             ))}
           </div>
-          <p className="mb-1 text-xs text-slate-500">
+          <p className="mb-1 text-xs font-semibold text-slate-700">
             {hourLabel(filters.arriveStart)} — {hourLabel(filters.arriveEnd)}
           </p>
           <DualRange
@@ -393,47 +473,85 @@ export default function FlightFilters({
         </section>
 
         <section>
-          <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.duration}</p>
-          <p className="mb-1 text-xs font-semibold text-[#051741]">{formatDuration(filters.maxDuration)}</p>
+          <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.duration}</p>
+          <p className="mb-1 text-xs font-bold text-purple-900">{formatDuration(filters.maxDuration)}</p>
           <input
             type="range"
             min={60}
             max={Math.max(120, maxDuration)}
             value={filters.maxDuration}
             onChange={(e) => onChange({ ...filters, maxDuration: Number(e.target.value) })}
-            className="w-full accent-[#10b981]"
+            className="w-full accent-amber-500 cursor-pointer"
           />
         </section>
 
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.baggageFilter}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.baggageFilter}</p>
           <div className="grid grid-cols-2 gap-2">
-            {(["any", "included", 20, 23] as const).map((opt) => (
+            {(["any", "included", "none", 20, 23] as const).map((opt) => (
               <button
                 key={String(opt)}
                 type="button"
-                onClick={() => onChange({ ...filters, baggage: opt as BaggageFilter })}
+                onClick={() => onChange({ ...filters, baggage: opt as BaggageFilter, baggageKg: null })}
                 className={cn(
-                  "rounded-xl border px-3 py-2 text-xs font-bold",
-                  filters.baggage === opt
-                    ? "border-[#10b981] bg-emerald-50 text-[#051741]"
-                    : "border-slate-200 text-slate-600"
+                  "rounded-xl border px-3 py-2 text-xs font-bold transition cursor-pointer",
+                  filters.baggage === opt && filters.baggageKg == null
+                    ? "border-purple-600 bg-purple-50 text-[#1e1b4b]"
+                    : "border-slate-200 text-slate-700 hover:bg-slate-50"
                 )}
               >
                 {opt === "any"
                   ? copy.baggageAny
                   : opt === "included"
                     ? copy.baggageIncluded
-                    : opt === 20
-                      ? copy.baggage20
-                      : copy.baggage23}
+                    : opt === "none"
+                      ? copy.baggageNone
+                      : opt === 20
+                        ? copy.baggage20
+                        : copy.baggage23}
               </button>
             ))}
           </div>
+          {baggageKgs.length ? (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {baggageKgs.map((kg) => (
+                <Chip
+                  key={kg}
+                  active={filters.baggageKg === kg}
+                  onClick={() =>
+                    onChange({
+                      ...filters,
+                      baggageKg: filters.baggageKg === kg ? null : kg,
+                      baggage: "any",
+                    })
+                  }
+                >
+                  {copy.baggageKg(kg)}
+                </Chip>
+              ))}
+            </div>
+          ) : null}
         </section>
 
+        {fareBrands.length > 1 ? (
+          <section>
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.fareBrandFilter}</p>
+            <div className="flex flex-wrap gap-2">
+              {fareBrands.slice(0, 18).map((name) => (
+                <Chip
+                  key={name}
+                  active={filters.fareBrands.includes(name)}
+                  onClick={() => toggleList("fareBrands", name)}
+                >
+                  {name}
+                </Chip>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#051741]/60">{copy.cabinFilter}</p>
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.cabinFilter}</p>
           <div className="flex flex-wrap gap-2">
             {CABINS.map((cabin) => (
               <Chip

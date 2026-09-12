@@ -37,7 +37,7 @@ export function KpiSparkCard({
   const delta = last - prev;
   return (
     <Link href={href} className="block h-full">
-      <Card className="h-full overflow-hidden border-border py-0 transition-colors hover:border-emerald-500/40">
+      <Card className="h-full overflow-hidden border-border py-0 transition-colors hover:border-purple-500/40 dark:hover:border-purple-400/40">
         <CardContent className="flex h-full flex-col gap-3 p-4">
           <div className="flex items-start justify-between gap-2">
             <div>
@@ -46,7 +46,7 @@ export function KpiSparkCard({
                 {value}
               </p>
             </div>
-            <div className="flex size-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400">
+            <div className="flex size-9 items-center justify-center rounded-lg bg-purple-500/10 text-purple-700 dark:bg-purple-500/20 dark:text-amber-400">
               <Icon className="size-4" />
             </div>
           </div>
@@ -56,8 +56,8 @@ export function KpiSparkCard({
                 <Area
                   type="monotone"
                   dataKey="count"
-                  stroke="#10b981"
-                  fill="#10b981"
+                  stroke="#7c3aed"
+                  fill="#7c3aed"
                   fillOpacity={0.16}
                   strokeWidth={1.75}
                   dot={false}
@@ -72,7 +72,7 @@ export function KpiSparkCard({
               <span
                 className={
                   delta >= 0
-                    ? " font-semibold text-emerald-600 dark:text-emerald-400"
+                    ? " font-semibold text-purple-700 dark:text-amber-400"
                     : " font-semibold text-rose-600 dark:text-rose-400"
                 }
               >

@@ -1,15 +1,16 @@
-export const ADMIN_THEME_STORAGE_KEY = "alrayyan_admin_theme";
+export const ADMIN_THEME_STORAGE_KEY = "lonaliza_admin_theme";
+export const LEGACY_ADMIN_THEME_STORAGE_KEY = "alrayyan_admin_theme";
 
 export type AdminTheme = "light" | "dark";
 
 export function readStoredAdminTheme(): AdminTheme {
   try {
-    const stored = localStorage.getItem(ADMIN_THEME_STORAGE_KEY);
+    const stored = localStorage.getItem(ADMIN_THEME_STORAGE_KEY) || localStorage.getItem(LEGACY_ADMIN_THEME_STORAGE_KEY);
     if (stored === "light" || stored === "dark") return stored;
   } catch {
     /* ignore */
   }
-  return "dark";
+  return "light";
 }
 
 export function applyAdminTheme(theme: AdminTheme) {
@@ -22,6 +23,7 @@ export function applyAdminTheme(theme: AdminTheme) {
 export function persistAdminTheme(theme: AdminTheme) {
   try {
     localStorage.setItem(ADMIN_THEME_STORAGE_KEY, theme);
+    localStorage.setItem(LEGACY_ADMIN_THEME_STORAGE_KEY, theme);
   } catch {
     /* ignore */
   }

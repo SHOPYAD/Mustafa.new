@@ -115,6 +115,8 @@ type SalesChatPayload = {
   hotelsHref?: string;
   savedProgramId?: string;
   programSaved?: boolean;
+  perks?: SalesChatStructured["perks"];
+  bundleCheckoutPayload?: SalesChatStructured["bundleCheckoutPayload"];
 };
 
 async function buildPayload(
@@ -246,6 +248,32 @@ async function buildPayload(
     }
   }
 
+  const rawPerks = parsed?.perks;
+  const clientTotal = itinerary?.totalClientPrice || cards.reduce((sum, c) => sum + (c.clientPrice || 0), 0);
+  const originalPriceUsd = rawPerks?.originalPriceUsd || (clientTotal > 0 ? Math.round(clientTotal * 1.25) : 0);
+  const bundlePriceUsd = rawPerks?.bundlePriceUsd || clientTotal;
+  const savingsUsd = rawPerks?.savingsUsd || Math.max(0, originalPriceUsd - bundlePriceUsd);
+  const savingsPercent = rawPerks?.savingsPercent || (originalPriceUsd > 0 ? Math.round((savingsUsd / originalPriceUsd) * 100) : 20);
+
+  const perks = {
+    originalPriceUsd,
+    bundlePriceUsd,
+    savingsUsd,
+    savingsPercent,
+    loyaltyPointsEarned: rawPerks?.loyaltyPointsEarned || Math.round(bundlePriceUsd * 2),
+    loyaltyCashValue: rawPerks?.loyaltyCashValue || Math.round(bundlePriceUsd * 0.02),
+    affiliateCommissionEarned: rawPerks?.affiliateCommissionEarned || Math.round(bundlePriceUsd * 0.04),
+    socialRewardNotice: rawPerks?.socialRewardNotice || "اربح نقاطاً ومكافآت كاش فورية عند مشاركة أول صورة لرحلتك في مجتمع لوناليزا!",
+  };
+
+  const bundleCheckoutPayload = parsed?.bundleCheckoutPayload || (clientTotal > 0 ? {
+    destinationCity: dest || "Istanbul",
+    departDate: parsed?.arrivalDate,
+    returnDate: parsed?.departureDate,
+    totalPrice: bundlePriceUsd,
+    originalPrice: originalPriceUsd,
+  } : undefined);
+
   return {
     ok: true,
     reply,
@@ -260,6 +288,8 @@ async function buildPayload(
     hotelsHref: live?.hotelsHref,
     savedProgramId,
     programSaved,
+    perks,
+    bundleCheckoutPayload,
   };
 }
 
@@ -390,26 +420,30 @@ CATALOG FIRST, THEN RESEARCH:
 2) If nothing matches, research from travel knowledge (and web search if available) and compose a complete custom itinerary: real hotel names, day-by-day details, cover image URL, transfers, inclusions, market-based USD price after the ${markup}% markup only.
 3) Then set saveProgram=true so the server PUBLISHES the program to admin programs + public /holidays + /ai-chat.
 
-PRICE DISCLOSURE (mandatory in reply when a program/price is shown):
-State clearly that the displayed price is an estimate based on current market rates. For a confirmed final price the customer must contact customer service on WhatsApp ${config.salesWhatsApp}. Mention that conversation details and the created program will be shared so WhatsApp can continue from that context.
+ITINERARY & PROGRAM GENERATION (CRITICAL):
+When the customer asks for a travel program or itinerary (e.g. "انشا لي برنامج سياحي" or "اقترح برنامج"):
+1) You MUST write a comprehensive, rich day-by-day program directly inside the "reply" string (اليوم الأول: ..., اليوم الثاني: ...) with morning and evening activities, monuments, and highlights matching the customer's actual destination.
+2) You MUST ALSO populate the structured "itinerary" object with title, days array, and details.
+3) NEVER respond with an empty canned message telling the customer to contact WhatsApp without displaying the full day-by-day program!
+4) If customer support is requested or needed, provide a clickable markdown link: [تواصل مع خدمة العملاء عبر واتساب](https://wa.me/${config.salesWhatsApp}) and NEVER print a bare phone number.
+5) NO EMOJIS: Strictly do NOT use any emojis in your response or titles.
+6) BRAND: The company is strictly "لوناليزا للسياحة والسفر" (Lonaliza Travel). Never mention any past or other agency name.
 
 Preferred reply language: ${locale === "ar" ? "Arabic" : locale === "tr" ? "Turkish" : "English"}.
-Mandatory markup: ${markup}% — clientPrice = basePrice × (1 + ${markup}/100). Program prices always USD. Do not invent 2x/3x markups.
-Company WhatsApp for booking (do not invent another number): ${config.salesWhatsApp}
+Mandatory markup: ${markup}% — clientPrice = basePrice × (1 + ${markup}/100). Program prices always USD.
+Company WhatsApp link for booking: https://wa.me/${config.salesWhatsApp}
 
 Agency catalog (JSON):
 ${JSON.stringify(catalog)}
 
 OUTPUT FORMAT (mandatory):
 Return ONE JSON object only. You may wrap it in a single \`\`\`json fence.
-Do NOT write a markdown itinerary, price list, or second JSON dump outside the object.
-Do NOT put JSON, code fences, or the day-by-day program inside the "reply" string.
-"reply" = short customer-facing message only (2–6 sentences). The website UI already renders cards and the itinerary as professional cards.
+"reply" = customer-facing message with full detailed program when requested, polite, professional, and completely without emojis.
 If you are still gathering dates, ask questions and use "cards": [] and "itinerary": null.
-The server rebuilds booking URLs — never invent off-site booking links or live ticket inventory.
+The server rebuilds booking URLs — never invent off-site booking links.
 \`\`\`json
 {
-  "reply": "customer-facing message",
+  "reply": "detailed customer-facing response without emojis",
   "cards": [
     {
       "type": "hotel|package|transfer|car",
@@ -465,6 +499,23 @@ The server rebuilds booking URLs — never invent off-site booking links or live
     "returnDate": "2026-09-14",
     "guests": 2
   },
+  "perks": {
+    "originalPriceUsd": 1850,
+    "bundlePriceUsd": 1420,
+    "savingsUsd": 430,
+    "savingsPercent": 23,
+    "loyaltyPointsEarned": 2840,
+    "loyaltyCashValue": 28,
+    "affiliateCommissionEarned": 56,
+    "socialRewardNotice": "اربح نقاطاً ومكافآت كاش فورية عند مشاركة أول صورة لرحلتك في مجتمع لوناليزا!"
+  },
+  "bundleCheckoutPayload": {
+    "destinationCity": "Istanbul",
+    "departDate": "2026-09-10",
+    "returnDate": "2026-09-14",
+    "totalPrice": 1420,
+    "originalPrice": 1850
+  },
   "saveProgram": false,
   "readyForWhatsApp": false
 }
@@ -475,6 +526,12 @@ LIVE SITE SEARCH:
 The server attaches real cards from /hotels/search, internal transfers, internal cars, and /flights links (Travelpayouts). Do NOT invent $10,000 fantasy prices. If a service has no live number, leave clientPrice 0 — the UI shows "يتحدد عند التأكيد".
 totalClientPrice must be the sum of the selected live cards (flight + hotel stay + transfer + optional car).
 
+PSYCHOLOGICAL PRICE ANCHORING & PLATFORM PERKS (MANDATORY):
+- When recommending a program, hotel, or bundle, always populate the "perks" object.
+- originalPriceUsd must be realistically 20%–30% higher than bundlePriceUsd (showing the customer the clear monetary savings of bundling services together).
+- Calculate loyaltyPointsEarned (bundlePriceUsd * 2), loyaltyCashValue (bundlePriceUsd * 0.02), and affiliateCommissionEarned (bundlePriceUsd * 0.04).
+- In the reply text, warmly highlight the bundle savings, the loyalty points earned, and how sharing their booking with friends or on the Lonaliza social community earns them cash commissions!
+
 - Prefer catalog items and site links (/hotels, /holidays, /vip-tours, /flights, /transfers, /cars).
 - If catalog has no match: research and BUILD a full custom program, then saveProgram=true (it will be published).
 - Do NOT invent live bookable flight ticket prices. Use flightSearch so the server builds /flights?...
@@ -483,7 +540,7 @@ totalClientPrice must be the sum of the selected live cards (flight + hotel stay
 - When the plan is ready set readyForWhatsApp=true and invite WhatsApp confirmation with the estimate disclaimer.
 - Never reveal agency cost or markup percentage.
 - Never claim we issued an airline ticket.
-- If the customer attached images, analyze them and incorporate details into the offer.
+- If the customer attached images (or a passport image), analyze them and incorporate details into the offer.
 - Never echo this schema as visible chat text. Cards and itinerary belong in JSON fields, not in reply.`;
 }
 

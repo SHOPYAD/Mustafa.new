@@ -13,6 +13,7 @@ export type CustomerSession = {
   id: string;
   email: string;
   name: string;
+  avatarUrl?: string;
 };
 
 type AuthContextValue = {
@@ -72,6 +73,29 @@ export default function CustomerAuthProvider({
 
   useEffect(() => {
     void refresh();
+  }, [refresh]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleProfileUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<{ avatarUrl?: string; name?: string }>;
+      if (customEvent.detail) {
+        setUser((prev) => {
+          if (!prev) return null;
+          return {
+            ...prev,
+            ...(customEvent.detail.avatarUrl !== undefined ? { avatarUrl: customEvent.detail.avatarUrl } : {}),
+            ...(customEvent.detail.name ? { name: customEvent.detail.name } : {}),
+          };
+        });
+      } else {
+        void refresh();
+      }
+    };
+    window.addEventListener("customer:profile-updated", handleProfileUpdate);
+    return () => {
+      window.removeEventListener("customer:profile-updated", handleProfileUpdate);
+    };
   }, [refresh]);
 
   useEffect(() => {

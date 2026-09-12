@@ -14,6 +14,7 @@ import type { Dictionary, Locale } from "./types";
 import ar from "./dictionaries/ar";
 import en from "./dictionaries/en";
 import tr from "./dictionaries/tr";
+import fr from "./dictionaries/fr";
 import {
   applyFlatToDictionary,
   BUILTIN_LOCALE_META,
@@ -26,10 +27,11 @@ import {
   persistLocale,
   type LocaleScope,
 } from "./locale-storage";
-const builtinDictionaries: Record<"ar" | "en" | "tr", Dictionary> = {
+const builtinDictionaries: Record<"ar" | "en" | "tr" | "fr", Dictionary> = {
   ar,
   en,
   tr,
+  fr,
 };
 
 type LocaleContextType = {
@@ -89,7 +91,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const applyPayload = useCallback(
     (payload: {
       locales?: RegisteredLocale[];
-      overrides?: Partial<Record<"ar" | "en" | "tr", Record<string, string>>>;
+      overrides?: Partial<Record<Locale, Record<string, string>>>;
       values?: Record<string, Record<string, string>>;
     }) => {
       const nextLocales = Array.isArray(payload.locales) && payload.locales.length
@@ -101,6 +103,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
         ar: applyFlatToDictionary(ar, payload.overrides?.ar || {}),
         en: applyFlatToDictionary(en, payload.overrides?.en || {}),
         tr: applyFlatToDictionary(tr, payload.overrides?.tr || {}),
+        fr: applyFlatToDictionary(fr, payload.overrides?.fr || {}),
       };
       for (const meta of nextLocales) {
         if (isBuiltInLocale(meta.code)) continue;
@@ -121,7 +124,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       const data = (await res.json()) as {
         ok?: boolean;
         locales?: RegisteredLocale[];
-        overrides?: Partial<Record<"ar" | "en" | "tr", Record<string, string>>>;
+        overrides?: Partial<Record<Locale, Record<string, string>>>;
         values?: Record<string, Record<string, string>>;
       };
       if (data?.ok) applyPayload(data);
@@ -137,15 +140,32 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const params =
       typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
-    const editorHl = params?.get("hl") || "";
-    const editorMode = params?.get("editor") === "1" || params?.get("editor") === "true";
-    if (editorMode && (editorHl === "ar" || editorHl === "en" || editorHl === "tr")) {
-      setLocaleState(editorHl);
+    const urlLocale = params?.get("locale") || params?.get("lang") || params?.get("hl") || "";
+    const isSupported = urlLocale === "ar" || urlLocale === "en" || urlLocale === "tr" || urlLocale === "fr";
+    if (isSupported) {
+      setLocaleState(urlLocale as Locale);
+      persistLocale(scopeRef.current, urlLocale as Locale);
     } else {
       setLocaleState(asLocale(loadLocale(scope)));
     }
     setHydrated(true);
   }, [scope]);
+
+  // Smart Iframe Sync: listen to parent window language changes
+  useEffect(() => {
+    const onMessage = (e: MessageEvent) => {
+      if (e.data?.type === "SET_LOCALE" && typeof e.data?.locale === "string") {
+        const next = e.data.locale;
+        if (next === "ar" || next === "en" || next === "tr" || next === "fr") {
+          setLocaleState(next as Locale);
+          persistLocale(scopeRef.current, next as Locale);
+          applyDocumentLocale(next as Locale, lookupDir(next as Locale, locales));
+        }
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [locales]);
 
   useEffect(() => {
     applyDocumentLocale(locale, lookupDir(locale, locales));
@@ -155,6 +175,15 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(next);
     persistLocale(scopeRef.current, next);
     applyDocumentLocale(next, lookupDir(next, locales));
+
+    // Smart Iframe Broadcast: sync all embedded iframes in the document immediately
+    if (typeof document !== "undefined") {
+      document.querySelectorAll("iframe").forEach((frame) => {
+        try {
+          frame.contentWindow?.postMessage({ type: "SET_LOCALE", locale: next }, "*");
+        } catch {}
+      });
+    }
   }, [locales]);
 
   const toggleLocale = useCallback(() => {

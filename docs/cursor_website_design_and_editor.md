@@ -1,5 +1,5 @@
 # Website design and editor
-_Exported on 8/31/2026 at 16:37:28 GMT+3 from Cursor (3.18.9)_
+_Exported on 8/31/2026 at 18:45:34 GMT+3 from Cursor (3.18.9)_
 
 ---
 
@@ -4418,4 +4418,619 @@ output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7
 كل بطاقة مستقلة: تفعيل، إعدادات، اختبار، حفظ. المجموعات: GDS مباشر | سكرابر | ترافل بايوتس. الحيّ (إير سكرابر، ترافل بايوتس، محرك الفنادق…) ما زال يعمل. الجدد (PKFARE، Seeru، Amadeus، Travelport، Biletbank، IATI، Bilet Dükkanı، Turna، RateHawk، TBO، سيارات وترانسفير) **قريباً** ومتوقفون حتى تفعّلهم بعد التكامل — الاختبار لا يزوّر نجاحاً.
 
 شعارات CDN الرسمية رجعت 404 فاستُخدمت بطاقات اسم محلية؛ يمكن لاحقاً استبدالها بملفات الشعار الرسمية إن وفّرتها.
+
+---
+
+**User**
+
+https://github.com/SHOPYAD/Mustafa.new.git  قم بتحديث المستودع الخاص بي باخر نسخة من المشروع الحالي 
+
+---
+
+**Cursor**
+
+سأرفع أحدث نسخة من المشروع الحالي
+
+ إلى مستودعك على GitHub، مع استبعاد الأسرار وملفات البيئة.
+
+تخطيْت ربط GitHub، لذلك الرفع إلى `SHOPYAD/Mustafa.new` قد يتوقف عند تسجيل الدخول. إن أردت الإكمال، اربط الحساب أو أرسل صلاحية الدفع — الأسرار وملفات `.env` لن تُرفع.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 5:01 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: b497fd7b-d15b-4172-822b-f78cc8593137
+title: Push project to GitHub
+tool_call_id: call-a5b2831b-26fa-4309-97e9-082f4051aac9-10
+fc_oyQk9UG-6jKPYy-a33c88972f9cdc92_1
+agent_id: b497fd7b-d15b-4172-822b-f78cc8593137
+detail: <user_visible_high_level_summary>
+الالتزام المحلي اكتمل، لكن الدفع إلى GitHub توقف بسبب المصادقة: لا يوجد `gh` ولا بيانات اعتماد HTTPS، ومفتاح SSH مرفوض. المستودع المستهدف: https://github.com/SHOPYAD/Mustafa.new — لم يُحدَّث على GitHub بعد. لم تُرفع الأسرار (.env و.data و.cursor وغيرها).
+</user_visible_high_level_summary>
+<response>
+الالتزام المحلي نجح، لكن **الدفع إلى GitHub فشل بسبب المصادقة**. المستودع على GitHub لم يُحدَّث بعد.
+
+**المستودع:** https://github.com/SHOPYAD/Mustafa.new
+
+## ما تم محلياً
+- المشروع كان مستودع Git مسبقاً على `main`.
+- تم توجيه `origin` إلى `https://github.com/SHOPYAD/Mustafa.new.git` (كان يشير إلى ريبو alrayyan).
+- تم تحديث `.gitignore` ثم عمل commitlein:
+ - `5c5b9b9` — sync: current LIOTRIP/Alrayyan production tree to GitHub
+ - `3a93082` — sync: include latest homepage template tweaks
+- شجرة العمل نظيفة، والفرع متقدم محلياً بـ commitين.
+
+## سبب توقف الدفع (لم يُستخدم --force)
+1. `gh` غير مثبت، فلا يمكن `gh auth status`.
+2. HTTPS: `fatal: could not read Username for 'https://github.com': No such device or address`
+3. SSH: `Permission denied (publickey)`
+
+يبدو أن ربط GitHub (Connect GitHub) ما زال غير مكتمل على هذا السيرفر. بعد تسجيل الدخول (`gh auth login` أو إضافة remote credentials)، يكفي: `git push -u origin HEAD`.
+
+لم يُرفض الدفع بسبب تواريخ غير مترابطة أو non-fast-forward؛ المشكلة مصادقة فقط.
+
+## ما لم يُضمَّن في الالتزام (أسرار / تشغيل)
+- `.env` و `.env.local` (`.env.example` مضمّن)
+- `.data/` بالكامل (مفاتيح الإعلانات، الاتصالات، MCP، مزوّدو الخدمات، توكنات السوشيال، ffmpeg، …)
+- `hotel-engine/.env` و`redis.conf` ومفاتيح WireGuard و`node_modules`/`dist`/`storage`
+- ثنائي PocketBase و`pb_data/`
+- `node_modules` و`.next`
+- `.cursor/` (قد يحتوي توكنات MCP)
+- بقايا `.well-known/acme-challenge/`
+
+`public/` (الشعارات والمصادر) مضمّنة. لا حاجة لـ force push الآن.
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\b497fd7b-d15b-4172-822b-f78cc8593137.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+[تحديث المستودع](b497fd7b-d15b-4172-822b-f78cc8593137) حفظ المشروع محلياً على `main`، لكن **GitHub لم يُحدَّث**: لا يوجد تسجيل دخول (`gh` غير مثبت، HTTPS بلا بيانات، SSH مرفوض).
+
+المستهدف: https://github.com/SHOPYAD/Mustafa.new  
+الأسرار (`.env`، `.data/`، التوكنات) لم تُرفع — وهذا صحيح.
+
+لإكمال الرفع: سجّل دخول GitHub على هذا السيرفر، أو اطلب ربط الحساب صراحة، ثم أكمّل بـ `git push -u origin HEAD`.
+
+---
+
+**User**
+
+قم بالاتصال بحساب الجيتهاب الذي اعطيتك مستودعه وليس الجيتهاب المستودع الريان الذي كان مفعل عليه مسبقا لاني حذفته 
+
+---
+
+**Cursor**
+
+سأربط حساب GitHub لمستودعك `SHOPYAD/Mustafa.new` (وليس ريبو الريان المحذوف)، ثم أكمل الرفع.
+
+---
+
+**User**
+
+جرب طريقة اخرى غير ربط كورسور 
+
+---
+
+**Cursor**
+
+سأجرّب طريقاً آخر بدون ربط Cursor: مفتاح SSH أو توكن `gh`/HTTPS للرفع إلى `SHOPYAD/Mustafa.new`.
+
+سأجرّب SSH أو توكن مباشر بدون ربط Cursor. إن احتجت خطوة منك (إضافة مفتاح النشر في إعدادات المستودع) سأعطيك المفتاح فوراً.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 5:03 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+title: Push via SSH or PAT
+tool_call_id: call-cd599558-f921-4465-8a02-78583576419f-12
+fc_468da562-9f0c-9f00-a3c8-9f4845e84234_0
+agent_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+detail: <user_visible_high_level_summary>
+المصادقة فشلت (Permission denied). تم تجهيز كل شيء محلياً: الفرع main متقدم بـ commitين، وorigin مضبوط على المستودع الجديد، ومفتاح SSH جاهز. أضف المفتاح العام أدناه كمفتاح نشر بكتابة على GitHub ثم أخبرني للمتابعة بالدفع دون force. لم يُدفع أي سر.
+</user_visible_high_level_summary>
+<response>
+## النتيجة: بانتظار إضافة مفتاح النشر
+
+**لم يتم الدفع** — GitHub رفض المفتاح: `Permission denied (publickey)`. لا يوجد `GH_TOKEN` / `GITHUB_TOKEN`، و`gh` غير مثبت، ولا ملف `/root/.github_pat`.
+
+### ما تم تجهيزه
+- الفرع `main` نظيف ومتقدم عن `origin/main` بـ **commitين** (`3a93082`, `5c5b9b9`)
+- `origin` = `git@github.com-mustafa:SHOPYAD/Mustafa.new.git`
+- مفتاح ed25519: `/root/.ssh/mustafa_new_github` + إعداد `Host github.com-mustafa`
+
+### المفتاح العام (أضفه الآن)
+
+```
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFfEwhQa+aaEu18TBVvpZdbuNGubxMttI+800dC5yxF1 mustafa.new-deploy@liotrip.com
+```
+
+**المسار على GitHub:** 
+https://github.com/SHOPYAD/Mustafa.new/settings/keys → **Add deploy key** → الصق المفتاح → فعّل **Allow write access** → حفظ.
+
+(بديل: مفتاح SSH على الحساب من Settings → SSH and GPG keys.)
+
+### بعد الإضافة
+اكتب هنا: **«المفتاح جاهز»** — سأعيد اختبار SSH ثم `git push -u origin HEAD` **بدون force**.
+
+**بديل بدون SSH:** ضع PAT بصلاحية `repo` في `/root/.github_pat` ثم `chmod 600`، واكتب **«token ready»** (لا تلصق التوكن في المحادثة).
+
+لم تُدفع أسرار، ولم يُغيَّر `user.name` / `user.email`.
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\35ff1567-66ad-4a35-8cc7-ff3dd3b84076.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+[الدفع عبر SSH](35ff1567-66ad-4a35-8cc7-ff3dd3b84076) جهّز كل شيء محلياً، وما زال ينتظر صلاحية من GitHub.
+
+أضف هذا المفتاح في المستودع  
+https://github.com/SHOPYAD/Mustafa.new/settings/keys → **Add deploy key** → فعّل **Allow write access**:
+
+```
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFfEwhQa+aaEu18TBVvpZdbuNGubxMttI+800dC5yxF1 mustafa.new-deploy@liotrip.com
+```
+
+بعد الحفظ اكتب **«المفتاح جاهز»** لأكمل الدفع بدون force.
+
+---
+
+**User**
+
+المفتاح جاهز
+
+---
+
+**Cursor**
+
+سأتأكد من اتصال SSH ثم أدفع التحديثات إلى مستودعك.
+
+أتحقق من المفتاح وأرفع الآن إلى `SHOPYAD/Mustafa.new`.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 5:06 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+title: Push after deploy key
+tool_call_id: call-1790c7f9-e39e-4357-8929-c12e902e5a3f-13
+fc_e52a5efa-c8b0-9b35-968f-513e852c246d_0
+agent_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+detail: <user_visible_high_level_summary>
+المصادقة نجحت عبر مفتاح النشر، لكن الدفع رُفض لأن GitHub يحتوي تاريخاً مختلفاً (غير fast-forward / لا يوجد سلف مشترك). لم يُستخدم --force. المحلي: 3a93082 — البعيد: b12fe43. تحتاج قرارك قبل أي دمج أو force.
+</user_visible_high_level_summary>
+<response>
+## المصادقة نجحت — الدفع توقف (بدون force)
+
+**SSH:** نجح — `Hi SHOPYAD/Mustafa.new! You've successfully authenticated...`
+
+**الدفع رُفض:**
+```
+! [rejected] HEAD -> main (fetch first)
+Updates were rejected because the remote contains work that you do not have locally.
+```
+
+| | |
+|---|---|
+| محلي `HEAD` | `3a93082` — sync: include latest homepage template tweaks |
+| بعيد `origin/main` | `b12fe43` — Rename brand from OK Travel… to Liotrip… |
+| التباعد | محلي +3 / بعيد +4، **لا يوجد سلف مشترك** (unrelated histories) |
+
+لم يُستخدم `--force`، ولم يُحدَّث git config، ولم تُدفع أسرار.
+
+**المستودع:** https://github.com/SHOPYAD/Mustafa.new 
+
+أخبرني ماذا تريد قبل المتابعة:
+1. **دمج** (`pull --allow-unrelated-histories` ثم push)، أو 
+2. **استبدال البعيد بالمحلي** (يحتاج موافقتك الصريحة على force — لم يُنفَّذ).
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\35ff1567-66ad-4a35-8cc7-ff3dd3b84076.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+المفتاح يعمل، لكن [الدفع](35ff1567-66ad-4a35-8cc7-ff3dd3b84076) توقف: المستودع على GitHub له تاريخ مختلف عن السيرفر (بدون سلف مشترك). لم أستخدم force.
+
+اختر واحداً:
+
+1. **دمج** التاريخين ثم رفع  
+2. **استبدال** محتوى GitHub بنسخة السيرفر الحالية (يحتاج موافقتك الصريحة على force)
+
+---
+
+**User**
+
+استبدل محتوى المستودع بالكامل بالمشروع المحدث بالكامل كما هو 
+
+---
+
+**Cursor**
+
+طلبت استبدال المستودع بالكامل — سأرفع نسخة السيرفر الحالية بـ force إلى `main` كما وافقت.
+
+أستبدل محتوى GitHub الآن بنسخة المشروع الحالية على السيرفر.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 5:09 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+title: Force replace GitHub repo
+tool_call_id: call-d05bb734-5fbb-48d3-b16d-a2e8b86d4c87-14
+fc_6d2204ff-500f-95e9-a918-7890dfd48e59_0
+agent_id: 35ff1567-66ad-4a35-8cc7-ff3dd3b84076
+detail: <user_visible_high_level_summary>
+تم استبدال محتوى GitHub بالكامل بنجاح. الدفع المباشر فشل بسبب مستودع shallow وأب ناقص؛ دُفعت شجرة المشروع الحالية كـ commit جذري. SHA: 5f3f03eb27cbda5c1c534b3383d8b024b8f95177 — https://github.com/SHOPYAD/Mustafa.new — المحلي والبعيد متطابقان.
+</user_visible_high_level_summary>
+<response>
+## تم بنجاح
+
+محتوى المستودع على GitHub استُبدل بالكامل بشجرة المشروع المحلية.
+
+| | |
+|---|---|
+| **Commit** | `5f3f03eb27cbda5c1c534b3383d8b024b8f95177` |
+| **الرسالة** | sync: full LIOTRIP production tree for SHOPYAD/Mustafa.new |
+| **المستودع** | https://github.com/SHOPYAD/Mustafa.new |
+| **الحالة** | `main` متزامن مع `origin/main`، working tree نظيف |
+
+**ملاحظة تقنية:** الدفع العادي لـ `3a93082` فشل لأن المستودع كان shallow والـ parent `bf97d9…` غير موجود. الحل: نفس الشجرة الحالية كـ commit جذري ثم `--force` (بموافقتك الصريحة). لم يُحدَّث git config ولم تُضف أسرار جديدة.
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\35ff1567-66ad-4a35-8cc7-ff3dd3b84076.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+تم. [استبدال المستودع](35ff1567-66ad-4a35-8cc7-ff3dd3b84076) اكتمل: https://github.com/SHOPYAD/Mustafa.new — `main` = `5f3f03e`، متزامن مع السيرفر.
+
+---
+
+**User**
+
+انظر الى الام سي بي المضافة لا تظهر ويظهر بالبحث ايميل الادمن ولا يقبل الحذف اظن هو من يمنع ظهورها ؟؟؟ وايضا بطاقات المزودين يجب ان يكون فيها وضع الساندبوكس ووضع الانتاج جاهز كتصميم لما نكمل التكامل يكون جاهز كتصميم بطاقة والمزودين الذين لم يتم التكامل معهم وعليهم قريبا كلهم بطاقاتهم يجب ان تكون مقفلة لا يمكن فتح اعداداتها ابدا او اختبار اتصالها 
+
+---
+
+**Cursor**
+
+أصلح بحث MCP العالق على إيميل الأدمن (الذي يخفي البطاقات)، وأقفل إعدادات واختبار مزودي «قريباً»، مع إضافة وضعَي الساندبوكس والإنتاج على تصميم البطاقات.
+
+ظنّك صحيح غالباً: البحث العالق على `admin@lonaliza.com` يخفي البطاقات. أصلحه الآن، وأقفل مزودي «قريباً» بالكامل، وأضيف وضع الساندبوكس/الإنتاج على تصميم البطاقات.
+
+---
+
+**User**
+
+واضف خاصة تغيير لوجو المزود من خلال الضغط على الشعار وتحميل اللوجو من الكمبيوتر او وضع رابطه الصحيح بحيث اضيف انا لاحقا كل الشعارات الصحيحة لانه ولا شعار اضفته انت صحيح كلهم غلط 
+
+---
+
+**Cursor**
+
+سأضيف على بطاقات المزودين: اضغط الشعار → ارفع ملفاً أو الصق رابطاً، لأن الشعارات الحالية غير صحيحة.
+
+الوكيل السابق ما زال يعمل على نفس الملفات — سأقاطعه وأضيف طلب تغيير الشعار إلى نفس المهمة حتى لا يتعارض التعديلان.
+
+أضفت طلبك: الضغط على شعار المزود → رفع من الجهاز أو لصق الرابط. مزودو «قريباً» يبقون مقفلين للإعدادات والاختبار، مع السماح بتغيير الشعار فقط.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 5:48 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: 22c37ef8-097f-41b2-a375-3437566fbac6
+title: Provider logo + MCP fix
+tool_call_id: call-e9cd84c7-5777-474b-961e-66567f964ae7-17
+fc_4de42d2f-de45-9ad2-a297-8eef660a3c92_0
+agent_id: 22c37ef8-097f-41b2-a375-3437566fbac6
+detail: <user_visible_high_level_summary>
+تم إصلاح بحث MCP (كان المتصفح يملأ البريد فيفلتر البطاقات)، وإضافة قفل «قريباً» مع وضع تجريبي/إنتاج، واستبدال الشعار بالنقر (رفع أو رابط) حتى للمزودين المقفولين. البناء نجح وأُعيد تشغيل lonaliza-alrayyan.
+</user_visible_high_level_summary>
+<response>
+## التقرير
+
+**لماذا اختفت بطاقات MCP؟** المتصفح كان يملأ حقل البحث تلقائياً بـ `admin@lonaliza.com`، فيُصفّى الكتالوج إلى صفر نتائج رغم أن العدد 11. البحث يبدأ فارغاً الآن، مع `autocomplete="off"` و`name="mcp-catalog-search"` وزر مسح وEscape، وتنظيف أي بريد يُحقَن تلقائياً.
+
+**Sandbox / Production:** مفتاح مجزّأ على كل بطاقة؛ يُحفظ للمزودين الحيّين؛ معطّل بصرياً على «قريباً».
+
+**القفل:** بطاقات «قريباً» بلا إعدادات/اختبار/تفعيل (واجهة + API ‏403). **استثناء:** تغيير الشعار مسموح.
+
+**الشعار:** نقر الشعار → رفع أو رابط → معاينة → حفظ/إلغاء/إعادة الافتراضي. يُخزَّن في السجل والملفات تحت `public/providers/custom/`.
+
+**الملفات:** `McpCatalogPanel.tsx` · `ProviderCard.tsx` · `ProvidersHub.tsx` · `types.ts` · `providers-registry-store.ts` · `api/admin/providers/route.ts` · `api/admin/providers/test/route.ts` · `api/admin/providers/logo/route.ts` · `providers-live.ts`
+
+البناء نجح و`lonaliza-alrayyan` أُعيد تشغيله على المنفذ 3047.
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\22c37ef8-097f-41b2-a375-3437566fbac6.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+[إصلاح MCP وشعارات المزودين](22c37ef8-097f-41b2-a375-3437566fbac6) نُشر.
+
+- **MCP:** البحث كان يُملأ بإيميل الأدمن فيخفي البطاقات — الآن فارغ وقابل للمسح، والـ 11 بطاقة تظهر  
+- **قريباً:** مقفول (لا إعدادات ولا اختبار) مع وضع تجريبي/إنتاج جاهز للتصميم  
+- **الشعار:** اضغط الشعار → رفع أو رابط → حفظ (يعمل أيضاً على المقفولين)
+
+حدّث `/admin/automation` و`/admin/providers`.
+
+---
+
+**User**
+
+الصور ترفع لكن تظهر مضروبة ؟؟؟؟؟ وهل انت متاكد ان كل خوادم الام سي بي تعمل دون اي مشاكل وتعمل 100ب100 لا احتاج اي تعديلات لاحقا ؟؟
+
+---
+
+**Cursor**
+
+لا — MCP ليست جاهزة 100٪. أفحص أولاً لماذا الشعارات المرفوعة تظهر مكسورة، ثم أعطيك تقييماً صادقاً لما يعمل وما يحتاج ربطاً لاحقاً.
+
+لا — خوادم MCP **ليست** جاهزة 100٪ ولن أقول ذلك. أصلح الآن عرض الشعارات المكسورة بعد الرفع، ثم أعطيك جدولاً صادقاً: ما يعمل، وما يحتاج مفاتيح، وما سيحتاج تعديلاً لاحقاً.
+
+---
+
+**User**
+
+ماذا يفعل الوكيل بعد ؟؟
+
+---
+
+**Cursor**
+
+الوكيل الحالي [إصلاح الشعارات + تقييم MCP](d58a9755-e340-4357-ab0a-0d1632d5106e) يعمل على طلبك الأخير، بالترتيب:
+
+1. **لماذا الشعار يظهر مكسوراً بعد الرفع** — فحص مسار الحفظ والعرض وإصلاحه  
+2. **بناء وإعادة تشغيل** الموقع فقط  
+3. **تقرير صادق عن MCP** — ما يعمل، ما يحتاج مفاتيح، وما سيحتاج تعديلاً لاحقاً (وليس ادعاء 100٪)
+
+لم يصلني بعد إشعار اكتماله. عند انتهائه سأعطيك النتيجة مباشرة.
+
+---
+
+**User**
+
+<timestamp>Monday, Aug 31, 2026, 6:19 PM (UTC+3)</timestamp>
+<system_notification>
+The following task has finished. If you were already aware, ignore this notification and do not restate prior responses.
+
+<task>
+kind: subagent
+status: success
+task_id: d58a9755-e340-4357-ab0a-0d1632d5106e
+title: Fix broken uploaded logos
+tool_call_id: call-366ec82b-34a2-40c5-9a70-5d8559a6ddc0-18
+fc_082ed86a-c9f3-9678-a2d4-ffc0ad9ffbd7_0
+agent_id: d58a9755-e340-4357-ab0a-0d1632d5106e
+detail: <user_visible_high_level_summary>
+الشعارات كانت تُحفظ على القرص لكن Next.js في الإنتاج لا يخدم ملفات `public/` المضافة بعد البناء، فيظهر المتصفح صفحة HTML 404 كصورة «مضروبة». أصلحت المسار عبر `/uploads/providers` + API، وأعدت البناء وإعادة تشغيل PM2. خوادم MCP ليست جاهزة 100٪ — التفاصيل في التقرير أدناه.
+</user_visible_high_level_summary>
+<response>
+## لماذا كانت الشعارات «مضروبة»؟
+
+الملف كان يُرفع سليماً إلى `public/providers/custom/` (JPEG صالح على القرص)، لكن **Next.js في الإنتاج لا يخدم ملفات أُضيفت إلى `public/` بعد `next build`**. الطلب على `/providers/custom/...` كان يعيد **صفحة HTML 404** بـ `Content-Type: text/html`، والمتصفح يعرضها كصورة مكسورة.
+
+نفس المشكلة موثّقة مسبقاً لرفع العلامة التجارية؛ لذلك الشعارات تُخدم عبر `/api/branding/file`.
+
+## ماذا أُصلح؟
+
+- الحفظ إلى `.data/uploads/providers/` (+ نسخة `public/uploads/`) وخدمة عبر `/uploads/providers/...` (rewrite → API)
+- التحقق من **magic bytes** (رفض HTML/JSON المموّه كصورة)
+- تنظيف SVG من `<script>` و`javascript:`
+- مسار محفوظ مع `?v=mtime` لكسر الكاش
+- rewrite لمسار `/providers/custom/` القديم
+- `npm run build` + `pm2 restart lonaliza-alrayyan --update-env`
+- اختبار: PNG بعد التشغيل → HTTP 200 و`image/png`؛ Amadeus JPEG → 200 و`image/jpeg`
+
+## كيف تعيد الرفع؟
+
+من **الإدارة → المزودون** → أيقونة الشعار → رفع png/jpg/webp/svg. المعاينة تتحدث فوراً وتبقى بعد التحديث. إن بقي كاش قديم: Ctrl+F5 أو ارفع مرة أخرى (يُحدَّث `?v=`).
+
+---
+
+## هل كل خوادم MCP تعمل 100٪ بلا تعديلات لاحقاً؟
+
+**لا.** الربط والتحقق موجودان، لكن هذا ليس «جاهز للأبد بلا مفاتيح ولا صيانة».
+
+| الخادم | مفاتيح؟ | الوضع الحالي | عمل لاحق متوقع |
+|--------|---------|--------------|----------------|
+| **مدونة / استوديو / إعلانات / نشر اجتماعي** | غالباً لا للربط الأساسي | تحقق و`callTool` مدمجان محلياً | حسابات اجتماعية، Gemini/ffmpeg، مفاتيح إعلانات حسب الاستخدام |
+| **Fetch / Memory / Filesystem** | لا | stdio عبر `npx` | يعتمد على الشبكة وNode؛ sandbox للملفات فقط |
+| **Canva** | نعم (`CANVA_ACCESS_TOKEN`) | تحقق + أدوات عبر Connect API | OAuth حيّ أفضل من لصق توكن؛ جودة القوالب تحتاج ضبطاً |
+| **Higgsfield** | نعم (`HF_API_KEY_ID` + `SECRET`) | تحقق + توليد عبر Cloud API | جودة/نماذج/حصص؛ ليست «اضغط ويعمل دائماً» |
+| **واتساب Cloud** | نعم (Phone ID + Token + Verify) | رسمي فقط + opt-in CRM | قوالب معتمدة من Meta؛ لا QR/غير رسمي |
+| **مستورد GitHub** | رابط مستودع MCP عام | يرفض المشاريع الكاملة/الخاصة | مستودعات خاصة تحتاج PAT لاحقاً |
+
+فجوات صريحة: لا ضمان 100٪؛ OAuth Canva كامل؛ اعتماد تيليجرام للوسائط يعتمد على إعدادات الدردشة؛ الجودة الحية لـ Canva/Higgsfield تتغير مع المفاتيح والحصص والـ API.
+</response>
+output_path: \root\.cursor\projects\www-wwwroot-lonaliza-com\agent-transcripts\7fd4ce0d-43c8-47ca-afb2-d7f014b39e3d\subagents\d58a9755-e340-4357-ab0a-0d1632d5106e.jsonl
+</task>
+</system_notification>
+<user_query>Perform any necessary follow-up actions in response to the subagent completion above. If no follow-up work is needed, no further action is required. If you mention an agent or subagent in your response, link it with the `[Name](id)` Don't use generic label such as `[agent]`, `[worker]`, or `[subagent]`. For cloud subagents, when the agent has edited code, link to `[Review](bc-id#changes)`, or, if you know the exact added and deleted line counts, `[Review +A −D](bc-id#changes)`, replacing A and D with those counts. Never write A or D literally. Use `[Try Live](bc-id#desktop)` only when the agent used computer use. Don't repeat the same confirmation every time.</user_query>
+
+---
+
+**Cursor**
+
+[إصلاح الشعارات](d58a9755-e340-4357-ab0a-0d1632d5106e) اكتمل.
+
+**الشعار المكسور:** الملف كان سليماً، لكن Next في الإنتاج لا يخدم ملفات `public/` بعد البناء فيُرجع HTML بدل صورة. الآن عبر `/uploads/providers`. أعد الرفع من بطاقة المزود (أو Ctrl+F5).
+
+**MCP:** ليست 100٪. الربط والتحقق موجودان؛ Canva وHiggsfield وواتساب تحتاج مفاتيحك، والجودة/OAuth والحصص ستحتاج ضبطاً لاحقاً حسب الاستخدام.
+
+---
+
+**User**
+
+هل اكتمل كل شيء ؟؟
+
+---
+
+**Cursor**
+
+**لا — لم يكتمل كل شيء.**
+
+**مكتمل وحي على الموقع (بعد حدّث الصفحة):**  
+محرر الصور/الشعارات، بطاقات الهيرو، حذف النشرة من الرئيسية، أخطاء الكونسول، «نتصل بك» على الجوال، عروض الطيران حسب المصدر، كتالوج MCP + إصلاح البحث، بطاقات المزودين (قفل «قريباً» + ساندبوكس/إنتاج + رفع شعار)، دفع المشروع إلى GitHub.
+
+**غير مكتمل أو يحتاجك:**  
+- مسار الاستوديو الإبداعي كامل حتى «انشر» والنشر  
+- مزودو GDS الجدد = بطاقات فقط («قريباً») بلا تكامل حجز  
+- MCP ليست 100٪ (مفاتيح Canva/Higgsfield/واتساب + ضبط لاحق)  
+- جذب العملاء (Places / CTWA / Lookalike)  
+- ترجمة المقال ومرحلة 5 كاملة  
+
+**باختصار:** الأساس التشغيلي جاهز جزئياً؛ التكاملات الحية والمسار الإبداعي الكامل والمزودون الجدد ما زالوا أمامنا.
+
+---
+
+**User**
+
+**لا — لم يكتمل كل شيء.**
+
+**مكتمل وحي على الموقع (بعد حدّث الصفحة):**  
+محرر الصور/الشعارات، بطاقات الهيرو، حذف النشرة من الرئيسية، أخطاء الكونسول، «نتصل بك» على الجوال، عروض الطيران حسب المصدر، كتالوج MCP + إصلاح البحث، بطاقات المزودين (قفل «قريباً» + ساندبوكس/إنتاج + رفع شعار)، دفع المشروع إلى GitHub.
+
+**غير مكتمل أو يحتاجك:**  
+- مسار الاستوديو الإبداعي كامل حتى «انشر» والنشر  
+- مزودو GDS الجدد = بطاقات فقط («قريباً») بلا تكامل حجز  
+- MCP ليست 100٪ (مفاتيح Canva/Higgsfield/واتساب + ضبط لاحق)  
+- جذب العملاء (Places / CTWA / Lookalike)  
+- ترجمة المقال ومرحلة 5 كاملة  
+
+**باختصار:** الأساس التشغيلي جاهز جزئياً؛ التكاملات الحية والمسار الإبداعي الكامل والمزودون الجدد ما زالوا أمامنا. من يجب ان يكمل هذه الامور انت او انا ؟؟
+
+---
+
+**Cursor**
+
+**تقسيم واضح:**
+
+**أنا (الكود والربط داخل الموقع)**  
+- مسار الاستوديو حتى «انشر» والنشر  
+- إكمال منطق MCP المتبقي (استدعاء الأدوات، التسليم للنشر)  
+- Places / CTWA / Lookalike (الرسمي فقط)  
+- ترجمة المقال ومرحلة 5  
+- تكامل مزودي GDS عندما نعتمد مزوداً ونبدأ التنفيذ (ليس مجرد بطاقة)
+
+**أنت (حسابات ومفاتيح وموافقة تجارية)**  
+- لصق مفاتيح Canva، Higgsfield، واتساب، تيليجرام، Meta، Google Ads، Places  
+- ربط OAuth للحسابات الاجتماعية  
+- عقود/اعتماد مزودي GDS (Amadeus، Travelport، PKFARE…) ثم تفعيل البطاقة بعد أن نبني التكامل  
+- الموافقة على النشر والإعلانات («انشر» / ميزانية)
+
+**الخلاصة:** التنفيذ التقني عليّ؛ بدون مفاتيحك وعقود المزودين لا يكتمل الجزء الحي. إذا وافقت نبدأ الآن بمسار الاستوديو حتى «انشر» — أهم فجوة تشغيلية.
+
+---
+
+**User**
+
+انا لا اتكلم على تكاملات المزودين الجدد الذي وضعناهم قريبا هؤلاء لاحقا اعمل عليهم اتكلم على الاتمتة ةمنطق الام سي بي Places / CTWA / Lookalike (الرسمي فقط) هل اكملت كلما كان يجب ان يكمل حسب الخطة او لا ؟
+
+---
+
+**Cursor**
+
+**لا — حسب الخطة هذه البنود لم تُغلق بالكامل.**
+
+| البند | حسب الخطة | الواقع |
+|--------|-----------|--------|
+| **الأتمتة** (محرك، وظائف، اعتماد، محتوى، تواصل) | أساس كامل + تشغيل | الأساس موجود؛ المسار الإبداعي حتى «انشر» والنشر **غير مربوط كسلسلة واحدة** |
+| **منطق MCP** | كتالوج + ربط + استدعاء أدوات حي للوكيل | كتالوج وربط/تحقق جاهزان جزئياً؛ **ليس** «كل خادم يعمل 100٪ بلا مفاتيح ولا فجوات» |
+| **Places** (نص مراجعات/منشآت فقط) | مطلوب | **غير مكتمل** كاستراتيجية leads حية |
+| **CTWA** | مطلوب رسمي | **غير مكتمل** |
+| **Lookalike** من عملاء PB | مطلوب رسمي | **غير مكتمل** |
+
+مزودو «قريباً» خارج هذا السؤال كما قلت.  
+ما تبقى من **خطتك للأتمتة + MCP + Places/CTWA/Lookalike** ما زال عليّ كتنفيذ كود — وليس مكتملًا بعد. إن وافقت أبدأ بإغلاقها بهذا الترتيب: مسار الاستوديو→انشر، ثم منطق MCP الحي، ثم Places/CTWA/Lookalike.
+
+---
+
+**User**
+
+البند	حسب الخطة	الواقع
+الأتمتة (محرك، وظائف، اعتماد، محتوى، تواصل)
+أساس كامل + تشغيل
+الأساس موجود؛ المسار الإبداعي حتى «انشر» والنشر غير مربوط كسلسلة واحدة
+منطق MCP
+كتالوج + ربط + استدعاء أدوات حي للوكيل
+كتالوج وربط/تحقق جاهزان جزئياً؛ ليس «كل خادم يعمل 100٪ بلا مفاتيح ولا فجوات»
+Places (نص مراجعات/منشآت فقط)
+مطلوب
+غير مكتمل كاستراتيجية leads حية
+CTWA
+مطلوب رسمي
+غير مكتمل
+Lookalike من عملاء PB
+مطلوب رسمي
+غير مكتمل يجب اكمال كل هذه المراحل بنسبة 100ب100
+
+---
+
+**Cursor**
+
+سأكمل الآن بنسبة تشغيلية كاملة: مسار الأتمتة حتى «انشر» والنشر، منطق MCP الحي، ثم Places وCTWA وLookalike الرسميين فقط.
+
+أبدأ إكمال البنود الخمسة الآن (بدون مزودي «قريباً»): مسار الأتمتة حتى «انشر»، منطق MCP الحي، Places، CTWA، وLookalike. سأعود عند الجاهزية.
+
+---
+
+**User**
+
+يجب اضافة التحديثات الاخيرة هذه الى نسخة اعادة البيع من دون الامور التي تخص السوبير ادمن مستثناة فقط الاتمتة والام سي بي اخر تحديث تعمل عليه الان 
 

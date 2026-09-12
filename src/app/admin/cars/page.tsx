@@ -16,7 +16,7 @@ export default function AdminCarsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <Car className="text-emerald-400" size={28} />
+            <Car className="text-amber-400" size={28} />
             {t.admin.cars}
           </h1>
           <p className="text-white/50 mt-1">{t.admin.carsSubtitle}</p>

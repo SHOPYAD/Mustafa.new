@@ -25,12 +25,10 @@ import {
   type HotelOfferSource,
 } from "@/lib/hotel-offers";
 import {
-  beforeDiscountPrice,
   fullLocationText,
   HOTEL_PAGE_SIZE,
   nightsBetween,
   resolveStayPrices,
-  stableDiscountPct,
 } from "@/lib/hotel-display";
 
 const LIST_FETCH_SIZE = 30;
@@ -146,6 +144,15 @@ function classifyRapidApiFailure(
 const DEFAULT_LANG = "en_US";
 const LIST_CACHE_TTL_MS = 8 * 60 * 1000;
 const DETAIL_CACHE_TTL_MS = 10 * 60 * 1000;
+let taUnsubscribedUntil = 0;
+
+function markTravelAdvisorUnsubscribed() {
+  taUnsubscribedUntil = Date.now() + 30 * 60 * 1000;
+}
+
+function isTravelAdvisorUnsubscribed() {
+  return Date.now() < taUnsubscribedUntil;
+}
 const SHARED_STOCK_PHOTO =
   "https://images.unsplash.com/photo-1566073771259-6a8506099945";
 
@@ -183,6 +190,8 @@ type TaRequestInit = {
   body?: unknown;
   retryEmpty?: boolean;
   lang?: string;
+  key?: string;
+  triedKeys?: string[];
 };
 
 type CacheEntry<T> = { at: number; value: T };
@@ -1010,11 +1019,10 @@ function withDisplayPricing(
   const nights = nightsBetween(input.checkIn, input.checkOut);
   const resolved = resolveStayPrices(card.priceFrom, nights, stayTotalHint ?? card.totalStay);
   const nightly = resolved.nightly;
-  const discountPct = nightly != null ? stableDiscountPct(card.id) : 0;
-  const priceOriginal =
-    nightly != null && discountPct
-      ? beforeDiscountPrice(nightly, discountPct)
-      : card.priceOriginal;
+  // Only a discount the provider actually reported (strike-through price present) is shown.
+  const priceOriginal = card.priceOriginal && nightly != null && card.priceOriginal > nightly ? card.priceOriginal : null;
+  const rawPct = priceOriginal && nightly ? Math.round(((priceOriginal - nightly) / priceOriginal) * 100) : 0;
+  const discountPct: TravelAdvisorHotelCard["discountPct"] = rawPct >= 15 ? 15 : rawPct >= 10 ? 10 : rawPct >= 5 ? 5 : 0;
   const baseLocation =
     card.locationText ||
     fullLocationText({
@@ -1889,8 +1897,19 @@ export function peekCachedHotelList(): TravelAdvisorHotelCard[] {
   return newest.value.hotels;
 }
 
+async function taKeyCandidates(): Promise<string[]> {
+  const primary = (await getServerEnv("RAPIDAPI_KEY")).trim();
+  const rooms = (await getServerEnv("RAPIDAPI_ROOMS_KEY")).trim();
+  const booking = (await getServerEnv("BOOKING_COM_RAPIDAPI_KEY")).trim();
+  return [primary, rooms, booking].filter((k, i, all) => k && all.indexOf(k) === i);
+}
+
 async function taFetch<T>(init: TaRequestInit): Promise<T> {
-  const key = (await getServerEnv("RAPIDAPI_KEY")).trim();
+  if (isTravelAdvisorUnsubscribed()) {
+    throw new TravelAdvisorError("not_configured");
+  }
+  const keys = await taKeyCandidates();
+  const key = init.key || keys[0] || "";
   const host =
     (await getServerEnv("RAPIDAPI_TRAVEL_ADVISOR_HOST")).trim() ||
     TRAVEL_ADVISOR_HOST;
@@ -1919,6 +1938,7 @@ async function taFetch<T>(init: TaRequestInit): Promise<T> {
     },
     body: init.body ? JSON.stringify(init.body) : undefined,
     cache: "no-store",
+    signal: AbortSignal.timeout(8000),
   });
 
   const text = await res.text();
@@ -1952,6 +1972,12 @@ async function taFetch<T>(init: TaRequestInit): Promise<T> {
   }
 
   if (!res.ok) {
+    const tried = new Set([...(init.triedKeys || []), key].filter(Boolean));
+    const nextKey = keys.find((item) => item && !tried.has(item));
+    if (nextKey && /not subscribed/i.test(text)) {
+      return taFetch<T>({ ...init, key: nextKey, triedKeys: [...tried], retryEmpty: false });
+    }
+    if (/not subscribed/i.test(text)) markTravelAdvisorUnsubscribed();
     console.error("[travel-advisor]", init.path, res.status, text.slice(0, 240));
     throw new TravelAdvisorError(
       classifyRapidApiFailure(res.status, text.slice(0, 240)),
@@ -1964,11 +1990,8 @@ async function taFetch<T>(init: TaRequestInit): Promise<T> {
 async function taFetchOptional(init: TaRequestInit): Promise<unknown | null> {
   try {
     return await taFetch(init);
-  } catch (e) {
-    if (e instanceof TravelAdvisorError && e.errorCode === "search_failed") {
-      return null;
-    }
-    throw e;
+  } catch {
+    return null;
   }
 }
 
@@ -3441,4 +3464,180 @@ export async function listHotelFilters(
   }));
   cacheSet(filterCache, key, groups);
   return groups;
+}
+
+function advisorNameKey(value: string): string {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\u0600-\u06ff]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function advisorNameScore(query: string, candidate: string): number {
+  const q = advisorNameKey(query);
+  const c = advisorNameKey(candidate);
+  if (!q || !c) return 0;
+  if (c === q) return 200;
+  if (c.includes(q) || q.includes(c)) return 120;
+  const words = q.split(" ").filter((w) => w.length > 2);
+  if (!words.length) return 0;
+  return words.filter((w) => c.includes(w)).length * 12;
+}
+
+export type TravelAdvisorHotelMatch = {
+  id: string;
+  name: string;
+  rating: number;
+  reviewCount: number;
+};
+
+/** Autocomplete results that are hotels — used to resolve the TripAdvisor location/content id. */
+export async function searchHotelPlaces(query: string): Promise<TravelAdvisorHotelMatch[]> {
+  const q = query.trim();
+  if (!q) return [];
+  const payload = await taFetchOptional({
+    path: "/locations/v2/auto-complete",
+    query: { query: q },
+  });
+  if (!payload) return [];
+  const results: TravelAdvisorHotelMatch[] = [];
+  const seen = new Set<string>();
+  walk(payload, (node) => {
+    const details = asRecord(node.detailsV2);
+    const id = normalizeHotelGeoId(
+      pickString(
+        details?.locationId,
+        node.locationId,
+        node.contentId,
+        node.documentId,
+        /^\d{4,}$/.test(pickString(node.id)) ? node.id : ""
+      )
+    );
+    const name = cleanHotelName(
+      pickString(node.title, node.name, asRecord(node.title)?.string, node.primaryInfo)
+    );
+    const type = pickString(node.type, node.placeType, details?.placeType, node.resultType).toUpperCase();
+    if (!id || !name || seen.has(id)) return;
+    const hotelType = type.includes("HOTEL") || /hotel|resort|riad|suites/i.test(name);
+    if (!hotelType) return;
+    seen.add(id);
+    results.push({
+      id,
+      name,
+      rating: pickNumber(asRecord(node.bubbleRating)?.rating, node.rating),
+      reviewCount: Math.round(
+        pickNumber(asRecord(node.bubbleRating)?.numberReviews, node.numReviews, node.reviewCount)
+      ),
+    });
+  });
+  return results.slice(0, 12);
+}
+
+export async function resolveTravelAdvisorHotelId(input: {
+  name: string;
+  city?: string;
+}): Promise<TravelAdvisorHotelMatch | null> {
+  const name = input.name.trim();
+  if (!name || isTravelAdvisorUnsubscribed()) return null;
+  const queries = [[name, input.city].filter(Boolean).join(" "), name].filter(
+    (item, index, all) => item && all.indexOf(item) === index
+  );
+  let best: TravelAdvisorHotelMatch | null = null;
+  let bestScore = 0;
+  for (const query of queries) {
+    const places = await searchHotelPlaces(query);
+    for (const place of places) {
+      const score = Math.max(
+        advisorNameScore(name, place.name),
+        advisorNameScore(`${name} ${input.city || ""}`, place.name)
+      );
+      if (score > bestScore) {
+        bestScore = score;
+        best = place;
+      }
+    }
+    if (bestScore >= 48) break;
+  }
+  return bestScore >= 24 ? best : null;
+}
+
+export async function fetchTravelAdvisorReviews(input: {
+  contentId: string;
+  lang?: string;
+}): Promise<{ reviews: TravelAdvisorReview[]; rating: number; reviewCount: number }> {
+  const contentId = String(input.contentId || "").trim();
+  if (!contentId) return { reviews: [], rating: 0, reviewCount: 0 };
+  const reviews: TravelAdvisorReview[] = [];
+  const seen = new Set<string>();
+  let rating = 0;
+  let reviewCount = 0;
+  for (const offset of [0, 20, 40]) {
+    const page = await taFetchOptional({
+      path: "/hotels/v2/get-reviews",
+      method: "POST",
+      lang: input.lang,
+      body: { contentId: String(contentId), offset, limit: 20 },
+    });
+    if (!page) break;
+    const extra = extractReviews(page);
+    const cards = extractHotels(page);
+    const card = cards.find((item) => item.id === contentId) || cards[0];
+    if (card?.rating) rating = rating || card.rating;
+    if (card?.reviewCount) reviewCount = reviewCount || card.reviewCount;
+    let added = 0;
+    for (const row of extra) {
+      if (!row.text || seen.has(row.id)) continue;
+      seen.add(row.id);
+      reviews.push({ ...row, source: "tripadvisor" });
+      added += 1;
+    }
+    if (added < 6) break;
+  }
+  if (!reviews.length) {
+    const details = await taFetchOptional({
+      path: "/hotels/get-details",
+      method: "GET",
+      lang: input.lang,
+      query: { location_id: contentId },
+    });
+    if (details) {
+      for (const row of extractReviews(details)) {
+        if (!row.text || seen.has(row.id)) continue;
+        seen.add(row.id);
+        reviews.push({ ...row, source: "tripadvisor" });
+      }
+    }
+  }
+  return { reviews, rating, reviewCount };
+}
+
+export async function listAdvisorScoreHints(input: {
+  lat: number;
+  lng: number;
+  checkIn: string;
+  checkOut: string;
+  lang?: string;
+}): Promise<TravelAdvisorHotelMatch[]> {
+  const hotels = await fetchLatlngPage(
+    {
+      query: "",
+      checkIn: input.checkIn,
+      checkOut: input.checkOut,
+      adults: 2,
+      lang: input.lang,
+    },
+    { lat: input.lat, lng: input.lng },
+    0
+  );
+  return hotels
+    .filter((hotel) => hotel.rating > 0 && hotel.name)
+    .map((hotel) => ({
+      id: hotel.id,
+      name: hotel.name,
+      rating: hotel.rating,
+      reviewCount: hotel.reviewCount || 0,
+    }));
 }

@@ -5,14 +5,23 @@ import { Activity, Loader2, Plus, Save, Trash2 } from "lucide-react";
 import type { HotelProvider } from "@/lib/hotels-config";
 import { parseHotelProvider } from "@/lib/hotels-config";
 import {
+  applyReviewsOnlyHotelsRuntime,
+  BOOKING_RUNTIME_ENDPOINTS,
   createEmptyHotelMarkupRule,
   defaultHotelsRuntime,
+  HOTEL_ENDPOINT_USE_AR,
+  HOTEL_ENDPOINT_USES,
   sanitizeHotelsRuntime,
+  TRAVEL_ADVISOR_RUNTIME_ENDPOINTS,
+  type HotelEndpointDef,
+  type HotelEndpointState,
+  type HotelEndpointUse,
   type HotelMarkupRule,
   type HotelMarkupScope,
   type HotelMarkupType,
   type HotelsRuntimeSettings,
 } from "@/lib/hotels-runtime";
+import { ROOMS_PROVIDER_HOST, TRAVEL_ADVISOR_HOST } from "@/lib/hotels-config";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import ProvidersHub from "@/components/admin/providers/ProvidersHub";
 
@@ -39,6 +48,86 @@ type QuotaSnapshot = {
   last429Path: string;
   advice: QuotaAdvice;
 };
+
+function EndpointTable({
+  title,
+  host,
+  catalog,
+  states,
+  onChange,
+}: {
+  title: string;
+  host: string;
+  catalog: readonly HotelEndpointDef[];
+  states: Record<string, HotelEndpointState>;
+  onChange: (id: string, next: HotelEndpointState) => void;
+}) {
+  return (
+    <div className="space-y-3">
+      <div>
+        <h3 className="text-base font-bold text-heading">{title}</h3>
+        <p className="text-muted-foreground text-xs mt-1" dir="ltr">
+          {host}
+        </p>
+      </div>
+      <div className="overflow-x-auto rounded-xl border border-border">
+        <table className="w-full min-w-[820px] text-sm">
+          <thead className="bg-muted text-muted-foreground">
+            <tr>
+              <th className="px-3 py-2 text-start font-medium">تفعيل</th>
+              <th className="px-3 py-2 text-start font-medium">النقطة</th>
+              <th className="px-3 py-2 text-start font-medium">تُستخدم لـ</th>
+              <th className="px-3 py-2 text-start font-medium">المسار</th>
+            </tr>
+          </thead>
+          <tbody>
+            {catalog.map((item) => {
+              const state: HotelEndpointState = states[item.id] || {
+                enabled: item.defaultEnabled,
+                uses: item.uses,
+              };
+              return (
+                <tr key={item.id} className="border-t border-border">
+                  <td className="px-3 py-2">
+                    <input
+                      type="checkbox"
+                      checked={state.enabled}
+                      onChange={(e) => onChange(item.id, { ...state, enabled: e.target.checked })}
+                    />
+                  </td>
+                  <td className="px-3 py-2">
+                    <div className="font-medium text-heading">{item.nameAr}</div>
+                    <div className="text-[11px] text-muted-foreground" dir="ltr">
+                      {item.name}
+                    </div>
+                  </td>
+                  <td className="px-3 py-2">
+                    <select
+                      value={state.uses}
+                      onChange={(e) =>
+                        onChange(item.id, { ...state, uses: e.target.value as HotelEndpointUse })
+                      }
+                      className={`${inputClass} min-w-[160px]`}
+                    >
+                      {HOTEL_ENDPOINT_USES.map((use) => (
+                        <option key={use} value={use}>
+                          {HOTEL_ENDPOINT_USE_AR[use]}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-[11px] text-muted-foreground" dir="ltr">
+                    {item.method} {item.path}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
 
 function formatWhen(value: string | null): string {
   if (!value) return "لا يوجد";
@@ -238,6 +327,51 @@ export default function HotelsProviderPanel({
     <div className="mb-8 space-y-6">
       <ProvidersHub vertical="hotels" onLiveChange={() => void load()} />
 
+      <div className="bg-card border border-border rounded-2xl p-6 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-bold text-heading">نقاط النهاية — RapidAPI</h2>
+            <p className="text-muted-foreground text-sm mt-1">
+              البحث العام يبقى على الموردين الحيّين (Travelport وغيره). RapidAPI هنا للتقييمات فقط:
+              عند فتح تفاصيل فندق نطابق اسمه ونمرّر المعرّف الذي يتوقعه Booking أو Travel Advisor، ثم
+              نجلب تقييمات ذلك الفندق. درجة /10 على البطاقات تأتي من الكاش بعد أول مطابقة، أو من
+              Travelport إن أرسل تقييم TripAdvisor.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => applyRuntime(applyReviewsOnlyHotelsRuntime(runtime))}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary text-foreground text-sm font-semibold shrink-0"
+          >
+            تفعيل التقييمات فقط
+          </button>
+        </div>
+        <EndpointTable
+          title="Booking.com15"
+          host={ROOMS_PROVIDER_HOST}
+          catalog={BOOKING_RUNTIME_ENDPOINTS}
+          states={runtime.bookingEndpoints}
+          onChange={(id, next) =>
+            applyRuntime({
+              ...runtime,
+              bookingEndpoints: { ...runtime.bookingEndpoints, [id]: next },
+            })
+          }
+        />
+        <EndpointTable
+          title="Travel Advisor"
+          host={TRAVEL_ADVISOR_HOST}
+          catalog={TRAVEL_ADVISOR_RUNTIME_ENDPOINTS}
+          states={runtime.travelAdvisorEndpoints}
+          onChange={(id, next) =>
+            applyRuntime({
+              ...runtime,
+              travelAdvisorEndpoints: { ...runtime.travelAdvisorEndpoints, [id]: next },
+            })
+          }
+        />
+      </div>
+
       <div id="markup" className="bg-card border border-border rounded-2xl p-6 space-y-4 scroll-mt-24">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
@@ -328,6 +462,7 @@ export default function HotelsProviderPanel({
                       className={inputClass}
                     >
                       <option value="booking">Booking.com15</option>
+                      <option value="seeru">Seeru Hotels</option>
                       <option value="travel_advisor">Travel Advisor</option>
                       <option value="owned">{t.admin.hotelsMarkupProviderOwned}</option>
                       <option value="internal">{t.admin.hotelsMarkupProviderInternal}</option>

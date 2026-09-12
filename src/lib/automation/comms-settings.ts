@@ -4,10 +4,13 @@ import { getServerEnv, getServerEnvMap } from "@/lib/server/env-store";
 import { isOtpChannel, type OtpChannel } from "@/lib/automation/types";
 import { sanitizeWhatsAppPhoneNumberId } from "@/lib/automation/comms-validate";
 
+export type WhatsAppMode = "qr" | "cloud_api";
+
 export type CommsSettings = {
   otpEnabled: boolean;
   otpChannels: OtpChannel[];
   otpTtlSec: number;
+  whatsappMode: WhatsAppMode;
   whatsappPhoneNumberId: string;
   whatsappAccessToken: string;
   whatsappWabaId: string;
@@ -25,6 +28,7 @@ export const DEFAULT_COMMS_SETTINGS: CommsSettings = {
   otpEnabled: false,
   otpChannels: ["whatsapp", "telegram", "email"],
   otpTtlSec: 600,
+  whatsappMode: "qr",
   whatsappPhoneNumberId: "",
   whatsappAccessToken: "",
   whatsappWabaId: "",
@@ -74,10 +78,13 @@ function sanitize(raw: Partial<CommsSettings> | Record<string, unknown> | null):
   const rec = raw && typeof raw === "object" ? raw : {};
   const rate = Number(rec.rateLimitPerMinute);
   const ttl = Number(rec.otpTtlSec);
+  const rawMode = String(rec.whatsappMode || "").trim();
+  const whatsappMode: WhatsAppMode = rawMode === "cloud_api" ? "cloud_api" : "qr";
   return {
     otpEnabled: rec.otpEnabled === true || isOn(rec.otpEnabled),
     otpChannels: sanitizeChannels(rec.otpChannels),
     otpTtlSec: Number.isFinite(ttl) ? Math.max(60, Math.min(1800, Math.round(ttl))) : 600,
+    whatsappMode,
     whatsappPhoneNumberId: sanitizeWhatsAppPhoneNumberId(String(rec.whatsappPhoneNumberId || "")),
     whatsappAccessToken: String(rec.whatsappAccessToken || "").trim(),
     whatsappWabaId: String(rec.whatsappWabaId || "").trim(),
@@ -110,6 +117,7 @@ export async function getCommsSettings(): Promise<CommsSettings> {
   const merged = sanitize({
     ...file,
     otpEnabled: file.otpEnabled ?? isOn(env.COMMS_OTP_ENABLED),
+    whatsappMode: file.whatsappMode || "qr",
     whatsappPhoneNumberId: pick(file.whatsappPhoneNumberId || "", env.WHATSAPP_CLOUD_PHONE_NUMBER_ID),
     whatsappAccessToken: pick(file.whatsappAccessToken || "", env.WHATSAPP_CLOUD_ACCESS_TOKEN),
     whatsappWabaId: pick(file.whatsappWabaId || "", env.WHATSAPP_CLOUD_WABA_ID),
@@ -166,11 +174,12 @@ export function publicCommsSettings(settings: CommsSettings) {
   const phoneId = sanitizeWhatsAppPhoneNumberId(settings.whatsappPhoneNumberId);
   return {
     ...settings,
+    whatsappMode: settings.whatsappMode,
     whatsappPhoneNumberId: phoneId,
     whatsappAccessToken: maskSecret(settings.whatsappAccessToken),
     telegramBotToken: maskSecret(settings.telegramBotToken),
     whatsappVerifyToken: maskSecret(settings.whatsappVerifyToken),
-    whatsappReady: Boolean(phoneId && settings.whatsappAccessToken),
+    whatsappReady: settings.whatsappMode === "qr" || Boolean(phoneId && settings.whatsappAccessToken),
     telegramReady: Boolean(settings.telegramBotToken),
     whatsappPhoneIdInvalid: Boolean(settings.whatsappPhoneNumberId && !phoneId),
   };
@@ -185,7 +194,7 @@ export async function getOtpPepper(): Promise<string> {
 export function channelReady(settings: CommsSettings, channel: OtpChannel): boolean {
   switch (channel) {
     case "whatsapp":
-      return Boolean(settings.whatsappPhoneNumberId && settings.whatsappAccessToken);
+      return settings.whatsappMode === "qr" || Boolean(settings.whatsappPhoneNumberId && settings.whatsappAccessToken);
     case "telegram":
       return Boolean(settings.telegramBotToken);
     case "email":

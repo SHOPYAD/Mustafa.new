@@ -29,7 +29,9 @@ const TYPE_HINTS: Array<{ type: AutomationJobType; keys: string[] }> = [
   { type: "studio.schedule_publish", keys: ["جدول نشر", "انشر لاحقا", "schedule publish"] },
   { type: "admin.weekly_digest", keys: ["ملخص أسبوعي", "digest"] },
   { type: "places.reviews", keys: ["جوجل ماب", "تقييمات النشاط", "places"] },
-  { type: "ads.ctwa_lookalike", keys: ["lookalike", "واتساب إعلان", "ctwa", "جمهور مشابه"] },
+  { type: "ads.lookalike", keys: ["lookalike", "جمهور مشابه", "مشابه"] },
+  { type: "ads.ctwa", keys: ["ctwa", "واتساب إعلان", "click to whatsapp", "كليك تو واتساب"] },
+  { type: "ads.ctwa_lookalike", keys: ["ctwa lookalike", "جمهور وإعلان واتساب"] },
 ];
 
 function inferType(text: string): AutomationJobType {

@@ -147,7 +147,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/searchHotels",
     method: "GET",
     uses: "list",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "searchHotelsByCoordinates",
@@ -156,7 +156,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/searchHotelsByCoordinates",
     method: "GET",
     uses: "nearby",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getHotelDetails",
@@ -165,7 +165,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getHotelDetails",
     method: "GET",
     uses: "details",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getAvailability",
@@ -183,7 +183,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getDescriptionAndInfo",
     method: "GET",
     uses: "details",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getRoomList",
@@ -201,7 +201,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getPaymentFeatures",
     method: "GET",
     uses: "policies",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getHotelPolicies",
@@ -210,7 +210,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getHotelPolicies",
     method: "GET",
     uses: "policies",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "propertyChildrenPolicies",
@@ -219,7 +219,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/propertyChildrenPolicies",
     method: "GET",
     uses: "policies",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getHotelReviewsFilterMetadata",
@@ -237,7 +237,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getHotelReviewScores",
     method: "GET",
     uses: "reviews",
-    defaultEnabled: false,
+    defaultEnabled: true,
   },
   {
     id: "getHotelReviewsSortOption",
@@ -264,7 +264,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getQuestionAndAnswer",
     method: "GET",
     uses: "questions",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getNearbyCities",
@@ -283,7 +283,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getPopularAttractionNearBy",
     method: "GET",
     uses: "nearby",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getRoomListWithAvailability",
@@ -292,7 +292,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getRoomListWithAvailability",
     method: "GET",
     uses: "rooms",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getHotelPhotos",
@@ -301,7 +301,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getHotelPhotos",
     method: "GET",
     uses: "photos",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "getHotelFacilities",
@@ -310,7 +310,7 @@ export const BOOKING_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/api/v1/hotels/getHotelFacilities",
     method: "GET",
     uses: "facilities",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
 ];
 
@@ -332,7 +332,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/v2/list",
     method: "POST",
     uses: "list",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsList",
@@ -341,7 +341,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/list",
     method: "GET",
     uses: "list",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsListByLatlng",
@@ -350,7 +350,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/list-by-latlng",
     method: "GET",
     uses: "list",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsListInBoundary",
@@ -386,7 +386,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/v2/get-details",
     method: "POST",
     uses: "details",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsV1Details",
@@ -395,7 +395,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/get-details",
     method: "GET",
     uses: "details",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsV2Photos",
@@ -404,7 +404,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/v2/get-photos",
     method: "POST",
     uses: "photos",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsV1Photos",
@@ -413,7 +413,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/photos",
     method: "GET",
     uses: "photos",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsV2Offers",
@@ -422,7 +422,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/v2/get-offers",
     method: "POST",
     uses: "rooms",
-    defaultEnabled: true,
+    defaultEnabled: false,
   },
   {
     id: "hotelsV2Reviews",
@@ -431,7 +431,7 @@ export const TRAVEL_ADVISOR_RUNTIME_ENDPOINTS: readonly HotelEndpointDef[] = [
     path: "/hotels/v2/get-reviews",
     method: "POST",
     uses: "reviews",
-    defaultEnabled: false,
+    defaultEnabled: true,
   },
 ];
 
@@ -511,6 +511,20 @@ export function createEmptyHotelMarkupRule(): HotelMarkupRule {
   };
 }
 
+export function defaultHotelMarkupRule(): HotelMarkupRule {
+  return {
+    id: "hmk_default_all_15",
+    enabled: true,
+    priority: 100,
+    scope: "all",
+    destination: "",
+    provider: "",
+    type: "percent",
+    value: 15,
+    currency: "USD",
+  };
+}
+
 export function defaultHotelsRuntime(provider: HotelProvider = "booking"): HotelsRuntimeSettings {
   const primary: HotelProvider =
     provider === "travel_advisor" || provider === "owned" || provider === "internal"
@@ -521,7 +535,7 @@ export function defaultHotelsRuntime(provider: HotelProvider = "booking"): Hotel
     providers: [primary],
     bookingEndpoints: statesFromCatalog(BOOKING_RUNTIME_ENDPOINTS),
     travelAdvisorEndpoints: statesFromCatalog(TRAVEL_ADVISOR_RUNTIME_ENDPOINTS),
-    markupRules: [],
+    markupRules: [defaultHotelMarkupRule()],
   };
 }
 
@@ -577,7 +591,43 @@ export function sanitizeHotelsRuntime(
         ? (rec.travelAdvisorEndpoints as Record<string, HotelEndpointState>)
         : undefined
     ),
-    markupRules,
+    markupRules: markupRules.length ? markupRules : [defaultHotelMarkupRule()],
+  };
+}
+
+const REVIEWS_ONLY_BOOKING_IDS = new Set([
+  "searchDestination",
+  "getHotelReviews",
+  "getHotelReviewScores",
+]);
+
+const REVIEWS_ONLY_TRAVEL_ADVISOR_IDS = new Set([
+  "locationsAutoComplete",
+  "hotelsV2Reviews",
+]);
+
+function reviewsOnlyStates(
+  catalog: readonly HotelEndpointDef[],
+  keepIds: Set<string>
+): Record<string, HotelEndpointState> {
+  const out: Record<string, HotelEndpointState> = {};
+  for (const item of catalog) {
+    out[item.id] = { enabled: keepIds.has(item.id), uses: item.uses };
+  }
+  return out;
+}
+
+/** Keep RapidAPI for guest reviews + the one lookup each API needs to resolve a hotel id. */
+export function applyReviewsOnlyHotelsRuntime(
+  settings: HotelsRuntimeSettings
+): HotelsRuntimeSettings {
+  return {
+    ...settings,
+    bookingEndpoints: reviewsOnlyStates(BOOKING_RUNTIME_ENDPOINTS, REVIEWS_ONLY_BOOKING_IDS),
+    travelAdvisorEndpoints: reviewsOnlyStates(
+      TRAVEL_ADVISOR_RUNTIME_ENDPOINTS,
+      REVIEWS_ONLY_TRAVEL_ADVISOR_IDS
+    ),
   };
 }
 

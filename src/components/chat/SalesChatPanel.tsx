@@ -22,6 +22,7 @@ import {
   User,
   Sparkles,
   Plane,
+  Camera,
 } from "lucide-react";
 import SalesOfferCards from "@/components/chat/SalesOfferCards";
 import SearchCtaCards from "@/components/chat/SearchCtaCards";
@@ -89,6 +90,8 @@ type ChatMessage = {
   transferHref?: string;
   carsHref?: string;
   hotelsHref?: string;
+  perks?: any;
+  bundleCheckoutPayload?: any;
 };
 
 export type SalesChatPanelProps = {
@@ -335,10 +338,10 @@ function buildWhatsAppTranscript(
 ): string {
   const lines: string[] = [
     locale === "ar"
-      ? "طلب حجز من مستشار السفر الذكي — الريان للسياحة"
+      ? "طلب حجز من مستشار السفر الذكي — لوناليزا للسياحة والسفر"
       : locale === "tr"
-        ? "Alrayyan Turizm AI danışmanı üzerinden rezervasyon talebi"
-        : "Booking request via Alrayyan Tourism AI consultant",
+        ? "Lonaliza Turizm AI danışmanı üzerinden rezervasyon talebi"
+        : "Booking request via Lonaliza Travel AI consultant",
     "",
   ];
 
@@ -860,6 +863,8 @@ export default function SalesChatPanel({
             text: hydrated.reply,
             cards: hydrated.cards,
             itinerary: hydrated.itinerary,
+            perks: (data.perks as any) || hydrated.perks,
+            bundleCheckoutPayload: (data.bundleCheckoutPayload as any) || hydrated.bundleCheckoutPayload,
             readyForWhatsApp:
               Boolean(data.readyForWhatsApp) || hydrated.readyForWhatsApp,
             flightHref: data.flightHref ? String(data.flightHref) : undefined,
@@ -1086,7 +1091,7 @@ export default function SalesChatPanel({
                       msg.cards &&
                       msg.cards.length > 0 && (
                         <div className="mt-3 w-full min-w-[min(100%,280px)]">
-                          <SalesOfferCards cards={msg.cards} />
+                          <SalesOfferCards cards={msg.cards} perks={msg.perks} bundlePayload={msg.bundleCheckoutPayload} />
                         </div>
                       )}
                     {showItinerary && msg.itinerary && (
@@ -1241,6 +1246,43 @@ export default function SalesChatPanel({
           >
             <ImagePlus size={18} />
           </button>
+
+          {/* Instant Passport OCR Camera Button */}
+          <label
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-400/40 bg-amber-400/15 text-amber-300 transition hover:border-amber-400/70 hover:bg-amber-400/25 cursor-pointer"
+            title={locale === "ar" ? "مسح الجواز بالذكاء الاصطناعي 📷" : "Scan Passport with AI 📷"}
+          >
+            <Camera size={18} />
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              className="hidden"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                const formData = new FormData();
+                formData.append("file", file);
+                try {
+                  setLoading(true);
+                  const res = await fetch("/api/ai/passport-ocr", { method: "POST", body: formData });
+                  const ocr = await res.json();
+                  if (ocr.ok && ocr.traveler) {
+                    const tr = ocr.traveler;
+                    const prompt = locale === "ar"
+                      ? `أرسلت لك صورة جواز سفري: المسافر ${tr.firstName} ${tr.lastName}، رقم الجواز: ${tr.passportNumber}، تاريخ الميلاد: ${tr.dateOfBirth}، الجنسية: ${tr.nationality}. أرجو تجهيز وتثبيت بياناتي لحجز الرحلة الكاملة.`
+                      : `Here is my passport: ${tr.firstName} ${tr.lastName}, passport: ${tr.passportNumber}, DOB: ${tr.dateOfBirth}, nationality: ${tr.nationality}. Please arrange my trip with these details.`;
+                    setInput(prompt);
+                  }
+                } catch (err) {
+                  console.error(err);
+                } finally {
+                  setLoading(false);
+                  e.target.value = "";
+                }
+              }}
+            />
+          </label>
 
           <textarea
             ref={inputRef}

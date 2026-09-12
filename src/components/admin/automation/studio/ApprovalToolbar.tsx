@@ -12,6 +12,7 @@ export function ApprovalToolbar({
   onApprove,
   onReject,
   onRevise,
+  onDelete,
 }: {
   record: ApprovalRecord | null;
   busy: boolean;
@@ -21,6 +22,7 @@ export function ApprovalToolbar({
   onApprove: () => void;
   onReject: () => void;
   onRevise: () => void;
+  onDelete?: () => void;
 }) {
   if (!record) return null;
   const draft = record.state === "draft";
@@ -45,9 +47,9 @@ export function ApprovalToolbar({
           type="button"
           disabled={busy}
           onClick={onSubmit}
-          className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-amber-400 disabled:opacity-40"
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] px-4 py-2 text-sm font-bold text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-sm"
         >
-          {busy ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+          {busy ? <Loader2 className="size-4 animate-spin text-amber-300" /> : <Send className="size-4 text-amber-400" />}
           أرسل للاعتماد
         </button>
       ) : null}
@@ -57,9 +59,9 @@ export function ApprovalToolbar({
             type="button"
             disabled={busy}
             onClick={onApprove}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-500 disabled:opacity-40"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] px-4 py-2 text-sm font-bold text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-sm"
           >
-            {busy ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4" />}
+            {busy ? <Loader2 className="size-4 animate-spin text-amber-300" /> : <Check className="size-4 text-amber-400" />}
             اعتماد / أطلق
           </button>
           <button
@@ -84,6 +86,15 @@ export function ApprovalToolbar({
           عدّل
         </button>
       ) : null}
+      <button
+        type="button"
+        disabled={busy}
+        onClick={onDelete}
+        className="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-500/20 dark:text-rose-300 disabled:opacity-40 transition-colors"
+      >
+        <X className="size-3.5" />
+        حذف المسودة
+      </button>
     </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import type { HomepageContent, HomepagePatch } from "@/types/homepage";
 
 /** Bump this + STORAGE_KEY whenever public homepage seed must replace stale localStorage. */
-export const HOMEPAGE_SEED_VERSION = 5;
-const STORAGE_KEY = "alrayyan_homepage_v5";
+export const HOMEPAGE_SEED_VERSION = 6;
+const STORAGE_KEY = "alrayyan_homepage_v6";
 const LEGACY_STORAGE_KEYS = [
+  "alrayyan_homepage_v5",
   "alrayyan_homepage_v4",
   "alrayyan_homepage_v3",
   "alrayyan_homepage_v2",
@@ -246,32 +247,48 @@ export const defaultHomepageContent: HomepageContent = {
       icon: "shield",
       titleAr: "حجز آمن",
       titleEn: "Secure Booking",
+      titleTr: "Güvenli Rezervasyon",
+      titleFr: "Réservation Sécurisée",
       descriptionAr: "بوابة دفع آمنة 100% مع معاملات مشفّرة.",
       descriptionEn: "100% secure payment gateway with encrypted transactions.",
+      descriptionTr: "Şifreli işlemlerle %100 güvenli ödeme altyapısı.",
+      descriptionFr: "Passerelle de paiement 100% sécurisée et cryptée.",
     },
     {
       id: "f2",
       icon: "headphones",
       titleAr: "دعم على مدار الساعة",
       titleEn: "24/7 Support",
+      titleTr: "7/24 Kesintisiz Destek",
+      titleFr: "Support 24/7",
       descriptionAr: "مساعدة مستمرة لجميع احتياجات سفرك.",
       descriptionEn: "Round-the-clock assistance for all your travel needs.",
+      descriptionTr: "Tüm seyahat ihtiyaçlarınız için günün her saati yanınızdayız.",
+      descriptionFr: "Assistance continue pour tous vos besoins de voyage.",
     },
     {
       id: "f3",
       icon: "zap",
       titleAr: "تأكيد فوري",
       titleEn: "Instant Confirmation",
+      titleTr: "Anında Onay",
+      titleFr: "Confirmation Immédiate",
       descriptionAr: "احصل على تأكيد الحجز فوراً عبر البريد والرسائل.",
       descriptionEn: "Get immediate booking confirmations via email & SMS.",
+      descriptionTr: "Rezervasyon onayınızı anında e-posta ve SMS ile alın.",
+      descriptionFr: "Recevez votre confirmation instantanément par e-mail et SMS.",
     },
     {
       id: "f4",
       icon: "award",
       titleAr: "ضمان أفضل سعر",
       titleEn: "Best Price Guarantee",
+      titleTr: "En İyi Fiyat Garantisi",
+      titleFr: "Meilleur Prix Garanti",
       descriptionAr: "نطابق أي سعر منافس أو نعيد الفرق.",
       descriptionEn: "We match any competitor price or refund the difference.",
+      descriptionTr: "Rakiplerimizin fiyatlarını yakalar veya farkı iade ederiz.",
+      descriptionFr: "Nous nous alignons sur tout prix concurrent ou remboursons la différence.",
     },
   ],
   cta: {

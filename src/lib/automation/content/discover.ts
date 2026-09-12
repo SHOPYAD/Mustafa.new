@@ -313,7 +313,7 @@ export async function discoverRankedTopics(input: {
   log?: (message: string) => void;
 }): Promise<{ topics: DiscoveredTopic[]; meta: DiscoverMeta }> {
   const enabled = new Set(input.sources);
-  const meta: DiscoverMeta = { sourcesUsed: ["كتالوج الريان الدائم (تركيا)"], limitations: [] };
+  const meta: DiscoverMeta = { sourcesUsed: ["كتالوج لوناليزا الدائم (تركيا)"], limitations: [] };
   const evergreen = evergreenAsHits(input.now);
   const hits: RawHit[] = [];
 

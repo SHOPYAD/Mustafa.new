@@ -480,3 +480,100 @@ export async function runAirportsImport(): Promise<AirportsMeta> {
   if (!meta) throw new Error("airport import wrote no meta");
   return meta;
 }
+
+export const KNOWN_CITY_AIRPORTS: Record<string, string[]> = {
+  ISTA: ["IST", "SAW"],
+  IST: ["IST", "SAW"],
+  SAW: ["SAW", "IST"],
+  LOND: ["LHR", "LGW", "STN", "LTN"],
+  LON: ["LHR", "LGW", "STN", "LTN"],
+  PARI: ["CDG", "ORY", "BVA"],
+  PAR: ["CDG", "ORY", "BVA"],
+  NYCA: ["JFK", "EWR", "LGA"],
+  NYC: ["JFK", "EWR", "LGA"],
+  MILA: ["MXP", "LIN", "BGY"],
+  MIL: ["MXP", "LIN", "BGY"],
+  TYOA: ["HND", "NRT"],
+  TYO: ["HND", "NRT"],
+  MOSC: ["SVO", "DME", "VKO"],
+  MOW: ["SVO", "DME", "VKO"],
+  DUBA: ["DXB", "DWC"],
+  DXB: ["DXB", "DWC"],
+  RIYA: ["RUH"],
+  RUH: ["RUH"],
+  JEDD: ["JED"],
+  JED: ["JED"],
+  MEDI: ["MED"],
+  MED: ["MED"],
+  DAMM: ["DMM"],
+  DMM: ["DMM"],
+  CAIR: ["CAI"],
+  CAI: ["CAI"],
+  DOHA: ["DOH"],
+  DOH: ["DOH"],
+  KUWA: ["KWI"],
+  KWI: ["KWI"],
+  AMMA: ["AMM"],
+  AMM: ["AMM"],
+  TRAB: ["TZX"],
+  TZX: ["TZX"],
+  ANTA: ["AYT"],
+  AYT: ["AYT"],
+  IZMI: ["ADB"],
+  ADB: ["ADB"],
+  ANKA: ["ESB"],
+  ESB: ["ESB"],
+  BODR: ["BJV"],
+  BJV: ["BJV"],
+  DALA: ["DLM"],
+  DLM: ["DLM"],
+  ROME: ["FCO", "CIA"],
+  ROM: ["FCO", "CIA"],
+  BERL: ["BER"],
+  BER: ["BER"],
+  MADR: ["MAD"],
+  MAD: ["MAD"],
+  BARC: ["BCN"],
+  BCN: ["BCN"],
+  AMST: ["AMS"],
+  AMS: ["AMS"],
+  VIEN: ["VIE"],
+  VIE: ["VIE"],
+  BEIR: ["BEY"],
+  BEY: ["BEY"],
+  CASA: ["CMN"],
+  CMN: ["CMN"],
+};
+
+export async function resolveAirportsForCode(code?: string | null): Promise<string[]> {
+  const clean = String(code || "")
+    .trim()
+    .toUpperCase()
+    .replace(/^LOC-[AC]-/i, "");
+  if (!clean) return [];
+
+  if (KNOWN_CITY_AIRPORTS[clean]) {
+    return [...KNOWN_CITY_AIRPORTS[clean]];
+  }
+
+  try {
+    const idx = await getAirportsIndex();
+    const airport = idx.byIata.get(clean);
+    if (airport) return [airport.iata];
+
+    const city = idx.byCity.get(clean);
+    if (city && Array.isArray(city.airports) && city.airports.length > 0) {
+      return [...city.airports];
+    }
+  } catch {
+    /* fallback to heuristics below */
+  }
+
+  if (clean.length === 3) return [clean];
+
+  if (clean.length === 4) {
+    return [clean.slice(0, 3)];
+  }
+
+  return [clean.slice(0, 3) || clean];
+}

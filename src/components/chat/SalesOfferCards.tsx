@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   Star,
   Plane,
@@ -9,11 +10,18 @@ import {
   Car,
   Sparkles,
   ArrowRight,
+  Gift,
+  Share2,
+  CheckCircle2,
+  ChevronRight,
+  ChevronLeft,
+  Coins,
 } from "lucide-react";
-import type { SalesChatCard } from "@/types/sales-chat";
+import type { SalesChatCard, SalesChatStructured } from "@/types/sales-chat";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent, cn } from "@/lib/utils";
+import { BOOKING_SESSION_KEY } from "@/components/flights/search-state";
 
 const PLACEHOLDER =
   "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800";
@@ -283,7 +291,15 @@ function TransferCard({ card }: { card: SalesChatCard }) {
   );
 }
 
-function ConnectedQuoteBar({ cards }: { cards: SalesChatCard[] }) {
+function ConnectedQuoteBar({
+  cards,
+  perks,
+  bundlePayload,
+}: {
+  cards: SalesChatCard[];
+  perks?: SalesChatStructured["perks"];
+  bundlePayload?: SalesChatStructured["bundleCheckoutPayload"];
+}) {
   const { locale, t } = useLocale();
   const order: SalesChatCard["type"][] = ["flight", "hotel", "transfer", "car"];
   const selected = order
@@ -296,8 +312,15 @@ function ConnectedQuoteBar({ cards }: { cards: SalesChatCard[] }) {
       return priced[0] || group[0];
     })
     .filter(Boolean) as SalesChatCard[];
-  if (selected.length < 2) return null;
-  const total = selected.reduce((s, c) => s + (c.clientPrice || 0), 0);
+
+  if (selected.length < 1 && !perks && !bundlePayload) return null;
+
+  const total = selected.reduce((s, c) => s + (c.clientPrice || 0), 0) || perks?.bundlePriceUsd || 0;
+  const originalPrice = perks?.originalPriceUsd || (total > 0 ? Math.round(total * 1.25) : 0);
+  const savings = perks?.savingsUsd || (originalPrice - total);
+  const loyaltyPoints = perks?.loyaltyPointsEarned || Math.round(total * 2);
+  const loyaltyCash = perks?.loyaltyCashValue || Math.round(total * 0.02);
+
   const labels: Record<SalesChatCard["type"], string> = {
     flight: t.admin.flightLabel,
     hotel: t.nav.hotels,
@@ -305,40 +328,181 @@ function ConnectedQuoteBar({ cards }: { cards: SalesChatCard[] }) {
     car: t.nav.cars,
     package: t.nav.holidays,
   };
+
+  const handleBookFullBundle = () => {
+    const flightCard = cards.find((c) => c.type === "flight");
+    const hotelCard = cards.find((c) => c.type === "hotel");
+    const transferCard = cards.find((c) => c.type === "transfer");
+
+    const sessionObj = {
+      query: {
+        origin: bundlePayload?.destinationCity ? "DXB" : "IST",
+        destination: bundlePayload?.destinationCity || "IST",
+        date: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
+        returnDate: bundlePayload?.returnDate,
+        adults: 2,
+        childrens: 0,
+        infants: 0,
+        cabinClass: "economy",
+      },
+      selection: {
+        itinerary: {
+          id: `ai-bundle-${Date.now()}`,
+          price: flightCard?.clientPrice || 180,
+          currency: "USD",
+          legs: [
+            {
+              origin: { displayCode: "DXB", name: "Dubai" },
+              destination: { displayCode: "IST", name: bundlePayload?.destinationCity || "Istanbul" },
+              departure: `${bundlePayload?.departDate || new Date().toISOString().slice(0, 10)}T10:00:00`,
+              arrival: `${bundlePayload?.departDate || new Date().toISOString().slice(0, 10)}T14:30:00`,
+              duration: 270,
+              stopCount: 0,
+              carriers: [{ code: "TK", name: "Turkish Airlines" }],
+            },
+          ],
+        },
+        fare: { id: "std", name: "باقة متكاملة مخصصة", price: flightCard?.clientPrice || 180 },
+        extras: { extraBag: false, insurance: false, priorityBoarding: false, packageIds: [] },
+      },
+      selectedHotel: hotelCard
+        ? {
+            hotelId: hotelCard.id || "h-ai",
+            hotelName: hotelCard.titleAr || hotelCard.titleEn,
+            hotelStars: 5,
+            hotelAddress: hotelCard.subtitleAr || hotelCard.subtitleEn || "مركز المدينة",
+            hotelPhoto: hotelCard.image || PLACEHOLDER,
+            roomId: "r-std",
+            roomName: "غرفة فاخرة مشمولة بالبرنامج",
+            roomPhoto: hotelCard.image || PLACEHOLDER,
+            bedType: "1 King Bed",
+            inclusions: ["إفطار مشمول", "إلغاء مجاني"],
+            checkIn: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
+            checkOut: bundlePayload?.returnDate || new Date().toISOString().slice(0, 10),
+            nightsCount: 4,
+            guestsCount: 2,
+            pricePerNight: Math.round((hotelCard.clientPrice || 400) / 4),
+            totalPrice: hotelCard.clientPrice || 400,
+            currency: "USD",
+            supplier: "ratehawk",
+          }
+        : null,
+      selectedTransfer: transferCard
+        ? {
+            id: `tr-${Date.now()}`,
+            vehicleType: "vip_van",
+            titleAr: transferCard.titleAr,
+            titleEn: transferCard.titleEn,
+            vehicleName: transferCard.titleAr,
+            seats: 7,
+            luggage: 6,
+            photoUrl: transferCard.image || "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800",
+            routeType: "airport_to_hotel",
+            pickupLocation: "مطار الوصول",
+            dropoffLocation: "الفندق",
+            flightNumber: "TK 1982",
+            date: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
+            time: "14:30",
+            price: transferCard.clientPrice || 55,
+            currency: "USD",
+            guestName: "Guest",
+            guestPhone: "",
+            supplier: "seeru_ride",
+          }
+        : null,
+    };
+
+    try {
+      sessionStorage.setItem(BOOKING_SESSION_KEY, JSON.stringify(sessionObj));
+      window.location.href = "/flights/booking";
+    } catch {
+      window.location.href = "/flights/booking";
+    }
+  };
+
   return (
-    <div className="mb-3 overflow-hidden rounded-2xl border border-emerald-500/25 bg-[#071018]/95">
-      <div className="flex items-center justify-between gap-2 border-b border-white/5 px-3 py-2">
-        <p className="text-[11px] font-semibold text-emerald-200/80">
-          {t.chat.programServices}
-        </p>
-        <p className="text-[10px] text-white/35">{t.chat.liveFromSearch}</p>
+    <div className="mb-4 overflow-hidden rounded-3xl border border-amber-400/30 bg-gradient-to-br from-[#1b053a] via-[#240a45] to-[#3b0764] p-4 text-white shadow-xl shadow-purple-950/40">
+      {/* Top Banner with Savings */}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-purple-800/60 pb-3">
+        <div className="flex items-center gap-2">
+          <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-amber-400 text-slate-950">
+            <Sparkles size={15} />
+          </div>
+          <div>
+            <p className="text-xs font-black text-white">
+              {locale === "ar" ? "باقة السفر المتكاملة المخصصة لك" : "Custom Tailored Travel Bundle"}
+            </p>
+            <p className="text-[10px] text-purple-200/70">
+              {locale === "ar" ? "وفرت حتى 25% بحجز الخدمات معاً" : "Save up to 25% by bundling services"}
+            </p>
+          </div>
+        </div>
+
+        {savings > 0 && (
+          <span className="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300">
+            ✓ {locale === "ar" ? `وفرت $${savings} فورياً` : `Saved $${savings} instantly`}
+          </span>
+        )}
       </div>
-      <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4">
-        {selected.map((card) => (
-          <Link
-            key={card.type}
-            href={card.href || "#"}
-            className="rounded-xl border border-white/8 bg-white/[0.03] px-2.5 py-2 transition hover:border-emerald-400/30"
-          >
-            <p className="text-[10px] uppercase tracking-wider text-white/40">
-              {labels[card.type]}
-            </p>
-            <p className="truncate text-xs font-semibold text-white">
-              {tContent(card, "title", locale)}
-            </p>
-            <p className="mt-1 text-sm font-bold text-emerald-300">
-              {card.pricePending || card.clientPrice <= 0
-                ? t.chat.priceOnConfirm
-                : <GuestMoney amount={card.clientPrice} currency={card.currency} />}
-            </p>
-          </Link>
-        ))}
+
+      {/* Services Grid */}
+      {selected.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 my-3">
+          {selected.map((card) => (
+            <div
+              key={card.type}
+              className="rounded-2xl border border-purple-800/60 bg-purple-950/40 p-2.5 transition"
+            >
+              <p className="text-[10px] uppercase font-bold text-purple-300/70">
+                {labels[card.type]}
+              </p>
+              <p className="truncate text-xs font-black text-white mt-0.5">
+                {tContent(card, "title", locale)}
+              </p>
+              <p className="mt-1 text-xs font-black text-amber-300">
+                {card.pricePending || card.clientPrice <= 0 ? (
+                  t.chat.priceOnConfirm
+                ) : (
+                  <GuestMoney amount={card.clientPrice} currency={card.currency} />
+                )}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Perks Badges (Loyalty & Affiliate) */}
+      <div className="flex flex-wrap items-center gap-2 my-3 pt-2 border-t border-purple-800/40 text-[11px]">
+        <div className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 text-amber-300">
+          <Coins size={13} className="text-amber-400" />
+          <span>+{loyaltyPoints} نقطة ولاء كاش (${loyaltyCash})</span>
+        </div>
+        <div className="inline-flex items-center gap-1.5 rounded-xl bg-purple-800/30 border border-purple-700/30 px-2.5 py-1 text-purple-200">
+          <Share2 size={13} className="text-purple-300" />
+          <span>اربح 4% كاش عند مشاركة الرحلة</span>
+        </div>
       </div>
-      <div className="flex items-center justify-between border-t border-white/5 bg-emerald-500/10 px-3 py-2.5">
-        <span className="text-xs text-white/50">{t.chat.connectedTotal}</span>
-        <span className="text-lg font-bold text-emerald-300">
-          {total > 0 ? <GuestMoney amount={total} currency="USD" /> : t.chat.priceOnConfirm}
-        </span>
+
+      {/* Price Comparison & Big 1-Click CTA */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-purple-800/60">
+        <div>
+          {originalPrice > total && (
+            <span className="block text-xs line-through text-purple-300/60">
+              <GuestMoney amount={originalPrice} currency="USD" />
+            </span>
+          )}
+          <div className="text-xl font-black text-white">
+            <GuestMoney amount={total} currency="USD" />
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleBookFullBundle}
+          className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-6 py-3 text-xs font-black text-slate-950 shadow-lg shadow-amber-500/30 hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+        >
+          <span>{locale === "ar" ? "احجز هذا البرنامج المتكامل بنقرة واحدة 🚀" : "Book Full Custom Bundle in 1-Click 🚀"}</span>
+        </button>
       </div>
     </div>
   );
@@ -346,42 +510,46 @@ function ConnectedQuoteBar({ cards }: { cards: SalesChatCard[] }) {
 
 export default function SalesOfferCards({
   cards,
+  perks,
+  bundlePayload,
   className,
 }: {
   cards: SalesChatCard[];
+  perks?: SalesChatStructured["perks"];
+  bundlePayload?: SalesChatStructured["bundleCheckoutPayload"];
   className?: string;
 }) {
-  if (!cards?.length) return null;
+  if (!cards?.length && !perks && !bundlePayload) return null;
 
   return (
     <div className={className}>
-    <ConnectedQuoteBar cards={cards} />
-    <div
-      className={cn(
-        "grid gap-3 sm:grid-cols-2",
-        cards.length === 1 && "sm:grid-cols-1"
-      )}
-    >
-      {cards.map((card, i) => {
-        const key = `${card.type}-${card.id || i}-${card.titleEn || card.titleAr}`;
-        switch (card.type) {
-          case "hotel":
-            return <HotelCard key={key} card={card} />;
-          case "flight":
-            return <FlightCard key={key} card={card} />;
-          case "package":
-            return <PackageCard key={key} card={card} />;
-          case "transfer":
-            return <TransferCard key={key} card={card} />;
-          case "car":
-            return <TransferCard key={key} card={card} />;
-          default: {
-            const _exhaustive: never = card.type;
-            return _exhaustive;
+      <ConnectedQuoteBar cards={cards} perks={perks} bundlePayload={bundlePayload} />
+      <div
+        className={cn(
+          "grid gap-3 sm:grid-cols-2",
+          cards.length === 1 && "sm:grid-cols-1"
+        )}
+      >
+        {cards.map((card, i) => {
+          const key = `${card.type}-${card.id || i}-${card.titleEn || card.titleAr}`;
+          switch (card.type) {
+            case "hotel":
+              return <HotelCard key={key} card={card} />;
+            case "flight":
+              return <FlightCard key={key} card={card} />;
+            case "package":
+              return <PackageCard key={key} card={card} />;
+            case "transfer":
+              return <TransferCard key={key} card={card} />;
+            case "car":
+              return <TransferCard key={key} card={card} />;
+            default: {
+              const _exhaustive: never = card.type;
+              return _exhaustive;
+            }
           }
-        }
-      })}
-    </div>
+        })}
+      </div>
     </div>
   );
 }

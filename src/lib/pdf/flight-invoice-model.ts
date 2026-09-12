@@ -36,11 +36,9 @@ function airportNameOf(row: StoredAirport, language: InvoiceLanguage): { name: s
     case "tr":
       return { name: row.nameTr || row.nameEn, city: row.cityTr || row.cityEn };
     case "en":
+    case "fr":
+    default:
       return { name: row.nameEn, city: row.cityEn };
-    default: {
-      const _exhaustive: never = language;
-      return _exhaustive;
-    }
   }
 }
 

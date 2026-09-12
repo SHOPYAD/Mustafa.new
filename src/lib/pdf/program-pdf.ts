@@ -61,7 +61,7 @@ export async function buildProgramPdfBuffer(
   const model: ProgramPdfModel = {
     ...program,
     brandName:
-      branding.brandNameAr || branding.brandNameEn || "الريان للسياحة",
+      branding.brandNameAr || branding.brandNameEn || "لوناليزا للسياحة والسفر",
     whatsappNumber: config.salesWhatsApp,
     fontDataUri: assets.fontDataUri,
     logoDataUri: assets.logoDataUri,

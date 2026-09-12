@@ -12,6 +12,8 @@ import { applyBrandTheme, type BrandTheme } from "@/lib/theme/tokens";
 import { applyElementOverridesToDocument } from "@/lib/visual-editor/live-bind";
 import { RenderHomepageSection } from "./render-section";
 import { ScrollLinkedBackdrop } from "./scroll-backdrop";
+import { CommunityReelsSlider } from "@/components/home/CommunityReelsSlider";
+import { CommunityStoriesSlider } from "@/components/home/CommunityStoriesSlider";
 import "./service-cards.css";
 
 type HomepageViewProps = {
@@ -130,16 +132,33 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
     >
       <ScrollLinkedBackdrop layout={draft.layout.filter((item) => !item.hidden || editorMode)} />
       <div className="relative z-10">
-      {draft.layout.map((instance) => {
+      {draft.layout.map((instance, idx) => {
         if (instance.hidden && !editorMode) return null;
         if (instance.type === "search" && heroHasSearch) return null;
+
+        // Position 1: Video Reels slider directly below Hero/Search
+        const isHeroOrSearch = instance.type === "hero" || (instance.type === "search" && !heroHasSearch);
+        const nextInstance = draft.layout[idx + 1];
+        const isNextSearch = nextInstance && nextInstance.type === "search" && !heroHasSearch;
+        const renderReelsAfterThis = isHeroOrSearch && !isNextSearch;
+
+        // Position 2: Community Stories slider in mid-page (rendered only once after hotels, packages, or index 4)
+        const firstStoriesTargetIdx = draft.layout.findIndex(
+          (l) => (!l.hidden || editorMode) && (l.type === "hotels" || l.type === "packages")
+        );
+        const storiesSlotIdx = firstStoriesTargetIdx !== -1 ? firstStoriesTargetIdx : 4;
+        const renderStoriesAfterThis = idx === storiesSlotIdx;
+
         return (
-          <RenderHomepageSection
-            key={instance.instanceId}
-            instance={instance}
-            editorMode={editorMode}
-            selectedId={selectedId}
-          />
+          <div key={instance.instanceId}>
+            <RenderHomepageSection
+              instance={instance}
+              editorMode={editorMode}
+              selectedId={selectedId}
+            />
+            {renderReelsAfterThis && <CommunityReelsSlider />}
+            {renderStoriesAfterThis && <CommunityStoriesSlider />}
+          </div>
         );
       })}
       </div>

@@ -24,6 +24,9 @@ const SEED: SkyPlaceRecord[] = [
   { skyId: "IST", entityId: "95673323", kind: "airport" },
   { skyId: "SAW", entityId: "95673324", kind: "airport" },
   { skyId: "LOND", entityId: "27544008", kind: "city" },
+  { skyId: "PARI", entityId: "27539733", kind: "city" },
+  { skyId: "PAR", entityId: "27539733", kind: "city" },
+  { skyId: "CDG", entityId: "95565050", kind: "airport" },
 ];
 
 type StoreFile = { places: SkyPlaceRecord[] };

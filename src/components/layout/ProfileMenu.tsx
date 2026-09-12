@@ -73,13 +73,21 @@ export default function ProfileMenu({
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border",
+          "flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border transition-all ring-2 ring-transparent hover:ring-amber-400/50",
           triggerClass
         )}
         aria-label={t.auth.account}
         aria-expanded={open}
       >
-        <span className="text-[11px] font-bold tracking-wide">{initials}</span>
+        {user.avatarUrl ? (
+          <img
+            src={user.avatarUrl}
+            alt={user.name || "Avatar"}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <span className="text-[11px] font-bold tracking-wide">{initials}</span>
+        )}
       </button>
 
       <AnimatePresence>
@@ -92,11 +100,20 @@ export default function ProfileMenu({
               exit={{ opacity: 0, y: -8 }}
               className="absolute end-0 top-full z-[70] mt-2 w-64 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
             >
-              <div className="border-b border-slate-100 px-4 py-3">
-                <p className="truncate text-sm font-bold text-slate-900">
-                  {user.name || t.auth.account}
-                </p>
-                <p className="truncate text-xs text-slate-500">{user.email}</p>
+              <div className="border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+                {user.avatarUrl ? (
+                  <img
+                    src={user.avatarUrl}
+                    alt={user.name}
+                    className="h-10 w-10 rounded-full object-cover border border-purple-200 ring-2 ring-amber-400/40"
+                  />
+                ) : null}
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-bold text-slate-900">
+                    {user.name || t.auth.account}
+                  </p>
+                  <p className="truncate text-xs text-slate-500">{user.email}</p>
+                </div>
               </div>
 
               <div className="p-2">

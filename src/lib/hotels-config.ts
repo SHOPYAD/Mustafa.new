@@ -66,18 +66,26 @@ export function defaultHotelDates(nights = 3): {
 
 export function hotelApiSlug(
   id: string,
-  source?: "booking" | "ta" | "owned" | "travel_advisor"
+  source?: "booking" | "ta" | "owned" | "travel_advisor" | "hotelbeds" | "travelport" | "ratehawk" | "seeru"
 ): string {
-  const clean = String(id || "")
-    .replace(/^(ta-|owned-|bk-)/, "")
-    .trim();
-  if (source === "booking" || String(id || "").startsWith("bk-")) return `bk-${clean}`;
-  if (source === "owned" || String(id || "").startsWith("owned-")) return `owned-${clean}`;
+  const strId = String(id || "").trim();
+  if (strId.startsWith("hb_") || strId.startsWith("tph_") || strId.startsWith("rh_") || strId.startsWith("sh_")) {
+    return strId;
+  }
+  const clean = strId.replace(/^(ta-|owned-|bk-)/, "").trim();
+  if (clean.startsWith("hb_") || clean.startsWith("tph_") || clean.startsWith("rh_") || clean.startsWith("sh_")) {
+    return clean;
+  }
+  if (source === "booking" || strId.startsWith("bk-")) return `bk-${clean}`;
+  if (source === "owned" || strId.startsWith("owned-")) return `owned-${clean}`;
   return `ta-${clean}`;
 }
 
 export function parseHotelApiId(slug: string): string | null {
   const s = String(slug || "").trim();
+  if (s.startsWith("hb_") || s.startsWith("tph_") || s.startsWith("rh_") || s.startsWith("sh_")) {
+    return s;
+  }
   if (s.startsWith("ta-") || s.startsWith("owned-") || s.startsWith("bk-")) {
     const id = s.replace(/^(ta-|owned-|bk-)/, "").trim();
     return id || null;
@@ -87,8 +95,12 @@ export function parseHotelApiId(slug: string): string | null {
 
 export function parseHotelRouteSource(
   slug: string
-): "booking" | "ta" | "owned" | null {
+): "booking" | "ta" | "owned" | "hotelbeds" | "travelport" | "ratehawk" | "seeru" | null {
   const s = String(slug || "").trim();
+  if (s.startsWith("hb_") || s.includes("hb_")) return "hotelbeds";
+  if (s.startsWith("tph_") || s.includes("tph_")) return "travelport";
+  if (s.startsWith("rh_") || s.includes("rh_")) return "ratehawk";
+  if (s.startsWith("sh_") || s.includes("sh_")) return "seeru";
   if (s.startsWith("bk-")) return "booking";
   if (s.startsWith("owned-")) return "owned";
   if (s.startsWith("ta-")) return "ta";

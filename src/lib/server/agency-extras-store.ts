@@ -8,8 +8,10 @@ import path from "path";
 import type { Locale } from "@/lib/i18n/types";
 import {
   isAgencyExtraIcon,
+  isAgencyExtraKind,
   isAgencyExtraPriceType,
   isAgencyExtraService,
+  kindFromIcon,
   type AgencyExtraInput,
   type AgencyExtraPackage,
   type AgencyExtraService,
@@ -50,7 +52,7 @@ function asString(value: unknown, fallback = ""): string {
 
 function seedPackages(): AgencyExtraPackage[] {
   const now = new Date().toISOString();
-  const rows: Array<Omit<AgencyExtraPackage, "createdAt" | "updatedAt"> & { id: string }> = [
+  const rows: Array<Omit<AgencyExtraPackage, "createdAt" | "updatedAt" | "kind" | "termsAr" | "termsEn" | "termsTr"> & { id: string }> = [
     {
       id: "xtra_refund",
       titleAr: "ضمان استرداد كامل",
@@ -142,7 +144,15 @@ function seedPackages(): AgencyExtraPackage[] {
       icon: "calendar",
     },
   ];
-  return rows.map((row) => ({ ...row, createdAt: now, updatedAt: now }));
+  return rows.map((row) => ({
+    ...row,
+    kind: kindFromIcon(row.icon),
+    termsAr: "",
+    termsEn: "",
+    termsTr: "",
+    createdAt: now,
+    updatedAt: now,
+  }));
 }
 
 function sanitizeServices(raw: unknown): AgencyExtraService[] {
@@ -165,6 +175,7 @@ export function sanitizeAgencyExtra(
   const now = new Date().toISOString();
   const iconRaw = asString(raw.icon || existing?.icon, "star");
   const priceTypeRaw = asString(raw.priceType || existing?.priceType, "fixed");
+  const kindRaw = asString(raw.kind || existing?.kind, "");
   return {
     id: asString(raw.id || existing?.id) || newId(),
     titleAr: titleAr || titleEn,
@@ -179,6 +190,10 @@ export function sanitizeAgencyExtra(
     isActive: raw.isActive !== undefined ? Boolean(raw.isActive) : existing?.isActive !== false,
     sort: Math.max(0, Number(raw.sort ?? existing?.sort) || 0),
     icon: isAgencyExtraIcon(iconRaw) ? iconRaw : "star",
+    kind: isAgencyExtraKind(kindRaw) ? kindRaw : kindFromIcon(isAgencyExtraIcon(iconRaw) ? iconRaw : "star"),
+    termsAr: asString(raw.termsAr ?? existing?.termsAr).trim().slice(0, 2000),
+    termsEn: asString(raw.termsEn ?? existing?.termsEn).trim().slice(0, 2000),
+    termsTr: asString(raw.termsTr ?? existing?.termsTr).trim().slice(0, 2000),
     createdAt: asString(existing?.createdAt) || now,
     updatedAt: now,
   };
@@ -280,12 +295,9 @@ export function extraTitleForLocale(pkg: AgencyExtraPackage, locale: Locale): st
     case "ar":
       return pkg.titleAr || pkg.titleEn;
     case "en":
+    default:
       return pkg.titleEn || pkg.titleAr;
     case "tr":
       return pkg.titleTr || pkg.titleEn || pkg.titleAr;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
   }
 }

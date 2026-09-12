@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import HotelFiltersPanel from "@/components/hotels/HotelFiltersPanel";
 import HotelListCard, { HotelCardSkeleton } from "@/components/hotels/HotelListCard";
-import { pickHotelRibbon, type HotelRibbonKind } from "@/lib/hotel-ribbons";
 import CouponSlider from "@/components/loyalty/CouponSlider";
 import HotelSearchBar from "@/components/hotels/HotelSearchBar";
 import {
@@ -20,6 +19,8 @@ import {
   type HotelSearchQuery,
 } from "@/lib/hotel-search";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
+import { SEARCH_AGENT_EVENT, type SearchAgentEventDetail } from "@/lib/search-agent";
 import type {
   TravelAdvisorAppliedFilter,
   TravelAdvisorFilterGroup,
@@ -52,45 +53,134 @@ export default function TravelAdvisorHotels() {
   const [appliedFilters, setAppliedFilters] = useState<TravelAdvisorAppliedFilter[]>([]);
   const [filterGroups, setFilterGroups] = useState<TravelAdvisorFilterGroup[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [listSource, setListSource] = useState<"booking" | "travel_advisor" | "owned" | "multi">(
+  const [listSource, setListSource] = useState<"booking" | "travel_advisor" | "owned" | "multi" | "supplier">(
     "booking"
   );
+  /** Facets computed server-side over the whole merged supplier result set (not just loaded pages). */
+  const serverFacetsRef = useRef(false);
+  const appliedFiltersRef = useRef<TravelAdvisorAppliedFilter[]>([]);
+  appliedFiltersRef.current = appliedFilters;
   const [listFallback, setListFallback] = useState(false);
   const moreRef = useRef<HTMLDivElement | null>(null);
   const tailRef = useRef<HTMLDivElement | null>(null);
   const loadMoreRef = useRef<() => Promise<void>>(async () => undefined);
+  // Progressive multi-supplier session (server returns `sid` + `progress` while suppliers are still answering).
+  const sidRef = useRef<string>("");
+  const pollTokenRef = useRef(0);
+  const [searching, setSearching] = useState(false);
 
   const searchParamsFor = (nextSort = sort, nextPage = 0, applyAll = false) => {
     const qs = hotelSearchToParams(search);
     qs.set("sort", nextSort);
     qs.set("lang", locale);
     qs.set("page", String(nextPage));
-    if (applyAll && appliedFilters.length) {
-      qs.set("filters", JSON.stringify(appliedFilters));
+    if (sidRef.current) qs.set("sid", sidRef.current);
+    const current = appliedFiltersRef.current;
+    if (applyAll && current.length) {
+      qs.set("filters", JSON.stringify(current));
       qs.set("applyAll", "1");
+    } else if (serverFacetsRef.current && current.length) {
+      // Supplier sessions filter server-side across every merged hotel, so pagination stays exact.
+      qs.set("filters", JSON.stringify(current));
     }
     return qs;
+  };
+
+  /** Prefer the server facets (supplier mode); otherwise derive them locally from the loaded cards. */
+  const syncFilterGroups = (data: Record<string, unknown>, cards: TravelAdvisorHotelCard[]) => {
+    if (Array.isArray(data.filterGroups)) {
+      serverFacetsRef.current = true;
+      setFilterGroups(data.filterGroups as TravelAdvisorFilterGroup[]);
+      return;
+    }
+    if (!serverFacetsRef.current) setFilterGroups(buildLocalHotelFilterGroups(cards));
+  };
+
+  const applyProgress = (data: Record<string, unknown>) => {
+    const progress = data.progress as { complete?: boolean; pending?: string[] } | undefined;
+    if (typeof data.sid === "string" && data.sid) sidRef.current = data.sid;
+    if (progress) {
+      setSearching(!progress.complete);
+      return !progress.complete;
+    }
+    return Boolean(sidRef.current);
+  };
+
+  /** Re-reads page 0 of the live session until every supplier answered, merging new hotels in. */
+  const pollSession = async (nextSort: SortKey, token: number) => {
+    for (let attempt = 0; attempt < 36; attempt++) {
+      await new Promise((r) => setTimeout(r, attempt < 4 ? 2000 : 2500));
+      if (pollTokenRef.current !== token || !sidRef.current) return;
+      try {
+        const res = await fetch(`/api/hotels/search?${searchParamsFor(nextSort, 0, false)}`, { cache: "no-store" });
+        if (!res.ok) continue;
+        const data = parseHotelApiJson(await res.text());
+        if (pollTokenRef.current !== token) return;
+        const list = Array.isArray(data.hotels) ? (data.hotels as TravelAdvisorHotelCard[]) : [];
+        const total = Number(data.totalCount) || 0;
+        if (list.length) {
+          setHotels((prev) => {
+            const seen = new Set(list.map((h) => h.id));
+            const rest = prev.filter((h) => !seen.has(h.id));
+            const next = [...list, ...rest];
+            syncFilterGroups(data, next);
+            return next;
+          });
+          setTotalCount((n) => Math.max(n, total));
+          setHasMore(Boolean(data.hasMore));
+          setLoading(false);
+        }
+        const stillRunning = applyProgress(data);
+        if (!stillRunning) {
+          setLoading(false);
+          return;
+        }
+      } catch {
+        // transient — keep polling
+      }
+    }
+    setSearching(false);
+    setLoading(false);
   };
 
   const runSearch = async (nextSort = sort, applyAll = false) => {
     setLoading(true);
     setError("");
     setPage(0);
+    sidRef.current = "";
+    serverFacetsRef.current = false;
+    const token = ++pollTokenRef.current;
     try {
-      const res = await fetch(`/api/hotels/search?${searchParamsFor(nextSort, 0, applyAll)}`, {
-        cache: "no-store",
-      });
+      const qs = searchParamsFor(nextSort, 0, applyAll);
+      let res = await fetch(`/api/hotels/search?${qs}`, { cache: "no-store" });
+      if (!res.ok) {
+        await new Promise((r) => setTimeout(r, 1500));
+        if (pollTokenRef.current !== token) return;
+        res = await fetch(`/api/hotels/search?${qs}`, { cache: "no-store" });
+      }
+      if (!res.ok) {
+        setError(t.hotels.searchError);
+        setLoading(false);
+        return;
+      }
       const data = parseHotelApiJson(await res.text());
       const list = Array.isArray(data.hotels)
         ? (data.hotels as TravelAdvisorHotelCard[])
         : [];
+      const stillRunning = applyProgress(data);
       if (!list.length) {
         setError("");
         setHotels([]);
         setTotalCount(0);
-        setHasMore(false);
-        setFilterGroups(buildLocalHotelFilterGroups([]));
+        setHasMore(Boolean(data.hasMore) && stillRunning);
+        syncFilterGroups(data, []);
         setListFallback(false);
+        if (data.source === "supplier") setListSource("supplier");
+        if (stillRunning) {
+          void pollSession(nextSort, token);
+          return;
+        }
+        setLoading(false);
         return;
       }
       setHotels(list);
@@ -99,12 +189,13 @@ export default function TravelAdvisorHotels() {
       setHasMore(Boolean(data.hasMore) || (total > 0 && list.length < total));
       setPage(0);
       setListSource(
-        data.source === "owned" || data.source === "travel_advisor" || data.source === "multi"
+        data.source === "owned" || data.source === "travel_advisor" || data.source === "multi" || data.source === "supplier"
           ? data.source
           : "booking"
       );
       setListFallback(Boolean(data.fallback));
-      setFilterGroups(buildLocalHotelFilterGroups(list));
+      syncFilterGroups(data, list);
+      if (stillRunning) void pollSession(nextSort, token);
       const resolvedGeo = String(data.geoId || "").trim();
       const resolvedDest = String(data.destId || "").trim();
       if (
@@ -119,12 +210,12 @@ export default function TravelAdvisorHotels() {
         setSearch(next);
         syncHotelSearchUrl(next);
       }
+      if (!stillRunning || list.length) setLoading(false);
     } catch {
       setError(t.hotels.searchError);
       setHotels([]);
       setTotalCount(0);
       setHasMore(false);
-    } finally {
       setLoading(false);
     }
   };
@@ -148,7 +239,7 @@ export default function TravelAdvisorHotels() {
       setHotels((prev) => {
         const seen = new Set(prev.map((h) => h.id));
         const next = [...prev, ...list.filter((h) => !seen.has(h.id))];
-        setFilterGroups(buildLocalHotelFilterGroups(next));
+        syncFilterGroups(data, next);
         return next;
       });
       setTotalCount((n) => Math.max(n, Number(data.totalCount) || 0));
@@ -172,6 +263,37 @@ export default function TravelAdvisorHotels() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
+  // Supplier sessions: re-page from the server whenever the facets change (exact totals + pagination).
+  const filtersKey = `${sort}|${JSON.stringify(appliedFilters)}`;
+  useEffect(() => {
+    if (!serverFacetsRef.current || !sidRef.current) return;
+    const token = ++pollTokenRef.current;
+    const timer = setTimeout(async () => {
+      setLoadingMore(true);
+      try {
+        const res = await fetch(`/api/hotels/search?${searchParamsFor(sort, 0, false)}`, { cache: "no-store" });
+        const data = parseHotelApiJson(await res.text());
+        if (pollTokenRef.current !== token) return;
+        const list = Array.isArray(data.hotels) ? (data.hotels as TravelAdvisorHotelCard[]) : [];
+        const stillRunning = applyProgress(data);
+        if (list.length || !stillRunning) {
+          setHotels(list);
+          setPage(0);
+          setTotalCount(Number(data.totalCount) || 0);
+          setHasMore(Boolean(data.hasMore));
+          syncFilterGroups(data, list);
+        }
+        if (stillRunning) void pollSession(sort, token);
+      } catch {
+        // keep the current list
+      } finally {
+        if (pollTokenRef.current === token) setLoadingMore(false);
+      }
+    }, 250);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filtersKey]);
+
   useEffect(() => {
     if (!hasMore || loading || loadingMore) return;
     const nodes = [moreRef.current, tailRef.current].filter((node): node is HTMLDivElement => Boolean(node));
@@ -187,7 +309,15 @@ export default function TravelAdvisorHotels() {
   }, [hasMore, hotels.length, loading, loadingMore]);
 
   const visible = useMemo(() => {
-    const list = filterHotelsClientSide(hotels, appliedFilters);
+    const nameNeedle = (search.hotelName || appliedFilters.find((f) => f.id === "name")?.value[0] || "").trim().toLowerCase();
+    const named = nameNeedle
+      ? hotels.filter((h) => h.name.toLowerCase().includes(nameNeedle))
+      : hotels;
+    if (listSource === "supplier") {
+      if (!appliedFilters.length) return named;
+      return filterHotelsClientSide(named, appliedFilters);
+    }
+    const list = filterHotelsClientSide(named, appliedFilters);
     list.sort((a, b) => {
       if (sort === "price") {
         const ap = a.nightly ?? a.priceFrom ?? 999999;
@@ -198,13 +328,15 @@ export default function TravelAdvisorHotels() {
       return (b.rating || 0) - (a.rating || 0);
     });
     return list;
-  }, [hotels, sort, appliedFilters]);
+  }, [hotels, sort, appliedFilters, listSource, search.hotelName]);
 
   const hrefFor = (hotel: TravelAdvisorHotelCard) => {
     const bookingId = hotel.bookingHotelId || (hotel.source === "booking" ? hotel.id : "");
     const slug = hotelApiSlug(bookingId || hotel.id, bookingId ? "booking" : "ta");
     const qs = hotelSearchToParams(search);
     if (bookingId) qs.set("bookingHotelId", bookingId);
+    if (hotel.sessionId) qs.set("sid", hotel.sessionId);
+    if (hotel.masterId) qs.set("master", hotel.masterId);
     return `/hotels/${slug}?${qs.toString()}`;
   };
 
@@ -215,6 +347,34 @@ export default function TravelAdvisorHotels() {
       onChange={setAppliedFilters}
     />
   );
+
+  useEffect(() => {
+    const onAgent = (event: Event) => {
+      const detail = (event as CustomEvent<SearchAgentEventDetail>).detail;
+      if (!detail?.filters) return;
+      if (detail.action !== "filter") return;
+      setSearch((prev) =>
+        detail.filters?.hotelName
+          ? { ...prev, hotelName: detail.filters.hotelName }
+          : prev
+      );
+      setAppliedFilters((prev) => {
+        const next = [...prev.filter((f) => f.id !== "class" && f.id !== "price")];
+        if (detail.filters?.stars) {
+          next.push({ id: "class", value: [String(detail.filters.stars)] });
+        }
+        if (detail.filters?.maxPrice) {
+          next.push({ id: "price", value: ["0", String(detail.filters.maxPrice)] });
+        }
+        return next;
+      });
+      if (detail.filters?.hotelName) {
+        window.setTimeout(() => void runSearch(), 80);
+      }
+    };
+    window.addEventListener(SEARCH_AGENT_EVENT, onAgent);
+    return () => window.removeEventListener(SEARCH_AGENT_EVENT, onAgent);
+  }, []);
 
   const searchForm = (
     <HotelSearchBar
@@ -264,9 +424,19 @@ export default function TravelAdvisorHotels() {
           <p className="text-white/70 text-sm md:text-base max-w-2xl mb-6">
             {t.hotels.bannerSubtitle}
           </p>
-          <div className="relative z-20">{searchForm}</div>
+          <div className="relative z-20">
+            <SearchAgentResultsDock
+              tab="hotel"
+              page="results"
+              replace
+              className="mt-3"
+              context={`Hotel search ${search.q} ${search.checkIn} ${search.checkOut} adults ${search.adults}. Current engine is hotels. If the customer asks for a flight, open the live flight engine.`}
+            >
+              {searchForm}
+            </SearchAgentResultsDock>
+          </div>
         </div>
-        <div className="h-1 w-full bg-gradient-to-l from-amber-300 via-amber-500 to-emerald-600" />
+        <div className="h-1 w-full bg-gradient-to-l from-amber-300 via-amber-500 to-[#2e1065]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 mt-5">
@@ -294,7 +464,24 @@ export default function TravelAdvisorHotels() {
             ) : error ? (
               <div className="py-20 text-center text-slate-400">{error}</div>
             ) : hotels.length === 0 ? (
-              <div className="py-20 text-center text-slate-400">{t.hotels.noHotels}</div>
+              searching ? (
+                <div>
+                  <div className="mb-5 flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-amber-950">
+                    <span className="relative flex h-10 w-10 items-center justify-center">
+                      <span className="absolute inset-0 rounded-full border-2 border-amber-400/30 border-t-amber-500 animate-spin" />
+                      <Search size={16} className="text-amber-600 animate-pulse" />
+                    </span>
+                    <p className="font-semibold">{t.hotels.searchingBestPrices}</p>
+                  </div>
+                  <div className="space-y-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <HotelCardSkeleton key={i} />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="py-20 text-center text-slate-400">{t.hotels.noHotels}</div>
+              )
             ) : (
               <>
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
@@ -337,18 +524,11 @@ export default function TravelAdvisorHotels() {
                 </div>
 
                 <div className="space-y-3">
-                  {visible.map((hotel, index) => {
-                    const neighborRibbons: HotelRibbonKind[] = [];
-                    const prev = index > 0 ? pickHotelRibbon(visible[index - 1]) : null;
-                    if (prev) neighborRibbons.push(prev.kind);
+                  {visible.map((hotel) => {
                     const prefetchId = hotels[Math.max(0, hotels.length - 8)]?.id;
                     return (
                       <div key={hotel.id} ref={hotel.id === prefetchId ? moreRef : undefined}>
-                        <HotelListCard
-                          hotel={hotel}
-                          href={hrefFor(hotel)}
-                          neighborRibbons={neighborRibbons}
-                        />
+                        <HotelListCard hotel={hotel} href={hrefFor(hotel)} />
                       </div>
                     );
                   })}

@@ -48,7 +48,7 @@ export function TopBar({ onSave, onPublish, onOpenLive }: TopBarProps) {
   } = useVisualEditor();
 
   return (
-    <header className="h-14 shrink-0 border-b border-white/10 bg-[#051741] text-white flex items-center gap-3 px-3">
+    <header className="h-14 shrink-0 border-b border-purple-900/40 bg-[#180a2e] text-white flex items-center gap-3 px-3">
       <div className="min-w-0">
         <p className="text-sm font-bold truncate">{e.title}</p>
         <p className="text-[11px] text-white/45 truncate hidden sm:block">{e.subtitle}</p>
@@ -61,7 +61,7 @@ export function TopBar({ onSave, onPublish, onOpenLive }: TopBarProps) {
             onClick={() => setLocale(code)}
             className={cn(
               "px-2 py-1 rounded-md text-xs font-bold uppercase",
-              locale === code ? "bg-emerald-500 text-[#051741]" : "bg-white/10 text-white/70"
+              locale === code ? "bg-amber-500 text-slate-950 shadow-xs" : "bg-white/10 text-white/70"
             )}
           >
             {code}
@@ -75,7 +75,7 @@ export function TopBar({ onSave, onPublish, onOpenLive }: TopBarProps) {
             onClick={() => setDevice(id)}
             className={cn(
               "w-8 h-8 rounded-lg flex items-center justify-center",
-              device === id ? "bg-white text-[#051741]" : "text-white/60 hover:text-white"
+              device === id ? "bg-purple-600 text-white shadow-xs" : "text-white/60 hover:text-white"
             )}
             title={e[id]}
           >
@@ -123,7 +123,7 @@ export function TopBar({ onSave, onPublish, onOpenLive }: TopBarProps) {
           type="button"
           onClick={onPublish}
           disabled={publishing}
-          className="inline-flex items-center gap-1.5 px-3 h-8 rounded-lg bg-emerald-500 text-[#051741] text-xs font-bold"
+          className="inline-flex items-center gap-1.5 px-3 h-8 rounded-lg bg-gradient-to-r from-purple-700 to-[#2e1065] hover:from-purple-600 hover:to-purple-900 text-amber-300 border border-amber-400/40 text-xs font-bold shadow-xs"
         >
           {publishing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
           {e.publish}

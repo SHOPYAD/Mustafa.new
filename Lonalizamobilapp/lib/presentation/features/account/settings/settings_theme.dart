@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Trip-style settings list (reference: label ~16sp medium, value #9E9E9E).
 abstract final class SettingsTheme {
   static const Color sectionLine = Color(0xFFF3F4F6); // Very faint line
-  static const Color trackBlue = Color(0xFF3264FF);
+  static const Color trackBlue = Color(0xFF7C3AED);
 
   static const TextStyle labelStyle = TextStyle(
     fontSize: 15,

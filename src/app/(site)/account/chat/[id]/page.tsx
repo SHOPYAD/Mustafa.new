@@ -42,7 +42,7 @@ export default function AccountChatPage() {
   if (loading || !ready) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center pt-24">
-        <Loader2 className="animate-spin text-emerald-600" />
+        <Loader2 className="animate-spin text-amber-500" />
       </div>
     );
   }
@@ -57,11 +57,11 @@ export default function AccountChatPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 pb-16 pt-28">
-      <Link href="/account?tab=chats" className="text-sm font-semibold text-emerald-700">
+      <Link href="/account?tab=chats" className="text-sm font-semibold text-purple-700 hover:text-purple-900">
         ← {t.account.navChats}
       </Link>
       <div className="mt-4 flex items-center gap-2">
-        <MessageCircle className="text-emerald-600" />
+        <MessageCircle className="text-purple-700" />
         <h1 className="text-2xl font-bold text-slate-900">
           {title || t.account.navChats}
         </h1>

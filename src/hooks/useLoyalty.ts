@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { LoyaltyService, LoyaltySettings } from "@/lib/loyalty/types";
 
 export type PublicCoupon = {
@@ -80,6 +80,15 @@ export function useLoyalty(service: LoyaltyService, locale: string) {
 
   const settings = data.settings;
   const coupons = useMemo(() => data.coupons || [], [data.coupons]);
+
+  const autoTried = useRef(false);
+  useEffect(() => {
+    if (appliedCode || autoTried.current) return;
+    const publicCode = coupons.find((c) => c.code === "LONA10" && !c.firstBookingOnly && !c.newUserOnly);
+    if (!publicCode) return;
+    autoTried.current = true;
+    void applyCode(publicCode.code);
+  }, [appliedCode, coupons, applyCode]);
 
   return { settings, coupons, appliedCode, applyCode, clearCode, reload };
 }

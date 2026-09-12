@@ -9,16 +9,17 @@ export const runtime = "nodejs";
 export async function GET(req: NextRequest) {
   const limited = rateLimit(`flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
-  const cacheKey = `flights:${req.nextUrl.search}`;
+  const cacheKey = `flights:v8:${req.nextUrl.search}`;
   const cached = ttlGet<Record<string, unknown>>(cacheKey);
   if (cached) return flightsJson(cached);
   const q = req.nextUrl.searchParams;
-  const originSkyId = (q.get("originSkyId") || "").trim();
-  const destinationSkyId = (q.get("destinationSkyId") || "").trim();
-  const originEntityId = (q.get("originEntityId") || "").trim();
-  const destinationEntityId = (q.get("destinationEntityId") || "").trim();
-  const date = (q.get("date") || "").trim();
-  if (!originSkyId || !destinationSkyId || !originEntityId || !destinationEntityId || !date) {
+  const originSkyId = (q.get("originSkyId") || q.get("origin") || "").trim().toUpperCase();
+  const destinationSkyId = (q.get("destinationSkyId") || q.get("destination") || "").trim().toUpperCase();
+  let originEntityId = (q.get("originEntityId") || "").trim();
+  let destinationEntityId = (q.get("destinationEntityId") || "").trim();
+  const date = (q.get("date") || q.get("departureDate") || "").trim();
+
+  if (!originSkyId || !destinationSkyId || !date) {
     return flightsJson(
       {
         ok: false,
@@ -28,6 +29,18 @@ export async function GET(req: NextRequest) {
       },
       400
     );
+  }
+
+  if (!originEntityId || !destinationEntityId) {
+    try {
+      const { lookupSkyEntity, ensureSkyEntityMap } = await import("@/lib/server/sky-entity-ids");
+      await ensureSkyEntityMap();
+      originEntityId = originEntityId || lookupSkyEntity(originSkyId)?.entityId || `ent_${originSkyId}`;
+      destinationEntityId = destinationEntityId || lookupSkyEntity(destinationSkyId)?.entityId || `ent_${destinationSkyId}`;
+    } catch {
+      originEntityId = originEntityId || `ent_${originSkyId}`;
+      destinationEntityId = destinationEntityId || `ent_${destinationSkyId}`;
+    }
   }
 
   const result = await runFlightSearch({

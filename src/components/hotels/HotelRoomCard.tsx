@@ -39,7 +39,7 @@ type Props = {
 };
 
 const BOOK_BTN =
-  "inline-flex h-8 min-w-[72px] shrink-0 items-center justify-center rounded-lg bg-[#102033] px-3 text-xs font-bold text-white hover:bg-[#1a334d]";
+  "inline-flex h-8 min-w-[72px] shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-[#2e1065] to-[#4c1d95] px-3 text-xs font-bold text-white hover:brightness-110 shadow-xs transition-all";
 
 export default function HotelRoomCard({
   room,
@@ -148,18 +148,18 @@ export default function HotelRoomCard({
               </span>
             ) : null}
             {room.breakfastIncluded ? (
-              <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[11px] text-emerald-800">
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-purple-50 px-1.5 py-0.5 text-[11px] text-purple-950 border border-purple-200/60 font-medium">
                 <HotelFeatureIcon label={t.breakfastIncluded} kind="breakfast" size={18} />
                 {t.breakfastIncluded}
               </span>
             ) : null}
             {room.freeCancellation ? (
-              <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[11px] text-emerald-800">
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-purple-50 px-1.5 py-0.5 text-[11px] text-purple-950 border border-purple-200/60 font-medium">
                 <HotelFeatureIcon label={t.freeCancellation} kind="cancel" size={18} />
                 {t.freeCancellation}
               </span>
             ) : showPaidCancel ? (
-              <span className="inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-900">
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-900 border border-amber-200/60 font-medium">
                 <HotelFeatureIcon label={t.nonRefundable} kind="noCancel" size={18} />
                 {t.nonRefundable}
               </span>
@@ -193,7 +193,7 @@ export default function HotelRoomCard({
                         <span className="truncate">{boardLabel}</span>
                       </p>
                       {rate.freeCancellation ? (
-                        <p className="inline-flex items-center gap-1 text-[11px] text-emerald-700">
+                        <p className="inline-flex items-center gap-1 text-[11px] text-purple-900 font-medium">
                           <HotelFeatureIcon label={t.freeCancellation} kind="cancel" size={16} />
                           {t.freeCancellation}
                         </p>
@@ -207,7 +207,7 @@ export default function HotelRoomCard({
                     <div className="flex shrink-0 items-center gap-2">
                       {nightly != null ? (
                         <div className="text-end">
-                          <p className="text-sm font-bold text-[#0b3d2e]">
+                          <p className="text-sm font-extrabold text-[#2e1065]">
                             {formatPrice(nightly, rate.currency || room.currency || "USD")}
                           </p>
                           <p className="text-[10px] text-slate-500">{t.perNight}</p>
@@ -230,7 +230,7 @@ export default function HotelRoomCard({
             </div>
           ) : null}
           {marketing ? (
-            <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-800">
+            <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-purple-950">
               <HotelFeatureIcon label={marketing} size={16} />
               {marketing}
             </p>

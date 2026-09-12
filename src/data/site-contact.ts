@@ -5,6 +5,7 @@ import type {
   SocialLinkConfig,
   SocialNetworkId,
 } from "@/types/site-contact";
+import type { Locale } from "@/lib/i18n/types";
 import { buildWhatsAppLink, normalizeWhatsAppNumber } from "@/lib/utils";
 
 const STORAGE_KEY = "liotrip_site_contact_v1";
@@ -13,10 +14,10 @@ export const SITE_CONTACT_STORAGE_KEY = STORAGE_KEY;
 export const SITE_CONTACT_UPDATED_EVENT = "liotrip:site-contact-updated";
 
 /** Default business WhatsApp (digits) — shared fallback for imports / forms */
-export const DEFAULT_SITE_WHATSAPP = "905321796763";
+export const DEFAULT_SITE_WHATSAPP = "905313591394";
 
 export const SITE_PUBLIC_EMAIL = "info@lonaliza.com";
-export const SITE_PUBLIC_PHONE = "+90 532 179 67 63";
+export const SITE_PUBLIC_PHONE = "+90 531 359 13 94";
 export const SITE_PUBLIC_ADDRESS_AR = "إسطنبول، تركيا";
 export const SITE_PUBLIC_ADDRESS_EN = "Istanbul, Turkey";
 export const SITE_PUBLIC_ADDRESS = `${SITE_PUBLIC_ADDRESS_AR}\n${SITE_PUBLIC_ADDRESS_EN}`;
@@ -54,9 +55,9 @@ export function isDemoCompanySocial(value: string): boolean {
 
 /** Default prefilled WhatsApp message for site-wide CTAs */
 export const DEFAULT_WHATSAPP_MESSAGE_EN =
-  "Hello Alrayyan Tourism! I would like help planning my trip to Turkey.";
+  "Hello Lonaliza Tourism! I would like help planning my trip to Turkey.";
 export const DEFAULT_WHATSAPP_MESSAGE_AR =
-  "مرحباً الريان للسياحة! أرغب بالمساعدة في تخطيط رحلتي إلى تركيا.";
+  "مرحباً لوناليزا للسياحة! أرغب بالمساعدة في تخطيط رحلتي إلى تركيا.";
 
 const defaultSocial: SocialLinkConfig[] = [
   {
@@ -120,6 +121,15 @@ export const defaultSiteContact: SiteContact = {
   address: SITE_PUBLIC_ADDRESS,
   supportHours: "يوميًا: 9 صباحاً – 9 مساءً\nDaily: 9AM – 9PM",
   social: defaultSocial,
+  floatingHubEnabled: true,
+  floatingHubPosition: "right",
+  floatingHubBottomPx: 24,
+  callbackBannerEnabled: true,
+  callbackBannerPosition: "right",
+  callbackBannerBottomPx: 24,
+  b2bAdvisorEnabled: true,
+  b2bAdvisorPosition: "right",
+  b2bAdvisorBottomPx: 24,
 };
 
 export const SOCIAL_NETWORK_IDS: SocialNetworkId[] = [
@@ -339,7 +349,7 @@ export function getEnabledSocialLinks(contact?: SiteContact): SocialLinkConfig[]
 /** Resolve default WhatsApp prefilled message for locale */
 export function getWhatsAppMessage(
   contact?: SiteContact,
-  locale: "ar" | "en" | "tr" = "en"
+  locale: Locale = "en"
 ): string {
   const c = contact || getSiteContact();
   if (locale === "ar") {

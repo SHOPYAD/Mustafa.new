@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import PocketBase from "pocketbase";
-import { getPocketBaseUrl } from "@/lib/pocketbase/admin";
+import { getPocketBaseUrl, tryCreateAdminPocketBase } from "@/lib/pocketbase/admin";
 
 export const PB_AUTH_COOKIE = "alrayyan_pb_auth";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 14;
@@ -9,6 +9,7 @@ export type CustomerUser = {
   id: string;
   email: string;
   name: string;
+  avatarUrl?: string;
 };
 
 export function pbAuthCookieHeader(payload: string, maxAge = COOKIE_MAX_AGE): string {
@@ -88,12 +89,52 @@ export async function getRequestCustomer(
       collectionName: "users",
     });
     const auth = await pb.collection("users").authRefresh();
+    let avatarUrl = String(auth.record.avatar_url || "");
+    if (!avatarUrl && auth.record.avatar) {
+      avatarUrl = `${await getPocketBaseUrl()}/api/files/users/${auth.record.id}/${auth.record.avatar}`;
+    }
+    if (!avatarUrl) {
+      try {
+        const adminPb = await tryCreateAdminPocketBase();
+        if (adminPb) {
+          const customer = await adminPb
+            .collection("customers")
+            .getFirstListItem(`user = "${auth.record.id}" || email = "${auth.record.email}"`);
+          if (customer.notes && typeof customer.notes === "string" && customer.notes.startsWith("{")) {
+            const meta = JSON.parse(customer.notes);
+            if (meta.avatarUrl) avatarUrl = String(meta.avatarUrl);
+          }
+        }
+      } catch {
+        /* ignore */
+      }
+    }
     return {
       id: auth.record.id,
       email: String(auth.record.email || parsed.model.email),
       name: String(auth.record.name || parsed.model.name || ""),
+      avatarUrl: avatarUrl || undefined,
     };
   } catch {
+    try {
+      const adminPb = await tryCreateAdminPocketBase();
+      if (adminPb && (parsed.model.id || parsed.model.email)) {
+        const customer = await adminPb
+          .collection("customers")
+          .getFirstListItem(`user = "${parsed.model.id}" || email = "${parsed.model.email}"`);
+        if (customer.notes && typeof customer.notes === "string" && customer.notes.startsWith("{")) {
+          const meta = JSON.parse(customer.notes);
+          if (meta.avatarUrl) {
+            return {
+              ...parsed.model,
+              avatarUrl: String(meta.avatarUrl),
+            };
+          }
+        }
+      }
+    } catch {
+      /* ignore */
+    }
     return parsed.model;
   }
 }

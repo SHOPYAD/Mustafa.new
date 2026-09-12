@@ -38,24 +38,6 @@ export function pricesClose(a: number, b: number, tol = 0.12): boolean {
   return Math.abs(a - b) / Math.max(a, b) <= tol;
 }
 
-/** Stable 5 / 10 / 15 so the badge does not flicker between renders. */
-export function stableDiscountPct(hotelId: string): 5 | 10 | 15 {
-  let hash = 2166136261;
-  for (let i = 0; i < hotelId.length; i += 1) {
-    hash ^= hotelId.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-  const bucket = Math.abs(hash) % 3;
-  if (bucket === 0) return 5;
-  if (bucket === 1) return 10;
-  return 15;
-}
-
-export function beforeDiscountPrice(after: number, pct: 5 | 10 | 15): number {
-  if (!(after > 0)) return after;
-  return Math.max(after + 1, Math.round(after / (1 - pct / 100)));
-}
-
 /**
  * Classify an API amount as per-night or stay-total for the requested dates.
  * Never keep a stay-total from a different night count, and never multiply a

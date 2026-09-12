@@ -1,70 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../all_bookings/all_bookings_theme.dart';
-import '../../all_bookings/widgets/all_bookings_flight_card.dart';
-import '../../all_bookings/widgets/all_bookings_stay_card.dart';
-import '../widgets/upcoming_filter_bar.dart';
-import '../widgets/upcoming_list_footer.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/network/mobile_json.dart';
+import '../../../../providers/auth_session_provider.dart';
+import '../../../../providers/dio_provider.dart';
 
-class UpcomingPage extends StatelessWidget {
+class UpcomingPage extends ConsumerWidget {
   const UpcomingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final session = ref.watch(authSessionProvider);
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.grey.shade900),
-          onPressed: () => context.pop(),
-        ),
-        title: Text('Upcoming', style: AllBookingsTheme.appBarTitle),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.manage_search_rounded, size: 26, color: Colors.grey.shade900),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-        ),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-        children: const [
-          UpcomingFilterBar(),
-          SizedBox(height: 14),
-          AllBookingsStayCard(
-            hotelName: 'Zedwell Capsule Hotel Piccadilly Circus',
-            roomType: 'Capsule Cocoon | 1 Room',
-            datesLine: 'Apr 28 - Apr 30, 1 room 2 nights',
-            prepayLabel: 'Prepay online',
-            price: '\$105.12',
-            status: 'Confirmed',
-            primaryButtonLabel: 'View booking',
-          ),
-          SizedBox(height: 12),
-          AllBookingsFlightCard(
-            status: 'Confirmed',
-            leg1Route: 'Algiers (ALG) ➔ Doha (DOH)',
-            leg1Schedule: '3:35 PM, Apr 24 - 11:35 PM, Apr 24',
-            leg1Code: 'QR1380 (ALG)',
-            leg2Route: 'Doha (DOH) ➔ Tokyo (NRT)',
-            leg2Schedule: '3:05 AM, Apr 25 - 7:35 PM, Apr 25',
-            leg2Code: 'QR806 (DOH)',
-            addonTitle: 'Add-ons Purchased or Included',
-            promoLine: 'Promo code',
-            price: '\$619.30',
-          ),
-          UpcomingListFooter(),
-        ],
-      ),
+      backgroundColor: const Color(0xFFF7F4FC),
+      appBar: AppBar(title: const Text('القادمة')),
+      body: session == null
+          ? Center(
+              child: TextButton(
+                onPressed: () => context.push('/auth'),
+                child: const Text('سجّل الدخول'),
+              ),
+            )
+          : FutureBuilder<Map<String, dynamic>>(
+              future: ref
+                  .read(appDioClientProvider)
+                  .get<Map<String, dynamic>>(
+                    AppConstants.accountBookingsUrl,
+                    queryParameters: const {'filter': 'upcoming'},
+                  )
+                  .then((r) => r.data ?? const {}),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final hotels = mapList(snapshot.data?['hotels']);
+                final enquiries = mapList(snapshot.data?['enquiries']);
+                final flights = mapList(snapshot.data?['flights']);
+                if (hotels.isEmpty && enquiries.isEmpty && flights.isEmpty) {
+                  return const Center(child: Text('لا حجوزات قادمة'));
+                }
+                return ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    for (final row in hotels)
+                      Card(
+                        child: ListTile(
+                          title: Text(asText(row['hotel_name'] ?? row['name'], 'فندق')),
+                          subtitle: Text(asText(row['status'])),
+                        ),
+                      ),
+                    for (final row in enquiries)
+                      Card(
+                        child: ListTile(
+                          title: Text(asText(row['service_name'], 'طلب')),
+                          subtitle: Text(asText(row['status'])),
+                        ),
+                      ),
+                    for (final row in flights)
+                      Card(
+                        child: ListTile(
+                          title: Text('${asText(row['origin'])} → ${asText(row['destination'])}'),
+                          subtitle: Text('${asText(row['currency'])} ${asText(row['price'])}'),
+                        ),
+                      ),
+                  ],
+                );
+              },
+            ),
     );
   }
 }

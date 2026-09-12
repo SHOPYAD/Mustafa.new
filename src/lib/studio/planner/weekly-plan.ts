@@ -49,13 +49,10 @@ function topicTitle(topic: DiscoveredTopic, locale: StudioLocale): string {
     case "ar":
       return topic.titleAr || topic.titleEn;
     case "en":
+    default:
       return topic.titleEn || topic.titleAr;
     case "tr":
       return topic.titleTr || topic.titleEn || topic.titleAr;
-    default: {
-      const _never: never = locale;
-      return _never;
-    }
   }
 }
 
@@ -66,13 +63,10 @@ function destLabel(topic: DiscoveredTopic, locale: StudioLocale): string {
     case "ar":
       return pack.nameAr;
     case "en":
+    default:
       return pack.nameEn;
     case "tr":
       return pack.nameTr;
-    default: {
-      const _never: never = locale;
-      return _never;
-    }
   }
 }
 
@@ -89,13 +83,13 @@ function captionFor(
       ? "#Alrayyan #Türkiye #Seyahat"
       : locale === "en"
         ? "#Alrayyan #TurkeyTravel #VisitTurkey"
-        : "#الريان #سياحة_تركيا #السفر";
+        : "#لوناليزا #سياحة_تركيا #السفر";
   const cta =
     locale === "tr"
       ? "Rezervasyon: wa.me/905321796763"
       : locale === "en"
         ? "Book with Alrayyan: wa.me/905321796763"
-        : "احجز مع الريان: wa.me/905321796763";
+        : "احجز مع لوناليزا: wa.me/905321796763";
   const hook =
     format === "story"
       ? locale === "en"
@@ -113,7 +107,7 @@ function captionFor(
           ? "A slide from Alrayyan Tourism"
           : locale === "tr"
             ? "Alrayyan'dan bir slayt"
-            : "سلايد من الريان للسياحة";
+            : "سلايد من لوناليزا للسياحة والسفر";
   return `${hook}\n${title}\n${dest} · ${platform}\n${cta}\n${tags}`;
 }
 

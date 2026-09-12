@@ -22,7 +22,7 @@ class AccountPerksSection extends StatelessWidget {
         const Divider(height: 1, thickness: 1, color: AccountTheme.border),
         AccountMenuTile(
           icon: Icons.toll_outlined,
-          title: 'Redeem Trip Coins',
+          title: 'Redeem نقاط لوناليزا',
           dense: true,
           onTap: () {},
         ),

@@ -237,6 +237,56 @@ async function quoteHotels(
   }
 
   if (!cards.length) {
+    // Live multi-supplier search (Hotelbeds / Travelport / RateHawk / Seeru) through the supply orchestrator.
+    try {
+      const { runPublicHotelSearch } = await import("@/lib/server/hotels-search-runtime");
+      const live = await runPublicHotelSearch({
+        query: trip.destination,
+        checkIn: trip.arrivalDate,
+        checkOut: trip.departureDate,
+        adults: trip.people,
+        rooms: 1,
+        page: 0,
+        pageSize: 10,
+        sort: "best",
+        lang: "ar",
+      });
+      if (live.hotels.length) {
+        cards = live.hotels.slice(0, 3).map((h) => {
+          const stay = hotelStayPrice(Number(h.nightly) || 0, trip.nights);
+          const pending = stay <= 0;
+          const qs = new URLSearchParams({ checkIn: trip.arrivalDate, checkOut: trip.departureDate, adults: String(trip.people) });
+          if (h.sessionId) qs.set("sid", h.sessionId);
+          if (h.masterId) qs.set("master", h.masterId);
+          return {
+            type: "hotel" as const,
+            id: h.id,
+            titleAr: h.name,
+            titleEn: h.name,
+            subtitleAr: h.city || trip.destination,
+            subtitleEn: h.city || trip.destination,
+            image: pickImage(h.image),
+            basePrice: stay,
+            clientPrice: pending ? 0 : applyMarkup(stay, markup),
+            currency: h.currency || "USD",
+            href: `/hotels/${hotelApiSlug(h.id)}?${qs.toString()}`,
+            badges: h.stars ? [`${h.stars}★`] : [],
+            highlights: h.badges?.slice(0, 3) || [],
+            pricePending: pending,
+            unitPrice: Number(h.nightly) || undefined,
+            unitLabelAr: "لليلة",
+            unitLabelEn: "per night",
+            nights: trip.nights,
+            source: pending ? "pending" : "live",
+          };
+        });
+      }
+    } catch {
+      /* fallback to local catalogue */
+    }
+  }
+
+  if (!cards.length) {
     const city = trip.destination.toLowerCase();
     const fallback = defaultHotels
       .filter((h) => h.isActive !== false)
@@ -276,10 +326,50 @@ async function quoteHotels(
   return { cards, warning };
 }
 
-function quoteTransfers(
+async function quoteTransfers(
   trip: ReturnType<typeof normalizeTrip>,
   markup: number
-): SalesChatCard[] {
+): Promise<SalesChatCard[]> {
+  // 1. Try Live Seeru Ride search if destination is available
+  try {
+    const { SeeruRideAdapter } = await import("@/lib/providers/adapters/seeru/seeruRideAdapter");
+    const adapter = new SeeruRideAdapter();
+    const dest = trip.dest;
+    const query = dest?.iata || dest?.airport || dest?.city || trip.destination;
+    const locs = await adapter.searchLocations(query);
+    if (locs.length > 0) {
+      const searchRes = await adapter.searchRides({
+        fromPlaceId: locs[0].place_id,
+        date: trip.arrivalDate,
+        time: "12:00",
+        mode: "transfer",
+        pax: Math.max(1, trip.people),
+      });
+
+      if (searchRes.offers?.length) {
+        return searchRes.offers.slice(0, 2).map((o) => ({
+          type: "transfer" as const,
+          id: `sr_${o.offer_id}`,
+          titleAr: `ترانسفير خاص - ${o.car_class.title}`,
+          titleEn: `Private Ride - ${o.car_class.title}`,
+          subtitleAr: `${o.car_class.capacity} مقاعد · ${o.car_class.luggage} حقائب`,
+          subtitleEn: `${o.car_class.capacity} seats · ${o.car_class.luggage} bags`,
+          image: o.car_class.image || pickImage(undefined, PHOTO.luxurySedan),
+          basePrice: o.price,
+          clientPrice: applyMarkup(o.price, markup),
+          currency: searchRes.currency || "USD",
+          href: `/transfers?from=${encodeURIComponent(locs[0].label)}&date=${trip.arrivalDate}&guests=${trip.people}`,
+          badges: [o.car_class.title, "Seeru Direct"].filter(Boolean),
+          highlights: [`سعة ${o.car_class.capacity} ركاب`, `استقبال في المطار مع لافتة باسم العميل`, `خدمة مباشرة ومؤمنة`],
+          source: "live",
+        }));
+      }
+    }
+  } catch {
+    /* fallback to catalog */
+  }
+
+  // 2. Fallback to catalog transfers
   const dest = trip.dest;
   const hay = `${trip.destination} ${dest?.city || ""} ${dest?.iata || ""} ${dest?.area || ""}`.toLowerCase();
   const items = defaultTransfers
@@ -482,12 +572,12 @@ export async function buildLiveQuote(
   const trip = normalizeTrip(raw, extraText);
   const warnings: string[] = [];
 
-  const [hotels, cars, flights] = await Promise.all([
+  const [hotels, cars, flights, transfers] = await Promise.all([
     quoteHotels(trip, markup),
     quoteCars(trip, markup),
     quoteFlights(trip, markup),
+    quoteTransfers(trip, markup),
   ]);
-  const transfers = quoteTransfers(trip, markup);
   if (hotels.warning) warnings.push(hotels.warning);
   if (flights.warning) warnings.push(flights.warning);
 

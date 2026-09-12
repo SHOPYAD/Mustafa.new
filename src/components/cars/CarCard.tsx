@@ -16,6 +16,7 @@ import { carCategoryLabel, carDisplayName, carTransmissionLabel } from "@/lib/ca
 import LoyaltyPointsRow from "@/components/loyalty/LoyaltyPointsRow";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import EnquiryModal from "@/components/ui/EnquiryModal";
+import { ShareToCommunityButton } from "@/components/community/ShareToCommunityButton";
 
 type CarCardProps = {
   car: RentalCar;
@@ -49,7 +50,7 @@ export default function CarCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 text-xs font-bold text-white rounded-full bg-gradient-to-r from-[#1e3a5f] to-emerald-600 shadow-lg">
+          <span className="px-3 py-1 text-xs font-bold text-white rounded-full bg-[var(--brand-primary)] shadow-lg">
             {carCategoryLabel(car.category, locale)}
           </span>
         </div>
@@ -73,20 +74,20 @@ export default function CarCard({
 
         <div className="flex flex-wrap gap-3 text-sm text-slate-600 mb-5">
           <span className="inline-flex items-center gap-1.5">
-            <Users size={15} className="text-emerald-600" />
+            <Users size={15} className="text-[var(--brand-primary)]" />
             {car.passengers} {t.cars.passengers}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <Briefcase size={15} className="text-emerald-600" />
+            <Briefcase size={15} className="text-[var(--brand-primary)]" />
             {car.luggage} {t.cars.luggage}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <Car size={15} className="text-emerald-600" />
+            <Car size={15} className="text-[var(--brand-primary)]" />
             {car.doors} {t.cars.doors}
           </span>
           {car.airConditioning ? (
             <span className="inline-flex items-center gap-1.5">
-              <Snowflake size={15} className="text-emerald-600" />
+              <Snowflake size={15} className="text-[var(--brand-primary)]" />
               A/C
             </span>
           ) : null}
@@ -112,19 +113,36 @@ export default function CarCard({
         ) : null}
 
         <div className="mt-auto space-y-2">
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#0a1628] hover:bg-[#152d4a] text-white font-semibold transition-colors"
-          >
-            <MessageCircle size={18} className="text-emerald-400" />
-            {t.cars.bookWhatsApp}
-          </a>
+          <div className="flex items-center gap-2">
+            <ShareToCommunityButton
+              service={{
+                id: car.id,
+                type: "car",
+                typeLabel: "تأجير سيارة سياحية فاخرة",
+                title: name,
+                destination: carCategoryLabel(car.category, locale),
+                price: car.pricePerDay,
+                currency: car.currency || "USD",
+                imageUrl:
+                  car.image ||
+                  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800",
+                url: `/cars`,
+              }}
+            />
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] hover:from-[#3b0764] hover:to-[#581c87] text-white font-bold transition-all shadow-md shadow-purple-950/20 border border-purple-800/40"
+            >
+              <MessageCircle size={18} className="text-amber-300" />
+              {t.cars.bookWhatsApp}
+            </a>
+          </div>
           <button
             type="button"
             onClick={() => setEnquiryOpen(true)}
-            className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-700 font-semibold hover:bg-slate-50"
+            className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-purple-200/80 bg-purple-50/60 hover:bg-purple-100 text-purple-950 font-bold transition-colors shadow-2xs"
           >
             {t.common.bookNow}
           </button>

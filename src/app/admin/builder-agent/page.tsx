@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Brain, Loader2, Plus, Trash2 } from "lucide-react";
+import { Brain, FileCode, Loader2, Plus, Trash2, Upload } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import {
   COPILOT_SCOPES,
@@ -55,6 +55,24 @@ function AdminBuilderAgentPageInner() {
   const [githubUrl, setGithubUrl] = useState("");
   const [note, setNote] = useState("");
   const [editingSkill, setEditingSkill] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleMdUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      await run({
+        action: "uploadSkill",
+        filename: file.name,
+        content: text,
+      });
+    } catch {
+      setError("فشل قراءة ملف المهارة");
+    } finally {
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
 
   const apply = useCallback((data: AgentPayload) => {
     if (Array.isArray(data.skills)) setSkills(data.skills);
@@ -156,10 +174,10 @@ function AdminBuilderAgentPageInner() {
               setScope(id);
               window.history.replaceState(null, "", `/admin/builder-agent?scope=${id}`);
             }}
-            className={`rounded-xl border px-3 py-1.5 text-xs font-semibold ${
+            className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-colors ${
               scope === id
-                ? "border-emerald-400/40 bg-emerald-500/15 text-emerald-200"
-                : "border-white/10 bg-white/[0.03] text-white/60 hover:bg-white/[0.06]"
+                ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 shadow-sm"
+                : "border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-white/[0.03] text-slate-700 dark:text-white/60 hover:bg-slate-200 dark:hover:bg-white/[0.06]"
             }`}
           >
             {copy.scopes[id]}
@@ -175,6 +193,38 @@ function AdminBuilderAgentPageInner() {
         <h2 className="text-lg font-bold text-white">
           {copy.skills} · {scopeLabel}
         </h2>
+
+        {/* Upload MD Skill File Card */}
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-dashed border-emerald-500/40 bg-emerald-500/5 p-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
+              <FileCode size={20} />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white">رفع ملف مهارة احترافي جديد (.md)</p>
+              <p className="text-xs text-white/50">
+                اختر أي ملف مهارات Markdown (.md) من جهازك ليتم استخراجه وتفعيله فوراً لتعزيز ذكاء الوكيل كخبير بشري.
+              </p>
+            </div>
+          </div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".md,text/markdown"
+            className="hidden"
+            onChange={handleMdUpload}
+          />
+          <button
+            type="button"
+            disabled={saving}
+            onClick={() => fileInputRef.current?.click()}
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-4 py-2.5 text-xs font-bold text-white shadow-md transition-all disabled:opacity-50"
+          >
+            <Upload size={15} />
+            <span>{saving ? "جارٍ التحميل..." : "رفع ملف مهارة (.md)"}</span>
+          </button>
+        </div>
+
         <div className="grid gap-3 md:grid-cols-[1fr_auto]">
           <input
             value={githubUrl}
@@ -186,7 +236,7 @@ function AdminBuilderAgentPageInner() {
             type="button"
             disabled={saving || !githubUrl.trim()}
             onClick={() => void run({ action: "importGithub", url: githubUrl.trim() })}
-            className="rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-[#051741] disabled:opacity-40"
+            className="rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm disabled:opacity-40"
           >
             {saving ? copy.importing : copy.importAction}
           </button>
@@ -220,9 +270,9 @@ function AdminBuilderAgentPageInner() {
               setSkillMarkdown("");
               setEditingSkill(null);
             }}
-            className="inline-flex items-center gap-2 self-start rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white"
+            className="inline-flex items-center gap-2 self-start rounded-xl bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition-all"
           >
-            <Plus size={14} />
+            <Plus size={16} />
             {editingSkill ? copy.save : copy.addSkill}
           </button>
         </div>
@@ -285,9 +335,9 @@ function AdminBuilderAgentPageInner() {
               setRuleTitle("");
               setRuleMarkdown("");
             }}
-            className="inline-flex items-center gap-2 self-start rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white"
+            className="inline-flex items-center gap-2 self-start rounded-xl bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition-all"
           >
-            <Plus size={14} />
+            <Plus size={16} />
             {copy.addRule}
           </button>
         </div>
@@ -302,7 +352,7 @@ function AdminBuilderAgentPageInner() {
                 <button
                   type="button"
                   onClick={() => void run({ action: "toggleRule", id: rule.id, enabled: !rule.enabled })}
-                  className="text-xs text-emerald-300"
+                  className="text-xs font-bold text-emerald-400"
                 >
                   {rule.enabled ? copy.enabled : copy.disabled}
                 </button>
@@ -331,7 +381,7 @@ function AdminBuilderAgentPageInner() {
               await run({ action: "addMemory", note: note.trim() });
               setNote("");
             }}
-            className="rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-[#051741] disabled:opacity-40"
+            className="rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm disabled:opacity-40"
           >
             {copy.addMemory}
           </button>

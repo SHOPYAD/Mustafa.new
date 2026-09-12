@@ -21,6 +21,8 @@ import {
 } from "@/components/admin/flight-extras-copy";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import {
+  AGENCY_EXTRA_KINDS,
+  type AgencyExtraKind,
   AGENCY_EXTRA_ICONS,
   AGENCY_EXTRA_SERVICES,
   type AgencyExtraIcon,
@@ -73,8 +75,22 @@ function emptyDraft(): AgencyExtraInput {
     isActive: true,
     sort: 100,
     icon: "star",
+    kind: "other",
+    termsAr: "",
+    termsEn: "",
+    termsTr: "",
   };
 }
+
+const KIND_LABELS: Record<string, { ar: string; en: string; tr: string }> = {
+  refund_guarantee: { ar: "ضمان استرداد (إلغاء عبر لوناليزا)", en: "Refund guarantee (cancel via Lonaliza)", tr: "İade garantisi" },
+  flex_change: { ar: "تاريخ مرن (تغيير ينفّذه فريق لوناليزا)", en: "Flexible date (change executed by Lonaliza)", tr: "Esnek tarih" },
+  insurance: { ar: "تأمين سفر", en: "Travel insurance", tr: "Seyahat sigortası" },
+  extra_bag: { ar: "حقيبة إضافية (تنفيذ يدوي لدى الناقل)", en: "Extra bag (manual at carrier)", tr: "Ek bagaj" },
+  priority: { ar: "أولوية صعود (تنفيذ يدوي)", en: "Priority boarding (manual)", tr: "Öncelikli biniş" },
+  sms: { ar: "تذكرة عبر الرسائل", en: "SMS e-ticket", tr: "SMS e-bilet" },
+  other: { ar: "أخرى", en: "Other", tr: "Diğer" },
+};
 
 export default function FlightExtrasPanel() {
   const { locale } = useLocale();
@@ -321,6 +337,32 @@ export default function FlightExtrasPanel() {
                 rows={2}
                 className={`${inputClass} mt-1`}
               />
+            </label>
+            <label className="text-xs text-white/50 md:col-span-3">
+              {locale === "ar" ? "نوع التنفيذ (خدمة لوناليزا — لا تُرسل للمورد)" : locale === "tr" ? "Yerine getirme türü (Lonaliza hizmeti)" : "Fulfilment kind (Lonaliza service — never sent to supplier)"}
+              <select
+                value={draft.kind || "other"}
+                onChange={(e) => setDraft({ ...draft, kind: e.target.value as AgencyExtraKind })}
+                className={`${inputClass} mt-1`}
+              >
+                {AGENCY_EXTRA_KINDS.map((kind) => (
+                  <option key={kind} value={kind}>
+                    {KIND_LABELS[kind]?.[locale === "en" ? "en" : locale === "tr" ? "tr" : "ar"] || kind}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="text-xs text-white/50 md:col-span-3">
+              {locale === "ar" ? "الشروط (عربي)" : locale === "tr" ? "Koşullar (AR)" : "Terms (AR)"}
+              <textarea value={draft.termsAr || ""} onChange={(e) => setDraft({ ...draft, termsAr: e.target.value })} rows={3} className={`${inputClass} mt-1`} />
+            </label>
+            <label className="text-xs text-white/50 md:col-span-3">
+              {locale === "ar" ? "الشروط (English)" : "Terms (EN)"}
+              <textarea value={draft.termsEn || ""} onChange={(e) => setDraft({ ...draft, termsEn: e.target.value })} rows={3} className={`${inputClass} mt-1`} />
+            </label>
+            <label className="text-xs text-white/50 md:col-span-3">
+              {locale === "ar" ? "الشروط (Türkçe)" : "Terms (TR)"}
+              <textarea value={draft.termsTr || ""} onChange={(e) => setDraft({ ...draft, termsTr: e.target.value })} rows={3} className={`${inputClass} mt-1`} />
             </label>
             <label className="text-xs text-white/50">
               {copy.priceType}

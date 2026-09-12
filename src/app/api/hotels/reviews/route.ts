@@ -1,20 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
-import { fetchHotelReviewsPage } from "@/lib/server/hotel-rooms-provider";
+import { getOrFetchGuestReviews } from "@/lib/server/hotels/guest-reviews-store";
 
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const hotelId = (searchParams.get("bookingHotelId") || searchParams.get("hotelId") || "").trim();
-  const page = Number(searchParams.get("page") || 2);
+  const bookingHotelId = (searchParams.get("bookingHotelId") || "").trim();
+  const hotelId = (searchParams.get("hotelId") || "").trim();
+  const masterId = (searchParams.get("masterId") || "").trim();
+  const name = (searchParams.get("name") || "").trim();
+  const city = (searchParams.get("city") || "").trim();
+  const lat = Number(searchParams.get("lat") || "");
+  const lng = Number(searchParams.get("lng") || "");
   const lang = searchParams.get("lang")?.trim() || "";
-  if (!hotelId) {
+
+  if (!hotelId && !masterId && !name && !bookingHotelId) {
     return NextResponse.json({ ok: false, reviews: [], error: "Missing hotel id" }, { status: 400 });
   }
-  const reviews = await fetchHotelReviewsPage({
+
+  const result = await getOrFetchGuestReviews({
     hotelId,
-    page: Number.isFinite(page) && page > 1 ? Math.floor(page) : 2,
+    bookingHotelId,
+    masterId,
+    name,
+    city,
+    lat: Number.isFinite(lat) ? lat : undefined,
+    lng: Number.isFinite(lng) ? lng : undefined,
     lang,
   });
-  return NextResponse.json({ ok: true, reviews, page: Math.max(2, Math.floor(page) || 2) });
+  return NextResponse.json({
+    ok: true,
+    reviews: result.reviews,
+    bookingHotelId: result.bookingHotelId,
+    taHotelId: result.taHotelId,
+    reviewScore: result.reviewScore || null,
+    reviewScores: result.reviewScores,
+    cached: result.cached,
+  });
 }

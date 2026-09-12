@@ -19,6 +19,12 @@ import { tContent } from "@/lib/utils";
 import type { HomepageSectionInstance } from "@/lib/visual-editor/schema";
 import { resolveBoundImage } from "@/lib/visual-editor/live-bind";
 import {
+  WORLD_COUNTRY_TABS,
+  WORLD_DESTINATIONS,
+  type WorldCountryKey,
+} from "@/data/world-destinations";
+import { cn } from "@/lib/utils";
+import {
   BuilderLink,
   EditableText,
   SectionFrame,
@@ -82,12 +88,13 @@ function SectionIntro({
 }
 
 export function DestinationsSection({ instance, editorMode, selectedId }: SectionProps) {
-  const homepage = useHomepageContent();
   const { locale, t } = useLocale();
   const { formatPrice } = useCurrency();
-  const destinations = homepage.destinations;
-  const featured = destinations[0];
-  const rest = destinations.slice(1, 7);
+  const [selectedCountry, setSelectedCountry] = useState<WorldCountryKey>("turkey");
+
+  const countryCities = useMemo(() => {
+    return WORLD_DESTINATIONS[selectedCountry] || WORLD_DESTINATIONS.turkey;
+  }, [selectedCountry]);
 
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
@@ -111,77 +118,123 @@ export function DestinationsSection({ instance, editorMode, selectedId }: Sectio
               </BuilderLink>
             }
           />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            {featured ? (
-              <BuilderLink
-                href={featured.href || "/holidays"}
-                editorMode={editorMode}
-                instance={instance}
-                field={`dest-${featured.id}`}
-                className="sc-card group relative lg:col-span-6 min-h-[420px] overflow-hidden rounded-[1.75rem] shadow-2xl"
-              >
-                <SafeImage
-                  src={resolveBoundImage(instance, `dest-${featured.id}`, featured.image)}
-                  alt={tContent(featured, "name", locale)}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  builderId={`${instance.instanceId}.dest-${featured.id}`}
-                  builderField={`dest-${featured.id}`}
-                  builderInstanceId={instance.instanceId}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-header)] via-[color-mix(in_srgb,var(--brand-header)_35%,transparent)] to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <p className="text-xs text-[var(--brand-primary)] flex items-center gap-1">
-                    <MapPin size={12} />
-                    {tContent(featured, "country", locale)}
-                  </p>
-                  <h3 className="sc-card-title text-3xl font-bold mt-1">{tContent(featured, "name", locale)}</h3>
-                  <p className="sc-card-desc text-white/70 mt-2 max-w-md">{tContent(featured, "tagline", locale)}</p>
-                  <div className="mt-5 flex items-center justify-between rounded-xl border border-white/15 bg-white/10 backdrop-blur-md px-4 py-3">
-                    <span className="text-sm font-semibold">
-                      {t.common.from} {formatPrice(featured.startingPrice)}
+
+          {/* Premier Country Tabs (Scrollable Luxury Tab Bar) */}
+          <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide select-none">
+            {WORLD_COUNTRY_TABS.map((tab) => {
+              const active = selectedCountry === tab.key;
+              const countryName =
+                locale === "ar"
+                  ? tab.nameAr
+                  : locale === "tr"
+                  ? tab.nameTr
+                  : locale === "fr"
+                  ? tab.nameFr
+                  : tab.nameEn;
+              return (
+                <button
+                  key={tab.key}
+                  type="button"
+                  onClick={() => setSelectedCountry(tab.key)}
+                  className={cn(
+                    "group inline-flex items-center gap-2.5 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-300 cursor-pointer border",
+                    active
+                      ? "bg-gradient-to-r from-[#2e1065] via-[#3b1275] to-[#4c1d95] text-amber-300 border-amber-400/40 shadow-lg shadow-purple-950/25 scale-[1.03]"
+                      : "bg-white hover:bg-purple-50/50 text-slate-700 hover:text-purple-950 border-purple-100 hover:border-purple-300 shadow-xs"
+                  )}
+                >
+                  <span className="text-base leading-none">{tab.flag}</span>
+                  <span>{countryName}</span>
+                  <span
+                    className={cn(
+                      "rounded-full px-2 py-0.5 text-[10px] font-mono font-bold transition-colors",
+                      active
+                        ? "bg-amber-400/20 text-amber-200 border border-amber-400/30"
+                        : "bg-slate-100 text-slate-500 group-hover:bg-purple-100 group-hover:text-purple-700"
+                    )}
+                  >
+                    {tab.citiesCount}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+            {countryCities.map((dest) => {
+              const cName =
+                locale === "ar" ? dest.nameAr : locale === "tr" ? dest.nameTr : locale === "fr" ? dest.nameFr : dest.nameEn;
+              const cTagline =
+                locale === "ar" ? dest.taglineAr : locale === "tr" ? dest.taglineTr : locale === "fr" ? dest.taglineFr : dest.taglineEn;
+              const countryTab = WORLD_COUNTRY_TABS.find((c) => c.key === dest.countryKey);
+              const countryLabel =
+                locale === "ar"
+                  ? countryTab?.nameAr
+                  : locale === "tr"
+                  ? countryTab?.nameTr
+                  : locale === "fr"
+                  ? countryTab?.nameFr
+                  : countryTab?.nameEn;
+
+              return (
+                <BuilderLink
+                  key={dest.id}
+                  href={dest.href || "/holidays"}
+                  editorMode={editorMode}
+                  instance={instance}
+                  field={`dest-${dest.id}`}
+                  className="group relative block h-[340px] sm:h-[360px] overflow-hidden rounded-[1.75rem] border border-white/20 bg-slate-900 shadow-lg transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(46,16,101,0.35)] hover:-translate-y-1.5 hover:border-amber-400/50"
+                >
+                  <SafeImage
+                    src={dest.image}
+                    alt={cName}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-108"
+                  />
+                  {/* High-contrast multi-stop vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-transparent" />
+
+                  {/* Badges row */}
+                  <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between gap-2 z-10">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-950/80 backdrop-blur-md px-3 py-1 text-xs font-black text-amber-300 border border-amber-400/30 shadow-md">
+                      <MapPin size={12} className="text-amber-400" />
+                      <span>{countryLabel}</span>
                     </span>
-                    <span className="inline-flex items-center gap-1 text-sm text-[var(--brand-primary)]">
-                      <Star size={13} className="fill-[var(--brand-primary)] text-[var(--brand-primary)]" />
-                      {featured.rating} · {featured.packages} {t.home.packagesCount}
+                    <span className="inline-flex items-center gap-1 rounded-full bg-purple-950/80 backdrop-blur-md px-2.5 py-1 text-xs font-bold text-purple-200 border border-purple-400/20 shadow-sm">
+                      <Star size={11} className="fill-amber-400 text-amber-400" />
+                      <span>{dest.rating}</span>
+                      <span className="text-[10px] text-purple-300 font-normal">({dest.reviews})</span>
                     </span>
                   </div>
-                </div>
-              </BuilderLink>
-            ) : null}
-            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {rest.map((dest) => {
-                const name = tContent(dest, "name", locale);
-                return (
-                  <BuilderLink
-                    key={dest.id}
-                    href={dest.href || "/holidays"}
-                    editorMode={editorMode}
-                    instance={instance}
-                    field={`dest-${dest.id}`}
-                    className="sc-card group relative block h-[200px] overflow-hidden rounded-2xl border border-white/10"
-                  >
-                    <SafeImage
-                      src={resolveBoundImage(instance, `dest-${dest.id}`, dest.image)}
-                      alt={name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      builderId={`${instance.instanceId}.dest-${dest.id}`}
-                      builderField={`dest-${dest.id}`}
-                      builderInstanceId={instance.instanceId}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-header)]/95 via-[color-mix(in_srgb,var(--brand-header)_30%,transparent)] to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                      <p className="text-[11px] text-white/60">{tContent(dest, "country", locale)}</p>
-                      <h3 className="sc-card-title text-lg font-bold">{name}</h3>
-                      <p className="sc-card-price mt-1 text-xs text-[var(--brand-primary)]">
-                        {t.common.from} {formatPrice(dest.startingPrice)}
-                      </p>
+
+                  {/* Bottom Content */}
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 z-10">
+                    <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight drop-shadow-md" style={{ color: "#ffffff" }}>
+                      {cName}
+                    </h3>
+                    <p className="mt-1 text-xs text-slate-200 font-medium line-clamp-1 leading-relaxed drop-shadow-xs" style={{ color: "#e2e8f0" }}>
+                      {cTagline}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between gap-2 rounded-2xl border border-white/20 bg-slate-950/70 backdrop-blur-md p-3">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">{t.common.from}</span>
+                        <span className="text-base sm:text-lg font-black text-amber-300 font-mono leading-tight" style={{ color: "#fde047" }}>
+                          {formatPrice(dest.startingPrice)}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-bold text-purple-200 bg-purple-950/80 px-2.5 py-1 rounded-xl border border-purple-400/20">
+                          {dest.packagesCount} {t.home.packagesCount}
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-xs font-black px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-md group-hover:scale-105 transition-transform">
+                          <ArrowUpRight size={14} />
+                        </span>
+                      </div>
                     </div>
-                  </BuilderLink>
-                );
-              })}
-            </div>
+                  </div>
+                </BuilderLink>
+              );
+            })}
           </div>
         </div>
       </ServiceSurface>
@@ -236,7 +289,7 @@ export function PackagesSection({ instance, editorMode, selectedId }: SectionPro
               >
                 <div
                   onClickCapture={(e) => preventBuilderNav(editorMode, e)}
-                  className="sc-card rounded-2xl ring-1 ring-[#051741]/8 shadow-[0_16px_40px_-28px_rgba(5,23,65,0.45)]"
+                  className="sc-card rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <PackageCard package_={pkg} compact />
                 </div>
@@ -295,7 +348,7 @@ export function HotelsSection({ instance, editorMode, selectedId }: SectionProps
               >
                 <div
                   onClickCapture={(e) => preventBuilderNav(editorMode, e)}
-                  className="sc-card rounded-2xl ring-1 ring-slate-100 shadow-[0_14px_36px_-24px_rgba(5,23,65,0.4)]"
+                  className="sc-card rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <HotelCard hotel={hotel} compact />
                 </div>
@@ -346,7 +399,7 @@ export function CarsSection({ instance, editorMode, selectedId }: SectionProps) 
                   editorMode={editorMode}
                   instance={instance}
                   field={`car-${offer.id}`}
-                  className="sc-card group overflow-hidden rounded-[var(--radius-card)] border border-[color:color-mix(in_srgb,var(--brand-accent)_10%,transparent)] bg-white shadow-[0_16px_40px_-28px_rgba(5,23,65,0.35)] transition hover:-translate-y-1"
+                  className="sc-card group overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="sc-card-image relative h-44">
                     <SafeImage
@@ -355,19 +408,26 @@ export function CarsSection({ instance, editorMode, selectedId }: SectionProps) 
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-header)]/70 to-transparent" />
-                    <span className="absolute top-3 start-3 inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[var(--brand-accent)]">
-                      <Car size={12} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
+                    <span className="absolute top-3 start-3 inline-flex items-center gap-1.5 rounded-full bg-slate-950/80 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-amber-300 border border-amber-400/25">
+                      <Car size={12} className="text-amber-400" />
                       {offer.iata}
                     </span>
                   </div>
-                  <div className="p-4">
-                    <p className="text-xs font-semibold text-[var(--brand-primary)]">{city}</p>
-                    <h3 className="sc-card-title mt-1 font-bold text-[var(--brand-accent)]">{title}</h3>
-                    <p className="sc-card-desc mt-1 line-clamp-2 text-sm text-slate-500">{tagline}</p>
-                    <p className="sc-card-price mt-3 text-sm font-semibold text-[var(--brand-accent)]">
-                      {t.common.from} {formatPrice(offer.priceFromUsd)}
-                    </p>
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className="text-xs font-bold uppercase tracking-wider text-purple-700">{city}</p>
+                    <h3 className="sc-card-title mt-1 font-black text-base text-slate-900 group-hover:text-purple-700 transition-colors">{title}</h3>
+                    <p className="sc-card-desc mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-600 font-medium">{tagline}</p>
+                    <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
+                      <div>
+                        <span className="block text-[11px] font-medium text-slate-500">{t.common.from}</span>
+                        <span className="text-base font-black text-purple-950">{formatPrice(offer.priceFromUsd)}</span>
+                      </div>
+                      <span className="inline-flex items-center gap-1 rounded-xl bg-purple-50 px-3 py-1.5 text-xs font-bold text-purple-950 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                        <span>{t.common.bookNow || "حجز"}</span>
+                        <ArrowUpRight size={13} />
+                      </span>
+                    </div>
                   </div>
                 </BuilderLink>
               );

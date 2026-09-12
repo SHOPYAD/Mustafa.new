@@ -36,6 +36,13 @@ export type HotelBookingConfirmView = {
   payment_method: "card" | "whatsapp" | "other";
   status: string;
   payment_status: string;
+  /** Supplier reservation state (quote-backed bookings): awaiting_payment → supplier_pending →
+   *  supplier_confirmed → voucher_sent | supplier_failed → refund_pending → refunded | cancelled. */
+  fulfilment_status: string;
+  supplier: string;
+  supplier_reference: string;
+  hotel_confirmation_code: string;
+  fulfilment_error: string;
   confirm: string;
   service: InvoiceService;
   snapshot: Record<string, unknown>;
@@ -125,6 +132,11 @@ export function toHotelBookingConfirmView(booking: HotelBookingRecord): HotelBoo
     payment_method: paymentMethodOf(booking),
     status: booking.status,
     payment_status: String(booking.payment_status || booking.status || ""),
+    fulfilment_status: String(snap.fulfilment_status || (booking.status === "paid" ? "confirmed" : booking.status === "cancelled" ? "cancelled" : "awaiting_payment")),
+    supplier: String(snap.supplier || booking.provider || ""),
+    supplier_reference: String(snap.supplier_reference || snap.supplier_order_id || ""),
+    hotel_confirmation_code: String(snap.hotel_confirmation_code || snap.supplierConfirmationNo || ""),
+    fulfilment_error: String(snap.fulfilment_error || ""),
     confirm: bookingConfirmToken(booking),
     service: detectInvoiceService({
       provider: booking.provider,

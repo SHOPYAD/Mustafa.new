@@ -124,7 +124,19 @@ export const MANAGED_ENV_KEYS = [
   "GOOGLE_YOUTUBE_CLIENT_SECRET",
   "TIKTOK_CLIENT_KEY",
   "TIKTOK_CLIENT_SECRET",
+  "X_CLIENT_ID",
+  "X_CLIENT_SECRET",
+  "TWITTER_CLIENT_ID",
+  "TWITTER_CLIENT_SECRET",
   "SOCIAL_OAUTH_STATE_SECRET",
+  "DEPLOYMENT_ROLE",
+  "LICENSE_KEY",
+  "LICENSE_ORIGIN",
+  "LICENSE_SIGNING_KEY",
+  "GOOGLE_PLACES_API_KEY",
+  "GOOGLE_MAPS_API_KEY",
+  "ADMIN_DIGEST_EMAIL",
+  "ADMIN_EMAIL",
 ] as const;
 
 export type ManagedEnvKey = (typeof MANAGED_ENV_KEYS)[number];
@@ -155,7 +167,13 @@ export const SECRET_ENV_KEYS = new Set<string>([
   "META_APP_SECRET",
   "GOOGLE_YOUTUBE_CLIENT_SECRET",
   "TIKTOK_CLIENT_SECRET",
+  "X_CLIENT_SECRET",
+  "TWITTER_CLIENT_SECRET",
   "SOCIAL_OAUTH_STATE_SECRET",
+  "LICENSE_KEY",
+  "LICENSE_SIGNING_KEY",
+  "GOOGLE_PLACES_API_KEY",
+  "GOOGLE_MAPS_API_KEY",
 ]);
 
 type StoreFile = {
@@ -496,20 +514,28 @@ export async function getPublicHotelsEnv(): Promise<Record<string, string>> {
 export async function getPublicClientConfig(): Promise<{
   siteUrl: string;
   googleAuthEnabled: boolean;
+  deploymentRole: "origin" | "client";
 }> {
   const map = await getServerEnvMap([
     "NEXT_PUBLIC_SITE_URL",
     "POCKETBASE_GOOGLE_ENABLED",
     "POCKETBASE_GOOGLE_CLIENT_ID",
     "POCKETBASE_GOOGLE_CLIENT_SECRET",
+    "DEPLOYMENT_ROLE",
   ]);
   const enabled = map.POCKETBASE_GOOGLE_ENABLED.trim().toLowerCase();
   const googleAuthEnabled =
     (enabled === "true" || enabled === "1" || enabled === "yes") &&
     Boolean(map.POCKETBASE_GOOGLE_CLIENT_ID.trim()) &&
     Boolean(map.POCKETBASE_GOOGLE_CLIENT_SECRET.trim());
+  const deploymentRole =
+    map.DEPLOYMENT_ROLE.trim().toLowerCase() === "client" ||
+    process.env.DEPLOYMENT_ROLE === "client"
+      ? "client"
+      : "origin";
   return {
     siteUrl: map.NEXT_PUBLIC_SITE_URL || "",
     googleAuthEnabled,
+    deploymentRole,
   };
 }

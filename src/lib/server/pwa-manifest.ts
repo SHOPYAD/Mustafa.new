@@ -52,7 +52,7 @@ export function buildWebManifest(input: {
   const name = pwaNameForLocale(settings, locale);
   const short =
     settings.shortName ||
-    (locale === "en" ? "Alrayyan" : locale === "tr" ? "Alrayyan" : "الريان");
+    (locale === "en" ? "Lonaliza" : locale === "tr" ? "Lonaliza" : "لوناليزا");
   const icon192 = resolvedPwaIcon192(settings);
   const icon512 = resolvedPwaIcon512(settings);
   const apple = resolvedAppleTouchIcon(settings);
@@ -64,15 +64,15 @@ export function buildWebManifest(input: {
     short_name: isAdmin ? `${short}`.slice(0, 12) : short,
     description: isAdmin
       ? locale === "en"
-        ? "Alrayyan control panel"
+        ? "Lonaliza control panel"
         : locale === "tr"
-          ? "Alrayyan kontrol paneli"
-          : "لوحة تحكم الريان"
+          ? "Lonaliza kontrol paneli"
+          : "لوحة تحكم لوناليزا"
       : locale === "en"
-        ? "Holiday packages, flights, and visas with Alrayyan Tourism."
+        ? "Holiday packages, flights, and visas with Lonaliza Travel."
         : locale === "tr"
-          ? "Alrayyan Turizm ile tatil paketleri, uçuşlar ve vizeler."
-          : "باقات العطلات والطيران والتأشيرات مع الريان للسياحة.",
+          ? "Lonaliza Travel ile tatil paketleri, uçuşlar ve vizeler."
+          : "باقات العطلات والطيران والتأشيرات مع لوناليزا للسياحة والسفر.",
     start_url: isAdmin ? "/admin" : "/",
     scope: isAdmin ? "/admin" : "/",
     display: enabled ? "standalone" : "browser",

@@ -15,7 +15,7 @@ class AccountAboutSection extends StatelessWidget {
         const AccountSectionHeader(title: 'About & terms'),
         AccountMenuTile(
           icon: Icons.info_outline_rounded,
-          title: 'About Trip.com',
+          title: 'About Lonaliza',
           iconColor: AccountTheme.textBody,
           dense: true,
           onTap: () {},

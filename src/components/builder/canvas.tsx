@@ -299,7 +299,7 @@ export function Canvas() {
                 sectionType: item.type,
                 label: item.type,
                 field,
-                text: field ? item.texts[field]?.[state.locale] : undefined,
+                text: field ? (item.texts[field] as Record<string, string | undefined>)?.[state.locale] : undefined,
               });
             }
             setActivePanel("design");
@@ -350,7 +350,7 @@ export function Canvas() {
           key={`${activePage}-${locale}-${canvasEpoch}`}
           ref={iframeRef}
           data-builder-preview="1"
-          title="Alrayyan builder canvas"
+          title="Lonaliza builder canvas"
           src={canvasSrc}
           className="h-full min-h-[960px] w-full border-0 bg-white"
           onLoad={() => {

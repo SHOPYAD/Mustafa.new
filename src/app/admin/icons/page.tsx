@@ -253,11 +253,11 @@ export default function AdminIconsPage() {
         onClick={() => setActiveKey(key)}
         className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-start transition ${
           active
-            ? "border-emerald-400/40 bg-emerald-500/10"
+            ? "border-purple-400/40 bg-purple-500/15"
             : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
         }`}
       >
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0a1628] text-emerald-300">
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-amber-300">
           <UiIcon icon={icon} size={18} />
         </span>
         <span className="min-w-0 flex-1">
@@ -268,7 +268,7 @@ export default function AdminIconsPage() {
             {key}
           </span>
         </span>
-        {active ? <Check size={16} className="text-emerald-400" /> : null}
+        {active ? <Check size={16} className="text-amber-400" /> : null}
       </button>
     );
   };
@@ -278,13 +278,13 @@ export default function AdminIconsPage() {
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="flex items-center gap-3 text-3xl font-bold text-white">
-            <Library className="text-emerald-400" size={28} />
+            <Library className="text-amber-400" size={28} />
             {t.admin.iconLibrary}
           </h1>
           <p className="mt-1 max-w-2xl text-white/50">{labels.subtitle}</p>
           <Link
             href="/admin/content#menu"
-            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal-300 hover:text-teal-200"
+            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-amber-300 hover:text-amber-200"
           >
             <Menu size={14} />
             {t.menuVisibility.title}
@@ -303,7 +303,7 @@ export default function AdminIconsPage() {
             type="button"
             onClick={() => void handleSave()}
             disabled={saving || loading}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-400 disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-800 px-4 py-2.5 text-sm font-bold text-white hover:brightness-110 shadow-sm disabled:opacity-50"
           >
             <Save size={14} />
             {saving ? t.admin.loading : labels.save}
@@ -314,7 +314,7 @@ export default function AdminIconsPage() {
       {message ? (
         <p
           className={`mb-4 text-sm ${
-            message === labels.saved ? "text-emerald-400" : "text-rose-400"
+            message === labels.saved ? "text-amber-300 font-medium" : "text-rose-400"
           }`}
         >
           {message}
@@ -360,7 +360,7 @@ export default function AdminIconsPage() {
               <h2 className="text-lg font-bold text-white">{labels.library}</h2>
               <p className="text-xs text-white/40">
                 {labels.selected}:{" "}
-                <span className="font-mono text-emerald-300">{activeKey}</span>
+                <span className="font-mono text-amber-300">{activeKey}</span>
               </p>
             </div>
             <label className="relative block w-full max-w-sm">
@@ -372,7 +372,7 @@ export default function AdminIconsPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={labels.searchPh}
-                className="w-full rounded-xl border border-white/10 bg-slate-950/60 py-2.5 ps-9 pe-3 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full rounded-xl border border-white/10 bg-slate-950/60 py-2.5 ps-9 pe-3 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
               />
             </label>
           </div>
@@ -386,7 +386,7 @@ export default function AdminIconsPage() {
                   onClick={() => setCategory(id)}
                   className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
                     category === id
-                      ? "bg-emerald-500 text-white"
+                      ? "bg-gradient-to-r from-purple-700 to-indigo-800 text-white"
                       : "bg-white/5 text-white/65 hover:bg-white/10 hover:text-white"
                   }`}
                 >
@@ -414,7 +414,7 @@ export default function AdminIconsPage() {
                         }
                         className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-1.5 text-start hover:bg-white/5"
                       >
-                        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0a1628] text-emerald-300">
+                        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-amber-300">
                           <UiIcon
                             icon={{ source: "svg", name: item.id, svg: item.svg }}
                             size={18}
@@ -448,7 +448,7 @@ export default function AdminIconsPage() {
                 <input
                   value={svgLabel}
                   onChange={(e) => setSvgLabel(e.target.value)}
-                  className="mb-3 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2.5 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mb-3 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2.5 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
                 />
                 <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-white/35">
                   {labels.customSvg}
@@ -457,7 +457,7 @@ export default function AdminIconsPage() {
                   value={svgMarkup}
                   onChange={(e) => setSvgMarkup(e.target.value)}
                   rows={5}
-                  className="mb-3 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2.5 font-mono text-xs text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mb-3 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2.5 font-mono text-xs text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
                   placeholder='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">…</svg>'
                 />
                 <button
@@ -477,7 +477,7 @@ export default function AdminIconsPage() {
                   type="button"
                   title={name}
                   onClick={() => assign({ source: "lucide", name })}
-                  className="flex flex-col items-center gap-1 rounded-xl border border-white/8 bg-[#0a1628] px-1.5 py-2 text-emerald-200 hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-white"
+                  className="flex flex-col items-center gap-1 rounded-xl border border-white/8 bg-slate-900 px-1.5 py-2 text-purple-200 hover:border-purple-400/40 hover:bg-purple-500/15 hover:text-white"
                 >
                   <UiIcon icon={{ source: "lucide", name }} size={20} />
                   <span className="w-full truncate text-[10px] text-white/45">

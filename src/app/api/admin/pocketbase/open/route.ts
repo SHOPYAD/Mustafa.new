@@ -7,6 +7,7 @@ import {
 import { createHandoff, publicHandoffUrl } from "@/lib/pocketbase/handoff-store";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   const denied = await assertAdminApi(req);

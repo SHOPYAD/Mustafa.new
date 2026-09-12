@@ -161,7 +161,7 @@ export default function TransferFormModal({
       whatsappNumber: formData.whatsappNumber || DEFAULT_WA,
       whatsappMessageAr:
         formData.whatsappMessageAr ||
-        `مرحباً الريان للسياحة، أرغب بالحجز: ${formData.titleAr}`,
+        `مرحباً لوناليزا للسياحة والسفر، أرغب بالحجز: ${formData.titleAr}`,
       whatsappMessageEn:
         formData.whatsappMessageEn ||
         `Hello Alrayyan Tourism, I would like to book: ${formData.titleEn}`,
@@ -238,7 +238,7 @@ export default function TransferFormModal({
                       whatsappMessageAr: editItem
                         ? formData.whatsappMessageAr
                         : formData.whatsappMessageAr ||
-                          `مرحباً الريان للسياحة، أرغب بالحجز: ${titleAr}`,
+                          `مرحباً لوناليزا للسياحة والسفر، أرغب بالحجز: ${titleAr}`,
                     });
                   }}
                   className={inputClass}

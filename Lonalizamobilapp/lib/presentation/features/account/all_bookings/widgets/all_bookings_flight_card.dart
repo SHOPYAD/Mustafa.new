@@ -15,7 +15,7 @@ class AllBookingsFlightCard extends StatelessWidget {
     this.leg2Code = 'QR806 (DOH)',
     this.addonTitle = 'Add-ons Purchased or Included',
     this.promoLine = 'Promo code',
-    this.price = '\$619.30',
+    this.price = '',
   });
 
   final String status;

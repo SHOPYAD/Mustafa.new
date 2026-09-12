@@ -50,8 +50,8 @@ function statusLabel(status: string, paymentStatus: string): string {
 }
 
 export function renderBookingHtml(model: BookingPdfModel): string {
-  const brandAr = esc(model.brandNameAr || "الريان للسياحة");
-  const brandEn = esc(model.brandNameEn || "Alrayyan Tourism");
+  const brandAr = esc(model.brandNameAr || "لوناليزا للسياحة");
+  const brandEn = esc(model.brandNameEn || "Lonaliza Tourism");
   const photo = safeUrl(model.hotel_image);
   const guests = model.guest_names.map((g) => esc(g)).filter(Boolean);
   const phone = esc(model.phone || defaultSiteContact.customerServicePhones[0] || "");

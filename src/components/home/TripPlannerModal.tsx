@@ -156,8 +156,8 @@ export default function TripPlannerModal({
   const totalSteps = 4;
 
   const waMessage = isAr
-    ? `مرحباً الريان، أرغب بتخطيط رحلة تركيا: ${formData.destination}، مسافرون ${formData.travelers}، ميزانية ${formData.budget}`
-    : `Hello Alrayyan, I'd like to plan a Turkey trip: ${formData.destination}, travelers ${formData.travelers}, budget ${formData.budget}`;
+    ? `مرحباً لوناليزا، أرغب بتخطيط رحلة تركيا: ${formData.destination}، مسافرون ${formData.travelers}، ميزانية ${formData.budget}`
+    : `Hello Lonaliza, I'd like to plan a Turkey trip: ${formData.destination}, travelers ${formData.travelers}, budget ${formData.budget}`;
   const waLink = buildWhatsAppLink(
     contact.whatsappNumber || DEFAULT_SITE_WHATSAPP,
     waMessage

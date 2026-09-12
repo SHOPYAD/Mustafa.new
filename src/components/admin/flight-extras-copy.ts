@@ -63,36 +63,6 @@ export function flightExtrasAdminCopy(locale: Locale): FlightExtrasAdminCopy {
         loadFailed: "تعذر تحميل الباقات",
         saveFailed: "تعذر الحفظ",
       };
-    case "en":
-      return {
-        title: "Add-on packages (agency services)",
-        subtitle: "Shown on the review step. Not added to the total until the customer selects them.",
-        add: "Add package",
-        edit: "Edit",
-        save: "Save",
-        cancel: "Cancel",
-        delete: "Delete",
-        reset: "Restore seed packages",
-        resetConfirm: "Restore the default extras and replace the current list?",
-        empty: "No packages yet",
-        active: "Active",
-        inactive: "Off",
-        sort: "Sort",
-        icon: "Icon",
-        price: "Price",
-        priceType: "Price type",
-        fixed: "Fixed amount",
-        percent: "Percent",
-        services: "Service types",
-        titleAr: "Title (Arabic)",
-        titleEn: "Title (English)",
-        titleTr: "Title (Turkish)",
-        descAr: "Description (Arabic)",
-        descEn: "Description (English)",
-        descTr: "Description (Turkish)",
-        loadFailed: "Could not load extras",
-        saveFailed: "Save failed",
-      };
     case "tr":
       return {
         title: "Ek paketler (acente hizmetleri)",
@@ -123,10 +93,37 @@ export function flightExtrasAdminCopy(locale: Locale): FlightExtrasAdminCopy {
         loadFailed: "Ek paketler yüklenemedi",
         saveFailed: "Kayıt başarısız",
       };
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
+    case "en":
+    default:
+      return {
+        title: "Add-on packages (agency services)",
+        subtitle: "Shown on the review step. Not added to the total until the customer selects them.",
+        add: "Add package",
+        edit: "Edit",
+        save: "Save",
+        cancel: "Cancel",
+        delete: "Delete",
+        reset: "Restore seed packages",
+        resetConfirm: "Restore the default extras and replace the current list?",
+        empty: "No packages yet",
+        active: "Active",
+        inactive: "Off",
+        sort: "Sort",
+        icon: "Icon",
+        price: "Price",
+        priceType: "Price type",
+        fixed: "Fixed amount",
+        percent: "Percent",
+        services: "Service types",
+        titleAr: "Title (Arabic)",
+        titleEn: "Title (English)",
+        titleTr: "Title (Turkish)",
+        descAr: "Description (Arabic)",
+        descEn: "Description (English)",
+        descTr: "Description (Turkish)",
+        loadFailed: "Could not load extras",
+        saveFailed: "Save failed",
+      };
   }
 }
 

@@ -19,16 +19,14 @@ import type {
 
 function localeCode(locale: Locale): string {
   switch (locale) {
-    case "ar":
-      return "en-US";
     case "tr":
       return "tr-TR";
+    case "fr":
+      return "fr-FR";
+    case "ar":
     case "en":
+    default:
       return "en-US";
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
   }
 }
 
@@ -38,12 +36,11 @@ function countryCode(locale: Locale): string {
       return "SA";
     case "tr":
       return "TR";
+    case "fr":
+      return "FR";
     case "en":
+    default:
       return "US";
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
   }
 }
 
@@ -121,6 +118,7 @@ export async function priceCalendar(input: {
   fromDate: string;
   toDate?: string;
   currency: string;
+  minPrice?: number;
 }): Promise<CalendarDayPrice[]> {
   const params = new URLSearchParams({
     originSkyId: input.originSkyId,
@@ -131,7 +129,8 @@ export async function priceCalendar(input: {
     currency: input.currency,
   });
   if (input.toDate) params.set("toDate", input.toDate);
-  const key = `fc3:${input.originSkyId}:${input.destinationSkyId}:${input.fromDate}:${input.toDate || ""}:${input.currency}`;
+  if (input.minPrice && input.minPrice > 0) params.set("minPrice", String(Math.round(input.minPrice)));
+  const key = `fc3:${input.originSkyId}:${input.destinationSkyId}:${input.fromDate}:${input.toDate || ""}:${input.currency}:${input.minPrice || ""}`;
   const mem = calendarMem.get(key);
   if (mem && mem.days.length && Date.now() - mem.at < CALENDAR_CACHE_TTL_MS) return mem.days;
   const cached = readSessionCache<CalendarDayPrice[]>(key, CALENDAR_CACHE_TTL_MS);
@@ -260,6 +259,8 @@ export async function flightDetails(input: {
 
 export async function initFlightBooking(input: {
   itineraryId: string;
+  /** Selected fare family (FareFamily.id) — resolved server-side to the supplier token. */
+  fareId?: string;
   legs: string;
   sessionId?: string;
   currency: string;
@@ -275,6 +276,8 @@ export async function initFlightBooking(input: {
   fareChanged: boolean;
   clientPrice: number;
   currency: string;
+  /** Server-side quote validity (ISO). Payment must start before this instant or the fare is re-priced. */
+  quoteExpiresAt?: string;
   iyzicoEnabled: boolean;
   whatsappBankLinkEnabled: boolean;
 }> {
@@ -283,6 +286,7 @@ export async function initFlightBooking(input: {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       itineraryId: input.itineraryId,
+      fareId: input.fareId,
       legs: input.legs,
       sessionId: input.sessionId,
       currency: input.currency,
@@ -299,19 +303,58 @@ export async function initFlightBooking(input: {
   const json = (await res.json()) as {
     ok?: boolean;
     bookingId?: string;
+    errorCode?: string;
     fareChanged?: boolean;
     price?: { client?: number; currency?: string };
+    quote?: { expiresAt?: string } | null;
     payment?: { iyzicoEnabled?: boolean; whatsappBankLinkEnabled?: boolean };
   };
   if (!res.ok || !json.ok || !json.bookingId) {
-    throw new Error("search_failed");
+    throw new Error(String(json.errorCode || "search_failed"));
   }
   return {
     bookingId: json.bookingId,
     fareChanged: Boolean(json.fareChanged),
     clientPrice: Number(json.price?.client) || input.quotedPrice,
     currency: String(json.price?.currency || input.currency),
+    quoteExpiresAt: json.quote?.expiresAt || undefined,
     iyzicoEnabled: Boolean(json.payment?.iyzicoEnabled),
     whatsappBankLinkEnabled: json.payment?.whatsappBankLinkEnabled !== false,
   };
+}
+
+export type PaidBagOption = {
+  id: string;
+  weightKg: number;
+  pieces: number;
+  label: string;
+  price: number;
+  currency: string;
+};
+
+export async function fetchPaidBaggage(input: {
+  sessionId: string;
+  itineraryId: string;
+  fareId?: string;
+  adults?: number;
+  children?: number;
+  infants?: number;
+  currency?: string;
+}): Promise<PaidBagOption[]> {
+  const res = await fetch("/api/flights/ancillary", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      sessionId: input.sessionId,
+      itineraryId: input.itineraryId,
+      fareId: input.fareId,
+      adults: input.adults || 1,
+      children: input.children || 0,
+      infants: input.infants || 0,
+      currency: input.currency,
+    }),
+  });
+  const json = (await res.json()) as { ok?: boolean; options?: PaidBagOption[] };
+  if (!res.ok || !json.ok) return [];
+  return Array.isArray(json.options) ? json.options : [];
 }

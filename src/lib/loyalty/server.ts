@@ -206,16 +206,34 @@ export async function quoteLoyalty(input: {
     }
   }
   const voucherIds: string[] = [];
+  let voucherNotice: string | undefined;
   if (input.userId && input.voucherIds?.length) {
-    const wallet = findWallet(store, input.userId);
-    for (const id of input.voucherIds) {
-      const voucher = wallet.vouchers.find((v) => v.id === id && v.active && v.remainingUsd > 0);
-      if (!voucher) continue;
-      if (!serviceMatches(voucher.service, input.service)) continue;
-      const take = Math.min(voucher.remainingUsd, Math.max(0, originalUsd - discountUsd));
-      if (take <= 0) continue;
-      discountUsd += take;
-      voucherIds.push(voucher.id);
+    const minBookingUsd = store.settings.minBookingAmountUsd ?? 500;
+    if (originalUsd + 0.01 < minBookingUsd) {
+      voucherNotice = `تنبيه: قسائم نقاط الولاء مخصصة للحجوزات التي تبدأ من $${minBookingUsd} فأكثر فقط. قيمة حجزك الحالية $${Math.round(originalUsd)}.`;
+    } else {
+      const maxPercent = store.settings.maxDiscountPercent ?? 15;
+      const maxCapUsd = store.settings.maxVoucherDiscountUsd ?? 150;
+      const maxVoucherAllowed = Math.min(
+        Math.round(originalUsd * (maxPercent / 100) * 100) / 100,
+        maxCapUsd
+      );
+      let appliedVoucherDiscount = 0;
+      const wallet = findWallet(store, input.userId);
+      for (const id of input.voucherIds) {
+        const voucher = wallet.vouchers.find((v) => v.id === id && v.active && v.remainingUsd > 0);
+        if (!voucher) continue;
+        if (!serviceMatches(voucher.service, input.service)) continue;
+        const availableBudget = Math.max(0, maxVoucherAllowed - appliedVoucherDiscount);
+        const take = Math.min(voucher.remainingUsd, availableBudget);
+        if (take <= 0) continue;
+        appliedVoucherDiscount += take;
+        voucherIds.push(voucher.id);
+      }
+      discountUsd += appliedVoucherDiscount;
+      if (input.voucherIds.length > voucherIds.length) {
+        voucherNotice = `تم تطبيق الحد الأقصى للخصم المسموح به (${maxPercent}% بما يعادل $${Math.round(appliedVoucherDiscount)}).`;
+      }
     }
   }
   discountUsd = Math.min(originalUsd, Math.round(discountUsd * 100) / 100);
@@ -233,9 +251,10 @@ export async function quoteLoyalty(input: {
     couponCode,
     couponId,
     voucherIds,
-    coveredInFull: payableUsd <= 0.009,
+    coveredInFull: voucherIds.length > 0 ? false : payableUsd <= 0.009,
     pointsEarn,
     pointsUsd: usdFromPoints(store.settings, pointsEarn),
+    voucherNotice,
   };
 }
 
@@ -455,6 +474,11 @@ export function walletSummary(wallet: LoyaltyWallet, settings: LoyaltySettings) 
       pointsPerUsdRedeem: settings.pointsPerUsdRedeem,
       minConvertPoints: settings.minConvertPoints,
       enabled: settings.enabled,
+      requireAdminApproval: settings.requireAdminApproval,
+      minBookingAmountUsd: settings.minBookingAmountUsd,
+      maxDiscountPercent: settings.maxDiscountPercent,
+      maxVoucherDiscountUsd: settings.maxVoucherDiscountUsd,
+      autoApproveVerifiedBookings: settings.autoApproveVerifiedBookings,
     },
   };
 }
@@ -462,3 +486,196 @@ export function walletSummary(wallet: LoyaltyWallet, settings: LoyaltySettings) 
 export function isLoyaltyServiceName(value: string): value is LoyaltyService {
   return isLoyaltyService(value);
 }
+
+export async function creditCommunityPoints(
+  userId: string,
+  points: number,
+  action: string,
+  note: string,
+  eventId?: string,
+  isVerifiedBookingCustomer?: boolean
+): Promise<{ ok: boolean; awarded: number; totalPoints: number; isPending: boolean }> {
+  if (!userId || points <= 0) return { ok: false, awarded: 0, totalPoints: 0, isPending: false };
+  return mutate((store) => {
+    const wallet = findWallet(store, userId);
+    if (eventId && wallet.ledger.some((l) => l.note?.includes(eventId))) {
+      return { ok: false, awarded: 0, totalPoints: wallet.points, isPending: false };
+    }
+    const settings = store.settings;
+    const requireApproval = Boolean(settings.requireAdminApproval);
+    const autoApprove = Boolean(settings.autoApproveVerifiedBookings && isVerifiedBookingCustomer);
+    const isPending = requireApproval && !autoApprove;
+
+    if (isPending) {
+      wallet.pendingPoints = Math.round((wallet.pendingPoints + points) * 100) / 100;
+    } else {
+      wallet.points = Math.round((wallet.points + points) * 100) / 100;
+    }
+
+    const entry: LoyaltyLedgerEntry = {
+      id: newLoyaltyId("soc"),
+      userId,
+      kind: "earn",
+      status: isPending ? "pending" : "confirmed",
+      points,
+      usdValue: usdFromPoints(store.settings, points),
+      note: `${note}${eventId ? ` [${eventId}]` : ""}`,
+      createdAt: nowIso(),
+    };
+    appendLedger(wallet, entry);
+    putWallet(store, wallet);
+    return { ok: true, awarded: points, totalPoints: wallet.points, isPending };
+  });
+}
+
+export async function listAllPendingPoints(): Promise<{
+  pendingCount: number;
+  pendingTotalPoints: number;
+  pendingTotalUsd: number;
+  items: Array<{
+    id: string;
+    userId: string;
+    points: number;
+    usdValue: number;
+    note?: string;
+    createdAt: string;
+    bookingId?: string;
+    kind: string;
+  }>;
+}> {
+  const store = await getLoyaltyStore();
+  const items: Array<{
+    id: string;
+    userId: string;
+    points: number;
+    usdValue: number;
+    note?: string;
+    createdAt: string;
+    bookingId?: string;
+    kind: string;
+  }> = [];
+
+  let pendingTotalPoints = 0;
+  let pendingTotalUsd = 0;
+
+  for (const wallet of store.wallets) {
+    for (const row of wallet.ledger) {
+      if (row.status === "pending") {
+        items.push({
+          id: row.id,
+          userId: wallet.userId,
+          points: row.points,
+          usdValue: row.usdValue,
+          note: row.note,
+          createdAt: row.createdAt,
+          bookingId: row.bookingId,
+          kind: row.kind,
+        });
+        pendingTotalPoints += row.points;
+        pendingTotalUsd += row.usdValue;
+      }
+    }
+  }
+
+  items.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
+
+  return {
+    pendingCount: items.length,
+    pendingTotalPoints,
+    pendingTotalUsd: Math.round(pendingTotalUsd * 100) / 100,
+    items,
+  };
+}
+
+export async function approvePointEntry(
+  entryId: string,
+  adminUser = "إدارة المنصة"
+): Promise<{ ok: boolean; message?: string }> {
+  return mutate((store) => {
+    let targetWallet: LoyaltyWallet | undefined;
+    let targetEntry: LoyaltyLedgerEntry | undefined;
+
+    for (const wallet of store.wallets) {
+      const match = wallet.ledger.find((l) => l.id === entryId && l.status === "pending");
+      if (match) {
+        targetWallet = wallet;
+        targetEntry = match;
+        break;
+      }
+    }
+
+    if (!targetWallet || !targetEntry) {
+      return { ok: false, message: "السجل غير موجود أو تم البت فيه مسبقاً" };
+    }
+
+    targetEntry.status = "confirmed";
+    targetEntry.approvedAt = nowIso();
+    targetEntry.approvedBy = adminUser;
+
+    targetWallet.pendingPoints = Math.max(0, targetWallet.pendingPoints - targetEntry.points);
+    targetWallet.points = Math.round((targetWallet.points + targetEntry.points) * 100) / 100;
+
+    putWallet(store, targetWallet);
+    return { ok: true, message: "تم اعتماد النقاط بنجاح ونقلها للرصيد المؤكد" };
+  });
+}
+
+export async function rejectPointEntry(
+  entryId: string,
+  reason = "مرفوض من قبل الإدارة"
+): Promise<{ ok: boolean; message?: string }> {
+  return mutate((store) => {
+    let targetWallet: LoyaltyWallet | undefined;
+    let targetEntry: LoyaltyLedgerEntry | undefined;
+
+    for (const wallet of store.wallets) {
+      const match = wallet.ledger.find((l) => l.id === entryId && l.status === "pending");
+      if (match) {
+        targetWallet = wallet;
+        targetEntry = match;
+        break;
+      }
+    }
+
+    if (!targetWallet || !targetEntry) {
+      return { ok: false, message: "السجل غير موجود أو تم البت فيه مسبقاً" };
+    }
+
+    targetEntry.status = "rejected";
+    targetEntry.rejectionReason = reason;
+
+    targetWallet.pendingPoints = Math.max(0, targetWallet.pendingPoints - targetEntry.points);
+
+    putWallet(store, targetWallet);
+    return { ok: true, message: "تم رفض النقاط وتجميدها" };
+  });
+}
+
+export async function approveAllPendingPoints(
+  adminUser = "إدارة المنصة"
+): Promise<{ ok: boolean; approvedCount: number }> {
+  return mutate((store) => {
+    let count = 0;
+    const now = nowIso();
+    for (const wallet of store.wallets) {
+      let walletChanged = false;
+      for (const row of wallet.ledger) {
+        if (row.status === "pending") {
+          row.status = "confirmed";
+          row.approvedAt = now;
+          row.approvedBy = adminUser;
+          wallet.pendingPoints = Math.max(0, wallet.pendingPoints - row.points);
+          wallet.points = Math.round((wallet.points + row.points) * 100) / 100;
+          walletChanged = true;
+          count++;
+        }
+      }
+      if (walletChanged) {
+        putWallet(store, wallet);
+      }
+    }
+    return { ok: true, approvedCount: count };
+  });
+}
+
+

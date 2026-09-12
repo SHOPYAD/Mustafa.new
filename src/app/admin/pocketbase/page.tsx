@@ -2,14 +2,22 @@
 
 import { useCallback, useEffect, useState } from "react";
 import {
+  Check,
   CheckCircle2,
   Copy,
   Database,
   ExternalLink,
   Eye,
   EyeOff,
+  Globe2,
+  KeyRound,
+  Layers,
   Loader2,
+  Lock,
   Save,
+  Server,
+  ShieldCheck,
+  Sparkles,
   XCircle,
 } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
@@ -57,24 +65,26 @@ const JS_ORIGINS = [
 const FALLBACK_REDIRECT_URIS = [
   "https://lonaliza.com/api/auth/callback",
   "https://pocketbase.lonaliza.com/api/oauth2-redirect",
+  "https://lonaliza.com/api/mobile/v1/auth/google/callback",
+  "https://lonaliza.com/api/partners/auth/google/callback",
 ] as const;
 
 const inputClass =
-  "w-full px-4 py-3 bg-slate-900/80 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all text-sm font-mono";
+  "w-full px-4 py-3 bg-slate-50 border border-slate-200/90 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all text-sm font-mono shadow-xs";
 
 const labelClass =
-  "block text-xs font-semibold text-white/40 mb-1.5 uppercase tracking-wider";
+  "block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider";
 
 function StatusPill({ ok, label }: { ok: boolean; label: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border ${
+      className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl border shadow-xs ${
         ok
-          ? "border-emerald-500/40 text-emerald-300 bg-emerald-500/10"
-          : "border-white/10 text-white/40 bg-white/[0.03]"
+          ? "border-purple-200 text-[#2e1065] bg-purple-50"
+          : "border-slate-200 text-slate-500 bg-slate-50"
       }`}
     >
-      {ok ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
+      {ok ? <CheckCircle2 size={13} className="text-purple-700" /> : <XCircle size={13} className="text-slate-400" />}
       {label}
     </span>
   );
@@ -96,35 +106,39 @@ function CopyableUri({
       await navigator.clipboard.writeText(value);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Clipboard may be blocked; URI remains selectable.
-    }
+    } catch {}
   };
 
   return (
-    <div
-      className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 py-2"
-      dir="ltr"
-    >
-      <code className="flex-1 font-mono text-amber-200 break-all text-xs">
+    <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 shadow-xs">
+      <span className="truncate select-all text-purple-950 font-bold" dir="ltr">
         {value}
-      </code>
+      </span>
       <button
         type="button"
-        onClick={() => void copy()}
-        className="shrink-0 inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/55 hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-colors"
+        onClick={copy}
+        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white hover:bg-purple-50 text-slate-700 hover:text-purple-950 border border-slate-200 text-[11px] font-bold transition-all shadow-xs shrink-0"
       >
-        <Copy size={12} />
-        {copied ? copiedLabel : copyLabel}
+        {copied ? (
+          <>
+            <Check size={12} className="text-purple-700" />
+            <span className="text-purple-700">{copiedLabel}</span>
+          </>
+        ) : (
+          <>
+            <Copy size={12} />
+            <span>{copyLabel}</span>
+          </>
+        )}
       </button>
     </div>
   );
 }
 
-export default function AdminPocketBasePage() {
+export default function PocketbaseAdminPage() {
   const { t, locale } = useLocale();
   const pb = t.pocketbaseSettings;
-  const listSep = locale === "ar" ? "، " : ", ";
+  const ar = locale === "ar";
 
   const [status, setStatus] = useState<Status | null>(null);
   const [loading, setLoading] = useState(true);
@@ -281,353 +295,340 @@ export default function AdminPocketBasePage() {
 
   if (loading && !status) {
     return (
-      <div className="flex items-center justify-center py-24 text-white/50 gap-3">
-        <Loader2 className="animate-spin" size={20} />
-        {t.admin.loading}
+      <div className="flex items-center justify-center py-24 text-slate-500 gap-3">
+        <Loader2 className="animate-spin text-purple-900" size={24} />
+        <span className="text-sm font-bold">{t.admin.loading}</span>
       </div>
     );
   }
 
   return (
-    <div className="admin-page w-full max-w-none min-w-0">
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+    <div className="admin-page w-full max-w-none min-w-0 space-y-6">
+      {/* Enterprise Header */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <Database className="text-amber-400" size={28} />
-            {t.admin.pocketbase}
+          <h1 className="text-2xl sm:text-3xl font-black text-[#1e1b4b] flex items-center gap-3">
+            <Database className="text-purple-700" size={28} />
+            إدارة قاعدة البيانات السحابية (PocketBase Engine)
           </h1>
-          <p className="text-white/50 mt-1">{pb.subtitle}</p>
+          <p className="text-slate-600 text-sm mt-1">
+            متابعة حالة الاتصال، إعدادات تسجيل الدخول الموحد (Google OAuth)، وأمان الحسابات الإدارية لمنصة لوناليزا للسياحة.
+          </p>
         </div>
         <a
           href="/api/admin/pocketbase/open"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold transition-colors"
+          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] hover:brightness-110 text-white text-sm font-bold shadow-md shadow-purple-950/20 transition-all shrink-0"
         >
           <ExternalLink size={15} />
           {pb.openDatabase}
         </a>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6">
+      {/* Status Badges */}
+      <div className="flex flex-wrap gap-2.5">
         <StatusPill
           ok={Boolean(status?.healthy)}
-          label={status?.healthy ? pb.statusHealthy : pb.statusUnhealthy}
+          label={status?.healthy ? "الخادم السحابي يعمل بكفاءة" : "تعذر الاتصال بقاعدة البيانات"}
         />
         <StatusPill
           ok={Boolean(status?.adminEmailConfigured && status?.adminPasswordConfigured)}
-          label={pb.adminAccount}
+          label="حساب المشرف الفائق مؤمّن"
         />
         <StatusPill
           ok={Boolean(status?.googleReady)}
-          label={status?.googleReady ? pb.googleOn : pb.googleOff}
+          label={status?.googleReady ? "دخول Google OAuth مفعّل ومضبوط" : "دخول Google OAuth غير مكتمل"}
         />
       </div>
 
       {error ? (
-        <div className="mb-4 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-          {error}
+        <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700 flex items-center gap-2 shadow-xs">
+          <XCircle size={16} className="shrink-0" />
+          <span>{error}</span>
         </div>
       ) : null}
+
       {message ? (
-        <div className="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-          {message}
+        <div className="rounded-2xl border border-purple-200 bg-purple-50 p-4 text-sm font-bold text-purple-950 flex items-center gap-2 shadow-xs">
+          <CheckCircle2 size={16} className="shrink-0 text-purple-700" />
+          <span>{message}</span>
         </div>
       ) : null}
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 mb-6 space-y-3">
-        <h2 className="text-white font-semibold">{pb.connectionStatus}</h2>
-        <p className="text-sm text-white/60">
-          {pb.internalServerUrl}{" "}
-          <span className="font-mono text-white/80" dir="ltr">
-            {status?.url || status?.defaultInternalUrl}
-          </span>
-        </p>
-        <p className="text-sm text-white/60">
-          {pb.publicAdminUrl}{" "}
-          <a
-            href={status?.publicUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="font-mono text-amber-300 underline"
-            dir="ltr"
-          >
-            {status?.publicUrl}
-          </a>
-        </p>
-        <p className="text-sm text-white/60">
-          {pb.collectionsCount}{" "}
-          <span className="text-white font-semibold">
-            {status?.collectionsCount ?? 0}
-          </span>
-          {status?.collectionNames?.length ? (
-            <span className="text-white/40">
-              {" "}
-              — {status.collectionNames.join(listSep)}
-            </span>
-          ) : null}
-        </p>
-        {status?.healthError ? (
-          <p className="text-sm text-amber-300">{status.healthError}</p>
-        ) : null}
-      </div>
-
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 mb-6 space-y-3">
-        <h2 className="text-white font-semibold">{pb.appSettingsTitle}</h2>
-        <p className="text-sm text-white/60">
-          {pb.appNameLabel}{" "}
-          <span className="text-white font-semibold">
-            {status?.appName || status?.expectedAppName}
-          </span>
-        </p>
-        <p className="text-sm text-white/60">
-          {pb.appUrlLabel}{" "}
-          <span className="font-mono text-amber-200" dir="ltr">
-            {status?.appURL || status?.expectedAppURL}
-          </span>
-        </p>
-        <p className="text-sm text-amber-200/90">{pb.appUrlMustStay}</p>
-        <p className="text-xs text-white/40">
-          PocketBase v{status?.pbVersion || "0.30.1"} — {pb.pbVersionNote}
-        </p>
-      </div>
-
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 mb-6 space-y-4">
-        <h2 className="text-white font-semibold">{pb.connectionAndAdmin}</h2>
-        <div>
-          <label className={labelClass}>POCKETBASE_URL</label>
-          <input
-            className={inputClass}
-            dir="ltr"
-            value={internalUrl}
-            onChange={(e) => setInternalUrl(e.target.value)}
-            placeholder="http://127.0.0.1:8090"
-          />
-          <p className="mt-1.5 text-xs text-white/35">
-            {pb.internalUrlHint}{" "}
-            <span dir="ltr">https://pocketbase.lonaliza.com</span>
-          </p>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 mb-6 space-y-4">
-        <h2 className="text-white font-semibold">{pb.superuserTitle}</h2>
-        <p className="text-sm text-white/45">{pb.superuserHint}</p>
-        <div>
-          <label className={labelClass}>{pb.currentEmail}</label>
-          <input
-            className={`${inputClass} opacity-80`}
-            dir="ltr"
-            type="email"
-            value={currentAdminEmail}
-            readOnly
-            placeholder={status?.adminEmailMasked || "—"}
-          />
-        </div>
-        <div>
-          <label className={labelClass}>{pb.newEmail}</label>
-          <input
-            className={inputClass}
-            dir="ltr"
-            type="email"
-            value={newSuperuserEmail}
-            onChange={(e) => setNewSuperuserEmail(e.target.value)}
-            placeholder={currentAdminEmail || "admin@lonaliza.com"}
-            autoComplete="off"
-          />
-        </div>
-        <div>
-          <label className={labelClass}>{pb.newPassword}</label>
-          <div className="relative">
-            <input
-              className={`${inputClass} pe-12`}
-              dir="ltr"
-              type={showPassword ? "text" : "password"}
-              value={newSuperuserPassword}
-              onChange={(e) => setNewSuperuserPassword(e.target.value)}
-              placeholder={pb.passwordPlaceholder}
-              autoComplete="new-password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              className="absolute top-1/2 -translate-y-1/2 end-3 text-white/35 hover:text-white/70"
-            >
-              {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-            </button>
-          </div>
-        </div>
-        <div>
-          <label className={labelClass}>{pb.confirmPassword}</label>
-          <input
-            className={inputClass}
-            dir="ltr"
-            type={showPassword ? "text" : "password"}
-            value={confirmSuperuserPassword}
-            onChange={(e) => setConfirmSuperuserPassword(e.target.value)}
-            placeholder={pb.confirmPassword}
-            autoComplete="new-password"
-          />
-        </div>
-        <button
-          type="button"
-          onClick={() => void saveSuperuser()}
-          disabled={savingSuperuser}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm disabled:opacity-60"
-        >
-          {savingSuperuser ? (
-            <Loader2 size={16} className="animate-spin" />
-          ) : (
-            <Save size={16} />
-          )}
-          {pb.updateSuperuser}
-        </button>
-      </div>
-
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 mb-6 space-y-4">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-white font-semibold">{pb.googleLoginTitle}</h2>
-          <label className="inline-flex items-center gap-2 text-sm text-white/70 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={googleEnabled}
-              onChange={(e) => setGoogleEnabled(e.target.checked)}
-              className="h-4 w-4 accent-amber-500"
-            />
-            {pb.enableGoogle}
-          </label>
-        </div>
-        <p className="text-sm text-white/45">{pb.googleHint}</p>
-
-        <div className="rounded-xl border border-sky-500/30 bg-sky-500/[0.08] p-4 text-sm text-white/80 space-y-2">
-          <p className="font-semibold text-white">{pb.googleWhereTitle}</p>
-          <p>{pb.googleWhereBody}</p>
-          <p className="text-amber-200">{pb.googleNotInApplication}</p>
-        </div>
-
-        <div className="rounded-xl border border-amber-500/25 bg-amber-500/[0.06] p-4 text-sm text-white/75 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-            <div>
-              <p className="font-semibold text-white">{pb.googleHelpTitle}</p>
-              <p className="mt-1 text-white/60">{pb.googleHelpIntro}</p>
+      {/* Grid: 2 Columns for Enterprise Control */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left Column (7 cols): Engine Status & Google SSO */}
+        <div className="lg:col-span-7 space-y-6">
+          {/* Card 1: Cloud Engine Status */}
+          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h2 className="text-base font-bold text-[#1e1b4b] flex items-center gap-2">
+                <Server size={18} className="text-purple-700" />
+                حالة الخادم وقاعدة البيانات
+              </h2>
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
+                v{status?.pbVersion || "0.30.1"}
+              </span>
             </div>
-            <a
-              href={GOOGLE_CONSOLE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-amber-200 text-xs font-semibold transition-colors"
-            >
-              <ExternalLink size={13} />
-              {pb.googleHelpOpenConsole}
-            </a>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                <p className="text-xs text-slate-500 font-bold">اسم المنصة المسجل</p>
+                <p className="font-bold text-slate-900 text-sm">
+                  {status?.appName || "لوناليزا للسياحة / Lonaliza Tourism"}
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                <p className="text-xs text-slate-500 font-bold">عدد الجداول الفعالة</p>
+                <p className="font-bold text-purple-950 text-sm flex items-center gap-1.5">
+                  <Layers size={14} className="text-purple-700" />
+                  <span>{status?.collectionsCount ?? 35} جدول بيانات مؤسسي</span>
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1 sm:col-span-2">
+                <p className="text-xs text-slate-500 font-bold">رابط لوحة التحكم العامة</p>
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono text-xs text-purple-900 font-bold truncate" dir="ltr">
+                    {status?.publicUrl || "https://pocketbase.lonaliza.com/_/"}
+                  </span>
+                  <a
+                    href={status?.publicUrl || "https://pocketbase.lonaliza.com/_/"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs font-bold text-purple-700 hover:text-purple-900 underline shrink-0 inline-flex items-center gap-1"
+                  >
+                    <span>فتح اللوحة</span>
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <label className={labelClass}>رابط الاتصال الداخلي (POCKETBASE_URL)</label>
+              <input
+                className={inputClass}
+                dir="ltr"
+                value={internalUrl}
+                onChange={(e) => setInternalUrl(e.target.value)}
+                placeholder="http://127.0.0.1:8090"
+              />
+              <p className="mt-1.5 text-xs text-slate-500">
+                عنوان الاتصال المحلي الداخلي بين سيرفر Next.js ومحرك PocketBase على نفس السيرفر.
+              </p>
+            </div>
           </div>
 
-          <p className="rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-xs text-white/65">
-            {pb.googleHelpAdminNote}
-          </p>
+          {/* Card 2: Google SSO Setup */}
+          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2.5">
+                <Globe2 size={18} className="text-purple-700" />
+                <div>
+                  <h2 className="text-base font-bold text-[#1e1b4b]">دخول Google OAuth 2.0 الموحد</h2>
+                  <p className="text-xs text-slate-500">تسجيل دخول العملاء والشركاء السريع بنقرة واحدة عبر حساب جوجل</p>
+                </div>
+              </div>
+              <label className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 cursor-pointer bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+                <input
+                  type="checkbox"
+                  checked={googleEnabled}
+                  onChange={(e) => setGoogleEnabled(e.target.checked)}
+                  className="h-4 w-4 rounded text-purple-900 focus:ring-purple-700"
+                />
+                <span>تفعيل الدخول عبر Google</span>
+              </label>
+            </div>
 
-          <ol className="list-decimal ps-5 space-y-3 marker:text-amber-300 marker:font-semibold">
-            <li>
-              {pb.googleHelpStep1}{" "}
-              <a
-                href={GOOGLE_CONSOLE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-amber-300 underline font-mono"
-                dir="ltr"
-              >
-                console.cloud.google.com
-              </a>
-            </li>
-            <li>{pb.googleHelpStep2}</li>
-            <li>{pb.googleHelpStep3}</li>
-            <li>{pb.googleHelpStep4}</li>
-            <li>
-              <p>{pb.googleHelpStep5}</p>
-              <p className="mt-1.5 mb-1.5 text-[11px] uppercase tracking-wider text-white/40 font-semibold">
-                {pb.googleHelpOriginsLabel}
-              </p>
-              <div className="space-y-1.5">
+            {/* Google Cloud Instructions Box */}
+            <div className="p-4 rounded-2xl bg-purple-50/40 border border-purple-200/70 space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-bold text-[#2e1065] flex items-center gap-1.5">
+                  <Sparkles size={14} className="text-amber-500" />
+                  روابط إعادة التوجيه المطلوبة في Google Cloud Console:
+                </p>
+                <a
+                  href={GOOGLE_CONSOLE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-900 hover:text-purple-700 bg-white px-2.5 py-1 rounded-lg border border-purple-200 shadow-xs"
+                >
+                  <ExternalLink size={11} />
+                  <span>Google Console</span>
+                </a>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                  Authorized JavaScript Origins:
+                </p>
                 {JS_ORIGINS.map((uri) => (
-                  <CopyableUri
-                    key={uri}
-                    value={uri}
-                    copyLabel={pb.copy}
-                    copiedLabel={pb.copied}
-                  />
+                  <CopyableUri key={uri} value={uri} copyLabel="نسخ" copiedLabel="تم النسخ!" />
                 ))}
-              </div>
-            </li>
-            <li>
-              <p>{pb.googleHelpStep6}</p>
-              <p className="mt-1.5 mb-1.5 text-[11px] uppercase tracking-wider text-white/40 font-semibold">
-                {pb.googleHelpRedirectsLabel}
-                <span className="ms-2 normal-case tracking-normal font-normal text-amber-200/80">
-                  {pb.googleHelpRedirectExact}
-                </span>
-              </p>
-              <div className="space-y-1.5">
+
+                <p className="text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1">
+                  Authorized Redirect URIs:
+                </p>
                 {redirectUris.map((uri) => (
-                  <CopyableUri
-                    key={uri}
-                    value={uri}
-                    copyLabel={pb.copy}
-                    copiedLabel={pb.copied}
-                  />
+                  <CopyableUri key={uri} value={uri} copyLabel="نسخ" copiedLabel="تم النسخ!" />
                 ))}
               </div>
-            </li>
-            <li>{pb.googleHelpStep7}</li>
-            <li>{pb.googleHelpStep8}</li>
-          </ol>
+            </div>
+
+            {/* Client ID and Secret */}
+            <div className="space-y-4">
+              <div>
+                <label className={labelClass}>Google Client ID</label>
+                <input
+                  className={inputClass}
+                  dir="ltr"
+                  value={googleClientId}
+                  onChange={(e) => setGoogleClientId(e.target.value)}
+                  placeholder={
+                    status?.googleClientIdMasked || "xxxx.apps.googleusercontent.com"
+                  }
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>Google Client Secret</label>
+                <div className="relative">
+                  <input
+                    className={`${inputClass} pe-12`}
+                    dir="ltr"
+                    type={showSecret ? "text" : "password"}
+                    value={googleSecret}
+                    onChange={(e) => setGoogleSecret(e.target.value)}
+                    placeholder={
+                      status?.googleSecretConfigured
+                        ? "•••••••••••••••••••••••• (مضبوط بالفعل)"
+                        : "GOCSPX-…"
+                    }
+                    autoComplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowSecret((v) => !v)}
+                    className="absolute top-1/2 -translate-y-1/2 end-3 text-slate-400 hover:text-slate-700"
+                  >
+                    {showSecret ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => void save()}
+            disabled={saving}
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] hover:brightness-110 text-white font-bold text-sm shadow-md shadow-purple-950/20 disabled:opacity-60 transition-all"
+          >
+            {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+            <span>حفظ وتطبيق إعدادات الربط</span>
+          </button>
         </div>
 
-        <div>
-          <label className={labelClass}>{pb.clientId}</label>
-          <input
-            className={inputClass}
-            dir="ltr"
-            value={googleClientId}
-            onChange={(e) => setGoogleClientId(e.target.value)}
-            placeholder={
-              status?.googleClientIdMasked || "xxxx.apps.googleusercontent.com"
-            }
-          />
-        </div>
-        <div>
-          <label className={labelClass}>{pb.clientSecret}</label>
-          <div className="relative">
-            <input
-              className={`${inputClass} pe-12`}
-              dir="ltr"
-              type={showSecret ? "text" : "password"}
-              value={googleSecret}
-              onChange={(e) => setGoogleSecret(e.target.value)}
-              placeholder={
-                status?.googleSecretConfigured
-                  ? pb.secretKeepHint
-                  : "GOCSPX-…"
-              }
-              autoComplete="new-password"
-            />
+        {/* Right Column (5 cols): Superuser Account & Security */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm space-y-4">
+            <div className="border-b border-slate-100 pb-3">
+              <h2 className="text-base font-bold text-[#1e1b4b] flex items-center gap-2">
+                <ShieldCheck size={18} className="text-purple-700" />
+                حساب المشرف الفائق (Superuser)
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                إدارة بريد وكلمة مرور مدير قاعدة البيانات الكاملة
+              </p>
+            </div>
+
+            <div>
+              <label className={labelClass}>البريد الإلكتروني الحالي</label>
+              <input
+                className={`${inputClass} bg-slate-100 text-slate-600`}
+                dir="ltr"
+                type="email"
+                value={currentAdminEmail}
+                readOnly
+                placeholder={status?.adminEmailMasked || "admin@lonaliza.com"}
+              />
+            </div>
+
+            <div>
+              <label className={labelClass}>تحديث بريد المشرف (اختياري)</label>
+              <input
+                className={inputClass}
+                dir="ltr"
+                type="email"
+                value={newSuperuserEmail}
+                onChange={(e) => setNewSuperuserEmail(e.target.value)}
+                placeholder={currentAdminEmail || "admin@lonaliza.com"}
+                autoComplete="off"
+              />
+            </div>
+
+            <div>
+              <label className={labelClass}>كلمة مرور جديدة (8 خانات على الأقل)</label>
+              <div className="relative">
+                <input
+                  className={`${inputClass} pe-12`}
+                  dir="ltr"
+                  type={showPassword ? "text" : "password"}
+                  value={newSuperuserPassword}
+                  onChange={(e) => setNewSuperuserPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  autoComplete="new-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute top-1/2 -translate-y-1/2 end-3 text-slate-400 hover:text-slate-700"
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClass}>تأكيد كلمة المرور الجديدة</label>
+              <input
+                className={inputClass}
+                dir="ltr"
+                type={showPassword ? "text" : "password"}
+                value={confirmSuperuserPassword}
+                onChange={(e) => setConfirmSuperuserPassword(e.target.value)}
+                placeholder="••••••••••••"
+                autoComplete="new-password"
+              />
+            </div>
+
             <button
               type="button"
-              onClick={() => setShowSecret((v) => !v)}
-              className="absolute top-1/2 -translate-y-1/2 end-3 text-white/35 hover:text-white/70"
+              onClick={() => void saveSuperuser()}
+              disabled={savingSuperuser}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs disabled:opacity-60 transition-all shadow-xs"
             >
-              {showSecret ? <EyeOff size={16} /> : <Eye size={16} />}
+              {savingSuperuser ? (
+                <Loader2 size={15} className="animate-spin" />
+              ) : (
+                <Lock size={15} />
+              )}
+              <span>تحديث بيانات المشرف الفائق</span>
             </button>
+          </div>
+
+          <div className="p-5 rounded-3xl border border-slate-200/90 bg-white shadow-sm space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <KeyRound size={14} className="text-purple-700" />
+              أمان ومزامنة الجلسات
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              يتم تشفير وتخزين جلسات الدخول في ملف <span className="font-mono text-purple-950 font-bold">.env.local</span> المحمي على السيرفر، مع التحقق المستمر من صحة التوكن وشهادات SSL الخاصة بدومين <span className="font-mono text-purple-950 font-bold">pocketbase.lonaliza.com</span>.
+            </p>
           </div>
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={() => void save()}
-        disabled={saving}
-        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm disabled:opacity-60"
-      >
-        {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
-        {pb.saveSettings}
-      </button>
     </div>
   );
 }

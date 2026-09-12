@@ -13,17 +13,14 @@ export default function SearchSubmitButton({ label, disabled, className }: Props
     <button
       type="submit"
       disabled={disabled}
-      className={cn(searchSubmitClass, "w-full xl:w-auto", className)}
-      style={{
-        backgroundColor: "var(--brand-button)",
-        color: "var(--theme-btn-text)",
-        borderRadius: "var(--radius-button)",
-        boxShadow: "var(--theme-btn-shadow)",
-        border: "var(--theme-border-width) solid var(--theme-btn-border)",
-      }}
+      className={cn(
+        searchSubmitClass,
+        "w-full xl:w-auto bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black shadow-lg shadow-amber-500/25 border border-amber-300/40 cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]",
+        className
+      )}
     >
-      <Search size={17} className="text-white" />
-      <span>{label}</span>
+      <Search size={18} className="shrink-0 text-slate-950 stroke-[2.5]" />
+      <span className="text-slate-950 font-black">{label}</span>
     </button>
   );
 }

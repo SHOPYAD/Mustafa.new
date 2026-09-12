@@ -45,16 +45,7 @@ export default function FlightPriceTrendsModal({
   const chartDays = useMemo(() => {
     const from = ymdOf(chartStart);
     const to = ymdOf(addDays(addMonths(chartStart, 2), -1));
-    const priced = days.filter((row) => row.date >= from && row.date <= to);
-    if (priced.length) return priced;
-    const generated: CalendarDayPrice[] = [];
-    let cursor = new Date(chartStart);
-    const end = addMonths(chartStart, 2);
-    while (cursor < end) {
-      generated.push({ date: ymdOf(cursor), price: 0, currency: query.currency });
-      cursor = addDays(cursor, 1);
-    }
-    return generated;
+    return days.filter((row) => row.date >= from && row.date <= to && row.price > 0);
   }, [chartStart, days, query.currency]);
 
   const maxPrice = Math.max(1, ...chartDays.map((row) => row.price));
@@ -80,14 +71,14 @@ export default function FlightPriceTrendsModal({
 
   return (
     <div className="fixed inset-0 z-[140]">
-      <button type="button" className="absolute inset-0 bg-[#051741]/50" onClick={onClose} aria-label={copy.closeDetails} />
+      <button type="button" className="absolute inset-0 bg-[#1b053a]/60 backdrop-blur-xs" onClick={onClose} aria-label={copy.closeDetails} />
       <div
         dir={dir}
-        className="absolute inset-x-3 top-[6%] mx-auto flex max-h-[88vh] max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl sm:inset-x-6"
+        className="absolute inset-x-3 top-[6%] mx-auto flex max-h-[88vh] max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl sm:inset-x-6 border border-purple-100"
       >
-        <div className="flex items-start justify-between gap-3 border-b border-slate-100 px-5 py-4">
+        <div className="flex items-start justify-between gap-3 border-b border-purple-100 bg-gradient-to-r from-purple-50/50 to-amber-50/20 px-5 py-4">
           <div>
-            <p className="text-lg font-bold text-[#051741]">
+            <p className="text-lg font-black text-purple-950">
               {originCity} {dir === "rtl" ? "←" : "→"} {destCity} · {copy.priceTrends}
             </p>
             <p className="mt-1 text-xs text-slate-500">{copy.priceTrendsHint}</p>
@@ -95,7 +86,7 @@ export default function FlightPriceTrendsModal({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-purple-50 text-purple-900 hover:bg-purple-100 transition-colors"
             aria-label={copy.closeDetails}
           >
             <X size={16} />
@@ -107,8 +98,8 @@ export default function FlightPriceTrendsModal({
             type="button"
             onClick={() => setTab("chart")}
             className={cn(
-              "rounded-xl px-3 py-1.5 text-xs font-bold",
-              tab === "chart" ? "bg-[#051741] text-white" : "bg-slate-100 text-slate-600"
+              "rounded-xl px-4 py-2 text-xs font-bold transition-all",
+              tab === "chart" ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-sm" : "bg-purple-50 text-purple-900 hover:bg-purple-100"
             )}
           >
             {copy.priceChart}
@@ -117,8 +108,8 @@ export default function FlightPriceTrendsModal({
             type="button"
             onClick={() => setTab("calendar")}
             className={cn(
-              "rounded-xl px-3 py-1.5 text-xs font-bold",
-              tab === "calendar" ? "bg-[#051741] text-white" : "bg-slate-100 text-slate-600"
+              "rounded-xl px-4 py-2 text-xs font-bold transition-all",
+              tab === "calendar" ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-sm" : "bg-purple-50 text-purple-900 hover:bg-purple-100"
             )}
           >
             {copy.selectDates}
@@ -143,45 +134,45 @@ export default function FlightPriceTrendsModal({
               <div className="mb-3 flex items-center justify-between">
                 <button
                   type="button"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-purple-100 bg-white text-purple-900 shadow-sm hover:bg-purple-50"
                   onClick={() => setChartStart((d) => addMonths(d, -2))}
                 >
                   {dir === "rtl" ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
                 </button>
-                <p className="text-sm font-semibold text-[#051741]">
+                <p className="text-sm font-black text-purple-950">
                   {format(chartStart, "MMMM yyyy", { locale: dfLocale })} —{" "}
                   {format(addMonths(chartStart, 1), "MMMM yyyy", { locale: dfLocale })}
                 </p>
                 <button
                   type="button"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-purple-100 bg-white text-purple-900 shadow-sm hover:bg-purple-50"
                   onClick={() => setChartStart((d) => addMonths(d, 2))}
                 >
                   {dir === "rtl" ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
                 </button>
               </div>
 
-              <div className="relative h-64 rounded-2xl bg-[#f7faf9] px-2 pt-10 pb-8">
+              <div className="relative h-64 rounded-2xl bg-slate-50 border border-purple-50 px-2 pt-10 pb-8">
                 {activeRow?.price ? (
-                  <div className="absolute start-3 top-2 z-10 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
+                  <div className="absolute start-3 top-2 z-10 rounded-xl border border-purple-100 bg-white px-3 py-2 shadow-md">
                     <p className="text-[11px] text-slate-500">
                       {parseYmd(activeRow.date)
                         ? format(parseYmd(activeRow.date) as Date, "EEEE d MMMM", { locale: dfLocale })
                         : activeRow.date}
                     </p>
-                    <p className="text-sm font-bold text-[#051741]">
+                    <p className="text-sm font-black text-[#1e1b4b]">
                       {copy.fromPrice} {formatFlightPrice(activeRow.price, activeRow.currency || query.currency)}
                     </p>
                     <button
                       type="button"
-                      className="mt-1 text-[11px] font-bold text-[#10b981]"
+                      className="mt-1 text-[11px] font-black text-purple-700 hover:text-purple-950"
                       onClick={() => onSelectDate(activeRow.date)}
                     >
                       {copy.searchShort}
                     </button>
                   </div>
                 ) : null}
-                <div className="absolute end-2 top-2 text-[10px] font-semibold text-slate-400">
+                <div className="absolute end-2 top-2 text-[10px] font-bold text-slate-500">
                   {formatFlightPrice(maxPrice, query.currency)}
                 </div>
                 <div className="flex h-full items-end gap-px">
@@ -201,8 +192,8 @@ export default function FlightPriceTrendsModal({
                       >
                         <span
                           className={cn(
-                            "mx-auto w-full max-w-[10px] rounded-t-sm",
-                            selected ? "bg-[#051741]" : cheap ? "bg-[#10b981]" : "bg-[#9ad8c2] group-hover:bg-[#10b981]"
+                            "mx-auto w-full max-w-[10px] rounded-t-sm transition-all",
+                            selected ? "bg-[#2e1065]" : cheap ? "bg-amber-400 shadow-sm" : "bg-purple-200 group-hover:bg-purple-400"
                           )}
                           style={{ height: `${h}%` }}
                         />
@@ -218,9 +209,12 @@ export default function FlightPriceTrendsModal({
               </div>
               <p className="mt-3 text-center text-[11px] text-slate-400">{copy.pricesReference}</p>
               {cheapest > 0 ? (
-                <p className="mt-1 text-center text-xs font-semibold text-emerald-700">
-                  {copy.cheapestDay}: {compactPrice(cheapest)}
-                </p>
+                <div className="mt-2 text-center">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-black text-amber-900">
+                    <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+                    {copy.cheapestDay}: {compactPrice(cheapest)}
+                  </span>
+                </div>
               ) : null}
             </div>
           )}

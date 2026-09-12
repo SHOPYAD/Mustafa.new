@@ -95,7 +95,7 @@ export async function runEmailCampaign(
   const { segment, contacts } = await resolveAudience("email", payload);
   const offer = payload.includeOffer === false ? null : await getActiveOffer();
   const offerText = offer ? formatOfferText(offer) : "";
-  const text = campaignMessage(payload, offerText) || "عرض من الريان لضيوفنا المشتركين.";
+  const text = campaignMessage(payload, offerText) || "عرض من لوناليزا لضيوفنا المشتركين.";
   const dryRun = isDryRun(job, ctx);
   const result: CampaignResult = {
     ok: true,
@@ -117,7 +117,7 @@ export async function runEmailCampaign(
     const sent = await sendCommsEmail({
       to: contact.email,
       name: contact.name,
-      subject: String(payload.subject || "عرض من الريان"),
+      subject: String(payload.subject || "عرض من لوناليزا"),
       text: text.replace(/\{name\}/g, contact.name || ""),
       locale: contact.locale,
     });
@@ -136,7 +136,7 @@ export async function runWhatsAppCampaign(
   const { segment, contacts } = await resolveAudience("whatsapp", payload);
   const offer = payload.includeOffer === false ? null : await getActiveOffer();
   const offerText = offer ? formatOfferText(offer) : "";
-  const text = campaignMessage(payload, offerText) || "عرض من الريان.";
+  const text = campaignMessage(payload, offerText) || "عرض من لوناليزا.";
   const dryRun = isDryRun(job, ctx);
   const result: CampaignResult = {
     ok: true,
@@ -186,7 +186,7 @@ export async function runTelegramCampaign(
   const { segment, contacts } = await resolveAudience("telegram", payload);
   const offer = payload.includeOffer === false ? null : await getActiveOffer();
   const offerText = offer ? formatOfferText(offer) : "";
-  const text = campaignMessage(payload, offerText) || "عرض من الريان.";
+  const text = campaignMessage(payload, offerText) || "عرض من لوناليزا.";
   const dryRun = isDryRun(job, ctx);
   const result: CampaignResult = {
     ok: true,
@@ -231,6 +231,10 @@ function otpText(purpose: SendOtpInput["purpose"], code: string): string {
       return `رمز التحقق لإنشاء الحساب: ${code}`;
     case "login_verify":
       return `رمز التحقق لتسجيل الدخول: ${code}`;
+    case "phone_update":
+      return `رمز تفعيل وتحديث رقم الواتساب: ${code}`;
+    case "account_verify":
+      return `رمز التحقق من الحساب: ${code}`;
     case "generic":
       return `رمز التحقق: ${code}`;
     default:
@@ -287,7 +291,7 @@ export async function sendOtp(input: SendOtpInput): Promise<SendOtpResult> {
     to,
     expiresInSec,
   };
-  if (!settings.otpEnabled && input.purpose !== "generic") {
+  if (!settings.otpEnabled && input.purpose !== "generic" && input.purpose !== "phone_update" && input.purpose !== "account_verify") {
     return { ...base, error: "otp_disabled" };
   }
   if (!to) return { ...base, error: "missing_to" };
@@ -297,7 +301,12 @@ export async function sendOtp(input: SendOtpInput): Promise<SendOtpResult> {
   const limited = rateLimit(`otp-send:${to}:${input.purpose}`, 5, 15 * 60 * 1000);
   if (!limited.ok) return { ...base, error: "rate_limited" };
 
-  if (input.purpose !== "register") {
+  if (
+    input.purpose !== "register" &&
+    input.purpose !== "phone_update" &&
+    input.purpose !== "account_verify" &&
+    input.purpose !== "generic"
+  ) {
     const known = await contactExistsInCrm(to);
     if (!known) return { ...base, error: "unknown_contact" };
   }

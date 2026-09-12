@@ -11,6 +11,8 @@ import {
   Tag,
   ArrowRightLeft,
   Car,
+  Plus,
+  Trash2,
 } from "lucide-react";
 import { DynamicIcon, type IconName } from "lucide-react/dynamic";
 import { cn } from "@/lib/utils";
@@ -39,6 +41,8 @@ import PlaceAutocomplete from "@/components/search/PlaceAutocomplete";
 import SearchSubmitButton from "@/components/search/SearchSubmitButton";
 import SegmentPills, { PillToggle } from "@/components/search/SegmentPills";
 import TimeField from "@/components/search/TimeField";
+import SearchAgentMode, { SearchAiModeSwitch } from "@/components/search/SearchAgentMode";
+import { SEARCH_AGENT_MODE_KEY, searchAgentCopy } from "@/lib/search-agent";
 
 export type SearchWidgetAppearance = {
   tabBarBg?: string;
@@ -186,9 +190,22 @@ function SearchTabButton({
   builderMode?: boolean;
   sectionInstanceId?: string;
 }) {
-  const activeBg = appearance?.tabActiveBg || "var(--theme-tab-active-bg)";
-  const activeText = appearance?.tabActiveText || "var(--theme-tab-active-text)";
-  const idleText = appearance?.tabIdleText || "var(--theme-tab-idle-text)";
+  const activeBg = appearance?.tabActiveBg || "#2e1065";
+  const activeText = appearance?.tabActiveText || "#ffffff";
+  let idleText = appearance?.tabIdleText || "#1e1b4b";
+  if (
+    !idleText ||
+    idleText === "var(--theme-tab-idle-text)" ||
+    idleText.includes("255,255,255") ||
+    idleText.includes("255, 255, 255") ||
+    idleText.includes("245, 243, 255") ||
+    idleText.includes("245,243,255") ||
+    idleText.toLowerCase() === "#ffffff" ||
+    idleText.toLowerCase() === "#fff" ||
+    idleText.toLowerCase() === "white"
+  ) {
+    idleText = "#1e1b4b";
+  }
   return (
     <button
       type="button"
@@ -202,13 +219,15 @@ function SearchTabButton({
       aria-selected={active}
       className={cn(
         /* Agent D: mobile + search tabs */
-        "inline-flex min-h-11 shrink-0 snap-start items-center gap-2 rounded-xl px-3.5 py-2 text-[13px] font-semibold whitespace-nowrap transition-colors duration-200 sm:min-h-[2.35rem] sm:px-3.5 sm:text-sm",
-        !active && "hover:bg-[var(--theme-nav-hover)]"
+        "inline-flex min-h-11 shrink-0 snap-start items-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-bold whitespace-nowrap transition-all duration-200 sm:min-h-[2.4rem] sm:px-4 sm:text-sm",
+        active
+          ? "shadow-md shadow-purple-950/20"
+          : "hover:bg-purple-100/60 hover:text-purple-950"
       )}
       style={
         active
           ? { backgroundColor: activeBg, color: activeText }
-          : { color: idleText, backgroundColor: "var(--theme-tab-idle-bg)" }
+          : { color: idleText }
       }
     >
       <TabIcon tab={tab} store={store} override={iconOverride} />
@@ -242,8 +261,32 @@ export default function SearchWidget({
   const iconStore = useUiIconsFile();
   const searchTabs = useSearchTabs();
 
-  const initialTab = (searchParams.get("type") as SearchTabKey) || "holiday";
+  const initialTab = (searchParams.get("type") as SearchTabKey) || "flight";
   const [activeTab, setActiveTab] = useState<SearchTabKey>(initialTab);
+  const [aiMode, setAiMode] = useState(false);
+  const agentCopy = useMemo(() => searchAgentCopy(locale), [locale]);
+
+  useEffect(() => {
+    const fromUrl = searchParams.get("ai") === "1";
+    if (fromUrl) {
+      setAiMode(true);
+      return;
+    }
+    try {
+      setAiMode(localStorage.getItem(SEARCH_AGENT_MODE_KEY) === "1");
+    } catch {
+      /* ignore */
+    }
+  }, [searchParams]);
+
+  const toggleAiMode = useCallback((next: boolean) => {
+    setAiMode(next);
+    try {
+      localStorage.setItem(SEARCH_AGENT_MODE_KEY, next ? "1" : "0");
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const [destination, setDestination] = useState(searchParams.get("q") || "");
   const [hotelGeoId, setHotelGeoId] = useState("");
@@ -259,6 +302,12 @@ export default function SearchWidget({
   const [directOnly, setDirectOnly] = useState(false);
   const [returnDate, setReturnDate] = useState("");
   const [cabinClass, setCabinClass] = useState("economy");
+  const [multiLegs, setMultiLegs] = useState<
+    Array<{ origin: AirportPick | null; destination: AirportPick | null; date: string }>
+  >([
+    { origin: null, destination: null, date: "" },
+    { origin: null, destination: null, date: "" },
+  ]);
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -290,7 +339,7 @@ export default function SearchWidget({
 
   useEffect(() => {
     if (!visibleTabs.includes(activeTab)) {
-      setActiveTab(visibleTabs[0] ?? "holiday");
+      setActiveTab(visibleTabs.includes("flight") ? "flight" : (visibleTabs[0] ?? "holiday"));
     }
   }, [visibleTabs, activeTab]);
 
@@ -369,6 +418,21 @@ export default function SearchWidget({
           return;
         }
         case "flight": {
+          if (flightType === "multi-city") {
+            const flightParams = new URLSearchParams();
+            flightParams.set("tripType", "multi-city");
+            flightParams.set("flightType", "multi-city");
+            flightParams.set("legs", JSON.stringify(multiLegs));
+            flightParams.set("guests", String(guests));
+            flightParams.set("adults", String(guests));
+            flightParams.set("class", cabinClass);
+            if (directOnly) flightParams.set("directOnly", "1");
+            if (multiLegs[0]?.origin?.iata) flightParams.set("from", multiLegs[0].origin.iata);
+            if (multiLegs[0]?.destination?.iata) flightParams.set("to", multiLegs[0].destination.iata);
+            if (multiLegs[0]?.date) flightParams.set("date", multiLegs[0].date);
+            router.push(`/flights/search?${flightParams.toString()}`);
+            return;
+          }
           const from = formatAirport(originPick) || fromCity;
           const to = formatAirport(destPick) || destination;
           const flightParams = new URLSearchParams();
@@ -487,54 +551,132 @@ export default function SearchWidget({
                 label={flightLabels.nonstopOnly}
               />
             </div>
-            <div className="relative col-span-full flex flex-col gap-2 md:grid md:grid-cols-[1fr_auto_1fr]">
-              <AirportAutocomplete
-                label={flightLabels.departureAirport}
-                value={originPick}
-                copy={flightLabels}
-                onChange={(origin) => {
-                  setOriginPick(origin);
-                  setFromCity(formatAirport(origin));
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  setOriginPick(destPick);
-                  setDestPick(originPick);
-                  setFromCity(formatAirport(destPick));
-                  setDestination(formatAirport(originPick));
-                }}
-                className="mx-auto flex h-9 w-9 shrink-0 items-center justify-center self-center rounded-full border border-[color:var(--theme-input-border)] bg-[var(--theme-card-bg)] text-[var(--navy)] shadow-sm transition hover:border-[var(--brand-primary)] hover:bg-[var(--theme-chip-hover)] md:my-auto"
-                aria-label={flightLabels.swap}
-              >
-                <ArrowRightLeft size={16} className="rotate-90 md:rotate-0" />
-              </button>
-              <AirportAutocomplete
-                label={flightLabels.arrivalAirport}
-                value={destPick}
-                copy={flightLabels}
-                onChange={(next) => {
-                  setDestPick(next);
-                  setDestination(formatAirport(next));
-                }}
-              />
-            </div>
-            <DateField
-              mode={flightType === "round-trip" ? "range" : "single"}
-              start={date}
-              end={returnDate}
-              startLabel={t.search.departure}
-              endLabel={t.search.return}
-              placeholder={t.hotels.selectDates}
-              selectStart={t.search.departure}
-              selectEnd={t.search.return}
-              doneLabel={doneLabel}
-              onChange={(start, end) => {
-                setDate(start);
-                if (end) setReturnDate(end);
-              }}
-            />
+            {flightType === "multi-city" ? (
+              <div className="col-span-full space-y-2.5">
+                {multiLegs.map((leg, idx) => (
+                  <div key={`mleg-${idx}`} className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_1fr_180px_auto]">
+                    <AirportAutocomplete
+                      label={`${flightLabels.departureAirport} ${idx + 1}`}
+                      value={leg.origin}
+                      copy={flightLabels}
+                      onChange={(origin) => {
+                        setMultiLegs((prev) => prev.map((l, i) => (i === idx ? { ...l, origin } : l)));
+                        if (idx === 0) {
+                          setOriginPick(origin);
+                          setFromCity(formatAirport(origin));
+                        }
+                      }}
+                    />
+                    <AirportAutocomplete
+                      label={`${flightLabels.arrivalAirport} ${idx + 1}`}
+                      value={leg.destination}
+                      copy={flightLabels}
+                      onChange={(destination) => {
+                        setMultiLegs((prev) => prev.map((l, i) => (i === idx ? { ...l, destination } : l)));
+                        if (idx === 0) {
+                          setDestPick(destination);
+                          setDestination(formatAirport(destination));
+                        }
+                      }}
+                    />
+                    <DateField
+                      mode="single"
+                      start={leg.date}
+                      startLabel={`${t.search.departure} ${idx + 1}`}
+                      placeholder={t.hotels.selectDates}
+                      selectStart={t.search.departure}
+                      doneLabel={doneLabel}
+                      onChange={(start) => {
+                        setMultiLegs((prev) => prev.map((l, i) => (i === idx ? { ...l, date: start } : l)));
+                        if (idx === 0) setDate(start);
+                      }}
+                    />
+                    {multiLegs.length > 2 ? (
+                      <button
+                        type="button"
+                        className="inline-flex h-11 w-11 items-center justify-center self-center rounded-xl border border-slate-200 text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors"
+                        onClick={() => setMultiLegs((prev) => prev.filter((_, i) => i !== idx))}
+                        aria-label={flightLabels.removeLeg || "حذف"}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    ) : (
+                      <span className="hidden md:inline-block w-4" />
+                    )}
+                  </div>
+                ))}
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                  {multiLegs.length < 5 ? (
+                    <button
+                      type="button"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-purple-200 bg-purple-50 px-3.5 py-2 text-xs font-black text-purple-950 hover:bg-purple-100 transition-colors"
+                      onClick={() => {
+                        const lastLeg = multiLegs[multiLegs.length - 1];
+                        setMultiLegs((prev) => [
+                          ...prev,
+                          { origin: lastLeg?.destination || null, destination: null, date: "" },
+                        ]);
+                      }}
+                    >
+                      <Plus size={14} className="text-purple-700 stroke-[3]" />
+                      <span>{flightLabels.addLeg || "+ إضافة رحلة أخرى"}</span>
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="relative col-span-full flex flex-col gap-2 md:grid md:grid-cols-[1fr_auto_1fr]">
+                  <AirportAutocomplete
+                    label={flightLabels.departureAirport}
+                    value={originPick}
+                    copy={flightLabels}
+                    onChange={(origin) => {
+                      setOriginPick(origin);
+                      setFromCity(formatAirport(origin));
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOriginPick(destPick);
+                      setDestPick(originPick);
+                      setFromCity(formatAirport(destPick));
+                      setDestination(formatAirport(originPick));
+                    }}
+                    className="group mx-auto my-1 md:my-auto flex h-8 w-8 shrink-0 items-center justify-center self-center rounded-full bg-white hover:bg-amber-50 text-slate-700 hover:text-amber-600 border border-slate-200 hover:border-amber-300 shadow-xs hover:shadow transition-all duration-200 active:scale-95 cursor-pointer z-10"
+                    aria-label={flightLabels.swap}
+                    title={flightLabels.swap}
+                  >
+                    <ArrowRightLeft size={14} className="text-slate-600 group-hover:text-amber-600 transition-transform group-hover:rotate-180" />
+                  </button>
+                  <AirportAutocomplete
+                    label={flightLabels.arrivalAirport}
+                    value={destPick}
+                    copy={flightLabels}
+                    onChange={(next) => {
+                      setDestPick(next);
+                      setDestination(formatAirport(next));
+                    }}
+                  />
+                </div>
+                <DateField
+                  mode={flightType === "round-trip" ? "range" : "single"}
+                  start={date}
+                  end={returnDate}
+                  startLabel={t.search.departure}
+                  endLabel={t.search.return}
+                  placeholder={t.hotels.selectDates}
+                  selectStart={t.search.departure}
+                  selectEnd={t.search.return}
+                  doneLabel={doneLabel}
+                  onChange={(start, end) => {
+                    setDate(start);
+                    if (end) setReturnDate(end);
+                  }}
+                />
+              </>
+            )}
             <GuestsField
               label={`${t.search.guestsLabel} & ${t.search.class}`}
               summary={`${guestsSummary} · ${cabinClass}`}
@@ -909,30 +1051,35 @@ export default function SearchWidget({
           style={{ backgroundColor: tabBarBg }}
           data-builder-field="search.tabBar"
         >
-          <div
-            className="flex gap-1 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory touch-pan-x [-webkit-overflow-scrolling:touch]"
-            role="tablist"
-            aria-label={t.search.search}
-          >
-            {visibleTabs.map((tab) => (
-              <SearchTabButton
-                key={tab}
-                tab={tab}
-                active={activeTab === tab}
-                onSelect={() => setActiveTab(tab)}
-                label={appearance?.tabLabels?.[tab] || TAB_LABEL[tab](t)}
-                store={iconStore}
-                appearance={appearance}
-                iconOverride={appearance?.tabIcons?.[tab]}
-                builderMode={builderMode}
-                sectionInstanceId={sectionInstanceId}
-              />
-            ))}
+          <div className="flex items-center gap-2">
+            <div
+              className="flex min-w-0 flex-1 gap-1 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory touch-pan-x [-webkit-overflow-scrolling:touch]"
+              role="tablist"
+              aria-label={t.search.search}
+            >
+              {visibleTabs.map((tab) => (
+                <SearchTabButton
+                  key={tab}
+                  tab={tab}
+                  active={activeTab === tab}
+                  onSelect={() => setActiveTab(tab)}
+                  label={appearance?.tabLabels?.[tab] || TAB_LABEL[tab](t)}
+                  store={iconStore}
+                  appearance={appearance}
+                  iconOverride={appearance?.tabIcons?.[tab]}
+                  builderMode={builderMode}
+                  sectionInstanceId={sectionInstanceId}
+                />
+              ))}
+            </div>
+            <SearchAiModeSwitch on={aiMode} onChange={toggleAiMode} label={agentCopy.mode} tone="brand" />
           </div>
         </div>
 
         <div className="overflow-visible p-3 sm:p-3.5 md:p-4" style={{ backgroundColor: panelBg }}>
-          {liveFlights && activeTab === "flight" ? (
+          {aiMode ? (
+            <SearchAgentMode tab={activeTab} page="hero" />
+          ) : liveFlights && activeTab === "flight" ? (
             <LiveFlightSearchPanel variant="embedded" />
           ) : (
             <form onSubmit={handleSearch} className="overflow-visible">
@@ -953,7 +1100,7 @@ export default function SearchWidget({
             </form>
           )}
 
-          {!(liveFlights && activeTab === "flight") ? (
+          {!aiMode && !(liveFlights && activeTab === "flight") ? (
             <div className="mt-3 flex items-center justify-start gap-4 overflow-x-auto border-t border-slate-100 pt-3 text-xs text-slate-500 scrollbar-hide sm:flex-wrap sm:justify-center">
               <div className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-primary)]" />

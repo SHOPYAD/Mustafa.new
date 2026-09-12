@@ -104,7 +104,7 @@ async function enableSmtpIfPasswordReady(): Promise<void> {
     smtp.authMethod = asString(smtp.authMethod) || "PLAIN";
     smtp.localName = asString(smtp.localName) || "lonaliza.com";
     if (!asString(meta.senderAddress)) meta.senderAddress = "noreply@lonaliza.com";
-    if (!asString(meta.senderName)) meta.senderName = "الريان للسياحة";
+    if (!asString(meta.senderName)) meta.senderName = "لوناليزا للسياحة والسفر";
     await pb.settings.update({ smtp, meta });
   } catch {
     /* status endpoint must stay readable */
@@ -139,7 +139,7 @@ export async function getSmtpPublicStatus(): Promise<SmtpPublicStatus> {
     authMethod: asString(smtp.authMethod) || "PLAIN",
     tlsMode: tlsModeFromSettings(smtp),
     localName: asString(smtp.localName),
-    senderName: asString(meta.senderName) || "الريان للسياحة",
+    senderName: asString(meta.senderName) || "لوناليزا للسياحة والسفر",
     senderAddress,
     statusLabelAr: connected
       ? "SMTP محلّي جاهز (قبول الخادم ≠ وصول جيميل)"
@@ -238,7 +238,7 @@ export async function resolveMailTransportConfig(): Promise<
     port,
     username: asString(smtp.username),
     password: secret,
-    senderName: asString(meta.senderName) || "الريان للسياحة",
+    senderName: asString(meta.senderName) || "لوناليزا للسياحة والسفر",
     senderAddress: senderAddress || asString(smtp.username),
     localName: asString(smtp.localName) || "lonaliza.com",
     secure: port === 465,

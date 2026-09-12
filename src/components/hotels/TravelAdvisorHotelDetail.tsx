@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { CalendarX, ChevronLeft, ChevronRight, X } from "lucide-react";
 import HotelFeatureIcon from "@/components/hotels/HotelFeatureIcon";
 import HotelOfferCompare from "@/components/hotels/HotelOfferCompare";
 import HotelPaymentChannels from "@/components/hotels/HotelPaymentChannels";
@@ -96,6 +96,14 @@ export default function TravelAdvisorHotelDetail({
           lang: locale,
         });
         if (bookingHotelId) qs.set("bookingHotelId", bookingHotelId);
+
+        // Forward all query parameters (hotelName, price, nightly, image, stars, rating)
+        for (const [key, val] of pageQs.entries()) {
+          if (!qs.has(key) && val) {
+            qs.set(key, val);
+          }
+        }
+
         const skipOffers = parseHotelRouteSource(slug) === "booking" || Boolean(bookingHotelId);
         const [detailRes, offerRes] = await Promise.all([
           fetch(`/api/hotels/details?${qs}`, { cache: "no-store" }),
@@ -106,7 +114,13 @@ export default function TravelAdvisorHotelDetail({
         const detailJson = parseHotelApiJson(await detailRes.text());
         const offerJson = offerRes ? parseHotelApiJson(await offerRes.text()) : { offers: [] };
         if (cancelled) return;
-        setHotel((detailJson.hotel as TravelAdvisorHotelDetails | undefined) || null);
+        const hotelData = (detailJson.hotel as TravelAdvisorHotelDetails | undefined) || null;
+        if (hotelData) {
+          if ((!hotelData.rooms || hotelData.rooms.length === 0) && Array.isArray(detailJson.rooms) && detailJson.rooms.length > 0) {
+            hotelData.rooms = detailJson.rooms as TravelAdvisorRoom[];
+          }
+        }
+        setHotel(hotelData);
         setReviewPage(1);
         setReviewVisible(6);
         setNearby(
@@ -128,22 +142,12 @@ export default function TravelAdvisorHotelDetail({
     };
   }, [slug, checkIn, checkOut, adults, query, locale]);
 
-  const bookHref = useMemo(() => {
-    const params = new URLSearchParams({
-      hotel: slug,
-      hotelName: hotel?.name || "",
-      provider: bookingProvider,
-      checkIn,
-      checkOut,
-      adults,
-      price: String(offers[0]?.price || hotel?.priceFrom || ""),
-    });
-    return `/hotels/book?${params}`;
-  }, [slug, hotel, checkIn, checkOut, adults, offers, bookingProvider]);
-
   const stayNights = nightsBetween(checkIn, checkOut);
 
   const displayRooms = useMemo<TravelAdvisorRoom[]>(() => {
+    if (hotel?.rooms && hotel.rooms.length > 0) {
+      return hotel.rooms;
+    }
     const fromHotel = (hotel?.rooms || []).filter((room) => isRealRoomName(room.name));
     if (fromHotel.length) return fromHotel;
     const images = (hotel?.images?.length ? hotel.images : hotel?.image ? [hotel.image] : []).filter(
@@ -160,6 +164,60 @@ export default function TravelAdvisorHotelDetail({
       locale
     );
   }, [hotel, offers, adults, t.hotels.bestAvailableRate, locale]);
+
+  const roomBookHref = useCallback(
+    (room: TravelAdvisorRoom, price?: number | null, roomLabel?: string) => {
+      const money = stayFromNightly(
+        price ?? room.nightly ?? room.price ?? hotel?.nightly ?? hotel?.priceFrom,
+        stayNights
+      );
+      const params = new URLSearchParams({
+        hotel: slug,
+        hotelName: hotel?.name || "",
+        provider: bookingProvider,
+        checkIn,
+        checkOut,
+        adults,
+        price: String(money.total),
+        room: room.id,
+        roomName: roomLabel || room.name,
+        currency: room.currency || hotel?.currency || "USD",
+        hotelImage: hotel?.image || "",
+        stars: String(hotel?.stars || 0),
+        rating: String(hotel?.rating || 0),
+        nightly: String(money.nightly),
+        freeCancel: room.freeCancellation ? "1" : "0",
+        nonRefundable: room.nonRefundable || !room.freeCancellation ? "1" : "0",
+      });
+      return `/hotels/book?${params}`;
+    },
+    [slug, hotel, checkIn, checkOut, adults, bookingProvider, stayNights]
+  );
+
+  const bookHref = useMemo(() => {
+    if (displayRooms[0]) {
+      return roomBookHref(displayRooms[0]);
+    }
+    const money = stayFromNightly(
+      offers[0]?.price || hotel?.nightly || hotel?.priceFrom,
+      stayNights
+    );
+    const params = new URLSearchParams({
+      hotel: slug,
+      hotelName: hotel?.name || "",
+      provider: bookingProvider,
+      checkIn,
+      checkOut,
+      adults,
+      price: String(money.total || ""),
+      nightly: String(money.nightly || ""),
+      currency: hotel?.currency || "USD",
+      hotelImage: hotel?.image || "",
+      stars: String(hotel?.stars || 0),
+      rating: String(hotel?.rating || 0),
+    });
+    return `/hotels/book?${params}`;
+  }, [displayRooms, roomBookHref, offers, hotel, stayNights, slug, bookingProvider, checkIn, checkOut, adults]);
 
   const amenityGroups = useMemo(() => {
     if (hotel?.facilityGroups?.length) {
@@ -185,36 +243,10 @@ export default function TravelAdvisorHotelDetail({
     return groups;
   }, [hotel]);
 
-  const roomBookHref = (room: TravelAdvisorRoom, price?: number | null, roomLabel?: string) => {
-    const money = stayFromNightly(
-      price ?? room.nightly ?? room.price ?? hotel?.nightly ?? hotel?.priceFrom,
-      stayNights
-    );
-    const params = new URLSearchParams({
-      hotel: slug,
-      hotelName: hotel?.name || "",
-      provider: bookingProvider,
-      checkIn,
-      checkOut,
-      adults,
-      price: String(money.total),
-      room: room.id,
-      roomName: roomLabel || room.name,
-      currency: room.currency || hotel?.currency || "USD",
-      hotelImage: hotel?.image || "",
-      stars: String(hotel?.stars || 0),
-      rating: String(hotel?.rating || 0),
-      nightly: String(money.nightly),
-      freeCancel: room.freeCancellation ? "1" : "0",
-      nonRefundable: room.nonRefundable || !room.freeCancellation ? "1" : "0",
-    });
-    return `/hotels/book?${params}`;
-  };
-
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center bg-slate-100">
-        <div className="w-10 h-10 border-2 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+        <div className="w-10 h-10 border-2 border-purple-500/20 border-t-purple-600 rounded-full animate-spin" />
       </div>
     );
   }
@@ -223,7 +255,7 @@ export default function TravelAdvisorHotelDetail({
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 bg-slate-100">
         <p className="text-slate-500">{t.hotels.noHotels}</p>
-        <Link href="/hotels" className="text-emerald-700 font-semibold">
+        <Link href="/hotels" className="text-purple-900 font-semibold hover:underline">
           ← {t.hotels.title}
         </Link>
       </div>
@@ -313,7 +345,7 @@ export default function TravelAdvisorHotelDetail({
           </p>
           <p className="text-amber-200 text-sm md:text-base max-w-2xl">{t.hotels.detailHeroLine}</p>
         </div>
-        <div className="h-1 w-full bg-gradient-to-l from-amber-300 via-amber-500 to-emerald-600" />
+        <div className="h-1 w-full bg-gradient-to-l from-amber-300 via-amber-500 to-[#2e1065]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4">
@@ -333,7 +365,7 @@ export default function TravelAdvisorHotelDetail({
           </button>
           <div className="grid grid-cols-3 gap-2 lg:col-span-3">
             {Array.from({ length: 6 }).map((_, i) => {
-              const img = thumbs[i];
+              const img = thumbs[i] || images[(i + 1) % Math.max(1, images.length)] || images[0];
               return (
                 <button
                   key={(img || "empty") + i}
@@ -379,7 +411,7 @@ export default function TravelAdvisorHotelDetail({
                   {hotel.highlights.slice(0, 6).map((item) => (
                     <li
                       key={item}
-                      className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-800"
+                      className="inline-flex items-center gap-1 rounded-full bg-purple-50 px-3 py-1 text-xs text-purple-950 border border-purple-200/60 font-medium"
                     >
                       <HotelFeatureIcon label={item} size={16} /> {localizeHotelLabel(item, locale)}
                     </li>
@@ -393,7 +425,7 @@ export default function TravelAdvisorHotelDetail({
                 <a
                   key={tab.id}
                   href={`#${tab.id}`}
-                  className="whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-600 hover:bg-emerald-50 hover:text-emerald-800"
+                  className="whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-600 hover:bg-purple-50 hover:text-purple-950"
                 >
                   {tab.label}
                 </a>
@@ -466,8 +498,27 @@ export default function TravelAdvisorHotelDetail({
                   })}
                 </div>
               ) : (
-                <div className="rounded-3xl border border-dashed border-[#d9cbb3] bg-white/70 px-6 py-10 text-center text-slate-500 text-sm">
-                  {t.hotels.roomsNone}
+                <div className="rounded-3xl border-2 border-amber-200/80 bg-gradient-to-br from-amber-50/90 via-orange-50/40 to-white p-6 sm:p-8 text-center shadow-md">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 ring-8 ring-amber-500/5">
+                    <CalendarX size={32} className="stroke-[2.2]" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
+                    {t.hotels.allRoomsBookedTitle}
+                  </h3>
+                  <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-6">
+                    {t.hotels.allRoomsBookedDesc}
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      href={`/hotels?city=${encodeURIComponent(hotel.city || query)}`}
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-all shadow-sm"
+                    >
+                      <span>{locale === "ar" ? `استكشف فنادق أخرى في ${hotel.city || query}` : `Explore other hotels in ${hotel.city || query}`}</span>
+                    </Link>
+                  </div>
+                  <div className="mt-5 pt-5 border-t border-amber-200/60 text-xs text-slate-500 flex items-center justify-center gap-2">
+                    <span>{checkIn} → {checkOut} ({stayNights} {stayNights > 1 ? (locale === "ar" ? "ليالٍ" : "nights") : (locale === "ar" ? "ليلة" : "night")})</span>
+                  </div>
                 </div>
               )}
             </section>
@@ -822,7 +873,7 @@ export default function TravelAdvisorHotelDetail({
                   ) : null}
                   <p>
                     <span className="text-slate-400 text-sm">{t.hotels.from} </span>
-                    <span className="text-3xl font-bold text-emerald-600">{formatPrice(startPrice, hotel.currency || "USD")}</span>
+                    <span className="text-3xl font-extrabold text-[#2e1065]">{formatPrice(startPrice, hotel.currency || "USD")}</span>
                   </p>
                   {startPrice != null ? (
                     <>
@@ -838,7 +889,7 @@ export default function TravelAdvisorHotelDetail({
               ) : null}
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {hotel.badges.slice(0, 3).map((b) => (
-                  <span key={b} className="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs rounded-md">
+                  <span key={b} className="px-2 py-0.5 bg-purple-50 text-purple-950 border border-purple-200/60 text-xs rounded-md font-medium">
                     {localizeHotelLabel(b, locale)}
                   </span>
                 ))}

@@ -231,13 +231,11 @@ export function invoiceLabels(language: InvoiceLanguage): Record<InvoiceLabelKey
   switch (language) {
     case "ar":
       return AR;
-    case "en":
-      return EN;
     case "tr":
       return TR;
-    default: {
-      const _exhaustive: never = language;
-      return _exhaustive;
-    }
+    case "en":
+    case "fr":
+    default:
+      return EN;
   }
 }

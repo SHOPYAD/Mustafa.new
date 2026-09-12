@@ -437,7 +437,7 @@ export default function AdminEmailMarketingPage() {
             href="/admin/email"
             className={`text-xs px-3 py-1.5 rounded-lg border ${
               smtpReady
-                ? "border-emerald-500/30 text-emerald-200"
+                ? "border-purple-500/40 text-purple-200"
                 : "border-amber-500/30 text-amber-200"
             }`}
           >
@@ -469,7 +469,7 @@ export default function AdminEmailMarketingPage() {
         ))}
       </div>
 
-      {msg && <p className="text-sm text-emerald-300">{msg}</p>}
+      {msg && <p className="text-sm text-amber-300 font-medium">{msg}</p>}
       {err && <p className="text-sm text-red-300">{err}</p>}
 
       {loading ? (
@@ -539,7 +539,7 @@ export default function AdminEmailMarketingPage() {
                     <button
                       type="button"
                       onClick={() => void testSend(selected.id)}
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-emerald-500/30 text-sm text-emerald-200"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-purple-500/40 text-sm text-purple-200 hover:bg-purple-500/10 transition-colors"
                     >
                       {busy === "test" ? (
                         <Loader2 size={14} className="animate-spin" />
@@ -685,7 +685,7 @@ export default function AdminEmailMarketingPage() {
                   type="button"
                   onClick={() => void createCampaign("now")}
                   disabled={!smtpReady}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-semibold disabled:opacity-40"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white text-sm font-semibold hover:brightness-110 shadow-sm disabled:opacity-40"
                 >
                   <Mail size={14} />
                   {ar ? "إرسال فوري (دفعات)" : "Send now (batched)"}
@@ -735,7 +735,7 @@ export default function AdminEmailMarketingPage() {
                     <button
                       type="button"
                       onClick={() => void patchStatus(c.id, "queued")}
-                      className="px-3 py-2 rounded-xl border border-emerald-500/30 text-xs text-emerald-200"
+                      className="px-3 py-2 rounded-xl border border-purple-500/40 text-xs text-purple-200 hover:bg-purple-500/10 transition-colors"
                     >
                       <Play size={14} />
                     </button>

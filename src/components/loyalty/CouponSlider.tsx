@@ -81,20 +81,20 @@ export default function CouponSlider({ service, className }: Props) {
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm",
+        "overflow-hidden rounded-2xl border border-purple-200/80 bg-white shadow-sm",
         className
       )}
     >
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 px-3 py-2.5 sm:px-4">
-        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#051741]">
-          <Gift size={16} className="text-emerald-600" />
+      <div className="flex flex-wrap items-center gap-2 border-b border-purple-100 bg-purple-50/40 px-3 py-2.5 sm:px-4">
+        <span className="inline-flex items-center gap-1.5 text-sm font-black text-[#1e1b4b]">
+          <Gift size={16} className="text-amber-500" />
           {t.loyalty.firstBookingOffer}
         </span>
         <div className="ms-auto flex flex-wrap items-center gap-2 text-sm">
           <button
             type="button"
             onClick={() => setCodeOpen((v) => !v)}
-            className="inline-flex items-center gap-1 font-semibold text-emerald-700 hover:text-emerald-800"
+            className="inline-flex items-center gap-1 font-bold text-purple-700 hover:text-purple-950 transition-colors cursor-pointer"
           >
             <Plus size={14} />
             {t.loyalty.usePromoCode}
@@ -103,7 +103,7 @@ export default function CouponSlider({ service, className }: Props) {
             <button
               type="button"
               onClick={() => setOpenAll((v) => !v)}
-              className="inline-flex items-center gap-0.5 font-semibold text-slate-600"
+              className="inline-flex items-center gap-0.5 font-bold text-slate-600 hover:text-purple-950 transition-colors cursor-pointer"
             >
               {t.loyalty.viewAll(coupons.length)}
               <ChevronLeft size={14} className={dir === "rtl" ? "" : "rotate-180"} />
@@ -113,24 +113,24 @@ export default function CouponSlider({ service, className }: Props) {
       </div>
 
       {codeOpen ? (
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 bg-slate-50 px-3 py-2.5 sm:px-4">
+        <div className="flex flex-wrap items-center gap-2 border-b border-purple-100 bg-purple-50/20 px-3 py-2.5 sm:px-4">
           <input
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder={t.loyalty.codePlaceholder}
-            className="min-w-[10rem] flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+            className="min-w-[10rem] flex-1 rounded-xl border border-purple-200 bg-white px-3 py-2 text-sm focus:border-purple-600 focus:outline-none"
             dir="ltr"
           />
           <button
             type="button"
             onClick={() => void apply(code)}
             disabled={!code.trim() || Boolean(busy)}
-            className="rounded-xl bg-[#051741] px-3 py-2 text-xs font-bold text-white disabled:opacity-50"
+            className="rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] hover:brightness-110 px-4 py-2 text-xs font-black text-white disabled:opacity-50 cursor-pointer transition-all"
           >
             {t.loyalty.applyDiscount}
           </button>
           {appliedCode ? (
-            <button type="button" onClick={() => void clearCode()} className="text-xs font-semibold text-slate-500">
+            <button type="button" onClick={() => void clearCode()} className="text-xs font-bold text-slate-500 hover:text-red-600 transition-colors cursor-pointer">
               {t.loyalty.clear}
             </button>
           ) : null}
@@ -144,27 +144,29 @@ export default function CouponSlider({ service, className }: Props) {
             <article
               key={coupon.id}
               className={cn(
-                "min-w-[16.5rem] shrink-0 rounded-xl border px-3 py-2.5",
-                active ? "border-emerald-400 bg-emerald-50" : "border-slate-200 bg-white"
+                "min-w-[16.5rem] shrink-0 rounded-xl border px-3 py-2.5 transition",
+                active
+                  ? "border-amber-400 bg-gradient-to-br from-amber-500/10 via-purple-50/40 to-white ring-1 ring-amber-400/50 shadow-xs"
+                  : "border-slate-200 bg-white hover:border-purple-200"
               )}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-bold uppercase tracking-wide text-emerald-700">
+                  <p className="text-[11px] font-black uppercase tracking-wide text-amber-700">
                     {discountLabel(coupon, locale)}
                   </p>
-                  <p className="mt-0.5 truncate text-sm font-bold text-[#051741]">{coupon.title}</p>
+                  <p className="mt-0.5 truncate text-sm font-black text-[#1e1b4b]">{coupon.title}</p>
                   {coupon.description ? (
-                    <p className="mt-0.5 line-clamp-1 text-[11px] text-slate-500">{coupon.description}</p>
+                    <p className="mt-0.5 line-clamp-1 text-[11px] font-semibold text-slate-500">{coupon.description}</p>
                   ) : null}
                 </div>
-                <span className="shrink-0 rounded-md bg-[#051741]/5 px-1.5 py-0.5 text-[10px] font-bold text-[#051741]">
+                <span className="shrink-0 rounded-md bg-purple-100/70 px-1.5 py-0.5 text-[10px] font-bold text-purple-950 border border-purple-200">
                   {serviceCopy(coupon.service, t.loyalty)}
                 </span>
               </div>
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500" dir="ltr">
-                  <TicketPercent size={12} />
+              <div className="mt-2.5 flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1 font-mono text-[11px] font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md" dir="ltr">
+                  <TicketPercent size={13} className="text-purple-700" />
                   {coupon.code}
                 </span>
                 <button
@@ -172,8 +174,10 @@ export default function CouponSlider({ service, className }: Props) {
                   disabled={Boolean(busy)}
                   onClick={() => void (active ? clearCode() : apply(coupon.code))}
                   className={cn(
-                    "rounded-lg px-2.5 py-1 text-[11px] font-bold",
-                    active ? "bg-emerald-600 text-white" : "bg-[#051741] text-white"
+                    "rounded-lg px-3 py-1.5 text-[11px] font-black transition-all cursor-pointer",
+                    active
+                      ? "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-xs"
+                      : "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white hover:brightness-110 shadow-xs"
                   )}
                 >
                   {active ? t.loyalty.applied : t.loyalty.applyDiscount}

@@ -13,7 +13,7 @@ import {
   buildHotelsConfigFromMap,
   parseHotelProvider,
 } from "@/lib/hotels-config";
-import { getHotelRoomsProviderStatus } from "@/lib/server/hotel-rooms-provider";
+import { clearBookingQuotaCooldown, getHotelRoomsProviderStatus } from "@/lib/server/hotel-rooms-provider";
 import { purgeBookingErrorCaches, purgeBookingListCaches } from "@/lib/server/booking-disk-cache";
 import { ownedEngineHealth } from "@/lib/scraping/hotels/owned-client";
 import {
@@ -208,6 +208,7 @@ export async function PUT(req: NextRequest) {
     const keyChanged = Boolean(patch.BOOKING_COM_RAPIDAPI_KEY);
     await saveServerEnv(patch);
     if (keyChanged) {
+      clearBookingQuotaCooldown();
       await purgeBookingErrorCaches();
     }
     const map = await getServerEnvMap(HOTELS_CONFIG_ENV_KEYS);

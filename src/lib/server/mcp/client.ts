@@ -1,8 +1,9 @@
+import path from "path";
 import { callBuiltinTool, verifyBuiltinCatalog } from "./builtin";
 import { getMcpSecret, getMcpServer, recordMcpTest } from "./store";
 import type { McpServerRecord, McpToolInfo } from "./types";
 
-const TEST_TIMEOUT_MS = 20_000;
+const TEST_TIMEOUT_MS = 60_000;
 
 function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise<T>((resolve, reject) => {
@@ -36,12 +37,16 @@ async function connectSdk(server: McpServerRecord): Promise<ConnectedClient> {
 
   if (server.transport === "stdio") {
     const { StdioClientTransport } = await import("@modelcontextprotocol/sdk/client/stdio.js");
-    const command = server.command || "npx";
+    const nodeBinDir = path.dirname(process.execPath);
+    const command = server.command && server.command !== "npx" ? server.command : path.join(nodeBinDir, "npx");
     const args = server.args.length ? server.args : server.packageName ? ["-y", server.packageName] : [];
     if (!command) throw new Error("لا يوجد أمر stdio للخادم");
     const env: Record<string, string> = {};
     for (const [key, value] of Object.entries(process.env)) {
       if (typeof value === "string") env[key] = value;
+    }
+    if (!env.PATH || !env.PATH.includes(nodeBinDir)) {
+      env.PATH = `${nodeBinDir}:${env.PATH || "/usr/local/bin:/usr/bin:/bin"}`;
     }
     if (secret.env) Object.assign(env, secret.env);
     if (secret.apiKey) env.MCP_API_KEY = secret.apiKey;

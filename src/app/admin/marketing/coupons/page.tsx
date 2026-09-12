@@ -54,8 +54,41 @@ export default function AdminCouponsPage() {
     pointsPerUsd: 10,
     pointsPerUsdByService: {},
     pointsPerUsdRedeem: 100,
-    minConvertPoints: 100,
+    minConvertPoints: 500,
+    requireAdminApproval: true,
+    minBookingAmountUsd: 500,
+    maxDiscountPercent: 15,
+    maxVoucherDiscountUsd: 150,
+    autoApproveVerifiedBookings: true,
   });
+  const [pendingData, setPendingData] = useState<{
+    pendingCount: number;
+    pendingTotalPoints: number;
+    pendingTotalUsd: number;
+    items: Array<{
+      id: string;
+      userId: string;
+      points: number;
+      usdValue: number;
+      note?: string;
+      createdAt: string;
+    }>;
+  }>({ pendingCount: 0, pendingTotalPoints: 0, pendingTotalUsd: 0, items: [] });
+
+  const loadPendingPoints = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/loyalty?tab=pending", { cache: "no-store" });
+      const json = await res.json();
+      if (json.ok) {
+        setPendingData({
+          pendingCount: json.pendingCount || 0,
+          pendingTotalPoints: json.pendingTotalPoints || 0,
+          pendingTotalUsd: json.pendingTotalUsd || 0,
+          items: json.items || [],
+        });
+      }
+    } catch {}
+  }, []);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -73,10 +106,57 @@ export default function AdminCouponsPage() {
       if (sJson.settings) setSettings(sJson.settings);
       const codes = cJson.currencyCodes || sJson.currencyCodes || [];
       if (codes.length) setCurrencies(codes);
+      void loadPendingPoints();
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [loadPendingPoints]);
+
+  const handleApprovePoint = async (id: string) => {
+    try {
+      const res = await fetch("/api/admin/loyalty", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "approve", id }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        void loadPendingPoints();
+        setMsg("تم اعتماد النقاط ونقلها بنجاح للرصيد المؤكد");
+      }
+    } catch {}
+  };
+
+  const handleRejectPoint = async (id: string) => {
+    try {
+      const res = await fetch("/api/admin/loyalty", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "reject", id, reason: "مرفوض بقرار الإدارة" }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        void loadPendingPoints();
+        setMsg("تم رفض النقاط وتجميدها");
+      }
+    } catch {}
+  };
+
+  const handleApproveAll = async () => {
+    if (!confirm("هل أنت متأكد من اعتماد كافة طلبات النقاط المعلقة دفعة واحدة؟")) return;
+    try {
+      const res = await fetch("/api/admin/loyalty", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "approve_all" }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        void loadPendingPoints();
+        setMsg(`تم اعتماد ${json.approvedCount} طلب معلق بنجاح`);
+      }
+    } catch {}
+  };
 
   useEffect(() => {
     void load();
@@ -188,83 +268,270 @@ export default function AdminCouponsPage() {
       {msg ? <p className="text-sm text-amber-300">{msg}</p> : null}
 
       {tab === "points" ? (
-        <div className={cardClass}>
-          <label className="mb-4 flex items-center gap-2 text-sm text-white">
-            <input
-              type="checkbox"
-              checked={settings.enabled}
-              onChange={(e) => setSettings({ ...settings, enabled: e.target.checked })}
-            />
-            {l.pointsEnabled}
-          </label>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <label className="text-xs text-white/60">
-              {l.pointsPerUsd}
-              <input
-                type="number"
-                min={0}
-                step="0.1"
-                value={settings.pointsPerUsd}
-                onChange={(e) => setSettings({ ...settings, pointsPerUsd: Number(e.target.value) })}
-                className={`mt-1 ${inputClass}`}
-              />
-            </label>
-            <label className="text-xs text-white/60">
-              {l.pointsRedeem}
-              <input
-                type="number"
-                min={1}
-                value={settings.pointsPerUsdRedeem}
-                onChange={(e) =>
-                  setSettings({ ...settings, pointsPerUsdRedeem: Number(e.target.value) })
-                }
-                className={`mt-1 ${inputClass}`}
-              />
-            </label>
-            <label className="text-xs text-white/60">
-              {l.minConvert}
-              <input
-                type="number"
-                min={0}
-                value={settings.minConvertPoints}
-                onChange={(e) =>
-                  setSettings({ ...settings, minConvertPoints: Number(e.target.value) })
-                }
-                className={`mt-1 ${inputClass}`}
-              />
-            </label>
-          </div>
-          <p className="mt-4 text-xs font-bold uppercase tracking-wide text-white/40">{l.perService}</p>
-          <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {LOYALTY_SERVICES.filter((s) => s !== "all").map((service) => (
-              <label key={service} className="text-xs text-white/60">
-                {serviceLabel(service)}
+        <div className="space-y-6">
+          {/* 1. FINANCIAL SAFEGUARDS & PROFIT PROTECTION */}
+          <div className={`${cardClass} border border-amber-500/30 bg-amber-500/[0.04]`}>
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+              <div>
+                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <span className="text-amber-400">🛡️</span>
+                  <span>قواعد الحماية المالية وضمان عدم خسارة المنصة (Anti-Loss Safeguards)</span>
+                </h3>
+                <p className="text-xs text-white/60 mt-1">
+                  ضوابط صارمة تمنع الحجوزات المجانية تماماً، وتشترط حجزاً حقيقياً مدفوعاً، وتلزم بموافقة الإدارة قبل صرف النقاط.
+                </p>
+              </div>
+              <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/40">
+                حماية وهوامش ربح
+              </span>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <label className="text-xs text-white/70">
+                الحد الأدنى لقيمة الحجز للخصم ($ USD)
+                <input
+                  type="number"
+                  min={100}
+                  value={settings.minBookingAmountUsd ?? 500}
+                  onChange={(e) =>
+                    setSettings({ ...settings, minBookingAmountUsd: Number(e.target.value) || 0 })
+                  }
+                  className={`mt-1 ${inputClass}`}
+                />
+                <span className="text-[10px] text-white/40 mt-0.5 block">
+                  لا يقبل النظام القسائم إذا كان الحجز أقل من هذا المبلغ
+                </span>
+              </label>
+
+              <label className="text-xs text-white/70">
+                الحد الأقصى للتخفيض من الحجز (%)
+                <input
+                  type="number"
+                  min={1}
+                  max={50}
+                  value={settings.maxDiscountPercent ?? 15}
+                  onChange={(e) =>
+                    setSettings({ ...settings, maxDiscountPercent: Number(e.target.value) || 15 })
+                  }
+                  className={`mt-1 ${inputClass}`}
+                />
+                <span className="text-[10px] text-white/40 mt-0.5 block">
+                  يضمن أن العميل يسدد 85%+ من قيمة الحجز نقداً بالبطاقة
+                </span>
+              </label>
+
+              <label className="text-xs text-white/70">
+                الحد الأدنى للنقاط للتحويل إلى قسيمة
+                <input
+                  type="number"
+                  min={100}
+                  value={settings.minConvertPoints ?? 500}
+                  onChange={(e) =>
+                    setSettings({ ...settings, minConvertPoints: Number(e.target.value) || 0 })
+                  }
+                  className={`mt-1 ${inputClass}`}
+                />
+                <span className="text-[10px] text-white/40 mt-0.5 block">
+                  أقل رصيد نقاط يجمعه العضو للبدء بإصدار قسائم
+                </span>
+              </label>
+
+              <label className="text-xs text-white/70">
+                سقف الخصم الأقصى للحجز الواحد ($)
+                <input
+                  type="number"
+                  min={10}
+                  value={settings.maxVoucherDiscountUsd ?? 150}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      maxVoucherDiscountUsd: Number(e.target.value) || 0,
+                    })
+                  }
+                  className={`mt-1 ${inputClass}`}
+                />
+                <span className="text-[10px] text-white/40 mt-0.5 block">
+                  أقصى خصم إجمالي بالدولار مهما بلغت قيمة الحجز
+                </span>
+              </label>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 pt-4 border-t border-white/10 mt-4">
+              <label className="flex items-center gap-2 text-xs text-white/80 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={Boolean(settings.requireAdminApproval)}
+                  onChange={(e) =>
+                    setSettings({ ...settings, requireAdminApproval: e.target.checked })
+                  }
+                  className="rounded border-white/20 text-amber-500 focus:ring-amber-500"
+                />
+                <span>
+                  <strong className="text-white block">إلزامية موافقة الإدارة على نقاط السوشيال ميديا</strong>
+                  <span className="text-[11px] text-white/50 block">
+                    تبقى النقاط معلّقة ولا تصرف إلا بعد اعتماد الإدارة لها يدوياً من السجل أدناه
+                  </span>
+                </span>
+              </label>
+
+              <label className="flex items-center gap-2 text-xs text-white/80 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={Boolean(settings.autoApproveVerifiedBookings)}
+                  onChange={(e) =>
+                    setSettings({ ...settings, autoApproveVerifiedBookings: e.target.checked })
+                  }
+                  className="rounded border-white/20 text-purple-600 focus:ring-purple-500"
+                />
+                <span>
+                  <strong className="text-white block">اعتماد تلقائي لنقاط أصحاب الحجوزات المؤكدة VIP</strong>
+                  <span className="text-[11px] text-white/50 block">
+                    استثناء العملاء الذين دفعوا وحجزوا بالفعل لتشجيع توثيق رحلاتهم فوراً
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3 pt-4 border-t border-white/10 mt-4">
+              <label className="text-xs text-white/60">
+                {l.pointsPerUsd}
                 <input
                   type="number"
                   min={0}
                   step="0.1"
-                  placeholder={String(settings.pointsPerUsd)}
-                  value={settings.pointsPerUsdByService[service] ?? ""}
-                  onChange={(e) => {
-                    const next = { ...settings.pointsPerUsdByService };
-                    if (e.target.value === "") delete next[service];
-                    else next[service] = Number(e.target.value);
-                    setSettings({ ...settings, pointsPerUsdByService: next });
-                  }}
+                  value={settings.pointsPerUsd}
+                  onChange={(e) =>
+                    setSettings({ ...settings, pointsPerUsd: Number(e.target.value) })
+                  }
                   className={`mt-1 ${inputClass}`}
                 />
               </label>
-            ))}
+              <label className="text-xs text-white/60">
+                معدل التحويل (كم نقطة = 1$ خصم)
+                <input
+                  type="number"
+                  min={1}
+                  value={settings.pointsPerUsdRedeem}
+                  onChange={(e) =>
+                    setSettings({ ...settings, pointsPerUsdRedeem: Number(e.target.value) })
+                  }
+                  className={`mt-1 ${inputClass}`}
+                />
+              </label>
+              <div className="flex items-end">
+                <button
+                  type="button"
+                  onClick={() => void saveSettings()}
+                  disabled={saving}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 py-2.5 text-sm font-bold text-slate-950 hover:bg-amber-400 transition-all shadow-md"
+                >
+                  <Save size={16} />
+                  <span>حفظ إعدادات الحماية المالية</span>
+                </button>
+              </div>
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={() => void saveSettings()}
-            disabled={saving}
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-bold text-slate-950"
-          >
-            <Save size={16} />
-            {t.common.save}
-          </button>
+
+          {/* 2. PENDING POINTS AUDIT & APPROVAL QUEUE */}
+          <div className={cardClass}>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4 mb-4">
+              <div>
+                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <span>⚖️</span>
+                  <span>سجل مراجعة واعتماد نقاط السوشيال ميديا المعلقة (Pending Approvals)</span>
+                </h3>
+                <p className="text-xs text-white/60 mt-1">
+                  طلبات النقاط التي جمعها الأعضاء وتنتظر مراجعة الإدارة لمنع التكرار وضمان صحة التفاعل.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl text-xs text-white/80">
+                  <span>المعلق:</span>
+                  <strong className="text-amber-400 font-bold font-mono">
+                    {pendingData.pendingCount} طلب
+                  </strong>
+                  <span>({pendingData.pendingTotalPoints.toLocaleString()} نقطة ≈ ${pendingData.pendingTotalUsd})</span>
+                </div>
+
+                {pendingData.pendingCount > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => void handleApproveAll()}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white text-xs font-bold hover:brightness-110 transition-all shadow-sm"
+                  >
+                    <span>⚡ اعتماد الكل دفعة واحدة</span>
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {pendingData.items.length === 0 ? (
+              <div className="py-8 text-center text-xs text-white/50 space-y-1">
+                <p className="text-sm font-bold text-amber-300">✅ لا توجد طلبات نقاط معلقة حالياً</p>
+                <p>كافة نقاط السوشيال ميديا معتمدة أو تم البت فيها. المنصة محمية ومستقرة تماماً.</p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-right text-xs text-white/80">
+                  <thead>
+                    <tr className="border-b border-white/10 text-white/40">
+                      <th className="pb-2 font-semibold">المستخدم</th>
+                      <th className="pb-2 font-semibold">التفاعل / الملاحظة</th>
+                      <th className="pb-2 font-semibold">النقاط</th>
+                      <th className="pb-2 font-semibold">القيمة التقديرية</th>
+                      <th className="pb-2 font-semibold">التاريخ</th>
+                      <th className="pb-2 text-center font-semibold">الإجراء</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {pendingData.items.map((item) => (
+                      <tr key={item.id} className="hover:bg-white/[0.02]">
+                        <td className="py-3 font-mono text-[11px] text-white/90">
+                          {item.userId}
+                        </td>
+                        <td className="py-3 max-w-[240px] truncate text-white/70">
+                          {item.note || "تفاعل في مجتمع السفر"}
+                        </td>
+                        <td className="py-3 font-bold text-amber-400 font-mono">
+                          +{item.points.toLocaleString()}
+                        </td>
+                        <td className="py-3 font-bold text-amber-300 font-mono">
+                          ${item.usdValue.toFixed(2)}
+                        </td>
+                        <td className="py-3 text-white/50 text-[11px]">
+                          {new Date(item.createdAt).toLocaleString("ar-EG", {
+                            month: "short",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </td>
+                        <td className="py-3 text-center">
+                          <div className="inline-flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => void handleApprovePoint(item.id)}
+                              className="px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 border border-purple-500/40 text-[11px] font-bold transition-all"
+                            >
+                              ✅ اعتماد
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => void handleRejectPoint(item.id)}
+                              className="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-300 hover:bg-red-500/30 border border-red-500/40 text-[11px] font-bold transition-all"
+                            >
+                              ❌ تجميد
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">

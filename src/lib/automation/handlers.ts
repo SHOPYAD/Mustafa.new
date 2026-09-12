@@ -8,7 +8,7 @@ import {
   translateArticle,
   watchPrices,
 } from "./interfaces/content";
-import { runCtwaLookalike } from "./handlers/ads-audience";
+import { runCtwaCampaign, runCtwaLookalike, runLookalikeAudience } from "./handlers/ads-audience";
 import { runWeeklyAdminDigest } from "./handlers/digest";
 import { runPlacesReviews } from "./handlers/places";
 import {
@@ -79,6 +79,10 @@ export async function dispatchAutomationJob(ctx: AutomationJobContext): Promise<
       return runWeeklyAdminDigest(ctx);
     case "places.reviews":
       return runPlacesReviews(ctx);
+    case "ads.lookalike":
+      return runLookalikeAudience(ctx);
+    case "ads.ctwa":
+      return runCtwaCampaign(ctx);
     case "ads.ctwa_lookalike":
       return runCtwaLookalike(ctx);
     default: {

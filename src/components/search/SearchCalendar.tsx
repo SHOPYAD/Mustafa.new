@@ -173,10 +173,10 @@ export default function SearchCalendar({
           ];
           return (
             <div key={m.toISOString()} className={cn(monthIndex === 1 && "hidden md:block")}>
-              <p className="mb-3 text-center text-base font-bold text-[var(--navy)]">
+              <p className="mb-3 text-center text-base font-black text-purple-950">
                 {format(m, "MMMM yyyy", { locale: dfLocale })}
               </p>
-              <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-slate-400">
+              <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-slate-500">
                 {labels.map((d, i) => (
                   <span key={`${d}-${i}`}>{d}</span>
                 ))}
@@ -200,16 +200,16 @@ export default function SearchCalendar({
                       disabled={disabled}
                       onClick={() => pickDay(day)}
                       className={cn(
-                        "h-11 rounded-xl text-sm font-medium transition",
-                        disabled && "cursor-not-allowed text-slate-300",
-                        !disabled && !isIn && !isOut && inRange && "bg-[var(--theme-chip-hover)] text-[var(--theme-text-heading)]",
+                        "h-11 rounded-xl text-sm font-bold transition",
+                        disabled && "cursor-not-allowed text-slate-300 opacity-40",
+                        !disabled && !isIn && !isOut && inRange && "bg-purple-100 text-purple-950 font-black border border-purple-300/60",
                         (isIn || isOut) &&
-                          "bg-[var(--brand-primary)] font-bold text-white shadow-sm",
+                          "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] font-black text-white shadow-md border border-amber-400/50",
                         !disabled &&
                           !isIn &&
                           !isOut &&
                           !inRange &&
-                          "text-slate-800 hover:bg-slate-100"
+                          "text-slate-900 hover:bg-purple-50 hover:text-purple-950"
                       )}
                     >
                       {day.getDate()}
@@ -224,7 +224,7 @@ export default function SearchCalendar({
 
       <button
         type="button"
-        className="mt-4 w-full rounded-xl bg-[var(--navy)] py-3 text-sm font-bold text-white hover:opacity-90"
+        className="mt-5 w-full rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 py-3 text-sm font-black text-slate-950 shadow-md shadow-amber-500/20 active:scale-98 transition-all cursor-pointer"
         onClick={onDone}
       >
         {doneLabel}

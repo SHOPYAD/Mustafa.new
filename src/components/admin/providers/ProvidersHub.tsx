@@ -11,6 +11,7 @@ import {
   type CatalogProviderId,
   type ProviderCategory,
   type ProviderClientState,
+  type ProviderMode,
   type ProviderVertical,
   providerCategoryHint,
   providerCategoryLabel,
@@ -23,6 +24,8 @@ type HubResponse = {
   states: Record<CatalogProviderId, ProviderClientState>;
   error?: string;
 };
+
+type BusyKind = "save" | "test" | "toggle" | "mode" | "logo";
 
 const emptyStates = {} as Record<CatalogProviderId, ProviderClientState>;
 
@@ -37,7 +40,7 @@ export default function ProvidersHub({
   const [catalog, setCatalog] = useState<CatalogProvider[]>([]);
   const [states, setStates] = useState<Record<CatalogProviderId, ProviderClientState>>(emptyStates);
   const [loading, setLoading] = useState(true);
-  const [busy, setBusy] = useState<Partial<Record<CatalogProviderId, "save" | "test" | "toggle">>>({});
+  const [busy, setBusy] = useState<Partial<Record<CatalogProviderId, BusyKind>>>({});
   const [messages, setMessages] = useState<Partial<Record<CatalogProviderId, string>>>({});
 
   const load = useCallback(async () => {
@@ -68,11 +71,15 @@ export default function ProvidersHub({
     })).filter((group) => group.items.length > 0);
   }, [catalog, activeVertical]);
 
-  const patchState = (id: CatalogProviderId, next: ProviderClientState) => {
-    setStates((prev) => ({ ...prev, [id]: next }));
+  const patchState = (id: CatalogProviderId, next: Partial<ProviderClientState>) => {
+    setStates((prev) => ({
+      ...prev,
+      [id]: { ...(prev[id] || {}), ...next } as ProviderClientState,
+    }));
   };
 
   const runToggle = async (provider: CatalogProvider, enabled: boolean) => {
+    if (provider.integration === "coming_soon") return;
     setBusy((prev) => ({ ...prev, [provider.id]: "toggle" }));
     setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
     try {
@@ -97,6 +104,7 @@ export default function ProvidersHub({
   };
 
   const runSave = async (provider: CatalogProvider, fields: Record<string, string>) => {
+    if (provider.integration === "coming_soon") return;
     setBusy((prev) => ({ ...prev, [provider.id]: "save" }));
     setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
     try {
@@ -121,6 +129,7 @@ export default function ProvidersHub({
   };
 
   const runTest = async (provider: CatalogProvider) => {
+    if (provider.integration === "coming_soon") return;
     setBusy((prev) => ({ ...prev, [provider.id]: "test" }));
     setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
     try {
@@ -136,6 +145,104 @@ export default function ProvidersHub({
       }));
     } catch {
       setMessages((prev) => ({ ...prev, [provider.id]: "تعذّر الاختبار" }));
+    } finally {
+      setBusy((prev) => ({ ...prev, [provider.id]: undefined }));
+    }
+  };
+
+  const runMode = async (provider: CatalogProvider, mode: ProviderMode) => {
+    if (provider.integration === "coming_soon") return;
+    setBusy((prev) => ({ ...prev, [provider.id]: "mode" }));
+    setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
+    try {
+      const res = await fetch("/api/admin/providers", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: provider.id, mode }),
+      });
+      const data = await res.json();
+      if (data?.ok && data.state) {
+        patchState(provider.id, data.state);
+        setMessages((prev) => ({
+          ...prev,
+          [provider.id]: mode === "sandbox" ? "تم ضبط الوضع التجريبي" : "تم ضبط وضع الإنتاج",
+        }));
+        return;
+      }
+      setMessages((prev) => ({ ...prev, [provider.id]: data?.error || "فشل حفظ الوضع" }));
+    } catch {
+      setMessages((prev) => ({ ...prev, [provider.id]: "فشل حفظ الوضع" }));
+    } finally {
+      setBusy((prev) => ({ ...prev, [provider.id]: undefined }));
+    }
+  };
+
+  const runLogoUrl = async (provider: CatalogProvider, customLogo: string) => {
+    setBusy((prev) => ({ ...prev, [provider.id]: "logo" }));
+    setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
+    try {
+      const res = await fetch("/api/admin/providers", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: provider.id, customLogo }),
+      });
+      const data = await res.json();
+      if (data?.ok && data.state) {
+        patchState(provider.id, data.state);
+        setMessages((prev) => ({ ...prev, [provider.id]: "تم حفظ الشعار" }));
+        return;
+      }
+      setMessages((prev) => ({ ...prev, [provider.id]: data?.error || "فشل حفظ الشعار" }));
+    } catch {
+      setMessages((prev) => ({ ...prev, [provider.id]: "فشل حفظ الشعار" }));
+    } finally {
+      setBusy((prev) => ({ ...prev, [provider.id]: undefined }));
+    }
+  };
+
+  const runLogoUpload = async (provider: CatalogProvider, file: File) => {
+    setBusy((prev) => ({ ...prev, [provider.id]: "logo" }));
+    setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
+    try {
+      const form = new FormData();
+      form.set("id", provider.id);
+      form.set("file", file);
+      const res = await fetch("/api/admin/providers/logo", { method: "POST", body: form });
+      const data = await res.json();
+      if (data?.ok) {
+        if (typeof data.customLogo === "string" && data.customLogo) {
+          patchState(provider.id, { customLogo: data.customLogo });
+        }
+        await load();
+        setMessages((prev) => ({ ...prev, [provider.id]: "تم رفع الشعار" }));
+        return;
+      }
+      setMessages((prev) => ({ ...prev, [provider.id]: data?.error || "فشل رفع الشعار" }));
+    } catch {
+      setMessages((prev) => ({ ...prev, [provider.id]: "فشل رفع الشعار" }));
+    } finally {
+      setBusy((prev) => ({ ...prev, [provider.id]: undefined }));
+    }
+  };
+
+  const runLogoReset = async (provider: CatalogProvider) => {
+    setBusy((prev) => ({ ...prev, [provider.id]: "logo" }));
+    setMessages((prev) => ({ ...prev, [provider.id]: undefined }));
+    try {
+      const res = await fetch("/api/admin/providers", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: provider.id, resetLogo: true }),
+      });
+      const data = await res.json();
+      if (data?.ok && data.state) {
+        patchState(provider.id, data.state);
+        setMessages((prev) => ({ ...prev, [provider.id]: "تمت إعادة الشعار الافتراضي" }));
+        return;
+      }
+      setMessages((prev) => ({ ...prev, [provider.id]: data?.error || "فشل إعادة الشعار" }));
+    } catch {
+      setMessages((prev) => ({ ...prev, [provider.id]: "فشل إعادة الشعار" }));
     } finally {
       setBusy((prev) => ({ ...prev, [provider.id]: undefined }));
     }
@@ -159,6 +266,10 @@ export default function ProvidersHub({
           onToggle={runToggle}
           onSave={runSave}
           onTest={runTest}
+          onModeChange={runMode}
+          onLogoSave={runLogoUrl}
+          onLogoUpload={runLogoUpload}
+          onLogoReset={runLogoReset}
         />
       ))}
     </div>
@@ -171,7 +282,7 @@ export default function ProvidersHub({
   return (
     <AdminSettingsSections
       title="مزودو البحث والحجز"
-      description="بطاقات مستقلة لكل مزود. الجديد يبدأ متوقفاً بشارة «قريباً» حتى يكتمل التكامل الحقيقي."
+      description="بطاقات مستقلة لكل مزود. الجديد مقفول بشارة «قريباً» — يمكن تغيير الشعار فقط حتى يكتمل التكامل."
       items={PROVIDER_VERTICALS.map((id) => ({
         id,
         label: providerVerticalLabel(id),
@@ -193,15 +304,23 @@ function CategoryBlock({
   onToggle,
   onSave,
   onTest,
+  onModeChange,
+  onLogoSave,
+  onLogoUpload,
+  onLogoReset,
 }: {
   category: ProviderCategory;
   items: CatalogProvider[];
   states: Record<CatalogProviderId, ProviderClientState>;
-  busy: Partial<Record<CatalogProviderId, "save" | "test" | "toggle">>;
+  busy: Partial<Record<CatalogProviderId, BusyKind>>;
   messages: Partial<Record<CatalogProviderId, string>>;
   onToggle: (provider: CatalogProvider, enabled: boolean) => void;
   onSave: (provider: CatalogProvider, fields: Record<string, string>) => void;
   onTest: (provider: CatalogProvider) => void;
+  onModeChange: (provider: CatalogProvider, mode: ProviderMode) => void;
+  onLogoSave: (provider: CatalogProvider, url: string) => void;
+  onLogoUpload: (provider: CatalogProvider, file: File) => void;
+  onLogoReset: (provider: CatalogProvider) => void;
 }) {
   return (
     <section className="space-y-3">
@@ -219,6 +338,8 @@ function CategoryBlock({
             enabled: false,
             ready: false,
             connected: false,
+            mode: "sandbox" as const,
+            customLogo: null,
             fields: {},
             integration: provider.integration,
           };
@@ -232,6 +353,10 @@ function CategoryBlock({
               onToggle={(enabled) => onToggle(provider, enabled)}
               onSave={(fields) => onSave(provider, fields)}
               onTest={() => onTest(provider)}
+              onModeChange={(mode) => onModeChange(provider, mode)}
+              onLogoSave={(url) => onLogoSave(provider, url)}
+              onLogoUpload={(file) => onLogoUpload(provider, file)}
+              onLogoReset={() => onLogoReset(provider)}
             />
           );
         })}

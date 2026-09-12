@@ -48,8 +48,8 @@ export async function loadInvoiceBrandExtras(template?: InvoiceTemplate | null):
   const siteUrl = resolveSitePublicUrl(await getServerEnv("NEXT_PUBLIC_SITE_URL"));
   const logoDataUri = await resolveInvoiceLogoDataUri(template?.logoUrl || "", assets.logoDataUri);
   return {
-    brandNameAr: template?.companyNameAr || branding.brandNameAr || "الريان للسياحة",
-    brandNameEn: template?.companyNameEn || branding.brandNameEn || "Alrayyan Tourism",
+    brandNameAr: template?.companyNameAr || branding.brandNameAr || "لوناليزا للسياحة",
+    brandNameEn: template?.companyNameEn || branding.brandNameEn || "Lonaliza Tourism",
     logoDataUri,
     fontDataUri: assets.fontDataUri,
     phone: defaultSiteContact.customerServicePhones[0] || defaultSiteContact.callbackPhone,

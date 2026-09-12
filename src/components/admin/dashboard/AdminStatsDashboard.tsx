@@ -25,6 +25,7 @@ import {
   statusVariant,
   typeLabel,
 } from "@/components/admin/dashboard/labels";
+import AdminExecutiveCopilot from "@/components/admin/dashboard/AdminExecutiveCopilot";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -66,7 +67,7 @@ function DashboardSkeleton() {
   );
 }
 
-export function AdminStatsDashboard() {
+export function AdminStatsDashboard({ statsEndpoint = "/api/admin/dashboard-stats" }: { statsEndpoint?: string } = {}) {
   const { locale } = useLocale();
   const copy = dashboardCopy(locale);
   const [stats, setStats] = useState<DashboardStats | null>(null);
@@ -96,6 +97,7 @@ export function AdminStatsDashboard() {
     const transfers = getTransfers();
     const visa = getVisaData();
     const posts = getPosts();
+
     setCatalog({
       hotels: hotels.length,
       hotelsActive: hotels.filter((h) => h.isActive).length,
@@ -118,7 +120,7 @@ export function AdminStatsDashboard() {
     let cancelled = false;
     void (async () => {
       try {
-        const res = await fetch("/api/admin/dashboard-stats", {
+        const res = await fetch(statsEndpoint, {
           cache: "no-store",
           credentials: "same-origin",
         });
@@ -134,7 +136,7 @@ export function AdminStatsDashboard() {
     return () => {
       cancelled = true;
     };
-  }, [copy.loadFailed]);
+  }, [copy.loadFailed, statsEndpoint]);
 
   const serviceRows: DashboardNamedCount[] = useMemo(
     () => [
@@ -200,7 +202,7 @@ export function AdminStatsDashboard() {
           <p className="mt-1 text-sm text-muted-foreground">{copy.subtitle}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Badge className="bg-emerald-600 text-white hover:bg-emerald-600">{copy.live}</Badge>
+          <Badge className="bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 border border-purple-700/60 shadow-xs font-bold hover:brightness-110">{copy.live}</Badge>
           <Badge variant="outline">
             {stats.pocketbase ? copy.pocketbaseOn : copy.pocketbaseOff}
           </Badge>
@@ -218,6 +220,9 @@ export function AdminStatsDashboard() {
           </AlertDescription>
         </Alert>
       )}
+
+      {/* Executive Co-Pilot Chat & Controls (Rendered only in authenticated admin panel; hidden in public preview) */}
+      {!statsEndpoint?.includes("/preview") && <AdminExecutiveCopilot />}
 
       <div className="grid grid-cols-2 gap-3 xl:grid-cols-6">
         <KpiSparkCard
@@ -284,7 +289,7 @@ export function AdminStatsDashboard() {
           { label: copy.posts, value: catalog.posts, sub: `${catalog.postsPublished} ${copy.published}`, href: "/admin/blog" },
         ].map((row) => (
           <Link key={row.href} href={row.href}>
-            <div className="rounded-xl border border-border bg-card px-3 py-2.5 transition-colors hover:border-emerald-500/40">
+            <div className="rounded-xl border border-border bg-card px-3 py-2.5 transition-colors hover:border-purple-400/40 dark:hover:border-purple-600/40">
               <p className="text-[11px] text-muted-foreground">{row.label}</p>
               <p className="text-xl font-semibold tabular-nums text-heading">
                 {formatInt(row.value, locale)}

@@ -212,7 +212,7 @@ export function EditableText({
       className={cn(
         className,
         editorMode && "cursor-text rounded-sm",
-        editing && "outline outline-2 outline-emerald-400 outline-offset-2 bg-emerald-400/10"
+        editing && "outline outline-2 outline-amber-400 outline-offset-2 bg-amber-400/10"
       )}
     >
       {value}
@@ -314,8 +314,9 @@ export function SectionFrame({
   className,
   children,
 }: SectionFrameProps) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const label = sectionLabel(instance.type);
+  const localizedSectionLabel = (label as Record<string, string>)[locale] || label.ar || label.en;
   const selected = selectedId === instance.instanceId;
   const [sectionOrder, setSectionOrder] = useState({ index: 0, total: 1 });
   useLayoutEffect(() => {
@@ -399,8 +400,8 @@ export function SectionFrame({
         className={cn(
           "pointer-events-none absolute inset-0 z-[58] border-2 transition-all duration-200",
           selected
-            ? "border-emerald-400 bg-emerald-400/5 ring-2 ring-emerald-400/25"
-            : "border-transparent group-hover/vesection:border-emerald-400/60"
+            ? "border-amber-400 bg-purple-950/10 ring-2 ring-amber-400/30"
+            : "border-transparent group-hover/vesection:border-amber-400/60"
         )}
       />
       <button
@@ -413,8 +414,8 @@ export function SectionFrame({
           e.dataTransfer.effectAllowed = "move";
         }}
         className={cn(
-          "absolute top-3 start-3 z-[62] inline-flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-bold shadow-lg cursor-grab active:cursor-grabbing",
-          "bg-emerald-500 text-[#051741]",
+          "absolute top-3 start-3 z-[62] inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-black shadow-lg cursor-grab active:cursor-grabbing",
+          "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-amber-500/20",
           selected ? "opacity-100" : "opacity-80 group-hover/vesection:opacity-100"
         )}
         data-builder-chrome=""
@@ -422,7 +423,7 @@ export function SectionFrame({
         title="Drag to reorder"
       >
         <GripVertical size={13} />
-        {label.ar}
+        {localizedSectionLabel}
       </button>
       <div
         dir="ltr"
@@ -476,7 +477,7 @@ export function sectionSurface(instance: HomepageSectionInstance, fallback: stri
   return instance.styles.background || fallback;
 }
 
-export function sectionAccent(instance: HomepageSectionInstance, fallback = "#10b981") {
+export function sectionAccent(instance: HomepageSectionInstance, fallback = "#2e1065") {
   return instance.styles.accent || fallback;
 }
 
@@ -505,11 +506,13 @@ export function brandButtonStyle(): {
   borderRadius: string;
   color: string;
   boxShadow: string;
+  fontWeight: string;
 } {
   return {
     backgroundColor: "var(--brand-button)",
     borderRadius: "var(--radius-button)",
-    color: "var(--theme-btn-text)",
+    color: "var(--theme-btn-text, #fde047)",
     boxShadow: "var(--theme-btn-shadow)",
+    fontWeight: "800",
   };
 }

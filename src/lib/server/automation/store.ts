@@ -192,6 +192,12 @@ export async function patchAutomationJob(
 export async function deleteAutomationJob(id: string): Promise<void> {
   const file = await getAutomationJobsFile();
   await writeJobs({ ...file, jobs: file.jobs.filter((item) => item.id !== id) });
+  try {
+    const { purgeApprovalByJobId } = await import("./approval-store");
+    await purgeApprovalByJobId(id);
+  } catch {
+    // Non-critical if approvals file is missing
+  }
 }
 
 export async function recordJobRun(

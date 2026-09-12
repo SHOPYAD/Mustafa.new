@@ -40,7 +40,7 @@ export function linksForTopic(topic: DiscoveredTopic): InternalLink[] {
   }
   links.push({
     href: "/contact",
-    labelAr: "تواصل مع الريان",
+    labelAr: "تواصل مع لوناليزا",
     labelEn: "Contact Alrayyan",
   });
   return links;

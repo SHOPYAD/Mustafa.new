@@ -10,12 +10,24 @@ import {
   type CatalogProviderId,
 } from "@/lib/providers/types";
 import { getCatalogProvider } from "@/lib/providers/catalog";
+import {
+  TravelportAirAdapter,
+  TravelportHotelAdapter,
+  SeeruAirAdapter,
+  PkfareAirAdapter,
+  RateHawkHotelAdapter,
+  HotelbedsHotelAdapter,
+  BiletbankAirAdapter,
+  SeeruHotelAdapter,
+  SeeruRideAdapter,
+} from "@/lib/providers/adapters";
 
 export type ProviderTestResult = {
   ok: boolean;
   code: string;
   message: string;
   httpStatus?: number;
+  latencyMs?: number;
 };
 
 async function pingUrl(url: string, timeoutMs = 8000): Promise<ProviderTestResult> {
@@ -44,6 +56,26 @@ async function pingUrl(url: string, timeoutMs = 8000): Promise<ProviderTestResul
     };
   } finally {
     clearTimeout(timer);
+  }
+}
+
+async function safeAdapterTest(
+  fn: () => Promise<{ ok: boolean; message: string; latencyMs?: number }>
+): Promise<ProviderTestResult> {
+  try {
+    const res = await fn();
+    return {
+      ok: res.ok,
+      code: res.ok ? "ok" : "connection_failed",
+      message: res.message,
+      latencyMs: res.latencyMs,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      code: "failed",
+      message: error instanceof Error ? error.message : "فشل فحص الاتصال بالمزود",
+    };
   }
 }
 
@@ -87,6 +119,20 @@ export async function testCatalogProvider(id: CatalogProviderId): Promise<Provid
         "wl.aviasales.com";
       return pingUrl(`https://${domain.replace(/^https?:\/\//, "")}/`);
     }
+    case "travelport_flights":
+      return safeAdapterTest(() => new TravelportAirAdapter().testConnection());
+    case "seeru":
+      return safeAdapterTest(() => new SeeruAirAdapter().testConnection());
+    case "pkfare":
+      return safeAdapterTest(() => new PkfareAirAdapter().testConnection());
+    case "ratehawk":
+      return safeAdapterTest(() => new RateHawkHotelAdapter().testConnection());
+    case "travelport_hotels":
+      return safeAdapterTest(() => new TravelportHotelAdapter().testConnection());
+    case "hotelbeds":
+      return safeAdapterTest(() => new HotelbedsHotelAdapter().testConnection());
+    case "seeru_hotels":
+      return safeAdapterTest(() => new SeeruHotelAdapter().testConnection());
     case "hotel_engine": {
       const health = await ownedEngineHealth();
       if (!health) {
@@ -120,18 +166,16 @@ export async function testCatalogProvider(id: CatalogProviderId): Promise<Provid
       return { ok: true, code: "ok", message: "الترانسفير الداخلي محلي — لا اتصال خارجي." };
     case "travelpayouts_transfers":
       return pingUrl("https://www.travelpayouts.com/");
-    case "pkfare":
-    case "seeru":
-    case "amadeus_flights":
-    case "travelport_flights":
     case "biletbank":
+      return safeAdapterTest(() => new BiletbankAirAdapter().testConnection());
+    case "seeru_transfers":
+      return safeAdapterTest(() => new SeeruRideAdapter().testConnection());
+    case "amadeus_flights":
     case "iati":
     case "biletdukkani":
     case "turna_flights":
     case "tbo_flights":
     case "amadeus_hotels":
-    case "travelport_hotels":
-    case "ratehawk":
     case "tbo_hotels":
     case "amadeus_cars":
     case "travelport_cars":

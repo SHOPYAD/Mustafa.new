@@ -23,6 +23,49 @@ export type AgencyExtraService = (typeof AGENCY_EXTRA_SERVICES)[number];
 
 export const AGENCY_EXTRA_PRICE_TYPES = ["fixed", "percent"] as const;
 
+/**
+ * Fulfilment kind of a Lonaliza service. Lonaliza services are sold and fulfilled by Lonaliza,
+ * never sent to the supplier (like Trip.com AirFlex):
+ * - refund_guarantee: customer may cancel; Lonaliza refunds from its own wallet and cancels at the supplier.
+ * - flex_change: one date change executed by Lonaliza staff at the supplier.
+ * - insurance / extra_bag / priority / sms / other: fulfilled by Lonaliza operations after payment.
+ */
+export const AGENCY_EXTRA_KINDS = [
+  "refund_guarantee",
+  "flex_change",
+  "insurance",
+  "extra_bag",
+  "priority",
+  "sms",
+  "other",
+] as const;
+
+export type AgencyExtraKind = (typeof AGENCY_EXTRA_KINDS)[number];
+
+export function isAgencyExtraKind(value: string): value is AgencyExtraKind {
+  return (AGENCY_EXTRA_KINDS as readonly string[]).includes(value);
+}
+
+export function kindFromIcon(icon: string): AgencyExtraKind {
+  switch (icon) {
+    case "refund":
+      return "refund_guarantee";
+    case "calendar":
+      return "flex_change";
+    case "insurance":
+    case "shield":
+      return "insurance";
+    case "bag":
+      return "extra_bag";
+    case "priority":
+      return "priority";
+    case "sms":
+      return "sms";
+    default:
+      return "other";
+  }
+}
+
 export type AgencyExtraPriceType = (typeof AGENCY_EXTRA_PRICE_TYPES)[number];
 
 export type AgencyExtraPackage = {
@@ -39,6 +82,12 @@ export type AgencyExtraPackage = {
   isActive: boolean;
   sort: number;
   icon: AgencyExtraIcon;
+  /** Fulfilment kind (drives the internal execution flow). */
+  kind: AgencyExtraKind;
+  /** Customer-facing terms & conditions, editable from the admin. */
+  termsAr: string;
+  termsEn: string;
+  termsTr: string;
   createdAt: string;
   updatedAt: string;
 };

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
+  AlertTriangle,
   BedDouble,
   CalendarDays,
   Check,
@@ -12,7 +13,9 @@ import {
   Lock,
   MessageCircle,
   Plus,
+  ShieldCheck,
   Star,
+  Timer,
   Trash2,
   Users,
 } from "lucide-react";
@@ -38,6 +41,129 @@ type PayConfig = {
 type PayMethod = "whatsapp" | "card";
 
 type AdultTraveler = { id: string; name: string; passport: string };
+
+/** Public view of a confirmed-price quote (POST /api/hotels/quote). */
+type PublicQuote = {
+  id: string;
+  supplier: string;
+  hotelId: string;
+  hotelName: string;
+  hotelImage: string;
+  stars: number;
+  city: string;
+  address: string;
+  checkIn: string;
+  checkOut: string;
+  nights: number;
+  adults: number;
+  childrenAges: number[];
+  rooms: number;
+  roomName: string;
+  roomImage: string;
+  board: string;
+  boardName?: string;
+  refundable: boolean;
+  freeCancellationUntil?: string;
+  cancellationPolicies: Array<{ from?: string; amount?: number; currency?: string; percent?: number; text?: string }>;
+  paymentType: string;
+  rateType: string;
+  sellingTotal: number;
+  perNight: number;
+  currency: string;
+  taxesIncluded: boolean;
+  priceChanged: boolean;
+  previousTotal?: number;
+  status: string;
+  expiresAt: string;
+};
+
+type QuoteState = "idle" | "loading" | "ready" | "expired" | "error";
+
+const QUOTE_COPY = {
+  ar: {
+    checking: "نتحقق من السعر النهائي مع المورد…",
+    checkingHint: "خطوة إلزامية قبل الدفع: نؤكد توفر الغرفة وسعرها الفعلي الآن.",
+    confirmed: "سعر مؤكد من المورد",
+    holdFor: "السعر محجوز لك لمدة",
+    expired: "انتهت صلاحية السعر المؤكد",
+    expiredHint: "الأسعار تتغير باستمرار لدى الموردين. أعد التحقق للحصول على السعر الحالي قبل الدفع.",
+    requote: "إعادة التحقق من السعر",
+    changed: "تغيّر السعر منذ صفحة الفندق",
+    changedHint: (prev: string, next: string) => `كان ${prev} وأصبح الآن ${next}. المبلغ المعروض هنا هو ما سيتم خصمه فعلياً.`,
+    unavailable: "لم تعد هذه الغرفة متاحة بهذا السعر",
+    unavailableHint: "اختر غرفة أو خطة سعر أخرى من صفحة الفندق.",
+    backToHotel: "العودة إلى صفحة الفندق",
+    chargeExact: "سيتم الخصم بالضبط:",
+    freeCancelUntil: "إلغاء مجاني حتى",
+    nonRefundable: "غير قابل للاسترداد",
+    payAtHotel: "الدفع في الفندق",
+    board: "الإعاشة",
+    taxesIncluded: "شامل الضرائب والرسوم",
+    taxesExcluded: "قد تُطبَّق ضرائب/رسوم محلية تُدفع في الفندق",
+    supplierBooking: "الحجز يُنفَّذ لدى المورد مباشرةً بعد الدفع ويصلك الفوشر الرسمي على بريدك.",
+  },
+  en: {
+    checking: "Confirming the final price with the supplier…",
+    checkingHint: "A mandatory step before payment: we confirm the room is still available at its live price.",
+    confirmed: "Price confirmed by the supplier",
+    holdFor: "Price held for",
+    expired: "The confirmed price has expired",
+    expiredHint: "Supplier prices change constantly. Re-check to get the current price before paying.",
+    requote: "Re-check price",
+    changed: "The price changed since the hotel page",
+    changedHint: (prev: string, next: string) => `It was ${prev} and is now ${next}. The amount shown here is exactly what will be charged.`,
+    unavailable: "This room is no longer available at this rate",
+    unavailableHint: "Pick another room or rate plan on the hotel page.",
+    backToHotel: "Back to the hotel page",
+    chargeExact: "You will be charged exactly:",
+    freeCancelUntil: "Free cancellation until",
+    nonRefundable: "Non-refundable",
+    payAtHotel: "Pay at the hotel",
+    board: "Board",
+    taxesIncluded: "Taxes and fees included",
+    taxesExcluded: "Local taxes/fees may be payable at the hotel",
+    supplierBooking: "The reservation is placed with the supplier right after payment and the official voucher is e-mailed to you.",
+  },
+  tr: {
+    checking: "Nihai fiyat tedarikçiyle doğrulanıyor…",
+    checkingHint: "Ödeme öncesi zorunlu adım: odanın güncel fiyatıyla hâlâ müsait olduğunu doğruluyoruz.",
+    confirmed: "Fiyat tedarikçi tarafından onaylandı",
+    holdFor: "Fiyat şu süre için tutuluyor",
+    expired: "Onaylı fiyatın süresi doldu",
+    expiredHint: "Tedarikçi fiyatları sürekli değişir. Ödemeden önce güncel fiyatı yeniden kontrol edin.",
+    requote: "Fiyatı yeniden kontrol et",
+    changed: "Fiyat otel sayfasından bu yana değişti",
+    changedHint: (prev: string, next: string) => `${prev} idi, şimdi ${next}. Burada gösterilen tutar tam olarak tahsil edilecek tutardır.`,
+    unavailable: "Bu oda artık bu fiyatla müsait değil",
+    unavailableHint: "Otel sayfasından başka bir oda veya fiyat planı seçin.",
+    backToHotel: "Otel sayfasına dön",
+    chargeExact: "Tam olarak tahsil edilecek:",
+    freeCancelUntil: "Ücretsiz iptal son tarihi",
+    nonRefundable: "İade edilemez",
+    payAtHotel: "Otelde ödeme",
+    board: "Pansiyon",
+    taxesIncluded: "Vergiler ve ücretler dahil",
+    taxesExcluded: "Yerel vergiler/ücretler otelde ödenebilir",
+    supplierBooking: "Rezervasyon ödemeden hemen sonra tedarikçide oluşturulur ve resmi voucher e-postanıza gönderilir.",
+  },
+} as const;
+
+function fmtCountdown(ms: number): string {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const m = Math.floor(total / 60);
+  const sec = total % 60;
+  return `${m}:${String(sec).padStart(2, "0")}`;
+}
+
+function fmtDeadline(iso: string, locale: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  try {
+    return d.toLocaleString(locale === "ar" ? "ar-EG" : locale === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
+  } catch {
+    return iso;
+  }
+}
 type ChildTraveler = { id: string; name: string; age: number };
 
 const COUNTRY_CODES = ["+90", "+971", "+966", "+20", "+962", "+964", "+965", "+974", "+973", "+968", "+44", "+49", "+1"];
@@ -73,6 +199,22 @@ export default function HotelBookCheckout() {
   const roomId = params.get("room") || "";
   const provider = params.get("provider") || "internal";
   const searchAdults = Math.max(1, Number(params.get("adults") || 2) || 2);
+  const supplierParam = params.get("supplier") || "";
+  const rateKeyParam = params.get("rateKey") || "";
+  const sessionIdParam = params.get("sid") || "";
+  const masterIdParam = params.get("master") || "";
+  const roomsParam = Math.max(1, Number(params.get("rooms") || 1) || 1);
+  const childrenAgesParam = useMemo(
+    () =>
+      String(params.get("children") || "")
+        .split(",")
+        .map((v) => Number(v))
+        .filter((n) => Number.isFinite(n) && n >= 0 && n < 18),
+    [params]
+  );
+  /** Supplier rate → mandatory confirmed-price quote before payment. */
+  const supplierMode = Boolean(supplierParam && rateKeyParam && !bookingIdParam);
+  const qc = QUOTE_COPY[(locale === "en" || locale === "tr" ? locale : "ar") as keyof typeof QUOTE_COPY];
 
   const [remote, setRemote] = useState<HotelReceiptModel | null>(null);
   const [remoteLoading, setRemoteLoading] = useState(Boolean(bookingIdParam));
@@ -99,6 +241,79 @@ export default function HotelBookCheckout() {
   const [savedBookingId, setSavedBookingId] = useState(bookingIdParam);
   const [payPageUrl, setPayPageUrl] = useState("");
   const [loyalty, setLoyalty] = useState<CheckoutLoyaltyValue | null>(null);
+  const [quote, setQuote] = useState<PublicQuote | null>(null);
+  const [quoteState, setQuoteState] = useState<QuoteState>(supplierMode ? "loading" : "idle");
+  const [quoteError, setQuoteError] = useState<"unavailable" | "generic" | "">("");
+  const [quoteLeftMs, setQuoteLeftMs] = useState(0);
+
+  const requestQuote = useCallback(async () => {
+    if (!supplierMode) return;
+    setQuoteState("loading");
+    setQuoteError("");
+    try {
+      let supplierContext: Record<string, string> | undefined;
+      try {
+        const raw = params.get("ctx");
+        if (raw) supplierContext = JSON.parse(raw) as Record<string, string>;
+      } catch {
+        supplierContext = undefined;
+      }
+      const res = await fetch("/api/hotels/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
+        body: JSON.stringify({
+          rateId: roomId || undefined,
+          hotelId,
+          supplierToken: rateKeyParam,
+          supplierContext,
+          checkIn: params.get("checkIn") || undefined,
+          checkOut: params.get("checkOut") || undefined,
+          adults: searchAdults,
+          rooms: roomsParam,
+          childrenAges: childrenAgesParam,
+          currency: params.get("currency") || undefined,
+          expectedTotal: Number(params.get("price") || 0) || undefined,
+          sessionId: sessionIdParam || undefined,
+          masterId: masterIdParam || undefined,
+          lang: locale,
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; quote?: PublicQuote; errorCode?: string; error?: string };
+      if (!res.ok || !data.ok || !data.quote) {
+        setQuote(null);
+        setQuoteError(data.errorCode === "unavailable" || data.errorCode === "not_found" || res.status === 404 || res.status === 409 ? "unavailable" : "generic");
+        setQuoteState("error");
+        return;
+      }
+      setQuote(data.quote);
+      setQuoteLeftMs(Math.max(0, new Date(data.quote.expiresAt).getTime() - Date.now()));
+      setQuoteState("ready");
+    } catch {
+      setQuote(null);
+      setQuoteError("generic");
+      setQuoteState("error");
+    }
+  }, [supplierMode, params, roomId, hotelId, rateKeyParam, searchAdults, roomsParam, childrenAgesParam, sessionIdParam, masterIdParam, locale]);
+
+  useEffect(() => {
+    if (!supplierMode) return;
+    void requestQuote();
+    // Quote once per landing on the page; re-quotes are explicit (button) or after expiry.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supplierMode]);
+
+  useEffect(() => {
+    if (quoteState !== "ready" || !quote) return;
+    const tick = () => {
+      const left = new Date(quote.expiresAt).getTime() - Date.now();
+      setQuoteLeftMs(Math.max(0, left));
+      if (left <= 0) setQuoteState("expired");
+    };
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, [quoteState, quote]);
 
   const onLoyalty = useCallback((next: CheckoutLoyaltyValue) => {
     setLoyalty((prev) => {
@@ -115,32 +330,34 @@ export default function HotelBookCheckout() {
     });
   }, []);
 
-  const hotelName = remote?.hotel_name || params.get("hotelName") || hotelId;
-  const roomName = remote?.room_name || params.get("roomName") || "";
-  const currency = remote?.currency || params.get("currency") || "USD";
-  const price = remote?.price || Number(params.get("price") || 0);
-  const nightlyParam = remote?.nightly || Number(params.get("nightly") || 0);
-  const checkIn = remote?.check_in || params.get("checkIn") || defaults.checkIn;
-  const checkOut = remote?.check_out || params.get("checkOut") || defaults.checkOut;
-  const hotelImage = remote?.hotel_image || params.get("hotelImage") || "";
-  const stars = remote?.stars || Number(params.get("stars") || 0);
+  const hotelName = remote?.hotel_name || quote?.hotelName || params.get("hotelName") || hotelId;
+  const roomName = remote?.room_name || quote?.roomName || params.get("roomName") || "";
+  const currency = remote?.currency || quote?.currency || params.get("currency") || "USD";
+  const price = remote?.price || quote?.sellingTotal || Number(params.get("price") || 0);
+  const nightlyParam = remote?.nightly || quote?.perNight || Number(params.get("nightly") || 0);
+  const checkIn = remote?.check_in || quote?.checkIn || params.get("checkIn") || defaults.checkIn;
+  const checkOut = remote?.check_out || quote?.checkOut || params.get("checkOut") || defaults.checkOut;
+  const hotelImage = remote?.hotel_image || quote?.hotelImage || params.get("hotelImage") || "";
+  const stars = remote?.stars || quote?.stars || Number(params.get("stars") || 0);
   const rating = remote?.rating || Number(params.get("rating") || 0);
   const stayNights = remote?.nights || nightsBetween(checkIn, checkOut);
   const rawNightly =
     nightlyParam > 0
       ? nightlyParam
-      : price > 0 && stayNights > 1 && price >= 900
-        ? price / stayNights
+      : price > 0 && stayNights > 1
+        ? Math.round(price / stayNights)
         : price;
   const money = stayFromNightly(rawNightly, stayNights);
-  const nightly = remote?.nightly || money.nightly;
-  const total = remote?.price || money.total;
+  const nightly = remote?.nightly || (nightlyParam > 0 ? nightlyParam : money.nightly);
+  const total = remote?.price || (nightlyParam > 0 && price > 0 ? price : money.total);
   const sourceCurrency = currency || "USD";
   const displayNightly = Math.round(convert(nightly, sourceCurrency));
   const displayTotal = Math.round(convert(total, sourceCurrency));
-  const chargeCurrency = remote ? sourceCurrency : guest.code;
-  const chargeNightly = remote ? nightly : displayNightly;
-  const chargeTotal = remote ? total : displayTotal;
+  // Supplier quotes are charged in the quote currency (server-authoritative); display converts for info only.
+  const serverPriced = Boolean(remote || quote);
+  const chargeCurrency = serverPriced ? sourceCurrency : guest.code;
+  const chargeNightly = serverPriced ? nightly : displayNightly;
+  const chargeTotal = serverPriced ? total : displayTotal;
   const dueTotal = loyalty && loyalty.discountUsd > 0 ? loyalty.payable : chargeTotal;
 
   useEffect(() => {
@@ -178,6 +395,40 @@ export default function HotelBookCheckout() {
       cancelled = true;
     };
   }, [bookingIdParam, confirmParam, paymentStatus, router]);
+
+  // After a successful card payment the supplier reservation runs server-side; poll until it settles.
+  useEffect(() => {
+    if (!remote || !bookingIdParam) return;
+    const st = String(remote.fulfilment_status || "");
+    const paidLike = `${remote.status} ${remote.payment_status} ${paymentStatus}`.toLowerCase().includes("paid");
+    if (!paidLike || !(st === "supplier_pending" || st === "awaiting_payment")) return;
+    let attempts = 0;
+    let cancelled = false;
+    const id = window.setInterval(async () => {
+      attempts += 1;
+      if (attempts > 45) {
+        window.clearInterval(id);
+        return;
+      }
+      try {
+        const res = await fetch(
+          `/api/hotel-bookings/${encodeURIComponent(bookingIdParam)}?confirm=${encodeURIComponent(confirmToken || confirmParam)}`,
+          { cache: "no-store" }
+        );
+        const data = (await res.json()) as { ok?: boolean; booking?: HotelReceiptModel };
+        if (cancelled || !data.ok || !data.booking) return;
+        const next = String(data.booking.fulfilment_status || "");
+        if (next !== st) setRemote(data.booking);
+        if (next && next !== "supplier_pending" && next !== "awaiting_payment") window.clearInterval(id);
+      } catch {
+        /* keep polling */
+      }
+    }, 4000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
+  }, [remote, bookingIdParam, confirmToken, confirmParam, paymentStatus]);
 
   useEffect(() => {
     if (!user) return;
@@ -230,12 +481,14 @@ export default function HotelBookCheckout() {
   const turkishProduction =
     method === "card" && payConfig?.iyzicoMode === "production" && countryCode === "+90";
   const identityOk = !turkishProduction || /^\d{11}$/.test(identityNumber.replace(/\D/g, ""));
+  const quoteOk = !supplierMode || (quoteState === "ready" && Boolean(quote));
   const formValid =
     fullName.length >= 3 &&
     emailOk(email) &&
     phoneDigits.length >= 8 &&
     travelersOk &&
-    identityOk;
+    identityOk &&
+    quoteOk;
 
   const guestNames = [
     ...adults.map((row) => `${row.name.trim()} · ${row.passport.trim()}`),
@@ -253,7 +506,7 @@ export default function HotelBookCheckout() {
 
   const whatsappText = [
     locale === "ar"
-      ? "مرحباً الريان للسياحة، أرغب بإتمام حجز الفندق عبر الرابط البنكي الرسمي."
+      ? "مرحباً لوناليزا للسياحة والسفر، أرغب بإتمام حجز الفندق عبر الرابط البنكي الرسمي."
       : locale === "tr"
         ? "Merhaba Alrayyan Turizm, resmi banka bağlantısı ile otel rezervasyonumu tamamlamak istiyorum."
         : "Hello Alrayyan Tourism, I would like to complete this hotel booking via the official bank link.",
@@ -271,6 +524,8 @@ export default function HotelBookCheckout() {
 
   const payErrorText = (code?: string, errorCode?: string) => {
     if (isSandboxPriceLimitError(code, errorCode)) return t.hotels.sandboxAmountLimit;
+    if (code === "quote_expired" || code === "quote_consumed" || code === "quote_failed" || code === "quote_required") return qc.expired;
+    if (code === "booking_not_payable") return t.hotels.bookingPayFailed;
     if (code === "iyzico_not_configured") return t.hotels.iyzicoNotReady;
     if (code === "fx_unavailable") return t.hotels.fxUnavailable;
     if (code === "iyzico_network") return t.hotels.iyzicoNetwork;
@@ -322,6 +577,11 @@ export default function HotelBookCheckout() {
       return false;
     }
     if (!init.ok || !pay.ok) {
+      if (String(pay.errorCode || pay.error || "").startsWith("quote_")) {
+        // The held price lapsed before payment: drop the pending booking and force a fresh quote.
+        setSavedBookingId("");
+        setQuoteState("expired");
+      }
       setError(payErrorText(pay.error, pay.errorCode));
       return false;
     }
@@ -342,6 +602,10 @@ export default function HotelBookCheckout() {
     if (!formValid) return;
     if (!user) {
       openAuth("login");
+      return;
+    }
+    if (supplierMode && (!quote || quoteState !== "ready")) {
+      setQuoteState("expired");
       return;
     }
     setSaving(true);
@@ -372,6 +636,7 @@ export default function HotelBookCheckout() {
             currency: chargeCurrency,
             couponCode: loyalty?.couponCode || "",
             voucherIds: loyalty?.voucherIds || [],
+            quoteId: quote?.id || undefined,
             provider,
             hotel_image: hotelImage,
             stars,
@@ -385,25 +650,33 @@ export default function HotelBookCheckout() {
               stars,
               rating,
               children_ages: childrenList.map((row) => row.age),
-              free_cancellation: params.get("freeCancel") === "1",
-              non_refundable: params.get("nonRefundable") === "1" && params.get("freeCancel") !== "1",
-              cancel_until: checkIn,
+              free_cancellation: quote ? quote.refundable : params.get("freeCancel") === "1",
+              non_refundable: quote ? !quote.refundable : params.get("nonRefundable") === "1" && params.get("freeCancel") !== "1",
+              cancel_until: quote?.freeCancellationUntil || params.get("freeCancelUntil") || checkIn,
             },
           }),
         });
         const data = (await res.json()) as {
           ok?: boolean;
           error?: string;
+          errorCode?: string;
           confirm?: string;
           booking?: { id?: string; status?: string; payment_status?: string; price?: number };
           coveredInFull?: boolean;
+          fulfilment?: { status?: string };
         };
         if (res.status === 401 || data.error === "login_required") {
           openAuth("login");
           return;
         }
         if (!res.ok || !data.ok || !data.booking?.id) {
-          setError(data.error || t.auth.failed);
+          const code = String(data.errorCode || data.error || "");
+          if (code.startsWith("quote_")) {
+            setQuoteState("expired");
+            setError(qc.expired);
+            return;
+          }
+          setError(payErrorText(data.error, data.errorCode));
           return;
         }
         bookingId = data.booking.id;
@@ -559,6 +832,83 @@ export default function HotelBookCheckout() {
               </div>
             ) : (
               <>
+                {supplierMode ? (
+                  <section
+                    className={`rounded-2xl border p-4 md:p-5 ${
+                      quoteState === "ready"
+                        ? quote?.priceChanged
+                          ? "border-amber-300 bg-amber-50"
+                          : "border-emerald-200 bg-emerald-50/70"
+                        : quoteState === "loading"
+                          ? "border-sky-200 bg-sky-50"
+                          : "border-red-200 bg-red-50"
+                    }`}
+                    aria-live="polite"
+                  >
+                    {quoteState === "loading" ? (
+                      <div className="flex items-start gap-3">
+                        <Loader2 size={20} className="mt-0.5 shrink-0 animate-spin text-sky-700" />
+                        <div>
+                          <p className="font-bold text-sky-950">{qc.checking}</p>
+                          <p className="mt-0.5 text-sm text-sky-900/80">{qc.checkingHint}</p>
+                        </div>
+                      </div>
+                    ) : quoteState === "ready" && quote ? (
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <p className="inline-flex items-center gap-2 font-bold text-emerald-950">
+                            <ShieldCheck size={18} className="text-emerald-700" /> {qc.confirmed}
+                          </p>
+                          <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-slate-700" dir="ltr">
+                            <Timer size={14} /> {qc.holdFor} {fmtCountdown(quoteLeftMs)}
+                          </p>
+                        </div>
+                        {quote.priceChanged ? (
+                          <div className="flex items-start gap-2 rounded-xl bg-white/80 px-3 py-2 text-sm text-amber-950">
+                            <AlertTriangle size={16} className="mt-0.5 shrink-0 text-amber-600" />
+                            <div>
+                              <p className="font-semibold">{qc.changed}</p>
+                              <p className="mt-0.5 text-xs leading-relaxed">
+                                {qc.changedHint(
+                                  quote.previousTotal ? formatPrice(quote.previousTotal, quote.currency) : "—",
+                                  formatPrice(quote.sellingTotal, quote.currency)
+                                )}
+                              </p>
+                            </div>
+                          </div>
+                        ) : null}
+                        <p className="text-xs leading-relaxed text-emerald-900/80">{qc.supplierBooking}</p>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <p className="inline-flex items-center gap-2 font-bold text-red-900">
+                          <AlertTriangle size={18} /> {quoteState === "expired" ? qc.expired : qc.unavailable}
+                        </p>
+                        <p className="text-sm text-red-900/80">
+                          {quoteState === "expired" ? qc.expiredHint : quoteError === "unavailable" ? qc.unavailableHint : t.hotels.iyzicoNetwork}
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                          {quoteState === "expired" || quoteError === "generic" ? (
+                            <button
+                              type="button"
+                              onClick={() => void requestQuote()}
+                              className="rounded-xl bg-[#051741] px-4 py-2 text-sm font-bold text-white"
+                            >
+                              {qc.requote}
+                            </button>
+                          ) : null}
+                          <Link
+                            href={hotelId ? `/hotels/${encodeURIComponent(hotelId)}?checkIn=${encodeURIComponent(checkIn)}&checkOut=${encodeURIComponent(checkOut)}&adults=${searchAdults}` : "/hotels"}
+                            className="rounded-xl border border-[#051741] px-4 py-2 text-sm font-bold text-[#051741]"
+                          >
+                            {qc.backToHotel}
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </section>
+                ) : null}
+
                 <section className="space-y-4 rounded-2xl border border-[#eadfcf] bg-white p-5 md:p-6">
                   <h2 className="text-lg font-bold text-[#102033]">{t.hotels.whoIsStaying}</h2>
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -851,7 +1201,11 @@ export default function HotelBookCheckout() {
                       </button>
                     </div>
                   ) : null}
-                  {!formValid ? <p className="text-xs text-slate-500">{t.hotels.fillRequiredFields}</p> : null}
+                  {!formValid ? (
+                    <p className="text-xs text-slate-500">
+                      {supplierMode && !quoteOk ? (quoteState === "loading" ? qc.checking : qc.expired) : t.hotels.fillRequiredFields}
+                    </p>
+                  ) : null}
                   {!checkoutHtml ? (
                     <button
                       type="button"
@@ -889,7 +1243,7 @@ export default function HotelBookCheckout() {
                   <h3 className="font-bold text-[#102033]">{hotelName}</h3>
                   <div className="mt-1 flex flex-wrap items-center gap-1.5 text-sm">
                     {stars > 0
-                      ? Array.from({ length: stars }).map((_, i) => (
+                      ? Array.from({ length: Math.min(5, Math.round(stars)) }).map((_, i) => (
                           <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
                         ))
                       : null}
@@ -912,28 +1266,61 @@ export default function HotelBookCheckout() {
                   <Users size={14} /> {adults.length} {t.hotels.adults}
                   {childrenList.length ? ` · ${childrenList.length} ${t.hotels.children}` : ""}
                 </p>
+                {quote ? (
+                  <ul className="space-y-1 border-t border-slate-100 pt-3 text-xs text-slate-600">
+                    {quote.boardName || quote.board ? (
+                      <li className="flex justify-between gap-2">
+                        <span>{qc.board}</span>
+                        <span className="font-semibold text-slate-800">{quote.boardName || quote.board}</span>
+                      </li>
+                    ) : null}
+                    <li className={`flex justify-between gap-2 ${quote.refundable ? "text-emerald-800" : "text-slate-600"}`}>
+                      <span>{quote.refundable && quote.freeCancellationUntil ? qc.freeCancelUntil : quote.refundable ? t.hotels.freeCancellation : qc.nonRefundable}</span>
+                      {quote.refundable && quote.freeCancellationUntil ? <span className="font-semibold" dir="ltr">{fmtDeadline(quote.freeCancellationUntil, locale)}</span> : null}
+                    </li>
+                    {quote.paymentType === "pay_at_hotel" ? <li className="text-amber-800">{qc.payAtHotel}</li> : null}
+                  </ul>
+                ) : null}
                 <div className="space-y-1.5 border-t border-slate-100 pt-3 text-sm">
                   <p className="font-semibold">{t.hotels.priceDetails}</p>
-                  <div className="flex justify-between text-slate-600">
-                    <span>{t.hotels.nightlyRate}</span>
-                    <span>
-                      {formatPrice(nightly, sourceCurrency)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-slate-600">
-                    <span>{t.hotels.nightsCount(stayNights)}</span>
-                    <span>× {stayNights}</span>
-                  </div>
-                  <div className="flex justify-between text-slate-500">
-                    <span>{t.hotels.taxesFees}</span>
-                    <span>{t.hotels.includesTaxes}</span>
-                  </div>
-                  <div className="flex justify-between pt-1 font-bold text-[#102033]">
-                    <span>{t.hotels.alrayyanTotal}</span>
-                    <span>
-                      {formatPrice(dueTotal, chargeCurrency)}
-                    </span>
-                  </div>
+                  {supplierMode && quoteState === "loading" ? (
+                    <div className="space-y-2 py-1" aria-hidden>
+                      <div className="h-3 w-2/3 animate-pulse rounded bg-slate-200" />
+                      <div className="h-3 w-1/2 animate-pulse rounded bg-slate-200" />
+                      <div className="h-5 w-3/4 animate-pulse rounded bg-slate-200" />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex justify-between text-slate-600">
+                        <span>{t.hotels.nightlyRate}</span>
+                        <span>
+                          {formatPrice(nightly, sourceCurrency)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between text-slate-600">
+                        <span>{t.hotels.nightsCount(stayNights)}</span>
+                        <span>× {stayNights}</span>
+                      </div>
+                      <div className="flex justify-between text-slate-500">
+                        <span>{t.hotels.taxesFees}</span>
+                        <span>{quote ? (quote.taxesIncluded ? qc.taxesIncluded : qc.taxesExcluded) : t.hotels.includesTaxes}</span>
+                      </div>
+                      <div className="flex justify-between pt-1 font-bold text-[#102033]">
+                        <span>{t.hotels.alrayyanTotal}</span>
+                        <span>
+                          {formatPrice(dueTotal, chargeCurrency)}
+                        </span>
+                      </div>
+                      {quote && chargeCurrency !== guest.code ? (
+                        <p className="flex justify-between text-xs text-slate-500">
+                          <span>{qc.chargeExact}</span>
+                          <span dir="ltr" className="font-semibold text-slate-700">
+                            {dueTotal.toLocaleString("en-US", { maximumFractionDigits: 2 })} {chargeCurrency}
+                          </span>
+                        </p>
+                      ) : null}
+                    </>
+                  )}
                 </div>
                 <p className="inline-flex items-start gap-1.5 rounded-xl bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
                   <Check size={14} className="mt-0.5 shrink-0" />

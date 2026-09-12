@@ -7,6 +7,9 @@ export type ProviderCategory = (typeof PROVIDER_CATEGORIES)[number];
 export const PROVIDER_INTEGRATIONS = ["live", "coming_soon"] as const;
 export type ProviderIntegration = (typeof PROVIDER_INTEGRATIONS)[number];
 
+export const PROVIDER_MODES = ["sandbox", "production"] as const;
+export type ProviderMode = (typeof PROVIDER_MODES)[number];
+
 export const PROVIDER_FIELD_KINDS = ["text", "password", "url"] as const;
 export type ProviderFieldKind = (typeof PROVIDER_FIELD_KINDS)[number];
 
@@ -29,6 +32,8 @@ export const PROVIDER_IDS = [
   "amadeus_hotels",
   "travelport_hotels",
   "ratehawk",
+  "hotelbeds",
+  "seeru_hotels",
   "tbo_hotels",
   "cars_internal",
   "travelpayouts_cars",
@@ -39,6 +44,7 @@ export const PROVIDER_IDS = [
   "rentalcars",
   "sunnycars",
   "transfers_internal",
+  "seeru_transfers",
   "travelpayouts_transfers",
   "amadeus_transfers",
   "travelport_transfers",
@@ -76,6 +82,9 @@ export type CatalogProvider = {
 
 export type ProviderRuntimeState = {
   enabled: boolean;
+  mode: ProviderMode;
+  /** Custom logo URL or `/providers/custom/...` path; null/undefined = catalog default */
+  customLogo?: string | null;
   fields: Record<string, string>;
 };
 
@@ -89,11 +98,30 @@ export type ProviderClientState = {
   enabled: boolean;
   ready: boolean;
   connected: boolean;
+  mode: ProviderMode;
+  customLogo?: string | null;
   fields: Record<string, string>;
   integration: ProviderIntegration;
 };
 
 export const NOT_INTEGRATED_AR = "قريباً — التكامل غير مفعّل";
+export const COMING_SOON_LOCKED_AR =
+  "مقفلة — لا يمكن فتح الإعدادات أو اختبار الاتصال قبل اكتمال التكامل";
+
+export function isProviderMode(value: unknown): value is ProviderMode {
+  return value === "sandbox" || value === "production";
+}
+
+export function providerModeLabel(mode: ProviderMode): string {
+  switch (mode) {
+    case "sandbox":
+      return "تجريبي";
+    case "production":
+      return "إنتاج";
+    default:
+      return assertNever(mode, "mode");
+  }
+}
 
 export function isCatalogProviderId(value: string): value is CatalogProviderId {
   return (PROVIDER_IDS as readonly string[]).includes(value);

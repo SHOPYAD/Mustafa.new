@@ -313,6 +313,29 @@ export async function applyIyzicoResultToBooking(input: {
   });
 
   if (!alreadyPaid && nextStatus === "paid") {
+    // 0. Supplier reservation (quote-backed hotel bookings). Idempotent: callback + webhook may both land.
+    if (snapshot.quote_id) {
+      void import("@/lib/server/hotels/fulfilment")
+        .then(({ fulfilHotelBooking }) => fulfilHotelBooking(booking.id, { trigger: input.webhookEventType ? "iyzico_webhook" : "iyzico_callback" }))
+        .catch((e) => console.warn("[hotel fulfilment error]:", e));
+    }
+    // 0b. Flights: supplier booking + ticket issue only after the money is in (plan B3). Idempotent.
+    if (snapshot.flight_booking_id) {
+      void import("@/lib/server/flights/fulfilment")
+        .then(({ fulfilFlightBooking }) => fulfilFlightBooking(booking.id, { trigger: input.webhookEventType ? "iyzico_webhook" : "iyzico_callback" }))
+        .catch((e) => console.warn("[flight fulfilment error]:", e));
+    }
+
+    // 1. Trigger Parasut e-Archive issuance automatically
+    void (async () => {
+      try {
+        const { triggerParasutEArchiveIssue } = await import("@/lib/server/parasut/parasut-service");
+        await triggerParasutEArchiveIssue(booking.id);
+      } catch (e) {
+        console.warn("[Parasut background issue error]:", e);
+      }
+    })();
+
     void notifyIyzicoPaymentSuccess(booking.id).catch(() => undefined);
     const userId = String(booking.user || "").trim();
     if (userId) {

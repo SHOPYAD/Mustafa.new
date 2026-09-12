@@ -106,11 +106,13 @@ export default function AutomationAdmin() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [draft, setDraft] = useState<JobDraft>(EMPTY_DRAFT);
+  const [placesKey, setPlacesKey] = useState("");
+  const [placesConfigured, setPlacesConfigured] = useState(false);
 
   const load = useCallback(async () => {
     setError("");
     try {
-      const [jobsRes, logsRes, settingsRes, mcpRes] = await Promise.all([
+      const [jobsRes, logsRes, settingsRes, mcpRes, envRes] = await Promise.all([
         jsonFetch<{ ok?: boolean; jobs?: AutomationJob[]; error?: string }>("/api/admin/automation/jobs"),
         jsonFetch<{ logs?: AutomationLogEntry[] }>("/api/admin/automation/logs"),
         jsonFetch<{ settings?: AutomationSettings; redis?: { ok: boolean; host: string; port: number } }>(
@@ -122,6 +124,9 @@ export default function AutomationAdmin() {
           catalog?: CatalogCard[];
           hints?: { whatsappReady?: boolean };
         }>("/api/admin/mcp"),
+        jsonFetch<{
+          keys?: Record<string, { configured?: boolean; masked?: string }>;
+        }>("/api/admin/env"),
       ]);
       if (jobsRes.ok === false) throw new Error(jobsRes.error || "فشل التحميل");
       setJobs(jobsRes.jobs || []);
@@ -132,6 +137,9 @@ export default function AutomationAdmin() {
       setMcpTools(mcpRes.tools || []);
       setMcpCatalog(mcpRes.catalog || []);
       setWhatsappReady(Boolean(mcpRes.hints?.whatsappReady));
+      const places = envRes.keys?.GOOGLE_PLACES_API_KEY;
+      setPlacesConfigured(Boolean(places?.configured));
+      setPlacesKey("");
     } catch (e) {
       setError(e instanceof Error ? e.message : "فشل التحميل");
     } finally {
@@ -164,7 +172,11 @@ export default function AutomationAdmin() {
     }
   };
 
+  const [runningJobId, setRunningJobId] = useState<string | null>(null);
+  const [logFilter, setLogFilter] = useState<string>("all");
+
   const runJob = async (id: string, dryRun: boolean) => {
+    setRunningJobId(id);
     setSaving(true);
     try {
       await jsonFetch(`/api/admin/automation/jobs/${encodeURIComponent(id)}/run`, {
@@ -174,6 +186,7 @@ export default function AutomationAdmin() {
       await load();
     } finally {
       setSaving(false);
+      setRunningJobId(null);
     }
   };
 
@@ -190,6 +203,17 @@ export default function AutomationAdmin() {
     await load();
   };
 
+  const clearLogs = async () => {
+    if (!confirm("هل أنت متأكد من رغبتك في مسح وتنظيف كل سجلات النشاط؟")) return;
+    setSaving(true);
+    try {
+      await jsonFetch("/api/admin/automation/logs", { method: "DELETE" });
+      await load();
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const saveSettings = async () => {
     if (!settings) return;
     setSaving(true);
@@ -202,6 +226,25 @@ export default function AutomationAdmin() {
       await load();
     } catch (e) {
       setError(e instanceof Error ? e.message : "فشل الحفظ");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const savePlacesKey = async () => {
+    if (!placesKey.trim()) return;
+    setSaving(true);
+    setError("");
+    try {
+      const data = await jsonFetch<{ ok?: boolean; error?: string }>("/api/admin/env", {
+        method: "PUT",
+        body: JSON.stringify({ values: { GOOGLE_PLACES_API_KEY: placesKey.trim() } }),
+      });
+      if (!data.ok) throw new Error(data.error || "فشل حفظ مفتاح Places");
+      setPlacesKey("");
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "فشل حفظ المفتاح");
     } finally {
       setSaving(false);
     }
@@ -364,70 +407,142 @@ export default function AutomationAdmin() {
                 type="button"
                 disabled={saving || !draft.name.trim()}
                 onClick={() => void saveJob()}
-                className="mt-3 inline-flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 disabled:opacity-40"
+                className="mt-3 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-sm"
               >
-                {saving ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />}
+                {saving ? <Loader2 size={14} className="animate-spin text-amber-300" /> : <Plus size={14} className="text-amber-400" />}
                 حفظ الوظيفة
               </button>
             </AdminSettingsPanel>
 
-            <AdminSettingsPanel className="xl:col-span-7" title="الوظائف المحفوظة">
+            <AdminSettingsPanel className="xl:col-span-7" title="الوظائف المحفوظة والنشطة">
               {jobs.length === 0 ? (
-                <p className="text-sm text-muted-foreground">لا وظائف بعد. صف المهمة في Copilot (وضع أتمتة) أو أنشئها هنا.</p>
+                <div className="p-8 text-center text-xs text-muted-foreground border border-dashed rounded-2xl">
+                  لا توجد وظائف أتمتة محفوظة حالياً. صف المهمة في المحادثة بالأعلى أو أنشئ وظيفة يدوية.
+                </div>
               ) : (
-                <div className="space-y-3">
-                  {jobs.map((job) => (
-                    <div key={job.id} className="rounded-xl border border-border p-3">
-                      <div className="flex flex-wrap items-start justify-between gap-2">
-                        <div>
-                          <p className="font-semibold">{job.name}</p>
-                          <p className="text-xs text-muted-foreground">
-                            {job.type && isAutomationJobType(job.type) ? catalogEntry(job.type).titleAr : job.type} · {job.cron} · {job.timezone}
-                          </p>
-                          <p className="mt-1 text-[11px] text-muted-foreground">
-                            {job.maxPerRun}/تشغيل · {job.maxPerDay}/يوم · {(job.locales || []).join(",")}
-                            {job.dryRun ? " · dry-run" : ""}
-                            {job.lastError ? ` · خطأ: ${job.lastError}` : ""}
-                          </p>
-                        </div>
-                        <div className="flex flex-wrap gap-1">
-                          <button type="button" className="rounded-lg border px-2 py-1 text-[11px]" onClick={() => void toggleJob(job)}>
-                            {job.enabled ? <Pause size={12} /> : <Play size={12} />}
-                          </button>
-                          <button type="button" className="rounded-lg border px-2 py-1 text-[11px]" onClick={() => void runJob(job.id, true)}>
-                            تجربة
-                          </button>
-                          <button type="button" className="rounded-lg border px-2 py-1 text-[11px]" onClick={() => void runJob(job.id, false)}>
-                            تشغيل الآن
-                          </button>
-                          <button
-                            type="button"
-                            className="rounded-lg border px-2 py-1 text-[11px]"
-                            onClick={() =>
-                              setDraft({
-                                id: job.id,
-                                name: job.name || "",
-                                type: job.type && isAutomationJobType(job.type) ? job.type : "articles.research_and_publish",
-                                cron: job.cron || "0 9 * * *",
-                                timezone: job.timezone || AUTOMATION_TIMEZONE,
-                                maxPerRun: job.maxPerRun || 3,
-                                maxPerDay: job.maxPerDay || 10,
-                                locales: job.locales || ["ar", "tr", "en"],
-                                enabled: job.enabled !== false,
-                                dryRun: job.dryRun !== false,
-                                consentSource: job.consentSource || "",
-                              })
-                            }
-                          >
-                            تعديل
-                          </button>
-                          <button type="button" className="rounded-lg border px-2 py-1 text-[11px] text-rose-400" onClick={() => void removeJob(job.id)}>
-                            <Trash2 size={12} />
-                          </button>
+                <div className="space-y-3.5">
+                  {jobs.map((job) => {
+                    const isRunning = runningJobId === job.id;
+                    return (
+                      <div
+                        key={job.id}
+                        className={`rounded-2xl border p-4 transition-all ${
+                          isRunning
+                            ? "border-purple-500 bg-purple-50/20 dark:bg-purple-950/20 ring-1 ring-purple-500"
+                            : "border-border bg-card"
+                        }`}
+                      >
+                        <div className="flex flex-wrap items-start justify-between gap-3">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-sm text-foreground">{job.name}</span>
+                              <span
+                                className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                  job.enabled
+                                    ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800"
+                                    : "bg-slate-100 dark:bg-slate-800 text-slate-500 border border-border"
+                                }`}
+                              >
+                                {job.enabled ? "نشطة ومجدولة" : "متوقفة مؤقتاً"}
+                              </span>
+                              {job.dryRun ? (
+                                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+                                  تجريبي (Dry Run)
+                                </span>
+                              ) : null}
+                            </div>
+
+                            <p className="text-xs text-muted-foreground">
+                              {job.type && isAutomationJobType(job.type) ? catalogEntry(job.type).titleAr : job.type} · الجدول: {job.cron} (توقيت إسطنبول)
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 text-[11px] text-muted-foreground pt-1">
+                              <span>الحد: {job.maxPerRun}/تشغيل ({job.maxPerDay}/يوم)</span>
+                              <span>· اللغات: {(job.locales || []).join(", ")}</span>
+                              {job.lastRunAt ? (
+                                <span className="text-purple-600 dark:text-purple-400 font-medium">
+                                  · آخر تشغيل: {new Date(job.lastRunAt).toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" })}
+                                </span>
+                              ) : (
+                                <span>· بانتظار أول تشغيل</span>
+                              )}
+                              {job.lastError ? (
+                                <span className="text-rose-500">· خطأ: {job.lastError}</span>
+                              ) : null}
+                            </div>
+                          </div>
+
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            <button
+                              type="button"
+                              disabled={isRunning}
+                              className="rounded-xl border border-border bg-background hover:bg-muted p-2 text-xs transition-colors"
+                              onClick={() => void toggleJob(job)}
+                              title={job.enabled ? "إيقاف مؤقت" : "تفعيل"}
+                            >
+                              {job.enabled ? <Pause size={14} /> : <Play size={14} className="text-emerald-500" />}
+                            </button>
+
+                            <button
+                              type="button"
+                              disabled={isRunning}
+                              className="rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 text-purple-700 dark:text-purple-300 px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs"
+                              onClick={() => void runJob(job.id, false)}
+                            >
+                              {isRunning ? (
+                                <>
+                                  <Loader2 size={13} className="animate-spin text-purple-600" />
+                                  <span>جاري التنفيذ…</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Play size={13} />
+                                  <span>تشغيل الآن</span>
+                                </>
+                              )}
+                            </button>
+
+                            <button
+                              type="button"
+                              disabled={isRunning}
+                              className="rounded-xl border border-border bg-background hover:bg-muted px-2.5 py-1.5 text-xs transition-colors"
+                              onClick={() =>
+                                setDraft({
+                                  id: job.id,
+                                  name: job.name || "",
+                                  type: job.type && isAutomationJobType(job.type) ? job.type : "articles.research_and_publish",
+                                  cron: job.cron || "0 9 * * *",
+                                  timezone: job.timezone || AUTOMATION_TIMEZONE,
+                                  maxPerRun: job.maxPerRun || 3,
+                                  maxPerDay: job.maxPerDay || 10,
+                                  locales: job.locales || ["ar", "tr", "en"],
+                                  enabled: job.enabled !== false,
+                                  dryRun: job.dryRun !== false,
+                                  consentSource: job.consentSource || "",
+                                })
+                              }
+                            >
+                              تعديل
+                            </button>
+
+                            <button
+                              type="button"
+                              disabled={isRunning}
+                              className="rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-600 dark:text-rose-400 p-2 text-xs transition-colors"
+                              onClick={() => {
+                                if (confirm(`هل أنت متأكد من حذف الوظيفة «${job.name}» وإيقافها نهائياً؟`)) {
+                                  void removeJob(job.id);
+                                }
+                              }}
+                              title="حذف الوظيفة وإيقافها نهائياً"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </AdminSettingsPanel>
@@ -437,32 +552,96 @@ export default function AutomationAdmin() {
 
         {tab === "connections" ? (
           <AdminSettingsPanel title="حسابات النشر والإعلانات">
-            <p className="mb-4 text-xs text-muted-foreground">
-              الحالة صادقة: لا يظهر «متصل» بلا رمز. الربط عبر OAuth الرسمي. الإعلانات لها وضع تجريبي حتى تُلصق المفاتيح في /admin/ads.
-            </p>
             <ConnectionsHub />
           </AdminSettingsPanel>
         ) : null}
 
         {tab === "logs" ? (
-          <AdminSettingsPanel title="سجل النشاط (آخر 400)">
-            {logs.length === 0 ? (
-              <p className="text-sm text-muted-foreground">لا أحداث بعد.</p>
-            ) : (
-              <div className="space-y-2">
-                {logs.map((entry) => (
-                  <div key={entry.id} className="rounded-lg border border-border px-3 py-2 text-xs">
-                    <div className="flex flex-wrap gap-2 text-muted-foreground">
-                      <span>{entry.at}</span>
-                      <span>{entry.level}</span>
-                      <span>{entry.jobType}</span>
-                      {entry.dryRun ? <span>dry-run</span> : null}
-                    </div>
-                    <p className="mt-1">{entry.message}</p>
-                  </div>
+          <AdminSettingsPanel title="سجل نشاط الأتمتة وتتبع الوكلاء">
+            {/* Filter Tabs & Clear Action */}
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { id: "all", label: "الكل" },
+                  { id: "info", label: "معلومات" },
+                  { id: "warn", label: "تحذيرات" },
+                  { id: "error", label: "أخطاء" },
+                ].map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => setLogFilter(f.id)}
+                    className={`px-3 py-1 rounded-xl text-xs font-bold transition-all ${
+                      logFilter === f.id
+                        ? "bg-purple-600 text-white shadow-xs"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    }`}
+                  >
+                    {f.label}
+                  </button>
                 ))}
               </div>
-            )}
+
+              <button
+                type="button"
+                onClick={() => void clearLogs()}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-700 dark:text-rose-300 px-3 py-1.5 text-xs font-bold transition-all shadow-xs"
+              >
+                <Trash2 size={13} />
+                <span>تنظيف ومسح السجل</span>
+              </button>
+            </div>
+
+            {(() => {
+              const filtered = logs.filter((entry) => (logFilter === "all" ? true : entry.level === logFilter));
+              if (filtered.length === 0) {
+                return (
+                  <div className="p-12 text-center text-xs text-muted-foreground border border-dashed rounded-2xl">
+                    لا توجد أحداث مسجلة في هذا التصنيف. السجل نظيف تماماً!
+                  </div>
+                );
+              }
+              return (
+                <div className="space-y-2.5 max-h-[600px] overflow-y-auto pe-1">
+                  {filtered.map((entry) => (
+                    <div
+                      key={entry.id}
+                      className={`rounded-xl border p-3 text-xs flex flex-col gap-1.5 shadow-xs ${
+                        entry.level === "error"
+                          ? "border-rose-200 dark:border-rose-900/60 bg-rose-50/50 dark:bg-rose-950/20 text-rose-900 dark:text-rose-200"
+                          : entry.level === "warn"
+                            ? "border-amber-200 dark:border-amber-900/60 bg-amber-50/50 dark:bg-amber-950/20 text-amber-900 dark:text-amber-200"
+                            : "border-border bg-card text-foreground"
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold font-mono uppercase ${
+                              entry.level === "error"
+                                ? "bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-300"
+                                : entry.level === "warn"
+                                  ? "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
+                                  : "bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+                            }`}
+                          >
+                            {entry.level}
+                          </span>
+                          <span className="font-mono text-[11px]">{entry.jobType}</span>
+                          {entry.dryRun ? (
+                            <span className="text-[10px] text-amber-600 font-semibold">[dry-run]</span>
+                          ) : null}
+                        </div>
+                        <span className="font-mono text-[10px] text-muted-foreground">
+                          {entry.at ? new Date(entry.at).toLocaleString("ar-SA") : ""}
+                        </span>
+                      </div>
+                      <p className="leading-relaxed font-medium text-xs whitespace-pre-wrap">{entry.message}</p>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
           </AdminSettingsPanel>
         ) : null}
 
@@ -493,6 +672,29 @@ export default function AutomationAdmin() {
             {settings ? (
               <>
                 <AdminFieldGrid>
+                  <div className="sm:col-span-2">
+                    <label className={labelClass}>مفتاح Google Places (تقييمات النشاط — نص فقط)</label>
+                    <input
+                      className={inputClass}
+                      type="password"
+                      autoComplete="off"
+                      placeholder={placesConfigured ? "محفوظ — الصقوا مفتاحاً جديداً للاستبدال" : "GOOGLE_PLACES_API_KEY"}
+                      value={placesKey}
+                      onChange={(e) => setPlacesKey(e.target.value)}
+                    />
+                    <p className="mt-1 text-[11px] text-muted-foreground">
+                      نجلب اسم النشاط ونص التقييم فقط. لا نكشط هواتف أو إيميلات شخصية من الخرائط أو التعليقات.
+                      الحالة: {placesConfigured ? "مفتاح محفوظ" : "غير مُعدّ"}
+                    </p>
+                    <button
+                      type="button"
+                      disabled={saving || !placesKey.trim()}
+                      onClick={() => void savePlacesKey()}
+                      className="mt-2.5 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] px-4 py-2 text-xs font-bold text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-sm"
+                    >
+                      حفظ مفتاح Places
+                    </button>
+                  </div>
                   <div>
                     <label className={labelClass}>المنطقة الزمنية</label>
                     <input
@@ -547,25 +749,28 @@ export default function AutomationAdmin() {
                   checked={settings.defaultDryRun}
                   onChange={(defaultDryRun) => setSettings({ ...settings, defaultDryRun })}
                 />
-                <p className="mt-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-100">
-                  {settings.consentPolicy}
-                </p>
-                <p className="mt-2 text-xs text-muted-foreground">
-                  Redis: {redis?.ok ? <CheckCircle2 className="inline text-emerald-500" size={12} /> : "غير متصل"}{" "}
-                  {redis ? `${redis.host}:${redis.port}` : ""} · بادئة lonaliza:automation: · لا تلمس lonaliza:hotels:
-                </p>
-                <p className="mt-1 text-[11px] text-muted-foreground">
-                  العامل: <code>node scripts/automation-worker.mjs</code> أو{" "}
-                  <code>pm2 start ecosystem.config.cjs --only lonaliza-automation</code>. التكة: POST /api/cron/automation
-                </p>
-                <button
-                  type="button"
-                  disabled={saving}
-                  onClick={() => void saveSettings()}
-                  className="mt-3 rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950"
-                >
-                  حفظ الإعدادات
-                </button>
+                <div className="mt-4 rounded-2xl border border-border bg-muted/40 p-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-foreground">حالة محرك الأتمتة:</span>
+                    <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ${
+                      redis?.ok ? "bg-purple-50 dark:bg-purple-950/60 text-purple-950 dark:text-purple-300 border border-purple-200 dark:border-purple-800" : "bg-muted text-muted-foreground"
+                    }`}>
+                      {redis?.ok ? <CheckCircle2 size={13} className="text-purple-600 dark:text-amber-400" /> : null}
+                      {redis?.ok ? "محرك الأتمتة متصل ونشط" : "في وضع الاستعداد"}
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <button
+                    type="button"
+                    disabled={saving}
+                    onClick={() => void saveSettings()}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] px-6 py-2.5 text-sm font-extrabold text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-md"
+                  >
+                    {saving ? <Loader2 size={16} className="animate-spin text-amber-300" /> : null}
+                    حفظ الإعدادات
+                  </button>
+                </div>
               </>
             ) : null}
           </AdminSettingsPanel>

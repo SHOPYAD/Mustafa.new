@@ -79,7 +79,7 @@ export async function generateInvoiceTemplateWithGemini(input: {
     return { ok: false, error: "اكتب وصفاً أوضح للتعديل (4 أحرف على الأقل)." };
   }
 
-  const system = `You are an invoice designer for Alrayyan Tourism / الريان للسياحة.
+  const system = `You are an invoice designer for Lonaliza Travel / لوناليزا للسياحة والسفر.
 Edit the ${input.service} (${titles.ar} / ${titles.en}) PDF invoice template.
 
 Return ALWAYS:

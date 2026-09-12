@@ -9,6 +9,7 @@ import { resolveMcpFromGithub } from "@/lib/server/mcp/resolve";
 import { addMcpServer, findMcpByCatalogId, patchMcpServer } from "@/lib/server/mcp/store";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 180;
 
 function stringMap(raw: unknown): Record<string, string> {

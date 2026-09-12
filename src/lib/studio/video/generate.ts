@@ -315,7 +315,7 @@ export async function generateStudioVideo(
         ? "Cinematic 9:16 travel film of Turkey for Alrayyan Tourism, golden hour, no text."
         : locale === "tr"
           ? "Alrayyan için sinematik 9:16 Türkiye seyahat filmi, altın saat, metinsiz."
-          : "فيلم سفر سينمائي عمودي 9:16 عن تركيا لوكالة الريان، ضوء ذهبي، بدون نص.";
+          : "فيلم سفر سينمائي عمودي 9:16 عن تركيا لوكالة لوناليزا، ضوء ذهبي، بدون نص.";
   const loudnorm = Boolean(input.loudnorm);
   const ffmpeg = await resolveFfmpeg();
   const attempts: StudioVideoAttempt[] = [];

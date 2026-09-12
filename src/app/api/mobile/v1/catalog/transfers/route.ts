@@ -14,15 +14,19 @@ export async function GET(req: NextRequest) {
   }
 
   const q = req.nextUrl.searchParams;
-  const fromPlaceId = q.get("fromPlaceId") || q.get("from") || "";
-  if (!fromPlaceId) {
-    return NextResponse.json({ ok: false, error: "fromPlaceId is required", offers: [] }, { status: 400 });
+  const fromPlaceId = q.get("fromPlaceId") || "";
+  const toPlaceId = q.get("toPlaceId") || "";
+  if (!fromPlaceId || !toPlaceId) {
+    return NextResponse.json(
+      { ok: false, error: "fromPlaceId and toPlaceId are required", offers: [] },
+      { status: 400 }
+    );
   }
 
   try {
     const result = await rideAdapter.searchRides({
       fromPlaceId,
-      toPlaceId: q.get("toPlaceId") || q.get("to") || undefined,
+      toPlaceId,
       date: q.get("date") || new Date().toISOString().split("T")[0],
       time: q.get("time") || "12:00",
       mode: (q.get("mode") as "transfer" | "hourly") || "transfer",

@@ -2,7 +2,11 @@ import arabicReshaper from "arabic-reshaper";
 import bidiFactory from "bidi-js";
 import sharp from "sharp";
 import { generateNanoBananaImage } from "@/lib/studio/creative/nano-banana";
-import { studioNotifyPaths } from "@/lib/studio/creative/notify";
+import { studioNotifyTelegram } from "@/lib/studio/creative/notify";
+import { writeStudioLastOutput } from "@/lib/studio/last-output";
+import { siteOrigin } from "@/lib/automation/site-url";
+import { queueStudioPublishApproval } from "@/lib/server/mcp/connectors/studio-handoff";
+
 import {
   publicStudioUrl,
   sanitizeStudioFileName,
@@ -53,16 +57,13 @@ function escapeXml(value: string): string {
 
 function defaultCta(locale: "ar" | "en" | "tr"): string {
   switch (locale) {
-    case "en":
-      return "Book with Alrayyan · wa.me/905321796763";
-    case "tr":
-      return "Alrayyan ile rezervasyon · wa.me/905321796763";
     case "ar":
-      return "احجز مع الريان · wa.me/905321796763";
-    default: {
-      const _never: never = locale;
-      return _never;
-    }
+      return "احجز مع لوناليزا";
+    case "tr":
+      return "Lonaliza ile rezervasyon";
+    case "en":
+    default:
+      return "Book with Lonaliza";
   }
 }
 
@@ -78,7 +79,7 @@ function overlaySvg(input: {
   const title = escapeXml(rtl ? shapeRtl(input.title) : input.title);
   const dest = escapeXml(rtl ? shapeRtl(input.destination) : input.destination);
   const cta = escapeXml(rtl ? shapeRtl(input.cta) : input.cta);
-  const brand = rtl ? shapeRtl("الريان للسياحة") : "ALRAYYAN TOURISM";
+  const brand = rtl ? shapeRtl("لوناليزا للسياحة والسفر") : "ALRAYYAN TOURISM";
   const dir = rtl ? "rtl" : "ltr";
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${input.width}" height="${input.height}" viewBox="0 0 ${input.width} ${input.height}">
@@ -237,15 +238,30 @@ export async function generateBrandedStudioImages(
     artifacts.push(rawArtifact, slideArtifact);
   }
 
+  const origin = siteOrigin();
+  const slideArts = artifacts.filter((row) => row.kind === "slide");
+  const notifyPaths = (slideArts.length ? slideArts : artifacts).map((row) => row.absolutePath);
+  const notifyUrls = (slideArts.length ? slideArts : artifacts).map(
+    (row) => `${origin}${row.url.startsWith("/") ? row.url : `/${row.url}`}`
+  );
+  await writeStudioLastOutput({
+    caption: title,
+    imagePaths: notifyPaths,
+    imageUrls: notifyUrls,
+    pendingPublish: true,
+  });
+  const notify = await studioNotifyTelegram({
+    title: `شرائح لوناليزا · ${title}`,
+    paths: notifyPaths,
+    urls: notifyUrls,
+  });
+  await queueStudioPublishApproval(title);
+
   return {
     ok: true,
     model: usedModel,
     triedModels,
     artifacts,
-    notify: studioNotifyPaths({
-      title: `شرائح الريان · ${title}`,
-      paths: artifacts.map((row) => row.absolutePath),
-      urls: artifacts.map((row) => row.url),
-    }),
+    notify,
   };
 }

@@ -297,7 +297,7 @@ export function formatTelegramReviewCard(record: ApprovalRecord): string {
   const entry = catalogEntry(draft.type);
   const dry = draft.dryRun ? "نعم (تجريبي)" : "لا";
   return [
-    "طلب موافقة أتمتة — الريان",
+    "طلب موافقة أتمتة — لوناليزا",
     `#${record.id}`,
     "",
     `الحالة: ${describeApprovalState(record.state)}`,

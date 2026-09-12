@@ -23,6 +23,7 @@ import {
 } from "@/lib/pocketbase/constants";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const PB_KEYS = [
   "POCKETBASE_URL",

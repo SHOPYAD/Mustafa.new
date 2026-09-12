@@ -7,7 +7,7 @@ const SHELL = [
   "/favicon.png",
   "/apple-touch-icon.png",
 ];
-const DEFAULT_TITLE = "الريان للسياحة";
+const DEFAULT_TITLE = "لوناليزا للسياحة والسفر";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

@@ -20,11 +20,9 @@ abstract final class AppConstants {
     defaultValue: 'https://lonaliza.com',
   );
 
-  /// Base URL Address for local network server.
-  static const String urlAddress = 'http://192.168.1.7:5678';
+  static const String placesSearchUrl = '$mobileApiBase/api/mobile/v1/places';
 
-  /// Local-network webhook endpoint for place search.
-  static const String nominatimSearchUrl = '$urlAddress/webhook/get-locations';
+  static const String nominatimSearchUrl = '$placesSearchUrl?type=hotels';
 
   /// Live flight search on the Lonaliza mobile BFF (website engine + markup).
   static const String flightSearchUrl =
@@ -33,6 +31,9 @@ abstract final class AppConstants {
   static const String flightBookUrl = '$mobileApiBase/api/mobile/v1/flights/book';
 
   static const String hotelSearchUrl = '$mobileApiBase/api/mobile/v1/hotels/search';
+
+  static const String hotelDetailsUrl =
+      '$mobileApiBase/api/mobile/v1/hotels/details';
 
   static const String hotelQuoteUrl = '$mobileApiBase/api/mobile/v1/hotels/quote';
 
@@ -76,14 +77,62 @@ abstract final class AppConstants {
   static const String toursCatalogUrl =
       '$mobileApiBase/api/mobile/v1/catalog/tours';
 
-  /// Local-network webhook endpoint for airline dictionary lookup.
-  static const String airlinesUrl = '$urlAddress/webhook/airlines';
+  static const String catalogLocationSearchUrl = '$placesSearchUrl?type=airports';
 
-  /// Local-network webhook endpoint for catalog location (airport/city) search.
-  static const String catalogLocationSearchUrl =
-      '$urlAddress/webhook/catalog-locations';
-
-  /// Local-network webhook endpoint for flight price confirmation.
   static const String flightConfirmPriceUrl =
-      '$urlAddress/webhook/flight-pricing';
+      '$mobileApiBase/api/mobile/v1/flights/quote';
+
+  static const String flightExtrasUrl =
+      '$mobileApiBase/api/mobile/v1/flights/extras';
+
+  static const String flightAncillaryUrl =
+      '$mobileApiBase/api/mobile/v1/flights/ancillary';
+
+  static const String communityFeedUrl =
+      '$mobileApiBase/api/mobile/v1/community/feed';
+
+  static const String communityPublishUrl =
+      '$mobileApiBase/api/mobile/v1/community/publish';
+
+  static const String communityCommentsUrl =
+      '$mobileApiBase/api/mobile/v1/community/comments';
+
+  static const String communityCommentsLikeUrl =
+      '$mobileApiBase/api/mobile/v1/community/comments/like';
+
+  static const String communityRewardUrl =
+      '$mobileApiBase/api/mobile/v1/community/reward';
+
+  static const String communityBuddiesUrl =
+      '$mobileApiBase/api/mobile/v1/community/buddies';
+
+  static const String communityCreatorStatsUrl =
+      '$mobileApiBase/api/mobile/v1/community/creator/stats';
+
+  static const String aiSalesChatUrl =
+      '$mobileApiBase/api/mobile/v1/ai/sales-chat';
+
+  static const String aiSearchAgentUrl =
+      '$mobileApiBase/api/mobile/v1/ai/search-agent';
+
+  static const String accountInboxUrl =
+      '$mobileApiBase/api/mobile/v1/account/inbox';
+
+  static String accountInboxThreadUrl(String id) => '$accountInboxUrl/$id';
+
+  static const String accountRecentlyViewedUrl =
+      '$mobileApiBase/api/mobile/v1/account/recently-viewed';
+
+  static const String accountCardsUrl =
+      '$mobileApiBase/api/mobile/v1/account/cards';
+
+  static const String giftCardsUrl = '$mobileApiBase/api/mobile/v1/gift-cards';
+
+  static const String giftCardsRedeemUrl =
+      '$mobileApiBase/api/mobile/v1/gift-cards/redeem';
+
+  static const String homeFeaturedUrl =
+      '$mobileApiBase/api/mobile/v1/home/featured';
+
+  static const String onboardingDoneKey = 'lonaliza_onboarding_done';
 }

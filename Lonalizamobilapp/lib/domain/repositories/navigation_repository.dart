@@ -19,6 +19,10 @@ abstract class NavigationRepository {
   void goHotelDetails();
   void goAuth();
   void goMessages();
+  void goCommunity();
+  void goReels();
+  void goAi();
+  void goGiftCards();
   void goMyTrips();
   void goPackage();
   void goAccount();

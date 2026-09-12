@@ -37,12 +37,9 @@ class AuthPage extends ConsumerWidget {
           icon: const Icon(Icons.close, color: Color(0xFF1F2937)),
           onPressed: () => context.pop(),
         ),
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Text('Trip', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Color(0xFF2F60F5))),
-            Text('.com', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Color(0xFF2F60F5))),
-          ],
+        title: const Text(
+          'لوناليزا',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Color(0xFF7C3AED)),
         ),
         centerTitle: true,
       ),
@@ -61,7 +58,7 @@ class AuthPage extends ConsumerWidget {
                 children: [
                   // Placeholder for illustration
                   Center(
-                    child: Icon(Icons.style, size: 100, color: const Color(0xFF2F60F5).withValues(alpha: 0.1)),
+                    child: Icon(Icons.style, size: 100, color: const Color(0xFF7C3AED).withValues(alpha: 0.1)),
                   ),
                   Positioned(
                     bottom: 24,
@@ -175,7 +172,7 @@ class AuthPage extends ConsumerWidget {
                   _buildAuthButton(
                     text: 'Continue with email',
                     iconData: Icons.email,
-                    bgColor: const Color(0xFF2F60F5),
+                    bgColor: const Color(0xFF7C3AED),
                     onTap: () => _emailAuth(context, ref),
                   ),
                   const SizedBox(height: 12),
@@ -206,9 +203,9 @@ class AuthPage extends ConsumerWidget {
                   children: [
                     Text(
                       'I have a referral code for registration',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF2F60F5), fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 14, color: Color(0xFF7C3AED), fontWeight: FontWeight.w600),
                     ),
-                    Icon(Icons.keyboard_arrow_right_rounded, size: 18, color: Color(0xFF2F60F5)),
+                    Icon(Icons.keyboard_arrow_right_rounded, size: 18, color: Color(0xFF7C3AED)),
                   ],
                 ),
               ),

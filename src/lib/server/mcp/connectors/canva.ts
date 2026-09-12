@@ -90,7 +90,7 @@ export async function callCanvaTool(
         return { ok: health.ok, content: health.ok ? "Canva Connect جاهز" : "", error: health.error };
       }
       case "canva.create_design": {
-        const title = String(args.title || args.caption || "تصميم الريان").slice(0, 255);
+        const title = String(args.title || args.caption || "تصميم لوناليزا").slice(0, 255);
         const preset = String(args.preset || "");
         const width = Number(args.width || 1080);
         const height = Number(args.height || 1080);
@@ -133,7 +133,7 @@ export async function callCanvaTool(
         const first = urls[0];
         if (!first) return { ok: false, content: "", error: "لا رابط تنزيل من كانفا" };
         const buffer = await downloadToBuffer(first);
-        const caption = String(args.caption || args.title || "تصميم كانفا — الريان");
+        const caption = String(args.caption || args.title || "تصميم كانفا — لوناليزا");
         const asset = await saveGeneratedStudioAsset({
           kind: format === "mp4" ? "video" : "image",
           buffer,

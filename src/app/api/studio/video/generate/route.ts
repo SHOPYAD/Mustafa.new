@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+import { siteOrigin } from "@/lib/automation/site-url";
 import { assertAdminApi } from "@/lib/server/admin-auth";
+import { queueStudioPublishApproval } from "@/lib/server/mcp/connectors/studio-handoff";
 import { resolveGeminiApiKey } from "@/lib/server/gemini";
+import { studioNotifyTelegram } from "@/lib/studio/creative/notify";
+import { writeStudioLastOutput } from "@/lib/studio/last-output";
 import { detectStudioModels } from "@/lib/studio/video/detect-models";
 import { resolveFfmpeg } from "@/lib/studio/video/ffmpeg";
 import { generateStudioVideo } from "@/lib/studio/video/generate";
@@ -34,6 +38,25 @@ export async function POST(req: NextRequest) {
       locale: body.locale,
       loudnorm: body.loudnorm,
     });
+    if (result.ok && result.video) {
+      const origin = siteOrigin();
+      const absolute = result.video.url.startsWith("http")
+        ? result.video.url
+        : `${origin}${result.video.url}`;
+      await writeStudioLastOutput({
+        caption: result.prompt,
+        videoPaths: [result.video.absolutePath],
+        videoUrls: [absolute],
+        pendingPublish: true,
+      });
+      const notify = await studioNotifyTelegram({
+        title: `فيديو استوديو · ${result.model}`,
+        paths: [result.video.absolutePath],
+        urls: [absolute],
+      });
+      await queueStudioPublishApproval(result.prompt);
+      return NextResponse.json({ ...result, notify }, { status: 200 });
+    }
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });
   } catch (error) {
     return NextResponse.json(

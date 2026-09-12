@@ -12,6 +12,7 @@ import { fetchPublishedPackages } from "@/data/packages-client";
 import { packageRecency, sortPackagesNewestFirst } from "@/lib/packages-sort";
 import SafeImage from "@/components/ui/SafeImage";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import type { Locale } from "@/lib/i18n/types";
 import CouponSlider from "@/components/loyalty/CouponSlider";
 import LoyaltyPointsRow from "@/components/loyalty/LoyaltyPointsRow";
 import { useCurrency } from "@/components/ui/CurrencySelector";
@@ -39,24 +40,29 @@ type DestKey = (typeof DEST_KEYS)[number];
 type DurationKey = "any" | "3-4" | "5-7" | "8-14" | "15";
 type SortKey = "newest" | "featured" | "price-asc" | "price-desc" | "rating" | "duration";
 
-function destLabel(key: DestKey, locale: "ar" | "en" | "tr", allLabel: string): string {
+function destLabel(key: DestKey, locale: Locale, allLabel: string): string {
   if (key === "all") return allLabel;
-  const map: Record<Exclude<DestKey, "all">, { ar: string; en: string; tr: string }> = {
-    Istanbul: { ar: "إسطنبول", en: "Istanbul", tr: "İstanbul" },
-    Antalya: { ar: "أنطاليا", en: "Antalya", tr: "Antalya" },
-    Cappadocia: { ar: "كابادوكيا", en: "Cappadocia", tr: "Kapadokya" },
-    Trabzon: { ar: "طرابزون", en: "Trabzon", tr: "Trabzon" },
-    Bursa: { ar: "بورصة", en: "Bursa", tr: "Bursa" },
-    Sapanca: { ar: "سبانجا", en: "Sapanca", tr: "Sapanca" },
-    Bodrum: { ar: "بودروم", en: "Bodrum", tr: "Bodrum" },
-    Izmir: { ar: "إزمير", en: "Izmir", tr: "İzmir" },
-    Pamukkale: { ar: "باموكالي", en: "Pamukkale", tr: "Pamukkale" },
-    Ankara: { ar: "أنقرة", en: "Ankara", tr: "Ankara" },
-    Gaziantep: { ar: "غازي عنتاب", en: "Gaziantep", tr: "Gaziantep" },
-    Fethiye: { ar: "فتحية", en: "Fethiye", tr: "Fethiye" },
-    Konya: { ar: "قونية", en: "Konya", tr: "Konya" },
+  const map: Record<Exclude<DestKey, "all">, { ar: string; en: string; tr: string; fr?: string }> = {
+    Istanbul: { ar: "إسطنبول", en: "Istanbul", tr: "İstanbul", fr: "Istanbul" },
+    Antalya: { ar: "أنطاليا", en: "Antalya", tr: "Antalya", fr: "Antalya" },
+    Cappadocia: { ar: "كابادوكيا", en: "Cappadocia", tr: "Kapadokya", fr: "Cappadoce" },
+    Trabzon: { ar: "طرابزون", en: "Trabzon", tr: "Trabzon", fr: "Trabzon" },
+    Bursa: { ar: "بورصة", en: "Bursa", tr: "Bursa", fr: "Bourse" },
+    Sapanca: { ar: "سبانجا", en: "Sapanca", tr: "Sapanca", fr: "Sapanca" },
+    Bodrum: { ar: "بودروم", en: "Bodrum", tr: "Bodrum", fr: "Bodrum" },
+    Izmir: { ar: "إزمير", en: "Izmir", tr: "İzmir", fr: "Izmir" },
+    Pamukkale: { ar: "باموكالي", en: "Pamukkale", tr: "Pamukkale", fr: "Pamukkale" },
+    Ankara: { ar: "أنقرة", en: "Ankara", tr: "Ankara", fr: "Ankara" },
+    Gaziantep: { ar: "غازي عنتاب", en: "Gaziantep", tr: "Gaziantep", fr: "Gaziantep" },
+    Fethiye: { ar: "فتحية", en: "Fethiye", tr: "Fethiye", fr: "Fethiye" },
+    Konya: { ar: "قونية", en: "Konya", tr: "Konya", fr: "Konya" },
   };
-  return map[key][locale];
+  const item = map[key];
+  if (!item) return key;
+  if (locale === "ar") return item.ar;
+  if (locale === "tr") return item.tr;
+  if (locale === "fr") return item.fr || item.en;
+  return item.en;
 }
 
 function matchesDestination(pkg: HolidayPackage, dest: DestKey): boolean {

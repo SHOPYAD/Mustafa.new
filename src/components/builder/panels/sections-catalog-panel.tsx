@@ -23,22 +23,22 @@ const PREVIEW_TONE: Record<string, string> = {
   flashDeals: "rose",
   packages: "amber",
   hotels: "amber",
-  cars: "emerald",
+  cars: "purple",
   transfers: "blue",
   visa: "sky",
   flightDeals: "sky",
   vipTours: "lime",
-  coupons: "emerald",
-  points: "emerald",
+  coupons: "purple",
+  points: "amber",
   affiliate: "navy",
   whyUs: "navy",
   stats: "blue",
   testimonials: "amber",
-  trust: "emerald",
+  trust: "purple",
   partners: "slate",
   blog: "navy",
   newsletter: "sky",
-  contact: "emerald",
+  contact: "purple",
   cta: "rose",
 };
 
@@ -149,7 +149,7 @@ export function SectionsCatalogPanel() {
               <section key={group.key}>
                 <header className="mb-2 flex items-center justify-between px-1">
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    <span className="flex h-4 w-4 items-center justify-center rounded bg-emerald-100 text-emerald-700">
+                    <span className="flex h-4 w-4 items-center justify-center rounded bg-amber-100 text-amber-800">
                       <Sparkles className="h-2.5 w-2.5" />
                     </span>
                     {catalogGroupLabel(group, locale, t.editor.sections)}

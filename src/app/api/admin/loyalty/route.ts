@@ -26,6 +26,12 @@ export async function GET(req: Request) {
     return NextResponse.json({ ok: true, settings, currencyCodes });
   }
 
+  if (tab === "pending") {
+    const { listAllPendingPoints } = await import("@/lib/loyalty/server");
+    const data = await listAllPendingPoints();
+    return NextResponse.json({ ok: true, ...data });
+  }
+
   const coupons = await listCoupons();
   return NextResponse.json({ ok: true, coupons, currencyCodes });
 }
@@ -43,6 +49,23 @@ export async function POST(req: Request) {
 
   const action = String(body.action || "save");
   try {
+    if (action === "approve") {
+      const { approvePointEntry } = await import("@/lib/loyalty/server");
+      const id = String(body.id || "");
+      const res = await approvePointEntry(id, String(body.adminUser || "إدارة المنصة"));
+      return NextResponse.json(res);
+    }
+    if (action === "reject") {
+      const { rejectPointEntry } = await import("@/lib/loyalty/server");
+      const id = String(body.id || "");
+      const res = await rejectPointEntry(id, String(body.reason || "مرفوض بقرار الإدارة"));
+      return NextResponse.json(res);
+    }
+    if (action === "approve_all") {
+      const { approveAllPendingPoints } = await import("@/lib/loyalty/server");
+      const res = await approveAllPendingPoints(String(body.adminUser || "إدارة المنصة"));
+      return NextResponse.json(res);
+    }
     if (action === "settings") {
       const settings = await saveLoyaltySettings(body);
       return NextResponse.json({ ok: true, settings });

@@ -23,7 +23,7 @@ class AccountPartnerBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Join Trip.com as a partner and grow your business',
+                  'انضم كشريك لوناليزا and grow your business',
                   style: AccountTheme.listTitle.copyWith(
                     fontSize: 15,
                     height: 1.35,

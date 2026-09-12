@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronLeft, Menu, Moon, Sun } from "lucide-react";
+import { ChevronLeft, GraduationCap, Menu, Moon, Sun } from "lucide-react";
 import { checkAuthenticated, logout } from "@/data/auth";
 import { fetchNewBookingsCount, getNewBookingsCount } from "@/data/bookings";
 import {
@@ -18,6 +18,9 @@ import AdminNotificationCenter from "@/components/admin/AdminNotificationCenter"
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { buildAdminNav, findCurrentNavLabel } from "@/components/admin/admin-nav";
 import AdminPwaInstallHint from "@/components/pwa/AdminPwaInstallHint";
+import AdminProductTour from "@/components/admin/tour/AdminProductTour";
+import DemoSeedBanner from "@/components/admin/DemoSeedBanner";
+import PlatformReadinessHeaderBanner from "@/components/admin/PlatformReadinessHeaderBanner";
 
 export default function AdminLayout({
   children,
@@ -30,7 +33,7 @@ export default function AdminLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [newBookings, setNewBookings] = useState(0);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [themeReady, setThemeReady] = useState(false);
 
   useEffect(() => {
@@ -38,8 +41,22 @@ export default function AdminLayout({
     setTheme(stored);
     applyAdminTheme(stored);
     setThemeReady(true);
+
+    const handleError = (e: ErrorEvent) => {
+      const msg = String(e?.message || "");
+      if (
+        msg.includes("ChunkLoadError") ||
+        msg.includes("Loading chunk") ||
+        msg.includes("Failed to load chunk")
+      ) {
+        window.location.reload();
+      }
+    };
+    window.addEventListener("error", handleError);
+
     return () => {
       clearAdminTheme();
+      window.removeEventListener("error", handleError);
     };
   }, []);
 
@@ -70,7 +87,7 @@ export default function AdminLayout({
     navIdle:
       "text-sidebar-muted hover:text-sidebar-foreground hover:bg-secondary",
     navActive:
-      "bg-sidebar-accent text-sidebar-accent-foreground border border-emerald-500/25",
+      "bg-sidebar-accent text-sidebar-accent-foreground border border-purple-400/40 dark:border-purple-600/40 font-bold shadow-xs",
     hairline: "border-sidebar-border",
   };
 
@@ -123,7 +140,7 @@ export default function AdminLayout({
 
   if (isFullscreenEditor) {
     return (
-      <div className="h-screen w-screen overflow-hidden bg-white" dir={dir} data-admin-theme={theme}>
+      <div className={`h-screen w-screen overflow-hidden ${isLight ? 'bg-white' : 'bg-background'}`} dir={dir} data-admin-theme={theme}>
         {children}
       </div>
     );
@@ -182,6 +199,15 @@ export default function AdminLayout({
           </div>
           <button
             type="button"
+            onClick={() => window.dispatchEvent(new Event("liotrip:start-tour"))}
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 text-xs font-bold transition-colors"
+            title="بدء الجولة التعريفية بالنظام"
+          >
+            <GraduationCap size={15} />
+            <span className="hidden sm:inline">الجولة التعليمية</span>
+          </button>
+          <button
+            type="button"
             onClick={toggleTheme}
             className="w-9 h-9 rounded-xl border border-border bg-secondary text-foreground hover:bg-muted flex items-center justify-center transition-colors"
             aria-label={isLight ? t.admin.darkMode : t.admin.lightMode}
@@ -194,6 +220,7 @@ export default function AdminLayout({
           <AdminNotificationCenter isLight={isLight} />
         </header>
         )}
+        {!isFullscreenEditor && <PlatformReadinessHeaderBanner />}
         <main
           className={`admin-main min-w-0 w-full flex-1 ${
             isFullscreenEditor
@@ -201,9 +228,11 @@ export default function AdminLayout({
               : `overflow-auto overflow-x-clip p-4 sm:p-5 lg:p-7 ${isLight ? "admin-main--light" : ""}`
           }`}
         >
+          {!isFullscreenEditor && <DemoSeedBanner />}
           {children}
         </main>
       </div>
+      <AdminProductTour />
     </div>
   );
 }

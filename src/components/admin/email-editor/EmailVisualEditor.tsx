@@ -5,13 +5,21 @@ import {
   AlignCenter,
   AlignLeft,
   AlignRight,
+  Check,
   ChevronDown,
   ChevronUp,
+  Copy,
   GripVertical,
   ImagePlus,
+  Layers,
   Loader2,
+  Monitor,
   Plus,
   Save,
+  Sliders,
+  Smartphone,
+  Sparkles,
+  Tablet,
   Trash2,
 } from "lucide-react";
 import { AdminCopilotPanel } from "@/components/admin/copilot";
@@ -34,8 +42,8 @@ import {
 } from "@/lib/email/visual-doc";
 
 const inputClass =
-  "w-full px-3 py-2.5 bg-slate-950/60 border border-white/10 rounded-xl text-white placeholder-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 text-sm";
-const cardClass = "rounded-2xl border border-white/10 bg-white/[0.03] p-4";
+  "w-full px-3 py-2.5 bg-slate-900/80 border border-slate-700/60 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 text-sm transition-colors";
+const cardClass = "rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm";
 
 type EditorProps = {
   ar: boolean;
@@ -81,7 +89,10 @@ export default function EmailVisualEditor({
     )
   );
   const [selectedId, setSelectedId] = useState(doc.blocks[0]?.id || "");
-  const [previewMode, setPreviewMode] = useState<"desktop" | "narrow">("desktop");
+  const [previewMode, setPreviewMode] = useState<"desktop" | "tablet" | "mobile">("desktop");
+  const [activeStudioTab, setActiveStudioTab] = useState<"blocks" | "inspector">("blocks");
+  const [copilotOpen, setCopilotOpen] = useState(false);
+  const [copiedToken, setCopiedToken] = useState<string | null>(null);
   const [dragId, setDragId] = useState("");
   const { t } = useLocale();
 
@@ -105,7 +116,7 @@ export default function EmailVisualEditor({
       company: brand.brandNameAr,
       bookingId: "BK-PREVIEW",
       booking_id: "BK-PREVIEW",
-      amount: "—",
+      amount: "1,250 SAR",
       cta_url: `${brand.siteUrl}/account`,
     });
   }, [doc, brand]);
@@ -131,6 +142,7 @@ export default function EmailVisualEditor({
     blocks.splice(index, 0, block);
     commit({ ...doc, blocks });
     setSelectedId(block.id);
+    setActiveStudioTab("inspector");
   };
 
   const removeBlock = (id: string) => {
@@ -162,195 +174,457 @@ export default function EmailVisualEditor({
     setDragId("");
   };
 
+  const copyToken = (token: string) => {
+    navigator.clipboard.writeText(token);
+    setCopiedToken(token);
+    setTimeout(() => setCopiedToken(null), 2000);
+  };
+
+  const previewWidth =
+    previewMode === "desktop" ? "100%" : previewMode === "tablet" ? "480px" : "360px";
+
   return (
-    <div className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-3">
-        <input
-          className={inputClass}
-          value={name}
-          onChange={(e) => onNameChange(e.target.value)}
-          placeholder={ar ? "اسم القالب" : "Template name"}
-        />
-        <input
-          className={inputClass}
-          value={subjectAr}
-          onChange={(e) => onSubjectArChange(e.target.value)}
-          placeholder={ar ? "موضوع الرسالة (عربي)" : "Subject (AR)"}
-        />
-        <input
-          className={`${inputClass} md:col-span-2`}
-          value={subjectEn}
-          onChange={(e) => onSubjectEnChange(e.target.value)}
-          placeholder={ar ? "موضوع الرسالة (إنجليزي)" : "Subject (EN)"}
-        />
-      </div>
-
-      <div className={`${cardClass} overflow-hidden p-0`}>
-        <AdminCopilotPanel
-          scope="email"
-          title={ar ? "توليد أو تعديل عبر Copilot" : "Generate or edit with Copilot"}
-          hint={t.builderAgent.isolated}
-          placeholder={
-            ar
-              ? "مثال: تذكير حجز فندق مع زر حسابي وجدول رقم الحجز والمبلغ"
-              : "e.g. Hotel booking reminder with account button and booking table"
-          }
-          className="h-[360px]"
-          host={{
-            email: {
-              kind: emailKind,
-              audienceHint,
-              currentDocument: doc,
-              onApply: (template) => {
-                if (template.name) onNameChange(template.name);
-                if (template.subject_ar) onSubjectArChange(template.subject_ar);
-                if (template.subject_en) onSubjectEnChange(template.subject_en);
-                if (template.document) {
-                  commit(sanitizeVisualDocument(template.document, brand));
-                }
-              },
-            },
-          }}
-          fallback={async (messages) => {
-            const prompt = messages.filter((m) => m.role === "user").map((m) => m.content).pop() || "";
-            if (prompt.trim().length < 8) {
-              return ar ? "اكتب وصفاً أوضح (8 أحرف على الأقل)." : "Write a clearer brief (8+ characters).";
-            }
-            onGemini(prompt);
-            return ar ? "طُلِب التوليد — راجع المحرر بعد التطبيق." : "Generation requested — review the editor after apply.";
-          }}
-        />
-      </div>
-
-      <div className="grid xl:grid-cols-[240px_1fr_280px] gap-4">
-        <div className={`${cardClass} space-y-2`}>
-          <p className="text-xs uppercase tracking-wider text-white/35">
-            {ar ? "المكوّنات" : "Blocks"}
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {EMAIL_BLOCK_TYPES.map((type) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => addBlock(type)}
-                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg border border-white/10 text-[11px] text-white/70 hover:bg-white/[0.06]"
-              >
-                <Plus size={11} />
-                {blockLabelAr(type)}
-              </button>
-            ))}
-          </div>
-          <div className="space-y-1 pt-2">
-            {doc.blocks.map((block) => (
-              <div
-                key={block.id}
-                draggable
-                onDragStart={() => setDragId(block.id)}
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={() => onDrop(block.id)}
-                className={`flex items-center gap-1 rounded-xl px-2 py-1.5 ${
-                  selectedId === block.id
-                    ? "bg-amber-500/15 border border-amber-500/25"
-                    : "hover:bg-white/[0.04]"
-                }`}
-              >
-                <button
-                  type="button"
-                  className="text-white/30 cursor-grab"
-                  aria-label={ar ? "سحب" : "Drag"}
-                >
-                  <GripVertical size={14} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedId(block.id)}
-                  className="flex-1 text-start text-xs text-white/80"
-                >
-                  {blockLabelAr(block.type)}
-                </button>
-                <button type="button" onClick={() => moveBlock(block.id, -1)} className="text-white/35">
-                  <ChevronUp size={13} />
-                </button>
-                <button type="button" onClick={() => moveBlock(block.id, 1)} className="text-white/35">
-                  <ChevronDown size={13} />
-                </button>
-                <button type="button" onClick={() => removeBlock(block.id)} className="text-red-300/70">
-                  <Trash2 size={13} />
-                </button>
-              </div>
-            ))}
-          </div>
+    <div className="space-y-5">
+      {/* Subject & Meta Fields */}
+      <div className="grid md:grid-cols-3 gap-3">
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">
+            {ar ? "اسم القالب الداخلي" : "Template Name"}
+          </label>
+          <input
+            className={inputClass}
+            value={name}
+            onChange={(e) => onNameChange(e.target.value)}
+            placeholder={ar ? "اسم القالب" : "Template name"}
+          />
         </div>
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">
+            {ar ? "موضوع الرسالة (عربي)" : "Subject (Arabic)"}
+          </label>
+          <input
+            className={inputClass}
+            value={subjectAr}
+            onChange={(e) => onSubjectArChange(e.target.value)}
+            placeholder={ar ? "مثال: تأكيد حجز رحلتكم مع لوناليزا" : "Subject (AR)"}
+          />
+        </div>
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">
+            {ar ? "موضوع الرسالة (إنجليزي)" : "Subject (English)"}
+          </label>
+          <input
+            className={inputClass}
+            value={subjectEn}
+            onChange={(e) => onSubjectEnChange(e.target.value)}
+            placeholder={ar ? "Your booking confirmation" : "Subject (EN)"}
+          />
+        </div>
+      </div>
 
-        <div className={`${cardClass} space-y-3`}>
-          <div className="flex items-center justify-between gap-2">
-            <p className="text-xs uppercase tracking-wider text-white/35">
-              {ar ? "معاينة حيّة" : "Live preview"}
-            </p>
-            <div className="flex gap-1">
-              {(["desktop", "narrow"] as const).map((mode) => (
-                <button
-                  key={mode}
-                  type="button"
-                  onClick={() => setPreviewMode(mode)}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] ${
-                    previewMode === mode
-                      ? "bg-amber-500 text-slate-950"
-                      : "border border-white/10 text-white/50"
-                  }`}
-                >
-                  {mode === "desktop" ? (ar ? "سطح المكتب" : "Desktop") : ar ? "عرض ضيق" : "Narrow"}
-                </button>
-              ))}
+      {/* AI Copilot Collapsible Panel */}
+      <div className="rounded-2xl border border-purple-800/40 bg-purple-950/20 overflow-hidden transition-all">
+        <button
+          type="button"
+          onClick={() => setCopilotOpen(!copilotOpen)}
+          className="w-full flex items-center justify-between px-4 py-3 text-start hover:bg-purple-900/20 transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-tr from-[#2e1065] to-purple-600 text-amber-300">
+              <Sparkles size={15} />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-slate-200">
+                {ar ? "مساعد الذكاء الاصطناعي Copilot لتصميم البريد" : "AI Email Copilot Assistant"}
+              </p>
+              <p className="text-[11px] text-slate-400">
+                {ar
+                  ? "توليد محتوى احترافي ومخصص بنقرة واحدة عبر الذكاء الاصطناعي"
+                  : "Generate customized, high-converting email layouts with AI"}
+              </p>
             </div>
           </div>
-          <div className="flex justify-center bg-black/20 rounded-xl p-3">
-            <iframe
-              title="email-preview"
-              className="h-[560px] rounded-lg border border-white/10 bg-white transition-all"
-              style={{ width: previewMode === "desktop" ? "100%" : 360, maxWidth: 600 }}
-              srcDoc={previewHtml}
+          <span className="text-xs px-2.5 py-1 rounded-lg bg-purple-900/40 text-purple-200 border border-purple-700/30 flex items-center gap-1">
+            {copilotOpen ? (ar ? "إخفاء" : "Collapse") : ar ? "فتح Copilot" : "Open Copilot"}
+            {copilotOpen ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+          </span>
+        </button>
+
+        {copilotOpen && (
+          <div className="border-t border-purple-800/30 p-2 bg-slate-950/40">
+            <AdminCopilotPanel
+              scope="email"
+              title={ar ? "توليد أو تعديل عبر Copilot" : "Generate or edit with Copilot"}
+              hint={t.builderAgent.isolated}
+              placeholder={
+                ar
+                  ? "مثال: تذكير حجز فندق في إسطنبول مع جدول تفاصيل الحجز وزر حسابي باللون البنفسجي"
+                  : "e.g. Hotel booking reminder with account button and booking details"
+              }
+              className="h-[340px]"
+              host={{
+                email: {
+                  kind: emailKind,
+                  audienceHint,
+                  currentDocument: doc,
+                  onApply: (template) => {
+                    if (template.name) onNameChange(template.name);
+                    if (template.subject_ar) onSubjectArChange(template.subject_ar);
+                    if (template.subject_en) onSubjectEnChange(template.subject_en);
+                    if (template.document) {
+                      commit(sanitizeVisualDocument(template.document, brand));
+                    }
+                  },
+                },
+              }}
+              fallback={async (messages) => {
+                const prompt =
+                  messages
+                    .filter((m) => m.role === "user")
+                    .map((m) => m.content)
+                    .pop() || "";
+                if (prompt.trim().length < 8) {
+                  return ar
+                    ? "اكتب وصفاً أوضح (8 أحرف على الأقل)."
+                    : "Write a clearer brief (8+ characters).";
+                }
+                onGemini(prompt);
+                return ar
+                  ? "طُلِب التوليد — راجع المحرر بعد التطبيق."
+                  : "Generation requested — review the editor after apply.";
+              }}
             />
           </div>
-          <p className="text-[11px] text-white/35">
-            {ar
-              ? "المتغيرات: {{name}} {{company}} {{bookingId}} {{amount}}"
-              : "Variables: {{name}} {{company}} {{bookingId}} {{amount}}"}
-          </p>
+        )}
+      </div>
+
+      {/* Spacious 2-Column Studio Layout (Canvas 60% / Tools 40%) */}
+      <div className="grid lg:grid-cols-12 gap-6 items-start">
+        {/* Left Column: Live Email Canvas (60% width) */}
+        <div className="lg:col-span-7 xl:col-span-7 space-y-3">
+          <div className={`${cardClass} space-y-3`}>
+            {/* Canvas Header & Device Toggles */}
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                  {ar ? "معاينة حيّة للمراسلة" : "Live Email Canvas"}
+                </p>
+              </div>
+
+              {/* Device Selector */}
+              <div className="flex items-center gap-1 bg-slate-950/70 p-1 rounded-xl border border-slate-800">
+                <button
+                  type="button"
+                  onClick={() => setPreviewMode("desktop")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    previewMode === "desktop"
+                      ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <Monitor size={14} />
+                  {ar ? "كمبيوتر" : "Desktop"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPreviewMode("tablet")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    previewMode === "tablet"
+                      ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <Tablet size={14} />
+                  {ar ? "تابلت" : "Tablet"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPreviewMode("mobile")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    previewMode === "mobile"
+                      ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <Smartphone size={14} />
+                  {ar ? "جوال" : "Mobile"}
+                </button>
+              </div>
+            </div>
+
+            {/* Device Simulated Screen Frame */}
+            <div className="flex justify-center bg-slate-950/80 rounded-2xl p-4 sm:p-6 border border-slate-800 overflow-x-auto min-h-[660px]">
+              <div
+                className="transition-all duration-300 flex flex-col shadow-2xl rounded-xl border border-slate-700/60 bg-white overflow-hidden"
+                style={{ width: previewWidth, maxWidth: "100%" }}
+              >
+                {/* Simulated Email Client Top Bar */}
+                <div className="bg-slate-100 px-3 py-2 border-b border-slate-200 flex items-center justify-between text-xs text-slate-600 select-none">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                  </div>
+                  <div className="text-[11px] font-medium text-slate-500 truncate max-w-[200px]">
+                    {subjectAr || "Inbox Preview"}
+                  </div>
+                  <span className="text-[10px] text-slate-400">Lonaliza Mail</span>
+                </div>
+
+                <iframe
+                  title="email-preview"
+                  className="w-full h-[580px] bg-white border-0"
+                  srcDoc={previewHtml}
+                />
+              </div>
+            </div>
+
+            {/* Quick Variable Tokens */}
+            <div className="pt-2 border-t border-slate-800">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-medium text-slate-400">
+                  {ar ? "متغيرات ذكية قابلة للنسخ:" : "Dynamic template variables (click to copy):"}
+                </span>
+                {copiedToken && (
+                  <span className="text-[11px] font-semibold text-amber-300 flex items-center gap-1">
+                    <Check size={12} /> {ar ? "تم النسخ للحافظة!" : "Copied to clipboard!"}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { token: "{{name}}", label: ar ? "اسم العميل" : "Name" },
+                  { token: "{{company}}", label: ar ? "اسم الشركة" : "Company" },
+                  { token: "{{bookingId}}", label: ar ? "رقم الحجز" : "Booking ID" },
+                  { token: "{{amount}}", label: ar ? "المبلغ" : "Amount" },
+                  { token: "{{cta_url}}", label: ar ? "رابط الإجراء" : "CTA URL" },
+                ].map(({ token, label }) => (
+                  <button
+                    key={token}
+                    type="button"
+                    onClick={() => copyToken(token)}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-purple-950/60 border border-slate-700/60 text-xs text-slate-300 hover:text-amber-200 transition-colors"
+                  >
+                    <Copy size={11} className="text-slate-400" />
+                    <code className="text-amber-300 font-mono text-[11px]">{token}</code>
+                    <span className="text-[10px] text-slate-400">({label})</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className={`${cardClass} space-y-3`}>
-          <p className="text-xs uppercase tracking-wider text-white/35">
-            {ar ? "تحرير المكوّن" : "Edit block"}
-          </p>
-          {selected ? (
-            <BlockInspector
-              ar={ar}
-              brand={brand}
-              block={selected}
-              onChange={(patch) => updateBlock(selected.id, patch)}
-              canvasBg={doc.canvasBg}
-              cardBg={doc.cardBg}
-              onCanvas={(patch) => commit({ ...doc, ...patch })}
-            />
-          ) : (
-            <p className="text-sm text-white/40">
-              {ar ? "اختر مكوّناً من القائمة." : "Select a block."}
-            </p>
-          )}
+        {/* Right Column: Studio Tools & Block Inspector (40% width) */}
+        <div className="lg:col-span-5 xl:col-span-5 space-y-4">
+          <div className={`${cardClass} space-y-4`}>
+            {/* Studio Tabs */}
+            <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-950/80 rounded-xl border border-slate-800">
+              <button
+                type="button"
+                onClick={() => setActiveStudioTab("blocks")}
+                className={`flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-bold transition-all ${
+                  activeStudioTab === "blocks"
+                    ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                <Layers size={14} />
+                {ar ? `المكونات والترتيب (${doc.blocks.length})` : `Blocks (${doc.blocks.length})`}
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveStudioTab("inspector")}
+                className={`flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-bold transition-all ${
+                  activeStudioTab === "inspector"
+                    ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                <Sliders size={14} />
+                {ar ? "خصائص العنصر" : "Block Inspector"}
+              </button>
+            </div>
+
+            {/* TAB 1: BLOCKS PALETTE & REORDERING */}
+            {activeStudioTab === "blocks" && (
+              <div className="space-y-4">
+                {/* Palette */}
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    {ar ? "إضافة مكوّن جديد" : "Add Block"}
+                  </p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {EMAIL_BLOCK_TYPES.map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => addBlock(type)}
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/60 hover:bg-purple-950/50 border border-slate-700/50 hover:border-purple-600/40 text-xs text-slate-200 hover:text-amber-200 transition-all text-start"
+                      >
+                        <Plus size={13} className="text-amber-400" />
+                        <span className="truncate">{blockLabelAr(type)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Blocks List & Drag-Reorder */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {ar ? "هيكل القالب (الترتيب)" : "Template Structure"}
+                    </p>
+                    <span className="text-[10px] text-slate-400">
+                      {ar ? "اسحب أو استخدم الأسهم" : "Drag or use arrows"}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5 max-h-[420px] overflow-y-auto pr-1">
+                    {doc.blocks.map((block, idx) => (
+                      <div
+                        key={block.id}
+                        draggable
+                        onDragStart={() => setDragId(block.id)}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={() => onDrop(block.id)}
+                        className={`flex items-center gap-2 rounded-xl px-3 py-2 border transition-all ${
+                          selectedId === block.id
+                            ? "bg-purple-950/70 border-amber-500/40 shadow-sm"
+                            : "bg-slate-950/40 border-slate-800 hover:bg-slate-800/40"
+                        }`}
+                      >
+                        <button
+                          type="button"
+                          className="text-slate-500 hover:text-slate-300 cursor-grab active:cursor-grabbing p-0.5"
+                          aria-label={ar ? "سحب" : "Drag"}
+                        >
+                          <GripVertical size={14} />
+                        </button>
+                        <span className="text-[10px] font-mono text-slate-500 w-4 text-center">
+                          {idx + 1}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedId(block.id);
+                            setActiveStudioTab("inspector");
+                          }}
+                          className="flex-1 text-start text-xs font-semibold text-slate-200 hover:text-amber-200 truncate"
+                        >
+                          {blockLabelAr(block.type)}
+                        </button>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            onClick={() => moveBlock(block.id, -1)}
+                            disabled={idx === 0}
+                            className="p-1 text-slate-400 hover:text-slate-200 disabled:opacity-30"
+                            title={ar ? "تحريك لأعلى" : "Move up"}
+                          >
+                            <ChevronUp size={13} />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => moveBlock(block.id, 1)}
+                            disabled={idx === doc.blocks.length - 1}
+                            className="p-1 text-slate-400 hover:text-slate-200 disabled:opacity-30"
+                            title={ar ? "تحريك لأسفل" : "Move down"}
+                          >
+                            <ChevronDown size={13} />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => removeBlock(block.id)}
+                            className="p-1 text-red-400/70 hover:text-red-300"
+                            title={ar ? "حذف" : "Delete"}
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB 2: INSPECTOR PROPERTIES */}
+            {activeStudioTab === "inspector" && (
+              <div>
+                {selected ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                      <div>
+                        <span className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">
+                          {ar ? "تعديل خصائص المكوّن" : "Editing Element"}
+                        </span>
+                        <h4 className="text-sm font-bold text-slate-100">
+                          {blockLabelAr(selected.type)}
+                        </h4>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeBlock(selected.id)}
+                        className="text-xs text-red-400 hover:text-red-300 flex items-center gap-1"
+                      >
+                        <Trash2 size={12} />
+                        {ar ? "حذف المكوّن" : "Delete"}
+                      </button>
+                    </div>
+
+                    <BlockInspector
+                      ar={ar}
+                      brand={brand}
+                      block={selected}
+                      onChange={(patch) => updateBlock(selected.id, patch)}
+                      canvasBg={doc.canvasBg}
+                      cardBg={doc.cardBg}
+                      onCanvas={(patch) => commit({ ...doc, ...patch })}
+                    />
+                  </div>
+                ) : (
+                  <div className="text-center py-10 px-4">
+                    <p className="text-sm font-medium text-slate-400">
+                      {ar ? "لم يتم تحديد أي مكوّن." : "No block selected."}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setActiveStudioTab("blocks")}
+                      className="mt-3 text-xs text-amber-400 hover:underline"
+                    >
+                      {ar ? "اختر مكوّناً من القائمة" : "Choose a block from the list"}
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      {/* Save Action Bar - Purged Emerald, Royal Purple & Radiant Amber */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
         <button
           type="button"
           onClick={onSave}
           disabled={busy === "save"}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-sm disabled:opacity-40"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] hover:from-[#3b157e] hover:to-[#581c87] text-white font-bold text-sm shadow-md shadow-purple-950/30 transition-all hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50"
         >
-          {busy === "save" ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
-          {ar ? "حفظ وتحديث القائمة" : "Save and update list"}
+          {busy === "save" ? (
+            <Loader2 size={16} className="animate-spin text-amber-300" />
+          ) : (
+            <Save size={16} className="text-amber-300" />
+          )}
+          <span>{ar ? "حفظ التعديلات وتحديث القالب" : "Save and Update Template"}</span>
         </button>
+
+        <p className="text-xs text-slate-400">
+          {ar
+            ? "يتم تطبيق التحديثات فوراً على حملات البريد الإلكتروني الجاهزة للإرسال."
+            : "Saved changes will be immediately available to draft and queued campaigns."}
+        </p>
       </div>
     </div>
   );
@@ -401,54 +675,64 @@ function BlockInspector({
   };
 
   return (
-    <div className="space-y-3">
-      <p className="text-sm font-semibold text-white">{blockLabelAr(block.type)}</p>
+    <div className="space-y-4">
+      {/* Text / Body input */}
       {(block.type === "heading" || block.type === "paragraph" || block.type === "button") && (
-        <label className="block text-[11px] text-white/40">
-          {ar ? "النص" : "Text"}
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">
+            {ar ? "النص أو المحتوى" : "Text content"}
+          </label>
           <textarea
-            className={`${inputClass} mt-1 min-h-[70px]`}
+            className={`${inputClass} min-h-[85px] leading-relaxed`}
             value={block.text || ""}
             onChange={(e) => onChange({ text: e.target.value })}
+            placeholder={ar ? "اكتب النص هنا..." : "Type text here..."}
           />
-        </label>
+        </div>
       )}
+
+      {/* Button Destination Link */}
       {block.type === "button" && (
-        <>
-          <label className="block text-[11px] text-white/40">
-            {ar ? "وجهة الزر" : "Button target"}
-            <select
-              className={`${inputClass} mt-1`}
-              value={block.hrefKey || "home"}
-              onChange={(e) =>
-                onChange({
-                  hrefKey: EMAIL_SITE_LINKS.find((l) => l.key === e.target.value)?.key || "home",
-                })
-              }
-            >
-              {EMAIL_SITE_LINKS.map((link) => (
-                <option key={link.key} value={link.key}>
-                  {ar ? link.labelAr : link.labelEn}
-                  {link.path ? ` — ${link.path}` : ""}
-                </option>
-              ))}
-            </select>
+        <div className="space-y-2">
+          <label className="block text-xs font-semibold text-slate-300">
+            {ar ? "وجهة الزر" : "Button Target"}
           </label>
+          <select
+            className={inputClass}
+            value={block.hrefKey || "home"}
+            onChange={(e) =>
+              onChange({
+                hrefKey: EMAIL_SITE_LINKS.find((l) => l.key === e.target.value)?.key || "home",
+              })
+            }
+          >
+            {EMAIL_SITE_LINKS.map((link) => (
+              <option key={link.key} value={link.key} className="bg-slate-900 text-white">
+                {ar ? link.labelAr : link.labelEn}
+                {link.path ? ` — ${link.path}` : ""}
+              </option>
+            ))}
+          </select>
+
           {block.hrefKey === "custom" && (
             <input
               className={inputClass}
               value={block.customUrl || ""}
               onChange={(e) => onChange({ customUrl: e.target.value })}
-              placeholder={ar ? "مسار الموقع مثل /holidays" : "Site path such as /holidays"}
+              placeholder={ar ? "مسار الرابط مثل: /holidays أو https://..." : "/holidays or https://..."}
             />
           )}
-        </>
+        </div>
       )}
+
+      {/* Header Logo Background */}
       {block.type === "header" && (
-        <label className="block text-[11px] text-white/40">
-          {ar ? "خلفية الشعار" : "Logo background"}
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">
+            {ar ? "خلفية الشعار" : "Logo background"}
+          </label>
           <select
-            className={`${inputClass} mt-1`}
+            className={inputClass}
             value={block.logoBackground || "brand"}
             onChange={(e) =>
               onChange({
@@ -456,13 +740,22 @@ function BlockInspector({
               })
             }
           >
-            <option value="brand">{ar ? "لون البراند" : "Brand color"}</option>
-            <option value="transparent">{ar ? "شفاف" : "Transparent"}</option>
+            <option value="brand" className="bg-slate-900 text-white">
+              {ar ? "لون البراند الأساسي" : "Brand Color"}
+            </option>
+            <option value="transparent" className="bg-slate-900 text-white">
+              {ar ? "شفاف" : "Transparent"}
+            </option>
           </select>
-        </label>
+        </div>
       )}
+
+      {/* Image Uploader */}
       {block.type === "image" && (
-        <>
+        <div className="space-y-2">
+          <label className="block text-xs font-semibold text-slate-300">
+            {ar ? "رابط أو ملف الصورة" : "Image Source or Upload"}
+          </label>
           <input
             dir="ltr"
             className={`${inputClass} text-left font-mono text-xs`}
@@ -475,12 +768,12 @@ function BlockInspector({
             <img
               src={block.src}
               alt=""
-              className="mt-1 max-h-28 w-full rounded-lg bg-black/30 object-contain"
+              className="mt-1 max-h-36 w-full rounded-xl bg-black/40 object-contain border border-slate-700/60"
             />
           ) : null}
-          <label className="inline-flex items-center gap-2 text-xs text-amber-200 cursor-pointer">
-            <ImagePlus size={14} />
-            {uploading ? (ar ? "رفع…" : "Uploading…") : ar ? "رفع صورة" : "Upload image"}
+          <label className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-purple-950/60 border border-purple-800/40 text-xs font-semibold text-amber-300 cursor-pointer hover:bg-purple-900/40 transition-colors">
+            <ImagePlus size={15} />
+            <span>{uploading ? (ar ? "جاري الرفع…" : "Uploading…") : ar ? "رفع صورة جديدة" : "Upload Image"}</span>
             <input
               type="file"
               accept="image/*"
@@ -492,18 +785,35 @@ function BlockInspector({
               }}
             />
           </label>
-          {uploadError ? (
-            <p className="text-[11px] text-red-300">{uploadError}</p>
-          ) : null}
-        </>
+          {uploadError ? <p className="text-xs text-red-400 font-medium">{uploadError}</p> : null}
+        </div>
       )}
+
+      {/* Booking Table Rows */}
       {block.type === "bookingTable" && (
-        <div className="space-y-2">
+        <div className="space-y-2.5">
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-semibold text-slate-300">
+              {ar ? "صفوف جدول الحجز" : "Booking details rows"}
+            </label>
+            <button
+              type="button"
+              className="text-xs font-semibold text-amber-300 hover:text-amber-200"
+              onClick={() =>
+                onChange({
+                  rows: [...(block.rows || []), { label: "حقل", value: "{{bookingId}}" }],
+                })
+              }
+            >
+              {ar ? "+ إضافة صف" : "+ Add row"}
+            </button>
+          </div>
           {(block.rows || []).map((row, index) => (
             <div key={`${row.label}-${index}`} className="grid grid-cols-2 gap-2">
               <input
                 className={inputClass}
                 value={row.label}
+                placeholder={ar ? "عنوان الحقل" : "Field label"}
                 onChange={(e) => {
                   const rows = [...(block.rows || [])];
                   rows[index] = { ...rows[index], label: e.target.value };
@@ -513,6 +823,7 @@ function BlockInspector({
               <input
                 className={inputClass}
                 value={row.value}
+                placeholder={ar ? "القيمة أو المتغير" : "Value"}
                 onChange={(e) => {
                   const rows = [...(block.rows || [])];
                   rows[index] = { ...rows[index], value: e.target.value };
@@ -521,91 +832,128 @@ function BlockInspector({
               />
             </div>
           ))}
-          <button
-            type="button"
-            className="text-xs text-amber-200"
-            onClick={() =>
-              onChange({
-                rows: [...(block.rows || []), { label: "حقل", value: "{{bookingId}}" }],
-              })
-            }
-          >
-            {ar ? "+ صف" : "+ row"}
-          </button>
         </div>
       )}
+
+      {/* Text Alignment */}
       {(block.type === "heading" ||
         block.type === "paragraph" ||
         block.type === "button" ||
         block.type === "image") && (
-        <div className="flex gap-1">
-          {(["right", "center", "left"] as const).map((align) => (
-            <button
-              key={align}
-              type="button"
-              onClick={() => onChange({ align })}
-              className={`p-1.5 rounded-lg border ${
-                block.align === align ? "border-amber-400 text-amber-200" : "border-white/10 text-white/40"
-              }`}
-            >
-              {align === "right" ? (
-                <AlignRight size={14} />
-              ) : align === "center" ? (
-                <AlignCenter size={14} />
-              ) : (
-                <AlignLeft size={14} />
-              )}
-            </button>
-          ))}
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+            {ar ? "المحاذاة" : "Alignment"}
+          </label>
+          <div className="flex gap-1.5">
+            {(["right", "center", "left"] as const).map((align) => (
+              <button
+                key={align}
+                type="button"
+                onClick={() => onChange({ align })}
+                className={`p-2 rounded-xl border flex-1 flex justify-center transition-colors ${
+                  block.align === align
+                    ? "border-amber-400 bg-amber-500/10 text-amber-300"
+                    : "border-slate-800 bg-slate-950/40 text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                {align === "right" ? (
+                  <AlignRight size={16} />
+                ) : align === "center" ? (
+                  <AlignCenter size={16} />
+                ) : (
+                  <AlignLeft size={16} />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       )}
-      {(block.type === "heading" || block.type === "paragraph" || block.type === "button") && (
-        <label className="block text-[11px] text-white/40">
-          {ar ? "لون النص" : "Text color"}
-          <input
-            type="color"
-            className="mt-1 h-9 w-full rounded-lg bg-transparent border border-white/10"
-            value={block.color || "#122033"}
-            onChange={(e) => onChange({ color: e.target.value })}
-          />
-        </label>
-      )}
-      {(block.type === "header" ||
-        block.type === "button" ||
-        block.type === "bookingTable" ||
-        block.type === "footer" ||
-        block.type === "divider") && (
-        <label className="block text-[11px] text-white/40">
-          {block.type === "divider" ? (ar ? "لون الفاصل" : "Divider") : ar ? "لون الخلفية" : "Background"}
-          <input
-            type="color"
-            className="mt-1 h-9 w-full rounded-lg bg-transparent border border-white/10"
-            value={block.background || block.color || brand.button}
-            onChange={(e) =>
-              onChange(block.type === "divider" ? { color: e.target.value } : { background: e.target.value })
-            }
-          />
-        </label>
-      )}
-      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
-        <label className="block text-[11px] text-white/40">
-          {ar ? "خلفية الصفحة" : "Canvas"}
-          <input
-            type="color"
-            className="mt-1 h-9 w-full rounded-lg bg-transparent border border-white/10"
-            value={canvasBg}
-            onChange={(e) => onCanvas({ canvasBg: e.target.value, cardBg })}
-          />
-        </label>
-        <label className="block text-[11px] text-white/40">
-          {ar ? "خلفية البطاقة" : "Card"}
-          <input
-            type="color"
-            className="mt-1 h-9 w-full rounded-lg bg-transparent border border-white/10"
-            value={cardBg}
-            onChange={(e) => onCanvas({ canvasBg, cardBg: e.target.value })}
-          />
-        </label>
+
+      {/* Text & Background Color Controls */}
+      <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+        {(block.type === "heading" || block.type === "paragraph" || block.type === "button") && (
+          <div>
+            <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+              {ar ? "لون النص" : "Text color"}
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                type="color"
+                className="h-8 w-10 rounded-lg cursor-pointer bg-transparent border border-slate-700/60"
+                value={block.color || "#122033"}
+                onChange={(e) => onChange({ color: e.target.value })}
+              />
+              <span className="text-xs font-mono text-slate-400">{block.color || "#122033"}</span>
+            </div>
+          </div>
+        )}
+
+        {(block.type === "header" ||
+          block.type === "button" ||
+          block.type === "bookingTable" ||
+          block.type === "footer" ||
+          block.type === "divider") && (
+          <div>
+            <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+              {block.type === "divider"
+                ? ar
+                  ? "لون الفاصل"
+                  : "Divider color"
+                : ar
+                  ? "لون الخلفية"
+                  : "Background color"}
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                type="color"
+                className="h-8 w-10 rounded-lg cursor-pointer bg-transparent border border-slate-700/60"
+                value={block.background || block.color || brand.button}
+                onChange={(e) =>
+                  onChange(
+                    block.type === "divider"
+                      ? { color: e.target.value }
+                      : { background: e.target.value }
+                  )
+                }
+              />
+              <span className="text-xs font-mono text-slate-400">
+                {block.background || block.color || brand.button}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Global Canvas & Card Color settings */}
+      <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+        <div>
+          <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+            {ar ? "خلفية الصفحة الخارجية" : "Canvas BG"}
+          </label>
+          <div className="flex items-center gap-2">
+            <input
+              type="color"
+              className="h-8 w-10 rounded-lg cursor-pointer bg-transparent border border-slate-700/60"
+              value={canvasBg}
+              onChange={(e) => onCanvas({ canvasBg: e.target.value, cardBg })}
+            />
+            <span className="text-xs font-mono text-slate-400">{canvasBg}</span>
+          </div>
+        </div>
+        <div>
+          <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+            {ar ? "خلفية بطاقة البريد" : "Card BG"}
+          </label>
+          <div className="flex items-center gap-2">
+            <input
+              type="color"
+              className="h-8 w-10 rounded-lg cursor-pointer bg-transparent border border-slate-700/60"
+              value={cardBg}
+              onChange={(e) => onCanvas({ canvasBg, cardBg: e.target.value })}
+            />
+            <span className="text-xs font-mono text-slate-400">{cardBg}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

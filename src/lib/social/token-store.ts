@@ -84,6 +84,7 @@ function sanitizeAccount(raw: unknown): StoredSocialAccount | null {
     connectedAt: asString(row.connectedAt) || new Date().toISOString(),
     lastRefreshedAt: asString(row.lastRefreshedAt) || undefined,
     lastError: asString(row.lastError) || undefined,
+    isPrimary: Boolean(row.isPrimary),
   };
 }
 
@@ -137,6 +138,7 @@ export function toPublicAccount(account: StoredSocialAccount): PublicSocialAccou
     hasAccessToken: Boolean(account.accessToken),
     hasRefreshToken: Boolean(account.refreshToken),
     tokenExpiresAt: account.tokenExpiresAt,
+    isPrimary: Boolean(account.isPrimary),
   };
 }
 
@@ -157,10 +159,45 @@ export async function getStoredAccount(
   return accounts.find((row) => row.id === id) ?? null;
 }
 
+export async function setPrimaryStoredAccount(id: string): Promise<StoredSocialAccount | null> {
+  const store = await readStore();
+  const target = store.accounts.find((a) => a.id === id);
+  if (!target) return null;
+
+  for (const acc of store.accounts) {
+    if (acc.platform === target.platform) {
+      acc.isPrimary = acc.id === id;
+    }
+  }
+
+  // Sort so primary comes first
+  store.accounts.sort((a, b) => (b.isPrimary ? 1 : 0) - (a.isPrimary ? 1 : 0));
+  await writeStore(store);
+  return target;
+}
+
 export async function findConnectedAccount(
   platform: SocialPlatform
 ): Promise<StoredSocialAccount | null> {
   const accounts = await listStoredAccounts();
+  const primary = accounts.find(
+    (row) =>
+      row.platform === platform &&
+      row.status === "connected" &&
+      row.isPrimary &&
+      Boolean(row.accessToken || row.pageAccessToken)
+  );
+  if (primary) return primary;
+
+  const lonaliza = accounts.find(
+    (row) =>
+      row.platform === platform &&
+      row.status === "connected" &&
+      row.displayName.toLowerCase().includes("lonaliza") &&
+      Boolean(row.accessToken || row.pageAccessToken)
+  );
+  if (lonaliza) return lonaliza;
+
   const connected = accounts.find(
     (row) =>
       row.platform === platform &&

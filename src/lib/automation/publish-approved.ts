@@ -45,7 +45,7 @@ export async function publishApprovedStudio(input: {
     approved: true,
     platforms: resolved,
     mediaUrls,
-    caption: input.caption || last?.caption || "الريان للسياحة",
+    caption: input.caption || last?.caption || "لوناليزا للسياحة",
     title: input.caption || last?.caption,
   });
   await recordPublishedPosts(result);
@@ -57,7 +57,7 @@ export async function publishApprovedStudio(input: {
       approved: true,
       dryRun: false,
       platforms: ["meta"],
-      name: input.caption || "تعزيز منشور الريان",
+      name: input.caption || "تعزيز منشور لوناليزا",
       landingUrl: `${origin}/`,
       dailyBudget: input.budget,
       metaCreative: "boost",

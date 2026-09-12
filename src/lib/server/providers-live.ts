@@ -45,6 +45,11 @@ import {
 } from "@/lib/server/env-store";
 import { getFlightsRuntime, saveFlightsRuntime } from "@/lib/server/flights-runtime-store";
 import { getHotelsRuntime, saveHotelsRuntime } from "@/lib/server/hotels-runtime-store";
+import {
+  getProviderMode,
+  getProviderRuntime,
+  saveProviderRuntime,
+} from "@/lib/server/providers-registry-store";
 import { ownedEngineHealth } from "@/lib/scraping/hotels/owned-client";
 
 function maskFields(fields: Record<string, string>, secretKeys: string[]): Record<string, string> {
@@ -81,6 +86,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
   if (def.integration !== "live") {
     throw new Error(`${id} is not a live provider`);
   }
+  const mode = await getProviderMode(id);
 
   switch (id) {
     case "air_scraper": {
@@ -94,6 +100,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           { host: map.SKY_SCRAPPER_HOST || SKY_SCRAPPER_HOST, apiKey },
@@ -122,6 +129,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -151,6 +159,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready && Boolean(health?.ok),
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -172,6 +181,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -193,6 +203,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -211,6 +222,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready: true,
         connected: enabled,
+        mode,
         integration: "live",
         fields: {},
       };
@@ -218,7 +230,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
     case "cars_internal": {
       const map = await getServerEnvMap(CARS_CONFIG_ENV_KEYS);
       const enabled = (map.NEXT_PUBLIC_CARS_PROVIDER || "travelpayouts") === "internal";
-      return { id, enabled, ready: true, connected: enabled, integration: "live", fields: {} };
+      return { id, enabled, ready: true, connected: enabled, mode, integration: "live", fields: {} };
     }
     case "travelpayouts_cars": {
       const map = await getServerEnvMap(CARS_CONFIG_ENV_KEYS);
@@ -239,6 +251,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -258,7 +271,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
     case "transfers_internal": {
       const map = await getServerEnvMap(TRANSFERS_CONFIG_ENV_KEYS);
       const enabled = (map.NEXT_PUBLIC_TRANSFERS_PROVIDER || "internal") === "internal";
-      return { id, enabled, ready: true, connected: enabled, integration: "live", fields: {} };
+      return { id, enabled, ready: true, connected: enabled, mode, integration: "live", fields: {} };
     }
     case "travelpayouts_transfers": {
       const map = await getServerEnvMap(TRANSFERS_CONFIG_ENV_KEYS);
@@ -281,6 +294,7 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         enabled,
         ready,
         connected: enabled && ready,
+        mode,
         integration: "live",
         fields: maskFields(
           {
@@ -299,18 +313,139 @@ export async function getLiveProviderState(id: CatalogProviderId): Promise<Provi
         ),
       };
     }
-    case "pkfare":
-    case "seeru":
+    case "pkfare": {
+      const runtime = await getProviderRuntime("pkfare");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.partnerId?.trim() && fields.partnerKey?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["partnerKey"]),
+      };
+    }
+    case "seeru": {
+      const runtime = await getProviderRuntime("seeru");
+      const fields = runtime.fields || {};
+      const token = (fields.apiKey || fields.jwtToken || "").trim();
+      const ready = Boolean(token && (fields.refreshKey || "").trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["apiKey", "refreshKey", "jwtToken", "password"]),
+      };
+    }
+    case "travelport_flights": {
+      const runtime = await getProviderRuntime("travelport_flights");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.username?.trim() && fields.password?.trim() && fields.targetBranch?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["password", "clientSecret"]),
+      };
+    }
+    case "travelport_hotels": {
+      const runtime = await getProviderRuntime("travelport_hotels");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.username?.trim() && fields.password?.trim() && fields.targetBranch?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["password", "clientSecret"]),
+      };
+    }
+    case "ratehawk": {
+      const runtime = await getProviderRuntime("ratehawk");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.keyId?.trim() && fields.apiKey?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["apiKey"]),
+      };
+    }
+    case "hotelbeds": {
+      const runtime = await getProviderRuntime("hotelbeds");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.apiKey?.trim() && fields.apiSecret?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["apiSecret"]),
+      };
+    }
+    case "biletbank": {
+      const runtime = await getProviderRuntime("biletbank");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.clientKey?.trim() || (fields.username?.trim() && fields.password?.trim()));
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["clientKey", "password"]),
+      };
+    }
+    case "seeru_hotels": {
+      const runtime = await getProviderRuntime("seeru_hotels");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.jwtToken?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["jwtToken", "webhookSecret"]),
+      };
+    }
+    case "seeru_transfers": {
+      const runtime = await getProviderRuntime("seeru_transfers");
+      const fields = runtime.fields || {};
+      const ready = Boolean(fields.jwtToken?.trim());
+      return {
+        id,
+        enabled: runtime.enabled,
+        ready,
+        connected: runtime.enabled && ready,
+        mode,
+        integration: "live",
+        fields: maskFields(fields, ["jwtToken"]),
+      };
+    }
     case "amadeus_flights":
-    case "travelport_flights":
-    case "biletbank":
     case "iati":
     case "biletdukkani":
     case "turna_flights":
     case "tbo_flights":
     case "amadeus_hotels":
-    case "travelport_hotels":
-    case "ratehawk":
     case "tbo_hotels":
     case "amadeus_cars":
     case "travelport_cars":
@@ -561,16 +696,55 @@ export async function saveLiveProvider(
     }
     case "pkfare":
     case "seeru":
-    case "amadeus_flights":
+    case "seeru_hotels":
+    case "seeru_transfers":
     case "travelport_flights":
-    case "biletbank":
+    case "travelport_hotels":
+    case "ratehawk":
+    case "hotelbeds": {
+      const current = await getProviderRuntime(id);
+      const cleanFields: Record<string, string> = { ...(current.fields || {}) };
+      if (patch.fields) {
+        for (const [k, v] of Object.entries(patch.fields)) {
+          if (v !== undefined) {
+            if (isMaskedPlaceholder(v)) {
+              continue;
+            }
+            cleanFields[k] = v;
+          }
+        }
+      }
+      if (cleanFields.apiKey) {
+        cleanFields.jwtToken = cleanFields.apiKey;
+      }
+      await saveProviderRuntime(id, {
+        enabled: patch.enabled,
+        fields: cleanFields,
+      });
+      return getLiveProviderState(id);
+    }
+    case "biletbank": {
+      const current = await getProviderRuntime("biletbank");
+      const cleanFields: Record<string, string> = { ...current.fields };
+      if (patch.fields) {
+        for (const [k, v] of Object.entries(patch.fields)) {
+          if (v && !v.includes("••")) {
+            cleanFields[k] = v;
+          }
+        }
+      }
+      await saveProviderRuntime("biletbank", {
+        enabled: patch.enabled,
+        fields: cleanFields,
+      });
+      return getLiveProviderState("biletbank");
+    }
+    case "amadeus_flights":
     case "iati":
     case "biletdukkani":
     case "turna_flights":
     case "tbo_flights":
     case "amadeus_hotels":
-    case "travelport_hotels":
-    case "ratehawk":
     case "tbo_hotels":
     case "amadeus_cars":
     case "travelport_cars":

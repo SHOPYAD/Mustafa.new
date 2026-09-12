@@ -32,11 +32,18 @@ const CITY_IATA: Record<string, string> = {
   "sahiha": "SAW",
   "sabiha": "SAW",
   antalya: "AYT",
+  antalia: "AYT",
+  antialya: "AYT",
   أسطنبول: "IST",
   اسطنبول: "IST",
   إسطنبول: "IST",
+  استانبول: "IST",
   أنطاليا: "AYT",
   انطاليا: "AYT",
+  أنطالية: "AYT",
+  انطالية: "AYT",
+  أنطلييا: "AYT",
+  انطلييا: "AYT",
   trabzon: "TZX",
   طرابزون: "TZX",
   ankara: "ESB",
@@ -76,6 +83,13 @@ const CITY_IATA: Record<string, string> = {
   لندن: "LHR",
   paris: "CDG",
   باريس: "CDG",
+  casablanca: "CMN",
+  "casa blanca": "CMN",
+  cmn: "CMN",
+  "الدار البيضاء": "CMN",
+  الدارالبيضاء: "CMN",
+  البيضاء: "CMN",
+  كازابلانكا: "CMN",
 };
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -127,6 +141,39 @@ export function resolveIataCode(raw?: string | null): string | undefined {
     if (airport?.iata) return airport.iata;
   }
   return undefined;
+}
+
+const CITY_NAMES_BY_LENGTH = Object.keys(CITY_IATA).sort((a, b) => b.length - a.length);
+
+function cityCodeInChunk(chunk: string): string | undefined {
+  const hay = String(chunk || "").trim();
+  if (!hay) return undefined;
+  const direct = resolveIataCode(hay);
+  if (direct) return direct;
+  const lower = hay.toLowerCase();
+  for (const name of CITY_NAMES_BY_LENGTH) {
+    if (name.length < 3) continue;
+    if (lower.includes(name.toLowerCase())) return CITY_IATA[name];
+  }
+  return undefined;
+}
+
+/** Pull origin/destination from typed speech like «من الدار البيضاء الى اسطنبول». */
+export function extractOdFromText(text: string): { from?: string; to?: string } {
+  const t = String(text || "").trim();
+  if (!t) return {};
+  const fromTo =
+    t.match(/من\s+(.+?)\s+(?:الى|إلى)\s+(.+?)(?:\s|$|،|,|شخص|وزن|بعد|مباشر|رخيص|ارخص|رحلة|تذكرة)/i) ||
+    t.match(/\bfrom\s+(.+?)\s+to\s+(.+?)(?:\s|$|,)/i);
+  if (!fromTo) return {};
+  return {
+    from: cityCodeInChunk(fromTo[1]),
+    to: cityCodeInChunk(fromTo[2]),
+  };
+}
+
+export function textNamesOrigin(text: string): boolean {
+  return /(?:^|[\s،,])(?:من|from)\s+\S+/i.test(String(text || ""));
 }
 
 export function buildAdvisorFlightHref(

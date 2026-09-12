@@ -152,7 +152,7 @@ export function DashboardCommerce({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BadgePercent className="size-4 text-emerald-600" />
+              <BadgePercent className="size-4 text-purple-700 dark:text-amber-400" />
               {copy.affiliate}
             </CardTitle>
             <CardDescription>
@@ -182,7 +182,7 @@ export function DashboardCommerce({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Gift className="size-4 text-emerald-600" />
+              <Gift className="size-4 text-purple-700 dark:text-amber-400" />
               {copy.rewards}
             </CardTitle>
             <CardDescription>
@@ -213,7 +213,7 @@ export function DashboardCommerce({
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TicketPercent className="size-4 text-emerald-600" />
+              <TicketPercent className="size-4 text-purple-700 dark:text-amber-400" />
               {copy.coupons}
             </CardTitle>
             <CardDescription>

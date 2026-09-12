@@ -1,0 +1,31 @@
+{
+  "name": "etg-spec-docs-mcp",
+  "version": "1.0.0",
+  "description": "Enterprise Specification & Documentation MCP Server for Emerging Travel Group (RateHawk API v3)",
+  "type": "module",
+  "bin": {
+    "etg-docs-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ratehawk",
+    "emerging-travel-group",
+    "docs-mcp",
+    "openapi",
+    "hotel-api"
+  ],
+  "author": "Ferdos Alkan",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}

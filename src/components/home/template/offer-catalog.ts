@@ -165,12 +165,15 @@ export async function loadOfferCatalog(locale: Locale): Promise<OfferCatalogEntr
   ];
 }
 
-export const OFFER_KIND_LABEL: Record<HeroOfferKind, { ar: string; en: string; tr: string }> = {
-  package: { ar: "باقات", en: "Packages", tr: "Paketler" },
-  hotel: { ar: "فنادق", en: "Hotels", tr: "Oteller" },
-  flight: { ar: "طيران", en: "Flights", tr: "Uçuşlar" },
-  transfer: { ar: "ترانسفير", en: "Transfers", tr: "Transferler" },
-  car: { ar: "سيارات", en: "Cars", tr: "Araçlar" },
-  visa: { ar: "تأشيرات", en: "Visas", tr: "Vizeler" },
-  tour: { ar: "جولات", en: "Tours", tr: "Turlar" },
+export const OFFER_KIND_LABEL: Record<
+  HeroOfferKind,
+  { ar: string; en: string; tr: string; fr?: string; [k: string]: string | undefined }
+> = {
+  package: { ar: "باقات", en: "Packages", tr: "Paketler", fr: "Forfaits" },
+  hotel: { ar: "فنادق", en: "Hotels", tr: "Oteller", fr: "Hôtels" },
+  flight: { ar: "طيران", en: "Flights", tr: "Uçuşlar", fr: "Vols" },
+  transfer: { ar: "ترانسفير", en: "Transfers", tr: "Transferler", fr: "Transferts" },
+  car: { ar: "سيارات", en: "Cars", tr: "Araçlar", fr: "Voitures" },
+  visa: { ar: "تأشيرات", en: "Visas", tr: "Vizeler", fr: "Visas" },
+  tour: { ar: "جولات", en: "Tours", tr: "Turlar", fr: "Excursions" },
 };

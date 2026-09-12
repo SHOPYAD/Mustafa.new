@@ -93,11 +93,27 @@ export function enquiryToApi(row: EnquiryBookingRecord) {
   };
 }
 
+const FULFILMENT_LABEL_AR: Record<string, string> = {
+  awaiting_payment: "بانتظار الدفع",
+  supplier_pending: "جارٍ التثبيت لدى المورد",
+  supplier_confirmed: "مؤكد لدى المورد",
+  voucher_sent: "مؤكد — أُرسل الفوشر",
+  supplier_failed: "فشل التثبيت لدى المورد",
+  refund_pending: "فشل المورد — استرداد معلّق",
+  refunded: "مسترد",
+  refund_failed: "فشل الاسترداد — تدخل يدوي",
+  cancelled: "ملغى لدى المورد",
+};
+
 export function hotelBookingToEnquiry(row: HotelBookingRecord) {
+  const snap = (row.offer_snapshot && typeof row.offer_snapshot === "object" ? row.offer_snapshot : {}) as Record<string, unknown>;
+  const fulfilment = String(snap.fulfilment_status || "");
+  const supplierRef = String(snap.hotel_confirmation_code || snap.supplier_reference || snap.supplier_order_id || "");
+  const needsAttention = fulfilment === "supplier_failed" || fulfilment === "refund_pending" || fulfilment === "refund_failed";
   return {
     id: `hotel:${row.id}`,
     type: "hotel",
-    status: row.status === "cancelled" ? "resolved" : "new",
+    status: row.status === "cancelled" ? "resolved" : needsAttention ? "in-progress" : "new",
     service_name: row.hotel_name,
     destination: row.hotel_slug,
     customer_name: row.customer_name,
@@ -111,6 +127,9 @@ export function hotelBookingToEnquiry(row: HotelBookingRecord) {
       row.notes || "",
       `السعر: ${row.currency} ${row.price}`,
       `حالة الدفع: ${row.status}`,
+      fulfilment ? `حالة المورد: ${FULFILMENT_LABEL_AR[fulfilment] || fulfilment}${snap.supplier ? ` (${String(snap.supplier)})` : ""}` : "",
+      supplierRef ? `رقم تأكيد المورد: ${supplierRef}` : "",
+      snap.fulfilment_error ? `خطأ المورد: ${String(snap.fulfilment_error)}` : "",
     ]
       .filter(Boolean)
       .join("\n"),
@@ -119,6 +138,10 @@ export function hotelBookingToEnquiry(row: HotelBookingRecord) {
       hotel_booking_id: row.id,
       payment_status: row.status,
       provider: row.provider,
+      supplier: snap.supplier ? String(snap.supplier) : undefined,
+      fulfilment_status: fulfilment || undefined,
+      supplier_reference: supplierRef || undefined,
+      quote_id: snap.quote_id ? String(snap.quote_id) : undefined,
     },
     created_at: row.created || new Date().toISOString(),
     updated_at: row.updated || row.created || new Date().toISOString(),

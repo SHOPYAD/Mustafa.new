@@ -9,6 +9,8 @@ import HotelCard from "@/components/hotels/HotelCard";
 import { getActiveHotels } from "@/data/hotels";
 import type { Hotel } from "@/types/hotel";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
+import { SEARCH_AGENT_EVENT, type SearchAgentEventDetail } from "@/lib/search-agent";
 import { tContent } from "@/lib/utils";
 
 export default function InternalHotelsContent() {
@@ -24,28 +26,69 @@ export default function InternalHotelsContent() {
     if (q) setSearch(q);
   }, []);
 
+  useEffect(() => {
+    const onAgent = (event: Event) => {
+      const detail = (event as CustomEvent<SearchAgentEventDetail>).detail;
+      if (!detail?.filters) return;
+      if (detail.filters.hotelName) setSearch(detail.filters.hotelName);
+      if (detail.filters.stars) setStars(String(detail.filters.stars));
+    };
+    window.addEventListener(SEARCH_AGENT_EVENT, onAgent);
+    return () => window.removeEventListener(SEARCH_AGENT_EVENT, onAgent);
+  }, []);
+
   const cities = useMemo(
     () => Array.from(new Set(hotels.map((h) => h.city))).sort(),
     [hotels]
   );
 
+  const CITY_SYNONYMS: Record<string, string> = {
+    "اسطنبول": "Istanbul",
+    "إسطنبول": "Istanbul",
+    "انطاليا": "Antalya",
+    "أنطاليا": "Antalya",
+    "طرابزون": "Trabzon",
+    "بودروم": "Bodrum",
+    "كابادوكيا": "Cappadocia",
+    "ريزا": "Rize",
+    "ريزه": "Rize",
+    "بورصة": "Bursa",
+    "بورصه": "Bursa",
+  };
+
   const filtered = hotels.filter((h) => {
     if (city !== "all" && h.city !== city) return false;
     if (stars !== "all" && h.stars !== Number(stars)) return false;
     if (search.trim()) {
-      const q = search.toLowerCase();
-      const name = tContent(h, "name", locale).toLowerCase();
-      const neighborhood = tContent(h, "neighborhood", locale).toLowerCase();
-      const address = tContent(h, "address", locale).toLowerCase();
-      if (
-        !name.includes(q) &&
-        !neighborhood.includes(q) &&
-        !address.includes(q) &&
-        !h.city.toLowerCase().includes(q) &&
-        !h.amenities.some((a) => a.toLowerCase().includes(q))
-      ) {
-        return false;
+      const q = search.trim().toLowerCase();
+      if (q === "turkey" || q === "turkiye" || q === "تركيا" || q === "all" || q === "الكل") {
+        return true;
       }
+      const mappedCity = CITY_SYNONYMS[q] || "";
+      if (mappedCity && h.city.toLowerCase().includes(mappedCity.toLowerCase())) {
+        return true;
+      }
+      const nameEn = (h.nameEn || "").toLowerCase();
+      const nameAr = (h.nameAr || "").toLowerCase();
+      const neighborhoodEn = (h.neighborhoodEn || "").toLowerCase();
+      const neighborhoodAr = (h.neighborhoodAr || "").toLowerCase();
+      const addressEn = (h.addressEn || "").toLowerCase();
+      const addressAr = (h.addressAr || "").toLowerCase();
+      const cityName = (h.city || "").toLowerCase();
+
+      if (
+        nameEn.includes(q) ||
+        nameAr.includes(q) ||
+        neighborhoodEn.includes(q) ||
+        neighborhoodAr.includes(q) ||
+        addressEn.includes(q) ||
+        addressAr.includes(q) ||
+        cityName.includes(q) ||
+        h.amenities?.some((a) => a.toLowerCase().includes(q))
+      ) {
+        return true;
+      }
+      return false;
     }
     return true;
   });
@@ -84,6 +127,13 @@ export default function InternalHotelsContent() {
 
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SearchAgentResultsDock
+            tab="hotel"
+            page="results"
+            tone="light"
+            className="mb-6"
+            context={`Hotel list ${search}`}
+          />
           <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-8 bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
             <div className="flex items-center gap-2 text-slate-700 font-semibold flex-shrink-0">
               <Filter size={18} className="text-orange-500" />

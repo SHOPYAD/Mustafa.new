@@ -64,8 +64,7 @@ export default function SocialSidebar() {
       }));
   }, [contact, t.contactSettings]);
 
-  if (pathname?.startsWith("/flights/redirect")) return null;
-  if (pathname === "/transfers" || pathname?.startsWith("/transfers?")) return null;
+  if (pathname === "/" || pathname?.startsWith("/partners") || pathname?.startsWith("/flights/redirect")) return null;
   if (socialLinks.length === 0) return null;
 
   return (

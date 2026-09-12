@@ -26,7 +26,7 @@ import type { BrandingContent } from "@/types/branding";
 import { normalizeWhatsAppNumber } from "@/lib/utils";
 
 const inputClass =
-  "w-full px-3 py-2 bg-slate-950/60 border border-white/10 rounded-xl text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 text-sm";
+  "w-full px-3 py-2 bg-slate-950/60 border border-white/10 rounded-xl text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-purple-500/40 text-sm";
 
 const labelClass =
   "block text-[11px] font-semibold text-white/35 mb-1.5 uppercase tracking-wider";
@@ -321,7 +321,7 @@ export function EditorBrandingPanel({
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-white text-sm font-bold flex items-center gap-2">
-            <Palette size={16} className="text-emerald-400" />
+            <Palette size={16} className="text-amber-400" />
             {t.admin.brandingIdentity}
           </h2>
           <p className="text-white/40 text-[11px] mt-1">
@@ -334,14 +334,14 @@ export function EditorBrandingPanel({
           type="button"
           onClick={() => void handleSave()}
           disabled={saving}
-          className="px-3 py-1.5 rounded-lg bg-emerald-500 text-[#051741] text-xs font-bold inline-flex items-center gap-1.5 disabled:opacity-60"
+          className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 via-purple-700 to-amber-600 text-white text-xs font-bold inline-flex items-center gap-1.5 hover:brightness-110 shadow-sm disabled:opacity-60 transition-all"
         >
           {saving ? <Loader2 className="animate-spin" size={14} /> : <Check size={14} />}
           {t.admin.brandingSave}
         </button>
       </div>
 
-      {message ? <p className="text-xs text-emerald-300/90">{message}</p> : null}
+      {message ? <p className="text-xs text-amber-300/90 font-medium">{message}</p> : null}
 
       <section className="space-y-3">
         <div className="grid grid-cols-1 gap-3">
@@ -532,19 +532,19 @@ export function EditorBrandingPanel({
           onClick={() => void resetTheme()}
           className={`w-full text-start rounded-xl border px-3 py-2.5 transition inline-flex items-center gap-2 ${
             theme?.presetId === FACTORY_PRESET_ID
-              ? "border-emerald-400 bg-emerald-500/10"
+              ? "border-amber-400/60 bg-purple-900/30 ring-1 ring-amber-400/40"
               : "border-white/15 bg-white/5 hover:bg-white/10"
           }`}
         >
-          <RotateCcw size={14} className="text-emerald-300 shrink-0" />
+          <RotateCcw size={14} className="text-amber-300 shrink-0" />
           <span>
             <span className="block text-white text-sm font-semibold">
               {t.admin.brandingReset}
             </span>
             <span className="block text-[11px] text-white/45 mt-0.5">
               {isAr
-                ? "كحلي / تركواز / أخضر — هوية الريان الأصلية فورًا."
-                : "Navy / teal / green — factory Alrayyan tokens, instantly."}
+                ? "بنفسج ملكي داكن وذهب لامع — هوية لوناليزا الرسمية فورًا."
+                : "Royal purple & lustrous gold — factory Lonaliza brand tokens."}
             </span>
           </span>
         </button>
@@ -560,7 +560,7 @@ export function EditorBrandingPanel({
                 onClick={() => void applyPreset(preset.id)}
                 className={`text-start rounded-xl border px-3 py-2.5 transition ${
                   active
-                    ? "border-emerald-400 bg-emerald-500/10"
+                    ? "border-amber-400/60 bg-purple-900/30 ring-1 ring-amber-400/40"
                     : "border-white/10 bg-white/5 hover:bg-white/10"
                 }`}
               >

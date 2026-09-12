@@ -68,7 +68,7 @@ class _AccountMyPostsSectionState extends State<AccountMyPostsSection> {
                     children: const [
                       TextSpan(text: 'Post your first Trip Moments to earn '),
                       TextSpan(
-                        text: '25 Trip Coins',
+                        text: '25 نقاط لوناليزا',
                         style: TextStyle(
                           color: AccountTheme.coinGold,
                           fontWeight: FontWeight.w800,

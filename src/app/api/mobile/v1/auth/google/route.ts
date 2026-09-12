@@ -9,7 +9,9 @@ import { isEmbeddedWebViewUserAgent } from "@/lib/server/mobile/handoff-allowlis
 
 export const runtime = "nodejs";
 
-const MOBILE_REDIRECT = "lonaliza://auth/callback";
+/** Google Web clients only accept https redirects. The HTTPS callback then opens the app. */
+export const MOBILE_GOOGLE_REDIRECT = "https://lonaliza.com/api/mobile/v1/auth/google/callback";
+export const MOBILE_APP_SCHEME = "lonaliza://auth/callback";
 
 export async function GET(req: NextRequest) {
   if (isEmbeddedWebViewUserAgent(req.headers.get("user-agent") || "")) {
@@ -30,7 +32,7 @@ export async function GET(req: NextRequest) {
   const state = randomBytes(16).toString("base64url");
   const params = new URLSearchParams({
     client_id: clientId,
-    redirect_uri: MOBILE_REDIRECT,
+    redirect_uri: MOBILE_GOOGLE_REDIRECT,
     response_type: "code",
     scope: "openid email profile",
     code_challenge: challenge,
@@ -44,7 +46,8 @@ export async function GET(req: NextRequest) {
     ok: true,
     url: `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`,
     verifier,
-    redirectUri: MOBILE_REDIRECT,
+    redirectUri: MOBILE_GOOGLE_REDIRECT,
+    appScheme: MOBILE_APP_SCHEME,
   });
 }
 
@@ -62,7 +65,7 @@ export async function POST(req: NextRequest) {
 
   const code = String(body.code || "").trim();
   const verifier = String(body.verifier || "").trim();
-  const redirectUri = String(body.redirectUri || MOBILE_REDIRECT).trim();
+  const redirectUri = String(body.redirectUri || MOBILE_GOOGLE_REDIRECT).trim();
   if (!code || !verifier) {
     return NextResponse.json({ ok: false, error: "code_required" }, { status: 400 });
   }

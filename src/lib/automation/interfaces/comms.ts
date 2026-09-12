@@ -78,7 +78,7 @@ export async function sendAbandonedBookingReminder(ctx: AutomationJobContext): P
           segment: "abandoned",
           includeOffer: true,
           consentSource: ctx.job?.consentSource || "crm_opt_in",
-          subject: "أكملوا حجزكم لدى الريان — العرض ما زال متاحاً لجمهوركم الموافق",
+          subject: "أكملوا حجزكم لدى لوناليزا — العرض ما زال متاحاً لجمهوركم الموافق",
         },
       },
       ctx
@@ -97,7 +97,7 @@ export async function sendPostTripReviewRequest(ctx: AutomationJobContext): Prom
           segment: "past_guests",
           includeOffer: false,
           consentSource: ctx.job?.consentSource || "crm_opt_in",
-          subject: "كيف كانت رحلتكم مع الريان؟ تقييمكم يساعدنا — لجمهور موافق فقط",
+          subject: "كيف كانت رحلتكم مع لوناليزا؟ تقييمكم يساعدنا — لجمهور موافق فقط",
         },
       },
       ctx

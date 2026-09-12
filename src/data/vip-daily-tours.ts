@@ -95,7 +95,7 @@ function defineVip(opts: {
           );
 
   const overview = loc(
-    `${opts.overview.ar}\n\n${vehiclePitch.ar} مدة البرنامج حوالي ${opts.hours} ساعات مع استلام من الفندق وعودة إليه في نهاية اليوم. الجدول أدناه ساعة بساعة: الاستلام، المحطات، نافذة الغداء، والعودة.\n\nتذاكر المعالم والوجبات غير مشمولة إلا إذا ذُكر خلاف ذلك. يمكن تقديم أو تأخير محطة ضمن الوقت المتفق عليه. احجز عبر واتساب الريان للسياحة برقم المركبة والتاريخ.`,
+    `${opts.overview.ar}\n\n${vehiclePitch.ar} مدة البرنامج حوالي ${opts.hours} ساعات مع استلام من الفندق وعودة إليه في نهاية اليوم. الجدول أدناه ساعة بساعة: الاستلام، المحطات، نافذة الغداء، والعودة.\n\nتذاكر المعالم والوجبات غير مشمولة إلا إذا ذُكر خلاف ذلك. يمكن تقديم أو تأخير محطة ضمن الوقت المتفق عليه. احجز عبر واتساب لوناليزا للسياحة والسفر برقم المركبة والتاريخ.`,
     `${opts.overview.en}\n\n${vehiclePitch.en} The program lasts about ${opts.hours} hours with hotel pickup and drop-off at the end of the day. The timeline below is hourly: pickup, stops, a lunch window, and return.\n\nAttraction tickets and meals are extra unless stated. Stops can shift within the booked hours. Book on Alrayyan Tourism WhatsApp with the vehicle type and date.`,
     `${opts.overview.tr}\n\n${vehiclePitch.tr} Program yaklaşık ${opts.hours} saat sürer; otelden alış ve gün sonunda bırakış vardır. Aşağıdaki saatlik akış: alış, duraklar, öğle penceresi ve dönüş.\n\nMüze biletleri ve yemekler belirtilmedikçe extra’dır. Duraklar rezerve saatler içinde kayabilir. Alrayyan Turizm WhatsApp’tan araç tipi ve tarihle rezervasyon yapın.`
   );
@@ -138,7 +138,7 @@ function defineVip(opts: {
     excludedEn: opts.excludes.map((e) => e.en),
     reviews: sampleVipReviews(opts.id, 20),
     whatsappNumber: WA,
-    whatsappMessageAr: `مرحباً الريان للسياحة، أرغب بحجز ${opts.title.ar} (سعر المركبة ${opts.price} دولار).`,
+    whatsappMessageAr: `مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ${opts.title.ar} (سعر المركبة ${opts.price} دولار).`,
     whatsappMessageEn: `Hello Alrayyan Tourism, I would like to book ${opts.title.en} (vehicle price USD ${opts.price}).`,
     isFeatured: Boolean(opts.featured),
     isActive: true,

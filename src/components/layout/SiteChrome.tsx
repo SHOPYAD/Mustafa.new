@@ -20,6 +20,8 @@ function SiteChromeInner({ children }: { children: React.ReactNode }) {
     searchParams.get("builder") === "1" ||
     searchParams.get("builder") === "true";
 
+  const isCommunity = pathname?.startsWith("/community");
+
   if (isAdmin || isFlightsRedirect) {
     return <>{children}</>;
   }
@@ -29,7 +31,7 @@ function SiteChromeInner({ children }: { children: React.ReactNode }) {
       <Header />
       <main className="min-h-screen">{children}</main>
       <Footer />
-      {!editorMode && (
+      {!editorMode && !isCommunity && (
         <>
           <FloatingActionHub />
           <SocialSidebar />

@@ -90,8 +90,8 @@ export default function LocationAutocomplete({
               fieldValue
             )
           : variant === "dark"
-            ? "w-full ps-12 pe-4 py-2.5 bg-slate-950/60 border border-white/10 rounded-xl text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 text-sm"
-            : "w-full ps-12 pe-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all placeholder:text-slate-400 text-slate-800 font-medium",
+            ? "w-full ps-12 pe-4 py-2.5 bg-slate-950/60 border border-white/10 rounded-xl text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-purple-500/40 text-sm"
+            : "w-full ps-12 pe-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-600 outline-none transition-all placeholder:text-slate-400 text-slate-800 font-medium",
         inputClassName
       )}
     />
@@ -108,7 +108,7 @@ export default function LocationAutocomplete({
             "w-full text-start px-4 py-2.5 text-sm transition-colors flex items-center gap-3",
             variant === "dark"
               ? "hover:bg-white/5 text-white"
-              : "hover:bg-emerald-50 text-slate-800"
+              : "hover:bg-purple-50 text-slate-800 font-medium"
           )}
         >
           <TypeIcon

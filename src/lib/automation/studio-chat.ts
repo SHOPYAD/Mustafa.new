@@ -42,7 +42,7 @@ const DRAFT_SCHEMA: ResponseSchema = {
 };
 
 export function studioSystemPrompt(): string {
-  return `أنت وكيل أتمتة الريان. المستخدم يصف وظيفة بالعربية.
+  return `أنت وكيل أتمتة لوناليزا. المستخدم يصف وظيفة بالعربية.
 ابنِ مسودة وظيفة كاملة من الكتالوج فقط. لا تخترع أنواعاً خارج القائمة.
 التوقيت دائماً ${AUTOMATION_TIMEZONE}.
 autoPublish يجب أن يكون false دائماً. لا تفعّل الكرون ولا النشر.

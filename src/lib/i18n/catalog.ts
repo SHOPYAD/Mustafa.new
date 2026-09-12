@@ -1,6 +1,6 @@
 import type { Dictionary } from "./types";
 
-export const BUILTIN_LOCALES = ["ar", "en", "tr"] as const;
+export const BUILTIN_LOCALES = ["ar", "en", "tr", "fr"] as const;
 export type BuiltInLocale = (typeof BUILTIN_LOCALES)[number];
 
 export const RTL_LANG_CODES = new Set([
@@ -63,10 +63,17 @@ export const BUILTIN_LOCALE_META: RegisteredLocale[] = [
     dir: "ltr",
     builtin: true,
   },
+  {
+    code: "fr",
+    name: "French",
+    nativeName: "Français",
+    dir: "ltr",
+    builtin: true,
+  },
 ];
 
 export function isBuiltInLocale(code: string): code is BuiltInLocale {
-  return code === "ar" || code === "en" || code === "tr";
+  return code === "ar" || code === "en" || code === "tr" || code === "fr";
 }
 
 export function scopeForKey(key: string): TranslationScope {

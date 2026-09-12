@@ -166,69 +166,70 @@ export function imageTreatmentVars(treatment: ImageTreatment): {
   }
 }
 
-/** Alrayyan factory — navy / teal / green. Reset target. */
+/** Lonaliza default — royal purple / luxury violet. */
 export const FACTORY_CHROME: ThemeChrome = {
-  pageBg: "#ffffff",
-  sectionBg: "#f1f5f9",
-  cardBg: "#ffffff",
-  headerBg: "#051741",
-  footerBg: "#051741",
-  overlayBg: "rgba(5, 23, 65, 0.55)",
-  textHeading: "#051741",
-  textBody: "#1e293b",
-  textMuted: "#475569",
-  textInverse: "#f8fafc",
-  textLink: "#0d9488",
-  primary: "#10b981",
-  secondary: "#0d9488",
-  success: "#10b981",
-  buttonBg: "#10b981",
+  pageBg: "#f7f4fc",
+  sectionBg: "#ece4f7",
+  cardBg: "#fdfbff",
+  headerBg: "#2e1065",
+  footerBg: "#2e1065",
+  overlayBg: "rgba(46, 16, 101, 0.55)",
+  textHeading: "#2e1065",
+  textBody: "#3b2466",
+  textMuted: "#6b5280",
+  textInverse: "#f5f3ff",
+  textLink: "#6d28d9",
+  primary: "#7c3aed",
+  secondary: "#c4b5fd",
+  success: "#d97706",
+  buttonBg: "#2e1065",
   buttonText: "#ffffff",
   buttonBorder: "transparent",
-  buttonHoverBg: "#059669",
+  buttonHoverBg: "#3b0764",
   buttonHoverText: "#ffffff",
-  buttonActiveBg: "#047857",
+  buttonActiveBg: "#4c1d95",
   buttonDisabledBg: "#94a3b8",
   buttonDisabledText: "#f8fafc",
-  buttonRadius: "0.75rem",
-  buttonShadow: "0 10px 22px -12px rgba(16, 185, 129, 0.7)",
-  cardHoverBg: "#ffffff",
-  cardHoverShadow: "0 18px 40px -18px rgba(5, 23, 65, 0.28)",
-  navHover: "rgba(255, 255, 255, 0.1)",
-  chipHover: "rgba(16, 185, 129, 0.12)",
-  borderColor: "#c5d0de",
+  buttonRadius: "0.5rem",
+  buttonShadow: "0 14px 28px -10px rgba(46, 16, 101, 0.35)",
+  cardHoverBg: "#fdfbff",
+  cardHoverShadow: "0 24px 48px -16px rgba(46, 16, 101, 0.36)",
+  navHover: "rgba(196, 181, 253, 0.16)",
+  chipHover: "rgba(15, 23, 42, 0.06)",
+  borderColor: "#ddd6fe",
   borderWidth: "1px",
-  radiusSm: "0.375rem",
+  radiusSm: "0.25rem",
   radiusMd: "0.5rem",
   radiusLg: "0.75rem",
-  radiusXl: "1rem",
-  radiusCard: "1rem",
-  radiusInput: "0.75rem",
-  headerGlass: "rgba(5, 23, 65, 0.94)",
-  cardGlass: "rgba(255, 255, 255, 0.9)",
-  searchGlass: "rgba(255, 255, 255, 0.94)",
-  focusRing: "#10b981",
-  shadowSm: "0 6px 14px -10px rgba(5, 23, 65, 0.18)",
-  shadowMd: "0 10px 28px rgba(10, 22, 40, 0.18)",
-  shadowLg: "0 18px 40px -18px rgba(5, 23, 65, 0.38)",
-  inputBg: "#f8fafc",
-  inputText: "#051741",
-  inputBorder: "#c5d0de",
-  inputPlaceholder: "#94a3b8",
-  tabActiveBg: "#10b981",
+  radiusXl: "1.25rem",
+  radiusCard: "0.75rem",
+  radiusInput: "0.5rem",
+  headerGlass: "rgba(46, 16, 101, 0.94)",
+  cardGlass: "rgba(253, 251, 255, 0.92)",
+  searchGlass: "rgba(253, 251, 255, 0.95)",
+  focusRing: "#7c3aed",
+  shadowSm: "0 8px 18px -10px rgba(46, 16, 101, 0.28)",
+  shadowMd: "0 16px 36px rgba(46, 16, 101, 0.28)",
+  shadowLg: "0 28px 56px -16px rgba(46, 16, 101, 0.42)",
+  inputBg: "#fdfbff",
+  inputText: "#2e1065",
+  inputBorder: "#ddd6fe",
+  inputPlaceholder: "#a78bb8",
+  tabActiveBg: "#2e1065",
   tabActiveText: "#ffffff",
   tabIdleBg: "transparent",
-  tabIdleText: "rgba(255, 255, 255, 0.78)",
-  badgeBg: "#ecfdf5",
-  badgeText: "#047857",
-  iconChrome: "#6ee7b7",
+  tabIdleText: "#1e1b4b",
+  badgeBg: "#ede9fe",
+  badgeText: "#5b21b6",
+  iconChrome: "#1e1b4b",
 };
 
 export function colorsFromChrome(chrome: ThemeChrome): BrandColors {
+  const accentColor = chrome.textHeading || chrome.footerBg || "#2e1065";
   return {
     primary: chrome.primary,
     secondary: chrome.sectionBg,
-    accent: chrome.headerBg,
+    accent: accentColor === "#ffffff" ? "#2e1065" : accentColor,
     header: chrome.headerBg,
     footer: chrome.footerBg,
     button: chrome.buttonBg,
@@ -269,17 +270,24 @@ export function factoryTheme(): BrandTheme {
 export function themeToCssVars(theme: BrandTheme): Record<string, string> {
   const chrome = theme.chrome || FACTORY_CHROME;
   const image = imageTreatmentVars(theme.image.treatment);
+  const accentResolved =
+    theme.colors?.accent && theme.colors.accent !== "#ffffff"
+      ? theme.colors.accent
+      : chrome.textHeading && chrome.textHeading !== "#ffffff"
+      ? chrome.textHeading
+      : "#2e1065";
   const vars: Record<string, string> = {
     "--brand-primary": chrome.primary,
     "--brand-secondary": chrome.secondary,
-    "--brand-accent": chrome.headerBg,
+    "--brand-accent": accentResolved,
     "--brand-header": chrome.headerBg,
     "--brand-footer": chrome.footerBg,
     "--brand-button": chrome.buttonBg,
     "--brand-success": chrome.success,
+    "--brand-gold": "#d97706",
     "--primary": chrome.primary,
-    "--accent": chrome.headerBg,
-    "--navy": chrome.textHeading,
+    "--accent": accentResolved,
+    "--navy": "#1e1b4b",
     "--heading": chrome.textHeading,
     "--radius-button": chrome.buttonRadius,
     "--radius-card": chrome.radiusCard,
@@ -369,6 +377,7 @@ const APPLIED_VAR_KEYS = [
   "--brand-footer",
   "--brand-button",
   "--brand-success",
+  "--brand-gold",
   "--primary",
   "--accent",
   "--navy",
@@ -436,10 +445,45 @@ const APPLIED_VAR_KEYS = [
 
 export function applyBrandTheme(theme: BrandTheme, root: HTMLElement = document.documentElement) {
   const vars = themeToCssVars(theme);
+  const isDark =
+    root.classList.contains("dark") ||
+    root.dataset.siteTheme === "dark" ||
+    root.dataset.adminTheme === "dark";
+
+  const darkOverrides: Record<string, string> = {
+    "--theme-page-bg": "#07090e",
+    "--theme-section-bg": "#0d121e",
+    "--theme-card-bg": "#111827",
+    "--theme-text-heading": "#f8fafc",
+    "--theme-text-body": "#cbd5e1",
+    "--theme-text-muted": "#94a3b8",
+    "--theme-border-color": "rgba(255, 255, 255, 0.12)",
+    "--background": "#07090e",
+    "--foreground": "#cbd5e1",
+    "--card": "#111827",
+    "--muted": "#0d121e",
+    "--muted-foreground": "#94a3b8",
+    "--border": "rgba(255, 255, 255, 0.12)",
+    "--theme-header-glass": "rgba(7, 9, 14, 0.94)",
+    "--theme-card-glass": "rgba(17, 24, 39, 0.9)",
+    "--theme-search-glass": "rgba(17, 24, 39, 0.95)",
+    "--theme-input-bg": "#0d121e",
+    "--theme-input-text": "#f8fafc",
+    "--theme-input-border": "rgba(255, 255, 255, 0.16)",
+    "--brand-header": "#07090e",
+    "--brand-footer": "#07090e",
+  };
+
   for (const key of APPLIED_VAR_KEYS) {
-    if (vars[key]) root.style.setProperty(key, vars[key]);
-    else root.style.removeProperty(key);
+    if (isDark && darkOverrides[key]) {
+      root.style.setProperty(key, darkOverrides[key]);
+    } else if (vars[key]) {
+      root.style.setProperty(key, vars[key]);
+    } else {
+      root.style.removeProperty(key);
+    }
   }
+
   const arabicId = theme.arabicFontId || DEFAULT_ARABIC_FONT_ID;
   if (arabicId === DEFAULT_ARABIC_FONT_ID) {
     root.style.removeProperty("--font-ar");

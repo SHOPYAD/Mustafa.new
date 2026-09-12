@@ -21,6 +21,7 @@ export const runtime = "nodejs";
 
 type AgentAction =
   | "upsertSkill"
+  | "uploadSkill"
   | "toggleSkill"
   | "deleteSkill"
   | "upsertRule"
@@ -33,6 +34,7 @@ type AgentAction =
 function asAction(value: unknown): AgentAction | null {
   switch (value) {
     case "upsertSkill":
+    case "uploadSkill":
     case "toggleSkill":
     case "deleteSkill":
     case "upsertRule":
@@ -97,6 +99,26 @@ export async function POST(req: NextRequest) {
           title,
           markdown,
           enabled: body.enabled !== false,
+        });
+        return NextResponse.json(scopedPayload(store, scope, hasKey));
+      }
+      case "uploadSkill": {
+        const rawContent = String(body.content || "").trim();
+        const filename = String(body.filename || "skill.md").trim();
+        if (!rawContent) {
+          return NextResponse.json({ ok: false, error: "محتوى ملف المهارة مطلوب" }, { status: 400 });
+        }
+        let title = filename.replace(/\.md$/i, "");
+        const h1Match = rawContent.match(/^#\s+(.+)$/m);
+        if (h1Match && h1Match[1]) {
+          title = h1Match[1].trim();
+        }
+        const store = await upsertSkill(scope, {
+          title,
+          markdown: rawContent,
+          enabled: true,
+          source: "manual",
+          filePath: filename,
         });
         return NextResponse.json(scopedPayload(store, scope, hasKey));
       }

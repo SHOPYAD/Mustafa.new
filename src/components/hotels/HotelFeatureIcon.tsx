@@ -219,15 +219,15 @@ export function hotelFeatureKind(label: string): HotelFeatureKind {
 
 const KIND_TINT: Partial<Record<HotelFeatureKind, string>> = {
   breakfast: "text-amber-700",
-  cancel: "text-emerald-700",
+  cancel: "text-purple-900",
   noCancel: "text-amber-700",
-  bed: "text-sky-800",
-  wifi: "text-sky-700",
+  bed: "text-purple-800",
+  wifi: "text-purple-700",
   parking: "text-slate-700",
   pool: "text-cyan-700",
-  spa: "text-violet-700",
-  restaurant: "text-orange-700",
-  location: "text-emerald-700",
+  spa: "text-purple-700",
+  restaurant: "text-amber-800",
+  location: "text-amber-700",
   sea: "text-cyan-800",
 };
 
@@ -241,7 +241,7 @@ type Props = {
 export default function HotelFeatureIcon({ label, size = 18, className, kind }: Props) {
   const resolved = kind || hotelFeatureKind(label);
   const Icon = ICON_BY_KIND[resolved];
-  const tint = KIND_TINT[resolved] || "text-emerald-700";
+  const tint = KIND_TINT[resolved] || "text-[#2e1065]";
   return <Icon size={size} className={`shrink-0 ${tint} ${className || ""}`} aria-hidden />;
 }
 

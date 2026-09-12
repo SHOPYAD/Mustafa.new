@@ -4,14 +4,13 @@ function localeTag(locale: Locale): string {
   switch (locale) {
     case "ar":
       return "ar-SA";
-    case "en":
-      return "en-US";
     case "tr":
       return "tr-TR";
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
+    case "fr":
+      return "fr-FR";
+    case "en":
+    default:
+      return "en-US";
   }
 }
 

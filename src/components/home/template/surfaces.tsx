@@ -20,74 +20,64 @@ export const SURFACE: Record<
   { wash: string; ink: string; accent: string; pattern: string }
 > = {
   flights: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 72%, #dbeafe)",
-    ink: "#0369a1",
-    accent: "#0284c7",
-    pattern:
-      "radial-gradient(circle at 12% 18%, color-mix(in srgb, #38bdf8 22%, transparent) 0 18%, transparent 19%), radial-gradient(circle at 88% 78%, color-mix(in srgb, var(--brand-primary) 16%, transparent) 0 16%, transparent 17%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
+    ink: "#1e1b4b",
+    accent: "#4338ca",
+    pattern: "none",
   },
   hotels: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 70%, #fde68a)",
-    ink: "#b45309",
-    accent: "#d97706",
-    pattern:
-      "radial-gradient(circle at 80% 12%, color-mix(in srgb, #f59e0b 20%, transparent) 0 16%, transparent 17%), radial-gradient(circle at 8% 86%, color-mix(in srgb, var(--brand-primary) 12%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #fdfbf7 100%)",
+    ink: "#1e1b4b",
+    accent: "#b45309",
+    pattern: "none",
   },
   tours: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 68%, #d1fae5)",
-    ink: "#047857",
-    accent: "var(--brand-primary)",
-    pattern:
-      "radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--brand-primary) 20%, transparent) 0 18%, transparent 19%), radial-gradient(circle at 10% 80%, color-mix(in srgb, #34d399 16%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #faf8ff 100%)",
+    ink: "#1e1b4b",
+    accent: "#2e1065",
+    pattern: "none",
   },
   transfers: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 70%, #ccfbf1)",
-    ink: "#0f766e",
-    accent: "#0d9488",
-    pattern:
-      "radial-gradient(circle at 18% 22%, color-mix(in srgb, #2dd4bf 20%, transparent) 0 16%, transparent 17%), radial-gradient(circle at 92% 70%, color-mix(in srgb, var(--brand-primary) 14%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
+    ink: "#1e1b4b",
+    accent: "#3b0764",
+    pattern: "none",
   },
   cars: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 68%, #e0e7ff)",
-    ink: "#4338ca",
-    accent: "#4f46e5",
-    pattern:
-      "radial-gradient(circle at 86% 16%, color-mix(in srgb, #818cf8 22%, transparent) 0 18%, transparent 19%), radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--brand-primary) 12%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
+    ink: "#1e1b4b",
+    accent: "#2e1065",
+    pattern: "none",
   },
   visa: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 70%, #ede9fe)",
-    ink: "#6d28d9",
-    accent: "#7c3aed",
-    pattern:
-      "radial-gradient(circle at 20% 16%, color-mix(in srgb, #a78bfa 20%, transparent) 0 16%, transparent 17%), radial-gradient(circle at 90% 84%, color-mix(in srgb, var(--brand-primary) 12%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #faf8ff 100%)",
+    ink: "#1e1b4b",
+    accent: "#4c1d95",
+    pattern: "none",
   },
   offers: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 66%, #ffe4e6)",
-    ink: "#be123c",
-    accent: "#e11d48",
-    pattern:
-      "radial-gradient(circle at 14% 20%, color-mix(in srgb, #fb7185 20%, transparent) 0 16%, transparent 17%), radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--brand-primary) 14%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #fffbfb 100%)",
+    ink: "#1e1b4b",
+    accent: "#991b1b",
+    pattern: "none",
   },
   rewards: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 68%, #fef3c7)",
-    ink: "#b45309",
-    accent: "var(--brand-primary)",
-    pattern:
-      "radial-gradient(circle at 78% 18%, color-mix(in srgb, #fbbf24 22%, transparent) 0 16%, transparent 17%), radial-gradient(circle at 10% 82%, color-mix(in srgb, var(--brand-primary) 14%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #fffdf5 100%)",
+    ink: "#1e1b4b",
+    accent: "#b45309",
+    pattern: "none",
   },
   destinations: {
-    wash: "color-mix(in srgb, var(--brand-secondary) 74%, #e0f2fe)",
-    ink: "var(--brand-accent)",
-    accent: "var(--brand-primary)",
-    pattern:
-      "radial-gradient(circle at 16% 24%, color-mix(in srgb, var(--brand-primary) 16%, transparent) 0 18%, transparent 19%), radial-gradient(circle at 90% 80%, color-mix(in srgb, #38bdf8 14%, transparent) 0 14%, transparent 15%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #faf8ff 100%)",
+    ink: "#1e1b4b",
+    accent: "#2e1065",
+    pattern: "none",
   },
   neutral: {
-    wash: "var(--brand-secondary)",
-    ink: "var(--brand-accent)",
-    accent: "var(--brand-primary)",
-    pattern:
-      "radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--brand-primary) 12%, transparent) 0 16%, transparent 17%)",
+    wash: "linear-gradient(180deg, #ffffff 0%, #ffffff 100%)",
+    ink: "#1e1b4b",
+    accent: "#2e1065",
+    pattern: "none",
   },
 };
 
@@ -188,8 +178,8 @@ type ServiceSurfaceProps = {
 export function ServiceSurface({ kind, className, children, background }: ServiceSurfaceProps) {
   const tone = SURFACE[kind];
   const style: CSSProperties = {
-    background: background || "transparent",
-    color: "var(--brand-accent)",
+    background: background || tone.wash,
+    color: "#0f172a",
   };
   return (
     <section
@@ -199,22 +189,18 @@ export function ServiceSurface({ kind, className, children, background }: Servic
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-transparent via-transparent to-transparent"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-55"
+        className="pointer-events-none absolute inset-0 opacity-15"
         style={{ backgroundImage: tone.pattern }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -end-8 -top-6 h-36 w-36 opacity-70 sm:h-48 sm:w-48"
+        className="pointer-events-none absolute -end-8 -top-6 h-32 w-32 opacity-15 sm:h-40 sm:w-40"
       >
         <Motif kind={kind} />
       </div>
       <div
         aria-hidden
-        className="pointer-events-none absolute -start-10 bottom-0 h-28 w-28 rotate-12 opacity-40"
+        className="pointer-events-none absolute -start-8 bottom-0 h-24 w-24 rotate-12 opacity-10"
       >
         <Motif kind={kind} />
       </div>
@@ -225,17 +211,17 @@ export function ServiceSurface({ kind, className, children, background }: Servic
 
 export function serviceTitleClass(kind: ServiceSurfaceKind, extra?: string) {
   return cn(
-    "text-3xl font-bold leading-tight md:text-4xl transition-colors duration-200 hover:brightness-110",
+    "text-3xl font-black leading-tight md:text-4xl transition-colors duration-200 hover:brightness-110 tracking-tight",
     extra
   );
 }
 
 export function serviceTitleStyle(kind: ServiceSurfaceKind): CSSProperties {
-  return { color: SURFACE[kind].ink };
+  return { color: SURFACE[kind]?.ink || "#0f172a" };
 }
 
 export function serviceEyebrowClass() {
-  return "mb-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--brand-primary)]";
+  return "mb-3 inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-purple-700";
 }
 
 export function InteractiveHeading({

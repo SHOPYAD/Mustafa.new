@@ -234,10 +234,10 @@ export default function AdminBlogPage() {
 
                 <div className="col-span-1 flex items-center">
                   <span
-                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg border ${
+                    className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border ${
                       post.status === "published"
-                        ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/20"
-                        : "bg-amber-500/15 text-amber-400 border-amber-500/20"
+                        ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
+                        : "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400 border-amber-200 dark:border-amber-500/30"
                     }`}
                   >
                     {post.status === "published" ? "نشر" : "مسودة"}
@@ -251,13 +251,13 @@ export default function AdminBlogPage() {
                 </div>
 
                 <div className="col-span-2 flex items-center">
-                  <span className="text-white/60 text-sm truncate">
+                  <span className="text-slate-700 dark:text-white/60 text-sm font-medium truncate">
                     {post.category}
                   </span>
                 </div>
 
                 <div className="col-span-2 flex items-center">
-                  <span className="text-white/40 text-sm">
+                  <span className="text-slate-500 dark:text-white/40 text-sm">
                     {formatDate(post.updatedAt)}
                   </span>
                 </div>
@@ -266,35 +266,35 @@ export default function AdminBlogPage() {
                   <button
                     onClick={() => void handleToggleStatus(post)}
                     disabled={busyId === post.id}
-                    className="w-9 h-9 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center text-white/40 hover:text-amber-400 transition-all disabled:opacity-50"
+                    className="w-9 h-9 bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 rounded-lg flex items-center justify-center text-slate-700 dark:text-white/60 hover:text-amber-600 dark:hover:text-amber-400 transition-all disabled:opacity-50"
                     title={
                       post.status === "published" ? "Set to مسودة" : "Set to نشر"
                     }
                   >
                     {post.status === "published" ? (
-                      <ToggleRight size={18} className="text-emerald-400" />
+                      <ToggleRight size={20} className="text-emerald-600 dark:text-emerald-400" />
                     ) : (
-                      <ToggleLeft size={18} />
+                      <ToggleLeft size={20} className="text-slate-400" />
                     )}
                   </button>
                   <Link
                     href={`/admin/blog/${post.id}`}
-                    className="w-9 h-9 bg-blue-500/10 hover:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 hover:text-blue-300 transition-all"
+                    className="w-9 h-9 bg-blue-50 hover:bg-blue-100 dark:bg-blue-500/15 dark:hover:bg-blue-500/25 border border-blue-200 dark:border-blue-500/30 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-all shadow-sm"
                     title="Edit"
                   >
-                    <Pencil size={14} />
+                    <Pencil size={15} />
                   </Link>
                   {deleteConfirmId === post.id ? (
                     <div className="flex items-center gap-1">
                       <button
                         onClick={() => void handleDelete(post.id)}
-                        className="px-3 py-1.5 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-red-400 text-xs font-semibold transition-all"
+                        className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-all shadow-sm"
                       >
                         Confirm
                       </button>
                       <button
                         onClick={() => setDeleteConfirmId(null)}
-                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-white/50 text-xs transition-all"
+                        className="px-3 py-1.5 bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-white/70 rounded-lg text-xs font-semibold transition-all"
                       >
                         Cancel
                       </button>
@@ -302,10 +302,10 @@ export default function AdminBlogPage() {
                   ) : (
                     <button
                       onClick={() => setDeleteConfirmId(post.id)}
-                      className="w-9 h-9 bg-red-500/10 hover:bg-red-500/20 rounded-lg flex items-center justify-center text-red-400 hover:text-red-300 transition-all"
+                      className="w-9 h-9 bg-red-50 hover:bg-red-100 dark:bg-red-500/15 dark:hover:bg-red-500/25 border border-red-200 dark:border-red-500/30 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 hover:text-red-700 transition-all shadow-sm"
                       title="حذف"
                     >
-                      <Trash2 size={14} />
+                      <Trash2 size={15} />
                     </button>
                   )}
                 </div>

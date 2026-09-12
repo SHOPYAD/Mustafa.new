@@ -7,6 +7,7 @@ import { cn, tContent } from "@/lib/utils";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import SafeImage from "@/components/ui/SafeImage";
+import { ShareToCommunityButton } from "@/components/community/ShareToCommunityButton";
 
 interface PackageCardProps {
   package_: HolidayPackage;
@@ -34,7 +35,7 @@ export default function PackageCard({
     <Link
       href={`/package/${package_.slug}`}
       className={cn(
-        "group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2",
+        "group block bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg dark:shadow-slate-950/50 border border-slate-100 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2",
         compact && "rounded-xl shadow-md hover:-translate-y-1",
         className
       )}
@@ -52,7 +53,7 @@ export default function PackageCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
         <div className="absolute top-3 start-3 flex flex-wrap gap-1.5">
-          <div className="px-2.5 py-0.5 bg-emerald-700 text-white text-[10px] font-bold rounded-full shadow-lg">
+          <div className="px-2.5 py-0.5 bg-[var(--brand-primary)] text-white text-[10px] font-bold rounded-full shadow-lg">
             {t.catalog.inTurkey}
           </div>
           {package_.isFeatured && (
@@ -62,7 +63,7 @@ export default function PackageCard({
           )}
         </div>
 
-        <div className="absolute top-3 end-3 px-2.5 py-0.5 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-semibold rounded-full flex items-center gap-1">
+        <div className="absolute top-3 end-3 px-2.5 py-0.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-slate-700 dark:text-slate-300 text-[10px] font-semibold rounded-full flex items-center gap-1 border border-slate-100/50 dark:border-slate-800">
           <Clock size={11} />
           {package_.durationDays} {t.common.days}
         </div>
@@ -70,14 +71,14 @@ export default function PackageCard({
         <div className="absolute bottom-3 end-3">
           <div
             className={cn(
-              "bg-white rounded-xl shadow-lg",
+              "bg-white dark:bg-slate-900/95 backdrop-blur-sm rounded-xl shadow-lg border border-slate-100 dark:border-slate-800",
               compact ? "px-3 py-1.5" : "px-4 py-2"
             )}
           >
-            <span className="text-[10px] text-slate-400 block">{t.common.from}</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-400 block">{t.common.from}</span>
             <span
               className={cn(
-                "font-bold text-emerald-600",
+                "font-bold text-[var(--brand-primary)] dark:text-amber-400",
                 compact ? "text-base" : "text-xl"
               )}
             >
@@ -88,8 +89,8 @@ export default function PackageCard({
       </div>
 
       <div className={cn(compact ? "p-3.5" : "p-5")}>
-        <div className="flex items-center gap-1 text-sm text-slate-500 mb-2">
-          <MapPin size={14} className="text-emerald-500" />
+        <div className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400 mb-2">
+          <MapPin size={14} className="text-[var(--brand-primary)]" />
           <span className="truncate">
             {destination}, {country}
           </span>
@@ -97,7 +98,7 @@ export default function PackageCard({
 
         <h3
           className={cn(
-            "font-bold text-slate-800 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2",
+            "font-bold text-slate-800 dark:text-white mb-2 group-hover:text-[var(--brand-primary)] dark:group-hover:text-amber-400 transition-colors line-clamp-2",
             compact ? "text-base" : "text-lg mb-3"
           )}
         >
@@ -106,8 +107,8 @@ export default function PackageCard({
 
         {package_.rating && (
           <div className="flex items-center gap-1 mb-2">
-            <Star size={14} className="fill-emerald-400 text-emerald-400" />
-            <span className="font-semibold text-slate-700 text-sm">
+            <Star size={14} className="fill-amber-400 text-amber-400" />
+            <span className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
               {package_.rating}
             </span>
           </div>
@@ -118,7 +119,7 @@ export default function PackageCard({
             {amenities.slice(0, 3).map((amenity, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-md"
+                className="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded-md border border-transparent dark:border-slate-700/50"
               >
                 {amenity}
               </span>
@@ -128,16 +129,32 @@ export default function PackageCard({
 
         <div
           className={cn(
-            "flex items-center justify-between border-t border-slate-100",
+            "flex items-center justify-between border-t border-slate-100 dark:border-slate-800",
             compact ? "pt-2.5" : "pt-4"
           )}
         >
-          <span className="text-sm text-slate-500">{t.common.viewDetails}</span>
-          <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 transition-colors">
-            <ArrowRight
-              size={16}
-              className="text-emerald-600 group-hover:text-white transition-colors rtl:rotate-180"
+          <span className="text-sm text-slate-500 dark:text-slate-400">{t.common.viewDetails}</span>
+          <div className="flex items-center gap-2">
+            <ShareToCommunityButton
+              service={{
+                id: package_.id,
+                type: "package",
+                typeLabel: "برنامج سياحي متكامل",
+                title,
+                destination: `${destination}، ${country}`,
+                price: package_.price,
+                currency: package_.currency || "USD",
+                imageUrl: package_.images[0]?.url,
+                url: `/package/${package_.slug}`,
+              }}
+              variant="icon"
             />
+            <div className="w-8 h-8 rounded-full bg-[var(--brand-secondary)] flex items-center justify-center group-hover:bg-[var(--brand-primary)] transition-colors">
+              <ArrowRight
+                size={16}
+                className="text-[var(--brand-primary)] group-hover:text-white transition-colors rtl:rotate-180"
+              />
+            </div>
           </div>
         </div>
       </div>

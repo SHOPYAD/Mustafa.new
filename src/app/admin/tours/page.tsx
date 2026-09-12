@@ -19,6 +19,7 @@ import { addTour, updateTour, deleteTour, resetTours, fetchAdminTours, type Tour
 import TourFormModal from "@/components/admin/TourFormModal";
 import ServiceImportChat from "@/components/admin/ServiceImportChat";
 import { normalizeImportedTour } from "@/lib/import-normalize";
+import WhiteLabelUpgradeOverlay from "@/components/admin/WhiteLabelUpgradeOverlay";
 
 export default function AdminToursPage() {
     const [tours, setTours] = useState<Tour[]>([]);
@@ -54,13 +55,30 @@ export default function AdminToursPage() {
         refresh();
     };
 
-    const handleDelete = (id: string) => {
-        deleteTour(id);
+    const handleDelete = async (id: string) => {
+        setTours((prev) => prev.filter((t) => t.id !== id));
         setDeleteConfirmId(null);
+        try {
+            await fetch(`/api/admin/tours?id=${encodeURIComponent(id)}`, {
+                method: "DELETE",
+            });
+        } catch (e) {
+            console.error("Delete tour error:", e);
+        }
+        deleteTour(id);
         refresh();
     };
 
-    const handleReset = () => {
+    const handleReset = async () => {
+        try {
+            await fetch("/api/admin/tours", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "reset" }),
+            });
+        } catch (e) {
+            console.error("Reset tours error:", e);
+        }
         resetTours();
         setShowResetConfirm(false);
         refresh();
@@ -85,6 +103,7 @@ export default function AdminToursPage() {
 
     return (
         <div className="admin-page w-full max-w-none min-w-0">
+            <WhiteLabelUpgradeOverlay moduleName="الجولات والرحلات اليومية">
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                 <div>
@@ -224,6 +243,8 @@ export default function AdminToursPage() {
                     </div>
                 </div>
             )}
+
+            </WhiteLabelUpgradeOverlay>
 
             <TourFormModal
                 isOpen={isModalOpen}

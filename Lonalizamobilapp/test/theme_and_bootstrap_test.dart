@@ -8,7 +8,7 @@ void main() {
   test('flavor display name is Lonaliza and theme is royal purple on white', () {
     expect(LonalizaTheme.displayName, 'Lonaliza');
     expect(LonalizaColors.royalPurple, const Color(0xFF2E1065));
-    expect(LonalizaTheme.light().scaffoldBackgroundColor, LonalizaColors.daytimeWhite);
+    expect(LonalizaTheme.light().scaffoldBackgroundColor, LonalizaColors.page);
     expect(AppLocalizationsEn().appTitle, 'Lonaliza');
     expect(AppLocalizationsEn().appTitle.contains('LioTrip'), isFalse);
   });

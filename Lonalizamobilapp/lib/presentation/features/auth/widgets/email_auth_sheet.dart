@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/auth/auth_error_mapper.dart';
+
 class EmailAuthCredentials {
   const EmailAuthCredentials({
     required this.email,
@@ -59,6 +61,13 @@ class _EmailAuthSheetState extends State<EmailAuthSheet> {
       _busy = true;
       _error = null;
     });
+    if (_password.text.trim().length < 8) {
+      setState(() {
+        _busy = false;
+        _error = AuthErrorMapper.shortPassword;
+      });
+      return;
+    }
     try {
       await onSubmit(
         EmailAuthCredentials(
@@ -70,7 +79,15 @@ class _EmailAuthSheetState extends State<EmailAuthSheet> {
       );
       if (mounted) Navigator.of(context).pop();
     } catch (e) {
-      if (mounted) setState(() => _error = e.toString());
+      if (mounted) {
+        setState(() {
+          _error = AuthErrorMapper.map(
+            e,
+            password: _password.text,
+            register: _register,
+          );
+        });
+      }
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -150,7 +167,7 @@ class _EmailAuthSheetState extends State<EmailAuthSheet> {
               child: ElevatedButton(
                 onPressed: _busy ? null : _submit,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF2F60F5),
+                  backgroundColor: const Color(0xFF7C3AED),
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                   elevation: 0,

@@ -43,7 +43,7 @@ class MobileAuthApi {
     return (
       url: '${data['url'] ?? ''}',
       verifier: '${data['verifier'] ?? ''}',
-      redirectUri: '${data['redirectUri'] ?? 'lonaliza://auth/callback'}',
+      redirectUri: '${data['redirectUri'] ?? 'https://lonaliza.com/api/mobile/v1/auth/google/callback'}',
     );
   }
 

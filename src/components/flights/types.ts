@@ -4,7 +4,7 @@ export type CabinClass = "economy" | "premium_economy" | "business" | "first";
 
 export type AirportKind = "city" | "airport";
 
-export type BaggageFilter = "any" | "included" | 20 | 23;
+export type BaggageFilter = "any" | "included" | "none" | 20 | 23 | number;
 
 export type AirportPick = {
   skyId: string;
@@ -27,10 +27,12 @@ export type FlightSearchQuery = {
   origin: AirportPick | null;
   destination: AirportPick | null;
   date: string;
+  departDate?: string;
   returnDate: string;
   multiLegs: FlightLegInput[];
   adults: number;
   childrens: number;
+  children?: number;
   infants: number;
   cabinClass: CabinClass;
   currency: string;
@@ -89,7 +91,24 @@ export type FlightLeg = {
   timeDeltaInDays: number;
   carriers: FlightCarrier[];
   segments: FlightSegment[];
-  layovers: { airport: string; city: string; durationInMinutes: number; selfTransfer?: boolean }[];
+  layovers: { airport: string; city: string; durationInMinutes: number; selfTransfer?: boolean; displayCode?: string; name?: string }[];
+};
+
+/** Tri-state baggage: "unknown" is legitimate (supplier did not say) and is resolved at re-pricing. */
+export type BaggageState =
+  | { status: "included"; pieces?: number; kg?: number; text?: string }
+  | { status: "none"; text?: string }
+  | { status: "unknown" };
+
+export type FareAttributeState = "included" | "chargeable" | "not_available" | "unknown";
+
+export type FarePenalty = {
+  type: "change" | "cancel" | "no_show";
+  amount?: number;
+  currency?: string;
+  percent?: number;
+  window?: string;
+  text?: string;
 };
 
 export type FareFamily = {
@@ -98,9 +117,25 @@ export type FareFamily = {
   price: number;
   currency: string;
   cabinClass: CabinClass;
+  /** Legacy label ("23 kg", "1 pc", "0kg" = none, "" = unknown). Prefer `baggageDetail`. */
   baggage: string;
   changeable: boolean;
   refundable: boolean;
+  features?: string[];
+  nameSource?: "supplier" | "derived";
+  brandCode?: string;
+  baggageDetail?: { checked: BaggageState; cabin: BaggageState };
+  attributes?: {
+    refund: FareAttributeState;
+    change: FareAttributeState;
+    seat: FareAttributeState;
+    meal: FareAttributeState;
+    priority: FareAttributeState;
+  };
+  penalties?: FarePenalty[];
+  rulesText?: string;
+  isBestPrice?: boolean;
+  canAddPaidBaggage?: boolean;
 };
 
 export type FarePolicy = {
@@ -108,6 +143,7 @@ export type FarePolicy = {
   isPartiallyChangeable: boolean;
   isCancellationAllowed: boolean;
   isPartiallyRefundable: boolean;
+  cancellationFee?: number;
 };
 
 export type Itinerary = {
@@ -115,6 +151,8 @@ export type Itinerary = {
   price: number;
   currency: string;
   formattedPrice: string;
+  rawPrice?: number;
+  score?: number;
   baseFare?: number;
   taxes?: number;
   legs: FlightLeg[];
@@ -127,6 +165,7 @@ export type Itinerary = {
   cabinBaggage?: string;
   checkedBaggage?: string;
   fareBrand?: string;
+  canAddPaidBaggage?: boolean;
 };
 
 export type FlightDetails = {
@@ -179,7 +218,12 @@ export type FlightFiltersState = {
   priceMax: number;
   originAirports: string[];
   destAirports: string[];
+  layoverAirports: string[];
   freeCancellation: boolean;
+  changeableOnly: boolean;
+  overnightOnly: boolean;
+  fareBrands: string[];
+  baggageKg: number | null;
 };
 
 export type SortKey = "best" | "price" | "fastest" | "outbound_departure_time";
@@ -212,6 +256,13 @@ export type SelectedFare = {
     priorityBoarding: boolean;
     /** Agency add-on package ids. Empty / omitted means nothing is added to the total. */
     packageIds?: string[];
+    paidBaggage?: {
+      id: string;
+      weightKg: number;
+      label: string;
+      price: number;
+      currency: string;
+    };
   };
 };
 

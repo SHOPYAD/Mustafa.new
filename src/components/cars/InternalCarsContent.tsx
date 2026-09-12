@@ -14,6 +14,8 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import LocationAutocomplete from "@/components/cars/LocationAutocomplete";
 import CarCard from "@/components/cars/CarCard";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
+import { SEARCH_AGENT_EVENT, type SearchAgentEventDetail } from "@/lib/search-agent";
 import type { RentalCar } from "@/types/car";
 import { rentalDays } from "@/lib/cars/matching";
 import { locationDisplayName, resolveLocationQuery } from "@/lib/cars/turkey-locations";
@@ -40,6 +42,23 @@ export default function InternalCarsContent() {
   const [guests, setGuests] = useState(searchParams.get("guests") || "2");
   const [cars, setCars] = useState<RentalCar[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const onAgent = (event: Event) => {
+      const detail = (event as CustomEvent<SearchAgentEventDetail>).detail;
+      if (!detail) return;
+      if (detail.action === "filter" || detail.action === "navigate") {
+        const city = detail.filters?.hotelName || "";
+        const pickupNext = (detail as { pickup?: string }).pickup;
+        if (pickupNext || city) setPickup(pickupNext || city);
+        if (detail.href && detail.action === "navigate") {
+          router.push(detail.href);
+        }
+      }
+    };
+    window.addEventListener(SEARCH_AGENT_EVENT, onAgent);
+    return () => window.removeEventListener(SEARCH_AGENT_EVENT, onAgent);
+  }, [router]);
 
   useEffect(() => {
     setPickup(
@@ -128,7 +147,7 @@ export default function InternalCarsContent() {
 
     if (locale === "ar") {
       return [
-        `مرحباً الريان للسياحة، أرغب بحجز سيارة: ${name}`,
+        `مرحباً لوناليزا للسياحة والسفر، أرغب بحجز سيارة: ${name}`,
         pickupLabel ? `الاستلام: ${pickupLabel}` : "",
         dropoffLabel ? `التسليم: ${dropoffLabel}` : "",
         date ? `من: ${date}` : "",
@@ -170,7 +189,7 @@ export default function InternalCarsContent() {
       <section className="pt-28 pb-10 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 mb-4">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-purple-100 text-[#2e1065] mb-4 shadow-xs">
               <Car size={26} />
             </div>
             <h1
@@ -182,6 +201,14 @@ export default function InternalCarsContent() {
             <p className="text-slate-500 max-w-2xl mx-auto">{t.cars.subtitle}</p>
           </div>
 
+          <SearchAgentResultsDock
+            tab="cars"
+            page="hero"
+            replace
+            tone="light"
+            className="mt-2"
+            context={`Cars ${pickup} ${dropoff} ${date} ${returnDate} guests ${guests}`}
+          >
           <form
             onSubmit={handleSearch}
             className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 md:p-6 grid grid-cols-1 md:grid-cols-12 gap-4"
@@ -216,7 +243,7 @@ export default function InternalCarsContent() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none text-slate-800 font-medium"
+                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-600 outline-none text-slate-800 font-medium"
                 />
               </div>
             </div>
@@ -230,7 +257,7 @@ export default function InternalCarsContent() {
                   type="date"
                   value={returnDate}
                   onChange={(e) => setReturnDate(e.target.value)}
-                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none text-slate-800 font-medium"
+                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-600 outline-none text-slate-800 font-medium"
                 />
               </div>
             </div>
@@ -243,7 +270,7 @@ export default function InternalCarsContent() {
                 <select
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
-                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none text-slate-800 font-medium appearance-none"
+                  className="w-full ps-11 pe-3 py-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-600 outline-none text-slate-800 font-medium appearance-none"
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                     <option key={n} value={String(n)}>
@@ -256,13 +283,14 @@ export default function InternalCarsContent() {
             <div className="md:col-span-12 flex justify-end">
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0a1628] hover:bg-[#152d4a] text-white font-bold rounded-xl"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] hover:brightness-110 text-white font-bold rounded-xl shadow-md shadow-purple-950/20 transition-all"
               >
-                <Search size={18} className="text-emerald-400" />
+                <Search size={18} className="text-amber-300" />
                 {t.cars.searchCars}
               </button>
             </div>
           </form>
+          </SearchAgentResultsDock>
         </div>
       </section>
 
@@ -270,14 +298,14 @@ export default function InternalCarsContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <CouponSlider service="cars" className="mb-6" />
           {filterHint ? (
-            <p className="text-sm text-emerald-700 mb-6">
+            <p className="text-sm font-bold text-[#2e1065] mb-6">
               {t.search.resultsFor}: {filterHint}
             </p>
           ) : null}
 
           {loading ? (
             <div className="flex justify-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-emerald-600" />
+              <Loader2 className="w-8 h-8 animate-spin text-[#2e1065]" />
             </div>
           ) : cars.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-slate-200 bg-white px-6 py-16 text-center text-slate-400">

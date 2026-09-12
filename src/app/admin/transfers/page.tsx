@@ -57,6 +57,7 @@ export default function AdminTransfersPage() {
   };
 
   const handleDelete = (id: string) => {
+    setTransfers((prev) => prev.filter((t) => t.id !== id));
     deleteTransfer(id);
     setDeleteConfirmId(null);
     refresh();
@@ -167,7 +168,7 @@ export default function AdminTransfersPage() {
         </span>
         <span className="text-white/40">
           Active:{" "}
-          <span className="text-emerald-400 font-semibold">
+          <span className="text-amber-400 font-semibold">
             {transfers.filter((t) => t.isActive).length}
           </span>
         </span>
@@ -246,7 +247,7 @@ export default function AdminTransfersPage() {
                   type="button"
                   onClick={() => toggleActive(item)}
                   className={`w-10 h-5 rounded-full flex items-center transition-all ${
-                    item.isActive ? "bg-emerald-500 justify-end" : "bg-white/10 justify-start"
+                    item.isActive ? "bg-purple-600 justify-end" : "bg-white/10 justify-start"
                   }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white mx-0.5 shadow-sm" />
@@ -257,7 +258,7 @@ export default function AdminTransfersPage() {
                   href={buildWhatsAppLink(item.whatsappNumber, item.whatsappMessageEn)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400 hover:text-emerald-300 transition-all"
+                  className="w-9 h-9 bg-purple-500/10 hover:bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 hover:text-purple-300 transition-all"
                   title="WhatsApp"
                 >
                   <MessageCircle size={14} />

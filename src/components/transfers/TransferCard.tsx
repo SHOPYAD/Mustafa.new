@@ -37,7 +37,7 @@ export default function TransferCard({
   return (
     <div
       className={cn(
-        "group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100 flex flex-col",
+        "group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl dark:shadow-slate-950/50 transition-all duration-300 hover:-translate-y-1 border border-slate-100 dark:border-slate-800 flex flex-col",
         compact && "rounded-xl"
       )}
     >
@@ -66,10 +66,10 @@ export default function TransferCard({
           <span
             className={cn(
               "text-white font-bold rounded-full shadow-lg",
-              compact ? "px-2 py-0.5 text-[10px]" : "px-3 py-1 text-xs",
+              compact ? "px-2.5 py-0.5 text-[10px]" : "px-3 py-1 text-xs",
               transfer.type === "transfer"
                 ? "bg-sky-500"
-                : "bg-gradient-to-r from-emerald-500 to-emerald-700"
+                : "bg-[var(--brand-primary)]"
             )}
           >
             {transfer.type === "transfer"
@@ -79,27 +79,27 @@ export default function TransferCard({
         </div>
         {transfer.isFeatured && (
           <div className="absolute top-3 right-3">
-            <span className="px-2 py-0.5 bg-emerald-500 text-white text-[10px] font-bold rounded-full">
+            <span className="px-2.5 py-0.5 bg-[var(--brand-accent)] text-white text-[10px] font-bold rounded-full shadow-sm">
               {t.catalog.featured}
             </span>
           </div>
         )}
         <div
           className={cn(
-            "absolute bottom-3 right-3 bg-white rounded-xl shadow-lg",
+            "absolute bottom-3 right-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-xl shadow-lg border border-slate-100 dark:border-slate-800",
             compact ? "px-2.5 py-1" : "px-3 py-1.5"
           )}
         >
           <span
             className={cn(
-              "font-bold text-emerald-600",
+              "font-bold text-[var(--brand-primary)] dark:text-amber-400",
               compact ? "text-base" : "text-lg"
             )}
           >
             {formatPrice(transfer.price, transfer.currency || "USD")}
           </span>
           {transfer.type === "vip_tour" && (
-            <span className="block text-[10px] text-slate-400">
+            <span className="block text-[10px] text-slate-400 dark:text-slate-400">
               {t.catalog.perVehicle}
             </span>
           )}
@@ -113,8 +113,8 @@ export default function TransferCard({
           service="transfers"
           className="mb-2"
         />
-        <div className="flex items-center gap-1.5 text-sm text-slate-500 mb-2">
-          <Car size={14} className="text-emerald-500" />
+        <div className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400 mb-2">
+          <Car size={14} className="text-[var(--brand-primary)]" />
           <span className="truncate">
             {transfer.vehicleName} ·{" "}
             {transfer.vehicleClass || transfer.vehicleType}
@@ -129,14 +129,14 @@ export default function TransferCard({
         >
           <h3
             className={cn(
-              "font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2",
+              "font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[var(--brand-primary)] dark:group-hover:text-amber-400 transition-colors line-clamp-2",
               compact ? "text-base" : "text-lg mb-3"
             )}
           >
             {title}
           </h3>
         </Link>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mb-3">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-3">
           <span className="flex items-center gap-1">
             <Users size={12} />
             {transfer.seats} {t.transfers.passengers}
@@ -155,7 +155,7 @@ export default function TransferCard({
 
         <div
           className={cn(
-            "mt-auto border-t border-slate-100 flex flex-col gap-2",
+            "mt-auto border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2",
             compact ? "pt-2.5" : "pt-3"
           )}
         >
@@ -163,10 +163,10 @@ export default function TransferCard({
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] hover:from-[#3b0764] hover:to-[#581c87] text-white text-sm font-bold rounded-xl transition-all shadow-md shadow-purple-950/20 border border-purple-800/30"
             onClick={(e) => e.stopPropagation()}
           >
-            <MessageCircle size={16} />
+            <MessageCircle size={16} className="text-amber-300" />
             WhatsApp
           </a>
           {!compact && (
@@ -176,13 +176,13 @@ export default function TransferCard({
                   ? `/vip-tours/${transfer.slug}`
                   : `/transfers/${transfer.slug}`
               }
-              className="flex items-center justify-between text-sm text-slate-500 hover:text-emerald-600 transition-colors"
+              className="flex items-center justify-between text-sm text-slate-500 hover:text-[var(--brand-primary)] transition-colors"
             >
               <span>{t.transfers.bookNow}</span>
-              <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-[var(--brand-secondary)] flex items-center justify-center group-hover:bg-[var(--brand-primary)] transition-colors">
                 <ArrowRight
                   size={16}
-                  className="text-emerald-600 group-hover:text-white transition-colors"
+                  className="text-[var(--brand-primary)] group-hover:text-white transition-colors"
                 />
               </div>
             </Link>

@@ -21,7 +21,7 @@ class AccountMembershipRow extends StatelessWidget {
           SizedBox(width: 10),
           _MembershipCard(
             icon: Icons.flag_outlined,
-            title: 'Earn Trip Coins',
+            title: 'Earn نقاط لوناليزا',
             subtitle: 'Book to earn rewards',
           ),
           SizedBox(width: 10),

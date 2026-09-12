@@ -36,7 +36,7 @@ describe("weekly tourism planner", () => {
       locale: "ar",
       weekStart: new Date("2026-08-31T00:00:00.000Z"),
       now: new Date("2026-08-31T12:00:00.000Z"),
-      sourcesUsed: ["كتالوج الريان"],
+      sourcesUsed: ["كتالوج لوناليزا"],
       limitations: [],
     });
     expect(plan.items).toHaveLength(7);

@@ -74,7 +74,7 @@ class HomeServiceGrid extends ConsumerWidget {
         nav.goHotels();
         return;
       case 'cars':
-        context.push('/catalog/cars');
+        context.push('/cars');
         return;
       case 'transfers':
         nav.goTransfers();
@@ -85,9 +85,17 @@ class HomeServiceGrid extends ConsumerWidget {
       case 'tours':
         context.push('/catalog/tours');
         return;
+      case 'ai-chat':
+        context.push('/ai');
+        return;
+      case 'community':
+        context.push('/community');
+        return;
+      case 'reels':
+        context.push('/community/reels');
+        return;
       default:
-        final path = surface.path ?? '/ai-chat';
-        context.push('/site?path=${Uri.encodeQueryComponent(path)}');
+        context.push('/ai');
     }
   }
 
@@ -113,27 +121,27 @@ class HomeServiceGrid extends ConsumerWidget {
 
   String _labelFor(String key) {
     return switch (key) {
-      'flight' => 'Flights',
-      'hotel' => 'Hotels',
-      'cars' => 'Cars',
-      'transfers' => 'Transfer',
-      'holiday' => 'Holiday',
-      'tours' => 'Tours',
-      'visa' => 'Visa',
-      'insurance' => 'Insurance',
-      'offers' => 'Offers',
-      'ai-chat' => 'AI',
-      'community' => 'Community',
-      'reels' => 'Reels',
-      'blog' => 'Blog',
-      'about' => 'About',
-      'contact' => 'Contact',
-      'privacy' => 'Privacy',
-      'terms' => 'Terms',
+      'flight' => 'طيران',
+      'hotel' => 'فنادق',
+      'cars' => 'سيارات',
+      'transfers' => 'ترانسفير',
+      'holiday' => 'باقات',
+      'tours' => 'رحلات',
+      'visa' => 'تأشيرة',
+      'insurance' => 'تأمين',
+      'offers' => 'عروض',
+      'ai-chat' => 'المساعد',
+      'community' => 'مجتمع',
+      'reels' => 'ريلز',
+      'blog' => 'المدونة',
+      'about' => 'من نحن',
+      'contact' => 'تواصل',
+      'privacy' => 'الخصوصية',
+      'terms' => 'الشروط',
       'gdpr' => 'GDPR',
-      'account-social' => 'Social',
-      'account-chats' => 'Chats',
-      'account-programs' => 'Programs',
+      'account-social' => 'اجتماعي',
+      'account-chats' => 'محادثات',
+      'account-programs' => 'برامج',
       _ => key,
     };
   }

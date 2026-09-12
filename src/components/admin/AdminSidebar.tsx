@@ -13,6 +13,7 @@ import {
   type NavGroupId,
   type NavLeaf,
 } from "@/components/admin/admin-nav";
+import { isOriginClient } from "@/lib/public-config";
 
 const STORAGE_KEY = "alrayyan_admin_nav_groups";
 
@@ -61,11 +62,15 @@ function emptyOpen(): Record<NavGroupId, boolean> {
   return {
     overview: false,
     bookings: false,
+    inventory: false,
+    storefront: false,
     customers: false,
-    services: false,
     marketing: false,
+    ai_center: false,
+    finance: false,
+    legal: false,
     system: false,
-    settings: false,
+    resale: false,
   };
 }
 
@@ -80,7 +85,11 @@ export default function AdminSidebar({
   onToggleTheme,
   onLogout,
 }: AdminSidebarProps) {
-  const nav = useMemo(() => buildAdminNav(t.admin), [t.admin]);
+  const isOrigin = isOriginClient();
+  const nav = useMemo(() => {
+    const all = buildAdminNav(t.admin);
+    return isOrigin ? all : all.filter((g) => g.id !== "resale");
+  }, [t.admin, isOrigin]);
   const [expanded, setExpanded] = useState<Record<NavGroupId, boolean>>(() => ({
     ...emptyOpen(),
     overview: true,
@@ -123,21 +132,13 @@ export default function AdminSidebar({
           theme.hairline
         )}
       >
-        <Link href="/admin" className="flex items-center gap-3 min-w-0" onClick={onClose}>
+        <Link href="/admin" className="flex items-center min-w-0 py-1" onClick={onClose}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
-            alt="Alrayyan Tourism"
-            className="size-8 object-contain rounded-lg"
+            src="/logo.svg?v=5"
+            alt="Lonaliza"
+            className="h-11 sm:h-12 w-auto max-w-[220px] object-contain transition-transform hover:scale-105"
           />
-          <div className="min-w-0">
-            <span className={cn(theme.textMain, "font-bold text-sm tracking-tight block truncate")}>
-              Alrayyan Tourism
-            </span>
-            <span className="block text-[9px] text-emerald-600 dark:text-emerald-400 font-semibold tracking-[0.18em] uppercase">
-              {t.admin.panel}
-            </span>
-          </div>
         </Link>
         <button
           type="button"
@@ -192,8 +193,8 @@ export default function AdminSidebar({
           <span>{t.admin.viewLiveSite}</span>
         </Link>
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl border border-sidebar-border bg-secondary">
-          <div className="size-7 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0">
-            <User size={13} className="text-white" />
+          <div className="size-7 rounded-lg bg-gradient-to-br from-[#2e1065] via-[#3b0764] to-[#4c1d95] text-amber-300 border border-amber-400/40 flex items-center justify-center flex-shrink-0">
+            <User size={13} className="text-amber-300" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sidebar-foreground text-xs font-semibold truncate">
@@ -253,7 +254,7 @@ function NavSection({
           className={cn(
             "size-7 rounded-lg flex items-center justify-center flex-shrink-0 border",
             hasActive
-              ? "bg-sidebar-accent border-emerald-500/25 text-sidebar-accent-foreground"
+              ? "bg-sidebar-accent border-purple-300/40 dark:border-purple-600/40 text-sidebar-accent-foreground shadow-2xs"
               : "bg-secondary border-sidebar-border text-sidebar-muted"
           )}
         >
@@ -338,7 +339,7 @@ function NavLink({
       )}
     >
       {active ? (
-        <span className="absolute inset-s-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-emerald-500 rounded-full -ms-3" />
+        <span className="absolute inset-s-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-amber-500 rounded-full -ms-3" />
       ) : null}
       <item.icon
         size={15}

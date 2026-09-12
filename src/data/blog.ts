@@ -14,8 +14,14 @@ const emptySeo = {
   ogImage: "",
 };
 
-/** Seed lives on the server store. Client catalog is fetched from /api/blog. */
-export const defaultPosts: BlogPost[] = [];
+import migratedPostsData from "@/data/migrated/blog-posts.json";
+
+/** Central blog posts seed from migrated catalog and database */
+export const defaultPosts: BlogPost[] = (
+  Array.isArray(migratedPostsData)
+    ? migratedPostsData
+    : (migratedPostsData as unknown as { posts?: BlogPost[] })?.posts || []
+) as BlogPost[];
 
 export function computeSeoScore(post: BlogPost): number {
   let score = 0;
@@ -29,21 +35,21 @@ export function computeSeoScore(post: BlogPost): number {
   return Math.min(100, score);
 }
 
-/** Sync stub for leftover catalog widgets. Live data: fetchPublishedPosts / admin API. */
+/** Synchronous catalog helper. Contains all migrated and active posts. */
 export function getPosts(): BlogPost[] {
   return defaultPosts;
 }
 
 export function getPublishedPosts(): BlogPost[] {
-  return [];
+  return defaultPosts.filter((p) => p.status === "published");
 }
 
-export function getPostById(_id: string): BlogPost | undefined {
-  return undefined;
+export function getPostById(id: string): BlogPost | undefined {
+  return defaultPosts.find((p) => p.id === id);
 }
 
-export function getPostBySlug(_slug: string): BlogPost | undefined {
-  return undefined;
+export function getPostBySlug(slug: string): BlogPost | undefined {
+  return defaultPosts.find((p) => p.slug === slug);
 }
 
 export function peekLegacyLocalPosts(): BlogPost[] {

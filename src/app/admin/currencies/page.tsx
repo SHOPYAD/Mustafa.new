@@ -239,7 +239,7 @@ export default function AdminCurrenciesPage() {
             {c.fxAt}: <span className="text-white">{fx?.at ? new Date(fx.at).toLocaleString() : "—"}</span>
           </p>
         </div>
-        <p className={`mt-3 text-sm ${fx?.stale || fx?.error ? "text-amber-300" : "text-emerald-300"}`}>
+        <p className={`mt-3 text-sm ${fx?.stale || fx?.error ? "text-amber-300" : "text-purple-300 font-medium"}`}>
           {!settings.liveFxEnabled ? c.fxOff : fx?.stale || fx?.error ? c.fxStale : c.fxLive}
         </p>
       </section>
@@ -262,7 +262,7 @@ export default function AdminCurrenciesPage() {
             {enabled.map((row) => (
               <span
                 key={row.code}
-                className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-xs text-emerald-200"
+                className="inline-flex items-center gap-1.5 rounded-full bg-purple-500/20 px-2.5 py-1 text-xs text-purple-200 border border-purple-400/30"
               >
                 {row.flag} {row.code}
                 {missing.has(row.code) ? (
@@ -300,9 +300,9 @@ export default function AdminCurrenciesPage() {
               key={id}
               type="button"
               onClick={() => setFilter(id)}
-              className={`rounded-full px-3 py-1 text-xs font-semibold ${
+              className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
                 filter === id
-                  ? "bg-amber-500 text-[#051741]"
+                  ? "bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm"
                   : "bg-white/5 text-white/55 hover:text-white"
               }`}
             >
@@ -320,9 +320,9 @@ export default function AdminCurrenciesPage() {
               return (
                 <div
                   key={row.code}
-                  className={`flex flex-wrap items-center gap-3 rounded-xl border px-3 py-2.5 ${
+                  className={`flex flex-wrap items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors ${
                     row.enabled
-                      ? "border-emerald-500/25 bg-emerald-500/8"
+                      ? "border-purple-500/30 bg-purple-950/25"
                       : "border-white/8 bg-black/20"
                   }`}
                 >
@@ -337,7 +337,7 @@ export default function AdminCurrenciesPage() {
                       {row.nameAr} · {row.nameEn} · {row.nameTr}
                     </p>
                     {row.enabled ? (
-                      <p className="text-[11px] text-emerald-300/80 mt-0.5">{c.onHeader}</p>
+                      <p className="text-[11px] text-amber-300/90 mt-0.5 font-medium">{c.onHeader}</p>
                     ) : null}
                     {noLive ? <p className="text-[11px] text-amber-300 mt-0.5">{c.noLive}</p> : null}
                     {row.enabled && rate && rate > 0 ? (
@@ -348,10 +348,10 @@ export default function AdminCurrenciesPage() {
                     type="button"
                     disabled={busyCode === row.code}
                     onClick={() => void toggle(row, !row.enabled)}
-                    className={`shrink-0 rounded-xl px-3 py-1.5 text-xs font-bold disabled:opacity-50 ${
+                    className={`shrink-0 rounded-xl px-3 py-1.5 text-xs font-bold disabled:opacity-50 transition-all ${
                       row.enabled
                         ? "bg-white/10 text-white/80 hover:bg-white/15"
-                        : "bg-amber-500 text-[#051741] hover:bg-amber-400"
+                        : "bg-gradient-to-r from-purple-700 to-indigo-800 text-white hover:brightness-110 shadow-sm"
                     }`}
                   >
                     {busyCode === row.code ? (

@@ -16,6 +16,8 @@ export type HotelSearchQuery = {
   children: number;
   rooms: number;
   childrenAges: number[];
+  hotelName?: string;
+  hotelKey?: string;
 };
 
 const MAX_ROOMS = 8;
@@ -86,7 +88,7 @@ export function parseHotelSearchParams(
   const rooms = clampInt(searchParam(sp, "rooms"), 1, MAX_ROOMS, 1);
   const adults = clampInt(searchParam(sp, "adults"), 1, MAX_ADULTS, 2);
   const children = clampInt(searchParam(sp, "children"), 0, MAX_CHILDREN, 0);
-  const q = searchParam(sp, "q") || "Istanbul";
+  const q = searchParam(sp, "q", "query", "city", "destination") || "Istanbul";
   return {
     q,
     geoId: searchParam(sp, "geoId", "geoid"),
@@ -97,6 +99,8 @@ export function parseHotelSearchParams(
     children,
     rooms,
     childrenAges: parseChildrenAges(searchParam(sp, "childrenAges", "children_ages"), children),
+    hotelName: searchParam(sp, "hotelName"),
+    hotelKey: searchParam(sp, "hotelKey"),
   };
 }
 
@@ -110,6 +114,8 @@ export function stayFromSearchParams(sp: URLSearchParams) {
     checkOut: query.checkOut,
     adults: query.adults,
     rooms: toAdvisorRooms(query),
+    hotelName: query.hotelName || "",
+    hotelKey: query.hotelKey || "",
   };
 }
 
@@ -125,6 +131,8 @@ export function hotelSearchToParams(query: HotelSearchQuery): URLSearchParams {
   if (query.geoId) qs.set("geoId", query.geoId);
   if (query.destId) qs.set("destId", query.destId);
   if (query.childrenAges.length) qs.set("childrenAges", query.childrenAges.join(","));
+  if (query.hotelName) qs.set("hotelName", query.hotelName);
+  if (query.hotelKey) qs.set("hotelKey", query.hotelKey);
   return qs;
 }
 
@@ -133,6 +141,16 @@ export function syncHotelSearchUrl(query: HotelSearchQuery) {
   const next = `/hotels?${hotelSearchToParams(query).toString()}`;
   window.history.replaceState(null, "", next);
 }
+
+export type HotelSuggestHit = {
+  kind: "city" | "hotel";
+  id: string;
+  name: string;
+  city: string;
+  country?: string;
+  hotelKey?: string;
+  bookingHotelId?: string;
+};
 
 export type GeoPlaceHit = {
   id: string;

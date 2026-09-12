@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "جاري التحويل | الريان للسياحة",
+  title: "جاري التحويل | لوناليزا للسياحة والسفر",
   robots: { index: false, follow: false },
 };
 

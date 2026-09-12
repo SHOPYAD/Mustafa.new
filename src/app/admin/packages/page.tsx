@@ -26,6 +26,7 @@ import ServiceImportChat from "@/components/admin/ServiceImportChat";
 import { normalizeImportedPackage } from "@/lib/import-normalize";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
+import WhiteLabelUpgradeOverlay from "@/components/admin/WhiteLabelUpgradeOverlay";
 
 export default function AdminPackagesPage() {
     const { t, locale } = useLocale();
@@ -72,12 +73,14 @@ export default function AdminPackagesPage() {
     };
 
     const handleDelete = async (id: string) => {
+        setPackages((prev) => prev.filter((p) => p.id !== id));
+        setDeleteConfirmId(null);
         try {
             await deleteAdminPackage(id);
-        } catch {
-            deletePackage(id);
+        } catch (e) {
+            console.error("Delete package error:", e);
         }
-        setDeleteConfirmId(null);
+        deletePackage(id);
         refresh();
     };
 
@@ -101,27 +104,7 @@ export default function AdminPackagesPage() {
 
     return (
         <div className="admin-page w-full max-w-none min-w-0">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-                <div>
-                    <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                        <Package className="text-emerald-400" size={28} />
-                        Package Management
-                    </h1>
-                    <p className="text-white/50 mt-1">Manage holiday packages, prices, and destinations</p>
-                </div>
-                <div className="flex items-center gap-3">
-                    <button onClick={() => setShowResetConfirm(true)} className="px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white font-medium rounded-xl transition-all flex items-center gap-2 text-sm">
-                        <RotateCcw size={14} />
-                        Reset
-                    </button>
-                    <button onClick={() => { setEditingPkg(null); setIsModalOpen(true); }} className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2">
-                        <Plus size={18} />
-                        Add Package
-                    </button>
-                </div>
-            </div>
-
+            <WhiteLabelUpgradeOverlay moduleName="البرامج السياحية">
             <div className="mb-6">
                 <ServiceImportChat
                     serviceType="package"
@@ -241,6 +224,8 @@ export default function AdminPackagesPage() {
                     </div>
                 </div>
             )}
+
+            </WhiteLabelUpgradeOverlay>
 
             <PackageFormModal
                 isOpen={isModalOpen}

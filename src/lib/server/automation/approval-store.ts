@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { sendTelegramDocument, sendTelegramMessage, sendTelegramPhoto } from "@/lib/automation/channels/telegram";
 import { publishApprovedStudio } from "@/lib/automation/publish-approved";
-import { readStudioLastOutput } from "@/lib/studio/last-output";
+import { readStudioLastOutput, writeStudioLastOutput } from "@/lib/studio/last-output";
 import { getCommsSettings } from "@/lib/automation/comms-settings";
 import {
   ApprovalTransitionError,
@@ -135,6 +135,18 @@ async function saveRecord(next: ApprovalRecord): Promise<ApprovalRecord> {
   });
 }
 
+export async function deleteApprovalRecord(id: string): Promise<void> {
+  await mutate((file) => {
+    file.items = file.items.filter((item) => item.id !== id);
+  });
+}
+
+export async function purgeApprovalByJobId(jobId: string): Promise<void> {
+  await mutate((file) => {
+    file.items = file.items.filter((item) => item.jobId !== jobId);
+  });
+}
+
 export async function proposeAutomationDraft(input: {
   prompt: string;
   notes?: string;
@@ -239,15 +251,17 @@ export async function applyApprovalEvent(input: {
       throw new ApprovalTransitionError(existing.state, input.event);
     }
     record.jobId = await materializeLiveJob(record);
-    if (input.publishMode === "publish") {
+    if (input.publishMode === "publish" || input.publishMode === "launch") {
       const budgetMatch = String(record.draft.budget || "").match(/(\d+(?:\.\d+)?)/);
       const budget = budgetMatch ? Number(budgetMatch[1]) : 0;
+      const wantBoost = input.publishMode === "launch" || budget > 0;
       await publishApprovedStudio({
         approved: true,
         caption: record.draft.summaryAr || record.draft.name,
-        boost: budget > 0,
-        budget: budget > 0 ? budget : undefined,
+        boost: wantBoost && budget > 0,
+        budget: budget > 0 ? budget : wantBoost ? 20 : undefined,
       });
+      await writeStudioLastOutput({ pendingPublish: false });
     }
   }
 
@@ -339,6 +353,31 @@ export async function handleTelegramApprovalText(
     return { handled: false };
   }
   if (!pending) {
+    if (intent.kind === "approve") {
+      const last = await readStudioLastOutput();
+      const hasMedia =
+        Boolean(last?.pendingPublish) &&
+        Boolean((last?.imageUrls?.length || 0) + (last?.videoUrls?.length || 0));
+      if (hasMedia && last) {
+        const published = await publishApprovedStudio({
+          approved: true,
+          caption: last.caption,
+          boost: intent.mode === "launch",
+          budget: intent.mode === "launch" ? 20 : undefined,
+        });
+        await writeStudioLastOutput({ pendingPublish: false });
+        return {
+          handled: true,
+          reply: published.ok
+            ? intent.mode === "launch"
+              ? "نُشر للحسابات المتصلة وطُلب تعزيز إعلاني (يتطلب مفاتيح ميتا وميزانية)."
+              : "نُشر للحسابات المتصلة بعد موافقة «انشر»."
+            : `تعذّر النشر: ${published.results
+                .map((r) => (r.ok ? r.platform : `${r.platform}:${r.error.message}`))
+                .join(", ") || "فشل"}`,
+        };
+      }
+    }
     return { handled: true, reply: "لا يوجد طلب أتمتة بانتظار الموافقة." };
   }
 

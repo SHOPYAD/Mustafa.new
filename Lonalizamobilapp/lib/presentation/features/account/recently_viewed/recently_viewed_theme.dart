@@ -92,7 +92,7 @@ abstract final class RecentlyViewedTheme {
 
   /// Location chips (second row under category tabs).
   static const Color cityChipActiveBg = Color(0xFFEFF6FF);
-  static const Color cityChipActiveText = Color(0xFF2563EB);
+  static const Color cityChipActiveText = Color(0xFF7C3AED);
   static const Color cityChipInactiveBorder = Color(0xFFE5E7EB);
   static const Color cityChipInactiveText = Color(0xFF4B5563);
 

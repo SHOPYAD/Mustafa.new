@@ -210,9 +210,14 @@ const hotelIdCache = new Map<string, CacheEntry<string>>();
 const inflight = new Map<string, Promise<HotelRoomsProviderResult>>();
 const QUOTA_COOL_MS = 12 * 60 * 1000;
 let quotaCoolUntil = 0;
+let lastRoomsKeySuffix = "";
 
 export function bookingQuotaCooling(): boolean {
   return Date.now() < quotaCoolUntil;
+}
+
+export function clearBookingQuotaCooldown() {
+  quotaCoolUntil = 0;
 }
 
 function markBookingQuotaCooldown() {
@@ -264,6 +269,17 @@ const BLOCKED_NAME_IDS: Array<{ name: RegExp; id: string }> = [
 let persistedBookingIds: Record<string, string> = { ...KNOWN_BOOKING_IDS };
 let persistedIdsReady = false;
 
+/** Booking.com hotel_id is digits only. Supplier codes (hb_648251 / 648251 from Hotelbeds) must never be treated as one. */
+export function asBookingComHotelId(raw?: string): string {
+  const s = String(raw || "").trim();
+  if (!s) return "";
+  const bk = /^bk-(\d+)$/i.exec(s);
+  if (bk) return bk[1];
+  if (/^(hb|nb|he|ht|rh|tph|sh|giata|ta|owned)[-_]/i.test(s)) return "";
+  if (/^\d+$/.test(s) && s.length >= 4 && s.length <= 12) return s;
+  return "";
+}
+
 function knownBookingHotelId(hotelName: string, city: string): string {
   const n = normalizeName(`${hotelName} ${city}`);
   const exact =
@@ -305,8 +321,39 @@ async function loadPersistedBookingIds() {
   }
 }
 
+export async function forgetPersistedBookingHotelId(hotelName: string, city: string, badId?: string) {
+  await loadPersistedBookingIds();
+  const keys = [normalizeName(hotelName), hotelIdCacheKey(hotelName, city)];
+  hotelIdCache.delete(hotelIdCacheKey(hotelName, city));
+  let changed = false;
+  for (const key of keys) {
+    if (key && persistedBookingIds[key]) {
+      delete persistedBookingIds[key];
+      changed = true;
+    }
+  }
+  if (badId) {
+    for (const [key, id] of Object.entries(persistedBookingIds)) {
+      if (id === badId && (key === normalizeName(hotelName) || key.startsWith(`${normalizeName(hotelName)}|`))) {
+        delete persistedBookingIds[key];
+        changed = true;
+      }
+    }
+  }
+  if (!changed) return;
+  try {
+    await fs.mkdir(path.dirname(BOOKING_ID_FILE), { recursive: true });
+    await fs.writeFile(BOOKING_ID_FILE, JSON.stringify(persistedBookingIds, null, 2), {
+      mode: 0o600,
+    });
+  } catch {
+    /* ignore disk errors */
+  }
+}
+
 async function persistBookingHotelId(hotelName: string, city: string, id: string) {
   if (!id || !isRealRoomName(hotelName)) return;
+  if (!asBookingComHotelId(id)) return;
   await loadPersistedBookingIds();
   const keys = [normalizeName(hotelName), hotelIdCacheKey(hotelName, city)];
   let changed = false;
@@ -377,6 +424,13 @@ export function roomsLanguage(lang?: string): string {
   const raw = (lang || "").toLowerCase();
   if (raw.startsWith("ar")) return "ar";
   if (raw.startsWith("tr")) return "tr";
+  return "en-us";
+}
+
+/** Booking.com15 review endpoints reject `ar` / `tr` and return status:false. */
+function bookingReviewLanguage(lang?: string): string {
+  const raw = roomsLanguage(lang).toLowerCase();
+  if (raw.startsWith("en-gb")) return "en-gb";
   return "en-us";
 }
 
@@ -563,9 +617,14 @@ async function roomsCredentials(): Promise<{ key: string; host: string; enabled:
     (await getServerEnv("BOOKING_COM_HOST")).trim() ||
     (await getServerEnv("RAPIDAPI_ROOMS_HOST")).trim() ||
     BOOKING_COM15_HOST;
-  const dedicated =
-    (await getServerEnv("BOOKING_COM_RAPIDAPI_KEY")).trim() ||
-    (await getServerEnv("RAPIDAPI_ROOMS_KEY")).trim();
+  const namedBooking = (await getServerEnv("BOOKING_COM_RAPIDAPI_KEY")).trim();
+  const roomsKey = (await getServerEnv("RAPIDAPI_ROOMS_KEY")).trim();
+  const dedicated = namedBooking || roomsKey;
+  const suffix = dedicated ? dedicated.slice(-12) : "";
+  if (suffix && suffix !== lastRoomsKeySuffix) {
+    lastRoomsKeySuffix = suffix;
+    quotaCoolUntil = 0;
+  }
   // Never silently use the Travel Advisor RapidAPI key for Booking.com15.
   return { key: dedicated, host: normalizeHost(configured), enabled };
 }
@@ -872,21 +931,21 @@ export function propertyChildrenPolicies(input: { hotelId: string; lang?: string
 export function getHotelReviewsFilterMetadata(input: { hotelId: string; lang?: string }) {
   return hotelGet(BOOKING_COM15_HOTEL_ENDPOINTS.getHotelReviewsFilterMetadata, {
     hotel_id: input.hotelId,
-    languagecode: roomsLanguage(input.lang),
+    languagecode: bookingReviewLanguage(input.lang),
   });
 }
 
 export function getHotelReviewScores(input: { hotelId: string; lang?: string }) {
   return hotelGet(BOOKING_COM15_HOTEL_ENDPOINTS.getHotelReviewScores, {
     hotel_id: input.hotelId,
-    languagecode: roomsLanguage(input.lang),
+    languagecode: bookingReviewLanguage(input.lang),
   });
 }
 
 export function getHotelReviewsTipsSort(input: { hotelId: string; lang?: string }) {
   return hotelGet(BOOKING_COM15_HOTEL_ENDPOINTS.getHotelReviewsSortOption, {
     hotel_id: input.hotelId,
-    languagecode: roomsLanguage(input.lang),
+    languagecode: bookingReviewLanguage(input.lang),
   });
 }
 
@@ -901,9 +960,9 @@ export function getHotelReviewsTips(input: {
     BOOKING_COM15_HOTEL_ENDPOINTS.getHotelReviews,
     {
       hotel_id: input.hotelId,
-      sort_option_id: input.sortOptionId || "sort_most_relevant",
+      sort_option_id: input.sortOptionId || "sort_recent_desc",
       page_number: input.pageNumber ?? 1,
-      languagecode: roomsLanguage(input.lang),
+      languagecode: bookingReviewLanguage(input.lang),
     },
     input.timeoutMs
   );
@@ -1056,6 +1115,14 @@ export async function bookingCom15Get(
     if (!res.ok) {
       const errorCode = classifyRoomsFailure(res.status, text);
       if (errorCode === "quota") markBookingQuotaCooldown();
+      if (errorCode === "not_subscribed") {
+        const namedBooking = (await getServerEnv("BOOKING_COM_RAPIDAPI_KEY")).trim();
+        const roomsKey = (await getServerEnv("RAPIDAPI_ROOMS_KEY")).trim();
+        const alt = [namedBooking, roomsKey].find((item) => item && item !== key) || "";
+        if (alt) {
+          return bookingCom15Get(host, alt, apiPath, query, method, timeoutMs);
+        }
+      }
       console.error("[booking-com15]", res.status, apiPath, snippet);
       return {
         ok: false,
@@ -1175,7 +1242,7 @@ export function hotelIdFromSearchHotels(payload: unknown, hotelName: string, cit
   return bestScore >= 24 ? bestId : "";
 }
 
-async function resolveBookingHotelId(
+export async function resolveBookingHotelId(
   _host: string,
   _key: string,
   hotelName: string,
@@ -1186,10 +1253,9 @@ async function resolveBookingHotelId(
   | { ok: true; id: string; status: number; path: string; body: string }
   | FetchErr
 > {
-  const direct = String(input.bookingHotelId || "").trim();
-  if (direct && !direct.startsWith("-")) {
+  const direct = asBookingComHotelId(input.bookingHotelId);
+  if (direct) {
     hotelIdCache.set(hotelIdCacheKey(hotelName, city), { at: Date.now(), value: direct });
-    void persistBookingHotelId(hotelName, city, direct);
     return { ok: true, id: direct, status: 200, path: "given", body: "" };
   }
   await loadPersistedBookingIds();
@@ -2063,7 +2129,7 @@ export function parseReviewsPayload(payload: unknown): TravelAdvisorReview[] {
   const data = asRecord(root?.data) || root;
   if (Array.isArray(root?.data)) bags.push(root.data);
   if (data) {
-    bags.push(data.result, data.reviews, data.tips, data.items);
+    bags.push(data.result, data.reviews, data.tips, data.items, data.review_list, asRecord(data.result)?.reviews);
   }
   for (const bag of bags) {
     if (!Array.isArray(bag)) continue;
@@ -2094,9 +2160,14 @@ export function parseReviewsPayload(payload: unknown): TravelAdvisorReview[] {
         text,
         date: pickString(rec.date, rec.review_date, rec.created),
       });
-      if (out.length >= 50) return out;
+      if (out.length >= 200) break;
     }
   }
+  out.sort((a, b) => {
+    const tb = Date.parse(b.date || "") || 0;
+    const ta = Date.parse(a.date || "") || 0;
+    return tb - ta;
+  });
   return out;
 }
 
@@ -3009,7 +3080,7 @@ export async function fetchHotelReviewsPage(input: {
   const hotelId = String(input.hotelId || "").trim();
   const page = Math.max(1, Math.floor(input.page || 1));
   const lang = roomsLanguage(input.lang);
-  const cacheKey = `reviews-${hotelId}-${page}-${lang}`;
+  const cacheKey = `reviews-${hotelId}-${page}-${lang}-recent`;
   const cached = unwrapExtra<TravelAdvisorReview[]>(
     await readBookingCache<unknown>(cacheKey, BOOKING_DETAIL_TTL_MS),
     true
@@ -3019,6 +3090,7 @@ export async function fetchHotelReviewsPage(input: {
     hotelId,
     pageNumber: page,
     lang,
+    sortOptionId: "sort_recent_desc",
   });
   if (!fetched.ok) return [];
   const reviews = parseReviewsPayload(fetched.payload);

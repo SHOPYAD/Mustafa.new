@@ -4,6 +4,7 @@ import { getServerEnv } from "@/lib/server/env-store";
 import { updatePocketBaseSuperuser } from "@/lib/pocketbase/admin";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   const denied = await assertAdminApi(req);

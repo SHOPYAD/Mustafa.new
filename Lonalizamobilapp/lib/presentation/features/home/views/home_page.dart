@@ -2,20 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/navigation/native_href.dart';
+import '../../../../core/network/mobile_json.dart';
+import '../../../../core/theme/lonaliza_theme.dart';
+import '../../../providers/auth_session_provider.dart';
+import '../../../providers/dio_provider.dart';
 import '../../../providers/router_providers.dart';
-
 import '../widgets/home_bottom_nav.dart';
 import '../widgets/home_destination_chips.dart';
-import '../widgets/home_gallery_section.dart';
 import '../widgets/home_header.dart';
-import '../widgets/home_new_user_promo_card.dart';
+import '../widgets/home_offer_card.dart';
 import '../widgets/home_quick_actions_row.dart';
 import '../widgets/home_search_bar.dart';
 import '../widgets/home_service_grid.dart';
+import '../widgets/home_service_tabs.dart';
 
-/// Trip.com–style home: composed of separate section widgets.
+/// Lonaliza–style home: composed of separate section widgets.
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key, required this.title});
+
+  /// Tests set this false so Dio is not started from [initState].
+  static bool fetchRemote = true;
 
   final String title;
 
@@ -32,6 +40,12 @@ class _HomePageState extends ConsumerState<HomePage> {
   bool _showHeaderSearch = false;
   bool _showHeaderActions = false;
   bool _showBackToTop = false;
+  List<Map<String, dynamic>> _reels = const [];
+  List<Map<String, dynamic>> _hotels = const [];
+  List<Map<String, dynamic>> _packages = const [];
+  List<Map<String, dynamic>> _cars = const [];
+  List<Map<String, dynamic>> _flights = const [];
+  String _searchTab = 'flight';
 
   /// How far the white sheet slides up over the blue (Trip card under the bar).
   static const double _sheetOverlap = -6;
@@ -88,7 +102,62 @@ class _HomePageState extends ConsumerState<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _syncHeaderContentVisibility();
+      if (HomePage.fetchRemote) _loadHome();
     });
+  }
+
+  Future<void> _loadHome() async {
+    try {
+      final client = ref.read(appDioClientProvider);
+      final results = await Future.wait([
+        client.get<Map<String, dynamic>>(
+          AppConstants.communityFeedUrl,
+          queryParameters: const {'reels': '1'},
+        ),
+        client.get<Map<String, dynamic>>(AppConstants.homeFeaturedUrl),
+      ]);
+      if (!mounted) return;
+      final featured = results[1].data ?? const <String, dynamic>{};
+      setState(() {
+        _reels = mapList(results[0].data?['posts']);
+        _hotels = mapList(featured['hotels']);
+        _packages = mapList(featured['packages']);
+        _cars = mapList(featured['cars']);
+        _flights = mapList(featured['flights']);
+      });
+    } catch (_) {
+      try {
+        final client = ref.read(appDioClientProvider);
+        final results = await Future.wait([
+          client.get<Map<String, dynamic>>(AppConstants.packagesCatalogUrl),
+          client.get<Map<String, dynamic>>(AppConstants.carsCatalogUrl),
+        ]);
+        if (!mounted) return;
+        setState(() {
+          _packages = mapList(results[0].data?['packages']);
+          _cars = mapList(results[1].data?['cars']);
+        });
+      } catch (_) {}
+    }
+  }
+
+  void _openOffer(Map<String, dynamic> item) {
+    final href = asText(item['href']);
+    context.push(href.isNotEmpty ? nativePathFromHref(href) : nativePathFromIntent(asText(item['type'])));
+  }
+
+  List<Widget> _offerCards(List<Map<String, dynamic>> items, {String? badge}) {
+    return items.take(10).map((item) {
+      return HomeOfferCard(
+        title: asText(item['title'] ?? item['name'] ?? item['titleAr'] ?? item['nameAr'], 'عرض لوناليزا'),
+        subtitle: asText(item['subtitle'] ?? item['city'] ?? item['destination'] ?? item['destinationAr']),
+        image: asText(item['image'] ?? item['imageUrl'] ?? item['cover']),
+        price: asDouble(item['price'] ?? item['pricePerDay'] ?? item['fromPrice']),
+        currency: asText(item['currency'], 'USD'),
+        badge: badge,
+        onTap: () => _openOffer(item),
+      );
+    }).toList();
   }
 
   @override
@@ -107,15 +176,15 @@ class _HomePageState extends ConsumerState<HomePage> {
       return;
     }
     if (index == 1) {
-      ref.read(navigationRepositoryProvider).goMessages();
+      ref.read(navigationRepositoryProvider).goMyTrips();
       return;
     }
     if (index == 2) {
-      context.go('/site?path=/community');
+      ref.read(navigationRepositoryProvider).goCommunity();
       return;
     }
     if (index == 3) {
-      ref.read(navigationRepositoryProvider).goMyTrips();
+      ref.read(navigationRepositoryProvider).goMessages();
       return;
     }
     if (index == 4) {
@@ -201,7 +270,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                 child: HomeHeader(
                   appName: widget.title,
                   onProfileTap: () {
-                    ref.read(navigationRepositoryProvider).goAuth();
+                    final nav = ref.read(navigationRepositoryProvider);
+                    if (ref.read(authSessionProvider) == null) {
+                      nav.goAuth();
+                    } else {
+                      nav.goAccount();
+                    }
                   },
                   bottomSheetOverlap: _sheetOverlap,
                   collapseProgress: _headerCollapseProgress,
@@ -247,15 +321,51 @@ class _HomePageState extends ConsumerState<HomePage> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            const HomeServiceGrid(),
-                            const SizedBox(height: 20),
+                            Text(
+                              'سافر بذوق لوناليزا',
+                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                color: LonalizaColors.royalPurple,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            const Text(
+                              'طيران، فنادق، باقات، سيارات وترانسفير — نفس عروض الموقع وأسعاره.',
+                              style: TextStyle(color: LonalizaColors.muted, height: 1.4),
+                            ),
+                            const SizedBox(height: 16),
+                            HomeServiceTabs(
+                              activeKey: _searchTab == 'holiday'
+                                  ? 'holiday'
+                                  : _searchTab,
+                              onChanged: (tab) {
+                                setState(() => _searchTab = tab.agentTab);
+                              },
+                            ),
+                            const SizedBox(height: 12),
                             SizedBox(key: _bodySearchKey),
                             AnimatedSwitcher(
                               duration: const Duration(milliseconds: 180),
                               child: _showHeaderSearch
                                   ? const SizedBox.shrink()
-                                  : const HomeSearchBar(),
+                                  : HomeSearchBar(agentTab: _searchTab),
                             ),
+                            const SizedBox(height: 10),
+                            Align(
+                              alignment: AlignmentDirectional.centerStart,
+                              child: TextButton(
+                                onPressed: () {
+                                  final tab = homeSearchTabs.firstWhere(
+                                    (item) => item.agentTab == _searchTab,
+                                    orElse: () => homeSearchTabs.first,
+                                  );
+                                  tab.onOpen(context, ref);
+                                },
+                                child: const Text('فتح محرك البحث الكامل'),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const HomeServiceGrid(),
                             const SizedBox(height: 16),
                             const HomeDestinationChips(),
                             const SizedBox(height: 6),
@@ -266,9 +376,34 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   ? const SizedBox.shrink()
                                   : const HomeQuickActionsRow(),
                             ),
-                            const HomeNewUserPromoCard(),
+                            HomeReelsStrip(
+                              posts: _reels,
+                              onOpenAll: () => context.push('/community/reels'),
+                            ),
                             const SizedBox(height: 20),
-                            const HomeGallerySection(),
+                            HomeOfferRail(
+                              title: 'عروض الطيران',
+                              items: _offerCards(_flights, badge: 'مباشر'),
+                              onSeeAll: () => ref.read(navigationRepositoryProvider).goFlights(),
+                            ),
+                            const SizedBox(height: 20),
+                            HomeOfferRail(
+                              title: 'فنادق مختارة',
+                              items: _offerCards(_hotels, badge: 'مميز'),
+                              onSeeAll: () => ref.read(navigationRepositoryProvider).goHotels(),
+                            ),
+                            const SizedBox(height: 20),
+                            HomeOfferRail(
+                              title: 'باقات تركيا',
+                              items: _offerCards(_packages, badge: 'باقة'),
+                              onSeeAll: () => context.push('/catalog/packages'),
+                            ),
+                            const SizedBox(height: 20),
+                            HomeOfferRail(
+                              title: 'سيارات للإيجار',
+                              items: _offerCards(_cars, badge: 'يومي'),
+                              onSeeAll: () => context.push('/catalog/cars'),
+                            ),
                             const SizedBox(height: 24),
                           ],
                         ),

@@ -117,34 +117,14 @@ export function ScrollLinkedBackdrop({ layout }: ScrollLinkedBackdropProps) {
   const to = SURFACE[toKind];
 
   const style: CSSProperties = {
-    backgroundImage: `${mixWash(from.wash, to.wash, blend.t)}, ${from.pattern}, ${to.pattern}`,
-    backgroundBlendMode: "normal, soft-light, soft-light",
+    backgroundImage: mixWash(from.wash, to.wash, blend.t),
   };
 
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 min-h-full overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 min-h-full overflow-hidden bg-white"
       style={style}
-    >
-      <div
-        className="absolute -end-16 top-[18%] h-64 w-64 opacity-40 transition-transform duration-700"
-        style={{ transform: `translateY(${blend.from * -12}px)` }}
-      >
-        <div
-          className="h-full w-full rounded-full blur-3xl"
-          style={{ background: `color-mix(in srgb, ${from.accent} 28%, transparent)` }}
-        />
-      </div>
-      <div
-        className="absolute -start-20 bottom-[12%] h-72 w-72 opacity-30 transition-transform duration-700"
-        style={{ transform: `translateY(${blend.to * 10}px)` }}
-      >
-        <div
-          className="h-full w-full rounded-full blur-3xl"
-          style={{ background: `color-mix(in srgb, ${to.accent} 26%, transparent)` }}
-        />
-      </div>
-    </div>
+    />
   );
 }

@@ -83,7 +83,7 @@ export async function loadPdfAssets(): Promise<{
 }
 
 export function renderProgramHtml(model: ProgramPdfModel): string {
-  const brand = esc(model.brandName || "الريان للسياحة");
+  const brand = esc(model.brandName || "لوناليزا للسياحة");
   const title = esc(model.titleAr || model.titleEn);
   const titleEn =
     model.titleEn && model.titleEn !== model.titleAr ? esc(model.titleEn) : "";
@@ -341,7 +341,7 @@ export function renderProgramHtml(model: ProgramPdfModel): string {
         ? `<p class="wa"><a href="${esc(waUrl)}">للتأكيد تواصل واتساب ${esc(wa)}</a></p>`
         : ""
     }
-    <p class="foot">الريان للسياحة — Alrayyan Tourism — lonaliza.com</p>
+    <p class="foot">لوناليزا للسياحة — Lonaliza Tourism — lonaliza.com</p>
   </div>
 </body>
 </html>`;

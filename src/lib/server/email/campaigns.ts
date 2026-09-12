@@ -454,7 +454,7 @@ export async function sendCampaignTest(input: {
     name: "الأدمن",
     company: brand.brandNameAr,
     email: input.to,
-    offer_title: "عرض تجريبي من الريان",
+    offer_title: "عرض تجريبي من لوناليزا",
     offer_detail: "هذه رسالة تجريبية — لم تُرسل لأي عميل.",
     cta_url: brand.siteUrl,
     cta_label: ctaLabel,

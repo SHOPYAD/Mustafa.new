@@ -33,27 +33,27 @@ type Props = {
 
 function Stepper({ row }: { row: GuestRow }) {
   return (
-    <div className="flex items-center justify-between gap-4 py-2.5">
-      <span className="text-sm font-semibold text-slate-800">{row.label}</span>
+    <div className="flex items-center justify-between gap-4 py-2.5 border-b border-slate-100 last:border-0">
+      <span className="text-sm font-bold text-slate-900">{row.label}</span>
       <div className="flex items-center gap-2">
         <button
           type="button"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-700 transition hover:border-[var(--brand-primary)] hover:bg-[var(--theme-chip-hover)] disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-purple-950 transition-colors hover:border-purple-300 hover:bg-purple-50 disabled:opacity-30 cursor-pointer"
           disabled={row.value <= row.min}
           onClick={() => row.onChange(Math.max(row.min, row.value - 1))}
           aria-label="-"
         >
-          <Minus size={14} />
+          <Minus size={15} />
         </button>
-        <span className="w-7 text-center text-sm font-bold text-[var(--navy)]">{row.value}</span>
+        <span className="w-8 text-center text-base font-black text-purple-950 font-mono">{row.value}</span>
         <button
           type="button"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-700 transition hover:border-[var(--brand-primary)] hover:bg-[var(--theme-chip-hover)] disabled:opacity-40"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-purple-950 transition-colors hover:border-purple-300 hover:bg-purple-50 disabled:opacity-30 cursor-pointer"
           disabled={row.value >= row.max}
           onClick={() => row.onChange(Math.min(row.max, row.value + 1))}
           aria-label="+"
         >
-          <Plus size={14} />
+          <Plus size={15} />
         </button>
       </div>
     </div>
@@ -101,7 +101,7 @@ export default function GuestsField({
           {extra}
           <button
             type="button"
-            className="mt-3 w-full rounded-xl bg-[var(--navy)] py-2.5 text-sm font-bold text-white hover:opacity-90"
+            className="mt-4 w-full rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 py-3 text-sm font-black text-slate-950 shadow-md shadow-amber-500/20 active:scale-98 transition-all cursor-pointer"
             onClick={() => setOpen(false)}
           >
             {applyLabel}

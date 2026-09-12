@@ -61,9 +61,9 @@ export async function getEmailBrand(): Promise<EmailBrand> {
   const branding = await getBranding();
   const contact = await readLiveSiteContact();
   return {
-    brandNameAr: branding.brandNameAr || "الريان للسياحة",
-    brandNameEn: branding.brandNameEn || "Alrayyan Tourism",
-    brandNameTr: branding.brandNameTr || branding.brandNameEn || "Alrayyan Turizm",
+    brandNameAr: branding.brandNameAr || "لوناليزا للسياحة والسفر",
+    brandNameEn: branding.brandNameEn || "Lonaliza Travel",
+    brandNameTr: branding.brandNameTr || branding.brandNameEn || "Lonaliza Turizm",
     logoUrl: absoluteUrl(branding.logoUrl || "/logo.png"),
     primary: branding.colors.primary || "#10b981",
     accent: branding.colors.accent || "#0a1628",

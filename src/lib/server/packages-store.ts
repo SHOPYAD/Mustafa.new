@@ -21,6 +21,7 @@ const STORE_FILE = path.join(DATA_DIR, "published-packages.json");
 
 type StoreFile = {
   packages: HolidayPackage[];
+  deletedIds?: string[];
   updatedAt?: string;
 };
 
@@ -45,10 +46,11 @@ async function readStore(): Promise<StoreFile> {
   try {
     const raw = await fs.readFile(getStoreFile(), "utf8");
     const parsed = JSON.parse(raw) as StoreFile;
-    if (!Array.isArray(parsed.packages)) return { packages: [] };
+    if (!Array.isArray(parsed.packages)) parsed.packages = [];
+    if (!Array.isArray(parsed.deletedIds)) parsed.deletedIds = [];
     return parsed;
   } catch {
-    return { packages: [] };
+    return { packages: [], deletedIds: [] };
   }
 }
 
@@ -56,7 +58,16 @@ async function writeStore(store: StoreFile): Promise<void> {
   await ensureDir();
   await fs.writeFile(
     getStoreFile(),
-    JSON.stringify({ ...store, updatedAt: new Date().toISOString() }, null, 2)
+    JSON.stringify(
+      {
+        ...store,
+        packages: store.packages || [],
+        deletedIds: store.deletedIds || [],
+        updatedAt: new Date().toISOString(),
+      },
+      null,
+      2
+    )
   );
 }
 
@@ -223,19 +234,22 @@ export async function listExtraPackages(): Promise<HolidayPackage[]> {
 }
 
 export async function listMergedPackages(): Promise<HolidayPackage[]> {
-  const extras = await listExtraPackages();
+  const store = await readStore();
+  const deletedSet = new Set(store.deletedIds || []);
   const extraKeys = new Set<string>();
   const merged: HolidayPackage[] = [];
 
-  for (const pkg of extras) {
+  for (const pkg of store.packages) {
     if (!pkg?.id) continue;
+    if (deletedSet.has(pkg.id) || (pkg.slug && deletedSet.has(pkg.slug))) continue;
     extraKeys.add(pkg.id);
     if (pkg.slug) extraKeys.add(pkg.slug);
     merged.push(pkg);
   }
   for (const pkg of defaultPackages) {
+    if (deletedSet.has(pkg.id) || (pkg.slug && deletedSet.has(pkg.slug))) continue;
     if (extraKeys.has(pkg.id) || extraKeys.has(pkg.slug)) continue;
-    if (extras.some((extra) => packagesLookSame(extra, pkg))) continue;
+    if (store.packages.some((extra) => packagesLookSame(extra, pkg))) continue;
     merged.push(pkg);
   }
   return sortPackagesNewestFirst(merged);
@@ -263,6 +277,14 @@ export async function upsertPublishedPackage(
     incoming as Partial<HolidayPackage> & Record<string, unknown>,
     existing
   );
+
+  // If restoring or updating, remove from deletedIds
+  if (store.deletedIds && store.deletedIds.length) {
+    store.deletedIds = store.deletedIds.filter(
+      (delId) => delId !== pkg.id && delId !== pkg.slug
+    );
+  }
+
   if (idx >= 0) store.packages[idx] = pkg;
   else store.packages.unshift(pkg);
   await writeStore(store);
@@ -289,14 +311,32 @@ export async function publishAiProgramToCatalog(
 
 export async function unpublishPackage(id: string): Promise<boolean> {
   const store = await readStore();
-  const next = store.packages.filter((p) => p.id !== id && p.slug !== id);
-  if (next.length === store.packages.length) return false;
-  store.packages = next;
+  const targetId = String(id || "").trim();
+  if (!targetId) return false;
+
+  // Find target if in store or default
+  const inStore = store.packages.find((p) => p.id === targetId || p.slug === targetId);
+  const inDefault = defaultPackages.find((p) => p.id === targetId || p.slug === targetId);
+  const slugToBlock = inStore?.slug || inDefault?.slug || targetId;
+
+  // Filter out of store.packages
+  store.packages = store.packages.filter(
+    (p) => p.id !== targetId && p.slug !== targetId && p.slug !== slugToBlock
+  );
+
+  // Record tombstone in deletedIds
+  const deletedSet = new Set(store.deletedIds || []);
+  deletedSet.add(targetId);
+  if (slugToBlock) deletedSet.add(slugToBlock);
+  if (inStore?.id) deletedSet.add(inStore.id);
+  if (inDefault?.id) deletedSet.add(inDefault.id);
+  store.deletedIds = Array.from(deletedSet);
+
   await writeStore(store);
   return true;
 }
 
 export async function resetExtraPackages(): Promise<HolidayPackage[]> {
-  await writeStore({ packages: [] });
+  await writeStore({ packages: [], deletedIds: [] });
   return listMergedPackages();
 }

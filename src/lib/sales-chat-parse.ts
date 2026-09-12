@@ -25,6 +25,8 @@ export type HydratedSalesChat = {
   suggestedFlightHref?: string;
   transferHref?: string;
   carsHref?: string;
+  perks?: SalesChatStructured["perks"];
+  bundleCheckoutPayload?: SalesChatStructured["bundleCheckoutPayload"];
 };
 
 const CARD_TYPES: readonly SalesChatCardType[] = [
@@ -512,5 +514,7 @@ export function hydrateSalesChatResponse(
     suggestedFlightHref: pickStr(parsed?.suggestedFlightHref) || undefined,
     transferHref: pickStr(parsed?.transferHref) || undefined,
     carsHref: pickStr(parsed?.carsHref) || undefined,
+    perks: (parsed?.perks as SalesChatStructured["perks"]) || (extras as any)?.perks || undefined,
+    bundleCheckoutPayload: (parsed?.bundleCheckoutPayload as SalesChatStructured["bundleCheckoutPayload"]) || (extras as any)?.bundleCheckoutPayload || undefined,
   };
 }

@@ -104,8 +104,8 @@ export default function HotelPaymentChannels({
       return (
         <div className={cn("flex flex-wrap items-center gap-1.5", className)}>
           {flags.whatsappEnabled ? (
-            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-800">
-              <MessageCircle size={12} className="shrink-0" />
+            <span className="inline-flex items-center gap-1 rounded-md bg-purple-50 px-1.5 py-0.5 text-[10px] font-semibold text-purple-950 border border-purple-200/60">
+              <MessageCircle size={12} className="shrink-0 text-purple-700" />
               {t.payWhatsAppBank}
             </span>
           ) : null}
@@ -126,11 +126,11 @@ export default function HotelPaymentChannels({
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch">
             {flags.whatsappEnabled ? (
-              <div className="flex min-w-0 flex-1 items-start gap-2 rounded-xl border border-emerald-100 bg-emerald-50/70 px-3 py-2.5 text-sm text-emerald-950">
-                <MessageCircle size={18} className="mt-0.5 shrink-0 text-emerald-700" />
+              <div className="flex min-w-0 flex-1 items-start gap-2 rounded-xl border border-purple-100 bg-purple-50/80 px-3 py-2.5 text-sm text-purple-950">
+                <MessageCircle size={18} className="mt-0.5 shrink-0 text-[#2e1065]" />
                 <div className="min-w-0">
                   <p className="font-semibold">{t.payWhatsAppBank}</p>
-                  <p className="mt-0.5 text-xs leading-relaxed text-emerald-900/80">{t.bankLinkPayment}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-purple-900/80">{t.bankLinkPayment}</p>
                 </div>
               </div>
             ) : null}

@@ -139,14 +139,14 @@ export default function FlightPriceCalendar({
   return (
     <div className="p-4 sm:p-5">
       <div className="mb-4 grid grid-cols-2 gap-2">
-        <div className={cn("rounded-xl border px-3 py-2.5", !pickingReturn ? "border-[var(--brand-primary)] bg-emerald-50" : "border-slate-200 bg-slate-50")}>
+        <div className={cn("rounded-xl border px-3 py-2.5", !pickingReturn ? "border-[var(--brand-primary)] bg-purple-50" : "border-slate-200 bg-slate-50")}>
           <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{copy.departure}</p>
           <p className="mt-0.5 text-sm font-bold text-[var(--navy)]">
             {departDate ? format(departDate, "d MMM yyyy", { locale: dfLocale }) : copy.selectDates}
           </p>
         </div>
         {tripType === "round-trip" ? (
-          <div className={cn("rounded-xl border px-3 py-2.5", pickingReturn ? "border-[var(--brand-primary)] bg-emerald-50" : "border-slate-200 bg-slate-50")}>
+          <div className={cn("rounded-xl border px-3 py-2.5", pickingReturn ? "border-[var(--brand-primary)] bg-purple-50" : "border-slate-200 bg-slate-50")}>
             <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{copy.return}</p>
             <p className="mt-0.5 text-sm font-bold text-[var(--navy)]">
               {backDate ? format(backDate, "d MMM yyyy", { locale: dfLocale }) : copy.selectDates}
@@ -172,7 +172,7 @@ export default function FlightPriceCalendar({
           ) : loadingPrices ? (
             <p className="mt-0.5 text-xs text-slate-400">…</p>
           ) : prices.length > 0 ? (
-            <p className="mt-0.5 text-xs font-medium text-emerald-600">
+            <p className="mt-0.5 text-xs font-bold text-[#2e1065]">
               {copy.cheapestDay}: {formatFlightPrice(cheapest, currency)}
             </p>
           ) : null}
@@ -197,10 +197,10 @@ export default function FlightPriceCalendar({
           ];
           return (
             <div key={m.toISOString()} className={cn(monthIndex === 1 && "hidden md:block")}>
-              <p className="mb-3 text-center text-base font-bold text-[var(--navy)]">
+              <p className="mb-3 text-center text-base font-black text-purple-950">
                 {format(m, "MMMM yyyy", { locale: dfLocale })}
               </p>
-              <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-slate-400">
+              <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-slate-500">
                 {labels.map((d, i) => (
                   <span key={`${d}-${i}`}>{d}</span>
                 ))}
@@ -230,29 +230,31 @@ export default function FlightPriceCalendar({
                       onClick={() => pickDay(day)}
                       className={cn(
                         "flex min-h-[3.65rem] flex-col items-center justify-center rounded-xl px-0.5 py-1 text-sm transition",
-                        disabled && "cursor-not-allowed text-slate-300",
-                        !disabled && !isIn && !isOut && inRange && "bg-emerald-50 text-emerald-950",
-                        (isIn || isOut) && "bg-[var(--brand-primary)] font-bold text-white shadow-sm",
-                        !disabled && !isIn && !isOut && !inRange && "text-slate-800 hover:bg-slate-100",
-                        isCheapest && !isIn && !isOut && "bg-emerald-50 ring-1 ring-emerald-500"
+                        disabled && "cursor-not-allowed text-slate-300 opacity-30",
+                        !disabled && !isIn && !isOut && inRange && "bg-purple-100 text-purple-950 font-black border border-purple-300",
+                        (isIn || isOut) && "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] font-black text-white shadow-md border border-amber-400/50",
+                        !disabled && !isIn && !isOut && !inRange && "text-slate-900 font-bold hover:bg-purple-50 hover:text-purple-950 border border-transparent",
+                        isCheapest && !isIn && !isOut && "bg-amber-50 ring-2 ring-amber-500 font-black"
                       )}
                     >
-                      <span className="leading-none">{day.getDate()}</span>
+                      <span className={cn("leading-none font-bold", isIn || isOut ? "text-white" : "text-slate-950")}>
+                        {day.getDate()}
+                      </span>
                       {dayPrice && !disabled ? (
                         <span
                           className={cn(
-                            "mt-1 max-w-full truncate text-[10px] font-bold leading-none",
+                            "mt-1 max-w-full truncate text-[10px] font-mono leading-none",
                             isIn || isOut
-                              ? "text-white/90"
+                              ? "text-amber-300 font-black"
                               : isCheapest
-                                ? "text-emerald-700"
-                                : "text-slate-500"
+                                ? "text-amber-800 font-black"
+                                : "text-purple-900 font-bold"
                           )}
                         >
                           {formatCalendarPrice(dayPrice)}
                         </span>
                       ) : loadingPrices && routeReady && !disabled ? (
-                        <span className="mt-1 text-[10px] text-slate-300">…</span>
+                        <span className="mt-1 text-[10px] text-slate-400">…</span>
                       ) : null}
                     </button>
                   );
@@ -265,7 +267,7 @@ export default function FlightPriceCalendar({
 
       <button
         type="button"
-        className="mt-4 w-full rounded-xl bg-[var(--navy)] py-3 text-sm font-bold text-white hover:opacity-90"
+        className="mt-5 w-full rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 py-3 text-sm font-black text-slate-950 shadow-md shadow-amber-500/20 active:scale-98 transition-all cursor-pointer"
         onClick={onDone}
       >
         {copy.done}

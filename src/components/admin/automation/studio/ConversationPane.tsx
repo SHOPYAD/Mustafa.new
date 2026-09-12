@@ -89,10 +89,10 @@ export function ConversationPane({
             type="button"
             disabled={busy || !input.trim()}
             onClick={onSend}
-            className="flex size-11 items-center justify-center rounded-xl bg-amber-500 text-slate-950 disabled:opacity-40"
+            className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] text-amber-300 hover:text-amber-200 disabled:opacity-40 transition-colors shadow-sm"
             aria-label="إرسال"
           >
-            {busy ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+            {busy ? <Loader2 className="size-4 animate-spin text-amber-300" /> : <Send className="size-4 text-amber-400" />}
           </button>
         </div>
       </div>

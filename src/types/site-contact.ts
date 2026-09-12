@@ -38,4 +38,19 @@ export type SiteContact = {
   /** Free-text support hours */
   supportHours: string;
   social: SocialLinkConfig[];
+
+  /** Floating Action Hub (Green WhatsApp/Help bubble) */
+  floatingHubEnabled?: boolean;
+  floatingHubPosition?: "right" | "left" | "center";
+  floatingHubBottomPx?: number;
+
+  /** "Get a Callback" Banner */
+  callbackBannerEnabled?: boolean;
+  callbackBannerPosition?: "right" | "left" | "center";
+  callbackBannerBottomPx?: number;
+
+  /** B2B Advisor Launcher Widget */
+  b2bAdvisorEnabled?: boolean;
+  b2bAdvisorPosition?: "right" | "left" | "center";
+  b2bAdvisorBottomPx?: number;
 };

@@ -59,3 +59,7 @@ export async function appendAutomationLog(
   await writeLogs({ version: 1, entries });
   return next;
 }
+
+export async function clearAutomationLogs(): Promise<void> {
+  await writeLogs({ version: 1, entries: [] });
+}

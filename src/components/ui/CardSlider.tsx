@@ -9,8 +9,8 @@ interface CardSliderProps {
   subtitle?: string;
   children: ReactNode;
   className?: string;
-  /** Dark section (blog) vs light (homepage) */
-  tone?: "light" | "dark";
+  /** Section color mode: 'light', 'dark', or 'auto' (default: auto responds to dark: classes) */
+  tone?: "light" | "dark" | "auto";
   headerAction?: ReactNode;
 }
 
@@ -22,11 +22,10 @@ export default function CardSlider({
   subtitle,
   children,
   className,
-  tone = "light",
+  tone = "auto",
   headerAction,
 }: CardSliderProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const dark = tone === "dark";
 
   const scroll = (dir: "left" | "right") => {
     const el = scrollRef.current;
@@ -38,9 +37,12 @@ export default function CardSlider({
     });
   };
 
-  const btnClass = dark
-    ? "w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
-    : "w-9 h-9 rounded-full bg-slate-100 hover:bg-[#0a1628] hover:text-white text-slate-700 flex items-center justify-center transition-colors";
+  const btnClass =
+    tone === "dark"
+      ? "w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+      : tone === "light"
+        ? "w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors"
+        : "w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center transition-colors";
 
   return (
     <section className={cn("relative", className)}>
@@ -49,7 +51,11 @@ export default function CardSlider({
           <h2
             className={cn(
               "text-xl md:text-2xl font-bold tracking-tight",
-              dark ? "text-white" : "text-slate-900"
+              tone === "dark"
+                ? "text-white"
+                : tone === "light"
+                  ? "text-slate-900"
+                  : "text-slate-900 dark:text-white"
             )}
           >
             {title}
@@ -58,7 +64,11 @@ export default function CardSlider({
             <p
               className={cn(
                 "text-sm mt-1",
-                dark ? "text-white/50" : "text-slate-500"
+                tone === "dark"
+                  ? "text-white/50"
+                  : tone === "light"
+                    ? "text-slate-500"
+                    : "text-slate-500 dark:text-slate-400"
               )}
             >
               {subtitle}

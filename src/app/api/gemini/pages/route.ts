@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
       (typeof body.model === "string" && body.model.trim()) || config.model
     );
 
-    const system = `أنت محرر صفحات لموقع الريان للسياحة (Alrayyan Tourism).
+    const system = `أنت محرر صفحات لموقع لوناليزا للسياحة والسفر (Lonaliza Travel).
 يمكنك إنشاء صفحات مخصصة تظهر في الموقع على المسار /p/[slug].
 
 إذا طلب المستخدم إنشاء صفحة أو كتابة مقدمة لتأجير السيارات أو الترانسفير:

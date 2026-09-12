@@ -96,22 +96,39 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+import { themeToCssText } from "@/lib/theme/tokens";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = await getBrandTheme();
+  const [theme, branding] = await Promise.all([
+    getBrandTheme(),
+    getBranding(),
+  ]);
   const customArabicHref = arabicFontStylesheetHref(theme.arabicFontId);
   const customLatinHref = latinFontStylesheetHref(theme.latinFontId);
+  const sitePhone = branding.supportPhone || "+90 531 359 13 94";
+  const siteEmail = branding.supportEmail || "info@lonaliza.com";
+  const siteName = branding.brandNameEn || "Lonaliza Tourism";
+
   return (
     <html
       lang="ar"
       dir="rtl"
       className={`${latin.variable} ${sora.variable} ${arabic.variable}`}
+      data-theme-preset={theme.presetId}
+      data-arabic-font={theme.arabicFontId}
+      data-latin-font={theme.latinFontId}
+      data-image-treatment={theme.image?.treatment || "none"}
       suppressHydrationWarning
     >
       <head>
+        <style
+          id="brand-theme-vars"
+          dangerouslySetInnerHTML={{ __html: themeToCssText(theme) }}
+        />
         {customArabicHref ? (
           <link rel="stylesheet" href={customArabicHref} />
         ) : null}
@@ -120,7 +137,20 @@ export default async function RootLayout({
         ) : null}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(location.pathname.indexOf("/admin")!==0)return;var t=localStorage.getItem("alrayyan_admin_theme");if(t!=="light"&&t!=="dark")t="dark";document.documentElement.dataset.adminTheme=t;document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.style.colorScheme=t;}catch(e){}})();`,
+            __html: `(function(){try{
+              if(location.pathname.indexOf("/admin")===0){
+                var t=localStorage.getItem("lonaliza_admin_theme")||localStorage.getItem("alrayyan_admin_theme");
+                if(t!=="light"&&t!=="dark")t="light";
+                document.documentElement.dataset.adminTheme=t;
+                document.documentElement.classList.toggle("dark",t==="dark");
+                document.documentElement.style.colorScheme=t;
+              } else {
+                document.documentElement.dataset.siteTheme="light";
+                document.documentElement.classList.remove("dark");
+                document.documentElement.style.colorScheme="light";
+                try{localStorage.removeItem("lonaliza_site_theme");}catch(e){}
+              }
+            }catch(e){}})();`,
           }}
         />
         <script
@@ -129,13 +159,13 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "TravelAgency",
-              name: "Alrayyan Tourism",
+              name: siteName,
               url: "https://lonaliza.com",
-              logo: "https://lonaliza.com/logo.png",
+              logo: "https://lonaliza.com/logo.svg",
               description:
-                "Alrayyan Tourism offers curated holiday packages, flights, Turkey tours, hotels, transfers, and visa services.",
-              email: "info@lonaliza.com",
-              telephone: "+90 532 179 67 63",
+                "Lonaliza Tourism offers curated luxury holiday packages, flights, Turkey tours, hotels, transfers, and visa services.",
+              email: siteEmail,
+              telephone: sitePhone,
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Istanbul",

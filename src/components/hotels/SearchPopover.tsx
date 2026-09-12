@@ -117,7 +117,7 @@ export default function SearchPopover({
       role="dialog"
       dir={dir}
       className={cn(
-        "fixed z-[220] overflow-auto rounded-2xl border border-slate-200 bg-white shadow-[0_24px_64px_rgba(5,23,65,0.22)]",
+        "fixed z-[220] overflow-auto rounded-2xl border border-purple-200/80 bg-white shadow-2xl shadow-purple-950/25",
         className
       )}
       style={{

@@ -35,10 +35,10 @@ export default function HeroAwwwards() {
                   image: slide.image,
                   price: slide.price,
                   currencyLabel: "USD",
-                  durationAr: slide.durationAr,
-                  durationEn: slide.durationEn,
-                  durationTr: slide.durationAr,
-                  rating: slide.rating,
+                  durationAr: slide.durationAr || "",
+                  durationEn: slide.durationEn || "",
+                  durationTr: slide.durationAr || "",
+                  rating: slide.rating ?? 4.9,
                   badgeAr: "",
                   badgeEn: "",
                   badgeTr: "",
@@ -215,7 +215,7 @@ export default function HeroAwwwards() {
                                     <div className="flex items-center gap-2">
                                         <Star
                                             size={18}
-                                            className="text-emerald-400 fill-emerald-400"
+                                            className="text-amber-400 fill-amber-400"
                                         />
                                         <span className="text-white/80">{active.rating}</span>
                                     </div>
@@ -233,7 +233,7 @@ export default function HeroAwwwards() {
                                 >
                                     <Link
                                         href={ctaHref}
-                                        className="group relative flex items-center justify-center px-8 py-4 text-white font-semibold rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(16,185,129,0.35)]"
+                                        className="group relative flex items-center justify-center px-8 py-4 text-white font-semibold rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(124,58,237,0.35)]"
                                         style={{ backgroundColor: "var(--brand-button)" }}
                                         data-cursor="Explore"
                                     >

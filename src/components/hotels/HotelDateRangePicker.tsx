@@ -104,13 +104,13 @@ export default function HotelDateRangePicker({
         <div
           className={cn(
             "rounded-xl border px-3 py-2.5",
-            !pickingOut ? "border-emerald-500 bg-emerald-50" : "border-slate-200 bg-slate-50"
+            !pickingOut ? "border-purple-600 bg-purple-50" : "border-slate-200 bg-slate-50"
           )}
         >
           <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
             {checkInLabel}
           </p>
-          <p className="mt-0.5 text-sm font-bold text-[#051741]">
+          <p className="mt-0.5 text-sm font-bold text-[#1e1b4b]">
             {checkInDate
               ? format(checkInDate, "d MMMM yyyy", { locale: dfLocale })
               : selectCheckIn}
@@ -119,13 +119,13 @@ export default function HotelDateRangePicker({
         <div
           className={cn(
             "rounded-xl border px-3 py-2.5",
-            pickingOut ? "border-emerald-500 bg-emerald-50" : "border-slate-200 bg-slate-50"
+            pickingOut ? "border-purple-600 bg-purple-50" : "border-slate-200 bg-slate-50"
           )}
         >
           <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
             {checkOutLabel}
           </p>
-          <p className="mt-0.5 text-sm font-bold text-[#051741]">
+          <p className="mt-0.5 text-sm font-bold text-[#1e1b4b]">
             {checkOutDate
               ? format(checkOutDate, "d MMMM yyyy", { locale: dfLocale })
               : selectCheckOut}
@@ -204,8 +204,8 @@ export default function HotelDateRangePicker({
                       className={cn(
                         "h-11 rounded-xl text-sm font-medium transition",
                         disabled && "cursor-not-allowed text-slate-300",
-                        !disabled && !isIn && !isOut && inRange && "bg-emerald-50 text-emerald-900",
-                        (isIn || isOut) && "bg-emerald-600 font-bold text-white shadow-sm",
+                        !disabled && !isIn && !isOut && inRange && "bg-purple-100 text-purple-950 font-bold",
+                        (isIn || isOut) && "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] font-bold text-white shadow-sm",
                         !disabled && !isIn && !isOut && !inRange && "text-slate-800 hover:bg-slate-100"
                       )}
                     >

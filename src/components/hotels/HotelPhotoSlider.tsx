@@ -78,7 +78,17 @@ export default function HotelPhotoSlider({ images, name, className, hotelId }: P
       className={`relative h-full min-h-0 overflow-hidden bg-slate-200 ${className || ""}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={current} alt={name} className="absolute inset-0 h-full w-full object-cover" />
+      <img
+        src={current}
+        alt={name}
+        className="absolute inset-0 h-full w-full object-cover"
+        onError={(e) => {
+          const target = e.currentTarget;
+          if (target.src !== "/images/hotel-placeholder.jpg") {
+            target.src = "/images/hotel-placeholder.jpg";
+          }
+        }}
+      />
       {photos.length > 1 ? (
         <>
           <button

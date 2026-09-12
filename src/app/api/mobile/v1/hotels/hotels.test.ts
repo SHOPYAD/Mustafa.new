@@ -6,6 +6,7 @@ const createHotelQuote = vi.fn();
 const getHotelQuote = vi.fn();
 const quoteIsUsable = vi.fn();
 const updateHotelQuote = vi.fn();
+const buildHotelDetails = vi.fn();
 const create = vi.fn();
 
 vi.mock("@/lib/server/hotels-search-runtime", () => ({
@@ -17,6 +18,10 @@ vi.mock("@/lib/server/channel-services-store", () => ({
   appEnabledKeys: vi.fn((config: { appEnabled: { hotel?: boolean } }) =>
     config.appEnabled.hotel ? ["hotel"] : []
   ),
+}));
+
+vi.mock("@/lib/server/hotels/details-service", () => ({
+  buildHotelDetails,
 }));
 
 vi.mock("@/lib/server/hotels/quote-service", () => ({
@@ -70,6 +75,29 @@ describe("GET /api/mobile/v1/hotels/search", () => {
     const body = await (await GET(new NextRequest("http://localhost/api/mobile/v1/hotels/search?q=Istanbul"))).json();
     expect(body.hotels[0].id).toBe("h1");
     expect(runPublicHotelSearch).toHaveBeenCalled();
+  });
+});
+
+describe("GET /api/mobile/v1/hotels/details", () => {
+  afterEach(() => {
+    vi.resetModules();
+    buildHotelDetails.mockReset();
+  });
+
+  it("returns live rooms and supplier tokens from the website details service", async () => {
+    buildHotelDetails.mockResolvedValueOnce({
+      hotel: { id: "h1", name: "Test" },
+      rooms: [{ id: "r1", name: "Deluxe", rates: [{ id: "rate-1", supplierToken: "tok-1", totalStay: 210 }] }],
+      checkIn: "2026-10-01",
+      checkOut: "2026-10-03",
+      nights: 2,
+    });
+    const { GET } = await import("./details/route");
+    const body = await (
+      await GET(new NextRequest("http://localhost/api/mobile/v1/hotels/details?id=h1&checkIn=2026-10-01&checkOut=2026-10-03"))
+    ).json();
+    expect(body.rooms[0].rates[0].supplierToken).toBe("tok-1");
+    expect(buildHotelDetails).toHaveBeenCalled();
   });
 });
 

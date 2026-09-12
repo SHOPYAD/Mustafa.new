@@ -32,6 +32,19 @@ export function useSiteContact(): SiteContact {
     const refresh = () => setContact(getSiteContact());
     refresh();
 
+    // Fetch live settings from server
+    fetch("/api/public-contact")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        if (payload?.ok && payload.contact) {
+          setContact(payload.contact);
+          try {
+            localStorage.setItem(SITE_CONTACT_STORAGE_KEY, JSON.stringify(payload.contact));
+          } catch {}
+        }
+      })
+      .catch(() => {});
+
     const onCustom = (e: Event) => {
       const detail = (e as CustomEvent<SiteContact>).detail;
       if (detail) setContact(detail);

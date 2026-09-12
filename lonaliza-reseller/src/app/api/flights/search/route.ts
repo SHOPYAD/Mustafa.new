@@ -1,0 +1,66 @@
+import { NextRequest } from "next/server";
+import { PUBLIC_FLIGHT_EMPTY, runFlightSearch } from "@/lib/server/flights-engine";
+import { flightsFailJson, flightsJson } from "@/lib/server/flights-http";
+import { clientIp, rateLimit, rateLimitResponse } from "@/lib/server/rate-limit";
+import { ttlGet, ttlSet } from "@/lib/server/ttl-cache";
+
+export const runtime = "nodejs";
+
+export async function GET(req: NextRequest) {
+  const limited = rateLimit(`flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
+  const cacheKey = `flights:${req.nextUrl.search}`;
+  const cached = ttlGet<Record<string, unknown>>(cacheKey);
+  if (cached) return flightsJson(cached);
+  const q = req.nextUrl.searchParams;
+  const originSkyId = (q.get("originSkyId") || "").trim();
+  const destinationSkyId = (q.get("destinationSkyId") || "").trim();
+  const originEntityId = (q.get("originEntityId") || "").trim();
+  const destinationEntityId = (q.get("destinationEntityId") || "").trim();
+  const date = (q.get("date") || "").trim();
+  if (!originSkyId || !destinationSkyId || !originEntityId || !destinationEntityId || !date) {
+    return flightsJson(
+      {
+        ok: false,
+        provider: "live",
+        error: PUBLIC_FLIGHT_EMPTY,
+        errorCode: "search_failed",
+      },
+      400
+    );
+  }
+
+  const result = await runFlightSearch({
+    originSkyId,
+    destinationSkyId,
+    originEntityId,
+    destinationEntityId,
+    date,
+    returnDate: q.get("returnDate") || undefined,
+    adults: Number(q.get("adults") || 1),
+    childrens: Number(q.get("childrens") || q.get("children") || 0),
+    infants: Number(q.get("infants") || 0),
+    cabinClass: q.get("cabinClass") || undefined,
+    sortBy: q.get("sortBy") || undefined,
+    currency: q.get("currency") || undefined,
+    market: q.get("market") || undefined,
+    countryCode: q.get("countryCode") || undefined,
+  });
+
+  if (!result.ok) return flightsFailJson(result.errorCode);
+
+  const { session } = result;
+  const payload = {
+    ok: true,
+    provider: "live",
+    sessionId: session.sessionId,
+    status: session.status,
+    itineraries: session.itineraries,
+    currency: session.currency,
+    empty: session.itineraries.length === 0,
+    error: session.itineraries.length === 0 ? PUBLIC_FLIGHT_EMPTY : undefined,
+    errorCode: session.itineraries.length === 0 ? "zero_results" : undefined,
+  };
+  ttlSet(cacheKey, payload, 2 * 60 * 1000);
+  return flightsJson(payload);
+}

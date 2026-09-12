@@ -4,6 +4,7 @@ import {
   approveCancel,
   listPendingCancellations,
   rejectCancel,
+  resolveChangeRequest,
 } from "@/lib/server/hotel-cancellations";
 
 export const runtime = "nodejs";
@@ -28,6 +29,16 @@ export async function POST(req: NextRequest) {
   const bookingId = String(body.bookingId || "").trim();
   if (!bookingId) return NextResponse.json({ ok: false, error: "booking_required" }, { status: 400 });
   const note = String(body.note || "");
+  if (action === "change_done" || action === "change_reject") {
+    const result = await resolveChangeRequest({
+      bookingId,
+      action: action === "change_done" ? "done" : "reject",
+      note,
+      newCheckIn: body.newCheckIn ? String(body.newCheckIn) : undefined,
+      newCheckOut: body.newCheckOut ? String(body.newCheckOut) : undefined,
+    });
+    return NextResponse.json(result, { status: result.ok ? 200 : 400 });
+  }
   if (action === "reject") {
     const result = await rejectCancel({ bookingId, note });
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });

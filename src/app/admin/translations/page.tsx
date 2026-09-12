@@ -366,18 +366,19 @@ export default function AdminTranslationsPage() {
     }
   };
 
-  const incompleteLangs = extraCols.filter(
-    (lang) => (languageStats[lang.code]?.missing ?? 1) > 0
+  const targetLocales = locales.filter((l) => l.code !== "ar");
+  const incompleteLangs = targetLocales.filter(
+    (lang) => (languageStats[lang.code]?.missing ?? 0) > 0
   );
-  const pausedLangs = extraCols.filter((lang) => {
+  const pausedLangs = targetLocales.filter((lang) => {
     const stat = languageStats[lang.code];
     return Boolean(stat && stat.filled > 0 && stat.missing > 0);
   });
 
   const fillAllMissing = async () => {
-    const targets = incompleteLangs.length ? incompleteLangs : extraCols;
+    const targets = incompleteLangs.length ? incompleteLangs : targetLocales;
     for (const lang of targets) {
-      await runTranslation(lang.code, lang.sourceLocale || "en");
+      await runTranslation(lang.code, lang.sourceLocale || "ar");
     }
   };
 
@@ -508,62 +509,84 @@ export default function AdminTranslationsPage() {
         </div>
       )}
 
-      {extraCols.length > 0 && (
-        <div className="mb-4 rounded-2xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            {extraCols.map((lang) => {
+      {/* Gemini AI Translation & Language Progress Counters */}
+      <div className="mb-6 rounded-2xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div className="flex items-center gap-2 text-white font-bold text-sm">
+            <Sparkles size={16} className="text-amber-400" />
+            <span>حالة ومؤشرات الترجمة الذكية (Gemini AI Translation):</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            {locales.map((lang) => {
               const stat = languageStats[lang.code];
               const filled = stat?.filled ?? 0;
               const total = stat?.total || counts.total;
+              const isMissing = stat && stat.missing > 0;
               return (
                 <span
                   key={lang.code}
-                  className="text-xs px-2.5 py-1 rounded-full bg-white/10 text-white/80"
+                  className={`text-xs px-2.5 py-1 rounded-full font-mono font-bold flex items-center gap-1.5 ${
+                    isMissing
+                      ? "bg-amber-400/20 text-amber-300 border border-amber-400/30"
+                      : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                  }`}
                 >
-                  {lang.code.toUpperCase()} {filled}/{total}
+                  <span>{lang.nativeName || lang.code.toUpperCase()}</span>
+                  <span>
+                    ({filled}/{total})
+                  </span>
+                  {isMissing && <span className="text-[10px] text-amber-400">-{stat.missing}</span>}
                 </span>
               );
             })}
           </div>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              disabled={translating || !hasGeminiKey || incompleteLangs.length === 0}
-              onClick={() => void fillAllMissing()}
-              className="px-4 py-2.5 rounded-xl bg-emerald-500 text-black text-sm font-semibold flex items-center gap-2 hover:bg-emerald-400 disabled:opacity-40"
-            >
-              {translating ? (
-                <Loader2 size={16} className="animate-spin" />
-              ) : (
-                <Sparkles size={16} />
-              )}
-              {a.translationsFillMissing}
-            </button>
-            {pausedLangs.map((lang) => (
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            disabled={translating || !hasGeminiKey || incompleteLangs.length === 0}
+            onClick={() => void fillAllMissing()}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-purple-950 text-sm font-black flex items-center gap-2 shadow-md transition-all disabled:opacity-40 cursor-pointer"
+          >
+            {translating ? (
+              <Loader2 size={16} className="animate-spin" />
+            ) : (
+              <Sparkles size={16} />
+            )}
+            <span>ترجمة جميع النواقص تلقائياً عبر Gemini</span>
+          </button>
+
+          {targetLocales.map((lang) => {
+            const stat = languageStats[lang.code];
+            if (!stat || stat.missing === 0) return null;
+            return (
               <button
                 key={lang.code}
                 type="button"
                 disabled={translating || !hasGeminiKey}
                 onClick={() =>
-                  void runTranslation(lang.code, lang.sourceLocale || "en")
+                  void runTranslation(lang.code, lang.sourceLocale || "ar")
                 }
-                className="px-4 py-2.5 rounded-xl border border-emerald-400/40 text-emerald-200 text-sm font-semibold hover:bg-emerald-500/10 disabled:opacity-40"
+                className="px-3.5 py-2 rounded-xl border border-amber-400/40 text-amber-200 text-xs font-bold hover:bg-amber-500/10 transition-all disabled:opacity-40 cursor-pointer"
               >
-                {a.translationsResume} ({lang.code.toUpperCase()})
+                <span>ترجمة نواقص ({lang.name})</span>
+                <span className="text-[10px] text-amber-400 ms-1">({stat.missing} ناقص)</span>
               </button>
-            ))}
-            {translating && (
-              <button
-                type="button"
-                onClick={() => stopTranslation(a.translationsCancelled)}
-                className="px-4 py-2.5 rounded-xl border border-red-400/40 text-red-200 text-sm font-semibold hover:bg-red-500/10"
-              >
-                {a.translationsCancel}
-              </button>
-            )}
-          </div>
+            );
+          })}
+
+          {translating && (
+            <button
+              type="button"
+              onClick={() => stopTranslation(a.translationsCancelled)}
+              className="px-4 py-2.5 rounded-xl border border-red-400/40 text-red-200 text-sm font-semibold hover:bg-red-500/10 cursor-pointer"
+            >
+              {a.translationsCancel}
+            </button>
+          )}
         </div>
-      )}
+      </div>
 
       <div className="flex flex-wrap items-center gap-3 mb-4">
         <div className="flex rounded-xl border border-white/10 overflow-hidden">

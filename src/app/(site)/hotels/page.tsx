@@ -15,13 +15,9 @@ export default function HotelsPage() {
     );
   }
 
-  if (
-    config.provider === "travel_advisor" ||
-    config.provider === "owned" ||
-    config.provider === "booking"
-  ) {
-    return <TravelAdvisorHotels />;
+  if (config.provider === "internal") {
+    return <InternalHotelsContent />;
   }
 
-  return <InternalHotelsContent />;
+  return <TravelAdvisorHotels />;
 }

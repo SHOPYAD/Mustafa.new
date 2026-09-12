@@ -42,6 +42,13 @@ export async function POST(req: NextRequest) {
   const pb = await tryCreateAdminPocketBase();
   if (!pb) return NextResponse.json({ ok: false, error: "PocketBase unavailable" }, { status: 503 });
 
+  const incomingMeta =
+    body.metadata && typeof body.metadata === "object"
+      ? (body.metadata as Record<string, unknown>)
+      : {};
+  const quotedPrice = Number(body.price ?? body.quotedPrice ?? incomingMeta.quotedPrice ?? incomingMeta.price ?? 0);
+  const currency = String(body.currency || incomingMeta.currency || "USD").toUpperCase();
+
   const created = await pb.collection("enquiry_bookings").create({
     type,
     status: "pending_payment",
@@ -54,7 +61,9 @@ export async function POST(req: NextRequest) {
     user: auth.customer.id,
     metadata: {
       source: "mobile",
-      ...(body.metadata && typeof body.metadata === "object" ? (body.metadata as Record<string, unknown>) : {}),
+      quotedPrice: Number.isFinite(quotedPrice) ? quotedPrice : 0,
+      currency,
+      ...incomingMeta,
     },
   });
 

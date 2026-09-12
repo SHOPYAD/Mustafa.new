@@ -75,3 +75,18 @@ credentials.json
 
 # Let's Encrypt challenge leftovers
 .well-known/acme-challenge/
+
+# Nested dependencies and packaged builds
+**/node_modules/
+*.apk
+*.ipa
+
+# Flutter generated local machine paths
+Lonalizamobilapp/ios/Flutter/ephemeral/
+Lonalizamobilapp/ios/Flutter/Generated.xcconfig
+Lonalizamobilapp/ios/Flutter/flutter_export_environment.sh
+Lonalizamobilapp/macos/Flutter/ephemeral/
+
+# Vendor API dumps too large for git
+docs/travelport/
+docs/GDS_ExchangeAPIs_DevKit_23.11.18.21.17/

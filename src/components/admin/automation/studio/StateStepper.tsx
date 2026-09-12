@@ -26,7 +26,7 @@ export function StateStepper({ state }: { state: ApprovalState | null }) {
             <span
               className={cn(
                 "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold",
-                done && "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+                done && "border-purple-500/30 bg-purple-500/10 text-purple-700 dark:text-purple-300",
                 active && "border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-200",
                 rejected && "border-rose-500/40 bg-rose-500/10 text-rose-700 dark:text-rose-300",
                 !done && !active && !rejected && "border-border text-muted-foreground"

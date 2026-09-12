@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// Trip.com–style account / profile colors and text styles.
+/// Lonaliza–style account / profile colors and text styles.
 abstract final class AccountTheme {
-  static const Color primaryBlue = Color(0xFF3662E3);
-  static const Color primaryBlueAlt = Color(0xFF3264FF);
+  static const Color primaryBlue = Color(0xFF7C3AED);
+  static const Color primaryBlueAlt = Color(0xFF7C3AED);
   static const Color textPrimary = Color(0xFF111827);
   static const Color textBody = Color(0xFF333333);
   static const Color textMuted = Color(0xFF888888);

@@ -30,7 +30,6 @@ import '../features/packages/views/package_search_results_page.dart';
 import '../features/packages/views/package_tour_details_page.dart';
 import '../features/packages/views/package_confirm_options_page.dart';
 import '../features/packages/views/package_confirm_booking_page.dart';
-import '../features/checkout_payment/views/checkout_payment_page.dart';
 import '../features/home/views/home_page.dart';
 import '../features/hotels/views/hotels_page.dart';
 import '../features/hotels/views/hotels_search_results_page.dart';
@@ -43,14 +42,18 @@ import '../features/cars/views/car_booking_page.dart';
 import '../features/cars/views/car_rental_product_page.dart';
 import '../features/cars/views/car_rentals_page.dart';
 import '../features/cars/views/car_search_results_page.dart';
-import '../features/checkout_payment/views/checkout_payment_page.dart';
 import '../features/hotels/views/hotel_booking_guest_page.dart';
-import '../features/hotels/views/hotel_details_page.dart';
+import '../features/hotels/views/live_hotel_details_page.dart';
+import '../features/splash/views/onboarding_page.dart';
 import '../features/splash/views/splash_page.dart';
 import '../features/transfers/views/transfers_page.dart';
 import '../features/pay/iyzico_checkout_args.dart';
 import '../features/pay/iyzico_checkout_page.dart';
-import '../features/site/site_webview_page.dart';
+import '../features/community/views/community_page.dart';
+import '../features/community/views/reels_page.dart';
+import '../features/ai/views/ai_chat_page.dart';
+import '../features/inbox/views/inbox_page.dart';
+import '../features/gifts/views/gift_cards_page.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -60,6 +63,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/splash',
         name: 'splash',
         builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        name: 'onboarding',
+        builder: (context, state) => const OnboardingPage(),
       ),
       GoRoute(
         path: '/',
@@ -147,15 +155,27 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/messages',
         name: 'messages',
-        builder: (context, state) => const SiteWebViewPage(path: '/ai-chat'),
+        builder: (context, state) => const InboxPage(),
       ),
       GoRoute(
-        path: '/site',
-        name: 'site-webview',
-        builder: (context, state) {
-          final path = state.uri.queryParameters['path'] ?? '/community';
-          return SiteWebViewPage(path: path);
-        },
+        path: '/community',
+        name: 'community',
+        builder: (context, state) => const CommunityPage(),
+      ),
+      GoRoute(
+        path: '/community/reels',
+        name: 'community-reels',
+        builder: (context, state) => const ReelsPage(),
+      ),
+      GoRoute(
+        path: '/ai',
+        name: 'ai',
+        builder: (context, state) => const AiChatPage(),
+      ),
+      GoRoute(
+        path: '/gift-cards',
+        name: 'gift-cards',
+        builder: (context, state) => const GiftCardsPage(),
       ),
       GoRoute(
         path: '/my-trips',
@@ -171,7 +191,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/packages/search',
         name: 'packages-search',
         builder: (context, state) {
-          final q = state.uri.queryParameters['q'] ?? 'Beijing';
+          final q = state.uri.queryParameters['q'] ?? '';
           return PackageSearchResultsPage(query: q);
         },
       ),
@@ -194,8 +214,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/checkout-payment',
         name: 'checkout-payment',
         builder: (context, state) {
-          final amount = state.extra as String? ?? 'USD 3,710.91';
-          return CheckoutPaymentPage(totalAmountLabel: amount);
+          final extra = state.extra;
+          if (extra is IyzicoCheckoutArgs) {
+            return IyzicoCheckoutPage(args: extra);
+          }
+          return const _LivePayRequiredPage();
         },
       ),
       GoRoute(
@@ -242,27 +265,30 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/catalog/cars',
         name: 'catalog-cars',
         builder: (context, state) => const LiveCatalogPage(
-          title: 'Cars',
+          title: 'سيارات للإيجار',
           url: AppConstants.carsCatalogUrl,
           listKey: 'cars',
+          serviceType: 'cars',
         ),
       ),
       GoRoute(
         path: '/catalog/packages',
         name: 'catalog-packages',
         builder: (context, state) => const LiveCatalogPage(
-          title: 'Packages',
+          title: 'الباقات السياحية',
           url: AppConstants.packagesCatalogUrl,
           listKey: 'packages',
+          serviceType: 'packages',
         ),
       ),
       GoRoute(
         path: '/catalog/tours',
         name: 'catalog-tours',
         builder: (context, state) => const LiveCatalogPage(
-          title: 'Tours',
+          title: 'الرحلات والبرامج',
           url: AppConstants.toursCatalogUrl,
           listKey: 'tours',
+          serviceType: 'tours',
         ),
       ),
       GoRoute(
@@ -344,8 +370,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           if (extra is IyzicoCheckoutArgs) {
             return IyzicoCheckoutPage(args: extra);
           }
-          final label = extra is String && extra.isNotEmpty ? extra : r'$173.1 Total';
-          return CheckoutPaymentPage(totalAmountLabel: label);
+          return const _LivePayRequiredPage();
         },
       ),
       GoRoute(
@@ -356,7 +381,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/hotels/details',
         name: 'hotel-details',
-        builder: (context, state) => const HotelDetailsPage(),
+        builder: (context, state) {
+          final extra = state.extra;
+          return LiveHotelDetailsPage(
+            hotel: extra is Map ? Map<String, dynamic>.from(extra) : null,
+          );
+        },
       ),
       GoRoute(
         path: '/hotels/booking/guest',
@@ -371,8 +401,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           if (extra is IyzicoCheckoutArgs) {
             return IyzicoCheckoutPage(args: extra);
           }
-          final label = extra is String && extra.isNotEmpty ? extra : 'USD105.12';
-          return CheckoutPaymentPage(totalAmountLabel: label);
+          return const _LivePayRequiredPage();
         },
       ),
     ],
@@ -383,3 +412,22 @@ final navigationRepositoryProvider = Provider<NavigationRepository>((ref) {
   final router = ref.watch(goRouterProvider);
   return GoRouterNavigationRepository(router);
 });
+
+class _LivePayRequiredPage extends StatelessWidget {
+  const _LivePayRequiredPage();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text(
+            'ابدأ الحجز من نتائج البحث الحية. الدفع يتم عبر iyzico بعد إنشاء الحجز على الخادم.',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    );
+  }
+}

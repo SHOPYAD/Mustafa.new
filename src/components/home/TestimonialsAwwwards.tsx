@@ -18,9 +18,9 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
     rating: 5,
     textAr:
-      "نظّمت الريان للسياحة رحلتنا إلى إسطنبول وكابادوكيا بدقة مذهلة — سيارة خاصة، فندق على البوسفور، ومنطاد عند الفجر. تجربة فاخرة بدون أي قلق.",
+      "نظّمت لوناليزا للسياحة رحلتنا إلى إسطنبول وكابادوكيا بدقة مذهلة — سيارة خاصة، فندق على البوسفور، ومنطاد عند الفجر. تجربة فاخرة بدون أي قلق.",
     textEn:
-      "Alrayyan Tourism planned our Istanbul and Cappadocia trip perfectly — private car, Bosphorus hotel, and a dawn balloon flight. Luxury without stress.",
+      "Lonaliza Tourism planned our Istanbul and Cappadocia trip perfectly — private car, Bosphorus hotel, and a dawn balloon flight. Luxury without stress.",
     destinationAr: "إسطنبول",
     destinationEn: "Istanbul",
     tripImage:
@@ -36,9 +36,9 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
     rating: 5,
     textAr:
-      "ترانسفير المطار وجولة بورصة اليومية مع سائق محترف كانت في الموعد تماماً. فريق الريان يعرف تركيا جيداً.",
+      "ترانسفير المطار وجولة بورصة اليومية مع سائق محترف كانت في الموعد تماماً. فريق لوناليزا يعرف تركيا جيداً.",
     textEn:
-      "Airport transfer and our Bursa day tour with a professional driver were perfectly on time. Alrayyan really knows Turkey.",
+      "Airport transfer and our Bursa day tour with a professional driver were perfectly on time. Lonaliza really knows Turkey.",
     destinationAr: "بورصة",
     destinationEn: "Bursa",
     tripImage:
@@ -54,9 +54,9 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200",
     rating: 5,
     textAr:
-      "أخذنا الأطفال إلى سبانجا وآيدر — كبائن هادئة، طبيعة خضراء، وترانسفير مريح. الريان للسياحة جعلت الرحلة سهلة للعائلة.",
+      "أخذنا الأطفال إلى سبانجا وآيدر — كبائن هادئة، طبيعة خضراء، وترانسفير مريح. لوناليزا للسياحة جعلت الرحلة سهلة للعائلة.",
     textEn:
-      "We took the kids to Sapanca and Ayder — quiet cabins, green nature, and comfortable transfers. Alrayyan made family travel easy.",
+      "We took the kids to Sapanca and Ayder — quiet cabins, green nature, and comfortable transfers. Lonaliza made family travel easy.",
     destinationAr: "سبانجا",
     destinationEn: "Sapanca",
     tripImage:

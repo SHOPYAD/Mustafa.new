@@ -20,6 +20,12 @@ import {
   safeGoogleFailReason,
   safeOAuthNextPath,
 } from "@/lib/pocketbase/google";
+import { upsertResellerCompanyFromGoogle } from "@/lib/server/resale-store";
+import {
+  createPartnerSessionToken,
+  PARTNER_AUTH_COOKIE,
+  PARTNER_SESSION_MAX_AGE,
+} from "@/lib/server/partner-session";
 
 export const runtime = "nodejs";
 
@@ -104,6 +110,24 @@ export async function GET(req: NextRequest) {
     res.headers.append("Set-Cookie", pbAuthCookieHeader(payload));
     res.headers.append("Set-Cookie", clearCookie(OAUTH_VERIFIER_COOKIE));
     res.headers.append("Set-Cookie", clearCookie(OAUTH_NEXT_COOKIE));
+
+    if (next.startsWith("/partners")) {
+      try {
+        const company = await upsertResellerCompanyFromGoogle({
+          email: auth.user.email,
+          name: auth.user.name || "",
+          googleId: auth.user.id || "",
+        });
+        const partnerToken = await createPartnerSessionToken(company.id, company.email);
+        res.headers.append(
+          "Set-Cookie",
+          `${PARTNER_AUTH_COOKIE}=${encodeURIComponent(partnerToken)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${PARTNER_SESSION_MAX_AGE}; Secure`
+        );
+      } catch (partnerErr) {
+        console.warn("[auth-google] partner auto-session note:", partnerErr);
+      }
+    }
+
     console.log("[auth-google]", "ok", { userId: auth.user.id });
     return res;
   } catch (err) {

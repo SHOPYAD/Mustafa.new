@@ -20,11 +20,11 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
     category === "all" ? posts : posts.filter((p) => p.category === category);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-28 pb-20">
+    <div className="min-h-screen bg-slate-50/70 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 pt-28 pb-20 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="mb-3 text-3xl font-bold sm:text-4xl md:text-5xl">{t.blog.title}</h1>
-          <p className="text-white/50 text-lg">{t.blog.subtitle}</p>
+          <h1 className="mb-3 text-3xl font-black sm:text-4xl md:text-5xl text-slate-900 dark:text-white tracking-tight">{t.blog.title}</h1>
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">{t.blog.subtitle}</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -32,10 +32,10 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`min-h-11 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`min-h-11 px-5 py-2 rounded-full text-sm font-bold transition-all ${
                 category === cat
-                  ? "bg-orange-500 text-white"
-                  : "bg-white/5 text-white/60 hover:bg-white/10"
+                  ? "bg-emerald-600 dark:bg-emerald-500 text-white shadow-md shadow-emerald-600/20"
+                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/90 dark:border-slate-700 shadow-2xs"
               }`}
             >
               {cat === "all" ? t.blog.all : cat}
@@ -44,7 +44,7 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="text-center text-white/40 py-20">{t.blog.noPosts}</p>
+          <p className="text-center text-slate-500 dark:text-slate-400 py-20">{t.blog.noPosts}</p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((post) => {
@@ -54,7 +54,7 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-orange-500/30 transition-all"
+                  className="group rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 shadow-sm hover:shadow-xl dark:shadow-slate-950/50 transition-all duration-300 hover:-translate-y-1 flex flex-col"
                 >
                   <div className="relative h-48">
                     {post.coverImage ? (
@@ -65,14 +65,14 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full bg-slate-800" />
+                      <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
                     )}
-                    <span className="absolute top-3 start-3 bg-orange-500 text-white text-xs px-2.5 py-1 rounded-full">
+                    <span className="absolute top-3 start-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-bold shadow-md">
                       {post.category}
                     </span>
                   </div>
-                  <div className="p-5">
-                    <p className="text-white/40 text-xs mb-2">
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className="text-slate-500 dark:text-slate-400 text-xs mb-2 font-medium">
                       {post.author} ·{" "}
                       {post.publishedAt
                         ? new Date(post.publishedAt).toLocaleDateString(
@@ -80,11 +80,11 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
                           )
                         : ""}
                     </p>
-                    <h2 className="text-lg font-bold mb-2 group-hover:text-orange-400 transition-colors line-clamp-2">
+                    <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
                       {title}
                     </h2>
-                    <p className="text-white/50 text-sm line-clamp-3">{excerpt}</p>
-                    <span className="inline-block mt-4 text-orange-400 text-sm font-semibold">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3 leading-relaxed flex-1">{excerpt}</p>
+                    <span className="inline-block mt-4 text-emerald-600 dark:text-emerald-400 text-sm font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
                       {t.common.readMore} →
                     </span>
                   </div>

@@ -36,8 +36,8 @@ export function Button({
     <button
       type="button"
       className={cn(
-        "inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-medium transition outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 disabled:pointer-events-none disabled:opacity-50 whitespace-nowrap",
-        variant === "default" && "bg-emerald-500 text-[#051741] hover:bg-emerald-400 shadow-sm",
+        "inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-bold transition outline-none focus-visible:ring-2 focus-visible:ring-amber-400 disabled:pointer-events-none disabled:opacity-50 whitespace-nowrap",
+        variant === "default" && "bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black hover:from-amber-300 hover:to-amber-400 shadow-sm",
         variant === "outline" &&
           "border border-[var(--ed-border-hex,#e2e8f0)] bg-[var(--ed-surface-hex,#fff)] hover:bg-[hsl(var(--ed-hover,210_20%_96%))] text-[var(--ed-text-hex,#1e293b)]",
         variant === "ghost" &&
@@ -155,7 +155,7 @@ export function DropdownMenuItem({
       type="button"
       onClick={onSelect}
       className={cn(
-        "flex w-full items-center rounded-lg px-2 py-1.5 text-left text-sm text-slate-700 hover:bg-emerald-50 hover:text-[#047857]",
+        "flex w-full items-center rounded-lg px-2 py-1.5 text-left text-sm text-slate-700 hover:bg-amber-50 hover:text-purple-900 font-medium",
         className
       )}
     >
@@ -282,7 +282,7 @@ export function Slider({
       step={step}
       value={value[0] ?? min}
       onChange={(e) => onValueChange?.([Number(e.target.value)])}
-      className={cn("h-1.5 w-full cursor-pointer accent-emerald-500", className)}
+      className={cn("h-1.5 w-full cursor-pointer accent-amber-500", className)}
     />
   );
 }

@@ -199,7 +199,8 @@ export function bookingHref(): string {
 
 export function isSearchReady(query: FlightSearchQuery): boolean {
   if (query.tripType === "multi-city") {
-    const ready = query.multiLegs.filter((leg) => leg.origin && leg.destination && /^\d{4}-\d{2}-\d{2}$/.test(leg.date));
+    const legs = Array.isArray(query.multiLegs) ? query.multiLegs : [];
+    const ready = legs.filter((leg) => leg.origin && leg.destination && /^\d{4}-\d{2}-\d{2}$/.test(leg.date));
     return ready.length >= 2;
   }
   if (!query.origin?.skyId || !query.origin.entityId) return false;

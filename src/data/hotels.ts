@@ -9,8 +9,9 @@ import { normalizeWhatsAppNumber } from "@/lib/utils";
  * Property copy / ratings / guestReviews merged from Booking.com & Tripadvisor real sources
  * via src/data/scraping/hotels/real-from-booking.json (see scripts/hotel-scraper/apply-real-hotel-data.mjs).
  */
-const STORAGE_KEY = "alrayyan_hotels_v9";
+const STORAGE_KEY = "alrayyan_hotels_v10";
 const OLD_STORAGE_KEYS = [
+  "alrayyan_hotels_v9",
   "alrayyan_hotels_v8",
   "alrayyan_hotels_v7",
   "alrayyan_hotels_v6",
@@ -12071,9 +12072,7 @@ export function getHotels(): Hotel[] {
   if (stored) {
     try {
       const parsed = migrateIfNeeded(JSON.parse(stored) as Hotel[]);
-      const slugs = new Set(parsed.map((h) => h.slug));
-      const missing = defaultHotels.filter((h) => !slugs.has(h.slug));
-      return missing.length ? [...parsed, ...missing] : parsed;
+      return parsed;
     } catch {
       return defaultHotels;
     }
@@ -12118,7 +12117,8 @@ export function updateHotel(id: string, data: Partial<Hotel>): Hotel | null {
 }
 
 export function deleteHotel(id: string): boolean {
-  save(getHotels().filter((h) => h.id !== id));
+  const remaining = getHotels().filter((h) => h.id !== id && h.slug !== id);
+  save(remaining);
   return true;
 }
 

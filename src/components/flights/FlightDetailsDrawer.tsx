@@ -4,10 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import {
   Briefcase,
   Check,
+  CheckCircle2,
   Luggage,
   MonitorPlay,
   Plane,
   Plug,
+  Share2,
+  Sparkles,
   UtensilsCrossed,
   Wifi,
   X,
@@ -17,13 +20,21 @@ import { ar, enUS, tr } from "date-fns/locale";
 import { flightDetails } from "@/components/flights/api";
 import AirlineLogo from "@/components/flights/AirlineLogo";
 import { cabinClassLabel, type FlightCopy } from "@/components/flights/copy";
+import { getLocalizedAirline } from "@/lib/flights/airline-dictionary";
+import { getLocalizedPlace } from "@/lib/flights/airport-dictionary";
 import {
+  baggageStateText,
   bookingItinerarySnapshot,
+  fareCabinState,
+  fareCheckedState,
+  formatBaggageText,
   formatClock,
   formatDuration,
   hasValidFarePrices,
   legsPayload,
+  normalizeDetails,
 } from "@/components/flights/normalize";
+import FarePackageGrid from "@/components/flights/FarePackageGrid";
 import type {
   CabinClass,
   FareFamily,
@@ -64,10 +75,11 @@ function policyText(copy: FlightCopy, details?: FlightDetails | null, item?: Iti
   return copy.nonRefundable;
 }
 
-function airportLine(place: FlightPlace): string {
-  const code = place.displayCode;
-  const city = place.city && place.city !== code ? place.city : "";
-  const name = place.name && place.name !== city && place.name !== code ? place.name : "";
+function airportLine(place: FlightPlace, locale: string = "ar"): string {
+  const code = place.displayCode || "";
+  const localized = getLocalizedPlace(code, place.name, place.city, locale);
+  const city = localized.city || place.city || "";
+  const name = localized.name && localized.name !== city && localized.name !== code ? localized.name : "";
   return [city, name, code].filter(Boolean).join(" · ");
 }
 
@@ -122,12 +134,6 @@ function sameCalendarDay(a: string, b: string): boolean {
   const db = new Date(b);
   if (Number.isNaN(da.getTime()) || Number.isNaN(db.getTime())) return true;
   return da.toDateString() === db.toDateString();
-}
-
-function baggageKg(value: string): string {
-  const m = String(value || "").match(/(\d+)\s*k/i);
-  if (m) return `${m[1]} ${"kg"}`;
-  return value;
 }
 
 function TimelineSkeleton() {
@@ -189,7 +195,7 @@ function RouteTimeline({
                   {leg.layovers[segIndex] ? (
                     <div className="relative my-2 ms-0 rounded-xl bg-slate-50 px-3 py-2.5 ps-12">
                       <span className="absolute start-[0.95rem] top-3 h-2.5 w-2.5 rounded-full bg-amber-400 ring-4 ring-amber-50" />
-                      <p className="text-xs font-bold text-[#051741]">
+                      <p className="text-xs font-black text-purple-950">
                         {copy.transferIn} {leg.layovers[segIndex].city || airportLine(seg.destination)}{" "}
                         {formatDuration(leg.layovers[segIndex].durationInMinutes)}
                       </p>
@@ -208,8 +214,8 @@ function RouteTimeline({
               ))
             ) : (
               <div className="flex items-center gap-3 ps-1 text-sm text-slate-600">
-                <Plane size={14} className="text-[#10b981]" />
-                {airportLine(leg.origin)} → {airportLine(leg.destination)}
+                <Plane size={14} className="text-purple-700" />
+                {airportLine(leg.origin, locale)} → {airportLine(leg.destination, locale)}
               </div>
             )}
           </div>
@@ -232,6 +238,11 @@ function SegmentBlock({
   cabin: CabinClass;
   showArrivalDate: boolean;
 }) {
+  const carrierName = getLocalizedAirline(seg.marketingCarrier.code, seg.marketingCarrier.name, locale);
+  const operatingName = seg.operatingCarrier?.name
+    ? getLocalizedAirline(seg.operatingCarrier.code, seg.operatingCarrier.name, locale)
+    : "";
+
   return (
     <div className="relative pb-3">
       <TimePoint
@@ -239,15 +250,16 @@ function SegmentBlock({
         place={seg.origin}
         dateNote=""
         copy={copy}
+        locale={locale}
       />
       <div className="ms-12 mb-3 mt-1 space-y-1.5">
-        <p className="text-xs font-semibold text-[#051741]">
-          {seg.marketingCarrier.name || seg.marketingCarrier.code} {seg.flightNumber || seg.flightNo}
+        <p className="text-xs font-bold text-purple-950">
+          {carrierName} {seg.flightNumber || seg.flightNo}
           {` · ${cabinClassLabel(locale, cabin)}`}
         </p>
-        {seg.operatingCarrier?.name && seg.operatingCarrier.name !== seg.marketingCarrier.name ? (
+        {operatingName && operatingName !== carrierName ? (
           <p className="text-[11px] text-slate-500">
-            {copy.operatingCarrier} {seg.operatingCarrier.name}
+            {copy.operatingCarrier} {operatingName}
           </p>
         ) : null}
         {seg.aircraft ? (
@@ -257,7 +269,7 @@ function SegmentBlock({
         ) : null}
         <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-slate-500">
           <span className="inline-flex items-center gap-1">
-            <Plane size={10} className="text-[#10b981]" />
+            <Plane size={10} className="text-purple-700" />
             {copy.totalDuration}: {formatDuration(seg.durationInMinutes)}
           </span>
           {seg.amenities?.map((kind) => {
@@ -276,6 +288,7 @@ function SegmentBlock({
         place={seg.destination}
         dateNote={showArrivalDate ? dateShiftLabel(seg.arrival, locale) : ""}
         copy={copy}
+        locale={locale}
       />
     </div>
   );
@@ -286,23 +299,25 @@ function TimePoint({
   place,
   dateNote,
   copy,
+  locale = "ar",
 }: {
   time: string;
   place: FlightPlace;
   dateNote: string;
   copy: FlightCopy;
+  locale?: string;
 }) {
   return (
     <div className="relative flex items-start gap-3">
-      <span className="relative z-10 mt-1 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-[#10b981] bg-white" />
+      <span className="relative z-10 mt-1 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-purple-700 bg-white" />
       <div className="min-w-0 flex-1 pb-1">
         <div className="flex flex-wrap items-baseline gap-2">
-          <p className="text-base font-bold leading-none text-[#051741]">{time}</p>
+          <p className="text-base font-black leading-none text-purple-950">{time}</p>
           {dateNote ? (
             <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">{dateNote}</span>
           ) : null}
         </div>
-        <p className="mt-1 text-sm font-semibold text-slate-800">{airportLine(place)}</p>
+        <p className="mt-1 text-sm font-semibold text-slate-800">{airportLine(place, locale)}</p>
         {terminalOf(place) || place.gate ? (
           <p className="mt-0.5 text-[11px] font-semibold text-slate-500">
             {terminalOf(place) ? `${copy.terminalLabel} ${terminalOf(place)}` : ""}
@@ -319,71 +334,12 @@ function FareGrid({
   fares,
   selectedId,
   onPick,
-  copy,
-  formatPrice,
-  currency,
 }: {
   fares: FareFamily[];
   selectedId: string;
   onPick: (fare: FareFamily) => void;
-  copy: FlightCopy;
-  formatPrice: (amount: number, currency?: string) => string;
-  currency: string;
 }) {
-  const cheapest = Math.min(...fares.map((f) => f.price).filter((n) => n > 0), Number.POSITIVE_INFINITY);
-  return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-      {fares.map((fare, index) => {
-        const selected = fare.id === selectedId;
-        const recommended = fare.price === cheapest && cheapest !== Number.POSITIVE_INFINITY && index > 0;
-        return (
-          <button
-            key={fare.id}
-            type="button"
-            onClick={() => onPick(fare)}
-            className={cn(
-              "relative rounded-2xl border bg-white p-4 text-start transition",
-              selected ? "border-[#10b981] ring-2 ring-[#10b981]/30" : "border-slate-200 hover:border-[#10b981]/50"
-            )}
-          >
-            {recommended ? (
-              <span className="absolute -top-2 start-3 rounded-full bg-[#10b981] px-2 py-0.5 text-[10px] font-bold text-white">
-                {copy.recommended}
-              </span>
-            ) : null}
-            <div className="flex items-start justify-between gap-2">
-              <span
-                className={cn(
-                  "mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full border",
-                  selected ? "border-[#10b981] bg-[#10b981] text-white" : "border-slate-300"
-                )}
-              >
-                {selected ? <Check size={10} /> : null}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold text-[#051741]">{fare.name}</p>
-                <p className="mt-1 text-lg font-extrabold text-[#051741]">{formatPrice(fare.price, fare.currency || currency)}</p>
-              </div>
-            </div>
-            <div className="mt-3 space-y-2 text-xs text-slate-600">
-              <p className="font-bold text-slate-400">{copy.baggage}</p>
-              <p className="flex items-center gap-2">
-                <Briefcase size={13} className="text-slate-400" />
-                {copy.cabinBag}
-              </p>
-              <p className="flex items-center gap-2">
-                <Luggage size={13} className="text-slate-400" />
-                {fare.baggage ? baggageKg(fare.baggage) : copy.noCheckedBag}
-              </p>
-              <p className="pt-1 font-bold text-slate-400">{copy.flexibility}</p>
-              <p>{fare.refundable ? copy.refundableFee : copy.nonRefundable}</p>
-              <p>{fare.changeable ? copy.freeChange : copy.changeFee}</p>
-            </div>
-          </button>
-        );
-      })}
-    </div>
-  );
+  return <FarePackageGrid fares={fares} selectedId={selectedId} onSelect={onPick} />;
 }
 
 export default function FlightDetailsDrawer({ item, query, sessionId, copy, onClose, onSelect }: Props) {
@@ -393,6 +349,32 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
   const [loading, setLoading] = useState(false);
   const [detailError, setDetailError] = useState(false);
   const [selectedFareId, setSelectedFareId] = useState("");
+  const [shareSuccess, setShareSuccess] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (item) {
+      const raf = requestAnimationFrame(() => setIsOpen(true));
+      return () => cancelAnimationFrame(raf);
+    } else {
+      setIsOpen(false);
+    }
+  }, [item]);
+
+  const handleAnimatedClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleAnimatedClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   useEffect(() => {
     if (!item) {
@@ -443,7 +425,7 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
           price: item.price,
           currency: item.currency,
           cabinClass: item.fareFamilies[0]?.cabinClass || query.cabinClass,
-          baggage: item.fareFamilies[0]?.baggage || "cabin",
+          baggage: item.fareFamilies[0]?.baggage || "",
           changeable: Boolean(item.farePolicy?.isChangeAllowed),
           refundable: Boolean(item.farePolicy?.isCancellationAllowed || item.farePolicy?.isPartiallyRefundable),
         },
@@ -467,14 +449,53 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
   const dest = snapshot.legs[snapshot.legs.length - 1]?.destination;
   const selected = fares.find((f) => f.id === selectedFareId) || fares[0] || null;
   const totalMins = legs.reduce((sum, leg) => sum + (leg.durationInMinutes || 0), 0);
-  const cabinBag =
-    details?.cabinBaggage && details.cabinBaggage !== "—"
-      ? details.cabinBaggage
-      : item.cabinBaggage || copy.cabinBagIncluded;
-  const checkedBag =
-    details?.checkedBaggage && details.checkedBaggage !== "—"
-      ? details.checkedBaggage
-      : item.checkedBaggage || copy.noCheckedBag;
+
+  // Baggage bound to the selected package — tri-state, no assumptions.
+  const selectedCheckedState = (() => {
+    const st = fareCheckedState(selected);
+    if (st.status !== "unknown") return st;
+    const raw = details?.checkedBaggage && details.checkedBaggage !== "—" ? details.checkedBaggage : item.checkedBaggage;
+    if (!raw) return st;
+    const formatted = formatBaggageText(raw, locale);
+    return formatted ? ({ status: "included", text: formatted } as const) : ({ status: "none" } as const);
+  })();
+  const selectedCabinState = (() => {
+    const st = fareCabinState(selected);
+    if (st.status !== "unknown") return st;
+    const raw = details?.cabinBaggage && details.cabinBaggage !== "—" ? details.cabinBaggage : item.cabinBaggage;
+    return raw ? ({ status: "included", text: raw } as const) : st;
+  })();
+  const hasCheckedBag = selectedCheckedState.status === "included";
+
+  const origLoc = getLocalizedPlace(origin?.displayCode || "", origin?.name, origin?.city, locale);
+  const destLoc = getLocalizedPlace(dest?.displayCode || "", dest?.name, dest?.city, locale);
+  const carrierName = getLocalizedAirline(
+    snapshot.legs[0]?.carriers[0]?.code || snapshot.legs[0]?.segments[0]?.marketingCarrier.code || "",
+    snapshot.legs[0]?.carriers[0]?.name || snapshot.legs[0]?.segments[0]?.marketingCarrier.name || "",
+    locale
+  );
+
+  const handleShareToCommunity = () => {
+    const sharePayload = {
+      id: item.id || `flight_${Date.now()}`,
+      type: "flight",
+      typeLabel: locale === "ar" ? "تذكرة طيران مميزة" : "Flight Ticket Deal",
+      title: `${locale === "ar" ? "رحلة طيران" : "Flight"}: ${origLoc.city || origLoc.name} ← ${destLoc.city || destLoc.name} (${carrierName})`,
+      destination: destLoc.city || destLoc.name || "رحلة جوية",
+      price: selected?.price || item.rawPrice || item.price,
+      currency: selected?.currency || priceCurrency,
+      url: typeof window !== "undefined" ? window.location.href : undefined,
+    };
+
+    try {
+      sessionStorage.setItem("pendingCommunityShare", JSON.stringify(sharePayload));
+    } catch {}
+
+    setShareSuccess(true);
+    setTimeout(() => {
+      window.open("/community?shareService=1", "_blank");
+    }, 400);
+  };
 
   const continueBooking = (fare: FareFamily | null) => {
     onSelect({
@@ -486,54 +507,64 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
   };
 
   return (
-    <div className="fixed inset-0 z-[130]">
-      <button type="button" className="absolute inset-0 bg-[#051741]/45 backdrop-blur-[1px]" onClick={onClose} aria-label={copy.closeDetails} />
+    <div className={cn("fixed inset-0 z-[130] transition-opacity duration-200", isOpen ? "opacity-100" : "opacity-0 pointer-events-none")}>
+      <button
+        type="button"
+        className="absolute inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity duration-200"
+        onClick={handleAnimatedClose}
+        aria-label={copy.closeDetails}
+      />
       <aside
         dir={dir}
         className={cn(
-          "absolute inset-y-0 flex w-full max-w-2xl flex-col bg-white shadow-2xl",
-          dir === "rtl" ? "start-0" : "end-0"
+          "absolute inset-y-0 flex w-full max-w-2xl flex-col bg-white shadow-2xl transition-transform duration-200 ease-out",
+          dir === "rtl" ? "start-0" : "end-0",
+          isOpen ? "translate-x-0" : (dir === "rtl" ? "-translate-x-full" : "translate-x-full")
         )}
       >
-        <div className="border-b border-slate-100 px-5 py-4">
+        {/* Luxury Brand Boarding-Pass Header */}
+        <div className="bg-gradient-to-r from-[#1b053a] via-[#2e1065] to-[#3b0764] text-white px-5 py-5 shadow-md border-b border-amber-400/20">
           <div className="flex items-start justify-between gap-3">
-            <AirlineLogo
-              code={snapshot.legs[0]?.carriers[0]?.code || snapshot.legs[0]?.segments[0]?.marketingCarrier.code}
-              name={snapshot.legs[0]?.carriers[0]?.name || snapshot.legs[0]?.segments[0]?.marketingCarrier.name}
-              logoUrl={snapshot.legs[0]?.carriers[0]?.logoUrl || snapshot.legs[0]?.segments[0]?.marketingCarrier.logoUrl}
-              size="md"
-            />
+            <div className="rounded-2xl bg-white/10 p-1.5 ring-1 ring-white/20">
+              <AirlineLogo
+                code={snapshot.legs[0]?.carriers[0]?.code || snapshot.legs[0]?.segments[0]?.marketingCarrier.code}
+                name={carrierName}
+                logoUrl={snapshot.legs[0]?.carriers[0]?.logoUrl || snapshot.legs[0]?.segments[0]?.marketingCarrier.logoUrl}
+                size="md"
+              />
+            </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-lg font-extrabold text-[#051741]">
-                {origin?.city || origin?.name || origin?.displayCode} {dir === "rtl" ? "←" : "→"}{" "}
-                {dest?.city || dest?.name || dest?.displayCode}
-              </p>
-              <p className="mt-1 text-xs text-slate-500">
-                {origin?.name && origin.name !== origin.city ? `${origin.name} · ` : ""}
-                {origin?.displayCode}
+              <div className="flex items-center gap-2">
+                <p className="truncate text-lg font-black text-white">
+                  {origLoc.city || origin?.name} ({origin?.displayCode})
+                  <span className="mx-2 text-amber-400 font-extrabold">{dir === "rtl" ? "←" : "→"}</span>
+                  {destLoc.city || dest?.name} ({dest?.displayCode})
+                </p>
+              </div>
+              <p className="mt-1 text-xs font-semibold text-purple-200">
+                {carrierName} · {formatClock(snapshot.legs[0]?.departure || "")}
                 {" — "}
-                {dest?.name && dest.name !== dest.city ? `${dest.name} · ` : ""}
-                {dest?.displayCode}
+                {formatClock(snapshot.legs[snapshot.legs.length - 1]?.arrival || "")}
               </p>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-0.5 text-xs text-amber-300/90 font-bold">
                 {copy.outboundTag}: {query.date} · {copy.totalDuration} {formatDuration(totalMins)}
                 {loading ? ` · ${copy.loadingDetails}` : ""}
               </p>
             </div>
             <button
               type="button"
-              onClick={onClose}
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200"
+              onClick={handleAnimatedClose}
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
               aria-label={copy.closeDetails}
             >
-              <X size={16} />
+              <X size={18} />
             </button>
           </div>
         </div>
 
         <div className="flex-1 space-y-6 overflow-auto px-5 py-5 pb-28">
           <section>
-            <h3 className="mb-3 text-sm font-bold text-[#051741]">{copy.timeline}</h3>
+            <h3 className="mb-3 text-sm font-black text-[#1e1b4b]">{copy.timeline}</h3>
             {enrichingRoute ? (
               <TimelineSkeleton />
             ) : (
@@ -542,57 +573,143 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
             {detailError ? <p className="mt-2 text-xs text-amber-600">{copy.errorHint}</p> : null}
           </section>
 
-          <section className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-100 p-4">
-              <h3 className="mb-3 flex items-center gap-2 text-sm font-bold text-[#051741]">
-                <Luggage size={15} />
-                {copy.baggage}
-              </h3>
-              <p className="flex items-center gap-2 text-sm text-slate-600">
-                <Briefcase size={14} className="text-slate-400" />
-                {copy.cabinBag}: {cabinBag}
-              </p>
-              <p className="mt-2 flex items-center gap-2 text-sm text-slate-600">
-                <Luggage size={14} className="text-slate-400" />
-                {copy.checkedBag}: {checkedBag}
-              </p>
+          {/* Social Community Sharing Card with Clear Engagement Rules */}
+          <section className="rounded-2xl border border-amber-300/80 bg-gradient-to-br from-amber-500/10 via-amber-100/30 to-amber-500/5 p-4 text-slate-900 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-slate-950 shadow-sm">
+                  <Sparkles size={18} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-slate-900">
+                    {locale === "ar" ? "شارك الرحلة واكسب نقاط الولاء" : "Share Flight & Earn Loyalty Points"}
+                  </h4>
+                  <span className="inline-block rounded-md bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-950">
+                    {locale === "ar" ? "تطبق شروط تفاعل الجمهور" : "Engagement terms apply"}
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleShareToCommunity}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-2 text-xs font-black text-slate-950 shadow hover:from-amber-500 hover:to-amber-600 transition active:scale-95 cursor-pointer shrink-0"
+              >
+                {shareSuccess ? <CheckCircle2 size={14} className="text-slate-950" /> : <Share2 size={14} />}
+                <span>{shareSuccess ? (locale === "ar" ? "جاري الفتح..." : "Opening...") : (locale === "ar" ? "مشاركة بالسوشيال" : "Share to Social")}</span>
+              </button>
             </div>
-            <div className="rounded-2xl border border-slate-100 p-4">
-              <h3 className="mb-3 flex items-center gap-2 text-sm font-bold text-[#051741]">
-                <Plane size={15} />
-                {copy.policies}
+            <p className="mt-2.5 text-xs leading-relaxed text-slate-600">
+              {locale === "ar"
+                ? "انشر تفاصيل هذه الرحلة في مجتمع لوناليزا السياحي. تُمنح النقاط وتُضاف لرصيدك في المحفظة فور وصول المنشور إلى تفاعل الجمهور المحدد (50 إعجاب و 10 تعليقات) لتستخدمها في خصومات مباشرة على حجوزاتك القادمة."
+                : "Publish this flight to Lonaliza Social Community. Reward points are unlocked and credited to your wallet once your post hits audience engagement criteria (50 likes & 10 comments)."}
+            </p>
+          </section>
+
+          {/* Fully Unified Baggage and Ticket Policy Cards */}
+          <section className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-purple-200/80 bg-purple-50/20 p-4 shadow-2xs">
+              <h3 className="mb-3 flex items-center gap-2 text-sm font-black text-[#1e1b4b]">
+                <Luggage size={16} className="text-amber-600" />
+                <span>{copy.baggage}</span>
+                {selected?.name ? (
+                  <span className="text-[10px] font-bold text-purple-900 bg-purple-100 px-1.5 py-0.5 rounded">
+                    {selected.name}
+                  </span>
+                ) : null}
               </h3>
-              <p className="text-sm text-slate-600">{policyText(copy, details, snapshot)}</p>
-              {details?.changeLabel === "free_change" || snapshot.farePolicy?.isChangeAllowed ? (
-                <p className="mt-2 text-sm text-emerald-700">{copy.freeChange}</p>
+              <p className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <Briefcase size={14} className={selectedCabinState.status === "included" ? "text-purple-700 shrink-0" : "text-slate-400 shrink-0"} />
+                <span>
+                  {copy.cabinBag}: <strong className="text-slate-900">{baggageStateText(selectedCabinState, locale, "cabin")}</strong>
+                </span>
+              </p>
+              <p className="mt-2.5 flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <Luggage size={14} className={hasCheckedBag ? "text-amber-600 shrink-0" : "text-slate-400 shrink-0"} />
+                <span>
+                  {copy.checkedBag}:{" "}
+                  <strong className={hasCheckedBag ? "text-purple-950 font-black" : "text-slate-600 font-bold"}>
+                    {baggageStateText(selectedCheckedState, locale, "checked")}
+                  </strong>
+                </span>
+              </p>
+              {selectedCheckedState.status === "unknown" ? (
+                <p className="mt-2 text-[11px] text-slate-500">
+                  {locale === "ar"
+                    ? "لم تُرسل شركة الطيران تفاصيل الأمتعة لهذه التعرفة بعد؛ تُؤكد قبل الدفع."
+                    : locale === "tr"
+                      ? "Havayolu bu ücret için bagaj bilgisi göndermedi; ödeme öncesi onaylanır."
+                      : "The airline has not provided baggage details for this fare yet; confirmed before payment."}
+                </p>
               ) : null}
+            </div>
+
+            <div className="rounded-2xl border border-purple-200/80 bg-purple-50/20 p-4 shadow-2xs">
+              <h3 className="mb-3 flex items-center gap-2 text-sm font-black text-[#1e1b4b]">
+                <Plane size={16} className="text-purple-700" />
+                <span>{copy.policies}</span>
+                {selected?.name ? (
+                  <span className="text-[10px] font-bold text-purple-900 bg-purple-100 px-1.5 py-0.5 rounded">
+                    {selected.name}
+                  </span>
+                ) : null}
+              </h3>
+              <p className="text-sm font-semibold text-slate-700 flex items-start gap-2">
+                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", selected?.attributes?.refund === "included" ? "bg-emerald-500" : selected?.attributes?.refund === "chargeable" ? "bg-amber-500" : "bg-slate-400")} />
+                <span>
+                  {selected?.attributes?.refund === "included"
+                    ? (locale === "ar" ? "إلغاء مجاني" : locale === "tr" ? "Ücretsiz iptal" : "Free cancellation")
+                    : selected?.attributes?.refund === "chargeable"
+                      ? (() => {
+                          const fee = (selected.penalties || []).find((p) => p.type === "cancel" && p.amount != null);
+                          return fee?.amount != null
+                            ? (locale === "ar" ? `إلغاء متاح برسوم ${fee.amount} ${fee.currency || selected.currency}` : `Cancellation fee ${fee.amount} ${fee.currency || selected.currency}`)
+                            : (locale === "ar" ? "إلغاء متاح برسوم" : "Cancellation available with a fee");
+                        })()
+                      : (locale === "ar" ? "إلغاء غير متوفر" : locale === "tr" ? "İptal yok" : "Cancellation not available")}
+                </span>
+              </p>
+              <p className="mt-2 text-sm font-semibold text-slate-700 flex items-start gap-2">
+                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", selected?.attributes?.change === "included" ? "bg-emerald-500" : selected?.attributes?.change === "chargeable" ? "bg-purple-600" : "bg-slate-400")} />
+                <span>
+                  {selected?.attributes?.change === "included"
+                    ? (locale === "ar" ? "تعديل مجاني" : locale === "tr" ? "Ücretsiz değişiklik" : "Free date change")
+                    : selected?.attributes?.change === "chargeable"
+                      ? (() => {
+                          const fee = (selected.penalties || []).find((p) => p.type === "change" && p.amount != null);
+                          return fee?.amount != null
+                            ? (locale === "ar" ? `تعديل متاح برسوم ${fee.amount} ${fee.currency || selected.currency}` : `Change fee ${fee.amount} ${fee.currency || selected.currency}`)
+                            : (locale === "ar" ? "تعديل متاح برسوم" : "Date change available with a fee");
+                        })()
+                      : (locale === "ar" ? "تعديل غير متوفر" : locale === "tr" ? "Değişiklik yok" : "Date change not available")}
+                </span>
+              </p>
             </div>
           </section>
 
           {details?.fareRules ? (
-            <section className="rounded-2xl border border-slate-100 p-4">
-              <h3 className="mb-2 text-sm font-bold text-[#051741]">{copy.fareRules}</h3>
-              <p className="whitespace-pre-line text-sm leading-relaxed text-slate-600">{details.fareRules}</p>
+            <section className="rounded-2xl border border-slate-200 p-4">
+              <h3 className="mb-2 text-sm font-black text-[#1e1b4b]">{copy.fareRules}</h3>
+              <p className="whitespace-pre-line text-xs leading-relaxed text-slate-600">{details.fareRules}</p>
             </section>
           ) : null}
 
           <section>
-            <h3 className="mb-3 text-sm font-bold text-[#051741]">{copy.selectFare}</h3>
+            <h3 className="mb-3 text-sm font-black text-[#1e1b4b]">{copy.selectFare}</h3>
             <FareGrid
               fares={fares}
               selectedId={selected?.id || ""}
               onPick={(fare) => setSelectedFareId(fare.id)}
-              copy={copy}
-              formatPrice={formatFlightPrice}
-              currency={priceCurrency}
             />
           </section>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 border-t border-slate-100 bg-white/95 px-5 py-3 backdrop-blur">
+        {/* Luxury Bottom Action Bar */}
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-purple-100 bg-white/95 px-5 py-3.5 backdrop-blur shadow-[0_-8px_20px_rgba(46,16,101,0.04)]">
           <div>
-            <p className="text-[11px] text-slate-400">{copy.total}</p>
-            <p className="text-xl font-extrabold text-[#051741]">
+            <p className="text-[11px] font-bold text-slate-400">
+              {copy.total} · <span className="text-purple-950 font-black">{selected?.name || "Standard"}</span>
+            </p>
+            <p className="text-2xl font-black text-[#1e1b4b]">
               {selected ? formatFlightPrice(selected.price, selected.currency || priceCurrency) : "—"}
             </p>
           </div>
@@ -600,7 +717,7 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
             type="button"
             disabled={!selected}
             onClick={() => continueBooking(selected)}
-            className="rounded-xl bg-[#10b981] px-5 py-3 text-sm font-bold text-white disabled:opacity-50"
+            className="rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 active:scale-95 px-8 py-3 text-sm font-black text-slate-950 shadow-md shadow-amber-500/25 disabled:opacity-50 transition-all cursor-pointer"
           >
             {copy.continue}
           </button>

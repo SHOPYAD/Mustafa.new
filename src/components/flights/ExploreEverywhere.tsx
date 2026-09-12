@@ -47,42 +47,42 @@ export default function ExploreEverywhere({ origin, query, copy }: Props) {
   return (
     <section className="py-14">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="mb-6 text-2xl font-bold text-[#051741]">{copy.exploreTitle}</h2>
+        <h2 className="mb-6 text-2xl font-black text-purple-950">{copy.exploreTitle}</h2>
         {!origin ? (
-          <p className="rounded-2xl bg-white p-8 text-center text-slate-500">{copy.exploreEmpty}</p>
+          <p className="rounded-2xl bg-white p-8 text-center text-slate-500 shadow-sm border border-purple-100">{copy.exploreEmpty}</p>
         ) : loading && !deals.length ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-48 animate-pulse rounded-2xl bg-slate-200" />
+              <div key={i} className="h-48 animate-pulse rounded-2xl bg-purple-100" />
             ))}
           </div>
         ) : deals.length === 0 ? (
-          <p className="rounded-2xl bg-white p-8 text-center text-slate-500">{copy.exploreEmpty}</p>
+          <p className="rounded-2xl bg-white p-8 text-center text-slate-500 shadow-sm border border-purple-100">{copy.exploreEmpty}</p>
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {deals.map((deal) => (
-              <article key={deal.id} className="overflow-hidden rounded-2xl bg-white shadow-sm">
-                <div className="relative h-32 bg-gradient-to-br from-[#051741] to-amber-700">
+              <article key={deal.id} className="overflow-hidden rounded-2xl bg-white shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+                <div className="relative h-32 bg-gradient-to-br from-[#1b053a] to-[#3b0764]">
                   {deal.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={deal.imageUrl} alt="" className="h-full w-full object-cover" />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <p className="absolute bottom-3 start-3 text-sm font-bold text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <p className="absolute bottom-3 start-3 text-sm font-black text-white">
                     {deal.name} · {deal.iata}
                   </p>
                 </div>
                 <div className="p-4">
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 font-medium">
                     {deal.direct ? copy.directFrom : copy.startingFrom} {origin.iata}
                   </p>
-                  <p className="mt-1 text-lg font-bold text-[#051741]">
+                  <p className="mt-1 text-lg font-black text-purple-950">
                     {formatFlightPrice(deal.price, deal.currency || query.currency)}
                   </p>
-                  <p className="text-xs text-slate-400">{deal.windowLabel || copy.anytime}</p>
+                  <p className="text-xs text-slate-400 font-medium">{deal.windowLabel || copy.anytime}</p>
                   <button
                     type="button"
-                    className="mt-3 w-full rounded-xl bg-amber-500 py-2 text-sm font-bold text-[#051741]"
+                    className="mt-3 w-full rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 py-2.5 text-sm font-black text-slate-950 shadow-md shadow-amber-500/20 active:scale-95 transition-all cursor-pointer"
                     onClick={() =>
                       router.push(
                         searchHref({

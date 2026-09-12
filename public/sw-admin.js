@@ -1,5 +1,5 @@
 /* Alrayyan admin alerts — keep this file at site root scope. */
-const DEFAULT_TITLE = "الريان للسياحة";
+const DEFAULT_TITLE = "لوناليزا للسياحة والسفر";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());

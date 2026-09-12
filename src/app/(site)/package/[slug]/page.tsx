@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import EnquiryModal from "@/components/ui/EnquiryModal";
+import { ShareToCommunityButton } from "@/components/community/ShareToCommunityButton";
 import {
   enrichPackage,
   getLocalizedItinerary,
@@ -189,8 +190,81 @@ export default function PackageDetailPage({ params }: Props) {
       ? `مرحباً، أود الاستفسار عن باقة "${title}" إلى ${destination}.`
       : `Hello, I'd like to enquire about the "${title}" package to ${destination}.`;
 
+  const schemaJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristTrip",
+        "@id": `https://lonaliza.com/package/${pkg.slug}#trip`,
+        "name": title,
+        "description": (descriptionHtml ? descriptionHtml.replace(/<[^>]+>/g, " ") : title).slice(0, 300),
+        "touristType": ["Family", "Couples", "Luxury Travelers"],
+        "offers": {
+          "@type": "Offer",
+          "price": pkg.price,
+          "priceCurrency": pkg.currency || "USD",
+          "availability": "https://schema.org/InStock",
+          "url": `https://lonaliza.com/package/${pkg.slug}`,
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": pkg.price,
+            "priceCurrency": pkg.currency || "USD",
+            "valueAddedTaxIncluded": true,
+          },
+        },
+        "provider": {
+          "@type": "TravelAgency",
+          "name": "Lonaliza Tourism & Travel",
+          "url": "https://lonaliza.com",
+          "telephone": "+905321796763",
+          "priceRange": "$$",
+        },
+        "itinerary": {
+          "@type": "ItemList",
+          "numberOfItems": itinerary.length,
+          "itemListElement": itinerary.map((day, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": `${pd.days} ${day.day}: ${day.title}`,
+              "description": day.description,
+            },
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://lonaliza.com",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Holiday Packages",
+            "item": "https://lonaliza.com/holidays",
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": title,
+            "item": `https://lonaliza.com/package/${pkg.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+      />
       {/* Agent D: mobile + search tabs — package hero gutters + thumbnail rail */}
       <section className="relative overflow-x-hidden bg-[#0a1628]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/60 via-transparent to-[#0a1628]" />
@@ -315,7 +389,7 @@ export default function PackageDetailPage({ params }: Props) {
                 ) : (
                   <p className="leading-relaxed text-slate-600" dir={dir}>
                     {locale === "ar"
-                      ? `استكشف ${destination} مع برنامج ${durationLabel} من الريان للسياحة — إقامة مريحة، جولات منظمة، ودعم عربي طوال الرحلة.`
+                      ? `استكشف ${destination} مع برنامج ${durationLabel} من لوناليزا للسياحة والسفر — إقامة مريحة، جولات منظمة، ودعم عربي طوال الرحلة.`
                       : `Discover ${destination} with Alrayyan Tourism's ${durationLabel} program — comfortable stays, guided tours, and Arabic support throughout.`}
                   </p>
                 )}
@@ -626,6 +700,22 @@ export default function PackageDetailPage({ params }: Props) {
                     >
                       {pd.whatsapp}
                     </a>
+                    <ShareToCommunityButton
+                      service={{
+                        id: pkg.id,
+                        type: "package",
+                        typeLabel: "برنامج سياحي متكامل",
+                        title: title,
+                        destination: `${destination}، ${country}`,
+                        price: pkg.price,
+                        currency: pkg.currency || "USD",
+                        imageUrl: pkg.images[0]?.url,
+                        url: `/package/${pkg.slug}`,
+                      }}
+                      variant="button"
+                      label="شارك البرنامج في مجتمع لوناليزا ✨"
+                      className="w-full justify-center py-3 rounded-xl"
+                    />
                   </div>
                 </div>
               </div>
@@ -647,6 +737,20 @@ export default function PackageDetailPage({ params }: Props) {
               {formatPrice(pkg.price, pkg.currency || "USD")}
             </p>
           </div>
+          <ShareToCommunityButton
+            service={{
+              id: pkg.id,
+              type: "package",
+              typeLabel: "برنامج سياحي متكامل",
+              title: title,
+              destination: `${destination}، ${country}`,
+              price: pkg.price,
+              currency: pkg.currency || "USD",
+              imageUrl: pkg.images[0]?.url,
+              url: `/package/${pkg.slug}`,
+            }}
+            variant="icon"
+          />
           <button
             type="button"
             onClick={() => setIsEnquiryOpen(true)}

@@ -29,7 +29,10 @@ import {
 } from "@/lib/site-whatsapp";
 import HotelReviewsSection from "@/components/hotels/HotelReviewsSection";
 import TravelAdvisorHotelDetail from "@/components/hotels/TravelAdvisorHotelDetail";
-import { defaultHotelDates, parseHotelApiId } from "@/lib/hotels-config";
+import SupplierHotelDetail from "@/components/hotels/SupplierHotelDetail";
+import { defaultHotelDates, parseHotelApiId, parseHotelRouteSource } from "@/lib/hotels-config";
+
+const SUPPLIER_SOURCES = new Set(["hotelbeds", "travelport", "ratehawk", "seeru"]);
 
 const HotelLocationMap = dynamic(() => import("@/components/maps/HotelLocationMap"), {
   ssr: false,
@@ -64,7 +67,12 @@ export default function HotelDetailPage({ params }: Props) {
     checkIn: "",
     checkOut: "",
     adults: "2",
+    rooms: "1",
+    children: "",
     q: "Istanbul",
+    sid: "",
+    master: "",
+    ready: false,
   });
 
   useEffect(() => {
@@ -74,14 +82,43 @@ export default function HotelDetailPage({ params }: Props) {
       checkIn: params.get("checkIn") || defaults.checkIn,
       checkOut: params.get("checkOut") || defaults.checkOut,
       adults: params.get("adults") || "2",
+      rooms: params.get("rooms") || "1",
+      children: params.get("children") || "",
       q: params.get("q") || "Istanbul",
+      sid: params.get("sid") || "",
+      master: params.get("master") || "",
+      ready: true,
     });
   }, []);
 
-  if (parseHotelApiId(slug)) {
+  const cleanSlug = decodeURIComponent(String(slug || "").trim());
+  const staticHotel = getHotelBySlug(cleanSlug) || getHotelBySlug(slug);
+  const isApiHotel = !staticHotel;
+  const routeSource = parseHotelRouteSource(cleanSlug);
+
+  if (isApiHotel && routeSource && SUPPLIER_SOURCES.has(routeSource)) {
+    // Supplier-backed hotel (Hotelbeds / RateHawk / Travelport / Seeru): wait for the URL params so the
+    // first request already carries the search session and master id.
+    if (!search.ready) return <div className="min-h-screen bg-slate-50" />;
+    return (
+      <SupplierHotelDetail
+        slug={cleanSlug}
+        checkIn={search.checkIn}
+        checkOut={search.checkOut}
+        adults={search.adults}
+        rooms={search.rooms}
+        childrenAges={search.children}
+        query={search.q}
+        sessionId={search.sid || undefined}
+        masterId={search.master || undefined}
+      />
+    );
+  }
+
+  if (isApiHotel) {
     return (
       <TravelAdvisorHotelDetail
-        slug={slug}
+        slug={cleanSlug}
         checkIn={search.checkIn || defaultHotelDates().checkIn}
         checkOut={search.checkOut || defaultHotelDates().checkOut}
         adults={search.adults}

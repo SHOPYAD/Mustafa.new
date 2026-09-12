@@ -15,6 +15,8 @@ export type LocalizedCopy = {
   ar: string;
   en: string;
   tr: string;
+  fr?: string;
+  [lang: string]: string | undefined;
 };
 
 export type LoyaltyCoupon = {
@@ -46,11 +48,16 @@ export type LoyaltySettings = {
   pointsPerUsdByService: Partial<Record<LoyaltyService, number>>;
   pointsPerUsdRedeem: number;
   minConvertPoints: number;
+  requireAdminApproval: boolean;
+  minBookingAmountUsd: number;
+  maxDiscountPercent: number;
+  maxVoucherDiscountUsd: number;
+  autoApproveVerifiedBookings: boolean;
 };
 
 export type LoyaltyLedgerKind = "earn" | "convert" | "redeem" | "adjust";
 
-export type LoyaltyLedgerStatus = "pending" | "confirmed";
+export type LoyaltyLedgerStatus = "pending" | "confirmed" | "rejected";
 
 export type LoyaltyLedgerEntry = {
   id: string;
@@ -64,6 +71,9 @@ export type LoyaltyLedgerEntry = {
   couponId?: string;
   voucherId?: string;
   note?: string;
+  rejectionReason?: string;
+  approvedAt?: string;
+  approvedBy?: string;
   createdAt: string;
 };
 
@@ -111,6 +121,7 @@ export type LoyaltyQuote = {
   coveredInFull: boolean;
   pointsEarn: number;
   pointsUsd: number;
+  voucherNotice?: string;
 };
 
 export const LOYALTY_COUPON_COOKIE = "alrayyan_coupon";
@@ -120,7 +131,12 @@ export const DEFAULT_LOYALTY_SETTINGS: LoyaltySettings = {
   pointsPerUsd: 10,
   pointsPerUsdByService: {},
   pointsPerUsdRedeem: 100,
-  minConvertPoints: 100,
+  minConvertPoints: 500,
+  requireAdminApproval: true,
+  minBookingAmountUsd: 500,
+  maxDiscountPercent: 15,
+  maxVoucherDiscountUsd: 150,
+  autoApproveVerifiedBookings: true,
 };
 
 export function isLoyaltyService(value: unknown): value is LoyaltyService {

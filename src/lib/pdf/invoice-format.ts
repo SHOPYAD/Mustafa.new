@@ -8,12 +8,11 @@ function localeOf(language: InvoiceLanguage): string {
       return "ar";
     case "tr":
       return "tr-TR";
+    case "fr":
+      return "fr-FR";
     case "en":
+    default:
       return "en-GB";
-    default: {
-      const _exhaustive: never = language;
-      return _exhaustive;
-    }
   }
 }
 
@@ -130,12 +129,12 @@ export function formatInvoiceDuration(minutes: number, language: InvoiceLanguage
     case "tr":
       if (h <= 0) return `${m}dk`;
       return m ? `${h}sa ${m}dk` : `${h}sa`;
-    case "en":
+    case "fr":
       if (h <= 0) return `${m}m`;
       return m ? `${h}h ${m}m` : `${h}h`;
-    default: {
-      const _exhaustive: never = language;
-      return _exhaustive;
-    }
+    case "en":
+    default:
+      if (h <= 0) return `${m}m`;
+      return m ? `${h}h ${m}m` : `${h}h`;
   }
 }

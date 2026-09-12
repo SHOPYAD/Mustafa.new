@@ -62,7 +62,6 @@ type SectionProps = {
 export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps) {
   const homepage = useHomepageContent();
   const { locale } = useLocale();
-  const accent = sectionAccent(instance);
 
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
@@ -86,7 +85,7 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
               field="subtitle"
               editorMode={editorMode}
               as="p"
-              className="mt-4 text-slate-600"
+              className="mt-4 text-slate-600 font-medium leading-relaxed"
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -98,19 +97,16 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
                   instance={instance}
                   field={`feature-${f.id}`}
                   editorMode={editorMode}
-                  className="relative rounded-[var(--radius-card)] border border-slate-100 bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-24px_rgba(5,23,65,0.35)]"
+                  className="relative rounded-2xl border border-purple-100/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(46,16,101,0.25)] hover:border-purple-300 group"
                 >
-                  <span className="absolute top-4 end-4 text-xs font-bold text-[var(--brand-accent)]/20">
+                  <span className="absolute top-4 end-4 text-xs font-mono font-black text-purple-900/30">
                     0{index + 1}
                   </span>
-                  <div
-                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl text-white"
-                    style={{ backgroundColor: accent || "var(--brand-button)" }}
-                  >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-md shadow-purple-950/20 ring-1 ring-amber-400/30 group-hover:scale-105 transition-transform">
                     <Icon size={22} />
                   </div>
-                  <h3 className="font-bold text-[var(--brand-accent)]">{tContent(f, "title", locale)}</h3>
-                  <p className="mt-2 text-sm text-slate-500 leading-relaxed">
+                  <h3 className="font-extrabold text-base sm:text-lg text-slate-900">{tContent(f, "title", locale)}</h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed font-medium">
                     {tContent(f, "description", locale)}
                   </p>
                 </SelectableField>
@@ -125,36 +121,36 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
 
 function AnimatedNumber({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
-  const [seen, setSeen] = useState(false);
+  const [display, setDisplay] = useState(value);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    setDisplay(value);
+  }, [value]);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) setSeen(true);
+        if (entry?.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          const duration = 1200;
+          const started = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - started) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4);
+            setDisplay(Math.floor(eased * value));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!seen) return;
-    let start = 0;
-    const duration = 1400;
-    const started = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - started) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      start = Math.floor(eased * value);
-      setDisplay(start);
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [seen, value]);
+  }, [hasAnimated, value]);
 
   return <span ref={ref}>{display.toLocaleString()}</span>;
 }
@@ -175,23 +171,49 @@ export function StatsSection({ instance, editorMode, selectedId }: SectionProps)
 
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
-      <ServiceSurface kind="neutral" background={instance.styles.background || undefined}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <EditableText
-              instance={instance}
-              field="eyebrow"
-              editorMode={editorMode}
-              as="p"
-              className={serviceEyebrowClass()}
+      <section className="relative overflow-hidden py-16 md:py-24 bg-gradient-to-br from-[#120324] via-[#240a4a] to-[#3b1275] text-white">
+        {/* Radiant Golden Wave & Ambient Glow Effects */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-amber-400/15 blur-[100px]" />
+          <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-purple-600/25 blur-[120px]" />
+          <svg
+            className="absolute inset-0 h-full w-full opacity-20"
+            viewBox="0 0 1440 400"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,192L48,176C96,160,192,128,288,138.7C384,149,480,203,576,218.7C672,235,768,213,864,181.3C960,149,1056,107,1152,106.7C1248,107,1344,149,1392,170.7L1440,192L1440,400L1392,400C1344,400,1248,400,1152,400C1056,400,960,400,864,400C768,400,672,400,576,400C480,400,384,400,288,400C192,400,96,400,48,400L0,400Z"
+              fill="url(#gold-wave-gradient)"
             />
-            <h2 className={serviceTitleClass("neutral")} style={serviceTitleStyle("neutral")}>
+            <defs>
+              <linearGradient id="gold-wave-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.4" />
+                <stop offset="50%" stopColor="#fbbf24" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-14 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-amber-300 shadow-sm backdrop-blur-sm">
+              <EditableText
+                instance={instance}
+                field="eyebrow"
+                editorMode={editorMode}
+                as="span"
+              />
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
               <InteractiveHeading>
                 <EditableText instance={instance} field="title" editorMode={editorMode} as="span" />
               </InteractiveHeading>
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {stats.map((stat, index) => {
               const Icon = STAT_ICONS[index] || Users;
               return (
@@ -200,21 +222,21 @@ export function StatsSection({ instance, editorMode, selectedId }: SectionProps)
                   instance={instance}
                   field={stat.field}
                   editorMode={editorMode}
-                  className="rounded-[var(--radius-card)] border border-[color:color-mix(in_srgb,var(--brand-accent)_8%,transparent)] bg-white p-6 text-center shadow-[0_14px_32px_-24px_rgba(5,23,65,0.3)]"
+                  className="group relative overflow-hidden rounded-2xl border border-amber-400/20 bg-white/10 p-6 sm:p-8 text-center shadow-2xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/50 hover:bg-white/[0.14] hover:shadow-[0_20px_40px_-15px_rgba(245,158,11,0.25)]"
                 >
-                  <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--brand-secondary)] text-[var(--brand-primary)]">
-                    <Icon size={20} />
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                    <Icon size={26} strokeWidth={2.5} />
                   </div>
-                  <p className="text-3xl font-bold text-[var(--brand-accent)] md:text-4xl">
+                  <p className="text-4xl sm:text-5xl lg:text-6xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400 drop-shadow-[0_2px_12px_rgba(245,158,11,0.35)]">
                     <AnimatedNumber value={stat.value} />
-                    <span className="text-[var(--brand-primary)]">+</span>
+                    <span className="text-amber-400 font-bold ml-1">+</span>
                   </p>
                   <EditableText
                     instance={instance}
                     field={stat.field}
                     editorMode={editorMode}
                     as="p"
-                    className="mt-2 text-sm text-slate-600"
+                    className="mt-3 text-sm sm:text-base font-bold text-slate-200 tracking-wide"
                     fallback={locale}
                   />
                 </SelectableField>
@@ -222,7 +244,7 @@ export function StatsSection({ instance, editorMode, selectedId }: SectionProps)
             })}
           </div>
         </div>
-      </ServiceSurface>
+      </section>
     </SectionFrame>
   );
 }
@@ -296,43 +318,43 @@ export function TestimonialsSection({ instance, editorMode, selectedId }: Sectio
               field="eyebrow"
               editorMode={editorMode}
               as="p"
-              className="text-emerald-600 text-[11px] font-semibold tracking-[0.28em] uppercase mb-3"
+              className="text-purple-700 text-[11px] font-bold tracking-[0.28em] uppercase mb-3"
             />
             <EditableText
               instance={instance}
               field="title"
               editorMode={editorMode}
               as="h2"
-              className="text-3xl md:text-4xl font-bold text-[#051741]"
+              className="text-3xl md:text-4xl font-black text-slate-900"
             />
             <EditableText
               instance={instance}
               field="subtitle"
               editorMode={editorMode}
               as="p"
-              className="mt-4 text-slate-600"
+              className="mt-4 text-slate-600 font-medium"
             />
             <SelectableField
               instance={instance}
               field={`quote-${quote.id}`}
               editorMode={editorMode}
-              className="mt-8 rounded-2xl bg-white border border-slate-100 p-6 shadow-sm"
+              className="mt-8 rounded-2xl bg-white border border-purple-100 p-6 shadow-md shadow-purple-950/5"
             >
-              <Quote size={28} className="text-emerald-500/30 mb-3" />
+              <Quote size={28} className="text-amber-400/40 mb-3" />
               <div className="flex gap-1 mb-3">
                 {[0, 1, 2, 3, 4].map((star) => (
                   <Star key={star} size={14} className="fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <p className="text-lg text-[#051741] leading-relaxed">
+              <p className="text-lg text-slate-900 font-medium leading-relaxed">
                 “{pickCopy(quote.text, locale)}”
               </p>
               <footer className="mt-5 flex items-center gap-3">
-                <div className="relative h-11 w-11 overflow-hidden rounded-full">
+                <div className="relative h-11 w-11 overflow-hidden rounded-full ring-2 ring-amber-400/40">
                   <SafeImage src={quote.image} alt={quote.name} fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-[#051741]">{quote.name}</p>
+                  <p className="text-sm font-bold text-slate-900">{quote.name}</p>
                   <p className="text-xs text-slate-500">
                     {pickCopy(quote.role, locale)} · {pickCopy(quote.city, locale)}
                   </p>
@@ -386,21 +408,21 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
                 field="eyebrow"
                 editorMode={editorMode}
                 as="p"
-                className="text-emerald-600 text-[11px] font-semibold tracking-[0.28em] uppercase mb-3"
+                className="text-purple-700 text-xs font-bold tracking-[0.25em] uppercase mb-3"
               />
               <EditableText
                 instance={instance}
                 field="title"
                 editorMode={editorMode}
                 as="h2"
-                className="text-3xl md:text-4xl font-bold text-[#051741]"
+                className="text-3xl md:text-4xl font-black text-slate-900"
               />
               <EditableText
                 instance={instance}
                 field="subtitle"
                 editorMode={editorMode}
                 as="p"
-                className="mt-3 text-slate-600 max-w-xl"
+                className="mt-3 text-slate-600 font-medium max-w-xl"
               />
             </div>
             <BuilderLink
@@ -408,7 +430,7 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
               editorMode={editorMode}
               instance={instance}
               field="viewAll"
-              className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+              className="text-sm font-bold text-purple-700 hover:text-purple-900"
             >
               {t.home.viewAllArticles}
             </BuilderLink>
@@ -420,7 +442,7 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
                 editorMode={editorMode}
                 instance={instance}
                 field={`post-${featured.id}`}
-                className="group lg:col-span-7 overflow-hidden rounded-[1.5rem] border border-slate-100 bg-slate-50"
+                className="group lg:col-span-7 overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 hover:shadow-xl transition-shadow"
               >
                 <div className="relative h-72">
                   <SafeImage
@@ -431,10 +453,10 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
                   />
                 </div>
                 <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                  <p className="text-xs font-bold uppercase tracking-wide text-purple-700">
                     {featured.category}
                   </p>
-                  <h3 className="mt-2 text-2xl font-bold text-[#051741] line-clamp-2">
+                  <h3 className="mt-2 text-2xl font-black text-slate-900 line-clamp-2 group-hover:text-purple-700 transition-colors">
                     {tContent(featured, "title", locale)}
                   </h3>
                 </div>
@@ -448,7 +470,7 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
                   editorMode={editorMode}
                   instance={instance}
                   field={`post-${post.id}`}
-                  className="group flex gap-4 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50"
+                  className="group flex gap-4 overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 hover:shadow-md transition-shadow"
                 >
                   <div className="relative h-32 w-36 shrink-0">
                     <SafeImage
@@ -459,8 +481,8 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
                     />
                   </div>
                   <div className="py-4 pe-4">
-                    <p className="text-[11px] font-semibold uppercase text-emerald-600">{post.category}</p>
-                    <h3 className="mt-1 font-bold text-[#051741] line-clamp-2">
+                    <p className="text-[11px] font-bold uppercase text-purple-700">{post.category}</p>
+                    <h3 className="mt-1 font-bold text-slate-900 line-clamp-2 group-hover:text-purple-700 transition-colors">
                       {tContent(post, "title", locale)}
                     </h3>
                   </div>
@@ -521,18 +543,18 @@ export function NewsletterSection({ instance, editorMode, selectedId }: SectionP
             style={{
               background:
                 instance.styles.overlay ||
-                "linear-gradient(105deg, rgba(5,23,65,0.92) 0%, rgba(5,23,65,0.78) 46%, rgba(8,47,73,0.55) 100%)",
+                "linear-gradient(105deg, rgba(24,5,46,0.95) 0%, rgba(46,16,101,0.85) 46%, rgba(76,29,149,0.7) 100%)",
             }}
           />
         </div>
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-24">
           <div className="max-w-xl text-white">
-            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-200">
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-amber-300 backdrop-blur-sm">
               <Mail size={13} />
               <EditableText instance={instance} field="eyebrow" editorMode={editorMode} as="span" />
             </p>
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-black leading-tight sm:text-4xl md:text-5xl text-white">
               <InteractiveHeading>
                 <EditableText instance={instance} field="title" editorMode={editorMode} as="span" />
               </InteractiveHeading>
@@ -542,12 +564,12 @@ export function NewsletterSection({ instance, editorMode, selectedId }: SectionP
               field="subtitle"
               editorMode={editorMode}
               as="p"
-              className="mt-4 text-base leading-relaxed text-white/75 sm:text-lg"
+              className="mt-4 text-base leading-relaxed text-slate-200 sm:text-lg"
             />
           </div>
 
           <form
-            className="rounded-[1.4rem] border border-white/15 bg-white/10 p-4 shadow-[0_24px_60px_-28px_rgba(5,23,65,0.7)] backdrop-blur-md sm:p-5"
+            className="rounded-3xl border border-amber-400/20 bg-white/10 p-5 shadow-[0_24px_60px_-28px_rgba(24,5,46,0.8)] backdrop-blur-md sm:p-6"
             onSubmit={(e) => {
               e.preventDefault();
               if (editorMode) return;
@@ -575,22 +597,21 @@ export function NewsletterSection({ instance, editorMode, selectedId }: SectionP
                 required={!editorMode}
                 autoComplete="email"
                 data-builder-field="newsletter.email"
-                className="flex-1 rounded-[var(--radius-input)] border border-white/20 bg-white px-5 py-3.5 text-[var(--brand-accent)] placeholder:text-slate-400 focus:border-[var(--brand-primary)] focus:outline-none"
+                className="flex-1 rounded-[var(--radius-input)] border border-white/20 bg-white px-5 py-3.5 text-slate-900 font-semibold placeholder:text-slate-400 focus:border-amber-400 focus:outline-none shadow-sm"
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
                 data-builder-field="newsletter.button"
                 onClick={(e) => preventBuilderNav(editorMode, e)}
-                className={`${brandButtonClass} px-6 py-3.5 disabled:opacity-60`}
-                style={brandButtonStyle()}
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap px-7 py-3.5 rounded-[var(--radius-button)] bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black shadow-lg shadow-amber-500/25 transition-all active:scale-95 disabled:opacity-60"
               >
                 <EditableText instance={instance} field="button" editorMode={editorMode} as="span" />
               </button>
             </div>
             {statusCopy ? (
               <p
-                className={`mt-3 text-sm ${status === "ok" ? "text-emerald-200" : "text-rose-200"}`}
+                className={`mt-3 text-sm font-bold ${status === "ok" ? "text-amber-300" : "text-rose-300"}`}
                 role="status"
               >
                 {statusCopy}

@@ -60,7 +60,7 @@ export function Canvas() {
         <iframe
           key={locale}
           ref={iframeRef}
-          title="Alrayyan homepage canvas"
+          title="Lonaliza homepage canvas"
           src={`${PREVIEW}&hl=${locale}`}
           className="w-full h-full border-0 bg-white"
         />

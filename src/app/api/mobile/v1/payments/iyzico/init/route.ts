@@ -59,10 +59,14 @@ export async function POST(req: NextRequest) {
   } catch {
     try {
       const enquiry = await pb.collection("enquiry_bookings").getOne(bookingId);
+      const meta =
+        enquiry.metadata && typeof enquiry.metadata === "object"
+          ? (enquiry.metadata as Record<string, unknown>)
+          : {};
       ownerId = String(enquiry.user || enquiry.customer_id || "");
-      bookingName = String(enquiry.service_name || "Flight Booking");
-      bookingPrice = Number(enquiry.price || enquiry.total || 0);
-      bookingCurrency = String(enquiry.currency || "USD");
+      bookingName = String(enquiry.service_name || "Travel Booking");
+      bookingPrice = Number(enquiry.price || enquiry.total || meta.quotedPrice || meta.price || 0);
+      bookingCurrency = String(enquiry.currency || meta.currency || "USD");
     } catch {
       const { getFlightBooking } = await import("@/lib/server/flights-bookings");
       const flight = await getFlightBooking(bookingId);

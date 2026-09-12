@@ -332,7 +332,7 @@ function defaultCss(slug: string): string {
 function defaultHtml(titleAr: string, subtitle: string): string {
   return `<section class="copilot-live-section">
   <div class="copilot-live-inner">
-    <p class="copilot-live-eyebrow">الريان</p>
+    <p class="copilot-live-eyebrow">لوناليزا</p>
     <h2>${escapeHtml(titleAr)}</h2>
     <p class="copilot-live-sub">${escapeHtml(subtitle)}</p>
   </div>

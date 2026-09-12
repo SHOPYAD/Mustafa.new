@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
 
     const current = await getBranding();
 
-    const system = `أنت محرر هوية بصرية (براندينج) لموقع الريان للسياحة (Alrayyan Tourism).
+    const system = `أنت محرر هوية بصرية (براندينج) لموقع لوناليزا للسياحة والسفر (Lonaliza Travel).
 يمكنك اقتراح تعديلات على: الشعار، اسم العلامة، الألوان، إظهار أقسام الصفحة الرئيسية، ومحتوى الهيرو.
 
 أعد دائماً:

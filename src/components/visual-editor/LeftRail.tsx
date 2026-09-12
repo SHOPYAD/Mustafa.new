@@ -27,7 +27,7 @@ export function LeftRail() {
   const e = t.editor;
 
   return (
-    <aside className="w-14 shrink-0 bg-[#03102c] border-e border-white/10 flex flex-col items-center py-3 gap-1">
+    <aside className="w-14 shrink-0 bg-[#130726] border-e border-purple-900/40 flex flex-col items-center py-3 gap-1">
       {ITEMS.map((item) => {
         const Icon = item.icon;
         const active = panel === item.panel;
@@ -40,9 +40,9 @@ export function LeftRail() {
             className={cn(
               "w-10 h-10 rounded-xl flex items-center justify-center transition",
               active
-                ? "bg-emerald-500 text-[#051741] shadow-lg"
+                ? "bg-gradient-to-tr from-purple-700 to-[#2e1065] text-amber-300 border border-amber-400/40 shadow-lg"
                 : "text-white/55 hover:text-white hover:bg-white/10",
-              item.panel === "ai" && !active && "text-emerald-300"
+              item.panel === "ai" && !active && "text-amber-400"
             )}
           >
             <Icon size={18} />

@@ -15,6 +15,8 @@ import type { Hotel } from "@/types/hotel";
 import type { TransferService } from "@/types/transfer";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
+import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
+import type { SearchTabKey } from "@/data/search-tabs";
 
 function matchesQuery(
   q: string,
@@ -115,6 +117,15 @@ function SearchPageContent() {
               ? `${totalResults} ${t.admin.results}`
               : t.common.loading}
           </p>
+          <SearchAgentResultsDock
+            tab={(["flight", "hotel", "cars", "transfers", "tours", "holiday", "visa", "insurance", "offers"].includes(type)
+              ? type
+              : "holiday") as SearchTabKey}
+            page="results"
+            tone="light"
+            className="mt-4"
+            context={`Catalog search type=${type} q=${query}`}
+          />
         </div>
 
         {!ready ? (

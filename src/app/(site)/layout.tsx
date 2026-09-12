@@ -15,6 +15,10 @@ import AffiliateTracker from "@/components/affiliate/AffiliateTracker";
 import { BuilderModeProvider } from "@/components/builder/BuilderModeProvider";
 import SearchTabsProvider from "@/components/search/SearchTabsProvider";
 import { getSearchTabsConfig } from "@/lib/server/search-tabs-store";
+import { isOrigin } from "@/lib/server/deployment-role";
+import B2BLandingChatWidget from "@/components/chat/B2BLandingChatWidget";
+
+import { getBrandTheme } from "@/lib/server/brand-theme-store";
 
 /**
  * Public site chrome only — never wraps /admin (route group isolation).
@@ -24,34 +28,40 @@ export default async function SiteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const searchTabs = await getSearchTabsConfig();
+  const [searchTabs, theme] = await Promise.all([
+    getSearchTabsConfig(),
+    getBrandTheme(),
+  ]);
+  const isMasterOrigin = isOrigin();
+
   return (
     <>
       <SiteThemeStyle />
-      <ThemeProvider>
+      <ThemeProvider initialTheme={theme}>
         <BuilderModeProvider>
           <BrandingProvider>
             <CustomerAuthProvider>
-          <SearchTabsProvider
-            initialVisibility={searchTabs.visibility}
-            initialOrder={searchTabs.order}
-          >
-          <SiteTrackingScripts />
-          <AffiliateTracker />
-          <div className="notranslate" translate="no">
-            <Header />
-          </div>
-          <main className="min-h-screen">{children}</main>
-          <div className="notranslate" translate="no">
-            <Footer />
-          </div>
-          <FloatingActionHub />
-          <SocialSidebar />
-          <CallbackBanner />
-          <CompareDrawer />
-          <AuthGoogleFeedback />
-          <AuthModal />
-          </SearchTabsProvider>
+              <SearchTabsProvider
+                initialVisibility={searchTabs.visibility}
+                initialOrder={searchTabs.order}
+              >
+                <SiteTrackingScripts />
+                <AffiliateTracker />
+                <div className="notranslate" translate="no">
+                  <Header />
+                </div>
+                <main className="min-h-screen">{children}</main>
+                <div className="notranslate" translate="no">
+                  <Footer />
+                </div>
+                <FloatingActionHub />
+                <SocialSidebar />
+                <CallbackBanner />
+                <CompareDrawer />
+                <AuthGoogleFeedback />
+                <AuthModal />
+                <B2BLandingChatWidget />
+              </SearchTabsProvider>
             </CustomerAuthProvider>
           </BrandingProvider>
         </BuilderModeProvider>

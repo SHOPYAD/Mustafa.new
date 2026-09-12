@@ -113,7 +113,7 @@ export default function FlightPopover({
       <button
         type="button"
         aria-label="Close"
-        className="absolute inset-0 bg-[#051741]/20"
+        className="absolute inset-0 bg-transparent cursor-default"
         onClick={onClose}
       />
       <div
@@ -127,7 +127,7 @@ export default function FlightPopover({
           maxHeight: box.maxHeight,
         }}
         className={cn(
-          "overflow-auto rounded-2xl border border-[#051741]/10 bg-white shadow-2xl shadow-[#051741]/20",
+          "overflow-auto rounded-2xl border border-purple-200/80 bg-white shadow-2xl shadow-purple-950/25",
           className
         )}
       >

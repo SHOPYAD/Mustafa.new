@@ -95,11 +95,11 @@ export function TopBar({
       <Separator orientation="vertical" />
 
       <div className="flex items-center gap-2">
-        <div className="relative flex h-7 w-7 items-center justify-center rounded-md builder-gradient-brand shadow-sm shadow-emerald-500/30">
+        <div className="relative flex h-7 w-7 items-center justify-center rounded-md builder-gradient-brand shadow-sm shadow-amber-500/30">
           <Sparkles className="h-3.5 w-3.5 text-white" strokeWidth={2.5} />
         </div>
         <div className="flex items-baseline gap-1 text-sm font-semibold tracking-tight">
-          <span className="builder-gradient-text">Alrayyan</span>
+          <span className="builder-gradient-text">Lonaliza</span>
           <span className="text-[var(--ed-text-hex)]">Builder</span>
         </div>
         <span className="builder-chip">v2</span>
@@ -133,7 +133,7 @@ export function TopBar({
                 className={cn(
                   "inline-flex h-8 w-8 items-center justify-center rounded-md",
                   device === value
-                    ? "bg-[var(--ed-surface-hex)] text-emerald-600 shadow-sm"
+                    ? "bg-[var(--ed-surface-hex)] text-amber-500 shadow-sm"
                     : "text-[hsl(var(--ed-text-muted))] hover:text-[var(--ed-text-hex)]"
                 )}
               >
@@ -228,7 +228,7 @@ export function TopBar({
         )}
       </Button>
 
-      <Button size="sm" onClick={() => void onPublish()} disabled={isPublishing} className="min-w-[88px] shadow-emerald-500/30">
+      <Button size="sm" onClick={() => void onPublish()} disabled={isPublishing} className="min-w-[88px] shadow-amber-500/30">
         {isPublishing ? <Loader2 className="h-4 w-4 animate-spin" /> : t.editor.publish}
       </Button>
     </header>

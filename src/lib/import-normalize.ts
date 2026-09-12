@@ -250,22 +250,47 @@ export function normalizeImportedPackage(raw: Record<string, unknown>) {
     description: asString(raw.description || raw.descriptionAr || raw.descriptionEn),
     descriptionAr: asString(raw.descriptionAr || raw.description),
     descriptionEn: asString(raw.descriptionEn || raw.description),
+    descriptionTr: asString(raw.descriptionTr || raw.descriptionEn),
+    titleTr: asString(raw.titleTr || raw.titleEn),
+    destinationTr: asString(raw.destinationTr || destinationEn),
     inclusions: asStringArray(raw.inclusions || raw.inclusionsEn),
     inclusionsAr: asStringArray(raw.inclusionsAr || raw.inclusions),
     inclusionsEn: asStringArray(raw.inclusionsEn || raw.inclusions),
+    inclusionsTr: asStringArray(raw.inclusionsTr || raw.inclusionsEn),
     exclusions: asStringArray(raw.exclusions || raw.exclusionsEn),
     exclusionsAr: asStringArray(raw.exclusionsAr || raw.exclusions),
     exclusionsEn: asStringArray(raw.exclusionsEn || raw.exclusions),
+    exclusionsTr: asStringArray(raw.exclusionsTr || raw.exclusionsEn),
     itinerary: Array.isArray(raw.itinerary)
       ? raw.itinerary.map((d, i) => {
           const day = (d || {}) as Record<string, unknown>;
           return {
             day: asNumber(day.day, i + 1),
-            title: asString(day.title),
-            description: asString(day.description),
+            title: asString(day.title || day.titleAr || day.titleEn),
+            description: asString(day.description || day.descriptionAr || day.descriptionEn),
           };
         })
       : [],
+    itineraryAr: Array.isArray(raw.itineraryAr)
+      ? raw.itineraryAr.map((d, i) => {
+          const day = (d || {}) as Record<string, unknown>;
+          return {
+            day: asNumber(day.day, i + 1),
+            title: asString(day.title || day.titleAr),
+            description: asString(day.description || day.descriptionAr),
+          };
+        })
+      : undefined,
+    itineraryEn: Array.isArray(raw.itineraryEn)
+      ? raw.itineraryEn.map((d, i) => {
+          const day = (d || {}) as Record<string, unknown>;
+          return {
+            day: asNumber(day.day, i + 1),
+            title: asString(day.title || day.titleEn),
+            description: asString(day.description || day.descriptionEn),
+          };
+        })
+      : undefined,
   };
 }
 

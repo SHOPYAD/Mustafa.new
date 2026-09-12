@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp, MapPin, Plus, Trash2 } from "lucide-react";
 import SafeImage from "@/components/ui/SafeImage";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import type { Locale } from "@/lib/i18n/types";
 import {
   HERO_OFFER_KINDS,
   parseHeroPackages,
@@ -82,7 +83,7 @@ function readItems(instance: HomepageSectionInstance): HeroPackageItem[] {
 export function resolveHeroCards(
   items: HeroPackageItem[],
   catalog: OfferCatalogEntry[],
-  locale: "ar" | "en" | "tr"
+  locale: Locale
 ): ResolvedHeroCard[] {
   const byKey = new Map(catalog.map((entry) => [catalogKey(entry.kind, entry.liveId), entry]));
 
@@ -155,7 +156,7 @@ function OfferCard({
       instance={instance}
       field={`hero-pkg-${card.key}`}
       editorMode={editorMode}
-      className="group relative h-[5.4rem] overflow-hidden rounded-2xl border border-white/40 bg-white/92 shadow-[0_10px_28px_-8px_rgba(5,23,65,0.4)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:border-emerald-400/60 hover:shadow-[0_16px_36px_-8px_rgba(5,23,65,0.55)]"
+      className="group relative h-[5.4rem] overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_8px_20px_-6px_rgba(46,16,101,0.12)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:border-purple-400/60 hover:shadow-[0_12px_28px_-6px_rgba(46,16,101,0.2)]"
     >
       <a
         href={card.href}
@@ -164,7 +165,7 @@ function OfferCard({
         }}
         className="flex h-full items-center gap-3 p-2.5"
       >
-        <div className="relative h-[4.15rem] w-[4.85rem] shrink-0 overflow-hidden rounded-xl bg-[var(--brand-secondary)] shadow-sm">
+        <div className="relative h-[4.15rem] w-[4.85rem] shrink-0 overflow-hidden rounded-xl bg-purple-50 shadow-sm">
           {card.image ? (
             <SafeImage
               src={resolveBoundImage(instance, `hero-pkg-${card.key}`, card.image)}
@@ -178,20 +179,20 @@ function OfferCard({
           ) : null}
         </div>
         <div className="min-w-0 flex-1 py-0.5">
-          <p className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--brand-primary)]">
+          <p className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
             <MapPin size={10} className="shrink-0" />
             <span className="truncate">{card.tagline}</span>
           </p>
-          <h3 className="mt-0.5 line-clamp-1 text-[13px] font-bold leading-tight text-[var(--brand-header)]">
+          <h3 className="mt-0.5 line-clamp-1 text-[13px] font-black leading-tight text-slate-900">
             {card.title}
           </h3>
-          <p className="mt-1 flex items-center gap-1.5 text-xs font-bold text-[var(--brand-header)]">
+          <p className="mt-1 flex items-center gap-1.5 text-xs font-bold text-slate-700">
             <span className="text-[11px] font-medium text-slate-500">{fromLabel}</span>{" "}
-            <span className="text-[13px] font-extrabold text-[var(--brand-primary)]">
+            <span className="text-[13px] font-black text-purple-950">
               {formatPrice(card.price)}
             </span>
             {card.days ? (
-              <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-600">
+              <span className="rounded-md bg-purple-50 text-purple-900 border border-purple-200/60 px-1.5 py-0.5 text-[10px] font-bold">
                 {card.days}d
               </span>
             ) : null}
@@ -208,7 +209,7 @@ function OfferCard({
           <button
             type="button"
             data-builder-chrome
-            className="flex h-6 w-6 items-center justify-center rounded-md bg-[var(--brand-header)] text-white disabled:opacity-35"
+            className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2e1065] text-white hover:bg-[#3b0764] disabled:opacity-35"
             disabled={!canUp}
             onClick={(e) => {
               e.preventDefault();
@@ -221,7 +222,7 @@ function OfferCard({
           <button
             type="button"
             data-builder-chrome
-            className="flex h-6 w-6 items-center justify-center rounded-md bg-[var(--brand-header)] text-white disabled:opacity-35"
+            className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2e1065] text-white hover:bg-[#3b0764] disabled:opacity-35"
             disabled={!canDown}
             onClick={(e) => {
               e.preventDefault();
@@ -361,7 +362,7 @@ export function HeroPackageRail({ instance, editorMode }: HeroPackagesProps) {
           <button
             type="button"
             data-builder-chrome
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-[var(--brand-header)]/75 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-md"
+            className="inline-flex items-center gap-1.5 rounded-full border border-purple-300/40 bg-[#2e1065]/90 px-3 py-1 text-[11px] font-bold text-amber-300 backdrop-blur-md shadow-md hover:bg-[#3b0764]"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -369,12 +370,12 @@ export function HeroPackageRail({ instance, editorMode }: HeroPackagesProps) {
             }}
           >
             <Plus size={12} />
-            {locale === "ar" ? "عرض للهيرو" : locale === "tr" ? "Hero teklifi" : "Hero offer"}
+            {locale === "ar" ? "عرض للهيرو" : locale === "tr" ? "Hero teklifi" : locale === "fr" ? "Offre Hero" : "Hero offer"}
           </button>
           {pickerOpen ? (
             <div
               data-builder-chrome
-              className="absolute start-0 top-full z-40 mt-2 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-white/20 bg-[var(--brand-header)] p-2.5 text-white shadow-2xl"
+              className="absolute start-0 top-full z-40 mt-2 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-purple-500/30 bg-[#1e1b4b] p-2.5 text-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="mb-2 flex flex-wrap gap-1">
@@ -391,7 +392,7 @@ export function HeroPackageRail({ instance, editorMode }: HeroPackagesProps) {
                     }
                     onClick={() => setPickerKind(kind)}
                   >
-                    {OFFER_KIND_LABEL[kind][locale]}
+                    {OFFER_KIND_LABEL[kind][locale] || OFFER_KIND_LABEL[kind].en}
                   </button>
                 ))}
               </div>

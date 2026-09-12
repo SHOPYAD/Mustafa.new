@@ -7,6 +7,7 @@ const STORE_FILE = path.join(DATA_DIR, "tours-extra.json");
 
 type StoreFile = {
   tours: Tour[];
+  deletedIds?: string[];
   updatedAt?: string;
 };
 
@@ -27,10 +28,11 @@ async function readStore(): Promise<StoreFile> {
   try {
     const raw = await fs.readFile(getStoreFile(), "utf8");
     const parsed = JSON.parse(raw) as StoreFile;
-    if (!Array.isArray(parsed.tours)) return { tours: [] };
+    if (!Array.isArray(parsed.tours)) parsed.tours = [];
+    if (!Array.isArray(parsed.deletedIds)) parsed.deletedIds = [];
     return parsed;
   } catch {
-    return { tours: [] };
+    return { tours: [], deletedIds: [] };
   }
 }
 
@@ -38,7 +40,16 @@ async function writeStore(store: StoreFile): Promise<void> {
   await fs.mkdir(path.dirname(getStoreFile()), { recursive: true });
   await fs.writeFile(
     getStoreFile(),
-    JSON.stringify({ ...store, updatedAt: new Date().toISOString() }, null, 2),
+    JSON.stringify(
+      {
+        ...store,
+        tours: store.tours || [],
+        deletedIds: store.deletedIds || [],
+        updatedAt: new Date().toISOString(),
+      },
+      null,
+      2
+    ),
     "utf8"
   );
 }
@@ -81,9 +92,12 @@ export async function listExtraTours(): Promise<Tour[]> {
 }
 
 export async function listMergedTours(): Promise<Tour[]> {
-  const extras = await listExtraTours();
-  const ids = new Set(extras.map((t) => t.id));
-  return [...extras, ...defaultTours.filter((t) => !ids.has(t.id))];
+  const store = await readStore();
+  const deletedSet = new Set(store.deletedIds || []);
+  const activeExtras = store.tours.filter((t) => !deletedSet.has(t.id));
+  const ids = new Set(activeExtras.map((t) => t.id));
+  const activeDefaults = defaultTours.filter((t) => !deletedSet.has(t.id) && !ids.has(t.id));
+  return [...activeExtras, ...activeDefaults];
 }
 
 export async function upsertTour(
@@ -95,8 +109,33 @@ export async function upsertTour(
   );
   const existing = idx >= 0 ? store.tours[idx] : undefined;
   const tour = sanitizeTour(incoming, existing);
+
+  // Restore if was in deletedIds
+  if (store.deletedIds && store.deletedIds.length) {
+    store.deletedIds = store.deletedIds.filter((delId) => delId !== tour.id);
+  }
+
   if (idx >= 0) store.tours[idx] = tour;
   else store.tours.unshift(tour);
   await writeStore(store);
   return tour;
+}
+
+export async function deleteTour(id: string): Promise<boolean> {
+  const store = await readStore();
+  const targetId = String(id || "").trim();
+  if (!targetId) return false;
+
+  store.tours = store.tours.filter((t) => t.id !== targetId);
+  const deletedSet = new Set(store.deletedIds || []);
+  deletedSet.add(targetId);
+  store.deletedIds = Array.from(deletedSet);
+
+  await writeStore(store);
+  return true;
+}
+
+export async function resetExtraTours(): Promise<Tour[]> {
+  await writeStore({ tours: [], deletedIds: [] });
+  return listMergedTours();
 }

@@ -45,6 +45,10 @@
   "exclude": [
     "node_modules",
     "scripts",
-    "hotel-engine"
+    "hotel-engine",
+    "liotrip-reseller",
+    "lonaliza-reseller",
+    "*-reseller",
+    "pocketbase"
   ]
 }

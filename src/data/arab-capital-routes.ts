@@ -63,11 +63,8 @@ export function capitalDisplayName(city: ArabCapital, locale: Locale): string {
     case "tr":
       return city.nameTr;
     case "en":
+    default:
       return city.nameEn;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
   }
 }
 
@@ -78,11 +75,8 @@ export function destDisplayName(dest: TurkeyFlightDest, locale: Locale): string 
     case "tr":
       return dest.nameTr;
     case "en":
+    default:
       return dest.nameEn;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
   }
 }
 

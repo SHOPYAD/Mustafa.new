@@ -130,7 +130,7 @@ export async function callHiggsfieldTool(
         };
       }
       case "higgsfield.generate_image": {
-        const prompt = String(args.prompt || args.caption || "منظر سياحي لتركيا — الريان").slice(0, 2000);
+        const prompt = String(args.prompt || args.caption || "منظر سياحي لتركيا — لوناليزا").slice(0, 2000);
         const endpoint = safeEndpoint(args.endpoint, HF_IMAGE_ENDPOINT);
         const submitted = await hfFetch(serverId, endpoint, {
           method: "POST",
@@ -158,7 +158,7 @@ export async function callHiggsfieldTool(
         return { ok: true, content: JSON.stringify({ ...asset, requestId, source: "higgsfield" }) };
       }
       case "higgsfield.generate_video": {
-        const prompt = String(args.prompt || args.caption || "ريل سياحي قصير عن تركيا — الريان").slice(0, 2000);
+        const prompt = String(args.prompt || args.caption || "ريل سياحي قصير عن تركيا — لوناليزا").slice(0, 2000);
         const imageUrl = String(args.imageUrl || args.image_url || "").trim();
         const endpoint = safeEndpoint(
           args.endpoint,

@@ -4,7 +4,7 @@ export default function FlightSearchSkeleton({ count = 4 }: { count?: number }) 
       {Array.from({ length: count }).map((_, index) => (
         <article
           key={index}
-          className="overflow-hidden rounded-3xl border border-[#051741]/8 bg-white p-4 shadow-[0_10px_28px_rgba(5,23,65,0.06)] md:p-5"
+          className="overflow-hidden rounded-3xl border border-purple-100 bg-white p-4 shadow-sm md:p-5"
           style={{ animationDelay: `${index * 90}ms` }}
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
@@ -24,8 +24,8 @@ export default function FlightSearchSkeleton({ count = 4 }: { count?: number }) 
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flight-skel mx-auto mb-2 h-2 w-16 rounded-full" />
-                  <div className="relative h-px bg-[#051741]/10">
-                    <div className="flight-skel-plane absolute start-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#10b981]/40" />
+                  <div className="relative h-px bg-purple-100">
+                    <div className="flight-skel-plane absolute start-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400" />
                   </div>
                   <div className="flight-skel mx-auto mt-2 h-2 w-20 rounded-full" />
                 </div>
@@ -47,7 +47,7 @@ export default function FlightSearchSkeleton({ count = 4 }: { count?: number }) 
               </div>
               <div className="flex gap-2">
                 <div className="flight-skel h-9 w-20 rounded-xl" />
-                <div className="flight-skel h-9 w-24 rounded-xl bg-[#10b981]/20" />
+                <div className="flight-skel h-9 w-24 rounded-xl bg-amber-400/30" />
               </div>
             </div>
           </div>

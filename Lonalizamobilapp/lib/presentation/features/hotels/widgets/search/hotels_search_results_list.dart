@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../providers/dio_provider.dart';
+import '../../providers/hotels_booking_draft_notifier.dart';
 import 'hotels_search_result_card.dart';
 
 class HotelsSearchResultsList extends ConsumerWidget {
@@ -20,6 +21,12 @@ class HotelsSearchResultsList extends ConsumerWidget {
             child: Center(child: CircularProgressIndicator()),
           );
         }
+        if (snapshot.hasError) {
+          return Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text(snapshot.error.toString()),
+          );
+        }
         final hotels = snapshot.data ?? const [];
         if (hotels.isEmpty) {
           return const Padding(
@@ -33,7 +40,7 @@ class HotelsSearchResultsList extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                '${hotels.length} properties found',
+                '${hotels.length} فندق متاح بنفس محرك الموقع',
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   color: const Color(0xFF111827),
                   fontWeight: FontWeight.w800,
@@ -65,17 +72,41 @@ class HotelsSearchResultsList extends ConsumerWidget {
   }
 
   Future<List<Map<String, dynamic>>> _load(WidgetRef ref) async {
+    final draft = ref.read(hotelsBookingDraftProvider);
+    final dest = draft.selectedDestination;
+    final checkIn = _isoDate(draft.checkIn, 1);
+    final checkOut = _isoDate(draft.checkOut, 3);
     final res = await ref.read(appDioClientProvider).get<Map<String, dynamic>>(
       AppConstants.hotelSearchUrl,
-      queryParameters: {'q': 'Istanbul'},
+      queryParameters: {
+        'q': dest?.name.isNotEmpty == true ? dest!.name : 'Istanbul',
+        if (dest?.id.isNotEmpty == true) 'destId': dest!.id,
+        'checkIn': checkIn,
+        'checkOut': checkOut,
+        'adults': draft.adultCount,
+        'rooms': draft.roomCount,
+      },
       includeAuth: false,
       receiveTimeout: const Duration(seconds: 90),
     );
     final raw = res.data?['hotels'];
     if (raw is! List) return const [];
-    return raw
-        .whereType<Map>()
-        .map((row) => Map<String, dynamic>.from(row))
-        .toList();
+    final sid = res.data?['sid'];
+    return raw.whereType<Map>().map((row) {
+      final hotel = Map<String, dynamic>.from(row);
+      hotel['checkIn'] = hotel['checkIn'] ?? checkIn;
+      hotel['checkOut'] = hotel['checkOut'] ?? checkOut;
+      hotel['sessionId'] = hotel['sessionId'] ?? sid;
+      hotel['adults'] = draft.adultCount;
+      return hotel;
+    }).toList();
   }
+}
+
+String _isoDate(DateTime? value, int fallbackDays) {
+  final d = value ?? DateTime.now().toUtc().add(Duration(days: fallbackDays));
+  final y = d.year.toString().padLeft(4, '0');
+  final m = d.month.toString().padLeft(2, '0');
+  final day = d.day.toString().padLeft(2, '0');
+  return '$y-$m-$day';
 }

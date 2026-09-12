@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:liotrip/core/constants/app_constants.dart';
 import 'package:liotrip/data/models/flights/flight_offer_model.dart';
@@ -6,6 +8,9 @@ void main() {
   test('flight search points at the mobile BFF, not n8n', () {
     expect(AppConstants.flightSearchUrl.contains('/api/mobile/v1/flights/search'), isTrue);
     expect(AppConstants.flightSearchUrl.contains('192.168.1.7'), isFalse);
+    expect(AppConstants.placesSearchUrl.contains('/api/mobile/v1/places'), isTrue);
+    expect(AppConstants.catalogLocationSearchUrl.contains('192.168.1.7'), isFalse);
+    expect(AppConstants.flightConfirmPriceUrl.contains('/api/mobile/v1/flights/quote'), isTrue);
   });
 
   test('website-shaped offers keep id and client total', () {
@@ -28,8 +33,19 @@ void main() {
 
   test('catalog and pay URLs stay on the mobile BFF', () {
     expect(AppConstants.hotelSearchUrl.contains('/api/mobile/v1/hotels/search'), isTrue);
+    expect(AppConstants.hotelDetailsUrl.contains('/api/mobile/v1/hotels/details'), isTrue);
+    expect(AppConstants.hotelQuoteUrl.contains('/api/mobile/v1/hotels/quote'), isTrue);
+    expect(AppConstants.hotelBookUrl.contains('/api/mobile/v1/hotels/book'), isTrue);
+    expect(AppConstants.flightBookUrl.contains('/api/mobile/v1/flights/book'), isTrue);
+    expect(AppConstants.catalogEnquireUrl.contains('/api/mobile/v1/catalog/enquire'), isTrue);
     expect(AppConstants.iyzicoInitUrl.contains('/api/mobile/v1/payments/iyzico/init'), isTrue);
     expect(AppConstants.accountBookingsUrl.contains('/api/mobile/v1/account/bookings'), isTrue);
     expect(AppConstants.carsCatalogUrl.contains('/api/mobile/v1/catalog/cars'), isTrue);
+  });
+
+  test('flight payment starts the live book writer instead of a hardcoded amount', () {
+    final source = File('lib/presentation/features/flights/views/flight_payment_page.dart').readAsStringSync();
+    expect(source.contains('LiveCheckout.flight'), isTrue);
+    expect(source.contains('USD619.30'), isFalse);
   });
 }

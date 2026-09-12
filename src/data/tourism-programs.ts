@@ -94,9 +94,9 @@ function defineProgram(opts: {
       return {
         ...item,
         desc: loc(
-          `${item.desc.ar} يؤكد فريق الريان توقيت السيارة عبر واتساب قبل الموعد، ويبقى المندوب معكم حتى استقرار الأمتعة في الفندق أو صالة المغادرة.`,
-          `${item.desc.en} Alrayyan confirms the car timing on WhatsApp beforehand, and the driver stays with you until bags are in the hotel or the departure hall.`,
-          `${item.desc.tr} Alrayyan alış saatini WhatsApp ile önceden teyit eder; şoför otelde veya gidiş salonunda bagaj yerleşene kadar sizinle kalır.`
+          `${item.desc.ar} يؤكد فريق لوناليزا توقيت السيارة عبر واتساب قبل الموعد، ويبقى المندوب معكم حتى استقرار الأمتعة في الفندق أو صالة المغادرة.`,
+          `${item.desc.en} Lonaliza confirms the car timing on WhatsApp beforehand, and the driver stays with you until bags are in the hotel or the departure hall.`,
+          `${item.desc.tr} Lonaliza alış saatini WhatsApp ile önceden teyit eder; şoför otelde veya gidiş salonunda bagaj yerleşene kadar sizinle kalır.`
         ),
       };
     }
@@ -111,9 +111,9 @@ function defineProgram(opts: {
   });
 
   const overview = loc(
-    `${opts.overview.ar}\n\nهذا برنامج سياحي متعدد الأيام من الريان للسياحة داخل تركيا: إقامة فندقية بعدد الليالي المحدد، إفطار يومي، واستقبال المطار بسيارة خاصة. ليس بطاقة فندق منفردة وليس جولة يوم واحد. الأسعار بالدولار للشخص تقريبية وقابلة للتخصيص عبر واتساب حسب تواريخكم وعدد النجوم.`,
-    `${opts.overview.en}\n\nThis is a multi-day Turkey program from Alrayyan Tourism: hotel nights as listed, daily breakfast, and a private airport meet-and-greet. It is not a hotel-only card and not a single day tour. USD prices are per person, approximate, and can be tailored on WhatsApp by dates and hotel class.`,
-    `${opts.overview.tr}\n\nBu, Alrayyan Turizm’in Türkiye’deki çok günlük programıdır: belirtilen gece otel, günlük kahvaltı ve havalimanında özel karşılama. Tek otel kartı veya tek günlük tur değildir. USD kişi başı fiyatlar yaklaşıktır; tarih ve otel sınıfına göre WhatsApp’tan özelleştirilir.`
+    `${opts.overview.ar}\n\nهذا برنامج سياحي متعدد الأيام من لوناليزا للسياحة والسفر داخل تركيا: إقامة فندقية بعدد الليالي المحدد، إفطار يومي، واستقبال المطار بسيارة خاصة. ليس بطاقة فندق منفردة وليس جولة يوم واحد. الأسعار بالدولار للشخص تقريبية وقابلة للتخصيص عبر واتساب حسب تواريخكم وعدد النجوم.`,
+    `${opts.overview.en}\n\nThis is a multi-day Turkey program from Lonaliza Travel: hotel nights as listed, daily breakfast, and a private airport meet-and-greet. It is not a hotel-only card and not a single day tour. USD prices are per person, approximate, and can be tailored on WhatsApp by dates and hotel class.`,
+    `${opts.overview.tr}\n\nBu, Lonaliza Travel’in Türkiye’deki çok günlük programıdır: belirtilen gece otel, günlük kahvaltı ve havalimanında özel karşılama. Tek otel kartı veya tek günlük tur değildir. USD kişi başı fiyatlar yaklaşıktır; tarih ve otel sınıfına göre WhatsApp’tan özelleştirilir.`
   );
 
   return {

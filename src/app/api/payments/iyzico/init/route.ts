@@ -37,32 +37,114 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "PocketBase unavailable" }, { status: 503 });
     }
 
-    const booking = await pb.collection("hotel_bookings").getOne<HotelBookingRecord>(bookingId);
-    if (booking.user && booking.user !== user.id) {
-      return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+    let bookingName = "Travel Service Booking";
+    let roomOrDesc = "Booking Reservation";
+    let customerName = user.name || "Guest";
+    let customerEmail = user.email || "";
+    let customerPhone = "";
+    let bookingPrice = Number(body.amount || 0);
+    let bookingCurrency = String(body.currency || "USD");
+    let validBookingId = bookingId;
+    let hotelBookingFound = false;
+
+    // 1. Try hotel_bookings
+    try {
+      const hotelBooking = await pb.collection("hotel_bookings").getOne<HotelBookingRecord>(bookingId);
+      if (hotelBooking) {
+        hotelBookingFound = true;
+        if (hotelBooking.status === "paid" || hotelBooking.status === "cancelled") {
+          return NextResponse.json({ ok: false, error: "booking_not_payable", errorCode: "booking_not_payable" }, { status: 409 });
+        }
+        const snap = (hotelBooking.offer_snapshot || {}) as Record<string, unknown>;
+        if (snap.quote_id) {
+          const { getHotelQuote, quoteIsUsable } = await import("@/lib/server/hotels/quote-service");
+          const quote = await getHotelQuote(String(snap.quote_id));
+          const usable = quote ? quoteIsUsable(quote) : { ok: false as const, reason: "expired" as const };
+          if (!usable.ok) {
+            return NextResponse.json({ ok: false, error: `quote_${usable.reason}`, errorCode: `quote_${usable.reason}` }, { status: 409 });
+          }
+        }
+        if (hotelBooking.user && hotelBooking.user !== user.id) {
+          return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+        }
+        bookingName = hotelBooking.hotel_name || "Hotel Booking";
+        roomOrDesc = hotelBooking.room_name || "Hotel Room";
+        customerName = hotelBooking.customer_name || customerName;
+        customerEmail = hotelBooking.customer_email || customerEmail;
+        customerPhone = hotelBooking.customer_phone || "";
+        bookingPrice = hotelBooking.price || bookingPrice;
+        bookingCurrency = hotelBooking.currency || bookingCurrency;
+        validBookingId = hotelBooking.id;
+      }
+    } catch {
+      // 2. Try enquiry_bookings (Flights, Tours, Transfers, Packages)
+      try {
+        const enquiryBooking = await pb.collection("enquiry_bookings").getOne(bookingId);
+        if (enquiryBooking) {
+          bookingName = (enquiryBooking as Record<string, unknown>).service_name
+            ? String((enquiryBooking as Record<string, unknown>).service_name)
+            : "Flight Booking";
+          roomOrDesc = (enquiryBooking as Record<string, unknown>).destination
+            ? String((enquiryBooking as Record<string, unknown>).destination)
+            : "Flight Ticket";
+          customerName = (enquiryBooking as Record<string, unknown>).customer_name
+            ? String((enquiryBooking as Record<string, unknown>).customer_name)
+            : customerName;
+          customerEmail = (enquiryBooking as Record<string, unknown>).customer_email
+            ? String((enquiryBooking as Record<string, unknown>).customer_email)
+            : customerEmail;
+          customerPhone = (enquiryBooking as Record<string, unknown>).customer_phone
+            ? String((enquiryBooking as Record<string, unknown>).customer_phone)
+            : "";
+          validBookingId = enquiryBooking.id;
+        }
+      } catch {
+        // 3. Try Flight session store
+        try {
+          const { getFlightBooking } = await import("@/lib/server/flights-bookings");
+          const flightBooking = await getFlightBooking(bookingId);
+          if (flightBooking) {
+            bookingName = `Flight: ${flightBooking.contact?.name || "Booking"}`;
+            roomOrDesc = "Flight Ticket";
+            customerName = flightBooking.contact?.name || customerName;
+            customerEmail = flightBooking.contact?.email || customerEmail;
+            customerPhone = flightBooking.contact?.phone || "";
+            bookingPrice = flightBooking.price?.client || flightBooking.price?.base || bookingPrice;
+            bookingCurrency = flightBooking.price?.currency || bookingCurrency;
+            validBookingId = flightBooking.id;
+          }
+        } catch {
+          /* proceed with body parameters */
+        }
+      }
     }
 
     const { callbackUrl } = await getIyzicoMerchantUrls();
-    const amount = Number(body.amount || booking.price || 0);
-    const currency = String(body.currency || booking.currency || "USD");
-    const fullName = String(body.name || booking.customer_name || user.name || "Guest");
+    // Hotel bookings: the amount is always the server-side booking price (quote-backed for supplier
+    // hotels); the client cannot lower it.
+    const amount = hotelBookingFound ? bookingPrice : Number(body.amount || bookingPrice || 1);
+    const currency = hotelBookingFound ? bookingCurrency : String(body.currency || bookingCurrency || "USD");
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return NextResponse.json({ ok: false, error: "invalid_amount" }, { status: 400 });
+    }
+    const fullName = String(body.name || customerName || user.name || "Guest");
     const parts = fullName.trim().split(/\s+/);
     const countryCode = String(body.countryCode || "").trim();
     const country = String(body.country || (countryCode === "+90" ? "Turkey" : "")).trim();
     const result = await createCheckout({
-      bookingId: booking.id,
-      conversationId: booking.id,
+      bookingId: validBookingId,
+      conversationId: validBookingId,
       price: amount,
       currency,
-      hotelName: booking.hotel_name,
-      roomName: booking.room_name || "",
+      hotelName: bookingName,
+      roomName: roomOrDesc || "Standard",
       callbackUrl,
       buyer: {
         id: user.id,
         name: String(body.firstName || parts[0] || fullName),
         surname: String(body.lastName || parts.slice(1).join(" ") || "Guest"),
-        email: String(body.email || booking.customer_email || user.email || ""),
-        phone: String(body.phone || booking.customer_phone || ""),
+        email: String(body.email || customerEmail || user.email || ""),
+        phone: String(body.phone || customerPhone || ""),
         identityNumber: String(body.identityNumber || "").trim() || undefined,
         city: String(body.city || ""),
         country,
@@ -85,7 +167,7 @@ export async function POST(req: NextRequest) {
     if (result.charge) {
       try {
         await persistCheckoutCharge({
-          bookingId: booking.id,
+          bookingId: validBookingId,
           token: result.token,
           charge: result.charge,
         });

@@ -7,6 +7,7 @@ import {
 } from "@/lib/pocketbase/handoff-store";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 function loginRedirect(): NextResponse {
   return new NextResponse(null, {

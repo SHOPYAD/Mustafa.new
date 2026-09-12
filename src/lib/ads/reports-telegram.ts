@@ -174,8 +174,19 @@ export async function runAdsTelegramReport(options?: {
   return report;
 }
 
+export async function sendTelegramAdminMessage(text: string): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const chatId = await resolveReportChatId();
+    if (!chatId) return { ok: false, error: "No Telegram chat ID configured" };
+    return await sendTelegramMessage({ chatId, text });
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : "Failed to send telegram message" };
+  }
+}
+
 export async function lastAdsReport(): Promise<AdsReport | null> {
   return latestReport();
 }
 
 export { formatDigest };
+

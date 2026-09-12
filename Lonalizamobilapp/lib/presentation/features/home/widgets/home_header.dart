@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'home_quick_actions_row.dart';
 import 'home_search_bar.dart';
 
-/// Trip.com–style blue app bar (flat bottom edge — the curved “card” is the white sheet on [HomePage]).
+/// Lonaliza–style blue app bar (flat bottom edge — the curved “card” is the white sheet on [HomePage]).
 ///
 /// [bottomSheetOverlap]: bottom strip kept transparent so the white sheet can paint
 /// under the pinned sliver (handled on [HomePage], not here).
@@ -74,7 +74,7 @@ class HomeHeader extends StatelessWidget {
                       ? const SizedBox.shrink()
                       : Row(
                           children: [
-                            Text(appName, style: titleStyle),
+                            Text(appName, key: const ValueKey('home-title'), style: titleStyle),
                             const SizedBox(width: 6),
                             Container(
                               width: 6,
@@ -97,7 +97,7 @@ class HomeHeader extends StatelessWidget {
                                   height: 36,
                                   child: Center(
                                     child: Text(
-                                      'T',
+                                      'L',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w800,
                                         color: Colors.white,
@@ -113,18 +113,20 @@ class HomeHeader extends StatelessWidget {
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 220),
                   child: showSearch
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 1),
-                          child: const HomeSearchBar(compact: true),
+                      ? const Padding(
+                          key: ValueKey('collapsed-header-search'),
+                          padding: EdgeInsets.only(top: 1),
+                          child: HomeSearchBar(compact: true),
                         )
                       : const SizedBox(height: 0),
                 ),
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 220),
                   child: showActions
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 4),
-                          child: const HomeQuickActionsRow(
+                      ? const Padding(
+                          key: ValueKey('collapsed-header-actions'),
+                          padding: EdgeInsets.only(top: 4),
+                          child: HomeQuickActionsRow(
                             compactChipStyle: true,
                           ),
                         )

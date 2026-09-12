@@ -149,7 +149,7 @@ export function HeroSection({ instance, editorMode, selectedId }: SectionProps) 
                 field="eyebrow"
                 editorMode={editorMode}
                 as="p"
-                className="mb-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[var(--brand-primary)] sm:text-xs"
+                className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-white/95 drop-shadow-sm sm:text-sm"
               />
               <EditableText
                 instance={instance}
@@ -163,7 +163,7 @@ export function HeroSection({ instance, editorMode, selectedId }: SectionProps) 
                 field="subtitle"
                 editorMode={editorMode}
                 as="p"
-                className="mt-2.5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base"
+                className="mt-2.5 max-w-xl text-sm leading-relaxed text-white/90 sm:text-base"
               />
 
               {current?.name ? (
@@ -171,45 +171,17 @@ export function HeroSection({ instance, editorMode, selectedId }: SectionProps) 
                   instance={instance}
                   field={`slide-${current.id}`}
                   editorMode={editorMode}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs text-white/90 backdrop-blur-md"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-medium text-white shadow-sm backdrop-blur-md"
                 >
-                  <MapPin size={12} className="text-[var(--brand-primary)]" />
-                  <span className="font-semibold">{current.name}</span>
-                  {current.tagline ? <span className="text-white/55">· {current.tagline}</span> : null}
+                  <MapPin size={13} className="text-white shrink-0" />
+                  <span className="font-bold text-white">{current.name}</span>
+                  {current.tagline ? <span className="text-white/80">· {current.tagline}</span> : null}
                   {current.price ? (
-                    <span className="text-[var(--brand-primary)]">
+                    <span className="font-bold text-white">
                       {t.common.from} {formatPrice(current.price)}
                     </span>
                   ) : null}
                 </SelectableField>
-              ) : null}
-
-              {slides.length > 1 ? (
-                <div className="mt-4 flex flex-wrap items-center gap-2">
-                  {slides.map((slide, index) => (
-                    <button
-                      key={slide.id}
-                      type="button"
-                      data-builder-field={`hero.slide.${slide.id}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActive(index);
-                      }}
-                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition"
-                      style={
-                        index === active
-                          ? { backgroundColor: accent, borderColor: accent, color: "#ffffff" }
-                          : {
-                              backgroundColor: "rgba(255,255,255,0.08)",
-                              borderColor: "rgba(255,255,255,0.18)",
-                              color: "#fff",
-                            }
-                      }
-                    >
-                      {slide.name || `${index + 1}`}
-                    </button>
-                  ))}
-                </div>
               ) : null}
             </div>
 

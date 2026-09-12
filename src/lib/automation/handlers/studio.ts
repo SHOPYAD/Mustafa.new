@@ -13,6 +13,7 @@ import { saveWeeklyPlan } from "@/lib/studio/planner/store";
 import { generateWeeklyTourismPlan } from "@/lib/studio/planner/weekly-plan";
 import { generateStudioVideo } from "@/lib/studio/video/generate";
 import { publishApprovedStudio } from "@/lib/automation/publish-approved";
+import { queueStudioPublishApproval } from "@/lib/server/mcp/connectors/studio-handoff";
 
 function promptFrom(ctx: AutomationJobContext, fallback: string): string {
   const settings = { ...(ctx.job?.settings || {}), ...(ctx.job?.payload || {}) };
@@ -31,6 +32,16 @@ async function notifyAdmin(text: string, media?: { photoPath?: string; docPath?:
     await sendTelegramMessage({ chatId, text });
   }
   return { sent: true };
+}
+
+async function markPendingAndQueue(caption: string): Promise<string | undefined> {
+  const queued = await queueStudioPublishApproval(caption);
+  await writeStudioLastOutput({
+    caption,
+    pendingPublish: true,
+    approvalId: queued.approvalId || null,
+  });
+  return queued.approvalId;
 }
 
 export async function runWeeklyStudioPlan(ctx: AutomationJobContext): Promise<AutomationJobResult> {
@@ -57,6 +68,7 @@ export async function runWeeklyStudioPlan(ctx: AutomationJobContext): Promise<Au
   await writeStudioLastOutput({
     caption: plan.items[0]?.captionDraft || caption,
     platforms: [...new Set(plan.items.map((item) => item.platform))],
+    pendingPublish: false,
   });
   await notifyAdmin(caption);
   return {
@@ -70,7 +82,7 @@ export async function runWeeklyStudioPlan(ctx: AutomationJobContext): Promise<Au
 
 export async function runStudioGenerateImage(ctx: AutomationJobContext): Promise<AutomationJobResult> {
   const dryRun = Boolean(ctx.dryRun);
-  const prompt = promptFrom(ctx, "منظر سياحي لتركيا من الريان للسياحة");
+  const prompt = promptFrom(ctx, "منظر سياحي لتركيا من لوناليزا للسياحة");
   if (dryRun) {
     return { ok: true, processed: 0, message: `تجريبي: ستُولَّد صورة «${prompt.slice(0, 80)}»`, dryRun: true };
   }
@@ -84,17 +96,15 @@ export async function runStudioGenerateImage(ctx: AutomationJobContext): Promise
     caption: prompt,
     imagePaths: [saved.absolutePath],
     imageUrls: [absolute],
+    pendingPublish: true,
   });
-  await notifyAdmin(`صورة جاهزة للاعتماد\n${prompt}\nأجب: انشر`, {
-    photoPath: saved.absolutePath,
-    caption: `${prompt}\n\nانشر للموافقة`,
-  });
+  const approvalId = await markPendingAndQueue(prompt);
   return {
     ok: true,
     processed: 1,
-    message: `وُلدت صورة عبر ${image.model}`,
+    message: `وُلدت صورة عبر ${image.model} وأُرسلت لتيليجرام — بانتظار «انشر»`,
     dryRun,
-    details: { path: saved.relativePath, url: absolute, tried },
+    details: { path: saved.relativePath, url: absolute, tried, approvalId },
   };
 }
 
@@ -120,21 +130,20 @@ export async function runStudioGenerateVideo(ctx: AutomationJobContext): Promise
     caption: prompt,
     videoPaths: [result.video.absolutePath],
     videoUrls: [absolute],
+    pendingPublish: true,
   });
-  await notifyAdmin(`فيديو جاهز للاعتماد\n${prompt}`, {
-    docPath: result.video.absolutePath,
-    caption: `${prompt}\n\nانشر للموافقة`,
-  });
+  const approvalId = await markPendingAndQueue(prompt);
   return {
     ok: true,
     processed: 1,
-    message: `فيديو عبر ${result.engine}/${result.model}`,
+    message: `فيديو عبر ${result.engine}/${result.model} وأُرسل لتيليجرام — بانتظار «انشر»`,
     dryRun,
     details: {
       path: result.video.relativePath,
       url: absolute,
       ffmpeg: result.ffmpeg,
       attempts: result.attempts,
+      approvalId,
     },
   };
 }
@@ -160,10 +169,15 @@ export async function runStudioSchedulePublish(ctx: AutomationJobContext): Promi
       dryRun: true,
     };
   }
+  const budget = Number(settings.budget || settings.dailyBudget || 0) || undefined;
+  const boost = settings.boost === true && Boolean(budget && budget > 0);
   const published = await publishApprovedStudio({
     caption: String(settings.caption || ctx.job?.name || ""),
     approved: true,
+    boost,
+    budget,
   });
+  await writeStudioLastOutput({ pendingPublish: false });
   return {
     ok: published.ok,
     processed: published.results.filter((row) => row.ok).length,

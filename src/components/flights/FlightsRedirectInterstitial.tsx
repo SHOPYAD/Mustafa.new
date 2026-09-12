@@ -26,7 +26,7 @@ function copyFor(locale: Locale): Copy {
   switch (locale) {
     case "ar":
       return {
-        brandAr: "الريان للسياحة",
+        brandAr: "لوناليزا للسياحة والسفر",
         brandEn: "Alrayyan Tourism",
         group: "Alrayyan Group",
         transferring: "جاري تحويلك إلى شريك الحجز",
@@ -38,7 +38,7 @@ function copyFor(locale: Locale): Copy {
       };
     case "en":
       return {
-        brandAr: "الريان للسياحة",
+        brandAr: "لوناليزا للسياحة والسفر",
         brandEn: "Alrayyan Tourism",
         group: "Alrayyan Group",
         transferring: "Redirecting you to our booking partner",
@@ -50,9 +50,9 @@ function copyFor(locale: Locale): Copy {
       };
     case "tr":
       return {
-        brandAr: "الريان للسياحة",
-        brandEn: "Alrayyan Tourism",
-        group: "Alrayyan Group",
+        brandAr: "لوناليزا للسياحة",
+        brandEn: "Lonaliza Tourism",
+        group: "Lonaliza Group",
         transferring: "Rezervasyon ortağımıza yönlendiriliyorsunuz",
         partnerFallback: "rezervasyon ortağı",
         completes: "Rezervasyonunuz ortak sitede tamamlanacaktır.",
@@ -60,11 +60,8 @@ function copyFor(locale: Locale): Copy {
         invalid: "Bu yönlendirme bağlantısı izinli değil. Harici bir siteye gönderilmediniz.",
         backToFlights: "Uçuş aramasına dön",
       };
-    default: {
-      const _exhaustive: never = locale;
-      void _exhaustive;
-      return copyFor("ar");
-    }
+    default:
+      return copyFor("en");
   }
 }
 

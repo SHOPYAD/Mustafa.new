@@ -14,7 +14,7 @@ import {
   normalizeTransfersCurrency,
 } from "@/lib/tpemb-embed";
 
-export type TransferProvider = "internal" | "travelpayouts";
+export type TransferProvider = "internal" | "travelpayouts" | "seeru";
 
 export const TRANSFERS_TP_FLAG_KEYS = [
   "powered_by",
@@ -138,7 +138,9 @@ export function isTransfersTravelpayoutsMarker(value: string): boolean {
 }
 
 function parseProvider(raw: string | undefined): TransferProvider {
-  return raw === "travelpayouts" ? "travelpayouts" : "internal";
+  if (raw === "travelpayouts") return "travelpayouts";
+  if (raw === "seeru") return "seeru";
+  return "internal";
 }
 
 function forceSearchOnlyFlags(flags: Record<string, string>): Record<string, string> {

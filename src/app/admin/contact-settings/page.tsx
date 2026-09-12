@@ -53,7 +53,24 @@ export default function AdminContactSettingsPage() {
   const [phoneDraft, setPhoneDraft] = useState("");
 
   useEffect(() => {
-    setForm(getSiteContact());
+    const local = getSiteContact();
+    setForm(local);
+    fetch("/api/admin/site-contact")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.ok && data.contact) {
+          const fetched: SiteContact = data.contact;
+          const map = new Map((fetched.social || []).map((s) => [s.id, s]));
+          const mergedSocial = SOCIAL_NETWORK_IDS.map((id) => {
+            return map.get(id) || { id, enabled: false, url: "", handle: "" };
+          });
+          setForm({
+            ...fetched,
+            social: mergedSocial,
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const socialLabels: Record<string, string> = {
@@ -67,7 +84,7 @@ export default function AdminContactSettingsPage() {
     snapchat: cs.snapchat,
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form) return;
     setSaving(true);
     const next = saveSiteContact({
@@ -78,14 +95,31 @@ export default function AdminContactSettingsPage() {
         .filter(Boolean),
     });
     setForm(next);
+
+    try {
+      await fetch("/api/admin/site-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(next),
+      });
+    } catch {}
+
     setSaving(false);
     setSavedMsg(cs.saved);
     setTimeout(() => setSavedMsg(""), 2800);
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     if (!confirm(cs.resetConfirm)) return;
-    setForm(resetSiteContact());
+    const next = resetSiteContact();
+    setForm(next);
+    try {
+      await fetch("/api/admin/site-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(next),
+      });
+    } catch {}
     setSavedMsg(cs.resetDone);
     setTimeout(() => setSavedMsg(""), 2800);
   };
@@ -96,9 +130,13 @@ export default function AdminContactSettingsPage() {
     persistNow = false
   ) => {
     if (!form) return;
+    const exists = form.social.some((s) => s.id === id);
+    const updatedSocial = exists
+      ? form.social.map((s) => (s.id === id ? { ...s, ...patch } : s))
+      : [...form.social, { id, enabled: false, url: "", handle: "", ...patch }];
     const nextForm: SiteContact = {
       ...form,
-      social: form.social.map((s) => (s.id === id ? { ...s, ...patch } : s)),
+      social: updatedSocial,
     };
     setForm(nextForm);
     // Live-push enable/disable so public sidebar/footer update immediately
@@ -182,7 +220,7 @@ export default function AdminContactSettingsPage() {
       />
 
       {savedMsg && (
-        <div className="mb-6 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+        <div className="mb-6 flex items-center gap-2 rounded-xl border border-purple-500/40 bg-purple-950/40 px-4 py-3 text-sm text-purple-200">
           <CheckCircle2 size={16} />
           {savedMsg}
         </div>
@@ -223,7 +261,7 @@ export default function AdminContactSettingsPage() {
                   }
                   className={`flex items-center gap-2 text-sm px-4 py-2.5 rounded-xl border transition-all ${
                     form.whatsappEnabled !== false
-                      ? "border-emerald-500/40 text-emerald-300 bg-emerald-500/10"
+                      ? "border-purple-500/40 text-purple-300 bg-purple-500/15"
                       : "border-white/10 text-white/40 bg-white/[0.03]"
                   }`}
                 >
@@ -307,7 +345,7 @@ export default function AdminContactSettingsPage() {
                       addPhone();
                     }
                   }}
-                  placeholder="+90 532 179 67 63"
+                  placeholder="+90 531 359 13 94"
                   className={inputClass}
                   dir="ltr"
                 />
@@ -330,7 +368,7 @@ export default function AdminContactSettingsPage() {
                 onChange={(e) =>
                   setForm({ ...form, callbackPhone: e.target.value })
                 }
-                placeholder="+90 532 179 67 63"
+                placeholder="+90 531 359 13 94"
                 className={inputClass}
                 dir="ltr"
               />
@@ -388,14 +426,19 @@ export default function AdminContactSettingsPage() {
         >
           <div className="grid grid-cols-1 gap-3 min-w-0 md:grid-cols-2">
             {SOCIAL_NETWORK_IDS.map((id) => {
-              const link = form.social.find((s) => s.id === id)!;
+              const link = form.social.find((s) => s.id === id) || {
+                id,
+                enabled: false,
+                url: "",
+                handle: "",
+              };
               const isWa = id === "whatsapp";
               return (
                 <div
                   key={id}
                   className={`rounded-xl border p-4 transition-all ${
                     link.enabled
-                      ? "border-emerald-500/25 bg-emerald-500/5"
+                      ? "border-purple-500/30 bg-purple-950/20"
                       : "border-white/5 bg-white/[0.02]"
                   }`}
                 >
@@ -410,7 +453,7 @@ export default function AdminContactSettingsPage() {
                       }
                       className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs transition-all ${
                         link.enabled
-                          ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
+                          ? "border-purple-500/40 bg-purple-500/15 text-purple-300"
                           : "border-white/10 bg-white/[0.03] text-white/40"
                       }`}
                     >
@@ -463,6 +506,218 @@ export default function AdminContactSettingsPage() {
                 </div>
               );
             })}
+          </div>
+        </AdminSettingsPanel>
+
+        {/* Floating Action Widgets Control Panel */}
+        <AdminSettingsPanel
+          span={12}
+          title={
+            <span className="flex items-center gap-2">
+              <Phone size={16} className="text-amber-500" />
+              <span>التحكم في الأزرار العائمة وأزرار الاتصال (Floating Widgets)</span>
+            </span>
+          }
+          description="التحكم في ظهور أو إخفاء أزرار الاتصال العائمة بالأسفل ومواضعها بدقة (يمين، يسار، وسط، والارتفاع بالبيكسل). ملاحظة: كافة هذه الأزرار يتم إخفاؤها تلقائياً في صفحات السوشيال والمجتمع لضمان راحة الزائر."
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {/* Widget 1: Floating Action Hub (WhatsApp) */}
+            <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="size-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-xs">
+                    WA
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white">زر المساعد والواتساب</h4>
+                    <p className="text-[11px] text-white/50">الزر الأخضر الدائري العائم</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setForm({
+                      ...form,
+                      floatingHubEnabled: form.floatingHubEnabled === false ? true : false,
+                    })
+                  }
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+                    form.floatingHubEnabled !== false
+                      ? "border-purple-500/40 bg-purple-500/15 text-purple-300"
+                      : "border-white/10 bg-white/5 text-white/40"
+                  }`}
+                >
+                  {form.floatingHubEnabled !== false ? "مُفعّل" : "مُعطّل"}
+                </button>
+              </div>
+
+              <div>
+                <label className={labelClass}>موضع الزر في الشاشة</label>
+                <select
+                  value={form.floatingHubPosition || "right"}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      floatingHubPosition: e.target.value as "right" | "left" | "center",
+                    })
+                  }
+                  className={inputClass}
+                >
+                  <option value="right">يمين (Right)</option>
+                  <option value="left">يسار (Left)</option>
+                  <option value="center">وسط (Center)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className={labelClass}>الارتفاع من الأسفل (بالبيكسل px)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="300"
+                  value={form.floatingHubBottomPx ?? 24}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      floatingHubBottomPx: Number(e.target.value) || 24,
+                    })
+                  }
+                  className={inputClass}
+                />
+              </div>
+            </div>
+
+            {/* Widget 2: Callback Banner */}
+            <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="size-8 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold text-xs">
+                    📞
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white">زر "نتصل بك"</h4>
+                    <p className="text-[11px] text-white/50">طلب اتصال سريع من الإدارة</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setForm({
+                      ...form,
+                      callbackBannerEnabled: form.callbackBannerEnabled === false ? true : false,
+                    })
+                  }
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+                    form.callbackBannerEnabled !== false
+                      ? "border-orange-500/40 bg-orange-500/15 text-orange-300"
+                      : "border-white/10 bg-white/5 text-white/40"
+                  }`}
+                >
+                  {form.callbackBannerEnabled !== false ? "مُفعّل" : "مُعطّل"}
+                </button>
+              </div>
+
+              <div>
+                <label className={labelClass}>موضع الزر في الشاشة</label>
+                <select
+                  value={form.callbackBannerPosition || "right"}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      callbackBannerPosition: e.target.value as "right" | "left" | "center",
+                    })
+                  }
+                  className={inputClass}
+                >
+                  <option value="right">يمين (Right)</option>
+                  <option value="left">يسار (Left)</option>
+                  <option value="center">وسط (Center)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className={labelClass}>الارتفاع من الأسفل (بالبيكسل px)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="300"
+                  value={form.callbackBannerBottomPx ?? 24}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      callbackBannerBottomPx: Number(e.target.value) || 24,
+                    })
+                  }
+                  className={inputClass}
+                />
+              </div>
+            </div>
+
+            {/* Widget 3: B2B Advisor Widget */}
+            <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="size-8 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-xs">
+                    B2B
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white">مستشار B2B</h4>
+                    <p className="text-[11px] text-white/50">زر المساعد الذكي لصفحة الهبوط</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setForm({
+                      ...form,
+                      b2bAdvisorEnabled: form.b2bAdvisorEnabled === false ? true : false,
+                    })
+                  }
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+                    form.b2bAdvisorEnabled !== false
+                      ? "border-teal-500/40 bg-teal-500/15 text-teal-300"
+                      : "border-white/10 bg-white/5 text-white/40"
+                  }`}
+                >
+                  {form.b2bAdvisorEnabled !== false ? "مُفعّل" : "مُعطّل"}
+                </button>
+              </div>
+
+              <div>
+                <label className={labelClass}>موضع الزر في الشاشة</label>
+                <select
+                  value={form.b2bAdvisorPosition || "right"}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      b2bAdvisorPosition: e.target.value as "right" | "left" | "center",
+                    })
+                  }
+                  className={inputClass}
+                >
+                  <option value="right">يمين (Right)</option>
+                  <option value="left">يسار (Left)</option>
+                  <option value="center">وسط (Center)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className={labelClass}>الارتفاع من الأسفل (بالبيكسل px)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="300"
+                  value={form.b2bAdvisorBottomPx ?? 24}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      b2bAdvisorBottomPx: Number(e.target.value) || 24,
+                    })
+                  }
+                  className={inputClass}
+                />
+              </div>
+            </div>
           </div>
         </AdminSettingsPanel>
       </AdminSettingsGrid>

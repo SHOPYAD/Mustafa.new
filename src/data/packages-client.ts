@@ -10,21 +10,10 @@ export async function fetchPublishedPackages(): Promise<HolidayPackage[]> {
       packages?: HolidayPackage[];
     };
     if (data.ok && Array.isArray(data.packages) && data.packages.length) {
-      const byId = new Map<string, HolidayPackage>();
-      for (const pkg of data.packages) {
-        if (!pkg?.id || !isPublicPackage(pkg)) continue;
-        byId.set(pkg.id, pkg);
-      }
-      if (typeof window !== "undefined") {
-        for (const pkg of getPackages()) {
-          if (!pkg?.id || !isPublicPackage(pkg) || byId.has(pkg.id)) continue;
-          byId.set(pkg.id, pkg);
-        }
-      }
-      return sortPackagesNewestFirst(Array.from(byId.values()));
+      return sortPackagesNewestFirst(data.packages.filter((p) => p && isPublicPackage(p)));
     }
   } catch {
-    /* use local catalog */
+    /* fallback on seed catalog if offline */
   }
   return sortPackagesNewestFirst(getPackages().filter(isPublicPackage));
 }

@@ -105,7 +105,31 @@ export default function CheckoutRewards({ service, amount, currency, onChange }:
         <TicketPercent size={18} className="text-emerald-600" />
         {t.loyalty.paymentTitle}
       </h2>
-      <p className="text-sm text-slate-500">{t.loyalty.paymentHint}</p>
+      <p className="text-sm text-slate-500">
+        {locale === "ar"
+          ? "طبّق كود خصم أو قسيمة نقاط لتخفيض قيمة حجزك (حتى 15% كحد أقصى للحجوزات المؤكدة التي تبدأ من 500$ فأكثر)."
+          : t.loyalty.paymentHint}
+      </p>
+
+      {/* Financial Safeguards Notice */}
+      {quote && quote.originalUsd < 500 ? (
+        <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+          <TicketPercent className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+          <div className="leading-relaxed">
+            <p className="font-bold text-amber-950">تنبيه شروط استخدام قسائم نقاط الولاء:</p>
+            <p className="mt-0.5 text-amber-800">
+              قسائم خصم نقاط الولاء متاحة للحجوزات التي تبدأ قيمتها من $500 أو أكثر فقط (قيمة حجزك الحالية: ${Math.round(quote.originalUsd)}). ستحصل على نقاط ولاء جديدة فور إتمام هذا الحجز!
+            </p>
+          </div>
+        </div>
+      ) : null}
+
+      {quote?.voucherNotice && quote.originalUsd >= 500 ? (
+        <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2">
+          <TicketPercent className="h-4 w-4 text-emerald-600 shrink-0" />
+          <span>{quote.voucherNotice}</span>
+        </div>
+      ) : null}
 
       <div className="flex flex-wrap gap-2">
         <input
@@ -140,26 +164,37 @@ export default function CheckoutRewards({ service, amount, currency, onChange }:
         </button>
       ) : vouchers.length ? (
         <div className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{t.loyalty.yourVouchers}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{t.loyalty.yourVouchers}</p>
+            {quote && quote.originalUsd >= 500 && (
+              <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                متاح خصم حتى 15% ($150 كحد أقصى)
+              </span>
+            )}
+          </div>
           {vouchers.map((voucher) => {
             const on = voucherIds.includes(voucher.id);
+            const isBookingTooSmall = Boolean(quote && quote.originalUsd < 500);
             return (
               <label
                 key={voucher.id}
                 className={cn(
-                  "flex cursor-pointer items-center justify-between gap-3 rounded-xl border px-3 py-2.5",
-                  on ? "border-emerald-400 bg-emerald-50" : "border-slate-200"
+                  "flex items-center justify-between gap-3 rounded-xl border px-3 py-2.5 transition-all",
+                  isBookingTooSmall ? "opacity-50 cursor-not-allowed bg-slate-50 border-slate-200" : "cursor-pointer",
+                  on && !isBookingTooSmall ? "border-emerald-400 bg-emerald-50" : "border-slate-200"
                 )}
               >
                 <span className="flex items-center gap-2 text-sm">
                   <input
                     type="checkbox"
-                    checked={on}
-                    onChange={() =>
+                    disabled={isBookingTooSmall}
+                    checked={on && !isBookingTooSmall}
+                    onChange={() => {
+                      if (isBookingTooSmall) return;
                       setVoucherIds((prev) =>
                         on ? prev.filter((id) => id !== voucher.id) : [...prev, voucher.id]
-                      )
-                    }
+                      );
+                    }}
                   />
                   <Wallet size={14} className="text-amber-600" />
                   <span className="font-bold text-[#051741]" dir="ltr">

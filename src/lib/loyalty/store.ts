@@ -50,8 +50,42 @@ export function newLoyaltyId(prefix: string): string {
   return `${prefix}_${randomBytes(5).toString("hex")}`;
 }
 
+function lona10Coupon(at: string): LoyaltyCoupon {
+  return {
+    id: "cpn_lona10_public",
+    code: "LONA10",
+    service: "all",
+    discountType: "percent",
+    discountValue: 10,
+    currency: "USD",
+    validFrom: at.slice(0, 10),
+    validTo: "2027-12-31",
+    maxUsesTotal: 0,
+    maxUsesPerUser: 0,
+    minBookingAmount: 0,
+    minBookingCurrency: "USD",
+    newUserOnly: false,
+    firstBookingOnly: false,
+    active: true,
+    title: {
+      ar: "خصم لوناليزا 10%",
+      en: "Lonaliza 10% off",
+      tr: "Lonaliza %10 indirim",
+    },
+    description: {
+      ar: "خصم عام يظهر على أسعار البحث ويُطبَّق عند الدفع",
+      en: "Public discount shown on search prices and applied at checkout",
+      tr: "Arama fiyatlarında görünen ve ödemede uygulanan genel indirim",
+    },
+    usedCount: 0,
+    createdAt: at,
+    updatedAt: at,
+  };
+}
+
 function seedCoupons(at: string): LoyaltyCoupon[] {
   return [
+    lona10Coupon(at),
     {
       id: newLoyaltyId("cpn"),
       code: "FIRST20",
@@ -74,7 +108,7 @@ function seedCoupons(at: string): LoyaltyCoupon[] {
         tr: "İlk rezervasyonda %20",
       },
       description: {
-        ar: "عروض الحجز الأول لعملاء الريان",
+        ar: "عروض الحجز الأول لعملاء لوناليزا",
         en: "First booking offer for Alrayyan guests",
         tr: "Alrayyan ilk rezervasyon teklifi",
       },
@@ -138,6 +172,10 @@ function sanitizeSettings(raw: unknown): LoyaltySettings {
   const pointsPerUsd = Number(rec.pointsPerUsd);
   const redeem = Number(rec.pointsPerUsdRedeem);
   const minConvert = Number(rec.minConvertPoints);
+  const minBooking = Number(rec.minBookingAmountUsd);
+  const maxDiscount = Number(rec.maxDiscountPercent);
+  const maxVoucherUsd = Number(rec.maxVoucherDiscountUsd);
+
   return {
     enabled: rec.enabled !== false,
     pointsPerUsd: Number.isFinite(pointsPerUsd) && pointsPerUsd >= 0 ? pointsPerUsd : DEFAULT_LOYALTY_SETTINGS.pointsPerUsd,
@@ -148,6 +186,24 @@ function sanitizeSettings(raw: unknown): LoyaltySettings {
       Number.isFinite(minConvert) && minConvert >= 0
         ? Math.round(minConvert)
         : DEFAULT_LOYALTY_SETTINGS.minConvertPoints,
+    requireAdminApproval:
+      rec.requireAdminApproval !== undefined ? Boolean(rec.requireAdminApproval) : DEFAULT_LOYALTY_SETTINGS.requireAdminApproval,
+    minBookingAmountUsd:
+      Number.isFinite(minBooking) && minBooking >= 0
+        ? minBooking
+        : DEFAULT_LOYALTY_SETTINGS.minBookingAmountUsd,
+    maxDiscountPercent:
+      Number.isFinite(maxDiscount) && maxDiscount > 0 && maxDiscount <= 100
+        ? maxDiscount
+        : DEFAULT_LOYALTY_SETTINGS.maxDiscountPercent,
+    maxVoucherDiscountUsd:
+      Number.isFinite(maxVoucherUsd) && maxVoucherUsd >= 0
+        ? maxVoucherUsd
+        : DEFAULT_LOYALTY_SETTINGS.maxVoucherDiscountUsd,
+    autoApproveVerifiedBookings:
+      rec.autoApproveVerifiedBookings !== undefined
+        ? Boolean(rec.autoApproveVerifiedBookings)
+        : DEFAULT_LOYALTY_SETTINGS.autoApproveVerifiedBookings,
   };
 }
 
@@ -237,11 +293,14 @@ function sanitizeWallet(raw: unknown): LoyaltyWallet | null {
       if (kind !== "earn" && kind !== "convert" && kind !== "redeem" && kind !== "adjust") {
         continue;
       }
+      const statusRaw = String(item.status || "");
+      const status: LoyaltyLedgerEntry["status"] =
+        statusRaw === "pending" || statusRaw === "rejected" ? statusRaw : "confirmed";
       const entry: LoyaltyLedgerEntry = {
         id: String(item.id),
         userId,
         kind,
-        status: item.status === "pending" ? "pending" : "confirmed",
+        status,
         points,
         usdValue: Number(item.usdValue) || 0,
         createdAt: String(item.createdAt || nowIso()),
@@ -251,6 +310,9 @@ function sanitizeWallet(raw: unknown): LoyaltyWallet | null {
       if (item.couponId) entry.couponId = String(item.couponId);
       if (item.voucherId) entry.voucherId = String(item.voucherId);
       if (item.note) entry.note = String(item.note);
+      if (item.rejectionReason) entry.rejectionReason = String(item.rejectionReason);
+      if (item.approvedAt) entry.approvedAt = String(item.approvedAt);
+      if (item.approvedBy) entry.approvedBy = String(item.approvedBy);
       ledger.push(entry);
     }
   }
@@ -301,9 +363,12 @@ async function readStore(): Promise<StoreFile> {
         redemptions.push(redemption);
       }
     }
+    const at = nowIso();
+    const merged = coupons.length ? coupons : seedCoupons(at);
+    if (!merged.some((c) => c.code === "LONA10")) merged.unshift(lona10Coupon(at));
     const store: StoreFile = {
       settings: sanitizeSettings(raw.settings),
-      coupons: coupons.length ? coupons : seedCoupons(nowIso()),
+      coupons: merged,
       wallets,
       redemptions,
     };
@@ -333,7 +398,12 @@ async function mutate<T>(fn: (store: StoreFile) => T | Promise<T>): Promise<T> {
 }
 
 export async function getLoyaltyStore(): Promise<StoreFile> {
-  return readStore();
+  const store = await readStore();
+  if (!store.coupons.some((c) => c.code === "LONA10")) {
+    store.coupons.unshift(lona10Coupon(nowIso()));
+    await writeStore(store);
+  }
+  return store;
 }
 
 export async function getLoyaltySettings(): Promise<LoyaltySettings> {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { CalendarDays, MapPin, Minus, Plus, Search, Users } from "lucide-react";
+import { Building2, CalendarDays, MapPin, Minus, Plus, Search, Users } from "lucide-react";
 import { format } from "date-fns";
 import { ar, enUS, tr } from "date-fns/locale";
 import HotelDateRangePicker from "@/components/hotels/HotelDateRangePicker";
@@ -10,7 +10,7 @@ import SearchPopover, {
 } from "@/components/hotels/SearchPopover";
 import { nightsBetween } from "@/lib/hotel-display";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
-import type { GeoPlaceHit, HotelSearchQuery } from "@/lib/hotel-search";
+import type { GeoPlaceHit, HotelSearchQuery, HotelSuggestHit } from "@/lib/hotel-search";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -68,7 +68,7 @@ function Stepper({
 }
 
 const fieldShell =
-  "flex h-16 w-full items-center gap-3 rounded-xl border border-slate-300 bg-white px-3.5 text-start transition focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/25";
+  "flex h-16 w-full items-center gap-3 rounded-xl border border-slate-300 bg-white px-3.5 text-start transition focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/25";
 
 export default function HotelSearchBar({
   value,
@@ -83,6 +83,7 @@ export default function HotelSearchBar({
   const datesAnchorRef = useRef<HTMLDivElement>(null);
   const guestsAnchorRef = useRef<HTMLDivElement>(null);
   const [places, setPlaces] = useState<GeoPlaceHit[]>([]);
+  const [hotelHits, setHotelHits] = useState<HotelSuggestHit[]>([]);
   const [destOpen, setDestOpen] = useState(false);
   const [datesOpen, setDatesOpen] = useState(false);
   const [guestsOpen, setGuestsOpen] = useState(false);
@@ -98,22 +99,38 @@ export default function HotelSearchBar({
     const q = value.q.trim();
     if (q.length < 1) {
       setPlaces([]);
+      setHotelHits([]);
       return;
     }
     const ctrl = new AbortController();
     const timer = window.setTimeout(async () => {
       try {
         const res = await fetch(
-          `/api/geo/search?q=${encodeURIComponent(q)}&lang=${locale}`,
+          `/api/hotels/suggest?q=${encodeURIComponent(q)}&lang=${locale}`,
           { signal: ctrl.signal, cache: "no-store" }
         );
-        const data = (await res.json()) as { places?: GeoPlaceHit[] };
-        setPlaces(Array.isArray(data.places) ? data.places : []);
+        const data = (await res.json()) as { cities?: HotelSuggestHit[]; hotels?: HotelSuggestHit[] };
+        const cities = Array.isArray(data.cities) ? data.cities : [];
+        setPlaces(
+          cities.map((c) => ({
+            id: c.id,
+            city: c.city || c.name,
+            country: c.country || "",
+            countryCode: "",
+            admin1: "",
+            geoId: c.id,
+            population: 0,
+          }))
+        );
+        setHotelHits(Array.isArray(data.hotels) ? data.hotels : []);
         setHighlight(0);
       } catch {
-        if (!ctrl.signal.aborted) setPlaces([]);
+        if (!ctrl.signal.aborted) {
+          setPlaces([]);
+          setHotelHits([]);
+        }
       }
-    }, 180);
+    }, 200);
     return () => {
       ctrl.abort();
       window.clearTimeout(timer);
@@ -149,6 +166,19 @@ export default function HotelSearchBar({
       q: place.city,
       geoId: place.geoId,
       destId: "",
+      hotelName: "",
+      hotelKey: "",
+    });
+    setDestOpen(false);
+  };
+
+  const pickHotel = (hotel: HotelSuggestHit) => {
+    onChange({
+      ...value,
+      q: hotel.city || hotel.name,
+      hotelName: hotel.name,
+      hotelKey: hotel.hotelKey || hotel.bookingHotelId || hotel.id,
+      destId: "",
     });
     setDestOpen(false);
   };
@@ -159,7 +189,7 @@ export default function HotelSearchBar({
   return (
     <form
       ref={wrapRef}
-      className="rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_18px_50px_rgba(5,23,65,0.18)] md:p-4"
+      className="rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_18px_50px_rgba(46,16,101,0.12)] md:p-4"
       onSubmit={(e) => {
         e.preventDefault();
         closeAll();
@@ -172,7 +202,7 @@ export default function HotelSearchBar({
             {t.hotels.destination}
           </span>
           <div className={fieldShell}>
-            <MapPin size={18} className="shrink-0 text-emerald-600" />
+            <MapPin size={18} className="shrink-0 text-[#2e1065]" />
             <input
               value={value.q}
               onChange={(e) => {
@@ -217,14 +247,14 @@ export default function HotelSearchBar({
             </span>
             <button
               type="button"
-              className={cn(fieldShell, datesOpen && "border-emerald-500 ring-2 ring-emerald-500/25")}
+              className={cn(fieldShell, datesOpen && "border-purple-500 ring-2 ring-purple-500/25")}
               onClick={() => {
                 setDatesOpen((o) => !o);
                 setDestOpen(false);
                 setGuestsOpen(false);
               }}
             >
-              <CalendarDays size={18} className="shrink-0 text-emerald-600" />
+              <CalendarDays size={18} className="shrink-0 text-[#2e1065]" />
               <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-900">
                 {dateText(checkInDate, t.hotels.selectCheckIn)}
               </span>
@@ -236,18 +266,18 @@ export default function HotelSearchBar({
             </span>
             <button
               type="button"
-              className={cn(fieldShell, datesOpen && "border-emerald-500 ring-2 ring-emerald-500/25")}
+              className={cn(fieldShell, datesOpen && "border-purple-500 ring-2 ring-purple-500/25")}
               onClick={() => {
                 setDatesOpen(true);
                 setDestOpen(false);
                 setGuestsOpen(false);
               }}
             >
-              <CalendarDays size={18} className="shrink-0 text-emerald-600" />
+              <CalendarDays size={18} className="shrink-0 text-[#2e1065]" />
               <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-900">
                 {dateText(checkOutDate, t.hotels.selectCheckOut)}
               </span>
-              <span className="shrink-0 rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-800">
+              <span className="shrink-0 rounded-md bg-purple-50 px-2 py-0.5 text-[11px] font-bold text-purple-950 border border-purple-200/60">
                 {t.hotels.nightsCount(nights)}
               </span>
             </button>
@@ -260,14 +290,14 @@ export default function HotelSearchBar({
           </span>
           <button
             type="button"
-            className={cn(fieldShell, guestsOpen && "border-emerald-500 ring-2 ring-emerald-500/25")}
+            className={cn(fieldShell, guestsOpen && "border-purple-500 ring-2 ring-purple-500/25")}
             onClick={() => {
               setGuestsOpen((o) => !o);
               setDestOpen(false);
               setDatesOpen(false);
             }}
           >
-            <Users size={18} className="shrink-0 text-emerald-600" />
+            <Users size={18} className="shrink-0 text-[#2e1065]" />
             <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-900">
               {occupancyLabel}
             </span>
@@ -277,9 +307,9 @@ export default function HotelSearchBar({
         <div className="flex items-end gap-2 sm:col-span-2 xl:col-span-1">
           <button
             type="submit"
-            className="inline-flex h-16 flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-7 text-sm font-bold text-white shadow-sm hover:bg-emerald-500 xl:min-w-[8.5rem]"
+            className="inline-flex h-16 flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] hover:brightness-110 px-7 text-sm font-bold text-white shadow-md shadow-purple-950/20 xl:min-w-[8.5rem] transition-all"
           >
-            <Search size={16} />
+            <Search size={16} className="text-amber-300" />
             {t.common.search}
           </button>
           {compactActions}
@@ -293,34 +323,61 @@ export default function HotelSearchBar({
         size="field"
         dir={dir}
       >
-        <ul className="py-1" role="listbox">
-          {places.length === 0 ? (
-            <li className="px-4 py-3 text-sm text-slate-400">{t.hotels.noCitiesFound}</li>
-          ) : (
-            places.map((place, i) => (
-              <li key={place.id}>
-                <button
-                  type="button"
-                  role="option"
-                  aria-selected={i === highlight}
-                  className={cn(
-                    "flex w-full items-center justify-between gap-3 px-4 py-3 text-sm",
-                    i === highlight ? "bg-emerald-50 text-emerald-950" : "text-slate-800 hover:bg-slate-50"
-                  )}
-                  onMouseEnter={() => setHighlight(i)}
-                  onClick={() => pickPlace(place)}
-                >
-                  <span className="font-semibold">{place.city}</span>
-                  <span className="text-xs text-slate-500">
-                    {place.admin1 && place.admin1 !== place.city
-                      ? `${place.admin1}, ${place.country}`
-                      : place.country}
-                  </span>
-                </button>
-              </li>
-            ))
-          )}
-        </ul>
+        <div className="py-1" role="listbox">
+          {hotelHits.length ? (
+            <div className="px-4 pt-2 pb-1 text-[11px] font-black uppercase tracking-wide text-purple-800">
+              {locale === "ar" ? "فنادق" : locale === "tr" ? "Oteller" : "Hotels"}
+            </div>
+          ) : null}
+          {hotelHits.map((hotel, i) => (
+            <button
+              key={`h-${hotel.id}`}
+              type="button"
+              role="option"
+              aria-selected={i === highlight}
+              className={cn(
+                "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm",
+                i === highlight ? "bg-purple-50 text-purple-950 font-bold" : "text-slate-800 hover:bg-slate-50"
+              )}
+              onMouseEnter={() => setHighlight(i)}
+              onClick={() => pickHotel(hotel)}
+            >
+              <span className="inline-flex min-w-0 items-center gap-2">
+                <Building2 size={14} className="shrink-0 text-[#2e1065]" />
+                <span className="truncate font-semibold">{hotel.name}</span>
+              </span>
+              <span className="shrink-0 text-xs text-slate-500">{hotel.city}</span>
+            </button>
+          ))}
+          {places.length ? (
+            <div className="px-4 pt-2 pb-1 text-[11px] font-black uppercase tracking-wide text-slate-500">
+              {locale === "ar" ? "مدن" : locale === "tr" ? "Şehirler" : "Cities"}
+            </div>
+          ) : null}
+          {places.map((place, i) => (
+            <button
+              key={place.id}
+              type="button"
+              role="option"
+              aria-selected={hotelHits.length + i === highlight}
+              className={cn(
+                "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm",
+                hotelHits.length + i === highlight ? "bg-purple-50 text-purple-950 font-bold" : "text-slate-800 hover:bg-slate-50"
+              )}
+              onMouseEnter={() => setHighlight(hotelHits.length + i)}
+              onClick={() => pickPlace(place)}
+            >
+              <span className="inline-flex items-center gap-2 font-semibold">
+                <MapPin size={14} className="text-[#2e1065]" />
+                {place.city}
+              </span>
+              <span className="text-xs text-slate-500">{place.country}</span>
+            </button>
+          ))}
+          {!places.length && !hotelHits.length ? (
+            <p className="px-4 py-3 text-sm text-slate-400">{t.hotels.noCitiesFound}</p>
+          ) : null}
+        </div>
       </SearchPopover>
 
       <SearchPopover
@@ -355,7 +412,7 @@ export default function HotelSearchBar({
         dir={dir}
       >
         <div className="p-4">
-          <p className="mb-1 text-sm font-bold text-[#051741]">{t.hotels.guests}</p>
+          <p className="mb-1 text-sm font-bold text-[#1e1b4b]">{t.hotels.guests}</p>
           <Stepper
             label={t.hotels.rooms}
             value={value.rooms}
@@ -407,7 +464,7 @@ export default function HotelSearchBar({
           ) : null}
           <button
             type="button"
-            className="mt-4 w-full rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white hover:bg-emerald-500"
+            className="mt-4 w-full rounded-xl bg-gradient-to-r from-[#2e1065] to-[#4c1d95] py-3 text-sm font-bold text-white hover:brightness-110 shadow-sm transition-all"
             onClick={() => setGuestsOpen(false)}
           >
             {t.hotels.applyOccupancy}

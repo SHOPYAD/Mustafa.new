@@ -19,12 +19,13 @@ const PARTNER_MARKS: Array<{ test: RegExp; src: string }> = [
   { test: /kayak/i, src: "/partners/kayak.svg" },
 ];
 
-export const ALRAYYAN_LOGO_SRC = "/logo.png";
+export const LONALIZA_LOGO_SRC = "/logo.png";
+export const ALRAYYAN_LOGO_SRC = LONALIZA_LOGO_SRC;
 
 export function partnerLogoSrc(partnerName: string, fallbackUrl = ""): string {
   const name = partnerName.trim();
   if (!name) return fallbackUrl;
-  if (/الريان|alrayyan|al-?rayyan/i.test(name)) return ALRAYYAN_LOGO_SRC;
+  if (/لوناليزا|lonaliza|الريان|alrayyan|al-?rayyan/i.test(name)) return LONALIZA_LOGO_SRC;
   const hit = PARTNER_MARKS.find((row) => row.test.test(name));
   if (hit) return hit.src;
   if (fallbackUrl && fallbackUrl.startsWith("/partners/")) return fallbackUrl;

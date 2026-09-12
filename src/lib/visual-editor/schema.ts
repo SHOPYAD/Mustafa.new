@@ -88,6 +88,8 @@ export type LocalizedCopy = {
   ar: string;
   en: string;
   tr: string;
+  fr?: string;
+  [lang: string]: string | undefined;
 };
 
 export type SectionStyles = {
@@ -175,8 +177,8 @@ export function catalogSectionTypes(): HomepageSectionType[] {
   return HOMEPAGE_SECTION_TYPES.filter((type) => !HOMEPAGE_CATALOG_HIDDEN_TYPES.has(type));
 }
 
-export const ALRAYYAN_NAVY = "#051741";
-export const ALRAYYAN_EMERALD = "#10b981";
+export const ALRAYYAN_NAVY = "#2e1065";
+export const ALRAYYAN_EMERALD = "#7c3aed";
 
 /** Search widget appearance keys stored on hero/search `settings`. */
 export const SEARCH_WIDGET_SETTING_KEYS = [
@@ -440,16 +442,16 @@ function mergedContactTexts(): Record<string, LocalizedCopy> {
   return {
     title: copy("نرد بسرعة — اترك رقمك", "We reply fast — leave your number", "Hızlı dönüş — numaranızı bırakın"),
     subtitle: copy(
-      "فريق الريان يتواصل خلال دقائق لترتيب الرحلة.",
-      "The Alrayyan team calls back within minutes to arrange the trip.",
-      "Alrayyan ekibi seyahati ayarlamak için dakikalar içinde arar."
+      "فريق لوناليزا يتواصل خلال دقائق لترتيب الرحلة.",
+      "The Lonaliza team calls back within minutes to arrange the trip.",
+      "Lonaliza ekibi seyahati ayarlamak için dakikalar içinde arar."
     ),
     button: copy("اطلب اتصالاً", "Request a callback", "Geri arama iste"),
     ctaTitle: copy("جاهز لترتيب الرحلة؟", "Ready to arrange the trip?", "Seyahati ayarlamaya hazır mısınız?"),
     ctaSubtitle: copy(
-      "راسلنا أو ابدأ الآن — فريق الريان يرد بسرعة.",
-      "Write to us or start now — the Alrayyan team replies quickly.",
-      "Yazın veya hemen başlayın — Alrayyan ekibi hızlı döner."
+      "راسلنا أو ابدأ الآن — فريق لوناليزا يرد بسرعة.",
+      "Write to us or start now — the Lonaliza team replies quickly.",
+      "Yazın veya hemen başlayın — Lonaliza ekibi hızlı döner."
     ),
     ctaButton: copy("تواصل معنا", "Contact us", "Bize yazın"),
   };
@@ -471,7 +473,7 @@ function newsletterSectionTexts(): Record<string, LocalizedCopy> {
 
 function premiumBannerTexts(): Record<string, LocalizedCopy> {
   return {
-    eyebrow: copy("مجموعات الريان", "Alrayyan collections", "Alrayyan koleksiyonları"),
+    eyebrow: copy("مجموعات لوناليزا", "Lonaliza collections", "Lonaliza koleksiyonları"),
     title: copy(
       "وجهات أيقونية — اختر مدينتك",
       "Iconic destinations — pick your city",
@@ -580,7 +582,7 @@ function extraSectionDefaults(type: HomepageSectionType): Record<string, Localiz
       };
     case "points":
       return {
-        eyebrow: copy("ولاء الريان", "Alrayyan loyalty", "Alrayyan sadakati"),
+        eyebrow: copy("ولاء لوناليزا", "Lonaliza loyalty", "Lonaliza sadakati"),
         title: copy("اجمع نقاطاً مع كل حجز", "Earn points on every booking", "Her rezervasyonda puan kazanın"),
         subtitle: copy(
           "حوّل النقاط إلى قسيمة للدفع أو الخصم.",
@@ -670,7 +672,7 @@ export function defaultHomepageDraft(): HomepageTemplateDraft {
       makeSection(
         "hero",
         {
-          eyebrow: copy("الريان للسياحة", "Alrayyan Tourism", "Alrayyan Turizm"),
+          eyebrow: copy("لوناليزا للسياحة", "Lonaliza Tourism", "Lonaliza Turizm"),
           title: copy(
             "رحلة تركية تُدار كما يجب",
             "A Turkey trip, handled properly",
@@ -693,7 +695,7 @@ export function defaultHomepageDraft(): HomepageTemplateDraft {
           tabBarBg: "var(--brand-header)",
           tabActiveBg: "var(--brand-button)",
           tabActiveText: "#ffffff",
-          tabIdleText: "rgba(255,255,255,0.78)",
+          tabIdleText: "#1e1b4b",
           panelBg: "rgba(255,255,255,0.96)",
           showTabFlight: true,
           showTabHoliday: true,
@@ -731,7 +733,7 @@ export function defaultHomepageDraft(): HomepageTemplateDraft {
             tabBarBg: "var(--brand-header)",
             tabActiveBg: "var(--brand-button)",
             tabActiveText: "#ffffff",
-            tabIdleText: "rgba(255,255,255,0.78)",
+            tabIdleText: "#1e1b4b",
             panelBg: "#ffffff",
             showTabFlight: true,
             showTabHoliday: true,
@@ -841,7 +843,7 @@ export function defaultHomepageDraft(): HomepageTemplateDraft {
         ),
       }),
       makeSection("whyUs", {
-        eyebrow: copy("لماذا الريان", "Why Alrayyan", "Neden Alrayyan"),
+        eyebrow: copy("لماذا لوناليزا", "Why Lonaliza", "Neden Lonaliza"),
         title: copy("فريق يعرف تركيا عن قرب", "A team that knows Turkey", "Türkiye’yi yakından bilen ekip"),
         subtitle: copy(
           "دعم عربي، سائقون محليون، وحجز واضح بلا مفاجآت.",

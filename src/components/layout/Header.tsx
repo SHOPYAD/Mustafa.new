@@ -7,11 +7,14 @@ import Link from "next/link";
 import { Menu, X, ChevronDown, UserRound, Ellipsis } from "lucide-react";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { cn } from "@/lib/utils";
+import { useBrandTheme } from "@/components/theme/ThemeProvider";
+import { applyBrandTheme } from "@/lib/theme/tokens";
 import LocaleCurrencySwitcher from "@/components/ui/LocaleCurrencySwitcher";
 import ProfileMenu from "@/components/layout/ProfileMenu";
 import UiIcon from "@/components/ui/UiIcon";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import BrandImage from "@/components/branding/BrandImage";
+import LonalizaLogo from "@/components/ui/LonalizaLogo";
 import { useBrandName, useBranding } from "@/components/branding/BrandingProvider";
 import {
   HEADER_MAX_PRIMARY,
@@ -178,14 +181,33 @@ export default function Header() {
   const { getIcon } = useUiIcons();
   const branding = useBranding();
   const brandName = useBrandName(locale);
-  const logoSrc = branding.logoUrl || "/logo.png";
+  const logoSrc = branding.logoUrl || "/logo.svg?v=5";
   const { user, openAuth, logout } = useCustomerAuth();
+
+  const isOrigin = (process.env.NEXT_PUBLIC_DEPLOYMENT_ROLE || "origin") !== "client";
+  if (isOrigin && pathname === "/") {
+    return null;
+  }
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const headerHex = branding.colors.header || "#0f172a";
-  const onLight = hexLuminance(headerHex) > 0.45;
-  const switcherVariant = onLight ? "header-light" : "header";
+  const brandTheme = useBrandTheme();
+  const siteTheme: string = "light";
+
+  useEffect(() => {
+    try {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.dataset.siteTheme = "light";
+      localStorage.removeItem("lonaliza_site_theme");
+      if (brandTheme) {
+        applyBrandTheme(brandTheme, document.documentElement);
+      }
+    } catch {}
+  }, [brandTheme]);
+
+  const headerHex = "#ffffff";
+  const onLight = true;
+  const switcherVariant = "header-light";
 
   useEffect(() => {
     let cancelled = false;
@@ -202,24 +224,36 @@ export default function Header() {
     [holidayPkgs, locale]
   );
 
+  const [openSubMenus, setOpenSubMenus] = useState<Record<string, boolean>>({});
+
+  const toggleSubMenu = (key: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setOpenSubMenus((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const homeHref = pathname?.startsWith("/demo") ? "/demo" : "/";
+
   const allNavLinks: NavLink[] = useMemo(
     () => [
-      { key: "home", label: t.nav.home, href: "/" },
+      { key: "home", label: t.nav.home, href: homeHref },
+      { key: "flights", label: t.nav.flights, href: "/flights" },
+      { key: "hotels", label: t.nav.hotels, href: "/hotels" },
+      { key: "cars", label: t.nav.cars, href: "/cars" },
+      { key: "transfers", label: t.nav.transfers, href: "/transfers" },
       {
         key: "holidays",
         label: t.nav.holidays,
         href: "/holidays",
         children: holidayChildren,
       },
-      { key: "flights", label: t.nav.flights, href: "/flights" },
-      { key: "hotels", label: t.nav.hotels, href: "/hotels" },
       {
         key: "vipDailyTours",
         label: t.nav.vipDailyTours,
         href: "/vip-tours",
       },
-      { key: "transfers", label: t.nav.transfers, href: "/transfers" },
-      { key: "cars", label: t.nav.cars, href: "/cars" },
       {
         key: "visa",
         label: t.nav.visa,
@@ -232,12 +266,22 @@ export default function Header() {
           { label: t.nav.visaChange, href: "/visa?type=change" },
         ],
       },
-      { key: "uaeTours", label: t.nav.uaeTours, href: "/vip-tours" },
-      { key: "blog", label: t.nav.blog, href: "/blog" },
+      {
+        key: "community",
+        label: t.nav.community,
+        href: "/community",
+        children: [
+          { label: "تجارب ومنشورات المسافرين", href: "/community" },
+          { label: "ريلز السفر (Reels)", href: "/community/reels" },
+          { label: "لوحة المتصدرين ونقاط المكافآت", href: "/community/leaderboard" },
+        ],
+      },
       { key: "aiChat", label: t.nav.aiChat, href: "/ai-chat" },
       { key: "contact", label: t.nav.contact, href: "/contact" },
+      { key: "uaeTours", label: t.nav.uaeTours, href: "/vip-tours" },
+      { key: "blog", label: t.nav.blog, href: "/blog" },
     ],
-    [t, holidayChildren]
+    [t, holidayChildren, homeHref]
   );
 
   const navLinks = useMemo(() => {
@@ -320,31 +364,19 @@ export default function Header() {
   if (pathname?.startsWith("/admin")) return null;
   if (pathname?.startsWith("/flights/redirect")) return null;
 
-  const ink = onLight ? "text-slate-900" : "text-white";
-  const inkMuted = onLight ? "text-slate-600" : "text-white/80";
-  const navHover = onLight
-    ? "hover:bg-slate-900/5 hover:text-slate-950"
-    : "hover:bg-white/10 hover:text-white";
-  const navActive = onLight
-    ? "bg-slate-900/5 text-slate-950"
-    : "bg-white/10 text-white";
-  const iconTone = onLight ? "text-[#0a1628] alrayyan-chrome-icon" : "alrayyan-chrome-icon";
-  const hairline = onLight ? "border-slate-200" : "border-white/12";
-  const dropBg = onLight
-    ? "bg-white border-slate-200 shadow-xl"
-    : "bg-[#0a1628] border-white/10 shadow-2xl shadow-black/40";
-  const dropItem = onLight
-    ? "text-slate-700 hover:bg-slate-50 hover:text-slate-950"
-    : "text-white/80 hover:bg-white/10 hover:text-white";
-  const ghostBtn = onLight
-    ? "text-slate-800 hover:bg-slate-900/5"
-    : "text-white hover:bg-white/10";
-  const ctaClass = onLight
-    ? "bg-[#0a1628] text-white hover:bg-[#13233f]"
-    : "bg-emerald-500 text-white hover:bg-emerald-400";
+  const ink = "text-slate-900";
+  const inkMuted = "text-slate-900 font-semibold";
+  const navHover = "hover:bg-purple-50 hover:text-purple-950";
+  const navActive = "bg-purple-100/90 text-purple-950 font-bold shadow-2xs";
+  const iconTone = "text-[#1e1b4b] dark:text-[#1e1b4b] font-bold";
+  const hairline = "border-slate-200";
+  const dropBg = "bg-white border-slate-200 shadow-xl";
+  const dropItem = "text-slate-900 hover:bg-purple-50 hover:text-purple-950 font-semibold";
+  const ghostBtn = "text-slate-900 hover:bg-slate-100 font-semibold";
+  const ctaClass = "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white hover:brightness-110 font-bold shadow-sm";
 
-  const renderNavIcon = (key: NavLink["key"], size = 15) => (
-    <UiIcon icon={getIcon(navIconKey(key))} size={size} className={iconTone} />
+  const renderNavIcon = (key: NavLink["key"], size = 18) => (
+    <UiIcon icon={getIcon(navIconKey(key))} size={size} strokeWidth={2.2} className={iconTone} />
   );
 
   const renderDesktopLink = (link: NavLink) => {
@@ -385,28 +417,21 @@ export default function Header() {
 
   return (
     <header
-      className="alrayyan-site-header fixed top-0 inset-x-0 z-50 overflow-visible border-b shadow-[0_10px_28px_rgba(10,22,40,0.18)]"
+      className="alrayyan-site-header fixed top-0 inset-x-0 z-50 overflow-visible border-b border-slate-200/90 bg-white shadow-xs"
       style={{
-        backgroundColor: "var(--theme-header-glass, var(--brand-header))",
-        borderColor: "var(--theme-border-color)",
-        boxShadow: "var(--theme-shadow-md)",
+        backgroundColor: "#ffffff",
+        borderColor: "#e2e8f0",
+        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.05)",
       }}
     >
       <PwaInstallBanner />
       <div className="mx-auto max-w-[1600px] overflow-visible px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 overflow-visible py-2.5 lg:gap-4">
-          <Link href="/" className="z-50 flex shrink-0 items-center gap-2">
-            <BrandImage
-              src={logoSrc}
-              alt={brandName}
-              width={140}
-              height={48}
-              className="h-10 w-auto object-contain"
-              priority
-            />
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 overflow-visible py-2 lg:gap-4">
+          <Link href={homeHref} className="z-50 flex shrink-0 items-center gap-2">
+            <LonalizaLogo variant="header" />
             {branding.showWordmark ? (
               <span
-                className={cn("text-sm font-bold leading-tight sm:text-base", ink)}
+                className={cn("text-sm font-bold leading-tight sm:text-base text-slate-900")}
                 style={{ fontFamily: "var(--font-sora)" }}
               >
                 {brandName}
@@ -420,7 +445,7 @@ export default function Header() {
               {moreLinks.length ? (
                 <NavFlyout
                   label={t.nav.more}
-                  icon={<Ellipsis size={15} className={iconTone} />}
+                  icon={<Ellipsis size={18} strokeWidth={2.2} className={iconTone} />}
                   items={moreLinks.map((link) => ({
                     label: link.label,
                     href: link.href,
@@ -438,43 +463,49 @@ export default function Header() {
             </div>
           </nav>
 
-          <div className="hidden shrink-0 items-center justify-end gap-2 lg:flex xl:gap-2.5">
-            <LocaleCurrencySwitcher variant={switcherVariant} />
-            {user ? (
-              <ProfileMenu
-                user={user}
-                variant={switcherVariant}
-                onLogout={() => void logout()}
-              />
-            ) : (
+          <div className="z-50 flex shrink-0 items-center justify-end gap-2 sm:gap-2.5 justify-self-end">
+            <div className="hidden lg:flex items-center gap-2 xl:gap-2.5">
+              <LocaleCurrencySwitcher variant={switcherVariant} />
+              {user ? (
+                <ProfileMenu
+                  user={user}
+                  variant={switcherVariant}
+                  onLogout={() => void logout()}
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => openAuth("login")}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold",
+                    ghostBtn
+                  )}
+                >
+                  <UserRound size={15} />
+                  {t.auth.login}
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-1.5 xl:hidden">
+              <div className="lg:hidden">
+                <LocaleCurrencySwitcher variant={switcherVariant} />
+              </div>
               <button
                 type="button"
-                onClick={() => openAuth("login")}
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold",
-                  ghostBtn
+                  "flex min-h-10 min-w-10 items-center justify-center rounded-lg p-2",
+                  ink
                 )}
+                aria-label={t.common.menu}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-nav-drawer"
               >
-                <UserRound size={15} />
-                {t.auth.login}
+                <Menu size={22} />
               </button>
-            )}
+            </div>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            className={cn(
-              /* Agent D: mobile + search tabs */
-              "z-50 col-start-3 flex min-h-11 min-w-11 items-center justify-center justify-self-end rounded-lg p-2 xl:hidden",
-              ink
-            )}
-            aria-label={t.common.menu}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-nav-drawer"
-          >
-            <Menu size={24} />
-          </button>
         </div>
       </div>
 
@@ -488,7 +519,7 @@ export default function Header() {
                   ? "opacity-100"
                   : "pointer-events-none opacity-0"
               )}
-              style={{ backgroundColor: "var(--theme-overlay)" }}
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
               onClick={closeMobileMenu}
               aria-hidden
             />
@@ -499,34 +530,29 @@ export default function Header() {
               aria-label={t.common.menu}
               className={cn(
                 "fixed inset-y-0 start-0 z-[210] flex h-[100dvh] w-[min(100%,22rem)] flex-col shadow-2xl transition-transform duration-300 ease-out",
-                ink,
+                siteTheme === "dark"
+                  ? "bg-[#0a1628] text-white border-e border-white/10"
+                  : "bg-white text-slate-900 border-e border-slate-200",
                 isMobileMenuOpen
                   ? "translate-x-0"
                   : "pointer-events-none -translate-x-full rtl:translate-x-full"
               )}
-              style={{ backgroundColor: "var(--theme-header-glass, var(--brand-header))" }}
             >
               <div
                 className={cn(
-                  "flex items-center justify-between gap-3 border-b px-4 py-3",
-                  hairline
+                  "flex items-center justify-between gap-3 border-b px-4 py-3.5",
+                  siteTheme === "dark" ? "border-white/10 bg-white/[0.02]" : "border-slate-100 bg-slate-50/80"
                 )}
               >
                 <Link
-                  href="/"
+                  href={homeHref}
                   onClick={closeMobileMenu}
                   className="flex min-w-0 items-center gap-2"
                 >
-                  <BrandImage
-                    src={logoSrc}
-                    alt={brandName}
-                    width={140}
-                    height={48}
-                    className="h-9 w-auto object-contain"
-                  />
+                  <LonalizaLogo variant="header" />
                   {branding.showWordmark ? (
                     <span
-                      className="truncate text-sm font-bold leading-tight"
+                      className="truncate text-sm font-bold leading-tight text-slate-900"
                       style={{ fontFamily: "var(--font-sora)" }}
                     >
                       {brandName}
@@ -537,56 +563,93 @@ export default function Header() {
                   type="button"
                   onClick={closeMobileMenu}
                   className={cn(
-                    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full",
-                    ghostBtn
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors cursor-pointer",
+                    siteTheme === "dark"
+                      ? "text-white/60 hover:text-white hover:bg-white/10"
+                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-200/80"
                   )}
                   aria-label={t.common.cancel}
                 >
-                  <X size={22} />
+                  <X size={20} />
                 </button>
               </div>
 
-              <nav className="flex-1 overflow-y-auto overscroll-contain px-3 py-2">
+              <nav className="flex-1 overflow-y-auto overscroll-contain px-3 py-2.5 space-y-1">
                 {navLinks.map((link) => {
                   const active = linkIsActive(pathname, link.href);
+                  const hasChildren = Boolean(link.children && link.children.length > 0);
+                  const isOpen = Boolean(openSubMenus[link.key]);
+
                   return (
                     <div
                       key={link.href + link.label}
                       className={cn(
                         "border-b last:border-b-0",
-                        onLight ? "border-slate-100" : "border-white/10"
+                        siteTheme === "dark" ? "border-white/10" : "border-slate-100"
                       )}
                     >
-                      <Link
-                        href={link.href}
-                        onClick={closeMobileMenu}
-                        className={cn(
-                          "flex min-h-11 items-center gap-2.5 rounded-xl px-3 text-base font-semibold",
-                          ink,
-                          onLight ? "hover:bg-slate-900/5" : "hover:bg-white/10",
-                          active && navActive
-                        )}
-                      >
-                        {renderNavIcon(link.key, 18)}
-                        {link.label}
-                      </Link>
-                      {link.children ? (
-                        <div
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={link.href}
+                          onClick={closeMobileMenu}
                           className={cn(
-                            "mb-1 ms-3 border-s ps-2",
-                            onLight ? "border-slate-200" : "border-white/10"
+                            "flex flex-1 min-h-11 items-center gap-2.5 rounded-xl px-3 text-sm font-bold transition-colors",
+                            siteTheme === "dark"
+                              ? active
+                                ? "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                                : "text-white/85 hover:bg-white/10 hover:text-white"
+                              : active
+                              ? "bg-amber-500/15 text-amber-900 border border-amber-500/30"
+                              : "text-slate-800 hover:bg-slate-100 hover:text-slate-950"
                           )}
                         >
-                          {link.children.map((child) => (
+                          {renderNavIcon(link.key, 18)}
+                          <span>{link.label}</span>
+                        </Link>
+
+                        {hasChildren ? (
+                          <button
+                            type="button"
+                            onClick={(e) => toggleSubMenu(link.key, e)}
+                            className={cn(
+                              "flex h-11 w-11 items-center justify-center rounded-xl transition-colors cursor-pointer shrink-0",
+                              siteTheme === "dark"
+                                ? "text-white/60 hover:bg-white/10 hover:text-white"
+                                : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                            )}
+                            aria-label={`تبديل قائمة ${link.label}`}
+                            aria-expanded={isOpen}
+                          >
+                            <ChevronDown
+                              size={18}
+                              className={cn(
+                                "transition-transform duration-200",
+                                isOpen && "rotate-180"
+                              )}
+                            />
+                          </button>
+                        ) : null}
+                      </div>
+
+                      {hasChildren && isOpen ? (
+                        <div
+                          className={cn(
+                            "mb-2 ms-4 border-s-2 border-amber-400/80 ps-2.5 py-1 space-y-1 transition-all duration-200 rounded-e-xl",
+                            siteTheme === "dark"
+                              ? "bg-white/[0.04] text-white/80"
+                              : "bg-slate-50/90 text-slate-700"
+                          )}
+                        >
+                          {link.children!.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
                               onClick={closeMobileMenu}
                               className={cn(
-                                "flex min-h-11 items-center rounded-xl px-3 text-sm font-medium",
-                                onLight
-                                  ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-950"
-                                  : "text-white/75 hover:bg-white/10 hover:text-white"
+                                "flex min-h-10 items-center rounded-lg px-3 text-xs font-semibold transition-colors",
+                                siteTheme === "dark"
+                                  ? "text-white/75 hover:bg-white/10 hover:text-white"
+                                  : "text-slate-700 hover:bg-white hover:text-slate-950"
                               )}
                             >
                               {child.label}
@@ -599,17 +662,24 @@ export default function Header() {
                 })}
               </nav>
 
-              <div className={cn("border-t px-4 py-4", hairline)}>
-                <LocaleCurrencySwitcher variant={switcherVariant} />
+              <div
+                className={cn(
+                  "border-t px-4 py-4 space-y-3",
+                  siteTheme === "dark"
+                    ? "border-white/10 bg-white/[0.02]"
+                    : "border-slate-200 bg-slate-50/80"
+                )}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <LocaleCurrencySwitcher variant="header-light" />
+                </div>
+
                 {user ? (
-                  <div className="mt-4 space-y-2">
+                  <div className="space-y-2">
                     <Link
                       href="/account"
                       onClick={closeMobileMenu}
-                      className={cn(
-                        "flex min-h-11 w-full items-center justify-center rounded-full text-sm font-bold",
-                        ctaClass
-                      )}
+                      className="flex min-h-11 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white text-sm font-bold shadow-md shadow-purple-500/20 transition-all"
                     >
                       {t.auth.account}
                     </Link>
@@ -617,9 +687,10 @@ export default function Header() {
                       href="/account?tab=bookings"
                       onClick={closeMobileMenu}
                       className={cn(
-                        "flex min-h-11 w-full items-center justify-center rounded-full border text-sm font-bold",
-                        hairline,
-                        ink
+                        "flex min-h-11 w-full items-center justify-center rounded-2xl border text-sm font-bold transition-all",
+                        siteTheme === "dark"
+                          ? "border-white/15 text-white hover:bg-white/10"
+                          : "bg-white border-slate-200 text-slate-800 hover:bg-slate-100 shadow-2xs"
                       )}
                     >
                       {t.account.navBookings}
@@ -631,9 +702,10 @@ export default function Header() {
                         void logout();
                       }}
                       className={cn(
-                        "flex min-h-11 w-full items-center justify-center rounded-full border text-sm font-bold",
-                        hairline,
-                        ink
+                        "flex min-h-11 w-full items-center justify-center rounded-2xl border text-sm font-bold transition-all cursor-pointer",
+                        siteTheme === "dark"
+                          ? "border-rose-500/30 text-rose-300 hover:bg-rose-500/20"
+                          : "border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100"
                       )}
                     >
                       {t.auth.logout}
@@ -646,11 +718,7 @@ export default function Header() {
                       closeMobileMenu();
                       openAuth("login");
                     }}
-                    className={cn(
-                      "mt-4 flex min-h-11 w-full items-center justify-center rounded-full border text-sm font-bold",
-                      hairline,
-                      ink
-                    )}
+                    className="flex min-h-11 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white text-sm font-bold shadow-md shadow-purple-500/20 transition-all cursor-pointer"
                   >
                     {t.auth.login}
                   </button>

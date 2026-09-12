@@ -64,7 +64,7 @@ export type GeminiBuilderResult = {
   } | null;
 };
 
-const HOMEPAGE_SYSTEM = `أنت محرر الصفحة الرئيسية لموقع وكالة سفر (الريان للسياحة / Alrayyan Tourism).
+const HOMEPAGE_SYSTEM = `أنت محرر الصفحة الرئيسية لموقع وكالة سفر (لوناليزا للسياحة والسفر / Lonaliza Travel).
 /* Agent C: the agent SHOULD redesign structure when asked, not only tweak tokens. */
 لديك مساران:
 أ) تعديل عميق على الملفات: resolveSectionSource → readProjectFile → applyProjectPatch أو createHomepageSection
@@ -167,7 +167,7 @@ SectionBlock (قسم تصميم جديد على الصفحة):
 - «أضف بطاقة عرض» مع وسم flashDeals → addOffer
 - عند وسم عنصر (itemId) استخدم upsert* أو remove* لذلك الـ id`;
 
-const THEME_SYSTEM = `أنت مصمم صفحات لموقع الريان للسياحة (Alrayyan Tourism).
+const THEME_SYSTEM = `أنت مصمم صفحات لموقع لوناليزا للسياحة والسفر (Lonaliza Travel).
 الصفحة الحالية ليست الصفحة الرئيسية — لا تعدّل أقسام قالب الهوم.
 يمكنك فقط تطبيق رموز هوية (theme tokens) وتلميحات تخطيط بسيطة.
 
@@ -187,7 +187,7 @@ const THEME_SYSTEM = `أنت مصمم صفحات لموقع الريان للس�
 - createPage فقط إذا طلب المستخدم إنشاء صفحة جديدة
 - لا تخترع أسعاراً أو مسارات غير موجودة`;
 
-const CUSTOM_SYSTEM = `أنت محرر صفحات مخصصة على المسار /p/[slug] لموقع الريان للسياحة.
+const CUSTOM_SYSTEM = `أنت محرر صفحات مخصصة على المسار /p/[slug] لموقع لوناليزا للسياحة والسفر.
 يمكنك تغيير العنوان وقائمة الأقسام والألوان.
 
 أعد دائماً:

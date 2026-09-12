@@ -58,12 +58,12 @@ function AdminLoginForm() {
         <div className="text-center mb-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
-            alt="Alrayyan Tourism"
+            src="/logo.svg?v=5"
+            alt="Lonaliza"
             className="mx-auto h-16 w-auto object-contain mb-5"
           />
           <h1 className="text-3xl font-bold text-white tracking-tight">
-            Alrayyan Tourism
+            Lonaliza
           </h1>
           <p className="text-white/40 text-sm mt-1.5 font-medium">
             Admin Control Panel
@@ -150,7 +150,7 @@ function AdminLoginForm() {
         </div>
 
         <p className="text-center text-white/20 text-xs mt-6">
-          Alrayyan Tourism · Admin Portal
+          Lonaliza · Admin Portal
         </p>
       </div>
     </div>

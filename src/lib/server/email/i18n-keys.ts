@@ -129,7 +129,7 @@ export const EMAIL_I18N_SEED: Record<string, EmailI18nLocales> = {
     "{{brand}} — {{host}}"
   ),
   "email.templates.offers-reminder.subject": triple(
-    "{{offer_title}} — عرض من الريان للسياحة",
+    "{{offer_title}} — عرض من لوناليزا للسياحة والسفر",
     "{{offer_title}} — offer from Alrayyan Tourism",
     "{{offer_title}} — Alrayyan Turizm teklifi"
   ),
@@ -199,7 +199,7 @@ export const EMAIL_I18N_SEED: Record<string, EmailI18nLocales> = {
     "Rezervasyonunuz tarafımızca alındı"
   ),
   "email.templates.booking-success.lead": triple(
-    "شكراً {{name}}. فريق الريان راجع طلبك وسيتابع معك عند الحاجة.",
+    "شكراً {{name}}. فريق لوناليزا راجع طلبك وسيتابع معك عند الحاجة.",
     "Thank you {{name}}. The Alrayyan team has your request and will follow up if needed.",
     "Teşekkürler {{name}}. Alrayyan ekibi talebinizi aldı ve gerekirse sizinle iletişime geçer."
   ),
@@ -215,7 +215,7 @@ export const EMAIL_I18N_SEED: Record<string, EmailI18nLocales> = {
   ),
   "email.templates.booking-invoice.heading": triple("فاتورة الدفع", "Payment invoice", "Ödeme faturası"),
   "email.templates.booking-invoice.lead": triple(
-    "{{name}}، تم تأكيد الدفع عبر البطاقة. هذه فاتورة حجزك لدى الريان.",
+    "{{name}}، تم تأكيد الدفع عبر البطاقة. هذه فاتورة حجزك لدى لوناليزا.",
     "{{name}}, card payment is confirmed. This is your Alrayyan booking invoice.",
     "{{name}}, kart ödemeniz onaylandı. Bu Alrayyan rezervasyon faturanızdır."
   ),
@@ -261,7 +261,7 @@ const SERVICE_REMINDER_COPY = {
 const SERVICE_SUCCESS_COPY = {
   heading: triple("تم استلام طلبك", "We received your request", "Talebiniz alındı"),
   lead: triple(
-    "شكراً {{name}}. فريق الريان راجع {{service_name}} وسيتواصل عند الحاجة.",
+    "شكراً {{name}}. فريق لوناليزا راجع {{service_name}} وسيتواصل عند الحاجة.",
     "Thank you {{name}}. The Alrayyan team has {{service_name}} and will follow up if needed.",
     "Teşekkürler {{name}}. Alrayyan ekibi {{service_name}} talebinizi aldı ve gerekirse sizinle iletişime geçer."
   ),

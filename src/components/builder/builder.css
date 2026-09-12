@@ -10,7 +10,7 @@
   --builder-muted-foreground: 215 16% 47%;
   --builder-card: 0 0% 100%;
   --builder-border: 214 32% 91%;
-  --builder-primary: 160 84% 39%;
+  --builder-primary: 38 92% 50%;
   --builder-radius: 0.6rem;
   --ed-bg: 210 20% 97%;
   --ed-bg-hex: #f4f6f8;
@@ -26,17 +26,17 @@
   --ed-input-bg: 0 0% 100%;
   --ed-input-border: 214 18% 84%;
   --ed-hover: 210 16% 94%;
-  --ed-accent: 160 84% 39%;
-  --ed-accent-fg: 165 72% 10%;
+  --ed-accent: 38 92% 50%;
+  --ed-accent-fg: 275 80% 10%;
   --ed-canvas: 210 16% 93%;
   --ed-canvas-hex: #e8ecf0;
-  --ed-rail: #051741;
-  --ed-rail-text: #e8f8f0;
+  --ed-rail: #18052e;
+  --ed-rail-text: #fef08a;
   --ed-topbar: 0 0% 100%;
   --ed-shadow: 0 8px 24px -12px rgba(15, 23, 42, 0.18);
   --background: #f4f6f8;
   --foreground: #161b22;
-  --heading: #051741;
+  --heading: #1e1b4b;
   --card: #ffffff;
   --card-foreground: #161b22;
   --muted: #eef2f6;
@@ -46,14 +46,14 @@
   --popover-foreground: #161b22;
   --secondary: #e8eef5;
   --secondary-foreground: #161b22;
-  --accent-foreground: #042f2e;
+  --accent-foreground: #451a03;
   --input: #d8dee6;
-  --primary-foreground: #042f2e;
+  --primary-foreground: #020617;
   --sidebar: #ffffff;
   --sidebar-foreground: #161b22;
   --sidebar-border: #d8dee6;
-  --sidebar-accent: #ecfdf5;
-  --sidebar-accent-foreground: #047857;
+  --sidebar-accent: #fef3c7;
+  --sidebar-accent-foreground: #b45309;
   --sidebar-muted: #64748b;
   --admin-bg: #f4f6f8;
   --admin-surface: #ffffff;
@@ -104,12 +104,12 @@
   --ed-input-bg: 222 22% 14%;
   --ed-input-border: 220 14% 28%;
   --ed-hover: 222 18% 18%;
-  --ed-accent: 160 72% 42%;
-  --ed-accent-fg: 160 40% 8%;
+  --ed-accent: 38 92% 50%;
+  --ed-accent-fg: 38 100% 95%;
   --ed-canvas: 222 30% 7%;
   --ed-canvas-hex: #0b1017;
-  --ed-rail: #07101c;
-  --ed-rail-text: #d7e4ef;
+  --ed-rail: #140526;
+  --ed-rail-text: #fef08a;
   --ed-topbar: 222 24% 11%;
   --ed-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55);
   --background: #0e131b;
@@ -124,14 +124,14 @@
   --popover-foreground: #eef2f6;
   --secondary: #1a2230;
   --secondary-foreground: #e2e8f0;
-  --accent-foreground: #ecfdf5;
+  --accent-foreground: #fef3c7;
   --input: #2a3344;
-  --primary-foreground: #042f2e;
+  --primary-foreground: #020617;
   --sidebar: #161c27;
   --sidebar-foreground: #e2e8f0;
   --sidebar-border: #2a3344;
-  --sidebar-accent: rgba(16, 185, 129, 0.14);
-  --sidebar-accent-foreground: #34d399;
+  --sidebar-accent: rgba(245, 158, 11, 0.15);
+  --sidebar-accent-foreground: #fbbf24;
   --sidebar-muted: #94a3b8;
   --admin-bg: #0e131b;
   --admin-surface: #161c27;
@@ -179,12 +179,12 @@
 }
 
 #builder-root .builder-gradient-brand {
-  background: linear-gradient(135deg, #051741 0%, #0b3d4a 48%, #10b981 100%);
-  color: #ecfdf5;
+  background: linear-gradient(135deg, #18052e 0%, #2e1065 48%, #f59e0b 100%);
+  color: #fef08a;
 }
 
 #builder-root .builder-gradient-text {
-  background: linear-gradient(90deg, #051741 0%, #047857 55%, #10b981 100%);
+  background: linear-gradient(90deg, #2e1065 0%, #7c3aed 55%, #f59e0b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -196,7 +196,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: hsl(142 71% 45%);
+  background: hsl(38 92% 50%);
 }
 #builder-root .builder-status-dot::after {
   content: "";
@@ -208,7 +208,7 @@
   animation: builder-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 #builder-root .builder-status-dot.is-thinking { background: hsl(45 95% 55%); }
-#builder-root .builder-status-dot.is-applying { background: hsl(160 84% 39%); }
+#builder-root .builder-status-dot.is-applying { background: hsl(38 92% 50%); }
 
 @keyframes builder-ping {
   0% { transform: scale(1); opacity: 0.55; }
@@ -237,8 +237,8 @@
 }
 
 #builder-root .builder-msg-user {
-  background: linear-gradient(135deg, #051741, #047857);
-  color: #ecfdf5;
+  background: linear-gradient(135deg, #18052e, #4c1d95);
+  color: #fef08a;
   border-radius: 1rem 1rem 0.25rem 1rem;
   padding: 0.65rem 0.85rem;
   font-size: 0.8125rem;
@@ -270,9 +270,9 @@
 }
 
 #builder-root {
-  --primary: #10b981;
-  --primary-foreground: #051741;
-  --ring: #10b981;
+  --primary: #f59e0b;
+  --primary-foreground: #020617;
+  --ring: #f59e0b;
   --preview-violet-50: #f5f3ff;
   --preview-violet-100: #ede9fe;
   --preview-violet-200: #ddd6fe;

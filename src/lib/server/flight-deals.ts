@@ -77,6 +77,9 @@ const CITY_PHOTOS: Record<string, string> = {
   NYC: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200",
   AMM: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200",
   BEY: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200",
+  KWI: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200",
+  BAH: "https://images.unsplash.com/photo-1512453979798-5ea7fdf1bed4?w=1200",
+  MCT: "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=1200",
 };
 
 let refreshInFlight: Promise<HomepageFlightDealsPayload> | null = null;
@@ -274,7 +277,7 @@ function staticTpDeal(origin: ArabCapital, dest: TurkeyFlightDest, price: number
     ...capitalNames(origin),
     destIata: dest.iata,
     ...destNames(dest),
-    destImage: dest.image,
+    destImage: cityPhoto(origin.iata, dest.image),
     price,
     currency: "USD",
     href: tpHref(origin.iata, dest.iata),

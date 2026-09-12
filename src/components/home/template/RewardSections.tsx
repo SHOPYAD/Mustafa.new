@@ -101,10 +101,10 @@ export function CouponsSection({ instance, editorMode, selectedId }: SectionProp
                     key={card.title}
                     className="rounded-[var(--radius-card)] border border-[color:color-mix(in_srgb,var(--brand-accent)_8%,transparent)] bg-white/90 p-5 shadow-[0_16px_36px_-28px_rgba(5,23,65,0.35)]"
                   >
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[color:color-mix(in_srgb,var(--brand-primary)_14%,white)] text-[var(--brand-primary)]">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-900">
                       <Icon size={18} />
                     </span>
-                    <p className="mt-4 text-sm font-bold text-[var(--brand-accent)]">{card.title}</p>
+                    <p className="mt-4 text-sm font-extrabold text-slate-900">{card.title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-slate-500">{card.hint}</p>
                   </div>
                 );
@@ -151,7 +151,7 @@ export function PointsSection({ instance, editorMode, selectedId }: SectionProps
       icon: Gift,
       label: settings?.enabled === false ? "—" : locale === "ar" ? "مفعّل" : "Live",
       title: locale === "ar" ? "برنامج الولاء" : "Loyalty program",
-      hint: locale === "ar" ? "نفس الهوية على كل خدمات الريان." : "The same program across every Alrayyan service.",
+      hint: locale === "ar" ? "نفس الهوية على كل خدمات لوناليزا." : "The same program across every Lonaliza service.",
     },
   ];
 
@@ -171,9 +171,9 @@ export function PointsSection({ instance, editorMode, selectedId }: SectionProps
                   <span className="absolute end-4 top-4 text-xs font-semibold text-slate-300">
                     0{index + 1}
                   </span>
-                  <Icon size={20} className="text-[var(--brand-primary)]" />
-                  <p className="mt-4 text-3xl font-bold text-[var(--brand-accent)]">{card.label}</p>
-                  <p className="mt-1 text-sm font-semibold text-[var(--brand-accent)]">{card.title}</p>
+                  <Icon size={20} className="text-purple-700" />
+                  <p className="mt-4 text-3xl font-black text-slate-900">{card.label}</p>
+                  <p className="mt-1 text-sm font-bold text-purple-700">{card.title}</p>
                   <p className="mt-1 text-sm leading-relaxed text-slate-500">{card.hint}</p>
                 </div>
               );
@@ -214,17 +214,17 @@ export function AffiliateSection({ instance, editorMode, selectedId }: SectionPr
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <RewardIntro instance={instance} editorMode={editorMode} />
           <div className="overflow-hidden rounded-[var(--radius-card)] border border-[color:color-mix(in_srgb,var(--brand-accent)_8%,transparent)] bg-white/90 shadow-[0_20px_48px_-32px_rgba(5,23,65,0.4)]">
-            <div className="flex items-center justify-between gap-3 border-b border-slate-100 bg-[var(--brand-header)] px-5 py-4 text-white">
-              <p className="text-sm font-semibold">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-100 bg-gradient-to-r from-[#18052e] to-[#2e1065] px-5 py-4 text-white">
+              <p className="text-sm font-bold">
                 {locale === "ar" ? "عمولة حسب الخدمة" : "Commission by service"}
               </p>
-              <Share2 size={16} className="text-[var(--brand-primary)]" />
+              <Share2 size={16} className="text-amber-400" />
             </div>
             <div className="divide-y divide-slate-100">
               {rows.map(([key, label, rule]) => (
                 <div key={key} className="flex items-center justify-between px-5 py-3.5">
-                  <span className="text-sm font-semibold text-[var(--brand-accent)]">{label}</span>
-                  <span className="text-sm font-bold text-[var(--brand-primary)]">
+                  <span className="text-sm font-bold text-slate-900">{label}</span>
+                  <span className="text-sm font-black text-amber-500">
                     {rule.type === "percent" ? `${rule.value}%` : `$${rule.value}`}
                   </span>
                 </div>
@@ -289,7 +289,7 @@ export function BannersSection({ instance, editorMode, selectedId }: SectionProp
                   editorMode={editorMode}
                   instance={instance}
                   field={`banner-${dest.id}`}
-                  className={`group relative block overflow-hidden rounded-[1.35rem] shadow-[0_22px_48px_-28px_rgba(5,23,65,0.55)] ring-1 ring-[#051741]/10 ${
+                  className={`group relative block overflow-hidden rounded-[1.35rem] shadow-[0_22px_48px_-28px_rgba(24,5,46,0.65)] ring-1 ring-purple-950/10 ${
                     tall ? "min-h-[280px] sm:min-h-[300px]" : "min-h-[240px]"
                   }`}
                 >
@@ -302,27 +302,27 @@ export function BannersSection({ instance, editorMode, selectedId }: SectionProp
                     builderField={`banner-${dest.id}`}
                     builderInstanceId={instance.instanceId}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#051741] via-[#051741]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#18052e] via-[#18052e]/40 to-transparent" />
                   <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
-                      <MapPin size={11} />
+                      <MapPin size={11} className="text-amber-400" />
                       {tContent(dest, "country", locale)}
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2 py-1 text-[11px] font-bold text-[#051741]">
-                      <Star size={11} className="fill-[#051741]" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 text-[11px] font-black text-slate-950 shadow-sm">
+                      <Star size={11} className="fill-slate-950" />
                       {dest.rating}
                     </span>
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                    <h3 className="text-2xl font-bold tracking-tight">{name}</h3>
-                    <p className="mt-1 line-clamp-1 text-sm text-white/70">
+                    <h3 className="text-2xl font-black tracking-tight text-white">{name}</h3>
+                    <p className="mt-1 line-clamp-1 text-sm text-white/80 font-medium">
                       {tContent(dest, "tagline", locale)}
                     </p>
                     <div className="mt-4 flex items-center justify-between text-sm">
-                      <span className="font-semibold text-emerald-300">
+                      <span className="font-black text-amber-300">
                         {t.common.from} ${dest.startingPrice}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-white/85 transition group-hover:translate-x-0.5 group-hover:text-emerald-200 rtl:group-hover:-translate-x-0.5">
+                      <span className="inline-flex items-center gap-1 text-white/90 font-bold transition group-hover:translate-x-0.5 group-hover:text-amber-300 rtl:group-hover:-translate-x-0.5">
                         {dest.packages} {t.home.packagesCount}
                         <ArrowUpRight size={14} />
                       </span>

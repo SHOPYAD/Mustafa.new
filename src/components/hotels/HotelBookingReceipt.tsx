@@ -1,6 +1,6 @@
 "use client";
 
-import { BedDouble, CalendarDays, Download, MessageCircle, Star, Users } from "lucide-react";
+import { AlertTriangle, BedDouble, CalendarDays, CheckCircle2, Download, Loader2, MessageCircle, Star, Users } from "lucide-react";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
@@ -28,7 +28,83 @@ export type HotelReceiptModel = {
   payment_status: string;
   confirm: string;
   service?: "flight" | "hotel" | "transfer" | "car" | "package" | "tour" | "visa";
+  /** Supplier reservation state for quote-backed bookings (see hotel-booking-confirm.ts). */
+  fulfilment_status?: string;
+  supplier?: string;
+  supplier_reference?: string;
+  hotel_confirmation_code?: string;
+  fulfilment_error?: string;
 };
+
+const FULFILMENT_COPY: Record<string, Record<"ar" | "en" | "tr", { title: string; body: string }>> = {
+  pending: {
+    ar: { title: "جارٍ تأكيد الحجز مع الفندق", body: "استلمنا دفعتك ونقوم الآن بتثبيت الغرفة لدى المورد. يستغرق ذلك عادةً أقل من دقيقة، وسنرسل الفوشر إلى بريدك فور التأكيد." },
+    en: { title: "Confirming with the hotel", body: "Your payment is received and we are securing the room with the supplier. This usually takes under a minute; the voucher is e-mailed as soon as it is confirmed." },
+    tr: { title: "Otel ile onaylanıyor", body: "Ödemeniz alındı, oda tedarikçi nezdinde teyit ediliyor. Bu genellikle bir dakikadan kısa sürer; voucher onaylanır onaylanmaz e-postanıza gönderilir." },
+  },
+  confirmed: {
+    ar: { title: "تم تأكيد الحجز مع الفندق", body: "الغرفة مثبّتة باسمك. رقم تأكيد الفندق مذكور أدناه، والفوشر الرسمي أُرسل إلى بريدك الإلكتروني." },
+    en: { title: "Confirmed with the hotel", body: "The room is secured in your name. The hotel confirmation number is below and the official voucher has been e-mailed to you." },
+    tr: { title: "Otel ile onaylandı", body: "Oda adınıza teyit edildi. Otel onay numarası aşağıda; resmi voucher e-postanıza gönderildi." },
+  },
+  failed: {
+    ar: { title: "تعذّر تثبيت الغرفة لدى الفندق", body: "لم يقبل المورد الحجز بعد الدفع. تم بدء استرداد المبلغ كاملاً إلى وسيلة الدفع نفسها تلقائياً، وسيتواصل معك فريقنا لاختيار بديل." },
+    en: { title: "The hotel could not confirm the room", body: "The supplier rejected the reservation after payment. A full refund to the same payment method has been started automatically and our team will contact you with alternatives." },
+    tr: { title: "Otel odayı teyit edemedi", body: "Tedarikçi ödeme sonrası rezervasyonu kabul etmedi. Aynı ödeme yöntemine tam iade otomatik olarak başlatıldı; ekibimiz alternatifler için sizinle iletişime geçecek." },
+  },
+  refunded: {
+    ar: { title: "تم استرداد المبلغ", body: "أُعيد المبلغ إلى وسيلة الدفع نفسها. قد يستغرق ظهوره في كشف حسابك من 3 إلى 10 أيام عمل حسب البنك." },
+    en: { title: "Refund issued", body: "The amount has been returned to the same payment method. It may take 3–10 business days to appear on your statement depending on your bank." },
+    tr: { title: "İade yapıldı", body: "Tutar aynı ödeme yöntemine iade edildi. Bankanıza göre hesap özetinizde görünmesi 3–10 iş günü sürebilir." },
+  },
+};
+
+function fulfilmentKind(status?: string): keyof typeof FULFILMENT_COPY | null {
+  switch (status) {
+    case "supplier_pending":
+      return "pending";
+    case "supplier_confirmed":
+    case "voucher_sent":
+      return "confirmed";
+    case "supplier_failed":
+    case "refund_pending":
+    case "refund_failed":
+      return "failed";
+    case "refunded":
+      return "refunded";
+    default:
+      return null;
+  }
+}
+
+export function FulfilmentBanner({ booking, locale }: { booking: HotelReceiptModel; locale: string }) {
+  const kind = fulfilmentKind(booking.fulfilment_status);
+  if (!kind) return null;
+  const lang = (locale === "en" || locale === "tr" ? locale : "ar") as "ar" | "en" | "tr";
+  const copy = FULFILMENT_COPY[kind][lang];
+  const tone =
+    kind === "confirmed"
+      ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+      : kind === "pending"
+        ? "border-sky-200 bg-sky-50 text-sky-950"
+        : "border-amber-300 bg-amber-50 text-amber-950";
+  const Icon = kind === "confirmed" ? CheckCircle2 : kind === "pending" ? Loader2 : AlertTriangle;
+  const code = booking.hotel_confirmation_code || booking.supplier_reference || "";
+  return (
+    <div className={`flex items-start gap-3 rounded-2xl border px-4 py-3 ${tone}`} role="status" aria-live="polite">
+      <Icon size={18} className={`mt-0.5 shrink-0 ${kind === "pending" ? "animate-spin" : ""}`} />
+      <div className="min-w-0 text-sm">
+        <p className="font-bold">{copy.title}</p>
+        <p className="mt-0.5 leading-relaxed opacity-90">{copy.body}</p>
+        {kind === "confirmed" && code ? (
+          <p className="mt-1.5 font-semibold" dir="ltr">
+            {lang === "ar" ? "رقم تأكيد الفندق:" : lang === "tr" ? "Otel onay no:" : "Hotel confirmation no.:"} {code}
+          </p>
+        ) : null}
+      </div>
+    </div>
+  );
+}
 
 type Props = {
   booking: HotelReceiptModel;
@@ -42,7 +118,7 @@ function isPaid(booking: HotelReceiptModel, paymentQuery?: string): boolean {
 }
 
 export default function HotelBookingReceipt({ booking, paymentQuery, onReopenWhatsApp }: Props) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { formatPrice } = useCurrency();
   const cardPaid = booking.payment_method === "card" && isPaid(booking, paymentQuery);
   const whatsappPath = booking.payment_method === "whatsapp";
@@ -114,6 +190,7 @@ export default function HotelBookingReceipt({ booking, paymentQuery, onReopenWha
 
         <div className="flex flex-col justify-between gap-5 bg-[#fbf7f0] p-5 md:p-7">
           <div className="space-y-4">
+            <FulfilmentBanner booking={booking} locale={locale} />
             {cardPaid ? (
               <div className="rounded-2xl bg-[#051741] px-4 py-4 text-white">
                 <p className="text-lg font-bold leading-snug">{t.hotels.bookingPaid}</p>

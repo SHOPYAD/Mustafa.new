@@ -35,6 +35,25 @@ export function persistLocale(scope: LocaleScope, locale: string) {
   writeCookie(key, locale);
 }
 
+/**
+ * Detects the client's device/browser language preference intelligently.
+ * Supports Arabic, French, Turkish, and English.
+ */
+export function detectBrowserLocale(): "ar" | "en" | "tr" | "fr" {
+  if (typeof window === "undefined" || typeof navigator === "undefined") return "ar";
+  const navLanguages =
+    navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+  for (const lang of navLanguages) {
+    if (!lang) continue;
+    const l = lang.toLowerCase().trim();
+    if (l.startsWith("ar")) return "ar";
+    if (l.startsWith("fr")) return "fr";
+    if (l.startsWith("tr")) return "tr";
+    if (l.startsWith("en")) return "en";
+  }
+  return "ar";
+}
+
 export function loadLocale(scope: LocaleScope): string {
   if (typeof window === "undefined") return "ar";
   const key = localeStorageKey(scope);
@@ -47,6 +66,10 @@ export function loadLocale(scope: LocaleScope): string {
         persistLocale("site", legacy);
         return legacy;
       }
+      // Smart auto-detection based on client device language
+      const detected = detectBrowserLocale();
+      persistLocale("site", detected);
+      return detected;
     }
   } catch {
     /* ignore */

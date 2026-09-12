@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { BarChart3, ChevronLeft, ChevronRight } from "lucide-react";
 import { addDays, format } from "date-fns";
 import { ar, enUS, tr } from "date-fns/locale";
@@ -22,6 +22,7 @@ type Props = {
   query: FlightSearchQuery;
   copy: FlightCopy;
   onSelectDate: (date: string) => void;
+  minLivePrice?: number;
 };
 
 function dfOf(locale: string) {
@@ -29,6 +30,8 @@ function dfOf(locale: string) {
   if (locale === "tr") return tr;
   return enUS;
 }
+
+const CLIENT_CALENDAR_CACHE = new Map<string, CalendarDayPrice[]>();
 
 export function useRouteCalendarPrices(
   origin: AirportPick | null,
@@ -38,29 +41,46 @@ export function useRouteCalendarPrices(
 ) {
   const [days, setDays] = useState<CalendarDayPrice[]>([]);
   const [loading, setLoading] = useState(false);
-  const routeReady = Boolean(origin?.skyId && destination?.skyId && origin.entityId && destination.entityId);
+  const originSkyId = origin?.skyId || "";
+  const destinationSkyId = destination?.skyId || "";
+  const originEntityId = origin?.entityId || "";
+  const destinationEntityId = destination?.entityId || "";
+  const routeReady = Boolean(originSkyId && destinationSkyId && originEntityId && destinationEntityId);
+  const cacheKey = `${originSkyId}_${destinationSkyId}_${currency}_${date || ""}`;
 
   useEffect(() => {
     if (!routeReady) {
       setDays([]);
       return;
     }
+
+    if (CLIENT_CALENDAR_CACHE.has(cacheKey)) {
+      setDays(CLIENT_CALENDAR_CACHE.get(cacheKey)!);
+      return;
+    }
+
     const center = parseYmd(date) || new Date();
-    const from = ymdOf(new Date(center.getFullYear(), center.getMonth(), 1));
-    const to = ymdOf(addDays(new Date(center.getFullYear(), center.getMonth() + 2, 1), -1));
+    const today = new Date();
+    const from = ymdOf(new Date(today.getFullYear(), today.getMonth(), 1));
+    const horizon = addDays(new Date(center.getFullYear(), center.getMonth(), center.getDate()), 60);
+    const to = ymdOf(new Date(horizon.getFullYear(), horizon.getMonth() + 1, 0));
     let cancelled = false;
     setLoading(true);
+
     void priceCalendar({
-      originSkyId: origin!.skyId,
-      destinationSkyId: destination!.skyId,
-      originEntityId: origin!.entityId,
-      destinationEntityId: destination!.entityId,
+      originSkyId,
+      destinationSkyId,
+      originEntityId,
+      destinationEntityId,
       fromDate: from,
       toDate: to,
       currency,
     })
       .then((rows) => {
-        if (!cancelled) setDays(rows);
+        if (!cancelled && rows.length > 0) {
+          CLIENT_CALENDAR_CACHE.set(cacheKey, rows);
+          setDays(rows);
+        }
       })
       .catch(() => {
         if (!cancelled) setDays([]);
@@ -68,23 +88,34 @@ export function useRouteCalendarPrices(
       .finally(() => {
         if (!cancelled) setLoading(false);
       });
+
     return () => {
       cancelled = true;
     };
-  }, [origin, destination, date, currency, routeReady]);
+  }, [originSkyId, destinationSkyId, originEntityId, destinationEntityId, date, currency, routeReady, cacheKey]);
 
   return { days, loading, routeReady };
 }
 
-export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Props) {
+function FlightDatePriceSliderComponent({ query, copy, onSelectDate, minLivePrice }: Props) {
   const { locale, dir } = useLocale();
   const { formatFlightPrice } = useFlightPrice();
   const dfLocale = dfOf(locale);
   const scroller = useRef<HTMLDivElement>(null);
   const [trendsOpen, setTrendsOpen] = useState(false);
   const { days, loading } = useRouteCalendarPrices(query.origin, query.destination, query.date, query.currency);
-  const priceMap = useMemo(() => new Map(days.map((row) => [row.date, row])), [days]);
-  const windowDays = useMemo(() => sliderWindow(query.date || ymdOf(new Date()), days, 12), [days, query.date]);
+  const priceMap = useMemo(() => {
+    const map = new Map(days.map((row) => [row.date, row]));
+    if (minLivePrice && minLivePrice > 0 && query.date) {
+      map.set(query.date, {
+        date: query.date,
+        price: Math.round(minLivePrice),
+        currency: query.currency,
+      });
+    }
+    return map;
+  }, [days, minLivePrice, query.date, query.currency]);
+  const windowDays = useMemo(() => sliderWindow(query.date || ymdOf(new Date()), days, 45), [days, query.date]);
 
   const scrollBy = (dirSign: number) => {
     const el = scroller.current;
@@ -97,19 +128,19 @@ export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Pro
 
   return (
     <>
-      <div className="mb-4 overflow-hidden rounded-2xl border border-[#051741]/10 bg-white shadow-sm">
+      <div className="mb-4 overflow-hidden rounded-2xl border border-purple-100 bg-white shadow-sm">
         <div className="flex items-stretch">
           <button
             type="button"
             onClick={() => setTrendsOpen(true)}
-            className="flex w-[4.6rem] shrink-0 flex-col items-center justify-center gap-1 border-e border-slate-100 bg-[#f3faf7] px-2 py-3 text-center text-[11px] font-bold text-[#051741] hover:bg-emerald-50"
+            className="flex w-[5rem] shrink-0 flex-col items-center justify-center gap-1 border-e border-purple-200 bg-purple-50 px-2.5 py-3 text-center text-xs font-black text-purple-950 hover:bg-purple-100 transition-colors"
           >
-            <BarChart3 size={16} className="text-[#10b981]" />
+            <BarChart3 size={17} className="text-[#2e1065]" />
             <span className="leading-tight">{copy.priceChart}</span>
           </button>
           <button
             type="button"
-            className="inline-flex w-8 shrink-0 items-center justify-center text-slate-500 hover:bg-slate-50"
+            className="inline-flex w-8 shrink-0 items-center justify-center text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors"
             onClick={() => scrollBy(-1)}
             aria-label={copy.seeAllDates}
           >
@@ -131,16 +162,16 @@ export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Pro
                   onClick={() => onSelectDate(ymd)}
                   className={cn(
                     "min-w-[5.6rem] snap-start px-3 py-2.5 text-center transition",
-                    selected ? "bg-[#051741]/[0.04]" : "hover:bg-slate-50"
+                    selected ? "bg-purple-50/90 font-bold" : "hover:bg-slate-50"
                   )}
                 >
-                  <p className={cn("text-[11px] font-semibold", selected ? "text-[#051741]" : "text-slate-500")}>
+                  <p className={cn("text-[11px]", selected ? "text-purple-950 font-extrabold" : "text-slate-700 font-bold")}>
                     {format(d, "EEEE d MMM", { locale: dfLocale })}
                   </p>
                   <p
                     className={cn(
-                      "mt-1 text-sm font-bold",
-                      selected ? "text-[#10b981]" : priced ? "text-[#051741]" : "text-slate-300"
+                      "mt-1 text-sm font-extrabold",
+                      selected ? "text-[#2e1065] font-black" : priced ? "text-[#1e1b4b]" : "text-slate-500 font-semibold"
                     )}
                   >
                     {priced
@@ -149,14 +180,14 @@ export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Pro
                         ? "…"
                         : "—"}
                   </p>
-                  {selected ? <span className="mx-auto mt-1 block h-0.5 w-10 rounded-full bg-[#10b981]" /> : null}
+                  {selected ? <span className="mx-auto mt-1 block h-1 w-10 rounded-full bg-gradient-to-r from-[#2e1065] to-amber-500" /> : null}
                 </button>
               );
             })}
           </div>
           <button
             type="button"
-            className="inline-flex w-8 shrink-0 items-center justify-center text-slate-500 hover:bg-slate-50"
+            className="inline-flex w-8 shrink-0 items-center justify-center text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors"
             onClick={() => scrollBy(1)}
             aria-label={copy.seeAllDates}
           >
@@ -165,7 +196,7 @@ export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Pro
           <button
             type="button"
             onClick={() => setTrendsOpen(true)}
-            className="hidden shrink-0 px-3 text-xs font-bold text-[#10b981] hover:bg-emerald-50 sm:block"
+            className="hidden shrink-0 px-4 py-2 my-1.5 mx-2 rounded-xl border border-purple-200 bg-purple-50 text-xs font-bold text-purple-950 hover:bg-gradient-to-r hover:from-[#2e1065] hover:to-[#4c1d95] hover:text-white shadow-2xs transition-all sm:block"
           >
             {copy.seeAllDates}
           </button>
@@ -187,3 +218,6 @@ export default function FlightDatePriceSlider({ query, copy, onSelectDate }: Pro
     </>
   );
 }
+
+const FlightDatePriceSlider = memo(FlightDatePriceSliderComponent);
+export default FlightDatePriceSlider;

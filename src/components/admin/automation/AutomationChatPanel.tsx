@@ -110,6 +110,14 @@ export default function AutomationChatPanel({ onSaved }: { onSaved?: () => void 
             onRevise={() =>
               record && void run({ action: "edit", approvalId: record.id, notes }).then(() => setNotes(""))
             }
+            onDelete={() => {
+              if (record) {
+                void studioApi({ action: "delete", approvalId: record.id }).then(() => {
+                  setRecord(null);
+                  onSaved?.();
+                });
+              }
+            }}
           />
         </div>
       </div>

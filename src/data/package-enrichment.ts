@@ -11,6 +11,7 @@ import type {
   PackageReview,
   TripMode,
 } from "@/types/package";
+import type { Locale } from "@/lib/i18n/types";
 
 export type EnrichedHolidayPackage = HolidayPackage & { enriched: true };
 
@@ -863,7 +864,7 @@ const DEST_PROFILES: Record<DestKey, DestProfile> = {
         id: "rev-def-1",
         name: "Guest",
         rating: 5,
-        textAr: "تجربة رائعة مع الريان للسياحة.",
+        textAr: "تجربة رائعة مع لوناليزا للسياحة والسفر.",
         textEn: "Wonderful experience with Alrayyan Tourism.",
         date: "2025-04-01",
       },
@@ -1049,7 +1050,7 @@ export function enrichPackage(pkg: HolidayPackage): EnrichedHolidayPackage {
 
 export function getLocalizedItinerary(
   pkg: HolidayPackage,
-  locale: "ar" | "en" | "tr"
+  locale: Locale
 ): ItineraryDay[] {
   const enriched = enrichPackage(pkg);
   if (locale === "tr") {
@@ -1069,22 +1070,18 @@ export function getLocalizedItinerary(
       []
     );
   }
-  if (locale === "en") {
-    return (
-      enriched.itineraryEn ??
-      enriched.itinerary ??
-      enriched.itineraryAr ??
-      []
-    );
-  }
-  const _never: never = locale;
-  return _never;
+  return (
+    enriched.itineraryEn ??
+    enriched.itinerary ??
+    enriched.itineraryAr ??
+    []
+  );
 }
 
 export function getLocalizedList(
   pkg: HolidayPackage,
   base: "inclusions" | "exclusions" | "features" | "rules" | "tips",
-  locale: "ar" | "en" | "tr"
+  locale: Locale
 ): string[] {
   const enriched = enrichPackage(pkg);
   const arKey = `${base}Ar` as keyof HolidayPackage;

@@ -81,7 +81,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_LUXURY, CAR_SEDAN, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار IST → سلطان أحمت (سيدان فاخرة).",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار IST → سلطان أحمت (سيدان فاخرة).",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book IST Airport → Sultanahmet luxury sedan transfer.",
     isFeatured: true,
@@ -136,7 +136,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_SUV, CAR_LUXURY, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار IST → تقسيم (SUV).",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار IST → تقسيم (SUV).",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book IST Airport → Taksim SUV transfer.",
     isFeatured: true,
@@ -191,7 +191,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_SEDAN, CAR_LUXURY, CAR_BMW],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار IST → بشيكتاش.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار IST → بشيكتاش.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book IST Airport → Beşiktaş transfer.",
     isFeatured: false,
@@ -246,7 +246,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_LUXURY, CAR_SEDAN, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار IST → الجانب الآسيوي (Kadıköy).",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار IST → الجانب الآسيوي (Kadıköy).",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book IST Airport → Asian Side (Kadıköy) transfer.",
     isFeatured: false,
@@ -301,7 +301,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_VAN, CAR_SUV, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار SAW → إسطنبول.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار SAW → إسطنبول.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book SAW Airport → Istanbul transfer.",
     isFeatured: true,
@@ -356,7 +356,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_SEDAN, CAR_LUXURY, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار AYT → فنادق أنطاليا.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار AYT → فنادق أنطاليا.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book AYT Airport → Antalya hotels transfer.",
     isFeatured: false,
@@ -411,7 +411,7 @@ const seededTransfers: TransferService[] = [
     images: [CAR_VAN, CAR_SUV, CAR_INTERIOR],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز ترانسفير مطار TZX → Trabzon.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز ترانسفير مطار TZX → Trabzon.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book TZX Airport → Trabzon city transfer.",
     isFeatured: false,
@@ -543,7 +543,7 @@ const seededTransfers: TransferService[] = [
     ],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز جولة إسطنبول VIP — يوم كامل.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز جولة إسطنبول VIP — يوم كامل.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Istanbul Full Day VIP Tour.",
     isFeatured: true,
@@ -653,7 +653,7 @@ const seededTransfers: TransferService[] = [
     ],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز جولة البوسفور والجانب الآسيوي VIP.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز جولة البوسفور والجانب الآسيوي VIP.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Bosphorus & Asian Side VIP Tour.",
     isFeatured: true,
@@ -752,7 +752,7 @@ const seededTransfers: TransferService[] = [
     excludedEn: ["Cable car tickets", "Lunch", "Attraction tickets"],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز رحلة بورصة VIP — يوم كامل.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز رحلة بورصة VIP — يوم كامل.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Bursa Day Trip VIP.",
     isFeatured: true,
@@ -843,7 +843,7 @@ const seededTransfers: TransferService[] = [
     excludedEn: ["Lunch", "Zipline activities", "Attraction tickets"],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز رحلة Sapanca & Masukiye VIP.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز رحلة Sapanca & Masukiye VIP.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Sapanca & Masukiye VIP Tour.",
     isFeatured: false,
@@ -950,7 +950,7 @@ const seededTransfers: TransferService[] = [
     ],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز جولة Trabzon & Sümela VIP.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز جولة Trabzon & Sümela VIP.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Trabzon & Sümela VIP Tour.",
     isFeatured: true,
@@ -1044,7 +1044,7 @@ const seededTransfers: TransferService[] = [
     excludedEn: ["Waterfall tickets", "Lunch", "Beach equipment"],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز جولة Kaleiçi والشلالات VIP — أنطاليا.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز جولة Kaleiçi والشلالات VIP — أنطاليا.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Antalya Old Town & Waterfalls VIP Tour.",
     isFeatured: false,
@@ -1165,7 +1165,7 @@ const seededTransfers: TransferService[] = [
     ],
     whatsappNumber: DEFAULT_WA,
     whatsappMessageAr:
-      "مرحباً الريان للسياحة، أرغب بحجز جولة كابادوكيا VIP — نقل + يوم خاص.",
+      "مرحباً لوناليزا للسياحة والسفر، أرغب بحجز جولة كابادوكيا VIP — نقل + يوم خاص.",
     whatsappMessageEn:
       "Hello Alrayyan Tourism, I would like to book the Cappadocia VIP Transfer & Day Tour.",
     isFeatured: true,
@@ -1306,7 +1306,8 @@ export function updateTransfer(
 }
 
 export function deleteTransfer(id: string): boolean {
-  save(getTransfers().filter((t) => t.id !== id));
+  const remaining = getTransfers().filter((t) => t.id !== id && t.slug !== id);
+  save(remaining);
   return true;
 }
 

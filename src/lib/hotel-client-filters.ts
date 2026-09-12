@@ -166,6 +166,9 @@ function matchesNeighborhood(hotel: TravelAdvisorHotelCard, values: string[]): b
 function matchesFilter(hotel: TravelAdvisorHotelCard, filter: TravelAdvisorAppliedFilter): boolean {
   if (!filter.value.length) return true;
   switch (filter.id) {
+    case "name":
+    case "hotelName":
+      return hotel.name.toLowerCase().includes(filter.value[0]?.toLowerCase() || "") || matchesText(hotel, filter.value);
     case "class":
       return matchesClass(hotel, filter.value);
     case "rating":

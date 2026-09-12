@@ -33,12 +33,14 @@ function EmptyGlyph({
 
 export default function UiIcon({
   icon,
-  size = 16,
+  size = 18,
+  strokeWidth = 2.2,
   className,
   title,
 }: {
   icon: UiIconRef | null | undefined;
   size?: number;
+  strokeWidth?: number;
   className?: string;
   title?: string;
 }) {
@@ -52,7 +54,7 @@ export default function UiIcon({
           title={title}
           aria-hidden={!title}
           className={cn(
-            "inline-flex shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full [&>svg]:stroke-current",
+            "inline-flex shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full [&>svg]:stroke-current [&>svg]:stroke-[2.2]",
             className
           )}
           style={{ width: size, height: size }}
@@ -67,6 +69,7 @@ export default function UiIcon({
       <DynamicIcon
         name={asLucideName(ref.name || FALLBACK_ICON.name)}
         size={size}
+        strokeWidth={strokeWidth}
         className={cn("shrink-0", className)}
         fallback={() => <EmptyGlyph size={size} className={className} />}
       />

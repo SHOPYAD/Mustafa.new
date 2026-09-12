@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
 
   const result = await initFlightBooking({
     itineraryId,
+    fareId: body.fareId ? String(body.fareId) : undefined,
     legs: body.legs,
     sessionId: body.sessionId ? String(body.sessionId) : undefined,
     currency: body.currency ? String(body.currency) : undefined,
@@ -55,8 +56,25 @@ export async function POST(req: NextRequest) {
     locale: localeFromRequest(req, body),
   });
 
-  if (!result.ok) return flightsFailJson(result.errorCode);
+  if (!result.ok) {
+    if (result.errorCode === "not_bookable" || result.errorCode === "fare_unavailable" || result.errorCode === "quote_failed") {
+      return flightsJson(
+        {
+          ok: false,
+          provider: "live",
+          errorCode: result.errorCode,
+          error:
+            result.errorCode === "quote_failed"
+              ? "تعذّر التحقق من السعر لدى المورد الآن، حاولوا مجدداً"
+              : "هذه التعرفة لم تعد متاحة لدى المورد، اختاروا رحلة أو باقة أخرى",
+        },
+        409
+      );
+    }
+    return flightsFailJson(result.errorCode);
+  }
 
+  const quote = result.booking.quote;
   return flightsJson({
     ok: true,
     provider: "live",
@@ -64,7 +82,16 @@ export async function POST(req: NextRequest) {
     pocketbaseId: result.booking.pocketbaseId || null,
     price: result.booking.price,
     quotedClient: result.booking.quotedClient,
-    fareChanged: Boolean(result.booking.price.fareChanged),
+    fareChanged: Boolean(quote?.fareChanged),
+    quote: quote
+      ? {
+          clientTotal: quote.clientTotal,
+          currency: quote.clientCurrency,
+          previousClientTotal: quote.previousClientTotal,
+          expiresAt: quote.expiresAt,
+          baggage: quote.baggage,
+        }
+      : null,
     itinerary: result.booking.itinerary,
     payment: result.payment,
   });

@@ -28,6 +28,10 @@ export default function FloatingActionHub() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMode, setActiveMode] = useState<"menu" | "chat" | null>(null);
 
+  if (pathname === "/" || pathname?.startsWith("/partners") || pathname?.startsWith("/flights/redirect") || pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   const primaryPhone = getPrimaryPhone(contact);
 
   const menuItems = useMemo(
@@ -66,12 +70,26 @@ export default function FloatingActionHub() {
     [t, primaryPhone, contact.email]
   );
 
+  const isOrigin = (process.env.NEXT_PUBLIC_DEPLOYMENT_ROLE || "origin") !== "client";
+  if (isOrigin && (pathname === "/" || pathname?.startsWith("/partners"))) return null;
   if (pathname?.startsWith("/flights/redirect")) return null;
+  if (pathname?.startsWith("/community")) return null;
+  if (contact.floatingHubEnabled === false) return null;
+
+  const positionClass =
+    contact.floatingHubPosition === "left"
+      ? "start-6"
+      : contact.floatingHubPosition === "center"
+      ? "left-1/2 -translate-x-1/2"
+      : "end-6";
+
+  const bottomStyle = { bottom: `${contact.floatingHubBottomPx ?? 24}px` };
 
   return (
     <>
       <motion.div
-        className="fixed bottom-6 end-6 z-50"
+        className={`fixed z-50 ${positionClass}`}
+        style={bottomStyle}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring" }}

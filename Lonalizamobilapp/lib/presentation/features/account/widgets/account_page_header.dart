@@ -8,12 +8,16 @@ class AccountPageHeader extends StatelessWidget {
   const AccountPageHeader({
     super.key,
     required this.onProfileTap,
+    this.greeting = 'مرحباً في لوناليزا',
+    this.manageLabel = 'إدارة حسابي',
     this.onManageAccountTap,
     this.onScanTap,
     this.onSupportTap,
     this.onSettingsTap,
   });
 
+  final String greeting;
+  final String manageLabel;
   final VoidCallback onProfileTap;
   /// When set, the "Manage my account" row uses this instead of [onProfileTap].
   final VoidCallback? onManageAccountTap;
@@ -59,7 +63,7 @@ class AccountPageHeader extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 2, bottom: 2, right: 4),
                               child: Text(
-                                'Hi Trip.com Member',
+                                greeting,
                                 style: AccountTheme.headerTitle.copyWith(fontSize: 16),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -78,7 +82,7 @@ class AccountPageHeader extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                    'Manage my account',
+                                    manageLabel,
                                     style: AccountTheme.manageLink.copyWith(color: AccountTheme.textSecondary),
                                   ),
                                   Icon(Icons.chevron_right_rounded, size: 18, color: Colors.grey.shade500),

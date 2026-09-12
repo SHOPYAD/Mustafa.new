@@ -119,7 +119,7 @@ export default function AdminVisaPage() {
             {/* Stats */}
             <div className="flex items-center gap-6 mb-6 text-sm">
                 <span className="text-white/40">Countries: <span className="text-white font-semibold">{visaData.length}</span></span>
-                <span className="text-white/40">Active: <span className="text-emerald-400 font-semibold">{visaData.filter((v) => v.isActive !== false).length}</span></span>
+                <span className="text-white/40">Active: <span className="text-amber-400 font-semibold">{visaData.filter((v) => v.isActive !== false).length}</span></span>
                 <span className="text-white/40">Visa Types: <span className="text-blue-400 font-semibold">{totalVisaTypes}</span></span>
             </div>
 
@@ -144,7 +144,7 @@ export default function AdminVisaPage() {
                                     <ChevronDown size={18} className={`text-white/30 transition-transform ${expandedId === country.id ? "rotate-180" : ""}`} />
                                 </button>
                                 <div className="flex items-center gap-2 ml-4">
-                                    <button onClick={() => handleToggle(country)} className={`w-10 h-5 rounded-full flex items-center transition-all ${country.isActive !== false ? "bg-emerald-500 justify-end" : "bg-white/10 justify-start"}`}>
+                                    <button onClick={() => handleToggle(country)} className={`w-10 h-5 rounded-full flex items-center transition-all ${country.isActive !== false ? "bg-purple-600 justify-end" : "bg-white/10 justify-start"}`}>
                                         <div className="w-4 h-4 rounded-full bg-white mx-0.5 shadow-sm" />
                                     </button>
                                     <button onClick={() => { setEditingCountry(country); setIsModalOpen(true); }} className="w-9 h-9 bg-blue-500/10 hover:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 hover:text-blue-300 transition-all" title="Edit">

@@ -3,10 +3,12 @@ import path from "path";
 import ar from "@/lib/i18n/dictionaries/ar";
 import en from "@/lib/i18n/dictionaries/en";
 import tr from "@/lib/i18n/dictionaries/tr";
+import fr from "@/lib/i18n/dictionaries/fr";
 import type { Dictionary } from "@/lib/i18n/types";
 import {
   applyFlatToDictionary,
   BUILTIN_LOCALE_META,
+  BUILTIN_LOCALES,
   defaultDirForCode,
   flattenDictionary,
   isBuiltInLocale,
@@ -44,18 +46,18 @@ type StoreFile = {
 };
 
 const emptyStore = (): StoreFile => ({
-  overrides: { ar: {}, en: {}, tr: {} },
+  overrides: { ar: {}, en: {}, tr: {}, fr: {} },
   languages: [],
   values: {},
 });
 
-let catalogCache:
-  | {
-      keys: string[];
-      kinds: Record<string, TranslationKeyKind>;
-      builtins: Record<BuiltInLocale, Record<string, string>>;
-    }
-  | null = null;
+export type BuiltinCatalogCache = {
+  keys: string[];
+  kinds: Record<string, TranslationKeyKind>;
+  builtins: Record<BuiltInLocale, Record<string, string>>;
+};
+
+let catalogCache: BuiltinCatalogCache | null = null;
 
 function isServerlessHosting(): boolean {
   return (
@@ -87,24 +89,28 @@ export function sourceHasText(key: string): boolean {
     (catalog.builtins.en[key] || "").trim() ||
       (catalog.builtins.ar[key] || "").trim() ||
       (catalog.builtins.tr[key] || "").trim() ||
+      (catalog.builtins.fr[key] || "").trim() ||
       isEmailTemplateI18nKey(key)
   );
 }
 
-export function getBuiltinCatalog() {
+export function getBuiltinCatalog(): BuiltinCatalogCache {
   if (catalogCache) return catalogCache;
   const arFlat = flattenDictionary(ar);
   const enFlat = flattenDictionary(en);
   const trFlat = flattenDictionary(tr);
+  const frFlat = flattenDictionary(fr);
   const email = getEmailI18nSeedFlat();
   const keySet = new Set([
     ...Object.keys(arFlat.values),
     ...Object.keys(enFlat.values),
     ...Object.keys(trFlat.values),
+    ...Object.keys(frFlat.values),
     ...email.keys,
   ]);
   const keys = Array.from(keySet).sort();
   const kinds: Record<string, TranslationKeyKind> = {
+    ...frFlat.kinds,
     ...trFlat.kinds,
     ...enFlat.kinds,
     ...arFlat.kinds,
@@ -117,6 +123,7 @@ export function getBuiltinCatalog() {
       ar: { ...arFlat.values, ...email.ar },
       en: { ...enFlat.values, ...email.en },
       tr: { ...trFlat.values, ...email.tr },
+      fr: { ...frFlat.values, ...email.en },
     },
   };
   return catalogCache;
@@ -128,7 +135,7 @@ async function readStore(): Promise<StoreFile> {
     const parsed = JSON.parse(raw) as Partial<StoreFile>;
     const store = emptyStore();
     if (parsed.overrides && typeof parsed.overrides === "object") {
-      for (const loc of ["ar", "en", "tr"] as const) {
+      for (const loc of BUILTIN_LOCALES) {
         const map = parsed.overrides[loc];
         if (map && typeof map === "object") store.overrides[loc] = map;
       }
@@ -136,7 +143,7 @@ async function readStore(): Promise<StoreFile> {
     if (Array.isArray(parsed.languages)) {
       store.languages = parsed.languages.filter(
         (l): l is CustomLanguage =>
-          Boolean(l && typeof l.code === "string" && isValidLangCode(l.code))
+          Boolean(l && typeof l.code === "string" && isValidLangCode(l.code) && !isBuiltInLocale(l.code))
       );
     }
     if (parsed.values && typeof parsed.values === "object") {
@@ -162,7 +169,7 @@ async function writeLocaleDumps(store: StoreFile): Promise<void> {
     const dir = getLocalesDir();
     await ensureDir(dir);
     const catalog = getBuiltinCatalog();
-    for (const loc of ["ar", "en", "tr"] as const) {
+    for (const loc of BUILTIN_LOCALES) {
       const merged = { ...catalog.builtins[loc], ...(store.overrides[loc] || {}) };
       await fs.writeFile(
         path.join(dir, `${loc}.json`),
@@ -184,14 +191,16 @@ export async function listRegisteredLocales(): Promise<RegisteredLocale[]> {
   const store = await readStore();
   return [
     ...BUILTIN_LOCALE_META,
-    ...store.languages.map((l) => ({
-      code: l.code,
-      name: l.name,
-      nativeName: l.nativeName,
-      dir: l.dir,
-      builtin: false,
-      sourceLocale: l.sourceLocale,
-    })),
+    ...store.languages
+      .filter((l) => !isBuiltInLocale(l.code))
+      .map((l) => ({
+        code: l.code,
+        name: l.name,
+        nativeName: l.nativeName,
+        dir: l.dir,
+        builtin: false,
+        sourceLocale: l.sourceLocale,
+      })),
   ];
 }
 
@@ -212,6 +221,7 @@ export async function getPublicTranslationsPayload() {
       ar: store.overrides.ar || {},
       en: store.overrides.en || {},
       tr: store.overrides.tr || {},
+      fr: store.overrides.fr || {},
     },
     values: store.values,
     updatedAt: store.updatedAt || null,
@@ -238,11 +248,11 @@ export async function getTranslationCatalog() {
 
   const rows: TranslationRow[] = allKeys.map((key) => {
     const values: Record<string, string> = {};
-    for (const loc of ["ar", "en", "tr"] as const) {
+    for (const loc of BUILTIN_LOCALES) {
       const extraVal = loc === "ar" || loc === "en" ? extra[key]?.[loc] || "" : "";
       values[loc] = (
         store.overrides[loc]?.[key] ??
-        catalog.builtins[loc][key] ??
+        catalog.builtins[loc]?.[key] ??
         extraVal
       ).trim();
     }
@@ -251,7 +261,7 @@ export async function getTranslationCatalog() {
     }
     const missing = localeCodes.filter((code) => {
       if (values[code]) return false;
-      if (code === "ar" || code === "en" || code === "tr") return true;
+      if (isBuiltInLocale(code)) return true;
       return sourceHasText(key);
     });
     return {
@@ -267,11 +277,11 @@ export async function getTranslationCatalog() {
   const admin = rows.filter((r) => r.scope === "admin");
   const languageStats: Record<string, LanguageProgress> = {};
   for (const loc of locales) {
-    if (loc.builtin) continue;
-    const translatable = catalog.keys.filter((key) => sourceHasText(key));
-    const filled = translatable.filter((key) =>
-      Boolean((store.values[loc.code]?.[key] || "").trim())
-    ).length;
+    const translatable = allKeys.filter((key) => sourceHasText(key));
+    const filled = translatable.filter((key) => {
+      const row = rows.find((r) => r.key === key);
+      return Boolean((row?.values[loc.code] || "").trim());
+    }).length;
     languageStats[loc.code] = {
       code: loc.code,
       filled,
@@ -304,16 +314,24 @@ export type LanguageProgress = {
 export async function getLanguageProgress(
   code: string
 ): Promise<LanguageProgress> {
+  const normalized = normalizeLangCode(code);
   const store = await readStore();
   const catalog = getBuiltinCatalog();
   const extra = await readExtraEmailI18nKeys();
   const extraKeys = Object.keys(extra).filter((key) => !catalog.keys.includes(key));
-  const values = store.values[normalizeLangCode(code)] || {};
   const translatable = [...catalog.keys, ...extraKeys].filter((key) => sourceHasText(key));
-  const filled = translatable.filter((key) => Boolean((values[key] || "").trim()))
-    .length;
+
+  let filled = 0;
+  if (isBuiltInLocale(normalized)) {
+    const map = { ...catalog.builtins[normalized], ...(store.overrides[normalized] || {}) };
+    filled = translatable.filter((key) => Boolean((map[key] || "").trim())).length;
+  } else {
+    const values = store.values[normalized] || {};
+    filled = translatable.filter((key) => Boolean((values[key] || "").trim())).length;
+  }
+
   return {
-    code: normalizeLangCode(code),
+    code: normalized,
     filled,
     total: translatable.length,
     missing: translatable.length - filled,
@@ -368,7 +386,7 @@ export async function addCustomLanguage(input: {
     };
   }
   if (isBuiltInLocale(code)) {
-    return { ok: false, error: "هذه اللغة موجودة مسبقاً (عربية / إنجليزية / تركية)." };
+    return { ok: false, error: "هذه اللغة موجودة مسبقاً (عربية / إنجليزية / تركية / فرنسية)." };
   }
   const name = input.name.trim();
   const nativeName = input.nativeName.trim() || name;
@@ -401,10 +419,13 @@ export async function getLanguageBatch(
   scope: TranslationScope | "all",
   missingOnly = true
 ) {
+  const normalized = normalizeLangCode(code);
   const store = await readStore();
   const catalog = getBuiltinCatalog();
   const extra = await readExtraEmailI18nKeys();
-  const existing = store.values[normalizeLangCode(code)] || {};
+  const existing = isBuiltInLocale(normalized)
+    ? { ...catalog.builtins[normalized], ...(store.overrides[normalized] || {}) }
+    : store.values[normalized] || {};
   const extraKeys = Object.keys(extra).filter((key) => !catalog.keys.includes(key));
   const allKeys = [...catalog.keys, ...extraKeys];
   const scoped = allKeys.filter((key) =>
@@ -425,7 +446,14 @@ export async function getLanguageBatch(
   );
   const entries = slice.map((key) => ({
     key,
-    text: sourceMap[key] || extra[key]?.[sourceLocale] || extra[key]?.ar || "",
+    text:
+      sourceMap[key] ||
+      extra[key]?.[sourceLocale] ||
+      extra[key]?.ar ||
+      catalog.builtins[sourceLocale]?.[key] ||
+      catalog.builtins.ar?.[key] ||
+      catalog.builtins.en?.[key] ||
+      "",
   }));
   const filled = scoped.length - keys.length;
   return {
@@ -442,6 +470,7 @@ export async function getLanguageBatch(
 export function getBuiltinDictionary(locale: BuiltInLocale): Dictionary {
   if (locale === "ar") return ar;
   if (locale === "tr") return tr;
+  if (locale === "fr") return fr;
   return en;
 }
 
@@ -457,6 +486,21 @@ export function hydrateDictionary(
 }
 
 export async function getCustomLanguage(code: string): Promise<CustomLanguage | null> {
+  const normalized = normalizeLangCode(code);
   const store = await readStore();
-  return store.languages.find((l) => l.code === normalizeLangCode(code)) || null;
+  const found = store.languages.find((l) => l.code === normalized);
+  if (found) return found;
+  if (isBuiltInLocale(normalized)) {
+    const meta = BUILTIN_LOCALE_META.find((m) => m.code === normalized);
+    if (meta) {
+      return {
+        code: meta.code,
+        name: meta.name,
+        nativeName: meta.nativeName,
+        dir: meta.dir,
+        sourceLocale: "ar",
+      };
+    }
+  }
+  return null;
 }

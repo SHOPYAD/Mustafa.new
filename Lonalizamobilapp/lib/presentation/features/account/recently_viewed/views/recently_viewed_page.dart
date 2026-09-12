@@ -1,121 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../recently_viewed_theme.dart';
-import '../widgets/recently_viewed_category_tabs.dart';
-import '../widgets/recently_viewed_city_chips_bar.dart';
-import '../widgets/recently_viewed_day_header.dart';
-import '../widgets/recently_viewed_footer_note.dart';
-import '../widgets/recently_viewed_property_card.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/network/mobile_json.dart';
+import '../../../../providers/auth_session_provider.dart';
+import '../../../../providers/dio_provider.dart';
 
-class RecentlyViewedPage extends StatefulWidget {
+class RecentlyViewedPage extends ConsumerWidget {
   const RecentlyViewedPage({super.key});
 
-  static const _tabs = ['All', 'Stays', 'Attractions', 'Tours', 'Package tours'];
-
-  static const _cityChips = [
-    'All cities',
-    'London',
-    'Qesm Al Wahat Al Khargah',
-    'Paris',
-    'Tokyo',
-  ];
-
   @override
-  State<RecentlyViewedPage> createState() => _RecentlyViewedPageState();
-}
-
-class _RecentlyViewedPageState extends State<RecentlyViewedPage> {
-  int _tabIndex = 0;
-  int _cityChipIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final session = ref.watch(authSessionProvider);
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.grey.shade900),
-          onPressed: () => context.pop(),
-        ),
-        title: Text('Recently viewed', style: RecentlyViewedTheme.appBarTitle),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            tooltip: 'Wishlist',
-            onPressed: () {},
-            icon: Icon(Icons.collections_bookmark_outlined, size: 24, color: Colors.grey.shade900),
-          ),
-          IconButton(
-            tooltip: 'Clear history',
-            onPressed: () {},
-            icon: Icon(Icons.delete_outline_rounded, size: 24, color: Colors.grey.shade900),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          RecentlyViewedCategoryTabs(
-            labels: RecentlyViewedPage._tabs,
-            selectedIndex: _tabIndex,
-            onChanged: (i) => setState(() => _tabIndex = i),
-          ),
-          const SizedBox(height: 10),
-          RecentlyViewedCityChipsBar(
-            labels: RecentlyViewedPage._cityChips,
-            selectedIndex: _cityChipIndex,
-            onChanged: (i) => setState(() => _cityChipIndex = i),
-          ),
-          const SizedBox(height: 10),
-          Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              children: [
-                const RecentlyViewedDayHeader(),
-                RecentlyViewedPropertyCard(
-                  imageAsset: 'assets/images/1.jpg',
-                  title: 'ibis budget London Whitechapel - Brick Lane',
-                  starCount: 4,
-                  ratingScore: '8.4',
-                  reviewCount: 156,
-                  areaLine: 'Theatreland',
-                  dateRange: 'Apr 23 - Apr 25',
-                  soldOut: true,
-                ),
-                RecentlyViewedPropertyCard(
-                  imageAsset: 'assets/images/2.jpg',
-                  title: 'Zedwell Capsule Hotel Piccadilly Circus',
-                  starCount: 4,
-                  ratingScore: '8.6',
-                  reviewCount: 892,
-                  dateRange: 'Apr 23 - Apr 25',
-                  soldOut: false,
-                ),
-                RecentlyViewedPropertyCard(
-                  imageAsset: 'assets/images/3.jpg',
-                  title: 'The Resident Covent Garden',
-                  starCount: 5,
-                  ratingScore: '9.0',
-                  reviewCount: 324,
-                  areaLine: 'Covent Garden',
-                  dateRange: 'Apr 20 - Apr 22',
-                  soldOut: false,
-                ),
-                const RecentlyViewedFooterNote(),
-              ],
+      backgroundColor: const Color(0xFFF7F4FC),
+      appBar: AppBar(title: const Text('شوهد مؤخراً')),
+      body: session == null
+          ? Center(
+              child: TextButton(
+                onPressed: () => context.push('/auth'),
+                child: const Text('سجّل الدخول'),
+              ),
+            )
+          : FutureBuilder<List<Map<String, dynamic>>>(
+              future: ref
+                  .read(appDioClientProvider)
+                  .get<Map<String, dynamic>>(AppConstants.accountRecentlyViewedUrl)
+                  .then((r) => mapList(r.data?['items'])),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final items = snapshot.data ?? const [];
+                if (items.isEmpty) return const Center(child: Text('لا عناصر بعد'));
+                return ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: items.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) {
+                    final item = items[index];
+                    return Card(
+                      child: ListTile(
+                        leading: item['image'] != null
+                            ? Image.network(item['image'].toString(), width: 56, height: 56, fit: BoxFit.cover)
+                            : const Icon(Icons.history),
+                        title: Text(asText(item['title'])),
+                        subtitle: Text('${asText(item['kind'])} ${asText(item['price'])}'),
+                      ),
+                    );
+                  },
+                );
+              },
             ),
-          ),
-        ],
-      ),
     );
   }
 }

@@ -1,5 +1,3 @@
-import { sendTelegramDocument, sendTelegramMessage, sendTelegramPhoto } from "@/lib/automation/channels/telegram";
-import { getCommsSettings } from "@/lib/automation/comms-settings";
 import { completeStudioDraft } from "@/lib/automation/approval";
 import { applyApprovalEvent, proposeAutomationDraft, submitForApproval } from "@/lib/server/automation/approval-store";
 import { siteOrigin } from "@/lib/automation/site-url";
@@ -20,20 +18,6 @@ export type SavedStudioAsset = {
   url: string;
   absoluteUrl: string;
 };
-
-async function notifyAdmin(text: string, media?: { photoPath?: string; docPath?: string; caption?: string }) {
-  const settings = await getCommsSettings();
-  const chatId = settings.telegramDefaultChatId;
-  if (!chatId) return { sent: false as const, reason: "no_admin_chat" };
-  if (media?.photoPath) {
-    await sendTelegramPhoto({ chatId, filePath: media.photoPath, caption: media.caption || text.slice(0, 1024) });
-  } else if (media?.docPath) {
-    await sendTelegramDocument({ chatId, filePath: media.docPath, caption: media.caption || text.slice(0, 1024) });
-  } else {
-    await sendTelegramMessage({ chatId, text });
-  }
-  return { sent: true as const };
-}
 
 export async function saveGeneratedStudioAsset(input: {
   kind: HandoffKind;
@@ -75,14 +59,15 @@ export async function saveGeneratedStudioAsset(input: {
 export async function notifyStudioReadyForApproval(input: {
   caption: string;
   asset: SavedStudioAsset;
-}): Promise<{ sent: boolean }> {
-  const text = `${input.asset.kind === "video" ? "فيديو" : "تصميم"} جاهز للاعتماد\n${input.caption}\nأجب: انشر`;
-  const media =
-    input.asset.kind === "video"
-      ? { docPath: input.asset.absolutePath, caption: `${input.caption}\n\nانشر للموافقة` }
-      : { photoPath: input.asset.absolutePath, caption: `${input.caption}\n\nانشر للموافقة` };
-  const result = await notifyAdmin(text, media);
-  return { sent: result.sent };
+}): Promise<{ sent: boolean; approvalId?: string }> {
+  // Media is already in last-output; submitForApproval sends sendPhoto/sendDocument.
+  const queued = await queueStudioPublishApproval(input.caption);
+  await writeStudioLastOutput({
+    caption: input.caption,
+    pendingPublish: true,
+    approvalId: queued.approvalId || null,
+  });
+  return { sent: true, approvalId: queued.approvalId };
 }
 
 export async function queueStudioPublishApproval(caption: string): Promise<{

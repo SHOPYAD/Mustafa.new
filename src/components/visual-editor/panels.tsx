@@ -53,7 +53,7 @@ function SectionsPanel() {
             onClick={() => addSection(type, selection?.instanceId)}
             className="w-full text-start rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-2.5 text-white text-sm flex items-center gap-2"
           >
-            <Plus size={14} className="text-emerald-400" />
+            <Plus size={14} className="text-amber-400" />
             {label.ar}
           </button>
         );
@@ -74,7 +74,7 @@ function LayoutPanel() {
           <div
             key={item.instanceId}
             className={`rounded-xl border px-3 py-2 ${
-              active ? "border-emerald-400 bg-emerald-500/10" : "border-white/10 bg-white/5"
+              active ? "border-purple-400 bg-purple-500/20 text-amber-300" : "border-white/10 bg-white/5"
             }`}
           >
             <button
@@ -214,7 +214,7 @@ function InspectorPanel() {
   const fields = Object.keys(selected.texts);
   return (
     <PanelChrome title={t.editor.inspector}>
-      <p className="text-emerald-300 text-xs mb-2">
+      <p className="text-amber-400 text-xs mb-2">
         {pickCopy(sectionLabel(selected.type), locale)} · {canvasLocale.toUpperCase()}
       </p>
       {fields.map((field) => (
@@ -280,16 +280,16 @@ function AiPanel() {
   };
 
   return (
-    <div className="w-[22rem] shrink-0 bg-[#071a3a] border-e border-white/10 flex flex-col min-h-0">
-      <div className="px-4 py-3 border-b border-white/10 flex items-center gap-2 text-white text-sm font-bold">
-        <Sparkles size={16} className="text-emerald-400" />
+    <div className="w-[22rem] shrink-0 bg-[#180a2e] border-e border-purple-900/40 flex flex-col min-h-0">
+      <div className="px-4 py-3 border-b border-purple-900/40 flex items-center gap-2 text-white text-sm font-bold">
+        <Sparkles size={16} className="text-amber-400" />
         {t.editor.ai}
-        <Link href="/admin/ai-settings" className="ms-auto text-[11px] text-emerald-300 font-normal">
+        <Link href="/admin/ai-settings" className="ms-auto text-[11px] text-amber-300 font-normal">
           Gemini
         </Link>
       </div>
       {selection && (
-        <div className="px-3 pt-3 text-xs text-emerald-200">
+        <div className="px-3 pt-3 text-xs text-amber-300">
           {t.editor.tagged}: {selection.labelAr}
           {selection.field ? ` · ${selection.field}` : ""}
         </div>
@@ -302,7 +302,7 @@ function AiPanel() {
           <div
             key={i}
             className={`rounded-xl px-3 py-2 text-sm whitespace-pre-wrap ${
-              m.role === "user" ? "bg-emerald-500/15 text-emerald-50" : "bg-white/5 text-white/80"
+              m.role === "user" ? "bg-purple-600/30 text-purple-100 border border-purple-500/30" : "bg-white/5 text-white/80"
             }`}
           >
             {m.content.replace(/```json[\s\S]*?```/g, `\n[${t.editor.patchApplied}]\n`)}
@@ -310,7 +310,7 @@ function AiPanel() {
         ))}
         {loading && <p className="text-white/40 text-xs">{t.editor.aiThinking}</p>}
       </div>
-      <div className="p-3 border-t border-white/10 flex gap-2">
+      <div className="p-3 border-t border-purple-900/40 flex gap-2">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -322,7 +322,7 @@ function AiPanel() {
           type="button"
           onClick={() => void send()}
           disabled={loading || !input.trim()}
-          className="rounded-lg bg-emerald-500 text-[#051741] px-3 disabled:opacity-40"
+          className="rounded-lg bg-gradient-to-r from-purple-700 to-[#2e1065] text-amber-300 border border-amber-400/40 px-3 disabled:opacity-40"
         >
           <Send size={16} />
         </button>

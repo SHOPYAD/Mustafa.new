@@ -23,6 +23,8 @@ type StoreFile = {
   updatedAt?: string;
 };
 
+import { tryCreateAdminPocketBase } from "@/lib/pocketbase/admin";
+
 function isServerlessHosting(): boolean {
   return (
     process.env.VERCEL === "1" || process.env.AWS_LAMBDA_FUNCTION_NAME != null
@@ -31,7 +33,7 @@ function isServerlessHosting(): boolean {
 
 function getStoreFile(): string {
   if (isServerlessHosting()) {
-    return path.join("/tmp", "alrayyan-blog-posts.json");
+    return path.join("/tmp", "lonaliza-blog-posts.json");
   }
   return STORE_FILE;
 }
@@ -132,7 +134,7 @@ export function sanitizeBlogPost(
     tags: Array.isArray(raw.tags)
       ? raw.tags.map(String).filter(Boolean)
       : existing?.tags || [],
-    author: asString(raw.author ?? existing?.author, "Alrayyan Tourism"),
+    author: asString(raw.author ?? existing?.author, "Lonaliza"),
     status,
     seo: {
       ...emptySeo(),
@@ -142,6 +144,53 @@ export function sanitizeBlogPost(
     createdAt: asString(raw.createdAt || existing?.createdAt, now),
     updatedAt: now,
   };
+}
+
+async function syncPostToPocketBase(post: BlogPost): Promise<void> {
+  try {
+    const pb = await tryCreateAdminPocketBase();
+    if (!pb) return;
+    const existing = await pb.collection("articles").getFirstListItem(`slug = "${post.slug}"`).catch(() => null);
+    const data = {
+      titleAr: post.titleAr || "",
+      titleEn: post.titleEn || "",
+      slug: post.slug || "",
+      excerptAr: post.excerptAr || "",
+      excerptEn: post.excerptEn || "",
+      contentAr: post.contentAr || "",
+      contentEn: post.contentEn || "",
+      coverImage: post.coverImage || "",
+      category: post.category || "Travel Tips",
+      author: post.author || "Lonaliza",
+      status: post.status || "published",
+      publishedAt: post.publishedAt || new Date().toISOString(),
+      tags: post.tags || [],
+      seo: post.seo || {},
+    };
+    if (existing) {
+      await pb.collection("articles").update(existing.id, data);
+    } else {
+      await pb.collection("articles").create(data);
+    }
+  } catch {
+    // Non-blocking sync
+  }
+}
+
+async function deletePostFromPocketBase(slugOrId: string): Promise<void> {
+  try {
+    const pb = await tryCreateAdminPocketBase();
+    if (!pb) return;
+    const existing = await pb
+      .collection("articles")
+      .getFirstListItem(`slug = "${slugOrId}" || id = "${slugOrId}"`)
+      .catch(() => null);
+    if (existing) {
+      await pb.collection("articles").delete(existing.id);
+    }
+  } catch {
+    // Non-blocking sync
+  }
 }
 
 function seedPosts(): BlogPost[] {
@@ -300,6 +349,7 @@ export async function upsertBlogPost(
     if (idx >= 0) store.posts[idx] = post;
     else store.posts.unshift(post);
     await writeStoreAtomic(store);
+    void syncPostToPocketBase(post);
     return post;
   });
 }
@@ -325,6 +375,7 @@ export async function updateBlogPost(
     const post = sanitizeBlogPost({ ...incoming, id }, existing, siblings);
     store.posts[idx] = post;
     await writeStoreAtomic(store);
+    void syncPostToPocketBase(post);
     return post;
   });
 }
@@ -336,6 +387,7 @@ export async function deleteBlogPost(id: string): Promise<boolean> {
     if (next.length === store.posts.length) return false;
     store.posts = next;
     await writeStoreAtomic(store);
+    void deletePostFromPocketBase(id);
     return true;
   });
 }

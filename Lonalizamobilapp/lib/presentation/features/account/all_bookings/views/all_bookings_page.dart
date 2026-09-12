@@ -41,7 +41,8 @@ class AllBookingsPage extends ConsumerWidget {
                 }
                 final hotels = (snapshot.data?['hotels'] as List?) ?? const [];
                 final enquiries = (snapshot.data?['enquiries'] as List?) ?? const [];
-                if (hotels.isEmpty && enquiries.isEmpty) {
+                final flights = (snapshot.data?['flights'] as List?) ?? const [];
+                if (hotels.isEmpty && enquiries.isEmpty && flights.isEmpty) {
                   return const Center(child: Text('لا حجوزات بعد'));
                 }
                 return ListView(
@@ -57,6 +58,11 @@ class AllBookingsPage extends ConsumerWidget {
                         title: (row is Map ? row['service_name'] : null)?.toString() ?? 'Booking',
                         subtitle: (row is Map ? row['status'] : null)?.toString() ?? '',
                       ),
+                    for (final row in flights)
+                      _BookingTile(
+                        title: '${(row is Map ? row['origin'] : null) ?? ''} → ${(row is Map ? row['destination'] : null) ?? ''}',
+                        subtitle: (row is Map ? row['status'] : null)?.toString() ?? '',
+                      ),
                   ],
                 );
               },
@@ -67,7 +73,6 @@ class AllBookingsPage extends ConsumerWidget {
   Future<Map<String, dynamic>> _load(WidgetRef ref) async {
     final res = await ref.read(appDioClientProvider).get<Map<String, dynamic>>(
       AppConstants.accountBookingsUrl,
-      includeAuth: true,
     );
     return res.data ?? const {};
   }

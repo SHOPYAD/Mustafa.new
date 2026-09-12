@@ -78,10 +78,10 @@ export default function LocaleCurrencySwitcher({
         type="button"
         onClick={() => setTab(id)}
         className={cn(
-          "flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-xs font-bold transition-colors",
+          "flex flex-1 items-center justify-center gap-1.5 rounded-xl px-2.5 py-2 text-xs font-bold transition-all",
           active
-            ? "bg-emerald-500 text-white"
-            : "text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+            ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-amber-300 shadow-sm"
+            : "text-slate-600 hover:bg-purple-50 hover:text-purple-950"
         )}
       >
         {icon}
@@ -104,9 +104,9 @@ export default function LocaleCurrencySwitcher({
                   close();
                 }}
                 className={cn(
-                  "flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors",
+                  "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 transition-colors",
                   locale === opt.code
-                    ? "bg-emerald-50 text-emerald-700"
+                    ? "bg-purple-50 text-purple-950 font-bold border border-purple-200/80 shadow-2xs"
                     : "text-slate-700 hover:bg-slate-50"
                 )}
               >
@@ -114,7 +114,7 @@ export default function LocaleCurrencySwitcher({
                   <span>{opt.flag}</span>
                   <span className="text-sm font-medium">{opt.label}</span>
                 </span>
-                {locale === opt.code ? <Check size={16} /> : null}
+                {locale === opt.code ? <Check size={16} className="text-purple-700" /> : null}
               </button>
             ))}
           </div>
@@ -131,9 +131,9 @@ export default function LocaleCurrencySwitcher({
                   close();
                 }}
                 className={cn(
-                  "flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors",
+                  "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 transition-colors",
                   currency.code === curr.code
-                    ? "bg-orange-50 text-orange-600"
+                    ? "bg-amber-50 text-amber-950 font-bold border border-amber-200/80 shadow-2xs"
                     : "text-slate-700 hover:bg-slate-50"
                 )}
               >
@@ -146,7 +146,7 @@ export default function LocaleCurrencySwitcher({
                     </span>
                   </span>
                 </span>
-                {currency.code === curr.code ? <Check size={16} /> : null}
+                {currency.code === curr.code ? <Check size={16} className="text-amber-700" /> : null}
               </button>
             ))}
           </div>
@@ -164,25 +164,21 @@ export default function LocaleCurrencySwitcher({
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         className={cn(
-          "flex items-center gap-1.5 rounded-lg border px-2.5 py-2 transition-colors",
+          "flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 transition-all shadow-2xs",
           btnClass
         )}
         aria-label={`${t.common.language} · ${t.common.selectCurrency}`}
+        title={`${(current?.code || locale).toUpperCase()} · ${currency.code}`}
         aria-expanded={isOpen}
       >
-        <span className="text-base leading-none" aria-hidden>
-          {current?.flag || "🌐"}
+        <Languages size={15} className="shrink-0 text-purple-700 dark:text-purple-300" />
+        <Coins size={14} className="shrink-0 text-amber-600 dark:text-amber-400" />
+        <span className="text-[11px] font-bold tracking-tight uppercase">
+          {locale}
         </span>
-        <span className="text-xs font-bold tracking-wide">
-          {(current?.code || locale).toUpperCase()}
-        </span>
-        <span className="text-white/30 text-slate-400" aria-hidden>
-          ·
-        </span>
-        <span className="text-xs font-bold tracking-wide">{currency.code}</span>
         <ChevronDown
-          size={13}
-          className={cn("shrink-0 opacity-70 transition-transform", isOpen && "rotate-180")}
+          size={11}
+          className={cn("shrink-0 opacity-60 transition-transform", isOpen && "rotate-180")}
         />
       </button>
 

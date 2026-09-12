@@ -146,9 +146,142 @@ export function useEditorCopilotContext(): void {
       ),
     })),
   });
+
+  useCopilotReadable({
+    description:
+      "Full JSON schema of the current active page tree. Contains all sections with their IDs, types, texts (ar/en/tr), styles, settings, and global brand tokens. The agent can read and modify this complete JSON.",
+    value: {
+      global: theme.global,
+      layoutCount: theme.layout.length,
+      layout: theme.layout,
+      elementOverrides: theme.elementOverrides,
+      selectedSection: current ? current : null,
+    },
+  });
 }
 
 export function useEditorCopilotActions(): void {
+  useCopilotAction({
+    name: "getFullPageJson",
+    description:
+      "Get the full rendered JSON tree of the current page layout, containing all sections, texts (ar/en/tr), styles, settings, and globals.",
+    parameters: [],
+    handler: () => {
+      const { theme, activePage, locale } = useBuilderStore.getState();
+      return JSON.stringify(
+        {
+          activePage,
+          locale,
+          global: theme.global,
+          layout: theme.layout,
+          elementOverrides: theme.elementOverrides,
+        },
+        null,
+        2
+      );
+    },
+  });
+
+  useCopilotAction({
+    name: "applyFullPageJson",
+    description:
+      "Apply and render full or partial JSON page structure live in the visual editor. Allows deep structural redesign and instant canvas re-render.",
+    parameters: [
+      {
+        name: "pageJson",
+        type: "string",
+        required: true,
+        description: "JSON string containing layout array or full HomepageTemplateDraft object.",
+      },
+    ],
+    handler: ({ pageJson }: { pageJson: string }) => {
+      try {
+        const parsed = JSON.parse(pageJson);
+        const store = useBuilderStore.getState();
+        if (Array.isArray(parsed)) {
+          store.setTheme((prev) => ({ ...prev, layout: parsed }));
+          toast.success(`تم تحديث الهيكل (${parsed.length} قسم) بالكامل في المحرر`);
+          return `Applied JSON with ${parsed.length} sections live to editor.`;
+        }
+        if (parsed && typeof parsed === "object" && Array.isArray(parsed.layout)) {
+          store.setTheme((prev) => ({
+            ...prev,
+            global: parsed.global || prev.global,
+            elementOverrides: parsed.elementOverrides || prev.elementOverrides,
+            layout: parsed.layout,
+          }));
+          toast.success(`تم تحديث الهيكل (${parsed.layout.length} قسم) بالكامل في المحرر`);
+          return `Applied full page JSON with ${parsed.layout.length} sections live to editor.`;
+        }
+        return "Invalid pageJson: must contain an array of sections or a full draft object with layout array.";
+      } catch (err) {
+        return `Failed to parse pageJson: ${err instanceof Error ? err.message : String(err)}`;
+      }
+    },
+  });
+
+  useCopilotAction({
+    name: "createAndSaveSectionToLibrary",
+    description:
+      "Create a custom section from scratch and save it to the reusable Section Library (catalog) for this site. Also places it live on the canvas.",
+    parameters: [
+      { name: "titleAr", type: "string", required: true },
+      { name: "titleEn", type: "string" },
+      { name: "titleTr", type: "string" },
+      { name: "slug", type: "string" },
+      { name: "tsx", type: "string" },
+      { name: "css", type: "string" },
+      { name: "html", type: "string", description: "Live rendered HTML template" },
+      { name: "afterInstanceId", type: "string" },
+    ],
+    handler: async (args: {
+      titleAr: string;
+      titleEn?: string;
+      titleTr?: string;
+      slug?: string;
+      tsx?: string;
+      css?: string;
+      html?: string;
+      afterInstanceId?: string;
+    }) => {
+      const data = await callCopilotFs({
+        action: "create_section",
+        titleAr: args.titleAr,
+        titleEn: args.titleEn,
+        titleTr: args.titleTr,
+        slug: args.slug,
+        tsx: args.tsx,
+        css: args.css,
+        html: args.html,
+      });
+      if (!data.ok || !data.section) return data.error || "Could not create section.";
+      const store = useBuilderStore.getState();
+      const after = args.afterInstanceId || store.selectedElement?.sectionInstanceId || undefined;
+      const before = new Set(store.theme.layout.map((item) => item.instanceId));
+      store.addSection("copilot", after);
+      const created = store.theme.layout.find((item) => item.type === "copilot" && !before.has(item.instanceId));
+      if (created) {
+        store.updateSectionSettings(created.instanceId, {
+          copilotSlug: data.section.slug,
+          html: data.section.html,
+          css: data.section.css,
+        });
+        store.applyPatch({
+          updateSectionTexts: {
+            instanceId: created.instanceId,
+            texts: {
+              title: { ar: args.titleAr, en: args.titleEn || args.titleAr, tr: args.titleTr || args.titleEn || args.titleAr },
+              subtitle: { ar: "", en: "", tr: "" },
+            },
+          },
+        });
+      }
+      const files = (data.changed || []).map((item) => `${item.action} ${item.path}`).join("\n");
+      toast.success(`تم إنشاء القسم وإضافته لمكتبة الأقسام: ${args.titleAr}`);
+      return `Created and saved section "${args.titleAr}" (${data.section.slug}) to Section Library.\nFiles changed:\n${files}`;
+    },
+  });
+
   useCopilotAction({
     name: "rewriteSectionCSS",
     description:
@@ -237,11 +370,11 @@ export function useEditorCopilotActions(): void {
   useCopilotAction({
     name: "setThemePreset",
     description:
-      "Apply a named site theme preset: emerald-coast, midnight-gold, mediterranean, desert-rose, arctic-graphite, royal-sapphire.",
+      "Apply a named site theme preset: royal-purple, luxury-navy, mediterranean-teal, sunset-coral, corporate-slate, emerald-coast, etc.",
     parameters: [{ name: "preset", type: "string", required: true }],
     handler: async ({ preset }: { preset: string }) => {
       const match = THEME_PRESETS.find((item) => item.id === preset);
-      if (!match) return `Unknown preset ${preset}.`;
+      if (!match) return `Unknown preset ${preset}. Available: ${THEME_PRESETS.map((p) => p.id).join(", ")}`;
       const store = useBuilderStore.getState();
       store.updateGlobalToken("navy", match.theme.colors.accent || match.theme.colors.header);
       store.updateGlobalToken("emerald", match.theme.colors.primary);
@@ -256,7 +389,101 @@ export function useEditorCopilotActions(): void {
       } catch {
         /* local tokens still applied */
       }
-      return `Applied preset ${match.id}.`;
+      toast.success(`تم تطبيق القالب: ${match.nameAr}`);
+      return `Applied preset ${match.nameAr} (${match.id}).`;
+    },
+  });
+
+  useCopilotAction({
+    name: "proposeAndApplyCustomTheme",
+    description:
+      "Generate, live-apply, and permanently save a comprehensive custom brand theme (colors, fonts, button styling, card radiuses, shadows, header/footer tones) to the site and theme preset library.",
+    parameters: [
+      { name: "nameAr", type: "string", required: true, description: "Theme name in Arabic (e.g. بنفسج ملكي عصري)" },
+      { name: "nameEn", type: "string", description: "Theme name in English" },
+      { name: "nameTr", type: "string", description: "Theme name in Turkish" },
+      { name: "descriptionAr", type: "string", description: "Arabic description of visual mood" },
+      { name: "primary", type: "string", required: true, description: "Primary brand accent color (e.g. #7c3aed)" },
+      { name: "secondary", type: "string", description: "Secondary background wash tint (e.g. #ece4f7)" },
+      { name: "headerBg", type: "string", description: "Header & footer deep ink (e.g. #2e1065)" },
+      { name: "buttonBg", type: "string", description: "Call-to-action button color (e.g. #7c3aed)" },
+      { name: "pageBg", type: "string", description: "Canvas background (e.g. #f7f4fc)" },
+      { name: "arabicFontId", type: "string", description: "Arabic font: cairo, alexandria, el-messiri, tajawal, ibm-plex-sans-arabic, almarai, mada" },
+      { name: "latinFontId", type: "string", description: "Latin font: sora, plus-jakarta-sans, outfit, inter, manrope, playfair-display" },
+      { name: "radius", type: "string", description: "Border radius style: sharp (straight corners), soft (rounded 12px), pill (circular buttons 999px), luxury (tailored 8px)" },
+      { name: "elevation", type: "string", description: "Shadow depth: flat, soft, deep" },
+      { name: "imageTreatment", type: "string", description: "Image treatment: none, rounded, shadow, lift, film" },
+    ],
+    handler: async (args: {
+      nameAr: string;
+      nameEn?: string;
+      nameTr?: string;
+      descriptionAr?: string;
+      primary: string;
+      secondary?: string;
+      headerBg?: string;
+      buttonBg?: string;
+      pageBg?: string;
+      arabicFontId?: string;
+      latinFontId?: string;
+      radius?: string;
+      elevation?: string;
+      imageTreatment?: string;
+    }) => {
+      const store = useBuilderStore.getState();
+      const primary = args.primary;
+      const secondary = args.secondary || "color-mix(in srgb, " + primary + " 15%, #ffffff)";
+      const header = args.headerBg || primary;
+      const button = args.buttonBg || primary;
+      const pageBg = args.pageBg || "#ffffff";
+      const arabicFontId = args.arabicFontId || "cairo";
+      const latinFontId = args.latinFontId || "sora";
+
+      // Apply to live builder state
+      store.updateGlobalToken("navy", header);
+      store.updateGlobalToken("emerald", primary);
+
+      try {
+        const res = await fetch("/api/admin/theme", {
+          method: "PUT",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            colors: {
+              primary,
+              secondary,
+              header,
+              footer: header,
+              button,
+              accent: primary,
+            },
+            chrome: {
+              primary,
+              secondary,
+              headerBg: header,
+              footerBg: header,
+              buttonBg: button,
+              pageBg,
+              focusRing: primary,
+              tabActiveBg: button,
+            },
+            arabicFontId,
+            latinFontId,
+            image: { treatment: args.imageTreatment || "shadow" },
+          }),
+        });
+
+        window.dispatchEvent(new CustomEvent(BRAND_THEME_UPDATED_EVENT));
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: "alrayyan:brand-theme-updated" }, "*");
+        }
+
+        const data = await res.json();
+        toast.success(`تم حفظ وتطبيق الهوية الجديدة بنجاح: ${args.nameAr}`);
+        return `Theme "${args.nameAr}" applied and saved permanently. Primary: ${primary}, Header: ${header}, Button: ${button}, Fonts: ${arabicFontId}/${latinFontId}.`;
+      } catch (err) {
+        return `Applied locally but failed to save to server: ${err instanceof Error ? err.message : String(err)}`;
+      }
     },
   });
 

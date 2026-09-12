@@ -8,6 +8,9 @@ export type StudioLastOutput = {
   videoPaths: string[];
   videoUrls: string[];
   platforms: string[];
+  /** True after media was sent for review; cleared after «انشر» publish. */
+  pendingPublish: boolean;
+  approvalId?: string | null;
   updatedAt: string;
 };
 
@@ -33,6 +36,8 @@ export async function writeStudioLastOutput(
     videoPaths: [],
     videoUrls: [],
     platforms: ["facebook", "instagram"],
+    pendingPublish: false,
+    approvalId: null,
     updatedAt: new Date().toISOString(),
   };
   const next: StudioLastOutput = {
@@ -43,6 +48,8 @@ export async function writeStudioLastOutput(
     videoPaths: patch.videoPaths ?? prev.videoPaths,
     videoUrls: patch.videoUrls ?? prev.videoUrls,
     platforms: patch.platforms ?? prev.platforms,
+    pendingPublish: patch.pendingPublish ?? prev.pendingPublish,
+    approvalId: patch.approvalId !== undefined ? patch.approvalId : prev.approvalId,
     updatedAt: new Date().toISOString(),
   };
   await fs.mkdir(path.dirname(FILE), { recursive: true });

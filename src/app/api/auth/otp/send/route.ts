@@ -16,15 +16,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
 
-  const channel = body.channel;
-  const purpose = body.purpose;
-  if (!isOtpChannel(channel) || !isOtpPurpose(purpose)) {
-    return NextResponse.json({ ok: false, error: "channel_or_purpose" }, { status: 400 });
+  const channel = (body.channel as string) || "whatsapp";
+  const purpose = (body.purpose as string) || "phone_update";
+  const to = String(body.to || body.phone || "").trim();
+
+  if (!isOtpChannel(channel) || !isOtpPurpose(purpose) || !to) {
+    return NextResponse.json(
+      { ok: false, error: !to ? "missing_phone" : "channel_or_purpose" },
+      { status: 400 }
+    );
   }
 
   const result = await sendOtp({
     channel,
-    to: String(body.to || ""),
+    to,
     purpose,
   });
   return NextResponse.json(result, { status: result.ok ? 200 : 400 });

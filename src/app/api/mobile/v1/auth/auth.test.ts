@@ -98,6 +98,17 @@ describe("mobile auth + handoff", () => {
     expect(body.ok).toBe(false);
   });
 
+  it("bridges the Google https callback into the Lonaliza app scheme", async () => {
+    const { GET } = await import("./google/callback/route");
+    const res = await GET(
+      new NextRequest("http://localhost/api/mobile/v1/auth/google/callback?code=abc&state=s1")
+    );
+    const html = await res.text();
+    expect(res.headers.get("content-type")).toContain("text/html");
+    expect(html).toContain("lonaliza://auth/callback");
+    expect(html).toContain("code=abc");
+  });
+
   it("exchanges a Google Auth Tab code for the same email and a live JWT", async () => {
     const { POST } = await import("./google/route");
     const req = new NextRequest("http://localhost/api/mobile/v1/auth/google", {
@@ -108,7 +119,7 @@ describe("mobile auth + handoff", () => {
       body: JSON.stringify({
         code: "auth-code",
         verifier: "pkce",
-        redirectUri: "lonaliza://auth/callback",
+        redirectUri: "https://lonaliza.com/api/mobile/v1/auth/google/callback",
       }),
     });
     const res = await POST(req);

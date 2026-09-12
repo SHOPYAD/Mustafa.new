@@ -42,6 +42,7 @@ export const NAV_ICON_IDS = [
   "visa",
   "uaeTours",
   "blog",
+  "community",
   "aiChat",
   "contact",
 ] as const;
@@ -103,6 +104,7 @@ export const DEFAULT_NAV_ICONS: Record<NavIconId, UiIconRef> = {
   visa: { source: "lucide", name: "stamp" },
   uaeTours: { source: "lucide", name: "landmark" },
   blog: { source: "lucide", name: "newspaper" },
+  community: { source: "lucide", name: "share-2" },
   aiChat: { source: "lucide", name: "sparkles" },
   contact: { source: "lucide", name: "phone" },
 };

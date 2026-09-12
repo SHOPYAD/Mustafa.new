@@ -107,30 +107,41 @@ export default function Footer() {
     ? contact.customerServicePhones
     : primaryPhone
       ? [primaryPhone]
-      : ["+90 532 179 67 63"];
-  const email = contact.email || "info@alrayyantourism.com";
+      : ["+90 531 359 13 94"];
+  const email = contact.email || "info@lonaliza.com";
   const address = contact.address || t.footer.address;
 
+  const isOrigin = (process.env.NEXT_PUBLIC_DEPLOYMENT_ROLE || "origin") !== "client";
+  if (isOrigin && pathname === "/") return null;
   if (pathname?.startsWith("/flights/redirect")) return null;
 
   return (
-    <footer className="alrayyan-site-footer relative text-white" style={{ backgroundColor: "var(--brand-footer)" }}>
-      <div className="alrayyan-footer-main relative z-10 mx-auto max-w-[1400px] px-4 py-7 sm:px-6 lg:px-8 lg:py-8">
-        <div className="alrayyan-footer-grid grid grid-cols-2 gap-x-6 gap-y-7 md:grid-cols-12 md:gap-x-8 md:gap-y-6">
+    <footer
+      className="alrayyan-site-footer relative overflow-hidden bg-gradient-to-b from-[#faf5fe] via-[#f5edfc] to-[#ede3f8] text-slate-800 border-t border-purple-200/80"
+      style={{
+        backgroundImage: "radial-gradient(rgba(147, 51, 234, 0.12) 1.25px, transparent 1.25px)",
+        backgroundSize: "20px 20px",
+      }}
+    >
+      <div className="alrayyan-footer-main relative z-10 mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <div className="alrayyan-footer-grid grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-12 md:gap-x-8 md:gap-y-6">
           <div className="col-span-2 md:col-span-4">
-            <Link href="/" className="inline-flex items-center gap-2">
+            <Link
+              href={pathname?.startsWith("/demo") ? "/demo" : "/"}
+              className="inline-flex items-center gap-2"
+            >
               <BrandImage
                 src={branding.logoUrl || "/logo.png"}
                 alt={brandName}
-                width={140}
-                height={44}
-                className="h-9 w-auto object-contain"
+                width={220}
+                height={68}
+                className="h-14 sm:h-16 w-auto max-w-[260px] object-contain drop-shadow-xs"
               />
             </Link>
-            <p className="mt-3 max-w-xs text-[13px] leading-relaxed text-white/55">
+            <p className="mt-3.5 max-w-xs text-[13px] leading-relaxed text-slate-600 font-medium">
               {t.footer.tagline}
             </p>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2.5">
               {social.map((s) => {
                 const Icon = FOOTER_ICONS[s.id]!;
                 return (
@@ -140,9 +151,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.id}
-                    className="alrayyan-footer-icon flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-[color:var(--brand-primary)] hover:bg-white/10"
+                    className="alrayyan-footer-icon flex h-9 w-9 items-center justify-center rounded-xl border border-purple-200 bg-white/90 text-purple-900 shadow-2xs transition-all duration-200 hover:border-amber-400 hover:bg-[#2e1065] hover:text-amber-300 hover:scale-105"
                   >
-                    <Icon size={14} />
+                    <Icon size={15} />
                   </a>
                 );
               })}
@@ -150,15 +161,15 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="alrayyan-footer-heading mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-teal-300">
+            <h4 className="alrayyan-footer-heading mb-3 text-[13px] font-black uppercase tracking-[0.14em] text-purple-950">
               {t.footer.explore}
             </h4>
-            <ul className="grid grid-cols-1 gap-y-1.5 sm:grid-cols-2 sm:gap-x-3">
+            <ul className="grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block text-[13px] text-white/60 transition-colors"
+                    className="block text-[13px] font-semibold text-slate-700 transition-colors hover:text-purple-950"
                   >
                     {link.label}
                   </Link>
@@ -168,15 +179,15 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="alrayyan-footer-heading mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-teal-300">
+            <h4 className="alrayyan-footer-heading mb-3 text-[13px] font-black uppercase tracking-[0.14em] text-purple-950">
               {t.footer.destinations}
             </h4>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {destinations.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block text-[13px] text-white/60 transition-colors"
+                    className="block text-[13px] font-semibold text-slate-700 transition-colors hover:text-purple-950"
                   >
                     {link.label}
                   </Link>
@@ -186,13 +197,13 @@ export default function Footer() {
           </div>
 
           <div className="col-span-2 md:col-span-3">
-            <h4 className="alrayyan-footer-heading mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-teal-300">
+            <h4 className="alrayyan-footer-heading mb-3 text-[13px] font-black uppercase tracking-[0.14em] text-purple-950">
               {t.footer.contact}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {address ? (
-                <li className="flex items-start gap-2 text-[13px] text-white/60">
-                  <MapPin size={14} className="alrayyan-footer-icon mt-0.5 shrink-0 text-emerald-400" />
+                <li className="flex items-start gap-2.5 text-[13px] font-medium text-slate-700">
+                  <MapPin size={15} className="mt-0.5 shrink-0 text-purple-700" />
                   <span className="leading-snug whitespace-pre-line">{address}</span>
                 </li>
               ) : null}
@@ -200,10 +211,10 @@ export default function Footer() {
                 <li key={phone}>
                   <a
                     href={phoneToTelHref(phone)}
-                    className="flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white"
+                    className="flex items-center gap-2.5 text-[13px] font-semibold text-slate-700 transition-colors hover:text-purple-950"
                     dir="ltr"
                   >
-                    <Phone size={14} className="alrayyan-footer-icon text-emerald-400" />
+                    <Phone size={15} className="shrink-0 text-purple-700" />
                     {phone}
                   </a>
                 </li>
@@ -212,9 +223,9 @@ export default function Footer() {
                 <li>
                   <a
                     href={`mailto:${email}`}
-                    className="flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white"
+                    className="flex items-center gap-2.5 text-[13px] font-semibold text-slate-700 transition-colors hover:text-purple-950"
                   >
-                    <Mail size={14} className="alrayyan-footer-icon text-emerald-400" />
+                    <Mail size={15} className="shrink-0 text-purple-700" />
                     {email}
                   </a>
                 </li>
@@ -224,8 +235,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-black/20">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-2 px-4 py-3 text-[12px] text-white/45 sm:flex-row sm:px-6 lg:px-8">
+      <div className="border-t border-purple-200/80 bg-purple-100/60">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-2 px-4 py-3.5 text-[12px] font-medium text-slate-600 sm:flex-row sm:px-6 lg:px-8">
           <p
             data-builder-id="footer.copyright"
             data-field="footer.copyright"
@@ -235,10 +246,10 @@ export default function Footer() {
               © {new Date().getFullYear()} {brandName}. {t.common.allRights}
             </span>
           </p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-4 sm:gap-6 font-semibold">
             <Link
               href="/privacy"
-              className="transition-colors hover:text-white"
+              className="text-slate-600 hover:text-purple-950 transition-colors"
               data-builder-id="footer.privacy"
               data-field="footer.privacy"
               data-builder-field="footer.privacy"
@@ -247,12 +258,21 @@ export default function Footer() {
             </Link>
             <Link
               href="/terms"
-              className="transition-colors hover:text-white"
+              className="text-slate-600 hover:text-purple-950 transition-colors"
               data-builder-id="footer.terms"
               data-field="footer.terms"
               data-builder-field="footer.terms"
             >
               <span data-builder-text="">{t.common.terms}</span>
+            </Link>
+            <Link
+              href="/gdpr"
+              className="text-slate-600 hover:text-purple-950 transition-colors"
+              data-builder-id="footer.gdpr"
+              data-field="footer.gdpr"
+              data-builder-field="footer.gdpr"
+            >
+              <span data-builder-text="">GDPR / KVKK</span>
             </Link>
           </div>
         </div>

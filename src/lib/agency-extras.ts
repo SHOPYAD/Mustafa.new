@@ -5,14 +5,11 @@ export function extraLocalizedTitle(pkg: AgencyExtraPackage, locale: Locale): st
   switch (locale) {
     case "ar":
       return pkg.titleAr || pkg.titleEn;
-    case "en":
-      return pkg.titleEn || pkg.titleAr;
     case "tr":
       return pkg.titleTr || pkg.titleEn || pkg.titleAr;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
+    case "en":
+    default:
+      return pkg.titleEn || pkg.titleAr;
   }
 }
 
@@ -20,15 +17,54 @@ export function extraLocalizedDesc(pkg: AgencyExtraPackage, locale: Locale): str
   switch (locale) {
     case "ar":
       return pkg.descAr || pkg.descEn;
-    case "en":
-      return pkg.descEn || pkg.descAr;
     case "tr":
       return pkg.descTr || pkg.descEn || pkg.descAr;
-    default: {
-      const _exhaustive: never = locale;
-      return _exhaustive;
-    }
+    case "en":
+    default:
+      return pkg.descEn || pkg.descAr;
   }
+}
+
+export function extraLocalizedTerms(pkg: AgencyExtraPackage, locale: Locale): string {
+  switch (locale) {
+    case "ar":
+      return pkg.termsAr || pkg.termsEn || "";
+    case "tr":
+      return pkg.termsTr || pkg.termsEn || pkg.termsAr || "";
+    case "en":
+    default:
+      return pkg.termsEn || pkg.termsAr || "";
+  }
+}
+
+/** Snapshot of a purchased Lonaliza service stored inside the booking (never sent to the supplier). */
+export type LonalizaServiceLine = {
+  id: string;
+  kind: AgencyExtraPackage["kind"];
+  title: string;
+  amount: number;
+  currency?: string;
+  terms?: string;
+  priceType: AgencyExtraPackage["priceType"];
+  priceValue: number;
+};
+
+export function toLonalizaServiceLine(
+  pkg: AgencyExtraPackage,
+  fareSubtotal: number,
+  locale: Locale,
+  currency?: string
+): LonalizaServiceLine {
+  return {
+    id: pkg.id,
+    kind: pkg.kind || "other",
+    title: extraLocalizedTitle(pkg, locale),
+    amount: extraLineAmount(pkg, fareSubtotal),
+    currency,
+    terms: extraLocalizedTerms(pkg, locale) || undefined,
+    priceType: pkg.priceType,
+    priceValue: pkg.priceValue,
+  };
 }
 
 export function extraLineAmount(pkg: AgencyExtraPackage, fareSubtotal: number): number {

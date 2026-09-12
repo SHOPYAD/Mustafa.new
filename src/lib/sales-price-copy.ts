@@ -1,4 +1,4 @@
-/** Shared estimate + WhatsApp confirmation copy for chat, programs, and PDF. */
+import type { Locale } from "@/lib/i18n/types";
 
 export const PRICE_ESTIMATE_AR =
   "السعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.";
@@ -49,16 +49,16 @@ export function replyHasEstimateNote(reply: string): boolean {
 
 export function appendEstimateNote(
   reply: string,
-  locale: "ar" | "en" | "tr",
+  locale: Locale,
   whatsapp: string
 ): string {
   if (replyHasEstimateNote(reply)) return reply;
   const note =
     locale === "tr"
       ? PRICE_ESTIMATE_TR
-      : locale === "en"
-        ? PRICE_ESTIMATE_EN
-        : PRICE_ESTIMATE_AR;
+      : locale === "ar"
+        ? PRICE_ESTIMATE_AR
+        : PRICE_ESTIMATE_EN;
   const digits = digitsWhatsApp(whatsapp);
   const wa =
     locale === "ar"

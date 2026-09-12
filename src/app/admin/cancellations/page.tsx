@@ -41,7 +41,65 @@ type Row = {
   service: InvoiceService;
   pnr: string;
   route: string;
+  request_type?: "cancel" | "change";
+  change_status?: "none" | "pending_admin" | "done" | "rejected";
+  change_request?: string;
+  change_admin_note?: string;
+  change_requested_at?: string;
+  lonaliza_services?: Array<{ id: string; kind: string; title: string; amount: number; currency?: string }>;
+  refund_guarantee?: boolean;
+  flex_change?: boolean;
+  supplier_reference?: string;
+  supplier_cancel_note?: string;
 };
+
+const LZ_COPY = {
+  ar: {
+    services: "خدمات لوناليزا",
+    changeRequest: "طلب تغيير تاريخ (خدمة لوناليزا)",
+    changeHint: "نفّذ التغيير عند المورد ثم اضغط «تم التنفيذ». لا يُرسل شيء للمورد تلقائياً.",
+    changeDone: "تم التنفيذ",
+    changeReject: "رفض الطلب",
+    changeStatusDone: "نُفِّذ",
+    changeStatusRejected: "مرفوض",
+    changeStatusPending: "بانتظار التنفيذ",
+    newCheckIn: "التاريخ الجديد (ذهاب)",
+    newCheckOut: "التاريخ الجديد (عودة/مغادرة)",
+    guarantee: "ضمان استرداد لوناليزا: يُسترد للعميل حتى لو رفض المورد الإلغاء (الفرق على محفظة لوناليزا).",
+    supplierRef: "مرجع المورد",
+    requested: "طلب العميل",
+  },
+  en: {
+    services: "Lonaliza services",
+    changeRequest: "Date change request (Lonaliza service)",
+    changeHint: "Execute the change at the supplier, then press “Done”. Nothing is sent to the supplier automatically.",
+    changeDone: "Done",
+    changeReject: "Reject",
+    changeStatusDone: "Executed",
+    changeStatusRejected: "Rejected",
+    changeStatusPending: "Awaiting execution",
+    newCheckIn: "New date (outbound)",
+    newCheckOut: "New date (return/checkout)",
+    guarantee: "Lonaliza refund guarantee: refund the customer even if the supplier refuses (difference borne by Lonaliza).",
+    supplierRef: "Supplier ref",
+    requested: "Customer request",
+  },
+  tr: {
+    services: "Lonaliza hizmetleri",
+    changeRequest: "Tarih değişikliği talebi (Lonaliza hizmeti)",
+    changeHint: "Değişikliği tedarikçide yapın, sonra “Tamamlandı”ya basın. Tedarikçiye otomatik hiçbir şey gönderilmez.",
+    changeDone: "Tamamlandı",
+    changeReject: "Reddet",
+    changeStatusDone: "Yapıldı",
+    changeStatusRejected: "Reddedildi",
+    changeStatusPending: "Bekliyor",
+    newCheckIn: "Yeni tarih (gidiş)",
+    newCheckOut: "Yeni tarih (dönüş/çıkış)",
+    guarantee: "Lonaliza iade garantisi: tedarikçi reddetse bile müşteriye iade edilir (fark Lonaliza'ya ait).",
+    supplierRef: "Tedarikçi ref",
+    requested: "Müşteri talebi",
+  },
+} as const;
 
 function serviceLabel(service: InvoiceService, t: Dictionary): string {
   switch (service) {
@@ -114,7 +172,7 @@ function statusClass(status: CancelStatus): string {
       return "border-amber-400/30 bg-amber-500/15 text-amber-200";
     case "approved":
     case "refunded":
-      return "border-emerald-400/30 bg-emerald-500/15 text-emerald-200";
+      return "border-purple-400/30 bg-purple-500/15 text-purple-200";
     case "rejected":
       return "border-rose-400/30 bg-rose-500/15 text-rose-200";
     case "none":
@@ -133,6 +191,8 @@ export default function AdminCancellationsPage() {
   const [busyId, setBusyId] = useState("");
   const [fees, setFees] = useState<Record<string, string>>({});
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const [newDates, setNewDates] = useState<Record<string, { in: string; out: string }>>({});
+  const lz = LZ_COPY[locale === "en" ? "en" : locale === "tr" ? "tr" : "ar"];
   const [msg, setMsg] = useState("");
   const [filter, setFilter] = useState<StatusFilter>("all");
 
@@ -146,15 +206,26 @@ export default function AdminCancellationsPage() {
     void load().finally(() => setLoading(false));
   }, []);
 
+  const groupOf = (row: Row): StatusFilter => {
+    if (row.request_type === "change") {
+      if (row.change_status === "pending_admin") return "new";
+      if (row.change_status === "done") return "approved";
+      if (row.change_status === "rejected") return "rejected";
+      return "all";
+    }
+    return statusGroup(row.cancel_status);
+  };
+
   const visible = useMemo(
-    () => (filter === "all" ? rows : rows.filter((row) => statusGroup(row.cancel_status) === filter)),
+    () => (filter === "all" ? rows : rows.filter((row) => groupOf(row) === filter)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [rows, filter]
   );
 
   const counts = useMemo(() => {
     const next = { all: rows.length, new: 0, approved: 0, rejected: 0 };
     for (const row of rows) {
-      const group = statusGroup(row.cancel_status);
+      const group = groupOf(row);
       if (group === "new") next.new += 1;
       if (group === "approved") next.approved += 1;
       if (group === "rejected") next.rejected += 1;
@@ -162,7 +233,7 @@ export default function AdminCancellationsPage() {
     return next;
   }, [rows]);
 
-  const run = async (action: "approve" | "reject" | "retry", row: Row) => {
+  const run = async (action: "approve" | "reject" | "retry" | "change_done" | "change_reject", row: Row) => {
     setBusyId(`${action}:${row.id}`);
     setMsg("");
     try {
@@ -174,6 +245,8 @@ export default function AdminCancellationsPage() {
           bookingId: row.id,
           feeAmount: Number(fees[row.id] || 0),
           note: notes[row.id] || "",
+          newCheckIn: newDates[row.id]?.in || undefined,
+          newCheckOut: newDates[row.id]?.out || undefined,
         }),
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
@@ -255,9 +328,30 @@ export default function AdminCancellationsPage() {
                       <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white/70">
                         {t.admin.cancelService}: {serviceLabel(row.service, t)}
                       </span>
-                      <span className={cn("rounded-full border px-2.5 py-0.5 text-[11px] font-bold", statusClass(row.cancel_status))}>
-                        {statusLabel(row.cancel_status, t)}
-                      </span>
+                      {row.request_type === "change" ? (
+                        <span
+                          className={cn(
+                            "rounded-full border px-2.5 py-0.5 text-[11px] font-bold",
+                            row.change_status === "done"
+                              ? "border-purple-400/30 bg-purple-500/15 text-purple-200"
+                              : row.change_status === "rejected"
+                                ? "border-rose-400/30 bg-rose-500/15 text-rose-200"
+                                : "border-sky-400/30 bg-sky-500/15 text-sky-200"
+                          )}
+                        >
+                          {lz.changeRequest} ·{" "}
+                          {row.change_status === "done" ? lz.changeStatusDone : row.change_status === "rejected" ? lz.changeStatusRejected : lz.changeStatusPending}
+                        </span>
+                      ) : (
+                        <span className={cn("rounded-full border px-2.5 py-0.5 text-[11px] font-bold", statusClass(row.cancel_status))}>
+                          {statusLabel(row.cancel_status, t)}
+                        </span>
+                      )}
+                      {row.lonaliza_services?.map((svc) => (
+                        <span key={svc.id} className="rounded-full border border-amber-400/30 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-bold text-amber-200">
+                          {lz.services}: {svc.title}
+                        </span>
+                      ))}
                     </div>
                     <p className="mt-2 font-bold">{title}</p>
                     <p className="text-sm text-white/60">
@@ -274,6 +368,22 @@ export default function AdminCancellationsPage() {
                         {t.admin.cancelRequestedAt}: {formatHumanDateTime(row.cancel_requested_at, locale)}
                       </p>
                     ) : null}
+                    {row.request_type === "change" && row.change_requested_at ? (
+                      <p className="mt-1 text-xs text-white/40">
+                        {t.admin.cancelRequestedAt}: {formatHumanDateTime(row.change_requested_at, locale)}
+                      </p>
+                    ) : null}
+                    {row.supplier_reference ? (
+                      <p className="mt-1 text-xs text-white/40" dir="ltr">
+                        {lz.supplierRef}: {row.supplier_reference}
+                      </p>
+                    ) : null}
+                    {row.refund_guarantee && row.request_type !== "change" ? (
+                      <p className="mt-2 rounded-lg border border-amber-400/20 bg-amber-500/10 px-2.5 py-1.5 text-xs text-amber-100">{lz.guarantee}</p>
+                    ) : null}
+                    {row.supplier_cancel_note ? (
+                      <p className="mt-1 text-xs text-rose-200/80">{row.supplier_cancel_note}</p>
+                    ) : null}
                   </div>
                   <div className="text-end text-sm">
                     <p>
@@ -285,13 +395,78 @@ export default function AdminCancellationsPage() {
                     </p>
                     <Link
                       href={`/admin/bookings?id=${encodeURIComponent(`hotel:${row.id}`)}`}
-                      className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-emerald-300 hover:text-emerald-200"
+                      className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-amber-300 hover:text-amber-200"
                     >
                       <ExternalLink size={12} />
                       {t.admin.cancelViewBooking}
                     </Link>
                   </div>
                 </div>
+                {row.request_type === "change" ? (
+                  <div className="mt-3 rounded-xl border border-sky-400/20 bg-sky-500/5 p-3">
+                    <p className="text-sm text-white/80">
+                      <span className="font-semibold text-white/50">{lz.requested}: </span>
+                      {row.change_request || "—"}
+                    </p>
+                    <p className="mt-1 text-xs text-white/40">{lz.changeHint}</p>
+                    {row.change_admin_note ? (
+                      <p className="mt-1 text-sm text-amber-100/80">
+                        <span className="font-semibold text-white/50">{t.admin.cancelNote}: </span>
+                        {row.change_admin_note}
+                      </p>
+                    ) : null}
+                    {row.change_status === "pending_admin" ? (
+                      <>
+                        <div className="mt-3 grid gap-3 md:grid-cols-3">
+                          <label className="text-xs text-white/40">
+                            {lz.newCheckIn}
+                            <input
+                              type="date"
+                              value={newDates[row.id]?.in || ""}
+                              onChange={(e) => setNewDates((s) => ({ ...s, [row.id]: { in: e.target.value, out: s[row.id]?.out || "" } }))}
+                              className="mt-1 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-white"
+                            />
+                          </label>
+                          <label className="text-xs text-white/40">
+                            {lz.newCheckOut}
+                            <input
+                              type="date"
+                              value={newDates[row.id]?.out || ""}
+                              onChange={(e) => setNewDates((s) => ({ ...s, [row.id]: { in: s[row.id]?.in || "", out: e.target.value } }))}
+                              className="mt-1 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-white"
+                            />
+                          </label>
+                          <label className="text-xs text-white/40">
+                            {t.admin.cancelNote}
+                            <input
+                              value={notes[row.id] || ""}
+                              onChange={(e) => setNotes((s) => ({ ...s, [row.id]: e.target.value }))}
+                              className="mt-1 w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-white"
+                            />
+                          </label>
+                        </div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <button
+                            type="button"
+                            disabled={Boolean(busyId)}
+                            onClick={() => void run("change_done", row)}
+                            className="rounded-xl bg-gradient-to-r from-purple-700 to-indigo-800 px-4 py-2 text-xs font-bold text-white hover:brightness-110 shadow-sm disabled:opacity-50"
+                          >
+                            {lz.changeDone}
+                          </button>
+                          <button
+                            type="button"
+                            disabled={Boolean(busyId)}
+                            onClick={() => void run("change_reject", row)}
+                            className="rounded-xl border border-rose-400/30 px-4 py-2 text-xs font-bold text-rose-200 disabled:opacity-50"
+                          >
+                            {lz.changeReject}
+                          </button>
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+                ) : null}
                 {row.cancel_reason ? (
                   <p className="mt-3 rounded-xl bg-white/5 px-3 py-2 text-sm text-white/80">
                     <span className="font-semibold text-white/50">{t.admin.cancelCustomerReason}: </span>
@@ -304,6 +479,8 @@ export default function AdminCancellationsPage() {
                     {row.cancel_admin_note}
                   </p>
                 ) : null}
+                {row.request_type === "change" ? null : (
+                <>
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
                   <label className="text-xs text-white/40">
                     {t.admin.cancelFee}
@@ -325,7 +502,7 @@ export default function AdminCancellationsPage() {
                     />
                   </label>
                 </div>
-                <p className="mt-2 text-xs text-emerald-200">
+                <p className="mt-2 text-xs text-amber-200 font-medium">
                   {t.hotels.alrayyanTotal}: {row.currency} {refund}
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -335,7 +512,7 @@ export default function AdminCancellationsPage() {
                         type="button"
                         disabled={Boolean(busyId)}
                         onClick={() => void run(row.cancel_status === "refund_failed" ? "retry" : "approve", row)}
-                        className="rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white disabled:opacity-50"
+                        className="rounded-xl bg-gradient-to-r from-purple-700 to-indigo-800 px-4 py-2 text-xs font-bold text-white hover:brightness-110 shadow-sm disabled:opacity-50"
                       >
                         {row.cancel_status === "refund_failed" ? t.admin.cancelRetry : t.admin.cancelApprove}
                       </button>
@@ -350,6 +527,8 @@ export default function AdminCancellationsPage() {
                     </>
                   ) : null}
                 </div>
+                </>
+                )}
               </section>
             );
           })}

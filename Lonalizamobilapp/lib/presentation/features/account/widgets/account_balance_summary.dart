@@ -45,7 +45,7 @@ class AccountBalanceSummary extends ConsumerWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        'Use Trip Coins to save more',
+                        'استخدم نقاط لوناليزا لتوفير أكثر',
                         style: AccountTheme.listSubtitle.copyWith(fontSize: 12),
                       ),
                     ],

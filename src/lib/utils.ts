@@ -18,16 +18,20 @@ export function tContent(
     const arKey = `${base}Ar`;
     const enKey = `${base}En`;
     const trKey = `${base}Tr`;
+    const frKey = `${base}Fr`;
     const arVal = String(record[arKey] || "");
     const enVal = String(record[enKey] || "");
     const trVal = String(record[trKey] || "");
+    const frVal = String(record[frKey] || "");
     const baseVal = String(record[base] || "");
     if (locale === "ar") {
         return arVal || enVal || baseVal;
     }
     if (locale === "tr") {
-        // Prefer dedicated Tr fields; fall back to AR until TR content exists
-        return trVal || arVal || enVal || baseVal;
+        return trVal || enVal || arVal || baseVal;
+    }
+    if (locale === "fr") {
+        return frVal || enVal || arVal || baseVal;
     }
     return enVal || arVal || baseVal;
 }

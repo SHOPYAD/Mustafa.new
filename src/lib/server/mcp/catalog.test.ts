@@ -29,7 +29,9 @@ describe("MCP catalog", () => {
     expect(isBuiltinMcpId("liotrip-canva")).toBe(true);
     expect(isBuiltinMcpId("liotrip-higgsfield")).toBe(true);
     expect(isBuiltinMcpId("liotrip-whatsapp")).toBe(true);
+    expect(isBuiltinMcpId("liotrip-computer-use")).toBe(true);
+    expect(isBuiltinMcpId("liotrip-browser-use")).toBe(true);
     expect(isBuiltinMcpId("mcp-github-import")).toBe(false);
-    expect(BUILTIN_MCP_IDS).toHaveLength(7);
+    expect(BUILTIN_MCP_IDS).toHaveLength(16);
   });
 });

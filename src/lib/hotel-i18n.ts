@@ -6,7 +6,7 @@ export function rapidApiLang(locale?: string): string {
   return "en_US";
 }
 
-const AMENITY_MAP: Record<string, Record<Locale, string>> = {
+const AMENITY_MAP: Record<string, Partial<Record<Locale, string>>> = {
   pool: { ar: "مسبح", en: "Pool", tr: "Havuz" },
   "free high speed internet (wifi)": {
     ar: "إنترنت مجاني عالي السرعة (واي فاي)",
@@ -91,7 +91,7 @@ const AMENITY_MAP: Record<string, Record<Locale, string>> = {
   today: { ar: "اليوم", en: "Today", tr: "Bugün" },
 };
 
-const ROOM_PHRASE: Array<[RegExp, Record<Locale, string>]> = [
+const ROOM_PHRASE: Array<[RegExp, Partial<Record<Locale, string>>]> = [
   [
     /^standard king room with sofa bed$/i,
     {
@@ -163,11 +163,20 @@ function normKey(text: string): string {
   return text.replace(/\s+/g, " ").trim().toLowerCase();
 }
 
+export function humanizeHotelLabel(text: string): string {
+  return String(text || "")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+    .replace(/[_./-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function localizeHotelLabel(text: string, locale: Locale): string {
-  const raw = (text || "").replace(/\s+/g, " ").trim();
+  const raw = humanizeHotelLabel(text);
   if (!raw) return "";
-  const direct = AMENITY_MAP[normKey(raw)];
-  if (direct) return direct[locale];
+  const direct = AMENITY_MAP[normKey(raw)] || AMENITY_MAP[normKey(text)];
+  if (direct) return direct[locale] || direct.en || raw;
   const daysAgo = raw.match(/^(\d+)\s+days?\s+ago$/i);
   if (daysAgo) {
     const n = daysAgo[1];
@@ -182,11 +191,11 @@ export function localizeRoomType(text: string, locale: Locale): string {
   const raw = (text || "").replace(/\s+/g, " ").trim();
   if (!raw) return "";
   const exact = AMENITY_MAP[normKey(raw)];
-  if (exact) return exact[locale];
+  if (exact) return exact[locale] || exact.en || raw;
   for (const [re, copy] of ROOM_PHRASE) {
     if (!re.test(raw)) continue;
     const rest = raw.replace(re, "").trim();
-    if (rest === "" || /^with\b|^and\b/i.test(rest)) return copy[locale];
+    if (rest === "" || /^with\b|^and\b/i.test(rest)) return copy[locale] || copy.en || raw;
   }
   return raw;
 }
