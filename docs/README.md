@@ -1,6 +1,6 @@
 # Documentation & MCP Specification Servers Index
 
-Alrayyan Group / Lonaliza platform documentation and Enterprise MCP (Model Context Protocol) specification bridges for AI Agents and development teams.
+Lonaliza platform documentation and Enterprise MCP (Model Context Protocol) specification bridges for AI agents and development teams.
 
 ---
 
