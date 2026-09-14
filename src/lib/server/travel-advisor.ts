@@ -3567,6 +3567,7 @@ export async function resolveTravelAdvisorHotelId(input: {
 export async function fetchTravelAdvisorReviews(input: {
   contentId: string;
   lang?: string;
+  maxReviews?: number;
 }): Promise<{ reviews: TravelAdvisorReview[]; rating: number; reviewCount: number }> {
   const contentId = String(input.contentId || "").trim();
   if (!contentId) return { reviews: [], rating: 0, reviewCount: 0 };
@@ -3574,12 +3575,17 @@ export async function fetchTravelAdvisorReviews(input: {
   const seen = new Set<string>();
   let rating = 0;
   let reviewCount = 0;
-  for (const offset of [0, 20, 40]) {
+  let offset = 0;
+  const limit = 20;
+  const targetMax = input.maxReviews && input.maxReviews > 0 ? input.maxReviews : Infinity;
+
+  // Dynamically crawl all review pages from TripAdvisor until exhausted or target reached
+  while (reviews.length < targetMax) {
     const page = await taFetchOptional({
       path: "/hotels/v2/get-reviews",
       method: "POST",
       lang: input.lang,
-      body: { contentId: String(contentId), offset, limit: 20 },
+      body: { contentId: String(contentId), offset, limit },
     });
     if (!page) break;
     const extra = extractReviews(page);
@@ -3593,8 +3599,12 @@ export async function fetchTravelAdvisorReviews(input: {
       seen.add(row.id);
       reviews.push({ ...row, source: "tripadvisor" });
       added += 1;
+      if (reviews.length >= targetMax) break;
     }
-    if (added < 6) break;
+    if (added === 0) break;
+    offset += limit;
+    if (reviewCount > 0 && reviews.length >= reviewCount) break;
+    if (offset >= 10000) break; // extreme safety guard against infinite duplicate loops
   }
   if (!reviews.length) {
     const details = await taFetchOptional({

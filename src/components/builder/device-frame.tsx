@@ -44,7 +44,11 @@ export function DeviceFrame({
           initial={false}
           animate={{ width: frameWidth }}
           transition={{ type: "spring", stiffness: 300, damping: 32 }}
-          className="ed-device-frame relative flex w-full flex-col overflow-visible rounded-xl border shadow-lg"
+          className={
+            device === "mobile"
+              ? "ed-device-frame relative flex w-full flex-col overflow-hidden rounded-[48px] border-[10px] border-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/20 bg-slate-950"
+              : "ed-device-frame relative flex w-full flex-col overflow-visible rounded-xl border shadow-lg"
+          }
           style={{
             transform: scale < 1 ? `scale(${scale})` : undefined,
             transformOrigin: "top left",
@@ -52,7 +56,21 @@ export function DeviceFrame({
             minHeight: scale < 1 ? `${100 / scale}%` : "100%",
           }}
         >
+          {device === "mobile" && (
+            <div className="relative w-full h-7 bg-slate-950 flex items-center justify-center shrink-0 border-b border-slate-900 z-30 select-none">
+              {/* Dynamic Island Notch */}
+              <div className="h-4 w-24 rounded-full bg-black flex items-center justify-between px-2.5 shadow-inner border border-white/5">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-800" />
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500/80" />
+              </div>
+            </div>
+          )}
           {children}
+          {device === "mobile" && (
+            <div className="relative w-full h-4 bg-slate-950 flex items-center justify-center shrink-0 z-30 select-none">
+              <div className="h-1 w-28 rounded-full bg-slate-600/60" />
+            </div>
+          )}
         </motion.div>
       </div>
     </div>

@@ -37,16 +37,19 @@ import {
   FileText,
 } from "lucide-react";
 import AccountBookings from "@/components/account/AccountBookings";
+import AccountReviews from "@/components/account/AccountReviews";
 import AccountPayments from "@/components/account/AccountPayments";
 import AccountOverview from "@/components/account/AccountOverview";
 import AccountShell, { isAccountTab, type AccountTab } from "@/components/account/AccountShell";
 import LonalizaAccountFeatures from "@/components/account/LonalizaAccountFeatures";
 import CustomerTiersSection from "@/components/account/CustomerTiersSection";
 import SocialProfileSection from "@/components/account/SocialProfileSection";
+import { isClientAppMode } from "@/lib/mobile/app-mode";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 import TermsModal from "@/components/auth/TermsModal";
+import EmptyStateCard from "@/components/chrome/EmptyStateCard";
 
 function money(n: number) {
   return `$${Math.round((Number(n) || 0) * 100) / 100}`;
@@ -62,7 +65,7 @@ function Card({
   return (
     <div
       className={cn(
-        "rounded-3xl border border-slate-200/90 bg-white p-6 shadow-md shadow-purple-950/5",
+        "rounded-3xl border border-slate-200/90 bg-white p-4 sm:p-6 shadow-md shadow-purple-950/5 min-w-0 max-w-full overflow-hidden",
         className
       )}
     >
@@ -85,15 +88,15 @@ function StatCard({
   return (
     <div
       className={cn(
-        "rounded-3xl border p-5 shadow-sm transition-all",
+        "rounded-3xl border p-4 sm:p-5 shadow-sm transition-all min-w-0 max-w-full overflow-hidden",
         accent
           ? "border-2 border-amber-400 bg-gradient-to-br from-amber-50/90 via-white to-amber-50/40 text-slate-900 shadow-md ring-1 ring-amber-400/40"
           : "border border-slate-200 bg-white text-slate-900 hover:border-purple-300 hover:shadow-md"
       )}
     >
-      <p className="text-xs font-bold text-slate-600">{label}</p>
-      <p className="mt-2 text-2xl font-black text-slate-900 font-mono">{value}</p>
-      {subtitle ? <p className="mt-1 text-[11px] font-semibold text-slate-500">{subtitle}</p> : null}
+      <p className="text-xs font-bold text-slate-600 truncate">{label}</p>
+      <p className="mt-2 text-2xl font-black text-slate-900 font-mono truncate">{value}</p>
+      {subtitle ? <p className="mt-1 text-[11px] font-semibold text-slate-500 truncate">{subtitle}</p> : null}
     </div>
   );
 }
@@ -192,21 +195,85 @@ function AccountDashboard() {
     );
   }
 
+  const isApp =
+    params?.get("app") === "1" ||
+    params?.get("view_mode") === "app" ||
+    isClientAppMode();
+
   if (!user) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-28">
-        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-8 text-center shadow-sm">
-          <UserRound className="mx-auto mb-3 text-amber-700" />
-          <h1 className="text-2xl font-bold text-slate-900">{t.account.title}</h1>
-          <p className="mt-2 text-slate-600">{t.account.loginNotice}</p>
-          <button
-            type="button"
-            onClick={() => openAuth("login")}
-            className="mt-5 rounded-full bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-lg"
-          >
-            {t.account.loginCta}
-          </button>
+      <div className={`mx-auto max-w-lg px-4 ${isApp ? "lonaliza-safe-top pt-6 pb-24" : "py-24"}`}>
+        {/* Luxury Login Card */}
+        <div className="rounded-3xl border border-purple-200/80 bg-gradient-to-b from-white to-purple-50/40 p-6 sm:p-8 text-center shadow-lg shadow-purple-950/5">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2E1065] to-[#4c1d95] text-amber-400 shadow-md shadow-purple-950/20">
+            <UserRound className="h-7 w-7 stroke-[2.2]" />
+          </div>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900">{t.account.title}</h1>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
+            {t.account.loginNotice || "سجّل دخولك لمتابعة حجوزاتك، كسب نقاط المكافآت، وإدارة رصيد محفظتك"}
+          </p>
+
+          <div className="mt-6 flex flex-col gap-2.5">
+            <button
+              type="button"
+              onClick={() => openAuth("login")}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#2E1065] via-[#3b1277] to-[#2E1065] py-3.5 text-sm font-black text-white shadow-md shadow-purple-950/20 transition-all hover:brightness-110 active:scale-98 cursor-pointer"
+            >
+              <span>{t.account.loginCta || "تسجيل الدخول"}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => openAuth("register")}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-purple-200 bg-white py-3 text-sm font-black text-purple-900 transition-all hover:bg-purple-50 active:scale-98 cursor-pointer"
+            >
+              <span>إنشاء حساب جديد</span>
+            </button>
+          </div>
         </div>
+
+        {/* In-App Legal & Settings List (Visible to all mobile users) */}
+        {isApp && (
+          <div className="mt-6 space-y-3">
+            <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-sm space-y-1">
+              <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-wider px-3 pt-2 pb-1">
+                معلومات وسياسات التطبيق
+              </h3>
+              <Link
+                href="/privacy"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 transition-colors"
+              >
+                <span>سياسة الخصوصية وحماية البيانات</span>
+                <span className="text-slate-400 text-[10px]">←</span>
+              </Link>
+              <Link
+                href="/terms"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 transition-colors"
+              >
+                <span>شروط الاستخدام والأحكام</span>
+                <span className="text-slate-400 text-[10px]">←</span>
+              </Link>
+              <Link
+                href="/gdpr"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 transition-colors"
+              >
+                <span>حقوق الخصوصية الأوروبية (GDPR)</span>
+                <span className="text-slate-400 text-[10px]">←</span>
+              </Link>
+              <Link
+                href="/contact"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 transition-colors"
+              >
+                <span>خدمة العملاء والدعم الفني 24/7</span>
+                <span className="text-slate-400 text-[10px]">←</span>
+              </Link>
+              <div className="pt-2 px-3 flex items-center justify-between text-[10px] font-semibold text-slate-400 border-t border-slate-100">
+                <span>إصدار التطبيق</span>
+                <span className="font-mono text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">v1.0.0 Enterprise</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -239,6 +306,7 @@ function AccountDashboard() {
       {tab === "whatsapp" && <WhatsAppSection onUpdated={loadSummary} />}
       {tab === "bookings" && <AccountBookings />}
       {tab === "upcoming" && <LonalizaAccountFeatures feature="upcoming" />}
+      {tab === "reviews" && <AccountReviews />}
       {tab === "payments" && <AccountPayments />}
       {tab === "cards" && <LonalizaAccountFeatures feature="cards" />}
       {tab === "wallet" && <WalletAndVouchersSection onNavigateTab={handleTabChange} />}
@@ -1802,7 +1870,7 @@ function WalletAndVouchersSection({
       <Card>
         <h3 className="font-bold text-slate-900 mb-3">{wText.ledgerTitle}</h3>
         {!ledger.length ? (
-          <p className="text-xs text-slate-500">{wText.noLedger}</p>
+          <EmptyStateCard title={wText.noLedger} description={isAr ? "ستظهر هنا حركات النقاط والمحفظة بعد أول عملية." : "Wallet and points activity will appear after your first transaction."} />
         ) : (
           <div className="space-y-2.5">
             {ledger.map((row: any) => (
@@ -2098,13 +2166,13 @@ function AffiliateSection() {
           {(data.links || []).map((link: any) => (
             <div
               key={link.key}
-              className="flex flex-col gap-2.5 rounded-2xl bg-purple-50/40 p-4 sm:flex-row sm:items-center sm:justify-between border border-purple-200/80"
+              className="flex flex-col gap-2.5 rounded-2xl bg-purple-50/40 p-3.5 sm:p-4 sm:flex-row sm:items-center sm:justify-between border border-purple-200/80 min-w-0 max-w-full overflow-hidden"
             >
-              <div className="min-w-0">
-                <p className="text-xs font-bold text-slate-800">
+              <div className="min-w-0 flex-1 overflow-hidden">
+                <p className="text-xs font-bold text-slate-800 truncate">
                   {pageLabel[link.key] || link.path}
                 </p>
-                <p className="truncate text-xs font-mono text-purple-700/80 mt-0.5">{link.url}</p>
+                <p className="truncate text-xs font-mono text-purple-700/80 mt-0.5 select-all break-all">{link.url}</p>
               </div>
               <div className="flex gap-2 shrink-0">
                 <button

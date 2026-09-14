@@ -6,6 +6,7 @@ import {
   validateWhatsAppPhoneNumberId,
 } from "@/lib/automation/comms-validate";
 import { commsWebhookUrls, siteOrigin } from "@/lib/automation/site-url";
+import { getOrCreateTelegramWebhookSecret, telegramAllowedUpdates } from "@/lib/swarm/telegram-command-center";
 
 export type CommsTestChannel = "whatsapp" | "telegram";
 
@@ -122,16 +123,20 @@ export async function testTelegramConnection(): Promise<CommsTestResult> {
     const current = hook.result?.url || "";
     let setOk: boolean | null = null;
     let setError = "";
-    if (current !== hookUrl) {
-      const setRes = await fetch(`https://api.telegram.org/bot${token}/setWebhook`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: hookUrl, allowed_updates: ["message", "edited_message"] }),
-      });
-      const setData = (await setRes.json().catch(() => ({}))) as { ok?: boolean; description?: string };
-      setOk = Boolean(setData.ok);
-      if (!setOk) setError = redactCommsError(setData.description || `http_${setRes.status}`);
-    }
+    const secret = getOrCreateTelegramWebhookSecret();
+    const setRes = await fetch(`https://api.telegram.org/bot${token}/setWebhook`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        url: hookUrl,
+        allowed_updates: [...telegramAllowedUpdates()],
+        secret_token: secret,
+      }),
+    });
+    const setData = (await setRes.json().catch(() => ({}))) as { ok?: boolean; description?: string };
+    setOk = Boolean(setData.ok);
+    if (!setOk) setError = redactCommsError(setData.description || `http_${setRes.status}`);
+    void current;
 
     let chatOk: boolean | null = null;
     let chatError = "";

@@ -28,6 +28,10 @@ describe("toPkfareCityIata", () => {
     expect(toPkfareCityIata("PARI")).toBe("PAR");
     expect(toPkfareCityIata("ISTA")).toBe("IST");
     expect(toPkfareCityIata("PAR")).toBe("PAR");
+    expect(toPkfareCityIata("CMN")).toBe("CAS");
+    expect(toPkfareCityIata("CASA")).toBe("CAS");
+    expect(toPkfareCityIata("DXB")).toBe("DXB");
+    expect(toPkfareCityIata("DWC")).toBe("DXB");
   });
 });
 

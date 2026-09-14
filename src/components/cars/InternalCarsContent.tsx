@@ -13,6 +13,7 @@ import CouponSlider from "@/components/loyalty/CouponSlider";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import LocationAutocomplete from "@/components/cars/LocationAutocomplete";
 import CarCard from "@/components/cars/CarCard";
+import VerifiedCustomerReviews from "@/components/reviews/VerifiedCustomerReviews";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import SearchAgentResultsDock from "@/components/search/SearchAgentResultsDock";
 import { SEARCH_AGENT_EVENT, type SearchAgentEventDetail } from "@/lib/search-agent";
@@ -324,6 +325,14 @@ export default function InternalCarsContent() {
               ))}
             </div>
           )}
+
+          <div className="mt-14">
+            <VerifiedCustomerReviews
+              serviceType="car"
+              serviceId="general_cars"
+              serviceName={t.cars?.title || "تأجير السيارات الفاخرة"}
+            />
+          </div>
         </div>
       </section>
     </>

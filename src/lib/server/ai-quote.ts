@@ -1,26 +1,24 @@
 /**
  * Live service quotes for the AI travel consultant.
- * Consumes existing site search (hotels API, internal transfers/cars).
- * Flights: Travelpayouts Data API when a token exists; otherwise a linked card
- * with pricePending (iframe search has no server price feed).
+ * Binds the same engines the public site uses: runFlightSearch, runPublicHotelSearch,
+ * Seeru transfers, and the internal cars fleet. Never invents bookable inventory.
  */
 
-import { defaultHotels } from "@/data/hotels";
-import { defaultTransfers } from "@/data/transfers";
 import { PHOTO } from "@/data/catalog-photos";
 import { hotelApiSlug } from "@/lib/hotels-config";
 import { rentalDays, matchesInternalCar, sortFleet } from "@/lib/cars/matching";
 import { listActiveInternalCars } from "@/lib/server/cars-store";
 import { listHotels } from "@/lib/server/travel-advisor";
-import { getServerEnv } from "@/lib/server/env-store";
 import { applyMarkup } from "@/lib/server/sales-catalog";
 import {
   buildAdvisorCarsHref,
   buildAdvisorFlightHref,
   buildAdvisorTransferHref,
+  extractOdFromText,
   resolveIataCode,
 } from "@/lib/server/travel-search-links";
 import type { SalesChatCard } from "@/types/sales-chat";
+import type { PublicFlightItinerary } from "@/lib/server/flights-engine";
 
 export type QuoteTrip = {
   destination: string;
@@ -112,6 +110,42 @@ function isoPlus(days: number): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Accept only real calendar days. Rejects "10", "2026", "10 days", etc. */
+export function validIsoDate(raw?: string | null): string {
+  const m = String(raw || "")
+    .trim()
+    .match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return "";
+  const y = Number(m[1]);
+  const mo = Number(m[2]);
+  const d = Number(m[3]);
+  if (y < 2024 || y > 2036 || mo < 1 || mo > 12 || d < 1 || d > 31) return "";
+  const dt = new Date(Date.UTC(y, mo - 1, d));
+  if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== mo - 1 || dt.getUTCDate() !== d) {
+    return "";
+  }
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+  if (dt.getTime() < today.getTime() - 86400000) return "";
+  return `${m[1]}-${m[2]}-${m[3]}`;
+}
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T | null> {
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => resolve(null), ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      () => {
+        clearTimeout(timer);
+        resolve(null);
+      }
+    );
+  });
+}
+
 function nightsBetween(a?: string, b?: string): number {
   if (!a || !b) return 0;
   const start = Date.parse(`${a}T00:00:00`);
@@ -148,10 +182,12 @@ export function normalizeTrip(
 } {
   const blob = `${trip.destination} ${trip.toIata || ""} ${extraText}`;
   const dest = resolveDest(blob);
+  const spoken = extractOdFromText(extraText);
   const people = Math.max(1, Math.round(Number(trip.people) || 2));
-  let arrival = trip.arrivalDate || "";
-  let departure = trip.departureDate || "";
+  let arrival = validIsoDate(trip.arrivalDate);
+  let departure = validIsoDate(trip.departureDate);
   let nights = Math.max(0, Math.round(Number(trip.nights) || 0));
+  if (nights > 60) nights = 0;
   if (!nights && arrival && departure) nights = nightsBetween(arrival, departure);
   if (!nights) nights = 6;
   if (!arrival) arrival = isoPlus(14);
@@ -161,11 +197,22 @@ export function normalizeTrip(
     end.setDate(end.getDate() + nights);
     departure = end.toISOString().slice(0, 10);
   }
+  if (departure <= arrival) {
+    const start = Date.parse(`${arrival}T00:00:00`);
+    const end = new Date(start);
+    end.setDate(end.getDate() + nights);
+    departure = end.toISOString().slice(0, 10);
+  }
   const toIata =
-    resolveIataCode(trip.toIata) || dest?.iata || resolveIataCode(trip.destination) || "IST";
-  const fromIata = resolveIataCode(trip.fromIata || trip.fromCity) || "DXB";
+    resolveIataCode(trip.toIata) ||
+    spoken.to ||
+    dest?.iata ||
+    resolveIataCode(trip.destination) ||
+    "";
+  const fromIata =
+    resolveIataCode(trip.fromIata || trip.fromCity) || spoken.from || "";
   return {
-    destination: dest?.city || trip.destination || "Istanbul",
+    destination: dest?.city || trip.destination || toIata || "",
     people,
     arrivalDate: arrival,
     departureDate: departure,
@@ -173,6 +220,73 @@ export function normalizeTrip(
     fromIata,
     toIata,
     dest,
+  };
+}
+
+function mapLiveHotelCard(
+  h: {
+    id: string;
+    name: string;
+    city?: string;
+    neighborhood?: string;
+    image?: string;
+    images?: string[];
+    stars?: number;
+    badges?: string[];
+    nightly?: number | null;
+    totalStay?: number | null;
+    priceFrom?: number | null;
+    currency?: string;
+    sessionId?: string;
+    masterId?: string;
+    roomType?: string;
+    breakfastIncluded?: boolean;
+  },
+  trip: ReturnType<typeof normalizeTrip>,
+  alreadyMarkedUp: boolean,
+  markup: number
+): SalesChatCard | null {
+  if (!h.name) return null;
+  const nightly = Number(h.nightly) || Number(h.priceFrom) || 0;
+  const stay =
+    Number(h.totalStay) > 0
+      ? Number(h.totalStay)
+      : hotelStayPrice(nightly, trip.nights);
+  if (stay <= 0) return null;
+  const client = alreadyMarkedUp ? stay : applyMarkup(stay, markup);
+  const qs = new URLSearchParams({
+    checkIn: trip.arrivalDate,
+    checkOut: trip.departureDate,
+    adults: String(trip.people),
+  });
+  if (h.sessionId) qs.set("sid", h.sessionId);
+  if (h.masterId) qs.set("master", h.masterId);
+  const highlights = [
+    h.roomType,
+    ...(h.badges || []).slice(0, 2),
+    h.breakfastIncluded ? "إفطار مشمول" : "",
+  ].filter(Boolean);
+  return {
+    type: "hotel",
+    id: h.id,
+    titleAr: h.name,
+    titleEn: h.name,
+    subtitleAr: h.neighborhood || h.city || trip.destination,
+    subtitleEn: h.neighborhood || h.city || trip.destination,
+    image: pickImage(h.image || h.images?.[0]),
+    basePrice: stay,
+    clientPrice: client,
+    currency: h.currency || "USD",
+    href: `/hotels/${hotelApiSlug(h.id)}?${qs.toString()}`,
+    badges: h.stars ? [`${h.stars}★`] : [],
+    highlights,
+    unitPrice: nightly || Math.round(stay / Math.max(1, trip.nights)),
+    unitLabelAr: "لليلة",
+    unitLabelEn: "per night",
+    nights: trip.nights,
+    source: "live",
+    stars: h.stars || undefined,
+    roomName: h.roomType || undefined,
   };
 }
 
@@ -188,140 +302,77 @@ async function quoteHotels(
 
   let cards: SalesChatCard[] = [];
   let warning: string | undefined;
-  try {
-    const hotels = (await listHotels({
-      query: trip.destination,
-      checkIn: trip.arrivalDate,
-      checkOut: trip.departureDate,
-      adults: trip.people,
-    })).hotels;
-    const destCity = trip.destination.toLowerCase();
-    const matching = hotels.filter((h) => {
-      if (!h.name) return false;
-      const city = `${h.city} ${h.neighborhood} ${h.name}`.toLowerCase();
-      return (
-        city.includes(destCity.slice(0, 5)) ||
-        destCity.includes((h.city || "").toLowerCase().slice(0, 5))
-      );
-    });
-    const pool = matching.length ? matching : [];
-    cards = pool.slice(0, 3).map((h) => {
-        const stay = hotelStayPrice(Number(h.priceFrom) || 0, trip.nights);
-        const pending = stay <= 0;
-        const client = pending ? 0 : applyMarkup(stay, markup);
-        const href = `/hotels/${hotelApiSlug(h.id)}?checkIn=${trip.arrivalDate}&checkOut=${trip.departureDate}&adults=${trip.people}`;
-        return {
-          type: "hotel" as const,
-          id: h.id,
-          titleAr: h.name,
-          titleEn: h.name,
-          subtitleAr: h.neighborhood || h.city || trip.destination,
-          subtitleEn: h.neighborhood || h.city || trip.destination,
-          image: pickImage(h.image || h.images?.[0]),
-          basePrice: stay,
-          clientPrice: client,
-          currency: "USD",
-          href,
-          badges: h.stars ? [`${h.stars}★`] : h.badges?.slice(0, 2),
-          highlights: h.badges?.slice(0, 3),
-          pricePending: pending,
-          unitPrice: stay > 0 ? Math.round(stay / trip.nights) : undefined,
-          unitLabelAr: "لليلة",
-          unitLabelEn: "per night",
-          nights: trip.nights,
-          source: pending ? "pending" : "live",
-        };
-      });
-  } catch {
-    warning = "hotel_search_failed";
-  }
-
-  if (!cards.length) {
-    // Live multi-supplier search (Hotelbeds / Travelport / RateHawk / Seeru) through the supply orchestrator.
+  const query = trip.destination || trip.toIata;
+  if (query) {
     try {
       const { runPublicHotelSearch } = await import("@/lib/server/hotels-search-runtime");
-      const live = await runPublicHotelSearch({
-        query: trip.destination,
-        checkIn: trip.arrivalDate,
-        checkOut: trip.departureDate,
-        adults: trip.people,
-        rooms: 1,
-        page: 0,
-        pageSize: 10,
-        sort: "best",
-        lang: "ar",
-      });
-      if (live.hotels.length) {
-        cards = live.hotels.slice(0, 3).map((h) => {
-          const stay = hotelStayPrice(Number(h.nightly) || 0, trip.nights);
-          const pending = stay <= 0;
-          const qs = new URLSearchParams({ checkIn: trip.arrivalDate, checkOut: trip.departureDate, adults: String(trip.people) });
-          if (h.sessionId) qs.set("sid", h.sessionId);
-          if (h.masterId) qs.set("master", h.masterId);
-          return {
-            type: "hotel" as const,
-            id: h.id,
-            titleAr: h.name,
-            titleEn: h.name,
-            subtitleAr: h.city || trip.destination,
-            subtitleEn: h.city || trip.destination,
-            image: pickImage(h.image),
-            basePrice: stay,
-            clientPrice: pending ? 0 : applyMarkup(stay, markup),
-            currency: h.currency || "USD",
-            href: `/hotels/${hotelApiSlug(h.id)}?${qs.toString()}`,
-            badges: h.stars ? [`${h.stars}★`] : [],
-            highlights: h.badges?.slice(0, 3) || [],
-            pricePending: pending,
-            unitPrice: Number(h.nightly) || undefined,
-            unitLabelAr: "لليلة",
-            unitLabelEn: "per night",
-            nights: trip.nights,
-            source: pending ? "pending" : "live",
-          };
-        });
+      const live = await withTimeout(
+        runPublicHotelSearch({
+          query,
+          checkIn: trip.arrivalDate,
+          checkOut: trip.departureDate,
+          adults: trip.people,
+          rooms: 1,
+          page: 0,
+          pageSize: 12,
+          sort: "best",
+          lang: "ar",
+        }),
+        14000
+      );
+      if (live?.hotels?.length) {
+        cards = live.hotels
+          .map((h) => mapLiveHotelCard(h, trip, true, markup))
+          .filter((c): c is SalesChatCard => Boolean(c))
+          .slice(0, 8);
       }
     } catch {
-      /* fallback to local catalogue */
+      warning = "hotel_search_failed";
     }
   }
 
-  if (!cards.length) {
-    const city = trip.destination.toLowerCase();
-    const fallback = defaultHotels
-      .filter((h) => h.isActive !== false)
-      .filter((h) => (h.city || "").toLowerCase().includes(city.slice(0, 4)) || city.includes((h.city || "").toLowerCase()))
-      .slice(0, 3);
-    cards = fallback.map((h) => {
-      const nightly =
-        (h.rooms || []).map((r) => r.price).filter((p) => p > 0).sort((a, b) => a - b)[0] || 0;
-      const stay = nightly * trip.nights;
-      const pending = stay <= 0;
-      return {
-        type: "hotel" as const,
-        id: h.id,
-        titleAr: h.nameAr,
-        titleEn: h.nameEn,
-        subtitleAr: h.neighborhoodAr || h.city,
-        subtitleEn: h.neighborhoodEn || h.city,
-        image: pickImage(h.images?.[0]),
-        basePrice: stay,
-        clientPrice: pending ? 0 : applyMarkup(stay, markup),
-        currency: "USD",
-        href: `/hotels/${h.slug}?checkIn=${trip.arrivalDate}&checkOut=${trip.departureDate}&adults=${trip.people}`,
-        badges: h.stars ? [`${h.stars}★`] : [],
-        highlights: (h.highlightsAr || []).slice(0, 3),
-        pricePending: pending,
-        unitPrice: nightly || undefined,
-        unitLabelAr: "لليلة",
-        unitLabelEn: "per night",
-        nights: trip.nights,
-        source: pending ? "pending" : "catalog",
-      };
-    });
-    if (!cards.length) warning = warning || "hotel_none";
+  if (!cards.length && query) {
+    try {
+      const hotels = (
+        await listHotels({
+          query,
+          checkIn: trip.arrivalDate,
+          checkOut: trip.departureDate,
+          adults: trip.people,
+        })
+      ).hotels;
+      cards = hotels
+        .map((h) =>
+          mapLiveHotelCard(
+            {
+              id: h.id,
+              name: h.name,
+              city: h.city,
+              neighborhood: h.neighborhood,
+              image: h.image,
+              images: h.images,
+              stars: h.stars,
+              badges: h.badges,
+              nightly: h.nightly,
+              totalStay: h.totalStay,
+              priceFrom: h.priceFrom,
+              currency: h.currency,
+              roomType: h.roomType,
+              breakfastIncluded: h.breakfastIncluded,
+            },
+            trip,
+            false,
+            markup
+          )
+        )
+        .filter((c): c is SalesChatCard => Boolean(c))
+        .slice(0, 8);
+    } catch {
+      warning = warning || "hotel_search_failed";
+    }
   }
 
+  if (!cards.length) warning = warning || "hotel_none";
   hotelCache.set(key, { at: Date.now(), cards, warning });
   return { cards, warning };
 }
@@ -330,80 +381,44 @@ async function quoteTransfers(
   trip: ReturnType<typeof normalizeTrip>,
   markup: number
 ): Promise<SalesChatCard[]> {
-  // 1. Try Live Seeru Ride search if destination is available
   try {
     const { SeeruRideAdapter } = await import("@/lib/providers/adapters/seeru/seeruRideAdapter");
     const adapter = new SeeruRideAdapter();
     const dest = trip.dest;
-    const query = dest?.iata || dest?.airport || dest?.city || trip.destination;
-    const locs = await adapter.searchLocations(query);
-    if (locs.length > 0) {
-      const searchRes = await adapter.searchRides({
+    const query = dest?.iata || dest?.airport || dest?.city || trip.destination || trip.toIata;
+    if (!query) return [];
+    const locs = await withTimeout(adapter.searchLocations(query), 8000);
+    if (!locs?.length) return [];
+    const searchRes = await withTimeout(
+      adapter.searchRides({
         fromPlaceId: locs[0].place_id,
         date: trip.arrivalDate,
         time: "12:00",
         mode: "transfer",
         pax: Math.max(1, trip.people),
-      });
-
-      if (searchRes.offers?.length) {
-        return searchRes.offers.slice(0, 2).map((o) => ({
-          type: "transfer" as const,
-          id: `sr_${o.offer_id}`,
-          titleAr: `ترانسفير خاص - ${o.car_class.title}`,
-          titleEn: `Private Ride - ${o.car_class.title}`,
-          subtitleAr: `${o.car_class.capacity} مقاعد · ${o.car_class.luggage} حقائب`,
-          subtitleEn: `${o.car_class.capacity} seats · ${o.car_class.luggage} bags`,
-          image: o.car_class.image || pickImage(undefined, PHOTO.luxurySedan),
-          basePrice: o.price,
-          clientPrice: applyMarkup(o.price, markup),
-          currency: searchRes.currency || "USD",
-          href: `/transfers?from=${encodeURIComponent(locs[0].label)}&date=${trip.arrivalDate}&guests=${trip.people}`,
-          badges: [o.car_class.title, "Seeru Direct"].filter(Boolean),
-          highlights: [`سعة ${o.car_class.capacity} ركاب`, `استقبال في المطار مع لافتة باسم العميل`, `خدمة مباشرة ومؤمنة`],
-          source: "live",
-        }));
-      }
-    }
+      }),
+      10000
+    );
+    if (!searchRes?.offers?.length) return [];
+    return searchRes.offers.slice(0, 6).map((o) => ({
+      type: "transfer" as const,
+      id: `sr_${o.offer_id}`,
+      titleAr: `ترانسفير خاص - ${o.car_class.title}`,
+      titleEn: `Private Ride - ${o.car_class.title}`,
+      subtitleAr: `${o.car_class.capacity} مقاعد · ${o.car_class.luggage} حقائب`,
+      subtitleEn: `${o.car_class.capacity} seats · ${o.car_class.luggage} bags`,
+      image: o.car_class.image || pickImage(undefined, PHOTO.luxurySedan),
+      basePrice: o.price,
+      clientPrice: applyMarkup(o.price, markup),
+      currency: searchRes.currency || "USD",
+      href: `/transfers?from=${encodeURIComponent(locs[0].label)}&date=${trip.arrivalDate}&guests=${trip.people}`,
+      badges: [o.car_class.title].filter(Boolean),
+      highlights: [`${o.car_class.capacity} pax`],
+      source: "live" as const,
+    }));
   } catch {
-    /* fallback to catalog */
+    return [];
   }
-
-  // 2. Fallback to catalog transfers
-  const dest = trip.dest;
-  const hay = `${trip.destination} ${dest?.city || ""} ${dest?.iata || ""} ${dest?.area || ""}`.toLowerCase();
-  const items = defaultTransfers
-    .filter((t) => t.isActive !== false && t.type === "transfer")
-    .filter((t) => {
-      const blob = `${t.routeFrom} ${t.routeTo} ${t.routeFromAr} ${t.routeToAr} ${t.titleEn} ${t.titleAr}`.toLowerCase();
-      return (
-        blob.includes(hay.slice(0, 5)) ||
-        (dest &&
-          (blob.includes(dest.city.toLowerCase()) ||
-            blob.includes(dest.iata.toLowerCase()) ||
-            blob.includes(dest.area.toLowerCase())))
-      );
-    })
-    .filter((t) => t.seats >= Math.min(trip.people, 3))
-    .sort((a, b) => a.price - b.price)
-    .slice(0, 2);
-
-  return items.map((t) => ({
-    type: "transfer" as const,
-    id: t.id,
-    titleAr: t.titleAr,
-    titleEn: t.titleEn,
-    subtitleAr: `${t.vehicleName} · ${t.seats} مقاعد`,
-    subtitleEn: `${t.vehicleName} · ${t.seats} seats`,
-    image: pickImage(t.images?.[0], PHOTO.luxurySedan),
-    basePrice: t.price,
-    clientPrice: applyMarkup(t.price, markup),
-    currency: t.currency || "USD",
-    href: `/transfers/${t.slug}?date=${trip.arrivalDate}&guests=${trip.people}`,
-    badges: [t.vehicleClass || t.vehicleType].filter(Boolean),
-    highlights: (t.highlightsAr || []).slice(0, 3),
-    source: "catalog",
-  }));
 }
 
 async function quoteCars(
@@ -411,7 +426,7 @@ async function quoteCars(
   markup: number
 ): Promise<SalesChatCard[]> {
   const days = Math.max(1, rentalDays(trip.arrivalDate, trip.departureDate));
-  const pickup = trip.dest?.airport || trip.destination;
+  const pickup = trip.dest?.airport || trip.destination || trip.toIata;
   const cars = sortFleet(
     (await listActiveInternalCars()).filter((car) =>
       matchesInternalCar(car, {
@@ -421,7 +436,7 @@ async function quoteCars(
         guests: String(trip.people),
       })
     )
-  ).slice(0, 2);
+  ).slice(0, 6);
 
   return cars.map((car) => {
     const daily = car.pricePerDay;
@@ -458,15 +473,64 @@ async function quoteCars(
       unitLabelAr: "لليوم",
       unitLabelEn: "per day",
       days,
-      source: "catalog",
+      source: "catalog" as const,
     };
   });
 }
 
-async function quoteFlights(
+function flightCardFromItinerary(
+  it: PublicFlightItinerary,
   trip: ReturnType<typeof normalizeTrip>,
-  markup: number
-): Promise<{ cards: SalesChatCard[]; warning?: string }> {
+  href?: string
+): SalesChatCard | null {
+  const price = Number(it.price?.client) || 0;
+  if (price <= 0) return null;
+  const out = it.legs?.[0];
+  const ret = it.legs?.[1];
+  if (!out) return null;
+  const from = out.origin?.displayCode || trip.fromIata;
+  const to = out.destination?.displayCode || trip.toIata;
+  const airline = it.airlines?.[0] || out.carrierName || "";
+  const airlineCode = out.carrierCode || out.segments?.[0]?.airlineCode || "";
+  const airlineLogo = out.segments?.[0]?.airlineLogo || "";
+  const flightNumber = out.segments?.[0]?.flightNumber || "";
+  return {
+    type: "flight",
+    id: it.id,
+    titleAr: airline ? `${airline} ${from} → ${to}` : `طيران ${from} → ${to}`,
+    titleEn: airline ? `${airline} ${from} → ${to}` : `Flights ${from} → ${to}`,
+    subtitleAr: ret ? "ذهاب وعودة" : "اتجاه واحد",
+    subtitleEn: ret ? "Round-trip" : "One-way",
+    image: airlineLogo || undefined,
+    basePrice: Number(it.price?.base) || price,
+    clientPrice: price,
+    currency: it.price?.currency || "USD",
+    href,
+    badges: [
+      airlineCode,
+      out.stopCount === 0 ? "مباشر" : `${out.stopCount} توقف`,
+    ].filter(Boolean),
+    highlights: [],
+    source: "live",
+    airline,
+    airlineCode,
+    airlineLogo,
+    fromIata: from,
+    toIata: to,
+    departAt: out.departure,
+    arriveAt: out.arrival,
+    returnDepartAt: ret?.departure,
+    returnArriveAt: ret?.arrival,
+    durationMinutes: out.durationMinutes || it.durationMinutes,
+    stopCount: out.stopCount ?? it.stops,
+    flightNumber,
+    tripType: ret ? "round-trip" : "one-way",
+  };
+}
+
+async function quoteFlights(
+  trip: ReturnType<typeof normalizeTrip>
+): Promise<{ cards: SalesChatCard[]; warning?: string; href?: string }> {
   const href = buildAdvisorFlightHref({
     fromIata: trip.fromIata,
     toIata: trip.toIata,
@@ -475,77 +539,39 @@ async function quoteFlights(
     guests: trip.people,
     flightType: "round-trip",
   });
-  const token = (
-    (await getServerEnv("TRAVELPAYOUTS_TOKEN")) ||
-    (await getServerEnv("TRAVELPAYOUTS_API_TOKEN")) ||
-    ""
-  ).trim();
-
-  const pendingCard = (price = 0, extra?: Partial<SalesChatCard>): SalesChatCard => ({
-    type: "flight",
-    id: `${trip.fromIata}-${trip.toIata}`,
-    titleAr: `طيران ${trip.fromIata} → ${trip.toIata}`,
-    titleEn: `Flights ${trip.fromIata} → ${trip.toIata}`,
-    subtitleAr: `${trip.arrivalDate} → ${trip.departureDate}`,
-    subtitleEn: `${trip.arrivalDate} → ${trip.departureDate}`,
-    image: PHOTO.istanbulSkyline,
-    basePrice: price,
-    clientPrice: price > 0 ? applyMarkup(price, markup) : 0,
-    currency: "USD",
-    href,
-    badges: ["round-trip"],
-    pricePending: price <= 0,
-    source: price > 0 ? "live" : "pending",
-    ...extra,
-  });
-
-  if (!token) {
-    return {
-      cards: [pendingCard()],
-      warning: "flight_live_price_unavailable",
-    };
+  if (!trip.fromIata || !trip.toIata || !validIsoDate(trip.arrivalDate)) {
+    return { cards: [], warning: "flight_need_origin_dates", href };
   }
-
   try {
-    const url = new URL("https://api.travelpayouts.com/aviasales/v3/prices_for_dates");
-    url.searchParams.set("origin", trip.fromIata);
-    url.searchParams.set("destination", trip.toIata);
-    url.searchParams.set("departure_at", trip.arrivalDate.slice(0, 7));
-    url.searchParams.set("return_at", trip.departureDate.slice(0, 7));
-    url.searchParams.set("currency", "usd");
-    url.searchParams.set("limit", "3");
-    url.searchParams.set("sorting", "price");
-    url.searchParams.set("token", token);
-    const res = await fetch(url.toString(), { cache: "no-store" });
-    if (!res.ok) {
-      return { cards: [pendingCard()], warning: "flight_search_failed" };
+    const { runFlightSearch } = await import("@/lib/server/flights-engine");
+    const result = await withTimeout(
+      runFlightSearch({
+        originSkyId: trip.fromIata,
+        destinationSkyId: trip.toIata,
+        originEntityId: "",
+        destinationEntityId: "",
+        date: trip.arrivalDate,
+        returnDate: trip.departureDate,
+        adults: trip.people,
+        cabinClass: "economy",
+        currency: "USD",
+        sortBy: "cheapest",
+      }),
+      16000
+    );
+    if (!result?.ok) {
+      return { cards: [], warning: "flight_search_failed", href };
     }
-    const data = (await res.json()) as {
-      data?: Array<{ price?: number; airline?: string; departure_at?: string }>;
-    };
-    const rows = Array.isArray(data.data) ? data.data : [];
-    const cards = rows
-      .filter((row) => Number(row.price) > 0)
-      .slice(0, 3)
-      .map((row, i) =>
-        pendingCard(Number(row.price), {
-          id: `${trip.fromIata}-${trip.toIata}-${i}`,
-          titleAr: row.airline
-            ? `طيران ${row.airline} ${trip.fromIata} → ${trip.toIata}`
-            : `طيران ${trip.fromIata} → ${trip.toIata}`,
-          titleEn: row.airline
-            ? `${row.airline} ${trip.fromIata} → ${trip.toIata}`
-            : `Flights ${trip.fromIata} → ${trip.toIata}`,
-          pricePending: false,
-          source: "live",
-        })
-      );
+    const cards = result.session.itineraries
+      .map((it) => flightCardFromItinerary(it, trip, href))
+      .filter((c): c is SalesChatCard => Boolean(c))
+      .slice(0, 8);
     if (!cards.length) {
-      return { cards: [pendingCard()], warning: "flight_no_offers" };
+      return { cards: [], warning: "flight_no_offers", href };
     }
-    return { cards };
+    return { cards, href };
   } catch {
-    return { cards: [pendingCard()], warning: "flight_search_failed" };
+    return { cards: [], warning: "flight_search_failed", href };
   }
 }
 
@@ -567,15 +593,16 @@ export async function buildLiveQuote(
   extraText = ""
 ): Promise<LiveQuote | null> {
   const destText = String(raw.destination || "").trim();
-  if (!destText && !raw.toIata) return null;
+  if (!destText && !raw.toIata && !raw.fromIata) return null;
 
   const trip = normalizeTrip(raw, extraText);
+  if (!trip.destination && !trip.toIata) return null;
   const warnings: string[] = [];
 
   const [hotels, cars, flights, transfers] = await Promise.all([
     quoteHotels(trip, markup),
     quoteCars(trip, markup),
-    quoteFlights(trip, markup),
+    quoteFlights(trip),
     quoteTransfers(trip, markup),
   ]);
   if (hotels.warning) warnings.push(hotels.warning);
@@ -593,7 +620,7 @@ export async function buildLiveQuote(
     .filter((c) => c.pricePending || c.clientPrice <= 0)
     .map((c) => c.type);
 
-  const airport = trip.dest?.airport || `${trip.toIata} Airport`;
+  const airport = trip.dest?.airport || (trip.toIata ? `${trip.toIata} Airport` : "");
   const area = trip.dest?.area || trip.destination;
 
   return {
@@ -601,21 +628,27 @@ export async function buildLiveQuote(
     selected,
     totalClientPrice,
     pendingTypes,
-    flightHref: flights.cards[0]?.href,
-    transferHref: buildAdvisorTransferHref({
-      from: airport,
-      to: area,
-      date: trip.arrivalDate,
-      guests: trip.people,
-    }),
-    carsHref: buildAdvisorCarsHref({
-      iata: trip.toIata,
-      city: trip.destination,
-      date: trip.arrivalDate,
-      returnDate: trip.departureDate,
-      guests: trip.people,
-    }),
-    hotelsHref: `/hotels?q=${encodeURIComponent(trip.destination)}&checkIn=${trip.arrivalDate}&checkOut=${trip.departureDate}&adults=${trip.people}`,
+    flightHref: flights.href || flights.cards[0]?.href,
+    transferHref: airport && area
+      ? buildAdvisorTransferHref({
+          from: airport,
+          to: area,
+          date: trip.arrivalDate,
+          guests: trip.people,
+        })
+      : undefined,
+    carsHref: trip.toIata || trip.destination
+      ? buildAdvisorCarsHref({
+          iata: trip.toIata,
+          city: trip.destination,
+          date: trip.arrivalDate,
+          returnDate: trip.departureDate,
+          guests: trip.people,
+        })
+      : undefined,
+    hotelsHref: trip.destination
+      ? `/hotels?q=${encodeURIComponent(trip.destination)}&checkIn=${trip.arrivalDate}&checkOut=${trip.departureDate}&adults=${trip.people}`
+      : undefined,
     nights: trip.nights,
     people: trip.people,
     arrivalDate: trip.arrivalDate,
@@ -628,7 +661,7 @@ export function mergeLiveCards(
   aiCards: SalesChatCard[],
   live: LiveQuote | null
 ): SalesChatCard[] {
-  if (!live) return aiCards;
-  const packages = aiCards.filter((c) => c.type === "package");
-  return [...live.cards, ...packages];
+  const real = (c: SalesChatCard) => c.source === "live" || c.source === "catalog";
+  if (!live) return aiCards.filter(real);
+  return live.cards.filter(real);
 }

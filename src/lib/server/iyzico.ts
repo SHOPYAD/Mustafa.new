@@ -1,12 +1,9 @@
 /**
- * Official iyzico Checkout Form wrapper (docs fetched 28 Aug 2026).
+ * iyzico payment adapter.
  *
- * 3DS: Do NOT call threedsInitialize / threedsPayment. Official CF-Initialize
- * hosts card entry, installment, BIN checks, and 3-D Secure on iyzico's page.
- * https://docs.iyzico.com/en/payment-methods/checkoutform/cf-implementation/cf-initialize
- *
- * BIN / installment APIs: skipped — CF already handles cards on the hosted page.
- * Marketplace / Pay with iyzico / Subscription: not used (PRODUCT + VIRTUAL hotel item).
+ * Hosted Checkout Form leaked iframes into document.body (blank modal in
+ * Flutter WebView + orphaned sandbox chrome). Direct API + 3DS initialize
+ * is the supported path: PAN/CVV are forwarded to iyzico only, never stored.
  */
 import { createHmac, timingSafeEqual } from "crypto";
 import { createRequire } from "module";
@@ -32,7 +29,11 @@ const require = createRequire(import.meta.url);
 const Iyzipay = require("iyzipay") as typeof import("iyzipay");
 
 type SdkCallback = (err: Error | null, result: Record<string, unknown>) => void;
-type SdkMethod = { create: (req: object, cb: SdkCallback) => void; retrieve: (req: object, cb: SdkCallback) => void };
+type SdkMethod = {
+  create: (req: object, cb: SdkCallback) => void;
+  retrieve: (req: object, cb: SdkCallback) => void;
+  delete?: (req: object, cb: SdkCallback) => void;
+};
 type IyzipayClient = {
   checkoutFormInitialize: SdkMethod;
   checkoutForm: SdkMethod;
@@ -40,6 +41,10 @@ type IyzipayClient = {
   refund: SdkMethod;
   cancel: SdkMethod;
   binNumber: SdkMethod;
+  threedsInitialize: SdkMethod;
+  threedsPayment: SdkMethod;
+  card: SdkMethod;
+  cardList: SdkMethod;
 };
 
 /** Official sandbox dummy for non-TR buyers. Never send this in production. */
@@ -88,6 +93,47 @@ export type IyzicoCheckoutResult = {
   charge?: IyzicoChargePlan;
   error?: string;
   errorCode?: string;
+};
+
+export type IyzicoPaymentCard = {
+  cardHolderName?: string;
+  cardNumber?: string;
+  expireMonth?: string;
+  expireYear?: string;
+  cvc?: string;
+  registerCard?: 0 | 1;
+  cardAlias?: string;
+  cardToken?: string;
+  cardUserKey?: string;
+};
+
+export type IyzicoDirectChargeInput = IyzicoCheckoutInput & {
+  paymentCard: IyzicoPaymentCard;
+};
+
+export type IyzicoDirectChargeResult = {
+  ok: boolean;
+  charge?: IyzicoChargePlan;
+  paymentId?: string;
+  threeDSHtml?: string;
+  conversationId?: string;
+  cardUserKey?: string;
+  cardToken?: string;
+  error?: string;
+  errorCode?: string;
+};
+
+export type IyzicoStoredCard = {
+  cardToken: string;
+  cardUserKey: string;
+  cardAlias?: string;
+  binNumber?: string;
+  lastFourDigits?: string;
+  cardType?: string;
+  cardAssociation?: string;
+  cardFamily?: string;
+  expireMonth?: string;
+  expireYear?: string;
 };
 
 export type IyzicoProbeResult = {
@@ -450,7 +496,17 @@ function finalizeRetrieve(
   };
 }
 
-export async function createCheckout(input: IyzicoCheckoutInput): Promise<IyzicoCheckoutResult> {
+async function prepareCharge(
+  input: IyzicoCheckoutInput
+): Promise<
+  | { ok: false; error: string; charge?: IyzicoChargePlan }
+  | {
+      ok: true;
+      boxed: NonNullable<Awaited<ReturnType<typeof client>>>;
+      charge: IyzicoChargePlan;
+      request: Record<string, unknown>;
+    }
+> {
   const boxed = await client();
   if (!boxed) return { ok: false, error: "iyzico_not_configured" };
 
@@ -476,13 +532,15 @@ export async function createCheckout(input: IyzicoCheckoutInput): Promise<Iyzico
   const address = input.buyer.address || (turkish ? "Istanbul, Turkey" : "Address");
   const city = input.buyer.city || (turkish ? "Istanbul" : "City");
   const country = input.buyer.country || (turkish ? "Turkey" : "International");
-  const request = {
+  const request: Record<string, unknown> = {
     locale: Iyzipay.LOCALE.EN,
     conversationId: input.conversationId,
     price,
     paidPrice: price,
     currency: currencyConst(charge.chargedCurrency),
+    installment: "1",
     basketId: input.bookingId,
+    paymentChannel: Iyzipay.PAYMENT_CHANNEL.WEB,
     paymentGroup: Iyzipay.PAYMENT_GROUP.PRODUCT,
     callbackUrl: input.callbackUrl,
     enabledInstallments: [1],
@@ -514,12 +572,19 @@ export async function createCheckout(input: IyzicoCheckoutInput): Promise<Iyzico
       {
         id: input.bookingId,
         name: `${input.hotelName} — ${input.roomName}`.slice(0, 180),
-        category1: "Hotels",
+        category1: "Travel",
         itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
         price,
       },
     ],
   };
+  return { ok: true, boxed, charge, request };
+}
+
+export async function createCheckout(input: IyzicoCheckoutInput): Promise<IyzicoCheckoutResult> {
+  const prepared = await prepareCharge(input);
+  if (!prepared.ok) return { ok: false, charge: prepared.charge, error: prepared.error };
+  const { boxed, charge, request } = prepared;
 
   let result: Record<string, unknown>;
   try {
@@ -546,6 +611,197 @@ export async function createCheckout(input: IyzicoCheckoutInput): Promise<Iyzico
     checkoutFormContent: String(result.checkoutFormContent || ""),
     charge,
   };
+}
+
+export function decodeThreeDSHtml(raw: unknown): string {
+  const value = String(raw || "").trim();
+  if (!value) return "";
+  if (/<[a-z][\s\S]*>/i.test(value)) return value;
+  try {
+    const decoded = Buffer.from(value, "base64").toString("utf8");
+    return /<[a-z][\s\S]*>/i.test(decoded) ? decoded : "";
+  } catch {
+    return "";
+  }
+}
+
+function paymentCardBody(card: IyzicoPaymentCard): Record<string, unknown> {
+  const body: Record<string, unknown> = {};
+  if (card.cardToken && card.cardUserKey) {
+    body.cardToken = card.cardToken;
+    body.cardUserKey = card.cardUserKey;
+    if (card.cvc) body.cvc = card.cvc;
+    return body;
+  }
+  body.cardHolderName = card.cardHolderName;
+  body.cardNumber = card.cardNumber;
+  body.expireMonth = card.expireMonth;
+  body.expireYear = card.expireYear;
+  body.cvc = card.cvc;
+  body.registerCard = card.registerCard === 1 ? 1 : 0;
+  if (card.cardAlias) body.cardAlias = card.cardAlias;
+  return body;
+}
+
+export async function initializeThreedsPayment(
+  input: IyzicoDirectChargeInput
+): Promise<IyzicoDirectChargeResult> {
+  const prepared = await prepareCharge(input);
+  if (!prepared.ok) return { ok: false, charge: prepared.charge, error: prepared.error };
+  const { boxed, charge, request } = prepared;
+  request.paymentCard = paymentCardBody(input.paymentCard);
+
+  let result: Record<string, unknown>;
+  try {
+    result = await withDirectIyzicoNetwork(() =>
+      asPromise<Record<string, unknown>>((cb) => boxed.sdk.threedsInitialize.create(request, cb))
+    );
+  } catch (err) {
+    return { ok: false, charge, error: mapIyzicoTransportError(err) };
+  }
+  if (String(result.status || "") !== "success") {
+    const code = result.errorCode != null ? String(result.errorCode) : "";
+    const message = String(result.errorMessage || "").trim();
+    return {
+      ok: false,
+      charge,
+      error: mapGuestCheckoutError(message, code),
+      errorCode: code || undefined,
+    };
+  }
+  return {
+    ok: true,
+    charge,
+    paymentId: result.paymentId != null ? String(result.paymentId) : "",
+    conversationId: result.conversationId != null ? String(result.conversationId) : input.conversationId,
+    threeDSHtml: decodeThreeDSHtml(result.threeDSHtmlContent || result.htmlContent),
+    cardUserKey: result.cardUserKey != null ? String(result.cardUserKey) : "",
+    cardToken: result.cardToken != null ? String(result.cardToken) : "",
+  };
+}
+
+export async function completeThreedsPayment(input: {
+  paymentId: string;
+  conversationId?: string;
+  conversationData?: string;
+}): Promise<IyzicoRetrieveResult> {
+  const boxed = await client();
+  if (!boxed) return emptyRetrieve("iyzico_not_configured");
+  const secrets = await getIyzicoSecrets();
+  let result: Record<string, unknown>;
+  try {
+    result = await withDirectIyzicoNetwork(() =>
+      asPromise<Record<string, unknown>>((cb) =>
+        boxed.sdk.threedsPayment.create(
+          {
+            locale: Iyzipay.LOCALE.EN,
+            conversationId: input.conversationId || input.paymentId,
+            paymentId: input.paymentId,
+            conversationData: input.conversationData || "",
+          },
+          cb
+        )
+      )
+    );
+  } catch (err) {
+    return emptyRetrieve(mapIyzicoTransportError(err));
+  }
+  const mapped = mapPaymentResult(result, {
+    conversationId: input.conversationId,
+  });
+  const signature = String(result.signature || "").trim();
+  const signatureValid = signature ? verifyPaymentRetrieveSignature(result, secrets.secretKey) : null;
+  return finalizeRetrieve(mapped, signatureValid);
+}
+
+export async function storeIyzicoCard(input: {
+  email: string;
+  externalId: string;
+  cardUserKey?: string;
+  card: {
+    cardAlias?: string;
+    cardHolderName: string;
+    cardNumber: string;
+    expireMonth: string;
+    expireYear: string;
+  };
+}): Promise<{ ok: boolean; card?: IyzicoStoredCard; error?: string }> {
+  const boxed = await client();
+  if (!boxed) return { ok: false, error: "iyzico_not_configured" };
+  let result: Record<string, unknown>;
+  try {
+    result = await withDirectIyzicoNetwork(() =>
+      asPromise<Record<string, unknown>>((cb) =>
+        boxed.sdk.card.create(
+          {
+            locale: Iyzipay.LOCALE.EN,
+            conversationId: input.externalId,
+            email: input.email,
+            externalId: input.externalId,
+            cardUserKey: input.cardUserKey || undefined,
+            card: {
+              cardAlias: input.card.cardAlias || "Lonaliza",
+              cardHolderName: input.card.cardHolderName,
+              cardNumber: input.card.cardNumber,
+              expireMonth: input.card.expireMonth,
+              expireYear: input.card.expireYear,
+            },
+          },
+          cb
+        )
+      )
+    );
+  } catch (err) {
+    return { ok: false, error: mapIyzicoTransportError(err) };
+  }
+  if (String(result.status || "") !== "success") {
+    return { ok: false, error: String(result.errorMessage || result.errorCode || "card_store_failed") };
+  }
+  return {
+    ok: true,
+    card: {
+      cardToken: String(result.cardToken || ""),
+      cardUserKey: String(result.cardUserKey || input.cardUserKey || ""),
+      cardAlias: result.cardAlias != null ? String(result.cardAlias) : "",
+      binNumber: result.binNumber != null ? String(result.binNumber) : "",
+      lastFourDigits: result.lastFourDigits != null ? String(result.lastFourDigits) : "",
+      cardType: result.cardType != null ? String(result.cardType) : "",
+      cardAssociation: result.cardAssociation != null ? String(result.cardAssociation) : "",
+      expireMonth: result.expireMonth != null ? String(result.expireMonth) : "",
+      expireYear: result.expireYear != null ? String(result.expireYear) : "",
+    },
+  };
+}
+
+export async function deleteIyzicoCard(input: {
+  cardToken: string;
+  cardUserKey: string;
+}): Promise<{ ok: boolean; error?: string }> {
+  const boxed = await client();
+  if (!boxed?.sdk.card.delete) return { ok: false, error: "iyzico_not_configured" };
+  const remove = boxed.sdk.card.delete;
+  let result: Record<string, unknown>;
+  try {
+    result = await withDirectIyzicoNetwork(() =>
+      asPromise<Record<string, unknown>>((cb) =>
+        remove(
+          {
+            locale: Iyzipay.LOCALE.EN,
+            conversationId: input.cardToken,
+            cardToken: input.cardToken,
+            cardUserKey: input.cardUserKey,
+          },
+          cb
+        )
+      )
+    );
+  } catch (err) {
+    return { ok: false, error: mapIyzicoTransportError(err) };
+  }
+  if (String(result.status || "") !== "success") {
+    return { ok: false, error: String(result.errorMessage || result.errorCode || "card_delete_failed") };
+  }
+  return { ok: true };
 }
 
 function sdkFailure(result: Record<string, unknown>): { error: string; errorCode?: string } {

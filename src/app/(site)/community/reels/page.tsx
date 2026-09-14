@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   Heart,
   MessageCircle,
@@ -23,9 +24,15 @@ import {
   Loader2,
   Eye,
 } from "lucide-react";
-import type { TravelReelItem, NostrRelayConfig, ParsedTravelPost } from "@/lib/nostr/types";
-import { fetchTourismReels } from "@/lib/nostr/client";
+import type { TravelReelItem, ParsedTravelPost } from "@/lib/nostr/types";
+import { fetchReelEngagement, fetchTourismReels } from "@/lib/nostr/client";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import {
+  isMockReelSource,
+  resolveReelPoster,
+  seekAndCapturePoster,
+  splitReelCopy,
+} from "@/lib/community/reel-media";
 
 interface ReelComment {
   id: string;
@@ -38,82 +45,45 @@ interface ReelComment {
   likesCount: number;
 }
 
-// Verified initial reels for immediate ultra-fast playback
-// Verified initial reels with real published blossom video as top reel
-const INITIAL_DEMO_REELS: TravelReelItem[] = [
-  {
-    id: "post_1788519513862_nux1td",
-    pubkey: "npub1user1788519513862pgle",
-    title: "تجربة فندقية فاخرة في قلب إسطنبول الساحرة ✨",
-    description: "بين سحر البوسفور والتاريخ العريق الذي ينبض بالفخامة، إقامة استثنائية في أرقى المعالم الفندقية مع إطلالات ساحرة وخدمات VIP متكاملة لا تُنسى في إسطنبول! 🇹🇷✨",
-    videoUrl: "https://blossom.primal.net/40860043d2f16f332379773c950b640ed7be9ec9e9a698d70a362395e4efae3d.mp4",
-    category: "hotels",
-    destination: "إسطنبول",
-    likesCount: 184,
-    commentsCount: 23,
-    created_at: Math.floor(Date.now() / 1000) - 7200,
+function postToReel(p: ParsedTravelPost): TravelReelItem | null {
+  const videoUrl = p.videos?.[0] || p.videoUrl;
+  if (!videoUrl) return null;
+  const copy = splitReelCopy(p.content || "");
+  const reel: TravelReelItem = {
+    id: p.id,
+    pubkey: p.pubkey,
+    title: copy.title,
+    description: copy.description,
+    videoUrl,
+    posterUrl: resolveReelPoster({
+      posterUrl: p.videoPoster,
+      images: p.images,
+      videoUrl,
+    }),
+    category: p.category || "hotels",
+    destination: p.destination || "",
+    likesCount: p.likesCount || 0,
+    commentsCount: p.commentsCount || 0,
+    viewsCount: p.viewsCount || 0,
+    created_at: p.created_at,
     author: {
-      pubkey: "npub1user1788519513862pgle",
-      name: "مسافر لوناليزا VIP",
-      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      pubkey: p.author?.pubkey || p.pubkey,
+      name: p.author?.name || p.authorName || "مسافر لوناليزا VIP",
+      avatar:
+        p.author?.avatar ||
+        p.authorAvatar ||
+        `https://api.dicebear.com/7.x/bottts/svg?seed=${p.pubkey}`,
     },
-  },
-  {
-    id: "reel_01",
-    pubkey: "npub1lonalizapremium111222333444555666777888999000111222333444555",
-    title: "جولة الغروب الخاصة في البوسفور 🌅",
-    description: "أجمل لحظات الغروب من يخت خاص في مضيق البوسفور. إطلالة ساحرة على قصر دولمة بهجة والجسور المعلقة وأنوار المدينة التاريخية. تجربة خيالية لا تُنسى في إسطنبول! 🇹🇷✨",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-41559-large.mp4",
-    category: "tours",
-    destination: "إسطنبول",
-    likesCount: 184,
-    commentsCount: 23,
-    created_at: Math.floor(Date.now() / 1000) - 7200,
-    author: {
-      pubkey: "npub1lonalizapremium111222333444555666777888999000111222333444555",
-      name: "كابتن سياحي - مراد",
-      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=MuradTravel",
-    },
-  },
-  {
-    id: "reel_02",
-    pubkey: "npub1trabzonlover999888777666555444333222111000999888777666555444",
-    title: "مرتفعات آيدر والأكواخ الخشبية وسط الضباب 🌲",
-    description: "هدوء الطبيعة وصوت المياه العذبة في ريزا والشمال التركي. الإقامة في هذه الأكواخ الخشبية وسط مزارع الشاي تعيد شحن الطاقة بالكامل. أجواء باردة ومنعشة صيفاً وشتاءً! 🏔️☕",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-fog-over-a-mountain-forest-42861-large.mp4",
-    category: "hotels",
-    destination: "طرابزون",
-    likesCount: 312,
-    commentsCount: 46,
-    created_at: Math.floor(Date.now() / 1000) - 21600,
-    author: {
-      pubkey: "npub1trabzonlover999888777666555444333222111000999888777666555444",
-      name: "رحالة الخليج العربي",
-      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=GulfTraveler",
-    },
-  },
-  {
-    id: "reel_03",
-    pubkey: "npub1cappadociaballoon333444555666777888999000111222333444555666",
-    title: "منطاد كابادوكيا مع شروق الشمس 🎈",
-    description: "التحليق الهادئ فوق وادي المداخن الصخرية والكهوف المنحوتة في كابادوكيا مع ساعات الفجر الأولى. مشهد سينمائي بديع يستحق الاستيقاظ مبكراً وخوض المغامرة! 🌄",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-clouds-and-blue-sky-2408-large.mp4",
-    category: "activities",
-    destination: "كابادوكيا",
-    likesCount: 528,
-    commentsCount: 71,
-    created_at: Math.floor(Date.now() / 1000) - 86400,
-    author: {
-      pubkey: "npub1cappadociaballoon333444555666777888999000111222333444555666",
-      name: "فاطمة الزهراء",
-      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=FatimaZ",
-    },
-  },
-];
+  };
+  if (isMockReelSource(reel)) return null;
+  return reel;
+}
 
-export default function TravelReelsPage() {
+function TravelReelsContent() {
   const { locale } = useLocale();
-  const [reels, setReels] = useState<TravelReelItem[]>(INITIAL_DEMO_REELS);
+  const searchParams = useSearchParams();
+  const targetId = searchParams ? searchParams.get("id") || searchParams.get("reelId") : null;
+  const [reels, setReels] = useState<TravelReelItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [muted, setMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -203,6 +173,19 @@ export default function TravelReelsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  // Jump to specific reel if passed in URL (?id=...)
+  useEffect(() => {
+    if (!targetId || !reels.length) return;
+    const foundIdx = reels.findIndex((r) => r.id === targetId || r.videoUrl.includes(targetId));
+    if (foundIdx >= 0) {
+      setCurrentIndex(foundIdx);
+      const container = containerRef.current;
+      if (container) {
+        container.scrollTo({ top: foundIdx * container.clientHeight, behavior: "smooth" });
+      }
+    }
+  }, [targetId, reels]);
+
   // Pull-to-refresh & initial top-scroll state
   const [pullDistance, setPullDistance] = useState(0);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -212,40 +195,41 @@ export default function TravelReelsPage() {
   const triggerRefresh = useCallback(async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch(`/api/community/feed?limit=50&_t=${Date.now()}`);
-      const data = await res.json();
-      if (data.ok && Array.isArray(data.posts)) {
-        const userVideoPosts: TravelReelItem[] = data.posts
-          .filter((p: ParsedTravelPost) => p.videos && p.videos.length > 0)
-          .map((p: ParsedTravelPost) => ({
-            id: p.id,
-            pubkey: p.pubkey,
-            title: p.content.slice(0, 60),
-            description: p.content,
-            videoUrl: p.videos![0],
-            category: p.category || "hotels",
-            destination: p.destination || "إسطنبول",
-            likesCount: p.likesCount || 0,
-            commentsCount: p.commentsCount || 0,
-            viewsCount: p.viewsCount || ((p.likesCount || 0) * 14 + 160),
-            created_at: p.created_at,
-            author: {
-              pubkey: p.author?.pubkey || p.pubkey,
-              name: p.author?.name || p.authorName || "مسافر لوناليزا VIP",
-              avatar:
-                p.author?.avatar ||
-                p.authorAvatar ||
-                `https://api.dicebear.com/7.x/bottts/svg?seed=${p.pubkey}`,
-            },
-          }));
-
-        if (userVideoPosts.length > 0) {
-          setReels((prev) => {
-            const existingIds = new Set(userVideoPosts.map((r) => r.id));
-            const nonDuplicates = prev.filter((r) => !existingIds.has(r.id));
-            return rankReels([...userVideoPosts, ...nonDuplicates]);
-          });
-        }
+      const [feedRes, cfgRes] = await Promise.all([
+        fetch(`/api/community/feed?reels=1&limit=50&_t=${Date.now()}`),
+        fetch("/api/community/config"),
+      ]);
+      const data = await feedRes.json();
+      const cfg = await cfgRes.json();
+      const fromStore = Array.isArray(data.posts)
+        ? (data.posts.map((p: ParsedTravelPost) => postToReel(p)).filter(Boolean) as TravelReelItem[])
+        : [];
+      const live =
+        cfg.ok && cfg.relays?.length
+          ? (await fetchTourismReels(cfg.relays, 15)).filter((r) => !isMockReelSource(r))
+          : [];
+      const merged = rankReels(
+        [...fromStore, ...live].filter(
+          (r, idx, arr) => arr.findIndex((x) => x.id === r.id) === idx && !isMockReelSource(r),
+        ),
+      );
+      setReels(merged);
+      if (cfg.relays?.length && merged.length) {
+        const engagement = await fetchReelEngagement(
+          cfg.relays,
+          merged.map((r) => r.id),
+        );
+        setReels((prev) =>
+          prev.map((r) => {
+            const hit = engagement[r.id];
+            if (!hit) return r;
+            return {
+              ...r,
+              likesCount: Math.max(r.likesCount || 0, hit.likesCount),
+              commentsCount: Math.max(r.commentsCount || 0, hit.commentsCount),
+            };
+          }),
+        );
       }
     } catch {
       // ignore
@@ -297,63 +281,100 @@ export default function TravelReelsPage() {
     setCurrentIndex(0);
   }, []);
 
-  // Load community published videos and relays (prioritizing user uploads first)
+  const goToIndex = useCallback(
+    (next: number) => {
+      if (!containerRef.current || !reels.length) return;
+      const clamped = Math.max(0, Math.min(reels.length - 1, next));
+      containerRef.current.scrollTo({
+        top: clamped * containerRef.current.clientHeight,
+        behavior: "smooth",
+      });
+      setCurrentIndex(clamped);
+    },
+    [reels.length],
+  );
+
+  const wheelLock = useRef(false);
+  const handleWheel = useCallback(
+    (e: React.WheelEvent) => {
+      if (showCommentsModal || Math.abs(e.deltaY) < 18) return;
+      e.preventDefault();
+      if (wheelLock.current) return;
+      wheelLock.current = true;
+      goToIndex(currentIndex + (e.deltaY > 0 ? 1 : -1));
+      window.setTimeout(() => {
+        wheelLock.current = false;
+      }, 420);
+    },
+    [currentIndex, goToIndex, showCommentsModal],
+  );
+
   useEffect(() => {
-    fetch("/api/community/feed?limit=50")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.ok && Array.isArray(data.posts)) {
-          const userVideoPosts: TravelReelItem[] = data.posts
-            .filter((p: ParsedTravelPost) => p.videos && p.videos.length > 0)
-            .map((p: ParsedTravelPost) => ({
-              id: p.id,
-              pubkey: p.pubkey,
-              title: p.content.slice(0, 60),
-              description: p.content,
-              videoUrl: p.videos![0],
-              category: p.category || "hotels",
-              destination: p.destination || "إسطنبول",
-              likesCount: p.likesCount || 0,
-              commentsCount: p.commentsCount || 0,
-              viewsCount: p.viewsCount || ((p.likesCount || 0) * 14 + 160),
-              created_at: p.created_at,
-              author: {
-                pubkey: p.author?.pubkey || p.pubkey,
-                name: p.author?.name || p.authorName || "مسافر لوناليزا VIP",
-                avatar:
-                  p.author?.avatar ||
-                  p.authorAvatar ||
-                  `https://api.dicebear.com/7.x/bottts/svg?seed=${p.pubkey}`,
-              },
-            }));
+    const onKey = (e: KeyboardEvent) => {
+      if (showCommentsModal) return;
+      if (e.key === "ArrowDown" || e.key === "PageDown") {
+        e.preventDefault();
+        goToIndex(currentIndex + 1);
+      } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+        e.preventDefault();
+        goToIndex(currentIndex - 1);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [currentIndex, goToIndex, showCommentsModal]);
 
-          if (userVideoPosts.length > 0) {
-            setReels((prev) => {
-              const existingIds = new Set(userVideoPosts.map((r) => r.id));
-              const nonDuplicates = prev.filter((r) => !existingIds.has(r.id));
-              return rankReels([...userVideoPosts, ...nonDuplicates]);
-            });
-          }
-        }
-      })
-      .catch(() => {});
+  // Load community published videos and relays (real notes only)
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const feedRes = await fetch("/api/community/feed?reels=1&limit=50");
+        const feedData = await feedRes.json();
+        const fromStore = Array.isArray(feedData.posts)
+          ? (feedData.posts.map((p: ParsedTravelPost) => postToReel(p)).filter(Boolean) as TravelReelItem[])
+          : [];
 
-    // Live relays (append after user videos)
-    fetch("/api/community/config")
-      .then((res) => res.json())
-      .then(async (data) => {
-        if (data.ok && data.relays?.length) {
-          const liveReels = await fetchTourismReels(data.relays, 15);
-          if (liveReels.length > 0) {
-            setReels((prev) => {
-              const existingIds = new Set(prev.map((r) => r.id));
-              const fresh = liveReels.filter((r) => !existingIds.has(r.id));
-              return rankReels([...prev, ...fresh]);
-            });
-          }
+        const cfgRes = await fetch("/api/community/config");
+        const cfgData = await cfgRes.json();
+        const liveReels =
+          cfgData.ok && cfgData.relays?.length ? await fetchTourismReels(cfgData.relays, 15) : [];
+        const liveClean = liveReels.filter((r) => !isMockReelSource(r));
+
+        if (cancelled) return;
+        const merged = rankReels(
+          [...fromStore, ...liveClean].filter(
+            (r, idx, arr) => arr.findIndex((x) => x.id === r.id) === idx && !isMockReelSource(r),
+          ),
+        );
+        setReels(merged);
+
+        if (cfgData.relays?.length && merged.length) {
+          const engagement = await fetchReelEngagement(
+            cfgData.relays,
+            merged.map((r) => r.id),
+          );
+          if (cancelled) return;
+          setReels((prev) =>
+            prev.map((r) => {
+              const hit = engagement[r.id];
+              if (!hit) return r;
+              return {
+                ...r,
+                likesCount: Math.max(r.likesCount || 0, hit.likesCount),
+                commentsCount: Math.max(r.commentsCount || 0, hit.commentsCount),
+              };
+            }),
+          );
         }
-      })
-      .catch(() => {});
+      } catch {
+        // ignore
+      }
+    };
+    void load();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Sync active video play/pause
@@ -361,16 +382,26 @@ export default function TravelReelsPage() {
     videoRefs.current.forEach((vid, idx) => {
       if (!vid) return;
       if (idx === currentIndex) {
-        vid.currentTime = 0;
         vid.play().catch(() => {});
         setIsPlaying(true);
       } else {
         vid.pause();
       }
     });
-    // Reset collapsed description when switching reel
     setShowFullDesc(false);
   }, [currentIndex]);
+
+  const lastViewedId = useRef<string | null>(null);
+  useEffect(() => {
+    const activeId = reels[currentIndex]?.id;
+    if (!activeId || lastViewedId.current === activeId) return;
+    lastViewedId.current = activeId;
+    void fetch("/api/community/reward", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "view", eventId: activeId }),
+    }).catch(() => {});
+  }, [currentIndex, reels]);
 
   // Handle scroll snap detection
   const handleScroll = useCallback(() => {
@@ -505,8 +536,6 @@ export default function TravelReelsPage() {
     }
   };
 
-  const currentReel = reels[currentIndex];
-
   return (
     <div className="fixed inset-0 z-50 bg-black overflow-hidden flex items-center justify-center select-none" dir="rtl">
       {/* Return to Community Timeline Button: Small white icon with transparent rounded glass backdrop */}
@@ -560,12 +589,20 @@ export default function TravelReelsPage() {
       <div
         ref={containerRef}
         onScroll={handleScroll}
+        onWheel={handleWheel}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        className="h-[100dvh] w-full max-w-md sm:max-w-lg overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-contain"
+        className="h-[100dvh] w-full max-w-md sm:max-w-lg overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-none touch-pan-y"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+        {reels.length === 0 ? (
+          <div className="flex h-[100dvh] w-full flex-col items-center justify-center gap-3 px-8 text-center text-white">
+            <Loader2 className="h-8 w-8 animate-spin text-amber-400" />
+            <p className="text-sm font-bold">جاري جلب ريلز المجتمع من الشبكة الحية...</p>
+            <p className="text-xs text-white/60">اسحب للأسفل بعد التحميل لتحديث الملاحظات الجديدة</p>
+          </div>
+        ) : null}
         {reels.map((reel, idx) => {
           const isLiked = likedReels[reel.id] || false;
           const likesCount = likesCountMap[reel.id] || reel.likesCount || 0;
@@ -585,10 +622,24 @@ export default function TravelReelsPage() {
                   videoRefs.current[idx] = el;
                 }}
                 src={reel.videoUrl}
+                poster={reel.posterUrl}
+                preload={idx === currentIndex ? "auto" : "metadata"}
                 loop
                 playsInline
                 muted={muted}
                 onClick={togglePlay}
+                onLoadedData={(e) => {
+                  void seekAndCapturePoster(e.currentTarget).then((frame) => {
+                    if (!frame) return;
+                    setReels((prev) =>
+                      prev.map((item) =>
+                        item.id === reel.id && !item.posterUrl?.startsWith("data:")
+                          ? { ...item, posterUrl: frame }
+                          : item,
+                      ),
+                    );
+                  });
+                }}
                 onTimeUpdate={(e) => {
                   if (idx === currentIndex) {
                     const vid = e.currentTarget;
@@ -629,7 +680,7 @@ export default function TravelReelsPage() {
                     style={{ color: "#ffffff" }}
                     className="text-[11px] font-bold text-white mt-1 drop-shadow-md font-mono"
                   >
-                    {formatViews(reel.viewsCount || ((reel.likesCount || 10) * 14 + 180))}
+                    {formatViews(reel.viewsCount || 0)}
                   </span>
                 </div>
 
@@ -766,7 +817,7 @@ export default function TravelReelsPage() {
                   <span>{idx === currentIndex ? `${formatDuration(videoCurrentTime)} / ${formatDuration(videoDuration)}` : "00:00 / 00:00"}</span>
                   <span className="text-[11px] text-amber-300 font-sans font-bold flex items-center gap-1">
                     <Eye className="h-3 w-3" />
-                    <span>{formatViews(reel.viewsCount || ((reel.likesCount || 10) * 14 + 180))} مشاهدة</span>
+                    <span>{formatViews(reel.viewsCount || 0)} مشاهدة</span>
                   </span>
                 </div>
               </div>
@@ -969,28 +1020,26 @@ export default function TravelReelsPage() {
                 ))}
             </div>
 
-            {/* Comment Input Footer */}
+            {/* Comment Input Footer — circular send nested inside the field */}
             <div className="p-3 bg-slate-900 border-t border-white/10">
-              <form
-                onSubmit={handleSubmitComment}
-                className="flex items-center gap-2"
-              >
+              <form onSubmit={handleSubmitComment} className="relative">
                 <input
                   type="text"
                   value={newCommentText}
                   onChange={(e) => setNewCommentText(e.target.value)}
                   placeholder="أضف تعليقك حول هذا الريلز..."
-                  className="flex-1 bg-white/10 border border-white/10 rounded-2xl px-4 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-amber-400 transition-all"
+                  className="w-full rounded-full border border-white/15 bg-white/10 py-3 pe-12 ps-4 text-xs text-white placeholder-white/40 focus:border-amber-400 focus:outline-none"
                 />
                 <button
                   type="submit"
                   disabled={!newCommentText.trim() || submittingComment}
-                  className="p-2.5 rounded-2xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-slate-950 font-bold transition-all shadow-md shrink-0 cursor-pointer"
+                  aria-label="إرسال"
+                  className="absolute end-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-amber-500 text-slate-950 shadow-md disabled:opacity-40"
                 >
                   {submittingComment ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <Send className="h-4 w-4 rotate-180" />
+                    <Send className="h-4 w-4" />
                   )}
                 </button>
               </form>
@@ -999,5 +1048,19 @@ export default function TravelReelsPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function TravelReelsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-[100dvh] w-full bg-black flex items-center justify-center text-white">
+          <Loader2 className="h-8 w-8 animate-spin text-amber-400" />
+        </div>
+      }
+    >
+      <TravelReelsContent />
+    </Suspense>
   );
 }

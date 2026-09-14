@@ -7,6 +7,8 @@ export function extraLocalizedTitle(pkg: AgencyExtraPackage, locale: Locale): st
       return pkg.titleAr || pkg.titleEn;
     case "tr":
       return pkg.titleTr || pkg.titleEn || pkg.titleAr;
+    case "fr":
+      return pkg.titleEn || pkg.titleAr;
     case "en":
     default:
       return pkg.titleEn || pkg.titleAr;
@@ -19,6 +21,8 @@ export function extraLocalizedDesc(pkg: AgencyExtraPackage, locale: Locale): str
       return pkg.descAr || pkg.descEn;
     case "tr":
       return pkg.descTr || pkg.descEn || pkg.descAr;
+    case "fr":
+      return pkg.descEn || pkg.descAr;
     case "en":
     default:
       return pkg.descEn || pkg.descAr;
@@ -31,6 +35,8 @@ export function extraLocalizedTerms(pkg: AgencyExtraPackage, locale: Locale): st
       return pkg.termsAr || pkg.termsEn || "";
     case "tr":
       return pkg.termsTr || pkg.termsEn || pkg.termsAr || "";
+    case "fr":
+      return pkg.termsEn || pkg.termsAr || "";
     case "en":
     default:
       return pkg.termsEn || pkg.termsAr || "";

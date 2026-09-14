@@ -1042,6 +1042,26 @@ export default function SearchWidget({
       className={cn("mx-auto w-full", isHero ? "max-w-7xl" : "max-w-6xl")}
       data-builder-field="search.widget"
     >
+      {/* Sleek Top AI Mode Header Row: placed cleanly ABOVE the widget aligned with it */}
+      <div className="mb-2.5 flex items-center justify-between gap-3 px-1 sm:px-2">
+        <div className="flex items-center gap-2">
+          <SearchAiModeSwitch
+            on={aiMode}
+            onChange={toggleAiMode}
+            label={agentCopy.mode}
+            tone="brand"
+          />
+        </div>
+
+        <p className="hidden sm:block text-xs font-semibold text-white/85 drop-shadow-sm">
+          {locale === "ar"
+            ? "يفهم لهجتك وينفّذ البحث فوراً ويحفظ سياق رحلتك"
+            : locale === "tr"
+              ? "Yapay zeka ile anında arama yapın ve seyahat bağlamınızı koruyun"
+              : "Understands your intent instantly and preserves trip context"}
+        </p>
+      </div>
+
       <div
         className="alrayyan-search-widget overflow-hidden rounded-[var(--radius-card)]"
         style={{ backgroundColor: panelBg, boxShadow: "var(--theme-shadow-lg)" }}
@@ -1051,28 +1071,26 @@ export default function SearchWidget({
           style={{ backgroundColor: tabBarBg }}
           data-builder-field="search.tabBar"
         >
-          <div className="flex items-center gap-2">
-            <div
-              className="flex min-w-0 flex-1 gap-1 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory touch-pan-x [-webkit-overflow-scrolling:touch]"
-              role="tablist"
-              aria-label={t.search.search}
-            >
-              {visibleTabs.map((tab) => (
-                <SearchTabButton
-                  key={tab}
-                  tab={tab}
-                  active={activeTab === tab}
-                  onSelect={() => setActiveTab(tab)}
-                  label={appearance?.tabLabels?.[tab] || TAB_LABEL[tab](t)}
-                  store={iconStore}
-                  appearance={appearance}
-                  iconOverride={appearance?.tabIcons?.[tab]}
-                  builderMode={builderMode}
-                  sectionInstanceId={sectionInstanceId}
-                />
-              ))}
-            </div>
-            <SearchAiModeSwitch on={aiMode} onChange={toggleAiMode} label={agentCopy.mode} tone="brand" />
+          {/* Full Width Service Tabs — Free to scroll smoothly with zero squishing */}
+          <div
+            className="flex min-w-0 w-full gap-1 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory touch-pan-x [-webkit-overflow-scrolling:touch]"
+            role="tablist"
+            aria-label={t.search.search}
+          >
+            {visibleTabs.map((tab) => (
+              <SearchTabButton
+                key={tab}
+                tab={tab}
+                active={activeTab === tab}
+                onSelect={() => setActiveTab(tab)}
+                label={appearance?.tabLabels?.[tab] || TAB_LABEL[tab](t)}
+                store={iconStore}
+                appearance={appearance}
+                iconOverride={appearance?.tabIcons?.[tab]}
+                builderMode={builderMode}
+                sectionInstanceId={sectionInstanceId}
+              />
+            ))}
           </div>
         </div>
 

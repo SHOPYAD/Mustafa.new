@@ -45,37 +45,43 @@ export default function CardSlider({
         : "w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center transition-colors";
 
   return (
-    <section className={cn("relative", className)}>
-      <div className="flex items-end justify-between gap-4 mb-5">
-        <div className="min-w-0">
-          <h2
-            className={cn(
-              "text-xl md:text-2xl font-bold tracking-tight",
-              tone === "dark"
-                ? "text-white"
-                : tone === "light"
-                  ? "text-slate-900"
-                  : "text-slate-900 dark:text-white"
+    <section className={cn("lonaliza-carousel-wrap relative min-w-0 max-w-full", className)}>
+      <div className="mb-5 flex items-end justify-between gap-4">
+        {title || subtitle ? (
+          <div className="min-w-0">
+            {title ? (
+              <h2
+                className={cn(
+                  "overflow-visible pt-0.5 text-xl font-bold leading-[1.35] tracking-tight md:text-2xl",
+                  tone === "dark"
+                    ? "text-white"
+                    : tone === "light"
+                      ? "text-slate-900"
+                      : "text-slate-900 dark:text-white"
+                )}
+              >
+                {title}
+              </h2>
+            ) : null}
+            {subtitle && (
+              <p
+                className={cn(
+                  "mt-1 text-sm",
+                  tone === "dark"
+                    ? "text-white/50"
+                    : tone === "light"
+                      ? "text-slate-500"
+                      : "text-slate-500 dark:text-slate-400"
+                )}
+              >
+                {subtitle}
+              </p>
             )}
-          >
-            {title}
-          </h2>
-          {subtitle && (
-            <p
-              className={cn(
-                "text-sm mt-1",
-                tone === "dark"
-                  ? "text-white/50"
-                  : tone === "light"
-                    ? "text-slate-500"
-                    : "text-slate-500 dark:text-slate-400"
-              )}
-            >
-              {subtitle}
-            </p>
-          )}
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
+          </div>
+        ) : (
+          <div />
+        )}
+        <div className="flex shrink-0 items-center gap-2">
           {headerAction}
           <button
             type="button"
@@ -97,7 +103,7 @@ export default function CardSlider({
       </div>
       <div
         ref={scrollRef}
-        className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide pb-1"
+        className="lonaliza-carousel-track flex min-w-0 max-w-full snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1 pe-1 sm:gap-4"
       >
         {children}
       </div>

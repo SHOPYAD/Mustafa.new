@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Lock, ShieldCheck } from "lucide-react";
+import { destroyIyzicoArtifacts } from "@/lib/payments/iyzico-viewport";
 
 type Props = {
   amountLabel: string;
@@ -85,67 +86,31 @@ function DiscoverMark() {
 
 export function IyzicoSecureFrame({
   html,
-  title,
-  hostedNote,
-  onClose,
-  closeLabel,
-  logoSrc,
 }: {
   html: string;
-  title: string;
-  hostedNote: string;
-  onClose: () => void;
-  closeLabel: string;
+  title?: string;
+  hostedNote?: string;
+  onClose?: () => void;
+  closeLabel?: string;
   logoSrc?: string;
 }) {
-  return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#051741]/70 p-3">
-      <div className="flex max-h-[94vh] w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
-        <div className="flex items-center justify-between gap-3 bg-[#051741] px-4 py-3 text-white">
-          <div className="flex min-w-0 items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={logoSrc || "/logo.png"} alt="" className="h-8 w-auto" />
-            <div className="min-w-0">
-              <p className="inline-flex items-center gap-1.5 text-sm font-bold">
-                <Lock size={14} /> {title}
-              </p>
-            </div>
-          </div>
-          <button type="button" onClick={onClose} className="text-xs font-semibold text-white/70">
-            {closeLabel}
-          </button>
-        </div>
-        <div className="alrayyan-scroll min-h-[420px] overflow-y-auto bg-white p-2">
-          <IyzicoCheckoutEmbed html={html} />
-        </div>
-        <p className="border-t px-4 py-2.5 text-[11px] leading-relaxed text-slate-500">{hostedNote}</p>
-      </div>
-    </div>
-  );
-}
-
-export function IyzicoCheckoutEmbed({ html }: { html: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const host = ref.current;
-    if (!host || !html) return;
-    host.innerHTML = html;
-    const scripts = Array.from(host.querySelectorAll("script"));
-    for (const old of scripts) {
-      const next = document.createElement("script");
-      for (const attr of Array.from(old.attributes)) {
-        next.setAttribute(attr.name, attr.value);
-      }
-      next.text = old.textContent || "";
-      old.parentNode?.replaceChild(next, old);
-    }
+    destroyIyzicoArtifacts();
     return () => {
-      host.innerHTML = "";
+      destroyIyzicoArtifacts();
     };
   }, [html]);
+  return null;
+}
 
-  return <div ref={ref} className="min-h-[380px] overflow-hidden rounded-xl bg-white" />;
+export function IyzicoCheckoutEmbed({ html }: { html?: string }) {
+  useEffect(() => {
+    destroyIyzicoArtifacts();
+    return () => {
+      destroyIyzicoArtifacts();
+    };
+  }, [html]);
+  return null;
 }
 
 export default function IyzicoPayPanel({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -23,13 +23,15 @@ import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import HotelBookingReceipt, { type HotelReceiptModel } from "@/components/hotels/HotelBookingReceipt";
 import CheckoutRewards, { type CheckoutLoyaltyValue } from "@/components/loyalty/CheckoutRewards";
-import { IyzicoSecureFrame } from "@/components/hotels/IyzicoPayPanel";
+import IyzicoCardSheet, { type IyzicoCardSheetHandle } from "@/components/payments/IyzicoCardSheet";
+import { paymentCopy } from "@/lib/payments/copy";
+import { openBankTransferWhatsApp } from "@/lib/payments/whatsapp-bank-link";
 import { nightsBetween, stayFromNightly } from "@/lib/hotel-display";
 import { defaultHotelDates } from "@/lib/hotels-config";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { isSandboxPriceLimitError } from "@/lib/iyzico-limits";
 import { getBusinessWhatsAppNumber } from "@/lib/site-whatsapp";
-import { buildWhatsAppLink, normalizeWhatsAppNumber } from "@/lib/utils";
+import { normalizeWhatsAppNumber } from "@/lib/utils";
 
 type PayConfig = {
   iyzicoEnabled: boolean;
@@ -237,9 +239,10 @@ export default function HotelBookCheckout() {
   const [payConfig, setPayConfig] = useState<PayConfig | null>(null);
   const [method, setMethod] = useState<PayMethod>("card");
   const [identityNumber, setIdentityNumber] = useState("");
-  const [checkoutHtml, setCheckoutHtml] = useState("");
+  const [threeDsActive, setThreeDsActive] = useState(false);
+  const cardRef = useRef<IyzicoCardSheetHandle>(null);
+  const [awaitingWebhook, setAwaitingWebhook] = useState(paymentStatus === "pending");
   const [savedBookingId, setSavedBookingId] = useState(bookingIdParam);
-  const [payPageUrl, setPayPageUrl] = useState("");
   const [loyalty, setLoyalty] = useState<CheckoutLoyaltyValue | null>(null);
   const [quote, setQuote] = useState<PublicQuote | null>(null);
   const [quoteState, setQuoteState] = useState<QuoteState>(supplierMode ? "loading" : "idle");
@@ -396,11 +399,42 @@ export default function HotelBookCheckout() {
     };
   }, [bookingIdParam, confirmParam, paymentStatus, router]);
 
+  useEffect(() => {
+    const id = savedBookingId || bookingIdParam;
+    if (!id) return;
+    if (!awaitingWebhook && paymentStatus !== "pending") return;
+    let cancelled = false;
+    const poll = async () => {
+      try {
+        const res = await fetch(`/api/payments/iyzico/status?bookingId=${encodeURIComponent(id)}`, { cache: "no-store" });
+        const data = (await res.json()) as { paid?: boolean };
+        if (cancelled || !data.paid) return;
+        const detail = await fetch(
+          `/api/hotel-bookings/${encodeURIComponent(id)}?confirm=${encodeURIComponent(confirmToken || confirmParam)}`,
+          { cache: "no-store" }
+        );
+        const json = (await detail.json()) as { ok?: boolean; booking?: HotelReceiptModel };
+        if (!cancelled && json.ok && json.booking) {
+          setRemote(json.booking);
+          setAwaitingWebhook(false);
+        }
+      } catch {
+        /* stay pending */
+      }
+    };
+    void poll();
+    const timer = window.setInterval(poll, 2500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [awaitingWebhook, savedBookingId, bookingIdParam, paymentStatus, confirmToken, confirmParam]);
+
   // After a successful card payment the supplier reservation runs server-side; poll until it settles.
   useEffect(() => {
     if (!remote || !bookingIdParam) return;
     const st = String(remote.fulfilment_status || "");
-    const paidLike = `${remote.status} ${remote.payment_status} ${paymentStatus}`.toLowerCase().includes("paid");
+    const paidLike = remote.status === "paid" && String(remote.payment_status || "").toLowerCase() === "paid";
     if (!paidLike || !(st === "supplier_pending" || st === "awaiting_payment")) return;
     let attempts = 0;
     let cancelled = false;
@@ -534,68 +568,25 @@ export default function HotelBookCheckout() {
     return code && code !== "iyzico_init_failed" ? code : t.hotels.bookingPayFailed;
   };
 
-  const openWhatsApp = () => {
+  const openWhatsApp = (reservationId?: string) => {
     const number = payConfig?.whatsappNumber || getBusinessWhatsAppNumber();
-    window.open(buildWhatsAppLink(number, whatsappText), "_blank", "noopener,noreferrer");
+    const id = String(reservationId || savedBookingId || remote?.id || "").trim();
+    openBankTransferWhatsApp({
+      phone: number,
+      message: whatsappText,
+      reservationId: id,
+      totalLabel: `${dueTotal.toLocaleString("en-US", { maximumFractionDigits: 2 })} ${chargeCurrency}`,
+    });
   };
 
   const startIyzico = async (bookingId: string) => {
-    const cardIdentity = turkishProduction
-      ? identityNumber.replace(/\D/g, "")
-      : adults[0]?.passport.trim() || "";
-    const payName = fullName || remote?.customer_name || "";
-    const payEmail = email || remote?.customer_email || "";
-    const payPhone = phoneDigits ? `${countryCode}${phoneDigits}` : remote?.customer_phone || "";
-    const init = await fetch("/api/payments/iyzico/init", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        bookingId,
-        amount: dueTotal || remote?.price || 0,
-        currency: chargeCurrency || remote?.currency || "USD",
-        name: payName,
-        firstName: firstName || payName.split(/\s+/)[0] || "",
-        lastName: lastName || payName.split(/\s+/).slice(1).join(" ") || "",
-        email: payEmail,
-        phone: payPhone,
-        countryCode,
-        country: countryCode === "+90" ? "Turkey" : "",
-        identityNumber: cardIdentity,
-      }),
-    });
-    let pay: {
-      ok?: boolean;
-      error?: string;
-      errorCode?: string;
-      paymentPageUrl?: string;
-      checkoutFormContent?: string;
-    } = {};
-    try {
-      pay = (await init.json()) as typeof pay;
-    } catch {
-      setError(t.hotels.iyzicoNetwork);
+    setSavedBookingId(bookingId);
+    const invalid = cardRef.current?.validationError();
+    if (invalid) {
+      setError(invalid);
       return false;
     }
-    if (!init.ok || !pay.ok) {
-      if (String(pay.errorCode || pay.error || "").startsWith("quote_")) {
-        // The held price lapsed before payment: drop the pending booking and force a fresh quote.
-        setSavedBookingId("");
-        setQuoteState("expired");
-      }
-      setError(payErrorText(pay.error, pay.errorCode));
-      return false;
-    }
-    if (pay.checkoutFormContent) {
-      setCheckoutHtml(pay.checkoutFormContent);
-      return true;
-    }
-    if (pay.paymentPageUrl) {
-      setPayPageUrl(pay.paymentPageUrl);
-      window.location.href = pay.paymentPageUrl;
-      return true;
-    }
-    setError(t.hotels.bookingPayFailed);
-    return false;
+    return Boolean(await cardRef.current?.charge(bookingId));
   };
 
   const submit = async (chosen: PayMethod) => {
@@ -719,7 +710,7 @@ export default function HotelBookCheckout() {
         return;
       }
       if (chosen === "whatsapp") {
-        openWhatsApp();
+        openWhatsApp(bookingId);
         setRemote({
           id: bookingId,
           hotel_name: hotelName,
@@ -760,14 +751,16 @@ export default function HotelBookCheckout() {
   const cardPaid = Boolean(
     remote &&
       remote.payment_method === "card" &&
-      `${remote.status} ${remote.payment_status} ${paymentStatus}`.toLowerCase().includes("paid") &&
+      remote.status === "paid" &&
+      String(remote.payment_status || "").toLowerCase() === "paid" &&
       !`${remote.payment_status}`.toLowerCase().includes("pending_review")
   );
   const cardPending = Boolean(
-    remote &&
-      remote.payment_method === "card" &&
-      !cardPaid &&
-      (paymentStatus === "pending" || `${remote.payment_status}`.toLowerCase().includes("pending"))
+    !cardPaid &&
+      method === "card" &&
+      (awaitingWebhook ||
+        paymentStatus === "pending" ||
+        (remote && `${remote.payment_status}`.toLowerCase().includes("pending")))
   );
   const whatsappDone = done && (remote?.payment_method === "whatsapp" || method === "whatsapp") && !cardPaid;
   const paymentFailed = paymentStatus === "failed";
@@ -821,7 +814,7 @@ export default function HotelBookCheckout() {
               <HotelBookingReceipt
                 booking={{ ...remote, confirm: remote.confirm || confirmToken }}
                 paymentQuery={paymentStatus}
-                onReopenWhatsApp={remote.payment_method === "whatsapp" ? openWhatsApp : undefined}
+                onReopenWhatsApp={remote.payment_method === "whatsapp" ? () => openWhatsApp(remote.id) : undefined}
               />
             ) : missingPaidBooking ? (
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
@@ -1110,30 +1103,62 @@ export default function HotelBookCheckout() {
                 <section className="space-y-3 rounded-2xl border border-[#eadfcf] bg-white p-5 md:p-6">
                   <h2 className="text-lg font-bold text-[#102033]">{t.hotels.paymentMethodQuestion}</h2>
                   {cardEnabled ? (
-                    <label
-                      className={`flex cursor-pointer items-start gap-3 rounded-xl border px-3 py-3 ${
+                    <div
+                      className={`rounded-xl border px-3 py-3 ${
                         method === "card" ? "border-[#1E64FF] bg-[#f4f7ff]" : "border-slate-200"
                       }`}
                     >
-                      <input
-                        type="radio"
-                        name="pay"
-                        checked={method === "card"}
-                        onChange={() => setMethod("card")}
-                        className="mt-1"
+                      <label className="flex cursor-pointer items-start gap-3">
+                        <input
+                          type="radio"
+                          name="pay"
+                          checked={method === "card"}
+                          onChange={() => setMethod("card")}
+                          className="mt-1"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <p className="inline-flex items-center gap-2 font-semibold">
+                            <CreditCard size={16} /> {t.hotels.payCard}
+                          </p>
+                          <p className="mt-1 text-sm text-slate-600">{t.hotels.iyzicoPayHint}</p>
+                        </div>
+                      </label>
+                      <IyzicoCardSheet
+                        ref={cardRef}
+                        expanded={method === "card"}
+                        bookingId={savedBookingId || bookingIdParam}
+                        amountLabel={`${dueTotal.toLocaleString("en-US", { maximumFractionDigits: 2 })} ${chargeCurrency}`}
+                        locale={locale}
+                        sandbox={payConfig?.iyzicoMode !== "production"}
+                        identityNumber={
+                          turkishProduction ? identityNumber.replace(/\D/g, "") : adults[0]?.passport.trim() || ""
+                        }
+                        payLabel={t.hotels.cardPayCta}
+                        bookingBusy={saving}
+                        payDisabled={!formValid || !user}
+                        buyer={{
+                          name: fullName || remote?.customer_name || "",
+                          firstName: firstName,
+                          lastName: lastName,
+                          email: email || remote?.customer_email || "",
+                          phone: phoneDigits ? `${countryCode}${phoneDigits}` : remote?.customer_phone || "",
+                          countryCode,
+                          country: countryCode === "+90" ? "Turkey" : "",
+                          amount: dueTotal || remote?.price || 0,
+                          currency: chargeCurrency || remote?.currency || "USD",
+                        }}
+                        onRequestPay={() => void submit("card")}
+                        onThreeDs={setThreeDsActive}
+                        onPending={() => {
+                          setThreeDsActive(false);
+                          setAwaitingWebhook(true);
+                        }}
+                        onFailed={(message) => {
+                          setThreeDsActive(false);
+                          setError(message);
+                        }}
                       />
-                      <div className="min-w-0 flex-1">
-                        <p className="inline-flex items-center gap-2 font-semibold">
-                          <CreditCard size={16} /> {t.hotels.payCard}
-                        </p>
-                        <p className="mt-1 text-sm text-slate-600">{t.hotels.iyzicoPayHint}</p>
-                      </div>
-                    </label>
-                  ) : null}
-                  {method === "card" && cardEnabled ? (
-                    <p className="rounded-xl bg-[#f4f7ff] px-3 py-2 text-xs leading-relaxed text-slate-600">
-                      {t.hotels.iyzicoSecureNote}
-                    </p>
+                    </div>
                   ) : null}
                   {waEnabled ? (
                     <label
@@ -1206,15 +1231,20 @@ export default function HotelBookCheckout() {
                       {supplierMode && !quoteOk ? (quoteState === "loading" ? qc.checking : qc.expired) : t.hotels.fillRequiredFields}
                     </p>
                   ) : null}
-                  {!checkoutHtml ? (
+                  {awaitingWebhook && !cardPaid ? (
+                    <p className="rounded-xl bg-amber-50 px-3 py-2 text-xs font-bold text-amber-950">
+                      {paymentCopy(locale).awaitingWebhook}
+                    </p>
+                  ) : null}
+                  {method !== "card" && !threeDsActive ? (
                     <button
                       type="button"
                       onClick={() => void submit(method)}
-                      disabled={saving || !formValid || !user || (method === "card" ? !cardEnabled : !waEnabled)}
+                      disabled={saving || !formValid || !user || !waEnabled}
                       className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#051741] py-3.5 font-bold text-white disabled:opacity-50"
                     >
                       {saving ? <Loader2 size={16} className="animate-spin" /> : <Lock size={16} />}
-                      {method === "card" ? t.hotels.cardPayCta : t.hotels.whatsappPayCta}
+                      {t.hotels.whatsappPayCta}
                     </button>
                   ) : null}
                   <p className="flex items-center justify-center gap-1 text-xs text-slate-400">
@@ -1332,18 +1362,6 @@ export default function HotelBookCheckout() {
           )}
         </div>
       </div>
-      {checkoutHtml ? (
-        <IyzicoSecureFrame
-          html={checkoutHtml}
-          title={t.hotels.secureVerify}
-          hostedNote={t.hotels.iyzicoHostedOtpNote}
-          closeLabel={t.common.cancel}
-          onClose={() => {
-            setCheckoutHtml("");
-            setPayPageUrl("");
-          }}
-        />
-      ) : null}
     </div>
   );
 }

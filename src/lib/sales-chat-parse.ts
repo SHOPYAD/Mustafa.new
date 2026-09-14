@@ -308,6 +308,24 @@ export function normalizeSalesChatCard(raw: unknown): SalesChatCard | null {
       c.source === "live" || c.source === "catalog" || c.source === "pending"
         ? c.source
         : undefined,
+    stars: pickNum(c.stars) || undefined,
+    roomName: pickStr(c.roomName, c.roomType) || undefined,
+    airline: pickStr(c.airline, c.carrier) || undefined,
+    airlineCode: pickStr(c.airlineCode, c.carrierCode) || undefined,
+    airlineLogo: pickStr(c.airlineLogo, c.logo) || undefined,
+    fromIata: pickStr(c.fromIata, c.origin) || undefined,
+    toIata: pickStr(c.toIata, c.destination) || undefined,
+    departAt: pickStr(c.departAt, c.departure, c.departTime) || undefined,
+    arriveAt: pickStr(c.arriveAt, c.arrival, c.arriveTime) || undefined,
+    returnDepartAt: pickStr(c.returnDepartAt) || undefined,
+    returnArriveAt: pickStr(c.returnArriveAt) || undefined,
+    durationMinutes: pickNum(c.durationMinutes, c.duration) || undefined,
+    stopCount: pickNum(c.stopCount, c.stops) || undefined,
+    flightNumber: pickStr(c.flightNumber) || undefined,
+    tripType:
+      c.tripType === "round-trip" || c.tripType === "one-way"
+        ? c.tripType
+        : undefined,
   };
 }
 
@@ -337,13 +355,35 @@ function normalizeItineraryDay(
     d.textEn,
     d.body
   );
-  if (!titleAr && !titleEn && !detailAr && !detailEn) return null;
+  const itemsRaw = Array.isArray(d.items) ? d.items : [];
+  const items = itemsRaw
+    .map((raw) => {
+      if (!raw || typeof raw !== "object") return null;
+      const it = raw as Record<string, unknown>;
+      const labelAr = pickStr(it.labelAr, it.label, it.title, it.titleAr);
+      const labelEn = pickStr(it.labelEn, it.label, it.title, it.titleEn);
+      if (!labelAr && !labelEn && !pickStr(it.time)) return null;
+      const kindRaw = String(it.kind || it.type || "").toLowerCase();
+      const kind =
+        kindRaw === "flight" || kindRaw === "hotel" || kindRaw === "transfer" || kindRaw === "activity"
+          ? (kindRaw as "flight" | "hotel" | "transfer" | "activity")
+          : undefined;
+      return {
+        time: pickStr(it.time) || undefined,
+        kind,
+        labelAr: labelAr || labelEn || undefined,
+        labelEn: labelEn || labelAr || undefined,
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+  if (!titleAr && !titleEn && !detailAr && !detailEn && !items.length) return null;
   return {
     day: Math.max(1, Math.round(pickNum(d.day, index + 1) || index + 1)),
     titleAr: titleAr || titleEn,
     titleEn: titleEn || titleAr,
     detailAr: detailAr || undefined,
     detailEn: detailEn || undefined,
+    items: items.length ? items : undefined,
   };
 }
 
@@ -387,6 +427,9 @@ export function normalizeSalesChatItinerary(
     totalBasePrice: pickNum(it.totalBasePrice, it.baseTotal, it.cost),
     totalClientPrice,
     currency: pickStr(it.currency) || "USD",
+    arrivalDate: pickStr(it.arrivalDate, it.checkIn, it.date) || undefined,
+    departureDate: pickStr(it.departureDate, it.checkOut, it.returnDate) || undefined,
+    destination: pickStr(it.destination) || undefined,
   };
 }
 
@@ -456,10 +499,12 @@ export function hydrateSalesChatResponse(
   const cardsFromText = Array.isArray(parsed?.cards)
     ? parsed!.cards.map(normalizeSalesChatCard).filter((c): c is SalesChatCard => Boolean(c))
     : [];
-  const cardsFromExtras = Array.isArray(extras?.cards)
-    ? extras!.cards.map(normalizeSalesChatCard).filter((c): c is SalesChatCard => Boolean(c))
+  const extraCards = extras?.cards;
+  const hasExtraCards = Array.isArray(extraCards);
+  const cardsFromExtras = hasExtraCards
+    ? extraCards.map(normalizeSalesChatCard).filter((c): c is SalesChatCard => Boolean(c))
     : [];
-  const cards = cardsFromExtras.length ? cardsFromExtras : cardsFromText;
+  const cards = hasExtraCards ? cardsFromExtras : cardsFromText;
 
   const itineraryFromExtras = normalizeSalesChatItinerary(extras?.itinerary);
   const itineraryFromText = normalizeSalesChatItinerary(parsed?.itinerary);
@@ -471,7 +516,12 @@ export function hydrateSalesChatResponse(
 
   if (!itinerary) {
     itinerary = extractMarkdownItinerary(reply);
-    if (itinerary) reply = stripMarkdownItinerary(reply);
+  }
+  if (itinerary?.days && itinerary.days.length > 0) {
+    reply = stripMarkdownItinerary(reply);
+    if (reply.length > 520) {
+      reply = reply.split(/\n{2,}/).slice(0, 2).join("\n\n").trim();
+    }
   }
 
   if (itinerary && itinerary.totalClientPrice <= 0 && cards.length) {

@@ -102,7 +102,7 @@ export default function InternalFlightsContent() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1b053a] via-[#2e1065] to-[#3b0764] pb-14 pt-20 sm:pt-24 md:pt-28 -mt-px">
+      <section className="lonaliza-search-chrome relative overflow-hidden bg-gradient-to-br from-[#1b053a] via-[#2e1065] to-[#3b0764] pb-14 pt-20 sm:pt-24 md:pt-28 -mt-px">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute start-1/4 top-16 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl" />
           <div className="absolute bottom-0 end-10 h-64 w-64 rounded-full bg-purple-400/15 blur-3xl" />

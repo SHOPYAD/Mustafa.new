@@ -79,48 +79,62 @@ export interface ChatSession {
   messages: ChatMessage[];
 }
 
-const SESSIONS_STORAGE_KEY = "lonaliza_admin_copilot_sessions_v4";
-const ACTIVE_SESSION_STORAGE_KEY = "lonaliza_admin_copilot_active_id_v4";
+const SESSIONS_STORAGE_KEY = "lonaliza_admin_copilot_sessions_v5";
+const ACTIVE_SESSION_STORAGE_KEY = "lonaliza_admin_copilot_active_id_v5";
 
-function createInitialMessage(): ChatMessage {
+function createInitialMessage(live?: { posts?: number; mcp?: number; pocketbase?: boolean; bookings?: number }): ChatMessage {
+  const posts = live?.posts;
+  const mcp = live?.mcp;
+  const bookings = live?.bookings;
+  const pb = live?.pocketbase;
+  const postsLine =
+    typeof posts === "number"
+      ? `• المدونة: ${posts} مقالاً فعلياً من مخزن النظام.`
+      : "• المدونة: جاري قراءة العدد الفعلي من المخزن…";
+  const mcpLine =
+    typeof mcp === "number" ? `• خوادم MCP المدمجة: ${mcp}.` : "• خوادم MCP: تُحسب من الكتالوج عند التحميل.";
+  const bookLine =
+    typeof bookings === "number"
+      ? `• الحجوزات: ${bookings} من لوحة التحكم${pb === false ? " (PocketBase غير متصل)" : ""}.`
+      : "• الحجوزات: تُقرأ من لوحة التحكم الحية.";
   return {
     id: "welcome",
     role: "model",
-    text: "مرحباً بك سعادة المدير العام. أنا المشرف العام والمنسق التنفيذي لمنصة لوناليزا (Executive Co-Pilot & Swarm Gateway).\n\nأنا متصل بالبيانات اللحظية الحقيقية للمنصة:\n• المدونة السياحية: 34 مقالاً سياحياً ضخماً محدثاً لموسم 2026/2027 ومحفوظاً في قاعدة البيانات المركزية (PocketBase) مع صور تعريفية لكل قسم وجداول أسعار كاملة بالدولار.\n• ربط كامل ببروتوكول MCP وخوادم الأتمتة (14 خادماً مدمجاً).\n• خلية الوكلاء الأذكياء جاهزة في غرفة العمليات (War Room) ومربوطة بأدوات البحث في الويب وجوجل تريندز.\n\nكيف تأمرني بدعمك وإدارة المنصة الآن؟",
+    text: `مرحباً بك سعادة المدير العام. أنا المشرف العام والمنسق التنفيذي لمنصة لوناليزا، وأعتمد فقط على بيانات النظام الحية.\n\n${postsLine}\n${mcpLine}\n${bookLine}\n• خلية الوكلاء في غرفة العمليات مربوطة بنفس مصادر البيانات — بلا أرقام مخترعة.\n\nكيف تأمرني بدعمكم الآن؟`,
     timestamp: new Date().toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" }),
     agentStage: {
       agentName: "المشرف التنفيذي لمنصة لوناليزا",
-      stageName: "كافة الأنظمة وقاعدة البيانات PocketBase متزامنة (34 مقالاً)",
+      stageName: typeof posts === "number" ? `قراءة حية: ${posts} مقالاً` : "بانتظار مؤشرات النظام الحية",
       status: "completed",
     },
     executionSteps: [
       {
         id: "init_step_1",
         stepNumber: 1,
-        toolName: "PocketBase Central DB (Admin SDK)",
-        targetAgent: "وكيل قواعد البيانات والـ CMS",
+        toolName: "مخازن المنصة وPocketBase",
+        targetAgent: "وكيل قواعد البيانات",
         actionType: "db_query",
         status: "completed",
-        descriptionAr: "التحقق من سلامة وتزامن 34 مقالاً سياحياً لعام 2027 في جدول articles",
+        descriptionAr: typeof posts === "number" ? `عُدّت ${posts} مقالة من المخزن الفعلي` : "جاري عد المقالات من المخزن",
         timestamp: new Date().toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" }),
-        details: "قاعدة البيانات نشطة ومحدثة بنسبة 100% مع ربط الطيران والفنادق والسيارات.",
+        details: bookLine,
       },
       {
         id: "init_step_2",
         stepNumber: 2,
-        toolName: "بوابة بروتوكول MCP (Lonaliza MCP Gateway)",
-        targetAgent: "منسق خوادم MCP",
+        toolName: "بوابة MCP وخلية الوكلاء",
+        targetAgent: "منسق الخلية",
         actionType: "mcp_call",
         status: "completed",
-        descriptionAr: "فحص جاهزية الـ 14 خادم MCP للأتمتة والبحث الحي والإعلانات والاستوديو",
+        descriptionAr: mcpLine,
         timestamp: new Date().toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" }),
-        details: "كافة الخوادم المدمجة مفعلة وتملك صلاحية الوصول لكافة أرجاء المنصة.",
+        details: "الأرقام أدناه تُحدَّث من GET غرفة العمليات عند فتح اللوحة.",
       },
     ],
     actions: [
       {
         id: "view_blog",
-        label: "إدارة المدونة (34 مقالاً منشوراً) ↗",
+        label: typeof posts === "number" ? `إدارة المدونة (${posts} مقالاً) ↗` : "إدارة المدونة ↗",
         url: "/admin/blog",
         variant: "primary",
       },
@@ -152,6 +166,7 @@ export default function AdminExecutiveCopilot({ previewMode = false }: { preview
   const [expandedSteps, setExpandedSteps] = useState<Record<string, boolean>>({});
   const [liveRadarStep, setLiveRadarStep] = useState(0);
   const [pendingPrompt, setPendingPrompt] = useState("");
+  const [liveStats, setLiveStats] = useState<{ posts: number; mcp: number; bookings: number; pocketbase: boolean } | null>(null);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -228,6 +243,30 @@ export default function AdminExecutiveCopilot({ previewMode = false }: { preview
     } catch {}
   }, []);
 
+  useEffect(() => {
+    if (previewMode) return;
+    void fetch("/api/admin/automation/agent-war-room", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data: { ok?: boolean; platform?: { catalog?: { posts?: number; mcpServers?: number; bookings?: number; pocketbase?: boolean } } }) => {
+        const c = data.platform?.catalog;
+        if (!c) return;
+        const live = {
+          posts: c.posts || 0,
+          mcp: c.mcpServers || 0,
+          bookings: c.bookings || 0,
+          pocketbase: Boolean(c.pocketbase),
+        };
+        setLiveStats(live);
+        setMessages((prev) => {
+          if (prev.length === 1 && prev[0]?.id === "welcome") {
+            return [createInitialMessage(live)];
+          }
+          return prev;
+        });
+      })
+      .catch(() => {});
+  }, [previewMode]);
+
   // Save changes to localStorage whenever messages or active session changes
   useEffect(() => {
     if (!activeSessionId || messages.length === 0) return;
@@ -302,7 +341,7 @@ export default function AdminExecutiveCopilot({ previewMode = false }: { preview
       title: "جلسة إدارية جديدة",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      messages: [createInitialMessage()],
+      messages: [createInitialMessage(liveStats || undefined)],
     };
 
     setSessions((prev) => [newSession, ...prev]);
@@ -675,7 +714,9 @@ export default function AdminExecutiveCopilot({ previewMode = false }: { preview
               </span>
             </div>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">
-              متصل بـ 14 خادم MCP، قاعدة البيانات Central PocketBase (34 مقالاً)، وغرفة عمليات الوكلاء
+              {liveStats
+                ? `متصل بـ ${liveStats.mcp} خادم MCP، ${liveStats.posts} مقالاً فعلياً، ${liveStats.bookings} حجزاً${liveStats.pocketbase ? "" : " (PocketBase غير متصل)"}`
+                : "يتصل بمصادر النظام الحية — بدون أرقام ثابتة"}
             </p>
           </div>
         </div>

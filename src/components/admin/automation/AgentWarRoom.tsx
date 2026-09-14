@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Bot,
   Briefcase,
@@ -21,11 +21,11 @@ import {
   MessageSquare,
   Activity,
   Radio,
-  Sliders,
-  DollarSign,
-  Cpu,
-  Layers,
   ListOrdered,
+  Settings,
+  ChevronRight,
+  ChevronLeft,
+  Plus,
 } from "lucide-react";
 import type {
   SwarmAgentInfo,
@@ -34,6 +34,9 @@ import type {
   AdminDirective,
   AgentRole,
 } from "@/lib/automation/agent-collab-store";
+import type { SwarmToolCatalogEntry } from "@/lib/swarm/tool-catalog";
+import type { RegisteredSwarmAgent } from "@/lib/swarm/types";
+import AgentSettingsModal from "./AgentSettingsModal";
 
 export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agent-war-room" }: { apiEndpoint?: string } = {}) {
   const [agents, setAgents] = useState<SwarmAgentInfo[]>([]);
@@ -45,6 +48,11 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
   const [sendingDirective, setSendingDirective] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [decidingId, setDecidingId] = useState<string | null>(null);
+  const [toolCatalog, setToolCatalog] = useState<SwarmToolCatalogEntry[]>([]);
+  const [registry, setRegistry] = useState<RegisteredSwarmAgent[]>([]);
+  const [settingsAgentId, setSettingsAgentId] = useState<string | null>(null);
+  const [creatingAgent, setCreatingAgent] = useState(false);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const fetchData = async () => {
     try {
@@ -55,12 +63,16 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
         discussions?: SwarmDiscussionMessage[];
         decisions?: PendingApprovalDecision[];
         directives?: AdminDirective[];
+        toolCatalog?: SwarmToolCatalogEntry[];
+        registry?: RegisteredSwarmAgent[];
       };
       if (data.ok) {
         if (data.agents) setAgents(data.agents);
         if (data.discussions) setDiscussions(data.discussions);
         if (data.decisions) setDecisions(data.decisions);
         if (data.directives) setDirectives(data.directives);
+        if (data.toolCatalog) setToolCatalog(data.toolCatalog);
+        if (data.registry) setRegistry(data.registry);
       }
     } finally {
       setLoading(false);
@@ -82,7 +94,7 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
     setSendingDirective(true);
     setFeedback(null);
     try {
-      const res = await fetch("/api/admin/automation/agent-war-room", {
+      const res = await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -104,7 +116,7 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
   const handleDecision = async (decisionId: string, decisionStatus: "approved" | "rejected") => {
     setDecidingId(decisionId);
     try {
-      const res = await fetch("/api/admin/automation/agent-war-room", {
+      const res = await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -235,7 +247,7 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
                   }}
                 >
                   <span className="size-2 rounded-full bg-amber-400 animate-ping" />
-                  <span className="!text-white font-black">6 وكلاء نشطين متزامنين بنموذج Gemini</span>
+                  <span className="!text-white font-black">{agents.length} وكلاء مربوطون ببيانات النظام الحية</span>
                 </span>
               </div>
               <p
@@ -280,45 +292,91 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
         </div>
       )}
 
-      {/* 6 Agents Status Cards Grid - Responsive & Spacious */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        {agents.map((agent) => {
-          const theme = getAgentTheme(agent.id);
-          return (
-            <div
-              key={agent.id}
-              className={`p-4 rounded-2xl border ${theme.cardBorder} bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-3 group`}
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
-                    {theme.icon}
+      <div className="relative">
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-[11px] font-bold text-slate-500">شريط الوكلاء — مرّروا دون شريط تمرير ظاهر</p>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => sliderRef.current?.scrollBy({ left: 280, behavior: "smooth" })} className="p-2 rounded-xl border bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+              <ChevronRight size={16} />
+            </button>
+            <button type="button" onClick={() => sliderRef.current?.scrollBy({ left: -280, behavior: "smooth" })} className="p-2 rounded-xl border bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+              <ChevronLeft size={16} />
+            </button>
+          </div>
+        </div>
+        <div
+          ref={sliderRef}
+          className="flex gap-4 overflow-x-auto pb-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {agents.map((agent) => {
+            const theme = getAgentTheme(agent.id);
+            return (
+              <div
+                key={agent.id}
+                className={`snap-start shrink-0 w-[240px] p-4 rounded-2xl border ${theme.cardBorder} bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-3 group`}
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+                      {theme.icon}
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setSettingsAgentId(agent.id)}
+                        className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+                        title="إعدادات الوكيل"
+                      >
+                        <Settings size={14} />
+                      </button>
+                      <span className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-2 py-0.5 rounded-full border ${agent.connected ? "bg-purple-50 dark:bg-purple-950/60 text-purple-700 border-purple-200" : "bg-slate-50 text-slate-500 border-slate-200"}`}>
+                        <span className={`size-1.5 rounded-full ${agent.connected ? "bg-purple-500 animate-pulse" : "bg-slate-400"}`} />
+                        {agent.connected ? "حي" : "محدود"}
+                      </span>
+                    </div>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                    <span className="size-1.5 rounded-full bg-purple-500 animate-pulse" />
-                    متصل
-                  </span>
+                  <div className="mt-3">
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white leading-tight">{agent.nameAr}</h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5 leading-snug">{agent.titleAr}</p>
+                  </div>
                 </div>
-
-                <div className="mt-3">
-                  <h3 className="text-xs font-bold text-slate-900 dark:text-white leading-tight">{agent.nameAr}</h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5 leading-snug">{agent.titleAr}</p>
-                </div>
-              </div>
-
-              <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 space-y-2">
-                <p className="text-[11px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                  {agent.currentTaskAr}
-                </p>
-                <div className="text-[10px] font-mono flex items-center justify-between bg-slate-50 dark:bg-slate-950 px-2.5 py-1.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                  <span className="text-slate-500 dark:text-slate-400">المؤشر:</span>
-                  <span className="text-slate-900 dark:text-white font-bold">{agent.keyMetric}</span>
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                  <p className="text-[11px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed min-h-[36px]">
+                    {agent.currentTaskAr}
+                  </p>
+                  <div className="text-[10px] font-mono flex items-center justify-between bg-slate-50 dark:bg-slate-950 px-2.5 py-1.5 rounded-xl border border-slate-100 dark:border-slate-800 gap-2">
+                    <span className="text-slate-500 dark:text-slate-400 shrink-0">المؤشر:</span>
+                    <span className="text-slate-900 dark:text-white font-bold text-end">{agent.keyMetric}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+          <button
+            type="button"
+            onClick={() => setCreatingAgent(true)}
+            className="snap-start shrink-0 w-[240px] min-h-[190px] p-4 rounded-2xl border border-dashed border-purple-300 dark:border-purple-800 bg-purple-50/40 dark:bg-purple-950/20 flex flex-col items-center justify-center gap-2 text-purple-700 dark:text-purple-300"
+          >
+            <Plus size={22} />
+            <span className="text-xs font-black">إضافة وكيل جديد</span>
+            <span className="text-[10px] text-center leading-relaxed px-2">الاسم، المهمة، المهارات، القواعد، والبرومبت</span>
+          </button>
+        </div>
       </div>
+
+      {(settingsAgentId || creatingAgent) && (
+        <AgentSettingsModal
+          agentId={settingsAgentId || undefined}
+          isCreate={creatingAgent}
+          toolCatalog={toolCatalog}
+          initialAgent={settingsAgentId ? registry.find((a) => a.id === settingsAgentId) || null : null}
+          onClose={() => {
+            setSettingsAgentId(null);
+            setCreatingAgent(false);
+          }}
+          onSaved={() => void fetchData()}
+        />
+      )}
 
       {/* Main Operations Grid */}
       <div className="grid lg:grid-cols-12 gap-6">
@@ -625,6 +683,12 @@ export default function AgentWarRoom({ apiEndpoint = "/api/admin/automation/agen
                           <span>الأثر المتوقع:</span>
                           <span className="font-semibold">{dec.expectedBenefitAr}</span>
                         </div>
+                        {dec.executionResult && (
+                          <div className="pt-1 text-[10px] text-slate-700 dark:text-slate-200">
+                            التنفيذ: {dec.executionResult.summaryAr}
+                            {dec.executionResult.directUrl ? ` — ${dec.executionResult.directUrl}` : ""}
+                          </div>
+                        )}
                       </div>
 
                       {isPending && (

@@ -122,7 +122,13 @@ export default function PlatformReadinessHeaderBanner() {
 
   return (
     <>
-      <aside aria-label="جاهزية المنصة" className="w-full border-b border-purple-800/40 bg-gradient-to-r from-[#170e28] via-[#24143d] to-[#170e28] px-4 py-2.5 sm:px-6 shadow-md transition-all">
+      <aside
+        aria-label="جاهزية المنصة"
+        className="admin-dark-banner admin-isolated-dark platform-readiness-banner w-full border-b border-purple-800/40 bg-gradient-to-r from-[#170e28] via-[#24143d] to-[#170e28] px-4 py-2.5 sm:px-6 shadow-md transition-all text-white"
+        data-dark-banner="true"
+        data-admin-isolated-dark="true"
+        data-readiness-banner="true"
+      >
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* Right Section: Icon & Title & Score */}
           <div className="flex items-center gap-3">
@@ -138,7 +144,7 @@ export default function PlatformReadinessHeaderBanner() {
                   {score}% مكتمل
                 </span>
               </div>
-              <p className="mt-0.5 text-[11px] text-slate-300">
+              <p className="mt-0.5 text-[11px] text-purple-200">
                 {audit.readyModulesCount} من أصل {audit.totalModulesCount} قسماً مكتمل وجاهز للعمليات الميدانية
               </p>
             </div>
@@ -159,10 +165,10 @@ export default function PlatformReadinessHeaderBanner() {
             <button
               type="button"
               onClick={() => setDetailsOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs font-bold text-white transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/15 px-3 py-1.5 text-xs font-bold text-white transition-colors cursor-pointer shadow-xs"
             >
               <Layers size={13} className="text-amber-300" />
-              <span>تفاصيل الإعدادات (18)</span>
+              <span className="text-white font-bold">تفاصيل الإعدادات ({audit.totalModulesCount || 18})</span>
             </button>
 
             <button

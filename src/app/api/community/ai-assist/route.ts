@@ -33,6 +33,27 @@ function findMatchingHotel(prompt: string, destination: string) {
   return null;
 }
 
+async function toInlineImagePart(raw: string): Promise<{ inlineData: { mimeType: string; data: string } } | null> {
+  try {
+    if (!raw || typeof raw !== "string") return null;
+    if (raw.startsWith("data:")) {
+      const match = raw.match(/^data:([^;]+);base64,(.+)$/);
+      if (!match) return null;
+      return { inlineData: { mimeType: match[1] || "image/jpeg", data: match[2] } };
+    }
+    if (!/^https?:\/\//i.test(raw)) return null;
+    const res = await fetch(raw, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length < 80 || buf.length > 5 * 1024 * 1024) return null;
+    const mime = res.headers.get("content-type")?.split(";")[0] || "image/jpeg";
+    if (!mime.startsWith("image/")) return null;
+    return { inlineData: { mimeType: mime, data: buf.toString("base64") } };
+  } catch {
+    return null;
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -45,13 +66,20 @@ export async function POST(req: Request) {
       language = "ar",
       images = [],
       videos = [],
+      visualFrames = [],
       mode = "compose", // "compose" | "improve" | "hashtags"
     } = body;
 
-    const mediaCount = (images?.length || 0) + (videos?.length || 0);
+    const frameList = Array.isArray(visualFrames) ? visualFrames : [];
+    const imageList = Array.isArray(images) ? images : [];
+    const videoList = Array.isArray(videos) ? videos : [];
+    const mediaCount = imageList.length + videoList.length + frameList.length;
     const hasMedia = mediaCount > 0;
+    const bookingMeta = booking
+      ? `بيانات الحجز المرفقة: العنوان=${booking.title || ""}، النوع=${booking.typeLabel || booking.type || ""}، الوجهة=${booking.destination || ""}، التاريخ=${booking.date || ""}، السعر=${booking.price || ""} ${booking.currency || ""}، رقم=${booking.id || booking.refNumber || ""}.`
+      : "";
     const mediaContext = hasMedia
-      ? `المنشور يحتوي على ${mediaCount} وسائط حقيقية من تصوير المسافر توثق التجربة بدقة.`
+      ? `المسافر أرفق ${imageList.length} صورة و${videoList.length} فيديو. الصورتان/لقطات الفيديو مرفقة بصرياً — صف ما تراه فعلياً (المكان، الإضاءة، المرافق، الأشخاص إن وُجدوا، الأجواء) وادمجه مع بيانات الحجز. لا تختصر.`
       : "";
 
     // Clean destination
@@ -134,11 +162,11 @@ ${serviceGuidelines}
 4. الالتزام بالمعطيات الحقيقية:
    - التزم بالخدمة الفعلية المحددة أعلاه (${serviceName}). إن كانت جولة يخت تحدث عن اليخت والبحر، وإن كانت جولة سياحية تحدث عن المعالم، وإن كان فندقاً تحدث عن الإقامة.
    - ادمج أي ملاحظات إضافية يذكرها المسافر.
-5. الهيكل:
+5. الهيكل (مراجعة كاملة بلا سقف كلمات ضيق):
    - سطر أول جذاب يحدد التجربة والمدينة والانطباع العام.
-   - فقرتان متماسكتان غنيتان بالتفاصيل الواقعية.
-   - نصيحة مسافر صادقة ومختصرة في النهاية.
-   - وسوم هاشتاج مناسبة في النهاية.`;
+   - أربع إلى ست فقرات غنية: ما رأيته في الصور/لقطات الفيديو، تفاصيل الحجز والخدمة، الأجواء والمرافق، لحظة مميزة، ثم نصيحة عملية للمسافرين.
+   - وسوم هاشتاج مناسبة في النهاية.
+   - الحد الأدنى عند وجود وسائط: 220 كلمة عربية. ممنوع الرد بجملة قصيرة أو تلخيص مخل.`;
 
     let userPrompt = "";
     if (mode === "hashtags") {
@@ -149,17 +177,23 @@ ${serviceGuidelines}
 الوجهة: ${cleanDest}
 ${mediaContext}`;
     } else {
-      userPrompt = `اكتب مراجعة مسافر واقعية بضمير المتكلم بناءً على المعطيات التالية:
+      userPrompt = `اكتب مراجعة مسافر واقعية طويلة بضمير المتكلم بناءً على المعطيات التالية:
 - الخدمة / التجربة: ${serviceName}
 - الوجهة: ${cleanDest}
 - التقييم المعطى: ${rating} من 5 نجوم
 - ملاحظات المسافر: "${prompt || "تجربة ممتازة وتنسيق رائع وخدمة راقية جداً"}"
+${bookingMeta}
 ${mediaContext}
-تأكد أن النص يتمحور تماماً حول ${serviceName} ولا يخرج عنها إطلاقاً.`;
+تأكد أن النص يتمحور تماماً حول ${serviceName} ويصف المشهد البصري إن وُجدت صور أو لقطات فيديو. لا تضع حداً قصيراً للكلمات.`;
     }
 
     if (apiKey) {
       try {
+        const visualSources = [...frameList, ...imageList].slice(0, 6);
+        const visualParts = (
+          await Promise.all(visualSources.map((src) => toInlineImagePart(String(src))))
+        ).filter(Boolean) as Array<{ inlineData: { mimeType: string; data: string } }>;
+
         const res = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_DEFAULT_MODEL}:generateContent?key=${apiKey}`,
           {
@@ -167,10 +201,15 @@ ${mediaContext}
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               systemInstruction: { parts: [{ text: systemPrompt }] },
-              contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+              contents: [
+                {
+                  role: "user",
+                  parts: [{ text: userPrompt }, ...visualParts],
+                },
+              ],
               generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 1000,
+                temperature: 0.75,
+                maxOutputTokens: 8192,
               },
             }),
           }

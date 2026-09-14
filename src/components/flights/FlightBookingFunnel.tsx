@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -23,7 +23,8 @@ import {
   Calendar,
   Camera,
 } from "lucide-react";
-import { IyzicoSecureFrame } from "@/components/hotels/IyzicoPayPanel";
+import IyzicoCardSheet, { type IyzicoCardSheetHandle } from "@/components/payments/IyzicoCardSheet";
+import { paymentCopy } from "@/lib/payments/copy";
 import CheckoutRewards, { type CheckoutLoyaltyValue } from "@/components/loyalty/CheckoutRewards";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { flightDetails, initFlightBooking } from "@/components/flights/api";
@@ -53,7 +54,8 @@ import { useLocale } from "@/lib/i18n/LocaleProvider";
 import type { AgencyExtraPackage } from "@/types/agency-extra";
 import { isSandboxPriceLimitError } from "@/lib/iyzico-limits";
 import { getBusinessWhatsAppNumber } from "@/lib/site-whatsapp";
-import { buildWhatsAppLink, normalizeWhatsAppNumber } from "@/lib/utils";
+import { normalizeWhatsAppNumber } from "@/lib/utils";
+import { openBankTransferWhatsApp } from "@/lib/payments/whatsapp-bank-link";
 import SafeImage from "@/components/ui/SafeImage";
 
 // Cross-sell components & types
@@ -196,7 +198,10 @@ export default function FlightBookingFunnel() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [fareChanged, setFareChanged] = useState(false);
-  const [checkoutHtml, setCheckoutHtml] = useState("");
+  const [threeDsActive, setThreeDsActive] = useState(false);
+  const cardRef = useRef<IyzicoCardSheetHandle>(null);
+  const [awaitingWebhook, setAwaitingWebhook] = useState(false);
+  const [serverPaid, setServerPaid] = useState(false);
   const [bookingRef, setBookingRef] = useState(params.get("booking") || "");
   const paymentStatus = params.get("payment") || "";
   const [loyalty, setLoyalty] = useState<CheckoutLoyaltyValue | null>(null);
@@ -386,11 +391,42 @@ export default function FlightBookingFunnel() {
   }, []);
 
   useEffect(() => {
-    if (paymentStatus === "paid" && params.get("booking")) {
-      setBookingRef(params.get("booking") || "");
-      setStep("done");
+    const booking = params.get("booking") || "";
+    if (paymentStatus === "failed") {
+      setError(t.hotels.bookingPayFailed);
+      return;
     }
-  }, [paymentStatus, params]);
+    if (paymentStatus === "pending" && booking) {
+      setBookingRef(booking);
+      setAwaitingWebhook(true);
+    }
+  }, [paymentStatus, params, t.hotels.bookingPayFailed]);
+
+  useEffect(() => {
+    const id = bookingRef || params.get("booking") || "";
+    if (!id || serverPaid) return;
+    if (!awaitingWebhook && paymentStatus !== "pending") return;
+    let cancelled = false;
+    const poll = async () => {
+      try {
+        const res = await fetch(`/api/payments/iyzico/status?bookingId=${encodeURIComponent(id)}`, { cache: "no-store" });
+        const data = (await res.json()) as { paid?: boolean };
+        if (!cancelled && data.paid) {
+          setServerPaid(true);
+          setAwaitingWebhook(false);
+          setStep("done");
+        }
+      } catch {
+        /* keep pending */
+      }
+    };
+    void poll();
+    const timer = window.setInterval(poll, 2500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [awaitingWebhook, bookingRef, params, paymentStatus, serverPaid]);
 
   const paxCount = passengers.length || 1;
   const currency = selection?.itinerary.currency || query?.currency || paidSnapshot?.currency || "USD";
@@ -419,7 +455,7 @@ export default function FlightBookingFunnel() {
   const formValid = Boolean(selection && query && passengersOk && contactOk);
   const cardEnabled = Boolean(payConfig?.iyzicoEnabled);
   const waEnabled = payConfig ? payConfig.whatsappBankLinkEnabled : true;
-  const cardPaid = paymentStatus === "paid";
+  const cardPaid = serverPaid;
 
   // Primary traveler info for one-click auto-sync
   const primaryPassenger = useMemo<PrimaryTravelerInfo | undefined>(() => {
@@ -939,47 +975,13 @@ export default function FlightBookingFunnel() {
       return;
     }
     const identity = turkishProduction ? identityNumber.replace(/\D/g, "") : first.passportNumber.trim();
-    const init = await fetch("/api/payments/iyzico/init", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        bookingId: data.booking.id,
-        amount: dueTotal,
-        currency,
-        name,
-        firstName: first.firstName,
-        lastName: first.lastName,
-        email,
-        phone: `${countryCode}${phoneDigits}`,
-        countryCode,
-        country: countryCode === "+90" ? "Turkey" : "",
-        identityNumber: identity,
-      }),
-    });
-    let pay: {
-      ok?: boolean;
-      error?: string;
-      errorCode?: string;
-      paymentPageUrl?: string;
-      checkoutFormContent?: string;
-    } = {};
-    try {
-      pay = (await init.json()) as typeof pay;
-    } catch {
-      setError(t.hotels.iyzicoNetwork);
+    setIdentityNumber(identity);
+    const invalid = cardRef.current?.validationError();
+    if (invalid) {
+      setError(invalid);
       return;
     }
-    if (!init.ok || !pay.ok) {
-      setError(payErrorText(pay.error, pay.errorCode));
-      return;
-    }
-    if (pay.checkoutFormContent) {
-      setCheckoutHtml(pay.checkoutFormContent);
-      return;
-    }
-    if (pay.paymentPageUrl) {
-      window.location.href = pay.paymentPageUrl;
-    }
+    await cardRef.current?.charge(data.booking.id);
   };
 
   const submitPay = async (chosen: PayMethod) => {
@@ -993,10 +995,16 @@ export default function FlightBookingFunnel() {
     setError("");
     try {
       if (chosen === "whatsapp") {
-        await persistEnquiry();
+        const enquiry = await persistEnquiry();
+        const reservationId = enquiry?.bookingId || bookingRef;
         const number = payConfig?.whatsappNumber || getBusinessWhatsAppNumber();
-        window.open(buildWhatsAppLink(number, whatsappText()), "_blank", "noopener,noreferrer");
-        setBookingRef((prev) => prev || `WA-${Date.now().toString(36).toUpperCase()}`);
+        openBankTransferWhatsApp({
+          phone: number,
+          message: whatsappText(),
+          reservationId,
+          totalLabel: formatFlightPrice(dueTotal, currency),
+        });
+        setBookingRef((prev) => prev || reservationId || `WA-${Date.now().toString(36).toUpperCase()}`);
         setStep("done");
         return;
       }
@@ -1217,7 +1225,7 @@ export default function FlightBookingFunnel() {
 
   if ((!selection || !query) && !showPaidOnly) {
     return (
-      <div className="min-h-screen bg-[#faf8fd] px-4 pt-32 text-center">
+      <div className="lonaliza-booking-chrome min-h-screen bg-[#faf8fd] px-4 pt-32 text-center">
         <p className="font-bold text-purple-950">{copy.emptyTitle}</p>
         <Link href="/flights" className="mt-4 inline-block text-sm font-semibold text-amber-600">
           {copy.backFlights}
@@ -1227,13 +1235,14 @@ export default function FlightBookingFunnel() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8fd] pb-16 pt-24">
-      <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="lonaliza-booking-chrome min-h-screen bg-[#faf8fd] pb-16 pt-24">
+      <div className="lonaliza-booking-inner mx-auto max-w-5xl px-4 py-8">
         <Link
           href="/flights/search"
-          className="inline-flex items-center gap-1 text-sm font-bold text-purple-900 transition-colors hover:text-purple-950"
+          className="inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-purple-900 transition-colors hover:text-purple-950"
         >
-          ← {copy.backFlights}
+          <ChevronRight size={16} className="rtl:rotate-0 ltr:rotate-180" />
+          {copy.backFlights}
         </Link>
 
         {step !== "done" ? (
@@ -1268,9 +1277,9 @@ export default function FlightBookingFunnel() {
           </div>
         ) : null}
 
-        <div className="mb-6 mt-4 flex flex-wrap items-center gap-2 text-sm">
+        <div className="mb-6 mt-4 grid grid-cols-4 gap-1.5 text-center text-[11px] sm:flex sm:flex-wrap sm:items-center sm:gap-2 sm:text-start sm:text-sm">
           {steps.map(([key, label], i) => (
-            <div key={key} className="flex items-center gap-2">
+            <div key={key} className="flex min-w-0 flex-col items-center gap-1 sm:flex-row sm:gap-2">
               <span
                 className={`inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-black transition-all ${
                   key === step || (step === "done" && key === "payment")
@@ -1280,10 +1289,10 @@ export default function FlightBookingFunnel() {
               >
                 {i + 1}
               </span>
-              <span className={key === step ? "font-black text-purple-950" : "font-medium text-slate-500"}>
+              <span className={`leading-tight ${key === step ? "font-black text-purple-950" : "font-medium text-slate-500"}`}>
                 {label}
               </span>
-              {i < steps.length - 1 ? <span className="text-purple-300">—</span> : null}
+              {i < steps.length - 1 ? <span className="hidden text-purple-300 sm:inline">—</span> : null}
             </div>
           ))}
         </div>
@@ -1303,6 +1312,8 @@ export default function FlightBookingFunnel() {
                 <p className="mt-3 text-sm text-slate-500">{t.hotels.whatsappSentNote}</p>
               ) : cardPaid ? (
                 <p className="mt-3 text-sm font-bold text-emerald-700">{t.hotels.bookingPaid}</p>
+              ) : awaitingWebhook ? (
+                <p className="mt-3 text-sm font-bold text-amber-800">{paymentCopy(locale).awaitingWebhook}</p>
               ) : null}
               <p className="mx-auto mt-4 max-w-md rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-950">
                 {copy.eticketIssuanceNote}
@@ -1509,7 +1520,7 @@ export default function FlightBookingFunnel() {
               {/* Step 1: Passengers */}
               {step === "passengers" ? (
                 <>
-                  <section className="rounded-3xl border border-purple-100 bg-white p-6 shadow-sm">
+                  <section className="rounded-3xl border border-purple-100 bg-white p-4 shadow-sm sm:p-6">
                     <h2 className="text-lg font-black text-purple-950">{copy.contact}</h2>
                     <p className="mt-1 text-xs text-slate-500">{copy.contactHint}</p>
                     <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -1892,49 +1903,80 @@ export default function FlightBookingFunnel() {
                     </div>
 
                     {cardEnabled ? (
-                      <label
-                        className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-all ${
+                      <div
+                        className={`rounded-2xl border p-4 transition-all ${
                           method === "card"
                             ? "border-purple-600 bg-purple-50/50 shadow-xs ring-2 ring-purple-400/20"
                             : "border-slate-200 hover:border-slate-300"
                         }`}
                       >
-                        <input
-                          type="radio"
-                          name="pay"
-                          checked={method === "card"}
-                          onChange={() => setMethod("card")}
-                          className="mt-1 text-purple-600 focus:ring-purple-500"
+                        <label className="flex cursor-pointer items-start gap-3">
+                          <input
+                            type="radio"
+                            name="pay"
+                            checked={method === "card"}
+                            onChange={() => setMethod("card")}
+                            className="mt-1 text-purple-600 focus:ring-purple-500"
+                          />
+                          <div>
+                            <p className="inline-flex items-center gap-2 font-bold text-purple-950">
+                              <CreditCard size={18} className="text-purple-700" /> {copy.payCard}
+                            </p>
+                            <p className="mt-1 text-xs text-slate-500 leading-relaxed">{copy.cardHint}</p>
+                          </div>
+                        </label>
+                        <IyzicoCardSheet
+                          ref={cardRef}
+                          expanded={method === "card"}
+                          bookingId={bookingRef}
+                          amountLabel={formatFlightPrice(dueTotal, currency)}
+                          locale={locale}
+                          sandbox={payConfig?.iyzicoMode !== "production"}
+                          identityNumber={turkishProduction ? identityNumber.replace(/\D/g, "") : passengers[0]?.passportNumber}
+                          payLabel={copy.payCtaCard}
+                          bookingBusy={saving}
+                          payDisabled={!formValid || !user}
+                          buyer={{
+                            name: `${passengers[0]?.firstName || ""} ${passengers[0]?.lastName || ""}`.trim(),
+                            firstName: passengers[0]?.firstName,
+                            lastName: passengers[0]?.lastName,
+                            email,
+                            phone: `${countryCode}${phoneDigits}`,
+                            countryCode,
+                            country: countryCode === "+90" ? "Turkey" : "",
+                            amount: dueTotal,
+                            currency,
+                          }}
+                          onRequestPay={() => void submitPay("card")}
+                          onThreeDs={setThreeDsActive}
+                          onPending={() => {
+                            setThreeDsActive(false);
+                            setAwaitingWebhook(true);
+                          }}
+                          onFailed={(message) => {
+                            setThreeDsActive(false);
+                            setError(message);
+                          }}
                         />
-                        <div>
-                          <p className="inline-flex items-center gap-2 font-bold text-purple-950">
-                            <CreditCard size={18} className="text-purple-700" /> {copy.payCard}
-                          </p>
-                          <p className="mt-1 text-xs text-slate-500 leading-relaxed">{copy.cardHint}</p>
-                        </div>
-                      </label>
+                      </div>
                     ) : (
                       <p className="text-sm text-slate-500">{copy.cardDisabled}</p>
                     )}
 
-                    {method === "card" && cardEnabled ? (
-                      <p className="rounded-xl bg-purple-50 px-3 py-2 text-xs text-purple-900">{copy.noPan}</p>
-                    ) : null}
-
-                    {waEnabled && !checkoutHtml ? (
+                    {waEnabled && !threeDsActive ? (
                       <label
                         className={`flex items-start gap-3 rounded-2xl border p-4 transition-all ${
                           method === "whatsapp"
                             ? "border-emerald-500 bg-emerald-50/60 shadow-xs ring-2 ring-emerald-400/20"
                             : "border-slate-200 hover:border-slate-300"
-                        } ${checkoutHtml ? "pointer-events-none opacity-40" : "cursor-pointer"}`}
+                        } ${threeDsActive ? "pointer-events-none opacity-40" : "cursor-pointer"}`}
                       >
                         <input
                           type="radio"
                           name="pay"
                           checked={method === "whatsapp"}
                           onChange={() => {
-                            if (checkoutHtml) return;
+                            if (threeDsActive) return;
                             setMethod("whatsapp");
                           }}
                           className="mt-1 text-emerald-600 focus:ring-emerald-500"
@@ -1963,16 +2005,21 @@ export default function FlightBookingFunnel() {
                     ) : null}
 
                     {error ? <p className="text-sm text-red-600">{error}</p> : null}
+                    {awaitingWebhook && !cardPaid ? (
+                      <p className="rounded-xl bg-amber-50 px-3 py-2 text-xs font-bold text-amber-950">
+                        {paymentCopy(locale).awaitingWebhook}
+                      </p>
+                    ) : null}
 
-                    {!checkoutHtml ? (
+                    {method !== "card" && !threeDsActive ? (
                       <button
                         type="button"
-                        disabled={saving || !formValid || !user || (method === "card" ? !cardEnabled : !waEnabled)}
+                        disabled={saving || !formValid || !user || !waEnabled}
                         onClick={() => void submitPay(method)}
                         className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#4c1d95] py-4 font-black text-white shadow-lg shadow-purple-950/20 transition-all hover:brightness-110 active:scale-95 disabled:opacity-50 cursor-pointer"
                       >
                         {saving ? <Loader2 size={18} className="animate-spin" /> : <Lock size={18} />}
-                        {method === "card" ? copy.payCtaCard : copy.payCtaWa}
+                        {copy.payCtaWa}
                       </button>
                     ) : null}
 
@@ -2038,16 +2085,6 @@ export default function FlightBookingFunnel() {
           </div>
         ) : null}
       </div>
-
-      {checkoutHtml ? (
-        <IyzicoSecureFrame
-          html={checkoutHtml}
-          title={copy.payCard}
-          hostedNote={copy.noPan}
-          closeLabel={copy.done}
-          onClose={() => setCheckoutHtml("")}
-        />
-      ) : null}
     </div>
   );
 }

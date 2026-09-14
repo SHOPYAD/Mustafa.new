@@ -20,7 +20,8 @@ import { defaultPackages } from "@/data/packages";
 import { getTransfers } from "@/data/transfers";
 import { defaultVisaData } from "@/data/visa";
 import { listAutomationJobs } from "@/lib/server/automation/store";
-import { DEFAULT_AGENTS, getPendingDecisions, getSwarmDiscussions } from "@/lib/automation/agent-collab-store";
+import { getPendingDecisions, getSwarmDiscussions } from "@/lib/automation/agent-collab-store";
+import { assembleWarRoomAgents, collectPlatformGroundedSnapshot } from "@/lib/swarm";
 import { sendTelegramAdminMessage } from "@/lib/automation/channels/telegram";
 import { listInternalCars } from "@/lib/server/cars-store";
 import { listMergedPackages } from "@/lib/server/packages-store";
@@ -595,7 +596,7 @@ export async function saveAndVerifyApiKey(
  * 4. MONITOR AGENTS SWARM & BUSINESS METRICS
  */
 export async function getExecutivePlatformMetrics(): Promise<{
-  agents: typeof DEFAULT_AGENTS;
+  agents: Awaited<ReturnType<typeof assembleWarRoomAgents>>;
   pendingDecisionsCount: number;
   recentDiscussionsCount: number;
   catalogTotals: {
@@ -616,11 +617,13 @@ export async function getExecutivePlatformMetrics(): Promise<{
     strictTourismFilter: boolean;
   };
 }> {
-  const [internalCars, mergedPkgs, blogPosts, socialSettings] = await Promise.all([
+  const [internalCars, mergedPkgs, blogPosts, socialSettings, liveAgents, grounded] = await Promise.all([
     listInternalCars().catch(() => []),
     listMergedPackages().catch(() => []),
     listBlogPosts().catch(() => []),
     getNostrSocialSettings().catch(() => null),
+    assembleWarRoomAgents().catch(() => []),
+    collectPlatformGroundedSnapshot().catch(() => null),
   ]);
 
   const tours = getTours();
@@ -632,7 +635,7 @@ export async function getExecutivePlatformMetrics(): Promise<{
   const activeCats = (socialSettings?.categories || []).filter((c) => c.active !== false);
 
   return {
-    agents: DEFAULT_AGENTS,
+    agents: liveAgents.length ? liveAgents : [],
     pendingDecisionsCount: decisions.filter((d) => d.status === "pending").length,
     recentDiscussionsCount: discussions.length,
     catalogTotals: {
@@ -641,7 +644,7 @@ export async function getExecutivePlatformMetrics(): Promise<{
       flights: flights.length,
       cars: internalCars.length > 0 ? internalCars.length : CAR_RENTAL_OFFERS.length,
       packages: mergedPkgs.length > 0 ? mergedPkgs.length : defaultPackages.length,
-      posts: blogPosts.length > 0 ? blogPosts.length : getPosts().length,
+      posts: grounded?.catalog.posts ?? (blogPosts.length > 0 ? blogPosts.length : getPosts().length),
     },
     socialTotals: {
       activeRelaysCount: activeRelays.length,

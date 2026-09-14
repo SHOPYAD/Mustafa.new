@@ -9,6 +9,7 @@ import {
   MousePointerClick,
   RotateCcw,
   Search,
+  Smartphone,
   Trash2,
   X,
 } from "lucide-react";
@@ -100,29 +101,24 @@ class BlockBoundary extends ReactComponent<
       console.error(`[Inspector] block "${this.props.label}" crashed`, error);
     }
   }
-  reset = () => this.setState({ error: null });
   render() {
-    if (!this.state.error) return this.props.children;
-    return (
-      <div className="flex flex-col gap-2 rounded border border-destructive/40 bg-destructive/5 p-2 text-[11px]">
-        <div className="flex items-start gap-1.5 text-destructive">
-          <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-          <div>
-            <div className="font-semibold">{this.props.errorTitle}</div>
-            <div className="mt-0.5 font-mono text-[10px] text-destructive/80">
-              {this.state.error.message || this.props.unknownError}
-            </div>
-          </div>
+    if (this.state.error) {
+      return (
+        <div className="flex flex-col items-center gap-2 rounded-md border border-destructive/30 bg-destructive/5 p-3 text-center">
+          <AlertTriangle className="h-4 w-4 text-destructive" />
+          <div className="text-xs font-semibold text-destructive">{this.props.errorTitle}</div>
+          <div className="text-[11px] text-muted-foreground">{this.props.unknownError}</div>
+          <button
+            type="button"
+            onClick={() => this.setState({ error: null })}
+            className="mt-1 rounded border border-border bg-background px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted"
+          >
+            {this.props.retryLabel}
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={this.reset}
-          className="self-start rounded border border-destructive/40 bg-background px-2 py-0.5 text-[10px] font-medium text-destructive transition hover:bg-destructive/10"
-        >
-          {this.props.retryLabel}
-        </button>
-      </div>
-    );
+      );
+    }
+    return this.props.children;
   }
 }
 
@@ -133,7 +129,16 @@ export function InspectorPanel() {
   const styleClipboard = useBuilderStore((s) => s.styleClipboard);
   const copyElementStyles = useBuilderStore((s) => s.copyElementStyles);
   const pasteElementStyles = useBuilderStore((s) => s.pasteElementStyles);
+  const theme = useBuilderStore((s) => s.theme);
+  const updateSectionSettings = useBuilderStore((s) => s.updateSectionSettings);
   const api = useElementStyle();
+
+  const sectionInstance = useMemo(() => {
+    if (!selectedElement?.sectionInstanceId) return null;
+    return theme.layout.find((item) => item.instanceId === selectedElement.sectionInstanceId) || null;
+  }, [selectedElement?.sectionInstanceId, theme.layout]);
+
+  const isHiddenOnApp = Boolean(sectionInstance?.settings?.hideOnMobileApp);
 
   const applicable = useMemo(() => getApplicableBlocks(selectedElement), [selectedElement]);
   const { primary } = useMemo(() => sortBlocks(BLOCK_REGISTRY, applicable), [applicable]);
@@ -312,6 +317,43 @@ export function InspectorPanel() {
               ) : null}
             </div>
           ) : null}
+
+          {sectionInstance && (
+            <div className="mt-2.5 flex items-center justify-between gap-2 rounded-xl border border-purple-200/80 bg-purple-50/60 p-2.5 text-xs shadow-xs">
+              <div className="flex items-center gap-2 min-w-0">
+                <Smartphone className={cn("h-4 w-4 shrink-0", isHiddenOnApp ? "text-amber-600" : "text-purple-600")} />
+                <div className="min-w-0">
+                  <span className="block font-bold text-slate-800 text-[11px]">
+                    {isHiddenOnApp ? "مخفي في تطبيق الهاتف" : "ظاهر في التطبيق والموقع"}
+                  </span>
+                  <span className="block text-[10px] text-slate-500 truncate">
+                    {isHiddenOnApp ? "القسم يظهر فقط في موقع الكمبيوتر" : "معروض لجميع عملاء الهاتف والويب"}
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  updateSectionSettings(sectionInstance.instanceId, {
+                    hideOnMobileApp: !isHiddenOnApp,
+                  });
+                  toast.success(
+                    !isHiddenOnApp
+                      ? "تم إخفاء هذا القسم من تطبيق الهاتف فقط مع بقائه بالموقع"
+                      : "تم تفعيل ظهور القسم في تطبيق الهاتف والموقع معاً"
+                  );
+                }}
+                className={cn(
+                  "shrink-0 rounded-lg px-2.5 py-1.5 text-[11px] font-black transition-all cursor-pointer shadow-xs",
+                  isHiddenOnApp
+                    ? "bg-purple-700 text-white hover:bg-purple-800"
+                    : "bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300"
+                )}
+              >
+                {isHiddenOnApp ? "إظهار بالتطبيق" : "إلغاء من التطبيق"}
+              </button>
+            </div>
+          )}
         </div>
         <ResponsiveHeader api={api} />
         {visible.length === 0 ? (

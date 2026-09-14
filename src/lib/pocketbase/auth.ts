@@ -79,7 +79,8 @@ export async function getRequestCustomer(
   if (!parsed) return null;
 
   try {
-    const pb = new PocketBase(await getPocketBaseUrl());
+    const pbUrl = await getPocketBaseUrl();
+    const pb = new PocketBase(pbUrl);
     pb.autoCancellation(false);
     pb.authStore.save(parsed.token, {
       id: parsed.model.id,
@@ -88,26 +89,16 @@ export async function getRequestCustomer(
       collectionId: "users",
       collectionName: "users",
     });
-    const auth = await pb.collection("users").authRefresh();
+
+    const refreshPromise = pb.collection("users").authRefresh();
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("auth_timeout")), 1800)
+    );
+
+    const auth = await Promise.race([refreshPromise, timeoutPromise]);
     let avatarUrl = String(auth.record.avatar_url || "");
     if (!avatarUrl && auth.record.avatar) {
-      avatarUrl = `${await getPocketBaseUrl()}/api/files/users/${auth.record.id}/${auth.record.avatar}`;
-    }
-    if (!avatarUrl) {
-      try {
-        const adminPb = await tryCreateAdminPocketBase();
-        if (adminPb) {
-          const customer = await adminPb
-            .collection("customers")
-            .getFirstListItem(`user = "${auth.record.id}" || email = "${auth.record.email}"`);
-          if (customer.notes && typeof customer.notes === "string" && customer.notes.startsWith("{")) {
-            const meta = JSON.parse(customer.notes);
-            if (meta.avatarUrl) avatarUrl = String(meta.avatarUrl);
-          }
-        }
-      } catch {
-        /* ignore */
-      }
+      avatarUrl = `${pbUrl}/api/files/users/${auth.record.id}/${auth.record.avatar}`;
     }
     return {
       id: auth.record.id,
@@ -116,26 +107,13 @@ export async function getRequestCustomer(
       avatarUrl: avatarUrl || undefined,
     };
   } catch {
-    try {
-      const adminPb = await tryCreateAdminPocketBase();
-      if (adminPb && (parsed.model.id || parsed.model.email)) {
-        const customer = await adminPb
-          .collection("customers")
-          .getFirstListItem(`user = "${parsed.model.id}" || email = "${parsed.model.email}"`);
-        if (customer.notes && typeof customer.notes === "string" && customer.notes.startsWith("{")) {
-          const meta = JSON.parse(customer.notes);
-          if (meta.avatarUrl) {
-            return {
-              ...parsed.model,
-              avatarUrl: String(meta.avatarUrl),
-            };
-          }
-        }
-      }
-    } catch {
-      /* ignore */
-    }
-    return parsed.model;
+    // Instant resilient fallback from parsed cookie model without blocking
+    return {
+      id: parsed.model.id,
+      email: parsed.model.email,
+      name: parsed.model.name || "",
+      avatarUrl: undefined,
+    };
   }
 }
 

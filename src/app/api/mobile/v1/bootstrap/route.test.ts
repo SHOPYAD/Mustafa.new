@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 vi.mock("@/lib/server/branding-store", () => ({
   getBranding: vi.fn(async () => ({
@@ -70,10 +70,13 @@ describe("requireMobileCustomer", () => {
     const req = new NextRequest("http://localhost/api/mobile/v1/flights");
     const denied = await requireMobileCustomer(req);
     expect(denied).not.toBeNull();
-    expect(denied!.status).toBe(401);
-    const body = await denied!.json();
-    expect(body.offers).toBeUndefined();
-    expect(body.ok).toBe(false);
+    expect(denied instanceof NextResponse).toBe(true);
+    if (denied instanceof NextResponse) {
+      expect(denied.status).toBe(401);
+      const body = await denied.json();
+      expect(body.offers).toBeUndefined();
+      expect(body.ok).toBe(false);
+    }
   });
 
   it("rejects a B2B partner key header as a customer session", async () => {
@@ -84,6 +87,9 @@ describe("requireMobileCustomer", () => {
       headers: { "x-lonaliza-b2b-key": "partner-secret" },
     });
     const denied = await requireMobileCustomer(req);
-    expect(denied?.status).toBe(401);
+    expect(denied instanceof NextResponse).toBe(true);
+    if (denied instanceof NextResponse) {
+      expect(denied.status).toBe(401);
+    }
   });
 });

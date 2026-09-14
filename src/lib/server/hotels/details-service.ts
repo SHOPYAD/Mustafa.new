@@ -170,23 +170,41 @@ function rateToPublic(plan: RatePlan, nights: number, lang: string): TravelAdvis
   const boardLabel = lang === "ar" ? BOARD_LABEL_AR[plan.board] : plan.boardName || plan.board;
   const breakfast = ["BB", "HB", "FB", "AI", "UAI"].includes(plan.board);
   let label = plan.boardName && plan.board === "OTHER" ? plan.boardName : boardLabel;
-  if (plan.refundable && plan.freeCancellationUntil) {
+
+  const isFree = Boolean(
+    plan.cancellationType === "free" ||
+    (plan.freeCancellationUntil && Date.parse(plan.freeCancellationUntil) > Date.now())
+  );
+  const isFeeApplies = Boolean(
+    plan.cancellationType === "fee_applies" ||
+    (plan.refundable && !isFree && plan.cancellationPolicies?.some((p) => p.amount > 0))
+  );
+
+  if (isFree && plan.freeCancellationUntil) {
     const d = new Date(plan.freeCancellationUntil);
     if (!Number.isNaN(d.getTime())) {
-      const dateText = d.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB", { day: "numeric", month: "short", year: "numeric" });
+      const dateText = d.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
       label += lang === "ar" ? ` · إلغاء مجاني حتى ${dateText}` : ` · Free cancellation until ${dateText}`;
     }
-  } else if (plan.refundable) {
+  } else if (isFree) {
     label += lang === "ar" ? " · إلغاء مجاني" : " · Free cancellation";
+  } else if (isFeeApplies) {
+    const penalty = plan.currentPenalty || plan.cancellationPolicies?.find((p) => p.amount > 0);
+    const amtStr = penalty ? `${penalty.amount} ${penalty.currency}` : "";
+    label += lang === "ar"
+      ? (amtStr ? ` · إلغاء متاح (غرامة: ${amtStr})` : " · إلغاء متاح برسوم")
+      : (amtStr ? ` · Cancellable (fee: ${amtStr})` : " · Cancellation with fee");
   } else {
     label += lang === "ar" ? " · غير قابل للاسترداد" : " · Non-refundable";
   }
+
   if (plan.paymentType === "pay_at_hotel") label += lang === "ar" ? " · الدفع في الفندق" : " · Pay at hotel";
   return {
     id: plan.id,
     board: breakfast ? "breakfast" : "room_only",
     breakfastIncluded: breakfast,
-    freeCancellation: plan.refundable,
+    freeCancellation: isFree,
+    cancellationType: plan.cancellationType || (isFree ? "free" : isFeeApplies ? "fee_applies" : "non_refundable"),
     price: round2(plan.price.total),
     nightly: round2(plan.price.perNight ?? plan.price.total / Math.max(1, nights)),
     totalStay: round2(plan.price.total),
@@ -196,7 +214,8 @@ function rateToPublic(plan: RatePlan, nights: number, lang: string): TravelAdvis
     boardCode: plan.board,
     boardName: plan.boardName,
     paymentType: plan.paymentType,
-    freeCancellationUntil: plan.freeCancellationUntil,
+    freeCancellationUntil: isFree ? plan.freeCancellationUntil : undefined,
+    currentPenalty: plan.currentPenalty,
     cancellationPolicies: plan.cancellationPolicies,
     rateType: plan.rateType,
     supplierToken: plan.supplierToken,
@@ -212,8 +231,27 @@ function rateToPublic(plan: RatePlan, nights: number, lang: string): TravelAdvis
 }
 
 export function roomGroupToPublic(group: RoomGroup, nights: number, lang: string): TravelAdvisorRoom {
-  const rates = group.ratePlans.map((p) => rateToPublic(p, nights, lang));
+  const rates = group.ratePlans.map((p) => rateToPublic(p, nights, lang)).sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
   const cheapest = rates[0];
+  const isCheapestFree = cheapest?.cancellationType === "free" || Boolean(cheapest?.freeCancellation);
+  const isCheapestFee = cheapest?.cancellationType === "fee_applies";
+
+  let cancellationPolicyText = lang === "ar" ? "غير قابل للاسترداد" : "Non-refundable";
+  if (isCheapestFree) {
+    cancellationPolicyText = cheapest.freeCancellationUntil
+      ? lang === "ar"
+        ? `إلغاء مجاني حتى ${new Date(cheapest.freeCancellationUntil).toLocaleDateString("ar-EG", { day: "numeric", month: "long" })}`
+        : `Free cancellation until ${new Date(cheapest.freeCancellationUntil).toLocaleDateString("en-GB", { day: "numeric", month: "long" })}`
+      : lang === "ar"
+        ? "إلغاء مجاني"
+        : "Free cancellation";
+  } else if (isCheapestFee) {
+    const penaltyAmt = cheapest.currentPenalty ? `${cheapest.currentPenalty.amount} ${cheapest.currentPenalty.currency}` : "";
+    cancellationPolicyText = lang === "ar"
+      ? (penaltyAmt ? `إلغاء متاح (رسوم: ${penaltyAmt})` : "إلغاء متاح برسوم محددة")
+      : (penaltyAmt ? `Cancellable (fee: ${penaltyAmt})` : "Cancellable with fee");
+  }
+
   return {
     id: group.id,
     name: group.name,
@@ -233,19 +271,9 @@ export function roomGroupToPublic(group: RoomGroup, nights: number, lang: string
     totalStay: cheapest?.totalStay ?? null,
     available: rates.length > 0,
     rates,
-    cancellationPolicy: cheapest?.freeCancellation
-      ? cheapest.freeCancellationUntil
-        ? lang === "ar"
-          ? `إلغاء مجاني حتى ${new Date(cheapest.freeCancellationUntil).toLocaleDateString("ar-EG", { day: "numeric", month: "long" })}`
-          : `Free cancellation until ${new Date(cheapest.freeCancellationUntil).toLocaleDateString("en-GB", { day: "numeric", month: "long" })}`
-        : lang === "ar"
-          ? "إلغاء مجاني"
-          : "Free cancellation"
-      : lang === "ar"
-        ? "غير قابل للاسترداد"
-        : "Non-refundable",
+    cancellationPolicy: cancellationPolicyText,
     prepayment: cheapest?.paymentType === "pay_at_hotel" ? (lang === "ar" ? "الدفع في الفندق" : "Pay at the hotel") : lang === "ar" ? "دفع مسبق آمن" : "Secure prepayment",
-    nonRefundable: cheapest ? !cheapest.freeCancellation : true,
+    nonRefundable: cheapest ? cheapest.cancellationType === "non_refundable" : true,
   };
 }
 
@@ -341,17 +369,40 @@ export async function buildHotelDetails(req: HotelDetailsRequest): Promise<Hotel
 
   const lat = content?.lat ?? primary?.lat ?? sessionHotel?.lat ?? 0;
   const lng = content?.lng ?? primary?.lng ?? sessionHotel?.lng ?? 0;
+  const rawPolicies = content?.policies || [];
+  const extractedFacilitiesFromPolicies: string[] = [];
+  const cleanPolicies: string[] = [];
+  const FACILITY_LINE_RE = /كراسي متحركة|موقف السيارات|مواقف|استقبال|تغطية الهاتف|إنترنت|واي فاي|تأجير السيارات|خدمة الغرف|غسيل الملابس|الخدمة الطبية|مجالسة الأطفال|طاقم عمل|أمن 24|مسبح|صالة ألعاب|حمام سباحة|سبا|ساونا|مفتاح الغرف|wheelchair|car park|parking|reception|wi-?fi|internet|car hire|shuttle|room service|laundry|medical|babysitt|security|luggage|multilingual/i;
+
+  for (const p of rawPolicies) {
+    const text = cleanText(p);
+    if (!text) continue;
+    if (FACILITY_LINE_RE.test(text)) {
+      extractedFacilitiesFromPolicies.push(text);
+    } else {
+      cleanPolicies.push(text);
+    }
+  }
+
   const facilityGroups = (() => {
     const map = new Map<string, string[]>();
     for (const f of content?.facilities || []) map.set(f.group, uniq([...(map.get(f.group) || []), f.name]));
+    if (extractedFacilitiesFromPolicies.length) {
+      const gTitle = req.lang === "ar" ? "مرافق وخدمات الفندق" : "Hotel Facilities & Services";
+      map.set(gTitle, uniq([...(map.get(gTitle) || []), ...extractedFacilitiesFromPolicies]));
+    }
     return Array.from(map.entries()).map(([title, items]) => ({ title, items }));
   })();
-  const amenities = uniq([...(content?.facilities.map((f) => f.name) || []), ...(primary?.amenities || [])]);
+  const amenities = uniq([
+    ...(content?.facilities.map((f) => f.name) || []),
+    ...extractedFacilitiesFromPolicies,
+    ...(primary?.amenities || []),
+  ]);
   const pois = (content?.pois || []).slice().sort((a, b) => (a.distanceM ?? 1e9) - (b.distanceM ?? 1e9));
   const policies: string[] = [];
   if (content?.checkInTime) policies.push(req.lang === "ar" ? `تسجيل الوصول من ${content.checkInTime}` : `Check-in from ${content.checkInTime}`);
   if (content?.checkOutTime) policies.push(req.lang === "ar" ? `تسجيل المغادرة حتى ${content.checkOutTime}` : `Check-out until ${content.checkOutTime}`);
-  for (const p of content?.policies || []) if (cleanText(p)) policies.push(String(p));
+  policies.push(...cleanPolicies);
   const reviewScore = primary?.reviewScore || sessionHotel?.reviewScore || content?.reviewScore;
   const rating10 = reviewScore ? (reviewScore.scale === 5 ? reviewScore.score * 2 : reviewScore.score) : 0;
   const rooms = roomGroups.map((g) => roomGroupToPublic(g, nights, req.lang));

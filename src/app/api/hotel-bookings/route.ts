@@ -343,11 +343,11 @@ export async function POST(req: Request) {
   void notifyBookingChannels({
     bookingId: created.id,
     name: customer_name,
-    email: row.customer_email,
     phone: row.customer_phone,
-    status: "pending_payment",
+    status: coveredInFull ? "paid" : "pending_payment",
     service: hotel_name,
     userId: user.id,
+    sendEmail: false,
   }).catch(() => undefined);
   const otp = await sendOtpIfEnabled({
     phone: row.customer_phone,

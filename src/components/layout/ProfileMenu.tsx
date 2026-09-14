@@ -58,9 +58,8 @@ export default function ProfileMenu({
     };
   }, [user.id]);
 
-  const triggerClass = onLight
-    ? "bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 border-slate-200"
-    : "bg-white/10 hover:bg-white/20 text-white border-white/20";
+  const triggerClass =
+    "bg-gradient-to-br from-[#2e1065] via-[#3b0764] to-[#4c1d95] text-white border border-amber-400/50 shadow-md ring-1 ring-amber-400/30 hover:brightness-110 active:scale-95";
 
   const close = () => setOpen(false);
 
@@ -73,7 +72,7 @@ export default function ProfileMenu({
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border transition-all ring-2 ring-transparent hover:ring-amber-400/50",
+          "flex h-10 w-10 items-center justify-center overflow-hidden rounded-full transition-all cursor-pointer",
           triggerClass
         )}
         aria-label={t.auth.account}
@@ -86,7 +85,7 @@ export default function ProfileMenu({
             className="h-full w-full object-cover"
           />
         ) : (
-          <span className="text-[11px] font-bold tracking-wide">{initials}</span>
+          <span className="text-xs font-black text-amber-300 tracking-wider drop-shadow-sm">{initials}</span>
         )}
       </button>
 

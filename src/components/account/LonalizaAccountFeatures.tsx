@@ -2,8 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Clapperboard, Gift, Inbox, Sparkles } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { useBrandName } from "@/components/branding/BrandingProvider";
+import EmptyStateCard from "@/components/chrome/EmptyStateCard";
+import NativeComposer from "@/components/chrome/NativeComposer";
+import TravelCompanionsPanel from "@/components/account/TravelCompanionsPanel";
+import InboxPanel from "@/components/messaging/InboxPanel";
+import SavedCardsPanel from "@/components/payments/SavedCardsPanel";
 
 type Feature =
   | "inbox"
@@ -42,6 +48,10 @@ export default function LonalizaAccountFeatures({ feature }: { feature: Feature 
     );
   }
 
+  if (feature === "buddies") return <TravelCompanionsPanel />;
+  if (feature === "inbox") return <InboxPanel />;
+  if (feature === "cards") return <SavedCardsPanel locale={locale} />;
+
   return <LivePanel feature={feature} isAr={isAr} />;
 }
 
@@ -51,9 +61,7 @@ function LivePanel({ feature, isAr }: { feature: Feature; isAr: boolean }) {
   const [busy, setBusy] = useState(false);
 
   async function load() {
-    if (feature === "inbox") setData(await j("/api/account/inbox"));
     if (feature === "moments") setData(await j("/api/community/feed?kind=moment"));
-    if (feature === "buddies") setData(await j("/api/community/buddies"));
     if (feature === "creator") setData(await j("/api/community/creator/stats"));
     if (feature === "gifts") setData(await j("/api/gift-cards"));
     if (feature === "upcoming") setData(await j("/api/account/bookings?filter=upcoming"));
@@ -68,17 +76,11 @@ function LivePanel({ feature, isAr }: { feature: Feature; isAr: boolean }) {
   async function submit() {
     setBusy(true);
     try {
-      if (feature === "inbox") {
-        await j("/api/account/inbox", { method: "POST", body: JSON.stringify({ title: isAr ? "دعم" : "Support", text, type: "support" }) });
-      }
       if (feature === "gifts" && Number(text) >= 10) {
         await j("/api/gift-cards", { method: "POST", body: JSON.stringify({ amount: Number(text) }) });
       }
       if (feature === "gifts" && text.toUpperCase().startsWith("LNZ")) {
         await j("/api/gift-cards/redeem", { method: "POST", body: JSON.stringify({ code: text }) });
-      }
-      if (feature === "buddies") {
-        await j("/api/community/buddies", { method: "POST", body: JSON.stringify({ destination: text || "اسطنبول", bio: text }) });
       }
       setText("");
       await load();
@@ -87,28 +89,33 @@ function LivePanel({ feature, isAr }: { feature: Feature; isAr: boolean }) {
     }
   }
 
-  const rows = Array.isArray((data as { threads?: unknown[] })?.threads)
-    ? (data as { threads: Array<{ id: string; title: string; type: string; updatedAt: string }> }).threads
-    : Array.isArray((data as { posts?: unknown[] })?.posts)
-      ? (data as { posts: Array<{ id: string; content?: string; destination?: string }> }).posts
-      : Array.isArray((data as { buddies?: unknown[] })?.buddies)
-        ? (data as { buddies: Array<{ id: string; name: string; destination: string; bio?: string }> }).buddies
-        : Array.isArray((data as { cards?: unknown[] })?.cards)
-          ? (data as { cards: Array<{ id: string; code?: string; amount?: number; last4?: string; brand?: string; status?: string }> }).cards
-          : Array.isArray((data as { items?: unknown[] })?.items)
-            ? (data as { items: Array<{ id: string; title: string; kind: string }> }).items
-            : Array.isArray((data as { hotels?: unknown[] })?.hotels) || Array.isArray((data as { flights?: unknown[] })?.flights)
-              ? [
-                  ...(((data as { hotels?: Array<{ id: string }> }).hotels || []).map((h) => ({ id: h.id, title: "Hotel" }))),
-                  ...(((data as { flights?: Array<{ id: string; destination?: string }> }).flights || []).map((f) => ({ id: f.id, title: f.destination || "Flight" }))),
-                  ...(((data as { enquiries?: Array<{ id: string; service_name?: string }> }).enquiries || []).map((e) => ({ id: e.id, title: e.service_name || "Enquiry" }))),
-                ]
-              : [];
+  const rows = Array.isArray((data as { posts?: unknown[] })?.posts)
+    ? (data as { posts: Array<{ id: string; content?: string; destination?: string; title?: string }> }).posts
+    : Array.isArray((data as { cards?: unknown[] })?.cards)
+      ? (data as { cards: Array<{ id: string; code?: string; amount?: number; last4?: string; brand?: string; status?: string; title?: string }> }).cards
+      : Array.isArray((data as { items?: unknown[] })?.items)
+        ? (data as { items: Array<{ id: string; title: string; kind: string }> }).items
+        : Array.isArray((data as { hotels?: unknown[] })?.hotels) || Array.isArray((data as { flights?: unknown[] })?.flights)
+          ? [
+              ...(((data as { hotels?: Array<{ id: string }> }).hotels || []).map((h) => ({ id: h.id, title: "Hotel" }))),
+              ...(((data as { flights?: Array<{ id: string; destination?: string }> }).flights || []).map((f) => ({ id: f.id, title: f.destination || "Flight" }))),
+              ...(((data as { enquiries?: Array<{ id: string; service_name?: string }> }).enquiries || []).map((e) => ({ id: e.id, title: e.service_name || "Enquiry" }))),
+            ]
+          : [];
 
   const stats = (data as { stats?: { posts: number; reels: number; likes: number; comments: number } })?.stats;
 
+  const emptyCopy =
+    feature === "moments"
+      ? { icon: Clapperboard, title: isAr ? "لا توجد لحظات بعد" : "No moments yet", desc: isAr ? "شارك أول لحظة من رحلتك هنا." : "Share your first travel moment here." }
+      : feature === "gifts"
+          ? { icon: Gift, title: isAr ? "لا توجد بطاقات هدايا بعد" : "No gift cards yet", desc: isAr ? "أدخل مبلغاً أو كود LNZ لإضافة بطاقة." : "Enter an amount or LNZ code to add a card." }
+          : feature === "creator"
+            ? { icon: Sparkles, title: isAr ? "لا توجد إحصاءات بعد" : "No creator stats yet", desc: isAr ? "ستظهر أرقام الصنّاع بعد أول نشاط." : "Creator stats appear after your first activity." }
+            : { icon: Inbox, title: isAr ? "لا توجد بيانات بعد" : "Nothing here yet", desc: isAr ? "ستظهر العناصر هنا عند توفرها." : "Items will show up here when available." };
+
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-md space-y-4">
+    <div className="space-y-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-md sm:p-6">
       {stats && (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {Object.entries(stats).map(([k, v]) => (
@@ -119,31 +126,32 @@ function LivePanel({ feature, isAr }: { feature: Feature; isAr: boolean }) {
           ))}
         </div>
       )}
-      <ul className="space-y-2">
-        {rows.length === 0 && <li className="text-sm text-slate-500">{isAr ? "لا توجد بيانات بعد." : "Nothing here yet."}</li>}
-        {rows.map((row) => (
-          <li key={row.id} className="rounded-2xl border border-slate-100 px-4 py-3 text-sm font-semibold text-slate-800">
-            {"title" in row ? String(row.title) : "content" in row ? String(row.content || row.destination) : JSON.stringify(row)}
-          </li>
-        ))}
-      </ul>
-      {(feature === "inbox" || feature === "gifts" || feature === "buddies") && (
-        <div className="flex gap-2">
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="flex-1 rounded-2xl border border-slate-200 px-3 py-2 text-sm"
-            placeholder={feature === "gifts" ? (isAr ? "مبلغ أو كود LNZ" : "Amount or LNZ code") : isAr ? "اكتب هنا" : "Write here"}
-          />
-          <button
-            type="button"
-            disabled={busy || !text.trim()}
-            onClick={submit}
-            className="rounded-2xl bg-[#7C3AED] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
-          >
-            {isAr ? "إرسال" : "Send"}
-          </button>
-        </div>
+      {rows.length === 0 ? (
+        <EmptyStateCard icon={emptyCopy.icon} title={emptyCopy.title} description={emptyCopy.desc} />
+      ) : (
+        <ul className="space-y-2">
+          {rows.map((row) => (
+            <li key={row.id} className="rounded-2xl border border-slate-100 px-4 py-3 text-sm font-semibold text-slate-800">
+              {"title" in row && row.title
+                ? String(row.title)
+                : "content" in row
+                  ? String(row.content || row.destination || "")
+                  : "name" in row
+                    ? String((row as { name?: string }).name || "")
+                    : ""}
+            </li>
+          ))}
+        </ul>
+      )}
+      {feature === "gifts" && (
+        <NativeComposer
+          value={text}
+          onChange={setText}
+          onSubmit={submit}
+          disabled={busy}
+          placeholder={feature === "gifts" ? (isAr ? "مبلغ أو كود LNZ" : "Amount or LNZ code") : isAr ? "اكتب هنا" : "Write here"}
+          submitLabel={isAr ? "إرسال" : "Send"}
+        />
       )}
       {feature === "cards" && (
         <p className="text-xs text-slate-500">

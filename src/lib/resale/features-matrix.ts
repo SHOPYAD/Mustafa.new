@@ -558,6 +558,24 @@ export const ALL_PLATFORM_FEATURES: PlatformFeature[] = [
     descEn: "Continuous security patches, automated snapshots, and uninterrupted uptime guarantees.",
     defaultEnabled: { whitelabel_free: true, whitelabel_paid: true, ownership: true },
   },
+  {
+    id: "infra_pwa_app",
+    categoryId: "infrastructure_cms",
+    nameAr: "تطبيق الويب التقدمي فائق السرعة (PWA) للأجهزة والهواتف (مجاناً)",
+    nameEn: "Ultra-Fast Progressive Web App (PWA) for Mobile & Desktop (Free)",
+    descAr: "تطبيق ويب متطور يتم تثبيته فوراً على شاشة هاتف العميل دون متجر تطبيقات وبسرعة تحميل فائقة ويعمل حتى بدون إنترنت، مفعل مجاناً لجميع الباقات.",
+    descEn: "Installable Progressive Web App with offline caching, home screen shortcut, and instant loading, free across all tiers.",
+    defaultEnabled: { whitelabel_free: true, whitelabel_paid: true, ownership: true },
+  },
+  {
+    id: "infra_flutter_mobile_app",
+    categoryId: "infrastructure_cms",
+    nameAr: "تطبيقات الهواتف الذكية الأصيلة بنظام Flutter (Android & iOS) مع كود المصدر",
+    nameEn: "Native Smartphone Flutter Apps (Android & iOS) with Full Source Code",
+    descAr: "كود وتطبيقات فلاتر الأصلية الكاملة القابلة للنشر على Google Play و Apple App Store مع محرك البناء والرفع إلى GitHub Actions (حصرية للتملك الكامل).",
+    descEn: "Full native Flutter project source code, in-server build engine, and GitHub Actions dispatch for Google Play & App Store publishing.",
+    defaultEnabled: { whitelabel_free: false, whitelabel_paid: false, ownership: true },
+  },
 ];
 
 /**

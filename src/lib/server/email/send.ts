@@ -6,6 +6,7 @@ import {
   brandDisplayName,
   displayRecipientName,
   emailBrandFromDefaults,
+  EMAIL_LOGO_START,
   emailLogoCid,
   getEmailBrand,
   htmlToPlainText,
@@ -21,10 +22,11 @@ import {
 } from "@/lib/server/email/delivery";
 import { KIND_SLUG, templateKey } from "@/lib/server/email/i18n-keys";
 import { loadEmailLogoAttachment } from "@/lib/server/email/logo";
+import { logoAttachmentForHtml } from "@/lib/server/email/logo-policy";
 import { DEFAULT_EMAIL_LOCALE } from "@/lib/server/email/recipient-locale";
 import { resolveMailTransportConfig } from "@/lib/server/email/smtp";
 import { emailT, translateVisualDocument } from "@/lib/server/email/template-i18n";
-import { renderBuiltinHtml } from "@/lib/server/email/templates";
+import { renderBuiltinHtml, wrapCustomHtml } from "@/lib/server/email/templates";
 import { SITE_PUBLIC_URL } from "@/lib/pocketbase/constants";
 import type {
   EmailTemplateRecord,
@@ -124,7 +126,11 @@ export async function sendMail(
   const domain = senderDomain(transport.senderAddress);
   const cid = emailLogoCid(domain);
   const logo = await loadEmailLogoAttachment(brand, cid);
-  const html = stampEmailChrome(input.html, brand, {
+  const sourced = String(input.html || "");
+  const wrapped = sourced.includes(EMAIL_LOGO_START)
+    ? sourced
+    : wrapCustomHtml(brand, sourced, locale);
+  const html = stampEmailChrome(wrapped, brand, {
     locale,
     logoSrc: logo ? `cid:${logo.cid}` : null,
   });
@@ -141,24 +147,16 @@ export async function sendMail(
   };
 
   const attachments = [
-    ...(logo
-      ? [
-          {
-            filename: logo.filename,
-            content: logo.content,
-            contentType: logo.contentType,
-            cid: logo.cid,
-            contentDisposition: "inline" as const,
-          },
-        ]
-      : []),
-    ...(input.attachments || []).map((file) => ({
-      filename: file.filename,
-      content: file.content,
-      contentType: file.contentType,
-      cid: file.cid,
-      contentDisposition: file.contentDisposition,
-    })),
+    ...logoAttachmentForHtml(html, logo),
+    ...(input.attachments || [])
+      .filter((file) => !/logo\.(png|jpe?g|webp|gif)$/i.test(file.filename || ""))
+      .map((file) => ({
+        filename: file.filename,
+        content: file.content,
+        contentType: file.contentType,
+        cid: file.cid,
+        contentDisposition: file.contentDisposition,
+      })),
   ];
 
   const transporter = nodemailer.createTransport(transportOptions(transport));

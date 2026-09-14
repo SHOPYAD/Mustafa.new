@@ -1,7 +1,10 @@
+import fs from "fs";
+import path from "path";
 import { tryCreateAdminPocketBase } from "@/lib/pocketbase/admin";
 import type { Locale } from "@/lib/i18n/types";
 import type { GeoPlaceHit } from "@/lib/hotel-search";
 import { searchLocations } from "@/lib/server/travel-advisor";
+import { WORLD_CITIES_MASTER } from "@/lib/geo/world-cities-data";
 
 export type GeoPlaceRecord = {
   id: string;
@@ -21,7 +24,7 @@ export type GeoPlaceRecord = {
   search_tokens?: string;
 };
 
-const FALLBACK: GeoPlaceRecord[] = [
+const TURKEY_FALLBACK: GeoPlaceRecord[] = [
   { id: "fb-ist", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Istanbul", city_name_ar: "إسطنبول", city_name_tr: "İstanbul", admin1: "Istanbul", population: 15460000, tripadvisor_geo_id: "293974" },
   { id: "fb-ayt", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Antalya", city_name_ar: "أنطاليا", city_name_tr: "Antalya", admin1: "Antalya", population: 1344000, tripadvisor_geo_id: "297962" },
   { id: "fb-ank", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Ankara", city_name_ar: "أنقرة", city_name_tr: "Ankara", admin1: "Ankara", population: 5747000, tripadvisor_geo_id: "298656" },
@@ -36,17 +39,86 @@ const FALLBACK: GeoPlaceRecord[] = [
   { id: "fb-fet", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Fethiye", city_name_ar: "فتحية", city_name_tr: "Fethiye", admin1: "Muğla", population: 167000, tripadvisor_geo_id: "298658" },
   { id: "fb-kus", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Kusadasi", city_name_ar: "كوشاداسي", city_name_tr: "Kuşadası", admin1: "Aydın", population: 113000, tripadvisor_geo_id: "298031" },
   { id: "fb-brs", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Bursa", city_name_ar: "بورصة", city_name_tr: "Bursa", admin1: "Bursa", population: 3140000, tripadvisor_geo_id: "297977" },
-  { id: "fb-gzt", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Gaziantep", city_name_ar: "غازي عنتاب", city_name_tr: "Gaziantep", admin1: "Gaziantep", population: 2130000, tripadvisor_geo_id: "298007" },
-  { id: "fb-mrd", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Mardin", city_name_ar: "ماردين", city_name_tr: "Mardin", admin1: "Mardin", population: 870000, tripadvisor_geo_id: "298032" },
-  { id: "fb-van", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Van", city_name_ar: "وان", city_name_tr: "Van", admin1: "Van", population: 525000, tripadvisor_geo_id: "298038" },
   { id: "fb-sul", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Sultanahmet", city_name_ar: "السلطان أحمد", city_name_tr: "Sultanahmet", admin1: "Istanbul", population: 15000, tripadvisor_geo_id: "293974" },
   { id: "fb-tks", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Taksim", city_name_ar: "تقسيم", city_name_tr: "Taksim", admin1: "Istanbul", population: 20000, tripadvisor_geo_id: "293974" },
-  { id: "fb-arn", country_code: "TR", country_name_en: "Turkey", country_name_ar: "تركيا", country_name_tr: "Türkiye", city_name_en: "Arnavutkoy", city_name_ar: "أرنافوت كوي", city_name_tr: "Arnavutköy", admin1: "Istanbul", population: 30000, tripadvisor_geo_id: "293974" },
-  { id: "fb-dxb", country_code: "AE", country_name_en: "United Arab Emirates", country_name_ar: "الإمارات", country_name_tr: "Birleşik Arap Emirlikleri", city_name_en: "Dubai", city_name_ar: "دبي", city_name_tr: "Dubai", population: 3331000, tripadvisor_geo_id: "295424" },
-  { id: "fb-par", country_code: "FR", country_name_en: "France", country_name_ar: "فرنسا", country_name_tr: "Fransa", city_name_en: "Paris", city_name_ar: "باريس", city_name_tr: "Paris", population: 2161000, tripadvisor_geo_id: "187147" },
-  { id: "fb-lon", country_code: "GB", country_name_en: "United Kingdom", country_name_ar: "بريطانيا", country_name_tr: "Birleşik Krallık", city_name_en: "London", city_name_ar: "لندن", city_name_tr: "Londra", population: 8982000, tripadvisor_geo_id: "186338" },
-  { id: "fb-nha", country_code: "VN", country_name_en: "Vietnam", country_name_ar: "فيتنام", country_name_tr: "Vietnam", city_name_en: "Nha Trang", city_name_ar: "نها ترانغ", city_name_tr: "Nha Trang", population: 422000, tripadvisor_geo_id: "293926" },
 ];
+
+const CURATED_WORLD_RECORDS: GeoPlaceRecord[] = WORLD_CITIES_MASTER.map((item) => ({
+  id: item.id,
+  country_code: item.countryCode,
+  country_name_en: item.countryNameEn,
+  country_name_ar: item.countryNameAr,
+  country_name_tr: item.countryNameTr,
+  city_name_en: item.cityNameEn,
+  city_name_ar: item.cityNameAr,
+  city_name_tr: item.cityNameTr,
+  admin1: item.admin1,
+  population: item.population || 500000,
+  tripadvisor_geo_id: item.tripadvisorGeoId,
+  search_tokens: [
+    item.cityNameEn,
+    item.cityNameAr,
+    item.cityNameTr,
+    item.countryNameEn,
+    item.countryNameAr,
+    item.countryNameTr,
+    ...(item.aliases || []),
+  ].join(" "),
+}));
+
+let airportCitiesCache: GeoPlaceRecord[] | null = null;
+function getAirportCities(): GeoPlaceRecord[] {
+  if (airportCitiesCache) return airportCitiesCache;
+  try {
+    const filePath = path.join(process.cwd(), ".data/airports/cities.json");
+    if (fs.existsSync(filePath)) {
+      const raw = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      if (Array.isArray(raw)) {
+        airportCitiesCache = raw.map((c: any) => ({
+          id: `city-${c.cityCode || c.cityEn}`,
+          country_code: c.countryCode || "",
+          country_name_en: c.countryEn || "",
+          country_name_ar: c.countryAr || "",
+          country_name_tr: c.countryTr || "",
+          city_name_en: c.cityEn || "",
+          city_name_ar: c.cityAr || "",
+          city_name_tr: c.cityTr || "",
+          lat: c.lat,
+          lng: c.lon,
+          population: 150000,
+          search_tokens: [c.cityEn, c.cityAr, c.cityTr, c.countryEn, c.countryAr, ...(c.aliases || [])].filter(Boolean).join(" "),
+        }));
+        return airportCitiesCache;
+      }
+    }
+  } catch (err) {
+    console.error("Failed to load .data/airports/cities.json:", err);
+  }
+  return [];
+}
+
+let staticCatalogCache: GeoPlaceRecord[] | null = null;
+export function getAllStaticRecords(): GeoPlaceRecord[] {
+  if (staticCatalogCache) return staticCatalogCache;
+  const map = new Map<string, GeoPlaceRecord>();
+  // 1. First add curated world records (highest priority)
+  for (const rec of CURATED_WORLD_RECORDS) {
+    const key = `${rec.country_code}_${(rec.city_name_en || "").toLowerCase()}`;
+    map.set(key, rec);
+  }
+  // 2. Add Turkey fallback
+  for (const rec of TURKEY_FALLBACK) {
+    const key = `${rec.country_code}_${(rec.city_name_en || "").toLowerCase()}`;
+    if (!map.has(key)) map.set(key, rec);
+  }
+  // 3. Add airport cities
+  for (const rec of getAirportCities()) {
+    const key = `${rec.country_code}_${(rec.city_name_en || "").toLowerCase()}`;
+    if (!map.has(key)) map.set(key, rec);
+  }
+  staticCatalogCache = Array.from(map.values());
+  return staticCatalogCache;
+}
 
 function sanitizeQuery(raw: string): string {
   return raw.replace(/["'\\]/g, "").trim().slice(0, 80);
@@ -84,13 +156,23 @@ function tokensOf(rec: GeoPlaceRecord): string {
 function scorePlace(rec: GeoPlaceRecord, q: string, lang: Locale): number {
   const city = pickCity(rec, lang).toLowerCase();
   const en = (rec.city_name_en || "").toLowerCase();
+  const ar = (rec.city_name_ar || "").toLowerCase();
+  const tr = (rec.city_name_tr || "").toLowerCase();
   const tokens = tokensOf(rec);
   let score = Math.log10((rec.population || 0) + 10);
-  if (rec.country_code === "TR") score += 2.8;
-  if (city === q || en === q) score += 8;
-  else if (city.startsWith(q) || en.startsWith(q)) score += 4.5;
-  else if (tokens.split(/\s+/).some((t) => t.startsWith(q))) score += 3.2;
-  else if (city.includes(q) || en.includes(q) || tokens.includes(q)) score += 1.4;
+
+  // Exact matches
+  if (city === q || en === q || ar === q || tr === q) score += 50;
+  // Prefix matches
+  else if (city.startsWith(q) || en.startsWith(q) || ar.startsWith(q) || tr.startsWith(q)) score += 25;
+  // Word tokens prefix match
+  else if (tokens.split(/\s+/).some((t) => t === q)) score += 20;
+  else if (tokens.split(/\s+/).some((t) => t.startsWith(q))) score += 12;
+  // Substring match
+  else if (city.includes(q) || en.includes(q) || ar.includes(q) || tr.includes(q)) score += 8;
+  else if (tokens.includes(q)) score += 4;
+  else return 0; // Does not match at all
+
   return score;
 }
 
@@ -109,56 +191,67 @@ function toHit(rec: GeoPlaceRecord, lang: Locale): GeoPlaceHit {
 function rankRecords(records: GeoPlaceRecord[], q: string, lang: Locale): GeoPlaceHit[] {
   return records
     .map((rec) => ({ rec, score: scorePlace(rec, q, lang) }))
-    .filter((row) => row.score > 0.5)
+    .filter((row) => row.score > 2)
     .sort((a, b) => b.score - a.score)
     .slice(0, 12)
     .map((row) => toHit(row.rec, lang));
-}
-
-function fallbackSearch(q: string, lang: Locale): GeoPlaceHit[] {
-  const needle = q.toLowerCase();
-  const matched = FALLBACK.filter((rec) => tokensOf(rec).includes(needle));
-  return rankRecords(matched.length ? matched : FALLBACK, needle, lang);
 }
 
 export async function searchGeoPlaces(rawQuery: string, lang: Locale): Promise<GeoPlaceHit[]> {
   const q = sanitizeQuery(rawQuery).toLowerCase();
   if (!q) return [];
 
+  const allStatic = getAllStaticRecords();
+  const staticMatches = allStatic.filter((rec) => tokensOf(rec).includes(q));
+
   try {
     const pb = await tryCreateAdminPocketBase();
-    if (!pb) return fallbackSearch(q, lang);
+    if (!pb) {
+      return rankRecords(staticMatches.length ? staticMatches : allStatic.slice(0, 20), q, lang);
+    }
     const safe = q.replace(/%/g, "");
-    const cityFilter = `city_name_en ~ "${safe}" || city_name_ar ~ "${safe}" || city_name_tr ~ "${safe}"`;
-    const [prefixLike, turkeyHits] = await Promise.all([
-      pb.collection("geo_places").getList<GeoPlaceRecord>(1, 60, {
-        filter: cityFilter,
-        sort: "-population",
-      }),
-      pb.collection("geo_places").getList<GeoPlaceRecord>(1, 40, {
-        filter: `country_code = "TR" && (${cityFilter})`,
-        sort: "-population",
-      }),
-    ]);
+    const cityFilter = `city_name_en ~ "${safe}" || city_name_ar ~ "${safe}" || city_name_tr ~ "${safe}" || search_tokens ~ "${safe}"`;
+    const pbHits = await pb.collection("geo_places").getList<GeoPlaceRecord>(1, 40, {
+      filter: cityFilter,
+      sort: "-population",
+    }).catch(() => null);
+
     const seen = new Set<string>();
     const items: GeoPlaceRecord[] = [];
-    for (const rec of [...(turkeyHits.items || []), ...(prefixLike.items || [])]) {
-      if (seen.has(rec.id)) continue;
-      seen.add(rec.id);
+    for (const rec of [...staticMatches, ...(pbHits?.items || [])]) {
+      const key = `${rec.country_code}_${(rec.city_name_en || "").toLowerCase()}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       items.push(rec);
     }
-    if (!items.length) return fallbackSearch(q, lang);
+
+    if (!items.length) {
+      return rankRecords(staticMatches, q, lang);
+    }
     return rankRecords(items, q, lang);
   } catch {
-    return fallbackSearch(q, lang);
+    return rankRecords(staticMatches, q, lang);
   }
 }
 
 export async function findPlaceByQuery(rawQuery: string): Promise<GeoPlaceRecord | null> {
   const q = sanitizeQuery(rawQuery);
   if (!q) return null;
-  const pb = await tryCreateAdminPocketBase();
   const needle = q.toLowerCase();
+  const allStatic = getAllStaticRecords();
+
+  const exactStatic = allStatic.find(
+    (r) =>
+      r.city_name_en.toLowerCase() === needle ||
+      (r.city_name_ar || "").toLowerCase() === needle ||
+      (r.city_name_tr || "").toLowerCase() === needle
+  );
+  if (exactStatic) return exactStatic;
+
+  const staticPrefix = allStatic.find((r) => tokensOf(r).includes(needle));
+  if (staticPrefix?.tripadvisor_geo_id) return staticPrefix;
+
+  const pb = await tryCreateAdminPocketBase();
   if (pb) {
     try {
       const rows = await pb.collection("geo_places").getList<GeoPlaceRecord>(1, 20, {
@@ -177,19 +270,12 @@ export async function findPlaceByQuery(rawQuery: string): Promise<GeoPlaceRecord
       /* fallback */
     }
   }
-  return (
-    FALLBACK.find(
-      (r) =>
-        r.city_name_en.toLowerCase() === needle ||
-        (r.city_name_ar || "").toLowerCase() === needle ||
-        (r.city_name_tr || "").toLowerCase() === needle ||
-        tokensOf(r).includes(needle)
-    ) || null
-  );
+
+  return staticPrefix || null;
 }
 
 export async function cacheTripadvisorGeoId(recordId: string, geoId: string): Promise<void> {
-  if (!recordId || !geoId || recordId.startsWith("fb-")) return;
+  if (!recordId || !geoId || recordId.startsWith("fb-") || recordId.startsWith("geo-")) return;
   const pb = await tryCreateAdminPocketBase();
   if (!pb) return;
   try {

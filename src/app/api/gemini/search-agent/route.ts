@@ -696,7 +696,8 @@ If both cities are spoken, action=navigate and missing=[].`;
 
       let gemini = await callGemini(apiKey, hasAudio ? understandModels[0] : model, contents, true, {
         timeoutMs: 22000,
-        maxOutputTokens: 4096,
+        maxOutputTokens: 2048,
+        thinkingBudget: 0,
       });
       if (!gemini.ok && lane === "free" && isGeminiQuotaError(gemini.status, gemini.error) && paid.apiKey) {
         gemini = await callGemini(paid.apiKey, textModel, contents, true);

@@ -175,7 +175,7 @@ export default function HotelSearchBar({
   const pickHotel = (hotel: HotelSuggestHit) => {
     onChange({
       ...value,
-      q: hotel.city || hotel.name,
+      q: hotel.name,
       hotelName: hotel.name,
       hotelKey: hotel.hotelKey || hotel.bookingHotelId || hotel.id,
       destId: "",
@@ -312,7 +312,7 @@ export default function HotelSearchBar({
             <Search size={16} className="text-amber-300" />
             {t.common.search}
           </button>
-          {compactActions}
+          {compactActions ? <div className="text-[#2e1065]">{compactActions}</div> : null}
         </div>
       </div>
 

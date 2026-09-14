@@ -112,15 +112,16 @@ type Props = {
   onReopenWhatsApp?: () => void;
 };
 
-function isPaid(booking: HotelReceiptModel, paymentQuery?: string): boolean {
-  const status = `${booking.status} ${booking.payment_status} ${paymentQuery || ""}`.toLowerCase();
-  return status.includes("paid") && !status.includes("pending_review");
+function isPaid(booking: HotelReceiptModel): boolean {
+  const status = String(booking.status || "").toLowerCase();
+  const pay = String(booking.payment_status || "").toLowerCase();
+  return status === "paid" && pay === "paid" && !pay.includes("pending_review");
 }
 
-export default function HotelBookingReceipt({ booking, paymentQuery, onReopenWhatsApp }: Props) {
+export default function HotelBookingReceipt({ booking, paymentQuery: _paymentQuery, onReopenWhatsApp }: Props) {
   const { t, locale } = useLocale();
   const { formatPrice } = useCurrency();
-  const cardPaid = booking.payment_method === "card" && isPaid(booking, paymentQuery);
+  const cardPaid = booking.payment_method === "card" && isPaid(booking);
   const whatsappPath = booking.payment_method === "whatsapp";
   const pdfHref = `/api/hotel-bookings/${encodeURIComponent(booking.id)}/pdf?confirm=${encodeURIComponent(booking.confirm)}`;
 

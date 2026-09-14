@@ -105,6 +105,19 @@ export async function togglePostLike(postId: string): Promise<{ likesCount: numb
   return { likesCount: target.likesCount, hasLiked: true };
 }
 
+export async function incrementPostView(postId: string): Promise<number> {
+  const current = await listStoredCommunityPosts();
+  const target = current.find((p) => p.id === postId);
+  if (!target) return 0;
+  target.viewsCount = (target.viewsCount || 0) + 1;
+  writeQueue = writeQueue.then(async () => {
+    await fs.mkdir(DATA_DIR, { recursive: true });
+    await fs.writeFile(STORE_FILE, JSON.stringify(current, null, 2), "utf-8");
+  });
+  await writeQueue;
+  return target.viewsCount;
+}
+
 export async function listPostComments(postId: string): Promise<import("@/lib/nostr/types").CommunityComment[]> {
   const current = await listStoredCommunityPosts();
   const target = current.find((p) => p.id === postId);

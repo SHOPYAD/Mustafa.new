@@ -45,7 +45,7 @@ export function useRouteCalendarPrices(
   const destinationSkyId = destination?.skyId || "";
   const originEntityId = origin?.entityId || "";
   const destinationEntityId = destination?.entityId || "";
-  const routeReady = Boolean(originSkyId && destinationSkyId && originEntityId && destinationEntityId);
+  const routeReady = Boolean(originSkyId && destinationSkyId);
   const cacheKey = `${originSkyId}_${destinationSkyId}_${currency}_${date || ""}`;
 
   useEffect(() => {
@@ -74,6 +74,7 @@ export function useRouteCalendarPrices(
       destinationEntityId,
       fromDate: from,
       toDate: to,
+      date,
       currency,
     })
       .then((rows) => {

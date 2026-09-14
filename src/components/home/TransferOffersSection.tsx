@@ -12,6 +12,7 @@ import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
 import SafeImage from "@/components/ui/SafeImage";
+import HomeSwipeCarousel from "@/components/ui/HomeSwipeCarousel";
 
 function TransferOfferCard({ offer }: { offer: TransferOffer }) {
   const router = useRouter();
@@ -26,7 +27,7 @@ function TransferOfferCard({ offer }: { offer: TransferOffer }) {
   };
 
   return (
-    <article className="sc-card group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1">
+    <article className="sc-card group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1">
       <button
         type="button"
         onClick={goToResults}
@@ -122,11 +123,11 @@ export default function TransferOffersSection({ embedded = false }: { embedded?:
         </div>
         ) : null}
 
-        <div className="sc-grid grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <HomeSwipeCarousel>
           {TRANSFER_OFFERS.map((offer) => (
             <TransferOfferCard key={offer.id} offer={offer} />
           ))}
-        </div>
+        </HomeSwipeCarousel>
 
         {chrome ? (
         <div className="mt-8 sm:hidden">

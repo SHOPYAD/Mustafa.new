@@ -12,7 +12,6 @@ import {
   updateDecisionStatus,
   saveSwarmDiscussionMessage,
   saveAdminDirective,
-  DEFAULT_AGENTS,
   type AgentRole,
 } from "@/lib/automation/agent-collab-store";
 import {
@@ -20,6 +19,20 @@ import {
   getTelegramDirective,
   updateTelegramDirectiveStatus,
 } from "@/lib/automation/telegram-directive-cache";
+import {
+  buildTelegramAgentRouteKeyboard,
+  buildTelegramAgentsCard,
+  buildTelegramMetricsCard,
+  buildTelegramStartCard,
+  clearTelegramAgentSession,
+  executeApprovedDecision,
+  getTelegramAgentSession,
+  mapTelegramRouteToAgent,
+  rejectDecision,
+  runGroundedSwarmCycle,
+  setTelegramAgentSession,
+  verifyTelegramWebhookSecret,
+} from "@/lib/swarm";
 
 export const runtime = "nodejs";
 
@@ -167,13 +180,52 @@ async function executeRoutedAgentDirective(input: {
 
     // 2. خلية الوكلاء المشتركة (War Room Swarm)
     if (agentKey === "swarm") {
-      const { executeOrchestratorDirective } = await import(
-        "@/lib/server/automation/agent-orchestrator"
-      );
-      await executeOrchestratorDirective({
+      const result = await runGroundedSwarmCycle({
         directiveText,
         source: "telegram",
-        adminChatId: chatId,
+        targetAgentId: "all",
+        notifyTelegram: true,
+      });
+      await sendTelegramMessage({
+        chatId,
+        text: `⚡ *تقرير خلية العمليات:*\n${result.reportAr}`,
+        parseMode: "Markdown",
+        replyMarkup: {
+          inline_keyboard: [
+            [{ text: "👁️ غرفة العمليات", url: "https://lonaliza.com/admin/agent-war-room" }],
+            [{ text: "⚡ توجيه آخر", callback_data: "dir_copilot_quick" }],
+          ],
+        },
+      });
+      return;
+    }
+
+    const routed = mapTelegramRouteToAgent(agentKey);
+    if (routed.kind === "agent" && routed.agentId) {
+      setTelegramAgentSession(chatId, routed.agentId);
+      const result = await runGroundedSwarmCycle({
+        directiveText,
+        source: "telegram",
+        targetAgentId: routed.agentId,
+        notifyTelegram: true,
+      });
+      await sendTelegramMessage({
+        chatId,
+        text: [
+          `🤖 *تقرير ${agentMeta.nameAr}:*`,
+          `«${directiveText}»`,
+          "",
+          result.reportAr,
+          "",
+          "الرسائل التالية تُوجَّه لهذا الوكيل حتى ترسلوا `/done`.",
+        ].join("\n"),
+        parseMode: "Markdown",
+        replyMarkup: {
+          inline_keyboard: [
+            [{ text: "👁️ غرفة العمليات", url: "https://lonaliza.com/admin/agent-war-room" }],
+            [{ text: "✅ إنهاء الجلسة", callback_data: "tg_done" }],
+          ],
+        },
       });
       return;
     }
@@ -462,8 +514,8 @@ async function handleBulkArabicDecisions(
 
     const titles: string[] = [];
     for (const dec of pending) {
-      updateDecisionStatus(dec.id, "approved", "تم الاعتماد الجماعي عبر تيليجرام");
-      titles.push(`• ✅ \`${dec.id}\`: ${dec.titleAr}`);
+      const executed = await executeApprovedDecision(dec.id);
+      titles.push(`• ✅ \`${dec.id}\`: ${dec.titleAr} — ${executed.execution.summaryAr}`);
     }
 
     saveSwarmDiscussionMessage({
@@ -509,21 +561,11 @@ async function handleBulkArabicDecisions(
     const decisions = getPendingDecisions();
     const latestPending = decisions.find((d) => d.status === "pending");
     if (latestPending) {
-      updateDecisionStatus(latestPending.id, "approved", "معتمد عبر تيليجرام");
-      saveSwarmDiscussionMessage({
-        id: `disc_app_${Date.now()}`,
-        fromAgent: "admin",
-        toAgent: "all",
-        type: "decision",
-        topic: `اعتماد قرار: ${latestPending.titleAr}`,
-        contentAr: `تم اعتماد القرار: «${latestPending.titleAr}» رسمياً من قِبل المدير العام عبر تيليجرام.`,
-        timestamp: new Date().toISOString(),
-        impactLevel: "high",
-      });
+      const executed = await executeApprovedDecision(latestPending.id);
 
       await sendTelegramMessage({
         chatId,
-        text: `✅ *تم اعتماد المقترح التالي وتفويضه للتنفيذ:* \n\n📋 *القرار:* ${latestPending.titleAr}\n🤖 *المبادر:* ${latestPending.proposedBy.toUpperCase()}\n🔑 *المعرّف:* \`${latestPending.id}\`\n\n🚀 *جاري التنفيذ الفوري عبر الخلية.*`,
+        text: `✅ *تم اعتماد المقترح وتنفيذه:* \n\n📋 *القرار:* ${latestPending.titleAr}\n🤖 *المبادر:* ${latestPending.proposedBy.toUpperCase()}\n🔑 *المعرّف:* \`${latestPending.id}\`\n\n🚀 ${executed.execution.summaryAr}`,
         parseMode: "Markdown",
         replyMarkup: {
           inline_keyboard: [
@@ -539,21 +581,11 @@ async function handleBulkArabicDecisions(
     const decisions = getPendingDecisions();
     const latestPending = decisions.find((d) => d.status === "pending");
     if (latestPending) {
-      updateDecisionStatus(latestPending.id, "rejected", "مرفوض عبر تيليجرام");
-      saveSwarmDiscussionMessage({
-        id: `disc_rej_${Date.now()}`,
-        fromAgent: "admin",
-        toAgent: "all",
-        type: "decision",
-        topic: `رفض قرار: ${latestPending.titleAr}`,
-        contentAr: `تم رفض المقترح: «${latestPending.titleAr}» من قِبل المدير العام عبر تيليجرام وتجميد خطته.`,
-        timestamp: new Date().toISOString(),
-        impactLevel: "medium",
-      });
+      await rejectDecision(latestPending.id, "مرفوض عبر تيليجرام");
 
       await sendTelegramMessage({
         chatId,
-        text: `❌ *تم رفض المقترح التالي وتجميد ميزانيته:* \n\n📋 *القرار:* ${latestPending.titleAr}\n🔑 *المعرّف:* \`${latestPending.id}\`\n\n🛡️ *تم حفظ القرار وتحديث سجلات غرفة العمليات.*`,
+        text: `❌ *تم رفض المقترح ولم يُنفَّذ أي تغيير:* \n\n📋 *القرار:* ${latestPending.titleAr}\n🔑 *المعرّف:* \`${latestPending.id}\``,
         parseMode: "Markdown",
       });
       return true;
@@ -567,6 +599,11 @@ async function handleBulkArabicDecisions(
  * Handle Telegram Inbound POST webhook
  */
 export async function POST(req: Request) {
+  const secretHeader = req.headers.get("x-telegram-bot-api-secret-token");
+  if (secretHeader && !verifyTelegramWebhookSecret(secretHeader)) {
+    return NextResponse.json({ ok: false }, { status: 401 });
+  }
+
   let body: Record<string, unknown>;
   try {
     body = (await req.json()) as Record<string, unknown>;
@@ -603,26 +640,16 @@ export async function POST(req: Request) {
 
         await answerTelegramCallbackQuery({
           callbackQueryId,
-          text: `✅ تم اعتماد «${target.titleAr}» وتفويض الوكلاء!`,
+          text: `✅ جاري اعتماد وتنفيذ «${target.titleAr}»`,
         });
 
-        const updated = updateDecisionStatus(decisionId, "approved", "معتمد عبر زر تيليجرام التفاعلي");
-        saveSwarmDiscussionMessage({
-          id: `disc_btn_app_${Date.now()}`,
-          fromAgent: "admin",
-          toAgent: "all",
-          type: "decision",
-          topic: `اعتماد قرار: ${updated?.titleAr || target.titleAr}`,
-          contentAr: `✅ تم اعتماد المقترح: «${updated?.titleAr || target.titleAr}» رسمياً بنقرة زر تفاعلي عبر تيليجرام وتفويض الوكلاء بالبدء الفوري.`,
-          timestamp: new Date().toISOString(),
-          impactLevel: "critical",
-        });
+        const executed = await executeApprovedDecision(decisionId);
 
         if (chatId && messageId) {
           const updatedMessage =
             originalText +
-            `\n\n━━━━━━━━━━━━━━━━━━━━\n✅ *تم الاعتماد والتفويض الفوري بنجاح!* (المعرّف: \`${decisionId}\`)\n` +
-            `🤖 تم تحويل القرار إلى خلية الوكلاء والمشرف العام للبدء بالتنفيذ فوراً.`;
+            `\n\n━━━━━━━━━━━━━━━━━━━━\n✅ *تم الاعتماد والتنفيذ الفعلي* (\`${decisionId}\`)\n` +
+            `${executed.execution.summaryAr}`;
 
           await editTelegramMessageText({
             chatId,
@@ -658,17 +685,7 @@ export async function POST(req: Request) {
           text: `❌ تم رفض مقترح «${target.titleAr}».`,
         });
 
-        const updated = updateDecisionStatus(decisionId, "rejected", "مرفوض عبر زر تيليجرام التفاعلي");
-        saveSwarmDiscussionMessage({
-          id: `disc_btn_rej_${Date.now()}`,
-          fromAgent: "admin",
-          toAgent: "all",
-          type: "decision",
-          topic: `رفض قرار: ${updated?.titleAr || target.titleAr}`,
-          contentAr: `❌ تم رفض المقترح: «${updated?.titleAr || target.titleAr}» من قِبل المدير العام عبر زر تيليجرام وتجميد خطة الإنفاق المخصصة.`,
-          timestamp: new Date().toISOString(),
-          impactLevel: "medium",
-        });
+        await rejectDecision(decisionId, "مرفوض عبر زر تيليجرام التفاعلي");
 
         if (chatId && messageId) {
           const updatedMessage =
@@ -717,6 +734,9 @@ export async function POST(req: Request) {
         }
 
         updateTelegramDirectiveStatus(directiveId, "routed", agentKey);
+        if (agentKey !== "copilot" && agentKey !== "swarm") {
+          setTelegramAgentSession(chatId, mapTelegramRouteToAgent(agentKey).agentId || agentKey);
+        }
 
         // Broadcast delegation to War Room discussions stream
         saveSwarmDiscussionMessage({
@@ -752,6 +772,52 @@ export async function POST(req: Request) {
           console.error("[Telegram Router Error]", err);
         });
 
+        return NextResponse.json({ ok: true });
+      }
+
+      if (callbackData.startsWith("dec_cop:")) {
+        const decisionId = callbackData.replace("dec_cop:", "").trim();
+        const target = getPendingDecisions().find((d) => d.id === decisionId);
+        if (!target) {
+          await answerTelegramCallbackQuery({ callbackQueryId, text: "القرار غير موجود." });
+          return NextResponse.json({ ok: true });
+        }
+        await answerTelegramCallbackQuery({ callbackQueryId, text: "تم تفويض المشرف العام" });
+        const { analyzeAndExecuteIntent } = await import("@/lib/server/chat-executive-engine");
+        const exec = await analyzeAndExecuteIntent(
+          `نفّذ أو أعد تخطيط هذا القرار المعتمد من الخلية: ${target.titleAr}. التفاصيل: ${target.descriptionAr}`
+        );
+        if (target.status === "pending") {
+          await executeApprovedDecision(decisionId);
+        }
+        if (chatId) {
+          await sendTelegramMessage({
+            chatId,
+            text: `👑 *المشرف العام تولى القرار*\n${target.titleAr}\n\n${exec.actionSummaryAr || "تمت المعالجة."}`,
+            parseMode: "Markdown",
+            replyMarkup: {
+              inline_keyboard: [
+                [{ text: "👁️ غرفة العمليات", url: "https://lonaliza.com/admin/agent-war-room" }],
+              ],
+            },
+          });
+        }
+        return NextResponse.json({ ok: true });
+      }
+
+      if (callbackData === "tg_done") {
+        clearTelegramAgentSession(chatId);
+        await answerTelegramCallbackQuery({ callbackQueryId, text: "تم إنهاء جلسة الوكيل" });
+        return NextResponse.json({ ok: true });
+      }
+      if (callbackData === "tg_agents" && chatId) {
+        await answerTelegramCallbackQuery({ callbackQueryId, text: "حالة الوكلاء" });
+        await sendTelegramMessage({ chatId, text: await buildTelegramAgentsCard(), parseMode: "Markdown" });
+        return NextResponse.json({ ok: true });
+      }
+      if (callbackData === "tg_metrics" && chatId) {
+        await answerTelegramCallbackQuery({ callbackQueryId, text: "حقائق المنصة" });
+        await sendTelegramMessage({ chatId, text: await buildTelegramMetricsCard(), parseMode: "Markdown" });
         return NextResponse.json({ ok: true });
       }
 
@@ -829,6 +895,43 @@ export async function POST(req: Request) {
         return NextResponse.json({ ok: true });
       }
 
+      if (isAdmin && (text.trim() === "/start" || text.trim() === "/help")) {
+        await sendTelegramMessage({
+          chatId,
+          text: await buildTelegramStartCard(),
+          parseMode: "Markdown",
+          replyMarkup: {
+            inline_keyboard: [
+              [{ text: "🤖 حالة الوكلاء", callback_data: "tg_agents" }, { text: "📊 الحقائق", callback_data: "tg_metrics" }],
+              [{ text: "👁️ غرفة العمليات", url: "https://lonaliza.com/admin/agent-war-room" }],
+            ],
+          },
+        });
+        return NextResponse.json({ ok: true });
+      }
+
+      if (isAdmin && (text.trim() === "/agents" || text.trim() === "/metrics" || text.trim() === "/done")) {
+        if (text.trim() === "/done") {
+          clearTelegramAgentSession(chatId);
+          await sendTelegramMessage({ chatId, text: "تم إنهاء جلسة الوكيل. اكتبوا توجيهاً جديداً." });
+          return NextResponse.json({ ok: true });
+        }
+        const card = text.trim() === "/agents" ? await buildTelegramAgentsCard() : await buildTelegramMetricsCard();
+        await sendTelegramMessage({ chatId, text: card, parseMode: "Markdown" });
+        return NextResponse.json({ ok: true });
+      }
+
+      const activeSession = isAdmin ? getTelegramAgentSession(chatId) : null;
+      if (isAdmin && activeSession && !text.trim().startsWith("/") && text.trim().length >= 3) {
+        await sendTelegramMessage({ chatId, text: `⏳ توجيه إلى جلسة ${activeSession.agentKey}...`, parseMode: "Markdown" });
+        void executeRoutedAgentDirective({
+          agentKey: activeSession.agentKey,
+          directiveText: text.trim(),
+          chatId,
+        });
+        return NextResponse.json({ ok: true });
+      }
+
       // 2.D: Status Command (/status)
       if (text.trim() === "/status") {
         const reply = [
@@ -861,7 +964,7 @@ export async function POST(req: Request) {
         const cmd = spaceIdx > 0 ? trimmedText.slice(1, spaceIdx).toLowerCase() : trimmedText.slice(1).toLowerCase();
         const argText = spaceIdx > 0 ? trimmedText.slice(spaceIdx + 1).trim() : "";
 
-        if (argText && (cmd === "copilot" || cmd === "sales" || cmd === "content" || cmd === "fleet" || cmd === "social" || cmd === "swarm")) {
+        if (argText && (cmd === "copilot" || cmd === "sales" || cmd === "content" || cmd === "fleet" || cmd === "social" || cmd === "swarm" || cmd === "ads" || cmd === "email" || cmd === "b2b_landing" || cmd === "site_advisor" || cmd.startsWith("ag_"))) {
           saveAdminDirective({
             id: `tg_cmd_${Date.now()}`,
             text: argText,
@@ -907,20 +1010,7 @@ export async function POST(req: Request) {
           text: promptCard,
           parseMode: "Markdown",
           replyMarkup: {
-            inline_keyboard: [
-              [
-                { text: "👑 المشرف العام (تنفيذ فوري)", callback_data: `agent_route:copilot:${directive.id}` },
-                { text: "💼 وكيل المبيعات", callback_data: `agent_route:sales:${directive.id}` },
-              ],
-              [
-                { text: "✍️ وكيل المحتوى والسيو", callback_data: `agent_route:content:${directive.id}` },
-                { text: "🚗 مدير أسطول VIP", callback_data: `agent_route:fleet:${directive.id}` },
-              ],
-              [
-                { text: "🌐 وكيل السوشيال ونوستر", callback_data: `agent_route:social:${directive.id}` },
-                { text: "⚡ خلية العمليات (War Room)", callback_data: `agent_route:swarm:${directive.id}` },
-              ],
-            ],
+            inline_keyboard: buildTelegramAgentRouteKeyboard(directive.id),
           },
         });
         return NextResponse.json({ ok: true });

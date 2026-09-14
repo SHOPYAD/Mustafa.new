@@ -1,24 +1,24 @@
 import { NextResponse } from "next/server";
 import {
-  DEFAULT_AGENTS,
   getSwarmDiscussions,
   getPendingDecisions,
   getAdminDirectives,
 } from "@/lib/automation/agent-collab-store";
+import { assembleWarRoomAgents, collectPlatformGroundedSnapshot, listRegisteredAgents, warRoomToolCatalog } from "@/lib/swarm";
 
 export const runtime = "nodejs";
 
 export async function GET() {
-  const discussions = getSwarmDiscussions();
-  const decisions = getPendingDecisions();
-  const directives = getAdminDirectives();
-
+  const [agents, platform] = await Promise.all([assembleWarRoomAgents(), collectPlatformGroundedSnapshot()]);
   return NextResponse.json({
     ok: true,
-    agents: DEFAULT_AGENTS,
-    discussions,
-    decisions,
-    directives,
+    agents,
+    registry: listRegisteredAgents(true),
+    platform,
+    toolCatalog: warRoomToolCatalog(),
+    discussions: getSwarmDiscussions(),
+    decisions: getPendingDecisions(),
+    directives: getAdminDirectives(),
     isPreview: true,
   });
 }

@@ -74,8 +74,9 @@ export function Canvas() {
   const canvasSrc = useMemo(() => {
     const page = findEditorPage(editorPages.pages, activePage);
     const option = pageOptions.find((entry) => entry.value === activePage) || pageOptions[0];
-    return builderCanvasSrc(page?.path || option?.routePath || "/", locale);
-  }, [activePage, editorPages.pages, locale, pageOptions]);
+    const isApp = device === "mobile" || (typeof window !== "undefined" && window.location.pathname.includes("mobile-app-editor"));
+    return builderCanvasSrc(page?.path || option?.routePath || "/", locale, isApp);
+  }, [activePage, device, editorPages.pages, locale, pageOptions]);
 
   useEffect(() => {
     const onRefresh = () => setCanvasEpoch((n) => n + 1);

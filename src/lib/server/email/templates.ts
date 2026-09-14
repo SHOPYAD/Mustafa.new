@@ -78,12 +78,28 @@ export const TEMPLATE_VARIABLES: Record<EmailTemplateKind, string[]> = {
   car_reminder: SERVICE_VARS,
   visa_reminder: SERVICE_VARS,
   booking_success: SERVICE_VARS,
-  hotel_success: SERVICE_VARS,
-  flight_success: SERVICE_VARS,
+  hotel_success: [
+    ...SERVICE_VARS,
+    "hotel_name",
+    "room_name",
+    "check_in",
+    "check_out",
+    "nights",
+    "address",
+    "breakfast",
+  ],
+  flight_success: [
+    ...SERVICE_VARS,
+    "route",
+    "depart_date",
+    "return_date",
+    "passengers",
+    "baggage",
+  ],
   package_success: SERVICE_VARS,
   tour_success: SERVICE_VARS,
-  transfer_success: SERVICE_VARS,
-  car_success: SERVICE_VARS,
+  transfer_success: [...SERVICE_VARS, "vehicle", "pickup", "driver_notes"],
+  car_success: [...SERVICE_VARS, "vehicle", "pickup", "driver_notes"],
   visa_success: SERVICE_VARS,
   invoice: [
     "name",
@@ -302,23 +318,72 @@ ${cta(brand, "cta_url", C("continueRequest"))}`,
         text: k("text"),
       };
     case "hotel_success":
+      return {
+        subject: k("subject"),
+        html: `${heading(k("heading"))}
+${lead(k("lead"))}
+${card([
+  [L("bookingId"), "{{booking_id}}"],
+  [L("hotel"), "{{hotel_name}}"],
+  [L("room"), "{{room_name}}"],
+  [L("checkIn"), "{{check_in}}"],
+  [L("checkOut"), "{{check_out}}"],
+  [L("address"), "{{address}}"],
+  [L("breakfast"), "{{breakfast}}"],
+  [L("amount"), "{{currency}} {{amount}}"],
+])}
+${cta(brand, "cta_url", C("viewBooking"))}`,
+        text: k("text"),
+      };
     case "flight_success":
+      return {
+        subject: k("subject"),
+        html: `${heading(k("heading"))}
+${lead(k("lead"))}
+${card([
+  [L("bookingId"), "{{booking_id}}"],
+  [L("route"), "{{route}}"],
+  [L("depart"), "{{depart_date}}"],
+  [L("return"), "{{return_date}}"],
+  [L("passengers"), "{{passengers}}"],
+  [L("baggage"), "{{baggage}}"],
+  [L("amount"), "{{currency}} {{amount}}"],
+])}
+${cta(brand, "cta_url", C("viewBooking"))}`,
+        text: k("text"),
+      };
     case "package_success":
     case "tour_success":
-    case "transfer_success":
-    case "car_success":
     case "visa_success":
       return {
         subject: k("subject"),
         html: `${heading(k("heading"))}
 ${lead(k("lead"))}
 ${card([
-  [L("requestId"), "{{booking_id}}"],
+  [L("bookingId"), "{{booking_id}}"],
   [L("service"), "{{service_name}}"],
   [L("details"), detailField(locale)],
   [L("amount"), "{{currency}} {{amount}}"],
 ])}
-${cta(brand, "cta_url", C("viewRequest"))}`,
+${cta(brand, "cta_url", C("viewBooking"))}`,
+        text: k("text"),
+      };
+    case "transfer_success":
+    case "car_success":
+      return {
+        subject: k("subject"),
+        html: `${heading(k("heading"))}
+${lead(k("lead"))}
+${card([
+  [L("bookingId"), "{{booking_id}}"],
+  [L("service"), "{{service_name}}"],
+  [L("vehicle"), "{{vehicle}}"],
+  [L("pickup"), "{{pickup}}"],
+  [L("driverNotes"), "{{driver_notes}}"],
+  [L("details"), detailField(locale)],
+  [L("amount"), "{{currency}} {{amount}}"],
+])}
+${cta(brand, "cta_url", C("viewBooking"))}`,
         text: k("text"),
       };
     default:

@@ -120,6 +120,11 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
     (item) => item.type === "hero" && !item.hidden && item.settings.showSearch !== false
   );
 
+  const isApp =
+    searchParams.get("app") === "1" ||
+    searchParams.get("view_mode") === "app" ||
+    (typeof document !== "undefined" && document.cookie.includes("lonaliza_app_shell=1"));
+
   return (
     <div
       className="alrayyan-home relative isolate"
@@ -130,11 +135,14 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
         } as CSSProperties
       }
     >
-      <ScrollLinkedBackdrop layout={draft.layout.filter((item) => !item.hidden || editorMode)} />
+      <ScrollLinkedBackdrop layout={draft.layout.filter((item) => (!item.hidden && (!isApp || !item.settings?.hideOnMobileApp)) || editorMode)} />
       <div className="relative z-10">
       {draft.layout.map((instance, idx) => {
         if (instance.hidden && !editorMode) return null;
+        if (isApp && Boolean(instance.settings?.hideOnMobileApp) && !editorMode) return null;
         if (instance.type === "search" && heroHasSearch) return null;
+
+        const isHiddenInApp = isApp && Boolean(instance.settings?.hideOnMobileApp);
 
         // Position 1: Video Reels slider directly below Hero/Search
         const isHeroOrSearch = instance.type === "hero" || (instance.type === "search" && !heroHasSearch);
@@ -150,7 +158,15 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
         const renderStoriesAfterThis = idx === storiesSlotIdx;
 
         return (
-          <div key={instance.instanceId}>
+          <div
+            key={instance.instanceId}
+            className={isHiddenInApp ? "relative opacity-50 ring-2 ring-dashed ring-amber-500/80 rounded-xl" : undefined}
+          >
+            {isHiddenInApp && editorMode && (
+              <div className="absolute top-2 right-2 z-40 flex items-center gap-1.5 rounded-lg bg-amber-500 text-slate-950 px-2.5 py-1 text-xs font-black shadow-lg pointer-events-none">
+                <span>📱 مخفي في تطبيق الهاتف (يظهر بالموقع فقط)</span>
+              </div>
+            )}
             <RenderHomepageSection
               instance={instance}
               editorMode={editorMode}

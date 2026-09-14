@@ -1,7 +1,23 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Check } from "lucide-react";
+import {
+  Armchair,
+  Building2,
+  Check,
+  Clock,
+  Luggage,
+  MapPin,
+  Moon,
+  Plane,
+  RotateCcw,
+  ShieldCheck,
+  Sunrise,
+  Sunset,
+  Ticket,
+  Timer,
+  Wallet,
+} from "lucide-react";
 import { cabinClassLabel, type FlightCopy } from "@/components/flights/copy";
 import { formatDuration } from "@/components/flights/normalize";
 import { useFlightPrice } from "@/components/flights/useFlightPrice";
@@ -199,24 +215,51 @@ function Chip({
   active,
   onClick,
   children,
+  icon,
 }: {
   active: boolean;
   onClick: () => void;
   children: ReactNode;
+  icon?: ReactNode;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full px-3 py-1.5 text-xs font-bold transition",
+        "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition",
         active
-          ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-xs"
+          ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-sm"
           : "bg-slate-100 text-slate-700 hover:bg-purple-50 hover:text-purple-950 border border-slate-200/80"
       )}
     >
+      {icon}
       {children}
     </button>
+  );
+}
+
+function FilterSection({
+  icon,
+  title,
+  children,
+}: {
+  icon: ReactNode;
+  title?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="rounded-2xl border border-slate-100 bg-slate-50/60 p-3">
+      {title ? (
+        <p className="mb-2 flex items-center gap-2 text-[11px] font-black uppercase tracking-wider text-[#1e1b4b]">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-br from-[#2e1065] to-[#6d28d9] text-white shadow-sm">
+            {icon}
+          </span>
+          {title}
+        </p>
+      ) : null}
+      {children}
+    </section>
   );
 }
 
@@ -284,41 +327,45 @@ export default function FlightFilters({
         </button>
       </div>
 
-      <div className="space-y-5 p-4">
-        <section className="space-y-2">
-          {(
-            [
-              ["freeCancellation", copy.freeCancellation],
-              ["changeableOnly", copy.changeableFilter],
-              ["overnightOnly", copy.overnightFilter],
-            ] as const
-          ).map(([key, label]) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => onChange({ ...filters, [key]: !filters[key] })}
-              className={cn(
-                "flex w-full items-center justify-between rounded-xl border px-3 py-2.5 text-start text-xs font-bold transition",
-                filters[key]
-                  ? "border-purple-600 bg-purple-50 text-[#1e1b4b]"
-                  : "border-slate-200 text-slate-700 hover:bg-slate-50"
-              )}
-            >
-              <span>{label}</span>
-              <span
+      <div className="space-y-3 p-3">
+        <FilterSection icon={<ShieldCheck size={14} />}>
+          <div className="space-y-2">
+            {(
+              [
+                ["freeCancellation", copy.freeCancellation, <ShieldCheck key="cxl" size={14} />],
+                ["changeableOnly", copy.changeableFilter, <RotateCcw key="chg" size={14} />],
+                ["overnightOnly", copy.overnightFilter, <Moon key="night" size={14} />],
+              ] as const
+            ).map(([key, label, icon]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => onChange({ ...filters, [key]: !filters[key] })}
                 className={cn(
-                  "inline-flex h-4 w-4 items-center justify-center rounded border",
-                  filters[key] ? "border-purple-600 bg-[#2e1065] text-white" : "border-slate-300"
+                  "flex w-full items-center justify-between rounded-xl border px-3 py-2.5 text-start text-xs font-bold transition",
+                  filters[key]
+                    ? "border-transparent bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-sm"
+                    : "border-slate-200 bg-white text-slate-700 hover:bg-purple-50"
                 )}
               >
-                {filters[key] ? <Check size={10} /> : null}
-              </span>
-            </button>
-          ))}
-        </section>
+                <span className="inline-flex items-center gap-2">
+                  {icon}
+                  {label}
+                </span>
+                <span
+                  className={cn(
+                    "inline-flex h-4 w-4 items-center justify-center rounded border",
+                    filters[key] ? "border-white/70 bg-white text-[#2e1065]" : "border-slate-300"
+                  )}
+                >
+                  {filters[key] ? <Check size={10} /> : null}
+                </span>
+              </button>
+            ))}
+          </div>
+        </FilterSection>
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.stops}</p>
+        <FilterSection icon={<Plane size={14} />} title={copy.stops}>
           <div className="flex flex-wrap gap-2">
             {stopOpts.map(([value, label]) => (
               <Chip key={value} active={filters.stops.includes(value)} onClick={() => toggleStop(value)}>
@@ -326,11 +373,10 @@ export default function FlightFilters({
               </Chip>
             ))}
           </div>
-        </section>
+        </FilterSection>
 
         {priceBounds.max > priceBounds.min ? (
-          <section>
-            <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.priceRange}</p>
+          <FilterSection icon={<Wallet size={14} />} title={copy.priceRange}>
             <p className="mb-1 text-xs font-bold text-[#2e1065]">
               {formatFlightPrice(filters.priceMin || priceBounds.min, priceBounds.currency)} —{" "}
               {formatFlightPrice(filters.priceMax || priceBounds.max, priceBounds.currency)}
@@ -342,11 +388,10 @@ export default function FlightFilters({
               end={filters.priceMax || priceBounds.max}
               onChange={(priceMin, priceMax) => onChange({ ...filters, priceMin, priceMax })}
             />
-          </section>
+          </FilterSection>
         ) : null}
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.airlines}</p>
+        <FilterSection icon={<Plane size={14} />} title={copy.airlines}>
           <div className="max-h-56 space-y-1.5 overflow-auto">
             {airlines.map((row) => {
               const active = filters.airlines.includes(row.name);
@@ -357,23 +402,26 @@ export default function FlightFilters({
                   onClick={() => toggleList("airlines", row.name)}
                   className={cn(
                     "flex w-full items-center gap-2 rounded-xl px-2 py-2 text-start text-sm transition",
-                    active ? "bg-purple-50 text-[#1e1b4b] font-bold" : "text-slate-700 hover:bg-slate-50"
+                    active
+                      ? "bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white font-bold shadow-sm"
+                      : "bg-white text-slate-700 hover:bg-purple-50"
                   )}
                 >
                   <AirlineLogo code={row.code} name={row.name} logoUrl={row.logoUrl} size="sm" className="rounded-md" />
-                  <span className="min-w-0 flex-1 truncate font-bold text-slate-800">{row.name}</span>
-                  <span className="text-[11px] font-extrabold text-[#2e1065]">
+                  <span className={cn("min-w-0 flex-1 truncate font-bold", active ? "text-white" : "text-slate-800")}>
+                    {row.name}
+                  </span>
+                  <span className={cn("text-[11px] font-extrabold", active ? "text-amber-300" : "text-[#2e1065]")}>
                     {formatFlightPrice(row.minPrice, row.currency)}
                   </span>
                 </button>
               );
             })}
           </div>
-        </section>
+        </FilterSection>
 
         {originAirports.length > 1 ? (
-          <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.originAirports}</p>
+          <FilterSection icon={<MapPin size={14} />} title={copy.originAirports}>
             <div className="flex flex-wrap gap-2">
               {originAirports.map((row) => (
                 <Chip
@@ -385,12 +433,11 @@ export default function FlightFilters({
                 </Chip>
               ))}
             </div>
-          </section>
+          </FilterSection>
         ) : null}
 
         {destAirports.length > 1 ? (
-          <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.destAirports}</p>
+          <FilterSection icon={<MapPin size={14} />} title={copy.destAirports}>
             <div className="flex flex-wrap gap-2">
               {destAirports.map((row) => (
                 <Chip
@@ -402,12 +449,11 @@ export default function FlightFilters({
                 </Chip>
               ))}
             </div>
-          </section>
+          </FilterSection>
         ) : null}
 
         {layoverAirports.length ? (
-          <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.layoverAirports}</p>
+          <FilterSection icon={<Building2 size={14} />} title={copy.layoverAirports}>
             <div className="flex flex-wrap gap-2">
               {layoverAirports.map((row) => (
                 <Chip
@@ -419,17 +465,17 @@ export default function FlightFilters({
                 </Chip>
               ))}
             </div>
-          </section>
+          </FilterSection>
         ) : null}
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.departWindow}</p>
+        <FilterSection icon={<Sunrise size={14} />} title={copy.departWindow}>
           <div className="mb-2 flex flex-wrap gap-1.5">
             {windows.map(([start, end, label]) => (
               <Chip
                 key={label}
                 active={filters.departStart === start && filters.departEnd === end}
                 onClick={() => onChange({ ...filters, departStart: start, departEnd: end })}
+                icon={start < 12 ? <Sunrise size={12} /> : start < 17 ? <Clock size={12} /> : start < 21 ? <Sunset size={12} /> : <Moon size={12} />}
               >
                 {label}
               </Chip>
@@ -445,16 +491,16 @@ export default function FlightFilters({
             end={filters.departEnd}
             onChange={(departStart, departEnd) => onChange({ ...filters, departStart, departEnd })}
           />
-        </section>
+        </FilterSection>
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.arriveWindow}</p>
+        <FilterSection icon={<Sunset size={14} />} title={copy.arriveWindow}>
           <div className="mb-2 flex flex-wrap gap-1.5">
             {windows.map(([start, end, label]) => (
               <Chip
                 key={`arr-${label}`}
                 active={filters.arriveStart === start && filters.arriveEnd === end}
                 onClick={() => onChange({ ...filters, arriveStart: start, arriveEnd: end })}
+                icon={start < 12 ? <Sunrise size={12} /> : start < 17 ? <Clock size={12} /> : start < 21 ? <Sunset size={12} /> : <Moon size={12} />}
               >
                 {label}
               </Chip>
@@ -470,10 +516,9 @@ export default function FlightFilters({
             end={filters.arriveEnd}
             onChange={(arriveStart, arriveEnd) => onChange({ ...filters, arriveStart, arriveEnd })}
           />
-        </section>
+        </FilterSection>
 
-        <section>
-          <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.duration}</p>
+        <FilterSection icon={<Timer size={14} />} title={copy.duration}>
           <p className="mb-1 text-xs font-bold text-purple-900">{formatDuration(filters.maxDuration)}</p>
           <input
             type="range"
@@ -483,32 +528,23 @@ export default function FlightFilters({
             onChange={(e) => onChange({ ...filters, maxDuration: Number(e.target.value) })}
             className="w-full accent-amber-500 cursor-pointer"
           />
-        </section>
+        </FilterSection>
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.baggageFilter}</p>
-          <div className="grid grid-cols-2 gap-2">
-            {(["any", "included", "none", 20, 23] as const).map((opt) => (
+        <FilterSection icon={<Luggage size={14} />} title={copy.baggageFilter}>
+          <div className="grid grid-cols-3 gap-2">
+            {(["any", "included", "none"] as const).map((opt) => (
               <button
-                key={String(opt)}
+                key={opt}
                 type="button"
                 onClick={() => onChange({ ...filters, baggage: opt as BaggageFilter, baggageKg: null })}
                 className={cn(
-                  "rounded-xl border px-3 py-2 text-xs font-bold transition cursor-pointer",
+                  "rounded-xl border px-2.5 py-2 text-xs font-bold transition cursor-pointer",
                   filters.baggage === opt && filters.baggageKg == null
-                    ? "border-purple-600 bg-purple-50 text-[#1e1b4b]"
-                    : "border-slate-200 text-slate-700 hover:bg-slate-50"
+                    ? "border-transparent bg-gradient-to-r from-[#2e1065] to-[#4c1d95] text-white shadow-sm"
+                    : "border-slate-200 bg-white text-slate-700 hover:bg-purple-50"
                 )}
               >
-                {opt === "any"
-                  ? copy.baggageAny
-                  : opt === "included"
-                    ? copy.baggageIncluded
-                    : opt === "none"
-                      ? copy.baggageNone
-                      : opt === 20
-                        ? copy.baggage20
-                        : copy.baggage23}
+                {opt === "any" ? copy.baggageAny : opt === "included" ? copy.baggageIncluded : copy.baggageNone}
               </button>
             ))}
           </div>
@@ -518,6 +554,7 @@ export default function FlightFilters({
                 <Chip
                   key={kg}
                   active={filters.baggageKg === kg}
+                  icon={<Luggage size={12} />}
                   onClick={() =>
                     onChange({
                       ...filters,
@@ -531,11 +568,10 @@ export default function FlightFilters({
               ))}
             </div>
           ) : null}
-        </section>
+        </FilterSection>
 
         {fareBrands.length > 1 ? (
-          <section>
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.fareBrandFilter}</p>
+          <FilterSection icon={<Ticket size={14} />} title={copy.fareBrandFilter}>
             <div className="flex flex-wrap gap-2">
               {fareBrands.slice(0, 18).map((name) => (
                 <Chip
@@ -547,11 +583,10 @@ export default function FlightFilters({
                 </Chip>
               ))}
             </div>
-          </section>
+          </FilterSection>
         ) : null}
 
-        <section>
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#1e1b4b]">{copy.cabinFilter}</p>
+        <FilterSection icon={<Armchair size={14} />} title={copy.cabinFilter}>
           <div className="flex flex-wrap gap-2">
             {CABINS.map((cabin) => (
               <Chip
@@ -563,7 +598,7 @@ export default function FlightFilters({
               </Chip>
             ))}
           </div>
-        </section>
+        </FilterSection>
       </div>
     </aside>
   );

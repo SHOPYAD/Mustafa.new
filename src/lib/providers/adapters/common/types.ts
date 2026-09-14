@@ -238,7 +238,9 @@ export interface RatePlan {
   board: BoardCode;
   boardName?: string;
   refundable: boolean;
+  cancellationType?: "free" | "fee_applies" | "non_refundable";
   freeCancellationUntil?: string;
+  currentPenalty?: { amount: number; currency: string };
   cancellationPolicies: CancellationPolicyRule[];
   paymentType: PaymentType;
   price: RatePrice;

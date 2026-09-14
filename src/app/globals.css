@@ -878,18 +878,18 @@ html[data-admin-theme="dark"] .admin-main [data-slot="card"] {
    No faded or invisible text! */
 /* Neutral standalone text with text-white in light mode gets darkened,
    BUT buttons, links, tabs, badges, icons, gradients, and dark/colored containers are STRICTLY EXCLUDED! */
-html[data-admin-theme="light"] .admin-main p.text-white,
-html[data-admin-theme="light"] .admin-main h1.text-white:not([class*="bg-"]),
-html[data-admin-theme="light"] .admin-main h2.text-white:not([class*="bg-"]),
-html[data-admin-theme="light"] .admin-main h3.text-white:not([class*="bg-"]),
-html[data-admin-theme="light"] .admin-main h4.text-white:not([class*="bg-"]),
-html[data-admin-theme="light"] .admin-main span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"]) *),
-.admin-main--light p.text-white,
-.admin-main--light h1.text-white:not([class*="bg-"]),
-.admin-main--light h2.text-white:not([class*="bg-"]),
-.admin-main--light h3.text-white:not([class*="bg-"]),
-.admin-main--light h4.text-white:not([class*="bg-"]),
-.admin-main--light span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"]) *) {
+html[data-admin-theme="light"] .admin-main p.text-white:not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"], [class*="bg-purple-8"]) *),
+html[data-admin-theme="light"] .admin-main h1.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+html[data-admin-theme="light"] .admin-main h2.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+html[data-admin-theme="light"] .admin-main h3.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+html[data-admin-theme="light"] .admin-main h4.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+html[data-admin-theme="light"] .admin-main span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"], header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
+.admin-main--light p.text-white:not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"], [class*="bg-purple-8"]) *),
+.admin-main--light h1.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h2.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h3.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h4.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"], header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
   color: #0f172a !important;
   --tw-text-opacity: 1 !important;
   opacity: 1 !important;
@@ -899,12 +899,12 @@ html[data-admin-theme="light"] .admin-main :is(
   [class*="text-white/9"],
   [class*="text-white/8"],
   [class*="text-white/7"]
-),
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
 .admin-main--light :is(
   [class*="text-white/9"],
   [class*="text-white/8"],
   [class*="text-white/7"]
-) {
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
   color: #1e293b !important;
   --tw-text-opacity: 1 !important;
   opacity: 1 !important;
@@ -917,7 +917,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class*="text-white/3"],
   [class*="text-white/2"],
   [class*="text-white/1"]
-),
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
 .admin-main--light :is(
   [class*="text-white/6"],
   [class*="text-white/5"],
@@ -925,7 +925,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class*="text-white/3"],
   [class*="text-white/2"],
   [class*="text-white/1"]
-) {
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
   color: #334155 !important;
   --tw-text-opacity: 1 !important;
   opacity: 1 !important;
@@ -942,7 +942,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class*="text-gray-1"],
   [class*="text-gray-2"],
   [class*="text-gray-3"]
-),
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
 .admin-main--light :is(
   [class*="text-slate-1"],
   [class*="text-slate-2"],
@@ -953,7 +953,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class*="text-gray-1"],
   [class*="text-gray-2"],
   [class*="text-gray-3"]
-) {
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
   color: #0f172a !important;
   --tw-text-opacity: 1 !important;
   opacity: 1 !important;
@@ -1137,6 +1137,96 @@ html[data-admin-theme="light"] .admin-main :is(
   color: #ffffff !important;
 }
 
+/* ── Mobile App Studio Tab & Dark Buttons Explicit High-Specificity Overrides ── */
+.admin-mobile-tab--active,
+.admin-mobile-tab--active *,
+[data-mobile-tab-active="true"],
+[data-mobile-tab-active="true"] * {
+  color: #ffffff !important;
+  fill: transparent;
+}
+.admin-mobile-tab--active svg,
+[data-mobile-tab-active="true"] svg {
+  color: #fbbf24 !important;
+  stroke: #fbbf24 !important;
+}
+.admin-mobile-tab--idle,
+.admin-mobile-tab--idle * {
+  color: #1e293b !important;
+}
+.admin-mobile-tab--idle svg {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+.admin-mobile-tab--idle:hover,
+.admin-mobile-tab--idle:hover * {
+  color: #0f172a !important;
+}
+
+.admin-btn-dark,
+.admin-btn-dark *,
+.admin-force-white,
+.admin-force-white *,
+:is(button, a)[class*="from-purple-"],
+:is(button, a)[class*="from-purple-"] *,
+:is(button, a)[class*="from-indigo-"],
+:is(button, a)[class*="from-indigo-"] *,
+:is(button, a)[class*="bg-purple-9"],
+:is(button, a)[class*="bg-purple-9"] *,
+:is(button, a)[class*="bg-slate-9"],
+:is(button, a)[class*="bg-slate-9"] * {
+  color: #ffffff !important;
+}
+
+/* Guaranteed High-Contrast Light & White Text for All Dark Banners & Headers */
+:is(html[data-admin-theme], .admin-shell, .admin-main, .admin-main--light) :is(
+  header,
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [class*="from-[#140522]"],
+  [class*="bg-[#140522]"],
+  [class*="from-[#170e28]"],
+  [class*="bg-[#170e28]"],
+  [class*="bg-[#220a40]"],
+  [class*="bg-[#120422]"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-950"]
+) :is(h1, h2, h3, h4, strong, b) {
+  color: #ffffff !important;
+}
+
+:is(html[data-admin-theme], .admin-shell, .admin-main, .admin-main--light) :is(
+  header,
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [class*="from-[#140522]"],
+  [class*="bg-[#140522]"],
+  [class*="from-[#170e28]"],
+  [class*="bg-[#170e28]"],
+  [class*="bg-[#220a40]"],
+  [class*="bg-[#120422]"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-950"]
+) p:not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]) {
+  color: #e2e8f0 !important;
+}
+
+:is(html[data-admin-theme], .admin-shell, .admin-main, .admin-main--light) :is(
+  header,
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [class*="from-[#140522]"],
+  [class*="bg-[#140522]"],
+  [class*="from-[#170e28]"],
+  [class*="bg-[#170e28]"],
+  [class*="bg-[#220a40]"],
+  [class*="bg-[#120422]"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-950"]
+) span:not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="bg-amber"]):not([class*="bg-emerald"]):not([class*="bg-rose"]):not(button *):not(a *) {
+  color: #f1f5f9 !important;
+}
+
 /* ── 2. LIGHT SURFACES IN LIGHT THEME (Strict Anti-White Contrast Rule) ──
    Any button, link, filter pill, table action, or suggestion chip that is NOT
    one of the solid dark buttons MUST have crisp, high-contrast dark text and dark icons!
@@ -1158,7 +1248,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class~="from-blue-600"], [class~="from-blue-700"],
   [class~="from-emerald-600"], [class~="from-rose-600"], [class~="from-amber-600"],
   [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
-  [class~="admin-btn-dark"], [class~="admin-force-white"]
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"]
 )) {
   color: #0f172a !important;
   --tw-text-opacity: 1 !important;
@@ -1176,7 +1266,7 @@ html[data-admin-theme="light"] .admin-main :is(
   [class~="bg-black"], [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
   [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
   [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
-  [class~="admin-btn-dark"], [class~="admin-force-white"]
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"]
 )) :is(span, p, div):not([class*="text-amber"]):not([class*="text-purple"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-yellow"]):not([style*="color: rgb(255, 255, 255)"]):not([style*="color: #ffffff"]) {
   color: #0f172a !important;
   --tw-text-opacity: 1 !important;
@@ -1193,33 +1283,18 @@ html[data-admin-theme="light"] .admin-main :is(
   [class~="bg-black"], [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
   [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
   [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
-  [class~="admin-btn-dark"], [class~="admin-force-white"]
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"]
 )) svg:not([class*="text-amber"]):not([class*="fill-amber"]):not([class*="text-yellow"]):not([class*="fill-yellow"]):not([class*="text-purple"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([style*="stroke: #ffffff"]):not([stroke="#ffffff"]) {
   stroke: #334155 !important;
   color: #334155 !important;
 }
 
-/* General safety rule: Standalone text with .text-white on light surfaces in Light Theme is darkened */
-:is(html[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(p, span, h1, h2, h3, h4, h5, h6, td, th, label, div):is(.text-white, [class*="text-white/"]):not(:is(
-  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"],
-  [class~="bg-blue-600"], [class~="bg-emerald-600"], [class~="bg-amber-600"], [class~="bg-rose-600"],
-  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-black"],
-  [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
-  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
-  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
-  [class~="admin-btn-dark"], [class~="admin-force-white"]
-)):not(:is(
-  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"],
-  [class~="bg-blue-600"], [class~="bg-emerald-600"], [class~="bg-amber-600"], [class~="bg-rose-600"],
-  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-black"],
-  [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
-  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
-  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
-  [class~="admin-btn-dark"], [class~="admin-force-white"]
-) *) {
+/* Only darken accidental .text-white on explicit pure-white or very light slate surfaces */
+:is(html[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-gray-50, .bg-zinc-50) > :is(p, span, h1, h2, h3, h4, h5, h6, label):is(.text-white, .text-white\/90, .text-white\/80) {
   color: #0f172a !important;
   --tw-text-opacity: 1 !important;
 }
+
 
 /* ── 3. TINTED PASTEL BADGES, TAGS & COUNTER PILLS (Light Theme) ──
    Enforces deep saturated text so numbers and category tags POP with rich contrast! */
@@ -1859,6 +1934,15 @@ html:not([data-admin-theme]) main img {
     overflow-wrap: anywhere;
   }
 
+  html:not([data-admin-theme]) main .lonaliza-legal-title,
+  html:not([data-admin-theme]) main .lonaliza-legal-hero h1 {
+    overflow: visible;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
   html:not([data-admin-theme]) main .prose,
   html:not([data-admin-theme]) main .prose p {
     line-height: 1.75;
@@ -1905,12 +1989,8 @@ html:not([data-admin-theme]) main img {
 }
 
 @media (min-width: 1024px) {
-  .alrayyan-site-footer .alrayyan-footer-main {
-    max-height: 20rem;
-  }
-
   .alrayyan-site-footer .alrayyan-footer-grid {
-    gap: 1rem 1.5rem;
+    gap: 1.25rem 1.5rem;
   }
 }
 
@@ -1958,3 +2038,438 @@ html.pwa-standalone .admin-shell header {
 html.pwa-standalone .alrayyan-site-header {
   padding-top: env(safe-area-inset-top, 0px);
 }
+
+/* Shared WebView / mobile chrome — notch, home indicator, horizontal tabs.
+   Flutter already wraps the WebView in SafeArea, so env(safe-area-inset-top)
+   is usually 0 inside the document. Do NOT force a 2.75rem fallback here:
+   that stacked a second status-bar gap on top of the native inset. */
+.lonaliza-app-bar {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+  padding-bottom: 0.5rem;
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px)) max(0.75rem, env(safe-area-inset-right, 0px));
+}
+
+html:not(.lonaliza-app-shell) .lonaliza-app-bar {
+  position: relative;
+  top: auto;
+}
+
+html.lonaliza-app-shell .lonaliza-app-bar {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+.lonaliza-safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Shared carousel utilities — NEVER pan-x alone (that freezes vertical page scroll).
+   Track may pan on both axes; the wrapper must not set pan-x. */
+.lonaliza-carousel-wrap {
+  touch-action: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.lonaliza-carousel-track {
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lonaliza-carousel-track::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.lonaliza-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(226 232 240 / 0.9);
+  background: rgb(255 255 255 / 0.92);
+  color: #1e1b4b;
+  box-shadow: 0 6px 16px -8px rgb(15 23 42 / 0.35);
+  opacity: 0.72;
+}
+
+.lonaliza-carousel-arrow:active {
+  opacity: 1;
+}
+
+.lonaliza-h-scroll,
+.lonaliza-suggest-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lonaliza-h-scroll::-webkit-scrollbar,
+.lonaliza-suggest-carousel::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.lonaliza-h-scroll > *,
+.lonaliza-suggest-carousel > * {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+
+/* Legal docs: never 100vw, never mixed overflow-x:clip + y:visible (that
+   computes to overflow-y:auto and plants a physical-right scrollbar that
+   slices RTL IBM Plex Arabic — especially font-black, which is faux-bold
+   because the face only ships 300–700). */
+.lonaliza-legal-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.lonaliza-legal-hero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  color: #fff;
+  background: linear-gradient(to bottom right, #18082e, #240c46, #120524);
+  border-bottom: 1px solid rgb(88 28 135 / 0.6);
+  box-shadow: 0 20px 50px -24px rgb(24 8 46 / 0.55);
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  padding-inline: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .lonaliza-legal-hero {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+    padding-inline: max(1.5rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 768px) {
+  .lonaliza-legal-hero {
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lonaliza-legal-hero {
+    padding-inline: max(2rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  }
+}
+
+.lonaliza-legal-title,
+.lonaliza-legal-hero h1 {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+  color: #fff;
+  text-align: start;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: none;
+  text-wrap: pretty;
+  padding-inline: 0.15em;
+}
+
+@media (min-width: 640px) {
+  .lonaliza-legal-title,
+  .lonaliza-legal-hero h1 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lonaliza-legal-title,
+  .lonaliza-legal-hero h1 {
+    font-size: 2.25rem;
+  }
+}
+
+.lonaliza-legal-lead,
+.lonaliza-legal-hero p,
+.lonaliza-legal-hero a,
+.lonaliza-legal-hero nav {
+  overflow: visible;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+html.lonaliza-app-shell .lonaliza-web-header-offset {
+  padding-top: 0 !important;
+}
+
+/* Booking kept pt-24 for the public site header. In the app shell that header
+   is gone and Flutter already inset the WebView — collapse the leftover void. */
+html.lonaliza-app-shell .lonaliza-booking-chrome {
+  padding-top: 0.5rem !important;
+}
+
+html.lonaliza-app-shell .lonaliza-booking-chrome .lonaliza-booking-inner {
+  padding-top: 0.75rem;
+  padding-bottom: 1.25rem;
+}
+
+html.lonaliza-app-shell .lonaliza-legal-hero {
+  padding-top: 0.75rem !important;
+  overflow: visible !important;
+}
+
+html.lonaliza-app-shell .lonaliza-legal-hero h1,
+html.lonaliza-app-shell .lonaliza-legal-title {
+  overflow: visible !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.5 !important;
+  text-wrap: pretty;
+}
+
+/* Homepage package cards stay ink-on-paper even if the WebView is in dark class. */
+html.lonaliza-app-shell .lonaliza-package-card,
+html.dark:not([data-admin-theme]) .lonaliza-package-card,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card {
+  background-color: #ffffff !important;
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-title,
+html.lonaliza-app-shell .lonaliza-package-card .sc-card-title,
+html.dark:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-title,
+html.dark:not([data-admin-theme]) .lonaliza-package-card .sc-card-title,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-title,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card .sc-card-title {
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-meta,
+html.dark:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-meta,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-meta {
+  color: #475569 !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-price,
+html.lonaliza-app-shell .lonaliza-package-card .sc-card-price,
+html.dark:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-price,
+html.dark:not([data-admin-theme]) .lonaliza-package-card .sc-card-price,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card .lonaliza-package-price,
+html[data-site-theme="dark"]:not([data-admin-theme]) .lonaliza-package-card .sc-card-price {
+  color: #2e1065 !important;
+}
+
+html.lonaliza-app-shell [data-surface-kind="tours"] h2,
+html.lonaliza-app-shell [data-surface-kind="transfers"] h2 {
+  overflow: visible;
+  padding-block: 0.45rem 0.25rem;
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-h-scroll,
+html.lonaliza-app-shell .lonaliza-suggest-carousel,
+html.lonaliza-app-shell .lonaliza-carousel-track {
+  touch-action: pan-x pan-y !important;
+}
+
+/* Search banners sit under the status bar in the app WebView (site header is gone). */
+.lonaliza-search-chrome {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+}
+
+html.lonaliza-app-shell .lonaliza-search-chrome {
+  padding-top: max(1.75rem, env(safe-area-inset-top, 0px)) !important;
+}
+
+/* ==========================================================================
+   Lonaliza Enterprise Native App Shell Mode Styles
+   ========================================================================== */
+html.lonaliza-app-shell,
+html.lonaliza-app-shell body,
+body.lonaliza-app-shell,
+.lonaliza-app-shell,
+.lonaliza-app-shell * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* clip (not hidden) so overflow-y stays visible and Arabic headings are not sliced */
+html.lonaliza-app-shell {
+  overflow-x: clip !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  background-color: #140522;
+}
+
+body.lonaliza-app-shell {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  min-height: 100% !important;
+  height: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Isolated shell loading canvas — prevents white flash before paint */
+html.lonaliza-app-shell.lonaliza-shell-loading,
+html.lonaliza-app-shell.lonaliza-shell-loading body {
+  background-color: #140522 !important;
+}
+
+/* Allow sub-containers to flow naturally with zero scrollbar interference and no gesture trapping */
+main.lonaliza-app-shell,
+.lonaliza-app-shell:not(html) {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
+}
+
+/* Smart Travel Advisor: fill the WebView above the native tab bar (no white void). */
+main.lonaliza-app-shell [data-ai-chat-shell] {
+  height: calc(100dvh - 6rem) !important;
+  max-height: calc(100dvh - 6rem) !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: #050d18 !important;
+}
+
+/* ==========================================================================
+   FINAL HIGH-SPECIFICITY OVERRIDES: SCOPED SOLELY TO ADMIN PANEL
+   Strictly prevents any admin rules from leaking into the public website!
+   ========================================================================== */
+
+/* 1. Header & Executive Dark Banners within Admin */
+:is(html[data-admin-theme], .admin-shell, .admin-main) :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"],
+  [data-dark-banner="true"],
+  .platform-readiness-banner,
+  [data-readiness-banner]
+) :is(h1, h2, h3, h4, strong, b, [class*="text-white"], [class*="font-black"]) {
+  color: #ffffff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* Paragraphs in admin dark banners */
+:is(html[data-admin-theme], .admin-shell, .admin-main) :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"],
+  [data-dark-banner="true"],
+  .platform-readiness-banner,
+  [data-readiness-banner]
+) p:not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]) {
+  color: #e9d5ff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* Sub-labels and descriptions in admin dark banners */
+:is(html[data-admin-theme], .admin-shell, .admin-main) :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"],
+  [data-dark-banner="true"],
+  .platform-readiness-banner,
+  [data-readiness-banner]
+) :is(span, div, label):is([class*="text-purple-200"], [class*="text-purple-100"], [class*="text-purple-300"], [class*="text-slate-300"], [class*="text-slate-200"]) {
+  color: #e9d5ff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(html[data-admin-theme], .admin-shell, .admin-main) :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"],
+  [data-dark-banner="true"],
+  .platform-readiness-banner,
+  [data-readiness-banner]
+) span:not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="bg-amber"]):not([class*="bg-emerald"]):not([class*="bg-rose"]):not(button *):not(a *) {
+  color: #f1f5f9 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* 2. Active Tab Styling in Mobile App Studio */
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--active,
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--active span,
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--active div,
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="true"],
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="true"] span,
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="true"] div {
+  color: #ffffff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--active svg,
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="true"] svg {
+  color: #fbbf24 !important;
+  stroke: #fbbf24 !important;
+}
+
+/* Inactive Tab in Mobile App Studio */
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--idle,
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--idle span,
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="false"],
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="false"] span {
+  color: #1e293b !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(html[data-admin-theme], .admin-shell) .admin-mobile-tab--idle svg,
+:is(html[data-admin-theme], .admin-shell) [data-mobile-tab-active="false"] svg {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+
+/* 3. Readiness Header Banner Contrast */
+:is(html[data-admin-theme], .admin-shell) .platform-readiness-banner,
+:is(html[data-admin-theme], .admin-shell) [data-readiness-banner] {
+  color: #ffffff !important;
+}
+:is(html[data-admin-theme], .admin-shell) :is(.platform-readiness-banner, [data-readiness-banner]) :is(button, a) span {
+  color: #ffffff !important;
+}
+:is(html[data-admin-theme], .admin-shell) :is(.platform-readiness-banner, [data-readiness-banner]) p {
+  color: #cbd5e1 !important;
+}
+

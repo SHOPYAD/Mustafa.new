@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState, type ReactNode } from "react";
 import {
   AlertCircle,
   Briefcase,
@@ -91,6 +91,7 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
   const { dir, locale } = useLocale();
   const { formatFlightPrice } = useFlightPrice();
   const [faresOpen, setFaresOpen] = useState(false);
+  const [badgesOpen, setBadgesOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [paidBag, setPaidBag] = useState<PaidBagOption | null>(null);
   const [bagOffered, setBagOffered] = useState(true);
@@ -243,13 +244,13 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
 
   return (
     <article
-      className="group relative z-0 overflow-visible rounded-3xl border border-purple-900/10 bg-white shadow-[0_10px_28px_rgba(46,16,101,0.05)] transition hover:z-40 hover:border-purple-600/40 hover:shadow-[0_16px_40px_rgba(46,16,101,0.12)]"
+      className="group relative z-0 overflow-visible rounded-3xl border border-[#2e1065]/12 bg-white shadow-[0_8px_24px_rgba(26,5,51,0.06)] transition hover:z-40 hover:border-[#2e1065]/35 hover:shadow-[0_14px_32px_rgba(26,5,51,0.1)]"
     >
-      <div className="flex flex-col gap-0 lg:flex-row">
-        <div className="flex min-w-0 flex-1 flex-col gap-4 p-4 md:p-5">
+      <div className="flex flex-col lg:flex-row lg:items-stretch">
+        <div className="flex min-w-0 flex-1 flex-col gap-2.5 overflow-visible p-3.5">
           {/* Top Carrier & Badges Bar */}
           <div className="flex flex-wrap items-start justify-between gap-3">
-            <div className="flex min-w-0 items-center gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
               {/* Stacked overlapping carrier logos if multi-carrier */}
               {isMultiCarrier ? (
                 <div className="flex items-center -space-x-3 rtl:space-x-reverse">
@@ -291,50 +292,109 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
               </div>
             </div>
 
-            {/* Badges without contradictions & Share Callout */}
-            <div className="flex flex-wrap items-center gap-1.5">
-              {item.tags.includes("cheapest") ? (
-                <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold text-amber-900 border border-amber-200/80">
-                  {copy.cheapest}
-                </span>
-              ) : null}
-              {item.tags.includes("fastest") ? (
-                <span className="rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold text-sky-700">
-                  {copy.fastest}
-                </span>
-              ) : null}
-              {item.tags.includes("best") ? (
-                <span className="rounded-full bg-purple-50 px-2.5 py-1 text-[10px] font-bold text-purple-950 border border-purple-200/60">
-                  {copy.bestValue}
-                </span>
-              ) : null}
-              {isStrictlyFreeRefund ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 px-2.5 py-1 text-[10px] font-bold text-purple-950 border border-purple-200">
-                  <ShieldCheck size={11} className="text-purple-700" />
-                  {copy.refundableFree}
-                </span>
-              ) : isRefundableWithFee ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-700 border border-slate-200">
-                  <ShieldCheck size={11} className="text-slate-500" />
-                  {locale === "ar" ? "إلغاء متاح برسوم" : copy.refundableFee}
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-400 border border-slate-200">
-                  {copy.nonRefundable}
-                </span>
-              )}
-
-              {/* High-profile Share & Earn reward pill */}
-              <button
-                type="button"
-                onClick={handleShareToCommunity}
-                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 px-3 py-1 text-[10px] font-black text-slate-950 shadow-2xs hover:shadow transition-all active:scale-95 cursor-pointer"
-                title={locale === "ar" ? "شارك هذه الرحلة في مجتمع لوناليزا واكسب نقاط ولاء" : "Share flight to community and earn points"}
-              >
-                <Sparkles size={11} className="text-slate-950 animate-pulse" />
-                <span>{locale === "ar" ? "شارك واربح 🎁" : "Share & Earn 🎁"}</span>
-              </button>
-            </div>
+            {/* Mobile: priority badges + overflow. Desktop: full badge row. */}
+            {(() => {
+              const badges: { key: string; node: ReactNode }[] = [];
+              if (item.tags.includes("cheapest")) {
+                badges.push({
+                  key: "cheapest",
+                  node: (
+                    <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold text-amber-900 border border-amber-200/80">
+                      {copy.cheapest}
+                    </span>
+                  ),
+                });
+              }
+              if (item.tags.includes("best")) {
+                badges.push({
+                  key: "best",
+                  node: (
+                    <span className="rounded-full bg-purple-50 px-2.5 py-1 text-[10px] font-bold text-purple-950 border border-purple-200/60">
+                      {copy.bestValue}
+                    </span>
+                  ),
+                });
+              }
+              if (item.tags.includes("fastest")) {
+                badges.push({
+                  key: "fastest",
+                  node: (
+                    <span className="rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold text-sky-700">
+                      {copy.fastest}
+                    </span>
+                  ),
+                });
+              }
+              if (isStrictlyFreeRefund) {
+                badges.push({
+                  key: "refund-free",
+                  node: (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 px-2.5 py-1 text-[10px] font-bold text-purple-950 border border-purple-200">
+                      <ShieldCheck size={11} className="text-purple-700" />
+                      {copy.refundableFree}
+                    </span>
+                  ),
+                });
+              } else if (isRefundableWithFee) {
+                badges.push({
+                  key: "refund-fee",
+                  node: (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-700 border border-slate-200">
+                      <ShieldCheck size={11} className="text-slate-500" />
+                      {locale === "ar" ? "إلغاء متاح برسوم" : copy.refundableFee}
+                    </span>
+                  ),
+                });
+              }
+              const mobileBadges = badgesOpen ? badges : badges.slice(0, 2);
+              const overflow = badges.length - 2;
+              return (
+                <>
+                  <button
+                    type="button"
+                    onClick={handleShareToCommunity}
+                    className="inline-flex lg:hidden h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-2xs active:scale-95"
+                    title={locale === "ar" ? "شارك واربح" : "Share & Earn"}
+                    aria-label={locale === "ar" ? "شارك واربح" : "Share & Earn"}
+                  >
+                    <Share2 size={14} />
+                  </button>
+                  <div className="hidden lg:flex flex-wrap items-center gap-1.5">
+                    {badges.map((badge) => (
+                      <span key={badge.key}>{badge.node}</span>
+                    ))}
+                    {!isStrictlyFreeRefund && !isRefundableWithFee ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-400 border border-slate-200">
+                        {copy.nonRefundable}
+                      </span>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={handleShareToCommunity}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 px-3 py-1 text-[10px] font-black text-slate-950 shadow-2xs hover:shadow transition-all active:scale-95 cursor-pointer"
+                      title={locale === "ar" ? "شارك هذه الرحلة في مجتمع لوناليزا واكسب نقاط ولاء" : "Share flight to community and earn points"}
+                    >
+                      <Sparkles size={11} className="text-slate-950 animate-pulse" />
+                      <span>{locale === "ar" ? "شارك واربح 🎁" : "Share & Earn 🎁"}</span>
+                    </button>
+                  </div>
+                  <div className="flex w-full lg:hidden flex-wrap items-center gap-1.5">
+                    {mobileBadges.map((badge) => (
+                      <span key={badge.key}>{badge.node}</span>
+                    ))}
+                    {!badgesOpen && overflow > 0 ? (
+                      <button
+                        type="button"
+                        onClick={() => setBadgesOpen(true)}
+                        className="inline-flex h-7 items-center rounded-full bg-slate-100 px-2 text-[10px] font-black text-slate-700"
+                      >
+                        +{overflow}
+                      </button>
+                    ) : null}
+                  </div>
+                </>
+              );
+            })()}
           </div>
 
           {/* Flight Legs Section with Stops Popover */}
@@ -356,7 +416,7 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
               const destTerm = terminalOf(leg.destination);
 
               return (
-                <div key={leg.id || leg.departure} className="rounded-2xl bg-slate-50/80 p-3 md:p-4">
+                <div key={leg.id || leg.departure} className="relative z-0 rounded-2xl bg-slate-50/80 p-2.5 md:p-3">
                   <div className="mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wide text-slate-400">
                     <span>{index === 0 ? copy.departure : copy.return}</span>
                     <span className="inline-flex items-center gap-1 text-slate-500">
@@ -365,26 +425,26 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
                     </span>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-x-2 gap-y-1 lg:flex lg:items-start lg:gap-3">
                     {/* Origin */}
-                    <div className="min-w-0 flex-1 text-start">
-                      <p className="text-2xl font-bold leading-none text-[#1e1b4b]">
+                    <div className="min-w-0 text-start lg:flex-1">
+                      <p className="text-xl font-black leading-none tabular-nums text-[#1e1b4b] lg:text-2xl lg:font-bold">
                         {formatClock(leg.departure)}
                       </p>
-                      <p className="mt-1.5 text-sm font-bold text-[#1e1b4b]">{originPlace.city}</p>
-                      <p className="truncate text-xs text-slate-600">{originPlace.airport}</p>
-                      <p className="mt-0.5 text-[11px] font-semibold text-slate-400">
+                      <p className="mt-1.5 truncate text-sm font-bold text-[#1e1b4b]">{originPlace.city}</p>
+                      <p className="hidden truncate text-xs text-slate-600 lg:block">{originPlace.airport}</p>
+                      <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-slate-400">
                         {originPlace.code}
                         {originTerm ? ` · ${copy.terminalLabel} ${originTerm}` : ""}
                       </p>
                     </div>
 
                     {/* Flight Path & Interactive Stops Popover on Hover */}
-                    <div className="relative min-w-[7.5rem] flex-1 pt-1 text-center sm:min-w-[9.5rem]">
+                    <div className="relative min-w-[4.75rem] px-0.5 pt-0.5 text-center lg:min-w-[9.5rem] lg:flex-1 lg:pt-1">
                       <div className="group/stop relative z-10 inline-block hover:z-50">
                         <button
                           type="button"
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 hover:text-purple-900 cursor-pointer transition-colors"
+                          className="inline-flex min-h-8 items-center gap-1 text-[11px] font-bold text-slate-700 hover:text-purple-900 cursor-pointer transition-colors"
                         >
                           <span>
                             {leg.stopCount === 0
@@ -395,7 +455,7 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
                         </button>
 
                         {/* Interactive Hover Popover */}
-                        <div className="pointer-events-none opacity-0 group-hover/stop:pointer-events-auto group-hover/stop:opacity-100 transition-all duration-200 absolute bottom-full mb-2.5 z-[200] w-72 sm:w-84 max-w-[85vw] rounded-2xl border border-purple-200 bg-white p-4 shadow-2xl shadow-purple-950/25 text-start -start-24 sm:-start-32">
+                        <div className="pointer-events-none opacity-0 group-hover/stop:pointer-events-auto group-hover/stop:opacity-100 transition-all duration-200 absolute bottom-full mb-2.5 z-[200] hidden w-72 max-w-[85vw] rounded-2xl border border-purple-200 bg-white p-4 text-start shadow-2xl shadow-purple-950/25 lg:block sm:w-84 -start-24 sm:-start-32">
                           <div className="absolute -bottom-1.5 start-28 sm:start-36 w-3 h-3 rotate-45 border-b border-e border-purple-200 bg-white" />
                           <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
                             <span className="text-xs font-black text-purple-950">
@@ -501,8 +561,8 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
                     </div>
 
                     {/* Destination */}
-                    <div className="min-w-0 flex-1 text-end">
-                      <p className="text-2xl font-bold leading-none text-[#1e1b4b]">
+                    <div className="min-w-0 text-end lg:flex-1">
+                      <p className="text-xl font-black leading-none tabular-nums text-[#1e1b4b] lg:text-2xl lg:font-bold">
                         {formatClock(leg.arrival)}
                         {leg.timeDeltaInDays > 0 ? (
                           <span className="ms-1 text-[10px] font-bold text-[#d97706]">
@@ -510,9 +570,9 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
                           </span>
                         ) : null}
                       </p>
-                      <p className="mt-1.5 text-sm font-bold text-[#1e1b4b]">{destPlace.city}</p>
-                      <p className="truncate text-xs text-slate-600">{destPlace.airport}</p>
-                      <p className="mt-0.5 text-[11px] font-semibold text-slate-400">
+                      <p className="mt-1.5 truncate text-sm font-bold text-[#1e1b4b]">{destPlace.city}</p>
+                      <p className="hidden truncate text-xs text-slate-600 lg:block">{destPlace.airport}</p>
+                      <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-slate-400">
                         {destPlace.code}
                         {destTerm ? ` · ${copy.terminalLabel} ${destTerm}` : ""}
                       </p>
@@ -547,46 +607,26 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
                 {baggageStateText(checkedState, locale, "checked")}
               </span>
             )}
-            {bagOffered && item.canAddPaidBaggage && sessionId && (item.fareFamilies[0]?.canAddPaidBaggage !== false) && checkedState.status === "none" ? (
+            {bagOffered && item.canAddPaidBaggage && sessionId && /^pk/i.test(item.id) ? (
               <button
                 type="button"
                 onClick={() => setBagOpen(true)}
                 className={cn(
-                  "inline-flex h-7 w-7 items-center justify-center rounded-full border transition cursor-pointer",
+                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-black transition cursor-pointer",
                   paidBag
-                    ? "border-emerald-400 bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
-                    : "border-amber-300 bg-amber-50 text-amber-950 hover:bg-amber-100"
+                    ? "bg-emerald-50 text-emerald-800 ring-1 ring-emerald-300 hover:bg-emerald-100"
+                    : "bg-amber-50 text-amber-950 ring-1 ring-amber-300 hover:bg-amber-100"
                 )}
                 title={paidBag ? copy.addBagSelected : copy.addBag}
                 aria-label={paidBag ? copy.addBagSelected : copy.addBag}
               >
-                <span className="relative inline-flex">
-                  <Luggage size={13} />
-                  {paidBag ? (
-                    <Check size={8} className="absolute -end-1 -top-1 stroke-[3] text-emerald-700" />
-                  ) : (
-                    <Plus size={8} className="absolute -end-1 -top-1 stroke-[3]" />
-                  )}
-                </span>
+                {paidBag ? <Check size={12} className="stroke-[3]" /> : <Plus size={12} className="stroke-[3]" />}
+                {paidBag ? `${copy.addBagSelected} · +${paidBag.weightKg} kg` : copy.addBag}
               </button>
             ) : null}
             {fareBrand ? (
               <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 text-purple-900 font-bold px-2.5 py-1 ring-1 ring-purple-200">
                 {copy.fareBrand}: {fareBrand}
-                {bagOffered && item.canAddPaidBaggage && sessionId && checkedState.status === "none" ? (
-                  <button
-                    type="button"
-                    onClick={() => setBagOpen(true)}
-                    className={cn(
-                      "ms-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white ring-1 cursor-pointer",
-                      paidBag ? "text-emerald-800 ring-emerald-200 hover:bg-emerald-50" : "text-amber-800 ring-amber-200 hover:bg-amber-50"
-                    )}
-                    title={paidBag ? copy.addBagSelected : copy.addBag}
-                    aria-label={paidBag ? copy.addBagSelected : copy.addBag}
-                  >
-                    {paidBag ? <Check size={10} className="stroke-[3]" /> : <Plus size={10} className="stroke-[3]" />}
-                  </button>
-                ) : null}
               </span>
             ) : null}
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 ring-1 ring-purple-100">
@@ -608,60 +648,126 @@ function FlightResultCardComponent({ item, query, copy, sessionId, onSelect, onO
           </div>
         </div>
 
-        <div className="flex shrink-0 flex-col justify-between gap-3 overflow-hidden border-t border-[#2e1065]/10 bg-gradient-to-b from-[#2e1065]/[0.09] via-amber-50/70 to-white p-4 lg:w-[248px] lg:border-t-0 lg:border-s">
-          <div className="overflow-hidden rounded-2xl border border-[#2e1065]/10 bg-white/85 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-            <p className="mb-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-[#2e1065]/70">
-              {copy.perPerson}
-            </p>
-            <PromoPriceBlock
-              amount={displayPrice}
-              currency={item.currency}
-              service="flights"
-              formatPrice={formatFlightPrice}
-              align="start"
-              className="w-full min-w-0"
-              subLabel={paidBag ? `${copy.addBagPlusFlight} · +${paidBag.weightKg} kg` : undefined}
-            />
-            <p className="mt-2 text-[10px] font-bold text-slate-500">
-              {locale === "ar" ? "شامل الضرائب والرسوم" : locale === "tr" ? "Vergiler dahil" : "All taxes included"}
-            </p>
-            <LoyaltyPointsRow
-              amount={item.price}
-              currency={item.currency}
-              service="flights"
-              className="mt-2 font-bold text-[#2e1065]"
-            />
-          </div>
+        {/* Price & Action Section: Compact Sleek Horizontal Bar on Mobile (< lg), Rich Column on Desktop (lg:) */}
+        <div className="relative isolate flex w-full shrink-0 flex-col overflow-hidden rounded-b-3xl lg:w-[220px] lg:rounded-b-none lg:rounded-e-3xl">
+          <div className="absolute inset-0 bg-[#140428]" />
+          <div className="absolute inset-0 bg-[linear-gradient(165deg,rgba(88,28,135,0.45)_0%,transparent_42%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(245,158,11,0.32),transparent_46%)]" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-l from-amber-300/90 via-amber-200/30 to-transparent" />
+          <div className="hidden lg:block absolute inset-y-4 start-0 w-px bg-gradient-to-b from-amber-300/55 via-violet-300/15 to-transparent" />
 
-          <div className="flex flex-col gap-2">
-            {showFareTiers ? (
+          {/* --- MOBILE COMPACT FOOTER (< lg) --- */}
+          <div className="relative flex lg:hidden items-end gap-3 p-3 text-white">
+            <div className="min-w-0 flex-1">
+              <p className="mb-1 text-[10px] font-bold text-amber-300/90">
+                {copy.perPerson}
+                <span className="ms-1 font-medium text-white/55">
+                  · {locale === "ar" ? "شامل الرسوم" : locale === "tr" ? "Vergiler dahil" : "Taxes in"}
+                </span>
+              </p>
+              <PromoPriceBlock
+                amount={displayPrice}
+                currency={item.currency}
+                service="flights"
+                formatPrice={formatFlightPrice}
+                align="start"
+                tone="dark"
+                size="md"
+                className="w-full min-w-0"
+              />
+              <LoyaltyPointsRow
+                amount={item.price}
+                currency={item.currency}
+                service="flights"
+                className="mt-1.5 text-[11px] font-bold text-amber-200"
+              />
+            </div>
+            <div className="flex w-[9.5rem] shrink-0 flex-col gap-1.5">
               <button
                 type="button"
-                onClick={() => setFaresOpen((open) => !open)}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-purple-200 bg-purple-50 hover:bg-purple-100 px-3 py-2 text-xs font-black text-purple-950 shadow-2xs transition-all active:scale-[0.98] cursor-pointer"
+                onClick={pickDefault}
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-gradient-to-l from-amber-400 via-amber-500 to-amber-400 px-3 text-sm font-black text-[#1a0533] shadow-md shadow-amber-500/20 transition hover:brightness-110 active:scale-[0.99]"
               >
-                {copy.fareTiers}
-                {faresOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                {copy.selectFlight}
               </button>
-            ) : null}
+              {showFareTiers ? (
+                <button
+                  type="button"
+                  onClick={() => setFaresOpen((open) => !open)}
+                  className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-lg border border-white/15 bg-white/10 px-2 text-[11px] font-bold text-amber-200"
+                >
+                  <span>{copy.fareTiers}</span>
+                  {faresOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => onOpenDetails?.(item)}
+                  className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-lg border border-white/15 bg-white/10 px-2 text-[11px] font-bold text-white/85"
+                >
+                  <span>{copy.showDetails}</span>
+                  <ChevronLeft size={12} className={cn("shrink-0", dir === "rtl" ? "" : "rotate-180")} />
+                </button>
+              )}
+            </div>
+          </div>
 
-            <button
-              type="button"
-              onClick={pickDefault}
-              className="w-full rounded-xl px-4 py-3 text-sm font-black text-white shadow-[0_12px_28px_-12px_rgba(46,16,101,0.85)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
-              style={{ background: "linear-gradient(135deg, #2e1065 0%, #6d28d9 55%, #b45309 160%)" }}
-            >
-              {copy.selectFlight}
-            </button>
+          {/* --- DESKTOP VIEW (lg:) --- */}
+          <div className="relative hidden lg:flex h-full flex-col justify-between gap-3 p-3.5 text-white">
+            <div>
+              <p className="mb-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-300/90">
+                {copy.perPerson}
+              </p>
+              <PromoPriceBlock
+                amount={displayPrice}
+                currency={item.currency}
+                service="flights"
+                formatPrice={formatFlightPrice}
+                align="start"
+                tone="dark"
+                className="w-full min-w-0"
+                subLabel={paidBag ? `${copy.addBagPlusFlight} · +${paidBag.weightKg} kg` : undefined}
+              />
+              <p className="mt-1.5 text-[10px] font-bold text-white/55">
+                {locale === "ar" ? "شامل الضرائب والرسوم" : locale === "tr" ? "Vergiler dahil" : "All taxes included"}
+              </p>
+              <LoyaltyPointsRow
+                amount={item.price}
+                currency={item.currency}
+                service="flights"
+                className="mt-2 font-bold text-amber-200"
+              />
+            </div>
 
-            <button
-              type="button"
-              onClick={() => onOpenDetails?.(item)}
-              className="w-full rounded-xl border border-slate-200 hover:border-purple-300 bg-white hover:bg-purple-50/50 active:scale-[0.98] py-2.5 px-3 text-xs font-black text-slate-800 hover:text-purple-950 shadow-2xs transition-all flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer"
-            >
-              <span className="whitespace-nowrap">{copy.showDetails}</span>
-              <ChevronLeft size={14} className={cn("transition-transform shrink-0", dir === "rtl" ? "" : "rotate-180")} />
-            </button>
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={pickDefault}
+                className="w-full rounded-xl bg-gradient-to-l from-amber-400 via-amber-500 to-amber-400 px-4 py-2.5 text-sm font-black text-[#1a0533] transition hover:brightness-110 active:scale-[0.98] cursor-pointer"
+              >
+                {copy.selectFlight}
+              </button>
+              <div className="flex gap-2">
+                {showFareTiers ? (
+                  <button
+                    type="button"
+                    onClick={() => setFaresOpen((open) => !open)}
+                    className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg border border-white/15 bg-white/8 px-2 py-1.5 text-[11px] font-bold text-amber-100 transition hover:bg-white/14 cursor-pointer"
+                  >
+                    {copy.fareTiers}
+                    {faresOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => onOpenDetails?.(item)}
+                  className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg border border-white/15 bg-white/8 px-2 py-1.5 text-[11px] font-bold text-white/85 transition hover:bg-white/14 cursor-pointer"
+                >
+                  <span className="whitespace-nowrap">{copy.showDetails}</span>
+                  <ChevronLeft size={12} className={cn("shrink-0", dir === "rtl" ? "" : "rotate-180")} />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

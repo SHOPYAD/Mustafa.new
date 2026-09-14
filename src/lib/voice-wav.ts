@@ -48,7 +48,7 @@ export async function mediaBlobToWav(blob: Blob): Promise<Blob> {
     const offline = new OfflineAudioContext(1, Math.ceil(duration * sampleRate), sampleRate);
     const mono = mixToMono(decoded);
     const srcBuf = offline.createBuffer(1, mono.length, decoded.sampleRate);
-    srcBuf.copyToChannel(mono, 0);
+    (srcBuf as any).copyToChannel(mono, 0);
     const src = offline.createBufferSource();
     src.buffer = srcBuf;
     src.connect(offline.destination);

@@ -73,10 +73,24 @@ function TitledWrap({
 }: SectionProps & { children: ReactNode; kind: ServiceSurfaceKind }) {
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
-      <ServiceSurface kind={kind} background={instance.styles.background || undefined} className="py-12 md:py-16">
+      <ServiceSurface
+        kind={kind}
+        background={instance.styles.background || undefined}
+        className={
+          kind === "visa"
+            ? "overflow-x-clip overflow-y-visible pt-12 pb-12 md:pt-16 md:pb-16"
+            : "py-12 md:py-16"
+        }
+      >
         {/* Agent B: public homepage content */}
-        <HomeContainer>
-          <h2 className={serviceTitleClass(kind)} style={serviceTitleStyle(kind)}>
+        <HomeContainer className={kind === "visa" ? "min-w-0 max-w-full overflow-x-clip" : undefined}>
+          <h2
+            className={serviceTitleClass(
+              kind,
+              kind === "visa" ? "pt-1 pb-1 leading-[1.4] [overflow:visible]" : undefined
+            )}
+            style={serviceTitleStyle(kind)}
+          >
             <InteractiveHeading>
               <EditableText instance={instance} field="title" editorMode={editorMode} as="span" />
             </InteractiveHeading>
@@ -491,7 +505,10 @@ export function TransfersSection({ instance, editorMode, selectedId }: SectionPr
             as="p"
             className={serviceEyebrowClass()}
           />
-          <h2 className={serviceTitleClass("transfers")} style={serviceTitleStyle("transfers")}>
+          <h2
+            className={serviceTitleClass("transfers", "pt-2")}
+            style={serviceTitleStyle("transfers")}
+          >
             <InteractiveHeading>
               <EditableText instance={instance} field="title" editorMode={editorMode} as="span" />
             </InteractiveHeading>

@@ -12,8 +12,6 @@ import {
   CheckCircle2,
   AlertTriangle,
   Mail,
-  Printer,
-  Sparkles,
   Database,
   UserX,
   Clock,
@@ -21,6 +19,8 @@ import {
   Scale,
 } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import LegalPageHero from "@/components/legal/LegalPageHero";
+import { displayLegalTitle } from "@/lib/legal/display-title";
 import type {
   LegalCompanyIdentity,
   LegalCustomClause,
@@ -110,56 +110,22 @@ export default function GdprPage() {
   }, [legalData]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 pb-20" dir={dir}>
-      {/* Hero Section - Seamlessly attached to navigation */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#18082e] via-[#240c46] to-[#120524] text-white border-b border-purple-900/60 shadow-xl pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-14 -mt-px">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(217,119,6,0.18),transparent_50%)] pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3.5 py-1.5 text-xs font-bold text-amber-300 backdrop-blur-md">
-              <ShieldCheck className="h-4 w-4 text-amber-400" />
-              <span>{t.badge}</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => typeof window !== "undefined" && window.print()}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/20 bg-white/10 text-xs font-semibold text-white hover:bg-white/20 transition-colors cursor-pointer"
-              >
-                <Printer className="h-3.5 w-3.5" />
-                <span>{isAr ? "طباعة الوثيقة" : isTr ? "Yazdır" : isFr ? "Imprimer" : "Print"}</span>
-              </button>
-            </div>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4">
-            {t.title}
-          </h1>
-          <p className="max-w-3xl text-sm sm:text-base text-purple-200/90 leading-relaxed mb-6">
-            {t.subtitle}
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 text-xs text-amber-300/90 font-medium">
-            <span className="inline-flex items-center gap-1.5 bg-purple-950/60 px-3 py-1 rounded-lg border border-purple-800">
-              <Sparkles className="h-3 w-3 text-amber-400" />
-              {t.lastUpdated}
-            </span>
-            <div className="flex items-center gap-3 text-slate-300">
-              <Link href="/terms" className="hover:text-amber-300 underline underline-offset-4">
-                {isAr ? "شروط الاستخدام" : isTr ? "Kullanıcı Sözleşmesi" : isFr ? "Conditions Générales" : "Terms of Service"}
-              </Link>
-              <span>•</span>
-              <Link href="/privacy" className="hover:text-amber-300 underline underline-offset-4">
-                {isAr ? "سياسة الخصوصية (KVKK)" : isTr ? "Gizlilik Politikası (KVKK)" : isFr ? "Politique de Confidentialité" : "Privacy Policy (KVKK)"}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="lonaliza-legal-page min-h-screen w-full min-w-0 max-w-full bg-slate-50 text-slate-800 pb-20" dir={dir}>
+      <LegalPageHero
+        title={t.title}
+        subtitle={t.subtitle}
+        badge={t.badge}
+        lastUpdated={t.lastUpdated}
+        printLabel={isAr ? "طباعة الوثيقة" : isTr ? "Yazdır" : isFr ? "Imprimer" : "Print"}
+        badgeIcon={ShieldCheck}
+        links={[
+          { href: "/terms", label: isAr ? "شروط الاستخدام" : isTr ? "Kullanıcı Sözleşmesi" : isFr ? "Conditions Générales" : "Terms of Service" },
+          { href: "/privacy", label: isAr ? "سياسة الخصوصية" : isTr ? "Gizlilik Politikası" : isFr ? "Politique de Confidentialité" : "Privacy Policy" },
+        ]}
+      />
 
       {/* Main Container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-8">
+      <div className="mx-auto mt-8 max-w-6xl space-y-8 px-4 sm:mt-10 sm:px-6 lg:px-8">
         {/* Interactive Self-Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Card 1: Data Export (Art. 20) */}
@@ -285,13 +251,16 @@ export default function GdprPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
             {activeClauses.map((clause, idx) => {
               const iconTheme = ICON_THEMES[idx % ICON_THEMES.length];
-              const title = isAr
-                ? clause.titleAr || clause.titleEn
-                : isTr
-                ? clause.titleTr || clause.titleEn
-                : isFr
-                ? clause.titleFr || clause.titleEn
-                : clause.titleEn || clause.titleAr;
+              const title = displayLegalTitle(
+                isAr
+                  ? clause.titleAr || clause.titleEn
+                  : isTr
+                    ? clause.titleTr || clause.titleEn
+                    : isFr
+                      ? clause.titleFr || clause.titleEn
+                      : clause.titleEn || clause.titleAr,
+                lang
+              );
 
               const content = isAr
                 ? clause.contentAr || clause.contentEn
@@ -305,7 +274,7 @@ export default function GdprPage() {
                 <div
                   key={clause.id}
                   id={clause.sectionKey || `gdpr-${clause.id}`}
-                  className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 space-y-2.5 transition-all hover:bg-slate-50 scroll-mt-28"
+                  className="scroll-mt-4 space-y-2.5 rounded-2xl border border-slate-200 bg-slate-50/70 p-5 transition-all hover:bg-slate-50 lg:scroll-mt-28"
                 >
                   <div className="flex items-center gap-2 text-[#18082e] font-bold flex-wrap">
                     {clause.badge && (

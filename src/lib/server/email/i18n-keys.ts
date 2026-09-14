@@ -102,6 +102,12 @@ export const EMAIL_I18N_SEED: Record<string, EmailI18nLocales> = {
   "email.templates.common.label.amount": triple("المبلغ", "Amount", "Tutar"),
   "email.templates.common.label.requestId": triple("رقم الطلب", "Request no.", "Talep no."),
   "email.templates.common.label.paid": triple("المبلغ المدفوع", "Paid", "Ödenen"),
+  "email.templates.common.label.baggage": triple("الأمتعة", "Baggage", "Bagaj"),
+  "email.templates.common.label.address": triple("العنوان", "Address", "Adres"),
+  "email.templates.common.label.breakfast": triple("الإفطار / الإعاشة", "Board / breakfast", "Pansiyon"),
+  "email.templates.common.label.vehicle": triple("المركبة", "Vehicle", "Araç"),
+  "email.templates.common.label.pickup": triple("الاستلام", "Pickup", "Teslim alma"),
+  "email.templates.common.label.driverNotes": triple("ملاحظات السائق", "Driver notes", "Sürücü notları"),
   "email.templates.common.label.paymentRef": triple("مرجع الدفع", "Payment ref.", "Ödeme ref."),
   "email.templates.common.mailCheck.subject": triple(
     "تحقق من إعداد البريد",
@@ -189,24 +195,24 @@ export const EMAIL_I18N_SEED: Record<string, EmailI18nLocales> = {
     "{{name}} — otel hatırlatması {{hotel_name}} — {{cta_url}}"
   ),
   "email.templates.booking-success.subject": triple(
-    "تم استلام حجزك {{booking_id}}",
-    "Booking received {{booking_id}}",
-    "Rezervasyon alındı {{booking_id}}"
+    "تم تأكيد الدفع والحجز {{booking_id}}",
+    "Payment confirmed {{booking_id}}",
+    "Ödeme onaylandı {{booking_id}}"
   ),
   "email.templates.booking-success.heading": triple(
-    "تم تسجيل حجزك بنجاح",
-    "Your booking is confirmed on our side",
-    "Rezervasyonunuz tarafımızca alındı"
+    "تم تأكيد حجزك",
+    "Your booking is confirmed",
+    "Rezervasyonunuz onaylandı"
   ),
   "email.templates.booking-success.lead": triple(
-    "شكراً {{name}}. فريق لوناليزا راجع طلبك وسيتابع معك عند الحاجة.",
-    "Thank you {{name}}. The Alrayyan team has your request and will follow up if needed.",
-    "Teşekkürler {{name}}. Alrayyan ekibi talebinizi aldı ve gerekirse sizinle iletişime geçer."
+    "شكراً {{name}}. استلمنا الدفع بنجاح وسيتابع فريق لوناليزا إصدار المستندات.",
+    "Thank you {{name}}. Payment is confirmed and the Alrayyan team will issue your documents.",
+    "Teşekkürler {{name}}. Ödemeniz alındı, Alrayyan ekibi belgelerinizi hazırlar."
   ),
   "email.templates.booking-success.text": triple(
-    "حجز ناجح {{booking_id}} — {{service_name}} — {{amount}} {{currency}}",
-    "Booking received {{booking_id}} — {{service_name}} — {{amount}} {{currency}}",
-    "Rezervasyon alındı {{booking_id}} — {{service_name}} — {{amount}} {{currency}}"
+    "حجز مؤكد {{booking_id}} — {{service_name}} — {{amount}} {{currency}}",
+    "Booking confirmed {{booking_id}} — {{service_name}} — {{amount}} {{currency}}",
+    "Rezervasyon onaylandı {{booking_id}} — {{service_name}} — {{amount}} {{currency}}"
   ),
   "email.templates.booking-invoice.subject": triple(
     "فاتورة الحجز {{booking_id}}",
@@ -259,16 +265,40 @@ const SERVICE_REMINDER_COPY = {
 };
 
 const SERVICE_SUCCESS_COPY = {
-  heading: triple("تم استلام طلبك", "We received your request", "Talebiniz alındı"),
+  heading: triple("تم تأكيد حجزك", "Your booking is confirmed", "Rezervasyonunuz onaylandı"),
   lead: triple(
-    "شكراً {{name}}. فريق لوناليزا راجع {{service_name}} وسيتواصل عند الحاجة.",
-    "Thank you {{name}}. The Alrayyan team has {{service_name}} and will follow up if needed.",
-    "Teşekkürler {{name}}. Alrayyan ekibi {{service_name}} talebinizi aldı ve gerekirse sizinle iletişime geçer."
+    "شكراً {{name}}. استلمنا الدفع لـ {{service_name}} ومرفق المستندات عند جاهزيتها.",
+    "Thank you {{name}}. Payment for {{service_name}} is confirmed and documents are attached when ready.",
+    "Teşekkürler {{name}}. {{service_name}} ödemeniz onaylandı, belgeler hazır olduğunda eklenir."
   ),
   text: triple(
-    "تم الاستلام {{booking_id}} — {{service_name}}",
-    "Received {{booking_id}} — {{service_name}}",
-    "Alındı {{booking_id}} — {{service_name}}"
+    "حجز مؤكد {{booking_id}} — {{service_name}}",
+    "Confirmed {{booking_id}} — {{service_name}}",
+    "Onaylandı {{booking_id}} — {{service_name}}"
+  ),
+};
+
+const SERVICE_SUCCESS_HEADINGS: Partial<
+  Record<Exclude<EmailTemplateKind, "custom">, EmailI18nLocales>
+> = {
+  hotel_success: triple("تم تأكيد حجز الفندق", "Hotel booking confirmed", "Otel rezervasyonu onaylandı"),
+  flight_success: triple("تم تأكيد حجز الطيران", "Flight booking confirmed", "Uçuş rezervasyonu onaylandı"),
+  transfer_success: triple("تم تأكيد الترانسفير", "Transfer confirmed", "Transfer onaylandı"),
+  car_success: triple("تم تأكيد تأجير السيارة", "Car rental confirmed", "Araç kiralama onaylandı"),
+};
+
+const SERVICE_SUCCESS_LEADS: Partial<
+  Record<Exclude<EmailTemplateKind, "custom">, EmailI18nLocales>
+> = {
+  flight_success: triple(
+    "شكراً {{name}}. الدفع مؤكد. أرفقنا تذكرة إلكترونية عند صدور رقم التذكرة ورمز PNR. يُرجى الوصول للمطار قبل الرحلة الدولية بثلاث ساعات مع جواز السفر.",
+    "Thank you {{name}}. Payment is confirmed. Your e-ticket is attached when the ticket number and PNR are issued. Please arrive 3 hours before an international flight with your passport.",
+    "Teşekkürler {{name}}. Ödeme onaylandı. Bilet numarası ve PNR hazır olduğunda e-bilet eklenir. Uluslararası uçuşlarda pasaportunuzla 3 saat önce havalimanında olun."
+  ),
+  hotel_success: triple(
+    "شكراً {{name}}. الدفع مؤكد. أرفقنا قسيمة الفندق وفاتورة الضريبة. أبرزوا القسيمة عند تسجيل الوصول.",
+    "Thank you {{name}}. Payment is confirmed. The hotel voucher and tax invoice are attached. Present the voucher at check-in.",
+    "Teşekkürler {{name}}. Ödeme onaylandı. Otel voucher’ı ve vergi faturası ektedir. Girişte voucher’ı gösterin."
   ),
 };
 
@@ -282,8 +312,8 @@ const KIND_LABELS: Record<Exclude<EmailTemplateKind, "custom">, EmailI18nLocales
   car_reminder: triple("تذكير تأجير سيارة", "Car rental reminder", "Araç kiralama hatırlatması"),
   visa_reminder: triple("تذكير طلب تأشيرة", "Visa reminder", "Vize hatırlatması"),
   booking_success: triple("إشعار حجز ناجح", "Booking success", "Rezervasyon onayı"),
-  hotel_success: triple("حجز فندق ناجح", "Hotel booking success", "Otel rezervasyonu alındı"),
-  flight_success: triple("حجز طيران ناجح", "Flight booking success", "Uçuş rezervasyonu alındı"),
+  hotel_success: triple("حجز فندق مؤكد", "Hotel booking confirmed", "Otel rezervasyonu onaylandı"),
+  flight_success: triple("حجز طيران مؤكد", "Flight booking confirmed", "Uçuş rezervasyonu onaylandı"),
   package_success: triple("حجز باقة ناجح", "Package booking success", "Paket rezervasyonu alındı"),
   tour_success: triple("حجز جولة ناجح", "Tour booking success", "Tur rezervasyonu alındı"),
   transfer_success: triple("حجز ترانسفير ناجح", "Transfer booking success", "Transfer rezervasyonu alındı"),
@@ -313,8 +343,10 @@ for (const kind of SERVICE_SUCCESS_KINDS) {
     `${title.en} {{booking_id}}`,
     `${title.tr} {{booking_id}}`
   );
-  EMAIL_I18N_SEED[`email.templates.${slug}.heading`] = SERVICE_SUCCESS_COPY.heading;
-  EMAIL_I18N_SEED[`email.templates.${slug}.lead`] = SERVICE_SUCCESS_COPY.lead;
+  EMAIL_I18N_SEED[`email.templates.${slug}.heading`] =
+    SERVICE_SUCCESS_HEADINGS[kind] || SERVICE_SUCCESS_COPY.heading;
+  EMAIL_I18N_SEED[`email.templates.${slug}.lead`] =
+    SERVICE_SUCCESS_LEADS[kind] || SERVICE_SUCCESS_COPY.lead;
   EMAIL_I18N_SEED[`email.templates.${slug}.text`] = SERVICE_SUCCESS_COPY.text;
 }
 

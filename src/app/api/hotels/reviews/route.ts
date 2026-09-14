@@ -13,6 +13,7 @@ export async function GET(req: NextRequest) {
   const lat = Number(searchParams.get("lat") || "");
   const lng = Number(searchParams.get("lng") || "");
   const lang = searchParams.get("lang")?.trim() || "";
+  const refresh = searchParams.get("refresh") === "true" || searchParams.get("force") === "true";
 
   if (!hotelId && !masterId && !name && !bookingHotelId) {
     return NextResponse.json({ ok: false, reviews: [], error: "Missing hotel id" }, { status: 400 });
@@ -27,6 +28,7 @@ export async function GET(req: NextRequest) {
     lat: Number.isFinite(lat) ? lat : undefined,
     lng: Number.isFinite(lng) ? lng : undefined,
     lang,
+    forceRefresh: refresh,
   });
   return NextResponse.json({
     ok: true,

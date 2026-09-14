@@ -21,6 +21,7 @@ import { createAdminNotification } from "@/lib/admin-notifications/server";
 import { cacheDel, cacheLock } from "./cache";
 import { getHotelQuote, updateHotelQuote, type HotelQuote } from "./quote-service";
 import { supplyLogger } from "./telemetry";
+import { formatEmailDate } from "@/lib/server/email/booking-message";
 
 export type FulfilmentStatus =
   | "awaiting_payment"
@@ -326,7 +327,7 @@ export async function sendVoucher(bookingId: string): Promise<boolean> {
     <table style="border-collapse:collapse;margin:12px 0">
       <tr><td style="padding:4px 12px;color:#64748b">${ar ? "الفندق" : "Hotel"}</td><td style="padding:4px 12px;font-weight:700">${booking.hotel_name}</td></tr>
       <tr><td style="padding:4px 12px;color:#64748b">${ar ? "الغرفة" : "Room"}</td><td style="padding:4px 12px">${booking.room_name || "—"}</td></tr>
-      <tr><td style="padding:4px 12px;color:#64748b">${ar ? "الوصول / المغادرة" : "Check-in / out"}</td><td style="padding:4px 12px">${booking.check_in} → ${booking.check_out}</td></tr>
+      <tr><td style="padding:4px 12px;color:#64748b">${ar ? "الوصول / المغادرة" : "Check-in / out"}</td><td style="padding:4px 12px">${formatEmailDate(booking.check_in, locale)} → ${formatEmailDate(booking.check_out, locale)}</td></tr>
       <tr><td style="padding:4px 12px;color:#64748b">${ar ? "رقم التأكيد" : "Confirmation"}</td><td style="padding:4px 12px;font-family:monospace;font-weight:700">${ref || "—"}</td></tr>
     </table>
     <p style="color:#64748b;font-size:13px">${brandName}</p>

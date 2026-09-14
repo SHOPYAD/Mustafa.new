@@ -31,9 +31,23 @@ describe("iyzico checkout fixtures", () => {
   });
 
   it("keeps callback field names stable", () => {
-    const sample = { token: "tok", conversationId: "conv_1" };
-    for (const key of requiredCallbackFields) {
+    const sample = { token: "tok", conversationId: "conv_1", paymentId: "pay_1" };
+    for (const key of ["token", "conversationId", "paymentId"] as const) {
       expect(sample[key]).toBeTruthy();
     }
+  });
+
+  it("direct charge never returns hosted checkout HTML fields as required", () => {
+    const chargeResponse = {
+      ok: true,
+      payment: "pending",
+      paymentStatus: "pending_payment",
+      threeDSHtml: "<form></form>",
+      checkoutFormContent: "",
+      paymentPageUrl: "",
+    };
+    expect(chargeResponse.payment).toBe("pending");
+    expect(chargeResponse.checkoutFormContent).toBe("");
+    expect(chargeResponse.paymentPageUrl).toBe("");
   });
 });

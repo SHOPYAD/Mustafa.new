@@ -3,8 +3,8 @@ import { searchLiveWeb, getTurkishMarketIntelligence } from "@/lib/server/mcp/se
 import { getTourismWeather } from "@/lib/server/mcp/servers/weather";
 import { getTourismDemandAnalytics } from "@/lib/server/mcp/servers/analytics";
 import { getAllWhatsAppSlotsStatus } from "@/lib/server/whatsapp-qr/multi-service";
-import { triggerSwarmDeliberation } from "@/lib/automation/agent-swarm-orchestrator";
 import { saveAdminDirective, getAdminDirectives } from "@/lib/automation/agent-collab-store";
+import { runGroundedSwarmCycle } from "@/lib/swarm/grounded-runtime";
 import { listBlogPosts, upsertBlogPost } from "@/lib/server/blog-store";
 import { createAdminPocketBase } from "@/lib/pocketbase/admin";
 import { slugify } from "@/lib/utils";
@@ -1525,11 +1525,11 @@ ${topPkgsList}
         status: "executing",
       });
 
-      await triggerSwarmDeliberation({
-        triggerSource: "admin",
-        topic: `نشر مقال جديد في المدونة (${newPost.titleAr}) ومواءمة التسويق والمبيعات`,
-        contextText: directiveText,
-        impactLevel: "high",
+      await runGroundedSwarmCycle({
+        directiveText,
+        source: "copilot",
+        targetAgentId: "all",
+        notifyTelegram: true,
       }).catch((e) => console.error("Swarm trigger failed:", e));
 
       steps.push({
@@ -1750,11 +1750,11 @@ ${topPkgsList}
         status: "executing",
       });
 
-      await triggerSwarmDeliberation({
-        triggerSource: "admin",
-        topic: "تحديث الأنشطة السياحية الأسبوعية المتوافقة مع الطقس اللحظي",
-        contextText: directiveText,
-        impactLevel: "medium",
+      await runGroundedSwarmCycle({
+        directiveText,
+        source: "copilot",
+        targetAgentId: "site_advisor",
+        notifyTelegram: false,
       }).catch((e) => console.error("Swarm weather trigger failed:", e));
 
       steps.push({
@@ -1927,11 +1927,11 @@ ${analyticsRes.summaryAr}
           status: "executing",
         });
 
-        await triggerSwarmDeliberation({
-          triggerSource: "admin",
-          topic: "خطة الترويج المباشر لبرنامج تركيا الأسبوعي 2027 عبر واتساب",
-          contextText: campaignDirective,
-          impactLevel: "high",
+        await runGroundedSwarmCycle({
+          directiveText: campaignDirective,
+          source: "copilot",
+          targetAgentId: "sales",
+          notifyTelegram: true,
         }).catch((e) => console.error("Swarm trigger failed:", e));
 
         steps.push({
@@ -2264,20 +2264,11 @@ ${topTrends.map((t) => `  * ${t.title} (الوجهة: ${t.destination})`).join("
         details: `نص التوجيه الصادر: "${userMessage.slice(0, 80)}..."`,
       });
 
-      // Actually save directive and trigger deliberation!
-      saveAdminDirective({
-        id: `dir_${Date.now()}`,
-        text: userMessage,
-        targetAgent: "all",
-        createdAt: new Date().toISOString(),
-        status: "executing",
-      });
-
-      const swarmRes = await triggerSwarmDeliberation({
-        triggerSource: "admin",
-        topic: "توجيه إداري تنفيذي مباشر من المدير العام",
-        contextText: userMessage,
-        impactLevel: "high",
+      const swarmRes = await runGroundedSwarmCycle({
+        directiveText: userMessage,
+        source: "copilot",
+        targetAgentId: "all",
+        notifyTelegram: true,
       });
 
       steps.push({
@@ -2304,23 +2295,28 @@ ${topTrends.map((t) => `  * ${t.title} (الوجهة: ${t.destination})`).join("
         details: "تأكيد فوري لسلامة المسارات وربطها مع الكتالوج المركزي بنسبة 100%.",
       });
 
-      const deliberationQuotes = swarmRes.messagesGenerated
-        .slice(1, 4)
-        .map((m) => `• [${m.fromAgent.toUpperCase()}]: ${m.contentAr}`)
+      const deliberationQuotes = swarmRes.messages
+        .slice(1, 6)
+        .map((m) => `• [${m.fromAgent}]: ${m.contentAr}`)
         .join("\n");
+      const factsLine = swarmRes.factsUsed
+        .filter((f) => f.available)
+        .slice(0, 10)
+        .map((f) => `${f.labelAr}=${String(f.value)}`)
+        .join(" · ");
 
       return {
         hasAction: true,
         actionType: "swarm_directive",
-        agentName: "منسق خلية الوكلاء (Swarm Orchestrator)",
-        stageName: "تم بث التوجيه لغرفة العمليات وبدء نقاش الوكلاء الـ 6",
-        actionSummaryAr: "تم توزيع الأمر الإداري فورياً في غرفة العمليات وتسجيل ردود الوكلاء ومقترحاتهم",
+        agentName: "منسق خلية الوكلاء (Grounded Swarm Runtime)",
+        stageName: "تم تشغيل دورة خلية حقيقية بأدوات النظام",
+        actionSummaryAr: swarmRes.reportAr,
         contextForAi: `
-[تم إرسال التوجيه لخلية الوكلاء في غرفة العمليات War Room وحفظه في النظام فعلياً]:
-ردود الوكلاء اللحظية المسجلة:
-${deliberationQuotes || "الوكلاء يعملون على تنفيذ الأمر الإداري الآن في غرفة العمليات."}
-${swarmRes.proposalCreated ? `مقترح معلق: ${swarmRes.proposalCreated.titleAr} (تكلفة: $${swarmRes.proposalCreated.costUSD || 0})` : ""}
-يرجى إبلاغ سعادة المدير العام بأن أمره مسجل الآن في غرفة العمليات وجاري تنفيذه فورياً.
+[دورة خلية حقيقية — استخدم هذه الحقائق فقط ولا تخترع أرقاماً]:
+${factsLine}
+ردود الوكلاء:
+${deliberationQuotes || swarmRes.reportAr}
+${swarmRes.proposal ? `مقترح معلق يحتاج اعتماداً: ${swarmRes.proposal.titleAr} (${swarmRes.proposal.id})` : "لا يوجد مقترح يحتاج موافقة."}
 `.trim(),
         steps,
         customActions: [

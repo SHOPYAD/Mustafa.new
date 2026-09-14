@@ -24,13 +24,21 @@ import {
   ChevronUp,
   Clock,
   ImageOff,
+  Languages,
   MapPin,
   MessageSquareText,
   Mail,
   Phone,
+  Search,
+  ShieldCheck,
+  Star,
+  Sparkles,
   Users,
+  Utensils,
+  Wifi,
   X,
 } from "lucide-react";
+import ReviewsAgentSkeleton from "@/components/hotels/ReviewsAgentSkeleton";
 import HotelFeatureIcon from "@/components/hotels/HotelFeatureIcon";
 import HotelStars from "@/components/hotels/HotelStars";
 import SupplierRoomCard from "@/components/hotels/SupplierRoomCard";
@@ -255,8 +263,46 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
   const [descOpen, setDescOpen] = useState(false);
   const [allFacilities, setAllFacilities] = useState(false);
   const [guestReviews, setGuestReviews] = useState<TravelAdvisorReview[]>([]);
+  const [visibleReviewsCount, setVisibleReviewsCount] = useState(10);
+  const [showOriginal, setShowOriginal] = useState<Record<string, boolean>>({});
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [guestScore, setGuestScore] = useState<{ source: string; score: number; scale: number; count?: number } | null>(null);
+
+  const toggleOriginal = (id: string) => {
+    setShowOriginal((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const handleShowMoreReviews = () => {
+    const nextCount = visibleReviewsCount + 10;
+    setVisibleReviewsCount(nextCount);
+    // If approaching or exceeding currently loaded array, proactively poll server for background-harvested reviews
+    if (nextCount >= guestReviews.length && hotel?.name && guestReviews.length < 250) {
+      const qs = new URLSearchParams({
+        hotelId: hotel.id,
+        name: hotel.name,
+        city: hotel.city || "",
+        lang: locale,
+      });
+      if (hotel.masterId) qs.set("masterId", hotel.masterId);
+      void fetch(`/api/hotels/reviews?${qs}`, { cache: "no-store" })
+        .then((r) => r.json())
+        .then((json) => {
+          if (Array.isArray(json?.reviews) && json.reviews.length > guestReviews.length) {
+            setGuestReviews(json.reviews as TravelAdvisorReview[]);
+            if (json.reviewScore) {
+              setGuestScore({
+                source: String(json.reviewScore.source || "tripadvisor"),
+                score: Number(json.reviewScore.score),
+                scale: Number(json.reviewScore.scale) || 10,
+                count: Number(json.reviewScore.count) || undefined,
+              });
+            }
+          }
+        })
+        .catch(() => {});
+    }
+  };
+
   const sectionRefs = useRef<Record<Tab, HTMLElement | null>>({ overview: null, rooms: null, reviews: null, facilities: null, location: null, policies: null });
 
   const nights = nightsBetween(checkIn, checkOut);
@@ -340,6 +386,37 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
     };
   }, [hotel?.id, hotel?.masterId, hotel?.name, hotel?.city, hotel?.lat, hotel?.lng, hotel?.bookingHotelId, locale]);
 
+  // Progressive background synchronization: silently checks for newly harvested reviews until target 250 is reached
+  useEffect(() => {
+    if (!hotel?.name || guestReviews.length === 0 || guestReviews.length >= 250) return;
+    const interval = setInterval(() => {
+      const qs = new URLSearchParams({
+        hotelId: hotel.id,
+        name: hotel.name,
+        city: hotel.city || "",
+        lang: locale,
+      });
+      if (hotel.masterId) qs.set("masterId", hotel.masterId);
+      void fetch(`/api/hotels/reviews?${qs}`, { cache: "no-store" })
+        .then((r) => r.json())
+        .then((json) => {
+          if (Array.isArray(json?.reviews) && json.reviews.length > guestReviews.length) {
+            setGuestReviews(json.reviews as TravelAdvisorReview[]);
+            if (json.reviewScore) {
+              setGuestScore({
+                source: String(json.reviewScore.source || "tripadvisor"),
+                score: Number(json.reviewScore.score),
+                scale: Number(json.reviewScore.scale) || 10,
+                count: Number(json.reviewScore.count) || undefined,
+              });
+            }
+          }
+        })
+        .catch(() => {});
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [hotel?.id, hotel?.masterId, hotel?.name, hotel?.city, locale, guestReviews.length]);
+
   const allImages = useMemo(() => (hotel?.images?.length ? hotel.images : hotel?.image ? [hotel.image] : []), [hotel]);
   const categories = useMemo(() => {
     const cats = (hotel?.imageCategories || []).filter((x) => x.urls.length);
@@ -379,8 +456,7 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
     ro.observe(header);
     return () => ro.disconnect();
   }, []);
-  const TABS_H = 52;
-  const sectionOffset = headerH + TABS_H + 8;
+  const sectionOffset = headerH + 16;
 
   const scrollTo = useCallback((key: Tab) => {
     setTab(key);
@@ -489,11 +565,38 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
     );
   }
 
+  const FACILITY_KEYWORD_RE = /كراسي متحركة|موقف السيارات|مواقف|استقبال|تغطية الهاتف|إنترنت|واي فاي|تأجير السيارات|خدمة الغرف|غسيل الملابس|الخدمة الطبية|مجالسة الأطفال|طاقم عمل|أمن 24|مسبح|صالة ألعاب|حمام سباحة|سبا|ساونا|مفتاح الغرف|مصعد|تكييف|شرفة|wheelchair|car park|parking|reception|wi-?fi|internet|car hire|shuttle|room service|laundry|medical|babysitt|security|luggage|multilingual|elevator|air condition/i;
+
+  const extractedFacilitiesFromPolicies = (hotel.policies || []).filter((p) => FACILITY_KEYWORD_RE.test(p));
+  const truePolicies = (hotel.policies || []).filter(
+    (p) => !/^(تسجيل الوصول|تسجيل المغادرة|Check-in|Check-out)/i.test(p) && !FACILITY_KEYWORD_RE.test(p)
+  );
+
+  const baseFacilityGroups = hotel.facilityGroups?.length
+    ? hotel.facilityGroups
+    : hotel.amenities?.length
+      ? [{ title: locale === "ar" ? "مرافق وخدمات الفندق" : locale === "tr" ? "Otel Olanakları ve Hizmetleri" : "Hotel Facilities & Services", items: hotel.amenities }]
+      : [];
+
+  const facilityGroups = (() => {
+    if (!extractedFacilitiesFromPolicies.length) return baseFacilityGroups;
+    const existingItems = new Set(baseFacilityGroups.flatMap((g) => g.items));
+    const newItems = extractedFacilitiesFromPolicies.filter((item) => !existingItems.has(item));
+    if (!newItems.length) return baseFacilityGroups;
+    const extraGroupTitle = locale === "ar" ? "مرافق وخدمات الفندق" : locale === "tr" ? "Otel Olanakları ve Hizmetleri" : "Hotel Facilities & Services";
+    const existingExtraGroup = baseFacilityGroups.find((g) => g.title === extraGroupTitle);
+    if (existingExtraGroup) {
+      existingExtraGroup.items = Array.from(new Set([...existingExtraGroup.items, ...newItems]));
+      return [...baseFacilityGroups];
+    }
+    return [{ title: extraGroupTitle, items: newItems }, ...baseFacilityGroups];
+  })();
+
   const available = hotel.available || {
     description: Boolean(hotel.description),
-    facilities: Boolean(hotel.amenities?.length),
+    facilities: Boolean(facilityGroups.length || hotel.amenities?.length),
     pois: Boolean(hotel.pois?.length),
-    policies: Boolean(hotel.policies?.length || hotel.checkInTime || hotel.checkOutTime || hotel.phone || hotel.email || hotel.address),
+    policies: Boolean(truePolicies.length || hotel.checkInTime || hotel.checkOutTime || hotel.phone || hotel.email || hotel.address),
     reviews: Boolean(hotel.reviewScore || guestScore || guestReviews.length),
     map: Boolean(hotel.lat && hotel.lng),
   };
@@ -512,7 +615,6 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
   const description = hotel.description || "";
   const descriptionLong = description.length > DESCRIPTION_CLAMP;
   const descriptionShown = descOpen || !descriptionLong ? description : `${description.slice(0, DESCRIPTION_CLAMP).trimEnd()}…`;
-  const facilityGroups = hotel.facilityGroups?.length ? hotel.facilityGroups : hotel.amenities?.length ? [{ title: "", items: hotel.amenities }] : [];
   const facilityTotal = facilityGroups.reduce((n, g) => n + g.items.length, 0);
   const facilitiesCollapsed = !allFacilities && facilityTotal > 24;
   const distance = hotel.distanceFromCenterM != null ? distanceLabel(hotel.distanceFromCenterM, locale) : "";
@@ -631,8 +733,8 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
         )}
       </div>
 
-      {/* Sticky tabs */}
-      <div className="sticky z-30 bg-white/95 backdrop-blur border-b border-slate-200 mt-4" style={{ top: headerH }}>
+      {/* Section tabs — fixed in document flow, does not float or cover rooms */}
+      <div className="relative z-10 bg-white border-b border-slate-200 mt-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
           <nav className="flex gap-1 overflow-x-auto no-scrollbar">
             {tabs
@@ -821,34 +923,89 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
               <div className="rounded-2xl bg-slate-50 border border-slate-100 p-5 text-sm text-slate-500 text-center">{k.reviewsEmptyScore}</div>
             )}
             {reviewsLoading ? (
-              <div className="rounded-2xl border border-slate-100 p-6 text-sm text-slate-500">{locale === "ar" ? "جاري جلب التقييمات…" : "Loading reviews…"}</div>
+              <ReviewsAgentSkeleton locale={locale} hotelName={hotel?.name} />
             ) : guestReviews.length ? (
-              <ul className="max-h-[520px] space-y-3 overflow-y-auto pe-1 [scrollbar-width:thin]">
-                {guestReviews.map((rv) => (
-                  <li key={`${rv.source || "rv"}-${rv.id}`} className="rounded-xl border border-slate-100 bg-slate-50/70 p-4">
-                    <div className="flex flex-wrap items-center gap-2 text-sm">
-                      <span className="font-extrabold text-slate-900">{rv.author}</span>
-                      {rv.rating > 0 ? (
-                        <span className="rounded-md bg-[#2e1065] px-1.5 py-0.5 text-[11px] font-black text-white tabular-nums">
-                          {scoreOutOf10(rv.rating, rv.rating <= 5 ? 5 : 10).toFixed(1)}
-                        </span>
-                      ) : null}
-                      {rv.source ? (
-                        <span className="text-[11px] text-slate-400">{reviewSourceLabel(rv.source)}</span>
-                      ) : null}
-                      {rv.date ? <span className="text-xs text-slate-400">{rv.date}</span> : null}
-                    </div>
-                    {rv.title ? (
-                      <p className="mt-1 text-sm font-bold text-slate-800" dir="auto">
-                        {rv.title}
-                      </p>
-                    ) : null}
-                    <p className="mt-1 text-sm text-slate-600 leading-relaxed whitespace-pre-line" dir="auto" style={{ unicodeBidi: "plaintext" }}>
-                      {rv.text}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-3">
+                <ul className="max-h-[560px] space-y-3 overflow-y-auto pe-1 [scrollbar-width:thin]">
+                  {guestReviews.slice(0, visibleReviewsCount).map((rv) => {
+                    const isOriginal = Boolean(showOriginal[rv.id]);
+                    const currentTitle = isOriginal ? (rv.originalTitle || rv.title) : rv.title;
+                    const currentText = isOriginal ? (rv.originalText || rv.text) : rv.text;
+                    const hasOriginalDiff = Boolean(
+                      (rv.originalText && rv.originalText !== rv.text) ||
+                      (rv.originalTitle && rv.originalTitle !== rv.title)
+                    );
+
+                    return (
+                      <li key={`${rv.source || "rv"}-${rv.id}`} className="rounded-xl border border-slate-100 bg-slate-50/70 p-4 transition-all">
+                        <div className="flex flex-wrap items-center gap-2 text-sm">
+                          <span className="font-extrabold text-slate-900">{rv.author}</span>
+                          {rv.rating > 0 ? (
+                            <span className="inline-flex items-center gap-1 rounded-md bg-[#2e1065] px-2 py-0.5 text-[11px] font-black text-white tabular-nums">
+                              <span>{scoreOutOf10(rv.rating, rv.rating <= 5 ? 5 : 10).toFixed(1)}</span>
+                              <span className="text-[9px] font-bold text-white/80">/ 10</span>
+                            </span>
+                          ) : null}
+                          {rv.source ? (
+                            <span className="text-[11px] text-slate-400">{reviewSourceLabel(rv.source)}</span>
+                          ) : null}
+                          {rv.date ? <span className="text-xs text-slate-400">{rv.date}</span> : null}
+                        </div>
+                        {currentTitle ? (
+                          <p className="mt-1.5 text-sm font-bold text-slate-800" dir="auto">
+                            {currentTitle}
+                          </p>
+                        ) : null}
+                        <p className="mt-1 text-sm text-slate-600 leading-relaxed whitespace-pre-line" dir="auto" style={{ unicodeBidi: "plaintext" }}>
+                          {currentText}
+                        </p>
+
+                        {hasOriginalDiff ? (
+                          <div className="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between">
+                            <button
+                              type="button"
+                              onClick={() => toggleOriginal(rv.id)}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-800 hover:text-purple-950 bg-white hover:bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200/70 transition-colors shadow-2xs"
+                            >
+                              <Languages size={13} className="text-purple-600" />
+                              <span>
+                                {isOriginal
+                                  ? (locale === "ar" ? "عرض الترجمة بالعربية" : locale === "tr" ? "Türkçe Çeviriyi Göster" : "Show Translation")
+                                  : (locale === "ar" ? "عرض النص الأصلي" : locale === "tr" ? "Orijinal Metni Göster" : "Show Original Text")}
+                              </span>
+                            </button>
+                            <span className="text-[11px] text-slate-400">
+                              {isOriginal
+                                ? (locale === "ar"
+                                    ? (reviewSourceLabel(rv.source) ? `النص الأصلي (${reviewSourceLabel(rv.source)})` : "النص الأصلي")
+                                    : (reviewSourceLabel(rv.source) ? `Original (${reviewSourceLabel(rv.source)})` : "Original"))
+                                : (locale === "ar" ? "مترجم آلياً" : "Translated")}
+                            </span>
+                          </div>
+                        ) : null}
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {guestReviews.length > visibleReviewsCount ? (
+                  <div className="pt-2 text-center">
+                    <button
+                      type="button"
+                      onClick={handleShowMoreReviews}
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl border border-purple-200 bg-purple-50/70 hover:bg-purple-100 text-purple-900 font-bold text-xs transition-all shadow-2xs"
+                    >
+                      <span>
+                        {locale === "ar"
+                          ? `عرض المزيد من التقييمات (+10) [معروض ${Math.min(visibleReviewsCount, guestReviews.length)} من أصل ${guestReviews.length}]`
+                          : locale === "tr"
+                            ? `Daha Fazla Yorum Göster (+10) [${Math.min(visibleReviewsCount, guestReviews.length)} / ${guestReviews.length}]`
+                            : `Show More Reviews (+10) [${Math.min(visibleReviewsCount, guestReviews.length)} of ${guestReviews.length}]`}
+                      </span>
+                    </button>
+                  </div>
+                ) : null}
+              </div>
             ) : (
               <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center">
                 <MessageSquareText size={26} className="text-slate-300" />
@@ -992,15 +1149,13 @@ export default function SupplierHotelDetail({ slug, checkIn, checkOut, adults, r
                 </div>
               ) : null}
             </div>
-            {hotel.policies?.filter((p) => !/^(تسجيل الوصول|تسجيل المغادرة|Check-in|Check-out)/.test(p)).length ? (
+            {truePolicies.length ? (
               <ul className="space-y-2">
-                {hotel.policies
-                  .filter((p) => !/^(تسجيل الوصول|تسجيل المغادرة|Check-in|Check-out)/.test(p))
-                  .map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-sm text-slate-600">
-                      <Check size={14} className="text-slate-400 mt-0.5 shrink-0" /> <span className="whitespace-pre-line">{p}</span>
-                    </li>
-                  ))}
+                {truePolicies.map((p) => (
+                  <li key={p} className="flex items-start gap-2 text-sm text-slate-600">
+                    <Check size={14} className="text-slate-400 mt-0.5 shrink-0" /> <span className="whitespace-pre-line">{p}</span>
+                  </li>
+                ))}
               </ul>
             ) : null}
           </section>

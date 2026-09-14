@@ -119,7 +119,18 @@ export default function PwaInstallBanner() {
     setMenuOpen((open) => !open);
   }, [deferred, dismiss]);
 
-  if (hidden) return null;
+  const isAppOrEditor =
+    typeof window !== "undefined" &&
+    (window.self !== window.top ||
+      window.location.search.includes("app=1") ||
+      window.location.search.includes("editor=1") ||
+      window.location.search.includes("preview=1") ||
+      window.location.pathname.includes("/admin") ||
+      document.documentElement.classList.contains("lonaliza-app-shell") ||
+      document.body.classList.contains("lonaliza-app-shell") ||
+      navigator.userAgent.includes("LonalizaApp"));
+
+  if (hidden || isAppOrEditor) return null;
 
   const appName =
     locale === "en"

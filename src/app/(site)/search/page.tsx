@@ -110,7 +110,7 @@ function SearchPageContent() {
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900">
             {query
               ? `${t.search.resultsFor} "${query}"`
-              : t.search.search}
+              : t.search.pageTitle}
           </h1>
           <p className="text-slate-600 mt-2">
             {ready

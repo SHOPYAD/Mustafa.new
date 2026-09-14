@@ -22,6 +22,7 @@ import AirlineLogo from "@/components/flights/AirlineLogo";
 import { cabinClassLabel, type FlightCopy } from "@/components/flights/copy";
 import { getLocalizedAirline } from "@/lib/flights/airline-dictionary";
 import { getLocalizedPlace } from "@/lib/flights/airport-dictionary";
+import { canonicalPenalty, collapseFarePenalties, customerFacingPenalties } from "@/lib/flights/fare-penalties";
 import {
   baggageStateText,
   bookingItinerarySnapshot,
@@ -35,6 +36,7 @@ import {
   normalizeDetails,
 } from "@/components/flights/normalize";
 import FarePackageGrid from "@/components/flights/FarePackageGrid";
+import { usePromoPrice } from "@/components/loyalty/PromoPriceBlock";
 import type {
   CabinClass,
   FareFamily,
@@ -438,6 +440,9 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
     if (!selectedFareId && fares[0]) setSelectedFareId(fares[0].id);
   }, [fares, selectedFareId]);
 
+  const selected = fares.find((f) => f.id === selectedFareId) || fares[0] || null;
+  const promoPrice = usePromoPrice(selected?.price || 0, "flights");
+
   if (!item) return null;
 
   const snapshot = bookingItinerarySnapshot(item, details);
@@ -447,7 +452,6 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
   const priceCurrency = details?.currency || item.currency;
   const origin = snapshot.legs[0]?.origin;
   const dest = snapshot.legs[snapshot.legs.length - 1]?.destination;
-  const selected = fares.find((f) => f.id === selectedFareId) || fares[0] || null;
   const totalMins = legs.reduce((sum, leg) => sum + (leg.durationInMinutes || 0), 0);
 
   // Baggage bound to the selected package — tri-state, no assumptions.
@@ -498,6 +502,13 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
   };
 
   const continueBooking = (fare: FareFamily | null) => {
+    if (promoPrice.hasDiscount && promoPrice.code) {
+      void fetch("/api/loyalty/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: promoPrice.code, service: "flights" }),
+      }).catch(() => undefined);
+    }
     onSelect({
       itinerary: snapshot,
       fare,
@@ -653,36 +664,53 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
                   </span>
                 ) : null}
               </h3>
+              {(() => {
+                const policy = collapseFarePenalties(selected?.penalties);
+                const facing = customerFacingPenalties(selected?.penalties);
+                const refund = policy.refundable !== "unknown" ? policy.refundable : selected?.attributes?.refund;
+                const change = policy.changeable !== "unknown" ? policy.changeable : selected?.attributes?.change;
+                const cancelFee = canonicalPenalty(facing.penalties, "cancel");
+                const changeFee = canonicalPenalty(facing.penalties, "change");
+                const afterCancel = facing.afterDeparture.find((p) => p.type === "cancel");
+                const afterChange = facing.afterDeparture.find((p) => p.type === "change");
+                return (
+                  <>
               <p className="text-sm font-semibold text-slate-700 flex items-start gap-2">
-                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", selected?.attributes?.refund === "included" ? "bg-emerald-500" : selected?.attributes?.refund === "chargeable" ? "bg-amber-500" : "bg-slate-400")} />
+                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", refund === "included" ? "bg-emerald-500" : refund === "chargeable" ? "bg-amber-500" : "bg-slate-400")} />
                 <span>
-                  {selected?.attributes?.refund === "included"
-                    ? (locale === "ar" ? "إلغاء مجاني" : locale === "tr" ? "Ücretsiz iptal" : "Free cancellation")
-                    : selected?.attributes?.refund === "chargeable"
-                      ? (() => {
-                          const fee = (selected.penalties || []).find((p) => p.type === "cancel" && p.amount != null);
-                          return fee?.amount != null
-                            ? (locale === "ar" ? `إلغاء متاح برسوم ${fee.amount} ${fee.currency || selected.currency}` : `Cancellation fee ${fee.amount} ${fee.currency || selected.currency}`)
-                            : (locale === "ar" ? "إلغاء متاح برسوم" : "Cancellation available with a fee");
-                        })()
+                  {refund === "included"
+                    ? (locale === "ar" ? "إلغاء مجاني قبل الإقلاع" : locale === "tr" ? "Kalkış öncesi ücretsiz iptal" : "Free cancellation before departure")
+                    : refund === "chargeable"
+                      ? cancelFee?.amount != null
+                            ? (locale === "ar" ? `إلغاء قبل الإقلاع برسوم ${formatFlightPrice(cancelFee.amount, cancelFee.currency || selected?.currency || "USD")}` : `Cancellation fee ${formatFlightPrice(cancelFee.amount, cancelFee.currency || selected?.currency || "USD")}`)
+                            : (locale === "ar" ? "إلغاء متاح برسوم قبل الإقلاع" : "Cancellation available with a fee")
                       : (locale === "ar" ? "إلغاء غير متوفر" : locale === "tr" ? "İptal yok" : "Cancellation not available")}
                 </span>
               </p>
               <p className="mt-2 text-sm font-semibold text-slate-700 flex items-start gap-2">
-                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", selected?.attributes?.change === "included" ? "bg-emerald-500" : selected?.attributes?.change === "chargeable" ? "bg-purple-600" : "bg-slate-400")} />
+                <span className={cn("inline-block h-2 w-2 rounded-full mt-1.5 shrink-0", change === "included" ? "bg-emerald-500" : change === "chargeable" ? "bg-purple-600" : "bg-slate-400")} />
                 <span>
-                  {selected?.attributes?.change === "included"
-                    ? (locale === "ar" ? "تعديل مجاني" : locale === "tr" ? "Ücretsiz değişiklik" : "Free date change")
-                    : selected?.attributes?.change === "chargeable"
-                      ? (() => {
-                          const fee = (selected.penalties || []).find((p) => p.type === "change" && p.amount != null);
-                          return fee?.amount != null
-                            ? (locale === "ar" ? `تعديل متاح برسوم ${fee.amount} ${fee.currency || selected.currency}` : `Change fee ${fee.amount} ${fee.currency || selected.currency}`)
-                            : (locale === "ar" ? "تعديل متاح برسوم" : "Date change available with a fee");
-                        })()
+                  {change === "included"
+                    ? (locale === "ar" ? "تعديل مجاني قبل الإقلاع" : locale === "tr" ? "Kalkış öncesi ücretsiz değişiklik" : "Free date change before departure")
+                    : change === "chargeable"
+                      ? changeFee?.amount != null
+                            ? (locale === "ar" ? `تعديل قبل الإقلاع برسوم ${formatFlightPrice(changeFee.amount, changeFee.currency || selected?.currency || "USD")}` : `Change fee ${formatFlightPrice(changeFee.amount, changeFee.currency || selected?.currency || "USD")}`)
+                            : (locale === "ar" ? "تعديل متاح برسوم قبل الإقلاع" : "Date change available with a fee")
                       : (locale === "ar" ? "تعديل غير متوفر" : locale === "tr" ? "Değişiklik yok" : "Date change not available")}
                 </span>
               </p>
+              {afterCancel || afterChange ? (
+                <p className="mt-2 text-[11px] text-slate-500">
+                  {locale === "ar"
+                    ? `بعد الإقلاع: ${afterCancel ? "الإلغاء غير متاح" : ""}${afterCancel && afterChange ? " · " : ""}${afterChange ? "التعديل غير متاح" : ""}`
+                    : locale === "tr"
+                      ? `Kalkıştan sonra: ${afterCancel ? "iptal yok" : ""}${afterCancel && afterChange ? " · " : ""}${afterChange ? "değişiklik yok" : ""}`
+                      : `After departure: ${afterCancel ? "cancellation not available" : ""}${afterCancel && afterChange ? " · " : ""}${afterChange ? "changes not available" : ""}`}
+                </p>
+              ) : null}
+                  </>
+                );
+              })()}
             </div>
           </section>
 
@@ -706,12 +734,35 @@ export default function FlightDetailsDrawer({ item, query, sessionId, copy, onCl
         {/* Luxury Bottom Action Bar */}
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-purple-100 bg-white/95 px-5 py-3.5 backdrop-blur shadow-[0_-8px_20px_rgba(46,16,101,0.04)]">
           <div>
-            <p className="text-[11px] font-bold text-slate-400">
-              {copy.total} · <span className="text-purple-950 font-black">{selected?.name || "Standard"}</span>
-            </p>
-            <p className="text-2xl font-black text-[#1e1b4b]">
-              {selected ? formatFlightPrice(selected.price, selected.currency || priceCurrency) : "—"}
-            </p>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <p className="text-[11px] font-bold text-slate-400">
+                {copy.total} · <span className="text-purple-950 font-black">{selected?.name || "Standard"}</span>
+              </p>
+              {promoPrice.hasDiscount ? (
+                <span className="inline-flex items-center gap-1 rounded-md bg-gradient-to-r from-[#2e1065] to-[#4c1d95] px-1.5 py-0.5 text-[9.5px] font-black text-amber-300 shadow-2xs">
+                  {locale === "ar"
+                    ? `وفّروا ${formatFlightPrice(promoPrice.saved, selected?.currency || priceCurrency)} مع ${promoPrice.code}`
+                    : locale === "tr"
+                      ? `${promoPrice.code} ile ${formatFlightPrice(promoPrice.saved, selected?.currency || priceCurrency)} kazanın`
+                      : `Save ${formatFlightPrice(promoPrice.saved, selected?.currency || priceCurrency)} with ${promoPrice.code}`}
+                </span>
+              ) : null}
+            </div>
+            <div className="flex items-baseline gap-2 mt-0.5">
+              <p className="text-2xl font-black text-amber-500 tabular-nums">
+                {selected
+                  ? formatFlightPrice(
+                      promoPrice.hasDiscount ? promoPrice.discounted : selected.price,
+                      selected.currency || priceCurrency
+                    )
+                  : "—"}
+              </p>
+              {promoPrice.hasDiscount ? (
+                <span className="text-xs font-semibold text-slate-400 line-through tabular-nums">
+                  {formatFlightPrice(promoPrice.original, selected?.currency || priceCurrency)}
+                </span>
+              ) : null}
+            </div>
           </div>
           <button
             type="button"

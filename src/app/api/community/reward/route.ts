@@ -10,7 +10,7 @@ const userLastAction = new Map<string, number>();
 
 export async function POST(req: Request) {
   let body: {
-    action?: "post" | "photo" | "reel" | "comment" | "like";
+    action?: "post" | "photo" | "reel" | "comment" | "like" | "view";
     eventId?: string;
     commentText?: string;
     hasBooking?: boolean;
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   }
 
   const { action, eventId, commentText, hasBooking, booking } = body;
-  if (!action || !["post", "photo", "reel", "comment", "like"].includes(action)) {
+  if (!action || !["post", "photo", "reel", "comment", "like", "view"].includes(action)) {
     return NextResponse.json({ ok: false, error: "invalid_action" }, { status: 400 });
   }
 
@@ -34,6 +34,12 @@ export async function POST(req: Request) {
         const { togglePostLike } = await import("@/lib/server/community-feed-store");
         await togglePostLike(eventId);
       } catch {}
+    } else if (action === "view") {
+      try {
+        const { incrementPostView } = await import("@/lib/server/community-feed-store");
+        await incrementPostView(eventId);
+      } catch {}
+      return NextResponse.json({ ok: true, awarded: 0 });
     } else if (action === "comment") {
       try {
         const { addPostComment } = await import("@/lib/server/community-feed-store");

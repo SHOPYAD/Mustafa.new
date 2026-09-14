@@ -5,6 +5,7 @@ import { TicketPercent, Wallet } from "lucide-react";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLoyalty } from "@/hooks/useLoyalty";
+import { pickDisplayCoupon } from "@/lib/loyalty/display-price";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import type { LoyaltyQuote, LoyaltyService, LoyaltyVoucher } from "@/lib/loyalty/types";
 import { cn } from "@/lib/utils";
@@ -37,16 +38,21 @@ export default function CheckoutRewards({ service, amount, currency, onChange }:
   const { t, locale } = useLocale();
   const { user, openAuth } = useCustomerAuth();
   const { formatPrice } = useCurrency();
-  const { appliedCode, applyCode, clearCode } = useLoyalty(service, locale);
+  const { appliedCode, applyCode, clearCode, coupons } = useLoyalty(service, locale);
   const [wallet, setWallet] = useState<WalletPayload | null>(null);
-  const [code, setCode] = useState(appliedCode);
+  const defaultPublicCode = pickDisplayCoupon(coupons)?.code || "";
+  const [code, setCode] = useState(appliedCode || defaultPublicCode);
   const [voucherIds, setVoucherIds] = useState<string[]>([]);
   const [quote, setQuote] = useState<LoyaltyQuote | null>(null);
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    setCode(appliedCode);
-  }, [appliedCode]);
+    if (appliedCode) {
+      setCode(appliedCode);
+    } else if (defaultPublicCode && !code) {
+      setCode(defaultPublicCode);
+    }
+  }, [appliedCode, defaultPublicCode]);
 
   useEffect(() => {
     if (!user) {

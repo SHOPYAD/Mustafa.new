@@ -6,13 +6,18 @@ import {
   getHotelBookingRecord,
   toHotelBookingConfirmView,
 } from "@/lib/server/hotel-booking-confirm";
-import { buildBookingPdfBuffer } from "@/lib/pdf/booking-pdf";
-import { buildInvoiceModelFromConfirmView } from "@/lib/pdf/flight-invoice-model";
-import { loadInvoiceBrandExtras, renderInvoiceHtmlForService } from "@/lib/pdf/invoice-assets";
-import { getInvoiceTemplate } from "@/lib/server/invoice-templates-store";
+import { detectInvoiceService } from "@/lib/booking-service";
+import { buildBookingMailPdfs } from "@/lib/pdf/booking-documents";
 import { getEmailBrand } from "@/lib/server/email/brand";
+import {
+  buildBookingEmailVars,
+  bookingResumeUrl,
+  flightSessionDetail,
+} from "@/lib/server/email/booking-message";
+import { pendingTemplateKinds, paymentEmailGate, successTemplateKinds } from "@/lib/server/email/payment-gate";
 import { renderTemplateMessage, sendMail } from "@/lib/server/email/send";
 import { resolveRecipientLocale } from "@/lib/server/email/recipient-locale";
+import { wrapCustomHtml as wrapEmailHtml } from "@/lib/server/email/templates";
 import type { EmailTemplateKind, EmailTemplateRecord, MailAttachment } from "@/lib/server/email/types";
 import type { FlightBookingSession } from "@/lib/server/flights-bookings";
 
@@ -72,31 +77,46 @@ async function alreadySent(booking: HotelBookingRecord, flag: string): Promise<b
   return Boolean(snapshotOf(booking)[flag]);
 }
 
-export async function notifyHotelBookingPlaced(bookingId: string): Promise<void> {
+async function attachOfficialEArchive(bookingId: string, attachments: MailAttachment[]): Promise<void> {
+  try {
+    const { getParasutInvoicePdfBuffer } = await import("@/lib/server/parasut/parasut-invoices-store");
+    const eFile = await getParasutInvoicePdfBuffer(bookingId);
+    if (eFile?.buffer) {
+      attachments.push({
+        filename: eFile.filename || `TC-GIB-E-Arsiv-${bookingId}.pdf`,
+        content: eFile.buffer,
+        contentType: "application/pdf",
+      });
+    }
+  } catch {
+    /* non-fatal */
+  }
+}
+
+/**
+ * Checkout-create / unpaid hold. Always a complete-booking reminder — never hotel/flight "ناجح".
+ */
+export async function notifyBookingAwaitingPayment(bookingId: string): Promise<void> {
   const booking = await getHotelBookingRecord(bookingId);
   if (!booking?.customer_email) return;
-  if (await alreadySent(booking, "email_booking_sent")) return;
-  const template = await findTemplateByKinds(["hotel_success", "booking_success"]);
-  if (!template) return;
+  if (paymentEmailGate(booking) === "paid") return;
+  if (await alreadySent(booking, "email_pending_sent")) return;
+
   const view = toHotelBookingConfirmView(booking);
+  const template = await findTemplateByKinds(pendingTemplateKinds(view.service));
+  if (!template) return;
+
   const brand = await getEmailBrand();
-  const detailAr = `${view.hotel_name} · ${view.check_in} → ${view.check_out}`;
   const locale = await resolveRecipientLocale({
     email: view.customer_email,
     bookingLocale: snapshotOf(booking).locale,
   });
-  const rendered = await renderTemplateMessage(template, {
-    name: view.customer_name,
-    email: view.customer_email,
-    booking_id: view.id,
-    bookingId: view.id,
-    service_name: view.hotel_name,
-    detail_ar: detailAr,
-    detail_en: detailAr,
-    amount: view.price,
-    currency: view.currency,
-    cta_url: `${SITE_PUBLIC_URL}/hotels/book?booking=${view.id}&confirm=${view.confirm}`,
-  }, brand, locale);
+  const rendered = await renderTemplateMessage(
+    template,
+    buildBookingEmailVars(view, locale),
+    brand,
+    locale
+  );
   const sent = await sendMail({
     to: view.customer_email,
     toName: view.customer_name,
@@ -106,127 +126,182 @@ export async function notifyHotelBookingPlaced(bookingId: string): Promise<void>
     listUnsubscribe: false,
     locale,
   });
-  if (sent.ok) await markBookingEmail(booking.id, "email_booking_sent");
+  if (sent.ok) await markBookingEmail(booking.id, "email_pending_sent");
 }
 
+export async function notifyBookingPaymentFailed(bookingId: string): Promise<void> {
+  const booking = await getHotelBookingRecord(bookingId);
+  if (!booking?.customer_email) return;
+  if (paymentEmailGate(booking) === "paid") return;
+  if (await alreadySent(booking, "email_payment_failed_sent")) return;
+
+  const view = toHotelBookingConfirmView(booking);
+  const brand = await getEmailBrand();
+  const locale = await resolveRecipientLocale({
+    email: view.customer_email,
+    bookingLocale: snapshotOf(booking).locale,
+  });
+  const vars = buildBookingEmailVars(view, locale);
+  const resume = String(vars.cta_url || bookingResumeUrl(view));
+  const ar = locale !== "en" && locale !== "tr";
+  const subject = ar
+    ? `فشل الدفع — أكمل حجزك ${view.id}`
+    : locale === "tr"
+      ? `Ödeme başarısız — rezervasyonu tamamlayın ${view.id}`
+      : `Payment failed — complete your booking ${view.id}`;
+  const heading = ar ? "تعذّر تأكيد الدفع" : locale === "tr" ? "Ödeme doğrulanamadı" : "Payment was not confirmed";
+  const lead = ar
+    ? `مرحباً ${view.customer_name}. لم نستلم دفعاً ناجحاً بعد. يمكنك إكمال الحجز من الرابط أدناه.`
+    : locale === "tr"
+      ? `Merhaba ${view.customer_name}. Ödemeniz doğrulanmadı. Rezervasyonu aşağıdaki bağlantıdan tamamlayabilirsiniz.`
+      : `Hello ${view.customer_name}. We could not confirm payment. Use the link below to complete your booking.`;
+  const details = String(vars.detail_ar || vars.detail_en || "");
+  const inner = `<h1 style="margin:0 0 10px;font-size:22px;">${heading}</h1>
+<p style="margin:0 0 12px;color:#5b4d3e;line-height:1.8;">${lead}</p>
+<p style="margin:0 0 12px;line-height:1.8;">${details}</p>
+<p style="margin:22px 0 8px;"><a href="${resume}" style="display:inline-block;background:${brand.button};color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:700;">${
+    ar ? "إكمال الحجز" : locale === "tr" ? "Rezervasyonu tamamla" : "Complete booking"
+  }</a></p>`;
+  const html = wrapEmailHtml(brand, inner, locale);
+  const sent = await sendMail({
+    to: view.customer_email,
+    toName: view.customer_name,
+    subject,
+    html,
+    text: `${subject}\n${details}\n${resume}`,
+    listUnsubscribe: false,
+    locale,
+  });
+  if (sent.ok) await markBookingEmail(booking.id, "email_payment_failed_sent");
+}
+
+/**
+ * Called when a hotel_bookings row is created (checkout session). Sends pending mail unless already paid
+ * (loyalty / voucher cover). Never sends "حجز فندق ناجح" while pending_payment.
+ */
+export async function notifyHotelBookingPlaced(bookingId: string): Promise<void> {
+  const booking = await getHotelBookingRecord(bookingId);
+  if (!booking) return;
+  const gate = paymentEmailGate(booking);
+  if (gate === "paid") {
+    await notifyIyzicoPaymentSuccess(bookingId);
+    return;
+  }
+  if (gate === "failed") {
+    await notifyBookingPaymentFailed(bookingId);
+    return;
+  }
+  await notifyBookingAwaitingPayment(bookingId);
+}
+
+/** E-ticket mail after supplier ticketing — flights only, never hotel wording. */
 export async function notifyFlightBookingPlaced(
   booking: FlightBookingSession
 ): Promise<void> {
   const email = String(booking.contact.email || "").trim();
   if (!email) return;
+  const hotelId = String(booking.hotelBookingId || "").trim();
+  if (hotelId) {
+    const row = await getHotelBookingRecord(hotelId);
+    if (row && paymentEmailGate(row) !== "paid") return;
+    if (row && (await alreadySent(row, "email_eticket_sent"))) return;
+  }
   const template = await findTemplateByKinds(["flight_success", "booking_success"]);
   if (!template) return;
-  const first = booking.itinerary?.legs[0];
-  const last = booking.itinerary?.legs[booking.itinerary.legs.length - 1];
-  const route = [
-    first?.origin.displayCode || first?.origin.skyId,
-    last?.destination.displayCode || last?.destination.skyId,
-  ]
-    .filter(Boolean)
-    .join(" → ");
   const brand = await getEmailBrand();
   const locale = await resolveRecipientLocale({
     email,
-    bookingLocale: (booking as { locale?: string }).locale,
+    bookingLocale: booking.locale,
   });
-  const rendered = await renderTemplateMessage(template, {
-    name: booking.contact.name || email,
-    email,
-    booking_id: booking.id,
-    bookingId: booking.id,
-    service_name: route || "Flight",
-    detail_ar: `رحلة ${route} — ${booking.passengers.adults} بالغ`,
-    detail_en: `Flight ${route} — ${booking.passengers.adults} adult(s)`,
-    amount: booking.price.client || booking.quotedClient,
-    currency: booking.price.currency || "USD",
-    cta_url: `${brand.siteUrl}/flights/booking?id=${encodeURIComponent(booking.id)}`,
-  }, brand, locale);
-  await sendMail({
+  const copy = flightSessionDetail(booking, locale);
+  const cta = hotelId
+    ? `${brand.siteUrl}/hotels/book?booking=${encodeURIComponent(hotelId)}`
+    : `${brand.siteUrl}/flights/booking?id=${encodeURIComponent(booking.id)}`;
+  const rendered = await renderTemplateMessage(
+    template,
+    {
+      name: booking.contact.name || email,
+      email,
+      booking_id: hotelId || booking.id,
+      bookingId: hotelId || booking.id,
+      service_name: copy.route,
+      detail_ar: copy.detail,
+      detail_en: copy.detail,
+      amount: booking.price.client || booking.quotedClient,
+      currency: booking.price.currency || "USD",
+      cta_url: cta,
+      route: copy.route,
+      depart_date: copy.depart,
+      return_date: copy.ret,
+      passengers: copy.passengers,
+      baggage: copy.baggage,
+    },
+    brand,
+    locale
+  );
+  let attachments: MailAttachment[] = [];
+  if (hotelId) {
+    const row = await getHotelBookingRecord(hotelId);
+    if (row && paymentEmailGate(row) === "paid") {
+      attachments = await buildBookingMailPdfs(toHotelBookingConfirmView(row), locale);
+    }
+  }
+  const sent = await sendMail({
     to: email,
     toName: booking.contact.name,
     subject: rendered.subject,
     html: rendered.html,
     text: rendered.text,
+    attachments,
     listUnsubscribe: false,
     locale,
   });
+  if (sent.ok && hotelId) await markBookingEmail(hotelId, "email_eticket_sent");
 }
 
+/** Payment-received mail — iyzico webhook / confirmed paid only. */
 export async function notifyIyzicoPaymentSuccess(bookingId: string): Promise<void> {
   const booking = await getHotelBookingRecord(bookingId);
   if (!booking?.customer_email) return;
+  if (paymentEmailGate(booking) !== "paid") return;
   if (await alreadySent(booking, "email_payment_sent")) return;
 
   const view = toHotelBookingConfirmView(booking);
   const brand = await getEmailBrand();
-  const invoiceUrl = `${SITE_PUBLIC_URL}/api/hotel-bookings/${view.id}/pdf?confirm=${encodeURIComponent(view.confirm)}`;
-  const detailAr = `${view.hotel_name} · ${view.check_in} → ${view.check_out}`;
-  const template = await findTemplateByKind("invoice");
-  if (!template) return;
-
-  let attachments: MailAttachment[] = [];
-  let htmlInvoice = "";
-  try {
-    const pdf = await buildBookingPdfBuffer(view);
-    attachments = [
-      {
-        filename: `lonaliza-invoice-${view.id}.pdf`,
-        content: pdf,
-        contentType: "application/pdf",
-      },
-    ];
-
-    // Check and attach official signed GİB e-Arşiv PDF if available
-    try {
-      const { getParasutInvoicePdfBuffer } = await import("@/lib/server/parasut/parasut-invoices-store");
-      const eFile = await getParasutInvoicePdfBuffer(view.id);
-      if (eFile && eFile.buffer) {
-        attachments.push({
-          filename: eFile.filename || `TC-GIB-E-Arsiv-${view.id}.pdf`,
-          content: eFile.buffer,
-          contentType: "application/pdf",
-        });
-      }
-    } catch {
-      /* non-fatal */
-    }
-  } catch {
-    try {
-      const invoiceTpl = await getInvoiceTemplate(view.service);
-      const extras = await loadInvoiceBrandExtras(invoiceTpl);
-      htmlInvoice = await renderInvoiceHtmlForService(
-        await buildInvoiceModelFromConfirmView(view, extras, invoiceTpl.language),
-        invoiceTpl
-      );
-    } catch {
-      htmlInvoice = "";
-    }
-  }
-
   const locale = await resolveRecipientLocale({
     email: view.customer_email,
     bookingLocale: snapshotOf(booking).locale,
   });
-  const rendered = await renderTemplateMessage(template, {
-    name: view.customer_name,
-    email: view.customer_email,
-    booking_id: view.id,
-    bookingId: view.id,
-    service_name: view.hotel_name,
-    detail_ar: detailAr,
-    detail_en: detailAr,
-    amount: view.price,
-    currency: view.currency,
-    invoice_url: invoiceUrl,
-    payment_ref: String(booking.iyzico_payment_id || "iyzico"),
-    cta_url: invoiceUrl,
-  }, brand, locale);
+  const kinds: EmailTemplateKind[] = ["invoice", ...successTemplateKinds(view.service)];
+  const template = await findTemplateByKinds(kinds);
+  if (!template) return;
+
+  const invoiceUrl =
+    view.service === "flight"
+      ? `${SITE_PUBLIC_URL}/api/account/bookings/${view.id}/ticket/pdf`
+      : `${SITE_PUBLIC_URL}/api/hotel-bookings/${view.id}/pdf?confirm=${encodeURIComponent(view.confirm)}`;
+
+  const attachments = await buildBookingMailPdfs(view, locale);
+  await attachOfficialEArchive(view.id, attachments);
+
+  const rendered = await renderTemplateMessage(
+    template,
+    {
+      ...buildBookingEmailVars(view, locale, {
+        invoice_url: invoiceUrl,
+        payment_ref: String(booking.iyzico_payment_id || "iyzico"),
+        cta_url: invoiceUrl,
+      }),
+    },
+    brand,
+    locale
+  );
 
   const sent = await sendMail({
     to: view.customer_email,
     toName: view.customer_name,
     subject: rendered.subject,
-    html: htmlInvoice || rendered.html,
+    html: rendered.html,
     text: rendered.text,
     attachments,
     listUnsubscribe: false,
@@ -245,7 +320,13 @@ export async function notifyEnquiryPlaced(booking: EnquiryBookingRecord): Promis
   const meta = enquiryMeta(booking);
   if (meta.email_booking_sent) return;
 
-  const kinds = ENQUIRY_SUCCESS_KINDS[booking.type] || ["booking_success"];
+  const service = detectInvoiceService({
+    type: booking.type,
+    provider: meta.provider,
+    hotel_id: meta.hotel_id,
+    offer_snapshot: meta,
+  });
+  const kinds = ENQUIRY_SUCCESS_KINDS[booking.type] || ENQUIRY_SUCCESS_KINDS[service] || ["booking_success"];
   const template = await findTemplateByKinds(kinds);
   if (!template) return;
 
@@ -256,18 +337,23 @@ export async function notifyEnquiryPlaced(booking: EnquiryBookingRecord): Promis
     email,
     bookingLocale: meta.locale,
   });
-  const rendered = await renderTemplateMessage(template, {
-    name: booking.customer_name || email,
-    email,
-    booking_id: booking.id,
-    bookingId: booking.id,
-    service_name: serviceName,
-    detail_ar: detailAr || serviceName,
-    detail_en: detailAr || serviceName,
-    amount: String(meta.amount || meta.price || ""),
-    currency: String(meta.currency || ""),
-    cta_url: brand.siteUrl,
-  }, brand, locale);
+  const rendered = await renderTemplateMessage(
+    template,
+    {
+      name: booking.customer_name || email,
+      email,
+      booking_id: booking.id,
+      bookingId: booking.id,
+      service_name: serviceName,
+      detail_ar: detailAr || serviceName,
+      detail_en: detailAr || serviceName,
+      amount: String(meta.amount || meta.price || ""),
+      currency: String(meta.currency || ""),
+      cta_url: brand.siteUrl,
+    },
+    brand,
+    locale
+  );
   const sent = await sendMail({
     to: email,
     toName: booking.customer_name,

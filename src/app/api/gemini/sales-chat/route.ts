@@ -6,6 +6,7 @@ import {
   getGeminiPublicConfig,
 } from "@/lib/server/gemini";
 import {
+  GEMINI_DEFAULT_MODEL,
   GEMINI_SALES_LITE_MODEL,
   normalizeGeminiModelId,
 } from "@/lib/gemini-models";
@@ -117,6 +118,7 @@ type SalesChatPayload = {
   programSaved?: boolean;
   perks?: SalesChatStructured["perks"];
   bundleCheckoutPayload?: SalesChatStructured["bundleCheckoutPayload"];
+  transcript?: string;
 };
 
 async function buildPayload(
@@ -137,15 +139,16 @@ async function buildPayload(
     "";
   const shouldQuote =
     Boolean(dest) ||
-    /antalya|istanbul|trabzon|cappadocia|أنطاليا|إسطنبول|طرابزون|كابادوكيا/i.test(
+    Boolean(parsed?.flightSearch?.fromIata || parsed?.flightSearch?.toIata) ||
+    /antalya|istanbul|trabzon|cappadocia|أنطاليا|إسطنبول|طرابزون|كابادوكيا|riyadh|الرياض|jeddah|جدة/i.test(
       conversationText
     );
   const live = shouldQuote
     ? await buildLiveQuote(
         {
           destination: dest || conversationText,
-          arrivalDate: parsed?.arrivalDate,
-          departureDate: parsed?.departureDate,
+          arrivalDate: parsed?.arrivalDate || parsed?.flightSearch?.date,
+          departureDate: parsed?.departureDate || parsed?.flightSearch?.returnDate,
           nights: parsed?.nights,
           people: parsed?.people,
           fromIata: parsed?.flightSearch?.fromIata || parsed?.flightSearch?.from,
@@ -173,7 +176,23 @@ async function buildPayload(
       totalBasePrice: base,
       totalClientPrice: selectedSum || Number(itinerary?.totalClientPrice) || 0,
       currency: "USD",
+      arrivalDate: live?.arrivalDate || parsed?.arrivalDate,
+      departureDate: live?.departureDate || parsed?.departureDate,
+      destination: dest || itinerary?.destination,
     };
+  }
+
+  let replyOut = reply;
+  if (live && !cards.length) {
+    const emptyNote =
+      locale === "tr"
+        ? "Bu tarihler için canlı rezervasyon sonucu yok. Lütfen tarih veya destinasyonu değiştirin."
+        : locale === "ar"
+          ? "لا توجد نتائج حية قابلة للحجز بهذه التواريخ حالياً. جرّب تاريخاً أقرب أو وجهة أخرى."
+          : "No live bookable results for these dates. Try nearby dates or another destination.";
+    if (!replyOut.includes(emptyNote)) {
+      replyOut = [replyOut.trim(), emptyNote].filter(Boolean).join("\n\n");
+    }
   }
 
   const flightHref =
@@ -267,16 +286,16 @@ async function buildPayload(
   };
 
   const bundleCheckoutPayload = parsed?.bundleCheckoutPayload || (clientTotal > 0 ? {
-    destinationCity: dest || "Istanbul",
-    departDate: parsed?.arrivalDate,
-    returnDate: parsed?.departureDate,
+    destinationCity: dest || "",
+    departDate: live?.arrivalDate || parsed?.arrivalDate,
+    returnDate: live?.departureDate || parsed?.departureDate,
     totalPrice: bundlePriceUsd,
     originalPrice: originalPriceUsd,
   } : undefined);
 
   return {
     ok: true,
-    reply,
+    reply: replyOut,
     cards,
     itinerary,
     readyForWhatsApp: Boolean(parsed?.readyForWhatsApp) || cards.length > 0,
@@ -421,13 +440,13 @@ CATALOG FIRST, THEN RESEARCH:
 3) Then set saveProgram=true so the server PUBLISHES the program to admin programs + public /holidays + /ai-chat.
 
 ITINERARY & PROGRAM GENERATION (CRITICAL):
-When the customer asks for a travel program or itinerary (e.g. "انشا لي برنامج سياحي" or "اقترح برنامج"):
-1) You MUST write a comprehensive, rich day-by-day program directly inside the "reply" string (اليوم الأول: ..., اليوم الثاني: ...) with morning and evening activities, monuments, and highlights matching the customer's actual destination.
-2) You MUST ALSO populate the structured "itinerary" object with title, days array, and details.
-3) NEVER respond with an empty canned message telling the customer to contact WhatsApp without displaying the full day-by-day program!
-4) If customer support is requested or needed, provide a clickable markdown link: [تواصل مع خدمة العملاء عبر واتساب](https://wa.me/${config.salesWhatsApp}) and NEVER print a bare phone number.
-5) NO EMOJIS: Strictly do NOT use any emojis in your response or titles.
-6) BRAND: The company is strictly "لوناليزا للسياحة والسفر" (Lonaliza Travel). Never mention any past or other agency name.
+When the customer asks for a travel program or itinerary:
+1) Put the day-by-day schedule ONLY in the structured "itinerary" object (days[].titleAr/titleEn, detailAr/detailEn, optional items[] with time + kind=flight|hotel|transfer|activity).
+2) "reply" = 1–3 short sentences. NEVER dump day-by-day Markdown, never repeat the itinerary in reply, never paste JSON.
+3) Dates MUST be ISO YYYY-MM-DD (example 2026-09-20). Never put night-count or year alone in arrivalDate/departureDate.
+4) Do NOT invent live hotel/flight/transfer prices or names. The server attaches live inventory cards. Leave cards [] unless you are only listing catalog package ids.
+5) If customer support is needed, link: [تواصل مع خدمة العملاء عبر واتساب](https://wa.me/${config.salesWhatsApp}) — never a bare phone number, never whatsapp://
+6) NO EMOJIS. Brand is strictly "لوناليزا للسياحة والسفر" (Lonaliza Travel).
 
 Preferred reply language: ${locale === "ar" ? "Arabic" : locale === "tr" ? "Turkish" : "English"}.
 Mandatory markup: ${markup}% — clientPrice = basePrice × (1 + ${markup}/100). Program prices always USD.
@@ -438,7 +457,7 @@ ${JSON.stringify(catalog)}
 
 OUTPUT FORMAT (mandatory):
 Return ONE JSON object only. You may wrap it in a single \`\`\`json fence.
-"reply" = customer-facing message with full detailed program when requested, polite, professional, and completely without emojis.
+"reply" = short customer-facing summary (no day-by-day dump, no JSON, no emojis).
 If you are still gathering dates, ask questions and use "cards": [] and "itinerary": null.
 The server rebuilds booking URLs — never invent off-site booking links.
 \`\`\`json
@@ -464,7 +483,7 @@ The server rebuilds booking URLs — never invent off-site booking links.
   "itinerary": {
     "titleAr": "",
     "titleEn": "",
-    "days": [{ "day": 1, "titleAr": "", "titleEn": "", "detailAr": "", "detailEn": "" }],
+    "days": [{ "day": 1, "titleAr": "", "titleEn": "", "detailAr": "", "detailEn": "", "items": [{ "time": "10:00", "kind": "flight", "labelAr": "", "labelEn": "" }] }],
     "totalBasePrice": 0,
     "totalClientPrice": 0,
     "currency": "USD"
@@ -541,7 +560,8 @@ PSYCHOLOGICAL PRICE ANCHORING & PLATFORM PERKS (MANDATORY):
 - Never reveal agency cost or markup percentage.
 - Never claim we issued an airline ticket.
 - If the customer attached images (or a passport image), analyze them and incorporate details into the offer.
-- Never echo this schema as visible chat text. Cards and itinerary belong in JSON fields, not in reply.`;
+- Never echo this schema as visible chat text. Cards and itinerary belong in JSON fields, not in reply.
+- arrivalDate and departureDate must be ISO YYYY-MM-DD only.`;
 }
 
 async function callGemini(params: {
@@ -589,6 +609,67 @@ async function callGemini(params: {
   return { ok: true, text };
 }
 
+function normalizeAudioMime(raw: string): string {
+  const mime = String(raw || "").toLowerCase();
+  if (mime.includes("wav")) return "audio/wav";
+  if (mime.includes("mpeg") || mime.includes("mp3")) return "audio/mp3";
+  if (mime.includes("ogg") || mime.includes("opus")) return "audio/ogg";
+  if (mime.includes("mp4") || mime.includes("aac") || mime.includes("m4a")) return "audio/mp4";
+  if (mime.includes("flac")) return "audio/flac";
+  return "audio/webm";
+}
+
+async function transcribeAdvisorVoice(params: {
+  apiKey: string;
+  audioBase64: string;
+  audioMime: string;
+  locale: Locale;
+}): Promise<string> {
+  const prompt =
+    params.locale === "ar"
+      ? "استمع للتسجيل كاملاً. اكتب كل الكلام حرفياً: الوجهة، التواريخ، عدد المسافرين. أعد النص فقط."
+      : "Listen to the entire clip. Write every spoken word (destination, dates, travelers). Return only the transcript.";
+  const models = [
+    "gemini-3.5-transcribe",
+    GEMINI_DEFAULT_MODEL,
+    GEMINI_SALES_LITE_MODEL,
+    "gemini-3.5-flash",
+  ];
+  for (const modelId of models) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${params.apiKey}`;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: "user",
+              parts: [
+                { inlineData: { mimeType: params.audioMime, data: params.audioBase64 } },
+                { text: prompt },
+              ],
+            },
+          ],
+          generationConfig: { temperature: 0, maxOutputTokens: 2048 },
+        }),
+      });
+      const data = await res.json();
+      const text =
+        data?.candidates?.[0]?.content?.parts
+          ?.map((p: { text?: string }) => p.text || "")
+          .join("")
+          .replace(/```[\s\S]*?```/g, "")
+          .replace(/^["']|["']$/g, "")
+          .trim() || "";
+      if (res.ok && text) return text;
+    } catch {
+      /* try next model */
+    }
+  }
+  return "";
+}
+
 export async function GET() {
   const config = await getGeminiPublicConfig();
   return NextResponse.json({
@@ -614,8 +695,15 @@ export async function POST(req: NextRequest) {
     const wantsStream =
       body.stream === true ||
       (req.headers.get("accept") || "").includes("text/event-stream");
+    let audioBase64 = String(body.audioBase64 || "").replace(/\s/g, "");
+    const comma = audioBase64.indexOf(",");
+    if (audioBase64.startsWith("data:") && comma !== -1) {
+      audioBase64 = audioBase64.slice(comma + 1);
+    }
+    if (audioBase64.length > 8_000_000) audioBase64 = "";
+    const audioMime = normalizeAudioMime(String(body.audioMime || ""));
 
-    if (!messages.length) {
+    if (!messages.length && !audioBase64) {
       return NextResponse.json(
         { ok: false, error: "messages required" },
         { status: 400 }
@@ -666,6 +754,34 @@ export async function POST(req: NextRequest) {
       ? GEMINI_SALES_LITE_MODEL
       : normalizeGeminiModelId(config.model);
     const system = buildSystemPrompt(config, locale, catalog, markup);
+
+    let transcript = "";
+    if (audioBase64) {
+      transcript = await transcribeAdvisorVoice({
+        apiKey,
+        audioBase64,
+        audioMime,
+        locale,
+      });
+      if (transcript) {
+        const lastUser = [...messages].reverse().find((m) => m.role === "user");
+        if (lastUser && !String(lastUser.content || "").trim()) {
+          lastUser.content = transcript;
+        } else if (!messages.length) {
+          messages.push({ role: "user", content: transcript });
+        } else if (lastUser && lastUser.content.trim().length < 8) {
+          lastUser.content = transcript;
+        }
+      }
+    }
+
+    if (!messages.length) {
+      return NextResponse.json(
+        { ok: false, error: locale === "ar" ? "تعذر تفريغ التسجيل. أعد المحاولة." : "Could not transcribe the clip. Try again." },
+        { status: 400 }
+      );
+    }
+
     const lastUserText = [...messages]
       .reverse()
       .find((m) => m.role === "user")
@@ -740,6 +856,7 @@ export async function POST(req: NextRequest) {
         customer?.id,
         messages.map((m) => m.content).join("\n")
       );
+      if (transcript) payload.transcript = transcript;
       return NextResponse.json(payload);
     }
 
@@ -785,6 +902,7 @@ export async function POST(req: NextRequest) {
             customer?.id,
             messages.map((m) => m.content).join("\n")
           );
+          if (transcript) payload.transcript = transcript;
           emitStage("program", "done");
           send("result", payload);
         } catch (e) {

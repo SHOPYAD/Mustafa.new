@@ -1,7 +1,7 @@
 import type PocketBase from "pocketbase";
 import { tryCreateAdminPocketBase } from "@/lib/pocketbase/admin";
 import type { HotelBookingRecord } from "@/lib/pocketbase/records";
-import { notifyIyzicoPaymentSuccess } from "@/lib/server/email/notify";
+import { notifyIyzicoPaymentSuccess, notifyBookingPaymentFailed } from "@/lib/server/email/notify";
 import {
   cancelPayment,
   refundPayment,
@@ -13,6 +13,7 @@ import {
 } from "@/lib/server/iyzico";
 import { bookingConfirmToken, newConfirmToken } from "@/lib/server/hotel-booking-confirm";
 import { confirmBookingPoints } from "@/lib/loyalty/server";
+import { resolveIyzicoPaymentState, type IyzicoPaidSource } from "@/lib/payments/paid-promotion";
 
 function pbQuote(value: string): string {
   return `"${value.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
@@ -189,7 +190,9 @@ async function patchBooking(
 export async function persistCheckoutCharge(input: {
   bookingId: string;
   token?: string;
+  paymentId?: string;
   charge: IyzicoChargePlan;
+  paymentStatus?: string;
 }): Promise<void> {
   const pb = await tryCreateAdminPocketBase();
   if (!pb) return;
@@ -197,9 +200,14 @@ export async function persistCheckoutCharge(input: {
   const booking = await pb.collection("hotel_bookings").getOne<HotelBookingRecord>(input.bookingId);
   const snapshot = snapshotOf(booking);
   const confirmToken = bookingConfirmToken(booking) || newConfirmToken();
+  const paymentStatus =
+    booking.status === "paid" || String(booking.payment_status || "").toLowerCase() === "paid"
+      ? "paid"
+      : input.paymentStatus || booking.payment_status || "pending_payment";
   await patchBooking(pb, booking, {
     iyzico_token: input.token || booking.iyzico_token || "",
-    payment_status: booking.payment_status || "pending_payment",
+    iyzico_payment_id: input.paymentId || booking.iyzico_payment_id || "",
+    payment_status: paymentStatus,
     charged_amount: input.charge.chargedAmount,
     charged_currency: input.charge.chargedCurrency,
     display_amount: input.charge.displayAmount,
@@ -210,8 +218,9 @@ export async function persistCheckoutCharge(input: {
     offer_snapshot: {
       ...snapshot,
       confirm_token: confirmToken,
-      payment_method: "iyzico",
+      payment_method: "card",
       iyzico_token: input.token || snapshot.iyzico_token,
+      iyzico_payment_id: input.paymentId || snapshot.iyzico_payment_id,
       charged_amount: input.charge.chargedAmount,
       charged_currency: input.charge.chargedCurrency,
       chargedAmount: input.charge.chargedAmount,
@@ -232,6 +241,7 @@ export async function applyIyzicoResultToBooking(input: {
   conversationId?: string;
   webhookStatus?: string;
   webhookEventType?: string;
+  source?: IyzicoPaidSource;
 }): Promise<{ updated: boolean; bookingId?: string; alreadyPaid: boolean; confirmToken?: string }> {
   const token = String(input.token || input.retrieved.token || "").trim();
   const conversationId = String(input.conversationId || input.retrieved.conversationId || "").trim();
@@ -266,29 +276,20 @@ export async function applyIyzicoResultToBooking(input: {
         : true),
   };
 
-  const webhookSuccess = String(input.webhookStatus || "").toUpperCase() === "SUCCESS";
-  /** Official: fraudStatus 0 stays pending until merchant webhook SUCCESS. */
-  const reviewCleared = retrieved.pendingReview && webhookSuccess;
   const amountOk = retrieved.amountMatched !== false;
-
-  let nextStatus = booking.status;
-  let paymentStatus = String(booking.payment_status || booking.status || "pending_payment");
-  if (alreadyPaid) {
-    nextStatus = "paid";
-    paymentStatus = "paid";
-  } else if ((retrieved.paid || reviewCleared) && amountOk) {
-    nextStatus = "paid";
-    paymentStatus = "paid";
-  } else if (retrieved.pendingReview) {
-    nextStatus = "pending_payment";
-    paymentStatus = "pending_review";
-  } else if (!amountOk && (retrieved.paid || webhookSuccess)) {
-    nextStatus = "pending_payment";
-    paymentStatus = "amount_mismatch";
-  } else {
-    nextStatus = "pending_payment";
-    paymentStatus = retrieved.ok ? "failed" : paymentStatus;
-  }
+  const next = resolveIyzicoPaymentState({
+    alreadyPaid,
+    currentStatus: booking.status,
+    currentPaymentStatus: String(booking.payment_status || booking.status || "pending_payment"),
+    retrievedPaid: Boolean(retrieved.paid),
+    pendingReview: Boolean(retrieved.pendingReview),
+    retrieveOk: Boolean(retrieved.ok),
+    amountMatched: amountOk,
+    webhookStatus: input.webhookStatus,
+    source: input.source,
+  });
+  const nextStatus = next.status;
+  const paymentStatus = next.paymentStatus;
 
   await patchBooking(pb, booking, {
     status: nextStatus,
@@ -298,7 +299,7 @@ export async function applyIyzicoResultToBooking(input: {
     offer_snapshot: {
       ...snapshot,
       confirm_token: confirmToken,
-      payment_method: "iyzico",
+      payment_method: "card",
       iyzico_token: token || snapshot.iyzico_token,
       iyzico_payment_id: retrieved.paymentId || snapshot.iyzico_payment_id,
       iyzico_payment_transaction_id:
@@ -312,7 +313,7 @@ export async function applyIyzicoResultToBooking(input: {
     },
   });
 
-  if (!alreadyPaid && nextStatus === "paid") {
+  if (!alreadyPaid && nextStatus === "paid" && input.source === "webhook") {
     // 0. Supplier reservation (quote-backed hotel bookings). Idempotent: callback + webhook may both land.
     if (snapshot.quote_id) {
       void import("@/lib/server/hotels/fulfilment")
@@ -341,6 +342,8 @@ export async function applyIyzicoResultToBooking(input: {
     if (userId) {
       void confirmBookingPoints(booking.id, userId).catch(() => undefined);
     }
+  } else if (!alreadyPaid && (paymentStatus === "failed" || paymentStatus === "amount_mismatch")) {
+    void notifyBookingPaymentFailed(booking.id).catch(() => undefined);
   }
 
   return { updated: true, bookingId: booking.id, alreadyPaid, confirmToken };
@@ -437,6 +440,7 @@ export async function refreshIyzicoBooking(bookingId: string): Promise<{
     retrieved,
     token,
     conversationId: booking.id,
+    source: "refresh",
   });
   const next = await pb.collection("hotel_bookings").getOne<HotelBookingRecord>(bookingId);
   return { ok: retrieved.ok, booking: toAdminRow(next), error: retrieved.error };
@@ -476,6 +480,7 @@ export async function refundIyzicoBooking(input: {
       retrieved,
       token: bookingToken(booking),
       conversationId: booking.id,
+      source: "refresh",
     });
   }
 

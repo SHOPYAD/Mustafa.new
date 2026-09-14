@@ -130,6 +130,7 @@ export async function verifyBuiltinCatalog(
       case "liotrip-google-flow":
       case "liotrip-computer-use":
       case "liotrip-browser-use":
+      case "liotrip-tripadvisor-reviews":
       case "lonaliza-platform-admin":
       case "mcp-fetch": {
         return { ok: true, tools: toolsFor(id) };
@@ -666,6 +667,60 @@ export async function callBuiltinTool(
       }
       const res = await adminSrv.auditPlatformReadiness();
       return { ok: true, content: JSON.stringify(res, null, 2) };
+    }
+    case "liotrip-tripadvisor-reviews": {
+      const {
+        crawlTripAdvisorReviews,
+        translateReviewsWithLibre,
+        injectReviewsIntoPocketBase,
+        syncHotelTripAdvisorReviews,
+      } = await import("./servers/tripadvisor-reviews");
+
+      if (tool === "tripadvisor.crawl_reviews") {
+        const res = await crawlTripAdvisorReviews({
+          hotelName: String(args.hotelName || args.name || ""),
+          city: typeof args.city === "string" ? args.city : undefined,
+          maxReviews: typeof args.maxReviews === "number" ? args.maxReviews : typeof args.limit === "number" ? args.limit : undefined,
+        });
+        return { ok: res.ok, content: JSON.stringify(res, null, 2), error: res.error };
+      }
+      if (tool === "tripadvisor.translate_reviews") {
+        const reviews = Array.isArray(args.reviews) ? (args.reviews as any[]) : [];
+        const res = await translateReviewsWithLibre(reviews, typeof args.targetLang === "string" ? args.targetLang : "ar");
+        return { ok: true, content: JSON.stringify(res, null, 2) };
+      }
+      if (tool === "tripadvisor.inject_reviews") {
+        const res = await injectReviewsIntoPocketBase({
+          hotelName: String(args.hotelName || args.name || ""),
+          city: typeof args.city === "string" ? args.city : undefined,
+          masterId: typeof args.masterId === "string" ? args.masterId : undefined,
+          reviews: Array.isArray(args.reviews) ? (args.reviews as any[]) : [],
+          targetLang: typeof args.targetLang === "string" ? args.targetLang : "ar",
+        });
+        return { ok: res.injected > 0, content: JSON.stringify(res, null, 2), error: res.error };
+      }
+      if (tool === "tripadvisor.sync_hotel") {
+        const res = await syncHotelTripAdvisorReviews({
+          hotelName: String(args.hotelName || args.name || ""),
+          city: typeof args.city === "string" ? args.city : undefined,
+          masterId: typeof args.masterId === "string" ? args.masterId : undefined,
+          maxReviews: typeof args.maxReviews === "number" ? args.maxReviews : typeof args.limit === "number" ? args.limit : undefined,
+          targetLang: typeof args.targetLang === "string" ? args.targetLang : "ar",
+        });
+        return { ok: res.ok, content: JSON.stringify(res, null, 2), error: res.error };
+      }
+      if (tool === "tripadvisor.harvest_250") {
+        const { harvestHotelReviewsUpTo250 } = await import("./servers/tripadvisor-reviews");
+        const res = await harvestHotelReviewsUpTo250({
+          hotelName: String(args.hotelName || args.name || ""),
+          city: typeof args.city === "string" ? args.city : undefined,
+          masterId: typeof args.masterId === "string" ? args.masterId : undefined,
+          targetTotal: typeof args.targetTotal === "number" ? args.targetTotal : 250,
+          targetLang: typeof args.targetLang === "string" ? args.targetLang : "ar",
+        });
+        return { ok: res.status !== "error", content: JSON.stringify(res, null, 2), error: res.error };
+      }
+      break;
     }
     default: {
       const _never: never = id;

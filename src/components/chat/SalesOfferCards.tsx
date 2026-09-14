@@ -2,26 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import {
   Star,
   Plane,
   MapPin,
   Car,
   Sparkles,
-  ArrowRight,
-  Gift,
-  Share2,
-  CheckCircle2,
-  ChevronRight,
-  ChevronLeft,
-  Coins,
+  Clock,
+  Hotel,
 } from "lucide-react";
 import type { SalesChatCard, SalesChatStructured } from "@/types/sales-chat";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent, cn } from "@/lib/utils";
-import { BOOKING_SESSION_KEY } from "@/components/flights/search-state";
 
 const PLACEHOLDER =
   "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800";
@@ -29,6 +22,25 @@ const PLACEHOLDER =
 function GuestMoney({ amount, currency }: { amount: number; currency?: string }) {
   const { formatPrice } = useCurrency();
   return <>{formatPrice(amount, currency || "USD")}</>;
+}
+
+function clockOf(iso?: string): string {
+  if (!iso) return "";
+  const m = String(iso).match(/T(\d{2}:\d{2})/);
+  if (m) return m[1];
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
+function durationOf(mins?: number): string {
+  const n = Math.max(0, Math.round(Number(mins) || 0));
+  if (!n) return "";
+  const h = Math.floor(n / 60);
+  const m = n % 60;
+  if (h <= 0) return `${m}m`;
+  if (m <= 0) return `${h}h`;
+  return `${h}h ${m}m`;
 }
 
 function CardImage({
@@ -49,8 +61,41 @@ function CardImage({
       fill
       unoptimized={unoptimized}
       className={cn("object-cover", className)}
-      sizes="(max-width: 640px) 100vw, 320px"
+      sizes="(max-width: 640px) 86vw, 280px"
     />
+  );
+}
+
+function Rail({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mt-3 first:mt-0">
+      <p className="mb-2 px-0.5 text-[11px] font-bold uppercase tracking-wider text-white/45">
+        {title}
+      </p>
+      <div className="lonaliza-h-scroll flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function EmptyRail({ title, hint, href }: { title: string; hint: string; href?: string }) {
+  return (
+    <div className="mt-3 rounded-2xl border border-dashed border-white/15 bg-white/5 px-4 py-3">
+      <p className="text-[11px] font-bold uppercase tracking-wider text-white/40">{title}</p>
+      <p className="mt-1 text-sm text-white/60">{hint}</p>
+      {href ? (
+        <Link href={href} className="mt-2 inline-block text-xs font-semibold text-amber-300">
+          {hint}
+        </Link>
+      ) : null}
+    </div>
   );
 }
 
@@ -58,20 +103,23 @@ function HotelCard({ card }: { card: SalesChatCard }) {
   const { locale, t } = useLocale();
   const title = tContent(card, "title", locale);
   const subtitle = tContent(card, "subtitle", locale);
+  const stars = Math.min(5, Math.max(0, Math.round(card.stars || 0)));
   const inner = (
-    <div className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-950/80 to-stone-900 shadow-lg shadow-amber-900/20">
+    <div className="relative h-full overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-950/80 to-stone-900 shadow-lg shadow-amber-900/20">
       <div className="relative h-36">
         <CardImage src={card.image} alt={title} />
         <div className="absolute inset-0 bg-gradient-to-t from-amber-950 via-amber-950/40 to-transparent" />
-        <div className="absolute top-3 start-3 flex items-center gap-0.5 rounded-full bg-black/40 px-2 py-1 backdrop-blur-sm">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              size={10}
-              className="fill-amber-400 text-amber-400"
-            />
-          ))}
-        </div>
+        {stars > 0 && (
+          <div className="absolute top-3 start-3 flex items-center gap-0.5 rounded-full bg-black/40 px-2 py-1 backdrop-blur-sm">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                key={i}
+                size={10}
+                className={i < stars ? "fill-amber-400 text-amber-400" : "text-white/25"}
+              />
+            ))}
+          </div>
+        )}
         {card.badges?.[0] && (
           <span className="absolute top-3 end-3 rounded-full bg-amber-500/90 px-2.5 py-0.5 text-[10px] font-bold text-white">
             {card.badges[0]}
@@ -79,15 +127,21 @@ function HotelCard({ card }: { card: SalesChatCard }) {
         )}
       </div>
       <div className="space-y-2 p-4">
-        <h4 className="font-bold text-amber-50 leading-snug">{title}</h4>
+        <h4 className="font-bold leading-snug text-amber-50">{title}</h4>
         {subtitle && (
           <p className="flex items-center gap-1.5 text-xs text-amber-200/60">
             <MapPin size={12} className="shrink-0 text-amber-400" />
             {subtitle}
           </p>
         )}
+        {card.roomName ? (
+          <p className="flex items-center gap-1 text-[11px] text-amber-100/55">
+            <Hotel size={11} />
+            {card.roomName}
+          </p>
+        ) : null}
         {card.highlights && card.highlights.length > 0 && (
-          <p className="text-[11px] text-amber-100/50 line-clamp-2">
+          <p className="line-clamp-2 text-[11px] text-amber-100/50">
             {card.highlights.slice(0, 2).join(" · ")}
           </p>
         )}
@@ -116,7 +170,7 @@ function HotelCard({ card }: { card: SalesChatCard }) {
     </div>
   );
   return card.href ? (
-    <Link href={card.href} className="block transition hover:scale-[1.02]">
+    <Link href={card.href} className="block h-full transition hover:scale-[1.02]">
       {inner}
     </Link>
   ) : (
@@ -126,45 +180,62 @@ function HotelCard({ card }: { card: SalesChatCard }) {
 
 function FlightCard({ card }: { card: SalesChatCard }) {
   const { locale, t } = useLocale();
-  const title = tContent(card, "title", locale);
-  const subtitle = tContent(card, "subtitle", locale);
-  const parts = (subtitle || title).split(/\s*[→\-–—]\s*/);
-  const from = parts[0] || title;
-  const to = parts[1] || card.badges?.[0] || "—";
+  const from = card.fromIata || "";
+  const to = card.toIata || "";
+  const dep = clockOf(card.departAt);
+  const arr = clockOf(card.arriveAt);
+  const dur = durationOf(card.durationMinutes);
+  const airline = card.airline || tContent(card, "title", locale);
+  const retDep = clockOf(card.returnDepartAt);
 
   const inner = (
-    <div className="overflow-hidden rounded-2xl border border-sky-400/25 bg-gradient-to-br from-sky-950 via-slate-900 to-blue-950 p-4 shadow-lg shadow-sky-900/30">
-      <div className="mb-3 flex items-center justify-between">
+    <div className="h-full overflow-hidden rounded-2xl border border-sky-400/25 bg-gradient-to-br from-sky-950 via-slate-900 to-blue-950 p-4 shadow-lg shadow-sky-900/30">
+      <div className="mb-3 flex items-center justify-between gap-2">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-sky-300">
           <Plane size={12} />
-          {t.admin.flightLabel}
+          {card.airlineCode || t.admin.flightLabel}
         </span>
-        {card.badges?.[0] && (
-          <span className="text-[10px] text-sky-200/50">{card.badges[0]}</span>
-        )}
+        <span className="text-[10px] text-sky-200/60">
+          {card.tripType === "round-trip" || retDep
+            ? locale === "ar"
+              ? "ذهاب وعودة"
+              : "Round-trip"
+            : locale === "ar"
+              ? "اتجاه واحد"
+              : "One-way"}
+        </span>
       </div>
-      <div className="flex items-center gap-3">
+      <p className="mb-2 truncate text-xs font-semibold text-sky-100/80">{airline}</p>
+      <div className="flex items-center gap-2">
         <div className="min-w-0 flex-1 text-center">
-          <p className="truncate text-lg font-bold text-white">{from}</p>
-          <p className="text-[10px] uppercase tracking-widest text-sky-300/50">
-            {t.common.from}
-          </p>
+          <p className="text-lg font-black text-white">{dep || from || "—"}</p>
+          <p className="text-[10px] font-bold tracking-widest text-sky-300/70">{from || t.common.from}</p>
         </div>
-        <div className="flex flex-col items-center gap-1 px-1">
+        <div className="flex flex-col items-center gap-0.5 px-1">
           <div className="h-px w-8 bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
           <Plane size={14} className="rotate-90 text-sky-400 rtl:-rotate-90" />
+          {dur ? (
+            <span className="inline-flex items-center gap-0.5 text-[10px] text-sky-200/70">
+              <Clock size={9} />
+              {dur}
+            </span>
+          ) : null}
           <div className="h-px w-8 bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
         </div>
         <div className="min-w-0 flex-1 text-center">
-          <p className="truncate text-lg font-bold text-white">{to}</p>
-          <p className="text-[10px] uppercase tracking-widest text-sky-300/50">
-            {t.common.to}
-          </p>
+          <p className="text-lg font-black text-white">{arr || to || "—"}</p>
+          <p className="text-[10px] font-bold tracking-widest text-sky-300/70">{to || t.common.to}</p>
         </div>
       </div>
-      {title !== subtitle && (
-        <p className="mt-3 text-center text-xs text-sky-100/60 line-clamp-1">
-          {title}
+      {card.stopCount != null && (
+        <p className="mt-2 text-center text-[10px] text-sky-200/50">
+          {card.stopCount === 0
+            ? locale === "ar"
+              ? "مباشر"
+              : "Direct"
+            : locale === "ar"
+              ? `${card.stopCount} توقف`
+              : `${card.stopCount} stop(s)`}
         </p>
       )}
       {card.clientPrice > 0 && !card.pricePending ? (
@@ -179,7 +250,7 @@ function FlightCard({ card }: { card: SalesChatCard }) {
     </div>
   );
   return card.href ? (
-    <Link href={card.href} className="block transition hover:scale-[1.02]">
+    <Link href={card.href} className="block h-full transition hover:scale-[1.02]">
       {inner}
     </Link>
   ) : (
@@ -192,7 +263,7 @@ function PackageCard({ card }: { card: SalesChatCard }) {
   const title = tContent(card, "title", locale);
   const subtitle = tContent(card, "subtitle", locale);
   const inner = (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600 via-rose-600 to-violet-700 p-[1px] shadow-lg shadow-rose-900/30">
+    <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600 via-rose-600 to-violet-700 p-[1px] shadow-lg shadow-rose-900/30">
       <div className="relative overflow-hidden rounded-[15px] bg-slate-950/40 backdrop-blur-sm">
         <div className="relative h-28">
           <CardImage src={card.image} alt={title} className="opacity-80" />
@@ -203,39 +274,17 @@ function PackageCard({ card }: { card: SalesChatCard }) {
           </span>
         </div>
         <div className="space-y-2 p-4">
-          <h4 className="font-bold text-white leading-snug">{title}</h4>
-          {subtitle && (
-            <p className="text-xs text-white/55 line-clamp-2">{subtitle}</p>
-          )}
-          {card.highlights && card.highlights.length > 0 && (
-            <ul className="flex flex-wrap gap-1.5">
-              {card.highlights.slice(0, 3).map((h) => (
-                <li
-                  key={h}
-                  className="rounded-md bg-white/10 px-2 py-0.5 text-[10px] text-white/80"
-                >
-                  {h}
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="flex items-end justify-between pt-1">
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-white/40">
-                Total
-              </p>
-              <p className="text-2xl font-bold text-white">
-                <GuestMoney amount={card.clientPrice} currency={card.currency} />
-              </p>
-            </div>
-            <ArrowRight size={18} className="mb-1 text-white/50 rtl:rotate-180" />
-          </div>
+          <h4 className="font-bold leading-snug text-white">{title}</h4>
+          {subtitle && <p className="line-clamp-2 text-xs text-white/55">{subtitle}</p>}
+          <p className="text-2xl font-bold text-white">
+            <GuestMoney amount={card.clientPrice} currency={card.currency} />
+          </p>
         </div>
       </div>
     </div>
   );
   return card.href ? (
-    <Link href={card.href} className="block transition hover:scale-[1.02]">
+    <Link href={card.href} className="block h-full transition hover:scale-[1.02]">
       {inner}
     </Link>
   ) : (
@@ -248,31 +297,20 @@ function TransferCard({ card }: { card: SalesChatCard }) {
   const title = tContent(card, "title", locale);
   const subtitle = tContent(card, "subtitle", locale);
   const inner = (
-    <div className="relative overflow-hidden rounded-2xl border border-zinc-700/80 bg-gradient-to-br from-zinc-950 via-neutral-900 to-black shadow-lg shadow-black/40">
-      <div className="absolute -end-8 -top-8 h-32 w-32 rounded-full bg-amber-500/10 blur-2xl" />
+    <div className="relative h-full overflow-hidden rounded-2xl border border-zinc-700/80 bg-gradient-to-br from-zinc-950 via-neutral-900 to-black shadow-lg shadow-black/40">
       <div className="relative flex gap-3 p-4">
         <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-zinc-800">
           <CardImage src={card.image} alt={title} />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/50 to-transparent" />
-          <Car
-            size={18}
-            className="absolute bottom-2 start-2 text-amber-400/90"
-          />
+          <Car size={18} className="absolute bottom-2 start-2 text-amber-400/90" />
         </div>
         <div className="min-w-0 flex-1 space-y-1.5">
           <span className="text-[10px] font-semibold uppercase tracking-widest text-amber-500/80">
-            VIP Transfer
+            {card.type === "car" ? (locale === "ar" ? "سيارة" : "Car") : "VIP Transfer"}
           </span>
-          <h4 className="font-bold text-zinc-50 leading-snug line-clamp-2">
-            {title}
-          </h4>
-          {subtitle && (
-            <p className="text-xs text-zinc-400 line-clamp-1">{subtitle}</p>
-          )}
+          <h4 className="line-clamp-2 font-bold leading-snug text-zinc-50">{title}</h4>
+          {subtitle && <p className="line-clamp-1 text-xs text-zinc-400">{subtitle}</p>}
           {card.pricePending || card.clientPrice <= 0 ? (
-            <p className="pt-1 text-sm font-semibold text-amber-300/80">
-              {t.chat.priceOnConfirm}
-            </p>
+            <p className="pt-1 text-sm font-semibold text-amber-300/80">{t.chat.priceOnConfirm}</p>
           ) : (
             <p className="pt-1 text-lg font-bold text-amber-400">
               <GuestMoney amount={card.clientPrice} currency={card.currency} />
@@ -283,7 +321,7 @@ function TransferCard({ card }: { card: SalesChatCard }) {
     </div>
   );
   return card.href ? (
-    <Link href={card.href} className="block transition hover:scale-[1.02]">
+    <Link href={card.href} className="block h-full transition hover:scale-[1.02]">
       {inner}
     </Link>
   ) : (
@@ -294,7 +332,6 @@ function TransferCard({ card }: { card: SalesChatCard }) {
 function ConnectedQuoteBar({
   cards,
   perks,
-  bundlePayload,
 }: {
   cards: SalesChatCard[];
   perks?: SalesChatStructured["perks"];
@@ -313,13 +350,9 @@ function ConnectedQuoteBar({
     })
     .filter(Boolean) as SalesChatCard[];
 
-  if (selected.length < 1 && !perks && !bundlePayload) return null;
+  if (selected.length < 1 && !perks) return null;
 
   const total = selected.reduce((s, c) => s + (c.clientPrice || 0), 0) || perks?.bundlePriceUsd || 0;
-  const originalPrice = perks?.originalPriceUsd || (total > 0 ? Math.round(total * 1.25) : 0);
-  const savings = perks?.savingsUsd || (originalPrice - total);
-  const loyaltyPoints = perks?.loyaltyPointsEarned || Math.round(total * 2);
-  const loyaltyCash = perks?.loyaltyCashValue || Math.round(total * 0.02);
 
   const labels: Record<SalesChatCard["type"], string> = {
     flight: t.admin.flightLabel,
@@ -329,134 +362,20 @@ function ConnectedQuoteBar({
     package: t.nav.holidays,
   };
 
-  const handleBookFullBundle = () => {
-    const flightCard = cards.find((c) => c.type === "flight");
-    const hotelCard = cards.find((c) => c.type === "hotel");
-    const transferCard = cards.find((c) => c.type === "transfer");
-
-    const sessionObj = {
-      query: {
-        origin: bundlePayload?.destinationCity ? "DXB" : "IST",
-        destination: bundlePayload?.destinationCity || "IST",
-        date: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
-        returnDate: bundlePayload?.returnDate,
-        adults: 2,
-        childrens: 0,
-        infants: 0,
-        cabinClass: "economy",
-      },
-      selection: {
-        itinerary: {
-          id: `ai-bundle-${Date.now()}`,
-          price: flightCard?.clientPrice || 180,
-          currency: "USD",
-          legs: [
-            {
-              origin: { displayCode: "DXB", name: "Dubai" },
-              destination: { displayCode: "IST", name: bundlePayload?.destinationCity || "Istanbul" },
-              departure: `${bundlePayload?.departDate || new Date().toISOString().slice(0, 10)}T10:00:00`,
-              arrival: `${bundlePayload?.departDate || new Date().toISOString().slice(0, 10)}T14:30:00`,
-              duration: 270,
-              stopCount: 0,
-              carriers: [{ code: "TK", name: "Turkish Airlines" }],
-            },
-          ],
-        },
-        fare: { id: "std", name: "باقة متكاملة مخصصة", price: flightCard?.clientPrice || 180 },
-        extras: { extraBag: false, insurance: false, priorityBoarding: false, packageIds: [] },
-      },
-      selectedHotel: hotelCard
-        ? {
-            hotelId: hotelCard.id || "h-ai",
-            hotelName: hotelCard.titleAr || hotelCard.titleEn,
-            hotelStars: 5,
-            hotelAddress: hotelCard.subtitleAr || hotelCard.subtitleEn || "مركز المدينة",
-            hotelPhoto: hotelCard.image || PLACEHOLDER,
-            roomId: "r-std",
-            roomName: "غرفة فاخرة مشمولة بالبرنامج",
-            roomPhoto: hotelCard.image || PLACEHOLDER,
-            bedType: "1 King Bed",
-            inclusions: ["إفطار مشمول", "إلغاء مجاني"],
-            checkIn: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
-            checkOut: bundlePayload?.returnDate || new Date().toISOString().slice(0, 10),
-            nightsCount: 4,
-            guestsCount: 2,
-            pricePerNight: Math.round((hotelCard.clientPrice || 400) / 4),
-            totalPrice: hotelCard.clientPrice || 400,
-            currency: "USD",
-            supplier: "ratehawk",
-          }
-        : null,
-      selectedTransfer: transferCard
-        ? {
-            id: `tr-${Date.now()}`,
-            vehicleType: "vip_van",
-            titleAr: transferCard.titleAr,
-            titleEn: transferCard.titleEn,
-            vehicleName: transferCard.titleAr,
-            seats: 7,
-            luggage: 6,
-            photoUrl: transferCard.image || "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800",
-            routeType: "airport_to_hotel",
-            pickupLocation: "مطار الوصول",
-            dropoffLocation: "الفندق",
-            flightNumber: "TK 1982",
-            date: bundlePayload?.departDate || new Date().toISOString().slice(0, 10),
-            time: "14:30",
-            price: transferCard.clientPrice || 55,
-            currency: "USD",
-            guestName: "Guest",
-            guestPhone: "",
-            supplier: "seeru_ride",
-          }
-        : null,
-    };
-
-    try {
-      sessionStorage.setItem(BOOKING_SESSION_KEY, JSON.stringify(sessionObj));
-      window.location.href = "/flights/booking";
-    } catch {
-      window.location.href = "/flights/booking";
-    }
-  };
-
   return (
-    <div className="mb-4 overflow-hidden rounded-3xl border border-amber-400/30 bg-gradient-to-br from-[#1b053a] via-[#240a45] to-[#3b0764] p-4 text-white shadow-xl shadow-purple-950/40">
-      {/* Top Banner with Savings */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-purple-800/60 pb-3">
-        <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-amber-400 text-slate-950">
-            <Sparkles size={15} />
-          </div>
-          <div>
-            <p className="text-xs font-black text-white">
-              {locale === "ar" ? "باقة السفر المتكاملة المخصصة لك" : "Custom Tailored Travel Bundle"}
-            </p>
-            <p className="text-[10px] text-purple-200/70">
-              {locale === "ar" ? "وفرت حتى 25% بحجز الخدمات معاً" : "Save up to 25% by bundling services"}
-            </p>
-          </div>
-        </div>
-
-        {savings > 0 && (
-          <span className="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300">
-            ✓ {locale === "ar" ? `وفرت $${savings} فورياً` : `Saved $${savings} instantly`}
-          </span>
-        )}
-      </div>
-
-      {/* Services Grid */}
+    <div className="mb-3 overflow-hidden rounded-3xl border border-amber-400/30 bg-gradient-to-br from-[#1b053a] via-[#240a45] to-[#3b0764] p-4 text-white shadow-xl shadow-purple-950/40">
+      <p className="text-xs font-black text-white">
+        {locale === "ar" ? "ملخص العرض الحي" : "Live offer summary"}
+      </p>
       {selected.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 my-3">
+        <div className="my-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {selected.map((card) => (
             <div
               key={card.type}
-              className="rounded-2xl border border-purple-800/60 bg-purple-950/40 p-2.5 transition"
+              className="rounded-2xl border border-purple-800/60 bg-purple-950/40 p-2.5"
             >
-              <p className="text-[10px] uppercase font-bold text-purple-300/70">
-                {labels[card.type]}
-              </p>
-              <p className="truncate text-xs font-black text-white mt-0.5">
+              <p className="text-[10px] font-bold uppercase text-purple-300/70">{labels[card.type]}</p>
+              <p className="mt-0.5 truncate text-xs font-black text-white">
                 {tContent(card, "title", locale)}
               </p>
               <p className="mt-1 text-xs font-black text-amber-300">
@@ -470,86 +389,100 @@ function ConnectedQuoteBar({
           ))}
         </div>
       )}
-
-      {/* Perks Badges (Loyalty & Affiliate) */}
-      <div className="flex flex-wrap items-center gap-2 my-3 pt-2 border-t border-purple-800/40 text-[11px]">
-        <div className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 text-amber-300">
-          <Coins size={13} className="text-amber-400" />
-          <span>+{loyaltyPoints} نقطة ولاء كاش (${loyaltyCash})</span>
+      {total > 0 && (
+        <div className="text-xl font-black text-white">
+          <GuestMoney amount={total} currency="USD" />
         </div>
-        <div className="inline-flex items-center gap-1.5 rounded-xl bg-purple-800/30 border border-purple-700/30 px-2.5 py-1 text-purple-200">
-          <Share2 size={13} className="text-purple-300" />
-          <span>اربح 4% كاش عند مشاركة الرحلة</span>
-        </div>
-      </div>
-
-      {/* Price Comparison & Big 1-Click CTA */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-purple-800/60">
-        <div>
-          {originalPrice > total && (
-            <span className="block text-xs line-through text-purple-300/60">
-              <GuestMoney amount={originalPrice} currency="USD" />
-            </span>
-          )}
-          <div className="text-xl font-black text-white">
-            <GuestMoney amount={total} currency="USD" />
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleBookFullBundle}
-          className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-6 py-3 text-xs font-black text-slate-950 shadow-lg shadow-amber-500/30 hover:brightness-110 active:scale-95 transition-all cursor-pointer"
-        >
-          <span>{locale === "ar" ? "احجز هذا البرنامج المتكامل بنقرة واحدة 🚀" : "Book Full Custom Bundle in 1-Click 🚀"}</span>
-        </button>
-      </div>
+      )}
     </div>
   );
 }
+
+const SLIDE = "w-[min(86vw,280px)] shrink-0 snap-start";
 
 export default function SalesOfferCards({
   cards,
   perks,
   bundlePayload,
   className,
+  emptyHint,
 }: {
   cards: SalesChatCard[];
   perks?: SalesChatStructured["perks"];
   bundlePayload?: SalesChatStructured["bundleCheckoutPayload"];
   className?: string;
+  emptyHint?: string;
 }) {
-  if (!cards?.length && !perks && !bundlePayload) return null;
+  const { locale, t } = useLocale();
+  if (!cards?.length && !perks && !bundlePayload) {
+    if (!emptyHint) return null;
+    return (
+      <div className={cn("mt-3 rounded-2xl border border-dashed border-white/15 px-4 py-3 text-sm text-white/60", className)}>
+        {emptyHint}
+      </div>
+    );
+  }
+
+  const flights = cards.filter((c) => c.type === "flight");
+  const hotels = cards.filter((c) => c.type === "hotel");
+  const transfers = cards.filter((c) => c.type === "transfer");
+  const cars = cards.filter((c) => c.type === "car");
+  const packages = cards.filter((c) => c.type === "package");
 
   return (
     <div className={className}>
       <ConnectedQuoteBar cards={cards} perks={perks} bundlePayload={bundlePayload} />
-      <div
-        className={cn(
-          "grid gap-3 sm:grid-cols-2",
-          cards.length === 1 && "sm:grid-cols-1"
-        )}
-      >
-        {cards.map((card, i) => {
-          const key = `${card.type}-${card.id || i}-${card.titleEn || card.titleAr}`;
-          switch (card.type) {
-            case "hotel":
-              return <HotelCard key={key} card={card} />;
-            case "flight":
-              return <FlightCard key={key} card={card} />;
-            case "package":
-              return <PackageCard key={key} card={card} />;
-            case "transfer":
-              return <TransferCard key={key} card={card} />;
-            case "car":
-              return <TransferCard key={key} card={card} />;
-            default: {
-              const _exhaustive: never = card.type;
-              return _exhaustive;
-            }
-          }
-        })}
-      </div>
+      {flights.length > 0 && (
+        <Rail title={t.admin.flightLabel}>
+          {flights.map((card, i) => (
+            <div key={`${card.id || i}-f`} className={SLIDE}>
+              <FlightCard card={card} />
+            </div>
+          ))}
+        </Rail>
+      )}
+      {hotels.length > 0 && (
+        <Rail title={t.nav.hotels}>
+          {hotels.map((card, i) => (
+            <div key={`${card.id || i}-h`} className={SLIDE}>
+              <HotelCard card={card} />
+            </div>
+          ))}
+        </Rail>
+      )}
+      {transfers.length > 0 && (
+        <Rail title={t.nav.transfers}>
+          {transfers.map((card, i) => (
+            <div key={`${card.id || i}-t`} className={SLIDE}>
+              <TransferCard card={card} />
+            </div>
+          ))}
+        </Rail>
+      )}
+      {cars.length > 0 && (
+        <Rail title={t.nav.cars}>
+          {cars.map((card, i) => (
+            <div key={`${card.id || i}-c`} className={SLIDE}>
+              <TransferCard card={card} />
+            </div>
+          ))}
+        </Rail>
+      )}
+      {packages.length > 0 && (
+        <Rail title={t.nav.holidays}>
+          {packages.map((card, i) => (
+            <div key={`${card.id || i}-p`} className={SLIDE}>
+              <PackageCard card={card} />
+            </div>
+          ))}
+        </Rail>
+      )}
+      {!cards.length && emptyHint ? (
+        <EmptyRail
+          title={locale === "ar" ? "المخزون الحي" : "Live inventory"}
+          hint={emptyHint}
+        />
+      ) : null}
     </div>
   );
 }

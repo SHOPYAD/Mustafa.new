@@ -136,7 +136,8 @@ export default function AdminLayout({
     pathname === "/admin/homepage-editor" ||
     pathname === "/admin/homepage" ||
     pathname === "/admin/editor" ||
-    pathname === "/admin/visual-editor";
+    pathname === "/admin/visual-editor" ||
+    pathname === "/admin/mobile-app-editor";
 
   if (isFullscreenEditor) {
     return (

@@ -72,9 +72,7 @@ export default function FlightPriceCalendar({
   }, [initialPick, tripType, departDate]);
   const [prices, setPrices] = useState<CalendarDayPrice[]>([]);
   const [loadingPrices, setLoadingPrices] = useState(false);
-  const routeReady = Boolean(
-    origin?.skyId && destination?.skyId && origin.entityId && destination.entityId
-  );
+  const routeReady = Boolean(origin?.skyId && destination?.skyId);
   const months = useMemo(() => [month, addMonths(month, 1)], [month]);
   const labels = weekdayLabels(locale, dfLocale);
   const saturdayStart = locale === "ar";
@@ -96,6 +94,7 @@ export default function FlightPriceCalendar({
       destinationEntityId: destination!.entityId,
       fromDate,
       toDate,
+      date: depart,
       currency,
     })
       .then((rows) => {

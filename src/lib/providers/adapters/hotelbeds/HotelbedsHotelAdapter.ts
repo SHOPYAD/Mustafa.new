@@ -415,10 +415,10 @@ export function mapHotelbedsRooms(hotel: any, currency: string, nights: number, 
       const net = toNumber(rate.net);
       const selling = rate.sellingRate != null ? toNumber(rate.sellingRate) : net;
       const policies = mapCancellation(rate, rateCurrency);
-      const cancel = deriveCancellation(policies);
       const rateClass = String(rate.rateClass || "").toUpperCase();
       const isNrf = rateClass === "NRF" || rateClass === "NR";
-      const refundable = isNrf ? false : cancel.refundable || rateClass === "NOR";
+      const cancel = deriveCancellation(policies, Date.now(), isNrf, selling);
+      const refundable = cancel.refundable;
       const promotions = Array.isArray(rate.promotions)
         ? rate.promotions.map((p: any) => cleanText(p.name || p.remark)).filter(Boolean)
         : [];
@@ -431,7 +431,9 @@ export function mapHotelbedsRooms(hotel: any, currency: string, nights: number, 
         board: normalizeBoard(rate.boardCode || rate.boardName),
         boardName: cleanText(rate.boardName),
         refundable,
-        freeCancellationUntil: refundable ? cancel.freeCancellationUntil : undefined,
+        cancellationType: cancel.cancellationType,
+        freeCancellationUntil: cancel.freeCancellationUntil,
+        currentPenalty: cancel.currentPenalty,
         cancellationPolicies: policies,
         paymentType: paymentTypeOf(rate),
         price: {
@@ -501,14 +503,6 @@ export function mapHotelbedsContent(
     }
     if (groupCode === 70 && CHECK_OUT_CODES.has(code)) {
       checkOutTime = checkOutTime || cleanText(f.timeTo || f.timeFrom)?.slice(0, 5);
-      continue;
-    }
-    if (groupCode === 70) {
-      const policyName = facilityName(f, dict);
-      if (policyName) {
-        const line = facilityLabel(f, policyName);
-        if (line) policyLines.push(line);
-      }
       continue;
     }
     const name = facilityName(f, dict);

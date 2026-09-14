@@ -1896,7 +1896,7 @@ export default function FlightBookingSmartConcierge({
   };
 
   return (
-    <div className="smart-concierge-container relative overflow-hidden rounded-3xl border border-purple-800/60 bg-gradient-to-br from-[#180333] via-[#240a45] to-[#320857] p-5 sm:p-6 text-white shadow-2xl shadow-purple-950/40">
+    <div className="smart-concierge-container relative overflow-hidden rounded-3xl border border-purple-800/60 bg-gradient-to-br from-[#180333] via-[#240a45] to-[#320857] p-4 text-white shadow-2xl shadow-purple-950/40 sm:p-6">
       {/* Ambient background glow */}
       <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-amber-400/15 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
@@ -1911,20 +1911,19 @@ export default function FlightBookingSmartConcierge({
         className="hidden"
       />
 
-      {/* Header Bar */}
-      <div className="relative flex items-center justify-between gap-4">
-        {/* Right side in RTL: Title & Bot Status */}
-        <div className="flex items-center gap-3">
+      {/* Header — stacked on narrow RTL phones so chips never collide */}
+      <div className="relative flex flex-col gap-3">
+        <div className="flex items-start gap-3">
           <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-slate-950 shadow-md shadow-amber-500/25">
-            <Bot size={24} className="text-slate-950" />
+            <Bot size={22} className="text-slate-950" />
             <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#180333] bg-emerald-500" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm sm:text-base font-black text-white">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-[15px] font-black leading-snug text-white sm:text-base">
                 {locale === "ar" ? "مساعد لوناليزا الذكي للرحلة" : "Lonaliza Smart AI Travel Concierge"}
               </h3>
-              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-0.5 text-[10px] font-black text-emerald-200">
+              <span className="inline-flex min-h-8 items-center gap-1 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2.5 py-1 text-[10px] font-black text-emerald-200">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -1932,52 +1931,42 @@ export default function FlightBookingSmartConcierge({
                 {locale === "ar" ? "اتصال حي" : "LIVE"}
               </span>
             </div>
-            <p className="text-xs text-purple-200 mt-0.5 leading-snug">
+            <p className="mt-1 text-xs leading-relaxed text-purple-100">
               {locale === "ar"
                 ? `أنت في اتصال حي مع الوكيل — يحفظ سياق رحلتك إلى ${destinationCity} ويجلب الفنادق والترانسفير والبرامج من المزودين`
                 : `You are live with the agent — keeping ${destinationCity} context and pulling hotels, transfers, and tours from providers`}
             </p>
           </div>
-        </div>
-
-        {/* Left side in RTL (أعلى يسار بطاقة الشات): Passport Camera Button + Open/Close Icon Button */}
-        <div className="flex items-center gap-2">
-          {/* Repositioned Passport Camera Button */}
-          <button
-            type="button"
-            disabled={scanningPassport}
-            onClick={() => fileInputRef.current?.click()}
-            title={locale === "ar" ? "مسح الجواز الذكي بالكاميرا" : "AI Passport Camera Scan"}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-3.5 py-2 text-xs font-black text-slate-950 shadow-md shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
-          >
-            {scanningPassport ? (
-              <>
-                <Loader2 size={15} className="animate-spin text-slate-950" />
-                <span className="hidden sm:inline font-black">
-                  {locale === "ar" ? "جارٍ المسح..." : "Scanning..."}
-                </span>
-              </>
-            ) : (
-              <>
-                <Camera size={15} className="text-slate-950 stroke-[2.5]" />
-                <span className="hidden sm:inline font-black">
-                  {locale === "ar" ? "مسح الجواز الذكي" : "Smart Passport Scan"}
-                </span>
-              </>
-            )}
-          </button>
-
-          {/* Open/Close Chat Toggle Icon Button (بأعلى يسار بطاقة الشات) */}
           <button
             type="button"
             onClick={() => setChatOpen(!chatOpen)}
             title={chatOpen ? (locale === "ar" ? "إغلاق / تصغير الشات" : "Collapse Chat") : (locale === "ar" ? "فتح محادثة الوكيل" : "Open Chat")}
             aria-label={chatOpen ? "Collapse Chat" : "Open Chat"}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-purple-400/40 bg-purple-900/60 hover:bg-purple-800 text-amber-300 hover:text-white shadow-sm active:scale-95 transition-all cursor-pointer"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-400/40 bg-purple-900/60 text-amber-300 shadow-sm transition-all hover:bg-purple-800 hover:text-white active:scale-95 cursor-pointer"
           >
             {chatOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </button>
         </div>
+
+        <button
+          type="button"
+          disabled={scanningPassport}
+          onClick={() => fileInputRef.current?.click()}
+          title={locale === "ar" ? "مسح الجواز الذكي بالكاميرا" : "AI Passport Camera Scan"}
+          className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-3.5 text-sm font-black text-slate-950 shadow-md shadow-amber-500/20 transition-all hover:brightness-110 active:scale-[0.99] cursor-pointer disabled:opacity-50 sm:w-auto sm:self-start"
+        >
+          {scanningPassport ? (
+            <>
+              <Loader2 size={16} className="animate-spin text-slate-950" />
+              <span>{locale === "ar" ? "جارٍ المسح..." : "Scanning..."}</span>
+            </>
+          ) : (
+            <>
+              <Camera size={16} className="text-slate-950 stroke-[2.5]" />
+              <span>{locale === "ar" ? "مسح الجواز الذكي" : "Smart Passport Scan"}</span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* Success banner if passport extracted */}
@@ -2005,58 +1994,66 @@ export default function FlightBookingSmartConcierge({
         </div>
       )}
 
-      {/* Quick Discovery Chips - Interactive horizontal slider with wheel scroll, nav buttons, and AI generator */}
-      <div className="relative group/chips mt-4">
-        {/* Left Arrow Button */}
+      {/* Suggestion carousel — one horizontal row, never a vertical chip wall */}
+      <div className="group/chips relative mt-4 min-w-0">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-9 bg-gradient-to-r from-[#180333] via-[#180333]/80 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-9 bg-gradient-to-l from-[#2a0748] via-[#2a0748]/80 to-transparent"
+        />
         <button
           type="button"
           onClick={() => {
-            if (chipsScrollRef.current) {
-              chipsScrollRef.current.scrollBy({ left: dir === "rtl" ? 220 : -220, behavior: "smooth" });
-            }
+            chipsScrollRef.current?.scrollBy({
+              left: dir === "rtl" ? 200 : -200,
+              behavior: "smooth",
+            });
           }}
-          className="absolute -left-2.5 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-7 w-7 items-center justify-center rounded-full bg-purple-950/95 text-amber-300 border border-purple-500/50 shadow-xl hover:bg-purple-800 hover:text-white transition-all cursor-pointer opacity-85 hover:opacity-100 active:scale-95"
+          className="absolute left-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-purple-500/40 bg-[#140428]/90 text-amber-200/90 shadow-md backdrop-blur-sm transition-all hover:bg-purple-800 hover:text-white"
           title={locale === "ar" ? "السابق" : "Previous"}
+          aria-label={locale === "ar" ? "السابق" : "Previous"}
         >
-          <ChevronLeft size={16} />
+          <ChevronLeft size={14} />
         </button>
-
-        {/* Right Arrow Button */}
         <button
           type="button"
           onClick={() => {
-            if (chipsScrollRef.current) {
-              chipsScrollRef.current.scrollBy({ left: dir === "rtl" ? -220 : 220, behavior: "smooth" });
-            }
+            chipsScrollRef.current?.scrollBy({
+              left: dir === "rtl" ? -200 : 200,
+              behavior: "smooth",
+            });
           }}
-          className="absolute -right-2.5 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-7 w-7 items-center justify-center rounded-full bg-purple-950/95 text-amber-300 border border-purple-500/50 shadow-xl hover:bg-purple-800 hover:text-white transition-all cursor-pointer opacity-85 hover:opacity-100 active:scale-95"
+          className="absolute right-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-purple-500/40 bg-[#140428]/90 text-amber-200/90 shadow-md backdrop-blur-sm transition-all hover:bg-purple-800 hover:text-white"
           title={locale === "ar" ? "التالي" : "Next"}
+          aria-label={locale === "ar" ? "التالي" : "Next"}
         >
-          <ChevronRight size={16} />
+          <ChevronRight size={14} />
         </button>
 
         <div
           ref={chipsScrollRef}
+          dir={dir}
           onWheel={(e) => {
             if (e.deltaY !== 0) {
               e.currentTarget.scrollLeft += e.deltaY;
             }
           }}
-          className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden scroll-smooth py-1 px-1"
+          className="lonaliza-h-scroll lonaliza-suggest-carousel px-8 py-0.5"
         >
-          {/* Smart AI Suggestion Generator Button */}
           <button
             type="button"
             onClick={handleGenerateSmartSuggestions}
             disabled={isGeneratingSuggestions}
-            className="inline-flex shrink-0 whitespace-nowrap items-center gap-1.5 rounded-xl border border-amber-400/80 bg-gradient-to-r from-amber-500/30 via-purple-900/90 to-amber-500/20 px-3.5 py-2 text-xs font-black text-amber-200 hover:border-amber-300 hover:brightness-110 active:scale-95 transition-all cursor-pointer shadow-md shadow-amber-500/20"
+            className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-amber-400/80 bg-gradient-to-r from-amber-500/30 via-purple-900/90 to-amber-500/20 px-3 text-[11px] font-bold leading-none text-amber-200 shadow-sm shadow-amber-500/15 transition-all hover:border-amber-300 hover:brightness-110 active:scale-95 cursor-pointer disabled:opacity-60"
             title={locale === "ar" ? "توليد اقتراحات ذكية جديدة تخص وجهتك ورحلتك" : "Generate smart AI trip suggestions"}
           >
-            <Sparkles size={14} className={`text-amber-300 ${isGeneratingSuggestions ? "animate-spin" : "animate-pulse"}`} />
+            <Sparkles size={13} className={`shrink-0 text-amber-300 ${isGeneratingSuggestions ? "animate-spin" : "animate-pulse"}`} />
             <span>{locale === "ar" ? "توليد اقتراحات جديدة" : "AI Suggestions"}</span>
           </button>
 
-          {/* Dynamic Suggestion Chips */}
           {activeChips.map((chip) => {
             const Icon = chip.icon;
             return (
@@ -2064,13 +2061,13 @@ export default function FlightBookingSmartConcierge({
                 key={chip.id}
                 type="button"
                 onClick={() => handleQuickChip(chip.id)}
-                className={`inline-flex shrink-0 whitespace-nowrap items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold active:scale-95 transition-all cursor-pointer shadow-sm ${
+                className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 text-[11px] font-semibold leading-none shadow-sm transition-all active:scale-95 cursor-pointer ${
                   chip.isHighlighted
                     ? "border-amber-500/60 bg-amber-500/15 text-amber-200 hover:border-amber-400 hover:bg-amber-500/25"
-                    : "border-purple-600/60 bg-purple-900/60 text-white hover:border-amber-400 hover:bg-purple-800/80"
+                    : "border-purple-600/55 bg-purple-900/55 text-white hover:border-amber-400 hover:bg-purple-800/80"
                 }`}
               >
-                <Icon size={14} className="text-amber-400 shrink-0" />
+                <Icon size={13} className="shrink-0 text-amber-400" />
                 <span>{chip.label}</span>
               </button>
             );

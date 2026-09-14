@@ -11,6 +11,7 @@ import type {
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import type { Locale } from "@/lib/i18n/types";
 import SafeImage from "@/components/ui/SafeImage";
+import HomeSwipeCarousel from "@/components/ui/HomeSwipeCarousel";
 
 function localizedName(
   locale: Locale,
@@ -200,19 +201,11 @@ function TpGroups({ groups, light }: { groups: HomepageFlightDealGroup[]; light?
             </div>
           </div>
 
-          <div className="-mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2 md:hidden">
-            {group.offers.map((deal) => (
-              <div key={deal.id} className="w-[min(84vw,20.5rem)] shrink-0 snap-start">
-                <TpDealCard deal={deal} light={light} />
-              </div>
-            ))}
-          </div>
-
-          <div className="hidden gap-4 md:grid md:grid-cols-3 lg:grid-cols-4">
+          <HomeSwipeCarousel desktopClassName="lg:grid lg:grid-cols-4 lg:gap-4 lg:!overflow-visible lg:pb-0">
             {group.offers.map((deal) => (
               <TpDealCard key={deal.id} deal={deal} light={light} />
             ))}
-          </div>
+          </HomeSwipeCarousel>
         </div>
       ))}
     </div>
@@ -221,11 +214,11 @@ function TpGroups({ groups, light }: { groups: HomepageFlightDealGroup[]; light?
 
 function LiveGrid({ deals }: { deals: HomepageFlightDeal[] }) {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <HomeSwipeCarousel desktopClassName="lg:grid lg:grid-cols-3 lg:gap-4 lg:!overflow-visible lg:pb-0">
       {deals.map((deal) => (
         <LiveDealCard key={deal.id} deal={deal} />
       ))}
-    </div>
+    </HomeSwipeCarousel>
   );
 }
 

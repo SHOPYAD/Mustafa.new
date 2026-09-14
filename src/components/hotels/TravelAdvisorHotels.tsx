@@ -387,10 +387,11 @@ export default function TravelAdvisorHotels() {
       compactActions={
         <button
           type="button"
-          className="lg:hidden h-16 px-3 rounded-xl border border-slate-300 bg-white"
+          className="lg:hidden inline-flex h-16 w-14 shrink-0 items-center justify-center rounded-xl border border-purple-200 bg-white text-[#2e1065] shadow-sm"
           onClick={() => setFiltersOpen(true)}
+          aria-label={t.hotels.filters}
         >
-          <SlidersHorizontal size={16} />
+          <SlidersHorizontal size={20} strokeWidth={2.4} className="text-[#2e1065]" />
         </button>
       }
     />
@@ -402,7 +403,7 @@ export default function TravelAdvisorHotels() {
       data-hotel-source={listSource}
       data-hotel-fallback={listFallback ? "1" : "0"}
     >
-      <div className="relative bg-[#051741] text-white pt-[5.25rem] md:pt-[5.5rem]">
+      <div className="lonaliza-search-chrome relative bg-[#051741] text-white pt-[max(5.25rem,calc(4.25rem+env(safe-area-inset-top,0px)))] md:pt-[5.5rem]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 overflow-hidden opacity-60"

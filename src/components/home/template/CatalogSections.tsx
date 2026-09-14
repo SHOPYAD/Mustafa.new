@@ -6,6 +6,7 @@ import PackageCard from "@/components/packages/PackageCard";
 import HotelCard from "@/components/hotels/HotelCard";
 import SafeImage from "@/components/ui/SafeImage";
 import CardSlider from "@/components/ui/CardSlider";
+import HomeSwipeCarousel from "@/components/ui/HomeSwipeCarousel";
 import { featuredPackages } from "@/data/packages";
 import { fetchPublishedPackages } from "@/data/packages-client";
 import type { HolidayPackage } from "@/types/package";
@@ -60,8 +61,8 @@ function SectionIntro({
   action?: ReactNode;
 }) {
   return (
-    <div className="mb-10 flex flex-col gap-6 md:mb-12 lg:flex-row lg:items-end lg:justify-between">
-      <div className="max-w-2xl">
+    <div className="mb-8 flex flex-col gap-6 overflow-visible pt-1 md:mb-12 lg:flex-row lg:items-end lg:justify-between">
+      <div className="max-w-2xl overflow-visible">
         <EditableText
           instance={instance}
           field="eyebrow"
@@ -242,15 +243,99 @@ export function DestinationsSection({ instance, editorMode, selectedId }: Sectio
   );
 }
 
+function packageHasImage(pkg: HolidayPackage): boolean {
+  return Array.isArray(pkg.images) && pkg.images.some((img) => Boolean(img?.url));
+}
+
+function packageDisplayTitle(pkg: HolidayPackage): string {
+  return String(pkg.titleAr || pkg.titleEn || pkg.title || "").trim();
+}
+
+function isRenderableHomePackage(pkg: HolidayPackage | null | undefined): pkg is HolidayPackage {
+  if (!pkg || !pkg.id) return false;
+  return Boolean(packageDisplayTitle(pkg) || packageHasImage(pkg) || Number(pkg.price) > 0);
+}
+
+function mergeHomePackage(incoming: HolidayPackage, seed?: HolidayPackage): HolidayPackage {
+  if (!seed) return incoming;
+  return {
+    ...seed,
+    ...incoming,
+    title: incoming.title || seed.title,
+    titleAr: incoming.titleAr || seed.titleAr,
+    titleEn: incoming.titleEn || seed.titleEn,
+    destination: incoming.destination || seed.destination,
+    destinationAr: incoming.destinationAr || seed.destinationAr,
+    destinationEn: incoming.destinationEn || seed.destinationEn,
+    country: incoming.country || seed.country,
+    images: packageHasImage(incoming) ? incoming.images : seed.images,
+    amenities: incoming.amenities?.length ? incoming.amenities : seed.amenities,
+    amenitiesAr: incoming.amenitiesAr?.length ? incoming.amenitiesAr : seed.amenitiesAr,
+    price: Number(incoming.price) > 0 ? incoming.price : seed.price,
+    durationDays:
+      Number(incoming.durationDays) > 0 ? incoming.durationDays : seed.durationDays,
+    currency: incoming.currency || seed.currency,
+  };
+}
+
+function hydrateHomePackages(
+  live: HolidayPackage[],
+  seeds: HolidayPackage[]
+): HolidayPackage[] {
+  const seedsByKey = new Map<string, HolidayPackage>();
+  for (const seed of seeds) {
+    seedsByKey.set(seed.id, seed);
+    if (seed.slug) seedsByKey.set(seed.slug, seed);
+  }
+
+  const seen = new Set<string>();
+  const hydrated: HolidayPackage[] = [];
+
+  for (const raw of live) {
+    if (!raw?.id || seen.has(raw.id)) continue;
+    const seed = seedsByKey.get(raw.id) || (raw.slug ? seedsByKey.get(raw.slug) : undefined);
+    const next = mergeHomePackage(raw, seed);
+    if (!isRenderableHomePackage(next)) continue;
+    seen.add(next.id);
+    hydrated.push(next);
+  }
+
+  for (const seed of seeds) {
+    if (seen.has(seed.id) || !isRenderableHomePackage(seed)) continue;
+    seen.add(seed.id);
+    hydrated.push(seed);
+  }
+
+  return hydrated
+    .sort((a, b) => Number(Boolean(b.isFeatured)) - Number(Boolean(a.isFeatured)))
+    .slice(0, 8);
+}
+
 export function PackagesSection({ instance, editorMode, selectedId }: SectionProps) {
-  const { t } = useLocale();
-  const [homePackages, setHomePackages] = useState<HolidayPackage[]>(featuredPackages);
+  const { locale, t } = useLocale();
+  const [homePackages, setHomePackages] = useState<HolidayPackage[]>(() =>
+    hydrateHomePackages(featuredPackages, featuredPackages)
+  );
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    void fetchPublishedPackages().then((list) => {
-      if (!cancelled && list.length) setHomePackages(list);
-    });
+    void fetchPublishedPackages()
+      .then((list) => {
+        if (cancelled) return;
+        const next = hydrateHomePackages(
+          Array.isArray(list) && list.length ? list : featuredPackages,
+          featuredPackages
+        );
+        setHomePackages(next);
+        setLoadError(next.length === 0);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        const fallback = hydrateHomePackages(featuredPackages, featuredPackages);
+        setHomePackages(fallback);
+        setLoadError(fallback.length === 0);
+      });
     return () => {
       cancelled = true;
     };
@@ -259,7 +344,7 @@ export function PackagesSection({ instance, editorMode, selectedId }: SectionPro
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
       <ServiceSurface kind="tours" background={instance.styles.background || undefined}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto min-w-0 max-w-7xl overflow-x-clip px-4 pt-1 sm:px-6 lg:px-8">
           <SectionIntro
             instance={instance}
             editorMode={editorMode}
@@ -278,24 +363,36 @@ export function PackagesSection({ instance, editorMode, selectedId }: SectionPro
               </BuilderLink>
             }
           />
-          <CardSlider title="">
-            {homePackages.slice(0, 8).map((pkg) => (
-              <SelectableField
-                key={pkg.id}
-                instance={instance}
-                field={`package-${pkg.id}`}
-                editorMode={editorMode}
-                className="snap-start shrink-0 w-[240px] sm:w-[270px]"
-              >
-                <div
-                  onClickCapture={(e) => preventBuilderNav(editorMode, e)}
-                  className="sc-card rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow"
+          {homePackages.length ? (
+            <CardSlider title="" tone="light">
+              {homePackages.map((pkg) => (
+                <SelectableField
+                  key={pkg.id}
+                  instance={instance}
+                  field={`package-${pkg.id}`}
+                  editorMode={editorMode}
+                  className="w-[min(16.25rem,calc(100%-2.75rem))] max-w-full shrink-0 snap-start sm:w-[270px]"
                 >
-                  <PackageCard package_={pkg} compact />
-                </div>
-              </SelectableField>
-            ))}
-          </CardSlider>
+                  <div
+                    onClickCapture={(e) => preventBuilderNav(editorMode, e)}
+                    className="min-w-0 w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-shadow hover:shadow-md"
+                  >
+                    <PackageCard package_={pkg} compact />
+                  </div>
+                </SelectableField>
+              ))}
+            </CardSlider>
+          ) : (
+            <div className="rounded-2xl border border-slate-200 bg-white px-4 py-10 text-center text-sm text-slate-600">
+              {loadError
+                ? locale === "ar"
+                  ? "تعذر تحميل البرامج الآن. جرّب مرة أخرى من صفحة العطلات."
+                  : "Packages could not be loaded. Open holidays to browse the catalog."
+                : locale === "ar"
+                  ? "لا توجد برامج منشورة للعرض حالياً."
+                  : "No published holiday programs are available right now."}
+            </div>
+          )}
         </div>
       </ServiceSurface>
     </SectionFrame>
@@ -387,7 +484,7 @@ export function CarsSection({ instance, editorMode, selectedId }: SectionProps) 
               </BuilderLink>
             }
           />
-          <div className="sc-grid grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <HomeSwipeCarousel>
             {CAR_RENTAL_OFFERS.slice(0, 4).map((offer) => {
               const title = tContent(offer, "title", locale);
               const city = tContent(offer, "city", locale);
@@ -399,7 +496,7 @@ export function CarsSection({ instance, editorMode, selectedId }: SectionProps) 
                   editorMode={editorMode}
                   instance={instance}
                   field={`car-${offer.id}`}
-                  className="sc-card group overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1"
+                  className="sc-card group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="sc-card-image relative h-44">
                     <SafeImage
@@ -432,7 +529,7 @@ export function CarsSection({ instance, editorMode, selectedId }: SectionProps) 
                 </BuilderLink>
               );
             })}
-          </div>
+          </HomeSwipeCarousel>
         </div>
       </ServiceSurface>
     </SectionFrame>

@@ -170,7 +170,12 @@ export default function AdminPwaPage() {
           <Smartphone size={20} />
         </span>
         <div className="flex flex-col gap-1.5">
-          <h1 className="text-2xl font-bold tracking-tight text-white">{copy.title}</h1>
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-2xl font-bold tracking-tight text-white">{copy.title}</h1>
+            <span className="rounded-full bg-emerald-500/20 border border-emerald-500/40 px-3 py-0.5 text-xs font-bold text-emerald-300">
+              مجاناً لكافة باقات إعادة البيع
+            </span>
+          </div>
           <p className="text-sm leading-relaxed text-white/40">{copy.subtitle}</p>
         </div>
       </div>

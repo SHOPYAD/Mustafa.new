@@ -17,6 +17,10 @@ import SearchTabsProvider from "@/components/search/SearchTabsProvider";
 import { getSearchTabsConfig } from "@/lib/server/search-tabs-store";
 import { isOrigin } from "@/lib/server/deployment-role";
 import B2BLandingChatWidget from "@/components/chat/B2BLandingChatWidget";
+import { headers, cookies } from "next/headers";
+import { APP_SHELL_COOKIE, APP_SHELL_HEADER } from "@/lib/mobile/app-mode";
+import AppModeClientSync from "@/components/mobile/AppModeClientSync";
+import { cn } from "@/lib/utils";
 
 import { getBrandTheme } from "@/lib/server/brand-theme-store";
 
@@ -28,15 +32,26 @@ export default async function SiteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [searchTabs, theme] = await Promise.all([
+  const [searchTabs, theme, headerList, cookieStore] = await Promise.all([
     getSearchTabsConfig(),
     getBrandTheme(),
+    headers(),
+    cookies(),
   ]);
   const isMasterOrigin = isOrigin();
+
+  const userAgent = headerList.get("user-agent") || "";
+  const isDesktop = !/Android|iPhone|iPad|iPod|Mobile/i.test(userAgent);
+  const isApp =
+    !isDesktop &&
+    (headerList.get(APP_SHELL_HEADER) === "1" ||
+      cookieStore.get(APP_SHELL_COOKIE)?.value === "1" ||
+      userAgent.includes("LonalizaApp"));
 
   return (
     <>
       <SiteThemeStyle />
+      <AppModeClientSync initialIsApp={isApp} />
       <ThemeProvider initialTheme={theme}>
         <BuilderModeProvider>
           <BrandingProvider>
@@ -47,20 +62,26 @@ export default async function SiteLayout({
               >
                 <SiteTrackingScripts />
                 <AffiliateTracker />
-                <div className="notranslate" translate="no">
-                  <Header />
-                </div>
-                <main className="min-h-screen">{children}</main>
-                <div className="notranslate" translate="no">
-                  <Footer />
-                </div>
-                <FloatingActionHub />
-                <SocialSidebar />
-                <CallbackBanner />
+                {!isApp && (
+                  <div className="notranslate" translate="no">
+                    <Header />
+                  </div>
+                )}
+                <main className={cn("min-h-screen", isApp && "lonaliza-app-shell pb-24")}>
+                  {children}
+                </main>
+                {!isApp && (
+                  <div className="notranslate" translate="no">
+                    <Footer />
+                  </div>
+                )}
+                {!isApp && <FloatingActionHub />}
+                {!isApp && <SocialSidebar />}
+                {!isApp && <CallbackBanner />}
                 <CompareDrawer />
                 <AuthGoogleFeedback />
                 <AuthModal />
-                <B2BLandingChatWidget />
+                {!isApp && <B2BLandingChatWidget />}
               </SearchTabsProvider>
             </CustomerAuthProvider>
           </BrandingProvider>
@@ -69,3 +90,4 @@ export default async function SiteLayout({
     </>
   );
 }
+

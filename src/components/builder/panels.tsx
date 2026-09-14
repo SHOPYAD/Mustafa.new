@@ -68,6 +68,11 @@ function LayoutPanel() {
             >
               {pickCopy(label, locale)}
               {item.hidden ? <span className="ms-2 text-[10px] text-slate-400">{t.editor.hide}</span> : null}
+              {item.settings?.hideOnMobileApp ? (
+                <span className="ms-2 text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded font-bold">
+                  مخفي بالتطبيق
+                </span>
+              ) : null}
             </button>
             <div className="mt-2 flex items-center gap-1">
               <button
@@ -89,9 +94,31 @@ function LayoutPanel() {
               <button
                 type="button"
                 onClick={() => hideSection(item.instanceId, !item.hidden)}
+                title={item.hidden ? "إظهار في كل المنصات" : "إخفاء من كل المنصات"}
                 className="rounded bg-white px-2 py-1 text-slate-600"
               >
                 {item.hidden ? <EyeOff size={12} /> : <Eye size={12} />}
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  useBuilderStore.getState().updateSectionSettings(item.instanceId, {
+                    hideOnMobileApp: !item.settings?.hideOnMobileApp,
+                  })
+                }
+                title={
+                  item.settings?.hideOnMobileApp
+                    ? "إظهار في تطبيق الجوال"
+                    : "إلغاء من تطبيق الجوال فقط (إبقاؤه في الموقع)"
+                }
+                className={cn(
+                  "rounded px-2 py-1 text-[11px] font-bold transition-colors",
+                  item.settings?.hideOnMobileApp
+                    ? "bg-amber-100 text-amber-900 border border-amber-300"
+                    : "bg-white text-purple-700 hover:bg-purple-50"
+                )}
+              >
+                📱 {item.settings?.hideOnMobileApp ? "مخفي بالتطبيق" : "بالتطبيق"}
               </button>
               <button
                 type="button"

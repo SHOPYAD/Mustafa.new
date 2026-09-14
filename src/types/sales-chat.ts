@@ -46,8 +46,8 @@ export const DEFAULT_SALES_BEHAVIOR_RULES = `قواعد السلوك الإلز�
    - اسأل: مدينة/مطار الاستلام والتواريخ وعدد الركاب.
 
 5) البرامج السياحية:
-   - عند طلب برنامج سياحي، اكتب برنامجاً مفصلاً وشاملاً يوماً بيوم في نص الرد reply مع الأنشطة الصباحية والمسائية وأهم المعالم التي تناسب الوجهة بدقة.
-   - لا تكتفِ برسالة مقتضبة تخبره بالتواصل مع واتساب! بل اعرض البرنامج كاملاً أمامه.
+   - عند طلب برنامج سياحي، ضع الجدول يوماً بيوم داخل كائن itinerary فقط (days[].title + detail + items).
+   - reply = فقرتان قصيرتان كحد أقصى. ممنوع تكرار البرنامج كـ Markdown أو قوائم طويلة في نص الرد.
 
 6) خدمة العملاء وروابط الدعم:
    - إذا طلب العميل خدمة العملاء أو احتجت لتوفير وسيلة تواصل، وفّر رابط زر واتساب الرسمي بهذا التنسيق: [تواصل مع خدمة العملاء عبر واتساب](https://wa.me/905313591394) ولا تطبع أبداً رقم هاتف مجرد كنص.
@@ -78,7 +78,7 @@ export const defaultSalesChatConfig: SalesChatConfig = {
 تحدث بلباقة واحترافية بالعربية أولاً، أو بالإنجليزية حسب لغة العميل.
 يمنع منعاً باتاً استخدام أي إيموجي في نصوصك وردودك.
 لا تذكر إطلاقاً اسم الريان للسياحة، الاسم الوحيد المعتمد هو لوناليزا للسياحة والسفر (Lonaliza Travel).
-عندما يطلب العميل برنامجاً سياحياً، أنشئ له برنامجاً سياحياً حقيقياً ومفصلاً يوماً بيوم في نص الرد reply مع ذكر معالم الوجهة وتفاصيل كل يوم كاملة.
+عندما يطلب العميل برنامجاً سياحياً، ضع الجدول يوماً بيوم في itinerary JSON فقط، واجعل reply موجزاً بدون Markdown مكرر.
 إذا طلب العميل خدمة العملاء أو احتجت لتوجيهه، وفّر له رابط واتساب المباشر بهذا الشكل: [تواصل مع خدمة العملاء عبر واتساب](https://wa.me/905313591394) ولا تكتب أبداً رقم هاتف مجرد كنص.
 إذا طلب العميل رحلة أرخص أو خطوط طيران بديلة لنفس الوجهة، ساعده واقترح الرحلات البديلة.
 الحقول: reply, cards, itinerary, flightSearch, transferSearch, carsSearch, saveProgram, readyForWhatsApp.`,
@@ -126,6 +126,29 @@ export type SalesChatCard = {
   nights?: number;
   days?: number;
   source?: "live" | "catalog" | "pending";
+  stars?: number;
+  roomName?: string;
+  airline?: string;
+  airlineCode?: string;
+  airlineLogo?: string;
+  fromIata?: string;
+  toIata?: string;
+  /** ISO datetime from the live flight engine */
+  departAt?: string;
+  arriveAt?: string;
+  returnDepartAt?: string;
+  returnArriveAt?: string;
+  durationMinutes?: number;
+  stopCount?: number;
+  flightNumber?: string;
+  tripType?: "one-way" | "round-trip";
+};
+
+export type SalesChatItineraryDayItem = {
+  time?: string;
+  kind?: "flight" | "hotel" | "transfer" | "activity";
+  labelAr?: string;
+  labelEn?: string;
 };
 
 export type SalesChatItinerary = {
@@ -137,10 +160,14 @@ export type SalesChatItinerary = {
     titleEn: string;
     detailAr?: string;
     detailEn?: string;
+    items?: SalesChatItineraryDayItem[];
   }[];
   totalBasePrice?: number;
   totalClientPrice: number;
   currency: string;
+  arrivalDate?: string;
+  departureDate?: string;
+  destination?: string;
 };
 
 export type FlightSearchHints = {

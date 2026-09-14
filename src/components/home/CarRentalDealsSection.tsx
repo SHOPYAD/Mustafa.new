@@ -11,6 +11,7 @@ import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
 import SafeImage from "@/components/ui/SafeImage";
+import HomeSwipeCarousel from "@/components/ui/HomeSwipeCarousel";
 
 function CarRentalOfferCard({ offer }: { offer: CarRentalOffer }) {
   const router = useRouter();
@@ -25,7 +26,7 @@ function CarRentalOfferCard({ offer }: { offer: CarRentalOffer }) {
   };
 
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm hover:shadow-lg hover:border-purple-400/60 transition-all duration-300">
+    <article className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm hover:shadow-lg hover:border-purple-400/60 transition-all duration-300">
       <button
         type="button"
         onClick={goToSearch}
@@ -114,11 +115,11 @@ export default function CarRentalDealsSection() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <HomeSwipeCarousel>
           {CAR_RENTAL_OFFERS.map((offer) => (
             <CarRentalOfferCard key={offer.id} offer={offer} />
           ))}
-        </div>
+        </HomeSwipeCarousel>
 
         <div className="mt-8 sm:hidden">
           <button

@@ -9,7 +9,7 @@
  */
 
 import Link from "next/link";
-import { BedDouble, Building2, Check, CreditCard, MapPin, Maximize2, Tag, Users, Utensils, Wallet, X } from "lucide-react";
+import { BedDouble, Building2, Check, ChevronLeft, CreditCard, MapPin, Maximize2, Tag, Users, Utensils, Wallet, X } from "lucide-react";
 import HotelPhotoSlider from "@/components/hotels/HotelPhotoSlider";
 import HotelStars from "@/components/hotels/HotelStars";
 import LoyaltyPointsRow from "@/components/loyalty/LoyaltyPointsRow";
@@ -197,33 +197,74 @@ export default function HotelListCard({ hotel, href }: Props) {
 
         </div>
 
-        {/* Price column */}
-        <div className="sm:w-[232px] shrink-0 flex sm:flex-col items-stretch justify-between sm:justify-end gap-3 px-4 py-4 sm:ps-4 border-t sm:border-t-0 sm:border-s border-[#2e1065]/10 bg-gradient-to-b from-[#2e1065]/[0.08] via-amber-50/70 to-white">
+        {/* Price column / Mobile Booking Bar */}
+        <div className="sm:w-[232px] shrink-0 flex flex-col sm:justify-end gap-3 px-4 py-3.5 sm:py-4 sm:ps-4 border-t sm:border-t-0 sm:border-s border-[#2e1065]/10 bg-gradient-to-b from-[#2e1065]/[0.05] via-amber-50/50 to-white">
           {nightly != null ? (
-            <div className="w-full text-start sm:text-end">
-              {remaining > 0 && remaining <= 5 ? <p className="mb-1.5 text-[11px] font-black text-rose-600">{c.remaining(remaining)}</p> : null}
-              <PromoPriceBlock
-                amount={nightly}
-                currency={priceCurrency}
-                service="hotels"
-                formatPrice={formatPrice}
-                size="lg"
-                perLabel={c.perNight}
-                subLabel={stayTotal != null ? `${c.totalFor(nights)}: ${formatPrice(stayTotal, priceCurrency)}` : undefined}
-                note={taxesNote}
-              />
+            <div className="w-full">
+              {remaining > 0 && remaining <= 5 ? (
+                <p className="mb-1 text-[11px] font-black text-rose-600 sm:text-end">
+                  {c.remaining(remaining)}
+                </p>
+              ) : null}
+
+              {/* Mobile layout: price on start, sleek button on end */}
+              <div className="flex items-center justify-between sm:block gap-3">
+                <div className="min-w-0 sm:text-end">
+                  <PromoPriceBlock
+                    amount={nightly}
+                    currency={priceCurrency}
+                    service="hotels"
+                    formatPrice={formatPrice}
+                    size="lg"
+                    perLabel={c.perNight}
+                    subLabel={stayTotal != null ? `${c.totalFor(nights)}: ${formatPrice(stayTotal, priceCurrency)}` : undefined}
+                    note={taxesNote}
+                  />
+                  {stayTotal != null ? (
+                    <div className="mt-1.5 hidden sm:flex sm:justify-end">
+                      <LoyaltyPointsRow amount={stayTotal} currency={priceCurrency} service="hotels" className="font-bold text-[#2e1065]" />
+                    </div>
+                  ) : null}
+                </div>
+
+                {/* Mobile action button (sleek, fixed height, not stretched) */}
+                <div className="sm:hidden shrink-0">
+                  <Link
+                    href={href}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-black text-white shadow-md shadow-purple-950/25 hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+                    style={{ background: "linear-gradient(135deg, #2e1065 0%, #6d28d9 55%, #b45309 160%)" }}
+                  >
+                    <span>{c.seeRooms}</span>
+                    <ChevronLeft size={16} className="rtl:rotate-0 ltr:rotate-180" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Mobile loyalty points row */}
               {stayTotal != null ? (
-                <div className="mt-2 sm:flex sm:justify-end">
-                  <LoyaltyPointsRow amount={stayTotal} currency={priceCurrency} service="hotels" className="font-bold text-[#2e1065]" />
+                <div className="mt-2 sm:hidden pt-2 border-t border-purple-900/10">
+                  <LoyaltyPointsRow amount={stayTotal} currency={priceCurrency} service="hotels" className="font-bold text-[#2e1065] text-[11px]" />
                 </div>
               ) : null}
             </div>
           ) : (
-            <p className="text-xs font-semibold text-slate-500 text-start sm:text-end">{locale === "ar" ? "السعر يظهر في صفحة الفندق" : "Price shown on the hotel page"}</p>
+            <div className="flex items-center justify-between sm:block">
+              <p className="text-xs font-semibold text-slate-500 text-start sm:text-end">
+                {locale === "ar" ? "السعر يظهر في صفحة الفندق" : "Price shown on the hotel page"}
+              </p>
+              <Link
+                href={href}
+                className="sm:hidden inline-flex items-center justify-center rounded-xl px-4 py-2 text-xs font-black text-white bg-purple-950"
+              >
+                {c.seeRooms}
+              </Link>
+            </div>
           )}
+
+          {/* Desktop full-width button */}
           <Link
             href={href}
-            className="inline-flex shrink-0 items-center justify-center rounded-2xl px-4 py-3.5 text-[14px] font-black text-white shadow-[0_12px_28px_-12px_rgba(46,16,101,0.85)] hover:brightness-110 active:scale-[0.98] transition-all sm:w-full"
+            className="hidden sm:inline-flex shrink-0 items-center justify-center rounded-2xl px-4 py-3.5 text-[14px] font-black text-white shadow-[0_12px_28px_-12px_rgba(46,16,101,0.85)] hover:brightness-110 active:scale-[0.98] transition-all sm:w-full"
             style={{ background: "linear-gradient(135deg, #2e1065 0%, #6d28d9 55%, #b45309 160%)" }}
           >
             {c.seeRooms}

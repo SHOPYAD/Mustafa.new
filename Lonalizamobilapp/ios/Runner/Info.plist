@@ -37,6 +37,15 @@
 				</array>
 			</dict>
 		</array>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>whatsapp</string>
+			<string>whatsapp-business</string>
+			<string>tel</string>
+			<string>mailto</string>
+			<string>sms</string>
+			<string>market</string>
+		</array>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
 		<key>UIApplicationSceneManifest</key>
@@ -81,5 +90,13 @@
 		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>لوناليزا تحتاج الوصول إلى صورك وفيديوهاتك لنشر التجارب السياحية والريلز.</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>لوناليزا قد تحفظ الوسائط في مكتبة الصور بعد النشر.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>لوناليزا تحتاج الكاميرا لالتقاط صور وفيديو الرحلات عند النشر.</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>لوناليزا تحتاج الميكروفون لتسجيل الرسائل الصوتية وتصوير الريلز.</string>
 	</dict>
 </plist>

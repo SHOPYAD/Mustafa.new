@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
       if (flight.userId && flight.userId !== auth.customer.id) {
         return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
       }
-      const status = String(flight.status || "pending");
+      const status = String((flight as any).status || (flight as any).paymentStatus || "pending");
       return NextResponse.json({
         ok: true,
         bookingId,

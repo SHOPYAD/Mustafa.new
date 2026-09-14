@@ -16,6 +16,7 @@ export const BUILTIN_MCP_IDS = [
   "liotrip-google-flow",
   "liotrip-computer-use",
   "liotrip-browser-use",
+  "liotrip-tripadvisor-reviews",
   "lonaliza-platform-admin",
   "mcp-fetch",
 ] as const;
@@ -371,6 +372,20 @@ export const MCP_CATALOG: McpCatalogEntry[] = [
       { name: "browser.capture_tab_screenshot", description: "التقاط لقطة شاشة للصفحة النشطة للتحقق من المونتاج" },
       { name: "browser.get_cookies", description: "قراءة وتأكيد كوكيز الجلسة لمحررات الفيديو (CapCut / Canva)" },
       { name: "browser.extract_rendered_video", description: "استخراج رابط الفيديو المصدر وحفظه في استوديو لوناليزا" },
+    ],
+  },
+  {
+    id: "liotrip-tripadvisor-reviews",
+    nameAr: "خادم تقييمات تريب أدفايزر الذكي (TripAdvisor Reviews)",
+    purposeAr: "جلب تقييمات نزلاء الفنادق الحقيقية من TripAdvisor، ترجمتها فورياً عبر Docker LibreTranslate، وحقنها في قاعدة بيانات PocketBase.",
+    source: "builtin",
+    version: "2.1.0",
+    categoryAr: "ذكاء تقييمات الفنادق",
+    tools: [
+      { name: "tripadvisor.crawl_reviews", description: "زحف واستخراج تقييمات النزلاء الحقيقية من TripAdvisor لفندق ومدينة محددة" },
+      { name: "tripadvisor.translate_reviews", description: "ترجمة عناوين ونصوص التقييمات آلياً إلى العربية بواسطة حاوية Docker LibreTranslate" },
+      { name: "tripadvisor.inject_reviews", description: "حقن وحفظ التقييمات المترجمة في جدول hotel_guest_reviews وتحديث تقييم الفندق" },
+      { name: "tripadvisor.sync_hotel", description: "مزامنة شاملة متكاملة (زحف + ترجمة فورية + حقن بقاعدة البيانات) بضغطة واحدة" },
     ],
   },
 ];

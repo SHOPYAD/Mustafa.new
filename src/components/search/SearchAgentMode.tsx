@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Pause, Play, Radio, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -129,6 +129,129 @@ function VoiceClipPlayer({
   );
 }
 
+const MemoizedMessageList = memo(function MessageList({
+  messages,
+  busy,
+  busyKind,
+  recording,
+  copy,
+  compact,
+  listRef,
+}: {
+  messages: SearchAgentMessage[];
+  busy: boolean;
+  busyKind: "text" | "voice" | null;
+  recording: boolean;
+  copy: ReturnType<typeof searchAgentCopy>;
+  compact?: boolean;
+  listRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  return (
+    <div
+      ref={listRef}
+      className={cn(
+        "relative space-y-2 overflow-y-auto px-3 py-3 sm:px-4",
+        compact ? "h-[160px]" : "h-[220px]"
+      )}
+    >
+      {messages.map((m) => (
+        <div key={m.id} className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}>
+          <div
+            className={cn(
+              "max-w-[88%] rounded-2xl px-3 py-2 text-[13px] leading-relaxed",
+              m.role === "user"
+                ? "bg-amber-400 font-semibold text-slate-950"
+                : "border border-white/10 bg-white/8 text-white"
+            )}
+          >
+            {m.audioUrl ? (
+              <VoiceClipPlayer src={m.audioUrl} playLabel={copy.playVoice} pauseLabel={copy.pauseVoice} />
+            ) : m.voice ? (
+              <span className="mb-0.5 block text-[10px] opacity-70">{copy.voiceSent}</span>
+            ) : null}
+            {m.text ? <p className="whitespace-pre-wrap">{m.text}</p> : null}
+          </div>
+        </div>
+      ))}
+      {busy ? (
+        <div className="flex items-center gap-2 text-[12px] text-emerald-200">
+          <Loader2 size={14} className="animate-spin" />
+          {recording ? copy.listening : busyKind === "voice" ? copy.transcribing : copy.thinking}
+        </div>
+      ) : null}
+    </div>
+  );
+});
+
+const AgentChatInputBar = memo(function AgentChatInputBar({
+  onSend,
+  onToggleRecord,
+  recording,
+  busy,
+  copy,
+}: {
+  onSend: (text: string) => void;
+  onToggleRecord: () => void;
+  recording: boolean;
+  busy: boolean;
+  copy: ReturnType<typeof searchAgentCopy>;
+}) {
+  const [text, setText] = useState("");
+
+  const handleSend = () => {
+    const trimmed = text.trim();
+    if (!trimmed || recording) return;
+    setText("");
+    onSend(trimmed);
+  };
+
+  return (
+    <div className="relative flex items-end gap-2 border-t border-white/10 px-3 py-2.5 sm:px-4">
+      <button
+        type="button"
+        onClick={onToggleRecord}
+        disabled={busy && !recording}
+        title={recording ? copy.stop : copy.mic}
+        className={cn(
+          "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition cursor-pointer",
+          recording
+            ? "bg-rose-500 text-white"
+            : "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
+        )}
+      >
+        {recording ? (
+          <span className="absolute inset-0 animate-ping rounded-full bg-rose-400/40" />
+        ) : (
+          <span className="absolute inset-0 animate-pulse rounded-full bg-emerald-300/25" />
+        )}
+        <Radio size={18} className="relative" />
+      </button>
+      <textarea
+        value={text}
+        rows={1}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+          }
+        }}
+        placeholder={recording ? copy.listening : copy.placeholder}
+        className="min-h-11 flex-1 resize-none rounded-xl border border-white/10 bg-white/6 px-3 py-2.5 text-sm text-white outline-none placeholder:text-white/40 focus:border-amber-300/50"
+      />
+      <button
+        type="button"
+        onClick={handleSend}
+        disabled={recording || !text.trim()}
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-400 text-slate-950 disabled:opacity-40 cursor-pointer"
+        title={copy.send}
+      >
+        {busy ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+      </button>
+    </div>
+  );
+});
+
 export function SearchAiModeSwitch({
   on,
   onChange,
@@ -198,7 +321,6 @@ export default function SearchAgentMode({
 
   const [sid, setSid] = useState("");
   const [messages, setMessages] = useState<SearchAgentMessage[]>([]);
-  const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [busyKind, setBusyKind] = useState<"text" | "voice" | null>(null);
   const [recording, setRecording] = useState(false);
@@ -392,12 +514,12 @@ export default function SearchAgentMode({
     [copy.offline, copy.voiceSlow, locale, onResponse, page, persistAndGo, sid, tab]
   );
 
-  const sendText = () => {
-    const text = input.trim();
-    if (!text || recording) return;
-    setInput("");
-    void callAgent(text);
-  };
+  const handleSendText = useCallback(
+    (text: string) => {
+      void callAgent(text);
+    },
+    [callAgent]
+  );
 
   const stopStream = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -498,7 +620,11 @@ export default function SearchAgentMode({
       }, 20000);
     } catch (err) {
       const name = err instanceof DOMException ? err.name : "";
-      setError(name === "NotAllowedError" || name === "PermissionDeniedError" ? copy.micDenied : copy.offline);
+      setError(
+        name === "NotAllowedError" || name === "PermissionDeniedError"
+          ? copy.micDenied
+          : "تعذر تفعيل الميكروفون. يرجى التأكد من منح إذن الميكروفون لتطبيق لوناليزا في إعدادات الهاتف."
+      );
     }
   };
 
@@ -535,85 +661,25 @@ export default function SearchAgentMode({
         </span>
       </div>
 
-      <div
-        ref={listRef}
-        className={cn(
-          "relative space-y-2 overflow-y-auto px-3 py-3 sm:px-4",
-          compact ? "h-[160px]" : "h-[220px]"
-        )}
-      >
-        {messages.map((m) => (
-          <div key={m.id} className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}>
-            <div
-              className={cn(
-                "max-w-[88%] rounded-2xl px-3 py-2 text-[13px] leading-relaxed",
-                m.role === "user"
-                  ? "bg-amber-400 font-semibold text-slate-950"
-                  : "border border-white/10 bg-white/8 text-white"
-              )}
-            >
-              {m.audioUrl ? (
-                <VoiceClipPlayer src={m.audioUrl} playLabel={copy.playVoice} pauseLabel={copy.pauseVoice} />
-              ) : m.voice ? (
-                <span className="mb-0.5 block text-[10px] opacity-70">{copy.voiceSent}</span>
-              ) : null}
-              {m.text ? <p className="whitespace-pre-wrap">{m.text}</p> : null}
-            </div>
-          </div>
-        ))}
-        {busy ? (
-          <div className="flex items-center gap-2 text-[12px] text-emerald-200">
-            <Loader2 size={14} className="animate-spin" />
-            {recording ? copy.listening : busyKind === "voice" ? copy.transcribing : copy.thinking}
-          </div>
-        ) : null}
-      </div>
+      <MemoizedMessageList
+        messages={messages}
+        busy={busy}
+        busyKind={busyKind}
+        recording={recording}
+        copy={copy}
+        compact={compact}
+        listRef={listRef}
+      />
 
       {error ? <p className="px-4 pb-1 text-[11px] text-rose-300">{error}</p> : null}
 
-      <div className="relative flex items-end gap-2 border-t border-white/10 px-3 py-2.5 sm:px-4">
-        <button
-          type="button"
-          onClick={() => void toggleRecord()}
-          disabled={busy && !recording}
-          title={recording ? copy.stop : copy.mic}
-          className={cn(
-            "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-            recording
-              ? "bg-rose-500 text-white"
-              : "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
-          )}
-        >
-          {recording ? (
-            <span className="absolute inset-0 animate-ping rounded-full bg-rose-400/40" />
-          ) : (
-            <span className="absolute inset-0 animate-pulse rounded-full bg-emerald-300/25" />
-          )}
-          <Radio size={18} className="relative" />
-        </button>
-        <textarea
-          value={input}
-          rows={1}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              sendText();
-            }
-          }}
-          placeholder={recording ? copy.listening : copy.placeholder}
-          className="min-h-11 flex-1 resize-none rounded-xl border border-white/10 bg-white/6 px-3 py-2.5 text-sm text-white outline-none placeholder:text-white/40 focus:border-amber-300/50"
-        />
-        <button
-          type="button"
-          onClick={sendText}
-          disabled={recording || !input.trim()}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-400 text-slate-950 disabled:opacity-40"
-          title={copy.send}
-        >
-          {busy ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-        </button>
-      </div>
+      <AgentChatInputBar
+        onSend={handleSendText}
+        onToggleRecord={() => void toggleRecord()}
+        recording={recording}
+        busy={busy}
+        copy={copy}
+      />
     </div>
   );
 }

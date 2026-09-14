@@ -149,11 +149,12 @@ export function withBuilderQuery(path: string, extra?: Record<string, string>): 
   return `${pathname || "/"}?${params.toString()}`;
 }
 
-export function builderCanvasSrc(path: string, locale = "ar"): string {
+export function builderCanvasSrc(path: string, locale = "ar", isApp = false): string {
   return withBuilderQuery(path, {
     editor: "1",
     preview: "1",
     hl: locale,
+    ...(isApp ? { app: "1", view_mode: "app" } : {}),
   });
 }
 

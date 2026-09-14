@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import type { FareAttributeState, FareFamily, FarePenalty } from "@/components/flights/types";
 import { baggageStateText, fareCabinState, fareCheckedState } from "@/components/flights/normalize";
+import { canonicalPenalty, collapseFarePenalties, customerFacingPenalties } from "@/lib/flights/fare-penalties";
 import PromoPriceBlock from "@/components/loyalty/PromoPriceBlock";
 import { useFlightPrice } from "@/components/flights/useFlightPrice";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
@@ -51,6 +52,7 @@ const COPY: Record<
     free: string;
     notPermitted: string;
     confirmNote: string;
+    afterDeparture: string;
   }
 > = {
   ar: {
@@ -78,6 +80,7 @@ const COPY: Record<
     free: "مجاناً",
     notPermitted: "غير مسموح",
     confirmNote: "تُؤكد الأمتعة والقواعد النهائية من شركة الطيران قبل الدفع.",
+    afterDeparture: "بعد الإقلاع",
   },
   en: {
     checked: "Checked bag",
@@ -104,6 +107,7 @@ const COPY: Record<
     free: "Free",
     notPermitted: "Not permitted",
     confirmNote: "Final baggage and rules are confirmed by the airline before payment.",
+    afterDeparture: "After departure",
   },
   tr: {
     checked: "Kayıtlı bagaj",
@@ -130,6 +134,7 @@ const COPY: Record<
     free: "Ücretsiz",
     notPermitted: "İzin verilmez",
     confirmNote: "Nihai bagaj ve kurallar ödeme öncesinde havayolu tarafından onaylanır.",
+    afterDeparture: "Kalkıştan sonra",
   },
 };
 
@@ -216,32 +221,26 @@ export function FarePackageCard({
   const checkedState: FareAttributeState = checked.status === "included" ? "included" : checked.status === "none" ? "not_available" : "unknown";
   const cabinState: FareAttributeState = cabin.status === "included" ? "included" : cabin.status === "none" ? "not_available" : "unknown";
   const diff = cheapest != null && fare.price > cheapest ? fare.price - cheapest : 0;
-  const penalties = fare.penalties || [];
+  const policy = collapseFarePenalties(fare.penalties);
+  const facing = customerFacingPenalties(fare.penalties);
+  const penalties = facing.penalties;
+  const refundState = policy.refundable !== "unknown" ? policy.refundable : displayAttr(attrs.refund);
+  const changeState = policy.changeable !== "unknown" ? policy.changeable : displayAttr(attrs.change);
 
-  const feeFor = (type: FarePenalty["type"]) => {
-    const matches = penalties.filter((p) => p.type === type);
-    const hit =
-      matches.find((p) => p.amount != null && p.amount > 0) ||
-      matches.find((p) => p.percent != null) ||
-      matches[0];
-    const attrState = displayAttr(type === "cancel" ? attrs.refund : attrs.change);
+  const feeFor = (type: FarePenalty["type"], attrState: FareAttributeState) => {
+    const hit = canonicalPenalty(penalties, type);
     if (hit && (hit.amount != null || hit.percent != null)) {
       return penaltyLine(hit, c, formatFlightPrice, fare.currency, langOf(locale)).replace(/^[^:]+:\s*/, "");
     }
     if (!hit) return stateText(attrState, c);
-    if (attrState === "not_available" && hit.amount == null && hit.percent == null) return c.notPermitted;
+    if (attrState === "not_available") return c.notPermitted;
     return penaltyLine(hit, c, formatFlightPrice, fare.currency, langOf(locale)).replace(/^[^:]+:\s*/, "");
   };
-  const changeRowState: FareAttributeState = penalties.some(
-    (p) => p.type === "change" && ((p.amount != null && p.amount > 0) || (p.percent != null && p.percent > 0))
-  )
-    ? "chargeable"
-    : displayAttr(attrs.change);
   const rows: Array<{ icon: React.ReactNode; label: string; state: FareAttributeState; value: string }> = [
     { icon: <Luggage size={14} />, label: c.checked, state: checkedState, value: baggageStateText(checked, locale, "checked") },
     { icon: <Briefcase size={14} />, label: c.cabin, state: cabinState, value: baggageStateText(cabin, locale, "cabin") },
-    { icon: <Undo2 size={14} />, label: c.refund, state: displayAttr(attrs.refund), value: feeFor("cancel") },
-    { icon: <RefreshCw size={14} />, label: c.change, state: changeRowState, value: feeFor("change") },
+    { icon: <Undo2 size={14} />, label: c.refund, state: refundState, value: feeFor("cancel", refundState) },
+    { icon: <RefreshCw size={14} />, label: c.change, state: changeState, value: feeFor("change", changeState) },
     ...(compact
       ? []
       : [
@@ -300,7 +299,7 @@ export function FarePackageCard({
           </li>
         ))}
       </ul>
-      {penalties.length ? (
+      {penalties.length || facing.afterDeparture.length ? (
         <div className="border-t border-dashed border-slate-200 px-3 py-2">
           <button
             type="button"
@@ -315,6 +314,17 @@ export function FarePackageCard({
               {penalties.map((p, i) => (
                 <li key={i}>• {penaltyLine(p, c, formatFlightPrice, fare.currency, langOf(locale))}</li>
               ))}
+              {facing.afterDeparture.length ? (
+                <li className="text-slate-400">
+                  • {c.afterDeparture}:{" "}
+                  {facing.afterDeparture
+                    .map((p) => {
+                      const label = p.type === "cancel" ? c.cancel : p.type === "change" ? c.changeFee : c.noShow;
+                      return `${label} ${p.amount != null && p.amount > 0 ? formatFlightPrice(p.amount, p.currency || fare.currency) : p.text ? penaltyText(p, c, langOf(locale)) : c.notPermitted}`;
+                    })
+                    .join(" · ")}
+                </li>
+              ) : null}
             </ul>
           ) : null}
         </div>
@@ -426,9 +436,29 @@ export default function FarePackageGrid({
   if (!sorted.length) return null;
   return (
     <div className={className}>
-      <div className={cn("grid gap-3", sorted.length === 1 ? "grid-cols-1 sm:max-w-sm" : sorted.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3")}>
+      <div
+        className={cn(
+          "flex overflow-x-auto snap-x snap-mandatory gap-3 pb-3 scrollbar-none sm:grid sm:overflow-visible sm:pb-0",
+          sorted.length === 1
+            ? "grid-cols-1 sm:max-w-sm"
+            : sorted.length === 2
+            ? "sm:grid-cols-2"
+            : "sm:grid-cols-2 lg:grid-cols-3"
+        )}
+      >
         {sorted.map((fare) => (
-          <FarePackageCard key={fare.id} fare={fare} cheapest={cheapest} selected={selectedId === fare.id} onSelect={onSelect} compact={compact} />
+          <div
+            key={fare.id}
+            className="min-w-[275px] max-w-[295px] shrink-0 snap-center sm:min-w-0 sm:max-w-none sm:shrink flex-1"
+          >
+            <FarePackageCard
+              fare={fare}
+              cheapest={cheapest}
+              selected={selectedId === fare.id}
+              onSelect={onSelect}
+              compact={compact}
+            />
+          </div>
         ))}
       </div>
     </div>

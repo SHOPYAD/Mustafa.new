@@ -13,6 +13,7 @@ import type {
   TravelCategory,
 } from "./types";
 import { getOrCreateLocalNostrKey } from "./blossom-uploader";
+import { resolveReelPoster, splitReelCopy } from "@/lib/community/reel-media";
 
 // High-confidence tourism keywords in Arabic, English, Turkish, French
 const TOURISM_KEYWORDS = [
@@ -107,9 +108,19 @@ export function isStrictTourismContent(event: NostrEvent): boolean {
 /**
  * Extracts media URLs from content and tags
  */
-export function extractMediaUrls(event: NostrEvent): { images: string[]; videos: string[] } {
+export function extractMediaUrls(event: NostrEvent): {
+  images: string[];
+  videos: string[];
+  posters: string[];
+} {
   const images: string[] = [];
   const videos: string[] = [];
+  const posters: string[] = [];
+
+  const pushUnique = (list: string[], url?: string) => {
+    if (!url) return;
+    if (!list.includes(url)) list.push(url);
+  };
 
   const mediaRegex = /(https?:\/\/[^\s]+?\.(?:png|jpg|jpeg|webp|gif|mp4|webm|mov)(?:\?[^\s]*)?)/gi;
   const matches = event.content.match(mediaRegex) || [];
@@ -117,35 +128,32 @@ export function extractMediaUrls(event: NostrEvent): { images: string[]; videos:
   for (const url of matches) {
     const clean = url.split("?")[0].toLowerCase();
     if (clean.endsWith(".mp4") || clean.endsWith(".webm") || clean.endsWith(".mov")) {
-      if (!videos.includes(url)) videos.push(url);
+      pushUnique(videos, url);
     } else {
-      if (!images.includes(url)) images.push(url);
+      pushUnique(images, url);
     }
   }
 
-  // Check tags for imeta or url
   for (const tag of event.tags || []) {
-    if (tag[0] === "image" && tag[1] && !images.includes(tag[1])) {
-      images.push(tag[1]);
-    }
-    if (tag[0] === "video" && tag[1] && !videos.includes(tag[1])) {
-      videos.push(tag[1]);
-    }
+    if (tag[0] === "image" && tag[1]) pushUnique(images, tag[1]);
+    if (tag[0] === "video" && tag[1]) pushUnique(videos, tag[1]);
+    if (tag[0] === "thumb" && tag[1]) pushUnique(posters, tag[1]);
     if (tag[0] === "imeta") {
       for (let i = 1; i < tag.length; i++) {
-        if (tag[i].startsWith("url ")) {
-          const u = tag[i].substring(4).trim();
-          if (u.match(/\.(mp4|webm|mov)/i)) {
-            if (!videos.includes(u)) videos.push(u);
-          } else {
-            if (!images.includes(u)) images.push(u);
-          }
+        const part = tag[i];
+        if (part.startsWith("url ")) {
+          const u = part.substring(4).trim();
+          if (u.match(/\.(mp4|webm|mov)/i)) pushUnique(videos, u);
+          else pushUnique(images, u);
+        } else if (part.startsWith("thumb ") || part.startsWith("image ")) {
+          const u = part.replace(/^(thumb|image)\s+/i, "").trim();
+          if (u) pushUnique(posters, u);
         }
       }
     }
   }
 
-  return { images, videos };
+  return { images, videos, posters };
 }
 
 /**
@@ -154,7 +162,7 @@ export function extractMediaUrls(event: NostrEvent): { images: string[]; videos:
 export function parseTravelPost(event: NostrEvent, categories: TravelCategory[] = []): ParsedTravelPost | null {
   if (!isStrictTourismContent(event)) return null;
 
-  const { images, videos } = extractMediaUrls(event);
+  const { images, videos, posters } = extractMediaUrls(event);
   const tags = event.tags || [];
 
   let category = "hotels";
@@ -187,6 +195,7 @@ export function parseTravelPost(event: NostrEvent, categories: TravelCategory[] 
     rating,
     images,
     videos,
+    videoPoster: posters[0] || resolveReelPoster({ images, videoUrl: videos[0] }),
     likesCount: 0,
     commentsCount: 0,
     userHasLiked: false,
@@ -204,7 +213,7 @@ export function parseTravelPost(event: NostrEvent, categories: TravelCategory[] 
  */
 export function parseTravelReel(event: NostrEvent): TravelReelItem | null {
   if (!isStrictTourismContent(event)) return null;
-  const { videos } = extractMediaUrls(event);
+  const { videos, images, posters } = extractMediaUrls(event);
   if (!videos.length) return null;
 
   const tags = event.tags || [];
@@ -216,12 +225,19 @@ export function parseTravelReel(event: NostrEvent): TravelReelItem | null {
     if (tag[0] === "d" || tag[0] === "destination") destination = tag[1] || destination;
   }
 
+  const { title, description } = splitReelCopy(event.content);
+
   return {
     id: event.id,
     pubkey: event.pubkey,
-    title: event.content.slice(0, 60),
-    description: event.content,
+    title,
+    description,
     videoUrl: videos[0],
+    posterUrl: resolveReelPoster({
+      posterUrl: posters[0],
+      images,
+      videoUrl: videos[0],
+    }),
     category,
     destination,
     likesCount: 0,
@@ -233,6 +249,91 @@ export function parseTravelReel(event: NostrEvent): TravelReelItem | null {
       avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${event.pubkey.slice(0, 8)}`,
     },
   };
+}
+
+function countTaggedEvents(
+  relays: NostrRelayConfig[],
+  eventIds: string[],
+  kinds: number[],
+): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  if (!eventIds.length) return Promise.resolve(counts);
+
+  const activeReadRelays = relays.filter(
+    (r) => r.active && (r.read !== false && r.canRead !== false),
+  );
+  if (!activeReadRelays.length) return Promise.resolve(counts);
+
+  const queryPromises = activeReadRelays.slice(0, 3).map((relay) => {
+    return new Promise<void>((resolve) => {
+      try {
+        const ws = new WebSocket(relay.url);
+        const subId = "eng_" + Math.random().toString(36).substring(2, 9);
+        const timeout = setTimeout(() => {
+          try {
+            ws.close();
+          } catch {}
+          resolve();
+        }, 3500);
+
+        ws.onopen = () => {
+          ws.send(
+            JSON.stringify([
+              "REQ",
+              subId,
+              { kinds, "#e": eventIds.slice(0, 40), limit: 400 },
+            ]),
+          );
+        };
+
+        ws.onmessage = (msg) => {
+          try {
+            const data = JSON.parse(msg.data);
+            if (data[0] === "EVENT" && data[2]) {
+              const ev = data[2] as NostrEvent;
+              const eTag = (ev.tags || []).find((t) => t[0] === "e")?.[1];
+              if (!eTag) return;
+              counts.set(eTag, (counts.get(eTag) || 0) + 1);
+            } else if (data[0] === "EOSE") {
+              clearTimeout(timeout);
+              try {
+                ws.close();
+              } catch {}
+              resolve();
+            }
+          } catch {}
+        };
+
+        ws.onerror = () => {
+          clearTimeout(timeout);
+          resolve();
+        };
+      } catch {
+        resolve();
+      }
+    });
+  });
+
+  return Promise.allSettled(queryPromises).then(() => counts);
+}
+
+/** NIP-25 likes (kind 7) + reply notes (kind 1) counted from relays. */
+export async function fetchReelEngagement(
+  relays: NostrRelayConfig[],
+  eventIds: string[],
+): Promise<Record<string, { likesCount: number; commentsCount: number }>> {
+  const [likes, comments] = await Promise.all([
+    countTaggedEvents(relays, eventIds, [7]),
+    countTaggedEvents(relays, eventIds, [1, 1111]),
+  ]);
+  const out: Record<string, { likesCount: number; commentsCount: number }> = {};
+  for (const id of eventIds) {
+    out[id] = {
+      likesCount: likes.get(id) || 0,
+      commentsCount: comments.get(id) || 0,
+    };
+  }
+  return out;
 }
 
 /**

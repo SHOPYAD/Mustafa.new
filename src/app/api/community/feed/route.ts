@@ -116,7 +116,7 @@ export async function GET(req: Request) {
       results = results.filter(
         (p) =>
           Boolean(p.isReel || p.isVideo || p.kind === "reel" || p.videoUrl) ||
-          (Array.isArray(p.images) && p.images.length > 0)
+          (Array.isArray(p.videos) && p.videos.length > 0),
       );
     }
     if (authorUserId) {

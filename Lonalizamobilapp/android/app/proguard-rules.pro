@@ -4,5 +4,7 @@
 -keep class io.flutter.view.** { *; }
 -keep class io.flutter.** { *; }
 -keep class io.flutter.plugins.** { *; }
+-keep class com.lonaliza.app.** { *; }
+-keep class com.lonaliza.app.MainActivity { *; }
 -dontwarn io.flutter.embedding.**
 -keep class androidx.lifecycle.** { *; }

@@ -564,9 +564,9 @@ export default function FlightSearchResults() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f8f6fc] pb-16 pt-[3.85rem]">
-      {/* Brand Sticky Search Bar */}
-      <div className="sticky top-[3.85rem] z-30 overflow-visible border-b border-purple-900/15 bg-gradient-to-r from-[#1b053a] via-[#2e1065] to-[#3b0764] shadow-lg shadow-purple-950/20">
+    <div className="lonaliza-search-chrome min-h-screen bg-[#f8f6fc] pb-16 pt-[max(1rem,env(safe-area-inset-top,0px))] md:pt-[3.85rem]">
+      {/* Brand Search Bar (Natural Page Flow for Seamless Scrolling) */}
+      <div className="relative z-20 overflow-visible border-b border-purple-900/15 bg-gradient-to-r from-[#1b053a] via-[#2e1065] to-[#3b0764] shadow-lg shadow-purple-950/20">
         <div className="mx-auto max-w-7xl overflow-visible px-3 py-2 sm:px-4 sm:py-3">
           <SearchAgentResultsDock
             tab="flight"

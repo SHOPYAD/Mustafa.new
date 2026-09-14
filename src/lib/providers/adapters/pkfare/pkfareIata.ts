@@ -25,6 +25,12 @@ const PKFARE_CITY_IATA: Record<string, string> = {
   MOW: "MOW",
   ROME: "ROM",
   ROM: "ROM",
+  CASA: "CAS",
+  CMN: "CAS",
+  CAS: "CAS",
+  DUBA: "DXB",
+  DXB: "DXB",
+  DWC: "DXB",
 };
 
 export function toPkfareCityIata(code?: string | null): string {

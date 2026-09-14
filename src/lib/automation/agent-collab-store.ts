@@ -1,14 +1,20 @@
 import fs from "fs";
 import path from "path";
 
-export type AgentRole =
-  | "sales"
-  | "b2b_landing"
-  | "site_advisor"
-  | "ads"
-  | "social"
-  | "email"
-  | "admin";
+export type AgentRole = string;
+
+export type SwarmDecisionActionType =
+  | "budget_shift"
+  | "campaign_pause"
+  | "content_launch"
+  | "email_broadcast"
+  | "pricing_tweak"
+  | "create_automation_job"
+  | "create_blog_article"
+  | "create_tourism_service"
+  | "launch_meta_ad"
+  | "publish_social_post"
+  | "general_coordination";
 
 export interface SwarmAgentInfo {
   id: AgentRole;
@@ -21,6 +27,12 @@ export interface SwarmAgentInfo {
   currentTaskAr: string;
   keyMetric: string;
   lastActive: string;
+  enabled?: boolean;
+  isCustom?: boolean;
+  connected?: boolean;
+  metricSource?: string;
+  skillCount?: number;
+  toolCount?: number;
 }
 
 export interface SwarmDiscussionMessage {
@@ -33,7 +45,7 @@ export interface SwarmDiscussionMessage {
   timestamp: string;
   impactLevel: "low" | "medium" | "high" | "critical";
   proposalData?: {
-    actionType: "budget_shift" | "campaign_pause" | "content_launch" | "email_broadcast" | "pricing_tweak";
+    actionType: SwarmDecisionActionType;
     targetPlatform?: string;
     suggestedChange?: string;
     estimatedRoiGain?: string;
@@ -48,13 +60,23 @@ export interface PendingApprovalDecision {
   descriptionAr: string;
   proposedBy: AgentRole;
   affectedAgent: AgentRole;
-  actionType: "budget_shift" | "campaign_pause" | "content_launch" | "email_broadcast" | "pricing_tweak";
+  actionType: SwarmDecisionActionType;
   costUSD?: number;
   expectedBenefitAr: string;
   status: "pending" | "approved" | "rejected";
   createdAt: string;
   decidedAt?: string;
   adminNote?: string;
+  executablePlan?: {
+    actionType: SwarmDecisionActionType;
+    actionPayload?: Record<string, unknown>;
+  };
+  actionPayload?: Record<string, unknown>;
+  executionResult?: {
+    success: boolean;
+    summaryAr: string;
+    directUrl?: string;
+  };
 }
 
 export interface AdminDirective {
@@ -155,58 +177,8 @@ export function getSwarmDiscussions(): SwarmDiscussionMessage[] {
   try {
     ensureDir();
     if (!fs.existsSync(DISCUSSIONS_FILE)) {
-      // Seed default initial discussion if empty
-      const initial: SwarmDiscussionMessage[] = [
-        {
-          id: "disc_seed_1",
-          fromAgent: "sales",
-          toAgent: "ads",
-          type: "insight",
-          topic: "تحليل جودة العملاء لحملات طرابزون الأخيرة",
-          contentAr: "لاحظنا أن العملاء القادمين من حملة إنستغرام لرحلات طرابزون وأوزنجول لديهم جدية عالية بمعدل إغلاق صفقات 38%، بينما حملة التيك توك تولد استفسارات عامة بتكلفة أعلى. نوصي بإعادة توجيه 25% من ميزانية تيك توك إلى إنستغرام.",
-          timestamp: new Date(Date.now() - 3600000 * 2).toISOString(),
-          impactLevel: "high",
-          proposalData: {
-            actionType: "budget_shift",
-            targetPlatform: "Meta Instagram Ads",
-            suggestedChange: "زيادة ميزانية إنستغرام بـ 150$ وخفض تيك توك",
-            estimatedRoiGain: "+28% مبيعات إضافية",
-            estimatedCostUSD: 150,
-          },
-        },
-        {
-          id: "disc_seed_2",
-          fromAgent: "ads",
-          toAgent: "sales",
-          type: "proposal",
-          topic: "خطة تحسين ميزانية الحملات",
-          contentAr: "أوافق على التوصية تماماً! قمت بإعداد مقترح تعديل توزيع الميزانية ورفع كفاءة الجمهور المستهدف لرحلات العوائل، وأدرجت القرار في قائمة الموافقات بانتظار اعتماد الإدارة.",
-          timestamp: new Date(Date.now() - 3600000).toISOString(),
-          impactLevel: "medium",
-        },
-        {
-          id: "disc_seed_3",
-          fromAgent: "social",
-          toAgent: "all",
-          type: "insight",
-          topic: "تجهيز منشورات وفيديوهات ريلز لرحلات طرابزون",
-          contentAr: "تم تجهيز 3 فيديوهات ريلز جديدة تستعرض الفنادق الريفية والسيارات الـ VIP في طرابزون لدعم الحملات الإعلانية ومساعدة وكيل المبيعات في إقناع العملاء بالروابط المباشرة.",
-          timestamp: new Date(Date.now() - 1800000).toISOString(),
-          impactLevel: "medium",
-        },
-        {
-          id: "disc_seed_4",
-          fromAgent: "b2b_landing",
-          toAgent: "all",
-          type: "insight",
-          topic: "اهتمام متزايد من شركات السياحة بباقة Pro السحابية",
-          contentAr: "تحدثت اليوم مع 4 شركات سياحية عبر الشات العائم بصفحة الهبوط؛ اثنتان منها طلبت عرضاً تفصيلياً (Demo) بعد إجراء مقارنة الجدوى الاقتصادية وإثبات توفير 4,000$ سنوياً.",
-          timestamp: new Date(Date.now() - 900000).toISOString(),
-          impactLevel: "high",
-        },
-      ];
-      fs.writeFileSync(DISCUSSIONS_FILE, JSON.stringify(initial, null, 2), "utf-8");
-      return initial;
+      fs.writeFileSync(DISCUSSIONS_FILE, JSON.stringify([], null, 2), "utf-8");
+      return [];
     }
     const raw = fs.readFileSync(DISCUSSIONS_FILE, "utf-8");
     return JSON.parse(raw) as SwarmDiscussionMessage[];
@@ -226,22 +198,8 @@ export function getPendingDecisions(): PendingApprovalDecision[] {
   try {
     ensureDir();
     if (!fs.existsSync(DECISIONS_FILE)) {
-      const initialDecisions: PendingApprovalDecision[] = [
-        {
-          id: "dec_1",
-          titleAr: "إعادة توجيه 150$ من ميزانية الإعلانات لصالح إنستغرام طرابزون",
-          descriptionAr: "بناءً على توصية وكيل المبيعات ووكيل الإعلانات، سيتم رفع ميزانية حملة إنستغرام لرحلات طرابزون العائلية لارتفاع معدل إغلاق الحجوزات إلى 38%.",
-          proposedBy: "ads",
-          affectedAgent: "sales",
-          actionType: "budget_shift",
-          costUSD: 150,
-          expectedBenefitAr: "زيادة الحجوزات المؤكدة بنسبة 28% واستقطاب 15 عميلاً إضافياً",
-          status: "pending",
-          createdAt: new Date().toISOString(),
-        },
-      ];
-      fs.writeFileSync(DECISIONS_FILE, JSON.stringify(initialDecisions, null, 2), "utf-8");
-      return initialDecisions;
+      fs.writeFileSync(DECISIONS_FILE, JSON.stringify([], null, 2), "utf-8");
+      return [];
     }
     const raw = fs.readFileSync(DECISIONS_FILE, "utf-8");
     return JSON.parse(raw) as PendingApprovalDecision[];

@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { Loader2, MessageCircle } from "lucide-react";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import NativeAppBar from "@/components/chrome/NativeAppBar";
 
 type ChatMessage = {
   id: string;
@@ -41,25 +42,26 @@ export default function AccountChatPage() {
 
   if (loading || !ready) {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center pt-24">
-        <Loader2 className="animate-spin text-amber-500" />
+      <div className="lonaliza-web-header-offset flex min-h-[50vh] flex-col pt-24">
+        <NativeAppBar title={t.account.navChats} fallbackHref="/account?tab=chats" />
+        <div className="flex flex-1 items-center justify-center">
+          <Loader2 className="animate-spin text-amber-500" />
+        </div>
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-28 text-center">
+      <div className="lonaliza-web-header-offset mx-auto max-w-lg px-4 py-28 text-center">
         <p className="font-semibold">{t.account.loginNotice}</p>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 pb-16 pt-28">
-      <Link href="/account?tab=chats" className="text-sm font-semibold text-purple-700 hover:text-purple-900">
-        ← {t.account.navChats}
-      </Link>
+    <div className="lonaliza-web-header-offset mx-auto max-w-3xl px-4 pb-16 pt-28">
+      <NativeAppBar title={title || t.account.navChats} fallbackHref="/account?tab=chats" />
       <div className="mt-4 flex items-center gap-2">
         <MessageCircle className="text-purple-700" />
         <h1 className="text-2xl font-bold text-slate-900">

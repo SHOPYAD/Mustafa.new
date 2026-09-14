@@ -20,7 +20,6 @@ import {
 } from "@/data/site-contact";
 import {
   buildWhatsAppLink,
-  cn,
   normalizeWhatsAppNumber,
   tContent,
 } from "@/lib/utils";
@@ -65,19 +64,6 @@ export default function SavedProgramsPanel({
   }, [load]);
 
   const selected = programs.find((p) => p.id === openId) || null;
-
-  const bookWhatsApp = (program: SavedAiProgramPublic) => {
-    const title = tContent(program, "title", locale);
-    const message =
-      locale === "ar"
-        ? `أرغب بحجز برنامج: ${title}\nالوجهة: ${program.destination}\nالليالي: ${program.nights}\nالسعر التقديري: ${formatPrice(program.priceFromUsd, "USD")}\n${t.chat.priceEstimateNote}`
-        : `I want to book this program: ${title}\nDestination: ${program.destination}\nNights: ${program.nights}\nEstimated price: ${formatPrice(program.priceFromUsd, "USD")}\n${t.chat.priceEstimateNote}`;
-    window.open(
-      buildWhatsAppLink(resolveWhatsApp(), message),
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
 
   const cards = programs.map((program) => {
     const title = tContent(program, "title", locale);
@@ -259,14 +245,20 @@ export default function SavedProgramsPanel({
               {t.chat.priceEstimateNote}
             </p>
 
-            <button
-              type="button"
-              onClick={() => bookWhatsApp(selected)}
+            <a
+              href={buildWhatsAppLink(
+                resolveWhatsApp(),
+                locale === "ar"
+                  ? `أرغب بحجز برنامج: ${tContent(selected, "title", locale)}\nالوجهة: ${selected.destination}\nالليالي: ${selected.nights}\nالسعر التقديري: ${formatPrice(selected.priceFromUsd, "USD")}\n${t.chat.priceEstimateNote}`
+                  : `I want to book this program: ${tContent(selected, "title", locale)}\nDestination: ${selected.destination}\nNights: ${selected.nights}\nEstimated price: ${formatPrice(selected.priceFromUsd, "USD")}\n${t.chat.priceEstimateNote}`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white"
             >
               <MessageCircle size={18} />
               {t.chat.confirmOnWhatsApp}
-            </button>
+            </a>
           </motion.div>
         </motion.div>
       )}

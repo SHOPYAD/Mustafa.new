@@ -3,6 +3,7 @@ import { getAdapterCredentials } from "../common/credentials";
 import { directFetch } from "@/lib/server/direct-network";
 import { toPkfareCabin } from "./pkfareCabin";
 import { toPkfareAirportIata, toPkfareCityIata } from "./pkfareIata";
+import { collapseFarePenalties } from "@/lib/flights/fare-penalties";
 import {
   BAGGAGE_UNKNOWN,
   deriveFareLabel,
@@ -32,6 +33,8 @@ export interface PkfareSearchParams {
   useCityCode?: boolean;
   allowedOrigins?: string[];
   allowedDestinations?: string[];
+  /** Override shopping solutions cap. 0 = supplier default / unlimited. */
+  solutions?: number;
 }
 
 export interface PkfarePassenger {
@@ -139,10 +142,12 @@ function collectMiniRuleGroups(miniRuleMap: any): any[] {
 }
 
 function mergeAttrState(a: FareAttributeState, b: FareAttributeState): FareAttributeState {
-  if (a === "included" || b === "included") return "included";
+  if (a === "unknown") return b;
+  if (b === "unknown") return a;
   if (a === "chargeable" || b === "chargeable") return "chargeable";
   if (a === "not_available" || b === "not_available") return "not_available";
-  return a === "unknown" ? b : a;
+  if (a === "included" && b === "included") return "included";
+  return a;
 }
 
 export function parsePkfareMiniRules(miniRuleMap: any, currencyFallback: string): { penalties: FarePenalty[]; refundable: FareAttributeState; changeable: FareAttributeState } {
@@ -193,7 +198,12 @@ export function parsePkfareMiniRules(miniRuleMap: any, currencyFallback: string)
       if (kind === "change") changeable = mergeAttrState(changeable, state);
     }
   }
-  return { penalties, refundable, changeable };
+  const collapsed = collapseFarePenalties(penalties);
+  return {
+    penalties: collapsed.penalties,
+    refundable: collapsed.refundable !== "unknown" ? collapsed.refundable : refundable,
+    changeable: collapsed.changeable !== "unknown" ? collapsed.changeable : changeable,
+  };
 }
 
 /** Parse Penalty API free-text rows ("Reissue: 131 USD") into structured fees. Never invents amounts. */
@@ -796,7 +806,7 @@ export class PkfareAirAdapter {
       infants,
       nonstop: params.directOnly ? 1 : 0,
       airline: String(params.airline || "").trim(),
-      solutions: PKFARE_SOLUTIONS_LIMIT,
+      solutions: Number.isFinite(Number(params.solutions)) ? Number(params.solutions) : PKFARE_SOLUTIONS_LIMIT,
       searchAirLegs,
     };
 

@@ -62,32 +62,88 @@ export const BOARD_LABEL_AR: Record<BoardCode, string> = {
   OTHER: "حسب المورد",
 };
 
+export type CancellationType = "free" | "fee_applies" | "non_refundable";
+
+export interface DerivedCancellation {
+  refundable: boolean;
+  cancellationType: CancellationType;
+  freeCancellationUntil?: string;
+  currentPenalty?: { amount: number; currency: string };
+  upcomingPenalty?: { from: string; amount: number; currency: string };
+}
+
 /**
- * Derives `refundable` and `freeCancellationUntil` from an ordered list of penalty rules.
- * A rate is refundable when there is a moment (now → first penalty start) with zero penalty.
+ * Derives `refundable`, `cancellationType`, and `freeCancellationUntil` from penalty rules.
+ * Never labels a room non-refundable if the supplier allows cancellation with a partial penalty fee.
  */
 export function deriveCancellation(
   rules: CancellationPolicyRule[],
-  now = Date.now()
-): { refundable: boolean; freeCancellationUntil?: string } {
+  now = Date.now(),
+  isExplicitNrf = false,
+  totalRatePrice?: number
+): DerivedCancellation {
+  if (isExplicitNrf) {
+    return { refundable: false, cancellationType: "non_refundable" };
+  }
+
   const sorted = [...rules]
     .filter((r) => r && r.from && Number.isFinite(Date.parse(r.from)))
     .sort((a, b) => Date.parse(a.from) - Date.parse(b.from));
-  if (!sorted.length) return { refundable: false };
+
+  if (!sorted.length) {
+    return { refundable: !isExplicitNrf, cancellationType: isExplicitNrf ? "non_refundable" : "free" };
+  }
+
   const first = sorted[0];
   const firstStart = Date.parse(first.from);
+
   if (firstStart > now) {
-    // Free window until first penalty kicks in (penalty may be 0 too).
-    return { refundable: true, freeCancellationUntil: first.from };
+    // Free window until first penalty kicks in
+    return {
+      refundable: true,
+      cancellationType: "free",
+      freeCancellationUntil: first.from,
+      upcomingPenalty: { from: first.from, amount: first.amount, currency: first.currency },
+    };
   }
-  // Already inside a penalty window: refundable only if that window has zero penalty.
-  let current = first;
-  for (const r of sorted) if (Date.parse(r.from) <= now) current = r;
-  if (current.amount <= 0) {
-    const next = sorted.find((r) => Date.parse(r.from) > now && r.amount > 0);
-    return { refundable: true, freeCancellationUntil: next?.from };
+
+  // Already inside a penalty window
+  let activeRule = first;
+  for (const r of sorted) {
+    if (Date.parse(r.from) <= now) {
+      activeRule = r;
+    }
   }
-  return { refundable: false };
+
+  if (activeRule.amount <= 0) {
+    const nextWithPenalty = sorted.find((r) => Date.parse(r.from) > now && r.amount > 0);
+    return {
+      refundable: true,
+      cancellationType: "free",
+      freeCancellationUntil: nextWithPenalty?.from,
+      upcomingPenalty: nextWithPenalty
+        ? { from: nextWithPenalty.from, amount: nextWithPenalty.amount, currency: nextWithPenalty.currency }
+        : undefined,
+    };
+  }
+
+  const isFullPenalty = Boolean(
+    totalRatePrice && totalRatePrice > 0 && activeRule.amount >= totalRatePrice * 0.98
+  );
+
+  if (isFullPenalty) {
+    return {
+      refundable: false,
+      cancellationType: "non_refundable",
+      currentPenalty: { amount: activeRule.amount, currency: activeRule.currency },
+    };
+  }
+
+  return {
+    refundable: true,
+    cancellationType: "fee_applies",
+    currentPenalty: { amount: activeRule.amount, currency: activeRule.currency },
+  };
 }
 
 export function cleanText(v: unknown): string | undefined {

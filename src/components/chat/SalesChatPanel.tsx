@@ -23,7 +23,13 @@ import {
   Sparkles,
   Plane,
   Camera,
+  Radio,
+  Hotel,
+  Car,
+  Clock,
 } from "lucide-react";
+import { blobToDataUrl, inspectVoiceBlob } from "@/lib/voice-wav";
+import { isClientAppMode } from "@/lib/mobile/app-mode";
 import SalesOfferCards from "@/components/chat/SalesOfferCards";
 import SearchCtaCards from "@/components/chat/SearchCtaCards";
 import WorkStagesTimeline, {
@@ -96,6 +102,7 @@ type ChatMessage = {
 
 export type SalesChatPanelProps = {
   embedded?: boolean;
+  fillViewport?: boolean;
   className?: string;
   onClose?: () => void;
   conversationId?: string;
@@ -129,6 +136,18 @@ const EXT_MIME: Record<string, string> = {
   doc: "application/msword",
   docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 };
+
+function pickRecorderMime(): string {
+  const candidates = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "audio/mp4",
+    "audio/ogg;codecs=opus",
+    "audio/ogg",
+  ];
+  if (typeof MediaRecorder === "undefined") return "";
+  return candidates.find((mime) => MediaRecorder.isTypeSupported(mime)) || "";
+}
 
 function uid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -181,6 +200,19 @@ function readFileAsBase64(file: File): Promise<string> {
 }
 
 
+function formatIsoDay(iso?: string, locale?: Locale) {
+  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return "";
+  try {
+    return new Intl.DateTimeFormat(
+      locale === "ar" ? "ar-AE" : locale === "tr" ? "tr-TR" : "en-GB",
+      { day: "numeric", month: "short", year: "numeric" }
+    ).format(new Date(`${m[1]}-${m[2]}-${m[3]}T12:00:00`));
+  } catch {
+    return `${m[3]}/${m[2]}/${m[1]}`;
+  }
+}
+
 function ItineraryBlock({
   itinerary,
   locale,
@@ -192,32 +224,69 @@ function ItineraryBlock({
   const { formatPrice } = useCurrency();
   const title = tContent(itinerary, "title", locale) || t.admin.itineraryLabel;
   const days = itinerary.days || [];
+  const dates = [formatIsoDay(itinerary.arrivalDate, locale), formatIsoDay(itinerary.departureDate, locale)]
+    .filter(Boolean)
+    .join(" — ");
   return (
-    <div className="mt-3 overflow-hidden rounded-2xl border border-emerald-500/20 bg-gradient-to-b from-[#0c1a2e]/95 to-[#071018]/95 shadow-lg shadow-black/20">
+    <div className="mt-3 w-full overflow-hidden rounded-2xl border border-emerald-500/20 bg-gradient-to-b from-[#0c1a2e]/95 to-[#071018]/95 shadow-lg shadow-black/20">
       <div className="flex items-center gap-2 border-b border-emerald-500/15 bg-emerald-500/10 px-4 py-2.5">
         <CalendarDays size={16} className="text-emerald-400" />
-        <h5 className="text-sm font-bold text-emerald-50">{title}</h5>
+        <div className="min-w-0">
+          <h5 className="text-sm font-bold text-emerald-50">{title}</h5>
+          {dates ? <p className="text-[10px] text-emerald-200/60">{dates}</p> : null}
+        </div>
       </div>
       {days.length > 0 && (
-        <ol className="relative space-y-2 p-3 ps-4">
+        <ol className="space-y-2 p-3">
           {days.map((d, i) => {
             const dayTitle = tContent(d, "title", locale);
             const dayDetail =
               tContent(d, "detail", locale) ||
               tContent(d, "description", locale);
+            const items = d.items || [];
             return (
               <li
                 key={`${d.day}-${i}`}
-                className="relative rounded-xl border border-white/8 bg-black/20 px-4 py-3"
+                className="rounded-xl border border-white/8 bg-black/20 px-4 py-3"
               >
                 <p className="text-xs font-bold text-emerald-300">
                   {t.admin.dayLabel.replace("{n}", String(d.day || i + 1))}
                   {dayTitle ? ` — ${dayTitle}` : ""}
                 </p>
+                {items.length > 0 && (
+                  <ul className="mt-2 space-y-1.5">
+                    {items.map((item, idx) => {
+                      const Icon =
+                        item.kind === "flight"
+                          ? Plane
+                          : item.kind === "hotel"
+                            ? Hotel
+                            : item.kind === "transfer"
+                              ? Car
+                              : Clock;
+                      const label =
+                        locale === "ar"
+                          ? item.labelAr || item.labelEn
+                          : item.labelEn || item.labelAr;
+                      return (
+                        <li
+                          key={`${item.kind}-${idx}`}
+                          className="flex items-start gap-2 text-[12px] text-white/70"
+                        >
+                          <Icon size={12} className="mt-0.5 shrink-0 text-amber-300" />
+                          <span>
+                            {item.time ? (
+                              <span className="me-1 font-bold text-amber-200/80">{item.time}</span>
+                            ) : null}
+                            {label}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
                 {dayDetail ? (
-                  <p className="mt-1 text-sm leading-relaxed text-white/65">
-                    {dayDetail}
-                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/65">{dayDetail}</p>
                 ) : null}
               </li>
             );
@@ -227,9 +296,7 @@ function ItineraryBlock({
       {itinerary.totalClientPrice > 0 && (
         <div className="border-t border-white/5 bg-black/30 px-4 py-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-white/40">
-              {t.admin.totalLabel}
-            </span>
+            <span className="text-xs text-white/40">{t.admin.totalLabel}</span>
             <span className="text-lg font-bold text-emerald-300">
               {formatPrice(itinerary.totalClientPrice, "USD")}
             </span>
@@ -374,8 +441,15 @@ function buildWhatsAppTranscript(
       lines.push(labels.offers);
       for (const c of m.cards) {
         const title = tContent(c, "title", locale);
+        const flightBits = [
+          c.fromIata && c.toIata ? `${c.fromIata}→${c.toIata}` : "",
+          c.departAt || "",
+          c.airline || "",
+        ]
+          .filter(Boolean)
+          .join(" ");
         lines.push(
-          `• [${c.type}] ${title} — ${money(c.clientPrice, c.currency)}`
+          `• [${c.type}] ${title}${flightBits ? ` (${flightBits})` : ""} — ${money(c.clientPrice, c.currency)}`
         );
       }
     }
@@ -385,6 +459,9 @@ function buildWhatsAppTranscript(
       lines.push(
         `${labels.itinerary}: ${tContent(it, "title", locale)}`
       );
+      if (it.arrivalDate && it.departureDate) {
+        lines.push(`${it.arrivalDate} → ${it.departureDate}`);
+      }
       lines.push(
         `${labels.total}: ${money(it.totalClientPrice, it.currency)}`
       );
@@ -404,6 +481,7 @@ function buildWhatsAppTranscript(
 
 export default function SalesChatPanel({
   embedded = false,
+  fillViewport = false,
   className,
   onClose,
   conversationId: initialConversationId,
@@ -429,6 +507,12 @@ export default function SalesChatPanel({
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+  const streamRef = useRef<MediaStream | null>(null);
+  const [recording, setRecording] = useState(false);
+  const [kbInset, setKbInset] = useState(0);
+  const native = fillViewport || isClientAppMode();
 
   useEffect(() => {
     setWhatsappNumber(resolveSalesWhatsApp(null));
@@ -475,8 +559,28 @@ export default function SalesChatPanel({
   }, []);
 
   useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const sync = () => {
+      const overlap = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      setKbInset(overlap);
+    };
+    vv.addEventListener("resize", sync);
+    vv.addEventListener("scroll", sync);
+    window.addEventListener("focusin", sync);
+    window.addEventListener("focusout", sync);
+    sync();
+    return () => {
+      vv.removeEventListener("resize", sync);
+      vv.removeEventListener("scroll", sync);
+      window.removeEventListener("focusin", sync);
+      window.removeEventListener("focusout", sync);
+    };
+  }, []);
+
+  useEffect(() => {
     scrollChatToBottom();
-  }, [messages, loading, pending, scrollChatToBottom]);
+  }, [messages, loading, pending, recording, scrollChatToBottom]);
 
   useEffect(() => {
     if (!loading) return;
@@ -502,6 +606,12 @@ export default function SalesChatPanel({
       pending.forEach((p) => {
         if (p.previewUrl) URL.revokeObjectURL(p.previewUrl);
       });
+      try {
+        recorderRef.current?.stop();
+      } catch {
+        /* ignore */
+      }
+      streamRef.current?.getTracks().forEach((track) => track.stop());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -725,9 +835,9 @@ export default function SalesChatPanel({
   }, []);
 
   const send = useCallback(
-    async (raw?: string) => {
+    async (raw?: string, voice?: { base64: string; mime: string }) => {
       const text = (raw ?? input).trim();
-      if ((!text && pending.length === 0) || loading) return;
+      if ((!text && pending.length === 0 && !voice) || loading) return;
 
       setError("");
       const attachmentsSnapshot = pending.map((p) => ({
@@ -745,7 +855,13 @@ export default function SalesChatPanel({
       const userMsg: ChatMessage = {
         id: uid(),
         role: "user",
-        text,
+        text:
+          text ||
+          (voice
+            ? locale === "ar"
+              ? "رسالة صوتية"
+              : "Voice message"
+            : ""),
         attachments: attachmentsSnapshot,
         createdAt: Date.now(),
       };
@@ -784,6 +900,8 @@ export default function SalesChatPanel({
             locale,
             attachments: apiAttachments,
             stream: true,
+            audioBase64: voice?.base64 || "",
+            audioMime: voice?.mime || "",
           }),
         });
 
@@ -848,6 +966,13 @@ export default function SalesChatPanel({
         }
 
         setWhatsappNumber(resolveSalesWhatsApp(String(data.whatsappNumber || "")));
+        if (data.transcript) {
+          const spoken = String(data.transcript);
+          userMsg.text = spoken;
+          setMessages((prev) =>
+            prev.map((m) => (m.id === userMsg.id ? { ...m, text: spoken } : m))
+          );
+        }
 
         const hydrated = hydrateSalesChatResponse(String(data.reply || ""), {
           cards: data.cards,
@@ -906,8 +1031,70 @@ export default function SalesChatPanel({
     [input, pending, loading, messages, locale, t.chat, applyStage]
   );
 
-  const openWhatsApp = () => {
-    const transcript = buildWhatsAppTranscript(
+  const stopMicStream = () => {
+    streamRef.current?.getTracks().forEach((track) => track.stop());
+    streamRef.current = null;
+  };
+
+  const toggleRecord = async () => {
+    if (recording) {
+      try {
+        recorderRef.current?.requestData?.();
+      } catch {
+        /* older browsers */
+      }
+      recorderRef.current?.stop();
+      setRecording(false);
+      return;
+    }
+    if (loading) return;
+    if (typeof MediaRecorder === "undefined" || !navigator.mediaDevices?.getUserMedia) {
+      showToast(locale === "ar" ? "الميكروفون غير مدعوم في هذا المتصفح." : "Microphone is not supported here.");
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          channelCount: 1,
+        },
+      });
+      streamRef.current = stream;
+      const mime = pickRecorderMime();
+      const rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+      chunksRef.current = [];
+      rec.ondataavailable = (ev) => {
+        if (ev.data.size) chunksRef.current.push(ev.data);
+      };
+      rec.onstop = () => {
+        stopMicStream();
+        const blob = new Blob(chunksRef.current, { type: rec.mimeType || mime || "audio/webm" });
+        if (blob.size < 1200) {
+          showToast(locale === "ar" ? "التسجيل قصير جداً." : "Recording was too short.");
+          return;
+        }
+        void inspectVoiceBlob(blob).then(async (probe) => {
+          if (!probe.audible) {
+            showToast(locale === "ar" ? "لم يُلتقط صوت. قرّب الميكروفون." : "No audio captured. Check the mic.");
+            return;
+          }
+          const base64 = await blobToDataUrl(blob);
+          void send("", { base64, mime: blob.type || mime || "audio/webm" });
+        });
+      };
+      recorderRef.current = rec;
+      rec.start(250);
+      setRecording(true);
+    } catch {
+      showToast(locale === "ar" ? "تعذر فتح الميكروفون." : "Could not open the microphone.");
+    }
+  };
+
+  const waHref = buildWhatsAppLink(
+    whatsappNumber,
+    buildWhatsAppTranscript(
       messages,
       locale,
       {
@@ -916,10 +1103,8 @@ export default function SalesChatPanel({
         total: t.admin.totalLabel,
       },
       formatPrice
-    );
-    const url = buildWhatsAppLink(whatsappNumber, transcript);
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+    )
+  );
 
   const quickPrompts = [
     { label: t.chat.quickPlan, value: t.chat.quickPlan },
@@ -951,13 +1136,14 @@ export default function SalesChatPanel({
       onDragLeave={() => setDragOver(false)}
       onDrop={onDrop}
       className={cn(
-        "relative flex flex-col overflow-hidden text-white",
+        "relative flex min-h-0 flex-col overflow-hidden text-white",
         "bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.08),_transparent_55%),linear-gradient(180deg,#07111f_0%,#0a1628_45%,#050d18_100%)]",
-        embedded
-          ? "h-full min-h-0 rounded-2xl border border-amber-500/15 shadow-2xl shadow-black/50"
+        embedded || fillViewport || native
+          ? "h-full rounded-none border-0 shadow-none sm:rounded-2xl sm:border sm:border-amber-500/15"
           : "min-h-[70vh] rounded-3xl border border-amber-500/20 shadow-2xl shadow-black/40",
         className
       )}
+      style={{ paddingBottom: kbInset > 0 ? kbInset : undefined }}
     >
       {/* Ambient gold glow */}
       <div
@@ -966,7 +1152,10 @@ export default function SalesChatPanel({
       />
 
       {/* Header */}
-      <div className="relative z-10 flex shrink-0 items-center justify-between gap-3 border-b border-white/10 bg-[#0a1628]/80 px-4 py-3.5 backdrop-blur-md">
+      <div className={cn(
+        "relative z-10 flex shrink-0 items-center justify-between gap-3 border-b border-white/10 bg-[#0a1628]/80 px-4 py-3.5 backdrop-blur-md",
+        (fillViewport || native) && "pt-[max(0.85rem,env(safe-area-inset-top))]"
+      )}>
         <div className="flex min-w-0 items-center gap-3">
           <div className="relative">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 via-amber-500 to-orange-600 shadow-lg shadow-amber-500/35 ring-2 ring-amber-300/30">
@@ -1000,7 +1189,7 @@ export default function SalesChatPanel({
       <div
         ref={listRef}
         onScroll={onListScroll}
-        className="relative z-10 flex-1 space-y-5 overflow-y-auto px-3 py-4 sm:px-4"
+        className="relative z-10 flex-1 space-y-5 overflow-y-auto overscroll-contain px-3 py-4 sm:px-4"
       >
         {booting ? (
           <div className="flex flex-col items-center justify-center gap-3 py-16 text-white/40">
@@ -1088,10 +1277,21 @@ export default function SalesChatPanel({
                       </span>
                     )}
                     {msg.role === "assistant" &&
-                      msg.cards &&
-                      msg.cards.length > 0 && (
+                      ((msg.cards && msg.cards.length > 0) ||
+                        Boolean(msg.flightHref || msg.hotelsHref || msg.transferHref || msg.carsHref)) && (
                         <div className="mt-3 w-full min-w-[min(100%,280px)]">
-                          <SalesOfferCards cards={msg.cards} perks={msg.perks} bundlePayload={msg.bundleCheckoutPayload} />
+                          <SalesOfferCards
+                            cards={msg.cards || []}
+                            perks={msg.perks}
+                            bundlePayload={msg.bundleCheckoutPayload}
+                            emptyHint={
+                              !msg.cards?.length
+                                ? locale === "ar"
+                                  ? "لا توجد نتائج حية قابلة للحجز بهذه التواريخ."
+                                  : "No live bookable results for these dates."
+                                : undefined
+                            }
+                          />
                         </div>
                       )}
                     {showItinerary && msg.itinerary && (
@@ -1152,8 +1352,8 @@ export default function SalesChatPanel({
       </div>
 
       {/* Quick prompts */}
-      {!booting && messages.length <= 2 && !loading && (
-        <div className="relative z-10 flex shrink-0 gap-2 overflow-x-auto border-t border-white/5 px-3 py-2.5 [scrollbar-width:none]">
+      {!booting && !loading && (
+        <div className="relative z-10 flex shrink-0 gap-2 overflow-x-auto border-t border-white/5 px-3 py-2 [scrollbar-width:none]">
           {quickPrompts.map((q) => (
             <button
               key={q.label}
@@ -1170,14 +1370,15 @@ export default function SalesChatPanel({
       {/* Sticky WhatsApp CTA */}
       {showWhatsAppCta && (
         <div className="relative z-10 shrink-0 border-t border-emerald-500/20 bg-emerald-950/30 px-3 py-2.5 backdrop-blur-sm">
-          <button
-            type="button"
-            onClick={openWhatsApp}
+          <a
+            href={waHref.startsWith("https://wa.me/") ? waHref : `https://wa.me/${whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/40 transition hover:bg-[#20bd5a] active:scale-[0.99]"
           >
             <MessageCircle size={18} />
             {t.chat.whatsappCta}
-          </button>
+          </a>
         </div>
       )}
 
@@ -1284,6 +1485,27 @@ export default function SalesChatPanel({
             />
           </label>
 
+          <button
+            type="button"
+            disabled={loading || booting}
+            onClick={() => void toggleRecord()}
+            className={cn(
+              "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
+              recording
+                ? "bg-rose-500 text-white"
+                : "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
+            )}
+            aria-label={recording ? (locale === "ar" ? "إيقاف التسجيل" : "Stop recording") : (locale === "ar" ? "تسجيل صوتي" : "Voice recording")}
+            title={recording ? (locale === "ar" ? "إيقاف" : "Stop") : (locale === "ar" ? "ميكروفون" : "Mic")}
+          >
+            {recording ? (
+              <span className="absolute inset-0 animate-ping rounded-full bg-rose-400/40" />
+            ) : (
+              <span className="absolute inset-0 animate-pulse rounded-full bg-emerald-300/25" />
+            )}
+            <Radio size={18} className="relative" />
+          </button>
+
           <textarea
             ref={inputRef}
             rows={1}
@@ -1292,7 +1514,7 @@ export default function SalesChatPanel({
               setInput(e.target.value);
               const el = e.target;
               el.style.height = "auto";
-              el.style.height = `${Math.min(el.scrollHeight, 120)}px`;
+              el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
@@ -1300,13 +1522,13 @@ export default function SalesChatPanel({
                 void send();
               }
             }}
-            placeholder={t.chat.placeholder}
-            disabled={loading || booting}
-            className="max-h-[120px] min-h-[44px] min-w-0 flex-1 resize-none rounded-xl border border-white/10 bg-slate-950/70 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition focus:border-amber-500/40 focus:ring-2 focus:ring-amber-500/20 disabled:opacity-50"
+            placeholder={recording ? (locale === "ar" ? "جارٍ الاستماع…" : "Listening…") : t.chat.placeholder}
+            disabled={loading || booting || recording}
+            className="max-h-[160px] min-h-[44px] min-w-0 flex-1 resize-none rounded-xl border border-white/10 bg-slate-950/70 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition focus:border-amber-500/40 focus:ring-2 focus:ring-amber-500/20 disabled:opacity-50"
           />
           <button
             type="submit"
-            disabled={!canSend}
+            disabled={!canSend || recording}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-900/35 transition hover:brightness-110 disabled:opacity-40"
             aria-label={t.chat.send}
           >

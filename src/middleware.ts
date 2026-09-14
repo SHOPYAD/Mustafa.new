@@ -7,6 +7,7 @@ import {
   looksLikeSignedAdminToken,
   verifyAdminSessionToken,
 } from "@/lib/admin-session-token";
+import { APP_SHELL_COOKIE, APP_SHELL_HEADER } from "@/lib/mobile/app-mode";
 
 const COOKIE_DAYS = 30;
 
@@ -42,16 +43,53 @@ export async function middleware(req: NextRequest) {
     return adminLoginRedirect(req);
   }
 
+  const userAgent = req.headers.get("user-agent") || "";
+  const isDesktop = !/Android|iPhone|iPad|iPod|Mobile/i.test(userAgent);
+
+  const hasAppIdentity =
+    userAgent.includes("LonalizaApp") ||
+    req.headers.get(APP_SHELL_HEADER) === "1" ||
+    (!isDesktop && req.cookies.get(APP_SHELL_COOKIE)?.value === "1");
+
+  const isAppReq =
+    !isDesktop &&
+    (hasAppIdentity ||
+      req.nextUrl.searchParams.get("app") === "1" ||
+      req.nextUrl.searchParams.get("view_mode") === "app" ||
+      req.nextUrl.searchParams.get("shell") === "1");
+
+  const requestHeaders = new Headers(req.headers);
+  if (isAppReq) {
+    requestHeaders.set(APP_SHELL_HEADER, "1");
+  }
+
+  const res = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+
+  if (isAppReq && req.cookies.get(APP_SHELL_COOKIE)?.value !== "1") {
+    res.cookies.set(APP_SHELL_COOKIE, "1", {
+      path: "/",
+      maxAge: 365 * 24 * 60 * 60,
+      sameSite: "lax",
+    });
+  } else if (isDesktop && req.cookies.has(APP_SHELL_COOKIE)) {
+    // Purge rogue app cookie on desktop browsers
+    res.cookies.delete(APP_SHELL_COOKIE);
+  }
+
   const ref = req.nextUrl.searchParams.get("ref") || "";
   const code = normalizeCode(ref);
-  if (code.length < 3) return NextResponse.next();
+  if (code.length >= 3) {
+    res.cookies.set(AFFILIATE_REF_COOKIE, code, {
+      path: "/",
+      maxAge: COOKIE_DAYS * 24 * 60 * 60,
+      sameSite: "lax",
+    });
+  }
 
-  const res = NextResponse.next();
-  res.cookies.set(AFFILIATE_REF_COOKIE, code, {
-    path: "/",
-    maxAge: COOKIE_DAYS * 24 * 60 * 60,
-    sameSite: "lax",
-  });
   return res;
 }
 

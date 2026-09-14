@@ -24,6 +24,7 @@ import {
 import {
   isAdminPath,
   loadLocale,
+  localeStorageKey,
   persistLocale,
   type LocaleScope,
 } from "./locale-storage";
@@ -141,10 +142,11 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     const params =
       typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
     const urlLocale = params?.get("locale") || params?.get("lang") || params?.get("hl") || "";
-    const isSupported = urlLocale === "ar" || urlLocale === "en" || urlLocale === "tr" || urlLocale === "fr";
+    const isSupported =
+      urlLocale === "ar" || urlLocale === "en" || urlLocale === "tr" || urlLocale === "fr";
     if (isSupported) {
       setLocaleState(urlLocale as Locale);
-      persistLocale(scopeRef.current, urlLocale as Locale);
+      persistLocale(scopeRef.current, urlLocale as Locale, { explicit: true });
     } else {
       setLocaleState(asLocale(loadLocale(scope)));
     }
@@ -158,7 +160,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
         const next = e.data.locale;
         if (next === "ar" || next === "en" || next === "tr" || next === "fr") {
           setLocaleState(next as Locale);
-          persistLocale(scopeRef.current, next as Locale);
+          persistLocale(scopeRef.current, next as Locale, { explicit: true });
           applyDocumentLocale(next as Locale, lookupDir(next as Locale, locales));
         }
       }
@@ -171,9 +173,22 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     applyDocumentLocale(locale, lookupDir(locale, locales));
   }, [locale, locales]);
 
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (!e.key || e.key !== localeStorageKey(scopeRef.current)) return;
+      const next = String(e.newValue || "").trim();
+      if (next === "ar" || next === "en" || next === "tr" || next === "fr") {
+        setLocaleState(next as Locale);
+        applyDocumentLocale(next, lookupDir(next, locales));
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [locales]);
+
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    persistLocale(scopeRef.current, next);
+    persistLocale(scopeRef.current, next, { explicit: true });
     applyDocumentLocale(next, lookupDir(next, locales));
 
     // Smart Iframe Broadcast: sync all embedded iframes in the document immediately

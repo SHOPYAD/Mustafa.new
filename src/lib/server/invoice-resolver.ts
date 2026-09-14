@@ -10,6 +10,7 @@ import {
   getInvoiceVerificationUrl,
   generateInvoiceQrCode,
 } from "@/lib/server/invoice-signature";
+import { formatInvoiceDate, formatInvoiceDateTime } from "@/lib/pdf/invoice-format";
 import type { InvoiceService } from "@/lib/booking-service";
 
 export type OfficialInvoiceData = {
@@ -251,8 +252,10 @@ export async function resolveOfficialInvoice(bookingId: string): Promise<Officia
       bookingDetails: {
         title: isFlight ? `${flight.origin} ✈ ${flight.destination}` : realBooking.hotel_name,
         subtitle: isFlight ? `${flight.airline} · ${flight.fare_class}` : realBooking.room_name || "إقامة فندقية مؤكدة",
-        pnr: flight.pnr || realBooking.ref_code || realBooking.id.slice(0, 8).toUpperCase(),
-        dateLine: [realBooking.check_in, realBooking.check_out].filter(Boolean).join(" ➔ ") || "—",
+        pnr: flight.pnr || "",
+        dateLine: [formatInvoiceDateTime(realBooking.check_in, "ar"), formatInvoiceDateTime(realBooking.check_out, "ar")]
+          .filter(Boolean)
+          .join(" ➔ ") || "—",
         status: realBooking.status || "paid",
         paymentStatus: realBooking.payment_status || "paid",
         paymentMethod: String(snap.payment_method || (realBooking as any).payment_method || "بطاقة إلكترونية"),
@@ -260,21 +263,21 @@ export async function resolveOfficialInvoice(bookingId: string): Promise<Officia
           {
             name: customerUser.name,
             role: isFlight ? "المسافر الرئيسي" : "النزيل الرئيسي",
-            ticketOrDoc: flight.pnr || realBooking.id.slice(0, 10).toUpperCase(),
+            ticketOrDoc: String(snap.ticket_number || snap.ticketNumber || flight.pnr || "—"),
             seatOrRoom: isFlight ? String(snap.seat || "—") : realBooking.room_name || "—",
           },
         ],
         flightSummary: isFlight
           ? {
-              airline: flight.airline || "خطوط الطيران",
-              airlineCode: flight.airline_code || "PC",
-              flightNumber: String(snap.flightNumber || "PC-2401"),
-              origin: flight.origin || "SAW",
-              destination: flight.destination || "RUH",
-              departureTime: realBooking.check_in || "2026-09-20T08:30:00Z",
-              arrivalTime: realBooking.check_out || "2026-09-20T12:45:00Z",
-              duration: "4 ساعات و15 دقيقة",
-              cabinClass: flight.fare_class || "درجة اقتصادية",
+              airline: flight.airline || "",
+              airlineCode: flight.airline_code || "",
+              flightNumber: String(snap.flightNumber || snap.flight_number || "").trim(),
+              origin: flight.origin || "",
+              destination: flight.destination || "",
+              departureTime: realBooking.check_in || "",
+              arrivalTime: realBooking.check_out || "",
+              duration: String(snap.duration || snap.durationMinutes || "").trim(),
+              cabinClass: flight.fare_class || "",
             }
           : undefined,
         hotelSummary: isHotel ? hotelSummaryFromBooking(realBooking, snap) : undefined,

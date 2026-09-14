@@ -117,6 +117,7 @@ export async function priceCalendar(input: {
   destinationEntityId: string;
   fromDate: string;
   toDate?: string;
+  date?: string;
   currency: string;
   minPrice?: number;
 }): Promise<CalendarDayPrice[]> {
@@ -129,8 +130,9 @@ export async function priceCalendar(input: {
     currency: input.currency,
   });
   if (input.toDate) params.set("toDate", input.toDate);
+  if (input.date) params.set("centerDate", input.date);
   if (input.minPrice && input.minPrice > 0) params.set("minPrice", String(Math.round(input.minPrice)));
-  const key = `fc3:${input.originSkyId}:${input.destinationSkyId}:${input.fromDate}:${input.toDate || ""}:${input.currency}:${input.minPrice || ""}`;
+  const key = `fc4:${input.originSkyId}:${input.destinationSkyId}:${input.fromDate}:${input.toDate || ""}:${input.date || ""}:${input.currency}:${input.minPrice || ""}`;
   const mem = calendarMem.get(key);
   if (mem && mem.days.length && Date.now() - mem.at < CALENDAR_CACHE_TTL_MS) return mem.days;
   const cached = readSessionCache<CalendarDayPrice[]>(key, CALENDAR_CACHE_TTL_MS);

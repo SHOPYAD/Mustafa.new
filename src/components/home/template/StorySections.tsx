@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import SafeImage from "@/components/ui/SafeImage";
+import HomeSwipeCarousel from "@/components/ui/HomeSwipeCarousel";
 import { useHomepageContent } from "@/hooks/useHomepageContent";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
@@ -88,7 +89,7 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
               className="mt-4 text-slate-600 font-medium leading-relaxed"
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <HomeSwipeCarousel>
             {homepage.features.map((f, index) => {
               const Icon = ICON_MAP[f.icon] || Sparkles;
               return (
@@ -97,7 +98,7 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
                   instance={instance}
                   field={`feature-${f.id}`}
                   editorMode={editorMode}
-                  className="relative rounded-2xl border border-purple-100/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(46,16,101,0.25)] hover:border-purple-300 group"
+                  className="relative flex h-full min-h-[11.5rem] flex-col rounded-2xl border border-purple-100/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(46,16,101,0.25)] hover:border-purple-300 group"
                 >
                   <span className="absolute top-4 end-4 text-xs font-mono font-black text-purple-900/30">
                     0{index + 1}
@@ -112,7 +113,7 @@ export function WhyUsSection({ instance, editorMode, selectedId }: SectionProps)
                 </SelectableField>
               );
             })}
-          </div>
+          </HomeSwipeCarousel>
         </div>
       </ServiceSurface>
     </SectionFrame>
@@ -299,7 +300,76 @@ export function TestimonialsSection({ instance, editorMode, selectedId }: Sectio
   return (
     <SectionFrame instance={instance} editorMode={editorMode} selectedId={selectedId}>
       <section className="py-16 md:py-24 bg-[#f4f7fb]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-8 max-w-3xl text-center lg:hidden">
+            <EditableText
+              instance={instance}
+              field="eyebrow"
+              editorMode={editorMode}
+              as="p"
+              className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-purple-700"
+            />
+            <EditableText
+              instance={instance}
+              field="title"
+              editorMode={editorMode}
+              as="h2"
+              className="text-3xl font-black text-slate-900"
+            />
+            <EditableText
+              instance={instance}
+              field="subtitle"
+              editorMode={editorMode}
+              as="p"
+              className="mt-3 font-medium text-slate-600"
+            />
+          </div>
+
+          <div className="lg:hidden">
+            <HomeSwipeCarousel desktopClassName="" itemClassName="w-[min(86vw,22rem)]">
+              {GUEST_STORIES.map((story) => (
+                <SelectableField
+                  key={story.id}
+                  instance={instance}
+                  field={`quote-${story.id}`}
+                  editorMode={editorMode}
+                  className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-purple-100 bg-white shadow-md"
+                >
+                  <div className="relative h-44 overflow-hidden">
+                    <SafeImage src={story.trip} alt="" fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#051741]/75 to-transparent" />
+                    <p className="absolute bottom-3 start-3 text-sm font-semibold text-white">
+                      {pickCopy(story.city, locale)}
+                    </p>
+                  </div>
+                  <div className="flex flex-1 flex-col p-4">
+                    <Quote size={22} className="mb-2 text-amber-400/40" />
+                    <div className="mb-2 flex gap-1">
+                      {[0, 1, 2, 3, 4].map((star) => (
+                        <Star key={star} size={12} className="fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="line-clamp-4 text-sm font-medium leading-relaxed text-slate-900">
+                      “{pickCopy(story.text, locale)}”
+                    </p>
+                    <footer className="mt-4 flex items-center gap-3">
+                      <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-amber-400/40">
+                        <SafeImage src={story.image} alt={story.name} fill className="object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-slate-900">{story.name}</p>
+                        <p className="text-xs text-slate-500">
+                          {pickCopy(story.role, locale)} · {pickCopy(story.city, locale)}
+                        </p>
+                      </div>
+                    </footer>
+                  </div>
+                </SelectableField>
+              ))}
+            </HomeSwipeCarousel>
+          </div>
+
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
           <SelectableField
             instance={instance}
             field={`quote-image-${quote.id}`}
@@ -381,6 +451,7 @@ export function TestimonialsSection({ instance, editorMode, selectedId }: Sectio
             </div>
           </div>
         </div>
+        </div>
       </section>
     </SectionFrame>
   );
@@ -391,7 +462,7 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    void fetchPublishedPosts().then((posts) => setPosts(posts.slice(0, 3)));
+    void fetchPublishedPosts().then((posts) => setPosts(posts.slice(0, 8)));
   }, []);
 
   const featured = posts[0];
@@ -435,7 +506,39 @@ export function BlogSection({ instance, editorMode, selectedId }: SectionProps) 
               {t.home.viewAllArticles}
             </BuilderLink>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:hidden">
+            <HomeSwipeCarousel desktopClassName="" itemClassName="w-[min(84vw,20rem)]">
+              {posts.map((post) => (
+                <BuilderLink
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  editorMode={editorMode}
+                  instance={instance}
+                  field={`post-${post.id}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50"
+                >
+                  <div className="relative h-40">
+                    <SafeImage
+                      src={post.coverImage || ""}
+                      alt={tContent(post, "title", locale)}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[11px] font-bold uppercase tracking-wide text-purple-700">
+                      {post.category}
+                    </p>
+                    <h3 className="mt-1 line-clamp-2 text-base font-black text-slate-900">
+                      {tContent(post, "title", locale)}
+                    </h3>
+                  </div>
+                </BuilderLink>
+              ))}
+            </HomeSwipeCarousel>
+          </div>
+
+          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-6">
             {featured ? (
               <BuilderLink
                 href={`/blog/${featured.slug}`}

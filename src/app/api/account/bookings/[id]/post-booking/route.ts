@@ -17,6 +17,7 @@ import {
   requestGuestChange,
 } from "@/lib/server/hotel-cancellations";
 import { SeeruAirAdapter } from "@/lib/providers/adapters/seeru/seeruAirAdapter";
+import { customerFacingCopy, pickScheduleStamp } from "@/lib/account/booking-display";
 
 export const runtime = "nodejs";
 
@@ -143,11 +144,29 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
     const isHotel = serviceType === "hotel";
     const isOther = serviceType === "car" || serviceType === "transfer" || serviceType === "tour" || serviceType === "package";
 
-    const legs = Array.isArray(snap.legs) ? (snap.legs as Array<Record<string, any>>) : [];
+    const itin =
+      snap.itinerary && typeof snap.itinerary === "object"
+        ? (snap.itinerary as Record<string, unknown>)
+        : {};
+    const legs = (
+      Array.isArray(snap.legs)
+        ? snap.legs
+        : Array.isArray(itin.legs)
+          ? itin.legs
+          : []
+    ) as Array<Record<string, any>>;
     const firstLeg = legs[0] || {};
     const lastLeg = legs[legs.length - 1] || firstLeg;
-    const firstSeg = Array.isArray(firstLeg.segments) ? firstLeg.segments[0] : undefined;
-    const lastSeg = Array.isArray(lastLeg.segments) ? lastLeg.segments[lastLeg.segments.length - 1] : undefined;
+    const firstSeg = Array.isArray(firstLeg.segments)
+      ? firstLeg.segments[0]
+      : Array.isArray(snap.segments)
+        ? (snap.segments as Array<Record<string, any>>)[0]
+        : undefined;
+    const lastSeg = Array.isArray(lastLeg.segments)
+      ? lastLeg.segments[lastLeg.segments.length - 1]
+      : Array.isArray(snap.segments)
+        ? (snap.segments as Array<Record<string, any>>).at(-1)
+        : undefined;
 
     const title = isFlight
       ? [flight.origin, flight.destination].filter(Boolean).join(" ➔ ") || hotelBooking.hotel_name
@@ -168,9 +187,28 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
           destination: flight.destination || "",
           destinationAirport: str(snap.destinationAirport) || str(lastSeg?.destination?.name) || "",
           destinationTerminal: str(lastSeg?.destination?.terminal) || "",
-          departureTime: str(firstSeg?.departure) || hotelBooking.check_in || "",
-          arrivalTime: str(lastSeg?.arrival) || hotelBooking.check_out || "",
+          departureTime:
+            pickScheduleStamp(
+              firstSeg?.departure,
+              firstSeg?.departureTime,
+              firstLeg.departure,
+              firstLeg.departureTime,
+              snap.departureTime,
+              snap.departure,
+              itin.departure
+            ) || str(firstSeg?.departure),
+          arrivalTime:
+            pickScheduleStamp(
+              lastSeg?.arrival,
+              lastSeg?.arrivalTime,
+              lastLeg.arrival,
+              lastLeg.arrivalTime,
+              snap.arrivalTime,
+              snap.arrival,
+              itin.arrival
+            ) || str(lastSeg?.arrival),
           duration: str(snap.duration) || minutesLabel(num(firstLeg.durationMinutes)),
+          durationMinutes: num(firstLeg.durationMinutes) || num(snap.durationMinutes),
           stops: Number(snap.stops) || Math.max(0, (Array.isArray(firstLeg.segments) ? firstLeg.segments.length : 1) - 1),
           cabinClass: flight.fare_class || "",
           fareBrand: str(snap.fareClass) || str(snap.fareBrand) || "",
@@ -245,12 +283,15 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
     const cancellationPolicy = refundGuarantee
       ? "ضمان استرداد لوناليزا مفعّل: يمكنك طلب الإلغاء قبل موعد السفر ويُسترد المبلغ وفق شروط الخدمة."
       : hotelBooking.free_cancellation || snap.isFreeCancellation
-        ? `إلغاء مجاني وفق سياسة المورد${cancelUntil ? ` حتى ${cancelUntil.slice(0, 10)}` : ""}.`
+        ? `إلغاء مجاني وفق شروط الخدمة${cancelUntil ? ` حتى ${cancelUntil.slice(0, 10)}` : ""}.`
         : snap.non_refundable || hotelBooking.non_refundable
-          ? "غير قابل للاسترداد وفق شروط المورد."
-          : str(snap.cancellationPolicy || snap.cancel_policy) || "يخضع الإلغاء لشروط المورد؛ تُعرض الرسوم قبل التأكيد.";
+          ? "غير قابل للاسترداد وفق شروط الخدمة."
+          : customerFacingCopy(
+              str(snap.cancellationPolicy || snap.cancel_policy) ||
+                "يخضع الإلغاء لشروط الخدمة؛ تُعرض الرسوم قبل التأكيد."
+            );
     const modificationPolicy = flexChange
-      ? "خدمة التاريخ المرن من لوناليزا مفعّلة: يمكنك طلب تغيير التاريخ مرة واحدة وينفّذه فريق لوناليزا لدى المورد وفق التوفر."
+      ? "خدمة التاريخ المرن من لوناليزا مفعّلة: يمكنك طلب تغيير التاريخ مرة واحدة وينفّذه فريق لوناليزا حسب التوفر."
       : "تغيير الموعد غير مشمول؛ يمكن شراء خدمة التاريخ المرن من لوناليزا عند الحجز.";
 
     return NextResponse.json({
@@ -349,9 +390,20 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
           destination: destCode,
           destinationAirport: str(meta.destinationAirport || lastSeg?.destination?.name || lastSeg?.destination?.city),
           destinationTerminal: str(meta.destinationTerminal || lastSeg?.destination?.terminal),
-          departureTime: str(meta.departureTime || firstSeg?.departure || firstLeg?.departure),
-          arrivalTime: str(meta.arrivalTime || lastSeg?.arrival || lastLeg?.arrival),
+          departureTime: pickScheduleStamp(
+            meta.departureTime,
+            firstSeg?.departure,
+            firstSeg?.departureTime,
+            firstLeg?.departure
+          ),
+          arrivalTime: pickScheduleStamp(
+            meta.arrivalTime,
+            lastSeg?.arrival,
+            lastSeg?.arrivalTime,
+            lastLeg?.arrival
+          ),
           duration: minutesLabel(num(firstLeg?.durationMinutes)),
+          durationMinutes: num(firstLeg?.durationMinutes),
           stops: Number(firstLeg?.stopCount || 0),
           cabinClass: str(firstSeg?.cabinClass),
           fareBrand: str(meta.fareBrand),
@@ -445,10 +497,10 @@ export async function GET(req: NextRequest, context: { params: Promise<{ id: str
     baggageOptions: [],
     policies: {
       cancellation: refundable
-        ? `قابلة للاسترداد وفق شروط المورد${refundableInfo ? `: ${refundableInfo}` : ""}`
+        ? `قابلة للاسترداد وفق شروط الخدمة${refundableInfo ? `: ${refundableInfo}` : ""}`
         : meta.refundable === false
-          ? "غير قابلة للاسترداد وفق شروط المورد."
-          : "تُحدَّد شروط الاسترداد من شركة الطيران عند التسعير.",
+          ? "غير قابلة للاسترداد وفق شروط الخدمة."
+          : "تُحدَّد شروط الاسترداد عند التسعير.",
       modification:
         meta.canExchange === true
           ? "التغيير متاح وفق شروط شركة الطيران وفرق السعر."
@@ -510,7 +562,7 @@ export async function POST(req: NextRequest, context: { params: Promise<{ id: st
           ok: true,
           message: "request_submitted",
           request: requestItem,
-          note: "تم استلام طلب الإلغاء وسيراجعه فريق لوناليزا ثم ينفّذه لدى المورد ويُشعرك بالنتيجة.",
+          note: "تم استلام طلب الإلغاء وسيراجعه فريق لوناليزا ثم ينفّذه ويُشعرك بالنتيجة.",
         });
       }
       if (action === "modify_flight") {
@@ -528,7 +580,7 @@ export async function POST(req: NextRequest, context: { params: Promise<{ id: st
           ok: true,
           message: "request_submitted",
           request: requestItem,
-          note: "تم استلام طلب تغيير التاريخ (خدمة لوناليزا) وسينفّذه فريقنا لدى المورد وفق التوفر ثم يُشعرك.",
+          note: "تم استلام طلب تغيير التاريخ (خدمة لوناليزا) وسينفّذه فريقنا حسب التوفر ثم يُشعرك.",
         });
       }
       return NextResponse.json({ ok: false, error: "invalid_action" }, { status: 400 });
@@ -590,7 +642,7 @@ export async function POST(req: NextRequest, context: { params: Promise<{ id: st
           status: "cancelled",
           metadata: { ...meta, cancelStatus: "voided", post_booking_requests: existingReqs, lastPostBookingAction: "void" },
         });
-        return NextResponse.json({ ok: true, message: "ticket_voided_successfully", note: "تم إبطال التذكرة (Void) لدى المورد." });
+        return NextResponse.json({ ok: true, message: "ticket_voided_successfully", note: "تم إبطال التذكرة بنجاح." });
       }
 
       if (action === "cancel") {

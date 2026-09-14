@@ -139,7 +139,9 @@ export type TravelAdvisorRoomRate = {
   boardCode?: string;
   boardName?: string;
   paymentType?: "prepay" | "pay_at_hotel" | "deposit";
+  cancellationType?: "free" | "fee_applies" | "non_refundable";
   freeCancellationUntil?: string;
+  currentPenalty?: { amount: number; currency: string };
   cancellationPolicies?: Array<{ from: string; amount: number; currency: string; description?: string }>;
   /** BOOKABLE = price is final; RECHECK = must be re-quoted before payment. */
   rateType?: "BOOKABLE" | "RECHECK";
@@ -187,6 +189,9 @@ export type TravelAdvisorReview = {
   text: string;
   date: string;
   source?: "booking_com15" | "tripadvisor";
+  originalTitle?: string;
+  originalText?: string;
+  originalLang?: string;
 };
 
 export type TravelAdvisorQuestion = {

@@ -43,6 +43,7 @@ export function TopBar({
   onDiscard,
   chromeTheme,
   onToggleChromeTheme,
+  appMode = false,
 }: {
   onSave: () => Promise<void> | void;
   onPublish: () => Promise<void> | void;
@@ -50,6 +51,7 @@ export function TopBar({
   onDiscard: () => void;
   chromeTheme: "light" | "dark";
   onToggleChromeTheme: () => void;
+  appMode?: boolean;
 }) {
   const { t } = useLocale();
   const device = useBuilderStore((s) => s.device);
@@ -85,65 +87,72 @@ export function TopBar({
   return (
     <header className="ed-topbar flex h-12 shrink-0 items-center gap-2 px-3 backdrop-blur-md">
       <Link
-        href="/admin"
-        className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[11px] font-semibold text-[hsl(var(--ed-text-muted))] hover:bg-[hsl(var(--ed-hover))] hover:text-[var(--ed-text-hex)]"
+        href={appMode ? "/admin/mobile-app" : "/admin"}
+        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[11px] font-bold text-amber-400 hover:bg-amber-400/10 hover:text-amber-300 transition-colors"
       >
         <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
-        {t.editor.backToAdmin}
+        {appMode ? "العودة لاستوديو التطبيق" : t.editor.backToAdmin}
       </Link>
 
       <Separator orientation="vertical" />
 
       <div className="flex items-center gap-2">
         <div className="relative flex h-7 w-7 items-center justify-center rounded-md builder-gradient-brand shadow-sm shadow-amber-500/30">
-          <Sparkles className="h-3.5 w-3.5 text-white" strokeWidth={2.5} />
+          {appMode ? <Smartphone className="h-3.5 w-3.5 text-white" strokeWidth={2.5} /> : <Sparkles className="h-3.5 w-3.5 text-white" strokeWidth={2.5} />}
         </div>
         <div className="flex items-baseline gap-1 text-sm font-semibold tracking-tight">
           <span className="builder-gradient-text">Lonaliza</span>
-          <span className="text-[var(--ed-text-hex)]">Builder</span>
+          <span className="text-[var(--ed-text-hex)]">{appMode ? "App Studio" : "Builder"}</span>
         </div>
-        <span className="builder-chip">v2</span>
+        <span className="builder-chip">{appMode ? "Mobile Native" : "v2"}</span>
       </div>
 
       <Separator orientation="vertical" />
 
       <nav aria-label={t.editor.currentPage} className="flex items-center gap-1 text-[12px] text-[hsl(var(--ed-text-muted))]">
-        <Home className="h-3.5 w-3.5" />
+        {appMode ? <Smartphone className="h-3.5 w-3.5 text-amber-400" /> : <Home className="h-3.5 w-3.5" />}
         <ChevronRight className="h-3 w-3 opacity-60 rtl:rotate-180" />
-        <span className="font-medium text-[var(--ed-text-hex)] truncate max-w-[160px]">{currentPageLabel}</span>
+        <span className="font-bold text-[var(--ed-text-hex)] truncate max-w-[160px]">{appMode ? `تطبيق الهاتف (${currentPageLabel})` : currentPageLabel}</span>
       </nav>
 
       <div className="flex-1" />
 
-      <div className="inline-flex rounded-lg bg-[hsl(var(--ed-surface-2))] p-0.5 shadow-inner">
-        {(
-          [
-            ["desktop", Monitor, t.editor.desktop],
-            ["tablet", Tablet, t.editor.tablet],
-            ["mobile", Smartphone, t.editor.mobile],
-          ] as const
-        ).map(([value, Icon, label]) => (
-          <Tooltip key={value}>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                aria-label={label}
-                aria-pressed={device === value}
-                onClick={() => handleDevice(value)}
-                className={cn(
-                  "inline-flex h-8 w-8 items-center justify-center rounded-md",
-                  device === value
-                    ? "bg-[var(--ed-surface-hex)] text-amber-500 shadow-sm"
-                    : "text-[hsl(var(--ed-text-muted))] hover:text-[var(--ed-text-hex)]"
-                )}
-              >
-                <Icon className="h-4 w-4" strokeWidth={2.25} />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent>{label}</TooltipContent>
-          </Tooltip>
-        ))}
-      </div>
+      {appMode ? (
+        <div className="inline-flex items-center gap-1.5 rounded-lg bg-purple-950/80 px-3 py-1.5 border border-purple-500/30 text-xs font-black text-amber-300 shadow-inner">
+          <Smartphone className="h-4 w-4 text-amber-400 shrink-0" />
+          <span>وضع تطبيق الهاتف (Native App Canvas)</span>
+        </div>
+      ) : (
+        <div className="inline-flex rounded-lg bg-[hsl(var(--ed-surface-2))] p-0.5 shadow-inner">
+          {(
+            [
+              ["desktop", Monitor, t.editor.desktop],
+              ["tablet", Tablet, t.editor.tablet],
+              ["mobile", Smartphone, t.editor.mobile],
+            ] as const
+          ).map(([value, Icon, label]) => (
+            <Tooltip key={value}>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  aria-label={label}
+                  aria-pressed={device === value}
+                  onClick={() => handleDevice(value)}
+                  className={cn(
+                    "inline-flex h-8 w-8 items-center justify-center rounded-md",
+                    device === value
+                      ? "bg-[var(--ed-surface-hex)] text-amber-500 shadow-sm"
+                      : "text-[hsl(var(--ed-text-muted))] hover:text-[var(--ed-text-hex)]"
+                  )}
+                >
+                  <Icon className="h-4 w-4" strokeWidth={2.25} />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>{label}</TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      )}
 
       <Separator orientation="vertical" />
 

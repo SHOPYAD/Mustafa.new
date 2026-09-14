@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'core/extensions/context_l10n.dart';
-import 'l10n/app_localizations.dart';
-import 'core/theme/lonaliza_theme.dart';
-import 'presentation/providers/app_locale_provider.dart';
-import 'presentation/providers/router_providers.dart';
+import 'lonaliza_shell.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  final prefs = await SharedPreferences.getInstance();
-  runApp(
-    ProviderScope(
-      overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
-      child: const MyApp(),
+
+  // Set immersive edge-to-edge transparent system bars
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+
+  runApp(const LonalizaApp());
 }
 
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
+class LonalizaApp extends StatelessWidget {
+  const LonalizaApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(goRouterProvider);
-    final locale = ref.watch(appLocaleNotifierProvider);
-    return MaterialApp.router(
-      routerConfig: router,
-      locale: locale,
-      onGenerateTitle: (context) => context.l10n.appTitle,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: LonalizaTheme.light(),
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'لوناليزا للسياحة',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'sans-serif',
+        scaffoldBackgroundColor: const Color(0xFF140522),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF2E1065),
+          primary: const Color(0xFF2E1065),
+          secondary: const Color(0xFFF59E0B),
+        ),
+      ),
+      locale: const Locale('ar'),
+      supportedLocales: const [
+        Locale('ar'),
+        Locale('en'),
+        Locale('tr'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: const LonalizaShellPage(),
     );
   }
 }

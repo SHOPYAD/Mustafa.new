@@ -57,24 +57,24 @@ export function buildFlightTicketModelFromInvoice(
   bookingDetail?: MockBookingDetail | null
 ): FlightTicketModel {
   const flight = invoice.bookingDetails.flightSummary;
-  const pnr = invoice.bookingDetails.pnr || invoice.bookingId.slice(0, 8).toUpperCase();
-  const rawTicketNo = invoice.bookingDetails.passengersOrGuests?.[0]?.ticketOrDoc;
-  const ticketNumber =
-    rawTicketNo && rawTicketNo.includes("-")
-      ? rawTicketNo
-      : `235-${(Math.abs(pnr.split("").reduce((acc, c) => acc * 31 + c.charCodeAt(0), 7)) % 9000000000 + 1000000000).toString()}`;
+  const refsPnr = invoice.bookingDetails.pnr || "";
+  const pnr = refsPnr;
+  const rawTicketNo = String(invoice.bookingDetails.passengersOrGuests?.[0]?.ticketOrDoc || "").trim();
+  const invented = !rawTicketNo || rawTicketNo === "—" || rawTicketNo === "PENDING" || rawTicketNo.startsWith("TKT-");
+  const ticketNumber = invented ? "PENDING" : rawTicketNo;
 
   const passengers = (invoice.bookingDetails.passengersOrGuests || []).map((p, idx) => {
     const mockP = bookingDetail?.passengers?.[idx];
+    const seat = p.seatOrRoom && p.seatOrRoom !== "—" ? p.seatOrRoom : mockP?.seat || "";
     return {
       name: p.name || mockP?.name || "—",
       type: mockP?.type ? mockP.type.toUpperCase() : "ADULT",
-      ticketNumber: p.ticketOrDoc || mockP?.ticketNumber || ticketNumber,
-      seat: p.seatOrRoom || mockP?.seat || "14A",
-      baggage: mockP?.baggage || "20 KG (Checked)",
-      cabinBaggage: "8 KG (Cabin)",
-      meal: mockP?.meal || "Standard Meal",
-      passportNumber: mockP?.passportNumber || "U12345678",
+      ticketNumber: invented ? ticketNumber : p.ticketOrDoc || mockP?.ticketNumber || ticketNumber,
+      seat: seat === "14A" && !mockP?.seat ? "" : seat,
+      baggage: mockP?.baggage || "",
+      cabinBaggage: mockP ? "8 KG (Cabin)" : "",
+      meal: mockP?.meal || "",
+      passportNumber: mockP?.passportNumber || "",
     };
   });
 
@@ -83,43 +83,52 @@ export function buildFlightTicketModelFromInvoice(
       name: invoice.customer.name || "—",
       type: "ADULT",
       ticketNumber,
-      seat: "14A",
-      baggage: "20 KG (Checked)",
-      cabinBaggage: "8 KG (Cabin)",
-      meal: "Standard Meal",
-      passportNumber: "U12345678",
+      seat: "",
+      baggage: "",
+      cabinBaggage: "",
+      meal: "",
+      passportNumber: "",
     });
   }
 
   const segments: FlightTicketModel["segments"] = [];
 
-  const originParts = (flight?.origin || "Istanbul (IST)").split(/[()]/).map((s) => s.trim());
-  const originCity = originParts[0] || "Istanbul";
-  const originCode = originParts[1] || "IST";
+  const parsePlace = (raw: string) => {
+    const text = String(raw || "").trim();
+    const paren = text.split(/[()]/).map((s) => s.trim()).filter(Boolean);
+    if (paren.length >= 2) return { city: paren[0], code: paren[1].slice(0, 3).toUpperCase() };
+    if (/^[A-Za-z]{3}$/.test(text)) return { city: text.toUpperCase(), code: text.toUpperCase() };
+    return { city: text, code: "" };
+  };
+  const origin = parsePlace(flight?.origin || "");
+  const dest = parsePlace(flight?.destination || "");
+  const originCity = origin.city;
+  const originCode = origin.code;
+  const destCity = dest.city;
+  const destCode = dest.code;
 
-  const destParts = (flight?.destination || "London (LHR)").split(/[()]/).map((s) => s.trim());
-  const destCity = destParts[0] || "London";
-  const destCode = destParts[1] || "LHR";
+  const departStamp = flight?.departureTime || "";
+  const arriveStamp = flight?.arrivalTime || "";
 
   segments.push({
     direction: "outbound",
-    flightNumber: flight?.flightNumber || bookingDetail?.flightDetails?.flightNumber || "TK 1985",
-    airline: flight?.airline || bookingDetail?.flightDetails?.airline || "Turkish Airlines",
-    aircraft: bookingDetail?.flightDetails?.aircraft || "Airbus A321neo",
-    cabinClass: flight?.cabinClass || bookingDetail?.flightDetails?.cabinClass || "Economy (Y)",
+    flightNumber: flight?.flightNumber || bookingDetail?.flightDetails?.flightNumber || "",
+    airline: flight?.airline || bookingDetail?.flightDetails?.airline || "",
+    aircraft: bookingDetail?.flightDetails?.aircraft || "",
+    cabinClass: flight?.cabinClass || bookingDetail?.flightDetails?.cabinClass || "",
     originCode,
     originCity,
-    originAirport: bookingDetail?.flightDetails?.originAirport || `${originCity} International Airport`,
-    originTerminal: bookingDetail?.flightDetails?.originTerminal || "T1",
-    departureDate: (flight?.departureTime || invoice.issuedAt || new Date().toISOString()).slice(0, 10),
-    departureTime: flight?.departureTime ? flight.departureTime.slice(11, 16) : "08:30",
+    originAirport: bookingDetail?.flightDetails?.originAirport || originCity,
+    originTerminal: bookingDetail?.flightDetails?.originTerminal || "",
+    departureDate: departStamp.slice(0, 10),
+    departureTime: departStamp.length > 11 && !/T00:00/.test(departStamp) ? departStamp.slice(11, 16) : "",
     destinationCode: destCode,
     destinationCity: destCity,
-    destinationAirport: bookingDetail?.flightDetails?.destinationAirport || `${destCity} International Airport`,
-    destinationTerminal: bookingDetail?.flightDetails?.destinationTerminal || "T2",
-    arrivalDate: (flight?.arrivalTime || invoice.issuedAt || new Date().toISOString()).slice(0, 10),
-    arrivalTime: flight?.arrivalTime ? flight.arrivalTime.slice(11, 16) : "10:45",
-    duration: flight?.duration || bookingDetail?.flightDetails?.duration || "4h 15m",
+    destinationAirport: bookingDetail?.flightDetails?.destinationAirport || destCity,
+    destinationTerminal: bookingDetail?.flightDetails?.destinationTerminal || "",
+    arrivalDate: arriveStamp.slice(0, 10),
+    arrivalTime: arriveStamp.length > 11 && !/T00:00/.test(arriveStamp) ? arriveStamp.slice(11, 16) : "",
+    duration: flight?.duration || bookingDetail?.flightDetails?.duration || "",
     stops: 0,
   });
 
@@ -133,30 +142,40 @@ export function buildFlightTicketModelFromInvoice(
       cabinClass: flight?.cabinClass || "Economy (Y)",
       originCode: destCode,
       originCity: destCity,
-      originAirport: `${destCity} International Airport`,
-      originTerminal: "T2",
+      originAirport: destCity,
+      originTerminal: "",
       departureDate: ret.departureTime ? ret.departureTime.slice(0, 10) : "",
-      departureTime: ret.departureTime ? ret.departureTime.slice(11, 16) : "14:20",
+      departureTime: ret.departureTime && ret.departureTime.length > 11 && !/T00:00/.test(ret.departureTime) ? ret.departureTime.slice(11, 16) : "",
       destinationCode: originCode,
       destinationCity: originCity,
-      destinationAirport: `${originCity} International Airport`,
-      destinationTerminal: "T1",
+      destinationAirport: originCity,
+      destinationTerminal: "",
       arrivalDate: ret.arrivalTime ? ret.arrivalTime.slice(0, 10) : "",
-      arrivalTime: ret.arrivalTime ? ret.arrivalTime.slice(11, 16) : "20:15",
-      duration: ret.duration || "4h 15m",
+      arrivalTime: ret.arrivalTime && ret.arrivalTime.length > 11 && !/T00:00/.test(ret.arrivalTime) ? ret.arrivalTime.slice(11, 16) : "",
+      duration: ret.duration || "",
       stops: 0,
     });
   }
 
-  const barcodeData = `M1${passengers[0]?.name.toUpperCase().replace(/\s+/g, "/")} E${pnr} ${originCode}${destCode}${segments[0]?.airline.slice(0, 2).toUpperCase() || "TK"} ${segments[0]?.flightNumber} 271Y014A0001 147`;
+  const barcodeData = [
+    "M1",
+    (passengers[0]?.name || "").toUpperCase().replace(/\s+/g, "/"),
+    pnr || invoice.bookingId,
+    originCode,
+    destCode,
+    segments[0]?.flightNumber || "",
+    ticketNumber !== "PENDING" ? ticketNumber : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return {
     bookingId: invoice.bookingId,
-    pnr,
+    pnr: pnr || invoice.bookingId,
     ticketNumber,
     issueDate: invoice.issuedAt ? invoice.issuedAt.slice(0, 10) : new Date().toISOString().slice(0, 10),
-    status: "CONFIRMED / OK TO BOARD",
-    airline: segments[0]?.airline || "Turkish Airlines",
+    status: ticketNumber !== "PENDING" ? "CONFIRMED / OK TO BOARD" : "PAYMENT RECEIVED — TICKET PENDING",
+    airline: segments[0]?.airline || "",
     agencyNameAr: invoice.company.nameAr || "شركة لوناليزا للسياحة والسفر",
     agencyNameEn: invoice.company.nameEn || "Lonaliza Tourism & Travel LLC",
     iataCode: "42-2 9821",

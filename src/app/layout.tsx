@@ -5,6 +5,7 @@ import "./globals.css";
 import { CompareProvider } from "@/components/packages/CompareDrawer";
 import { CurrencyProvider } from "@/components/ui/CurrencySelector";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
+import IyzicoViewportGuard from "@/components/payments/IyzicoViewportGuard";
 import PublicConfigBootstrap from "@/components/PublicConfigBootstrap";
 import AdminNotifyBridge from "@/components/admin/AdminNotifyBridge";
 import PwaRegistrar from "@/components/pwa/PwaRegistrar";
@@ -181,6 +182,7 @@ export default async function RootLayout({
         <PublicConfigBootstrap />
         <AdminNotifyBridge />
         <LocaleProvider>
+          <IyzicoViewportGuard />
           <PwaRegistrar />
           <CurrencyProvider>
             <CompareProvider>{children}</CompareProvider>

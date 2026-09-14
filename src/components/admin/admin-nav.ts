@@ -40,6 +40,7 @@ import {
   ShieldCheck,
   Smartphone,
   Sparkles,
+  Star,
   Store,
   Timer,
   Ticket,
@@ -156,6 +157,7 @@ export function buildAdminNav(admin: AdminCopy): NavGroup[] {
           items: [
             leaf("bookings-all", admin.bookings || "جميع الحجوزات", "/admin/bookings", Inbox, { badge: "bookings" }),
             leaf("cancellations", admin.cancellations || "طلبات الإلغاء والاسترداد", "/admin/cancellations", Undo2),
+            leaf("customer-reviews", "تقييمات العملاء الموثقة", "/admin/reviews", Star),
           ],
         },
       ],
@@ -173,6 +175,7 @@ export function buildAdminNav(admin: AdminCopy): NavGroup[] {
           items: [
             leaf("hotels", "مزودو ومارك أب الفنادق", "/admin/hotels", Hotel, { exact: true }),
             leaf("hotels-catalog", "الكتالوج الداخلي للفنادق", "/admin/hotels/catalog", Building2),
+            leaf("hotels-reviews", "تقييمات الفنادق ووكيل تريب أدفايزر", "/admin/reviews", Star),
             leaf("flights", admin.flights || "تذاكر الطيران وموزعو GDS", "/admin/flights", Plane),
             leaf("packages", admin.packages || "الباقات والعروض السياحية", "/admin/packages", Package),
           ],
@@ -223,6 +226,9 @@ export function buildAdminNav(admin: AdminCopy): NavGroup[] {
           label: "",
           items: [
             leaf("customers", admin.customers || "سجل العملاء والمسافرين", "/admin/customers", Users),
+            leaf("customer-reviews-mgmt", "تقييمات العملاء والنزلاء الموثقة", "/admin/reviews", Star, {
+              description: "اعتماد ومراقبة تقييمات المسافرين ونزلاء الفنادق الحقيقية",
+            }),
             leaf("deletion-requests", "طلبات حذف الحسابات ومحو البيانات (GDPR)", "/admin/legal?tab=deletions", ShieldAlert, {
               description: "إدارة طلبات حذف العملاء، فترات الحفظ، والحذف النهائي الجماعي",
             }),
@@ -274,6 +280,9 @@ export function buildAdminNav(admin: AdminCopy): NavGroup[] {
           id: "ai-agents-hub",
           label: "الوكلاء وغرفة العمليات",
           items: [
+            leaf("tripadvisor-reviews-agent", "وكيل تقييمات TripAdvisor والنزلاء", "/admin/reviews", Star, {
+              description: "مراقبة وتشغيل وكيل زحف وترجمة وحقن تقييمات تريب أدفايزر",
+            }),
             leaf("agent-war-room", "غرفة عمليات الوكلاء (War Room)", "/admin/agent-war-room", Sparkles, {
               description: "مركز التنسيق والنقاش اللحظي بين كافة وكلاء الذكاء الاصطناعي",
             }),

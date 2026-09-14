@@ -109,6 +109,7 @@ export async function POST(req: NextRequest) {
       conversationId,
       webhookStatus: status,
       webhookEventType: eventType,
+      source: "webhook",
     });
     return jsonOk();
   }
@@ -121,6 +122,7 @@ export async function POST(req: NextRequest) {
       conversationId,
       webhookStatus: status,
       webhookEventType: eventType,
+      source: "webhook",
     });
     return jsonOk();
   }
@@ -139,6 +141,7 @@ export async function POST(req: NextRequest) {
       conversationId,
       webhookStatus: status,
       webhookEventType: eventType,
+      source: "webhook",
     });
   }
 

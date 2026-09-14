@@ -57,9 +57,9 @@ export default function LocaleCurrencySwitcher({
 
   const btnClass =
     variant === "header-light"
-      ? "bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 border-slate-200"
+      ? "bg-white hover:bg-purple-50/70 text-slate-900 border-slate-300 shadow-xs hover:border-purple-300 ring-1 ring-slate-200/60 font-black"
       : variant === "header"
-        ? "bg-white/10 hover:bg-white/20 text-white border-white/20"
+        ? "bg-white/15 hover:bg-white/25 text-white border-white/30 font-bold"
         : "bg-slate-800 hover:bg-slate-700 text-white border-white/10";
 
   const panelClass =
@@ -171,14 +171,17 @@ export default function LocaleCurrencySwitcher({
         title={`${(current?.code || locale).toUpperCase()} · ${currency.code}`}
         aria-expanded={isOpen}
       >
-        <Languages size={15} className="shrink-0 text-purple-700 dark:text-purple-300" />
-        <Coins size={14} className="shrink-0 text-amber-600 dark:text-amber-400" />
-        <span className="text-[11px] font-bold tracking-tight uppercase">
+        <span className="text-base leading-none">{current?.flag || "🌐"}</span>
+        <span className="text-xs font-black tracking-wide uppercase">
           {locale}
         </span>
+        <span className="text-slate-300 select-none">|</span>
+        <span className="text-xs font-black text-[#2e1065]">
+          {currency.code}
+        </span>
         <ChevronDown
-          size={11}
-          className={cn("shrink-0 opacity-60 transition-transform", isOpen && "rotate-180")}
+          size={12}
+          className={cn("shrink-0 opacity-70 transition-transform", isOpen && "rotate-180")}
         />
       </button>
 

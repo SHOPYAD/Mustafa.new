@@ -3,6 +3,7 @@ import {
   obtainTravelportToken,
   travelportRequest,
 } from "./httpClient";
+import { collapseFarePenalties } from "@/lib/flights/fare-penalties";
 import {
   BAGGAGE_UNKNOWN,
   deriveFareLabel,
@@ -369,6 +370,7 @@ function buildFareOption(parts: Pbo[], idx: Indexed, cabinFallback: string, isBe
     selections: parts.map((p) => ({ offeringId: p.offeringId, productRef: p.productRef })),
   };
   rules = Array.from(new Set(rules));
+  const policy = collapseFarePenalties(penalties);
   return {
     id: `tp_${parts.map((p) => `${p.offeringId}.${p.productRef}`).join("+")}`,
     supplier: "travelport",
@@ -377,9 +379,9 @@ function buildFareOption(parts: Pbo[], idx: Indexed, cabinFallback: string, isBe
     nameSource: brandNames.length ? "supplier" : "derived",
     cabin,
     baggage,
-    refundable,
-    changeable,
-    penalties,
+    refundable: policy.refundable !== "unknown" ? policy.refundable : refundable,
+    changeable: policy.changeable !== "unknown" ? policy.changeable : changeable,
+    penalties: policy.penalties,
     seatSelection: attrs.SeatAssignment || attrs.PremiumSeat || "unknown",
     meal: attrs.Meals || "unknown",
     priority: attrs.PriorityBoarding || "unknown",
@@ -451,18 +453,30 @@ export class TravelportAirAdapter {
     const ctx = await getTravelportContext("travelport_flights");
     const cabinPref = String(params.cabinClass || "").toUpperCase();
     const cabinValue =
-      cabinPref === "BUSINESS" ? "Business" : cabinPref === "FIRST" ? "First" : cabinPref === "PREMIUM_ECONOMY" ? "PremiumEconomy" : "";
+      cabinPref === "BUSINESS"
+        ? "Business"
+        : cabinPref === "FIRST"
+          ? "First"
+          : cabinPref === "PREMIUM_ECONOMY"
+            ? "PremiumEconomy"
+            : cabinPref === "ECONOMY" || cabinPref === "Y"
+              ? "Economy"
+              : "";
 
     const requestBody = {
       CatalogProductOfferingsQueryRequest: {
         "@type": "CatalogProductOfferingsQueryRequest",
         CatalogProductOfferingsRequest: {
           "@type": "CatalogProductOfferingsRequestAir",
-          maxNumberOfUpsellsToReturn: 4,
+          maxNumberOfUpsellsToReturn: 3,
           offersPerPage: 100,
           contentSourceList: ["GDS"],
           PassengerCriteria: passengerCriteria,
           SearchCriteriaFlight: searchCriteria,
+          PricingModifiersAir: {
+            "@type": "PricingModifiersAir",
+            CurrencyCode: { value: "USD" },
+          },
           ...(cabinValue
             ? { SearchModifiersAir: { "@type": "SearchModifiersAir", CabinPreference: [{ "@type": "CabinPreference", preferenceType: "Permitted", cabins: [cabinValue] }] } }
             : {}),

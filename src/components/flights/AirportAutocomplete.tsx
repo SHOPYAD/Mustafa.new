@@ -123,6 +123,11 @@ export default function AirportAutocomplete({ label, value, onChange, copy, auto
           onFocus={(e) => {
             setOpen(true);
             e.currentTarget.select();
+            const node = e.currentTarget;
+            node.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" });
+            window.setTimeout(() => {
+              node.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" });
+            }, 280);
           }}
           placeholder={copy.airportPlaceholder}
           autoComplete="off"

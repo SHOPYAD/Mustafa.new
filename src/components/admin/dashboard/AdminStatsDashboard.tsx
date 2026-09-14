@@ -9,6 +9,10 @@ import {
   Layers,
   Sparkles,
   Users,
+  Star,
+  Compass,
+  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 
 import { dashboardCopy } from "@/components/admin/dashboard/copy";
@@ -298,6 +302,37 @@ export function AdminStatsDashboard({ statsEndpoint = "/api/admin/dashboard-stat
             </div>
           </Link>
         ))}
+      </div>
+
+      {/* TripAdvisor Reviews & Customer Reviews Management Hub Card */}
+      <div className="relative overflow-hidden rounded-2xl border border-purple-200/80 bg-gradient-to-r from-purple-900 via-indigo-950 to-slate-900 p-5 text-white shadow-md">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/20 text-amber-300 ring-1 ring-amber-400/40">
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+              </span>
+              <h2 className="text-base sm:text-lg font-black text-white">
+                إدارة تقييمات العملاء ووكيل تريب أدفايزر الذكي (TripAdvisor MCP)
+              </h2>
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300 ring-1 ring-emerald-500/40">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                نشط ومربوط بـ Docker LibreTranslate
+              </span>
+            </div>
+            <p className="max-w-2xl text-xs sm:text-sm text-purple-200/80">
+              مركز اعتماد تقييمات المسافرين الموثقة، ومراقبة وكيل الذكاء الاصطناعي المستقل لزحف وترجمة تقييمات TripAdvisor وحقنها في قاعدة البيانات.
+            </p>
+          </div>
+
+          <Link
+            href="/admin/reviews"
+            className="inline-flex items-center justify-center gap-2 shrink-0 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-950 shadow-md hover:from-amber-400 hover:to-amber-500 transition-all hover:scale-102 active:scale-98"
+          >
+            <span>فتح لوحة إدارة التقييمات والوكيل</span>
+            {locale === "ar" ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+          </Link>
+        </div>
       </div>
 
       <DashboardCommerce stats={stats} copy={copy} locale={locale} />

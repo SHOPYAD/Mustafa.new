@@ -6,6 +6,12 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  foldSearchText,
+  hasArabicScript,
+  overlayAirportRecord,
+  searchQueryVariants,
+} from "@/lib/flights/airport-i18n-overlay";
 import { applyMappedEntity, ensureSkyEntityMap } from "@/lib/server/sky-entity-ids";
 
 export type AirportLocale = "ar" | "en" | "tr";
@@ -180,13 +186,12 @@ let cached: Index | null = null;
 let loadPromise: Promise<Index> | null = null;
 
 function seedIndex(): Index {
-  const airports = SEED_AIRPORTS;
-  const cities = citiesFromAirports(airports);
-  return buildIndex(airports, cities, {
+  const overlaid = overlayIndexRecords(SEED_AIRPORTS, citiesFromAirports(SEED_AIRPORTS));
+  return buildIndex(overlaid.airports, overlaid.cities, {
     source: "seed",
     importedAt: "",
-    airportCount: airports.length,
-    cityCount: cities.length,
+    airportCount: overlaid.airports.length,
+    cityCount: overlaid.cities.length,
   });
 }
 
@@ -199,14 +204,43 @@ async function readJson<T>(file: string): Promise<T | null> {
   }
 }
 
+function overlayIndexRecords(airports: StoredAirport[], cities: StoredCity[]): {
+  airports: StoredAirport[];
+  cities: StoredCity[];
+} {
+  const nextAirports = airports.map((row) => overlayAirportRecord(row));
+  const byIata = new Map(nextAirports.map((row) => [row.iata, row]));
+  const nextCities = cities.map((city) => {
+    const overlaid = overlayAirportRecord({
+      ...city,
+      iata: city.cityCode,
+    });
+    const primary = byIata.get(city.airports[0] || "");
+    return {
+      ...overlaid,
+      aliases: [...new Set([
+        ...overlaid.aliases,
+        ...city.airports.flatMap((iata) => byIata.get(iata)?.aliases || []),
+        primary?.cityAr,
+        primary?.cityEn,
+        primary?.cityTr,
+      ].filter(Boolean) as string[])],
+      cityAr: overlaid.cityAr || primary?.cityAr || city.cityAr,
+      cityTr: overlaid.cityTr || primary?.cityTr || city.cityTr,
+    };
+  });
+  return { airports: nextAirports, cities: nextCities };
+}
+
 async function loadIndex(): Promise<Index> {
   const airports = await readJson<StoredAirport[]>("airports.json");
   const cities = await readJson<StoredCity[]>("cities.json");
   const meta = await readJson<AirportsMeta>("meta.json");
   if (!airports?.length) return seedIndex();
+  const overlaid = overlayIndexRecords(airports, cities?.length ? cities : citiesFromAirports(airports));
   return buildIndex(
-    airports,
-    cities?.length ? cities : citiesFromAirports(airports),
+    overlaid.airports,
+    overlaid.cities,
     meta || {
       source: "local",
       importedAt: "",
@@ -248,17 +282,7 @@ export function localeOfAirport(raw?: string | null): AirportLocale {
 }
 
 export function foldAirportText(value: string): string {
-  return String(value || "")
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/İ/g, "i")
-    .replace(/I/g, "i")
-    .replace(/[إأآا]/g, "ا")
-    .replace(/[ىي]/g, "ي")
-    .replace(/ة/g, "ه")
-    .toLowerCase()
-    .replace(/[^a-z0-9\u0600-\u06ff]+/g, " ")
-    .trim();
+  return foldSearchText(value);
 }
 
 function localizedAirport(row: StoredAirport, locale: AirportLocale): AirportPickDto {
@@ -320,30 +344,39 @@ function haystacks(row: StoredAirport | StoredCity): string[] {
   ].map(foldAirportText);
 }
 
-function scoreText(q: string, texts: string[]): number {
+function scoreText(query: string, texts: string[]): number {
+  const variants = searchQueryVariants(query);
+  if (!variants.length) return 0;
   let best = 0;
-  for (const raw of texts) {
-    if (!raw) continue;
-    const text = raw.replace(/\binternational\b/g, " ").replace(/\s+/g, " ").trim();
-    if (!text) continue;
-    if (text === q) {
-      best = Math.max(best, 1000);
-      continue;
+  const arabic = hasArabicScript(query);
+  const containMin = arabic ? 2 : 4;
+  for (const q of variants) {
+    for (const raw of texts) {
+      if (!raw) continue;
+      const text = raw.replace(/\binternational\b/g, " ").replace(/\s+/g, " ").trim();
+      if (!text) continue;
+      const compactText = text.replace(/\s+/g, "");
+      if (text === q || compactText === q) {
+        best = Math.max(best, 1000);
+        continue;
+      }
+      if (text.startsWith(q) || compactText.startsWith(q)) {
+        best = Math.max(best, 780);
+        continue;
+      }
+      const words = text.split(" ");
+      if (words.some((word) => word === q)) {
+        best = Math.max(best, 720);
+        continue;
+      }
+      if (words.some((word) => word.startsWith(q) && q.length >= 2)) {
+        best = Math.max(best, 640);
+        continue;
+      }
+      if (q.length >= containMin && (text.includes(q) || compactText.includes(q))) {
+        best = Math.max(best, 360);
+      }
     }
-    if (text.startsWith(q)) {
-      best = Math.max(best, 780);
-      continue;
-    }
-    const words = text.split(" ");
-    if (words.some((word) => word === q)) {
-      best = Math.max(best, 720);
-      continue;
-    }
-    if (words.some((word) => word.startsWith(q) && q.length >= 3)) {
-      best = Math.max(best, 640);
-      continue;
-    }
-    if (q.length >= 4 && text.includes(q)) best = Math.max(best, 360);
   }
   return best;
 }

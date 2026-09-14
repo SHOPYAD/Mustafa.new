@@ -3,11 +3,12 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { CalendarX, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { CalendarX, ChevronLeft, ChevronRight, Languages, X } from "lucide-react";
 import HotelFeatureIcon from "@/components/hotels/HotelFeatureIcon";
 import HotelOfferCompare from "@/components/hotels/HotelOfferCompare";
 import HotelPaymentChannels from "@/components/hotels/HotelPaymentChannels";
 import HotelRoomCard from "@/components/hotels/HotelRoomCard";
+import ReviewsAgentSkeleton from "@/components/hotels/ReviewsAgentSkeleton";
 import { hotelApiSlug, parseHotelApiJson, parseHotelRouteSource } from "@/lib/hotels-config";
 import { useHotelsConfig } from "@/hooks/useHotelsConfig";
 import { usePaymentsPublicConfig } from "@/hooks/usePaymentsPublicConfig";
@@ -76,9 +77,14 @@ export default function TravelAdvisorHotelDetail({
   const [offers, setOffers] = useState<HotelOfferSource[]>([]);
   const [loading, setLoading] = useState(true);
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const [reviewVisible, setReviewVisible] = useState(6);
+  const [reviewVisible, setReviewVisible] = useState(10);
+  const [showOriginal, setShowOriginal] = useState<Record<string, boolean>>({});
   const [reviewPage, setReviewPage] = useState(1);
   const [loadingReviews, setLoadingReviews] = useState(false);
+
+  const toggleOriginal = (id: string) => {
+    setShowOriginal((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -133,6 +139,37 @@ export default function TravelAdvisorHotelDetail({
             ? (offerJson.offers as HotelOfferSource[])
             : []
         );
+        if (hotelData && (!hotelData.reviews || hotelData.reviews.length === 0) && hotelData.name) {
+          setLoadingReviews(true);
+          const revQs = new URLSearchParams({
+            hotelId: hotelData.id,
+            name: hotelData.name,
+            city: hotelData.city || query,
+            lang: locale,
+          });
+          if (hotelData.bookingHotelId) revQs.set("bookingHotelId", hotelData.bookingHotelId);
+          void fetch(`/api/hotels/reviews?${revQs}`, { cache: "no-store" })
+            .then((r) => r.json())
+            .then((json) => {
+              if (cancelled) return;
+              if (Array.isArray(json?.reviews) && json.reviews.length > 0) {
+                setHotel((current) =>
+                  current
+                    ? {
+                        ...current,
+                        reviews: json.reviews,
+                        reviewCount: json.reviews.length,
+                        rating: json.reviewScore?.score || current.rating,
+                      }
+                    : current
+                );
+              }
+            })
+            .catch(() => {})
+            .finally(() => {
+              if (!cancelled) setLoadingReviews(false);
+            });
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -420,7 +457,7 @@ export default function TravelAdvisorHotelDetail({
               ) : null}
             </div>
 
-            <div className="sticky top-20 z-20 rounded-2xl bg-white/95 border border-[#eadfcf] px-3 py-2 flex gap-2 overflow-x-auto backdrop-blur">
+            <div className="relative z-10 rounded-2xl bg-white border border-[#eadfcf] px-3 py-2 flex gap-2 overflow-x-auto">
               {tabs.map((tab) => (
                 <a
                   key={tab.id}
@@ -576,41 +613,75 @@ export default function TravelAdvisorHotelDetail({
                   </div>
                 </div>
               ) : null}
-              {hotel.reviews?.length ? (
+              {loadingReviews ? (
+                <ReviewsAgentSkeleton locale={locale} hotelName={hotel.name} />
+              ) : hotel.reviews?.length ? (
                 <div className="alrayyan-scroll space-y-3 pe-1">
                   {hotel.reviews.length > 8 ? (
                     <p className="text-xs text-slate-400">
                       {t.hotels.showingReviews(visibleReviews.length, hotel.reviews.length)}
                     </p>
                   ) : null}
-                  {visibleReviews.map((review) => (
-                    <div key={review.id} className="rounded-xl border border-slate-100 p-4">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {review.rating > 0 ? (
-                          <span className="px-2 py-0.5 bg-[var(--navy)] text-white text-xs font-bold rounded">
-                            {review.rating.toFixed(1)}
-                          </span>
+                  {visibleReviews.map((review) => {
+                    const isOriginal = Boolean(showOriginal[review.id]);
+                    const currentTitle = isOriginal ? (review.originalTitle || review.title) : review.title;
+                    const currentText = isOriginal ? (review.originalText || review.text) : review.text;
+                    const hasOriginalDiff = Boolean(
+                      (review.originalText && review.originalText !== review.text) ||
+                      (review.originalTitle && review.originalTitle !== review.title)
+                    );
+
+                    return (
+                      <div key={review.id} className="rounded-xl border border-slate-100 p-4 transition-all">
+                        <div className="flex flex-wrap items-center gap-2">
+                          {review.rating > 0 ? (
+                            <span className="px-2 py-0.5 bg-[var(--navy)] text-white text-xs font-bold rounded">
+                              {review.rating.toFixed(1)}
+                            </span>
+                          ) : null}
+                          <p className="font-semibold text-slate-900">{review.author}</p>
+                          {review.date ? (
+                            <span className="text-xs text-slate-400">
+                              {localizeHotelLabel(review.date, locale)}
+                            </span>
+                          ) : null}
+                        </div>
+                        {currentTitle ? (
+                          <p className="text-sm font-medium text-slate-800 mt-1">{currentTitle}</p>
                         ) : null}
-                        <p className="font-semibold text-slate-900">{review.author}</p>
-                        {review.date ? (
-                          <span className="text-xs text-slate-400">
-                            {localizeHotelLabel(review.date, locale)}
-                          </span>
+                        <p className="text-slate-600 text-sm mt-1 leading-relaxed whitespace-pre-line">{currentText}</p>
+
+                        {hasOriginalDiff ? (
+                          <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
+                            <button
+                              type="button"
+                              onClick={() => toggleOriginal(review.id)}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-800 hover:text-purple-950 bg-white hover:bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200/70 transition-colors shadow-2xs"
+                            >
+                              <Languages size={13} className="text-purple-600" />
+                              <span>
+                                {isOriginal
+                                  ? (locale === "ar" ? "عرض الترجمة بالعربية" : locale === "tr" ? "Türkçe Çeviriyi Göster" : "Show Translation")
+                                  : (locale === "ar" ? "عرض النص الأصلي" : locale === "tr" ? "Orijinal Metni Göster" : "Show Original Text")}
+                              </span>
+                            </button>
+                            <span className="text-[11px] text-slate-400">
+                              {isOriginal
+                                ? (locale === "ar" ? "النص الأصلي (TripAdvisor)" : "Original Text")
+                                : (locale === "ar" ? "مترجم آلياً" : "Translated")}
+                            </span>
+                          </div>
                         ) : null}
                       </div>
-                      {review.title ? (
-                        <p className="text-sm font-medium text-slate-800 mt-1">{review.title}</p>
-                      ) : null}
-                      <p className="text-slate-600 text-sm mt-1">{review.text}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                   {reviewVisible < hotel.reviews.length ? (
                     <button
                       type="button"
-                      onClick={() => setReviewVisible((n) => n + 6)}
-                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-emerald-50"
+                      onClick={() => setReviewVisible((n) => n + 10)}
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-emerald-50 transition-colors"
                     >
-                      {t.hotels.loadMoreReviews} ({hotel.reviews.length - reviewVisible})
+                      {t.hotels.loadMoreReviews} (+10) [{Math.min(reviewVisible, hotel.reviews.length)} / {hotel.reviews.length}]
                     </button>
                   ) : hotel.bookingHotelId && reviewPage < 2 ? (
                     <button

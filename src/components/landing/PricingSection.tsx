@@ -113,6 +113,8 @@ export default function PricingSection({
   const coreLifetimeFeatures = [
     loc("نسخة كاملة من منظومة لوناليزا (Lonaliza) بعلامتك التجارية وسيرفرك الخاص", "Full Lonaliza Tourism Platform under your brand on dedicated server", "Plateforme complète Lonaliza Tourisme sous votre propre marque", "Kendi markanız altında bağımsız sunucunuzda eksiksiz Lonaliza Turizm Platformu"),
     loc("ترخيص دومين دائم مشفر ومحمي مدى الحياة دون أي عمولات مبيعات (0%)", "Single-domain permanent encrypted license with 0% sales commission", "Licence permanente chiffrée par domaine avec 0% de commission", "Satış komisyonsuz (%0) tek alan adına özel ömür boyu şifreli kalıcı lisans"),
+    loc("تطبيق الويب التقدمي (PWA) فائق السرعة مشمول ومفعل مجاناً بالكامل", "Ultra-Fast Progressive Web App (PWA) Included 100% Free", "Application Web Progressive (PWA) ultra-rapide incluse 100% gratuite", "Ultra Hızlı Progresif Web Uygulaması (PWA) %100 Ücretsiz Dahil"),
+    loc("تطبيقات الهواتف الأصيلة بنظام Flutter (Android & iOS) مع كود المصدر ومحرك النشر بالمتاجر", "Native Smartphone Flutter Apps (Android & iOS) with Full Source Code & Store Publishing Engine", "Applications Mobiles Natives Flutter (Android & iOS) avec Code Source & Moteur de Publication Stores", "Tam Kaynak Kodlu ve Mağaza Yayınlama Motorlu Yerel Flutter Mobil Uygulamaları (Android & iOS)"),
     loc("سيرفر Contabo Cloud VPS مخصص عالي الأداء مجاناً لمدة سنة كاملة", "1-Year free dedicated high-performance Contabo Cloud VPS hosting", "Hébergement Contabo Cloud VPS dédié haute performance gratuit 1 an", "1 yıl boyunca ücretsiz yüksek performanslı bağımsız Contabo Bulut VPS barındırma"),
     loc("فتح كافة الموزعين العالميين المربوطين (PKFARE, Seeru, Travelport, BiletBank, RateHawk...)", "All real integrated global distributors unlocked (PKFARE, Seeru, Travelport, RateHawk...)", "Tous les distributeurs mondiaux réels débloqués (PKFARE, Seeru, Travelport...)", "Tüm entegre küresel dağıtıcılar açık (PKFARE, Seeru, Travelport, RateHawk...)"),
     loc("دعم موديولات لوناليزا المركزية ومحفظة B2B دون اشتراط عقود خارجية", "Central Lonaliza B2B module support with instant wallet deduction", "Support des modules B2B Lonaliza avec débit portefeuille instantané", "Dış anlaşma yapmadan merkezi Lonaliza B2B modülleriyle anında çalışma"),
@@ -647,9 +649,28 @@ export default function PricingSection({
                       <CheckCircle2 className="size-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{loc("لوحة تحكم الشركاء لإدارة المحفظة، الفواتير الضريبية، ومفاتيح API المشفرة", "Partner portal for wallet management, tax invoices & encrypted API keys", "Portail partenaire avec gestion portefeuille, factures et clés API", "Cüzdan yönetimi, vergi faturaları ve şifreli API anahtarları için ortak paneli")}</span>
                     </div>
+                    <div className="flex items-start gap-2 text-slate-700">
+                      <CheckCircle2 className="size-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span>{loc("تطبيق الويب التقدمي (PWA) فائق السرعة للهواتف والأجهزة", "Ultra-Fast Progressive Web App (PWA) for Mobile & Desktop", "Application Web Progressive (PWA) ultra-rapide", "Ultra Hızlı Progresif Web Uygulaması (PWA)")}</span>
+                        <span className="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                          {loc("مجاناً للأبد", "FREE INCLUDED", "GRATUIT", "ÜCRETSİZ")}
+                        </span>
+                      </div>
+                    </div>
 
                     {/* Visibly Locked Features for Starter */}
                     <div className="flex items-start gap-2 text-slate-400 pt-1">
+                      <Lock className="size-4 text-slate-400 shrink-0 mt-0.5" />
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span>{loc("تطبيقات فلاتر الأصيلة للهواتف (Android & iOS) مع كود المصدر ومحرك النشر بالمتاجر", "Native Flutter Smartphone Apps with Full Source Code & Store Publishing", "Apps Mobiles Natives Flutter avec Code Source", "Tam Kaynak Kodlu Yerel Flutter Mobil Uygulamaları")}</span>
+                        <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200">
+                          {loc("حصرية للتملك الكامل", "Full Ownership Only", "Exclusif Pleine Propriété", "Sadece Tam Mülkiyet")}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2 text-slate-400">
                       <Lock className="size-4 text-slate-400 shrink-0 mt-0.5" />
                       <div className="flex items-center gap-2 flex-wrap">
                         <span>{loc("الوحدات اليدوية (إضافة البرامج السياحية الخاصة والجولات والأسطول الداخلي)", "Manual inventory (Custom Packages, Tours & Private Fleet)", "Inventaire manuel (Forfaits, Circuits & Flotte privée)", "Manuel envanter (Özel Paketler, Turlar ve Özel Filo)")}</span>
@@ -760,6 +781,26 @@ export default function PricingSection({
                     <div className="flex items-start gap-2 text-slate-700">
                       <CheckCircle2 className="size-4 text-purple-600 shrink-0 mt-0.5" />
                       <span>{loc("دعم فني استشاري ذو أولوية 24/7 عبر واتساب وتيليجرام", "24/7 Priority consulting & technical support via WhatsApp & Telegram", "Support technique prioritaire 24/7 par WhatsApp et Telegram", "WhatsApp ve Telegram üzerinden 7/24 öncelikli teknik ve danışmanlık desteği")}</span>
+                    </div>
+                    <div className="flex items-start gap-2 text-slate-700">
+                      <CheckCircle2 className="size-4 text-purple-600 shrink-0 mt-0.5" />
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span>{loc("تطبيق الويب التقدمي (PWA) فائق السرعة للهواتف والأجهزة", "Ultra-Fast Progressive Web App (PWA) for Mobile & Desktop", "Application Web Progressive (PWA) ultra-rapide", "Ultra Hızlı Progresif Web Uygulaması (PWA)")}</span>
+                        <span className="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                          {loc("مجاناً مشمول", "FREE INCLUDED", "GRATUIT", "ÜCRETSİZ")}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Visibly Locked Flutter App for Pro White Label */}
+                    <div className="flex items-start gap-2 text-slate-400 pt-1">
+                      <Lock className="size-4 text-slate-400 shrink-0 mt-0.5" />
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span>{loc("تطبيقات فلاتر الأصيلة للهواتف (Android & iOS) مع كود المصدر ومحرك النشر بالمتاجر", "Native Flutter Smartphone Apps with Full Source Code & Store Publishing", "Apps Mobiles Natives Flutter avec Code Source", "Tam Kaynak Kodlu Yerel Flutter Mobil Uygulamaları")}</span>
+                        <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded-full border border-purple-200">
+                          {loc("حصرية للتملك الكامل", "Full Ownership Only", "Exclusif Pleine Propriété", "Sadece Tam Mülkiyet")}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

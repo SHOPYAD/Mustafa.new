@@ -126,13 +126,24 @@ const METRO_BY_IATA = {
 function pickCityI18n(i18n, cityEn, countryCode, iata) {
   const metro = METRO_BY_IATA[iata];
   const key = fold(metro?.cityEn || cityEn);
-  const hit = i18n.cities[key];
+  const byIata = i18n.iata?.[iata] || i18n.iata?.[String(iata || "").toUpperCase()];
+  let hit = byIata || i18n.cities[key];
+  if (!hit && i18n.cities) {
+    for (const [cityKey, row] of Object.entries(i18n.cities)) {
+      const names = [cityKey, row.en, ...(row.aliases || [])].map(fold).filter(Boolean);
+      if (!names.includes(key)) continue;
+      if (row.country && row.country !== countryCode && !metro) continue;
+      hit = row;
+      break;
+    }
+  }
   if (!hit) return metro ? { ...metro, ar: cityEn, tr: cityEn, aliases: [] } : null;
-  if (hit.country && hit.country !== countryCode && !metro) return null;
+  if (hit.country && hit.country !== countryCode && !metro && !byIata) return null;
   return {
     ...hit,
     cityCode: metro?.cityCode || hit.cityCode,
     en: hit.en || metro?.cityEn || cityEn,
+    aliases: [...new Set([...(hit.aliases || []), metro?.cityEn, cityEn].filter(Boolean))],
   };
 }
 

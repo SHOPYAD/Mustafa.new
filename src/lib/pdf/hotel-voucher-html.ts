@@ -1,5 +1,6 @@
 import type { OfficialInvoiceData } from "@/lib/server/invoice-resolver";
 import type { MockBookingDetail } from "@/lib/server/mock-account-bookings";
+import { formatInvoiceDate } from "@/lib/pdf/invoice-format";
 
 export type HotelVoucherModel = {
   voucherNumber: string;
@@ -52,10 +53,10 @@ export function buildHotelVoucherModelFromInvoice(
   // Only a confirmation number returned by the supplier is shown; nothing is derived or invented.
   const hotelConfirmationNo = hotel?.supplierConfirmationNo || "—";
 
-  const checkIn = hotel?.checkIn || bookingDetail?.hotelDetails?.checkIn || "";
-  const checkOut = hotel?.checkOut || bookingDetail?.hotelDetails?.checkOut || "";
+  const checkInRaw = hotel?.checkIn || bookingDetail?.hotelDetails?.checkIn || "";
+  const checkOutRaw = hotel?.checkOut || bookingDetail?.hotelDetails?.checkOut || "";
   const nightsFromDates =
-    checkIn && checkOut ? Math.max(0, Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000)) : 0;
+    checkInRaw && checkOutRaw ? Math.max(0, Math.round((new Date(checkOutRaw).getTime() - new Date(checkInRaw).getTime()) / 86400000)) : 0;
   const nights = hotel?.nights || bookingDetail?.hotelDetails?.nights || nightsFromDates;
 
   const leadName = invoice.bookingDetails.passengersOrGuests?.[0]?.name || invoice.customer.name || "—";
@@ -86,9 +87,9 @@ export function buildHotelVoucherModelFromInvoice(
       childrenCount: hotel?.children ?? 0,
     },
     otherGuests,
-    checkIn,
+    checkIn: formatInvoiceDate(checkInRaw, "ar") || checkInRaw,
     checkInTime: fmtTime(hotel?.checkInTime, "Check-in"),
-    checkOut,
+    checkOut: formatInvoiceDate(checkOutRaw, "ar") || checkOutRaw,
     checkOutTime: fmtTime(hotel?.checkOutTime, "Check-out"),
     nights,
     roomType,

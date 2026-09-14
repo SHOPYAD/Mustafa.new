@@ -183,7 +183,7 @@ export function ServiceSurface({ kind, className, children, background }: Servic
   };
   return (
     <section
-      className={cn("relative overflow-hidden py-16 md:py-20", className)}
+      className={cn("relative overflow-visible py-12 md:py-20", className)}
       style={style}
       data-surface-kind={kind}
     >
@@ -211,7 +211,7 @@ export function ServiceSurface({ kind, className, children, background }: Servic
 
 export function serviceTitleClass(kind: ServiceSurfaceKind, extra?: string) {
   return cn(
-    "text-3xl font-black leading-tight md:text-4xl transition-colors duration-200 hover:brightness-110 tracking-tight",
+    "overflow-visible pt-1.5 pb-1 text-3xl font-black leading-[1.4] tracking-normal transition-colors duration-200 hover:brightness-110 md:text-4xl",
     extra
   );
 }

@@ -25,7 +25,8 @@ export async function GET(req: NextRequest) {
   }
 
   const toDate = (q.get("toDate") || "").trim();
-  const cacheKey = `${originSkyId}_${destinationSkyId}_${fromDate}_${toDate}_${currency}_${clientMin}`;
+  const centerDate = (q.get("centerDate") || q.get("date") || fromDate).trim();
+  const cacheKey = `${originSkyId}_${destinationSkyId}_${fromDate}_${toDate}_${centerDate}_${currency}_${clientMin}`;
   const cached = SERVER_CALENDAR_CACHE.get(cacheKey);
   if (cached && Date.now() - cached.time < CACHE_TTL_MS) {
     return flightsJson(cached.data);
@@ -39,11 +40,12 @@ export async function GET(req: NextRequest) {
       destinationEntityId,
       fromDate,
       toDate: toDate || undefined,
+      centerDate,
       currency,
     });
 
     const timeoutPromise = new Promise<{ ok: false; errorCode: "timeout" }>((resolve) =>
-      setTimeout(() => resolve({ ok: false, errorCode: "timeout" }), 25000)
+      setTimeout(() => resolve({ ok: false, errorCode: "timeout" }), 40000)
     );
 
     const result = await Promise.race([calendarPromise, timeoutPromise]);

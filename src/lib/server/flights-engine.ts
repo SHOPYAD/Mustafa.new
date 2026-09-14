@@ -27,6 +27,7 @@ import {
   type SkyScrapperResult,
 } from "@/lib/server/flights-sky-scrapper";
 import { convertAmountSafe } from "@/lib/server/fx-service";
+import { getUsdRateTable } from "@/lib/server/iyzico-fx";
 import {
   ensureSkyEntityMap,
   lookupSkyEntity,
@@ -41,12 +42,14 @@ import {
   parsePkfareMiniRules,
   parsePkfarePenaltyTexts,
   type AirOffer,
+  type FarePenalty,
   type SeeruSearchJob,
 } from "@/lib/providers/adapters";
 import { getProvidersRegistry } from "@/lib/server/providers-registry-store";
 import { resolveAirportsForCode } from "@/lib/server/airports-db";
-import { toPkfareCityIata } from "@/lib/providers/adapters/pkfare/pkfareIata";
+import { toPkfareAirportIata, toPkfareCityIata } from "@/lib/providers/adapters/pkfare/pkfareIata";
 import { getLocalizedAirlineName } from "@/lib/flights/airline-dictionary";
+import { collapseFarePenalties } from "@/lib/flights/fare-penalties";
 
 export const PUBLIC_FLIGHT_EMPTY =
   "لا توجد نتائج حالياً. جرّب مطارات قريبة أو تواريخ مرنة.";
@@ -294,8 +297,28 @@ export function pruneDominatedFareFamilies(fares?: PublicFareFamily[]): PublicFa
 
 /** Union of fare families of the same flights sold by different suppliers, cheapest first. */
 export function mergeFareFamilies(a?: PublicFareFamily[], b?: PublicFareFamily[]): PublicFareFamily[] {
+  const all = [...(a || []), ...(b || [])];
+  if (!all.length) return [];
+  const cheapest = [...all].sort((x, y) => (x.price?.client || Infinity) - (y.price?.client || Infinity))[0];
+  const want = fareCabinBucket(cheapest?.cabin, cheapest?.name);
+  const filtered = all.filter((f) => {
+    const got = fareCabinBucket(f.cabin, f.name);
+    if (want === "unknown") return true;
+    return got === want || got === "unknown";
+  });
   const seen = new Map<string, PublicFareFamily>();
-  for (const f of [...(a || []), ...(b || [])]) if (!seen.has(f.id)) seen.set(f.id, { ...f, isBestPrice: false });
+  for (const f of filtered) {
+    const key =
+      String(f.name || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "")
+        .replace(/^economy/, "eco")
+        .replace(/^business/, "biz") || f.id;
+    const prev = seen.get(key);
+    if (!prev || (f.price?.client || Infinity) < (prev.price?.client || Infinity)) {
+      seen.set(key, { ...f, isBestPrice: false });
+    }
+  }
   return pruneDominatedFareFamilies(Array.from(seen.values()));
 }
 
@@ -333,7 +356,7 @@ export function roundFlightPrice(value: number): number {
 function markupSupplierAmount(
   amount: number,
   markupRules: FlightMarkupRule[],
-  ctx: { origin: string; destination: string; currency: string }
+  ctx: { origin?: string; destination?: string; currency?: string }
 ): number {
   const n = Number(amount);
   if (!Number.isFinite(n) || n <= 0) return Number.isFinite(n) && n === 0 ? 0 : 0;
@@ -353,18 +376,7 @@ function markupPenalties(
 }
 
 function mergePenaltyLists(base: PublicFarePenalty[] | undefined, extra: PublicFarePenalty[] | undefined): PublicFarePenalty[] {
-  const out = [...(base || [])];
-  for (const row of extra || []) {
-    const dup = out.some(
-      (p) =>
-        p.type === row.type &&
-        p.amount === row.amount &&
-        p.percent === row.percent &&
-        String(p.window || "") === String(row.window || "")
-    );
-    if (!dup) out.push(row);
-  }
-  return out;
+  return collapseFarePenalties([...(base || []), ...(extra || [])]).penalties;
 }
 
 function fareFromPkfareRules(
@@ -373,9 +385,20 @@ function fareFromPkfareRules(
   markupRules: FlightMarkupRule[],
   ctx: { origin: string; destination: string; currency: string }
 ): PublicFareFamily {
-  const penalties = markupPenalties(mergePenaltyLists(fare.penalties, rules.penalties), markupRules, ctx);
-  const refund = rules.refundable !== "unknown" ? rules.refundable : fare.attributes?.refund || "unknown";
-  const change = rules.changeable !== "unknown" ? rules.changeable : fare.attributes?.change || "unknown";
+  const merged = collapseFarePenalties(mergePenaltyLists(fare.penalties, rules.penalties));
+  const penalties = markupPenalties(merged.penalties, markupRules, ctx);
+  const refund =
+    merged.refundable !== "unknown"
+      ? merged.refundable
+      : rules.refundable !== "unknown"
+        ? rules.refundable
+        : fare.attributes?.refund || "unknown";
+  const change =
+    merged.changeable !== "unknown"
+      ? merged.changeable
+      : rules.changeable !== "unknown"
+        ? rules.changeable
+        : fare.attributes?.change || "unknown";
   return {
     ...fare,
     attributes: {
@@ -396,6 +419,119 @@ const PROVIDER_CURRENCY = "USD";
 
 function guestCurrencyOf(value: unknown): string {
   return str(value).toUpperCase() || PROVIDER_CURRENCY;
+}
+
+function fareCabinBucket(cabin?: string, brand?: string): "economy" | "premium_economy" | "business" | "first" | "unknown" {
+  const t = `${cabin || ""} ${brand || ""}`.toLowerCase();
+  if (/\bfirst\b/.test(t)) return "first";
+  if (/\bbusiness\b/.test(t)) return "business";
+  if (/premium/.test(t) && /econ/.test(t)) return "premium_economy";
+  if (/econ|coach|saver|eco\b|ecojet|basic|standard|flex/.test(t) && !/\bbusiness\b/.test(t)) return "economy";
+  return "unknown";
+}
+
+function requestedCabinBucket(cabin?: string): "economy" | "premium_economy" | "business" | "first" | "any" {
+  const t = String(cabin || "economy").toLowerCase();
+  if (t === "any") return "any";
+  if (t.includes("business")) return "business";
+  if (t.includes("first")) return "first";
+  if (t.includes("premium")) return "premium_economy";
+  return "economy";
+}
+
+function filterOptionsForCabin<T extends { cabin?: string; brandName?: string; name?: string }>(
+  options: T[] | undefined,
+  requested?: string
+): T[] {
+  const list = options || [];
+  const want = requestedCabinBucket(requested);
+  if (want === "any" || !list.length) return list;
+  const matched = list.filter((opt) => {
+    const got = fareCabinBucket(opt.cabin, opt.brandName || opt.name);
+    if (want === "economy") return got === "economy" || got === "unknown";
+    return got === want || got === "unknown";
+  });
+  return matched;
+}
+
+async function usdPerUnit(currency: string): Promise<number> {
+  const from = guestCurrencyOf(currency);
+  if (from === PROVIDER_CURRENCY) return 1;
+  const table = await getUsdRateTable();
+  const perUsd = Number(table.rates[from]);
+  if (Number.isFinite(perUsd) && perUsd > 0) return 1 / perUsd;
+  const converted = await convertAmountSafe(1, from, PROVIDER_CURRENCY);
+  return converted > 0 && converted !== 1 ? converted : 0;
+}
+
+async function convertPenaltyToUsd(
+  penalty: FarePenalty,
+  offerRate: number,
+  offerFrom: string
+): Promise<FarePenalty> {
+  if (penalty.amount == null || penalty.amount <= 0) {
+    return { ...penalty, currency: penalty.currency || PROVIDER_CURRENCY };
+  }
+  const from = guestCurrencyOf(penalty.currency || offerFrom);
+  if (from === PROVIDER_CURRENCY) return { ...penalty, currency: PROVIDER_CURRENCY };
+  const rate = from === offerFrom && offerRate > 0 ? offerRate : await usdPerUnit(from);
+  if (!(rate > 0)) return penalty;
+  return { ...penalty, amount: roundFlightPrice(Number(penalty.amount) * rate), currency: PROVIDER_CURRENCY };
+}
+
+async function convertOfferToUsd(offer: AirOffer): Promise<AirOffer> {
+  const from = guestCurrencyOf(offer.price.currency);
+  const rate = from === PROVIDER_CURRENCY ? 1 : await usdPerUnit(from);
+  if (from !== PROVIDER_CURRENCY && !(rate > 0)) {
+    logFlights("fx-drop-offer", { provider: offer.provider, from, total: offer.price.total });
+    return { ...offer, fareOptions: [], price: { ...offer.price, total: 0, base: 0, currency: PROVIDER_CURRENCY } };
+  }
+  const conv = (n: number) => (from === PROVIDER_CURRENCY ? Number(n || 0) : roundFlightPrice(Number(n || 0) * rate));
+  const fareOptions = await Promise.all(
+    (offer.fareOptions || []).map(async (opt) => ({
+      ...opt,
+      price: {
+        ...opt.price,
+        total: conv(opt.price.total),
+        base: conv(opt.price.base),
+        taxes: conv(opt.price.taxes || 0),
+        currency: PROVIDER_CURRENCY,
+      },
+      penalties: opt.penalties?.length
+        ? await Promise.all(opt.penalties.map((p) => convertPenaltyToUsd(p, rate, from)))
+        : opt.penalties,
+    }))
+  );
+  return {
+    ...offer,
+    price: {
+      ...offer.price,
+      total: conv(offer.price.total),
+      base: conv(offer.price.base),
+      taxes: conv(offer.price.taxes || 0),
+      currency: PROVIDER_CURRENCY,
+    },
+    fareOptions,
+  };
+}
+
+async function offersToItineraries(
+  offers: AirOffer[],
+  markupRules: FlightMarkupRule[],
+  guestCurrency: string,
+  requestedCabin?: string
+): Promise<PublicFlightItinerary[]> {
+  const converted = await Promise.all(offers.map(convertOfferToUsd));
+  const out: PublicFlightItinerary[] = [];
+  for (const offer of converted) {
+    if (!(Number(offer.price.total) > 0)) continue;
+    const fareOptions = filterOptionsForCabin(offer.fareOptions, requestedCabin);
+    if ((offer.fareOptions || []).length > 0 && fareOptions.length === 0) continue;
+    const itinerary = airOfferToItinerary({ ...offer, fareOptions }, markupRules, guestCurrency);
+    if (!(itinerary.price.client > 0)) continue;
+    out.push(itinerary);
+  }
+  return out;
 }
 
 async function localizeFlightSession(
@@ -1049,6 +1185,92 @@ export async function runNearbyAirports(input: {
   return result;
 }
 
+function calendarAirportIata(code: string): string {
+  return toPkfareAirportIata(code) || String(code || "").trim().toUpperCase().slice(0, 3);
+}
+
+function expandCalendarProbeDates(monthStarts: string[], centerDate: string): string[] {
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+  const candidates = new Set<string>();
+  const add = (value: Date) => {
+    if (value < today) return;
+    candidates.add(value.toISOString().slice(0, 10));
+  };
+  for (const monthStart of monthStarts) {
+    const parts = monthStart.match(/^(\d{4})-(\d{2})/);
+    if (!parts) continue;
+    const y = Number(parts[1]);
+    const m = Number(parts[2]);
+    const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+    for (let day = 1; day <= last; day += 3) {
+      add(new Date(Date.UTC(y, m - 1, day)));
+    }
+  }
+  const centerRaw = centerDate.match(/^\d{4}-\d{2}-\d{2}/)?.[0] || "";
+  if (centerRaw) add(new Date(`${centerRaw}T12:00:00Z`));
+  const centerMs = Date.parse(`${centerRaw || monthStarts[0] || today.toISOString().slice(0, 10)}T12:00:00Z`);
+  return Array.from(candidates)
+    .sort((a, b) => Math.abs(Date.parse(`${a}T12:00:00Z`) - centerMs) - Math.abs(Date.parse(`${b}T12:00:00Z`) - centerMs))
+    .slice(0, 10)
+    .sort();
+}
+
+async function fetchPkfareCalendarDays(
+  originCode: string,
+  destCode: string,
+  monthStarts: string[],
+  centerDate: string,
+  markupRules: FlightMarkupRule[]
+): Promise<Array<{ date: string; price: PublicFlightPrice }>> {
+  const registry = await getProvidersRegistry();
+  if (!registry.providers.pkfare?.enabled) return [];
+  const origin = calendarAirportIata(originCode);
+  const dest = calendarAirportIata(destCode);
+  if (!origin || !dest) return [];
+  const dates = expandCalendarProbeDates(monthStarts, centerDate);
+  const adapter = new PkfareAirAdapter();
+  const found: Array<{ date: string; base: number }> = [];
+  for (let i = 0; i < dates.length; i += 4) {
+    const batch = dates.slice(i, i + 4);
+    const rows = await Promise.all(
+      batch.map(async (date) => {
+        try {
+          const offers = await adapter.searchFlights({
+            origin,
+            destination: dest,
+            departureDate: date,
+            adults: 1,
+            cabinClass: "economy",
+            solutions: 3,
+          });
+          let min = Infinity;
+          for (const offer of offers) {
+            const usd = await convertOfferToUsd(offer);
+            const total = Number(usd.price.total);
+            if (total > 0 && total < min) min = total;
+          }
+          if (!Number.isFinite(min) || min <= 0) return null;
+          return { date, base: min };
+        } catch {
+          return null;
+        }
+      })
+    );
+    for (const row of rows) if (row) found.push(row);
+  }
+  const ctx: FlightMarkupContext = { origin, destination: dest, currency: PROVIDER_CURRENCY };
+  logFlights("calendar-pkfare", { origin, dest, probed: dates.length, priced: found.length });
+  return found.map((row) => ({
+    date: row.date,
+    price: {
+      base: roundFlightPrice(row.base),
+      client: markupSupplierAmount(row.base, markupRules, ctx),
+      currency: PROVIDER_CURRENCY,
+    },
+  }));
+}
+
 export async function runPriceCalendar(input: {
   originSkyId: string;
   destinationSkyId: string;
@@ -1056,15 +1278,13 @@ export async function runPriceCalendar(input: {
   destinationEntityId: string;
   fromDate: string;
   toDate?: string;
+  centerDate?: string;
   currency?: string;
 }): Promise<
   | { ok: true; days: Array<{ date: string; price: PublicFlightPrice }>; raw: unknown }
   | { ok: false; errorCode: FlightProviderErrorCode }
 > {
-  const { runtime, live, travelpayoutsOnly } = await resolveFlightsMode();
-  if (travelpayoutsOnly || !live) {
-    return { ok: false, errorCode: "provider_travelpayouts" };
-  }
+  const { runtime } = await resolveFlightsMode();
   const guestCurrency = guestCurrencyOf(input.currency);
   const currency = PROVIDER_CURRENCY;
   const [origin, destination] = await Promise.all([
@@ -1088,90 +1308,46 @@ export async function runPriceCalendar(input: {
       }
     }
   }
-  if (!monthStarts.length) monthStarts.push(str(input.fromDate));
+  if (!monthStarts.length) monthStarts.push(str(input.fromDate) || new Date().toISOString().slice(0, 10));
 
   const cacheKey = flightsCacheKey([
-    "calendar",
+    "calendar-v4",
     origin.skyId,
     destination.skyId,
     monthStarts.join("|"),
     currency,
   ]);
-  let payload = await readFlightsCache<unknown>(cacheKey, FLIGHTS_CALENDAR_TTL_MS);
-  if (payload == null) {
-    const monthPayloads = (
-      await Promise.all(
-        monthStarts.map(async (monthStart) => {
-          const [yy, mm] = monthStart.split("-").map(Number);
-          const last = new Date(yy, mm, 0);
-          const monthEnd = `${last.getFullYear()}-${String(last.getMonth() + 1).padStart(2, "0")}-${String(last.getDate()).padStart(2, "0")}`;
-          const result = await skyScrapperGet(
-            runtime,
-            "getPriceCalendar",
-            "/api/v1/flights/getPriceCalendar",
-            {
-              originSkyId: origin.skyId,
-              destinationSkyId: destination.skyId,
-              originEntityId: origin.entityId,
-              destinationEntityId: destination.entityId,
-              fromDate: monthStart,
-              toDate: monthEnd,
-              currency,
-            }
-          );
-          return result.ok ? result.payload : null;
-        })
-      )
-    ).filter((row): row is unknown => row != null);
-    if (!monthPayloads.length) return { ok: false, errorCode: "search_failed" };
-    payload = monthPayloads.length === 1 ? monthPayloads[0] : { months: monthPayloads };
-    await writeFlightsCache(cacheKey, payload);
+  const cached = await readFlightsCache<{ days: Array<{ date: string; price: PublicFlightPrice }>; raw: unknown }>(
+    cacheKey,
+    FLIGHTS_CALENDAR_TTL_MS
+  );
+  let days: Array<{ date: string; price: PublicFlightPrice }> = cached?.days || [];
+  let payload: unknown = cached?.raw;
+
+  if (!days.length) {
+    days = await fetchPkfareCalendarDays(
+      origin.skyId,
+      destination.skyId,
+      monthStarts,
+      str(input.centerDate || input.fromDate),
+      runtime.markupRules
+    );
+    if (days.length) payload = { source: "supplier-probe", days: days.length };
   }
-  const payloads = Array.isArray(asRecord(payload)?.months) ? (asRecord(payload)?.months as unknown[]) : [payload];
-  const rows: unknown[] = [];
-  for (const one of payloads) {
-    const data = unwrapData(one);
-    const flightsWrap = asRecord(data.flights);
-    rows.push(...asArray(flightsWrap?.days || data.days || data.prices || data.calendar));
+
+  if (days.length) {
+    await writeFlightsCache(cacheKey, { days, raw: payload });
+  } else {
+    logFlights("calendar-empty", { origin: origin.skyId, dest: destination.skyId, months: monthStarts });
   }
-  const ctx: FlightMarkupContext = {
-    origin: origin.skyId,
-    destination: destination.skyId,
-    currency,
-  };
-  const days = rows
-    .map((item) => {
-      const rec = asRecord(item) || {};
-      const dateRaw = str(rec.day || rec.date || rec.departureDate || rec.fromDate);
-      const date = dateRaw.match(/^(\d{4}-\d{2}-\d{2})/)?.[1] || "";
-      const priceRec = asRecord(rec.price);
-      const base = num(
-        priceRec?.client ??
-          priceRec?.raw ??
-          priceRec?.amount ??
-          priceRec?.total ??
-          rec.rawPrice ??
-          rec.minPrice ??
-          rec.price
-      );
-      if (!date || base <= 0) return null;
-      const marked = applyFlightMarkup(base, runtime.markupRules, ctx);
-      return {
-        date,
-        price: {
-          base: roundFlightPrice(base),
-          client: roundFlightPrice(marked.price),
-          currency,
-        },
-      };
-    })
-    .filter((item): item is { date: string; price: PublicFlightPrice } => Boolean(item));
+
   const daysFx = await Promise.all(
     days.map(async (row) => {
       const [base, client] = await Promise.all([
         convertAmountSafe(row.price.base, PROVIDER_CURRENCY, guestCurrency),
         convertAmountSafe(row.price.client, PROVIDER_CURRENCY, guestCurrency),
       ]);
+      if (!(client > 0)) return null;
       return {
         ...row,
         price: {
@@ -1183,7 +1359,11 @@ export async function runPriceCalendar(input: {
       };
     })
   );
-  return { ok: true, days: daysFx, raw: payload };
+  return {
+    ok: true,
+    days: daysFx.filter((row): row is { date: string; price: PublicFlightPrice } => Boolean(row)),
+    raw: payload,
+  };
 }
 
 function buildSearchSession(
@@ -1228,7 +1408,7 @@ function searchQueryCacheKey(
   sortBy: string
 ): string {
   return flightsCacheKey([
-    "searchq-v9",
+    "searchq-v12",
     query.originSkyId,
     query.destinationSkyId,
     query.originEntityId,
@@ -1409,6 +1589,9 @@ export function airOfferToItinerary(
       ...route,
       currency: opt.price.currency || offer.price.currency || PROVIDER_CURRENCY,
     };
+    const policy = collapseFarePenalties(opt.penalties);
+    const refund = policy.refundable !== "unknown" ? policy.refundable : opt.refundable;
+    const change = policy.changeable !== "unknown" ? policy.changeable : opt.changeable;
     return {
       id: opt.id,
       name: opt.brandName,
@@ -1424,18 +1607,18 @@ export function airOfferToItinerary(
       baggage: baggageStateLabel(opt.baggage.checked),
       baggageDetail: { checked: opt.baggage.checked, cabin: opt.baggage.cabin },
       attributes: {
-        refund: opt.refundable,
-        change: opt.changeable,
+        refund,
+        change,
         seat: opt.seatSelection,
         meal: opt.meal,
         priority: opt.priority,
       },
-      penalties: markupPenalties(opt.penalties, markupRules, brandCtx),
+      penalties: markupPenalties(policy.penalties, markupRules, brandCtx),
       rulesText: opt.rulesText,
-      refundable: opt.refundable === "included" || opt.refundable === "chargeable",
-      changeable: opt.changeable === "included" || opt.changeable === "chargeable",
+      refundable: refund === "included" || refund === "chargeable",
+      changeable: change === "included" || change === "chargeable",
       isBestPrice: opt.isBestPrice,
-      canAddPaidBaggage: offer.provider === "pkfare" && opt.baggage.checked.status === "none",
+      canAddPaidBaggage: offer.provider === "pkfare",
     };
   });
 
@@ -1457,9 +1640,7 @@ export function airOfferToItinerary(
     fareFamilies: pruneDominatedFareFamilies(fareFamilies),
     baggage: bag,
     baggageAllowance: baggageLabel || undefined,
-    canAddPaidBaggage:
-      offer.provider === "pkfare" &&
-      fareFamilies.some((f) => f.canAddPaidBaggage || f.baggageDetail?.checked.status === "none"),
+    canAddPaidBaggage: offer.provider === "pkfare",
     farePolicy: {
       provider: offer.provider,
       validatingCarrier: offer.validatingCarrier,
@@ -1525,7 +1706,7 @@ export function deduplicateAndEnrichFlights(
     if (preferCurrent) {
       const enriched: PublicFlightItinerary = {
         ...it,
-        canAddPaidBaggage: Boolean(it.canAddPaidBaggage || existing.canAddPaidBaggage),
+        canAddPaidBaggage: Boolean(it.canAddPaidBaggage),
         fareFamilies: mergeFareFamilies(it.fareFamilies, existing.fareFamilies),
         badges: Array.from(new Set([...it.badges, ...existing.badges])),
         legs: it.legs.map((leg, lIdx) => {
@@ -1558,7 +1739,7 @@ export function deduplicateAndEnrichFlights(
       map.set(fp, enriched);
     } else {
       // Existing is cheaper or equal! Enrich existing with any extra details from current
-      existing.canAddPaidBaggage = Boolean(existing.canAddPaidBaggage || it.canAddPaidBaggage);
+      existing.canAddPaidBaggage = Boolean(existing.canAddPaidBaggage);
       existing.fareFamilies = mergeFareFamilies(existing.fareFamilies, it.fareFamilies);
       existing.badges = Array.from(new Set([...existing.badges, ...it.badges]));
       existing.legs = existing.legs.map((leg, lIdx) => {
@@ -1643,6 +1824,7 @@ export async function runFlightSearch(input: {
   };
   if (input.returnDate) query.returnDate = input.returnDate;
   const cabin = cabinClassOf(input.cabinClass);
+  query.cabinClass = cabin;
   const adults = input.adults ?? 1;
   const childrens = input.childrens || 0;
   const infants = input.infants || 0;
@@ -1751,7 +1933,7 @@ export async function runFlightSearch(input: {
   }
   const seeruWave = seeruActive
     ? new SeeruAirAdapter()
-        .searchFlightsWave(supplierSearchParams, 4)
+        .searchFlightsWave({ ...supplierSearchParams, currency: "USD", preferredCurrency: "USD" }, 4)
         .catch((err) => {
           logFlights("seeru-search-err", { err: String(err) });
           return { offers: [] as AirOffer[], jobs: [] as SeeruSearchJob[] };
@@ -1776,7 +1958,7 @@ export async function runFlightSearch(input: {
           })
       );
     }
-    if (cityOrigin && cityDest && (originsForPk.length > 1 || destsForPk.length > 1)) {
+    if (cityOrigin && cityDest) {
       supplierPromises.push(
         new PkfareAirAdapter()
           .searchFlights({
@@ -1841,7 +2023,20 @@ export async function runFlightSearch(input: {
 
   const [supplierResults, seeruStarted] = await Promise.all([Promise.all(supplierPromises), seeruWave]);
   const supplierOffers = [...supplierResults.flat(), ...seeruStarted.offers];
-  const supplierItineraries = supplierOffers.map((o) => airOfferToItinerary(o, runtime.markupRules, guestCurrency));
+  const supplierItineraries = await offersToItineraries(
+    supplierOffers,
+    runtime.markupRules,
+    guestCurrency,
+    cabin
+  );
+  logFlights("search-suppliers", {
+    pk: supplierOffers.filter((o) => o.provider === "pkfare").length,
+    tp: supplierOffers.filter((o) => o.provider === "travelport").length,
+    seeru: supplierOffers.filter((o) => o.provider === "seeru").length,
+    bb: supplierOffers.filter((o) => o.provider === "biletbank").length,
+    itineraries: supplierItineraries.length,
+    cabin,
+  });
 
   let rawCombined: PublicFlightItinerary[] = [];
   if (skySession) {
@@ -1964,7 +2159,12 @@ export async function runSearchIncomplete(
   if (seeruJobs.some((j) => j.complete < 100)) {
     try {
       const continued = await new SeeruAirAdapter().continueSearchJobs(seeruJobs, 20);
-      const seeruItineraries = continued.offers.map((o) => airOfferToItinerary(o, runtime.markupRules, guest));
+      const seeruItineraries = await offersToItineraries(
+        continued.offers,
+        runtime.markupRules,
+        guest,
+        String(session.query?.cabinClass || "")
+      );
       const tokens = collectFareTokens(continued.offers);
       session.itineraries = deduplicateAndEnrichFlights([...session.itineraries, ...seeruItineraries]);
       session.fareTokens = { ...(session.fareTokens || {}), ...tokens.fareTokens };
@@ -2396,7 +2596,7 @@ export async function runFlightDetails(input: {
             const pen = journeys
               ? await pk.fetchPenalties({ solutionId: sid, journeys, brandFare: tag || undefined, tag: tag || undefined }).catch(() => null)
               : null;
-            const texts = parsePkfarePenaltyTexts(pen?.data?.penalties || pen?.penalties, currency);
+            const texts = parsePkfarePenaltyTexts((pen as any)?.data?.penalties || pen?.penalties, currency);
             const lastLeg = item.legs?.length ? item.legs[item.legs.length - 1] : undefined;
             const ruleCtx = {
               origin: item.legs?.[0]?.origin?.displayCode || item.legs?.[0]?.origin?.skyId || "",

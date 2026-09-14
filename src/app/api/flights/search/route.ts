@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 export async function GET(req: NextRequest) {
   const limited = rateLimit(`flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
-  const cacheKey = `flights:v8:${req.nextUrl.search}`;
+  const cacheKey = `flights:v11:${req.nextUrl.search}`;
   const cached = ttlGet<Record<string, unknown>>(cacheKey);
   if (cached) return flightsJson(cached);
   const q = req.nextUrl.searchParams;

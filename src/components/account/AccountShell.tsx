@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Bookmark,
@@ -21,11 +22,13 @@ import {
   Clapperboard,
   Clock3,
   Info,
+  Star,
 } from "lucide-react";
 import BrandImage from "@/components/branding/BrandImage";
 import { useBrandName, useBranding } from "@/components/branding/BrandingProvider";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
+import InAppMessageToast from "@/components/messaging/InAppMessageToast";
 
 export const ACCOUNT_TABS = [
   "overview",
@@ -33,6 +36,7 @@ export const ACCOUNT_TABS = [
   "whatsapp",
   "bookings",
   "upcoming",
+  "reviews",
   "payments",
   "cards",
   "wallet",
@@ -71,6 +75,7 @@ const TAB_ICON: Record<AccountTab, typeof UserRound> = {
   whatsapp: Phone,
   bookings: Plane,
   upcoming: Clock3,
+  reviews: Star,
   payments: ReceiptText,
   cards: CreditCard,
   wallet: Wallet,
@@ -107,6 +112,26 @@ export default function AccountShell({
   const { t, locale } = useLocale();
   const branding = useBranding();
   const brandName = useBrandName(locale);
+  const [unreadMessages, setUnreadMessages] = useState(0);
+
+  useEffect(() => {
+    let live = true;
+    async function loadUnread() {
+      try {
+        const res = await fetch("/api/account/unread", { credentials: "include", cache: "no-store" });
+        const data = await res.json();
+        if (live && data.ok) setUnreadMessages(Number(data.messages || 0));
+      } catch {
+        /* ignore */
+      }
+    }
+    void loadUnread();
+    const id = window.setInterval(() => void loadUnread(), 12000);
+    return () => {
+      live = false;
+      window.clearInterval(id);
+    };
+  }, []);
 
   const tabLabel: Record<AccountTab, string> = {
     overview: t.account.tabOverview,
@@ -114,6 +139,7 @@ export default function AccountShell({
     whatsapp: t.account.tabWhatsapp,
     bookings: t.account.tabBookings,
     upcoming: t.account.tabUpcoming,
+    reviews: t.account.tabReviews,
     payments: t.account.tabPayments,
     cards: t.account.tabCards,
     wallet: t.account.tabWallet,
@@ -143,43 +169,93 @@ export default function AccountShell({
     .join("")
     .toUpperCase() || "U";
 
+  const tabLabelShort: Record<AccountTab, string> = {
+    overview: t.account.shortOverview,
+    profile: t.account.shortProfile,
+    whatsapp: t.account.shortWhatsapp,
+    bookings: t.account.shortBookings,
+    upcoming: t.account.shortUpcoming,
+    reviews: t.account.shortReviews,
+    payments: t.account.shortPayments,
+    cards: t.account.shortCards,
+    wallet: t.account.shortWallet,
+    gifts: t.account.shortGifts,
+    affiliate: t.account.shortAffiliate,
+    tiers: t.account.shortTiers,
+    moments: t.account.shortMoments,
+    buddies: t.account.shortBuddies,
+    creator: t.account.shortCreator,
+    social: t.account.shortSocial,
+    messages: t.account.shortMessages,
+    chats: t.account.shortChats,
+    programs: t.account.shortPrograms,
+    about: t.account.shortAbout,
+  };
+
   return (
-    <div className="relative min-h-screen bg-slate-100/90 pb-20 pt-28">
-      <div className="relative mx-auto max-w-[1720px] w-full px-4 sm:px-6 lg:px-8 xl:px-10">
+    <div className="relative min-h-screen bg-slate-100/90 pb-20 pt-0 lg:pt-28">
+      <InAppMessageToast />
+      {/* Account root chrome — no back control on the main tab */}
+      <div className="lonaliza-app-bar sticky top-0 z-30 block border-b border-slate-200/80 bg-white/95 shadow-xs backdrop-blur-md lg:hidden">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#1b0833] to-[#3b0764] text-amber-400 font-black shadow-xs ring-1 ring-amber-400/30">
+              <span className="text-base font-serif">L</span>
+            </div>
+            <div className="min-w-0">
+              <span className="text-xs font-black tracking-tight text-[#2e1065]">LONALIZA</span>
+              <p className="truncate text-[10px] font-bold text-purple-700">{tabLabelShort[tab]}</p>
+            </div>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5">
+            <div className="flex items-center gap-1 rounded-xl border border-amber-300/60 bg-amber-50 px-2 py-1 text-[11px] font-black text-amber-900 shadow-2xs">
+              <span>{tierBadge}</span>
+              <span>${walletBalance}</span>
+            </div>
+            <div className="flex items-center gap-1 rounded-xl border border-purple-200 bg-purple-50 px-2 py-1 text-[11px] font-bold text-purple-900 shadow-2xs">
+              <Sparkles size={11} className="text-amber-500" />
+              <span>{loyaltyPoints} pt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-[1720px] w-full px-3 sm:px-6 lg:px-8 xl:px-10 mt-3 lg:mt-0">
         {/* Luxury Hero Customer Card */}
-        <div className="overflow-hidden rounded-3xl border border-purple-500/40 bg-gradient-to-br from-[#1b0833] via-[#240c46] to-[#140626] p-6 text-white shadow-2xl sm:p-8">
+        <div className="overflow-hidden rounded-3xl border border-purple-500/40 bg-gradient-to-br from-[#1b0833] via-[#240c46] to-[#140626] p-5 text-white shadow-2xl sm:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             {/* Customer Avatar & Primary Info */}
             <div className="flex items-center gap-4">
-              <div className="relative">
+              <div className="relative shrink-0">
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
                     alt={userName}
-                    className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-3xl object-cover ring-4 ring-amber-400/40 shadow-xl"
+                    className="h-14 w-14 sm:h-20 sm:w-20 rounded-2xl sm:rounded-3xl object-cover ring-4 ring-amber-400/40 shadow-xl"
                   />
                 ) : (
-                  <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-[#1d0a33] via-[#35145c] to-[#d97706] text-2xl sm:text-3xl font-black text-amber-300 ring-4 ring-amber-400/40 shadow-xl">
+                  <div className="flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-[#1d0a33] via-[#35145c] to-[#d97706] text-xl sm:text-3xl font-black text-amber-300 ring-4 ring-amber-400/40 shadow-xl">
                     {initials}
                   </div>
                 )}
                 <span
-                  className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#18082e] text-sm shadow-md ring-2 ring-amber-400/50 select-none"
+                  className="absolute -bottom-1.5 -right-1.5 flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-[#18082e] text-xs sm:text-sm shadow-md ring-2 ring-amber-400/50 select-none"
                   title="شارة رتبة العميل"
                 >
                   {tierBadge}
                 </span>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="text-xs font-semibold text-amber-300">{t.account.hello}</p>
-                  <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-bold text-amber-300">
+                  <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-300">
                     {badgeText}
                   </span>
                 </div>
-                <h1 className="mt-0.5 text-2xl font-black sm:text-3xl">{userName || t.account.title}</h1>
-                <p className="mt-1 text-xs text-purple-200/80 font-mono">{userEmail}</p>
+                <h1 className="mt-0.5 text-xl font-black sm:text-3xl truncate">{userName || t.account.title}</h1>
+                <p className="mt-0.5 text-xs text-purple-200/80 font-mono truncate">{userEmail}</p>
               </div>
             </div>
 
@@ -222,10 +298,43 @@ export default function AccountShell({
           </div>
         </div>
 
+        {/* Native horizontal tabs — short labels, no wrap */}
+        <div className="my-3 block w-full lg:hidden">
+          <div className="lonaliza-h-scroll py-1" role="tablist" aria-label={t.account.title}>
+            {ACCOUNT_TABS.map((key) => {
+              const Icon = TAB_ICON[key];
+              const active = tab === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => onTabChange(key)}
+                  className={cn(
+                    "inline-flex h-10 items-center gap-1.5 rounded-full px-3.5 text-[13px] font-bold transition-all",
+                    active
+                      ? "bg-[#2e1065] text-white shadow-md shadow-purple-950/15 ring-2 ring-amber-400"
+                      : "border border-slate-200 bg-white text-slate-700"
+                  )}
+                >
+                  <Icon size={14} className={active ? "text-amber-400" : "text-purple-700"} />
+                  <span>{tabLabelShort[key]}</span>
+                  {key === "messages" && unreadMessages > 0 ? (
+                    <span className="ms-0.5 min-w-5 rounded-full bg-amber-400 px-1 text-center text-[10px] font-black text-[#2E1065]">
+                      {unreadMessages > 9 ? "9+" : unreadMessages}
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Dashboard Content Layout */}
-        <div className="mt-8 flex flex-col gap-6 lg:flex-row">
-          {/* Responsive Sidebar Navigation */}
-          <aside className="lg:sticky lg:top-28 lg:w-72 lg:shrink-0 lg:self-start">
+        <div className="mt-4 lg:mt-8 flex flex-col gap-6 lg:flex-row min-w-0 max-w-full">
+          {/* Responsive Sidebar Navigation (Desktop only - mobile uses sleek header & slide carousel) */}
+          <aside className="hidden lg:block lg:sticky lg:top-28 lg:w-72 lg:shrink-0 lg:self-start">
             <nav
               aria-label={t.account.title}
               className="rounded-3xl border border-slate-200 bg-white p-3.5 shadow-md shadow-purple-950/5 space-y-1"
@@ -251,7 +360,8 @@ export default function AccountShell({
                 <span className="text-base select-none">{tierBadge}</span>
               </div>
 
-              <ul className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-1">
+              {/* Desktop Full Tabs List */}
+              <ul className="hidden lg:grid grid-cols-1 gap-1.5">
                 {ACCOUNT_TABS.map((key) => {
                   const Icon = TAB_ICON[key];
                   const active = tab === key;
@@ -261,7 +371,7 @@ export default function AccountShell({
                         type="button"
                         onClick={() => onTabChange(key)}
                         className={cn(
-                          "flex w-full items-center gap-2.5 rounded-2xl px-3 py-2.5 text-start text-xs font-bold transition-all",
+                          "flex w-full items-center gap-2.5 rounded-2xl px-3 py-2.5 text-start text-xs font-bold transition-all cursor-pointer",
                           active
                             ? "bg-[#220d3d] text-white shadow-md shadow-purple-950/20 border-s-4 border-amber-400"
                             : "text-slate-600 hover:bg-purple-50/50 hover:text-purple-950"
@@ -269,11 +379,64 @@ export default function AccountShell({
                       >
                         <Icon size={16} className={active ? "text-amber-400" : "text-slate-400"} />
                         <span className="truncate">{tabLabel[key]}</span>
+                        {key === "messages" && unreadMessages > 0 ? (
+                          <span className="ms-auto min-w-5 rounded-full bg-amber-400 px-1 text-center text-[10px] font-black text-[#2E1065]">
+                            {unreadMessages > 9 ? "9+" : unreadMessages}
+                          </span>
+                        ) : null}
                       </button>
                     </li>
                   );
                 })}
               </ul>
+
+              {/* Native App Legal & Settings Section */}
+              <div className="mt-4 pt-3 border-t border-slate-100 space-y-1">
+                <p className="px-3 text-[10px] font-black uppercase tracking-wider text-purple-900/60">
+                  سياسات ومعلومات التطبيق
+                </p>
+                <div className="grid grid-cols-1 gap-1">
+                  <Link
+                    href="/privacy?app=1"
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">🛡️ سياسة الخصوصية</span>
+                    <span className="text-[10px] text-slate-400">←</span>
+                  </Link>
+                  <Link
+                    href="/terms?app=1"
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">📜 الشروط والأحكام</span>
+                    <span className="text-[10px] text-slate-400">←</span>
+                  </Link>
+                  <Link
+                    href="/gdpr?app=1"
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">🇪🇺 الامتثال و GDPR</span>
+                    <span className="text-[10px] text-slate-400">←</span>
+                  </Link>
+                  <Link
+                    href="/about?app=1"
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">ℹ️ من نحن</span>
+                    <span className="text-[10px] text-slate-400">←</span>
+                  </Link>
+                  <Link
+                    href="/contact?app=1"
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">📞 الدعم والتواصل</span>
+                    <span className="text-[10px] text-slate-400">←</span>
+                  </Link>
+                </div>
+                <div className="pt-2 px-3 flex items-center justify-between text-[10px] font-semibold text-slate-400 border-t border-slate-50">
+                  <span>إصدار التطبيق</span>
+                  <span className="font-mono text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">v1.0.0 Enterprise</span>
+                </div>
+              </div>
             </nav>
           </aside>
 

@@ -49,9 +49,10 @@
 }
 
 [data-service-cards] .sc-card-title,
-.sc-card-title {
+.sc-card-title,
+.lonaliza-package-title {
   font-size: var(--sc-card-title-size, 1rem);
-  color: #0f172a !important;
+  color: #1e1b4b !important;
   font-weight: 800;
 }
 

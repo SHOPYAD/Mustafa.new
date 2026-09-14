@@ -322,7 +322,7 @@ export async function getSpotRateSafe(fromRaw: string, toRaw: string): Promise<S
     return await getSpotRate(fromRaw, toRaw);
   } catch {
     return {
-      rate: 1,
+      rate: 0,
       source: "unavailable",
       at: new Date().toISOString(),
       stale: true,

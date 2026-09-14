@@ -67,7 +67,7 @@ function persist(publish: boolean) {
     });
 }
 
-export function BuilderShell() {
+export function BuilderShell({ appMode = false }: { appMode?: boolean } = {}) {
   const { t } = useLocale();
   const [ready, setReady] = useState(false);
   const [chromeTheme, setChromeTheme] = useState<EditorChromeTheme>("light");
@@ -98,6 +98,12 @@ export function BuilderShell() {
   useLayoutEffect(() => {
     applyEditorChromeTheme(chromeTheme);
   }, [chromeTheme]);
+
+  useLayoutEffect(() => {
+    if (appMode) {
+      useBuilderStore.getState().setDevice("mobile");
+    }
+  }, [appMode]);
 
   const handleToggleChromeTheme = useCallback(() => {
     setChromeTheme((prev) => {
@@ -237,10 +243,11 @@ export function BuilderShell() {
         <TopBar
           onSave={handleSave}
           onPublish={handlePublish}
-          onOpenLive={() => window.open("/", "_blank", "noopener,noreferrer")}
+          onOpenLive={() => window.open(appMode ? "/?app=1" : "/", "_blank", "noopener,noreferrer")}
           onDiscard={discard}
           chromeTheme={chromeTheme}
           onToggleChromeTheme={handleToggleChromeTheme}
+          appMode={appMode}
         />
         <div className="flex min-h-0 flex-1">
           <LeftRail />

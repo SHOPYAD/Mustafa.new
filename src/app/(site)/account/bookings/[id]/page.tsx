@@ -2,15 +2,12 @@
 
 import { useEffect, useState, use } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plane,
   Hotel,
   Car,
   Bus,
   MapPin,
-  ArrowRight,
-  ArrowLeft,
   Calendar,
   Clock,
   CheckCircle2,
@@ -40,6 +37,13 @@ import { Badge } from "@/components/ui/badge";
 import { useCurrency } from "@/components/ui/CurrencySelector";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
+import NativeAppBar from "@/components/chrome/NativeAppBar";
+import {
+  customerFacingCopy,
+  fareRulePills,
+  formatDurationLabel,
+  formatFlightClock,
+} from "@/lib/account/booking-display";
 
 type BookingDetailResponse = {
   ok: boolean;
@@ -78,6 +82,8 @@ type BookingDetailResponse = {
     duration: string;
     stops: number;
     cabinClass: string;
+    fareBrand?: string;
+    durationMinutes?: number;
     returnFlight?: {
       flightNumber: string;
       origin: string;
@@ -168,8 +174,8 @@ export default function BookingDetailPage({
 }) {
   const resolvedParams = use(params);
   const bookingId = resolvedParams.id;
-  const router = useRouter();
   const { t, locale, dir } = useLocale();
+  const bc = t.bookingConfirm;
   const { currency, convert } = useCurrency();
 
   const [data, setData] = useState<BookingDetailResponse | null>(null);
@@ -244,20 +250,18 @@ export default function BookingDetailPage({
     }
   };
 
-  const isRtl = dir === "rtl" || locale === "ar";
-
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
     fetch(`/api/account/bookings/${bookingId}/post-booking`)
       .then((res) => {
-        if (!res.ok) throw new Error("تعذر جلب تفاصيل الحجز");
+        if (!res.ok) throw new Error(t.errors.bookingLoadFailed);
         return res.json();
       })
       .then((resData: BookingDetailResponse) => {
         if (cancelled) return;
         if (!resData.ok) {
-          setError("الحجز غير موجود أو تعذر الوصول إليه");
+          setError(t.errors.bookingNotFound);
         } else {
           setData(resData);
           // Set sensible active action tab based on capabilities
@@ -274,7 +278,7 @@ export default function BookingDetailPage({
         }
       })
       .catch(() => {
-        if (!cancelled) setError("حدث خطأ أثناء تحميل بيانات الحجز");
+        if (!cancelled) setError(t.errors.bookingLoadFailed);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -357,12 +361,17 @@ export default function BookingDetailPage({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-100/90 pb-20 pt-28">
-        <div className="mx-auto max-w-5xl px-4 text-center">
+      <div dir={dir} className="lonaliza-web-header-offset min-h-screen bg-slate-100/90 pb-20 pt-28">
+        <NativeAppBar
+          title={bc.detailsTitle}
+          fallbackHref="/account?tab=bookings"
+          titleWrap
+        />
+        <div className="mx-auto max-w-5xl px-4 pt-10 text-center">
           <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-100 text-purple-900 shadow-inner">
             <Loader2 size={32} className="animate-spin text-[#280e46]" />
           </div>
-          <p className="mt-4 text-sm font-bold text-slate-700">جارٍ تحميل تفاصيل الحجز ووثائق التذاكر...</p>
+          <p className="mt-4 text-sm font-bold text-slate-700">{bc.loadingDetails}</p>
         </div>
       </div>
     );
@@ -370,19 +379,17 @@ export default function BookingDetailPage({
 
   if (error || !data) {
     return (
-      <div className="min-h-screen bg-slate-100/90 pb-20 pt-28">
-        <div className="mx-auto max-w-lg px-4 text-center">
+      <div dir={dir} className="lonaliza-web-header-offset min-h-screen bg-slate-100/90 pb-20 pt-28">
+        <NativeAppBar
+          title={bc.detailsTitle}
+          fallbackHref="/account?tab=bookings"
+          titleWrap
+        />
+        <div className="mx-auto max-w-lg px-4 pt-8 text-center">
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
             <AlertCircle size={48} className="mx-auto text-rose-500" />
-            <h2 className="mt-4 text-xl font-bold text-slate-900">{error || "تعذر العثور على الحجز"}</h2>
-            <p className="mt-2 text-xs text-slate-500">قد يكون رقم الحجز غير صحيح أو تم نقله لحساب آخر.</p>
-            <Link
-              href="/account?tab=bookings"
-              className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-[#280e46] px-6 py-3 text-xs font-bold text-amber-300 shadow-md"
-            >
-              {isRtl ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}
-              <span>العودة إلى قائمة الحجوزات</span>
-            </Link>
+            <h2 className="mt-4 text-xl font-bold text-slate-900">{error || bc.notFound}</h2>
+            <p className="mt-2 text-xs text-slate-500">{bc.notFoundHint}</p>
           </div>
         </div>
       </div>
@@ -401,36 +408,29 @@ export default function BookingDetailPage({
     Boolean(capabilities?.canAddBaggage);
 
   const getServiceBadge = () => {
-    if (isFlight) return { label: "حجز طيران مؤكد", icon: <Plane size={16} /> };
-    if (isHotel) return { label: "حجز فندق معتمد", icon: <Hotel size={16} /> };
-    if (data.serviceType === "car") return { label: "تأجير سيارة معتمد", icon: <Car size={16} /> };
-    if (data.serviceType === "transfer") return { label: "ترانسفير خاص VIP", icon: <Bus size={16} /> };
-    if (isTour) return { label: "برنامج وجولة سياحية", icon: <MapPin size={16} /> };
-    return { label: "حجز سياحي معتمد", icon: <FileText size={16} /> };
+    if (isFlight) return { label: bc.confirmedFlight, icon: <Plane size={16} /> };
+    if (isHotel) return { label: bc.confirmedHotel, icon: <Hotel size={16} /> };
+    if (data.serviceType === "car") return { label: bc.confirmedCar, icon: <Car size={16} /> };
+    if (data.serviceType === "transfer") return { label: bc.confirmedTransfer, icon: <Bus size={16} /> };
+    if (isTour) return { label: bc.confirmedTour, icon: <MapPin size={16} /> };
+    return { label: bc.confirmedGeneric, icon: <FileText size={16} /> };
   };
 
   const serviceInfo = getServiceBadge();
 
   return (
-    <div className="min-h-screen bg-slate-100/90 pb-24 pt-28">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 space-y-6">
-        {/* Navigation & Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href="/account?tab=bookings"
-            className="inline-flex items-center gap-2 rounded-2xl bg-[#1b0833] hover:bg-[#280e46] px-4 py-2.5 text-xs font-bold text-amber-300 border border-amber-400/30 shadow-md transition-all"
-          >
-            {isRtl ? <ArrowRight size={14} /> : <ArrowLeft size={14} />}
-            <span>العودة إلى لوحة حجوزاتي</span>
-          </Link>
-
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-500 font-bold hidden sm:inline">رقم الحجز المرجعي:</span>
-            <span className="rounded-xl bg-purple-100 border border-purple-200 px-3 py-1 text-xs font-mono font-bold text-purple-950">
-              #{booking.id}
-            </span>
-          </div>
-        </div>
+    <div dir={dir} className="lonaliza-web-header-offset min-h-screen bg-slate-100/90 pb-36 pt-28">
+      <NativeAppBar
+        title={booking.title || bc.detailsTitle}
+        fallbackHref="/account?tab=bookings"
+        titleWrap
+        trailing={
+          <span className="max-w-[9.5rem] truncate rounded-xl border border-purple-200 bg-purple-100 px-2.5 py-1 font-mono text-[11px] font-bold text-purple-950">
+            #{booking.id}
+          </span>
+        }
+      />
+      <div className="mx-auto max-w-5xl space-y-6 px-4 pt-4 sm:px-6">
 
         {/* Master Booking Header Card */}
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
@@ -447,17 +447,17 @@ export default function BookingDetailPage({
                     </span>
                     {booking.freeCancellation && (
                       <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-0.5 text-xs font-bold text-emerald-700">
-                        إلغاء مجاني متاح
+                        {bc.freeCancel}
                       </span>
                     )}
                     {booking.cancelStatus === "pending_admin" && (
                       <span className="rounded-full bg-amber-100 border border-amber-300 px-3 py-0.5 text-xs font-bold text-amber-900">
-                        طلب الاسترجاع قيد المعالجة
+                        {bc.refundPending}
                       </span>
                     )}
                     {booking.status === "cancelled" && (
                       <span className="rounded-full bg-rose-100 border border-rose-300 px-3 py-0.5 text-xs font-bold text-rose-900">
-                        ملغي ومسترد
+                        {bc.cancelledRefunded}
                       </span>
                     )}
                   </div>
@@ -469,7 +469,7 @@ export default function BookingDetailPage({
               {/* Price & PNR Box */}
               <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between border-t sm:border-t-0 pt-4 sm:pt-0 border-slate-200 gap-3">
                 <div className="text-start sm:text-end">
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">الإجمالي المدفوع</p>
+                  <p className="text-[11px] font-bold text-slate-500 tracking-wider">{bc.totalPaid}</p>
                   <p className="text-2xl sm:text-3xl font-black text-[#18082e] font-mono">
                     {formatPrice(booking.price, booking.currency)}
                   </p>
@@ -483,7 +483,7 @@ export default function BookingDetailPage({
                       type="button"
                       onClick={copyPnr}
                       className="ms-1 rounded p-1 text-amber-800 hover:bg-amber-200 transition-colors"
-                      title="نسخ رمز PNR"
+                      title={bc.copyPnr}
                     >
                       {copiedPnr ? <Check size={12} className="text-emerald-600" /> : <Copy size={12} />}
                     </button>
@@ -493,98 +493,87 @@ export default function BookingDetailPage({
             </div>
           </div>
 
-          {/* Quick Action Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-50/90 px-6 py-4 border-b border-slate-200">
-            <div className="flex flex-wrap items-center gap-2.5">
-              {/* 1. Official Travel Document (E-Ticket / Hotel Voucher) */}
-              <button
-                type="button"
-                onClick={openTicketModal}
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:brightness-110 px-4 py-2.5 text-xs font-black text-white shadow-md shadow-indigo-500/20 transition-all cursor-pointer"
-              >
-                {isFlight ? <Plane size={15} /> : isHotel ? <Hotel size={15} /> : <FileText size={15} />}
-                <span>
-                  {isFlight
-                    ? "تذكرة الطيران الإلكترونية (E-Ticket)"
-                    : isHotel
-                    ? "فوشر حجز الفندق (Hotel Voucher)"
-                    : "قسيمة تأكيد الخدمة (Service Voucher)"}
-                </span>
-              </button>
+          {/* Document actions — primary / secondary / outline hierarchy */}
+          <div className="grid grid-cols-2 gap-2 border-b border-slate-200 bg-slate-50/90 p-4 sm:p-5">
+            <button
+              type="button"
+              onClick={openTicketModal}
+              className="col-span-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-[#2E1065] px-4 text-xs font-black text-white shadow-sm"
+            >
+              {isFlight ? <Plane size={15} /> : isHotel ? <Hotel size={15} /> : <FileText size={15} />}
+              <span>
+                {isFlight
+                  ? bc.eTicket
+                  : isHotel
+                    ? bc.hotelVoucher
+                    : bc.serviceVoucher}
+              </span>
+            </button>
 
-              {/* Direct Travel Document PDF Download */}
+            <button
+              type="button"
+              onClick={openInvoiceModal}
+              className="col-span-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-amber-400 px-4 text-xs font-black text-[#18082e] shadow-sm"
+            >
+              <Receipt size={15} />
+              <span>{bc.taxInvoice}</span>
+            </button>
+
+            <a
+              href={
+                isFlight
+                  ? `/api/account/bookings/${booking.id}/ticket/pdf?lang=${locale}`
+                  : `/api/account/bookings/${booking.id}/voucher/pdf?lang=${locale}`
+              }
+              download
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl border border-indigo-200 bg-white px-3 text-xs font-bold text-indigo-950"
+            >
+              <Download size={14} />
+              <span>{bc.ticketPdf}</span>
+            </a>
+
+            <a
+              href={`/api/account/invoices/${booking.id}/pdf?lang=${locale}`}
+              download
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl border border-amber-200 bg-white px-3 text-xs font-bold text-amber-950"
+            >
+              <Download size={14} />
+              <span>{bc.invoicePdf}</span>
+            </a>
+
+            {invoiceData?.eArchive?.invoiceNumber && (
               <a
-                href={
-                  isFlight
-                    ? `/api/account/bookings/${booking.id}/ticket/pdf?lang=${locale}`
-                    : `/api/account/bookings/${booking.id}/voucher/pdf?lang=${locale}`
-                }
-                download
-                className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 px-3 py-2.5 text-xs font-bold text-indigo-950 shadow-sm transition-all cursor-pointer"
-                title="تنزيل ملف الـ PDF للتذكرة أو الفوشر مباشرة"
-              >
-                <Download size={14} className="text-indigo-700" />
-                <span>تحميل PDF التذكرة</span>
-              </a>
-
-              {/* 2. Official Tax Invoice Button */}
-              <button
-                type="button"
-                onClick={openInvoiceModal}
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-500 hover:brightness-110 px-4 py-2.5 text-xs font-black text-[#18082e] shadow-md shadow-amber-500/20 transition-all cursor-pointer"
-              >
-                <Receipt size={15} />
-                <span>الفاتورة الضريبية الرسمية (Tax Invoice)</span>
-              </button>
-
-              {/* Direct Invoice PDF Download */}
-              <a
-                href={`/api/account/invoices/${booking.id}/pdf?lang=${locale}`}
-                download
-                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 px-3 py-2.5 text-xs font-bold text-amber-950 shadow-sm transition-all cursor-pointer"
-                title="تنزيل الفاتورة الضريبية PDF مباشرة"
-              >
-                <Download size={14} className="text-amber-800" />
-                <span>تحميل PDF الفاتورة</span>
-              </a>
-
-              {/* 3. Direct Official Turkish e-Archive PDF Download if issued */}
-              {invoiceData?.eArchive?.invoiceNumber && (
-                <a
-                  href={`/api/account/invoices/${booking.id}/earchive`}
-                  download={`e-Arsiv-${invoiceData.eArchive.invoiceNumber}.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 px-3.5 py-2.5 text-xs font-bold text-rose-950 shadow-sm transition-all cursor-pointer"
-                >
-                  <Download size={14} className="text-rose-700" />
-                  <span>فاتورة الدولة e-Arşiv (GİB PDF)</span>
-                </a>
-              )}
-
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 px-3 py-2.5 text-xs font-bold text-slate-800 shadow-sm transition-all cursor-pointer"
-              >
-                <Printer size={14} />
-                <span>طباعة سريعة</span>
-              </button>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <a
-                href={`https://wa.me/905015709201?text=${encodeURIComponent(
-                  `🧾 مرحباً، هذه تذكرة وفاتورة حجز لوناليزا الرسمية:\nالخدمة: ${booking.title}\nرمز PNR: ${booking.pnr || booking.id}\nالمبلغ المسدد: $${booking.price} ${booking.currency}\nرابط الفاتورة الموثقة: https://lonaliza.com/invoice/verify?id=${booking.id}&inv=INV-${(booking.pnr || booking.id).slice(0, 8).toUpperCase()}`
-                )}`}
+                href={`/api/account/invoices/${booking.id}/earchive`}
+                download={`e-Arsiv-${invoiceData.eArchive.invoiceNumber}.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 px-3.5 py-2 text-xs font-bold text-emerald-800 transition-all cursor-pointer"
+                className="col-span-2 inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl border border-rose-200 bg-white px-3 text-xs font-bold text-rose-950"
               >
-                <MessageCircle size={14} className="text-emerald-600" />
-                <span>إرسال مباشر للواتساب</span>
+                <Download size={14} />
+                <span>e-Arşiv PDF</span>
               </a>
-            </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl border border-slate-200 bg-white px-3 text-xs font-bold text-slate-800"
+            >
+              <Printer size={14} />
+              <span>{bc.printQuick}</span>
+            </button>
+
+            <a
+              href={`https://wa.me/905015709201?text=${encodeURIComponent(
+                `🧾 مرحباً، هذه تذكرة وفاتورة حجز لوناليزا الرسمية:\nالخدمة: ${booking.title}\nرمز PNR: ${booking.pnr || booking.id}\nالمبلغ المسدد: $${booking.price} ${booking.currency}\nرابط الفاتورة الموثقة: https://lonaliza.com/invoice/verify?id=${booking.id}&inv=INV-${(booking.pnr || booking.id).slice(0, 8).toUpperCase()}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl border border-emerald-300 bg-emerald-50 px-3 text-xs font-bold text-emerald-800"
+            >
+              <MessageCircle size={14} />
+              <span>{bc.whatsapp}</span>
+            </a>
           </div>
 
           {/* Main Details Body */}
@@ -592,35 +581,42 @@ export default function BookingDetailPage({
             {/* 1. FLIGHT DETAILS (ONLY RENDERED FOR FLIGHTS) */}
             {isFlight && flightDetails && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                    <Plane size={16} className="text-purple-700" />
-                    <span>تفاصيل رحلة الطيران ومسار التذاكر</span>
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-sm font-black text-slate-900 tracking-wider flex items-center gap-2 min-w-0">
+                    <Plane size={16} className="text-purple-700 shrink-0" />
+                    <span className="whitespace-normal break-words">{bc.flightRouteTitle}</span>
                   </h3>
-                  <span className="text-xs font-bold text-slate-500 font-mono">{flightDetails.flightNumber}</span>
+                  <span className="text-xs font-bold text-slate-500 font-mono shrink-0">{flightDetails.flightNumber}</span>
                 </div>
 
                 {/* Outbound Flight Card */}
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 border border-slate-200">
+                  <div className="flex flex-col gap-3 border-b border-slate-100 pb-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 border border-slate-200">
                         <AirlineLogo
                           name={flightDetails.airline}
                           code={flightDetails.airlineCode}
                           size="md"
                         />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="font-bold text-slate-900 text-sm">{flightDetails.airline}</p>
                         <p className="text-xs text-slate-500">
-                          {flightDetails.flightNumber} · {flightDetails.aircraft || "الطائرة التجارية"}
+                          {flightDetails.flightNumber} · {flightDetails.aircraft || bc.commercialAircraft}
                         </p>
                       </div>
                     </div>
-                    <Badge className="bg-purple-50 text-purple-900 border-purple-200 text-xs">
-                      {flightDetails.cabinClass}
-                    </Badge>
+                    <div className="flex max-w-full flex-wrap gap-1.5">
+                      {(fareRulePills(flightDetails.cabinClass || flightDetails.fareBrand || "")).map((pill) => (
+                        <span
+                          key={pill}
+                          className="inline-flex max-w-full rounded-full border border-purple-200 bg-purple-50 px-2.5 py-1 text-[11px] font-bold leading-snug text-purple-900 whitespace-normal break-words"
+                        >
+                          {pill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Route Timeline */}
@@ -628,7 +624,7 @@ export default function BookingDetailPage({
                     {/* Origin */}
                     <div className="text-center md:text-start min-w-[140px]">
                       <p className="text-2xl font-black text-slate-900 font-mono">
-                        {flightDetails.departureTime ? flightDetails.departureTime.slice(11, 16) : "08:30"}
+                        {formatFlightClock(flightDetails.departureTime) || bc.timeUnknown}
                       </p>
                       <p className="text-sm font-bold text-purple-950 mt-0.5">{flightDetails.origin}</p>
                       <p className="text-xs text-slate-500">{flightDetails.originAirport}</p>
@@ -641,7 +637,7 @@ export default function BookingDetailPage({
                     <div className="flex-1 flex flex-col items-center px-4 w-full">
                       <span className="text-[11px] font-bold text-slate-500 flex items-center gap-1">
                         <Clock size={12} />
-                        {flightDetails.duration}
+                        {formatDurationLabel(flightDetails.durationMinutes, locale) || flightDetails.duration}
                       </span>
                       <div className="relative my-2 w-full flex items-center justify-center">
                         <div className="h-0.5 w-full bg-slate-200" />
@@ -650,14 +646,14 @@ export default function BookingDetailPage({
                         </div>
                       </div>
                       <span className="text-[11px] font-bold text-emerald-700">
-                        {flightDetails.stops === 0 ? "رحلة مباشرة بدون توقف" : `${flightDetails.stops} ترانزيت`}
+                        {flightDetails.stops === 0 ? bc.directFlight : bc.stopsLabel(flightDetails.stops)}
                       </span>
                     </div>
 
                     {/* Destination */}
                     <div className="text-center md:text-end min-w-[140px]">
                       <p className="text-2xl font-black text-slate-900 font-mono">
-                        {flightDetails.arrivalTime ? flightDetails.arrivalTime.slice(11, 16) : "10:45"}
+                        {formatFlightClock(flightDetails.arrivalTime) || bc.timeUnknown}
                       </p>
                       <p className="text-sm font-bold text-purple-950 mt-0.5">{flightDetails.destination}</p>
                       <p className="text-xs text-slate-500">{flightDetails.destinationAirport}</p>
@@ -674,7 +670,7 @@ export default function BookingDetailPage({
                     <div className="mt-6 pt-5 border-t border-slate-100">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-bold text-amber-900">
-                          رحلة العودة
+                          {bc.returnFlight}
                         </span>
                         <span className="text-xs font-bold text-slate-700">
                           {flightDetails.returnFlight.flightNumber} · {flightDetails.returnFlight.duration}
@@ -684,16 +680,20 @@ export default function BookingDetailPage({
                         <div>
                           <span className="font-bold">{flightDetails.returnFlight.origin}</span>
                           <p className="text-slate-500 text-[11px]">
-                            {flightDetails.returnFlight.departureTime.slice(0, 10)} (
-                            {flightDetails.returnFlight.departureTime.slice(11, 16)})
+                            {flightDetails.returnFlight.departureTime.slice(0, 10)}
+                            {formatFlightClock(flightDetails.returnFlight.departureTime)
+                              ? ` (${formatFlightClock(flightDetails.returnFlight.departureTime)})`
+                              : ""}
                           </p>
                         </div>
                         <Plane size={14} className="text-slate-400 rtl:-scale-x-100" />
                         <div className="text-end">
                           <span className="font-bold">{flightDetails.returnFlight.destination}</span>
                           <p className="text-slate-500 text-[11px]">
-                            {flightDetails.returnFlight.arrivalTime.slice(0, 10)} (
-                            {flightDetails.returnFlight.arrivalTime.slice(11, 16)})
+                            {flightDetails.returnFlight.arrivalTime.slice(0, 10)}
+                            {formatFlightClock(flightDetails.returnFlight.arrivalTime)
+                              ? ` (${formatFlightClock(flightDetails.returnFlight.arrivalTime)})`
+                              : ""}
                           </p>
                         </div>
                       </div>
@@ -706,16 +706,16 @@ export default function BookingDetailPage({
             {/* 2. HOTEL DETAILS (ONLY RENDERED FOR HOTELS) */}
             {isHotel && hotelDetails && (
               <div className="space-y-4">
-                <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-sm font-black text-slate-900 tracking-wider flex items-center gap-2">
                   <Hotel size={16} className="text-purple-700" />
-                  <span>تفاصيل الإقامة الفندقية والغرفة</span>
+                  <span className="whitespace-normal break-words">{bc.hotelStayTitle}</span>
                 </h3>
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
                     <div>
                       <div className="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-1">
                         {"★".repeat(hotelDetails.stars || 4)}
-                        <span className="text-slate-700 ms-1">فندق {hotelDetails.stars || 4} نجوم</span>
+                        <span className="text-slate-700 ms-1">{bc.starHotel(hotelDetails.stars || 4)}</span>
                       </div>
                       <h4 className="text-base font-black text-slate-900">{hotelDetails.hotelName}</h4>
                       <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
@@ -730,22 +730,22 @@ export default function BookingDetailPage({
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <p className="text-slate-400 font-bold">تسجيل الوصول</p>
+                      <p className="text-slate-400 font-bold">{bc.checkIn}</p>
                       <p className="font-bold text-slate-900 mt-1">{hotelDetails.checkIn.slice(0, 10)}</p>
-                      <p className="text-[11px] text-slate-500">من 14:00 عصراً</p>
+                      <p className="text-[11px] text-slate-500">{bc.fromAfternoon}</p>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <p className="text-slate-400 font-bold">تسجيل المغادرة</p>
+                      <p className="text-slate-400 font-bold">{bc.checkOut}</p>
                       <p className="font-bold text-slate-900 mt-1">{hotelDetails.checkOut.slice(0, 10)}</p>
-                      <p className="text-[11px] text-slate-500">حتى 12:00 ظهراً</p>
+                      <p className="text-[11px] text-slate-500">{bc.untilNoon}</p>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <p className="text-slate-400 font-bold">مدة الإقامة</p>
-                      <p className="font-bold text-purple-900 mt-1">{hotelDetails.nights} ليالٍ</p>
+                      <p className="text-slate-400 font-bold">{bc.stayLength}</p>
+                      <p className="font-bold text-purple-900 mt-1">{bc.nightsCount(hotelDetails.nights || 0)}</p>
                       <p className="text-[11px] text-slate-500">{hotelDetails.guests}</p>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <p className="text-slate-400 font-bold">فئة الغرفة</p>
+                      <p className="text-slate-400 font-bold">{bc.roomCategory}</p>
                       <p className="font-bold text-slate-900 mt-1 truncate">{hotelDetails.roomType}</p>
                     </div>
                   </div>
@@ -758,7 +758,7 @@ export default function BookingDetailPage({
               <div className="space-y-4">
                 <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
                   <Car size={16} className="text-purple-700" />
-                  <span>تفاصيل ومميزات الخدمة السياحية</span>
+                  <span className="whitespace-normal break-words">{bc.serviceFeaturesTitle}</span>
                 </h3>
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -774,7 +774,7 @@ export default function BookingDetailPage({
                   </div>
 
                   <div className="space-y-2 text-xs">
-                    <p className="font-bold text-slate-800">المميزات والخدمات المشمولة في الحجز:</p>
+                    <p className="font-bold text-slate-800">{bc.includedInBooking}</p>
                     <div className="grid sm:grid-cols-2 gap-2">
                       {serviceDetails.inclusions.map((inc, i) => (
                         <div key={i} className="flex items-start gap-2 rounded-xl bg-slate-50 p-2.5 border border-slate-100">
@@ -793,17 +793,17 @@ export default function BookingDetailPage({
               <div className="space-y-3">
                 <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
                   <UserRound size={16} className="text-purple-700" />
-                  <span>بيانات المسافرين والتذاكر المصدرة</span>
+                  <span className="whitespace-normal break-words">{bc.passengersTitle}</span>
                 </h3>
                 <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
                   <table className="w-full text-start text-xs">
                     <thead className="border-b border-slate-200 bg-slate-50/80 text-slate-500 font-bold">
                       <tr>
-                        <th className="p-3.5 text-start">اسم المسافر</th>
-                        <th className="p-3.5 text-start">رقم التذكرة الإلكترونية</th>
-                        <th className="p-3.5 text-start">المقعد</th>
-                        <th className="p-3.5 text-start">الأمتعة المسموحة</th>
-                        <th className="p-3.5 text-start">الوجبة</th>
+                        <th className="p-3.5 text-start">{bc.passengerName}</th>
+                        <th className="p-3.5 text-start">{bc.eTicketNumber}</th>
+                        <th className="p-3.5 text-start">{bc.seat}</th>
+                        <th className="p-3.5 text-start">{bc.baggageAllowance}</th>
+                        <th className="p-3.5 text-start">{bc.meal}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 text-slate-800">
@@ -832,35 +832,35 @@ export default function BookingDetailPage({
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-4">
                   <CreditCard size={16} className="text-purple-700" />
-                  <span>تفاصيل الأسعار والفاتورة</span>
+                  <span>{bc.priceDetails}</span>
                 </h3>
                 <div className="space-y-2.5 text-xs text-slate-600">
                   <div className="flex justify-between">
-                    <span>السعر الأساسي للحجز:</span>
+                    <span>{bc.baseFare}</span>
                     <span className="font-mono font-bold text-slate-900">
                       {formatPrice(priceBreakdown?.baseFare || booking.price * 0.85)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span>الضرائب والرسوم الحكومية والخدمة:</span>
+                    <span>{bc.taxesFees}</span>
                     <span className="font-mono font-bold text-slate-900">
                       {formatPrice(priceBreakdown?.taxesAndFees || booking.price * 0.15)}
                     </span>
                   </div>
                   {priceBreakdown?.discount ? (
                     <div className="flex justify-between text-emerald-700 font-bold">
-                      <span>الخصم المطبق:</span>
+                      <span>{bc.discountApplied}</span>
                       <span className="font-mono">-{formatPrice(priceBreakdown.discount)}</span>
                     </div>
                   ) : null}
                   <div className="border-t border-slate-200 pt-3 flex justify-between items-center text-sm font-black text-slate-900">
-                    <span>المبلغ الكلي المدفوع:</span>
+                    <span>{bc.totalPaidLabel}</span>
                     <span className="font-mono text-xl text-[#18082e]">
                       {formatPrice(booking.price, booking.currency)}
                     </span>
                   </div>
                   <div className="mt-2 text-[11px] text-slate-500 pt-1">
-                    طريقة الدفع: <span className="font-bold text-slate-700">بطاقة إلكترونية (مدفوع بالكامل)</span>
+                    {bc.paymentMethod}: <span className="font-bold text-slate-700">{bc.paidByCard}</span>
                   </div>
                 </div>
               </div>
@@ -869,40 +869,52 @@ export default function BookingDetailPage({
                 <div>
                   <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
                     <ShieldCheck size={16} className="text-purple-700" />
-                    <span>سياسة وشروط المزود والإلغاء</span>
+                    <span>{bc.protectionPolicyTitle}</span>
                   </h3>
                   <div className="space-y-2 text-xs text-slate-600">
                     {data?.lonalizaServices?.length ? (
                       <div className="rounded-xl bg-purple-50/70 p-3 border border-purple-200/80">
                         <p className="font-bold text-purple-950 mb-1.5 flex items-center gap-1.5">
                           <Sparkles size={13} className="text-purple-700" />
-                          خدمات لوناليزا المشمولة (تنفّذها لوناليزا، مستقلة عن المورد):
+                          {bc.lonalizaExclusiveServices}
                         </p>
                         <ul className="space-y-1.5">
                           {data.lonalizaServices.map((svc) => (
                             <li key={svc.id} className="rounded-lg bg-white/80 px-2.5 py-1.5 border border-purple-100">
                               <div className="flex items-center justify-between gap-2">
-                                <span className="font-bold text-purple-950">{svc.title}</span>
+                                <span className="font-bold text-purple-950">{customerFacingCopy(svc.title)}</span>
                                 <span className="font-mono text-[11px] text-purple-800">{formatPrice(svc.amount, svc.currency || booking.currency)}</span>
                               </div>
-                              {svc.terms ? <p className="mt-1 whitespace-pre-line text-[11px] leading-relaxed text-slate-500">{svc.terms}</p> : null}
+                              {svc.terms ? (
+                                <p className="mt-1 whitespace-pre-line text-[11px] leading-relaxed text-slate-500">
+                                  {customerFacingCopy(svc.terms)}
+                                </p>
+                              ) : null}
                             </li>
                           ))}
                         </ul>
                       </div>
                     ) : null}
                     <div className="rounded-xl bg-amber-50/70 p-3 border border-amber-200/80">
-                      <p className="font-bold text-amber-950 mb-1">سياسة الإلغاء والاسترداد:</p>
-                      <p className="leading-relaxed text-amber-900/90">{policies?.cancellation}</p>
+                      <p className="font-bold text-amber-950 mb-1">{bc.cancelRefundPolicy}</p>
+                      <p className="leading-relaxed text-amber-900/90">
+                        {capabilities?.refundGuarantee
+                          ? bc.refundGuaranteePolicy
+                          : customerFacingCopy(policies?.cancellation || "") || bc.ticketTermsCancel}
+                      </p>
                     </div>
                     <div className="rounded-xl bg-slate-50 p-3 border border-slate-100">
-                      <p className="font-bold text-slate-800 mb-1">شروط تعديل المواعيد:</p>
-                      <p className="leading-relaxed text-slate-600">{policies?.modification}</p>
+                      <p className="font-bold text-slate-800 mb-1">{bc.dateChangeTerms}</p>
+                      <p className="leading-relaxed text-slate-600">
+                        {capabilities?.flexChange
+                          ? bc.flexChangePolicy
+                          : customerFacingCopy(policies?.modification || "") || bc.noFlexChangePolicy}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-4">
-                  تخضع جميع إجراءات الاسترداد المالي للائحة الطيران المدني الدولي IATA وشروط حماية المستهلك المعتمدة.
+                  {bc.iataDisclaimer}
                 </p>
               </div>
             </div>
@@ -911,14 +923,12 @@ export default function BookingDetailPage({
             <div className="rounded-3xl border border-purple-200/90 bg-white p-6 shadow-md">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-purple-100 pb-4">
                 <div>
-                  <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
-                    <Sliders size={18} className="text-amber-500" />
-                    <span>إدارة خدمات ما بعد الحجز (Post-Booking Services)</span>
+                  <h3 className="text-base font-black text-slate-900 flex items-start gap-2 min-w-0">
+                    <Sliders size={18} className="mt-0.5 shrink-0 text-amber-500" />
+                    <span className="whitespace-normal break-words leading-snug">{bc.postBookingTitle}</span>
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {hasAnyCapability
-                      ? "الميزات المتاحة والمدعومة رسمياً من مزود الخدمة المباشر لهذا الحجز"
-                      : "تفاصيل وسياسة الخدمة المعتمدة لدى المزود المباشر"}
+                    {hasAnyCapability ? bc.postBookingAvailable : bc.postBookingPolicyOnly}
                   </p>
                 </div>
               </div>
@@ -933,17 +943,17 @@ export default function BookingDetailPage({
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">
                         {isFlight
-                          ? "حجز طيران باقتصادي مخفض (Basic Fare) خاضع لشروط الناقل المباشر"
+                          ? bc.basicFareLocked
                           : isHotel
-                          ? "حجز فندق غير قابل للاسترداد أو التعديل الآلي (Non-refundable)"
-                          : "هذا الحجز لا يدعم التعديل أو الإلغاء الآلي عبر النظام"}
+                          ? bc.hotelNonRefundable
+                          : bc.bookingNoAutoChange}
                       </h4>
                       <p className="mt-1 text-xs text-slate-600 leading-relaxed">
                         {isFlight
-                          ? "هذه التذكرة صادرة بفئة اقتصادية خاصة تتبع سياسة الناقل المباشر، ولا تتيح التعديل أو إلغاء الحجز أو إضافة الأمتعة عبر النظام الآلي لمزودي الخدمة. في حال وجود حالة طارئة أو رغبة في استفسار مخصص، يسعد فريق العمليات في لوناليزا بتقديم المساعدة اليدوية المباشرة."
+                          ? bc.flightLockedHelp
                           : isHotel
-                          ? "وفقاً لشروط الفندق المعتمدة أثناء تأكيد الغرفة، فإن هذا السعر الترويجي نهائي ولا يدعم الإلغاء أو استرداد المبالغ. لأي تعديلات استثنائية أو طلبات خاصة من الفندق، يرجى التواصل مع فريق الدعم."
-                          : "تم تأكيد هذا الحجز مباشرة لدى المزود ولا يدعم التعديلات الآلية. يرجى التواصل مع فريق الدعم في حال وجود أي استفسار."}
+                          ? bc.hotelLockedHelp
+                          : bc.genericLockedHelp}
                       </p>
                     </div>
                   </div>
@@ -958,7 +968,7 @@ export default function BookingDetailPage({
                       className="inline-flex items-center gap-2 rounded-xl bg-[#280e46] hover:bg-[#391563] px-5 py-2.5 text-xs font-bold text-amber-300 shadow-sm transition-all"
                     >
                       <MessageCircle size={15} />
-                      <span>التواصل مباشرة مع مستشار الدعم (WhatsApp)</span>
+                      <span>{bc.contactSupportWhatsApp}</span>
                     </a>
                   </div>
                 </div>
@@ -978,7 +988,7 @@ export default function BookingDetailPage({
                         )}
                       >
                         <Luggage size={15} />
-                        <span>إضافة وزن أمتعة</span>
+                        <span>{bc.addBaggage}</span>
                       </button>
                     )}
 
@@ -994,7 +1004,7 @@ export default function BookingDetailPage({
                         )}
                       >
                         <Calendar size={15} />
-                        <span>تعديل الموعد / الرحلة</span>
+                        <span>{bc.changeDateFlight}</span>
                       </button>
                     )}
 
@@ -1010,7 +1020,7 @@ export default function BookingDetailPage({
                         )}
                       >
                         <AlertTriangle size={15} />
-                        <span>طلب إلغاء واسترداد</span>
+                        <span>{bc.requestCancelRefund}</span>
                       </button>
                     )}
 
@@ -1025,7 +1035,7 @@ export default function BookingDetailPage({
                       )}
                     >
                       <MessageCircle size={15} />
-                      <span>مستشار الحجز والمساعدة</span>
+                      <span>{bc.bookingAdvisor}</span>
                     </button>
                   </div>
 
@@ -1087,7 +1097,7 @@ export default function BookingDetailPage({
                     {activeActionTab === "modify" && capabilities?.canModify && (
                       <div className="space-y-4 max-w-xl">
                         <p className="text-xs text-slate-600 font-medium">
-                          يمكنك طلب تعديل موعد الرحلة أو بيانات السفر. سيقوم فريق العمليات بفحص توفر المقاعد وأسعار المورد وتزويدك بعرض السعر الفوري:
+                          يمكنك طلب تعديل موعد الرحلة أو بيانات السفر. سيقوم فريق لوناليزا بفحص التوفر وتزويدك بعرض السعر الفوري:
                         </p>
                         <div>
                           <label className="block text-xs font-bold text-slate-700 mb-1.5">التاريخ الجديد المقترح:</label>
@@ -1130,8 +1140,8 @@ export default function BookingDetailPage({
                           </h4>
                           <p className="text-xs leading-relaxed text-rose-900/80">
                             {booking.freeCancellation
-                              ? "حجزك مؤهل للإلغاء المجاني بالكامل بدون أي غرامات مورد."
-                              : "قد يطبق مزود الخدمة غرامة إلغاء جزئية وفق سياسة الإلغاء المبينة أعلاه."}
+                              ? "حجزك مؤهل للإلغاء المجاني بالكامل بدون غرامات."
+                              : "قد تُطبق غرامة إلغاء جزئية وفق سياسة الإلغاء المبينة أعلاه."}
                           </p>
                         </div>
 
@@ -1154,7 +1164,7 @@ export default function BookingDetailPage({
                             className="mt-0.5 accent-rose-600"
                           />
                           <span className="text-xs text-slate-600 leading-relaxed">
-                            أوافق على سياسة الإلغاء الخاصة بالمزود، وأدرك أن المبلغ المسترد سيتم تحويله لنفس وسيلة الدفع أو رصيد المحفظة بعد خصم الرسوم إن وجدت.
+                            أوافق على سياسة الإلغاء، وأدرك أن المبلغ المسترد سيتم تحويله لنفس وسيلة الدفع أو رصيد المحفظة بعد خصم الرسوم إن وجدت.
                           </span>
                         </label>
 
@@ -1419,7 +1429,9 @@ export default function BookingDetailPage({
                         <div className="text-2xl font-black font-mono text-slate-900">{flightDetails?.origin || "IST"}</div>
                         <div className="font-bold text-slate-800 text-xs">{flightDetails?.originAirport || "Istanbul Airport"}</div>
                         <div className="text-amber-700 font-bold text-[10px]">Terminal: {flightDetails?.originTerminal || "T1"}</div>
-                        <div className="text-indigo-600 font-mono font-bold text-sm mt-1">{flightDetails?.departureTime || "08:30"}</div>
+                        <div className="text-indigo-600 font-mono font-bold text-sm mt-1">
+                          {formatFlightClock(flightDetails?.departureTime) || bc.timeUnknown}
+                        </div>
                         <div className="text-slate-500 text-[10px]">{(booking.checkIn || new Date().toISOString()).slice(0, 10)}</div>
                       </div>
                       <div className="text-center">

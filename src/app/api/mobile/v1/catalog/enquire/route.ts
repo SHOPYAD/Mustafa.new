@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
   }
 
   const channels = await getChannelServices();
-  if (!appEnabledKeys(channels).includes(channel)) {
+  if (!(appEnabledKeys(channels) as readonly string[]).includes(channel)) {
     return NextResponse.json({ ok: false, error: "service_disabled" }, { status: 404 });
   }
 

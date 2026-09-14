@@ -198,8 +198,8 @@ function CommunityFeedInner() {
   }, [hasMore, isLoadingMore]);
 
   return (
-    <main className="min-h-screen bg-transparent text-[var(--theme-text-body)] transition-colors duration-200 pt-24 pb-20 px-3 sm:px-6 lg:px-8" dir={isRtl ? "rtl" : "ltr"}>
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen min-w-0 max-w-full overflow-x-hidden bg-transparent text-[var(--theme-text-body)] transition-colors duration-200 pt-24 pb-20 px-3 sm:px-6 lg:px-8" dir={isRtl ? "rtl" : "ltr"}>
+      <div className="mx-auto min-w-0 max-w-7xl overflow-x-hidden">
         {/* Top Hero Banner - Adaptive Light / Dark Luxury */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-amber-50 via-purple-50/50 to-white dark:from-slate-900/90 dark:via-purple-950/30 dark:to-slate-900/90 border border-slate-200/90 dark:border-white/10 p-5 sm:p-8 mb-6 sm:mb-8 shadow-sm backdrop-blur-md">
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
@@ -383,7 +383,7 @@ function CommunityFeedInner() {
         {/* Main Grid: Feed + Desktop-Only Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Feed Column (2 cols) */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 min-w-0 max-w-full space-y-6 overflow-x-hidden">
             {/* Interactive Post Composer */}
             <PostComposer
               categories={categories}

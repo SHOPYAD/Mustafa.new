@@ -18,8 +18,8 @@ const PREVIEW_TONE: Record<string, string> = {
   hero: "navy",
   search: "sky",
   categories: "navy",
-  destinations: "lime",
-  banners: "lime",
+  destinations: "amber",
+  banners: "purple",
   flashDeals: "rose",
   packages: "amber",
   hotels: "amber",
@@ -27,7 +27,7 @@ const PREVIEW_TONE: Record<string, string> = {
   transfers: "blue",
   visa: "sky",
   flightDeals: "sky",
-  vipTours: "lime",
+  vipTours: "amber",
   coupons: "purple",
   points: "amber",
   affiliate: "navy",
@@ -91,8 +91,8 @@ function SectionCard({
         <span
           className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full transition-colors group-hover:scale-110"
           style={{
-            background: `var(--preview-${tone}-100, #d1fae5)`,
-            color: `var(--preview-${tone}-700, #047857)`,
+            background: `var(--preview-${tone}-100, #ede9fe)`,
+            color: `var(--preview-${tone}-700, #6d28d9)`,
           }}
           aria-hidden="true"
         >

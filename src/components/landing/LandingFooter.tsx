@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import LonalizaLogo from "@/components/ui/LonalizaLogo";
+import AppStoreBadgesWithQr from "@/components/layout/AppStoreBadgesWithQr";
 
 export default function LandingFooter({
   supportWhatsapp = "+905015709201",
@@ -174,6 +175,11 @@ export default function LandingFooter({
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Mobile App Download & Desktop QR Codes */}
+        <div className="pt-2 pb-6 border-b border-slate-200">
+          <AppStoreBadgesWithQr variant="footer" />
         </div>
 
         {/* Bottom Bar */}

@@ -28,6 +28,7 @@ import {
   getBusinessWhatsAppNumber,
 } from "@/lib/site-whatsapp";
 import HotelReviewsSection from "@/components/hotels/HotelReviewsSection";
+import VerifiedCustomerReviews from "@/components/reviews/VerifiedCustomerReviews";
 import TravelAdvisorHotelDetail from "@/components/hotels/TravelAdvisorHotelDetail";
 import SupplierHotelDetail from "@/components/hotels/SupplierHotelDetail";
 import { defaultHotelDates, parseHotelApiId, parseHotelRouteSource } from "@/lib/hotels-config";
@@ -352,6 +353,12 @@ export default function HotelDetailPage({ params }: Props) {
                   }
                 />
               )}
+
+              <VerifiedCustomerReviews
+                serviceType="hotel"
+                serviceId={hotel.id}
+                serviceName={name}
+              />
 
               {/* Rooms */}
               <div>

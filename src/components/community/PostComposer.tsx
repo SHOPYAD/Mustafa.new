@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCustomerAuth } from "@/components/auth/CustomerAuthProvider";
 import {
   Sparkles,
@@ -28,6 +28,15 @@ import type {
   NostrRelayConfig,
   ParsedTravelPost,
 } from "@/lib/nostr/types";
+import {
+  COMPOSER_PHOTO_ACCEPT,
+  COMPOSER_VIDEO_ACCEPT,
+  composerFileTooLarge,
+  composerUploadErrorMessage,
+  isComposerImageFile,
+  isComposerVideoFile,
+} from "@/lib/community/composer-media";
+import { seekAndCapturePoster } from "@/lib/community/reel-media";
 import { uploadToBlossom } from "@/lib/nostr/blossom-uploader";
 import { signAndPublishEvent } from "@/lib/nostr/client";
 
@@ -171,6 +180,39 @@ export function PostComposer({
   const [aiLoading, setAiLoading] = useState(false);
   const [showAiModal, setShowAiModal] = useState(false);
   const [aiPromptNotes, setAiPromptNotes] = useState("");
+  const photoInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const lock = showAiModal || showBookingModal;
+    const html = document.documentElement;
+    const body = document.body;
+    if (lock) {
+      html.classList.add("lonaliza-composer-lock");
+      body.classList.add("lonaliza-composer-lock");
+    } else {
+      html.classList.remove("lonaliza-composer-lock");
+      body.classList.remove("lonaliza-composer-lock");
+    }
+    return () => {
+      html.classList.remove("lonaliza-composer-lock");
+      body.classList.remove("lonaliza-composer-lock");
+    };
+  }, [showAiModal, showBookingModal]);
+
+  useEffect(() => {
+    const onPickerError = (event: Event) => {
+      const detail = (event as CustomEvent<string>).detail;
+      setErrorBanner(
+        typeof detail === "string" && detail.trim()
+          ? detail
+          : "تعذر اختيار الملف من المعرض.",
+      );
+      setIsComposerExpanded(true);
+    };
+    window.addEventListener("lonaliza-file-picker-error", onPickerError);
+    return () => window.removeEventListener("lonaliza-file-picker-error", onPickerError);
+  }, []);
 
   // Publish state
   const [publishing, setPublishing] = useState(false);
@@ -318,25 +360,55 @@ export function PostComposer({
     setIsComposerExpanded(true);
   };
 
+  const openComposerMediaPicker = (kind: "photo" | "video") => {
+    if (!user && !isAdmin) {
+      openAuth("login");
+      return;
+    }
+    setErrorBanner(null);
+    const input = kind === "photo" ? photoInputRef.current : videoInputRef.current;
+    if (!input) {
+      setErrorBanner("تعذر فتح اختيار الوسائط. أعد تحميل الصفحة وحاول مرة أخرى.");
+      setIsComposerExpanded(true);
+      return;
+    }
+    try {
+      input.click();
+    } catch {
+      setErrorBanner("تعذر فتح معرض الصور أو الفيديو. تحقق من أذونات التطبيق.");
+    }
+  };
+
   // Handle file select & high speed direct upload
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
+    const selected = Array.from(files);
+    e.target.value = "";
 
+    setIsComposerExpanded(true);
     setUploading(true);
-    setUploadProgress(20);
+    setUploadProgress(1);
     setErrorBanner(null);
 
     try {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const isVideo = file.type.startsWith("video/");
+      for (let i = 0; i < selected.length; i++) {
+        const file = selected[i];
+        const tooLarge = composerFileTooLarge(file);
+        if (tooLarge) {
+          setErrorBanner(tooLarge);
+          continue;
+        }
+        const isVideo = isComposerVideoFile(file);
+        if (!isVideo && !isComposerImageFile(file)) {
+          setErrorBanner("الملف المختار ليس صورة أو فيديو صالحًا.");
+          continue;
+        }
 
-        // Upload media via Blossom BUD-01 servers with true real-time percentage progress
         const uploadResult = await uploadToBlossom(file, {
           onProgress: (pct) => {
-            const step = Math.round(((i + pct / 100) / files.length) * 100);
-            setUploadProgress(Math.max(5, Math.min(99, step)));
+            const step = Math.round(((i + pct / 100) / selected.length) * 100);
+            setUploadProgress(Math.max(1, Math.min(99, step)));
           },
         });
 
@@ -350,13 +422,39 @@ export function PostComposer({
         ]);
       }
       setUploadProgress(100);
-    } catch (err: any) {
-      setErrorBanner(err?.message || "فشل رفع وسائط التجربة السياحية");
+    } catch (err: unknown) {
+      setErrorBanner(composerUploadErrorMessage(err));
     } finally {
       setUploading(false);
       setTimeout(() => setUploadProgress(0), 1000);
     }
   };
+
+  const composerFileInputs = (
+    <>
+      <input
+        ref={photoInputRef}
+        type="file"
+        accept={COMPOSER_PHOTO_ACCEPT}
+        multiple
+        onChange={handleFileChange}
+        className="lonaliza-composer-file"
+        tabIndex={-1}
+        aria-hidden="true"
+        disabled={uploading}
+      />
+      <input
+        ref={videoInputRef}
+        type="file"
+        accept={COMPOSER_VIDEO_ACCEPT}
+        onChange={handleFileChange}
+        className="lonaliza-composer-file"
+        tabIndex={-1}
+        aria-hidden="true"
+        disabled={uploading}
+      />
+    </>
+  );
 
   // Trigger AI Copilot
   const handleGenerateWithAi = async () => {
@@ -365,23 +463,43 @@ export function PostComposer({
     try {
       const images = mediaFiles.filter((m) => m.type === "image").map((m) => m.url);
       const videos = mediaFiles.filter((m) => m.type === "video").map((m) => m.url);
+      const visualFrames: string[] = [];
+      for (const file of mediaFiles.filter((m) => m.type === "video").slice(0, 2)) {
+        try {
+          const video = document.createElement("video");
+          video.src = file.url;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = "auto";
+          await new Promise<void>((resolve) => {
+            const done = () => resolve();
+            video.addEventListener("loadeddata", done, { once: true });
+            window.setTimeout(done, 1800);
+          });
+          const frame = await seekAndCapturePoster(video, 0.6);
+          if (frame) visualFrames.push(frame);
+        } catch {
+          /* ignore frame harvest */
+        }
+      }
 
       const res = await fetch("/api/community/ai-assist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          booking: attachedBooking || undefined,
+          booking: attachedBooking || attachedService || undefined,
           prompt:
             aiPromptNotes ||
             (attachedBooking
               ? `تقييم وتجربة حجز ${attachedBooking.title} (${attachedBooking.typeLabel || ""})`
               : "تجربة ممتازة وخدمات راقية وتنسيق سياحي متكامل"),
-          destination: attachedBooking?.destination || selectedDestination,
-          category: attachedBooking?.type || selectedCategory,
+          destination: attachedBooking?.destination || attachedService?.destination || selectedDestination,
+          category: attachedBooking?.type || attachedService?.type || selectedCategory,
           rating,
           language: "ar",
           images,
           videos,
+          visualFrames,
         }),
       });
       const data = await res.json();
@@ -492,10 +610,36 @@ export function PostComposer({
   // ----------------------------------------------------
   // COMPACT / COLLAPSED STATE (DEFAULT)
   // ----------------------------------------------------
-  if (!isComposerExpanded) {
-    return (
+  const viewportLockStyle = (
+    <style>{`
+      html.lonaliza-composer-lock {
+        overflow: hidden !important;
+      }
+      .lonaliza-composer-scroll {
+        max-height: min(82dvh, calc(100dvh - 6.75rem));
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overscroll-behavior: contain;
+      }
+      input.lonaliza-composer-file {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 1px;
+        opacity: 0.01;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+    `}</style>
+  );
+
+  const collapsedComposer = (
       <div
-        className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all select-none"
+        className="min-w-0 max-w-full overflow-x-hidden rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-all"
         dir="rtl"
       >
         {/* Success / Error Banner if just published */}
@@ -542,10 +686,10 @@ export function PostComposer({
 
         {/* If General Guest: Clear call-to-action banner */}
         {!user && !isAdmin && !attachedService && (
-          <div className="mb-3 p-2.5 sm:p-3 rounded-2xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 text-amber-950 dark:text-amber-200 flex items-center justify-between gap-2 text-xs">
-            <div className="flex items-center gap-2 truncate">
-              <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span className="truncate">انضم لمجتمع لوناليزا وانشر تجاربك واكسب النقاط فور وصول منشورك لتفاعل الجمهور!</span>
+          <div className="mb-3 flex min-w-0 max-w-full items-center justify-between gap-2 rounded-2xl border border-amber-200/80 bg-amber-500/10 p-2.5 text-xs text-amber-950 dark:border-amber-800/60 dark:bg-amber-950/30 dark:text-amber-200 sm:p-3">
+            <div className="flex min-w-0 flex-1 items-center gap-2">
+              <Sparkles className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
+              <span className="min-w-0 whitespace-normal break-words">انضم لمجتمع لوناليزا وانشر تجاربك واكسب النقاط فور وصول منشورك لتفاعل الجمهور!</span>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
               <button
@@ -615,7 +759,7 @@ export function PostComposer({
               setIsComposerExpanded(true);
               setShowAiModal(true);
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs font-bold shrink-0 whitespace-nowrap shadow-xs cursor-pointer transition-all active:scale-95"
+            className="flex min-h-11 items-center gap-1.5 px-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs font-bold shrink-0 whitespace-nowrap shadow-xs cursor-pointer transition-all active:scale-95"
           >
             <Wand2 className="h-3.5 w-3.5 text-amber-300 animate-pulse shrink-0" />
             <span>وكيل لوناليزا</span>
@@ -632,70 +776,40 @@ export function PostComposer({
               setShowBookingModal(true);
               loadUserBookings();
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold shrink-0 whitespace-nowrap shadow-xs cursor-pointer transition-all active:scale-95"
+            className="flex min-h-11 items-center gap-1.5 px-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold shrink-0 whitespace-nowrap shadow-xs cursor-pointer transition-all active:scale-95"
           >
             <Ticket className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>مشاركة حجز</span>
           </button>
 
-          <label
-            onClick={() => {
-              if (!user && !isAdmin) {
-                openAuth("login");
-                return;
-              }
-              setIsComposerExpanded(true);
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold shrink-0 whitespace-nowrap shadow-xs cursor-pointer transition-all active:scale-95"
+          <button
+            type="button"
+            onClick={() => openComposerMediaPicker("photo")}
+            disabled={uploading}
+            className="relative flex min-h-11 min-w-[44px] cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-700 shadow-xs transition-all active:scale-95 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 disabled:opacity-50"
           >
-            <Camera className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+            <Camera className="h-3.5 w-3.5 shrink-0 text-blue-600 dark:text-blue-400" />
             <span>إضافة صور</span>
-            {user || isAdmin ? (
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleFileChange}
-                className="hidden"
-                disabled={uploading}
-              />
-            ) : null}
-          </label>
+          </button>
 
-          <label
-            onClick={() => {
-              if (!user && !isAdmin) {
-                openAuth("login");
-                return;
-              }
-              setIsComposerExpanded(true);
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold shrink-0 whitespace-nowrap cursor-pointer transition-all active:scale-95"
+          <button
+            type="button"
+            onClick={() => openComposerMediaPicker("video")}
+            disabled={uploading}
+            className="relative flex min-h-11 min-w-[44px] cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-700 transition-all active:scale-95 hover:bg-slate-100 disabled:opacity-50"
           >
-            <Video className="h-3.5 w-3.5 text-rose-600 shrink-0" />
+            <Video className="h-3.5 w-3.5 shrink-0 text-rose-600" />
             <span>ريلز</span>
-            {user || isAdmin ? (
-              <input
-                type="file"
-                accept="video/*"
-                onChange={handleFileChange}
-                className="hidden"
-                disabled={uploading}
-              />
-            ) : null}
-          </label>
+          </button>
         </div>
       </div>
     );
-  }
 
   // ----------------------------------------------------
   // FULL / EXPANDED STATE
   // ----------------------------------------------------
-  // If guest somehow reaches expanded state, prompt for auth
-  if (!user && !isAdmin) {
-    return (
-      <div className="rounded-3xl border border-amber-200/90 dark:border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-slate-900/5 to-amber-500/15 dark:from-amber-950/25 dark:via-slate-900 dark:to-amber-950/20 p-5 sm:p-6 shadow-sm text-center" dir="rtl">
+  const guestComposer = (
+      <div className="min-w-0 max-w-full overflow-x-hidden rounded-3xl border border-amber-200/90 dark:border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-slate-900/5 to-amber-500/15 dark:from-amber-950/25 dark:via-slate-900 dark:to-amber-950/20 p-5 sm:p-6 shadow-sm text-center" dir="rtl">
         <div className="max-w-md mx-auto space-y-3">
           <div className="h-12 w-12 mx-auto rounded-2xl bg-amber-100 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700/60 flex items-center justify-center text-amber-800 dark:text-amber-300 shadow-xs">
             <Sparkles className="h-6 w-6 text-amber-600 dark:text-amber-400" />
@@ -725,23 +839,24 @@ export function PostComposer({
         </div>
       </div>
     );
-  }
 
-  return (
+  const expandedComposer = (
     <div
-      className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-sm hover:shadow-md transition-all"
+      className="lonaliza-composer-scroll min-w-0 max-w-full rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-sm hover:shadow-md transition-all"
       dir="rtl"
     >
       {/* Top Banner: Rewards Info + Collapse Button */}
-      <div className="flex items-center justify-between gap-2 mb-3.5 pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
-        <span className="text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1.5">
-          <Sparkles className="h-4 w-4 text-amber-500 shrink-0" />
-          <span className="truncate">شارك تجربتك السياحية واكسب حتى +300 نقطة VIP (تُصرف فور وصول المنشور لشروط تفاعل الجمهور: 50 إعجاب و 10 تعليقات)</span>
+      <div className="mb-3.5 flex min-w-0 max-w-full items-start justify-between gap-2 border-b border-slate-100 pb-3 text-xs dark:border-slate-800">
+        <span className="flex min-w-0 flex-1 items-start gap-1.5 font-medium text-slate-600 dark:text-slate-300">
+          <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+          <span className="min-w-0 whitespace-normal break-words leading-relaxed">
+            شارك تجربتك السياحية واكسب حتى +300 نقطة VIP (تُصرف فور وصول المنشور لشروط تفاعل الجمهور: 50 إعجاب و 10 تعليقات)
+          </span>
         </span>
         <button
           type="button"
           onClick={() => setIsComposerExpanded(false)}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition-all cursor-pointer shrink-0"
+          className="flex shrink-0 items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-bold text-slate-500 transition-all hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white cursor-pointer"
         >
           <span>تصغير / إخفاء</span>
           <ChevronUp className="h-3.5 w-3.5" />
@@ -750,10 +865,10 @@ export function PostComposer({
 
       {/* Admin Role Toggle (For General Platform Admin) */}
       {isAdmin && (
-        <div className="mb-3.5 p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-yellow-400/10 to-amber-500/15 dark:from-indigo-950/60 dark:via-slate-800/80 dark:to-indigo-950/60 border border-amber-300 dark:border-indigo-800/60 flex items-center justify-between gap-2 text-xs">
-          <div className="flex items-center gap-2 text-amber-950 dark:text-amber-300 font-bold">
+        <div className="mb-3.5 flex min-w-0 max-w-full flex-col items-start justify-between gap-2 rounded-2xl border border-amber-300 bg-gradient-to-r from-amber-500/15 via-yellow-400/10 to-amber-500/15 p-3 text-xs dark:border-indigo-800/60 dark:from-indigo-950/60 dark:via-slate-800/80 dark:to-indigo-950/60 sm:flex-row sm:items-center">
+          <div className="flex min-w-0 items-center gap-2 font-bold text-amber-950 dark:text-amber-300">
             <span className="text-base">👑</span>
-            <span>النشر بالصفة الرسمية: <strong>إدارة المنصة العامة (Official Admin)</strong></span>
+            <span className="min-w-0 break-words">النشر بالصفة الرسمية: <strong>إدارة المنصة العامة (Official Admin)</strong></span>
           </div>
           <label className="flex items-center gap-2 cursor-pointer font-medium text-slate-700 dark:text-slate-300">
             <input
@@ -770,16 +885,16 @@ export function PostComposer({
       {/* Member Identity Selection (Real Name vs Luxury Pseudonym) */}
       {(!isAdmin || !postAsAdmin) && (
         <div className="mb-3.5 p-3 sm:p-3.5 rounded-2xl bg-amber-50/70 dark:bg-slate-800/60 border border-amber-200/80 dark:border-slate-700 text-xs space-y-2.5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+          <div className="flex min-w-0 flex-col justify-between gap-2 sm:flex-row sm:items-center">
+            <span className="flex min-w-0 items-center gap-1.5 font-bold text-slate-800 dark:text-slate-200">
               <span>🎭</span>
               <span>هوية النشر في مجتمع السفر:</span>
             </span>
-            <div className="inline-flex items-center rounded-xl bg-white dark:bg-slate-900 p-1 border border-slate-200 dark:border-slate-700 shadow-xs">
+            <div className="inline-flex min-w-0 max-w-full flex-wrap items-center rounded-xl border border-slate-200 bg-white p-1 shadow-xs dark:border-slate-700 dark:bg-slate-900">
               <button
                 type="button"
                 onClick={() => setIdentityMode("real")}
-                className={`px-3 py-1 rounded-lg font-bold text-xs transition-all cursor-pointer ${
+                className={`max-w-full truncate rounded-lg px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
                   identityMode === "real"
                     ? "bg-amber-500 text-slate-950 shadow-xs"
                     : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -1049,7 +1164,11 @@ export function PostComposer({
         {uploading && (
           <div className="space-y-1">
             <div className="flex justify-between text-[11px] text-amber-700 dark:text-amber-400 font-medium">
-              <span>جاري رفع الفيديو والصور بأعلى جودة...</span>
+              <span>
+                {uploadProgress >= 96
+                  ? "تم إرسال الملف، بانتظار تأكيد خادم الوسائط..."
+                  : "جاري رفع الفيديو والصور بأعلى جودة..."}
+              </span>
               <span>{uploadProgress}%</span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
@@ -1071,38 +1190,31 @@ export function PostComposer({
                 setShowBookingModal(true);
                 loadUserBookings();
               }}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold shrink-0 whitespace-nowrap cursor-pointer transition-all active:scale-95"
+              className="flex min-h-11 items-center gap-1.5 px-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold shrink-0 whitespace-nowrap cursor-pointer transition-all active:scale-95"
             >
               <Ticket className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>مشاركة حجز</span>
             </button>
 
-            {/* Add Photos Button */}
-            <label className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold shrink-0 whitespace-nowrap cursor-pointer transition-all active:scale-95">
-              <Camera className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+            <button
+              type="button"
+              onClick={() => openComposerMediaPicker("photo")}
+              disabled={uploading}
+              className="relative flex min-h-11 min-w-[44px] shrink-0 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-700 transition-all active:scale-95 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 disabled:opacity-50"
+            >
+              <Camera className="h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400" />
               <span>إضافة صور</span>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleFileChange}
-                className="hidden"
-                disabled={uploading}
-              />
-            </label>
+            </button>
 
-            {/* Upload Vertical Reels Button */}
-            <label className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold shrink-0 whitespace-nowrap cursor-pointer transition-all active:scale-95">
-              <Video className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0" />
+            <button
+              type="button"
+              onClick={() => openComposerMediaPicker("video")}
+              disabled={uploading}
+              className="relative flex min-h-11 min-w-[44px] shrink-0 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-700 transition-all active:scale-95 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 disabled:opacity-50"
+            >
+              <Video className="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" />
               <span>رفع ريلز</span>
-              <input
-                type="file"
-                accept="video/*"
-                onChange={handleFileChange}
-                className="hidden"
-                disabled={uploading}
-              />
-            </label>
+            </button>
           </div>
 
           {/* Submit Button */}
@@ -1113,7 +1225,7 @@ export function PostComposer({
               uploading ||
               (!content.trim() && mediaFiles.length === 0 && !attachedBooking)
             }
-            className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-amber-500/25 transition-all disabled:opacity-50 shrink-0 whitespace-nowrap cursor-pointer"
+            className="flex min-h-11 items-center justify-center gap-2 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-amber-500/25 transition-all disabled:opacity-50 shrink-0 whitespace-nowrap cursor-pointer"
           >
             {publishing ? (
               <RefreshCw className="h-4 w-4 animate-spin shrink-0" />
@@ -1128,10 +1240,10 @@ export function PostComposer({
       {/* Booking Selector Modal */}
       {showBookingModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/60 p-0 backdrop-blur-xs dark:bg-black/75 sm:items-center sm:p-4"
           dir="rtl"
         >
-          <div className="w-full max-w-lg rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
+          <div className="flex max-h-[min(92dvh,40rem)] w-full min-w-0 max-w-[min(32rem,100dvw)] flex-col space-y-4 overflow-x-hidden overflow-y-auto rounded-t-3xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-slate-800 dark:bg-slate-900 sm:max-h-[85vh] sm:rounded-3xl sm:p-6">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div className="flex items-center gap-2">
                 <Ticket className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
@@ -1224,75 +1336,104 @@ export function PostComposer({
 
       {/* AI Copilot Modal */}
       {showAiModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs">
-          <div className="w-full max-w-lg rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <Wand2 className="h-5 w-5 text-purple-600 shrink-0" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                  وكيل لوناليزا الذكي لصياغة وتنسيق التجارب الفاخرة
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/70 p-0 backdrop-blur-sm sm:items-center sm:p-4"
+          dir="rtl"
+        >
+          <div
+            data-keep-color="true"
+            className="flex max-h-[min(92dvh,42rem)] w-full min-w-0 max-w-[min(32rem,100dvw)] flex-col overflow-hidden rounded-t-3xl border border-purple-200 bg-white shadow-2xl sm:max-h-[85vh] sm:rounded-3xl"
+            style={{ backgroundColor: "#ffffff", color: "#1e1133" }}
+          >
+            <div className="flex items-start justify-between gap-3 border-b border-purple-100 px-5 pb-3 pt-5">
+              <div className="min-w-0 flex-1 space-y-1">
+                <div className="flex items-center gap-2 text-purple-800">
+                  <Wand2 className="h-5 w-5 shrink-0" />
+                  <span className="text-[11px] font-black tracking-wide">وكيل لوناليزا الذكي</span>
+                </div>
+                <h3
+                  className="text-base font-black leading-snug"
+                  style={{ color: "#2e1065" }}
+                >
+                  صياغة وتنسيق التجارب الفاخرة
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setShowAiModal(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-700"
+                aria-label="إغلاق"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4" />
               </button>
             </div>
 
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              اكتب اسم المعلم أو الخدمة وملاحظاتك الواقعية، وسيقوم وكيل لوناليزا الذكي بصياغة
-              مراجعة مسافر بشرية صادقة وثرية بالتفاصيل الدقيقة والمرافق دون أي مبالغة تسويقية.
-            </p>
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-5 py-4">
+              <p className="text-sm font-medium leading-relaxed" style={{ color: "#3b0764" }}>
+                اكتب اسم المعلم أو الخدمة وملاحظاتك الواقعية، وسيقوم وكيل لوناليزا الذكي بصياغة
+                مراجعة مسافر بشرية صادقة وثرية بالتفاصيل الدقيقة والمرافق دون أي مبالغة تسويقية.
+              </p>
 
-            {/* Attached Verified Booking Banner */}
             {attachedBooking && (
-              <div className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs text-emerald-950 dark:text-emerald-200 flex items-start gap-2.5 font-bold shadow-2xs">
-                <Sparkles className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-300 text-xs text-emerald-950 flex items-start gap-2.5 font-bold">
+                <Sparkles className="h-4 w-4 text-emerald-700 shrink-0 mt-0.5" />
                 <div className="min-w-0">
                   <div>حجز مؤكد مرفق: {attachedBooking.title}</div>
-                  <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-normal mt-0.5">
+                  <div className="text-[11px] text-emerald-800 font-semibold mt-0.5">
                     الوجهة: {attachedBooking.destination} • نوع الخدمة: {attachedBooking.typeLabel || attachedBooking.type} • سيقوم الذكاء الاصطناعي بكتابة تقييم وتجربة حصرية لهذه الخدمة بدقة.
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Attached Media Badge */}
             {mediaFiles.length > 0 && (
-              <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200/70 dark:border-purple-800/60 text-[11px] text-purple-900 dark:text-purple-300 flex items-center gap-2 font-medium">
-                <Sparkles className="h-3.5 w-3.5 text-purple-600 shrink-0" />
+              <div className="p-2.5 rounded-xl bg-purple-100 border border-purple-300 text-[11px] text-purple-950 flex items-center gap-2 font-bold">
+                <Sparkles className="h-3.5 w-3.5 text-purple-700 shrink-0" />
                 <span>
-                  تم رصد {mediaFiles.length} وسائط مرفقة؛ سيتم تخصيص التقرير ليعكس معالم ومرافق
-                  الصور بدقة.
+                  تم رصد {mediaFiles.length} وسائط مرفقة؛ سيقرأ الوكيل الصورة/لقطات الفيديو مع بيانات الحجز ويكتب مراجعة متعددة الفقرات.
                 </span>
               </div>
             )}
 
-            {/* Quick Inspiration Chips */}
-            <div className="space-y-1.5">
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            <div className="space-y-2">
+              <div className="text-[12px] font-black" style={{ color: "#2e1065" }}>
                 أفكار ومقترحات سريعة بنقرة واحدة:
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {[
+              {[
+                [
                   "إقامة فندقية فاخرة ومسبح وإطلالة بانورامية وإفطار راقٍ",
                   "جولة يخت خاص في البوسفور وقت الغروب وأجواء ساحرة",
                   "أكواخ طرابزون وأوزنجول وسط الضباب والطبيعة الخلابة",
+                ],
+                [
                   "خدمة سيارة مرسيدس VIP وسائق محترف ودقة في المواعيد",
                   "مطعم وتجربة عشاء راقية ومأكولات لذيذة وخدمة ممتازة",
-                ].map((chip) => (
-                  <button
-                    key={chip}
-                    type="button"
-                    onClick={() => setAiPromptNotes(chip)}
-                    className="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-purple-100 dark:hover:bg-purple-950/50 hover:text-purple-800 dark:hover:text-purple-300 text-slate-700 dark:text-slate-300 transition-all cursor-pointer text-right border border-transparent dark:border-slate-700"
-                  >
-                    + {chip}
-                  </button>
-                ))}
-              </div>
+                  "بالون كابادوكيا مع شروق الشمس ومشهد سينمائي",
+                ],
+              ].map((row, rowIdx) => (
+                <div
+                  key={rowIdx}
+                  className="flex gap-2 overflow-x-auto overscroll-x-contain pb-1 snap-x snap-mandatory touch-pan-x"
+                  style={{ scrollbarWidth: "thin" }}
+                >
+                  {row.map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      data-keep-color="true"
+                      onClick={() => setAiPromptNotes(chip)}
+                      className="snap-start shrink-0 max-w-[85%] whitespace-normal rounded-2xl border-2 px-3 py-2 text-start text-[12px] font-bold leading-relaxed"
+                      style={{
+                        backgroundColor: "#f3e8ff",
+                        borderColor: "#7e22ce",
+                        color: "#3b0764",
+                      }}
+                    >
+                      + {chip}
+                    </button>
+                  ))}
+                </div>
+              ))}
             </div>
 
             <textarea
@@ -1300,22 +1441,25 @@ export function PostComposer({
               value={aiPromptNotes}
               onChange={(e) => setAiPromptNotes(e.target.value)}
               placeholder="اكتب ملاحظاتك هنا... أو اختر أحد الاقتراحات أعلاه"
-              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white text-xs placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:bg-white dark:focus:bg-slate-800"
+              className="w-full rounded-xl border-2 border-purple-200 bg-purple-50 px-3 py-2 text-sm font-medium text-purple-950 placeholder:text-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
+            </div>
 
-            <div className="flex items-center justify-end gap-2 pt-2">
+            <div className="flex min-w-0 flex-wrap items-center justify-end gap-2 border-t border-purple-100 px-5 py-3">
               <button
                 type="button"
                 onClick={() => setShowAiModal(false)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                className="rounded-xl px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100"
               >
                 إلغاء
               </button>
               <button
                 type="button"
+                data-keep-color="true"
                 onClick={handleGenerateWithAi}
                 disabled={aiLoading}
-                className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md shadow-purple-500/25 transition-all disabled:opacity-50 cursor-pointer"
+                className="flex min-w-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-700 px-5 py-2.5 text-xs font-black text-white shadow-md disabled:opacity-50"
+                style={{ color: "#ffffff" }}
               >
                 {aiLoading && <RefreshCw className="h-3.5 w-3.5 animate-spin" />}
                 <span>توليد التقرير بالذكاء الاصطناعي</span>
@@ -1325,5 +1469,17 @@ export function PostComposer({
         </div>
       )}
     </div>
+  );
+
+  return (
+    <>
+      {viewportLockStyle}
+      {composerFileInputs}
+      {!isComposerExpanded
+        ? collapsedComposer
+        : !user && !isAdmin
+          ? guestComposer
+          : expandedComposer}
+    </>
   );
 }

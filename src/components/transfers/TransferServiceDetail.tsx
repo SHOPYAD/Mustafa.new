@@ -24,6 +24,7 @@ import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
 import { buildBusinessWhatsAppLink } from "@/lib/site-whatsapp";
 import EnquiryModal from "@/components/ui/EnquiryModal";
+import VerifiedCustomerReviews from "@/components/reviews/VerifiedCustomerReviews";
 
 const OsmRouteMap = dynamic(() => import("@/components/maps/OsmRouteMap"), {
   ssr: false,
@@ -380,6 +381,12 @@ export default function TransferServiceDetail({
                   </div>
                 </div>
               )}
+
+              <VerifiedCustomerReviews
+                serviceType={item.type === "vip_tour" ? "tour" : "transfer"}
+                serviceId={item.id}
+                serviceName={tContent(item, "name", locale)}
+              />
             </div>
 
             <aside className="lg:col-span-1">

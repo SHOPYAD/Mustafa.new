@@ -17,10 +17,10 @@ import {
   ChevronRight,
   ChevronLeft,
   CornerDownLeft,
-  Maximize2,
   Sparkles,
   ChevronDown,
   ChevronUp,
+  Maximize2,
   ShieldCheck,
   Play,
   Volume2,
@@ -35,6 +35,8 @@ import {
   Smartphone,
 } from "lucide-react";
 import type { ParsedTravelPost, CommunityComment } from "@/lib/nostr/types";
+import { probeImageUrl, resolveReelPoster, seekAndCapturePoster } from "@/lib/community/reel-media";
+import { SleekVideoOverlay } from "@/components/community/ReelVideoSurface";
 
 function formatViews(views: number): string {
   if (views >= 1000000) return `${(views / 1000000).toFixed(1)}M`;
@@ -43,13 +45,40 @@ function formatViews(views: number): string {
 }
 
 // Dedicated Vertical Portrait Video Player for Timeline (No letterboxing, tap-to-play)
-function PostVideoPlayer({ videoUrl }: { videoUrl: string }) {
+function PostVideoPlayer({
+  videoUrl,
+  posterUrl,
+  images,
+}: {
+  videoUrl: string;
+  posterUrl?: string;
+  images?: string[];
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [poster, setPoster] = useState<string | undefined>(undefined);
+  const [overlayOpen, setOverlayOpen] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const guessed = resolveReelPoster({ posterUrl, images, videoUrl });
+    setPoster(undefined);
+    if (!guessed) return;
+    if (guessed.startsWith("data:image/")) {
+      setPoster(guessed);
+      return;
+    }
+    void probeImageUrl(guessed).then((ok) => {
+      if (!cancelled && ok) setPoster(guessed);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [videoUrl, posterUrl, images?.[0]]);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -88,27 +117,38 @@ function PostVideoPlayer({ videoUrl }: { videoUrl: string }) {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  const toggleFullscreen = (e: React.MouseEvent) => {
+  const openOverlay = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!videoRef.current) return;
-    if (videoRef.current.requestFullscreen) {
-      videoRef.current.requestFullscreen().catch(() => {});
-    }
+    videoRef.current?.pause();
+    setIsPlaying(false);
+    setOverlayOpen(true);
   };
 
   return (
     <div
-      className="relative w-full max-w-[420px] mx-auto aspect-[4/5] sm:aspect-[9/16] max-h-[520px] rounded-2xl overflow-hidden bg-black shadow-lg group select-none cursor-pointer"
+      className="relative w-full max-w-[420px] mx-auto aspect-[4/5] sm:aspect-[9/16] max-h-[520px] rounded-2xl overflow-hidden bg-[#140522] shadow-lg group select-none cursor-pointer"
       onClick={togglePlay}
     >
+      {!poster ? (
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#4c2a78_0%,_#140522_58%,_#07040d_100%)]"
+          aria-hidden
+        />
+      ) : null}
       <video
         ref={videoRef}
         src={videoUrl}
+        poster={poster}
         playsInline
         loop
         muted={isMuted}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
+        onLoadedData={(e) => {
+          void seekAndCapturePoster(e.currentTarget).then((frame) => {
+            if (frame) setPoster(frame);
+          });
+        }}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         className="w-full h-full object-cover"
@@ -172,7 +212,7 @@ function PostVideoPlayer({ videoUrl }: { videoUrl: string }) {
           <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
           <button
             type="button"
-            onClick={toggleFullscreen}
+            onClick={openOverlay}
             className="p-1 hover:text-amber-400 text-white transition-colors cursor-pointer"
             title="ملء الشاشة"
           >
@@ -180,6 +220,13 @@ function PostVideoPlayer({ videoUrl }: { videoUrl: string }) {
           </button>
         </div>
       </div>
+      {overlayOpen ? (
+        <SleekVideoOverlay
+          videoUrl={videoUrl}
+          poster={poster}
+          onClose={() => setOverlayOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }
@@ -770,7 +817,11 @@ export function PostCard({ post, currentLocale = "ar", onLike, onComment }: Post
           <div className="mb-4">
             {/* If video: render dedicated portrait player without side letterboxing */}
             {post.videos && post.videos.length > 0 ? (
-              <PostVideoPlayer videoUrl={post.videos[0]} />
+              <PostVideoPlayer
+                videoUrl={post.videos[0]}
+                posterUrl={post.videoPoster}
+                images={post.images}
+              />
             ) : images.length === 1 ? (
               /* 1 Image: Full Preview + Click to zoom */
               <div className="rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/60">
@@ -1068,22 +1119,22 @@ export function PostCard({ post, currentLocale = "ar", onLike, onComment }: Post
               </div>
             )}
 
-            {/* Comment Input Form */}
-            <form onSubmit={handleSendComment} className="flex items-center gap-2">
+            {/* Comment Input Form — circular send nested inside the field */}
+            <form onSubmit={handleSendComment} className="relative">
               <input
                 type="text"
                 value={commentInput}
                 onChange={(e) => setCommentInput(e.target.value)}
                 placeholder={replyingTo ? `اكتب ردك على ${replyingTo.authorName}...` : "اكتب تعليقك أو استفسارك عن التجربة..."}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:bg-white dark:focus:bg-slate-800 transition-all"
+                className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pe-12 ps-4 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/30 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
               <button
                 type="submit"
                 disabled={submittingComment || !commentInput.trim()}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition-all disabled:opacity-50 cursor-pointer shadow-sm shrink-0"
+                aria-label={replyingTo ? "رد" : "إرسال"}
+                className="absolute end-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-amber-500 text-white shadow-sm transition-all hover:bg-amber-600 disabled:opacity-40"
               >
-                <Send className="h-3.5 w-3.5" />
-                <span>{replyingTo ? "رد" : "إرسال"}</span>
+                <Send className="h-4 w-4" />
               </button>
             </form>
           </div>

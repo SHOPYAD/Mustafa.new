@@ -10,6 +10,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
+  AlertCircle,
   BedDouble,
   Camera,
   Check,
@@ -58,6 +59,8 @@ const COPY = {
     cancelDetails: "تفاصيل الإلغاء",
     hideDetails: "إخفاء التفاصيل",
     penaltyFrom: (d: string, amount: string) => `من ${d}: غرامة ${amount}`,
+    penaltyFreeUntil: (d: string, amount: string) => `إلغاء مجاني حتى ${d} — بعد ذلك تطبق غرامة ${amount}`,
+    penaltyActive: (amount: string) => `تطبق غرامة إلغاء حالية بقيمة ${amount}`,
     roomDescription: "وصف الغرفة",
     bestValue: "أفضل قيمة",
     cheapest: "الأقل سعراً",
@@ -82,6 +85,8 @@ const COPY = {
     cancelDetails: "Cancellation details",
     hideDetails: "Hide details",
     penaltyFrom: (d: string, amount: string) => `From ${d}: penalty ${amount}`,
+    penaltyFreeUntil: (d: string, amount: string) => `Free cancellation until ${d} — then penalty ${amount}`,
+    penaltyActive: (amount: string) => `Cancellation penalty of ${amount} applies`,
     roomDescription: "Room description",
     bestValue: "Best value",
     cheapest: "Lowest price",
@@ -106,6 +111,8 @@ const COPY = {
     cancelDetails: "İptal ayrıntıları",
     hideDetails: "Ayrıntıları gizle",
     penaltyFrom: (d: string, amount: string) => `${d} itibarıyla: ceza ${amount}`,
+    penaltyFreeUntil: (d: string, amount: string) => `${d} tarihine kadar ücretsiz — sonrasında ceza ${amount}`,
+    penaltyActive: (amount: string) => `${amount} tutarında iptal cezası geçerlidir`,
     roomDescription: "Oda açıklaması",
     bestValue: "En iyi değer",
     cheapest: "En düşük fiyat",
@@ -136,12 +143,26 @@ function dedupeRates(rates: TravelAdvisorRoomRate[]): TravelAdvisorRoomRate[] {
   return out.sort((a, b) => (a.totalStay ?? a.price ?? 0) - (b.totalStay ?? b.price ?? 0));
 }
 
+export function isRateFreeCancelActive(rate: TravelAdvisorRoomRate): boolean {
+  if (rate.cancellationType === "free") return true;
+  if (rate.cancellationType === "non_refundable" || rate.cancellationType === "fee_applies") return false;
+  if (!rate.freeCancellation) return false;
+  if (rate.freeCancellationUntil && Date.parse(rate.freeCancellationUntil) <= Date.now()) {
+    return false;
+  }
+  const policies = (rate.cancellationPolicies || []).filter((p) => p.from && Number.isFinite(Date.parse(p.from)));
+  if (policies.some((p) => Date.parse(p.from) <= Date.now() && p.amount > 0)) {
+    return false;
+  }
+  return true;
+}
+
 function inclusionScore(rate: TravelAdvisorRoomRate): number {
   let s = 0;
   if (boardIncludesMeals(rate.boardCode) || rate.breakfastIncluded) s += 3;
   if (rate.boardCode === "HB" || rate.boardCode === "FB") s += 2;
   if (rate.boardCode === "AI" || rate.boardCode === "UAI") s += 3;
-  if (rate.freeCancellation) s += 3;
+  if (isRateFreeCancelActive(rate)) s += 3;
   if (rate.paymentType === "pay_at_hotel") s += 1;
   if (rate.promotions?.length) s += 1;
   return s;
@@ -155,7 +176,7 @@ function extrasVs(base: TravelAdvisorRoomRate, rate: TravelAdvisorRoomRate, loca
   if (rate.boardCode && base.boardCode && rate.boardCode !== base.boardCode && rateMeals && baseMeals) {
     extras.push(boardLabel(rate.boardCode, locale, rate.boardName));
   }
-  if (rate.freeCancellation && !base.freeCancellation) extras.push(c.freeCancel);
+  if (isRateFreeCancelActive(rate) && !isRateFreeCancelActive(base)) extras.push(c.freeCancel);
   if (rate.paymentType === "pay_at_hotel" && base.paymentType !== "pay_at_hotel") extras.push(c.payAtHotel);
   if (rate.paymentType === "prepay" && base.paymentType === "pay_at_hotel") extras.push(c.prepay);
   return extras.filter(Boolean);
@@ -286,8 +307,16 @@ export default function SupplierRoomCard({ room, nights, locale, bookHref, onOpe
             const meals = boardIncludesMeals(rate.boardCode) || rate.breakfastIncluded;
             const payment = paymentLabel(rate.paymentType, locale);
             const promos = meaningfulPromotions(rate.promotions);
-            const deadline = rate.freeCancellation ? fmtDeadline(rate.freeCancellationUntil, locale, true) : "";
+            const isFreeCancel = isRateFreeCancelActive(rate);
+            const deadline = isFreeCancel ? fmtDeadline(rate.freeCancellationUntil, locale, true) : "";
             const policies = (rate.cancellationPolicies || []).filter((p) => p.from && Number.isFinite(Date.parse(p.from)));
+            const activePenalty = rate.currentPenalty || policies.find((p) => Date.parse(p.from) <= Date.now() && p.amount > 0);
+            const isCancellableWithFee = !isFreeCancel && (
+              rate.cancellationType === "fee_applies" ||
+              Boolean(activePenalty && activePenalty.amount > 0 && (rate.totalStay == null || activePenalty.amount < rate.totalStay)) ||
+              policies.some((p) => p.amount > 0 && (rate.totalStay == null || p.amount < rate.totalStay))
+            );
+            const penaltyFeeStr = activePenalty ? formatPrice(activePenalty.amount, activePenalty.currency) : "";
             const total = rate.totalStay ?? rate.price;
             const nightly = rate.nightly;
             const isPolicyOpen = policyOpen === rate.id;
@@ -314,10 +343,26 @@ export default function SupplierRoomCard({ room, nights, locale, bookHref, onOpe
                     <span className={`inline-flex items-center gap-1.5 rounded-xl px-2.5 py-1 text-[12px] font-extrabold ${meals ? "bg-emerald-50 text-emerald-800" : "bg-slate-100 text-slate-700"}`}>
                       <Utensils size={13} /> {board}
                     </span>
-                    <span className={`inline-flex items-center gap-1.5 rounded-xl px-2.5 py-1 text-[12px] font-extrabold ${rate.freeCancellation ? "bg-emerald-50 text-emerald-800" : "bg-rose-50 text-rose-800"}`}>
-                      {rate.freeCancellation ? <ShieldCheck size={13} /> : <X size={13} />}
-                      {rate.freeCancellation ? (deadline ? c.freeCancelUntil(deadline) : c.freeCancel) : c.nonRefundable}
-                    </span>
+                    {isFreeCancel ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 px-2.5 py-1 text-[12px] font-extrabold text-emerald-800 border border-emerald-200/60 shadow-2xs">
+                        <ShieldCheck size={13} className="text-emerald-600" />
+                        {deadline ? c.freeCancelUntil(deadline) : c.freeCancel}
+                      </span>
+                    ) : isCancellableWithFee ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-xl bg-amber-50 px-2.5 py-1 text-[12px] font-extrabold text-amber-900 border border-amber-200/60 shadow-2xs">
+                        <AlertCircle size={13} className="text-amber-600" />
+                        {locale === "ar"
+                          ? (penaltyFeeStr ? `إلغاء متاح (رسوم الإلغاء: ${penaltyFeeStr})` : "إلغاء متاح برسوم محددة")
+                          : locale === "tr"
+                          ? (penaltyFeeStr ? `İptal Edilebilir (${penaltyFeeStr} kesinti)` : "Ücretli İptal Edilebilir")
+                          : (penaltyFeeStr ? `Cancellable (fee: ${penaltyFeeStr})` : "Cancellable with fee")}
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 rounded-xl bg-rose-50 px-2.5 py-1 text-[12px] font-extrabold text-rose-800 border border-rose-200/60 shadow-2xs">
+                        <X size={13} className="text-rose-600" />
+                        {c.nonRefundable}
+                      </span>
+                    )}
                     {payment ? (
                       <span className="inline-flex items-center gap-1.5 rounded-xl bg-sky-50 px-2.5 py-1 text-[12px] font-extrabold text-sky-800">
                         {rate.paymentType === "prepay" ? <CreditCard size={13} /> : <Wallet size={13} />} {payment}
@@ -330,20 +375,30 @@ export default function SupplierRoomCard({ room, nights, locale, bookHref, onOpe
                     ) : null}
                   </div>
 
-                  {policies.length && rate.freeCancellation ? (
+                  {policies.length ? (
                     <button type="button" data-keep-color="true" onClick={() => setPolicyOpen(isPolicyOpen ? null : rate.id)} className="inline-flex items-center gap-0.5 bg-transparent text-[11.5px] font-bold text-[#2e1065] hover:underline">
                       {isPolicyOpen ? k.hideDetails : k.cancelDetails}
                       {isPolicyOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
                     </button>
                   ) : null}
                   {isPolicyOpen && policies.length ? (
-                    <ul className="space-y-0.5 text-[11.5px] text-slate-500">
-                      {policies.slice(0, 6).map((p, i) => (
-                        <li key={i}>
-                          {k.penaltyFrom(fmtDeadline(p.from, locale, true), formatPrice(p.amount, p.currency))}
-                          {p.description ? ` — ${p.description}` : ""}
-                        </li>
-                      ))}
+                    <ul className="space-y-1.5 text-[11.5px] text-slate-700 bg-purple-50/40 p-3 rounded-xl border border-purple-100/80">
+                      {policies.slice(0, 6).map((p, i) => {
+                        const isPast = Date.parse(p.from) <= Date.now();
+                        const d = fmtDeadline(p.from, locale, true);
+                        const amt = formatPrice(p.amount, p.currency);
+                        return (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="shrink-0 text-purple-700 font-bold mt-0.5">•</span>
+                            <span className="leading-snug">
+                              {isPast
+                                ? (locale === "ar" ? `تطبق حالياً غرامة إلغاء بقيمة ${amt}` : locale === "tr" ? `Şu anda ${amt} iptal cezası geçerlidir` : `Current cancellation penalty: ${amt}`)
+                                : (locale === "ar" ? `إلغاء مجاني كامل حتى ${d} — بعد ذلك تطبق غرامة ${amt}` : locale === "tr" ? `${d} tarihine kadar ücretsiz — sonrasında ceza ${amt}` : `Free cancellation until ${d} — penalty ${amt} thereafter`)}
+                              {p.description ? ` (${p.description})` : ""}
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   ) : null}
 

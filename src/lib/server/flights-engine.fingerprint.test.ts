@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { getFlightFingerprint, pruneDominatedFareFamilies, type PublicFlightItinerary } from "./flights-engine";
+import {
+  getFlightFingerprint,
+  mergeFareFamilies,
+  pruneDominatedFareFamilies,
+  type PublicFareFamily,
+  type PublicFlightItinerary,
+} from "./flights-engine";
 
 function itinerary(id: string, flightNumber: string): PublicFlightItinerary {
   return {
@@ -76,5 +82,42 @@ describe("pruneDominatedFareFamilies", () => {
       },
     ]);
     expect(kept.map((f) => f.name).sort()).toEqual(["ECOJET", "PREMIUM", "غير قابل للاسترداد · غير قابل للتغيير · بدون أمتعة مسجلة"].sort());
+  });
+});
+
+describe("mergeFareFamilies", () => {
+  const bag = { status: "included" as const, kg: 23, pieces: 1, text: "1PC" };
+  const family = (id: string, name: string, client: number, cabin: string): PublicFareFamily => ({
+    id,
+    name,
+    nameSource: "supplier",
+    cabin,
+    price: { base: client, client, currency: "USD" },
+    attributes: {
+      refund: "unknown",
+      change: "unknown",
+      seat: "unknown",
+      meal: "unknown",
+      priority: "unknown",
+    },
+    baggageDetail: { checked: bag, cabin: bag },
+  });
+
+  it("keeps cheaper economy brands and drops business upsells on the same flight", () => {
+    const merged = mergeFareFamilies(
+      [family("eco", "ECO SAVER", 531, "economy"), family("flex", "ECO FLEX", 542, "economy")],
+      [family("biz", "BUSINESS FLEX", 1384, "business"), family("plus", "ECO FLEXPLUS", 997, "economy")]
+    );
+    expect(merged.some((f) => /business/i.test(`${f.name} ${f.cabin || ""}`))).toBe(false);
+    expect(merged.some((f) => f.name === "ECO SAVER")).toBe(true);
+  });
+
+  it("keeps the cheaper of ECO SAVER and Economy Saver", () => {
+    const merged = mergeFareFamilies(
+      [family("pk", "ECO SAVER", 647, "economy")],
+      [family("tp", "Economy Saver", 665, "economy")]
+    );
+    expect(merged.filter((f) => /saver/i.test(f.name))).toHaveLength(1);
+    expect(merged[0]?.price.client).toBe(647);
   });
 });

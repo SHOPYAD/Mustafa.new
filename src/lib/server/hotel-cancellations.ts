@@ -28,6 +28,8 @@ export type LonalizaServiceSnapshot = {
   amount: number;
   currency?: string;
   terms?: string;
+  priceType?: string;
+  priceValue?: number;
 };
 
 export type GuestHotelBooking = {
@@ -121,17 +123,31 @@ export function cancelStatusOf(booking: HotelBookingRecord): CancelStatus {
 export function lonalizaServicesOf(booking: HotelBookingRecord): LonalizaServiceSnapshot[] {
   const snap = snapshotOf(booking);
   const rows = Array.isArray(snap.lonalizaServices) ? snap.lonalizaServices : [];
+  const fare = Number(booking.price) || 0;
   return rows
     .map((row) => (row && typeof row === "object" ? (row as Record<string, unknown>) : null))
     .filter((row): row is Record<string, unknown> => Boolean(row))
-    .map((row) => ({
-      id: String(row.id || ""),
-      kind: String(row.kind || "other"),
-      title: String(row.title || ""),
-      amount: Number(row.amount) || 0,
-      currency: row.currency ? String(row.currency) : undefined,
-      terms: row.terms ? String(row.terms) : undefined,
-    }));
+    .map((row) => {
+      const priceType = String(row.priceType || "fixed");
+      const priceValue = Number(row.priceValue) || 0;
+      const stored = Number(row.amount);
+      const amount =
+        Number.isFinite(stored) && stored > 0
+          ? stored
+          : priceType === "percent"
+            ? Math.round(fare * (Math.max(0, priceValue) / 100) * 100) / 100
+            : Math.max(0, priceValue);
+      return {
+        id: String(row.id || ""),
+        kind: String(row.kind || "other"),
+        title: String(row.title || ""),
+        amount,
+        currency: row.currency ? String(row.currency) : undefined,
+        terms: row.terms ? String(row.terms) : undefined,
+        priceType,
+        priceValue,
+      };
+    });
 }
 
 export function hasLonalizaService(booking: HotelBookingRecord, kind: string): boolean {
