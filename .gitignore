@@ -58,3 +58,4 @@ next-env.d.ts
 *.iml
 **/*.iml
 **/postiz-app/
+**/redis-data/
