@@ -74,3 +74,49 @@ test("mobile explorer and restored window remain reachable", async ({ page }) =>
   await page.getByRole("button", { name: "فتح المستكشف" }).click();
   await expect(page.getByRole("complementary")).toBeVisible();
 });
+
+test("all twenty surfaces are reachable and render their actual components", async ({page})=>{
+ const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
+ for(let i=1;i<=20;i++){
+  const id=String(i).padStart(2,"0");
+  await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption(id);
+  await expect(page.getByTestId("neural-studio")).toHaveAttribute("data-screen-id",id);
+  if(id!=="01")await expect(page.getByTestId("surface-"+id)).toBeVisible();
+  await page.screenshot({path:"evidence/surface-"+id+".png",animations:"disabled"});
+ }
+ expect(errors).toEqual([]);
+});
+test("native management window only opens a source catalog route", async ({page})=>{
+ await page.route("**/admin/bookings",r=>r.fulfill({contentType:"text/html",body:"<h1>Test boundary: booking manager</h1>"}));
+ await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption("03");
+ await page.getByRole("group",{name:"شبكة مسارات القسم"}).getByRole("button",{name:"إدارة الحجوزات",exact:true}).click();
+ await page.getByRole("button",{name:"فتح أداة الإدارة داخل الاستوديو"}).click();
+ await expect(page.locator("iframe[title='أداة الإدارة الأصلية']")).toHaveAttribute("src","/admin/bookings");
+});
+test("draft preview never writes before explicit confirmation", async ({page})=>{
+ const modes:string[]=[];
+ await page.route("**/api/admin/automation/studio-action",r=>{
+  const b=r.request().postDataJSON();modes.push(b.mode);
+  return r.fulfill({json:b.mode==="preview"?{ok:true,token:"test-token",expiresAt:Date.now()+300000,preview:{title:"مسودة",summary:"Test",effects:["لا نشر"]}}:
+   {ok:true,result:{status:"draft"}}});
+ });
+ await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption("07");
+ const form=page.getByRole("region",{name:"مسودة مقال"});
+ await form.getByLabel("العنوان",{exact:true}).fill("مقال للاختبار");
+ await form.getByLabel("نص المسودة",{exact:true}).fill("محتوى للاختبار لا يُكتب على الإنتاج");
+ await form.getByRole("button",{name:"معاينة دون كتابة"}).click();
+ await expect(form.getByRole("region",{name:"مراجعة قبل الحفظ"})).toBeVisible();expect(modes).toEqual(["preview"]);
+ await form.getByRole("button",{name:"أوافق على حفظ المسودة"}).click();
+ await expect(form.getByRole("status")).toContainText("حُفظت");expect(modes).toEqual(["preview","confirm"]);
+});
+test("supervisor requests are contextual and do not execute actions", async ({page})=>{
+ await page.route("**/api/admin/automation/studio-supervisor",r=>{
+  expect(r.request().postDataJSON().domain).toBe("bookings");
+  return r.fulfill({json:{ok:true,reply:"لا توجد بيانات من المصدر.",effects:"read_only",events:[]}});
+ });
+ await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption("03");
+ await page.getByRole("button",{name:"المشرف العام",exact:true}).click();
+ await page.getByLabel("رسالة المشرف").fill("ما حالة الحجوزات؟");
+ await page.getByRole("button",{name:"إرسال للمشرف"}).click();
+ await expect(page.getByRole("log",{name:"محادثة المشرف"})).toContainText("لا توجد بيانات من المصدر.");
+});

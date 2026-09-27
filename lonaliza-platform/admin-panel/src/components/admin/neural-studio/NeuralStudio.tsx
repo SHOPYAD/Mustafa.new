@@ -6,10 +6,18 @@ import { ATLAS_CLUSTERS } from "@/lib/neural-studio/atlas-composition";
 import NeuralField from "./NeuralField";
 import NeuralAtlas from "./NeuralAtlas";
 import FloatingWindow from "./FloatingWindow";
+import { getSurface, type ScreenId, type PublicStage } from "@/lib/neural-studio/surfaces";
+import StudioSurfaces from "./StudioSurfaces";
+import SupervisorPanel from "./SupervisorPanel";
 import "./neural-studio.css";
 type Observation = { tool: string; status: string; observedAt?: string; readDurationMs?: number; facts: Array<{ key: string; labelAr: string; value: unknown; source: string; available: boolean }> };
 type Snapshot = { status: string; observedAt?: string; observations: Observation[] };
 export default function NeuralStudio() {
+  const [screen, setScreen] = useState<ScreenId>("01");
+  const [nativeHref, setNativeHref] = useState<string | null>(null);
+  const [supervisorOpen, setSupervisorOpen] = useState(false);
+  const [stage, setStage] = useState<PublicStage>("idle"), [outputLevel, setOutputLevel] = useState(0);
+  const screenTitle = STUDIO_SCREENS.find(s => s.id === screen)!.title;
   const [selected, setSelected] = useState<DomainId>("overview");
   const [expanded, setExpanded] = useState<string[]>([]);
   const [families, setFamilies] = useState<string[]>([]);
@@ -66,6 +74,22 @@ export default function NeuralStudio() {
       }; tick();
     } catch { stopAudio(); setAudioError("تعذر فتح الميكروفون؛ تحقق من الإذن واتصال HTTPS."); }
   };
+  const navigateScreen = (id: ScreenId) => {
+    setScreen(id); const target = getSurface(id)?.domains[0]; if (target) setSelected(target as DomainId);
+    setInspector(id === "01"); setReferences(false);
+    if (id === "17") setSupervisorOpen(true);
+    history.replaceState(null, "", "#screen=" + id);
+  };
+  useEffect(() => {
+    const read = () => { const id = new URLSearchParams(location.hash.slice(1)).get("screen"); if (STUDIO_SCREENS.some(s => s.id === id)) {
+      setScreen(id as ScreenId); setInspector(id === "01"); const domain = getSurface(id!)?.domains[0]; if (domain) setSelected(domain as DomainId);
+    }};
+    read(); addEventListener("hashchange", read); return () => removeEventListener("hashchange", read);
+  }, []);
+  const openNative = (href: string) => {
+    const page = STUDIO_PAGES.find(p => p.href === href && !p.dynamic && p.domain);
+    if (page) setNativeHref(page.href); // static same-origin source allowlist, never an LLM URL
+  };
   const toggle = (id: string) => setExpanded(previous => previous.includes(id) ? previous.filter(x => x !== id) : [...previous, id]);
   const inspectPage = (href: string) => {
     const page = STUDIO_PAGES.find(p => p.href === href);
@@ -74,15 +98,16 @@ export default function NeuralStudio() {
   };
   const select = (id: DomainId) => { setSelected(id); setPageHref(null); setInspector(true); };
   const status = loading ? "جارٍ الاستعلام" : error ? "تعذر الاتصال" : snapshot?.status === "ready" ? "قراءة موثقة" : snapshot?.status === "partial" ? "قراءة جزئية" : "غير موصول بعد";
-  return <main className="ns-studio" dir="rtl" data-testid="neural-studio">
+  return <main className="ns-studio" dir="rtl" data-testid="neural-studio" data-screen-id={screen}>
     <NeuralField />
     <header className="ns-topbar">
-      <div><h1>الأطلس العصبي الشامل</h1><p>منصة عمليات المعرفة المؤسسية</p></div>
+      <div><h1>{screenTitle}</h1><p>منصة عمليات المعرفة المؤسسية</p></div>
       <div className="ns-depth" aria-label="مستوى التوسع"><b>L{expanded.length ? 1 : 0}</b><span><i /><i /><i /><i /></span> مستوى العمق</div>
-      <nav aria-label="مسار الاستوديو"><a href="/admin">لوحة الإدارة</a><span>‹</span><button onClick={() => { setExpanded([]); select("overview"); setZoom(1); }}>الأطلس الشامل</button></nav>
+      <nav aria-label="مسار الاستوديو"><select aria-label="واجهة الاستوديو" value={screen} onChange={e => navigateScreen(e.target.value as ScreenId)}>{STUDIO_SCREENS.map(s => <option key={s.id} value={s.id}>{s.id} · {s.title}</option>)}</select><a href="/admin">لوحة الإدارة</a><span>‹</span><button onClick={() => { setExpanded([]); select("overview"); setZoom(1); }}>الأطلس الشامل</button></nav>
     </header>
-    <NeuralAtlas selected={selected} expanded={expanded} onSelect={select} onToggle={toggle}
-      onInspect={inspectPage} zoom={zoom} level={level} listening={listening} />
+    <div className={screen === "01" ? "ns-atlas-layer" : "ns-atlas-layer ns-hidden"}><NeuralAtlas selected={selected} expanded={expanded} onSelect={select} onToggle={toggle}
+      onInspect={inspectPage} zoom={zoom} level={stage === "speaking" ? outputLevel : level} listening={listening} /></div>
+    {screen !== "01" && <div className={"ns-surface-host " + (!sidebar ? "is-wide" : "")}><StudioSurfaces id={screen} onOpen={openNative} onNavigate={navigateScreen} onRestore={() => { setInspector(true); setSidebar(true); }} onSidebar={() => setSidebar(s => !s)} onVoice={() => setSupervisorOpen(true)} stage={listening ? "listening" : stage} level={stage === "speaking" ? outputLevel : level} /></div>}
     {sidebar ? <aside className="ns-explorer" aria-label="مستكشف المنصة">
       <header><strong>المستكشف</strong><button aria-label="إغلاق المستكشف" onClick={() => setSidebar(false)}>×</button></header>
       <input aria-label="البحث في أقسام المنصة" placeholder="البحث في المجالات…" value={query} onChange={e => setQuery(e.target.value)} />
@@ -99,7 +124,7 @@ export default function NeuralStudio() {
               return <div key={id} className={grouped ? "ns-family-child" : ""}>
                 <div className={"ns-tree-domain " + (selected === d.id ? "is-selected" : "")}>
                   <button aria-label={"توسيع " + d.label} aria-expanded={expanded.includes(d.id)} onClick={() => toggle(d.id)}>{expanded.includes(d.id) ? "▾" : "◂"}</button>
-                  <button onClick={() => select(d.id)}><span className="ns-tree-orb"/>{grouped ? d.label : group.label}</button>
+                  <button onClick={() => { select(d.id); if (screen !== "01") navigateScreen(d.screen as ScreenId); }}><span className="ns-tree-orb"/>{grouped ? d.label : group.label}</button>
                 </div>
                 {(expanded.includes(d.id) || query) && <ul>{STUDIO_PAGES.filter(p => p.domain === d.id && (!query || group.label.includes(query) || p.label.includes(query))).map(p =>
                   <li key={p.href}><button onClick={() => inspectPage(p.href)}>{p.label}</button></li>)}</ul>}
@@ -118,7 +143,7 @@ export default function NeuralStudio() {
       <details className="ns-source-details" open={!!selectedPage}><summary>مصدر البيانات والتفاصيل</summary>
       <small>فهرس المستودع · {SOURCE_COMMIT.slice(0, 7)}</small>
       {selectedPage && <><code className="ns-route" dir="ltr">{selectedPage.href}</code>
-        {!selectedPage.dynamic && <a className="ns-action" href={selectedPage.href} target="_blank" rel="noreferrer">فتح واجهة القسم الحالية</a>}
+        {!selectedPage.dynamic && <><a className="ns-action" href={selectedPage.href} target="_blank" rel="noreferrer">فتح واجهة القسم الحالية</a><button className="ns-action" onClick={() => openNative(selectedPage.href)}>فتح داخل الاستوديو</button></>}
         <p className="ns-note">هذه علاقة احتواء موثقة بالملف، وليست مسار تنفيذ حي أو اتصال مزود.</p></>}
       {loading && <p role="status">قراءة الأدوات المسجلة لهذا المجال…</p>}
       </details>
@@ -135,7 +160,15 @@ export default function NeuralStudio() {
     </FloatingWindow>}
     {references && <FloatingWindow id="references" title="عقد الواجهات العشرين" initial={{ x: 330, y: 100, width: 440, height: 560 }} onClose={() => setReferences(false)}>
       <p>كل مرجع محفوظ في المستودع. هذه قائمة نطاق التنفيذ وليست إعلان اكتماله.</p>
-      <ol className="ns-reference-list">{STUDIO_SCREENS.map(s => <li key={s.id}><strong>{s.id} · {s.title}</strong><p>{s.scenario}</p><small>القبول البصري: بانتظار الرندرة والمراجعة</small></li>)}</ol>
+      <ol className="ns-reference-list">{STUDIO_SCREENS.map(s => <li key={s.id}><button onClick={() => navigateScreen(s.id)}>{s.id} · {s.title}</button><p>{s.scenario}</p><small>القبول البصري: بانتظار الرندرة والمراجعة</small></li>)}</ol>
+    </FloatingWindow>}
+    {nativeHref && <FloatingWindow id="native-surface" title={STUDIO_PAGES.find(p => p.href === nativeHref)?.label || "أداة الإدارة"} initial={{ x: 50, y: 90, width: 1100, height: 700 }} onClose={() => setNativeHref(null)}>
+      <p className="ns-note">واجهة الإدارة الأصلية بصلاحيات جلستك؛ الإجراءات التي تؤكدها هنا قد تغيّر النظام فعليًا.</p>
+      <a href={nativeHref} target="_blank" rel="noreferrer">فتح في تبويب مستقل</a>
+      <iframe className="ns-native-frame" src={nativeHref} title="أداة الإدارة الأصلية" />
+    </FloatingWindow>}
+    {supervisorOpen && <FloatingWindow id="supervisor" title="المشرف العام" initial={{ x: 340, y: 94, width: 630, height: 680 }} onClose={() => { setSupervisorOpen(false); setStage("idle"); setOutputLevel(0); }}>
+      <SupervisorPanel domain={selected} onActivity={(state, rms) => { setStage(state); setOutputLevel(rms); }} />
     </FloatingWindow>}
     <footer className="ns-dock">
       <button className={listening ? "is-listening" : ""} onClick={() => void toggleAudio()} aria-pressed={listening} aria-label="قياس صوت الميكروفون">◉ <span>{listening ? "إيقاف الميكروفون" : "قياس الميكروفون"}</span></button>
@@ -143,9 +176,9 @@ export default function NeuralStudio() {
       <button onClick={() => setZoom(z => clampZoom(z-.15))} aria-label="تصغير المشهد">−</button><output>{Math.round(zoom*100)}%</output>
       <button onClick={() => setZoom(z => clampZoom(z+.15))} aria-label="تكبير المشهد">+</button>
       <button onClick={() => { setInspector(true); setSidebar(true); }}>إعادة النوافذ</button>
-      <button onClick={() => setReferences(true)}>الواجهات العشرون</button>
+      <button onClick={() => setReferences(true)}>الواجهات العشرون</button><button onClick={() => setSupervisorOpen(true)}>المشرف العام</button>
       <button onClick={() => { if (document.fullscreenElement) void document.exitFullscreen(); else void document.querySelector(".ns-studio")?.requestFullscreen().catch(() => setError("الشاشة الكاملة غير متاحة في هذا المتصفح.")); }}>ملء الشاشة</button>
-      <small>نسخة تطوير · الربط الجزئي معلّم · المطابقة غير معتمدة</small>
+      <small>نسخة تطوير · ربط جزئي موثق · القبول البصري ≥ 90 لم يُعتمد</small>
     </footer>
     {audioError && <div role="alert" className="ns-audio-error">{audioError}</div>}
   </main>;

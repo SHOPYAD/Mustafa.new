@@ -23,6 +23,8 @@
     "@types/react-dom": "19.2.2",
     "@types/node": "22.18.6",
     "pngjs": "7.0.0",
-    "pixelmatch": "6.0.0"
+    "pixelmatch": "6.0.0",
+    "three": "0.186.1",
+    "@types/three": "0.186.0"
   }
 }
