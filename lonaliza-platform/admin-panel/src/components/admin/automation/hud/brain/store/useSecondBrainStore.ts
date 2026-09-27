@@ -166,7 +166,7 @@ export const useSecondBrainStore = create<SecondBrainState>((set, get) => ({
   particleSize: 2.2,
   particleSpeed: 1.0,
 
-  executionMode: "live",
+  executionMode: "dry_run",
   isExecuting: false,
   lastExecutionResult: null,
   executionHistory: [],
@@ -231,51 +231,27 @@ export const useSecondBrainStore = create<SecondBrainState>((set, get) => ({
     set({ isExecuting: true });
 
     try {
-      if (state.executionMode === "dry_run") {
-        // Safe dry-run mock verification
-        await new Promise((r) => setTimeout(r, 650));
-        const res: DirectiveExecutionResult = {
-          success: true,
-          directiveId,
-          titleAr,
-          summaryAr: `🛡️ محاكاة وقائية ناجحة: تم فحص قيود Zod لمسار ${sub?.apiEndpoint} بدون أثر جانبي. الجاهزية 100%.`,
-          executionMode: "dry_run",
-          timestamp: new Date().toLocaleTimeString("ar-EG"),
-        };
-        set((s) => ({
-          isExecuting: false,
-          lastExecutionResult: res,
-          executionHistory: [res, ...s.executionHistory.slice(0, 19)],
-        }));
-        return res;
-      }
-
-      // Live Production Execution
-      // Calls real agent execution backend or triggers live directive
-      const resLive = await fetch("/api/admin/automation/second-brain-directive", {
+      if (!sub || !directive) throw new Error("Unknown directive");
+      const response = await fetch("/api/admin/automation/second-brain-directive", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          directiveId,
-          subModuleId,
-          toolKey: directive?.toolKey,
-          actionType: directive?.actionType,
-          assignedAgentId: sub?.assignedAgent.id,
-          payload: customPayload || sub?.samplePayload,
+          directiveId, subModuleId, executionMode: state.executionMode,
+          payload: customPayload || {},
         }),
-      }).then((r) => r.json()).catch(() => null);
-
-      const success = resLive?.ok ?? true;
-      const summaryAr = resLive?.summaryAr ||
-        `⚡ نُفّذ الإجراء الإداري الحي «${titleAr}» بنجاح عبر الوكيل (${sub?.assignedAgent.nameAr}). تم تسجيل التغيير في دفتر أستاذ المنصة.`;
-
+      });
+      const resLive = await response.json();
+      const success = response.ok && resLive?.ok === true;
+      const summaryAr = typeof resLive?.summaryAr === "string"
+        ? resLive.summaryAr
+        : "لم يؤكد الخادم نجاح الإجراء.";
       const result: DirectiveExecutionResult = {
         success,
         directiveId,
         titleAr,
         summaryAr,
         directUrl: resLive?.directUrl,
-        executionMode: "live",
+        executionMode: state.executionMode,
         timestamp: new Date().toLocaleTimeString("ar-EG"),
       };
 

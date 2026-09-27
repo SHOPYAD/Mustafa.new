@@ -39,18 +39,24 @@ export default function NodeInspectorDrawer() {
   const [activeTab, setActiveTab] = useState<"actions" | "schema" | "dag">("actions");
   const [customPayloadJson, setCustomPayloadJson] = useState<string>("");
 
+  const [payloadError, setPayloadError] = useState<string | null>(null);
+
   if (!inspectorOpen || !sub) return null;
 
   const agent = sub.assignedAgent;
   const lineage = sub.lineage;
 
   const handleRunDirective = async (directiveId: string) => {
-    let payload = sub.samplePayload;
+    setPayloadError(null);
+    let payload: Record<string, unknown> = {};
     if (customPayloadJson.trim()) {
       try {
-        payload = JSON.parse(customPayloadJson);
+        const parsed: unknown = JSON.parse(customPayloadJson);
+        if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Invalid payload");
+        payload = parsed as Record<string, unknown>;
       } catch {
-        // Fallback to sample payload
+        setPayloadError("صحح JSON أولاً؛ لم يتم إرسال الإجراء.");
+        return;
       }
     }
     await executeDirective(directiveId, sub.id, payload);
@@ -59,8 +65,9 @@ export default function NodeInspectorDrawer() {
   return (
     <div
       dir="rtl"
-      className="fixed inset-y-0 left-0 w-full sm:w-[480px] md:w-[520px] bg-[#020b18]/98 border-r border-cyan-500/30 backdrop-blur-2xl z-50 flex flex-col shadow-[-10px_0_40px_rgba(0,0,0,0.8)] font-sans text-slate-100 select-none animate-in slide-in-from-left duration-300"
+      className="fixed inset-y-0 right-0 w-full sm:w-[480px] md:w-[520px] bg-[#020b18]/98 border-r border-cyan-500/30 backdrop-blur-2xl z-50 flex flex-col shadow-[-10px_0_40px_rgba(0,0,0,0.8)] font-sans text-slate-100 select-none animate-in slide-in-from-right duration-300"
     >
+      {payloadError && <p role="alert" className="p-3 text-destructive">{payloadError}</p>}
       {/* 1. Header Bar */}
       <div className="p-4 border-b border-cyan-500/20 bg-[#031124] flex items-center justify-between gap-3">
         <div className="flex flex-col text-right">

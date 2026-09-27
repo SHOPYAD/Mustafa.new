@@ -1,0 +1,30 @@
+name: Neural studio quality
+on:
+  push:
+    branches: ["codex/neural-studio-20260928"]
+    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
+  pull_request:
+    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: neural-studio-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install isolated test dependencies (no production secrets or services)
+        run: pnpm --dir quality/neural-studio install --ignore-workspace --no-frozen-lockfile
+      - name: Link isolated dependencies in the disposable runner
+        run: ln -s "$GITHUB_WORKSPACE/quality/neural-studio/node_modules" lonaliza-platform/admin-panel/node_modules
+      - name: Test real route handlers against mocked boundaries
+        run: pnpm --dir quality/neural-studio test
