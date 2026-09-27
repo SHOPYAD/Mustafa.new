@@ -82,5 +82,5 @@
 .ns-meter i { display:block; width:2px; background:var(--ns-ion); }
 .ns-audio-error { position:absolute; bottom:85px; left:18px; z-index:50; background:var(--ns-panel); border:1px solid var(--ns-danger); padding:12px; }
 @media(max-width:900px) { .ns-depth { display:none; } .ns-topbar h1 { font-size:18px; } .ns-explorer { width:270px; } .ns-dock { gap:6px; padding:8px; overflow-x:auto; } .ns-dock button { white-space:nowrap; font-size:12px; } .ns-dock small { display:none; } }
-@media(max-width:600px) { .ns-topbar nav { display:none; } .ns-explorer { width:min(290px,calc(100% - 28px)); top:82px; } .ns-dock span.ns-meter { display:none; } .ns-topbar { padding:12px; } .ns-dock { height:68px; } }
+@media(max-width:600px) { .ns-topbar nav { display:none; } .ns-explorer { width:min(290px,calc(100% - 28px)); top:82px; z-index:45; } .ns-dock span.ns-meter { display:none; } .ns-topbar { padding:12px; } .ns-dock { height:68px; } }
 @media(prefers-reduced-motion:reduce) { .ns-orbit { animation:none; } .ns-explorer-scroll,.ns-window-body { scroll-behavior:auto; } }
