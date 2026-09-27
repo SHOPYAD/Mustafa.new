@@ -1,0 +1,3869 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Air Searches" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_AirAvailability.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Air Availability API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TravelportRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1><span class="mc-variable General.AirAPI variable">Air</span> Availability API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>search/airAvailability</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <![CDATA[  ]]><a href="AirShoppingGuide.html"> <span class="mc-variable General.AirAPI variable">Air</span> Search Guide</a></p>
+                                        <p>Air Availability returns scheduled flights between a specified city pair on a specified day and time and indicates whether seats are available on those flights.  Air Availability is a full payload request that focuses on seat availability by class of service. It does not return pricing information.</p>
+                                        <div class="noteNote">GDS only; not supported for NDC.</div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None.</p>
+                                        <h4>Request Body</h4>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Basic Search Request Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The minimum search request detailed below sends itinerary and passenger details.</p>
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogProductOfferingsQueryRequest</b>
+                                                                        <br />
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>CatalogProductOfferingsRequest</b>
+                                                                        <br />
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object with @type CatalogProductOfferingsRequestAir.</p>
+                                                                    <p>Includes PassengerCriteria and SearchCriteriaFlight objects. May contain SearchModifiersAir.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><a name="passcrit"></a><b>PassengerCriteria</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Array. Defines the type of passenger to search for. Optional - sending PTC details does not change the response. </p>
+                                                                    <p>Send one PassengerCriteria for each passenger type code (PTC).</p>
+                                                                    <div class="noteNote">
+                                                                        <p>Availability supports the following:</p>
+                                                                        <ul>
+                                                                            <li>Up to nine total passengers across all PTCs </li>
+                                                                            <li>Maximum of six PTCs</li>
+                                                                            <li>Maximum of six O&amp;D pairs </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>passengerTypeCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. The passenger type code for the passengers on the itinerary. Common PTCs are:</p>
+                                                                    <ul>
+                                                                        <li>ADT: adult</li>
+                                                                        <li>CHD: child of unknown age</li>
+                                                                        <li>CNN:&#160;child when age is known</li>
+                                                                        <li>INF:&#160;infant without a seat</li>
+                                                                        <li>INS:&#160;infant with a seat</li>
+                                                                        <li>UNN:&#160;unaccompanied child</li>
+                                                                    </ul>
+                                                                    <p>See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">Downloads</a> page to download a full list of PTCs. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>number</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Number. The number of passengers with this PTC. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><a name="scf"></a><b>SearchCriteriaFlight</b>
+                                                                    </p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Each instance defines one leg of the itinerary by specifying an origin and destination (O&amp;D) pair, aka departure and arrival location, for that leg. </p>
+                                                                    <p>Includes From and To objects. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>departureDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Date of departure in YYYY-MM-DD format (e.g., departureDate="2026-12-06").</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>departureTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Optional to send a time to search for flights departing close to that specified time. HH:MM:SS format (e.g., departureTime="18:00:00"). </p>
+                                                                    <div class="noteWarning">Sending "00:00:00" is not supported and causes an error message.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>arrivalDate </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Local date of arrival in YYYY-MM-DD format (e.g., departureDate="2026-12-06"). </p>
+                                                                    <p>Cannot be used with departureDate. If sent with a departureDate, the departureDate is ignored. Best practice when sending an arrival date is to also send an arrival time.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>arrivalTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Optional to send a local time of arrival to search for flights arriving close to that specified time. HH:MM:SS format (e.g., departureTime="18:00:00"). </p>
+                                                                    <p>Cannot be used with departureTime. </p>
+                                                                    <div class="noteWarning">Sending "00:00:00" is not supported and causes an error message.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>From</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Object. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">String. The IATA airport or city code for the departure airport/city for this leg.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p><a name="cityOrAirport"></a>cityOrAirport</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String.  Optional enumeration specifying whether to restrict the search based on the city/airport code sent in value. Supported value:</p>
+                                                                    <ul>
+                                                                        <li>City or Airport</li>
+                                                                    </ul>
+                                                                    <table style="width: 90%;border-left-style: solid;border-left-width: 1px;border-left-color: #d3d3d3;border-right-style: solid;border-right-width: 1px;border-right-color: #d3d3d3;border-top-style: solid;border-top-width: 1px;border-top-color: #d3d3d3;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #d3d3d3;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TravelportRows.css');" class="TableStyle-TravelportRows" cellspacing="0">
+                                                                        <col class="TableStyle-TravelportRows-Column-Column1">
+                                                                        </col>
+                                                                        <col class="TableStyle-TravelportRows-Column-Column1">
+                                                                        </col>
+                                                                        <thead>
+                                                                            <tr class="TableStyle-TravelportRows-Head-Header1">
+                                                                                <th class="TableStyle-TravelportRows-HeadE-Column1-Header1">cityOrAirport Options</th>
+                                                                                <th class="TableStyle-TravelportRows-HeadD-Column1-Header1">Behavior</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="TableStyle-TravelportRows-Body-Body1">
+                                                                                <td class="TableStyle-TravelportRows-BodyE-Column1-Body1">
+                                                                                    <p>Airport code with no cityOrAirport value</p>
+                                                                                </td>
+                                                                                <td class="TableStyle-TravelportRows-BodyD-Column1-Body1">
+                                                                                    <p>Expands the availability selection to the city while giving preference to the requested airport. For example, LGA would return flights for LGA, EWR, and JFK but would target more content from LGA.</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="TableStyle-TravelportRows-Body-Body2">
+                                                                                <td class="TableStyle-TravelportRows-BodyB-Column1-Body2">
+                                                                                    <p>City code with no cityOrAirport value, or with <i>City or Airport</i>value</p>
+                                                                                </td>
+                                                                                <td class="TableStyle-TravelportRows-BodyA-Column1-Body2">
+                                                                                    <p>Returns an unweighted selection of inventory for all airports in the city. For example,  NYC would search content equally between LGA, EWR, and JFK.</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>To</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Object </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">String. The IATA location code for the arrival city/airport for this leg.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>cityOrAirport</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String.  Optional enumeration specifying whether to restrict the search based on the city/airport code sent in value. Supported value: </p>
+                                                                    <ul>
+                                                                        <li>City or Airport</li>
+                                                                    </ul>
+                                                                    <p>See <a href="#cityOrAirport">cityOrAirport</a> above for behavior.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p>SearchModifiersAir</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Optional search modifiers. Can include ConnectionPreferences and/or CarrierPreference.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>CarrierPreference</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Specify preference for a permitted airline to limit results to one or more carriers. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>preferenceType</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. The type of carrier preference. Availability supports only the following:</p>
+                                                                    <ul>
+                                                                        <li>Permitted: Returns only results on the specified carrier or carriers. Returns an error if the carrier/s do not have availability within the requested search parameters.</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>carriers</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">String. One or more carrier codes to permit.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>ConnectionPreferences</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Specify whether results must have one or more of the specified connection points (permitted), or if they cannot have one or more of the specified connection points (prohibited). </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>cityOrAirport</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String.  Optional enumeration specifying whether to restrict the search based on the city/airport code sent in value. Supported value:</p>
+                                                                    <ul>
+                                                                        <li>City or Airport</li>
+                                                                    </ul>
+                                                                    <p>See <a href="#cityOrAirport">cityOrAirport</a> above for behavior.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>legSequence</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Use to apply preference to only specific legs of the itinerary. Do not send if requesting preference at itinerary level.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>preferenceType</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. The type of connection preference. Supported values  are:</p>
+                                                                    <ul>
+                                                                        <li>Permitted: Returns only results that connect through one or more of the specified locations in ConnectionPoint. Returns error if there is no availability through the specified connecting location/s. </li>
+                                                                        <li>Prohibited:  Excludes results that connect through one or more of the specified locations in ConnectionPoint. </li>
+                                                                    </ul>
+                                                                    <p>Only one preference type can be requested for an O&amp;D pair, either Permitted or Prohibited but not both.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>ConnectionPoint</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">String. Three-letter IATA code for the connecting location/s for this preference. For example, if you specify three locations, any flights meeting any one or more of those locations will be permitted or prohibited per the specified preferenceType.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>&#160;</p>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The Air Availability response shares the basic structure of the <a href="APIRef_Search.html">Search</a> response but returns a subset of its objects. It does not return any pricing or brand information. The tables in this section break down the Air Availability response into several of its objects&#160;to list all information in each. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show CatalogProductOfferings Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <h5>CatalogProductOfferingsResponse</h5>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>CatalogProductOfferingsResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Top level object for Air Availability response.</p>
+                                                                    <p>Includes CatalogProductOfferings,&#160;Result, ReferenceList.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>transactionId</b>: System-generated unique ID for this response. Can be used for internal tracking and troubleshooting.</p>
+                                                                        <p><b>traceId</b>: Returned if a custom trace ID was sent in the request header. See <a href="../General/TraceIDs.html">Transaction and Trace IDs</a> for details.</p>
+                                                                        <div class="noteNote">See <a href="../General/AirAPIsGuide.html#identifiers">Identifiers in the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs</a> for more about identifiers across all <span class="mc-variable General.Product variable">JSON</span>&#160;APIs.</div>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h5>CatalogProductOfferings</h5>
+                                                    <div class="noteNote">See <a href="../General/AirAPIsGuide.html#identifiers">Identifiers in the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs</a> for more about identifiers across all <span class="mc-variable General.Product variable">JSON</span>&#160;APIs.</div>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogProductOfferings</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object that groups all offers. </p>
+                                                                    <p>Includes Identifier and CatalogProductOffering objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returns identifier for the entire response as a unique system-generated identifier in <b>value</b>. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogProductOffering</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Array. Each instance of CatalogProductOffering returns one offer on one leg of the itinerary. </p>
+                                                                    <p>Includes Departure, Arrival, and ProductBrandOptions objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>Departure</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>IATA code for departure airport or city for this leg of the itinerary.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">Arrival</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>IATA code for arrival airport or city for this leg of the itinerary.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>ProductBrandOptions</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. Each instance groups the products available on this offer. </p>
+                                                                    <p>Includes ProductBrandOffering.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>ProductBrandOffering</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns one product in this offer and related details about it.</p>
+                                                                    <p>Includes Product.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>Product</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. Each instance returns one product identifier. </p>
+                                                                    <p>Includes productRef.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>productRef</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Reference id that matches to identifier in ReferenceListFlight/Product. To find flight details for a product, use the ProductRef id to identify the product in ReferenceListProduct/Product, and use the flight numbers (e.g., s3, s4) to match to flight information in ReferenceListFlight/Flight.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Result Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>Result returns any error and warning messages. See <a href="../General/ErrorList.html#errors">Error Messages</a> for a listing.</p>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Result</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Includes objects for any warning or error message returned.</p>
+                                                                    <p>May include Warning and/or Error objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Error</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returns error message details in the StatusCode, Message, and SourceCode objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Warning</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns warning message details in the Message and SourceCode objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>StatusCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>The HTTP standard response code for the message.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Message</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>The text of any error message returned.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>SourceCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>The error or warning code returned by the provider or host system.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show ReferenceList Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>ReferenceList consolidates all the details about flights, products, brands, and terms and conditions returned in CatalogProductOfferings.</p>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">&#160;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>ReferenceList</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p>Top level object for the consolidated flight, product, terms and conditions, and brand information referenced in the offers in CatalogProductOfferings.</p>
+                                                                    <p>Returns one instance each of types ReferenceListFlight and ReferenceListProduct.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p><a name="reflflight"></a>ReferenceList/ReferenceListFlight</p>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReferenceListFlight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns an array of Flight objects that match to the flights that make up a product. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Flight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. One instance for one flight. </p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>distance</b>: Distance covered by the flight.</p>
+                                                                        <p><b>duration</b>: Time of the flight in hours (H) and minutes (M).</p>
+                                                                        <p><b>carrier</b>: Airline carrier.</p>
+                                                                        <p><b>number</b>: Flight number.</p>
+                                                                        <p><b>operatingCarrier</b>: When the carrier has filed a codeshare operating carrier for the flight, the IATA code for that codeshare carrier. </p>
+                                                                        <p><b>operatingCarrierName</b>: Name of the marketing operating carrier.</p>
+                                                                        <p><b>equipment</b>: Equipment model. Note that TRN, TRS, and BUS equipment codes indicate ground transportation. </p>
+                                                                        <p><b>stops</b>: For a direct flight that makes one or more stops between an origin and destination, the number of stops. </p>
+                                                                        <p><b>id</b>: Internal flight reference id, used to match this flight to the flights listed in each offer (CatalogProductOffering).</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Departure, Arrival, AvailabilitySourceCode objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Departure</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Departure details. Key value pairs are the <b>location</b>, <b>date</b>, <b>time</b>, and <b>terminal</b> of departure.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Arrival</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Arrival details. Key value pairs  are the <b>location</b>, <b>date</b>, <b>time</b>, and  <b>terminal</b> of arrival.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><a name="avail"></a><b>AvailabilitySourceCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Returned to assist in troubleshooting.  Recommended to be sent in the <a href="../Price/APIRef_AirPriceFullPayload.html">AirPrice Full Payload</a> and <a href="../Book/APIRef_AddOfferFullPayload.html">Add Offer Full Payload</a> requests.</p>
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Supported values and definitions for AvailabilitySourceCode:</p>
+                                                                    <ul>
+                                                                        <li>A:&#160;AVS (availability and schedules)</li>
+                                                                        <li>B:&#160;Travelport cache</li>
+                                                                        <li>C:&#160;AVS</li>
+                                                                        <li>D:&#160;Direct Access</li>
+                                                                        <li>E:&#160;Travelport cache</li>
+                                                                        <li>F: Travelport cache</li>
+                                                                        <li>G: Travelport cache</li>
+                                                                        <li>H: Travelport cache</li>
+                                                                        <li>I: Travelport cache</li>
+                                                                        <li>K: Travelport cache</li>
+                                                                        <li>L:&#160;Last seat availability</li>
+                                                                        <li>M:&#160;Unknown source</li>
+                                                                        <li>O: Travelport cache</li>
+                                                                        <li>P: Travelport cache</li>
+                                                                        <li>Q:&#160;Travelport cache</li>
+                                                                        <li>S:&#160;Seamless</li>
+                                                                        <li>T:&#160;Travelport cache</li>
+                                                                        <li>U:&#160;Unknown source</li>
+                                                                        <li>X:&#160;Customer reusing availability data from customer cache (data originally obtained from Travelport)</li>
+                                                                        <li>Y:&#160;Customer reusing data obtained from another system (e.g., another GDS) (data may be fresh or stored in customer cache)</li>
+                                                                        <li>Z:&#160;Customer sold from e-streamed data stored in customer cache</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>&#160;</p>
+                                                    <h5><a name="reflproduct"></a>ReferenceList/ReferenceListProduct </h5>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" style="width: 234px;">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReferenceListProduct</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns details for the products returned in offers.  Includes the Product object. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Product</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. One instance for each product id. </p>
+                                                                    <p>Key value pairs: </p>
+                                                                    <blockquote>
+                                                                        <p><b>totalDuration</b>: Total time length of the segment in hours (H) and minutes (M).</p>
+                                                                        <p><b>id</b>:&#160;Product id.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes FlightSegment and PassengerFlight objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FlightSegment</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Array. One instance for each flight segment in the product.  </p>
+                                                                    <p>Key value pairs: </p>
+                                                                    <blockquote>
+                                                                        <p><b>sequence</b>:&#160;Order of the sequence; e.g. 1 for the first segment on the leg.</p>
+                                                                        <p><b>operationalStatus</b>: Operational status of this flight. Possible values are FlightBoarding, FlightCancelled, FlightDeparted, FlightPastScheduledDeparture, NotAvailableUseSearch (may be returned if no  classes of service are returned for a flight, or when the flight status is unknown).</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Flight object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Flight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. One instance for each flight in the product.</p>
+                                                                    <p>Includes id.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>id</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Unique identifier for this flight. Matches to identifier in ReferenceListFlight/Flight.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>PassengerFlight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returns availability details for each class of service on this flight. </p>
+                                                                    <p>Includes the FlightProduct object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FlightProduct</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Details for this flight. </p>
+                                                                    <p>Key value pairs: </p>
+                                                                    <blockquote>
+                                                                        <p><b>segmentSequence</b>:&#160;Order of this flight in the sequence.</p>
+                                                                        <p><b>cabin</b>:&#160;Cabin class.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>ClassOfServiceAvailability</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>Defines the class of service, the number of seats available for the class of service, and the status of the class of service (E.g., Available). </p>
+                                                                    <p>Key value pairs: </p>
+                                                                    <blockquote>
+                                                                        <p><b>number</b>:&#160;Number of seats available for the class of service.</p>
+                                                                        <p><b>status</b>:&#160;Status of these seats, such as Available.  If no seats available for a class of service, possible values are Not Available, Request, Waitlist, Waitlist Closed.</p>
+                                                                        <p><b>value</b>: Class of service code. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <p>The following example request is for a round trip itinerary with the optional ConnectionPreference modifier.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Request for round-trip with optional modifiers</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "CatalogProductOfferingsQueryRequest": {
+        "CatalogProductOfferingsRequest": {
+            "@type": "CatalogProductOfferingsRequestAir",
+            "PassengerCriteria": [
+                {
+                    "number": 1,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "SearchCriteriaFlight": [
+                {
+                    "departureDate": "2024-05-19",
+                    "From": {
+                        "value": "LAX"
+                    },
+                    "To": {
+                        "value": "JNB"
+                    }
+                },
+                {
+                    "arrivalDate": "2024-05-29",
+                    "From": {
+                        "value": "JNB"
+                    },
+                    "To": {
+                        "value": "LAX"
+                    }
+                }
+            ],
+            "SearchModifiersAir": {
+                "ConnectionPreferences": [
+                    {
+                        "preferenceType": "Permitted",
+                        "legSequence": [
+                            1
+                        ],
+                        "ConnectionPoint": [
+                            "AMS"
+                        ]
+                    },
+                    {
+                        "preferenceType": "Prohibited",
+                        "legSequence": [
+                            2
+                        ],
+                        "ConnectionPoint": [
+                            "FRA"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <p>Per the following example, the Air Availability response does not return pricing information. For brevity, the lines for products 3 and 4 have been omitted from this example. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Response</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogProductOfferingsResponse": {
+  "@type": "CatalogProductOfferingsResponse",
+  "transactionId": "SingleSurcharge_False",
+  "traceId": "trace",
+  "CatalogProductOfferings": {
+   "@type": "CatalogProductOfferings",
+   "Identifier": {
+    "value": "1df45270-2337-481e-b1e4-a0050ddae1ab"
+   },
+   "CatalogProductOffering": [
+    {
+     "@type": "CatalogProductOffering",
+     "Departure": "LAX",
+     "Arrival": "JNB",
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p0"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "@type": "ProductBrandOptions",
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p3"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "@type": "ProductBrandOptions",
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p4"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "@type": "CatalogProductOffering",
+     "Departure": "ONT",
+     "Arrival": "JNB",
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p1"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "@type": "CatalogProductOffering",
+     "Departure": "SNA",
+     "Arrival": "JNB",
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p2"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H15M",
+      "carrier": "KL",
+      "number": "602",
+      "equipment": "781",
+      "id": "s1",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "B",
+       "location": "LAX",
+       "date": "2024-05-19",
+       "time": "13:50:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "09:05:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H45M",
+      "carrier": "KL",
+      "number": "591",
+      "equipment": "789",
+      "id": "s2",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "JNB",
+       "date": "2024-05-20",
+       "time": "21:20:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT3H5M",
+      "carrier": "AA",
+      "number": "1820",
+      "equipment": "321",
+      "id": "s3",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "4",
+       "location": "ONT",
+       "date": "2024-05-19",
+       "time": "10:50:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "15:55:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT9H5M",
+      "carrier": "AA",
+      "number": "220",
+      "equipment": "788",
+      "id": "s4",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "16:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "08:40:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H45M",
+      "carrier": "KL",
+      "number": "591",
+      "equipment": "789",
+      "id": "s5",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "JNB",
+       "date": "2024-05-20",
+       "time": "21:20:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT3H10M",
+      "carrier": "AA",
+      "number": "2114",
+      "equipment": "738",
+      "id": "s6",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "SNA",
+       "date": "2024-05-19",
+       "time": "10:45:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "15:55:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT9H5M",
+      "carrier": "AA",
+      "number": "220",
+      "equipment": "788",
+      "id": "s7",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "16:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "08:40:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H45M",
+      "carrier": "KL",
+      "number": "591",
+      "equipment": "789",
+      "id": "s8",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "JNB",
+       "date": "2024-05-20",
+       "time": "21:20:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT3H19M",
+      "carrier": "AA",
+      "number": "1660",
+      "equipment": "321",
+      "id": "s9",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "0",
+       "location": "LAX",
+       "date": "2024-05-19",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "15:54:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT9H5M",
+      "carrier": "AA",
+      "number": "220",
+      "equipment": "788",
+      "id": "s10",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "0",
+       "location": "DFW",
+       "date": "2024-05-19",
+       "time": "16:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "08:40:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H45M",
+      "carrier": "KL",
+      "number": "591",
+      "equipment": "789",
+      "id": "s11",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "JNB",
+       "date": "2024-05-20",
+       "time": "21:20:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT1H32M",
+      "carrier": "UA",
+      "number": "447",
+      "equipment": "739",
+      "id": "s12",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "7",
+       "location": "LAX",
+       "date": "2024-05-19",
+       "time": "10:30:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "3",
+       "location": "SFO",
+       "date": "2024-05-19",
+       "time": "12:02:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H15M",
+      "carrier": "KL",
+      "number": "606",
+      "equipment": "781",
+      "id": "s13",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "I",
+       "location": "SFO",
+       "date": "2024-05-19",
+       "time": "13:50:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "09:05:00"
+      },
+      "availabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "duration": "PT10H45M",
+      "carrier": "KL",
+      "number": "591",
+      "equipment": "789",
+      "id": "s14",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "AMS",
+       "date": "2024-05-20",
+       "time": "10:35:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "JNB",
+       "date": "2024-05-20",
+       "time": "21:20:00"
+      },
+      "availabilitySourceCode": "S"
+     }
+    ]
+   },
+   {
+    "@type": "ReferenceListProduct",
+    "Product": [
+     {
+      "@type": "ProductAir",
+      "id": "p0",
+      "FlightSegment": [
+       {
+        "@type": "FlightSegment",
+        "sequence": 1,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s1"
+        }
+       },
+       {
+        "@type": "FlightSegment",
+        "sequence": 2,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s2"
+        }
+       }
+      ],
+      "totalDuration": "PT22H30M",
+      "PassengerFlight": [
+       {
+        "@type": "PassengerFlight",
+        "FlightProduct": [
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 4,
+            "status": "Available",
+            "value": "A"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "U"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "T"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "E"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "U"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "T"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "E"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "@type": "ProductAir",
+      "id": "p1",
+      "FlightSegment": [
+       {
+        "@type": "FlightSegment",
+        "sequence": 1,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s3"
+        }
+       },
+       {
+        "@type": "FlightSegment",
+        "sequence": 2,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s4"
+        }
+       },
+       {
+        "@type": "FlightSegment",
+        "sequence": 3,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s5"
+        }
+       }
+      ],
+      "totalDuration": "PT25H30M",
+      "PassengerFlight": [
+       {
+        "@type": "PassengerFlight",
+        "FlightProduct": [
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "D"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "I"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "O"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "D"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "I"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "P"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "O"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "U"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "T"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "E"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "X"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "@type": "ProductAir",
+      "id": "p2",
+      "FlightSegment": [
+       {
+        "@type": "FlightSegment",
+        "sequence": 1,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s6"
+        }
+       },
+       {
+        "@type": "FlightSegment",
+        "sequence": 2,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s7"
+        }
+       },
+       {
+        "@type": "FlightSegment",
+        "sequence": 3,
+        "Flight": {
+         "@type": "FlightID",
+         "id": "s8"
+        }
+       }
+      ],
+      "totalDuration": "PT25H35M",
+      "PassengerFlight": [
+       {
+        "@type": "PassengerFlight",
+        "FlightProduct": [
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "D"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "I"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           1
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "O"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "D"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "I"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "P"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           2
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "O"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "J"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Business",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "C"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "W"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "PremiumEconomy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 7,
+            "status": "Available",
+            "value": "S"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Y"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "B"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "M"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "U"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "K"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "H"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "L"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "Q"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "T"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "E"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "N"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "R"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "V"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "X"
+           }
+          ]
+         },
+         {
+          "@type": "FlightProduct",
+          "segmentSequence": [
+           3
+          ],
+          "cabin": "Economy",
+          "ClassOfServiceAvailability": [
+           {
+            "@type": "ClassOfServiceAvailability",
+            "number": 9,
+            "status": "Available",
+            "value": "G"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {ProductAir p3 omitted for brevity},
+     {ProductAir p4 omitted for brevity}
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_AirAvailability.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+</html>

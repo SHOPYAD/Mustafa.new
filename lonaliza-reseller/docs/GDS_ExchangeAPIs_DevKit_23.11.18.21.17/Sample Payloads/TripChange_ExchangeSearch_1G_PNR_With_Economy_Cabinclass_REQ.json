@@ -1,0 +1,43 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-10-25",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "PER"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "MEL"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "a77885f4-c89e-4b0a-88b4-b02d31995acf"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

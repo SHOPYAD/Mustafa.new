@@ -1,0 +1,45 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2022-09-22",
+                    "departureTime": "06:30:00",
+                    "From": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "LHR"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "FRA"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelection",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "@type": "BuildFromReservationWorkbench",
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ],
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "7bc8c828-135f-474a-ad61-71b9a9124a57"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,746 @@
+matrix_version: 1
+source_doc_html:
+  file: docs/travelport/travelport api guide/travelport-airapi json/.../Air11/General/AirEndpointsList11.html
+entries:
+  - endpoint_id: "POST 11/air/ancillaryprice/offers/buildancillaryoffersfromcatalogofferings"
+    method: POST
+    path: "11/air/ancillaryprice/offers/buildancillaryoffersfromcatalogofferings"
+    base_class: 11_AIR
+    doc_raw: "POST ancillaryprice/offers/buildancillaryoffersfromcatalogofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ancillaryshop/catalogofferingsancillaries"
+    method: POST
+    path: "11/air/ancillaryshop/catalogofferingsancillaries"
+    base_class: 11_AIR
+    doc_raw: "POST ancillaryshop/catalogofferingsancillaries"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/accounting/reservationworkbench/{workbenchID}/accountings"
+    method: POST
+    path: "11/air/book/accounting/reservationworkbench/{workbenchID}/accountings"
+    base_class: 11_AIR
+    doc_raw: "POST book/accounting/reservationworkbench/{workbenchID}/accountings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildancillaryoffersfromcatalogofferings"
+    method: POST
+    path: "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildancillaryoffersfromcatalogofferings"
+    base_class: 11_AIR
+    doc_raw: "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildancillaryoffersfromcatalogofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    method: POST
+    path: "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    base_class: 11_AIR
+    doc_raw: "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromproducts"
+    method: POST
+    path: "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromproducts"
+    base_class: 11_AIR
+    doc_raw: "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromproducts"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromunpricedsegments"
+    method: POST
+    path: "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromunpricedsegments"
+    base_class: 11_AIR
+    doc_raw: "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromunpricedsegments"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/unpricedsegments"
+    method: POST
+    path: "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/unpricedsegments"
+    base_class: 11_AIR
+    doc_raw: "POST book/airoffer/reservationworkbench/{workbenchID}/offers/unpricedsegments"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/book/customrule/customrules?PCC={PCC}"
+    method: GET
+    path: "11/air/book/customrule/customrules?PCC={PCC}"
+    base_class: 11_AIR
+    doc_raw: "GET book/customrule/customrules?PCC={PCC}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/book/customrule/customrules?PCC={PCC}?RuleRecordName={NAME}"
+    method: DELETE
+    path: "11/air/book/customrule/customrules?PCC={PCC}?RuleRecordName={NAME}"
+    base_class: 11_AIR
+    doc_raw: "DELETE book/customrule/customrules?PCC={PCC}?RuleRecordName={NAME}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/book/customrule/customrules?PCC={PCC}?RuleRecordSequence={XYZ}"
+    method: GET
+    path: "11/air/book/customrule/customrules?PCC={PCC}?RuleRecordSequence={XYZ}"
+    base_class: 11_AIR
+    doc_raw: "GET book/customrule/customrules?PCC={PCC}?RuleRecordSequence={XYZ}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/customrule/customrules/{workbenchID}?RuleRecordName={NAME}"
+    method: POST
+    path: "11/air/book/customrule/customrules/{workbenchID}?RuleRecordName={NAME}"
+    base_class: 11_AIR
+    doc_raw: "POST book/customrule/customrules/{workbenchID}?RuleRecordName={NAME}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/documentoverride/Reservation/{workbenchID}/documentoverrides"
+    method: POST
+    path: "11/air/book/documentoverride/Reservation/{workbenchID}/documentoverrides"
+    base_class: 11_AIR
+    doc_raw: "POST book/documentoverride/Reservation/{workbenchID}/documentoverrides"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/offer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    method: POST
+    path: "11/air/book/offer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    base_class: 11_AIR
+    doc_raw: "POST book/offer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts"
+    method: POST
+    path: "11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts"
+    base_class: 11_AIR
+    doc_raw: "POST book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts/{PrimaryContactID}"
+    method: DELETE
+    path: "11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts/{PrimaryContactID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts/{PrimaryContactID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/profile/reservationworkbench/{workbenchID}/clientprofile"
+    method: POST
+    path: "11/air/book/profile/reservationworkbench/{workbenchID}/clientprofile"
+    base_class: 11_AIR
+    doc_raw: "POST book/profile/reservationworkbench/{workbenchID}/clientprofile"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/remarks/reservationworkbench/{workbenchID}/reservationcomments/list"
+    method: POST
+    path: "11/air/book/remarks/reservationworkbench/{workbenchID}/reservationcomments/list"
+    base_class: 11_AIR
+    doc_raw: "POST book/remarks/reservationworkbench/{workbenchID}/reservationcomments/list"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/book/reservation/reservations/{LocatorCode}"
+    method: GET
+    path: "11/air/book/reservation/reservations/{LocatorCode}"
+    base_class: 11_AIR
+    doc_raw: "GET book/reservation/reservations/{LocatorCode}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/reservation/reservations/{workbenchID}"
+    method: POST
+    path: "11/air/book/reservation/reservations/{workbenchID}"
+    base_class: 11_AIR
+    doc_raw: "POST book/reservation/reservations/{workbenchID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/reservation/reservations/divide"
+    method: POST
+    path: "11/air/book/reservation/reservations/divide"
+    base_class: 11_AIR
+    doc_raw: "POST book/reservation/reservations/divide"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/session/reservationworkbench"
+    method: POST
+    path: "11/air/book/session/reservationworkbench"
+    base_class: 11_AIR
+    doc_raw: "POST book/session/reservationworkbench"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/book/session/reservationworkbench/{workbenchID}"
+    method: DELETE
+    path: "11/air/book/session/reservationworkbench/{workbenchID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE book/session/reservationworkbench/{workbenchID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/book/session/reservationworkbench/{workbenchID}"
+    method: GET
+    path: "11/air/book/session/reservationworkbench/{workbenchID}"
+    base_class: 11_AIR
+    doc_raw: "GET book/session/reservationworkbench/{workbenchID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/session/reservationworkbench/buildfromlocator?Locator={LocatorCode}"
+    method: POST
+    path: "11/air/book/session/reservationworkbench/buildfromlocator?Locator={LocatorCode}"
+    base_class: 11_AIR
+    doc_raw: "POST book/session/reservationworkbench/buildfromlocator?Locator={LocatorCode}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/{SpecialServiceID}"
+    method: DELETE
+    path: "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/{SpecialServiceID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE book/specialservices/reservationworkbench/{workbenchID}/specialservices/{SpecialServiceID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/deletemultiple"
+    method: DELETE
+    path: "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/deletemultiple"
+    base_class: 11_AIR
+    doc_raw: "DELETE book/specialservices/reservationworkbench/{workbenchID}/specialservices/deletemultiple"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/list"
+    method: POST
+    path: "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/list"
+    base_class: 11_AIR
+    doc_raw: "POST book/specialservices/reservationworkbench/{workbenchID}/specialservices/list"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/traveler/reservationworkbench/{workbenchID}/travelers"
+    method: POST
+    path: "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers"
+    base_class: 11_AIR
+    doc_raw: "POST book/traveler/reservationworkbench/{workbenchID}/travelers"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/list"
+    method: POST
+    path: "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/list"
+    base_class: 11_AIR
+    doc_raw: "POST book/traveler/reservationworkbench/{workbenchID}/travelers/list"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/updatefromtravelerupdateditems/{TravelerID}"
+    method: PUT
+    path: "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/updatefromtravelerupdateditems/{TravelerID}"
+    base_class: 11_AIR
+    doc_raw: "PUT book/traveler/reservationworkbench/{workbenchID}/travelers/updatefromtravelerupdateditems/{TravelerID}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/book/updatableItem/reservationworkbench/{workbenchID}/travelerupdatableitems/buildfromtraveler"
+    method: POST
+    path: "11/air/book/updatableItem/reservationworkbench/{workbenchID}/travelerupdatableitems/buildfromtraveler"
+    base_class: 11_AIR
+    doc_raw: "POST book/updatableItem/reservationworkbench/{workbenchID}/travelerupdatableitems/buildfromtraveler"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/catalog/search/catalogproductofferings"
+    method: POST
+    path: "11/air/catalog/search/catalogproductofferings"
+    base_class: 11_AIR
+    doc_raw: "POST catalog/search/catalogproductofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/catalog/search/catalogproductofferings/buildnext"
+    method: POST
+    path: "11/air/catalog/search/catalogproductofferings/buildnext"
+    base_class: 11_AIR
+    doc_raw: "POST catalog/search/catalogproductofferings/buildnext"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/catalog/search/catalogproductofferings/buildoptions"
+    method: POST
+    path: "11/air/catalog/search/catalogproductofferings/buildoptions"
+    base_class: 11_AIR
+    doc_raw: "POST catalog/search/catalogproductofferings/buildoptions"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/catalog/search/catalogproductofferings/buildpremiumflexoptions"
+    method: POST
+    path: "11/air/catalog/search/catalogproductofferings/buildpremiumflexoptions"
+    base_class: 11_AIR
+    doc_raw: "POST catalog/search/catalogproductofferings/buildpremiumflexoptions"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/catalog/search/catalogproductofferings/premiumflex"
+    method: POST
+    path: "11/air/catalog/search/catalogproductofferings/premiumflex"
+    base_class: 11_AIR
+    doc_raw: "POST catalog/search/catalogproductofferings/premiumflex"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/emds/{EMDNumber}"
+    method: GET
+    path: "11/air/emds/{EMDNumber}"
+    base_class: 11_AIR
+    doc_raw: "GET emds/{EMDNumber}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/emds/{EMDNumber}"
+    method: PUT
+    path: "11/air/emds/{EMDNumber}"
+    base_class: 11_AIR
+    doc_raw: "PUT emds/{EMDNumber}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/faredisplay/fares"
+    method: POST
+    path: "11/air/faredisplay/fares"
+    base_class: 11_AIR
+    doc_raw: "POST faredisplay/fares"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/farerule/farerules"
+    method: GET
+    path: "11/air/farerule/farerules"
+    base_class: 11_AIR
+    doc_raw: "GET farerule/farerules"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      - "erxes/backend/plugins/tourism_api/tests/travelportAirFollowup.test.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/payment/reservationworkbench/{workbenchID}/formofpayment"
+    method: POST
+    path: "11/air/payment/reservationworkbench/{workbenchID}/formofpayment"
+    base_class: 11_AIR
+    doc_raw: "POST payment/reservationworkbench/{workbenchID}/formofpayment"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    method: DELETE
+    path: "11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    base_class: 11_AIR
+    doc_raw: "DELETE payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    method: PUT
+    path: "11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    base_class: 11_AIR
+    doc_raw: "PUT payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/paymentoffer/reservationworkbench/{workbenchID}/payments"
+    method: POST
+    path: "11/air/paymentoffer/reservationworkbench/{workbenchID}/payments"
+    base_class: 11_AIR
+    doc_raw: "POST paymentoffer/reservationworkbench/{workbenchID}/payments"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/paymentoffer/reservationworkbench/{workbenchID}/payments/{paymentID}"
+    method: POST
+    path: "11/air/paymentoffer/reservationworkbench/{workbenchID}/payments/{paymentID}"
+    base_class: 11_AIR
+    doc_raw: "POST paymentoffer/reservationworkbench/{workbenchID}/payments/{paymentID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/price/offers/buildfromcatalogproductofferings"
+    method: POST
+    path: "11/air/price/offers/buildfromcatalogproductofferings"
+    base_class: 11_AIR
+    doc_raw: "POST price/offers/buildfromcatalogproductofferings"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/price/offers/buildfromproducts"
+    method: POST
+    path: "11/air/price/offers/buildfromproducts"
+    base_class: 11_AIR
+    doc_raw: "POST price/offers/buildfromproducts"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/receipt/reservation/{workbenchID}/receipts?OfferIdentifier={OfferID}"
+    method: POST
+    path: "11/air/receipt/reservation/{workbenchID}/receipts?OfferIdentifier={OfferID}"
+    base_class: 11_AIR
+    doc_raw: "POST receipt/reservation/{workbenchID}/receipts?OfferIdentifier={OfferID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/receipt/reservations/{LocatorCode}/receipts"
+    method: GET
+    path: "11/air/receipt/reservations/{LocatorCode}/receipts"
+    base_class: 11_AIR
+    doc_raw: "GET receipt/reservations/{LocatorCode}/receipts"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/receipt/reservations/{LocatorCode}/receipts"
+    method: POST
+    path: "11/air/receipt/reservations/{LocatorCode}/receipts"
+    base_class: 11_AIR
+    doc_raw: "POST receipt/reservations/{LocatorCode}/receipts"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/search/airAvailability"
+    method: POST
+    path: "11/air/search/airAvailability"
+    base_class: 11_AIR
+    doc_raw: "POST search/airAvailability"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/search/seat/catalogofferingsancillaries/seatavailabilities"
+    method: POST
+    path: "11/air/search/seat/catalogofferingsancillaries/seatavailabilities"
+    base_class: 11_AIR
+    doc_raw: "POST search/seat/catalogofferingsancillaries/seatavailabilities"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/air/ticket/tickets/{ticketID}"
+    method: GET
+    path: "11/air/ticket/tickets/{ticketID}"
+    base_class: 11_AIR
+    doc_raw: "GET ticket/tickets/{ticketID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/tickets/getbylocator"
+    method: POST
+    path: "11/air/ticket/tickets/getbylocator"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/tickets/getbylocator"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/ticket/tickets/updatestatus/{ticketID}"
+    method: PUT
+    path: "11/air/ticket/tickets/updatestatus/{ticketID}"
+    base_class: 11_AIR
+    doc_raw: "PUT ticket/tickets/updatestatus/{ticketID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency"
+    method: POST
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addemail"
+    method: POST
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addemail"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addemail"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addtelephone"
+    method: POST
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addtelephone"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addtelephone"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteaddress/{addressID}"
+    method: DELETE
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteaddress/{addressID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteaddress/{addressID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletecorporatecode"
+    method: DELETE
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletecorporatecode"
+    base_class: 11_AIR
+    doc_raw: "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletecorporatecode"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteemail/{emailID}"
+    method: DELETE
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteemail/{emailID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteemail/{emailID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "DELETE 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletetelephone/{telephoneID}"
+    method: DELETE
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletetelephone/{telephoneID}"
+    base_class: 11_AIR
+    doc_raw: "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletetelephone/{telephoneID}"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    method: POST
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    method: PUT
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    base_class: 11_AIR
+    doc_raw: "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatecorporatecode"
+    method: PUT
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatecorporatecode"
+    base_class: 11_AIR
+    doc_raw: "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatecorporatecode"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateemail"
+    method: PUT
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateemail"
+    base_class: 11_AIR
+    doc_raw: "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateemail"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "PUT 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatetelephone"
+    method: PUT
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatetelephone"
+    base_class: 11_AIR
+    doc_raw: "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatetelephone"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/addcorporatecode"
+    method: POST
+    path: "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/addcorporatecode"
+    base_class: 11_AIR
+    doc_raw: "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/addcorporatecode"
+    implementation_status: MISSING
+    gap_notes: "no static string match in tourism_api scan"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/book/reservationworkbench/{workbenchID}/reservations/cancelitems"
+    method: POST
+    path: "11/book/reservationworkbench/{workbenchID}/reservations/cancelitems"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST book/reservationworkbench/{workbenchID}/reservations/cancelitems"
+    implementation_status: MISSING
+    gap_notes: "non-/11/air/ base; verify before wiring"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "GET 11/documents/documentlist/{LocatorCode}"
+    method: GET
+    path: "11/documents/documentlist/{LocatorCode}"
+    base_class: NON_AIR_BASE
+    doc_raw: "GET documents/documentlist/{LocatorCode}"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/documents/history"
+    method: POST
+    path: "11/documents/history"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST documents/history"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/documents/void"
+    method: POST
+    path: "11/documents/void"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST documents/void"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/eligibility/ticketchangeeligibilities"
+    method: POST
+    path: "11/eligibility/ticketchangeeligibilities"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST eligibility/ticketchangeeligibilities"
+    implementation_status: MISSING
+    gap_notes: "non-/11/air/ base; verify before wiring"
+    code_refs: []
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/exchangesearch/catalogofferingsairchange"
+    method: POST
+    path: "11/exchangesearch/catalogofferingsairchange"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST exchangesearch/catalogofferingsairchange"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/queue/queue"
+    method: POST
+    path: "11/queue/queue"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST queue/queue"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/queue/queue/list"
+    method: POST
+    path: "11/queue/queue/list"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST queue/queue/list"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional
+  - endpoint_id: "POST 11/queue/queue/remove"
+    method: POST
+    path: "11/queue/queue/remove"
+    base_class: NON_AIR_BASE
+    doc_raw: "POST queue/queue/remove"
+    implementation_status: IMPLEMENTED
+    code_refs:
+      - "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+    sandbox_test_plan: optional

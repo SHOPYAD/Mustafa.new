@@ -1,0 +1,73 @@
+{
+  "cityKey": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "fetchedAt": "2026-09-25T12:27:50.008Z",
+  "sources": [
+    "google_places_live",
+    "official_tourism"
+  ],
+  "pois": [
+    {
+      "titleEn": "Hagia Sophia Grand Mosque",
+      "titleAr": "جامع آيا صوفيا التاريخي الكبير",
+      "detailEn": "Architectural marvel combining Byzantine and Ottoman history with a massive floating dome and stunning mosaics.",
+      "detailAr": "درة العمارة البيزنطية والعثمانية بقبتها المهيبة التي شيدت عام 537 م، تتوسط ساحة السلطان أحمد التاريخية.",
+      "lat": 41.0086,
+      "lng": 28.9802,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Blue Mosque (Sultan Ahmed Mosque)",
+      "titleAr": "جامع السلطان أحمد (المسجد الأزرق)",
+      "detailEn": "Imperial Ottoman mosque renowned for its six minarets and intricate blue Iznik interior ceramic tiles.",
+      "detailAr": "مسجد ذو ست مآذن مزدان بأكثر من 20 ألف بلاطة إزنيك زرقاء يدوية الصنع تحكي عظمة الفن الإسلامي العثماني.",
+      "lat": 41.0054,
+      "lng": 28.9768,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Topkapi Palace Museum",
+      "titleAr": "قصر توبكابي وسراي السلاطين",
+      "detailEn": "Vast Ottoman palace complex overlooking the Bosphorus, housing imperial jewels, courtyards, and holy relics.",
+      "detailAr": "المقر الإداري لسلاطين الدولة العثمانية لـ 400 عام، يطل على البوسفور والقرن الذهبي مع خزانة المجوهرات والأمانات المقدسة.",
+      "lat": 41.0115,
+      "lng": 28.9833,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Galata Tower Panoramic Observatory",
+      "titleAr": "برج غلاطة التاريخي وإطلالة البوسفور",
+      "detailEn": "Medieval stone tower offering sweeping 360-degree panoramic views of Istanbul, the Golden Horn, and the Bosphorus.",
+      "detailAr": "برج جنوة الحجري الشامخ منذ 1348 م يوفر أروع إطلالة بانورامية 360 درجة على إسطنبول ومضيق البوسفور وغروب الشمس.",
+      "lat": 41.0256,
+      "lng": 28.9741,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Grand Bazaar & Spice Market",
+      "titleAr": "البازار الكبير وسوق التوابل المصري",
+      "detailEn": "One of the world largest covered markets with over 4,000 shops along 61 covered streets.",
+      "detailAr": "أكبر وأقدم الأسواق المسقوفة في العالم يضم أكثر من 4000 متجر للذهب والمصنوعات الجلدية والسجاد العثماني والحلويات التركية.",
+      "lat": 41.0107,
+      "lng": 28.968,
+      "kind": "shopping",
+      "image": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    }
+  ]
+}

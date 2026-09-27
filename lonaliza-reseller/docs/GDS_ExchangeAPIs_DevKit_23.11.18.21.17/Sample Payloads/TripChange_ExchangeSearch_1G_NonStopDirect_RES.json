@@ -1,0 +1,277 @@
+{
+    "CatalogOfferingsAirChangeResponse": {
+        "transactionId": "2f2e992e-1cb6-4c29-84b3-4e8fe5c02f45",
+        "traceId": "ARNK_Test-12607",
+        "CatalogOfferings": {
+            "@type": "CatalogOfferings",
+            "Identifier": {
+                "value": "3217e182-2374-40c9-8f34-0e0ff0ff79fd"
+            },
+            "CatalogOffering": [{
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o0.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s1"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "C",
+                                                    "fareBasisCode": "CFLEXF",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 78,
+                        "TotalTaxes": 34.1,
+                        "TotalFees": 0,
+                        "TotalPrice": 112.1,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 78,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 34.1,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 9.1
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 12
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 13
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 112.1
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 684
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "ReferenceList": [{
+                "@type": "ReferenceListFlight",
+                "Flight": [{
+                        "@type": "Flight",
+                        "duration": "PT25M",
+                        "carrier": "WF",
+                        "number": "974",
+                        "equipment": "DH1",
+                        "id": "s1",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "BVG",
+                            "date": "2022-08-15",
+                            "time": "13:20:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "VDS",
+                            "date": "2022-08-15",
+                            "time": "13:45:00"
+                        }
+                    }
+                ]
+            }, {
+                "@type": "ReferenceListBrand",
+                "Brand": [{
+                        "@type": "Brand",
+                        "name": "FULL FLEX",
+                        "tier": 9,
+                        "id": "b1",
+                        "BrandRef": "b1",
+                        "Identifier": {
+                            "value": "0000000000001047731"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

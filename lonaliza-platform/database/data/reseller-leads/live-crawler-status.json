@@ -1,0 +1,41 @@
+{
+  "active": true,
+  "jobId": "live_job_1790341470699",
+  "step": "lead_saved",
+  "message": "[شركة سياحية موثقة] شركة الوطن للسياحة والسفر | هاتف: +905065306881 | موقع: /aclk?sa=L&ai=DChsSEwjD-Jng5YmXAxWAnGgJHY4qFoQYACICCAEQBBoCd2Y&co=1&ase=2&gclid=EAIaIQobChMIw_iZ4OWJlwMVgJxoCR2OKhaEEBAYASAAEgLZw_D_BwE&category=acrcp_v1_32&sig=AOD64_04mQ_alYjNOkrG8GIc-rfdJZBNow&adurl=&rct=j&nis=5",
+  "city": "إسطنبول",
+  "country": "تركيا",
+  "totalFound": 17,
+  "currentKeyword": "وكالات سياحة وسفر في إسطنبول",
+  "progressPercent": 84,
+  "updatedAt": "2026-09-25T13:05:45.913Z",
+  "lastLead": {
+    "id": "lead_mugz4q0g_zugys",
+    "jobId": "live_job_1790341470699",
+    "title": "Seen Travels سين ترافيلز",
+    "category": "وكالة سياحية",
+    "address": "Molla Gürani, Yekta Efendi Sk. No:27, 34225 Fatih/İstanbul, تركيا",
+    "completeAddress": "Molla Gürani, Yekta Efendi Sk. No:27, 34225 Fatih/İstanbul, تركيا",
+    "city": "إسطنبول",
+    "country": "تركيا",
+    "phone": "+905065306881",
+    "whatsappPhone": "905065306881",
+    "hasWhatsapp": true,
+    "email": "",
+    "emailsList": [],
+    "website": "/aclk?sa=L&ai=DChsSEwjD-Jng5YmXAxWAnGgJHY4qFoQYACICCAEQBBoCd2Y&co=1&ase=2&gclid=EAIaIQobChMIw_iZ4OWJlwMVgJxoCR2OKhaEEBAYASAAEgLZw_D_BwE&category=acrcp_v1_32&sig=AOD64_04mQ_alYjNOkrG8GIc-rfdJZBNow&adurl=&rct=j&nis=5",
+    "reviewRating": 5,
+    "reviewCount": 4,
+    "placeId": "place__________________________",
+    "cid": "",
+    "latitude": "41.0355388",
+    "longitude": "29.1349639",
+    "thumbnail": "https://lh3.googleusercontent.com/grass-cs/ACvplmPV3_KXae37FUKiHeuSPGATxHqDALJbfZoQmGPO6CBc25IdYiJrIbRRTk2_zB_pgQbRV4wj3XQQpHh4fKGWIhpTtqK34x1RH7fEp8KZWUtlQEG8JFC_XbR7Oeu_z7njjgj9MzTp=w408-h272-k-no",
+    "images": [
+      "https://lh3.googleusercontent.com/grass-cs/ACvplmPV3_KXae37FUKiHeuSPGATxHqDALJbfZoQmGPO6CBc25IdYiJrIbRRTk2_zB_pgQbRV4wj3XQQpHh4fKGWIhpTtqK34x1RH7fEp8KZWUtlQEG8JFC_XbR7Oeu_z7njjgj9MzTp=w408-h272-k-no"
+    ],
+    "outreachStatus": "new",
+    "createdAt": "2026-09-25T13:05:45.904Z",
+    "updatedAt": "2026-09-25T13:05:45.904Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2024-02-28",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "LIS"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "LGW"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PrivateFaresOnly"
+				},
+				"OrganizationInformation": {
+					"@type": "OrganizationInformation",
+					"OrganizationIdentifier": [
+						{
+							"value": "CLASSIC",
+							"supplier": "TP",
+							"organizationCodeType": "Account",
+							"accountCodeFaresOnlyInd": true
+						}
+					]
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "98617556-b428-4dcd-b01e-2e921c0b1693"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_1"
+					}
+				]
+			}
+		}
+	}
+}

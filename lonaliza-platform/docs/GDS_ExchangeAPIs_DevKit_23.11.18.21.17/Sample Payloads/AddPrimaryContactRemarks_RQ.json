@@ -1,0 +1,20 @@
+{
+    "PrimaryContact": {
+        "shareWithSupplier": [
+            "YY"
+        ],
+        "Email": {
+            "value": "testEmail@test.com"
+        },
+        "Telephone": {
+            "@type": "Telephone",
+            "role": "Mobile",
+            "phoneNumber": "581478"
+        },
+        "TravelerIdentifier": {
+            "Identifier": {
+                "value": "0b48f0e9-9f5e-4b2a-81a3-aa72b35972ad"
+            }
+        }
+    }
+}

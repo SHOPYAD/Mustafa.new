@@ -1,0 +1,46 @@
+{
+    "TicketChangeEligibilityListResponse": {
+        "TicketChangeEligibilityID": [{
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "None",
+                "objID": "ticketChangeEligibility_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "2203767694263"
+                },
+                "Penalties": {
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": ["Maximum"],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "approximateInd": true,
+                                        "value": 0.0
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": ["Minimum"],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "approximateInd": true,
+                                        "value": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }
+        ]
+    }
+}

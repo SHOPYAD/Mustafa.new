@@ -1,0 +1,47 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-08-15",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "BVG"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "VDS"
+                    }
+                }
+            ],
+            "SearchModifiersAir": {
+                "@type": "SearchModifiersAir",
+                "ConnectionPreferences": [{
+                        "@type": "ConnectionPreferencesAir",
+                        "FlightType": {
+                            "@type": "FlightType",
+                            "connectionType": "StopDirect"
+                        }
+                    }
+                ]
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "3e94b970-9c8f-46c7-a869-136ddda289fd"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

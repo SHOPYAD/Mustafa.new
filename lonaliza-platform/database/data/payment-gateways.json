@@ -1,0 +1,33 @@
+{
+  "tenants": {
+    "platform": {
+      "tenantId": "platform",
+      "activeGateway": "iyzico",
+      "gateways": {
+        "iyzico": {
+          "enabled": true,
+          "testMode": true,
+          "credentials": {
+            "apiKey": "sandbox-NrMfcdLw2pOlZPF8vpNRDVUdpaOSX2KV",
+            "secretKey": "enc:v1:drT1oxsebsinp4/5:UW29ZdxkGxSOVNAouMCeow==:Wg5o/NREdejQMBVB4+BTMdF10DjwMcqNYjvm8Vu6WTU=",
+            "baseUrl": "",
+            "mode": "sandbox"
+          },
+          "updatedAt": "2026-09-24T12:38:30.131Z"
+        },
+        "paytr": {
+          "enabled": false,
+          "testMode": true,
+          "credentials": {
+            "merchantId": "123456",
+            "merchantKey": "enc:v1:T51pivpg3+5bevY2:lQTm3HaBjgc/Vi/Y8LCsfw==:DJtHeIZIIQ==",
+            "merchantSalt": "enc:v1:8LESCMt9O7WLodiY:HC2p8zSOgphE6H7xN5D+uw==:x4af2nK29zk="
+          },
+          "updatedAt": "2026-09-25T23:31:44.480Z"
+        }
+      },
+      "updatedAt": "2026-09-24T12:38:30.131Z"
+    }
+  },
+  "updatedAt": "2026-09-25T23:31:44.480Z"
+}

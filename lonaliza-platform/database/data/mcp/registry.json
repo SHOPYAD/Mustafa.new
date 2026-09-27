@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "servers": [
+    {
+      "id": "mcp_mtj5q1pe_9fi40m",
+      "name": "مدونة الريان",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-blog",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-01T21:06:08.574Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "blog.research_draft",
+          "description": "اكتشاف مواضيع وكتابة مسودة"
+        },
+        {
+          "name": "blog.translate",
+          "description": "ترجمة مقال عربي↔إنجليزي"
+        }
+      ],
+      "createdAt": "2026-09-01T21:06:08.546Z",
+      "updatedAt": "2026-09-01T21:06:08.578Z"
+    },
+    {
+      "id": "mcp_mtldtfil_9bq9ek",
+      "name": "نشر اجتماعي",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-social",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T10:28:15.700Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "social.publish",
+          "description": "publishToConnectedAccounts بعد موافقة"
+        }
+      ],
+      "createdAt": "2026-09-03T10:28:15.693Z",
+      "updatedAt": "2026-09-03T10:28:15.701Z"
+    },
+    {
+      "id": "mcp_mtldtnd2_komd6a",
+      "name": "تقارير الإعلانات",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-ads",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T10:28:25.865Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "ads.status",
+          "description": "حالة الاتصال والبيئة"
+        },
+        {
+          "name": "ads.reports",
+          "description": "آخر تقرير تيليجرام"
+        },
+        {
+          "name": "ads.lookalike",
+          "description": "جمهور مشابه من CRM opt-in (يتطلب approved)"
+        },
+        {
+          "name": "ads.ctwa",
+          "description": "حملة Click-to-WhatsApp متوقفة (يتطلب approved+budget)"
+        },
+        {
+          "name": "ads.launch_targeted_campaign",
+          "description": "إطلاق حملة ميتا مستهدفة بفيديو Reels بعد اعتماد الأدمن"
+        }
+      ],
+      "createdAt": "2026-09-03T10:28:25.862Z",
+      "updatedAt": "2026-09-03T10:28:25.866Z"
+    },
+    {
+      "id": "mcp_mtldtqes_vn5z2g",
+      "name": "ذاكرة MCP",
+      "source": "npm",
+      "transport": "stdio",
+      "enabled": true,
+      "packageName": "@modelcontextprotocol/server-memory",
+      "command": "npx",
+      "catalogId": "mcp-memory",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T10:28:50.035Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "create_entities",
+          "description": "ذاكرة معرفية تراكمية للوكيل"
+        }
+      ],
+      "createdAt": "2026-09-03T10:28:29.812Z",
+      "updatedAt": "2026-09-03T10:28:50.037Z"
+    },
+    {
+      "id": "mcp_weather_mtlfwr43",
+      "name": "الطقس والمناخ السياحي",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-weather",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:26:49.922Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "weather.get_forecast",
+          "description": "جلب طقس الوجهة مع توصية تسويقية ذكية"
+        }
+      ],
+      "createdAt": "2026-09-03T11:26:49.922Z",
+      "updatedAt": "2026-09-03T11:26:49.922Z"
+    },
+    {
+      "id": "mcp_search_mtlfwr43",
+      "name": "البحث الحي في الويب",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-web-search",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:26:49.922Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "web.search",
+          "description": "بحث مباشر في الويب عن أي موضوع سياحي"
+        }
+      ],
+      "createdAt": "2026-09-03T11:26:49.922Z",
+      "updatedAt": "2026-09-03T11:26:49.922Z"
+    },
+    {
+      "id": "mcp_analytics_mtlfwr43",
+      "name": "تحليلات الحجوزات والطلب",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-analytics",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:26:49.922Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "analytics.demand_report",
+          "description": "تقرير اتجاهات الطلب والوجهات الأكثر تحويلاً"
+        }
+      ],
+      "createdAt": "2026-09-03T11:26:49.922Z",
+      "updatedAt": "2026-09-03T11:26:49.922Z"
+    },
+    {
+      "id": "mcp_puppeteer_mtlfwr43",
+      "name": "متصفح الويب التلقائي (Stealth)",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-puppeteer",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:26:49.922Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "browser.scrape_page",
+          "description": "زيارة موقع واستخراج النصوص ومعاينة الصفحة"
+        }
+      ],
+      "createdAt": "2026-09-03T11:26:49.922Z",
+      "updatedAt": "2026-09-03T11:26:49.922Z"
+    },
+    {
+      "id": "mcp_flow_mtlfwr43",
+      "name": "محرك فيديو Google Flow (Ultra)",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-google-flow",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:26:49.922Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "flow.generate_video",
+          "description": "توليد فيديو سياحي بالذكاء الاصطناعي مع إشعار تيليجرام"
+        },
+        {
+          "name": "flow.save_session",
+          "description": "حفظ رمز الجلسة لحساب Ultra"
+        }
+      ],
+      "createdAt": "2026-09-03T11:26:49.922Z",
+      "updatedAt": "2026-09-03T11:26:49.922Z"
+    },
+    {
+      "id": "mcp_mtlgjr59_dl1srk",
+      "name": "استوديو فيديو/صور",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-studio",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:44:43.064Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "studio.weekly_plan",
+          "description": "خطة محتوى أسبوعية"
+        },
+        {
+          "name": "studio.generate_image",
+          "description": "توليد صورة"
+        },
+        {
+          "name": "studio.generate_video",
+          "description": "توليد فيديو"
+        },
+        {
+          "name": "studio.ffmpeg_status",
+          "description": "حالة ffmpeg المحلي"
+        }
+      ],
+      "createdAt": "2026-09-03T11:44:43.053Z",
+      "updatedAt": "2026-09-03T11:44:43.066Z"
+    },
+    {
+      "id": "mcp_mtlglh2e_26i64v",
+      "name": "ملفات معزولة",
+      "source": "npm",
+      "transport": "stdio",
+      "enabled": true,
+      "packageName": "@modelcontextprotocol/server-filesystem",
+      "command": "npx",
+      "catalogId": "mcp-filesystem",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/www/wwwroot/lonaliza.com/.data/mcp-sandbox"
+      ],
+      "cwd": "/www/wwwroot/lonaliza.com/.data/mcp-sandbox",
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T11:47:03.458Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "قراءة ملف"
+        },
+        {
+          "name": "read_text_file",
+          "description": "قراءة ملف نصي"
+        },
+        {
+          "name": "write_file",
+          "description": "كتابة ملف"
+        },
+        {
+          "name": "edit_file",
+          "description": "تعديل ملف"
+        },
+        {
+          "name": "list_directory",
+          "description": "عرض مجلد"
+        },
+        {
+          "name": "create_directory",
+          "description": "إنشاء مجلد"
+        },
+        {
+          "name": "search_files",
+          "description": "بحث في الملفات"
+        },
+        {
+          "name": "get_file_info",
+          "description": "معلومات الملف"
+        }
+      ],
+      "createdAt": "2026-09-03T11:46:03.302Z",
+      "updatedAt": "2026-09-03T12:08:42.050Z"
+    },
+    {
+      "id": "mcp-fetch",
+      "name": "Fetch / HTTP",
+      "source": "builtin",
+      "transport": "http",
+      "enabled": true,
+      "catalogId": "mcp-fetch",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T12:08:42.049Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "fetch",
+          "description": "جلب صفحة ويب عامة وتحويلها إلى ماركداون نظيف"
+        }
+      ],
+      "createdAt": "2026-09-03T12:08:42.050Z",
+      "updatedAt": "2026-09-03T12:08:42.050Z"
+    },
+    {
+      "id": "lonaliza-platform-admin",
+      "name": "مشرف منصة لوناليزا العام",
+      "source": "builtin",
+      "transport": "http",
+      "enabled": true,
+      "catalogId": "lonaliza-platform-admin",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-03T12:08:42.050Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "admin.audit_platform",
+          "description": "فحص جاهزية المنصة الشامل لـ 18 قسماً"
+        },
+        {
+          "name": "admin.get_settings_overview",
+          "description": "استعراض الإعدادات وقيم الأقسام"
+        },
+        {
+          "name": "admin.configure_setting",
+          "description": "تعديل وضبط أي إعداد وحفظه في المنصة"
+        },
+        {
+          "name": "admin.guide_api_key",
+          "description": "دليل وخطوات ورابط جلب أي مفتاح API خارجي"
+        },
+        {
+          "name": "admin.save_and_verify_key",
+          "description": "حفظ وفحص أي مفتاح API في قاعدة البيانات فوراً"
+        },
+        {
+          "name": "admin.monitor_agents_activity",
+          "description": "مراقبة خلايا الوكلاء الـ 6 والقرارات المعلقة"
+        },
+        {
+          "name": "admin.get_executive_metrics",
+          "description": "إحصائيات ومؤشرات الزيارات والحجوزات والكتالوج"
+        },
+        {
+          "name": "admin.send_telegram_briefing",
+          "description": "إرسال تقرير إحاطة تنفيذي مباشر إلى تيليجرام"
+        }
+      ],
+      "createdAt": "2026-09-03T12:08:42.050Z",
+      "updatedAt": "2026-09-03T12:08:42.050Z"
+    },
+    {
+      "id": "mcp_mtomlweu_b30qp9",
+      "name": "التحكم في كمبيوتر العميل (Computer Use MCP)",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-computer-use",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-05T16:57:39.428Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "computer.health",
+          "description": "التحقق من حالة اتصال وكيل سطح المكتب"
+        },
+        {
+          "name": "computer.capcut_automate_video",
+          "description": "مونتاج فيديو سياحي سينمائي كامل في CapCut وقص المشاهد وإضافة النصوص العربية والموسيقى وتصديره"
+        },
+        {
+          "name": "computer.take_screenshot",
+          "description": "التقاط صورة حية لشاشة سطح المكتب والتايملاين"
+        }
+      ],
+      "createdAt": "2026-09-05T16:57:39.414Z",
+      "updatedAt": "2026-09-05T16:57:39.433Z"
+    },
+    {
+      "id": "mcp_mtomlxl8_zdk68j",
+      "name": "التحكم في متصفح العميل (Browser Use MCP)",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-browser-use",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-05T16:57:40.945Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "browser.connect_user_session",
+          "description": "الربط مع متصفح العميل المفتوح عبر بروتوكول التصحيح CDP"
+        },
+        {
+          "name": "browser.capcut_web_editor",
+          "description": "فتح محرر CapCut Web ومونتاج ريلز سياحي فخم بالذكاء الاصطناعي مع حفظ الكوكيز"
+        },
+        {
+          "name": "browser.canva_web_editor",
+          "description": "توليد تصاميم سياحية فاخرة في Canva Web وتصديرها"
+        }
+      ],
+      "createdAt": "2026-09-05T16:57:40.940Z",
+      "updatedAt": "2026-09-05T16:57:40.947Z"
+    },
+    {
+      "id": "mcp_mu5gi3kb_m6drxh",
+      "name": "خادم تقييمات تريب أدفايزر الذكي (TripAdvisor Reviews)",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "liotrip-tripadvisor-reviews",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-17T11:38:49.371Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "tripadvisor.crawl_reviews",
+          "description": "زحف واستخراج تقييمات النزلاء الحقيقية من TripAdvisor لفندق ومدينة محددة"
+        },
+        {
+          "name": "tripadvisor.translate_reviews",
+          "description": "ترجمة عناوين ونصوص التقييمات آلياً إلى العربية بواسطة حاوية Docker LibreTranslate"
+        },
+        {
+          "name": "tripadvisor.inject_reviews",
+          "description": "حقن وحفظ التقييمات المترجمة في جدول hotel_guest_reviews وتحديث تقييم الفندق"
+        },
+        {
+          "name": "tripadvisor.sync_hotel",
+          "description": "مزامنة شاملة متكاملة (زحف + ترجمة فورية + حقن بقاعدة البيانات) بضغطة واحدة"
+        }
+      ],
+      "createdAt": "2026-09-17T11:38:49.355Z",
+      "updatedAt": "2026-09-17T11:38:49.373Z"
+    },
+    {
+      "id": "mcp_mu5gir4g_z12rdf",
+      "name": "محرك نشر لوناليزا",
+      "source": "builtin",
+      "transport": "stdio",
+      "enabled": true,
+      "catalogId": "lonaliza-publish",
+      "args": [],
+      "hasAuth": false,
+      "lastTestAt": "2026-09-17T11:39:20.016Z",
+      "lastTestOk": true,
+      "lastError": null,
+      "tools": [
+        {
+          "name": "publish.channels",
+          "description": "عرض قنوات النشر المتاحة وحالة المخزن"
+        },
+        {
+          "name": "publish.posts",
+          "description": "عرض المنشورات ضمن نطاق تاريخ (from/to)"
+        },
+        {
+          "name": "publish.schedule",
+          "description": "إنشاء مسودة أو جدولة منشور — لا يُنشر للشبكة إلا بعد approved=true"
+        },
+        {
+          "name": "publish.media_from_url",
+          "description": "تنزيل وسيط من رابط إلى استوديو النشر"
+        },
+        {
+          "name": "publish.generate_image",
+          "description": "توليد صورة إلى مكتبة النشر — بلا نشر للشبكة"
+        },
+        {
+          "name": "publish.generate_video",
+          "description": "توليد فيديو إلى مكتبة النشر — بلا نشر للشبكة"
+        }
+      ],
+      "createdAt": "2026-09-17T11:39:19.888Z",
+      "updatedAt": "2026-09-17T11:39:20.018Z"
+    }
+  ],
+  "updatedAt": "2026-09-17T11:39:20.018Z"
+}

@@ -1,0 +1,43 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-11-15",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "PER"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "LHR"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "5b38ef50-95c2-4f82-810e-e1bdd2089ec1"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

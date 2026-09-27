@@ -1,0 +1,82 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-09-23",
+                    "departureTime": "15:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "DXB"
+                    }
+                }, {
+                    "departureDate": "2022-03-01",
+                    "departureTime": "20:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "DXB"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PrivateFaresOnly"
+                },
+                "OrganizationInformation": {
+                    "@type": "OrganizationInformation",
+                    "OrganizationIdentifier": [{
+                            "value": "MMIS",
+                            "supplier": "SQ",
+                            "organizationCodeType": "Account"
+                        }, {
+                            "value": "TEST2",
+                            "supplier": "SQ",
+                            "organizationCodeType": "Account"
+                        }, {
+                            "value": "TEST3",
+                            "supplier": "SQ",
+                            "organizationCodeType": "Account"
+                        }, {
+                            "value": "TEST4",
+                            "supplier": "SQ",
+                            "organizationCodeType": "Account"
+                        }, {
+                            "value": "TEST5",
+                            "supplier": "SQ",
+                            "organizationCodeType": "Account"
+                        }
+                    ]
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b6aaf0da-bccd-470d-93a2-971bb4cab1f6"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

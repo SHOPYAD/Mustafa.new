@@ -1,0 +1,36 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-10-24",
+                    "departureTime": "06:00:00",
+                    "From": {
+                        "value": "PRG"
+                    },
+                    "To": {
+                        "value": "KBP"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "278d2453-be5e-4dc2-8303-a006de74a803"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

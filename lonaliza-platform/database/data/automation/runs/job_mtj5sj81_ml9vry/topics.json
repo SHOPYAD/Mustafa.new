@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-09-02T06:00:33.994Z",
+  "count": 6,
+  "topics": [
+    {
+      "id": "cappadocia-balloons",
+      "titleAr": "كابادوكيا ومنطاد الفجر: كيف تخطط الرحلة دون مفاجآت",
+      "titleEn": "Cappadocia sunrise balloons: how to plan the trip",
+      "titleTr": "Kapadokya balon turu planı",
+      "queryAr": "منطاد كابادوكيا",
+      "queryEn": "Cappadocia hot air balloon",
+      "destination": "cappadocia",
+      "angle": "balloons",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 90,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 84,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    },
+    {
+      "id": "istanbul-season-guide",
+      "titleAr": "أفضل وقت لزيارة إسطنبول: دليل المواسم للعائلات والأزواج",
+      "titleEn": "Best time to visit Istanbul: a seasonal guide",
+      "titleTr": "İstanbul’u ziyaret etmek için en iyi zaman",
+      "queryAr": "أفضل وقت للسفر إلى إسطنبول",
+      "queryEn": "best time to visit Istanbul",
+      "destination": "istanbul",
+      "angle": "seasons",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 88,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 83,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    },
+    {
+      "id": "antalya-summer",
+      "titleAr": "أنطاليا في الصيف: شواطئ، منتجعات، وكيف تختار البرنامج المناسب",
+      "titleEn": "Antalya in summer: beaches, resorts, and the right program",
+      "titleTr": "Yazın Antalya: plajlar ve tatil programı",
+      "queryAr": "سياحة أنطاليا صيف",
+      "queryEn": "Antalya summer holiday",
+      "destination": "antalya",
+      "angle": "beach",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 84,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 81,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    },
+    {
+      "id": "trabzon-nature",
+      "titleAr": "طرابزون وأوزونغول: طبيعة البحر الأسود للعائلات الخليجية",
+      "titleEn": "Trabzon and Uzungöl: Black Sea nature for families",
+      "titleTr": "Trabzon ve Uzungöl doğa tatili",
+      "queryAr": "سياحة طرابزون أوزونغول",
+      "queryEn": "Trabzon Uzungol travel",
+      "destination": "trabzon",
+      "angle": "nature",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 82,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 80,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    },
+    {
+      "id": "istanbul-cappadocia-combo",
+      "titleAr": "برنامج إسطنبول وكابادوكيا: كم يوماً يكفي وكيف تقسّم الرحلة",
+      "titleEn": "Istanbul and Cappadocia combo: how many days you need",
+      "titleTr": "İstanbul + Kapadokya kaç gün sürer",
+      "queryAr": "برنامج إسطنبول كابادوكيا",
+      "queryEn": "Istanbul Cappadocia itinerary",
+      "destination": "cappadocia",
+      "angle": "combo",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 80,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 79,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    },
+    {
+      "id": "bursa-uludag",
+      "titleAr": "بورصة وأولوداغ: رحلة قريبة من إسطنبول بين التاريخ والجبل",
+      "titleEn": "Bursa and Uludağ: a short trip from Istanbul",
+      "titleTr": "Bursa ve Uludağ İstanbul’a yakın kaçamak",
+      "queryAr": "رحلة بورصة من إسطنبول",
+      "queryEn": "Bursa day trip from Istanbul",
+      "destination": "bursa",
+      "angle": "short-trip",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 70,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 75,
+      "publishedAt": "2026-09-02T06:00:31.383Z"
+    }
+  ]
+}

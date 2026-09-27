@@ -1,0 +1,48 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2023-01-18",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SIN"
+                    }
+                }, {
+                    "departureDate": "2023-01-28",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SIN"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "d5915c2e-4cfe-4b61-846d-21967325ffcb"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

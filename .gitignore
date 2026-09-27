@@ -1,23 +1,12 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Third-party dependencies (installable via pnpm install)
 node_modules/
 node_modules
 **/node_modules/
 **/node_modules
 /.pnp
 .pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
 
-# testing & coverage
-/coverage
-**/coverage/
-
-# Next.js & build output
+# Next.js build and webpack cache (files >100MB like 0.pack)
 .next/
 **/.next/
 **/.next
@@ -25,89 +14,41 @@ node_modules
 **/.next*
 /out/
 **/out/
-/build
-**/build/
-**/build
 
-# misc
+# Flutter native compilation cache (files >100MB like libflutter.so)
+**/.dart_tool/
+**/.flutter-plugins*
+**/.pub-cache/
+**/.pub/
+**/build/
+**/ephemeral/
+
+# PocketBase live socket/WAL/HTTP-log files (>100MB)
+# Note: The database is backed up in pb_data/backups/data.db.gz.part_*
+**/pb_data/auxiliary.db*
+**/pb_data/*.db-shm
+**/pb_data/*.db-wal
+**/pb_data/data.db
+
+# Live flight search transient API cache (1.6GB of 30-min cached query responses)
+**/flights-cache/
+
+# System / OS temp files
 .DS_Store
 **/.DS_Store
-*.pem
-**/*.pem
-*.key
-**/*.key
-*.bak*
-**/*.bak*
 *.pyc
 **/*.pyc
 __pycache__/
 **/__pycache__/
 .user.ini
-credentials.json
-**/credentials.json
-**/mcp-secrets*
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-**/.env*
-!.env.example
-!**/.env.example
-
-# PocketBase runtime data and binaries (keep migrations and hooks)
-pb_data/
-**/pb_data/
-pocketbase/pocketbase
-**/pocketbase/pocketbase
-**/pocketbase/pocketbase.exe
-*.zip
-**/*.zip
-
-# server-side secrets, runtime databases & caches
-.data/
-**/.data/
-**/.data
-server-env.json
-**/server-env.json
-gemini-secrets.json
-**/gemini-secrets.json
-email-cron-secret*
-**/email-cron-secret*
-**/database/data/
-**/database/data
-**/flights-cache/
-**/booking-cache/
-**/places_cache/
-**/whatsapp-qr-auth/
-**/data/bin/
-
-# Lonaliza hotel-engine (secrets, build, crawlee storage)
-hotel-engine/node_modules/
-hotel-engine/dist/
-hotel-engine/.env
-hotel-engine/storage/
-hotel-engine/redis-data/
-hotel-engine/redis.conf
-hotel-engine/wg/*.key
-hotel-engine/wg/wg-lonaliza.conf
-hotel-engine/wg/phone.conf
-
-# vercel
-.vercel
-**/.vercel
-
-# typescript
+# TypeScript build info
 *.tsbuildinfo
 **/*.tsbuildinfo
 next-env.d.ts
 **/next-env.d.ts
 
-# IDE / local agent (MCP tokens, workspace state)
+# IDE workspace state
 .cursor/
 **/.cursor/
 .claude/
@@ -116,35 +57,4 @@ next-env.d.ts
 **/.idea/
 *.iml
 **/*.iml
-
-# Let's Encrypt challenge leftovers
-.well-known/acme-challenge/
-
-# Mobile packages and builds
-*.apk
-**/*.apk
-*.aab
-**/*.aab
-*.ipa
-**/*.ipa
-
-# Flutter generated local machine paths
-**/.dart_tool/
-**/.flutter-plugins*
-**/.pub-cache/
-**/.pub/
-**/ephemeral/
-**/Generated.xcconfig
-**/flutter_export_environment.sh
-
-# Vendor API dumps too large for git (>30MB dumps)
-docs/travelport/
-**/docs/travelport/
-docs/GDS_ExchangeAPIs_DevKit_23.11.18.21.17/
-**/docs/GDS_ExchangeAPIs_DevKit_*/
-**/docs/_reference/
-**/docs/travel-providers-spec-mcp/
-
-# Postiz reference clone
-_reference/postiz-app/
-**/_reference/postiz-app/
+**/postiz-app/

@@ -1,0 +1,54 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-05-03",
+                    "departureTime": "14:10:00",
+                    "From": {
+                        "value": "LHR"
+                    },
+                    "To": {
+                        "value": "LAX"
+                    },
+                    "DepartureTimeRange": {
+                        "start": "14:10:00",
+                        "end": "18:10:00"
+                    }
+                }, {
+                    "departureDate": "2021-05-08",
+                    "departureTime": "17:40:00",
+                    "From": {
+                        "value": "LAX"
+                    },
+                    "To": {
+                        "value": "LHR"
+                    },
+                    "DepartureTimeRange": {
+                        "start": "17:40:00",
+                        "end": "21:40:00"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "1565fe34-7f82-41ad-9f64-40465362f4be"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

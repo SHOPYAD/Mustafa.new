@@ -1,0 +1,2840 @@
+{
+	"info": {
+		"_postman_id": "d94b247d-27bc-437c-adb4-375e888620a8",
+		"name": "PP GDS EXCHANGE E2E KIT",
+		"description": "# Introduction\nTravelport Trip Services allows developers to quickly build solutions for searching and booking travel across the full range of Travelport supplier content for air, hotel, and car. Trip Services offers developers an off-the-shelf menu of APIs to create efficient, responsive travel applications.\n\n# Overview\nRequests are RESTful and can be in either XML or JSON.\n\n# Authentication\nAuthentication with OAuth 2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32664166"
+	},
+	"item": [
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "OAuth PP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonObject =JSON.parse(responseBody);",
+									"",
+									"//pm.environment.set(\"token\", null);",
+									"pm.environment.unset(\"token\");",
+									"pm.environment.unset(\"version\");",
+									"pm.environment.unset(\"baseURL\");",
+									"",
+									"pm.collectionVariables.set(\"token\", jsonObject.access_token);",
+									"",
+									"pm.collectionVariables.set(\"refreshToken\", jsonObject.refresh_token);",
+									"",
+									"pm.collectionVariables.set(\"version\", 11)",
+									"",
+									"pm.collectionVariables.set(\"baseURL\", \"api.pp.travelport.com\")",
+									"",
+									"pm.collectionVariables.set(\"FFSBaseURL\", \"https://api.apim-a.zu2.pp.travelport.io\")",
+									"",
+									"postman.setNextRequest('Search Request One Way GDS');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"type": "text",
+								"value": "no-cache"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://oauth.pp.travelport.com/oauth/oauth20/token",
+							"protocol": "https",
+							"host": [
+								"oauth",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"oauth20",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eligibility",
+			"item": [
+				{
+					"name": "Eligibility API - byTicket",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "traceid",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/eligibility/ticketchangeeligibilities?Ticket=0163767694420",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"eligibility",
+								"ticketchangeeligibilities"
+							],
+							"query": [
+								{
+									"key": "Ticket",
+									"value": "0163767694420"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eligibility API - byLocator",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "traceid",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/eligibility/ticketchangeeligibilities?Locator=RJ28B1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"eligibility",
+								"ticketchangeeligibilities"
+							],
+							"query": [
+								{
+									"key": "Locator",
+									"value": "RJ28B1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TicketExchange",
+			"item": [
+				{
+					"name": "Initiate Workbench With Retrieve PNR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "E2ETrackingID",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/session/reservationworkbench/buildfromlocator?Locator=9NP5R2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"session",
+								"reservationworkbench",
+								"buildfromlocator"
+							],
+							"query": [
+								{
+									"key": "Locator",
+									"value": "9NP5R2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exchange Search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "traceId",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Version",
+								"type": "text",
+								"value": "11"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CatalogOfferingsQueryAirChange\": {\r\n        \"CatalogOfferingsAirChangeRequest\": {\r\n            \"@type\": \"CatalogOfferingsAirChangeRequestReservation\",\r\n            \"returnBrandedFaresInd\": true,\r\n            \"detailViewInd\": true,\r\n            \"SearchCriteriaFlight\": [{\r\n                    \"departureDate\": \"2021-05-14\",\r\n                    \"departureTime\": \"07:30:00\",\r\n                    \"From\": {\r\n                        \"cityOrAirport\": \"Airport Only\",\r\n                        \"value\": \"LHR\"\r\n                    },\r\n                    \"To\": {\r\n                        \"cityOrAirport\": \"City or Airport\",\r\n                        \"value\": \"FRA\"\r\n                    }\r\n                }, {\r\n                    \"departureDate\": \"2021-05-30\",\r\n                    \"departureTime\": \"08:00:00\",\r\n                    \"From\": {\r\n                        \"cityOrAirport\": \"Airport Only\",\r\n                        \"value\": \"FRA\"\r\n                    },\r\n                    \"To\": {\r\n                        \"cityOrAirport\": \"City or Airport\",\r\n                        \"value\": \"LHR\"\r\n                    }\r\n                }\r\n            ],\r\n            \"PassengerCriteria\": [{\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 20,\r\n                    \"passengerTypeCode\": \"ADT\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_1\"\r\n                    }\r\n                }, {\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 22,\r\n                    \"passengerTypeCode\": \"ADT\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_2\"\r\n                    }\r\n                }, {\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 15,\r\n                    \"passengerTypeCode\": \"C10\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_3\"\r\n                    }\r\n                }, {\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 15,\r\n                    \"passengerTypeCode\": \"C10\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_4\"\r\n                    }\r\n                }, {\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 60,\r\n                    \"passengerTypeCode\": \"ADT\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_5\"\r\n                    }\r\n                }, {\r\n                    \"@type\": \"PassengerCriteriaAirChange\",\r\n                    \"number\": 1,\r\n                    \"age\": 60,\r\n                    \"passengerTypeCode\": \"ADT\",\r\n                    \"TravelerIdentifierRef\": {\r\n                        \"id\": \"travelerRefId_6\"\r\n                    }\r\n                }\r\n            ],\r\n            \"PricingModifiersAirChange\": {},\r\n            \"BuildFromReservationWorkbench\": {\r\n                \"ReservationIdentifier\": {\r\n                    \"Identifier\": {\r\n                        \"authority\": \"Travelport\",\r\n                        \"value\": \"723f8a67-a1b2-4f41-b52b-71c5026db23e\"\r\n                    }\r\n                },\r\n                \"OfferIdentifier\": {\r\n                    \"id\": \"offer_1\"\r\n                },\r\n                \"ProductIdentifier\": [{\r\n                        \"id\": \"product_1\"\r\n                    }, {\r\n                        \"id\": \"product_2\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/exchangesearch/catalogofferingsairchange",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"exchangesearch",
+								"catalogofferingsairchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "E2ETrackingID",
+								"value": ""
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": ""
+							},
+							{
+								"key": "Content-Version",
+								"type": "text",
+								"value": "11"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"OfferQueryBuildFromCatalogOfferings\": {\r\n        \"fareRuleType\": \"TextLong\",\r\n        \"lowFareFinderInd\": \"false\",\r\n        \"returnBrandedFaresInd\": \"false\",\r\n        \"reCheckInventoryInd\": \"false\",\r\n        \"BuildFromCatalogOfferingsRequest\": {\r\n            \"@type\": \"BuildFromCatalogOfferingsRequestAir\",\r\n            \"CatalogOfferingsIdentifier\": {\r\n                \"id\": \"CatalogOfferings_1\",\r\n                \"Identifier\": {\r\n                    \"value\":\"04373e5e-b6b8-4cae-93eb-b630bcf6afdc\",\r\n                    \"authority\": \"Travelport\"\r\n                }\r\n            },\r\n            \"CatalogOfferingIdentifier\": {\r\n                \"Identifier\": {\r\n                    \"value\": \"o0.0\",\r\n                    \"authority\": \"Travelport\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/offer/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/offers/buildfromcatalogofferings",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"offer",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"offers",
+								"buildfromcatalogofferings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PRE ET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonObject =JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"PNR\", jsonObject.ReservationResponse.Reservation.Receipt[0].Confirmation.Locator.value);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "E2ETrackingID",
+								"value": "alphazqag",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/session/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"session",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5"
+							],
+							"query": [
+								{
+									"key": "autoDeleteDate",
+									"value": "2019-10-28",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddGeneralRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"id\": \"reservationComment_1\",\n                \"Comment\": [\n                    {\n                        \"name\": \"RE\",\n                        \"value\": \"DETAILS FOR THE REMARK\",\n                        \"id\": \"comment_1\",\n                        \"language\": \"EN\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNotePadRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Agency\",\n                \"Comment\": [\n                    {\n                        \"name\": \"YT\",\n                        \"value\": \"This is notepad remarks one\"\n                    },\n                    {\n                        \"name\": \"UA\",\n                        \"value\": \"This is notepad remarks two\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddHistoricalRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Agency\",\n                \"Comment\": [\n                    {\n                        \"name\": \"HG\",\n                        \"value\": \"*******************************\"\n                    },\n                    {\n                        \"name\": \"HH\",\n                        \"value\": \"QF 674 E 25AUG ADLMEL HS2 0905 1055 O\"\n                    },\n                    {\n                        \"name\": \"HM\",\n                        \"value\": \"AJIT//07JUN//1139\"\n                    },\n                    {\n                        \"name\": \"HG\",\n                        \"value\": \"FT.ADT IRT 5.53WG - TIRT AUD5.53\"\n                    },\n                    {\n                        \"name\": \"HA\",\n                        \"value\": \"FD-$222.00/TAXES:WG-$1.49/WY-$4.88\"\n                    },\n                    {\n                        \"name\": \"HO\",\n                        \"value\": \"-.......................RAHUL/12OCT/1630\"\n                    }\n                ]\n            },\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Agency\",\n                \"Comment\": [\n                    {\n                        \"name\": \"HQ\",\n                        \"value\": \"RAIL-12345/GBP/0.00/160.00/0.00\"\n                    },\n                    {\n                        \"name\": \"HM\",\n                        \"value\": \"PHOGAT // 20APR21// 2000\"\n                    },\n                    {\n                        \"name\": \"HQ\",\n                        \"value\": \"NEW TAX -AUD 43.72PP/87.44 TTL\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddVendorRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"id\": \"reservationComment_1\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Supplier\",\n                \"shareWithSupplier\": [\n                    \"UA\"\n                ],\n                \"Comment\": [\n                    {\n                        \"id\": \"comment_1\",\n                        \"name\": \"Vendor Remarks\",\n                        \"language\": \"EN\",\n                        \"value\": \"Testing with carrier code for GDS OW\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAssociatedRemarks-OfferLevel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "2A9A9814-3B18-4E65-9CDA-4F2CF7FFDBA4",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Traveler\",\n                \"Comment\": [\n                    {\n                        \"name\": \"ITIN COMMENTS\",\n                        \"value\": \"This remarks has single offer with all segments\"\n                    }\n                ],\n                \"AppliesTo\": [\n                    {\n                        \"@type\": \"AppliesToOffer\",\n                        \"OfferIdentifier\": [\n                            {\n                                \"Identifier\": {\n                                    \"authority\": \"Travelport\",\n                                    \"value\": \"1bee7d2e-5f77-4665-b258-1c64bfd777bf\"\n                                }\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAssociatedRemarks-ProductLevel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Traveler\",\n                \"Comment\": [\n                    {\n                        \"name\": \"ITIN COMMENTS\",\n                        \"value\": \"This is single comment with single product 1\"\n                    }\n                ],\n                \"AppliesTo\": [\n                    {\n                        \"@type\": \"AppliesToOfferProduct\",\n                        \"OfferIdentifier\": {\n                            \"Identifier\": {\n                                \"authority\": \"Travelport\",\n                                \"value\": \"8aafc8a4-20f2-48d0-ad69-5d95e886273b\"\n                            }\n                        },\n                        \"ProductIdentifier\": [\n                            {\n                                \"Identifier\": {\n                                    \"authority\": \"Travelport\",\n                                    \"value\": \"c8c52555-9fa3-4d5f-af3d-619e7a7e517c\"\n                                }\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAssociatedRemarks-SegmentLevel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Traveler\",\n                \"Comment\": [\n                    {\n                        \"name\": \"ITIN COMMENTS\",\n                        \"value\": \"Testing single ITIN associated remarks -per segment\"\n                    }\n                ],\n                \"AppliesTo\": [\n                    {\n                        \"@type\": \"AppliesToOfferProductSegment\",\n                        \"OfferIdentifier\": {\n                            \"Identifier\": {\n                                \"authority\": \"Travelport\",\n                                \"value\": \"3fe27069-2426-4e01-b111-29476937ba07\"\n                            }\n                        },\n                        \"ProductIdentifier\": {\n                            \"Identifier\": {\n                                \"authority\": \"Travelport\",\n                                \"value\": \"e6c8eec8-a837-487e-8430-61f1091dbf59\"\n                            }\n                        },\n                        \"SegmentSequenceList\": [1]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUnassociatedRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ReservationCommentListRequest\": {\n        \"ReservationCommentID\": [\n            {\n                \"@type\": \"ReservationComment\",\n                \"commentSource\": \"Agency\",\n                \"shareWith\": \"Traveler\",\n                \"Comment\": [\n                    {\n                        \"name\": \"ITIN COMMENTS\",\n                        \"value\": \"Testing ITIN Unassociated remarks one\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/reservationcomments/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"reservationcomments",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPrimaryContactRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"PrimaryContact\": {\n        \"shareWithSupplier\": [\n            \"YY\"\n        ],\n        \"Email\": {\n            \"value\": \"testEmail@test.com\"\n        },\n        \"Telephone\": {\n            \"@type\": \"Telephone\",\n            \"role\": \"Mobile\",\n            \"phoneNumber\": \"581478\"\n        },\n        \"TravelerIdentifier\": {\n            \"Identifier\": {\n                \"value\": \"44937d40-8205-4601-913a-300243018d08\"\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/primarycontact/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/primarycontacts",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"primarycontact",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"primarycontacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAccountingRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Accounting\": {\n        \"id\": \"accounting_1\",\n        \"AccountingRef\": \"accounting_1\",\n        \"NameValuePair\": [\n            {\n                \"value\": \"INV123456\",\n                \"name\": \"IN\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/accounting/reservationworkbench/a5039250-2988-42e6-8717-2e3255c18153/accountings",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"accounting",
+								"reservationworkbench",
+								"a5039250-2988-42e6-8717-2e3255c18153",
+								"accountings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAccountingRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/accounting/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/accountings/Accounting_1/namevaluepairs?NameValuePairIds=ActComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"accounting",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"accountings",
+								"Accounting_1",
+								"namevaluepairs"
+							],
+							"query": [
+								{
+									"key": "NameValuePairIds",
+									"value": "ActComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePrimaryContactRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/primarycontact/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/primarycontacts/primarycontact_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"primarycontact",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"primarycontacts",
+								"primarycontact_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteGeneralRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteNotePadRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteHistoricalRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteVendorRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAssociatedRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUnassociatedRemarks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/remarks/reservationworkbench/cb94240e-68a5-4a9e-b012-d4ef0ea336c5/reservationcomments/RSRVComment_1/comments?CommentIds=VeiComment_1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"remarks",
+								"reservationworkbench",
+								"cb94240e-68a5-4a9e-b012-d4ef0ea336c5",
+								"reservationcomments",
+								"RSRVComment_1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "CommentIds",
+									"value": "VeiComment_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form Of Payment Cash",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FormOfPaymentCash\": {\n        \"id\": \"formOfPayment_2\",\n        \"FormOfPaymentRef\": \"formOfPayment_2\",\n        \"Identifier\": {\n            \"authority\": \"Travelport\",\n            \"value\": \"A0656EFF-FAF4-456F-B061-0161008D6FOP\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/payment/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/formofpayment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"payment",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"formofpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form Of Payment - Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FormOfPaymentPaymentCard\": {\n        \"id\": \"formOfPayment_4\",\n        \"FormOfPaymentRef\": \"formOfPayment_4\",\n        \"PaymentCard\": {\n            \"@type\": \"PaymentCard\",\n            \"id\": \"paymentCard_4\",\n            \"expireDate\": \"1222\",\n            \"CardType\": \"Credit\",\n            \"CardCode\": \"VI\",\n            \"CardHolderName\": \"JOHN\",\n            \"CardNumber\": {\n                \"PlainText\": \"4005520000000129\"\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/payment/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/formofpayment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"payment",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"formofpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form Of Payment - Forfeit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FormOfPaymentForfeit\": {\n        \"forfeitInd\": true,\n        \"id\": \"formOfPayment_5\",\n        \"FormOfPaymentRef\": \"formOfPayment_5\",\n        \"Identifier\": {\n            \"authority\": \"Travelport\",\n            \"value\": \"2e88da9b-f4c2-4044-8607-c7b74ba4c657\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/payment/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/formofpayment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"payment",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"formofpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form Of Payment - Wavier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FormOfPaymentWaiverCode\": {\n        \"id\": \"formOfPayment_6\",\n        \"FormOfPaymentRef\": \"formOfPayment_6\",\n        \"Identifier\": {\n            \"value\": \"A0656EFF-FAF4-456F-B061-0161008D7C4E\",\n            \"authority\": \"Travelport\"\n        },\n        \"WaiverCode\": {\n            \"value\": \"ABC123\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/payment/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/formofpayment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"payment",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"formofpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form Of Payment Agent Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FormOfPaymentInvoice\": {\n        \"@type\": \"FormOfPaymentInvoice\",\n        \"id\": \"formOfPayment_5\",\n        \"Identifier\": {\n            \"authority\": \"Travelport\",\n            \"value\": \"2e88da9b-f4c2-4044-8607-c7b74ba4c657\"\n        },\n        \"InvoiceNumber\": \"34324343\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/payment/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/formofpayment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"payment",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"formofpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"GDS Commit Reservation Ticket Issuance\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Payment\": {\n        \"id\": \"payment_2\",\n        \"Identifier\": {\n            \"authority\": \"Travelport\",\n            \"value\": \"A0656EFF-FAF4-456F-B061-0161008D6A5E\"\n        },\n        \"Amount\": {\n            \"code\": \"AUD\",\n            \"value\": 14.55\n        },\n        \"FormOfPaymentIdentifier\": {\n            \"id\": \"formOfPayment_2\",\n            \"FormOfPaymentRef\": \"formOfPayment_2\",\n            \"Identifier\": {\n                \"authority\": \"Travelport\",\n                \"value\": \"a26164ec-02b8-41ef-af61-a837a76d5adb\"\n            }\n        },\n        \"OfferIdentifier\": [\n            {\n                \"id\": \"offer_1\",\n                \"offerRef\": \"offer_1\",\n                \"Identifier\": {\n                    \"authority\": \"Travelport\",\n                    \"value\": \"58100d86-b984-432b-82eb-c7286c061193\"\n                }\n            }\n        ],\n        \"TravelerIdentifierRef\": [\n            {\n                \"passengerTypeCode\": \"ADT\",\n                \"id\": \"travelerRefId_1\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/paymentoffer/reservationworkbench/2221c97d-cce9-46fd-8963-67726d35d518/payments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"paymentoffer",
+								"reservationworkbench",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DocumentOverrides",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DocumentOverrides\": {\n        \"id\": \"documentOverrides_1\",\n        \"DocumentOverridesRef\": \"documentOverrides_1\",\n        \"Commissions\": [\n            {\n                \"Commission\": {\n                    \"@type\": \"CommissionAmount\",\n                    \"Amount\": {\n                        \"code\": \"USD\",\n                        \"value\": 123\n                    }\n                }\n            }\n        ],\n        \"Restrictions\": [\n            {\n                \"Restriction\": [\n                    \"NON Exchange\"\n                ]\n            }\n        ],\n        \"TourCodes\": [\n            {\n                \"TourCode\": {\n                    \"tourCodeType\": \"Inclusive Tour\",\n                    \"value\": \"123456\"\n                }\n            }\n        ],\n        \"ChangeFeeCollectionMethod\": {\n            \"extension\": \"Other_Value\",\n            \"code\": \"D\",\n            \"subCode\": \"997\",\n            \"description\": \"REBOOKINGG\",\n            \"value\": \"EMD\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/documentoverride/Reservation/2221c97d-cce9-46fd-8963-67726d35d518/documentoverrides",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"documentoverride",
+								"Reservation",
+								"2221c97d-cce9-46fd-8963-67726d35d518",
+								"documentoverrides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exchange Ticket Issuance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonObject = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"PNR\", jsonObject.ReservationResponse.Reservation.Receipt[0].Confirmation.Locator.value);",
+									"",
+									"postman.setEnvironmentVariable(\"ticket_Number\", jsonObject.ReservationResponse.Reservation.Receipt[2].Confirmation.Ticket[0].Identifier.value);",
+									"",
+									"tests[\"ticket_Number\" + JSON.stringify(jsonObject.ReservationResponse.Reservation.Receipt[2].Confirmation.Ticket[0].Identifier.value)] =!null;",
+									"",
+									"postman.setNextRequest(\"Ticket Void GDS only\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiZ2QxbzlsZWEzMmxoIn0..Kgs0Mr6-PvjMUlzrZxvxlQ.CHuyfeki101dcKeImfoxA-F1MUyAzznceilVtlqH3v8LXwOP9cQ5kanK6IOmwH515qEsVxMVkcWlc7oApcYdJFE7Uzd5a6kYbPTjvCfzolAdpc6Un_NMtpqunEaI-mJKlin-rcktTEL2Bd1NzfhBx18iDXraH6SmJ5Yqvko7Cz3MBS3TO2Cd5WTyQnL7yEJsUt46l_R_17FCyu_42mfpSuD9TKQTl572eME331CgdSSIkac2ft_QSwV0f0HQc521LBxHl9BVXpaaOUMZoEV8IpXNCwnMbs0h3pgfIYDDGYJnA3zf-Lv8Ejkb8AcYAYCjylODYy_tSrZook-cn1_UEllTEar3AN0ea9cp09S_m597HpGKg54uIZ3dQLVDCtbLYnQg5VLkuhrLCA2NyN_7mha7Kr2MhkETA12n9hHb4TZcNCzZ2PepOY3vV91dhktotp46dHDiCAlQyolzjHcaex3zm-PX-jmhxuclkqytWH5vhQy9FG-JJ-cGuHPius8lVg0oioPuXwuWDBiWc6Rk1-g2U1PnIGR5w4u2wfwktOA1iM1dtUg8mPPO06v4aqRmpbZqWtl-wwIxiZTdVE5xn93lm4Obc1boPQoc709jvVgBD-D160kYrOQY9FT5AC1VRPuO5bz0J96byfvr-Po8yJuq-ssyzhZjobJiA_Gi9jHmcOmL-1JM-RqgUbYZP2tTUxDEXSQgXqeUWqDKJji7Y5aY3X0gSouup_gm_VGMOdDultPMr95KSjE5DasOGBeMaJX9HjxIErXxUzQD-VR9LOGF4EfBGE11W3q07fmdTMd6zUyWwS255CqJPObiTKj_GGS_rCrWXz1dd4a8vzH79mM267w-kXBLUdG9fNEUH5EFsnjAV-A6duhdGi2wEuYi-bFjJ6AWcUdQSVMqyw2dzhA8N_ruFKWpsT6cKo8ez5TdjmQq_pAGh-1ZhlTJtLnZzU0tLesWJ50IcqJ_V4z3k6qpt3noo8R3RsOiXCujUXn9ZpRewQAEfrqKLUZ7rYarjWJ5JvRQvdgrp7d1gSCRZrZwhOjLJChqeQQ_mwZqnm5aiUuyhX8rV8t7qTF4LnKrbmpKCFyWJDiVkSui2zoQb67ETUaPHwyB2gS4VfJTFc1aX0Hg993RUO1BxU2m0-b6Khi35erEsd9ZVwMmIs0Llllr4Te-IRm6XUHTGPGVH_XH3mGXVBJ2DJJ8fbszMLfktW8ED2BV19DLxQhljbCCwz7TeYaIDGW57B0qezN4Qk1ZWB73BmwZkYnzcCMlVVKPxZSJSOR1c3g4ntSAK4owDA76ES7pJ9a66LGtIQmynEj69AquoEZDbWSm78Bw8Bx_0mrtjknXH9b43RH5GDkyg9S3-_2iHJ1iFhPpIr2UxeFWWCytJZQQeDbTYDpV8ldMs72lJLHUuo-afuuFmzGWeyjmM2vL_qtAHqZ3WiY5l8FsbUbTzeXi8rdMftQfi-8cmir84ZMmV-vmf-nMnqq5A5kXXGsETfoxomOcABXtWiN8EKxwrtkUcyWxiLju-7t57wWWLdFRRoMSj-c2xVBrhSIzCnK5O5uY53Y3oKUDYNfPqRhHQ0UiP38eCl5U3yAl4GJH9DzKKq4vBe06SCXw6Uy92tHyVSjo3BuFfQfKNKCMENMei45n_vv3LVfW2qOsoC2VM-1PgRVJO4LRNnKUMwxpM_xikZlvI8B4VgNKRsNoF7vqzYpU2GyhGRJ_G8nbX81uhIB_EcFRzKYwXYQea_W-sVzMasKbH9Hm9zF4tcx56vD3uv8S89gjrB-WY1ALVX4pCiw7KWy-GvMLGr3WfGT_9CXBB6oD4-eUgDV0RTEBMMzJNYbvZiuhSMe17i2ubYHRnk4jJhxX1pAf4ASi6xmpxxEKuhWpel2RfdF_56OUv4L6MzYMGMXG_XX7I57E9eN3g6rbS9I34yS3DZ-uGx8VS9QyfywY4X0vr0RcM5LPifa4djOQNaivv44WnoYfW3Y7R1lzlya-TAvVtZEHAo8PvCCpZqjULsdd3u4kauUhUcYYK80-byF05_SKzk4xGWsbC-GrEsbM9q0_IJ-JVCES_jVjSr7WlM1UsOZ9FgdlmDxDaBf0GegSvyYjWJ0W_qv7RHlqe0hJrLFiaooOL3uOu-5Mop8qjYlRDWwxMkzxUA5aC3mNW4EB6K6xm27PF77XWemJaxMNLWKW7trnbnFFJQnhNjZki43uYxBxUlBgPTpxjOb5ODnPjdAJF76g_UaFdzigPn6sDsfhDmtFSCJpoBDVaPb2R1qNr99ZoJmUUexvOgxtrjFXtF-y_iefsAZM27VuHHEDFktrwNzMOG9zo4JpuTWrNno8akR1wr025MOX-Y4F7VYEMABMtgwUrPOn0VPd8ZrUHbpsHuP9PZfloiRb0X9FfyQS0K1-nJo7cZeFRZKdAqUYd5eYl_3pI_DOsj_gLxw6lxv6o26ad_qysd2gdBAZl91pGgsFXLNaxfqGltAyOlxRyx98H_G8wOHRrsoN4FXhNfkskRXZnCPEROwpiuioI4miAe2R0TqdySZJ9h1cwVlcEQK1B4FHIr0uv58GCJ3kl4U8JdxCsd_1TV1Zdle_PgG5DNDdVXVjI-Kh9EBpY0X4qfS6JsaEljfDEEfUqQRufc3JYbm83Q_0QtvD19N5Qd73s7sUNyh9sniC7JRSvTk76COz-YJC7AcXVUNd80qjK_3lspsHgw.0n0UtiU4AXmjLfDKyG8TPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "E2ETrackingID",
+								"value": "track123"
+							},
+							{
+								"key": "Content-Version",
+								"value": "11"
+							},
+							{
+								"key": "XAUTH_TRAVELPORT_ACCESSGROUP",
+								"value": "2A9A9814-3B18-4E65-9CDA-4F2CF7FFDBA4"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Version",
+								"type": "text",
+								"value": "11"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.pp.travelport.com/11/air/book/reservation/reservations/a5039250-2988-42e6-8717-2e3255c18153?payLaterInd=false",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pp",
+								"travelport",
+								"com"
+							],
+							"path": [
+								"11",
+								"air",
+								"book",
+								"reservation",
+								"reservations",
+								"a5039250-2988-42e6-8717-2e3255c18153"
+							],
+							"query": [
+								{
+									"key": "DocumentValue",
+									"value": "FORFEIT",
+									"disabled": true
+								},
+								{
+									"key": "payLaterInd",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Base URL from collection variable: \" + pm.collectionVariables.get(\"baseURL\"))",
+					"",
+					"console.log(\"Version of the API from collection variable: \" + pm.collectionVariables.get(\"version\"))"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var responseHeaders = pm.response.headers.all();",
+					"",
+					"console.log(responseHeaders[1])"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "offerIdPreCommitResponse",
+			"value": "offer_1"
+		},
+		{
+			"key": "productIdPreCommitResponse",
+			"value": "p0"
+		},
+		{
+			"key": "flightIdPreCommitResponse",
+			"value": "s13"
+		},
+		{
+			"key": "termsAndConditionsIdentifierValue",
+			"value": ""
+		},
+		{
+			"key": "firstSeatAvailablilityValue",
+			"value": ""
+		},
+		{
+			"key": "catalogOfferingsIdentifierValue",
+			"value": ""
+		},
+		{
+			"key": "NDCofferIdPreCommitResponse",
+			"value": "91d7e86a-8e03-42ac-a04a-3bd7167d2e40"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwianRpIjoiYzdqYzVhanNwaXVmIn0..1n9kaIxSelPGyqck_boP3A.OBipKUjiwPlO3owBmVlXhNuDImtq_CtHDGAMSECe7CisnAFQg457EDA85yJw-hvYi1FwWmQOdwhsq7N16PQQ5BXnvs6T78GD5hQFV3dohuO2jiD1gDLyG1uVcu8az5pikLJM11PfMgENnzrXNwnsGw2x8T1VHlLVqd4-L19YQjfTgVceJDz3hZP32WegaKHZlqv-eYRvg69OecX1sNG4IfBR5Dz0a8mmmB4lGRrgaDMkCMQ6KJoDQQF7r5OzD02c_GtVTybvCFVoQL_BE1z0ikF3QsBBFFUR3s28KrcHkpqRBswYfU0gcIqNrA0Qxb_uJEvx-hV8Uffl7-5Xrv1IG7KqsGF5dYPbxUFTZszf9H8SX93MWnebwHZS14C_RjZC6vhBlkAI-8FNFNsKve8aTS4a_hsJq4BQGK_aNdDKhbYbzlUQP9huJrk53Yy4Bh355FDMimHZExwQmyC_3aD-V99snA8FLzzZKdDtfmN0KVUKXhF5m_glRbUm-rWjyFU3tvYMxCC9BoM1sCOY8pRr2zBvLVByzn17R2hqU2mfhS_-Ii4Wpmf-4FoTxSppqQFkIFj6AxhZkcHup17T3DpRDTc__4Mm3LfLBUlC_QVjhHeUer_fc1cfC8R30ITH--YWYxsslrOQDO2Gy95gO1OCrcw_7q2I041suMHS2F6g3xZTcn3j_0ESRYv05nW3p34EPCe8_NsiXnqg2ltVugw4I8saqy92rmVs5KgElam0GHE4Aqxopp5y9lz-rImQguIdSvm_-C_rPASb0ucY4ir0Kc3ehSVqbTNTABFdJDIGYS3l2hXTnEf_F1ftToP-54hg7uYDqT2Nw5j1kmdumpgxwYwMJdgN8flrSyC7fgUkcYMwMOYUQhzqQUlHOtNfYgft5aIVaRnzdRnB0T3PMHS5Mz-uCJ-VRC366Nb2hbguvRKtu2Q2_WymPGd26shbS3O1cMM2QV_8eW4VbC2FfZhUJfm1Sae2-fZTZWoh1viWNjYbshgZTYE28KAAm1VKLWAHs8xO9nkrGuubD5R1-GqVbDIqNrvb31OUW1cYD0kTBZFEEn9wr6sjx3yFZGY_VkEy6edFtUeelxenAQruQ5-X8bRbXunoVC4mvX_Hmd6ZNggeJUmcNBU-x4IHDq-kmvehnLYk6TS-BctJobsNA3copU1D2hOX-gqBWO9qfqdTixPGyjo-BCb1DEsHaoCuHSkbeyIyv10Z3Dzo3X200LMxncGtUudDY4LFY9FQR_CEDkNsFbtKTXrUxvBwDLHXnd-h3YbIp4KCY_BBbUYi7JRi0nhyeS0nrXU1ERrfy9YJuQrJJJi9GISyc7NHYMHLYqK2cLNbmGqbef7elmQlKTkyGwhisIzNGOjIx8r6YS094dF9lxDxF7kX-jgCuM0zqtCKxaFYiXtjjPUHr_ZbUy5_KisJAjV3qNYPkpbpqVCD8tDNdVwyNV42iMxRKkoKjkZnYZByJtPrNKRW0u0Ol5VSU3whhcXMp6gDmZPRv1foowY_DTExEMx59MkOmxuCHVaTyqyr3PrHJQ7aMxM-cD1RXwr_FLldeihrMBZZwMUwamFgD6Xo4jLikahN83-FbYdpqooTtAFJJ1-5U_FoWeHPzeDnWsXY0ZaPXS-HVd78KBBJB20xxXgvDzdC5v4N4ZuZgHBWjCkbOc6QiYzXBbX3n9etdG1tYTibYfSuCvfpLLfG1hLhN8aMn7YR9mMZRpfx_7xQvribHnThZNtqqOwRw8W0JiTMjHL-cUhRhq7RXLgH22hvyeOXtwgEsmJinlm-rEPGoxwgc5QItybLUnmVFwJixzwot_ZD9dpUaw385Sqip8kkqcir3WqRO-9X5XjrcILInBv5ovJduqkBBEoEDdlZu3XBsJpTsMx_42g5e0PrIUGAxG70pUA8QtV2g6vaJ3EK40jbDpqAdKfwkb_YroFrH64Au3pX6wOUkCIiSw93uXg7kIjaycH2UaMU_Olx4RG_9vK0tz6zXUcIJd6AmmsyrIE4wRwbrt24xgLYV1xV3NwyksAX16hYkWITUOwrgzQFLFIxO14Q3mID2on-AYe35PBfSMXSzyIU_DJxw5CltMfRieOeP8NCbUpsyLXm60j_9m3ybG_dxuB6NV5uPAXB8XLUUgO0Hatl_V7M3gbUlwXf094ocFpC13Cq1HKBjB93w0hxCVaePRZWk8mHVZbfImLsiyGBz3isaBqZQACdheJrpVqweymreOujL-5WO_gRYhrMmUcxMtFM5LodztdhWtZNlYb67Jnc_GDL9B7tnbJcDWJOdgkxjYMNngWdNF2T6pZfFhf6fUo5j_NsOHpxjsiJLmLKln4KPJkwJaY81MFKfVnqk3DZD-t8JtyOU09B0YBKxIUa7kC-Jk8wyIwNEP2TuDlQwgFrudO5-lZDb42q5d6UuwjssDa-56ZbyWEwc0im-5-RC1ChMpIwR2cT10PO3c1xFx_qhlRG9Ref7_Jk8Eule0CfB-0-ymDLkfmTgG53QC6A6cHD_44wRb5z4bV5_blMGdSEGhpzvBh10XNyRVDGeodmChuWlNpRgRqXl3At73XPwrNaYyz3jcPg7Y36coid9VjPy10abL6of5h9LtvasLGWSQaeG54jy1E_Bg-52iwn5-S6dqmgimkcXvQtZI6V1C8d8YOu5jJsh-SpQBYlTDdcecFM-GJusHqYdiJf6RmiGowwYiZWUPTvjL053xfIG3i2fAOOQMdC6VkyHB3TIRL42EGoRQLXd_iYoz6YrZz5CkyJynkdXeEYrf7m47PSQn-NZMT2ecIe7AjT1WX7ltArruXvW_BK1GhCZw2tx7Ju_YeRFyUhx0TEaGiQLtz70xJrG0wTyirY6vrQ8tf54Sz0kyyX58-j_5B3wzCCglP8me2CAwvHqNH4-Kynjt7IyX6bIlTvSbi0rg_qjOlewvWG2aXpGcI56BnDFkeyndPAaiPm2oLu6oli0OewAwnVPJUKIxHwlQ6_rw3Ca933XiNP5uWsESJnjTIMysI4GxHSo4AnJwHfl_Og3W62Gs4qG009lOuDOb0UAs1MmBP1H8leBYaruRAMQQwHhyp0Zw4FgDl1frsju6nJy1PhETzawYNTJf_mpy-exx8WtxHkKtsQew5AYrHcs3kY7yrriS2FewUVnOsUqglZ8hrHmYz0vBudc_z18dhv1XPiNCl4hQjCvJnj_15fMoGQzloNV2CpTDX05eBjeEiO7SVE5zVhRQaRfHHHLOe1YsvvTaKH3JO20LykdIhsS4d__OZByAiAfSyiz3RPKhnyvyqhkibnF0bAYkR-ltFdtoY6kupWDyBUAwyhoVD1HUUeKhP7JJ2CNVQaf3JvaLhz1c8BBI1HtoQM6_7UKdmawAyfC_YX_cUmwcisFJATMCk_Klz73dpVC-4CeYbqmNEnrOmiznMMo9Y3TfM3d2xBQm9f0juDN1U5lXWAbWXnN1TeNZhJmIUZtm1gmnuOrlKpPrAIUJviEbi7yROfwyC7qGq5DWRY6NgZgbT2RFsoG_41iXI5u57FYt7tAwO-sDaL9QtTeHIFNvjs1KYkSiYy2nBAazGJbww0xqRI0BmtG0x-XuTSN2qJ7crasIuhHT-lZLisZfYIo-16uH_y4iyB4w6VgQx9gHwhzqe7kJe65Mo4c649zFDa05DUwi4gvuaebxy-9q1pKI7EXGrZJ-6EpF0uennROQ8_ppkEDjiX9Zc31w7pw-IPxi2FOGsRXlSe927Jqud8w0-jUiMFnoMC52T1xW9fMIGpPW3h6sjsmLodWOpfU7Pt1Kxbm1mQ_MpF5FyH4o57XHWo1PjCquW7la4ZstyV5Bcqj8lycdMfGn9C0UYfxYIAinGDb20qejkgFAH_MdxXVdVw3Iaz7mEYhaaDoNREFlO_YUrceGNWOT63QBW7emD0HQFqbyi0iALswCGkcg5EjzeAdT5XSjZMtPjeBkI2ETy2WtFtv6BJ7gADQKvY0nT7wCNViOsAVPuTYailo26cNtN9nZxakQRp1ualFldqC1uJeACwmq7_rz9rjGdrXqBs5g_iMyTsoGkYf3uaTizzzZbjFnyEgBRved8Romrpvh4r14Ds38AMoxop2argLZqzLWyh3Fh5U-WttsV929JBLDY2vkkVCkMAnt7HKHMBjnrJlZm5l1D_pYUzOGiSBD4wy0pOC7DUkUqc0pAkqYy4zzCWzL8AaxkYpSFGSpXNr7QYnTSw7jrPOflkVuIugRb3D8id6stmpQLTUb_6hxFdJIZRRHh60ea63aVR8NAe4Ay8gEYFVzhjO6CSGtvHZQWWBhowXmpfeKVJbqV11xPZaoOz4TCYIr4YgqEW9HLIaPVUpyoZZz2cTX1eo9yzF6wzYFrkXbc2n48Yee3TK-Gvha6yMeZ8ZC6BPQ7fq_zmHwhtSGnEdFYqdWbmKRb3bZAbO9C_j0pGHS_DLqiz1yaa-Q8cOnu9YzJe4thWiDkDqfQ-hGCaua3ZvllKGlaWdl_xzUacP5Hwp0Gda-jRU-WHPUl7a-p4rdi_gmO-MwItHofaNJAQv7lzBnnVrQEE7EwDQTgM7OrXeYB5fs9FDLkIJXUj0SLYlUNM6ooGT8vp4WabEMjls5fpRDGb5pMZdKSXs7us5enpvf8ZXD9PT4PYua9Q8CUz0KCmWcBj3qNAP-pvots6Ku46XjV7xT2tnUTnFJHxlotBu5OPesWEdr9foVAkcPIcG-7Kf3d2oRi4ZTWl_ahE1QgUdefDMcr4vE4xY4JM5IOfIzuRopwOxdVZV7DavL6THUYYjVfTziWRnR5fbOYTRZI1963IeSMkrMVLiSvvxjX5KilG0ba9qxpr9R1p3bSOsmdsAZ5nuPVUeTbuVX--rwXbHC5JtgFXPKyQvq0ONZO6ED4GEzUJawv6jzsWryeYEdMyGgxADTZvyzs52TaZBUMMvf1fwlmmmmfuVWqA-jaXvtv4Gm5co4h4iK_ahC-FJ2cKT7TGGlir-bRsx1Ytj77ZuWCGeDntYvnbSaIEqy1Fm765svoFKM3H1eWf5vL4oVCSEs0eY9GEMzQNlncvfIF_yBmvniDuUBdXXD6Xd7mFfTYSeU0gCGWKhBg_-kMM40SZG6tVdtTKZJTSi3agDeNqNhT2RjwOv0I50_d2iKJB7PpROLqrZEyZSOcT_v7mLW4MMGfwhoEiWs2QVXIQ1s-llac34ULrbHSB2OJEc5c4-d48n8zJUv9KAOwyrl-HI38g3_DS-KzWr8xAF-8SpTiaAr_KafyoG5WJ5K34aUiaESBsd13ABULg3kSqv_QpxmIlJFCL7UVcZAVX0a6he2t-JBBE5Ll4bmZE2lXzFFqm0tL5ORY74EEN0Eis-o0rt7UInow1bbHEe99WCz23Y6emUlGc6yxa54d4j9Z7UDWAOO8B5BcRfP9ao591w78YD65q3Xb6RSXTR8FgNtLME8u3nj3m67iIVzLNF680gPXdt72jJNg8l6YgMFDWCE_0vSU320Bwz8BnfvfZeCBJIbJlQMNdmI17cRX1TBm4rWROwTPADgLLza_Lnra7F9-LXc1YbAOYjdEO0xYwmxOEoOr8u3COA-pgsIUpp7syRi0Qrh6U_lzLMcLjJS_QjsLUg6DH4OqGg3NmnnHumW1DzwVIRlW93IV4ML8vqqbW3ifccKheLoLy_EiD_6tOfTXJW4OUfxoA3hWnos83aLJx-p_qdOZRlNS06O2qoU7357FBCNfBviQ1OibFzdsGpLKIkW5kY1hHiYHSqj1W52aRTyiD137l6ZVbDnUZa8PSikeC1t1yXJTgbrBL25PaNrGp_pmASE9HKUOhy5TJMvz5E2G-xwDvqNamqdAg1sL7oQIUfHvC9jqW8LPnapXjaC2Gh3rsaKSXlU6LdWWKwBudwrQIpa1nPCw9tQN2T8cLVTqcVb8K7yjEkd2HK-13TakmMxsa6P1-T--U1THg-IBVLvpunqnYzYKoVmkW8pPHRNo4b49L2efh5Zncy5e11AMDD7LUT3XwCeyA2cmv6y2tOMLkMII7WdK46FPpONxGa45bqAnI0Bu_3uIiQU-Xt4M-Q9d39BqacnvE7pkSFRrkd5N-RgvOzbNI-c2A7yUI-wKnZZp30BekT9bL9_YbNJch-TB6k-dxL_HQL0AgFuCR3-fGFlCjOXmU4sc0e1Kgf8Xa0qAzdBrp4iqAWnPrjxCPfi8NqjsYbVumViv6RU6U7Uunkt97jtb3sL-jBgQrl4OK9a6YjyethAZlQguOuhWExvDhOSE9x7Gkk_Q8iuW2ncQh-K6rygk6-TIvCLjbx4rZh5ckQLXwdhWa671Yo-YTKPCiJ9cNolIEHxbz7X1Tw1JhA5v6RCNFnjfsgl2N-DyB0Bp3_VrIsjVPvqIzD3N8QOVgeNZUCi0KI7c4uOH7jg2W6rdYH0sbuVCSQSGc1Dn1iZuJIgNkp8WLBrsZzqyGykWVKZL0srLfdb_8Ke5XS46jsdtoDSkBbipQUxyF7clldd6_lRhao3-lm6Ian3h6SDg4dwdgZ8-v9CxpJ3O6tl_TDgpoykixa2BHWcAF-bxV1WltgHBD27LCcg8ilOWNWi-lbY7oRpQOqxxQIpk8efUgaySEVvPHGkA34HaYMhJGtG8Ae_IsnXSIngrmP3uUg7_y_IxaCKirtILJb99nQkyq9EKExpC5Xzds_V_HvR6BZHtaN54tTtNzxhIrzrB78iy3a0OvAeP1HFA0tQft-Y6ON6Z3CGSs4tGbdQOAXAoVQ2Rr_hPTUE5v5ux5xdjx-XKxtjD0Y_L5lYCyF6IoshAtKcL-sQ0oIC6BHzobXtn8ONzlkxlSYL_ht7_QrVy2LrPF28O1Ja2RmispsCiDagg2DqnpaFKrURmJFStDKT50sNwWs2fQIGhiyCUleGyDN6FdV2GxtV9jzKWjVU6hJPbd0RtWUW7QXMqelk_Uc0QiVEQ2TiJSmqGrTI6RnhSx0kjXLUzPWMXQNQlhrB8kLaABC8BR2jNM7a3GhH8FFJ783y8qo6G0m0o0nVqauRcwNnCL_pKXTA9uSDDNLGKTJtpOExN-LzIVjRsVmjnde9OhpOyxerUV2qRsF2VP_icRitUoBqLwSxC29J3yTJ9F21DWrIZRfuSgGDRGiuUEwm_-Ui2FRkwiKwQGvShcBg0GowjSDWkKCEs51drTox3XXG8gDl1-pxC7zdhT2sw_s-EL9pymJjgqNP19DHf08MRNqAl0WH1DZ8fTYsSob-RQKqQJsRQ5pnmXSxQ1CFmC4gMpPUC8iACXeyWrK8Cw5ZJTmnCb0woo6CjWCMkidZG2_Bw0TC0sp0psZaP5iLw-OEd4NggLNJ7-qHsfCBjMO6foBEkzbNKvI2Wr8Ury8T-RBfoujgs_nPZtgQLIZliwnu0fbpXkYLW_dLhnGCEJ-_ztKnct8bd-ICGRywXqlcPmswWT1Fb5_LOFBfa-jokLpr5H0t69cYuYyP4YpRhEZmwS32YfG0vcjoSDcYeN8OQVSciqC95IXkfan_-YVKmecLw-zbfcpiVtJqeDNJ85p0StNHeIyiAGRIr4HhEUbAuPOXpg_JNWwQOfWBqYLgWq6BjvB3KKt87hVXTMj_LG0GdeNpB3v5rya4dVSB_VnQwkvtUCcGrxLdNk0mQb9q7xBpbUORCzz3hkgfqdLNpR3Y3fNVjC84DJYW38cjn2esUahOE_oZy4KZvNWtJsRlL1vOVDj7-F5NkB7Lj2QFwbWeSjCrpJFwgfC_nKsOX2n47BGIHaiQEG-vS8NHn4zIWdU51VRnCX0WvCjzYPGsTnMLWQJh79CAP7NBjkahQIPtrChvdFDhUshuZqcrNfTOR3OdbsVmzVtoktDvpCflQrtuGzZfTT_g3e-L0S8kiHezmnJ2QAblcM4XMDZ2_Eg4vjD_uZvEWtKRUwhnWnK7Zim0J7rsl4k5zhgDJxaTymf1QqF_fcHr8IkC66WOJbkAoFCaSaj2qoYfZMvujZlKIpnLYIBAZeMEYQCH0-Yb4bagkfe170Sfq_oBhqyP21Cs4jyOGgCGzN9Dl1T3eLSKQab9zXKxZshl86eUQLTUWGLXLl5RuBY_XXEU5LbukgeEdGvnGkbfe9VUQp2BcDnfUeDksB-k8Q-nqNOfXc_KxDO4Db79rQ9CAoUq2b1cAuIGTlNtX_8bSRZsoRfqzSOF3BBmZWcLw0fQTIe7AWrsF8JJS30gkthfdSnsgzhQUHgOkzeehd8HfJXikhC3KR_XEZCSzG6qeVNqrh0-rT_wpuPWlnESgJhjyFs61gs3Wu3nhGCRPhpH8JrYvPHVVhGd_I5HjHD2IFBxt_NXKHW32gZ4mP7pz9KH9lhify8E0lDY_1wssY-YO0RI-Iir896pfNmcScnkFuk2jXWBRHeQiprqQFVmxNt0joUpH0jmBg86EJrcGL-oizGBD3ftZxl9gG_VMJKKs1m1aVif2SaYRMu1BW_qOebIT0BpBS0Jl0p8Z1JmnXqtcfA5tFA_YPa-NB5RBL9S3A-R3KK_MKcB0lmEBj2e9etFks9hs-cttvrC8mdB4p4XICkayNnUVepyWE17O6F1Mj-zFa74O0YlZvRwf7lr6qRVlkSn03BYZxQ7sFNO80hAxHEQj1Xy3DlwsdOEPDbgukkCMGw3PDx3F9zLlc_O7JyS5YxDfTJCGf1oGcBxO90bjGbZW-zkLqDf90rG11pOxI4VQi-CB2iNTsDPCAkBmZVZkKcf9AjA5sZX3Fu2OTIevXNkBW5unWdiTCkWoEQEIigqiN6u9IsQardT5gO40l_Pt7o4hzejn4tTRhF3CjqZ5l2W4uzvFz-Qwz9CJgeUuf3WJVSzK1ImmXMYgVtWR9i75z3cf_wDV5f60i5Yk5iySKo7C-VxovMhZflFTsLkSaBTHI8wxrc4q_dsh0Kyq2PnZkbyXHpixsqi7ldAxYIbaPC9mUrnyxVpzN7UrU4V1KXyYPLm-G20IvvJMb0c2PEAIkPO57e90B4gXsA70zRTTZDu47v0SFvLsNbBeYJ5-GGoVePeojf_sepwz4X0Uq3OdMnXiWk95xbDv16L1tpo9Rk9xmWfO5aXDoo0pg78Xw4VdfUsxuEUMiXa056MG2z70KIO4Jch8pA1JrMB1b75WjyU0ulk4rd0LPPz89wYb9mYj3ekwc6na8Dwb3MLmEhkwnzY3znFCYcvPsf143ziyiuWXknrN-zsdcofCfsWdoULO4zdrMI4y1ujFEGEcmWX5Nvz5VEbHYvGlraZ8vgWidcAlFq_75xGVSfEF_KwHPSApeeo0d3XVED57d194LSbEcWeQOvMy6e-eEsxEr82WhS3ge7VOrP4bgAyflRzj35apQutRxHRnLJWmGxS_lDZl8mWIGR_6pZIp8vg3QjDMd8VLYLfwuZiSwTyNcOeTeje7kmIb-QTRVt2BJoVbt1rs3X0hq7Y8peDNJPYSXk9lVvopu_GatU0TBMkxxTEOSabDSGRCqbv3HSdtc4wh4OZe6ekUk4qwyrASs9Sq4kp3oGcJJdcagdPuvXd3HFkmP6QLRNvGFclKgYWIT7SB7NhCmho0phnKm5T6CAOIHP9BvkG44YpR5N4Sdq7nh5lmOiqWKpToetrFy9uXJPZdAlo62RV0MKmWpTt1BcgwMQ9PA5_FHlJjnMCi1XsbCUpLroS5F4c_Gwd3XfrmdQRzWCzESmnH8iaibH3qpgeeb-G95uFFgCN6faC7ev8po6IyDgim5_LLBABzZGtV6VpARydONKtl_SVQcTLyXRFFSDjetlH1B6fugOgieDM4VjgcSq6EYQBag0KzJBzzaXB_2Ipxq18XsA8SrhquOiAGRpLfk-nHQFlzWmohUzkeDvrW1V2YSxQvBXa_8l8I7jUBhGV3cIMoFIvkThk_qRvXMPEcXcXFaF_AV0cawqUUB6exU06btTEUHrAdod2dzfo4knFnVclxu9Vz7AMu1I_PoXf7dXtpxEzXvYCwlnZlIcyyn8LyrveNfHuHSPezSGxYZzQ7_zbmpFVNlT3GM8iLvEjqVcT1ZYWAWm_mYByJYv5na2rZwvtJ6ToNvZcJTE76vfr6gGe5S9GaIRsTwD1AmTPUMMEh554ihs5isnDrJemmyCm4Y5hoCMHA_ul-xIdj7S60J44L1_ybFoENS5fNiwELuaIjyVeaPJp20YFGdn0KmDJqYl7nmdOxUSpc0ws-j84q3dA46NNFmj4Jiry0MLWcS9f-XDb7WG3Tdhvu1LpPpMKYUyi3PoLjJMt9CzE0h2QTIC5xxYbndWAA4JMOLMXALw7O_nSlP8714lKbmYfxnX_iSN2JECnwe6Axe7ccRMdRLOkJPl8oQX4cKy7XPZcvG5MSphtaFi6m_67hkSOKWWa1-U2RVDm8P780_MrUj2gAwu5m4h2cWDwLvg-0pYObE6uS8O7YqJaZIWRt-rv3JPfc0DtxJxxx7yT93yix9EDVWU5jlX02qt3wdpo9-ckJaKULrE6fzhFWFz4zXdNuyL54EGAaeqMshwwYdn5XLzZ1Wbxy_KtVp_JhXzZ9cbtIu10GZ3eFqiIcMGbVwWE5b59dJspoFTykF5WWSWorDVjuhjeyY9Zop_fUw97FkfYznGab-JhtAjtXZk81Ntg2E-L7zNXa5qprsp0qUp0kwFvIguZvOjIaAT_jYKEW-j2-f0LqmrarBcq3tjpnrGTM.tbraGO6QvSzx2HuyY5PjiA"
+		},
+		{
+			"key": "version",
+			"value": 6
+		},
+		{
+			"key": "baseURL",
+			"value": "api.pp.travelport.com"
+		},
+		{
+			"key": "catalogOfferingIdentifierAuthoritySearchRsp",
+			"value": ""
+		},
+		{
+			"key": "catalogOfferingIdentifierValueSearchRsp",
+			"value": ""
+		},
+		{
+			"key": "FFSBaseURL",
+			"value": "https://api.apim-a.zu2.pp.travelport.io"
+		},
+		{
+			"key": "NDCFlightIdPostCommitResponse",
+			"value": ""
+		},
+		{
+			"key": "NDCreservationResponseReservationOfferIdentifierId",
+			"value": ""
+		},
+		{
+			"key": "eCacheId",
+			"value": ""
+		},
+		{
+			"key": "productIdPostCommitResponse",
+			"value": ""
+		},
+		{
+			"key": "reservationResponseReservationOfferIdentifierId",
+			"value": ""
+		},
+		{
+			"key": "NDCOfferId",
+			"value": ""
+		},
+		{
+			"key": "NDCflightSegmentIdPreCommitResponse",
+			"value": ""
+		},
+		{
+			"key": "NDC_PNR",
+			"value": ""
+		},
+		{
+			"key": "PNR",
+			"value": ""
+		},
+		{
+			"key": "addTravelerAdult",
+			"value": ""
+		},
+		{
+			"key": "travelerResponseIdentifierValue",
+			"value": ""
+		},
+		{
+			"key": "InitialDeparture",
+			"value": ""
+		},
+		{
+			"key": "ThreeDayTrip",
+			"value": ""
+		},
+		{
+			"key": "WeekTrip",
+			"value": ""
+		},
+		{
+			"key": "guid",
+			"value": ""
+		},
+		{
+			"key": "lastSeatAvailablilityValue",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		},
+		{
+			"key": "OfferResponseOfferIdentifierAuthorityPriceRsp",
+			"value": ""
+		},
+		{
+			"key": "OfferResponseOfferIdentifierValuePriceRsp",
+			"value": ""
+		},
+		{
+			"key": "OfferResponseOfferid",
+			"value": ""
+		},
+		{
+			"key": "reservationId",
+			"value": ""
+		},
+		{
+			"key": "price_request_template_mc",
+			"value": "{\n\t\"OfferQueryBuildFromProducts\": {\n\t\t\"fareRuleType\": \"{{fareRuleType}}\",\n\t\t\"lowFareFinderInd\": \"{{lowFareFinderInd}}\",\n\t\t\"returnBrandedFaresInd\": \"{{returnBrandedFaresInd}}\",\n\t\t\"reCheckInventoryInd\": \"true\",\n\t\t\"BuildFromProductsRequest\": {\n\t\t\t\"@type\": \"BuildFromProductsRequestAir\",\n\t\t\t\"PassengerCriteria\": [{\n\t\t\t\t\"passengerTypeCode\": \"ADT\",\n\t\t\t\t\"number\": 1,\n\t\t\t\t\"age\": 24\n\t\t\t}],\n\t\t\t\"ProductCriteriaAir\": []\n\t\t}\n\t}\n}"
+		},
+		{
+			"key": "price_segment",
+			"value": "{\n  \"@type\": \"SpecificFlightCriteria\",\n  \"carrier\": \"Example String Value\",\n  \"flightNumber\": \"Example String Value\",\n  \"departureDate\": \"2011-01-24\",\n  \"departureTime\": \"09:45:00\",\n  \"arrivalDate\": \"2011-01-24\",\n  \"arrivalTime\": \"14:15:00\",\n  \"from\": \"Example String Value\",\n  \"to\": \"Example String Value\",\n  \"cabin\": \"PremiumFirst\",\n  \"classOfService\": \"Example String Value\",\n  \"segmentSequence\": 2345\n}"
+		},
+		{
+			"key": "currencyCode",
+			"value": ""
+		},
+		{
+			"key": "totalPrice",
+			"value": ""
+		},
+		{
+			"key": "reservationResponseReservationOfferIdentifierAuthority",
+			"value": ""
+		},
+		{
+			"key": "reservationResponseReservationOfferIdentifierValue",
+			"value": ""
+		}
+	]
+}

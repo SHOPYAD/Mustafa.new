@@ -1,0 +1,202 @@
+{
+    "CatalogOfferingsAirChangeResponse": {
+        "transactionId": "Test-001",
+        "traceId": "CATD_TEST_001",
+        "DiagnosticResponse": [{
+                "value": "                      >4PLFB-AR|S1"
+            }, {}, {
+                "value": "          RAPID REPRICE DIAG                  "
+            }, {
+                "value": "TRAP:/1/ PASS RECORD2: CAT:031(COVIDGENRULE) (RULES)  R2DIR:B |"
+            }, {
+                "value": "SUP   CXR TRF RULE CAT SEQUENCE EFFDATE  DISDATE  LOC1 LOC2   |"
+            }, {
+                "value": "ATP   QF  364 CVID 031 4998363  20211008 99999999 AU   AU     |"
+            }, {
+                "value": "FCL:YFQW     FTY:ER                                           |"
+            }, {
+                "value": "GENERAL RULE OVERRIDE: 000 0000                               |"
+            }, {
+                "value": "RECORD 3 TABLE STRING:                                        |"
+            }, {
+                "value": "IF   014-01222425 I/O .. DIR ..                               |"
+            }, {
+                "value": "AND  015-03205646 I/O .. DIR ..                               |"
+            }, {
+                "value": "     THEN 031-04277742 I/O .. DIR ..                          |"
+            }, {
+                "value": "     OR   031-02902389 I/O .. DIR ..                          |"
+            }, {
+                "value": " --RAPID REPRICE ORIGINAL ITINERARY MATCH -- PASS --          |"
+            }, {
+                "value": " RULE    RECORD 2: 364 QF CVID 031 SEQUENCE: 4998363          |"
+            }, {
+                "value": "     031-04277742  PASS                                       |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         03014893        1 10  PASS                           |"
+            }, {
+                "value": "                         2 10  PASS                           |"
+            }, {
+                "value": "     031-02902389  FAIL-CHNG-50-N                             *"
+            }, {
+                "value": "--EXIT: PASS RECORD2 RESULT:PASS     PARTIAL:YES: PIPE OFF--- *"
+            }, {
+                "value": "TRAP:/2/ PASS RECORD2: CAT:031(COVIDGENRULE) (RULES)  R2DIR:B |"
+            }, {
+                "value": "SUP   CXR TRF RULE CAT SEQUENCE EFFDATE  DISDATE  LOC1 LOC2   |"
+            }, {
+                "value": "ATP   QF  364 CVID 031 4998363  20211008 99999999 AU   AU     |"
+            }, {
+                "value": "FCL:YFQW     FTY:ER                                           |"
+            }, {
+                "value": "GENERAL RULE OVERRIDE: 000 0000                               |"
+            }, {
+                "value": "RECORD 3 TABLE STRING:                                        |"
+            }, {
+                "value": "IF   014-01222425 I/O .. DIR ..                               |"
+            }, {
+                "value": "AND  015-03205646 I/O .. DIR ..                               |"
+            }, {
+                "value": "     THEN 031-04277742 I/O .. DIR ..                          |"
+            }, {
+                "value": "     OR   031-02902389 I/O .. DIR ..                          |"
+            }, {
+                "value": " --RAPID REPRICE ORIGINAL ITINERARY MATCH -- PASS --          |"
+            }, {
+                "value": " RULE    RECORD 2: 364 QF CVID 031 SEQUENCE: 4998363          |"
+            }, {
+                "value": "     031-04277742  PASS                                       |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         03014893        1 10  PASS                           |"
+            }, {
+                "value": "                         2 10  PASS                           |"
+            }, {
+                "value": "     031-02902389  PASS-OVERRIDE                              |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         00000000     2000  2  PASS-OVERRIDE                  *"
+            }, {
+                "value": "--EXIT: PASS RECORD2 RESULT:PASS     PARTIAL:YES: PIPE OFF--- *"
+            }, {
+                "value": "TRAP:/3/ PASS RECORD2: CAT:031(COVIDGENRULE) (RULES)  R2DIR:B |"
+            }, {
+                "value": "SUP   CXR TRF RULE CAT SEQUENCE EFFDATE  DISDATE  LOC1 LOC2   |"
+            }, {
+                "value": "ATP   QF  364 CVID 031 4998363  20211008 99999999 AU   AU     |"
+            }, {
+                "value": "FCL:YFQW     FTY:ER                                           |"
+            }, {
+                "value": "GENERAL RULE OVERRIDE: 000 0000                               |"
+            }, {
+                "value": "RECORD 3 TABLE STRING:                                        |"
+            }, {
+                "value": "IF   014-01222425 I/O .. DIR ..                               |"
+            }, {
+                "value": "AND  015-03205646 I/O .. DIR ..                               |"
+            }, {
+                "value": "     THEN 031-04277742 I/O .. DIR ..                          |"
+            }, {
+                "value": "     OR   031-02902389 I/O .. DIR ..                          |"
+            }, {
+                "value": " --RAPID REPRICE ORIGINAL ITINERARY MATCH -- PASS --          |"
+            }, {
+                "value": " RULE    RECORD 2: 364 QF CVID 031 SEQUENCE: 4998363          |"
+            }, {
+                "value": "     031-04277742  PASS                                       |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         03014893        1 10  PASS                           |"
+            }, {
+                "value": "                         2 10  PASS                           |"
+            }, {
+                "value": "     031-02902389  FAIL-CHNG-50-N                             *"
+            }, {
+                "value": "--EXIT: PASS RECORD2 RESULT:PASS     PARTIAL:YES: PIPE OFF--- *"
+            }, {
+                "value": "TRAP:/4/ PASS RECORD2: CAT:031(COVIDGENRULE) (RULES)  R2DIR:B |"
+            }, {
+                "value": "SUP   CXR TRF RULE CAT SEQUENCE EFFDATE  DISDATE  LOC1 LOC2   |"
+            }, {
+                "value": "ATP   QF  364 CVID 031 4998363  20211008 99999999 AU   AU     |"
+            }, {
+                "value": "FCL:YFQW     FTY:ER                                           |"
+            }, {
+                "value": "GENERAL RULE OVERRIDE: 000 0000                               |"
+            }, {
+                "value": "RECORD 3 TABLE STRING:                                        |"
+            }, {
+                "value": "IF   014-01222425 I/O .. DIR ..                               |"
+            }, {
+                "value": "AND  015-03205646 I/O .. DIR ..                               |"
+            }, {
+                "value": "     THEN 031-04277742 I/O .. DIR ..                          |"
+            }, {
+                "value": "     OR   031-02902389 I/O .. DIR ..                          |"
+            }, {
+                "value": " --RAPID REPRICE ORIGINAL ITINERARY MATCH -- PASS --          |"
+            }, {
+                "value": " RULE    RECORD 2: 364 QF CVID 031 SEQUENCE: 4998363          |"
+            }, {
+                "value": "     031-04277742  PASS                                       |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         03014893        1 10  PASS                           |"
+            }, {
+                "value": "                         2 10  PASS                           |"
+            }, {
+                "value": "     031-02902389  PASS-OVERRIDE                              |"
+            }, {
+                "value": "         TABLE988 SEQUENCE TAG MATCH RESULT                   |"
+            }, {
+                "value": "         -------- -------- --- ------------                   |"
+            }, {
+                "value": "         00000000     2000  2  PASS-OVERRIDE                  *"
+            }, {
+                "value": "--EXIT: PASS RECORD2 RESULT:PASS     PARTIAL:YES: PIPE OFF--- *"
+            }, {
+                "value": "TRAP:/5/ PASS RECORD2: CAT:031(COVIDGENRULE) (RULES)  R2DIR:B |"
+            }, {
+                "value": "SUP   CXR TRF RULE CAT SEQUENCE EFFDATE  DISDATE  LOC1 LOC2   |"
+            }, {
+                "value": "ATP   QF  364 CVID 031 4998363  20211008 99999999 AU   AU     |"
+            }, {
+                "value": "FCL:YFQW     FTY:ER                                           |"
+            }, {
+                "value": "GENERAL RULE OVERRIDE: 000 0000                               |"
+            }, {
+                "value": "RECORD 3 TABLE STRING:                                        |"
+            }, {
+                "value": "IF   014-01222425 I/O .. DIR ..                               |"
+            }, {
+                "value": "AND  015-03205646 I/O .. DIR ..                               |"
+            }, {
+                "value": "     THEN 031-04277742 I/O .. DIR ..                          |"
+            }, {
+                "value": "     OR   031-02902389 I/O .. DIR ..                          |"
+            }, {
+                "value": " --RAPID REPRICE ORIGINAL ITINERARY MATCH -- PASS --          |"
+            }, {
+                "value": " RULE    RECORD 2: 364 QF CVID 031 SEQUENCE: 4998363          |"
+            }, {
+                "value": "     031-04277742  PASS                                       |"
+            }
+        ]
+    }
+}

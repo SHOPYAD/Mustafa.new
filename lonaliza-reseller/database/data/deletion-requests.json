@@ -1,0 +1,42 @@
+[
+  {
+    "id": "del_req_101",
+    "userId": "usr_m91823",
+    "customerName": "سليمان عبد العزيز المهيدب",
+    "email": "s.muhaidib@al-riyadh.sa",
+    "phone": "+966 50 123 4567",
+    "reason": "عدم الرغبة في تلقي العروض الترويجية والرغبة في محو البيانات الشخصية نهائياً",
+    "requestedAt": "2026-09-03T16:41:35.457Z",
+    "retentionExpiresAt": "2026-10-03T16:41:35.457Z",
+    "status": "pending_purge",
+    "retentionDaysSet": 30,
+    "adminNotes": "تم تعليق الحساب مؤقتاً لحين انتهاء فترة السماح القانونية"
+  },
+  {
+    "id": "del_req_102",
+    "userId": "usr_t54219",
+    "customerName": "Emre Çağlayan",
+    "email": "emre.caglayan@istanbul.com.tr",
+    "phone": "+90 532 987 65 43",
+    "reason": "KVKK Madde 11 uyarınca tüm kişisel verilerimin silinmesini talep ediyorum.",
+    "requestedAt": "2026-08-26T16:41:35.457Z",
+    "retentionExpiresAt": "2026-09-25T16:41:35.457Z",
+    "status": "retained",
+    "retentionDaysSet": 60,
+    "adminNotes": "تم تمديد فترة الحفظ لمدة 60 يوماً بطلب من العميل للتحقق من قسائم الفندق"
+  },
+  {
+    "id": "del_req_103",
+    "userId": "usr_f89312",
+    "customerName": "Jean-Pierre Laurent",
+    "email": "jp.laurent@voyage-paris.fr",
+    "phone": "+33 6 12 34 56 78",
+    "reason": "Droit à l'oubli numérique (RGPD Art. 17). Suppression immédiate souhaitée.",
+    "requestedAt": "2026-08-06T16:41:35.457Z",
+    "retentionExpiresAt": "2026-09-05T16:41:35.457Z",
+    "status": "purged",
+    "retentionDaysSet": 30,
+    "purgedAt": "2026-09-05T16:41:35.457Z",
+    "adminNotes": "تم المسح الكامل لجميع السجلات والبيانات وجلسات الدخول بنجاح"
+  }
+]

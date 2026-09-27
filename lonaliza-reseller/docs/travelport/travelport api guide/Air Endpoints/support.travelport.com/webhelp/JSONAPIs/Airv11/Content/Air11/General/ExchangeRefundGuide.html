@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="NDC" data-mc-conditions="JSONAPIs.Air11,JSONAPIs.UpdateDevX" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:49:03 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Exchange, Refund, and Void Guide</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Exchange, Refund, and Void Guide</h1>
+                                        <p>This guide summarizes the options and workflows in the <span class="mc-variable General.Product variable">JSON</span> APIs for voiding, exchanging, or refunding ticketed itineraries, and canceling or modifying held bookings, for both NDC and GDS. </p>
+                                        <div class="noteNote">To update non-air details, such as passenger data, comments, or service requests, see the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelerModifyGuide.htm">Traveler Modify Guide</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm">Remarks and Service&#160;Requests Guide</a>.</div>
+                                        <p><b>In this guide:</b>
+                                        </p>
+                                        <ul data-mc-continue="true">
+                                            <li><a href="#concepts">Basic Concepts</a>
+                                            </li>
+                                            <li><a href="#sup">Exchange, Void, Cancel, Refund - Support &amp;&#160;Workflows for Tickets</a>
+                                            </li>
+                                            <li><a href="#supbookings">Cancel and Modify - Support &amp;&#160;Workflows for Held Bookings</a>
+                                            </li>
+                                            <li><a href="#gdsexchange">GDS Exchanges</a>
+                                                <ul>
+                                                    <li><a href="#workflowgds">Workflow Steps</a>
+                                                    </li>
+                                                    <li><a href="#diagramgds">Workflow Diagram</a>
+                                                    </li>
+                                                    <li><a href="#gdsexchangeapis">API&#160;Usage Details</a>
+                                                        <ul>
+                                                            <li><a href="#eligibility">Eligibility</a>
+                                                            </li>
+                                                            <li><a href="#exchsearch">Exchange Search </a>
+                                                            </li>
+                                                            <li><a href="#remarks">Remarks in&#160;Exchanges </a>
+                                                            </li>
+                                                            <li><a href="#fop">Form of Payment (FOP)</a> (multiple FOP, forfeit residual amounts, waive change fee)</li>
+                                                            <li><a href="#addpayment">Payment</a>
+                                                            </li>
+                                                            <li><a href="#commit">Workbench Commit (ticket now or hold booking)</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#supported">Supported GDS Exchange Options</a>
+                                                        <ul>
+                                                            <li><a href="#supitin">Supported Changes</a>
+                                                            </li>
+                                                            <li><a href="#supticketing">Supported Ticketing Options</a>
+                                                            </li>
+                                                            <li><a href="#multioffer">Multi-Offer Exchange Support</a>
+                                                            </li>
+                                                            <li><a href="#exref">Exchange and Refund Handling</a>
+                                                            </li>
+                                                            <li><a href="#unsup">Currently Unsupported</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#ndcexchanges">NDC Exchanges &amp;&#160;Refunds</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#workflowndc">Workflow Steps to Exchange Ticket or Modify Held Bookings</a>&#160;</li>
+                                                    <li><a href="#ndcrefundwkflw">Workflow Steps to Refund Ticket or Cancel Held Booking </a>
+                                                    </li>
+                                                    <li><a href="#diagramndc">Workflow Diagrams</a>
+                                                    </li>
+                                                    <li><a href="#supndc">Supported NDC Exchange Options</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <h2><a name="concepts"></a>Basic Concepts</h2>
+                                        <p>This section discusses the terms for the actions that are available once a <b class="Brand4">held booking</b>&#160;(reservation created but not yet paid for or ticketed) has been <b class="Brand4">ticketed</b>&#160;(payment has been made and ticket/s issued).  </p>
+                                        <p>In general, after a ticket is issued, it can be voided, canceled, or exchanged, which may result in a refund, as follows:</p>
+                                        <ul>
+                                            <li>
+                                                <p><b class="Brand4">Void</b>:&#160;Cancel  the ticket for a full refund within an allowed void period, based on the airline's rules for the market in which the ticket was issued. Generally a ticket can be voided within the same day it was issued, usually up to midnight local agency time. In some instances it may be voided up to midnight of the day after ticketing, or special holiday policies may apply.</p>
+                                            </li>
+                                            <li>
+                                                <p><b class="Brand4">Cancel</b>:&#160;Cancel the ticket after the void period without rebooking another itinerary. Depending on the fare rules, canceling a ticket may result in a full, partial, or no refund. </p>
+                                            </li>
+                                            <li>
+                                                <p><b class="Brand4">Exchange</b>:&#160;Modify the air itinerary on a ticket and issue a new ticket for the modified itinerary. If the price of the new ticket is less than the price of the original ticket, a refund may or may not be issued depending on fare rules.</p>
+                                            </li>
+                                        </ul>
+                                        <p>These terms apply to <i>how</i> a ticket can be refunded or exchanged:</p>
+                                        <ul>
+                                            <li>
+                                                <p><b class="Brand4">Automated refund</b>:&#160;A refund processed entirely within the <span class="mc-variable General.Product variable">JSON</span> APIs, from requesting a quote for the refund and any penalties through processing the cancellation.</p>
+                                            </li>
+                                            <li>
+                                                <p><b class="Brand4">Manual refund</b>:&#160;Information about the refund amount and any penalties are obtained from a source other than the <span class="mc-variable General.Product variable">JSON</span> APIs, and the <span class="mc-variable General.Product variable">JSON</span> APIs process the cancellation. Not supported in the <span class="mc-variable General.Product variable">JSON</span> APIs.</p>
+                                            </li>
+                                            <li><b class="Brand4">Voluntary refund or exchange</b>:&#160;The passenger or travel agency initiates the refund or exchange. <li><p><b class="Brand4">Involuntary refund</b>:&#160;The airline cancels the ticket, such as if a flight is canceled and the passenger cannot be rebooked. Not supported in the <span class="mc-variable General.Product variable">JSON</span> APIs.</p></li></li>
+                                        </ul>
+                                        <h2><a name="sup"></a>Exchange, Void, Cancel, Refund - Support &amp;&#160;Workflows for Tickets </h2>
+                                        <p>The following table lists the actions available for <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term10">ticketed itineraries<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>A ticket is a booking that has been paid for and tickets issued. Ticketing requires a form of payment and payment issuance. A ticket guarantees travel (subject to carrier rules), unlike a booking, which expires after a certain time.</span></a> for both GDS and NDC content. </p>
+                                        <p>As discussed in the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/NDCGuide.htm">NDC&#160;Guide</a>, NDC&#160;carriers directly handle ticketing and servicing for NDC content, while  Travelport handles those processes for GDS content. Because of this, the <span class="mc-variable General.Product variable">JSON</span> APIs use different processes to carry out cancellations, voids, exchanges, and so on for GDS and NDC content after a booking is made. </p>
+                                        <p>In addition, NDC support for the processes below vary by carrier. For example, some NDC carriers support holding an exchange as a held booking and ticketing it later, while others require the ticket to be issued at the time of exchange. See <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. If you need login assistance, see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/NDCGuide.htm#kbase">Knowledge Base NDC&#160;Resources</a>.</p>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col style="width: ;" class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p style="text-align: center;">Action</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p style="text-align: center;">GDS Workflow </p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p colspan="2" style="text-align: center;">NDC Workflow</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Exchange ticket for new itinerary</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeEligibility.htm">Exchange Eligibility</a> (optional)</p>
+                                                            </li>
+                                                            <li value="2"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeSearch.htm">Exchange Search</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="4">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_AddModifyOfferReferencePayload.htm">Add/Modify Offer</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="5">In case of an even exchange or add collect (price of new itinerary is greater than existing itinerary), <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment</a></li>
+                                                            <li value="6">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a>, setting PayLaterInd indicating whether to issue ticket/s at commit or hold the booking</p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <ol>
+                                                            <li value="1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.htm">Reshop</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reprice.htm">Reprice</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="4">In the case of an even exchange or add collect (price of new itinerary is greater than existing itinerary), payment is required prior to ticketing. When payment is required: <ul><li><p>To issue the new tickets at commit, send the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment</a> requests before Modify.
+</p></li><li><p>To hold the booking, do not send FOP or payment information in this workbench.</p></li></ul></li>
+                                                            <li value="5">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Modify.htm">Modify</a>
+                                                                </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <p>If any refund is due, new tickets are issued at Modify and the refund is credited to the original form of payment.</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>If a payment is due or the amount is an even exchange, new tickets are issued if payment was sent per the preceding step. If not, a held booking is created.</p>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ol>
+                                                        <div class="noteWarning">NDC  support for exchanges varies by carrier. Some carriers support exchanges only for fully unflown itineraries while others support exchanging partially flown itineraries. Some carriers require an exchanged itinerary to be ticketed at commit while others support holding the new booking. See the section <i>Voluntary Exchange</i> in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Void ticket (within void period)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketVoidGDS.htm">GDS Ticket Void </a> (void a single GDS ticket)
+                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <p>or</p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_BatchVoid.htm">Batch Void</a> (void multiple tickets on a GDS booking)</p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p>When used <b>during</b> the <a href="#concepts" style="font-weight: normal;">void period</a>, the following workflow cancels the ticket and issues a full refund:</p>
+                                                        <ol>
+                                                            <li value="1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Cancel ticket  and issue refund</p>
+                                                        <p style="font-weight: bold;">(automated refund)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Not supported (under development)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p>When used <b>after</b> the <a href="#concepts" style="font-weight: normal;">void period</a>, the following workflow cancels the ticket and may issue a full or partial refund to the original form of payment, depending on refund eligibility per the fare rules:</p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_RefundQuote.htm">Refund Quote</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <div class="noteNote">For carrier support and requirements, see the section <i>Cancel</i>  in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. </div>
+                                                        <div class="noteWarning">Refund Quote is mandatory  when canceling a ticket outside the void period and there is any difference between a refund due and the purchase price. If <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_RefundQuote.htm">Refund Quote</a> is not sent, and a refund is not available for the exact amount of the purchase price, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel</a> returns the error message OFFER CANNOT BE CANCELED WHEN REFUND AMOUNT DOES NOT EQUAL OFFER PRICE. PERFORM A REFUND QUOTE AND TRY AGAIN.</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Cancel payment; retain booking </p>
+                                                        <p style="font-weight: bold;">(aka Retain Segments)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p>On supporting NDC carriers only,  you can use the following workflow to cancel the payment on a ticket but retain the itinerary and traveler details. This creates a held booking that can be re-ticketed, such as when a different FOP is wanted. </p>
+                                                        <ol>
+                                                            <li value="1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_CancelPayment.htm">Cancel Payment</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <p>You can then re-ticket the itinerary by sending <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment</a> in the standard <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/TicketingGuide.htm">ticketing workflow</a>, just as for any held booking.</p>
+                                                        <div class="noteNote">For carrier support and requirements, see <i>Retain Segments</i>  in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Cancel ticket; retain ticket value </p>
+                                                        <p style="font-weight: bold;">(aka Retain Ticket)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p>On supporting NDC carriers only, either within or after the void period, you can cancel the ticket and the offer but retain the ticket value instead of issuing a refund. To cancel the ticket and retain the value:</p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel</a> with RetainFlag header parameter set to <i>true</i></p>
+                                                            </li>
+                                                        </ol>
+                                                        <p>You may then be able to apply the value of the ticket to another booking using the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_TicketAsFOP.htm">Ticket as FOP API</a>. Use Ticket as FOP in the normal ticketing workflow instead of the Add Form of Payment API. </p>
+                                                        <div class="noteNote">For carrier support and requirements, see <i>Retain Tickets</i>  in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. Note that some carriers that support this function do not support it inside the void period.</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Manual refund</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Involuntary refund</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p>Not supported</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2><a name="supbookings"></a>Cancel and Modify - Support &amp;&#160;Workflows for Held Bookings</h2>
+                                        <p>The table below lists the pre-ticketing actions available to cancel or modify <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term40">held bookings<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>A confirmed reservation with the carrier. A held booking is a reservation that has not yet been ticketed. The terms booking and reservation&#160;are interchangeable.</span></a> for both GDS and NDC content (tickets have not yet been issued).  See the notes in the preceding section about GDS and NDC content.</p>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col style="width: ;" class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p style="text-align: center;">Action</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p style="text-align: center;">GDS Workflow </p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p colspan="2" style="text-align: center;">NDC Workflow</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Cancel held booking</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Two workflows are supported:&#160;</p>
+                                                        <ol>
+                                                            <li value="1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationCancelGDS.htm">GDS Reservation&#160;Cancel</a>
+                                                            </li>
+                                                        </ol>
+                                                        <p>or </p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.htm">Cancel Workbench Items</a> with options set to cancel  the entire booking</p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <ol>
+                                                            <li value="1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2" style="font-weight: bold;">
+                                                        <p style="font-weight: bold;">Modify air itinerary on held booking</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.htm">Cancel Workbench Items</a> to cancel one or more offers on the booking and retain other booking details</p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a> (optional but recommended to ensure booking details are correctly synched before adding new offer)
+                                </p>
+                                                            </li>
+                                                            <li value="4">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a> (if the preceding optional commit was done)<![CDATA[                                ]]></p>
+                                                            </li>
+                                                            <li value="5">
+                                                                <p>Add Offer to add a new offer (either <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.htm">full </a> or <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferRefPayload.htm">reference payload</a>) </p>
+                                                            </li>
+                                                            <li value="6">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <p> </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-commit workbench</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.htm">Reshop</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reprice.htm">Reprice</a>
+                                                                </p>
+                                                            </li>
+                                                            <li value="4">
+                                                                <p>To issue tickets at Modify, send <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment</a> (see note below)</p>
+                                                            </li>
+                                                            <li value="5">
+                                                                <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Modify.htm">Modify</a>
+                                                                </p>
+                                                            </li>
+                                                        </ol>
+                                                        <div class="noteNote">Although  <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.htm">Cancel Workbench Items</a> cannot be used to modify NDC bookings in the post-commit workbench, you can use it to change the itinerary added to the <i>initial booking workbench</i> before the booking is made. This allows you to add a new offer without having to discard the workbench and start over. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/BookingGuide.htm#cancelwkbench">Booking Guide</a> for details. </div>
+                                                        <div class="noteWarning">NDC  support for modifying a held booking varies by carrier. Some carriers require a modified booking to be ticketed at commit while others support holding the modified booking. See the section <i>Voluntary Exchange</i> in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2><a name="gdsexchange"></a>GDS&#160;Exchanges</h2>
+                                        <p>The following sections provide workflow and API usage and support details for the GDS exchange ticketing process.</p>
+                                        <h3><a name="workflowgds"></a>Workflow Steps</h3>
+                                        <p>The GDS exchange workflow shops for a new itinerary to update the currently ticketed itinerary. Exchange ticketing supports automated exchanges only, in which the <span class="mc-variable General.Product variable">JSON</span> APIs are used for all steps of the exchange. </p>
+                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/SeatsGuide.htm">Seats</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/AncillaryGuide.htm">ancillaries</a> can be added after the exchange is completed.</p>
+                                        <p>Note that the <span class="mc-variable General.Product variable">JSON</span> APIs do not support refunds for GDS tickets.</p>
+                                        <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" style="width: 20%;">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Step #</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Booking Workflow Step</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Description and Notes</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p>API&#160;Reference</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p><i>optional</i>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Exchange&#160;Eligibility</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Optional but recommended. Exchange Eligibility determines whether a ticket has value in an exchange or refund scenario, and the range of any associated exchange fees.</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeEligibility.htm">Exchange Eligibility API&#160;Reference</a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>1</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Post-Commit Workbench</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Initiate a workbench and retrieve the existing booking.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-Commit Workbench API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">2</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Exchange Search</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Search for a new or modified itinerary. </p>
+                                                        <p>Supports  optional journey and pricing search modifiers. Both types of modifiers are applied at the journey level, not to individual legs of the itinerary.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeSearch.htm">Exchange Search API Reference</a><![CDATA[
+                    ]]></td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">3</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">Add/Modify Offer</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">Add an offer from the Exchange Search response to replace or update the current itinerary. The API compares the existing itinerary with the new itinerary, deletes any flight segments no longer needed, and adds the new flight segments. Any unmodified segments remain as they are.</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_AddModifyOfferReferencePayload.htm">Add/Modify Offer API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p><i>optional</i>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Add passenger-related comments and service requests</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Add <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm">remarks and service requests</a> as necessary.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm">Remarks &amp; Service Requests Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>4</p>
+                                                        <p style="font-style: italic;">(required only for add collect)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">Form of Payment</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Add Form of Payment is mandatory when there is an add collect (additional payment is due for the new itinerary).</p>
+                                                        <p>Optionally, you can use the Add Form Of Payment request to forfeit residual value, waive a change fee, or add an additional or alternate FOP.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p><i>optional</i>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Send ticket-related remarks</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Optional. Exchange ticketing supports document overrides, reservation comments, and accounting remarks. See <a href="#remarks">Remarks in Exchanges</a> below.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm">Remarks &amp; Service Requests Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>5</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Payment </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Required even if you will not ticket the reservation at commit. Send the Payment request to link the FOP to one or more offer/s to pay for.  </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>6</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Commit the workbench</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Required. Send Workbench Commit with the payLaterInd parameter indicating whether to issue ticket/s now or later. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit API&#160;Reference</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h3><a name="diagramgds"></a>Workflow Diagram</h3>
+                                        <p>The form of payment (FOP) step is required only if an additional amount is due for the exchange. Otherwise, FOP is optional and can be used to send a waiver code, forfeit residual amounts, or add an additional FOP.</p>
+                                        <p>&#160;</p>
+                                        <p>
+                                            <img src="../Workflows/GDSExchanges_workflow_ExchSearch.jpg" style="max-width: 90%;" />
+                                        </p>
+                                        <h3><a name="gdsexchangeapis"></a>API&#160;Usage Details</h3>
+                                        <p>The following sections provide usage details for the APIs in the GDS exchange ticketing process. For object-level details, see the API&#160;Reference for each API.</p>
+                                        <h4><a name="eligibility"></a>Eligibility </h4>
+                                        <p>The <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeEligibility.htm">Eligibility</a> API is the first step in the GDS exchange workflow. It is an optional step. Eligibility returns information about whether a ticket may have value in an exchange or refund scenario, and the range of potential exchange and refund fees. This information relates only to fees, not any fare or tax difference for the itinerary.</p>
+                                        <h4><a name="exchsearch"></a>Exchange Search</h4>
+                                        <p>Use <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeSearch.htm">Exchange Search</a> to search for new options for the exchange. For each offer returned, the response details the differences in base fare, taxes, fees, and total price between that offer and the current itinerary.</p>
+                                        <div class="noteWarning">The ticket and reservation must still be active to use Exchange Search. The length of time a ticket remains active on a carrier varies. To verify whether a reservation is still active, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.htm">retrieve the reservation</a>. To verify whether a ticket is still active, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketDisplay_GDS.htm">retrieve the ticket</a>. Valid responses indicate they are active.</div>
+                                        <div class="noteWarning">Travelport+  currently has available  functionality for automatic segment placement logic. This is controlled by the SASP field of the AAT table and must be set to <i>true</i> for the exchange process to work correctly.</div>
+                                        <p> The Search request must send criteria for the new search, and the identifier for the current, ticketed offer. </p>
+                                        <p>You can search for new options for only one leg of an itinerary and keep the other leg/s, or you can search for new options for all legs. To search for changes to a specific leg, send only the product identifier/s for the leg/s you want to change. (In the <span class="mc-variable General.Product variable">JSON</span> APIs a <i>product</i> is one leg of an itinerary; a <i>leg</i> is all flight or flights between one origin and destination pair. For example,  DEN&gt;LAX and LAX&gt;DEN&#160;could be the two legs of a round-trip itinerary.) To keep the other leg, don't send its product identifier in your search request. For any leg not sent in the request, Exchange Search returns the existing itinerary on that leg, and the exchange process retains any unmodified leg or legs.</p>
+                                        <p>The Exchange Search response returns up to 100 offers. Offers are numbered sequentially starting with <i>o</i>, e.g., o0.0, o0.1, o0.2, etc. Each offer is returned in an instance of CatalogOffering with type <i>CatalogOfferingModify</i>, and includes all products and flights that make up the offer. For example, a round-trip offer would return two instances of ProductOptions, one for each leg of the itinerary. </p>
+                                        <div class="noteWarning">
+                                            <p>In Exchange Search, all pricing information is inclusive of all travelers across all PTCs. </p>
+                                        </div>
+                                        <p>Each instance of CatalogOffering includes the following:</p>
+                                        <ul>
+                                            <li>For each flight:<ul><li>A reference ID for the flight matching to flight details consolidated across offers in the ReferenceList object.</li><li>Basic brand details (not ancillary details), including brand name, ID, tier.</li><li>The boundFlightsInd indicating that flights are bound and must be sold together (true) or can be sold point to point (false).</li></ul></li>
+                                            <li>Price:&#160;Price of the new itinerary, including base price, taxes, and fees, including the amount or percentage of any change fee.</li>
+                                            <li>PriceDifference: Difference between original and new itinerary.</li>
+                                            <li>Terms and conditions of the new fare, including baggage - checked &amp; carry on fees, price, pieces, size.</li>
+                                            <li>Any endorsements or restrictions, plus the vendor-filed base currency (currency of origin country).</li>
+                                        </ul>
+                                        <p style="font-weight: bold;"><a name="refundchangefee"></a>Refunds and Change Fee Collection Methods</p>
+                                        <p>In the ModifyPrice/TotalPrice object, a negative number indicates a refund, while a positive number indicates a change fee and/or an add collect (additional amount due). The following are returned in the refund and change fee scenarios: </p>
+                                        <p>If the new itinerary results in a refund:</p>
+                                        <ul>
+                                            <li>ModifyPrice/TotalPrice is negative </li>
+                                            <li>TermsAndConditions/FulfillmentMethod/RefundMethod is returned with one of the following values:<ul><li>RefundToOriginalFOP: Refund automatically applied to the original FOP.</li><li>MCO: MCO is automatically created and issued, residual value is applied to the MCO.</li><li>EMD: SVC segment is created and EMD is issued for refundable amount.</li><li>Unknown: If Unknown and a refund amount are returned, it means that the exchange results in a refundable balance. However, the carrier is not EMD-ready and/or does not support the refundable balance EMD, and the transaction cannot be processed via the GDC. Please process the refundable balance separately by either contacting the airline directly or using BSP Link to issue an ACM.</li></ul></li>
+                                        </ul>
+                                        <p>If the new itinerary incurs a change fee and/or an add collect:</p>
+                                        <ul>
+                                            <li>ModifyPrice/TotalPrice is positive</li>
+                                            <li>TermsAndConditions/FulfillmentMethod/ChangeFeeCollectionMethod is returned with one of the following values:<ul><li>EMD: SVC segment is created and EMD is issued for change fee amount</li><li>TAX: Response will also include ChangeFeeCollectionMethodCode (with the applicable tax code). Change fee will be automatically collected as a tax at the time of ticketing.</li></ul></li>
+                                        </ul>
+                                        <p style="font-weight: bold;"><a name="ntd"></a>Net Ticket Data</p>
+                                        <p>For  any fare that has a private fare component, the response returns the following net ticket data (NTD). Note you must request net fares to return net fare ticket data. </p>
+                                        <ul>
+                                            <li>Net ticket data in Product/PassengerFlight/FlightProduct in the attributes <b>carCode</b> (Commercial Airline Agreement number) and <b>valueCode</b> (value code for the fare).</li>
+                                            <li>Both Price and ModifyPrice include in their PriceBreakdown object the objects <b>Commission</b> (the amount of commission or the commission difference as either a percent or amount; not returned if no commission is filed or if the commission is a mix of amount and percent) and <b>NetBaseAmount</b>, which is the base fare filed by the airline.</li>
+                                        </ul>
+                                        <p>See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.htm#ntd">Reservation Retrieve</a> for the NTD details returned in the Reservation Retrieve.</p>
+                                        <h4><a name="remarks"></a>Remarks in Exchanges</h4>
+                                        <p>The following optional remarks are supported in a ticket exchange workbench after adding the offer and before adding FOP&#160;or payment. You can add remarks whether you are ticketing at commit or create a held booking for the exchange.</p>
+                                        <p><b>Document overrides</b> </p>
+                                        <p>See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm#docoverrides">Document Overrides</a> in the Remarks &amp;&#160;Service Requests Guide for these:</p>
+                                        <ul>
+                                            <li>Commission</li>
+                                            <li>Tour code </li>
+                                            <li>EMD&#160;endorsements</li>
+                                            <li>Adding or modifying a ticket designator</li>
+                                            <li>Overriding a change fee collection method</li>
+                                        </ul>
+                                        <p><b>Reservation remarks</b> </p>
+                                        <p>Send reservation remarks in the Reservation Comments payload; includes vendor, OSI, itinerary, and notepad remarks. Addition and deletion are supported.  See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm#reservationcomments">Reservation Comments</a> in the Remarks &amp;&#160;Service Requests Guide.</p>
+                                        <p><b>Accounting remarks</b> </p>
+                                        <p>Send accounting remarks in the Accounting payload; includes historical, accounting, and DOCI remarks. Addition and deletion are supported. See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm#accountingremarks">Accounting Remarks</a> in the Remarks &amp;&#160;Service Requests Guide.</p>
+                                        <h4><a name="fop"></a><a name="altfop"></a>Form of Payment (multiple FOP, forfeit residual amounts, waive change fee)</h4>
+                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Add Form Of Payment</a> is required for an exchange only if there is an add collect (additional payment is due for the new itinerary). In this case you cannot use the FOP&#160;on the existing reservation. FOP is not required if the modified itinerary costs the same as or less than the original itinerary. </p>
+                                        <p>Optionally, you can send Add FOP to forfeit residual amounts, waive a change fee, or add multiple FOPs for an add collect. </p>
+                                        <p style="font-weight: bold;">Forfeit residual amounts</p>
+                                        <div class="noteWarning">Supported only when <a href="#commit">issuing tickets at workbench commit</a>, as this information is not cached for  later ticketing.</div>
+                                        <p>When exchanging a ticket, you can choose to forfeit the total residual amount, the base amount, the total taxes, or individual taxes with a tax code. </p>
+                                        <p>To do so, send Add FOP with the FormOfPaymentForfeit payload. In the subsequent Add Payment request, send either Amount, BaseAmount, or Taxes to specify whether to forfeit the total residual amount, the base amount, the total taxes, or individual taxes. See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Add FOP</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Add Payment</a> for payloads and examples.</p>
+                                        <p>To forfeit for only specific traveler/s, include the traveler ID in the Add Payment request. If no traveler ID/s are sent, the forfeit is automatically applied to all travelers on the reservation.</p>
+                                        <div class="noteNote">When a residual value is forfeited because of a Category 31 filing by the airline, an entry about the forfeit is made in the historical notepad record. No change to the  response payload. The historical notepad is accessible only via a terminal program with the *HNP entry, and available only to specifically provisioned customers. Contact your Travelport representative for any questions about your access.</div>
+                                        <p style="font-weight: bold;">Waive a change fee</p>
+                                        <div class="noteNote">Supported when issuing tickets at <a href="#commit">workbench commit</a> and ticketing later.</div>
+                                        <p>You can waive a change fee with or without a waiver code. Waiver forms of payment are automatically applied to all travelers in a reservation.</p>
+                                        <p>To do so, send Add FOP with the FormOfPaymentWaiverCode payload and refer to that FOP in the subsequent Add Payment request.  See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Add FOP</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Add Payment</a> for payloads and examples.</p>
+                                        <p style="font-weight: bold;">Add multiple FOPs for add collect</p>
+                                        <div class="noteWarning">Supported only when <a href="#commit">issuing tickets at workbench commit</a>, as this information is not cached for  later ticketing.</div>
+                                        <p>When an add collect is due (which may include a change fee), you can choose to use multiple forms of payment for a single traveler (for BSP only), or use a different or multiple forms of payment for each traveler on the same itinerary. </p>
+                                        <p>To add multiple FOP, repeat the Add Form Of Payment request as necessary with one of the supported payloads in the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Add Form Of Payment API&#160;Reference</a>. </p>
+                                        <p style="font-weight: bold;">Note the following:</p>
+                                        <p style="font-weight: normal;">Change Fee to EMD:</p>
+                                        <blockquote>
+                                            <ul>
+                                                <li>
+                                                    <p>A change fee cannot be split across multiple FOPs.</p>
+                                                </li>
+                                                <li>
+                                                    <p>The first payment referenced will be used for the change fee and will not be used for the add collect.</p>
+                                                </li>
+                                                <li>
+                                                    <p>If a change fee to EMD is being collected during an exchange, then the first FOP referenced in the Payment service will be used for the change fee and any other FOPs referenced will be used for the add collect (if applicable).</p>
+                                                </li>
+                                            </ul>
+                                        </blockquote>
+                                        <p>Add Collect:</p>
+                                        <blockquote>
+                                            <ul>
+                                                <li>
+                                                    <p><b>A maximum of three FOPs</b> can be used for one ticket – for BSP only.</p>
+                                                </li>
+                                                <li>
+                                                    <p>ARC does not allow multiple FOPs for an add collect.</p>
+                                                </li>
+                                            </ul>
+                                        </blockquote>
+                                        <p>When adding FOP:</p>
+                                        <blockquote>
+                                            <ul>
+                                                <li>
+                                                    <p>Do not add FOPs that already exist in the workbench, unless it’s a credit card for which only the expiration date has changed.</p>
+                                                </li>
+                                                <li>
+                                                    <p>Supported FOPs are cash, invoice, and credit card.</p>
+                                                </li>
+                                            </ul>
+                                        </blockquote>
+                                        <p>When <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">adding payment</a>:</p>
+                                        <blockquote>
+                                            <ul>
+                                                <li>
+                                                    <p>Always send a traveler reference in TravelerIdentifierRef.</p>
+                                                </li>
+                                                <li>
+                                                    <p>When splitting payments across one ticket, ensure the amounts in Add Payment request add up to the total add collect and/or change fee.</p>
+                                                </li>
+                                                <li>
+                                                    <p>Always send the Amount object in the Add Payment step even if the value = zero (e.g., forfeit scenario).</p>
+                                                </li>
+                                            </ul>
+                                        </blockquote>
+                                        <h4><a name="addpayment"></a>Payment</h4>
+                                        <div class="noteWarning">Payment is a mandatory step in the GDS&#160;exchange workflow. In the case of even exchange or a refund, send Add Payment with Amount/value with <i>0</i> (zero).</div>
+                                        <p>Sending <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment</a> is required in the exchange workflow even if you will not ticket the reservation at commit. </p>
+                                        <p>In exchange ticketing, you can send Payment specifically for a change fee by including the Fees object in the payload. For example, if an exchange results in an add collect plus a change fee, and you want to use a different FOP for each, send one Payment request for the add collect and a second request for the change fee. You do not need to send multiple Payment requests when using the same FOP for all amounts to be collected; in that case, in the same Payment payload, send Amount/value for the add collect and Fees/Total Fees for the fees to pay for.</p>
+                                        <p>You can also use Payment to forfeit a tax amount by sending the Tax object with the amount to forfeit. </p>
+                                        <p>You cannot split an EMD&#160;into multiple payments. </p>
+                                        <p>See <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment API&#160;Reference</a> for the payload and examples.</p>
+                                        <h4><a name="commit"></a>Workbench Commit (ticket now or hold booking)</h4>
+                                        <p>Last, send the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm">Workbench Commit</a> to commit the changes. Set the payLaterInd query parameter to either issue the new ticket/s now, or create a held booking for later fulfillment. </p>
+                                        <p>The only difference in exchange ticketing from initial ticketing is that the payLaterInd and DocumentValue parameters are supported only for exchanges. </p>
+                                        <p>There is no message payload. </p>
+                                        <p>The Workbench Commit response returns both the previously booked offer, in an instance of Offer with @type=Offer, and the new offer, in an instance of Offer with @type=OfferModify. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm#exrspGDS">Workbench Commit API&#160;Reference</a> for an example. </p>
+                                        <p>Subsequent Reservation Retrieve responses do not return the previous offer; however,  several objects for the new offer indicate the exchanged status: Offer @type=<i>OfferModify</i>, Document @type=<i>DocumentTicketExchange</i>, and Offer/ModifyPrice returns the difference between the previous price and the exchanged price. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.htm#exGDSmodified">Reservation Retrieve API&#160;Reference</a> for an example.</p>
+                                        <p>For the exchanged tickets, The commit response returns the following Document @type values:</p>
+                                        <ul>
+                                            <li>
+                                                <p>The previous (exchanged) ticket details are returned with Document @type <i>DocumentTicketExchange</i>.</p>
+                                            </li>
+                                            <li>
+                                                <p>The newly issued ticket details are returned with Document @type <i>DocumentTicket</i>.</p>
+                                            </li>
+                                            <li>
+                                                <p>If an EMD&#160;is issued during the exchange, such as for a change fee or a residual balance, the commit response returns Document @type <i>DocumentEMD</i> with the EMD&#160;number and the amount.</p>
+                                            </li>
+                                        </ul>
+                                        <p>When travel originates outside the country of ticket issuance, the commit response returns the fare and ticket in the currency where the travel originates from, followed by the currency of the ticketing country. For example, for a ticket sold in Australia for travel commencing in the US, the base fare is returned in USD and the EQ/TTL fare is in AUD.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example commit response when exchanging GDS ticket</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "0ac7cfce-6192-4f32-b6b7-6dede455c17b"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "MTVhM2E4ZjQtM2Y2Mi00MzlmLTgyMzctYWVlYzMwZTA4ODY5fFA1QjQyQTU3My1CMTIxLTRGODMtODY3OHN4aHRiMTR5MjNydmMtMS0x"
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT2H29M",
+       "id": "product_1",
+       "Identifier": {
+        "authority": "AA",
+        "value": "3e08fb8b-b5ed-42e6-be7f-f0e628307d26"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H29M",
+          "carrier": "AA",
+          "number": "6221",
+          "equipment": "E75",
+          "id": "seg_1",
+          "Identifier": {
+           "authority": "AA",
+           "value": "6bc12b59-3387-4509-8975-64cd37e28d7d"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "0",
+           "location": "LAX",
+           "date": "2025-03-21",
+           "time": "09:22:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "location": "DEN",
+           "date": "2025-03-21",
+           "time": "12:51:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "L",
+           "cabin": "Economy",
+           "fareBasisCode": "LUAIYSN1",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "Brand",
+            "name": "Main Cabin"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 370,
+      "TotalTaxes": 51.8,
+      "TotalPrice": 421.8,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 370,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 51.8,
+          "Tax": [
+           {
+            "taxCode": "US",
+            "description": "U.S.A Transportation Tax",
+            "value": 27.7
+           },
+           {
+            "taxCode": "XF",
+            "description": "U.S Passenger Facility Charge",
+            "value": 7.1
+           },
+           {
+            "taxCode": "ZP",
+            "description": "U.S. Flight Segment Tax",
+            "value": 8.2
+           },
+           {
+            "taxCode": "AY",
+            "description": "Passenger Civil Aviation Security Service Fee",
+            "value": 8.8
+           }
+          ]
+         },
+         "Total": 421.8
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2025-02-23T23:59:00Z",
+       "TextBlock": [
+        {
+         "@type": "TextBlockDetail",
+         "description": "FARE RULES",
+         "title": "Ticketing",
+         "TextFormatted": [
+          {
+           "value": "NONREF/FAREDIF/"
+          },
+          {
+           "value": "CXL BY FLT TIME OR NOVALUE"
+          }
+         ]
+        }
+       ],
+       "BaggageAllowance": [
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 0
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "0PC"
+         ]
+        },
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "CarryOn",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 2
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "2PC"
+         ]
+        }
+       ],
+       "FareRuleInfo": [
+        {
+         "@type": "FareRuleInfoText",
+         "flightsRefs": [
+          "seg_1"
+         ],
+         "TextFareRule": [
+          {
+           "name": "Cancel",
+           "value": "Not Allowed"
+          }
+         ]
+        }
+       ],
+       "PaymentTimeLimit": "2025-02-23T23:59:00Z",
+       "Penalties": [
+        {
+         "@type": "Penalties",
+         "Change": [
+          {
+           "@type": "ChangePermitted",
+           "ProductRefs": [
+            "product_1"
+           ]
+          }
+         ],
+         "Cancel": [
+          {
+           "@type": "CancelNotPermitted",
+           "ProductRefs": [
+            "product_1"
+           ],
+           "NotPermittedInd": "true"
+          }
+         ],
+         "PassengerTypeCodes": [
+          "ADT"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "trav_1",
+     "TravelerRef": "trav_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "QURUfFQx"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "Telephone",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "4",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "id": "email_1",
+       "validInd": true,
+       "value": "TRAVELERONE@GMAIL.COM"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-02-21",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TestFirst",
+        "Surname": "TestLast"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "4afd7900-bcf6-4473-9109-44bd60d14ffb"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "OrderId",
+       "value": "AA001HGO3HWA4"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_2",
+     "Identifier": {
+      "authority": "AA",
+      "value": "ba4391ec-e0da-4290-98ca-f17d5b7b1060"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "VendorLocator",
+       "value": "IKRWES"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "seg_1"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "9acfe47e-c903-491b-b3d1-c8bb80970815"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-02-22",
+       "value": "B7KT1S"
+      }
+     }
+    }
+   ],
+   "ReservationComment": [
+    {
+     "@type": "ReservationComment",
+     "id": "reservationComment_1",
+     "Comment": [
+      {
+       "id": "comment_1",
+       "name": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST",
+       "language": "EN",
+       "value": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST"
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a name="supitin"></a>Supported GDS Exchange Options</h3>
+                                        <p>The Exchange APIs support the search and exchange options detailed below.</p>
+                                        <h4><a name="supitin"></a>Supported Changes</h4>
+                                        <p>Supported itinerary changes are as follows:</p>
+                                        <ul>
+                                            <li>Changes to outbound and inbound dates and times, origins, destinations, independently or together for outbound and inbound</li>
+                                            <li>Outbound and inbound on one carrier or different carrier (interline)</li>
+                                            <li>Alternates (for the changed flight) include only nonstop/direct or one connection</li>
+                                            <li>Outbound and inbound routing change at the same time</li>
+                                            <li>Outbound and inbound date and routing (combo of one or the other) change at the same time</li>
+                                        </ul>
+                                        <h4><a name="supticketing"></a>Supported Ticketing Options</h4>
+                                        <p>Exchanges are supported for the following:</p>
+                                        <ul>
+                                            <li>Automated exchanges </li>
+                                            <li>One-way, round-trip, interline, and open-jaw itineraries</li>
+                                            <li>Exchanging multiple air offers for single or multiple passengers</li>
+                                            <li>Tickets previously exchanged with the <span class="mc-variable General.Product variable">JSON</span>&#160;GDS&#160;Exchange APIs (or using <a href="https://www.travelportmarketplace.com/Product/Travelport-Automated-Exchanges" target="_blank">Travelport Automated Exchanges</a>)</li>
+                                            <li><a href="#multioffer">Multi-offer tickets</a>
+                                            </li>
+                                            <li>Bookings with up to 9 passengers</li>
+                                            <li>All PTC&#160;codes, up to a maximum of 4 PTC types on one booking</li>
+                                            <li>Up to 16 segments for all products in the reservation/ticket</li>
+                                            <li>Up to 2 connections for the outbound leg and up to 2 connections for the inbound leg</li>
+                                            <li>Wholly unflown and partially flown tickets</li>
+                                            <li>Currencies with zero, two, and three decimals</li>
+                                            <li>Private fares</li>
+                                            <li>Net fares with mark up using an account code</li>
+                                            <li>Exchanges for an empty reservation, which can result when air segments and stored fares are canceled but the reservation is kept open to retain traveler and ticket information. Refer to the bullet below for a restriction on empty PNRs with the original ticket of IT/BT (inclusive tour code fares / bulk fares). </li>
+                                            <li>Bulk IT/BT tickets on CAT 35 fares. However, if the original ticket has an IT/BT and if those flights were canceled and no flights from the original ticket were flown, then the reservation is empty and the original tickets with private fares cannot be exchanged. </li>
+                                            <li>BSP&#160;EMD&#160;change fees and BSP change fee as tax</li>
+                                            <li>Supported forms of payment (FOP)&#160;are cash, check, credit, or invoice</li>
+                                            <li>Alternate form of payment (FOP) using a different credit card than used for the original ticket</li>
+                                            <li>Document Overrides:<ul><li>Commission on fare</li><li>Endorsement</li><li>IT/BT</li><li>Tour Code</li></ul></li>
+                                            <li>Override change fee collection method in Document Override</li>
+                                        </ul>
+                                        <p><b>Other notes:</b>
+                                        </p>
+                                        <ul>
+                                            <li>Changes to a reservation&#160;apply to all passengers on that reservation. </li>
+                                            <li>Exchange Search returns a response only for the ticketed passengers on an itinerary. For example, in the US&#160;market, a domestic INF&#160;on lap would not be shown in the exchange response; however, all changes will apply to that INF&#160;traveler. </li>
+                                            <li>If Exchange Search returns RefundMethod of Unknown and a refund amount, and an exchange is carried out and committed, any residual balance will be forfeited.</li>
+                                            <li>Travelport does not collect OB&#160;fees on reissued tickets. </li>
+                                        </ul>
+                                        <h4><a name="multioffer"></a>Multi-offer Exchange Support</h4>
+                                        <p>Exchanges are supported in the Exchange APIs for multiple tickets (multi-offer tickets) for a single passenger, for multiple passengers, and for up to four PTCs,  subject to the following:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Multi-offer exchanges are supported only for segments with fares quoted separately (separate filed fares). 
+</p>
+                                            </li>
+                                            <li>
+                                                <p>A single workbench session supports exchanging one offer at a time one or multiple passengers.   For example, if you want to modify all legs of a round-trip itinerary for two passengers, and each leg of the round-trip is a separate offer, follow this sequence: </p>
+                                                <ul>
+                                                    <li>
+                                                        <p>Exchange the outbound/departure leg for passengers 1 and 2</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Exchange  the  inbound/return leg for passengers 1 and 2</p>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <p>Your PCC must be provisioned for exchanging multi-offers or an error message is returned. Contact your Travelport representative if necessary.</p>
+                                            </li>
+                                        </ul>
+                                        <p>For more about multi-offer ticketing, see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/BookingGuide.htm#multi-offer">Multi-offer&#160;Bookings</a> in the Booking Guide.</p>
+                                        <h4><a name="exref"></a>Exchange and Refund Handling</h4>
+                                        <p>The following applies to exchanges and refunds:</p>
+                                        <ul>
+                                            <li>BSP carriers must support EMD:<ul><li>Change fees are collect via EMD</li><li>Refundable balances are automatically refunded via EMD</li><li>In both cases, a SVC segment is added and the EMD issued</li></ul></li>
+                                            <li>ARC Carriers must support MCO:<ul><li>
+Change fees are collected at time of ticketing
+</li><li>MCO is automatically issued for any negative balance (refund or retain)</li></ul></li>
+                                            <li>Option to forfeit any residual value</li>
+                                            <li>Tax is supported in BSP&#160;markets</li>
+                                            <li>Overriding the change fee collection method is supported with <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm#docoverride">document override remarks</a></li>
+                                        </ul>
+                                        <h4><a name="unsup"></a>Currently Unsupported</h4>
+                                        <p>The GDS Exchange APIs do not currently support:</p>
+                                        <ul>
+                                            <li>Manual exchanges</li>
+                                            <li>NDC content (handled with the Reshop, Reprice, and Modify APIs)</li>
+                                            <li>Refunds without any itinerary exchange (separate refund functionality is under development)</li>
+                                            <li>Unworked schedule changes (i.e., tickets with unaccepted flight changes)</li>
+                                            <li>Tickets with the same PTC types priced separately. </li>
+                                            <li>Tickets that have been previously exchanged outside the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs and/or <a href="https://www.travelportmarketplace.com/Product/Travelport-Automated-Exchanges" target="_blank">Travelport Automated Exchanges</a>. </li>
+                                            <li>Split/divided tickets</li>
+                                            <li>Unaccompanied minors</li>
+                                            <li>No-show scenarios</li>
+                                            <li>Category 16 data</li>
+                                            <li>Carriers that don’t file Category 31 (voluntary changes) and Category 33 (voluntary refunds) rules data.  Category 16 is text-based information regarding exchanges and refunds. The Eligibility API relies on Category 31 and Category 33. Some carriers may not fully maintain the integrity and consistency of the data between Category 16 (text based) and Categories 31 and 33 (rule based). In such cases Eligibility relies on Categories 31 and 33.</li>
+                                        </ul>
+                                        <h2><a name="ndcexchanges"></a>NDC Exchanges &amp;&#160;Refunds</h2>
+                                        <p>The following sections provide workflow and support details for the APIs in the NDC exchange ticketing process. The same APIs and processes are also used to modify or cancel held bookings for NDC.</p>
+                                        <h3><a name="workflowndc"></a>Workflow to Exchange Tickets or Modify Held Booking</h3>
+                                        <p>The NDC exchange workflow shops for a new itinerary to update the currently ticketed itinerary. Supported only for automated exchanges only, in which the <span class="mc-variable General.Product variable">JSON</span> APIs are used for all steps of the exchange. </p>
+                                        <p>This same workflow also supports changing the itinerary on a held booking.</p>
+                                        <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" style="width: 20%;">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Step #</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Booking Workflow Step</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Description and Notes</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p>API&#160;Reference</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>1</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Post-Commit Workbench</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Initiate a workbench for the existing booking.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-Commit Workbench API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>2</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Reshop</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Search for a new itinerary for either a held booking or to exchange a ticket. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.htm">Reshop API Reference</a><![CDATA[
+                    ]]></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>3</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Reprice</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Confirm pricing on a selected offer from the Reshop response and add that offer to the workbench.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reprice.htm">Reprice API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>4</p>
+                                                        <p><i>may be optional or required</i>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Form of Payment</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Add Form of Payment may be required in the  case of an even exchange or an add collect (the new price is greater than the original). Some NDC carriers require tickets to be issued at commit while others support booking now and sending payment later. See the <a href="#sup">Support Table and Workflow Summary</a> in the Exchanges Guide for details.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm">Form of Payment API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>5</p>
+                                                        <p><i>may be optional or required</i>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Payment </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>May be optional or required depending on carrier rules. See Form of Payment in the row above.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm">Payment API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>6</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>Modify</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>Required. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Modify.htm">Modify API&#160;Reference</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h3><a name="ndcrefundwkflw"></a>Workflow to Refund Ticket or Cancel Held Booking</h3>
+                                        <p>The NDC refund workflow first determines whether any refund value is available for a ticket, and then cancels the ticketed itinerary. </p>
+                                        <p>To cancel a held booking, use this workflow without the Refund Quote in step #2. </p>
+                                        <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" style="width: 20%;">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Step #</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Booking Workflow Step</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Description and Notes</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p>API&#160;Reference</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>1</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Post-Commit Workbench</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Initiate a workbench for the existing booking.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">Post-Commit Workbench API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>2</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Refund Quote (omit for held bookings)</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Determine what if any refund value may be available on the ticket. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_RefundQuote.htm">Refund Quote API Reference</a><![CDATA[
+                    ]]></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>3</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Cancel</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Cancels the ticket or booking.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p><a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.htm">Cancel API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h3><a name="diagramndc"></a>Workflow Diagrams</h3>
+                                        <p>In the following diagrams, each box represents one API&#160;call in the workflow. </p>
+                                        <p>
+                                            <img src="../Workflows/NDCExchangeRefund_workflows.jpg" style="max-width: 90%;" />
+                                        </p>
+                                        <h3><a name="supndc"></a>Supported NDC Exchange Options</h3>
+                                        <p>In general, NDC supports the following changes on either a held booking or a ticketed itinerary:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Modify the date, time, flight, cabin, or origin and/or destinations</p>
+                                            </li>
+                                        </ul>
+                                        <p>Ticket exchanges are supported for the following:</p>
+                                        <ul>
+                                            <li>Automated exchanges </li>
+                                            <li>One-way, round-trip, interline, and open-jaw itineraries</li>
+                                            <li>Bookings with up to 9 passengers</li>
+                                            <li>All PTC&#160;codes</li>
+                                        </ul>
+                                        <p>Carrier support varies for the following:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Adding new air segments </p>
+                                            </li>
+                                            <li>
+                                                <p>Modifying seats or ancillaries</p>
+                                            </li>
+                                            <li>
+                                                <p>Modifying or adding flights after travel commences</p>
+                                            </li>
+                                            <li>
+                                                <p>Canceling a booking with ancillaries or seats</p>
+                                            </li>
+                                            <li>
+                                                <p>Canceling a divided booking.</p>
+                                            </li>
+                                        </ul>
+                                        <p>See the <i>Cancel</i> section in <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. If you need login assistance, see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/NDCGuide.htm#kbase">Knowledge Base NDC&#160;Resources</a>.</p>
+                                        <p>&#160;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:49:04 GMT -->
+</html>

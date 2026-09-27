@@ -1,0 +1,66 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-10-20",
+                    "departureTime": "06:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "MCI"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "DEN"
+                    }
+                }, {
+                    "departureDate": "2021-11-15",
+                    "departureTime": "07:50:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "DEN"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "MCI"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PrivateFaresOnly"
+                },
+                "OrganizationInformation": {
+                    "@type": "OrganizationInformation",
+                    "OrganizationIdentifier": [{
+                            "value": "APISELL",
+                            "supplier": "UA",
+                            "organizationCodeType": "Account"
+                        }
+                    ]
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b826c945-4824-43cf-991e-94c2a7e9d55c"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

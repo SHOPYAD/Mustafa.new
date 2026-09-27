@@ -1,0 +1,68 @@
+{
+  "keys": [
+    "__typename",
+    "address",
+    "badge",
+    "bubbleRating",
+    "cardLink",
+    "cardPhoto",
+    "cardTitle",
+    "closureInfo",
+    "commerceButtons",
+    "distance",
+    "isSaved",
+    "labels",
+    "primaryInfo",
+    "saveId",
+    "secondaryInfo",
+    "stableDiffingType",
+    "trackingKey",
+    "trackingTitle"
+  ],
+  "samples": [
+    {
+      "primaryInfo": null,
+      "secondaryInfo": null,
+      "labels": [
+        {
+          "__typename": "AppPresentation_SecondaryLabel",
+          "text": {
+            "__typename": "AppPresentation_LocalizedString",
+            "string": "الأعلى تقييمًا",
+            "debugValueKey": null
+          }
+        }
+      ],
+      "badge": null,
+      "commerceButtons": null
+    },
+    {
+      "primaryInfo": {
+        "text": "‪All-inclusive‬"
+      },
+      "secondaryInfo": null,
+      "labels": [],
+      "badge": null,
+      "commerceButtons": null
+    },
+    {
+      "primaryInfo": {
+        "text": "‪All-inclusive‬"
+      },
+      "secondaryInfo": null,
+      "labels": [
+        {
+          "__typename": "AppPresentation_SecondaryLabel",
+          "text": {
+            "__typename": "AppPresentation_LocalizedString",
+            "string": "الأكثر رواجًا",
+            "debugValueKey": null
+          }
+        }
+      ],
+      "badge": null,
+      "commerceButtons": null
+    }
+  ],
+  "at": "2026-08-29T08:45:06.234Z"
+}

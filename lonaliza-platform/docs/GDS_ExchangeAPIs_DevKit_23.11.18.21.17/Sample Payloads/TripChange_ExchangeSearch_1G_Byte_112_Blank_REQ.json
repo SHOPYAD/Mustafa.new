@@ -1,0 +1,43 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-06-20",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "CDG"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "ATL"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "310c3975-cb31-44c7-b2a4-cfb114ce204f"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

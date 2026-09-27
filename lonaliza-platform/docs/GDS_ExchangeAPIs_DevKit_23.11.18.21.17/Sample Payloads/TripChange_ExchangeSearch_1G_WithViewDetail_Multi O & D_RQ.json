@@ -1,0 +1,93 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-08-01",
+                    "departureTime": "07:15:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "YVR"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "ONT"
+                    }
+                }, {
+                    "departureDate": "2021-08-06",
+                    "departureTime": "12:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "LGA"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "YYZ"
+                    }
+                }, {
+                    "departureDate": "2021-08-11",
+                    "departureTime": "17:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "FLL"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "DFW"
+                    }
+                }, {
+                    "departureDate": "2021-08-22",
+                    "departureTime": "11:20:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "LAS"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "JFK"
+                    }
+                }, {
+                    "departureDate": "2021-09-12",
+                    "departureTime": "06:00:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "IAD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "EWR"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "keepToBrandInd": false
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "6ad8adf6-c98a-4715-8e49-23927978cd5b"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }, {
+                        "id": "product_3"
+                    }, {
+                        "id": "product_4"
+                    }, {
+                        "id": "product_5"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "visibility": {
+    "flight": true,
+    "holiday": true,
+    "hotel": true,
+    "tours": true,
+    "transfers": true,
+    "cars": true,
+    "insurance": false,
+    "visa": false,
+    "offers": false
+  },
+  "order": [
+    "flight",
+    "hotel",
+    "cars",
+    "transfers",
+    "holiday",
+    "tours",
+    "insurance",
+    "visa",
+    "offers"
+  ],
+  "updatedAt": "2026-09-17T19:10:46.252Z"
+}

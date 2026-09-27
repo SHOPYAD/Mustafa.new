@@ -1,0 +1,53 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-10-14",
+                    "departureTime": "08:25:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "PER"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PrivateFaresOnly"
+                },
+                "OrganizationInformation": {
+                    "@type": "OrganizationInformation",
+                    "OrganizationIdentifier": [{
+                            "value": "APITEST",
+                            "supplier": "QF",
+                            "organizationCodeType": "Account"
+                        }
+                    ]
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "2f850f6a-9e75-4ca7-b5f7-66e00424e347"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

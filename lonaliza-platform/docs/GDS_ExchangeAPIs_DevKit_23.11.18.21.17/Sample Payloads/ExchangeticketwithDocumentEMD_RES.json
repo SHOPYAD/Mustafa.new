@@ -1,0 +1,687 @@
+{
+    "ReservationResponse": {
+        "@type": "ReservationResponse",
+        "Reservation": {
+            "@type": "Reservation",
+            "Identifier": {
+                "authority": "Travelport",
+                "value": "141c6f17-57fc-4cf9-b7be-9573751177c1"
+            },
+            "Offer": [
+                {
+                    "@type": "Offer",
+                    "id": "offer_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b2d0c456-e2f1-43f4-a259-164131c03f69"
+                    },
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "product_1",
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "16a2508c-780f-475c-95ed-516b32cbfe1d"
+                            },
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "id": "FlightSegment_01",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT1H35M",
+                                        "carrier": "QF",
+                                        "number": "401",
+                                        "equipment": "73H",
+                                        "id": "Flight_01",
+                                        "Identifier": {
+                                            "authority": "Travelport",
+                                            "value": "ce7cf8e5-e303-4a25-836f-572c77e7b0b6"
+                                        },
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "SYD",
+                                            "date": "2022-11-23",
+                                            "time": "06:00:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "Arrival",
+                                            "location": "MEL",
+                                            "date": "2022-11-23",
+                                            "time": "07:35:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "YFQW",
+                                            "fareType": "PublicFare"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "id": "PriceDetail_1",
+                        "CurrencyCode": {
+                            "value": "AUD"
+                        },
+                        "Base": 864.72,
+                        "TotalTaxes": 110.56,
+                        "TotalFees": 0,
+                        "TotalPrice": 975.28,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": 864.72,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 110.56,
+                                        "Tax": [
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "QR",
+                                                "value": 15.4
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "WG",
+                                                "value": 6.5
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "UO",
+                                                "value": 88.66
+                                            }
+                                        ]
+                                    },
+                                    "Total": 975.28
+                                },
+                                "FareCalculation": "SYD QF MEL 864.72YFQW AUD864.72END"
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "63f711a2-3e16-40ee-822b-56e42133ff74"
+                            },
+                            "ExpiryDate": "2022-11-07T23:59:00Z",
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1PC"
+                                    ]
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "QF"
+                                }
+                            ],
+                            "PaymentTimeLimit": "2022-11-10T23:59:00Z",
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "Code": {
+                                        "value": "G"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "Restriction": [
+                                {
+                                    "value": "VALID ON QF SERVICES ONLY"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferModify",
+                    "id": "offerModify_1",
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "p1",
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT1H35M",
+                                        "carrier": "QF",
+                                        "number": "419",
+                                        "equipment": "73H",
+                                        "id": "s1",
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "SYD",
+                                            "date": "2022-11-27",
+                                            "time": "08:00:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "ArrivalDetail",
+                                            "terminal": "1",
+                                            "location": "MEL",
+                                            "date": "2022-11-27",
+                                            "time": "09:35:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "YFQW",
+                                            "fareType": "PublicFare",
+                                            "Brand": {
+                                                "@type": "BrandID"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "AUD"
+                        },
+                        "Base": 799.48,
+                        "TotalTaxes": 103.81,
+                        "TotalFees": 0,
+                        "TotalPrice": 903.29,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": 799.48,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 103.81,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "QR",
+                                                "value": 15.19
+                                            },
+                                            {
+                                                "taxCode": "UO",
+                                                "value": 82.12
+                                            },
+                                            {
+                                                "taxCode": "WG",
+                                                "value": 6.5
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "AUD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 903.29
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "AUD",
+                                    "decimalPlace": 2,
+                                    "value": 799.48
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAirChange",
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "FirstCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "AUD",
+                                                "value": 0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO55LI/140LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "SecondCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "AUD",
+                                                "value": 0
+                                            },
+                                            "Text": "BAGGAGE CHARGES DATA NOT AVAILABLE"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "CarryOn",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "AUD",
+                                                "value": 0
+                                            },
+                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "2P"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "CarryOn",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "AUD",
+                                                "value": 0
+                                            },
+                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "2P"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "BaggageEmbargo",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ]
+                                }
+                            ],
+                            "Restriction": [
+                                {
+                                    "value": "* NONREF 799.48 AUD/VALID ON QF SERVICES ONLY"
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "QF"
+                                }
+                            ],
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "EligibleforADMReview": "Yes",
+                                    "Code": {
+                                        "codeContext": "Travelport",
+                                        "value": "G"
+                                    }
+                                }
+                            ],
+                            "FulfillmentMethod": [
+                                {
+                                    "@type": "FulfillmentMethod",
+                                    "RefundMethod": {
+                                        "value": "EMD"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "AUD"
+                        },
+                        "Base": -65.24,
+                        "TotalTaxes": -6.75,
+                        "TotalFees": 0,
+                        "TotalPrice": -71.99,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": -65.24,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": -6.75,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "QR",
+                                                "value": -0.21
+                                            },
+                                            {
+                                                "taxCode": "UO",
+                                                "value": -6.54
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "AUD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": -71.99
+                                },
+                                "FareCalculation": "SYD QF MEL799.48AUD799.48END QF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "Traveler": [
+                {
+                    "@type": "Traveler",
+                    "passengerTypeCode": "ADT",
+                    "id": "travelerRefId_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "5abde08b-e0e9-400c-b02b-1af3ba2ccd0c"
+                    },
+                    "PersonName": {
+                        "@type": "PersonName",
+                        "Given": "ONE",
+                        "Surname": "PAX"
+                    },
+                    "Telephone": [
+                        {
+                            "@type": "TelephoneDetail",
+                            "phoneNumber": "NONE",
+                            "id": "telephone_1"
+                        }
+                    ]
+                }
+            ],
+            "FormOfPayment": [
+                {
+                    "@type": "FormOfPaymentCash",
+                    "id": "formOfPayment_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "ecdba4ab-304c-4c5f-9f42-d5ef5b78d862"
+                    }
+                }
+            ],
+            "Receipt": [
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "eaadb3f3-a857-430c-ade8-b87fd3fa48b3"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "1G",
+                            "value": "2WRDDM"
+                        },
+                        "OfferStatus": {
+                            "@type": "OfferStatusAir",
+                            "StatusAir": [
+                                {
+                                    "flightRefs": [
+                                        "Flight_01"
+                                    ],
+                                    "code": "HK",
+                                    "value": "Confirmed"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b85004f3-0ff9-424a-9d19-f9ae2bbea7a9"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "TripContainer",
+                            "value": "7CA80E5E-1EE0-0000-0202-211071132599"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "c23700dd-2b34-4dd0-9563-592d1d03f903"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "1A",
+                            "value": "5WU4KR"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b9736b48-b60e-42a3-95cb-7a601820018f"
+                    },
+                    "Document": [
+                        {
+                            "@type": "DocumentTicketExchange",
+                            "exchangeInd": true,
+                            "Number": "0813533168079",
+                            "TravelerIdentifierRef": {
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "5abde08b-e0e9-400c-b02b-1af3ba2ccd0c"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 975.28
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Document": [
+                        {
+                            "@type": "DocumentEMD",
+                            "Number": "0812901089387",
+                            "TravelerIdentifierRef": {
+                                "name": "PAX ONE",
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "5abde08b-e0e9-400c-b02b-1af3ba2ccd0c"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 71.99
+                            }
+                        },
+                        {
+                            "@type": "DocumentTicket",
+                            "Number": "0813533168082",
+                            "TravelerIdentifierRef": {
+                                "name": "PAX ONE",
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "5abde08b-e0e9-400c-b02b-1af3ba2ccd0c"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 799.48
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ReservationComment": [
+                {
+                    "@type": "ReservationComment",
+                    "commentSource": "Supplier",
+                    "shareWithSupplier": [
+                        "QF"
+                    ],
+                    "Comment": [
+                        {
+                            "value": "MISSING SSR CTCM MOBILE OR SSR CTCE EMAIL OR SSR CTCR NON-CONSENT FOR QF"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

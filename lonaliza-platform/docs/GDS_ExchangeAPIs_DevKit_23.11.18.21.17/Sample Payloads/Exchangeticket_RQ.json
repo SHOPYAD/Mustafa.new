@@ -1,0 +1,10 @@
+https://api.pp.travelport.com/11/air/book/reservation/reservations/c4dc4c87-e113-4f80-93fb-9d7b2b453003
+
+To save exchange data but not issue the ticket (issue later) - pass payLaterInd in the Url
+
+https://api.pp.travelport.com/11/air/book/reservation/reservations/c4dc4c87-e113-4f80-93fb-9d7b2b453003?payLaterInd=true
+
+
+To request the EMD be automatically refunded after issuance - pass DocumentValue in the Url
+
+https://api.pp.travelport.com/11/air/book/reservation/reservations/c4dc4c87-e113-4f80-93fb-9d7b2b453003?DocumentValue=REFUND

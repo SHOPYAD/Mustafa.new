@@ -1,0 +1,1757 @@
+/* MadCap Table Style: */
+
+/*<meta Version="9" RTLEnabled="true" />*/
+
+mcTableStyle
+{
+	name: TravelportRows;
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #d3d3d3;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	max-id: 5;
+	margin-bottom: 1.25rem;
+	cell-padding-left: 3px;
+	cell-padding-right: 3px;
+	cell-padding-top: 3px;
+	cell-padding-bottom: 3px;
+}
+
+mcTableColumnStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #d3d3d3;
+	name: Column1;
+	id: 0;
+	vertical-align: top;
+}
+
+mcTableHeadStyle
+{
+	span: 1;
+	separator-style: none;
+	separator-width: 0px;
+	separator-color: #000000;
+	background-color: #4e6659;
+	color: #fbf1e4;
+	name: Header1;
+	id: 3;
+	font-weight: bold;
+	vertical-align: top;
+	text-align: left;
+	cell-padding-left: 5px;
+	cell-padding-right: 5px;
+	cell-padding-top: 5px;
+	cell-padding-bottom: 5px;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #d3d3d3;
+	background-color: #ffffff;
+	name: Body1;
+	id: 1;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #d3d3d3;
+	name: Body2;
+	id: 2;
+	background-color: #fdf8f1;
+	size: 1.1em;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	id: 5;
+	name: Subhead;
+	type: Manual;
+	background-color: #b8c2bd;
+	font-weight: bold;
+}
+
+mcTableFootStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 2px;
+	separator-color: #000000;
+	background-color: #b8c2bd;
+	name: Footer1;
+	id: 4;
+}
+
+
+/* Cell Styles: */
+ 
+.TableStyle-TravelportRows
+{
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-color: #d3d3d3;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-right-color: #d3d3d3;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-top-color: #d3d3d3;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #d3d3d3;
+	border-bottom-width: 1px;
+	margin-bottom: 1.25rem;
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-TravelportRows-Column-Column1
+{
+	
+}
+
+.TableStyle-TravelportRows-Head-Header1
+{
+	
+}
+
+.TableStyle-TravelportRows-HeadI-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadI-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadE-Column1-Header1
+{
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadE-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadF-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadF-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadH-Column1-Header1
+{
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadH-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadD-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadD-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadC-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadC-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadB-Column1-Header1
+{
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadB-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadA-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadA-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadG-Column1-Header1
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadG-Column1-Header1 p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadI-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadI-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadE-Column1-Header1-R
+{
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadE-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadF-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadF-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadH-Column1-Header1-R
+{
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadH-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadD-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-TravelportRows-HeadD-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadC-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadC-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadB-Column1-Header1-R
+{
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadB-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadA-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadA-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-HeadG-Column1-Header1-R
+{
+	color: #fbf1e4;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #4e6659;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-TravelportRows-HeadG-Column1-Header1-R p
+{
+	color: #fbf1e4;
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-Foot-Footer1
+{
+	
+}
+
+.TableStyle-TravelportRows-FootI-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootI-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootE-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootE-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootF-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootF-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootH-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootH-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootD-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootD-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootC-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootC-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootB-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootB-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootA-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootA-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootG-Column1-Footer1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootG-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootI-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootI-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootE-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootE-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootF-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootF-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootH-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootH-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootD-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+	border-top-width: 2px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-TravelportRows-FootD-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootC-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootC-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootB-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootB-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootA-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootA-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-FootG-Column1-Footer1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	vertical-align: top;
+	background-color: #b8c2bd;
+}
+
+.TableStyle-TravelportRows-FootG-Column1-Footer1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-Body-Body1
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body1
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body1-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #ffffff;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body1-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-Body-Body2
+{
+	height: 1.1em;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body2
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body2 p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	border-bottom-width: 1px;
+	border-bottom-color: #d3d3d3;
+	border-bottom-style: solid;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body2-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #fdf8f1;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Body2-R p
+{
+	
+}
+
+.TableStyle-TravelportRows-Body-Subhead
+{
+	
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-right-width: 1px;
+	border-right-color: #d3d3d3;
+	border-right-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Subhead
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Subhead p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyI-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyE-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyF-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyH-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyD-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyC-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+	border-left-width: 1px;
+	border-left-color: #d3d3d3;
+	border-left-style: solid;
+}
+
+.TableStyle-TravelportRows-BodyB-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyA-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Subhead-R
+{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #b8c2bd;
+	vertical-align: top;
+}
+
+.TableStyle-TravelportRows-BodyG-Column1-Subhead-R p
+{
+	font-weight: bold;
+}
+
+

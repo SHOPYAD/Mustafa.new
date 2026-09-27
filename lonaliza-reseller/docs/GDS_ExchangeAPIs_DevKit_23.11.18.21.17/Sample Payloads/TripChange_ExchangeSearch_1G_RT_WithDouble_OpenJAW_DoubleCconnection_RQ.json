@@ -1,0 +1,51 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-06-10",
+                    "departureTime": "10:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SAN"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "ATL"
+                    }
+                }, {
+                    "departureDate": "2021-08-05",
+                    "departureTime": "10:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "DEN"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "LHR"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "0b6815ec-064e-40d4-8820-6d37c6220b30"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

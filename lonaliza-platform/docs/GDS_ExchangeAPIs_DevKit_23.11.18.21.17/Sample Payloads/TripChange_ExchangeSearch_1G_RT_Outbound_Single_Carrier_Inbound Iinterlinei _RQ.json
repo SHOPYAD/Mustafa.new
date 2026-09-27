@@ -1,0 +1,38 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-09-25",
+                    "departureTime": "09:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "DXB"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SEA"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "8b1afb21-0a5d-4240-8c19-238dcf350982"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

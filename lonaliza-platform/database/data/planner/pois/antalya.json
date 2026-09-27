@@ -1,0 +1,482 @@
+{
+  "cityKey": "antalya",
+  "city": "Antalya",
+  "lat": 36.9279654,
+  "lng": 30.7276865,
+  "fetchedAt": "2026-09-20T18:15:28.584Z",
+  "sources": [
+    "wikidata",
+    "wikipedia",
+    "osm"
+  ],
+  "pois": [
+    {
+      "titleEn": "Antalya Clock Tower",
+      "titleAr": "Antalya Clock Tower",
+      "lat": 36.887,
+      "lng": 30.7059,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikidata",
+      "detailEn": "The Tekeli Mehmet Paşa Mosque (Turkish: Tekeli Mehmet Paşa Camii) is a mosque in the city of Antalya, Turkey. The mosque takes its name from Lala Mehmed Pasa."
+    },
+    {
+      "titleEn": "Antalya Museum",
+      "titleAr": "متحف أنطاليا",
+      "lat": 36.8856,
+      "lng": 30.6797,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 14,
+      "source": "wikidata",
+      "detailEn": "The Antalya Museum or Antalya Archaeological Museum (Turkish: Antalya Müzesi) was one of Turkey's largest museums, located in Muratpaşa, Antalya. It includes 13 exhibition halls and an open-air gallery."
+    },
+    {
+      "titleEn": "Yivli Minaret Mosque",
+      "titleAr": "Yivli Minaret Mosque",
+      "detailEn": "Yivli Minaret Mosque (Turkish: Yivli Minare Camii) is a historic mosque located in Kaleiçi, the old town center of Antalya, Turkey. Situated along Cumhuriyet Street near Kalekapısı Square, it is one of the city’s most important landmarks.",
+      "lat": 36.88638889,
+      "lng": 30.70444444,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 22,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Hadrian's Gate",
+      "titleAr": "Hadrian's Gate",
+      "detailEn": "Hadrian's Gate (Turkish: Üçkapılar, meaning \"The Three Gates\") is a memorial gate located in Antalya, Turkey, which was built in the name of the Roman emperor Hadrian, who visited the city in 130 CE. It was later incorporated in the walls that surround the city and harbor, of which it is the only remaining entrance gate today.\nThe gate was rediscovered by the Irish hydrographer Francis Beaufort in 1817, while commanding on HMS Fridericksteen.",
+      "lat": 36.88523,
+      "lng": 30.70851,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Hidirlik Tower",
+      "titleAr": "Hidirlik Tower",
+      "detailEn": "Hıdırlık Tower (Turkish: Hıdırlık Kulesi) is a landmark tower of tawny stone in Antalya, Turkey, where Kaleiçi meets Karaalioğlu Park.",
+      "lat": 36.88138889,
+      "lng": 30.70361111,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Düden Waterfalls",
+      "titleAr": "Düden Waterfalls",
+      "detailEn": "The Düden Waterfalls are two waterfalls of the Düden River in the province of Antalya, Turkey.",
+      "lat": 36.8486,
+      "lng": 30.7806,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Mount Güllük-Termessos National Park",
+      "titleAr": "Mount Güllük-Termessos National Park",
+      "lat": 36.988333333,
+      "lng": 30.467777777,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 6,
+      "source": "wikidata",
+      "detailEn": "Mount Güllük-Termessos National Park (Turkish: Güllük Dağı-Termessos Milli Parkı), established in 1970, is a national park located in Antalya Province, southwestern Turkey."
+    },
+    {
+      "titleEn": "Arapsu Bridge",
+      "titleAr": "Arapsu Bridge",
+      "lat": 36.880906,
+      "lng": 30.659346,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 5,
+      "source": "wikidata",
+      "detailEn": "The Arapsu Bridge is a Roman bridge in Antalya, Turkey. The well-preserved footbridge lies in the Arapsuyu district, 5–6 km west to the city center, at the foot of an ancient mound which is associated with the Greek colony of Olbia."
+    },
+    {
+      "titleEn": "Karaalioğlu Park",
+      "titleAr": "Karaalioğlu Park",
+      "lat": 36.88,
+      "lng": 30.705555555,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata",
+      "detailEn": "Karaalioğlu Park (Turkish: Karaalioğlu Parkı) is a large park in Antalya, Turkey. It is just south of Kaleiçi in the city center, easily reached on foot or by tram."
+    },
+    {
+      "titleEn": "Göynük Canyon",
+      "titleAr": "Göynük Canyon",
+      "detailEn": "Göynük Canyon (Turkish: Göynük Kanyonu) is a canyon in the Antalya Province of southwestern Turkey.\nThe canyon is located inside the Beydağları Coastal National Park, \nabout 4 km (2.5 mi) to Göynük village of Kemer district in Antalya Province.",
+      "lat": 36.68277778,
+      "lng": 30.53305556,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Atatürk's House Museum",
+      "titleAr": "متحف أتاتورك هاوس",
+      "lat": 36.88051,
+      "lng": 30.70773,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 10,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Olympos Beydaglari National Park",
+      "titleAr": "Olympos Beydaglari National Park",
+      "lat": 36.541666666,
+      "lng": 30.511388888,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 9,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Eurymedon Bridge",
+      "titleAr": "Eurymedon Bridge",
+      "lat": 36.91441,
+      "lng": 31.16301,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 8,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kurşunlu Waterfall",
+      "titleAr": "Kurşunlu Waterfall",
+      "lat": 37.003,
+      "lng": 30.821,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 5,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Antalya Toy Museum",
+      "titleAr": "Antalya Toy Museum",
+      "lat": 36.885494,
+      "lng": 30.7022,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kemer Clock Tower",
+      "titleAr": "Kemer Clock Tower",
+      "lat": 36.602138888,
+      "lng": 30.559638888,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Lower Düden Waterfalls",
+      "titleAr": "Lower Düden Waterfalls",
+      "lat": 36.8509661,
+      "lng": 30.7834386,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Phaselis",
+      "titleAr": "Phaselis",
+      "lat": 36.522806,
+      "lng": 30.549049,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 26,
+      "source": "wikidata",
+      "detailEn": "Phaselis (Ancient Greek: Φασηλίς) or Faselis (Turkish: Faselis) was a Greek and Roman city on the coast of ancient Lycia. Its ruins are located north of the modern town Tekirova in the Kemer district of Antalya Province in Turkey."
+    },
+    {
+      "titleEn": "Atatürk Kültür Parkı",
+      "titleAr": "Atatürk Kültür Parkı",
+      "lat": 36.884166666,
+      "lng": 30.685,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Fener Park",
+      "titleAr": "Fener Park",
+      "lat": 36.846388888,
+      "lng": 30.759166666,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Gençlik Park (Antalya)",
+      "titleAr": "Gençlik Park (Antalya)",
+      "lat": 36.850277777,
+      "lng": 30.781388888,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kuğulu Park",
+      "titleAr": "Kuğulu Park",
+      "lat": 36.884166666,
+      "lng": 30.681111111,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Perga",
+      "titleAr": "Perga",
+      "detailEn": "Perga or Perge (Hittite: Parha, Greek: Πέργη Perge, Turkish: Perge) was originally an ancient Lycian settlement that later became a Greek city in Pamphylia. It was the capital of the Roman province of Pamphylia Secunda, now located in Antalya Province on the southwestern Mediterranean coast of Turkey.",
+      "lat": 36.96138889,
+      "lng": 30.85388889,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Expo 2016",
+      "titleAr": "Expo 2016",
+      "detailEn": "Expo 2016 was an international horticultural exposition held in Antalya, Turkey. Under the aegis of the Bureau International des Expositions (BIE)  Expo 2016 Antalya was the first  International Horticultural Exhibition to be held in Turkey.",
+      "lat": 36.9475,
+      "lng": 30.88472222,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Hisarçandır Castle",
+      "titleAr": "Hisarçandır Castle",
+      "lat": 36.7776566,
+      "lng": 30.4475079,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Gedelme Castle",
+      "titleAr": "Gedelme Castle",
+      "lat": 36.613621,
+      "lng": 30.441671,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kitanaura Bridge",
+      "titleAr": "Kitanaura Bridge",
+      "lat": 36.6469002,
+      "lng": 30.3638992,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kadınyarı Bridge",
+      "titleAr": "Kadınyarı Bridge",
+      "lat": 36.885704,
+      "lng": 30.6987782,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Antalya City Museum",
+      "titleAr": "Antalya City Museum",
+      "lat": 36.881069,
+      "lng": 30.709421,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Monastery of Doyran",
+      "titleAr": "Monastery of Doyran",
+      "lat": 36.9147415,
+      "lng": 30.5141563,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kemer",
+      "titleAr": "Kemer",
+      "detailEn": "Kemer is a seaside resort, municipality and district of Antalya Province, Turkey. Its area is 412 km2, and its population is 49,383 (2022).",
+      "lat": 36.6,
+      "lng": 30.55,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Finike",
+      "titleAr": "Finike",
+      "detailEn": "Finike (Turkish: [feˈnice]), the ancient Phoenix or Phoinix (Ancient Greek: Φοῖνιξ), also formerly Phineka, is a municipality and district of Antalya Province, Turkey. Its area is 768 km2, and its population is 49,720 (2022).",
+      "lat": 36.3,
+      "lng": 30.15,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Manavgat",
+      "titleAr": "Manavgat",
+      "detailEn": "Manavgat is a municipality and district of Antalya Province, Turkey. Its area is 2,351 km2, and its population is 252,941 (2022).",
+      "lat": 36.78333333,
+      "lng": 31.43333333,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Kepez, Antalya",
+      "titleAr": "Kepez, Antalya",
+      "detailEn": "Kepez is a municipality and district of Antalya Province, Turkey. Its area is 292 km2, and its population is 608,675 (2022).",
+      "lat": 36.91666667,
+      "lng": 30.68333333,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Aksu, Antalya",
+      "titleAr": "Aksu, Antalya",
+      "detailEn": "Aksu is a municipality and district of Antalya Province, Turkey. Its area is 406 km2, and its population is 82,560 (2024).",
+      "lat": 36.95,
+      "lng": 30.85,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Muratpaşa",
+      "titleAr": "Muratpaşa",
+      "detailEn": "Muratpaşa is a municipality and district of Antalya Province, Turkey. Its area is 96 km2, and its population is 526,293 (2022).",
+      "lat": 36.8825,
+      "lng": 30.76916667,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Suluada",
+      "titleAr": "Suluada",
+      "detailEn": "Suluada is a Mediterranean island of Turkey. The name Suluada is a composite word meaning \"watery island\" referring to fresh water sources of the island.",
+      "lat": 36.23861111,
+      "lng": 30.47166667,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Temple of Apollo (Side)",
+      "titleAr": "Temple of Apollo (Side)",
+      "detailEn": "The Temple of Apollo (Turkish: Apollon Tapınağı) is a Roman temple built around 150 A.D. during the Pax Romana era in the ancient Pamphylian town of Side, in southern Turkey on the Mediterranean Sea coast and dedicated to Apollo, the Greek and Roman god of music, harmony and light, inter alia.\nThe Temple of Apollo dates back to the time of Roman emperor Antoninus Pius (r. 138–161).",
+      "lat": 36.76416,
+      "lng": 31.38651,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Cape Gelidonya",
+      "titleAr": "رأس جيليدونيا",
+      "lat": 36.636111111,
+      "lng": 30.557222222,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 10,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Roman theatre of Phaselis",
+      "titleAr": "Roman theatre of Phaselis",
+      "lat": 36.52362,
+      "lng": 30.55269,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Saklıkent",
+      "titleAr": "Saklıkent",
+      "detailEn": "Saklikent is a winter resort in Turkey, 45 kilometres from Antalya and 60 kilometres from Antalya Airport. It is open for skiing from November to May.",
+      "lat": 36.84305556,
+      "lng": 30.33638889,
+      "kind": "airport",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Idyros",
+      "titleAr": "Idyros",
+      "lat": 36.596666666,
+      "lng": 30.573333333,
+      "kind": "attraction",
+      "popularity": 4,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kitanaura",
+      "titleAr": "Kitanaura",
+      "lat": 36.639758,
+      "lng": 30.356906,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Düden Şelalesi",
+      "titleAr": "Düden Şelalesi",
+      "lat": 36.963055555,
+      "lng": 30.727222222,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Uçansu Falls",
+      "titleAr": "Uçansu Falls",
+      "lat": 37.19896,
+      "lng": 30.90753,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Murat Pasha Mosque, Antalya",
+      "titleAr": "Murat Pasha Mosque, Antalya",
+      "detailEn": "The Murat Paşa Mosque (Turkish: Murat Paşa Camii) is an Ottoman mosque in the Muratpaşa borough of Antalya, Turkey.",
+      "lat": 36.8915,
+      "lng": 30.7025,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    }
+  ]
+}

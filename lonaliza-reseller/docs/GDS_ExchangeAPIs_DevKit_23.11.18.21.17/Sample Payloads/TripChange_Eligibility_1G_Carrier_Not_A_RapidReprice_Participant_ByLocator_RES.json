@@ -1,0 +1,72 @@
+{
+    "TicketChangeEligibilityListResponse": {
+        "TicketChangeEligibilityID": [{
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "All",
+                "automationNotSupportedInd": true,
+                "objID": "ticketChangeEligibility_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "2173767471986"
+                },
+                "Penalties": {
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": ["Maximum"],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "approximateInd": true,
+                                        "value": 0.0
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": ["Minimum"],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "approximateInd": true,
+                                        "value": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "Cancel": [{
+                            "@type": "CancelPermitted",
+                            "penaltyTypes": [],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "approximateInd": true,
+                                        "value": 269.28
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }
+        ],
+        "Result": {
+            "status": "Complete",
+            "Warning": [{
+                    "@type": "WarningDetail",
+                    "StatusCode": 55,
+                    "Message": "Carrier is not currently supported for automated exchanges.  Exchange must be processed manually.",
+                    "SourceDescription": "CARRIER NOT A RAPID REPRICE PARTICIPANT - PROCESS MANUALLY-Rapid Reprice input validation error from TPF"
+                }
+            ]
+        }
+    }
+}

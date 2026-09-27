@@ -1,0 +1,40 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-01-15",
+                    "departureTime": "9:20:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "ATL"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "IAH"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "f0870800-b3a7-4460-a188-cc01ea4da7df"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,52 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-01-18",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "KTM"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "LHR"
+					}
+				}
+			],
+			"PassengerCriteria": [
+				{
+					"@type": "PassengerCriteriaAirChange",
+					"number": 1,
+					"age": 22,
+					"passengerTypeCode": "ADT",
+					"TravelerIdentifierRef": {
+						"id": "travelerRefId_1"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"keepToBrandInd": true
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "6f5e9ffa-e82c-49f5-a0fd-7913734bda37"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_1"
+					}
+				]
+			}
+		}
+	}
+}

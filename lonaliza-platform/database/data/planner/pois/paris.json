@@ -1,0 +1,85 @@
+{
+  "cityKey": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "fetchedAt": "2026-09-25T12:27:49.985Z",
+  "sources": [
+    "google_places_live",
+    "official_tourism"
+  ],
+  "pois": [
+    {
+      "titleEn": "Eiffel Tower & Champ de Mars",
+      "titleAr": "برج إيفل وحدائق شامب دي مارس",
+      "detailEn": "Wrought-iron lattice tower on the Champ de Mars, the defining symbol of Paris and France.",
+      "detailAr": "الأيقونة العالمية لعاصمة النور صممه غوستاف إيفل عام 1889، يرتفع 330 متراً بإطلالات خرافية على نهر السين وباريس.",
+      "lat": 48.8584,
+      "lng": 2.2945,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Louvre Museum & Glass Pyramid",
+      "titleAr": "متحف اللوفر العظيم والهرم الزجاجي",
+      "detailEn": "The world largest art museum and historic monument in Paris, home to Leonardo da Vinci Mona Lisa.",
+      "detailAr": "أكبر متحف للفنون في العالم وقصر ملوك فرنسا السابق، موطن الموناليزا وتمثال فينوس دي ميلو وملايين الكنوز الإنسانية.",
+      "lat": 48.8606,
+      "lng": 2.3376,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Notre-Dame Cathedral & Île de la Cité",
+      "titleAr": "كاتدرائية نوتردام دو باري وجزيرة المدينة",
+      "detailEn": "Medieval Catholic cathedral on the Île de la Cité, considered one of the finest examples of French Gothic architecture.",
+      "detailAr": "جوهرة العمارة القوطية الفرنسية على جزيرة السين في قلب باريس، بنوافذها الوردية الملونة وأبراجها الشامخة.",
+      "lat": 48.853,
+      "lng": 2.3499,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Arc de Triomphe & Avenue des Champs-Élysées",
+      "titleAr": "قوس النصر وشارع الشانزليزيه الفاخر",
+      "detailEn": "Monumental triumphal arch honoring French military victories, anchoring the glamorous Avenue des Champs-Élysées.",
+      "detailAr": "صرح النصر التذكاري لنابليون بونابرت في ساحة شارل ديغول، مع منصة علوية تطل على أشهر جادة تسوق وفخامة في العالم.",
+      "lat": 48.8738,
+      "lng": 2.295,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Montmartre & Sacré-Cœur Basilica",
+      "titleAr": "مونمارتر وكنيسة القلب المقدس (ساكري كور)",
+      "detailEn": "Historic bohemian hilltop district crowned by the Romano-Byzantine white basilica overlooking all of Paris.",
+      "detailAr": "حي الفنانين البوهيمي التاريخي على أعلى تلال باريس، أزقة مرصوفة، مراسم الرسامين، وإطلالة بانورامية تأسر القلوب.",
+      "lat": 48.8867,
+      "lng": 2.3431,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1549144511-f099e773c147?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Palace of Versailles & Grand Gardens",
+      "titleAr": "قصر فرساي الملكي والحدائق الإمبراطورية",
+      "detailEn": "Opulent royal residence of the Sun King Louis XIV, featuring the Hall of Mirrors and vast formal French gardens.",
+      "detailAr": "قصر لويس الرابع عشر الأسطوري بقاعة المرايا المذهبة ونافورات الموسيقى وحدائق تمتد على مرمى البصر.",
+      "lat": 48.8049,
+      "lng": 2.1204,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    }
+  ]
+}

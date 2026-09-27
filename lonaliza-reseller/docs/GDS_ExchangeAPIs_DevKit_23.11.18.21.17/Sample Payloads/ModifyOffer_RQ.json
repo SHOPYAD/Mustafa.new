@@ -1,0 +1,20 @@
+{
+  "OfferQueryBuildFromCatalogOfferings" : {
+    "returnBrandedFaresInd" : true,
+    "reCheckInventoryInd" : true,
+    "BuildFromCatalogOfferingsRequest" : {
+      "@type" : "BuildFromCatalogOfferingsRequestAir",
+      "CatalogOfferingsIdentifier" : {
+        "Identifier" : {
+          "value" : "24ce713c-3d40-44b1-a1c6-ca1637f58fda"
+        }
+      },
+      "CatalogOfferingIdentifier" : {
+        "Identifier" : {
+          "value" : "o0.0"
+        }
+      }
+    },
+    "FareRuleType" : "LongText"
+  }
+}

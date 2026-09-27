@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "hotelbedsDailyRequestBudget": null,
+  "languages": [
+    "ARA"
+  ],
+  "travelportPerTick": 5,
+  "ratehawkDump": true,
+  "extraDestinations": []
+}

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Ticketing" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:34 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Payment API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Payment API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>paymentoffer/reservationworkbench/<span class="Brand4">{workbenchID}</span>/payments</p>
+                                                        <p>For <span class="Brand4">{workbenchID}</span> send the workbench identifier returned in ReservationResponse/Identifer/value in the workbench create response.</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="TicketingGuide.html">Ticketing Guide</a></p>
+                                        <p>The Payment step takes place in a ticketing workbench session and applies the payment sent previously in the <a href="APIRef_AddFOP.html">Form of Payment</a> request to the offer/s specified in the Payment request payload. Payment can be sent for any type of offer, including air, seats, and ancillaries. Payment can be made for multiple offers and multiple types of offers in the same request.</p>
+                                        <p>Form of payment information must either already be present in the reservation or the workbench. At workbench commit, tickets or EMDs are issued for any offer payment has been sent for.</p>
+                                        <p>Payment is also required prior to ticketing when exchanging tickets in the case of an even exchange, or an add collect (price of new itinerary is greater than existing itinerary). In the case of an add collect, send Payment with a zero amount in Amount/value. See the <a href="../General/ExchangeRefundGuide.html">Exchange, Refund, and Void Guide</a> for details.</p>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None.</p>
+                                        <h4>Request Body</h4>
+                                        <div class="noteNote">
+                                            <p>If multiple forms of payment have been added, repeat the Payment step for each FOP. The Payment request can include multiple offer IDs, such as for the itinerary and for paid seats, but supports only one FOP. </p>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Request Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_oliveHead-sandAltRows TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Payment</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                    <p>Includes Amount, FormOfPaymentIdentifier, OfferIdentifier, TravelerIdentierRef objects. For exchange ticketing only, may includes Fees and/or Taxes objects.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>id</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>A user-assigned identifier for the payment. Supports up to 256 alphanumeric characters.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Payment/<b>Identifier</b></p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Payment identifier.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>For both GDS and NDC send with the value <i>Travelport</i>.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>This is a placeholder value that has no use at this time. Any text can be sent.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Amount</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object for amount of payment. </p>
+                                                                    <div class="noteNote">When <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a>, do not send Amount here when choosing to forfeit residual amounts during the exchange; see below.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>code</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Currency code that applies to the payment.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>minorUnit</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>The smallest unit of currency for the currency in <i>code</i>. For example; the smallest denomination in USD is the cent, which is 1/100 of a USD, and the minor unit value is <i>2</i>. Not all currencies have a minor unit.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                    <p>Optional for exchange ticketing</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>currencySource</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Enum. The system requesting or returning the currency code. Supported values are <i>Supplier</i>, <i>Charged</i>, <i>Requested</i>. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                    <p>Optional for exchange ticketing</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>The amount of the charge for this payment, in the currency noted in the code object. </p>
+                                                                    <div class="noteNote">When <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a>, in the case of even exchange or a refund for the exchanged itinerary, send Add Payment with Amount/value with <i>0</i> (zero). </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FormOfPaymentIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object for FOP&#160;to reference.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>id</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>The id for the form of payment to be charged. Must match to a FOP already in the reservation or added to the workbench. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FormOfPaymentRef</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>The id for the form of payment to use. Must be the same value sent in FormOfPaymentRef in the <a href="APIRef_AddFOP.html">Add FOP request</a>. Must also match the value sent above in FormOfPaymentIdentifier/id.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="font-weight: normal;">FormOfPaymentIdentifier/</span><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send the payment identifier returned in the <a href="APIRef_AddFOP.html#rsp">Add Form of Payment</a> response. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send with the value <i>Travelport</i>.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p> This is a placeholder value that has no use at this time. Any text can be sent.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>OfferIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object for the offer/s to send payment for.</p>
+                                                                    <p>If the booking contains multiple offers, send an instance of OfferIdentifier for all offers you are ready to ticket or issue an EMD&#160;for. For example, a booking could contain multiple offers for any of the following:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>air and one or more ancillaries or paid seats</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>multiple air offers</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p> air and/or hotel and car offers (as support for <a href="../BookMultiContent/BookingGuide_multicontent.html">multi-content bookings</a> is developed) </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>Includes Identifier object. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>id</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Id for the offer to which this payment should apply.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>offerRef</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Id for the offer to which this payment should apply. Same value as sent in <i>id</i>. See above note for id and multiple offers.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="font-weight: normal;">OfferIdentifier/</span><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send with the value <i>Travelport</i> for all content.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>The system-generated offer identifier returned in the applicable Search, Seats, Ancillary etc. response.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2"><span style="color: #ff4500;">Required</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p style="font-weight: bold;">Fees</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Used only when <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a> to add payment for change fees or other fees.</p>
+                                                                    <p>When sending only one Add Payment request for both an add collect and fees, using the same FOP for both, send both Amount/value above and Fees/Total Fees in the same request. To use <a href="../General/ExchangeRefundGuide.html#fop">multiple FOP</a>, send one Add Payment request for the add collect (Amount/value), and another Add Payment request for the fees, each referring to the separate FOP to use.</p>
+                                                                    <p>Standard Fees object:</p>
+                                                                    <blockquote>
+                                                                        <p><b>@type</b>:&#160;String. Send with <i>Fees</i>.</p>
+                                                                        <p><b>TotalFees</b>:&#160;Send the total amount of the fees to pay for. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional, used only for exchange ticketing</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p style="font-weight: bold;">TravelerIdentifierRef</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Send only when <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a> to specify the traveler in case of multiple FOPs, or to forfeit residual amounts for only specific traveler/s. If not sent, the forfeit is applied to all travelers on the reservation.</p>
+                                                                    <p>Standard TravelerIdentifierRef object:</p>
+                                                                    <blockquote>
+                                                                        <p><b>passengerTypeCode</b>: String. IATA PTC code for this traveler.</p>
+                                                                        <p><b>id</b>: String. Traveler short id.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional, used only for exchange ticketing</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p style="font-weight: bold;">Amount</p>
+                                                                    <p style="font-weight: normal;">or</p>
+                                                                    <p style="font-weight: bold;">BaseAmount</p>
+                                                                    <p style="font-weight: normal;">or</p>
+                                                                    <p style="font-weight: bold;">Taxes</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <div class="noteNote">Send only when <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a> to forfeit residual amounts during the exchange. </div>
+                                                                    <p>To forfeit residual amounts, send <a href="APIRef_AddFOP.html">Add FOP</a> with the FormOfPaymentForfeit payload. In the Add Payment request, send the identifier for the forfeit FOP in FormOfPaymentIdentifier above. Do not send the Amount object above; instead, send one and only one of the following objects at the end of the payload as appropriate to identify the amount to forfeit:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>Forfeit the total residual amount: <b>Amount</b> object, example: 		"Amount": {
+			"code": "USD",
+			"value": 863.40
+		}
+</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Forfeit the base amount: <b>BaseAmount</b> object, example: "BaseAmount": {
+			"code": "USD",
+			"value": 123.45
+		}
+	}</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Forfeit the total tax amount: <b>Taxes</b> object with TotalTaxes, example:  		"Taxes": {
+			"@type": "TaxesDetail",
+			"TotalTaxes": 23.0
+		}
+</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Forfeit an Individual tax: 		<b>Taxes</b> object with individual Tax object, example: "Taxes": {
+			"@type": "TaxesDetail",
+			"Tax": [
+				{
+					"currencyCode": "USD",
+					"taxCode": "YQ",
+					"value": 34
+				}
+			]
+		}
+</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>To forfeit for only specific traveler/s, also send TravelerIdentifierRef per above. If no traveler ID/s are sent, the forfeit is automatically applied to all travelers in a reservation</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Optional, used only for exchange ticketing to forfeit amounts</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_oliveHead-sandAltRows TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>PaymentResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">Top level object for response.</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Payment</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">Includes Identifier object.</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Returns confirmation identifier.</p>
+                                                                    <ul>
+                                                                        <li><b>authority:</b> For GDS content this value is <i>Travelport</i>. For NDC content this value is the issuing carrier's name.</li>
+                                                                        <li><b>value:</b> Confirmation identifier. This identifier has no subsequent use at this time.</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Payment request for air offer</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+ "Payment": {
+  "id": "payment_1",
+  "Identifier": {
+   "authority": "Travelport",
+   "value": "A0656EFF-FAF4-456F-B061-0161008D6A5E"
+  },
+  "Amount": {
+   "code": "USD",
+   "minorUnit": 2,
+   "currencySource": "Charged",
+   "approximateInd": true,
+   "value": "2773.5"
+  },
+  "FormOfPaymentIdentifier": {
+   "id": "formOfPayment_5", 
+   "FormOfPaymentRef": "formOfPayment_5", 
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "A0656EFF-FAF4-456F-B061-0161008D6FOP" 
+   }
+  },
+  "OfferIdentifier": [
+   {
+    "id": "offer_1",
+    "offerRef": "offer_1",
+    "Identifier": {
+     "authority": "Travelport",
+     "value": "4ac0a1d8-fd2a-4192-83f5-cab69979ef4e"
+    }
+   }
+  ]
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>To issue the ticket and an EMD&#160;for a paid seat or ancillary, send all applicable offer IDs per this example. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Payment request for air and&#160;ancillary offera</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>In this example, <i>offer_1</i> is  the itinerary and <i>an_o1</i> is the ancillary offer.</p><pre class="line-numbers"><code class="language-json">{
+ "Payment": {
+  "id": "payment_1",
+  "Identifier": {
+   "authority": "Travelport",
+   "value": "A0656EFF-FAF4-456F-B061-0161008D6A5E"
+  },
+  "Amount": {
+   "code": "AUD",
+   "minorUnit": 2,
+   "currencySource": "Charged",
+   "approximateInd": true,
+   "value": 63.1
+  },
+  "FormOfPaymentIdentifier": {
+   "id": "formOfPayment_5",
+   "FormOfPaymentRef": "formOfPayment_5",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "A0656EFF-FAF4-456F-B061-0161008D6FOP"
+   }
+  },
+  "OfferIdentifier": [
+   {
+    "id": "offer_1",
+    "offerRef": "offer_1",
+    "Identifier": {
+     "authority": "Travelport",
+     "value": "07664bb3-37a0-4c63-a2ef-ed71b5f48d49"
+    }
+   },
+   {
+    "id": "an_o1",
+    "Identifier": {
+     "authority": "Travelport",
+     "value": "3427d42c-a72d-49ff-b29e-7bb8faa28a47"
+    }
+   }
+  ]
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>When <a href="../General/ExchangeRefundGuide.html">exchanging a GDS ticket</a>, you can choose to forfeit residual amounts. Send <a href="APIRef_AddFOP.html">Add FOP</a> with the FormOfPaymentForfeit payload. In the Add Payment request, per the examples below, specify what to forfeit. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Payment request to forfeit the total residual amount (GDS exchange ticketing only)</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following example shows the Add Payment payload to forfeit all residual amounts from a GDS ticket exchange.</p><pre class="line-numbers"><code class="language-json">{
+ "Payment": {
+  "id": "payment_3",
+  "Identifier": {
+   "authority": "Travelport",
+   "value": "A0656EFF-FAF4-456F-B061-0161008D6A5E"
+  },
+  "FormOfPaymentIdentifier": {
+   "id": "formOfPayment_1",
+   "FormOfPaymentRef": "formOfPayment_1",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "a26164ec-02b8-41ef-af61-a837a76d5adb"
+   }
+  },
+  "OfferIdentifier": [
+   {
+    "id": "offer_1",
+    "offerRef": "offer_1",
+    "Identifier": {
+     "authority": "Travelport",
+     "value": "58100d86-b984-432b-82eb-c7286c061193"
+    }
+   }
+  ],
+  "Amount": {
+   "code": "USD",
+   "value": 863.4
+  }
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Payment request to forfeit individual tax (GDS exchange ticketing only)</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following example shows the Add Payment payload to forfeit one individual tax.</p>
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "Payment": {
+  "id": "payment_2",
+  "Identifier": {
+   "authority": "Travelport",
+   "value": "A0656EFF-FAF4-456F-B061-0161008D6A5E"
+  },
+  "FormOfPaymentIdentifier": {
+   "id": "formOfPayment_1",
+   "FormOfPaymentRef": "formOfPayment_1",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "a26164ec-02b8-41ef-af61-a837a76d5adb"
+   }
+  },
+  "OfferIdentifier": [
+   {
+    "id": "offerModify_1",
+    "offerRef": "offerModify_1",
+    "Identifier": {
+     "authority": "Travelport",
+     "value": "58100d86-b984-432b-82eb-c7286c061193"
+    }
+   }
+  ],
+  "Taxes": {
+   "@type": "TaxesDetail",
+   "Tax": [
+    {
+     "currencyCode": "USD",
+     "taxCode": "YQ",
+     "value": 34
+    }
+   ]
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>The response returns a confirmation identifier.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Response</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "PaymentResponse": {
+        "Payment": {
+            "@type": "PaymentIdentifier",
+            "Identifier": {
+                "authority": "Travelport",
+                "value": "af076693-cfc3-49f3-b7d6-554aa9d8bfce"
+            }
+        }
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:34 GMT -->
+</html>

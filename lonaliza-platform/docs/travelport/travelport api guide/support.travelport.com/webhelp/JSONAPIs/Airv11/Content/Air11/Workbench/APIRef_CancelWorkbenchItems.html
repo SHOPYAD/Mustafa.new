@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Modify Bookings" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:29:52 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Cancel Workbench Items API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Cancel Workbench Items API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>book/reservationworkbench/<span class="Brand4">{workbenchID}</span>/reservations/cancelitems</p>
+                                                        <p>For <span class="Brand4">{workbenchID}</span> send the workbench identifier returned in ReservationResponse/Identifer/value in the workbench create response.</p>
+                                                        <p style="font-weight: bold;">Base path:</p>
+                                                        <div class="noteWarning">The base path for this API varies from that for other <span class="mc-variable General.Product variable">JSON</span>&#160;<span class="mc-variable General.AirAPI variable">Air</span> APIs and does not include <i>air</i> at the end.</div>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/</p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span><a href="../Book/BookingGuide.html">Air Booking Guide</a>, <a href="../Workflows/Booking_workflow.html">Booking Session Workflow</a></p>
+                                        <p>The Cancel Workbench Items API supports several options for canceling GDS air offers, NDC air offers, GDS filed fares, and hotel segments. The available cancel options vary between the initial workbench (during booking) and for a held booking (post-booking). Cancel Workbench Items cannot be used after a booking is ticketed. </p>
+                                        <p>For all supported cancel options, see <a href="../Book/BookingGuide.html#cancelwkbench">Cancel Offers, Products, Segments, and Filed Fares from a Booking</a> in the Booking Guide. </p>
+                                        <div class="noteNote">
+                                            <p>Cancel Workbench Items must always be followed by a <a href="APIRef_WorkbenchCommit.html">Workbench Commit</a> to commit the changes. If all offers were removed, a <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term7">shell booking<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>A  shell booking contains only traveler details and no offers. Created if all offers are removed from a booking with Cancel Workbench Items and the workbench is committed with only traveler details, or if a booking fails at commit and the autoDeleteDate query parameter was included in the commit request (see the Booking Guide).</span></a> is created to retain traveler details, and you can search for new offers to add to that booking. </p>
+                                            <p>A <a href="APIRef_WorkbenchRetrieve.html">workbench retrieve</a> before Cancel Workbench is recommended to sync all data.</p>
+                                            <p>Cancel Workbench Items supports NDC content only in the initial booking workbench, see the <a href="../Book/BookingGuide.html#cancelwkbench">Booking Guide</a> for details. Cancel Workbench Items cannot be used for an existing NDC booking: instead, use the NDC&#160;<a href="../NDC/APIRef_Reshop.html">Reshop</a> and <a href="../NDC/APIRef_Reprice.html">Reprice</a> APIs to modify the booking, or <a href="../NDC/APIRef_Cancel.html">Cancel</a> to cancel it. </p>
+                                        </div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None.</p>
+                                        <h4>Request Body</h4>
+                                        <p>The following payload provides options to cancel the entire reservation, all offers, or only selected offers, products, or segments. </p>
+                                        <p>See the introductory section above for which options are supported for NDC/GDS and in the initial and post-commit workbench. Note that this payload does not support any NDC post-commit options; instead, to modify an NDC held booking, create a <a href="APIRef_WorkbenchPostCreate.html">post-commit workbench</a> and use the <a href="../NDC/APIRef_Cancel.html">NDC&#160;Cancel API</a>.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Request Body Table to cancel entire reservation or one or more specified offers, products, segments </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>@type</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Identifier. Send with value <i>CancelRequest</i></p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>cancelAllInd</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Indicator. Send with value <i>true</i> to cancel the entire booking and remove all data from workbench. </p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                    <p>Optional. Send only to cancel entire initial workbench or held booking. Must be followed immediately by a <a href="APIRef_WorkbenchCommit.html">Workbench Commit</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>cancelOffers</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Object to cancel offers. Send to cancel one, multiple, or all offers (all offers includes all air, hotel, and car offers but retain traveler data in the workbench.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional. Send to cancel specific offers instead of entire booking (see cancelAllInd above) or unpriced segments (see cancelUnpricedSegments below)</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>objectType</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Supported values:</p>
+                                                                    <blockquote>
+                                                                        <p><b>CancelAllOffers</b>: Send to cancel all offers, including all air, hotel, and car offers.</p>
+                                                                        <p><b>CancelSelectedOffers</b>: Send to cancel only specified offers. Must also send offerProductSelection to specify the offers to cancel.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span> if cancelOffers or cancelUnpricedSegments sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>offerProductSelection</p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send if sending objectType=CancelSelectedOffers to cancel one or more specified offers. Send one instance for each offer to cancel, or each offer with a product or segment to cancel. Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>sendPassiveNotificationInd</b>: Send with value <i>true</i> only if specified offer includes one or more <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term5">passive segments<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>An air segment booked in a system outside the Travleport GDS. Adding a passive air segment to a booking maintains all travel details as part of the complete itinerary.</span></a>. Ignored for non-passive segments.
+True causes the message to be sent to the vendor airline system.&#160;The corresponding Travelport+ terminal entry is <i>X{n}</i> in which n=segment number.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes offerID object. Includes productSegmentSequenceArray only if canceling only one or more products or segments in an air offer instead of the entire offer. (Hotel and car offers do not have products or segments.)</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span> if canceling specific offers</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>sendPassiveNotificationInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">Boolean.&#160;Send with <i>true</i> to indicate cancellation of a passive segment.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>retainSegmentsInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Boolean. Send with <i>true</i> to cancel only the filed fare on the specified GDS offers on the booking but retain the segment/s and all flight details. The offer becomes an <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term9">unpriced segment/s<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>An air segment without any associated fare or pricing, generally booked for availability versus cost. Shown in the UnpricedSegments object instead of the Offer object. GDS only; NDC does not use unpriced segments.</span></a> and is returned in the UnpricedSegments object with no pricing information. Does not affect any hotel or car content on the booking.</p>
+                                                                    <p>Supported for both objectType/CancelAllOffers and /CancelSelectedOffers. Supported for existing bookings; supported in the initial booking workflow only if the fare is already stored.</p>
+                                                                    <div class="noteNote">
+                                                                        <p>GDS only; NDC does not support unpriced segments or removing filed fares.</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>offerID </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send if canceling one or more specified offers, or products or segments within an air offer. Includes the following:</p>
+                                                                    <blockquote>
+                                                                        <p><b>offerRef</b>: Optional. The internal short offer ID that starts with <i>o</i>, such as o0, o1, o2, etc. If sent, Identifier/authority below is not required. </p>
+                                                                        <p><b>Identifier</b>: Standard Travelport Identifier object for the offer to cancel:</p>
+                                                                        <p style="text-indent: 0.5in;"><b>authority</b>: Required only if OfferRef was not sent. Send  the value in Identifier/authority for the offer.</p>
+                                                                        <p style="text-indent: 0.5in;"><b>value</b>:&#160;Required. Send  the value in Identifier/value for the offer.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span> if canceling specific offers</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>productSegmentSequenceArray </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send if canceling one or more specified products or segments in an offer. Includes the following:</p>
+                                                                    <blockquote>
+                                                                        <p><b>productID</b>: The internal short product ID that starts with <i>p</i>, such as p0, p1, p2, etc. </p>
+                                                                        <p><b>segmentSequenceArray</b>: Comma-delimited array. Send only if canceling one or more segments in an air offer. Send the segment sequence of each segment to cancel. </p>
+                                                                        <p><b>Identifier</b>: Standard Travelport Identifier object for the product to cancel:</p>
+                                                                        <p style="text-indent: 0.5in;"><b>authority</b>: Required only if OfferRef was not sent. Send  the value in Identifier/authority for the product.</p>
+                                                                        <p style="text-indent: 0.5in;"><b>value</b>:&#160;Required. Send  the value in Identifier/value for the product.</p>
+                                                                        <p><b>segmentSequenceArray</b>: Comma-delimited array. Send only if canceling one or more segments in an air offer. Send the segment sequence of each segment to cancel. </p>
+                                                                    </blockquote>
+                                                                    <blockquote>&#160;</blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>  if canceling a product or segment within one or more air offers</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>cancelUnpricedSegments</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send to cancel one, multiple, or all unpriced segments. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span> if canceling unpriced segments</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>objectType</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Supported values:</p>
+                                                                    <blockquote>
+                                                                        <p><b>CancelAllUnpricedSegments</b>: Send to cancel all unpriced segments.</p>
+                                                                        <p><b>CancelSelectedUnpricedSegments</b>: Send to cancel only specified unpriced segments. Must also send unpricedFlightSegmentIDRefs to specify the unpriced segments to cancel. If sent, must also send flightSegmentSelection.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span> if cancelUnpricedSegments sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>flightSegmentSelection</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>Send to cancel specified unpriced segments. Includes the following:</p>
+                                                                    <blockquote>
+                                                                        <p><b>sendPassiveNotificationInd</b>: Send with value <i>true</i> only if specified unpriced segments include one or more <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term5">passive segments<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>An air segment booked in a system outside the Travleport GDS. Adding a passive air segment to a booking maintains all travel details as part of the complete itinerary.</span></a>. Ignored for non-passive segments.
+True causes the message to be sent to the vendor airline system.&#160;The corresponding Travelport+ terminal entry is <i>X{n}</i> in which n=segment number.</p>
+                                                                        <p><b>unpricedFlightSegmentIDRefs</b>: String array. Send the segment IDs of the unpriced segments to cancel, as in  <i>"unpricedFlightSegmentIDRefs": [
+                    "unPricedFlightSegment_1",
+                    "unPricedFlightSegment_2"
+                ]</i></p>
+                                                                    </blockquote>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span> if cancelUnpricedSegments sent</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>All of the request payloads above return a transaction identifier in the same format in the response. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReservationResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Reservation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                    <p>Includes Identifier.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Standard Travelport system-generated transaction identifier.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <p>For details on when the following payloads are supported, and GDS&#160;and NDC support, see <a href="../Book/BookingGuide.html#cancelwkbench">Cancel Offers, Products, Segments from a Booking</a> in the Booking Guide. </p>
+                                        <p>The following payload cancels the entire booking. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel entire reservation</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+  "@type": "CancelRequest",
+  "cancelAllInd": true
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload cancels all offers (air, hotel, and car as applicable) on a GDS held booking. Supported only for GDS in the post-commit workbench. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel all offers (inclusive of air/car/hotel)</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "@type": "CancelRequest",
+ "cancelOffers": {
+  "objectType": "CancelAllOffers"
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload includes retainSegmentsInd to cancel the filed fare from all air offers (supported for GDS only) and retain the segments. The segments are converted from the Offer object to UnpricedSegment.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel filed fare from all air offers</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelOffers": {
+        "objectType": "CancelAllOffers"
+        "retainSegmentsInd": true
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload cancels two specified offers and leaves all other offers on the booking. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel multiple offers</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "@type": "CancelRequest",
+ "cancelOffers": {
+  "objectType": "CancelSelectedOffers",
+  "offerProductSelection": [
+   {
+    "sendPassiveNotificationInd": true,
+    "offerID": {
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "30420d72-2d73-4506-bd93-e4f7da67d04d"
+     }
+    }
+   },
+   {
+    "sendPassiveNotificationInd": true,
+    "offerID": {
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "8b72118d-0247-449b-89bd-6ab554f550df"
+     }
+    }
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload includes retainSegmentsInd to cancel the filed fare from specified air offers (supported for GDS only) and retain the segments. The segments are converted from the Offer object to UnpricedSegment.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel filed fare on select air offers</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "@type": "CancelRequest",
+ "cancelOffers": {
+  "objectType": "CancelSelectedOffers",
+  "offerProductSelection": [
+   {
+    "sendPassiveNotificationInd": true,
+    "retainSegmentsInd": true,
+    "offerID": {
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "d937ddcd-34a0-4da9-aa97-ad54056a726b"
+     }
+    }
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload cancels a product within an offer.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel a product within an offer </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelOffers": {
+        "objectType": "CancelSelectedOffers",
+        "offerProductSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "offerID": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "672ccee8-d754-48a6-a5be-830098eb6429"
+                    }
+                },
+                "productSegmentSequenceArray": [
+                    {
+                        "productID": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "7687b84c-aa13-4d8c-b7d0-622ea57a9573"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload cancels a segment within a product.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel a segment within a product </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelOffers": {
+        "objectType": "CancelSelectedOffers",
+        "offerProductSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "offerID": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "64efc64a-6871-479f-873f-2ccde84da74b"
+                    }
+                },
+                "productSegmentSequenceArray": [
+                    {
+                        "productID": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "4ac1483f-4d8b-405a-b90b-b1ea00f8f069"
+                            }
+                        },
+                        "segmentSequenceArray": [
+                            4,5
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following payload cancels multiple product and segment combinations.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel multiple product and segment combinations</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelOffers": {
+        "objectType": "CancelSelectedOffers",
+        "offerProductSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "offerID": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "ada4e19a-b52a-43cd-b1ed-e9a1c5cee7d8"
+                    }
+                }
+            },
+            {
+                "sendPassiveNotificationInd": true,
+                "offerID": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "accc35ff-9dde-45cd-810e-afc2612f74c2"
+                    }
+                },
+                "productSegmentSequenceArray": [
+                    {
+                        "productID": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "ae4ee9ee-88de-4d05-a07a-360c2e8aaad6"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel all unpriced segments</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "@type": "CancelRequest",
+ "cancelUnpricedSegments": {
+  "objectType": "CancelAllUnpricedSegments"
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel specific unpriced segments</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelUnpricedSegments": {
+        "objectType": "CancelSelectedUnpricedSegments",
+        "flightSegmentSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "unpricedFlightSegmentIDRefs": [
+                    "unPricedFlightSegment_1"
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request to cancel offer and unpriced segment</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "@type": "CancelRequest",
+    "cancelOffers": {
+        "objectType": "CancelSelectedOffers",
+        "offerProductSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "offerID": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "f09eb521-0b9f-463e-8176-025356af0d7b"
+                    }
+                }
+            }
+        ]
+    },
+  "cancelUnpricedSegments": {
+        "objectType": "CancelSelectedUnpricedSegments",
+        "flightSegmentSelection": [
+            {
+                "sendPassiveNotificationInd": true,
+                "unpricedFlightSegmentIDRefs": [
+                    "unPricedFlightSegment_1",
+                    "unPricedFlightSegment_2"
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>All of the request payloads above return a transaction identifier in the response per the example below. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "value": "8521bef5-da95-496f-9b03-fc3b1fcac50b",
+    "authority": "Travelport"
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:29:52 GMT -->
+</html>

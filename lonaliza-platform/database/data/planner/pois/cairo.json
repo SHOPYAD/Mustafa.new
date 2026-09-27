@@ -1,0 +1,61 @@
+{
+  "cityKey": "cairo",
+  "city": "Cairo",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "fetchedAt": "2026-09-25T12:27:50.027Z",
+  "sources": [
+    "google_places_live",
+    "official_tourism"
+  ],
+  "pois": [
+    {
+      "titleEn": "Great Pyramids of Giza & Sphinx",
+      "titleAr": "أهرامات الجيزة الخالدة وتمثال أبو الهول",
+      "detailEn": "Sole surviving Wonder of the Ancient World, featuring the monumental pyramids of Khufu, Khafre, and the Great Sphinx.",
+      "detailAr": "الوحيدة الباقية من عجائب الدنيا السبع القديمة، هرم خوفو الأكبر وخفرع ومنقرع وحارس الأسرار تمثال أبو الهول.",
+      "lat": 29.9792,
+      "lng": 31.1342,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Grand Egyptian Museum (GEM)",
+      "titleAr": "المتحف المصري الكبير (GEM)",
+      "detailEn": "The largest archaeological museum complex in the world, displaying the complete Tutankhamun collection.",
+      "detailAr": "أكبر متحف أثري لحضارة واحدة في التاريخ، يضم المجموعة الكاملة لكنوز الملك توت عنخ آمون والدرج العظيم المطل على الأهرامات.",
+      "lat": 29.995,
+      "lng": 31.1197,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Khan el-Khalili & Al-Muizz Historic Street",
+      "titleAr": "خان الخليلي وشارع المعز لدين الله الفاطمي",
+      "detailEn": "Historic medieval bazaar and open-air Islamic architecture museum vibrant with lanterns, spice, and artisan brass.",
+      "detailAr": "قلب القاهرة الفاطمية التاريخي منذ 600 عام، أزقة المشغولات النحاسية والعطور الشرقية ومقهى الفيشاوي الأسطوري.",
+      "lat": 30.0478,
+      "lng": 31.2622,
+      "kind": "shopping",
+      "image": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Saladin Citadel & Mosque of Muhammad Ali",
+      "titleAr": "قلعة صلاح الدين الأيوبي وجامع محمد علي باشا",
+      "detailEn": "Medieval Islamic fortress featuring the Alabaster Mosque of Muhammad Ali perched with views across Cairo to the Pyramids.",
+      "detailAr": "قلعة إسلامية منيعة على تلال المقطم شيدت عام 1176 م، يتوجها جامع المرمر الرائع بإطلالة بانورامية على كامل القاهرة والأهرامات.",
+      "lat": 30.0299,
+      "lng": 31.2612,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=80",
+      "popularity": 19,
+      "source": "google_places_live"
+    }
+  ]
+}

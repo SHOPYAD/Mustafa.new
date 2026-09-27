@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="NDC|NDC Air Modify, Cancel, and Exchange " data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:46:06 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Reshop API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Reshop API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>change/catalogofferingsairchange</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm"> Exchange, Refund, and Void Guide</a></p>
+                                        <div class="noteNote">NDC&#160;only; not supported for GDS. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm">Exchange, Refund, and Void Guide</a> for GDS options.</div>
+                                        <p>The Reshop API searches for a new itinerary when modifying a held booking or exchanging a ticket for NDC. </p>
+                                        <p>Reshop is part of the NDC&#160;modify/exchange workflow: Create a <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm">post-commit workbench</a>, Reshop as detailed here, <a href="APIRef_Reprice.html">Reprice</a> to confirm pricing, and <a href="APIRef_Modify.html">Modify</a> to commit the changes.</p>
+                                        <div class="noteNote">
+                                            <p>For GDS&#160;and NDC differences in the <span class="mc-variable General.Product variable">JSON</span> APIs, see the support tables for <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/SeatsGuide.htm#sup">seats</a>, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/AncillaryGuide.htm#sup">ancillaries</a>, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/FareRulesGuide.htm#sup">fare rules</a>, and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm">exchanges/refunds</a>, and the <a href="NDCGuide.html#gds">NDC&#160;and GDS Functionality Comparison</a>.</p>
+                                            <p>For differences within NDC by individual carriers, see <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. See  <a href="NDCGuide.html#kbase">Knowledge Base NDC&#160;Resources</a> if you need login assistance.</p>
+                                        </div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/CommonAirHeaders.htm">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None. </p>
+                                        <h4>Request Body</h4>
+                                        <p>The message payload requires several identifiers: the workbench identifier returned when the workbench is created, the offer identifier, and the identifiers for all products (a product is one leg of the itinerary).&#160;If you want to change only specific segments, you must reshop the entire itinerary, not just the products to modify.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Reshop Request Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogOfferingsQueryAirChange</b>
+                                                                        <br />
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>CatalogOfferingsAirChangeRequestReservation</b>
+                                                                        <br />
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>returnBrandedFaresInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Boolean.  By default branded fares are not returned. Set to <i>true</i> to return branded fares or <i>false</i> to disable the return of branded fares. If not sent the default value is <i>false</i>. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><a name="passcrit"></a><b>PassengerCriteria</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Defines the type of passenger to search for. </p>
+                                                                    <p>Send one instance of PassengerCriteria for each passenger type code (PTC) on the itinerary.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>passengerTypeCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. The passenger type code for the passengers on the itinerary. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>number</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Number. The number of passengers with this PTC. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>age</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Number. The age of the passenger. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><a name="scf"></a><b>SearchCriteriaFlight</b>
+                                                                    </p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Defines one origin and destination (O&amp;D) pair. Send one SearchCriteriaFlight for each O&amp;D pair, or leg, to search for.</p>
+                                                                    <p>Includes From and To objects. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>departureDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Date of departure in YYYY-MM-DD format (e.g., departureDate="2022-12-06").</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>departureTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Time of departure in HH:MM:SS format (e.g., departureTime="18:00:00"). </p>
+                                                                    <div class="noteWarning">
+                                                                        <p>departureTime is <i>required</i> on a same-day flight, i.e., when searching for multiple legs on the same day.</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>From</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Object. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>type</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Optional enumeration specifying whether to restrict search based on the city/airport code sent in value. Supported values are </p>
+                                                                    <ul>
+                                                                        <li>City Only </li>
+                                                                        <li>Airport Only</li>
+                                                                        <li>City or Airport</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. The IATA location code for the departure airport/city for this leg.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>To</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Object </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>type</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Optional enumeration specifying whether to restrict search based on the city/airport code sent in value. Supported values are </p>
+                                                                    <ul>
+                                                                        <li>City Only </li>
+                                                                        <li>Airport Only</li>
+                                                                        <li>City or Airport</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. The IATA location code for the arrival city/airport for this leg.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>SearchModifiersAir</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object for optional journey modifiers. Only CabinPreference is supported in the Reshop request.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><a name="cabinpreference"></a><b>CabinPreference</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Requests a fare based on the cabin class. Only one cabin preferenceType (Permitted, Preferred, PreferredWithUpgrade) is allowed per request, but there is no limit to the number of cabins that can be sent. </p>
+                                                                    <div class="noteNote">Support for cabin class preferences varies by NDC carrier; see <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. If you need login assistance, see <a href="NDCGuide.html#kbase">Knowledge Base NDC&#160;Resources</a>.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>cabins</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String.  A space-delimited list of cabins.
+Supported values are (no default):
+</p>
+                                                                    <ul>
+                                                                        <li>Economy
+</li>
+                                                                        <li>PremiumEconomy</li>
+                                                                        <li>
+Business</li>
+                                                                        <li>
+First</li>
+                                                                        <li>
+PremiumFirst
+</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>preferenceType</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Supported values: </p>
+                                                                    <ul>
+                                                                        <li>Permitted: Searches for ONLY the specified cabin class or classes. If that class is not available, the response does not return any offers. </li>
+                                                                        <li>Preferred: Searches for the specified cabin class or classes, but will return lower classes if the specified class is not available. </li>
+                                                                        <li>PreferredWithUpgrade: Searches for the specified cabin class or classes, and will return higher classes if the specified class is not available.</li>
+                                                                    </ul>
+                                                                    <div class="noteWarning">Sending a mix of preferenceType values is not supported. For example, you cannot send an instance of CabinPreference with a preferenceType of Permitted and another instance with preferenceType of Prohibited. In this case the results default to the Preferred preference.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>PricingModifiersAir</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object for optional pricing modifiers. Only FareSelection/fareType is supported in the Reshop request.</p>
+                                                                    <p>May include WaiverCode and FareSelection objects.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>WaiverCode </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Include to send a waiver code, such as if required for rebooking after a <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/BookingGuide.htm#ndcdisruption">carrier-initiated change</a>:</p>
+                                                                    <blockquote>
+                                                                        <p>value: String. Any waiver code.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>FareSelection</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Optional fare type preferences. Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p>fareType: Requests the return of  specified fare types including private fares (negotiated), public fares (published), or net fares (consolidator fares, or any negotiated wholesale price that is further marked up for sale to customers).    Supported values:</p>
+                                                                    </blockquote>
+                                                                    <blockquote>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>PublicFaresOnly</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>PrivateFaresOnly</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>PublicAndPrivateFares (default value)</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>AllFares:&#160;Returns both public and private fare offers. </p>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </blockquote>
+                                                                    <p>The response identifies the type of fare returned for each Product in PassengerFlight/FlightProduct @fareType. Possible values in the response are AirlinePrivateFare, AgencyPrivateFare,  or PublicFare.</p>
+                                                                    <div class="noteNote">Support for fare type preferences varies by NDC carrier; see <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline" target="_blank">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> in the Travelport Knowledge Base. If you need login assistance, see <a href="NDCGuide.html#kbase">Knowledge Base NDC&#160;Resources</a>.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>BuildFromReservationWorkbench</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object for current reservation details.</p>
+                                                                    <p>Includes ReservationIdentifier, OfferIdentifier, and ProductIdentifier. Each of these includes the standard Identifier object per below.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>ReservationIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>ReservationIdentifier/Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object for workbench identifier.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send the value returned in ReservationResponse/Identifier/authority for the workbench when it was created.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send the value returned in ReservationResponse/Identifier/value for the workbench when it was created.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>OfferIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>OfferIdentifier/Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Identifier details for the current offer in the reservation.</p>
+                                                                    <p>Includes Identifier object per below. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send the value returned in ReservationResponse/Reservation/Offer/Identifier/authority in the workbench create step. For NDC this is the code for the carrier on which the ticket or reservation is issued.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send the value returned in ReservationResponseReservation/Offer/Identifier/value in the workbench create step.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>ProductIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <p><b>ProductIdentifier/Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Identifier details for the current product in the reservation.</p>
+                                                                    <p>Includes Identifier object per below. Send one instance for each product currently in the reservation. A product is one leg of the itinerary.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>authority</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send the value returned in ReservationResponse/Reservation/Offer/Product/Identifier/authority in the workbench create step. For NDC this is the code for the carrier on which the ticket or reservation is issued.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>Send the value returned in ReservationResponse/Reservation/Offer/Product/Identifier/value in the workbench create step.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The Reshop response uses the same general structure as the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm">Search API response</a>. The table below notes differences in the Reshop response and references the Search API&#160;Reference for common objects.</p>
+                                        <p>The number of offers returned depends on availability for the search criteria. Each offer is returned in an instance of CatalogOffering. For each offer, CatalogOffering/Price/TotalPrice does not return the price of the new offer but instead for the new offer compared with the existing offer:</p>
+                                        <ul>
+                                            <li>a positive number indicates the additional amount due for that offer</li>
+                                            <li>a zero amount indicates an even exchange</li>
+                                            <li>a negative number indicates the offer costs less than the original itinerary and a partial refund is due </li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogOfferingsAirChangeResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object for response.</p>
+                                                                    <p>Includes CatalogOfferings, Result, and ReferenceList objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>CatalogOfferings</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Top level object for the offers returned for the search. Same as the CatalogProductOfferings object in the Search API&#160;response. </p>
+                                                                    <p>Includes CatalogOffering object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogOffering </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Each instance returns an offer for one leg of the itinerary to be exchanged. </p>
+                                                                    <p>Includes Identifier, ProductOptions, Price, and TermsAndConditions objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Standard <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/AirAPIsGuide.htm#identifiers">identifier object</a> returned across the <span class="mc-variable General.Product variable">JSON</span> APIs. For NDC content <i>authority</i> is the carrier code for the issuing carrier. </p>
+                                                                    <p>Key value pairs.</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>ProductOptions</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Each instance returns a flight option/s for one leg of the itinerary. </p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>sequence</b>: Sequence of this leg of the itinerary; i.e., a value of <i>1</i> indicates the first leg on the itinerary, <i>2</i> the second leg, and so on.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Product object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>Product</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Flight, fare, and brand details for this product on this offer. Includes the following:</p>
+                                                                    <blockquote>
+                                                                        <p><b>id</b>:&#160;Internal id for this product.</p>
+                                                                        <p><b>FlightSegment</b>: Standard FlightSegment object with a cross-reference to the flights in ReferenceListFlight that are part of this offer. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm#rsp">Search API Reference</a> for details as needed.</p>
+                                                                        <p><b>PassengerFlight</b>: Standard PassengerFlight object to return fare class and brand details. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm#rsp">Search API Reference</a> for details as needed.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>Price </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Standard Price object except that the amounts do not return the price of the fare for this offer but instead the price difference between the original itinerary and this specific offer. In Price/TotalPrice:</p>
+                                                                    <ul>
+                                                                        <li>a positive number indicates the additional amount due for this offer</li>
+                                                                        <li>a zero amount indicates an even exchange</li>
+                                                                        <li>a negative number indicates this offer costs less than the original itinerary and a partial refund is due </li>
+                                                                    </ul>
+                                                                    <p>See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm#rsp">Search API Reference</a> for details on other objects as needed. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>TermsAndConditions </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Standard TermsAndConditions object to return terms and conditions for this offer. See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm#rsp">Search API Reference</a> for details as needed.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Result</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Includes objects for any warning or error message returned.</p>
+                                                                    <p>May include Warning and/or Error objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Error</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returned for error messages; text of the message returned in the Message object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Warning</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returned for warning messages; text of the message returned in the Message object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p style="font-weight: bold;">Message</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>The text of any error message returned.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>ReferenceList</b> </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>ReferenceList consolidates all the details about flights, products, brands, and terms and conditions returned in CatalogOfferings.</p>
+                                                                    <p>Same as the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm#referencelist">Search API&#160;response ReferenceList objects</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Reshop Request </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequestReservation": {
+		"returnBrandedFaresInd":"true",
+            "SearchCriteriaFlight": [
+                {
+                    "departureDate": "2021-12-19",
+                    "From": {
+                        "type": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "type": "Airport Only",
+                        "value": "MEL"
+                    }
+                }
+            ],
+            "PassengerCriteria": [
+                {
+                    "number": 1,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "1a967a6c-66e6-4edb-a24f-20bd6d8a5ee4"
+                    }
+                },
+                "OfferIdentifier": {
+                    "Identifier": {
+                        "authority": "QF",
+                        "value": "UUYwODExQjY4MkE2NHxQRDlCRDI2QkItNTNDQy00OUQ3LThEMzVubGo1cnE1cWt1anp6LTEtMQ=="
+                    }
+                },
+                "ProductIdentifier": [
+                    {
+                        "Identifier": {
+                            "authority": "QF",
+                            "value": "29b5ec43-609c-4d3a-a4d9-996856bb29ca"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <p>The response is structured similarly to the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm">Search response</a>. The price difference between the original itinerary and each offer is returned in CatalogOffering/Price/TotalPrice:</p>
+                                        <ul>
+                                            <li>a positive number indicates the additional amount due for that offer</li>
+                                            <li>a zero amount indicates an even exchange</li>
+                                            <li>a negative number indicates the offer costs less than the original itinerary and a partial refund is due </li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Reshop Response </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following excerpt has been truncated for brevity and includes only the first offer returned in the response. Depending on availability, multiple offers are usually returned. </p><pre class="line-numbers"><code class="language-json">{
+ "CatalogOfferingsAirChangeResponse": {
+  "CatalogOfferings": {
+   "@type": "CatalogOfferings",
+   "CatalogOffering": [
+    {
+     "@type": "CatalogOffering",
+     "id": "QF1",
+     "Identifier": {
+      "authority": "QF",
+      "value": "WDc3NkM5MUJFLTIyOUMtNDM3Qi05N0M3MS0xfFg3NzZDOTFCRS0yMjlDLTQzN0ItOTdDN3wyMDIxLTExLTE5VDE2OjMwOjUxfEFEVDpYNzc2QzkxQkUtMjI5Qy00MzdCLTk3QzcxLTEtMXxRRnxERUFM"
+     },
+     "ProductOptions": [
+      {
+       "@type": "ProductOptions",
+       "sequence": 1,
+       "Product": [
+        {
+         "@type": "ProductAir",
+         "totalDuration": "PT1H35M",
+         "id": "QFp0",
+         "FlightSegment": [
+          {
+           "id": "1",
+           "sequence": 1,
+           "Flight": {
+            "@type": "FlightID",
+            "FlightRef": "QFs1"
+           }
+          }
+         ],
+         "PassengerFlight": [
+          {
+           "passengerQuantity": 1,
+           "passengerTypeCode": "ADT",
+           "FlightProduct": [
+            {
+             "segmentSequence": [
+              1
+             ],
+             "classOfService": "E",
+             "cabin": "Economy",
+             "fareBasisCode": "ESQW1",
+             "fareType": "PublicFare",
+             "Brand": {
+              "@type": "Brand",
+              "name": "RED eDeal",
+              "Identifier": {
+               "authority": "Travelport",
+               "value": "1012447"
+              }
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 84.08,
+      "TotalTaxes": 24.92,
+      "TotalFees": 0,
+      "TotalPrice": 109,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 84.08,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 24.92,
+          "Tax": [
+           {
+            "taxCode": "QR",
+            "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+            "value": 9.42
+           },
+           {
+            "taxCode": "QR",
+            "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+            "value": 5.59
+           },
+           {
+            "taxCode": "UO",
+            "description": "GOODS AND SERVICES TAX  GST",
+            "value": 8.41
+           },
+           {
+            "taxCode": "UO",
+            "description": "GOODS AND SERVICES TAX  GST",
+            "value": 1.5
+           }
+          ]
+         },
+         "Fees": {
+          "@type": "FeesDetail",
+          "TotalFees": 0
+         },
+         "Total": 109
+        }
+       }
+      ]
+     },
+     "TermsAndConditions": {
+      "@type": "TermsAndConditionsAir",
+      "FareRuleInfo": [
+       {
+        "@type": "FareRuleInfo",
+        "flightsRefs": [
+         "QFs1"
+        ],
+        "ruleNumber": "70J"
+       }
+      ],
+      "ValidatingAirline": [
+       {
+        "ValidatingAirline": "QF"
+       }
+      ],
+      "PaymentTimeLimit": "2021-11-20T23:59:00Z"
+     }
+    },
+...</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:46:06 GMT -->
+</html>

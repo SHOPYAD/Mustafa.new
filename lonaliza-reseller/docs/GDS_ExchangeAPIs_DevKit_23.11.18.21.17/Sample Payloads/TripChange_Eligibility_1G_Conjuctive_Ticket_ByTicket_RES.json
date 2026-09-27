@@ -1,0 +1,50 @@
+{
+    "TicketChangeEligibilityListResponse": {
+        "transactionId": "Testing_Ancil_1",
+        "traceId": "Testing_Ancil_1",
+        "TicketChangeEligibilityID": [{
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "None",
+                "objID": "ticketChangeEligibility_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "0163899597255-256"
+                },
+                "Penalties": {
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Maximum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "GBP",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Minimum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "GBP",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }
+        ]
+    }
+}

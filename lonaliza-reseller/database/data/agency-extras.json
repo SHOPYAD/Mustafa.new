@@ -1,0 +1,143 @@
+{
+  "packages": [
+    {
+      "id": "xtra_refund",
+      "titleAr": "ضمان استرداد كامل",
+      "titleEn": "Full money-back guarantee",
+      "titleTr": "Tam para iade garantisi",
+      "descAr": "استرداد كامل لمبلغ الحجز وفق سياسة الوكالة إذا أُلغي السفر قبل الموعد المحدد.",
+      "descEn": "Full refund of the agency booking amount if travel is cancelled within the policy window.",
+      "descTr": "Politika süresi içinde seyahat iptal edilirse acente tutarının tamamı iade edilir.",
+      "priceType": "percent",
+      "priceValue": 6,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 10,
+      "icon": "refund",
+      "kind": "refund_guarantee",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    },
+    {
+      "id": "xtra_bag",
+      "titleAr": "حقيبة شحن إضافية",
+      "titleEn": "Extra checked bag",
+      "titleTr": "Ek kayıtlı bagaj",
+      "descAr": "أضفوا حقيبة مسجّلة عبر الوكالة قبل السفر.",
+      "descEn": "Add a checked bag through the agency before you travel.",
+      "descTr": "Seyahatten önce acente üzerinden ek kayıtlı bagaj ekleyin.",
+      "priceType": "fixed",
+      "priceValue": 45,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 20,
+      "icon": "bag",
+      "kind": "extra_bag",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    },
+    {
+      "id": "xtra_insurance",
+      "titleAr": "تأمين السفر",
+      "titleEn": "Travel insurance",
+      "titleTr": "Seyahat sigortası",
+      "descAr": "تغطية طبية وإلغاء رحلة مرتبة من الوكالة.",
+      "descEn": "Medical and trip-cancellation cover arranged by the agency.",
+      "descTr": "Acente tarafından düzenlenen sağlık ve iptal teminatı.",
+      "priceType": "fixed",
+      "priceValue": 18,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 30,
+      "icon": "insurance",
+      "kind": "insurance",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    },
+    {
+      "id": "xtra_priority",
+      "titleAr": "صعود أولوية",
+      "titleEn": "Priority boarding",
+      "titleTr": "Öncelikli biniş",
+      "descAr": "أولوية في إجراءات الصعود عبر خدمة الوكالة.",
+      "descEn": "Board earlier through the agency priority service.",
+      "descTr": "Acente öncelik hizmetiyle daha erken binin.",
+      "priceType": "fixed",
+      "priceValue": 12,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 40,
+      "icon": "priority",
+      "kind": "priority",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    },
+    {
+      "id": "xtra_sms",
+      "titleAr": "تذكرة عبر الرسائل",
+      "titleEn": "SMS e-ticket",
+      "titleTr": "SMS e-bilet",
+      "descAr": "إرسال رقم الحجز ورابط التذكرة إلى هاتفكم فور الإصدار.",
+      "descEn": "Send the booking reference and ticket link to your phone as soon as it is issued.",
+      "descTr": "Bilet düzenlenir düzenlenmez referans ve bağlantı telefonunuza gönderilir.",
+      "priceType": "fixed",
+      "priceValue": 4,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 50,
+      "icon": "sms",
+      "kind": "sms",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    },
+    {
+      "id": "xtra_flex",
+      "titleAr": "تاريخ مرن",
+      "titleEn": "Flexible date",
+      "titleTr": "Esnek tarih",
+      "descAr": "تغيير تاريخ الرحلة مرة واحدة عبر الوكالة وفق التوفر.",
+      "descEn": "Change the flight date once through the agency, subject to availability.",
+      "descTr": "Müsaitliğe göre uçuş tarihini acente üzerinden bir kez değiştirin.",
+      "priceType": "percent",
+      "priceValue": 8,
+      "serviceTypes": [
+        "flights"
+      ],
+      "isActive": true,
+      "sort": 60,
+      "icon": "calendar",
+      "kind": "flex_change",
+      "termsAr": "",
+      "termsEn": "",
+      "termsTr": "",
+      "createdAt": "2026-09-15T22:32:03.205Z",
+      "updatedAt": "2026-09-15T22:32:03.205Z"
+    }
+  ],
+  "updatedAt": "2026-09-15T22:32:03.251Z"
+}

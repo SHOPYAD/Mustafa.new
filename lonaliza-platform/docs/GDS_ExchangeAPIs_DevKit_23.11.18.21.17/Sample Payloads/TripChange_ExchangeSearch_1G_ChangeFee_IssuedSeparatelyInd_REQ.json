@@ -1,0 +1,45 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2022-06-19",
+                    "departureTime": "09:45:00",
+                    "From": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "YYZ"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelection",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "@type": "BuildFromReservationWorkbench",
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ],
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "87e4d8b6-5980-451c-9385-90599dbeeffa"
+                    }
+                }
+            }
+        }
+    }
+}

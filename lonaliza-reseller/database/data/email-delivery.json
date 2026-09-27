@@ -1,0 +1,15 @@
+{
+  "at": "2026-09-14T16:47:59.381Z",
+  "to": "flymefy@gmail.com",
+  "from": "noreply@lonaliza.com",
+  "localAccepted": true,
+  "status": "local_accepted",
+  "queueId": "F34CFC4716C",
+  "messageId": "<813a9f6d6d0d310a6ca0d22baf80cf74@lonaliza.com>",
+  "smtpResponse": "250 2.0.0 Ok: queued as F34CFC4716C",
+  "remoteDsn": "",
+  "remoteReason": "",
+  "deliveredToInbox": false,
+  "labelAr": "قُبلت محلياً من SMTP — هذا ليس وصولاً إلى جيميل",
+  "labelEn": "Accepted by local SMTP — not proof it reached Gmail"
+}

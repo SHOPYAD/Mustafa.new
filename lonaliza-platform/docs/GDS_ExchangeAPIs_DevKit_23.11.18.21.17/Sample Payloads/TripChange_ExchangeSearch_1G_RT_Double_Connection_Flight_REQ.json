@@ -1,0 +1,36 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-12-18",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "HAM"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b5ca515c-8c1a-472c-9ed7-1df9a644dec5"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

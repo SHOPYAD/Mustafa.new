@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "label": "المبيعات وإدارة النظام B2B (الرئيسي)",
+    "aiEnabled": true,
+    "aiTrack": "auto",
+    "isDefault": true
+  },
+  {
+    "id": 2,
+    "label": "خدمة العملاء وحجوزات السياحة B2C",
+    "aiEnabled": true,
+    "aiTrack": "b2c",
+    "isDefault": false
+  },
+  {
+    "id": 3,
+    "label": "حجوزات الفنادق والبرامج السياحية",
+    "aiEnabled": true,
+    "aiTrack": "b2c",
+    "isDefault": false
+  },
+  {
+    "id": 4,
+    "label": "تذاكر الطيران والمواصلات VIP",
+    "aiEnabled": true,
+    "aiTrack": "b2c",
+    "isDefault": false
+  },
+  {
+    "id": 5,
+    "label": "الدعم المباشر والاستفسارات العامة",
+    "aiEnabled": false,
+    "aiTrack": "auto",
+    "isDefault": false
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "defaultCode": "USD",
+  "liveFxEnabled": true,
+  "currencies": [
+    {
+      "code": "USD",
+      "symbol": "$",
+      "nameAr": "دولار أمريكي",
+      "nameEn": "US Dollar",
+      "nameTr": "ABD Doları",
+      "flag": "🇺🇸",
+      "enabled": true
+    },
+    {
+      "code": "EUR",
+      "symbol": "€",
+      "nameAr": "يورو",
+      "nameEn": "Euro",
+      "nameTr": "Euro",
+      "flag": "🇪🇺",
+      "enabled": true
+    },
+    {
+      "code": "GBP",
+      "symbol": "£",
+      "nameAr": "جنيه إسترليني",
+      "nameEn": "British Pound",
+      "nameTr": "İngiliz Sterlini",
+      "flag": "🇬🇧",
+      "enabled": true
+    },
+    {
+      "code": "TRY",
+      "symbol": "₺",
+      "nameAr": "ليرة تركية",
+      "nameEn": "Turkish Lira",
+      "nameTr": "Türk Lirası",
+      "flag": "🇹🇷",
+      "enabled": true
+    },
+    {
+      "code": "AED",
+      "symbol": "د.إ",
+      "nameAr": "درهم إماراتي",
+      "nameEn": "UAE Dirham",
+      "nameTr": "BAE Dirhemi",
+      "flag": "🇦🇪",
+      "enabled": true
+    },
+    {
+      "code": "SAR",
+      "symbol": "﷼",
+      "nameAr": "ريال سعودي",
+      "nameEn": "Saudi Riyal",
+      "nameTr": "Suudi Riyali",
+      "flag": "🇸🇦",
+      "enabled": true
+    }
+  ]
+}

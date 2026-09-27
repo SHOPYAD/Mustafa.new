@@ -1,0 +1,51 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-07-05",
+                    "departureTime": "10:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "ADL"
+                    }
+                }, {
+                    "departureDate": "2021-08-05",
+                    "departureTime": "10:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "MEL"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "ebf74ff4-5b98-400d-8fb9-ee3e28c096d9"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

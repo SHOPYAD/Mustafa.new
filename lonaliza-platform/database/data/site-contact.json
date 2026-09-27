@@ -1,0 +1,72 @@
+{
+  "whatsappNumber": "905313591394",
+  "whatsappMessageEn": "Hello Lonaliza Tourism!",
+  "whatsappMessageAr": "مرحباً لوناليزا للسياحة!",
+  "whatsappEnabled": true,
+  "customerServicePhones": [
+    "+905313591394"
+  ],
+  "callbackPhone": "+905313591394",
+  "email": "info@lonaliza.com",
+  "address": "إسطنبول، تركيا",
+  "supportHours": "24/7",
+  "social": [
+    {
+      "id": "whatsapp",
+      "enabled": true,
+      "url": "https://wa.me/905313591394",
+      "handle": "+905313591394"
+    },
+    {
+      "id": "instagram",
+      "enabled": true,
+      "url": "https://instagram.com/lonaliza",
+      "handle": "@lonaliza"
+    },
+    {
+      "id": "facebook",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    },
+    {
+      "id": "youtube",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    },
+    {
+      "id": "tiktok",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    },
+    {
+      "id": "twitter",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    },
+    {
+      "id": "linkedin",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    },
+    {
+      "id": "snapchat",
+      "enabled": false,
+      "url": "",
+      "handle": ""
+    }
+  ],
+  "floatingHubEnabled": true,
+  "floatingHubPosition": "right",
+  "floatingHubBottomPx": 24,
+  "callbackBannerEnabled": false,
+  "callbackBannerPosition": "right",
+  "callbackBannerBottomPx": 24,
+  "b2bAdvisorEnabled": true,
+  "b2bAdvisorPosition": "right",
+  "b2bAdvisorBottomPx": 24
+}

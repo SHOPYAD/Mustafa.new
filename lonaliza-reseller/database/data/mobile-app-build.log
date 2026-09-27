@@ -1,0 +1,73 @@
+=== بدء عملية بناء تطبيق لوناليزا [2026-09-15T13:32:21.084Z] ===
+[٣:٣٢:٢١ م] التحقق من البيئة: Flutter و Android SDK جاهزان.
+[٣:٣٢:٢١ م] إعدادات الهوية: لوناليزا (com.lonaliza.app) - الخادم: https://lonaliza.com
+[٣:٣٢:٢١ م] مزامنة اعتماديات فلاتر: flutter pub get
+[٣:٣٢:٢١ م]    Woah! You appear to be trying to run flutter as root.
+[٣:٣٢:٢١ م]    We strongly recommend running the flutter tool without superuser privileges.
+[٣:٣٢:٢١ م]   /
+[٣:٣٢:٢١ م] 📎
+[٣:٣٢:٢٢ م] Resolving dependencies...
+[٣:٣٢:٢٣ م] Downloading packages...
+[٣:٣٢:٢٣ م]   archive 4.0.9 (4.3.0 available)
+[٣:٣٢:٢٣ م]   clock 1.1.2 (1.1.3 available)
+[٣:٣٢:٢٣ م]   file_picker 10.3.10 (13.0.0 available)
+[٣:٣٢:٢٣ م]   flutter_native_splash 2.4.7 (2.4.8 available)
+[٣:٣٢:٢٣ م]   html 0.15.6 (0.15.7 available)
+[٣:٣٢:٢٣ م]   image 4.8.0 (4.10.1 available)
+[٣:٣٢:٢٣ م]   material_color_utilities 0.13.0 (0.13.1 available)
+[٣:٣٢:٢٣ م]   posix 6.5.0 (6.5.2 available)
+[٣:٣٢:٢٣ م]   stack_trace 1.12.1 (1.12.2 available)
+[٣:٣٢:٢٣ م]   test_api 0.7.12 (0.7.14 available)
+[٣:٣٢:٢٣ م]   vm_service 15.1.0 (15.3.0 available)
+[٣:٣٢:٢٣ م]   win32 5.15.0 (6.4.0 available)
+[٣:٣٢:٢٣ م]   xml 6.6.1 (7.0.1 available)
+[٣:٣٢:٢٣ م]   yaml 3.1.3 (3.1.4 available)
+[٣:٣٢:٢٣ م] Got dependencies!
+[٣:٣٢:٢٣ م] 14 packages have newer versions incompatible with dependency constraints.
+[٣:٣٢:٢٣ م] Try `flutter pub outdated` for more information.
+[٣:٣٢:٢٤ م] تطبيق أيقونة لوناليزا الرسمية للمتاجر وأندرويد...
+[٣:٣٢:٢٥ م] Loaded master icon: /www/wwwroot/lonaliza.com/public/icon.png (512x512)
+[٣:٣٢:٢٥ م] Saved: /www/wwwroot/lonaliza.com/public/app/store-assets/app-store-icon-1024.png
+[٣:٣٢:٢٥ م] Generated Android mipmap-mdpi: 48x48
+[٣:٣٢:٢٥ م] Generated Android mipmap-hdpi: 72x72
+[٣:٣٢:٢٥ م] Generated Android mipmap-xhdpi: 96x96
+[٣:٣٢:٢٥ م] Saved: /www/wwwroot/lonaliza.com/public/app/store-assets/google-play-icon-512.png
+[٣:٣٢:٢٥ م] Generated Android mipmap-xxhdpi: 144x144
+[٣:٣٢:٢٥ م] Updated iOS xcassets icons.
+[٣:٣٢:٢٥ م] All app icons generated successfully!
+[٣:٣٢:٢٥ م] Generated Android mipmap-xxxhdpi: 192x192
+[٣:٣٢:٢٥ م] تم تأكيد وتطبيق حزمة الأيقونات الرسمية.
+[٣:٣٢:٢٥ م] بدء تجميع حزمة Android APK (Release Arm64)...
+[٣:٣٢:٢٥ م]    Woah! You appear to be trying to run flutter as root.
+[٣:٣٢:٢٥ م]    We strongly recommend running the flutter tool without superuser privileges.
+[٣:٣٢:٢٥ م] 📎
+[٣:٣٢:٢٥ م]   /
+[٣:٣٢:٢٦ م] Running Gradle task 'assembleLonalizaRelease'...
+[٣:٣٣:١٢ م] Warning: Flutter support for your project's Gradle version (8.14.0) will soon be dropped. Please upgrade your Gradle version to a version of at least 9.1.0 soon.
+[٣:٣٣:١٢ م] Alternatively, use the flag "--android-skip-build-dependency-validation" to bypass this check.
+[٣:٣٣:١٢ م] Potential fix: Your project's gradle version is typically defined in the gradle wrapper file. By default, this can be found at /www/wwwroot/lonaliza.com/Lonalizamobilapp/android/gradle/wrapper/gradle-wrapper.properties.
+[٣:٣٣:١٢ م] For more information, see https://docs.gradle.org/current/userguide/gradle_wrapper.html.
+[٣:٣٣:١٢ م] Warning: Flutter support for your project's Android Gradle Plugin version (Android Gradle Plugin version 8.11.1) will soon be dropped. Please upgrade your Android Gradle Plugin version to a version of at least Android Gradle Plugin version 9.0.1 soon.
+[٣:٣٣:١٢ م] Alternatively, use the flag "--android-skip-build-dependency-validation" to bypass this check.
+[٣:٣٣:١٢ م] Potential fix: Your project's AGP version is typically defined in the plugins block of the `settings.gradle` file (/www/wwwroot/lonaliza.com/Lonalizamobilapp/android/settings.gradle), by a plugin with the id of com.android.application.
+[٣:٣٣:١٢ م] If you don't see a plugins block, your project was likely created with an older template version. In this case it is most likely defined in the top-level build.gradle file (/www/wwwroot/lonaliza.com/Lonalizamobilapp/android/build.gradle) by the following line in the dependencies block of the buildscript: "classpath 'com.android.tools.build:gradle:<version>'".
+[٣:٣٣:١٢ م] Warning: Flutter support for your project's Kotlin version (2.2.20) will soon be dropped. Please upgrade your Kotlin version to a version of at least 2.3.20 soon.
+[٣:٣٣:١٢ م] Alternatively, use the flag "--android-skip-build-dependency-validation" to bypass this check.
+[٣:٣٣:١٢ م] Potential fix: Your project's KGP version is typically defined in the plugins block of the `settings.gradle` file (/www/wwwroot/lonaliza.com/Lonalizamobilapp/android/settings.gradle), by a plugin with the id of org.jetbrains.kotlin.android.
+[٣:٣٣:١٢ م] If you don't see a plugins block, your project was likely created with an older template version, in which case it is most likely defined in the top-level build.gradle file (/www/wwwroot/lonaliza.com/Lonalizamobilapp/android/build.gradle) by the ext.kotlin_version property.
+[٣:٣٣:٣٦ م]    Woah! You appear to be trying to run flutter as root.
+[٣:٣٣:٣٦ م]    We strongly recommend running the flutter tool without superuser privileges.
+[٣:٣٣:٣٦ م]   /
+[٣:٣٣:٣٦ م] 📎
+[٣:٣٤:١٥ م] Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 3844 bytes (99.8% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+[٣:٣٤:٢٦ م] Warning: The generated ELF library contains unobfuscated DWARF debugging information.
+[٣:٣٤:٢٦ م]          To avoid this, use --strip to remove it.
+[٣:٣٤:٣٢ م] Caught exception: Already watching path: /www/wwwroot/lonaliza.com/Lonalizamobilapp/android
+[٣:٣٤:٣٦ م] Running Gradle task 'assembleLonalizaRelease'...
+[٣:٣٤:٣٦ م]   129.3s
+[٣:٣٤:٣٦ م] ✓ Built build/app/outputs/flutter-apk/app-lonaliza-release.apk (21.4MB)
+[٣:٣٤:٣٦ م] تم بناء ملف APK بنجاح! الحجم: 20.38 MB
+[٣:٣٤:٣٦ م] تم نشر حزمة APK في مجلد التنزيل العام: /app/lonaliza-latest.apk و /app/app-lonaliza-release.apk
+[٣:٣٤:٣٦ م] تجهيز حزمة تصدير مشروع iOS لنظام Mac...
+[٣:٣٤:٣٧ م] تم تجهيز حزمة iOS بنجاح: /www/wwwroot/lonaliza.com/Lonalizamobilapp/build/ios-export-bundle.zip
+[٣:٣٤:٣٧ م] === اكتمل البناء بنجاح 100% ===

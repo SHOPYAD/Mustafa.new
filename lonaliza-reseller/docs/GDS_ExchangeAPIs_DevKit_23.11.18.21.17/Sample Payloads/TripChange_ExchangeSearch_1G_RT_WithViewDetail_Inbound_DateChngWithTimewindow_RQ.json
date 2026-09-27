@@ -1,0 +1,39 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-05-07",
+                    "departureTime": "11:20:00",
+                    "From": {
+                        "value": "DFW"
+                    },
+                    "To": {
+                        "value": "DEN"
+                    },
+                    "DepartureTimeRange": {
+                        "start": "11:20:00",
+                        "end": "17:20:00"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "eab52e70-bfa7-4899-b858-9adce982308b"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

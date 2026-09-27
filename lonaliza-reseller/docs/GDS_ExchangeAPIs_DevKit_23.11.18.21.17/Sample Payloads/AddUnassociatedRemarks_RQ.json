@@ -1,0 +1,17 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Traveler",
+                "Comment": [
+                    {
+                        "name": "ITIN COMMENTS",
+                        "value": "Testing ITIN Unassociated remarks one"
+                    }
+                ]
+            }
+        ]
+    }
+}

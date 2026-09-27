@@ -1,0 +1,218 @@
+{
+  "customs": [
+    {
+      "id": "local:booking-success",
+      "slug": "booking-success",
+      "kind": "custom",
+      "name": "إشعار حجز ناجح",
+      "subject_ar": "تم استلام حجزك {{booking_id}}",
+      "subject_en": "Booking received {{booking_id}}",
+      "html_ar": "<!--ALRAYYAN_EMAIL_DOC_V1-->\n<!--{\"version\":1,\"canvasBg\":\"#f4efe6\",\"cardBg\":\"#ffffff\",\"blocks\":[{\"id\":\"b_mteiadjn_r0eknh\",\"type\":\"header\",\"background\":\"#0a1628\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_0bmkio\",\"type\":\"heading\",\"text\":\"إشعار حجز ناجح\",\"color\":\"#122033\",\"align\":\"center\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteibp1l_c3lyep\",\"type\":\"image\",\"align\":\"center\",\"src\":\"https://lonaliza.com/uploads/branding/mteic4ao-28027-t.jpg\",\"alt\":\"لوناليزا للسياحة\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_jfr43s\",\"type\":\"paragraph\",\"text\":\"مرحباً {{name}}\\n{{company}}\\nتفاصيل من لوناليزا للسياحة.\",\"color\":\"#5b4d3e\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_9fpe46\",\"type\":\"button\",\"text\":\"متابعة من حسابك\",\"color\":\"#ffffff\",\"background\":\"#10b981\",\"align\":\"center\",\"hrefKey\":\"account\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_00mnh6\",\"type\":\"divider\",\"color\":\"#e4d8c4\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_vpe6jg\",\"type\":\"bookingTable\",\"background\":\"#faf6ef\",\"align\":\"right\",\"rows\":[{\"label\":\"رقم الحجز\",\"value\":\"{{bookingId}}\"},{\"label\":\"المبلغ\",\"value\":\"{{amount}}\"}],\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_a9jjzb\",\"type\":\"footer\",\"color\":\"#6b5b4b\",\"background\":\"#faf6ef\",\"align\":\"right\",\"logoBackground\":\"brand\"}]}-->\n<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>لوناليزا للسياحة</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4efe6;font-family:Tahoma,Arial,sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4efe6;padding:24px 8px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadfcd;\">\n          <tr><td style=\"background:#0a1628;padding:22px 28px 18px;text-align:center;\">\n        <!--EMAIL_LOGO_START--><img src=\"https://lonaliza.com/logo.png\" alt=\"لوناليزا للسياحة\" width=\"220\" style=\"display:block;margin:0 auto;max-width:220px;width:auto;height:auto;max-height:72px;object-fit:contain;background:transparent;border:0;outline:none;\" /><!--EMAIL_LOGO_END-->\n        <div style=\"margin-top:10px;font-size:16px;font-weight:700;color:#ffffff;\">لوناليزا للسياحة</div>\n      </td></tr>\n<tr><td style=\"padding:22px 28px 8px;text-align:center;direction:rtl;\">\n        <h1 style=\"margin:0;font-size:22px;line-height:1.45;color:#122033;font-weight:700;\">إشعار حجز ناجح</h1>\n      </td></tr>\n<tr><td style=\"padding:12px 28px;text-align:center;\">\n        <img src=\"https://lonaliza.com/uploads/branding/mteic4ao-28027-t.jpg\" alt=\"لوناليزا للسياحة\" style=\"display:inline-block;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent;border:0;\" />\n      </td></tr>\n<tr><td style=\"padding:6px 28px 10px;text-align:right;direction:rtl;\">\n        <p style=\"margin:0;font-size:15px;line-height:1.85;color:#5b4d3e;white-space:pre-wrap;\">مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.</p>\n      </td></tr>\n<tr><td style=\"padding:16px 28px;text-align:center;\">\n        <a href=\"https://lonaliza.com/account\" style=\"display:inline-block;background:#10b981;color:#ffffff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:700;font-size:14px;\">متابعة من حسابك</a>\n      </td></tr>\n<tr><td style=\"padding:8px 28px;\"><div style=\"border-top:1px solid #e4d8c4;font-size:0;line-height:0;\">&nbsp;</div></td></tr>\n<tr><td style=\"padding:10px 28px;\">\n        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf6ef;border-radius:12px;padding:8px 16px;\"><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">رقم الحجز</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{bookingId}}</td>\n            </tr><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">المبلغ</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{amount}}</td>\n            </tr></table>\n      </td></tr>\n<tr><td style=\"background:#faf6ef;padding:18px 28px;color:#6b5b4b;font-size:12px;line-height:1.7;text-align:center;\">\n        <!--EMAIL_FOOTER_START--><div style=\"font-weight:700;color:#0a1628;margin-bottom:4px;\">لوناليزا للسياحة</div>\n        \n        <div><a href=\"https://lonaliza.com\" style=\"color:#10b981;text-decoration:none;\">lonaliza.com</a></div><!--EMAIL_FOOTER_END-->\n      </td></tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+      "html_en": "<!--ALRAYYAN_EMAIL_DOC_V1-->\n<!--{\"version\":1,\"canvasBg\":\"#f4efe6\",\"cardBg\":\"#ffffff\",\"blocks\":[{\"id\":\"b_mteiadjn_r0eknh\",\"type\":\"header\",\"background\":\"#0a1628\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_0bmkio\",\"type\":\"heading\",\"text\":\"إشعار حجز ناجح\",\"color\":\"#122033\",\"align\":\"center\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteibp1l_c3lyep\",\"type\":\"image\",\"align\":\"center\",\"src\":\"https://lonaliza.com/uploads/branding/mteic4ao-28027-t.jpg\",\"alt\":\"لوناليزا للسياحة\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_jfr43s\",\"type\":\"paragraph\",\"text\":\"مرحباً {{name}}\\n{{company}}\\nتفاصيل من لوناليزا للسياحة.\",\"color\":\"#5b4d3e\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_9fpe46\",\"type\":\"button\",\"text\":\"متابعة من حسابك\",\"color\":\"#ffffff\",\"background\":\"#10b981\",\"align\":\"center\",\"hrefKey\":\"account\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_00mnh6\",\"type\":\"divider\",\"color\":\"#e4d8c4\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_vpe6jg\",\"type\":\"bookingTable\",\"background\":\"#faf6ef\",\"align\":\"right\",\"rows\":[{\"label\":\"رقم الحجز\",\"value\":\"{{bookingId}}\"},{\"label\":\"المبلغ\",\"value\":\"{{amount}}\"}],\"logoBackground\":\"brand\"},{\"id\":\"b_mteiadjn_a9jjzb\",\"type\":\"footer\",\"color\":\"#6b5b4b\",\"background\":\"#faf6ef\",\"align\":\"right\",\"logoBackground\":\"brand\"}]}-->\n<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>لوناليزا للسياحة</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4efe6;font-family:Tahoma,Arial,sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4efe6;padding:24px 8px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadfcd;\">\n          <tr><td style=\"background:#0a1628;padding:22px 28px 18px;text-align:center;\">\n        <!--EMAIL_LOGO_START--><img src=\"https://lonaliza.com/logo.png\" alt=\"لوناليزا للسياحة\" width=\"220\" style=\"display:block;margin:0 auto;max-width:220px;width:auto;height:auto;max-height:72px;object-fit:contain;background:transparent;border:0;outline:none;\" /><!--EMAIL_LOGO_END-->\n        <div style=\"margin-top:10px;font-size:16px;font-weight:700;color:#ffffff;\">لوناليزا للسياحة</div>\n      </td></tr>\n<tr><td style=\"padding:22px 28px 8px;text-align:center;direction:rtl;\">\n        <h1 style=\"margin:0;font-size:22px;line-height:1.45;color:#122033;font-weight:700;\">إشعار حجز ناجح</h1>\n      </td></tr>\n<tr><td style=\"padding:12px 28px;text-align:center;\">\n        <img src=\"https://lonaliza.com/uploads/branding/mteic4ao-28027-t.jpg\" alt=\"لوناليزا للسياحة\" style=\"display:inline-block;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent;border:0;\" />\n      </td></tr>\n<tr><td style=\"padding:6px 28px 10px;text-align:right;direction:rtl;\">\n        <p style=\"margin:0;font-size:15px;line-height:1.85;color:#5b4d3e;white-space:pre-wrap;\">مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.</p>\n      </td></tr>\n<tr><td style=\"padding:16px 28px;text-align:center;\">\n        <a href=\"https://lonaliza.com/account\" style=\"display:inline-block;background:#10b981;color:#ffffff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:700;font-size:14px;\">متابعة من حسابك</a>\n      </td></tr>\n<tr><td style=\"padding:8px 28px;\"><div style=\"border-top:1px solid #e4d8c4;font-size:0;line-height:0;\">&nbsp;</div></td></tr>\n<tr><td style=\"padding:10px 28px;\">\n        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf6ef;border-radius:12px;padding:8px 16px;\"><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">رقم الحجز</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{bookingId}}</td>\n            </tr><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">المبلغ</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{amount}}</td>\n            </tr></table>\n      </td></tr>\n<tr><td style=\"background:#faf6ef;padding:18px 28px;color:#6b5b4b;font-size:12px;line-height:1.7;text-align:center;\">\n        <!--EMAIL_FOOTER_START--><div style=\"font-weight:700;color:#0a1628;margin-bottom:4px;\">لوناليزا للسياحة</div>\n        \n        <div><a href=\"https://lonaliza.com\" style=\"color:#10b981;text-decoration:none;\">lonaliza.com</a></div><!--EMAIL_FOOTER_END-->\n      </td></tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+      "text_ar": "لوناليزا للسياحة\nإشعار حجز ناجح\nلوناليزا للسياحة\nمرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.\nمتابعة من حسابك\nرقم الحجز: {{bookingId}}\nالمبلغ: {{amount}}\nلوناليزا للسياحة · lonaliza.com",
+      "text_en": "لوناليزا للسياحة\nإشعار حجز ناجح\nلوناليزا للسياحة\nمرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.\nمتابعة من حسابك\nرقم الحجز: {{bookingId}}\nالمبلغ: {{amount}}\nلوناليزا للسياحة · lonaliza.com",
+      "is_builtin": false,
+      "source": "builtin",
+      "variables": [
+        "name",
+        "company",
+        "booking_id",
+        "bookingId",
+        "service_name",
+        "detail_ar",
+        "detail_en",
+        "amount",
+        "currency",
+        "cta_url",
+        "bookingId"
+      ],
+      "document": {
+        "version": 1,
+        "canvasBg": "#f4efe6",
+        "cardBg": "#ffffff",
+        "blocks": [
+          {
+            "id": "b_mteiadjn_r0eknh",
+            "type": "header",
+            "background": "#0a1628",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_0bmkio",
+            "type": "heading",
+            "text": "إشعار حجز ناجح",
+            "color": "#122033",
+            "align": "center",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteibp1l_c3lyep",
+            "type": "image",
+            "align": "center",
+            "src": "https://lonaliza.com/uploads/branding/mteic4ao-28027-t.jpg",
+            "alt": "لوناليزا للسياحة",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_jfr43s",
+            "type": "paragraph",
+            "text": "مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.",
+            "color": "#5b4d3e",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_9fpe46",
+            "type": "button",
+            "text": "متابعة من حسابك",
+            "color": "#ffffff",
+            "background": "#10b981",
+            "align": "center",
+            "hrefKey": "account",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_00mnh6",
+            "type": "divider",
+            "color": "#e4d8c4",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_vpe6jg",
+            "type": "bookingTable",
+            "background": "#faf6ef",
+            "align": "right",
+            "rows": [
+              {
+                "label": "رقم الحجز",
+                "value": "{{bookingId}}"
+              },
+              {
+                "label": "المبلغ",
+                "value": "{{amount}}"
+              }
+            ],
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mteiadjn_a9jjzb",
+            "type": "footer",
+            "color": "#6b5b4b",
+            "background": "#faf6ef",
+            "align": "right",
+            "logoBackground": "brand"
+          }
+        ]
+      }
+    },
+    {
+      "id": "local:car-reminder",
+      "slug": "car-reminder",
+      "kind": "custom",
+      "name": "تذكير تأجير سيارة",
+      "subject_ar": "تذكير تأجير سيارة — {{service_name}}",
+      "subject_en": "Car rental reminder — {{service_name}}",
+      "html_ar": "<!--ALRAYYAN_EMAIL_DOC_V1-->\n<!--{\"version\":1,\"canvasBg\":\"#f4efe6\",\"cardBg\":\"#ffffff\",\"blocks\":[{\"id\":\"b_mtejaxnx_7bt0kv\",\"type\":\"header\",\"background\":\"#0a1628\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejb46d_jf3apg\",\"type\":\"image\",\"align\":\"center\",\"src\":\"/api/branding/file?name=email/mtejb860-28027-t.jpg\",\"alt\":\"لوناليزا للسياحة\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_ooagrc\",\"type\":\"heading\",\"text\":\"تذكير تأجير سيارة\",\"color\":\"#122033\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_etbnka\",\"type\":\"paragraph\",\"text\":\"مرحباً {{name}}\\n{{company}}\\nتفاصيل من لوناليزا للسياحة.\",\"color\":\"#5b4d3e\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_ot0qg1\",\"type\":\"button\",\"text\":\"متابعة من حسابك\",\"color\":\"#ffffff\",\"background\":\"#10b981\",\"align\":\"center\",\"hrefKey\":\"home\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_5tr9e9\",\"type\":\"divider\",\"color\":\"#e4d8c4\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_bo9v0g\",\"type\":\"bookingTable\",\"background\":\"#faf6ef\",\"align\":\"right\",\"rows\":[{\"label\":\"رقم الحجز\",\"value\":\"{{bookingId}}\"},{\"label\":\"المبلغ\",\"value\":\"{{amount}}\"}],\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_2trmgs\",\"type\":\"footer\",\"color\":\"#6b5b4b\",\"background\":\"#faf6ef\",\"align\":\"right\",\"logoBackground\":\"brand\"}]}-->\n<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>لوناليزا للسياحة</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4efe6;font-family:Tahoma,Arial,sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4efe6;padding:24px 8px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadfcd;\">\n          <tr><td style=\"background:#0a1628;padding:22px 28px 18px;text-align:center;\">\n        <!--EMAIL_LOGO_START--><img src=\"https://lonaliza.com/logo.png\" alt=\"لوناليزا للسياحة\" width=\"220\" style=\"display:block;margin:0 auto;max-width:220px;width:auto;height:auto;max-height:72px;object-fit:contain;background:transparent;border:0;outline:none;\" /><!--EMAIL_LOGO_END-->\n        <div style=\"margin-top:10px;font-size:16px;font-weight:700;color:#ffffff;\">لوناليزا للسياحة</div>\n      </td></tr>\n<tr><td style=\"padding:12px 28px;text-align:center;\">\n        <img src=\"https://lonaliza.com/api/branding/file?name=email/mtejb860-28027-t.jpg\" alt=\"لوناليزا للسياحة\" style=\"display:inline-block;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent;border:0;\" />\n      </td></tr>\n<tr><td style=\"padding:22px 28px 8px;text-align:right;direction:rtl;\">\n        <h1 style=\"margin:0;font-size:22px;line-height:1.45;color:#122033;font-weight:700;\">تذكير تأجير سيارة</h1>\n      </td></tr>\n<tr><td style=\"padding:6px 28px 10px;text-align:right;direction:rtl;\">\n        <p style=\"margin:0;font-size:15px;line-height:1.85;color:#5b4d3e;white-space:pre-wrap;\">مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.</p>\n      </td></tr>\n<tr><td style=\"padding:16px 28px;text-align:center;\">\n        <a href=\"https://lonaliza.com\" style=\"display:inline-block;background:#10b981;color:#ffffff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:700;font-size:14px;\">متابعة من حسابك</a>\n      </td></tr>\n<tr><td style=\"padding:8px 28px;\"><div style=\"border-top:1px solid #e4d8c4;font-size:0;line-height:0;\">&nbsp;</div></td></tr>\n<tr><td style=\"padding:10px 28px;\">\n        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf6ef;border-radius:12px;padding:8px 16px;\"><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">رقم الحجز</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{bookingId}}</td>\n            </tr><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">المبلغ</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{amount}}</td>\n            </tr></table>\n      </td></tr>\n<tr><td style=\"background:#faf6ef;padding:18px 28px;color:#6b5b4b;font-size:12px;line-height:1.7;text-align:center;\">\n        <!--EMAIL_FOOTER_START--><div style=\"font-weight:700;color:#0a1628;margin-bottom:4px;\">لوناليزا للسياحة</div>\n        \n        <div><a href=\"https://lonaliza.com\" style=\"color:#10b981;text-decoration:none;\">lonaliza.com</a></div><!--EMAIL_FOOTER_END-->\n      </td></tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+      "html_en": "<!--ALRAYYAN_EMAIL_DOC_V1-->\n<!--{\"version\":1,\"canvasBg\":\"#f4efe6\",\"cardBg\":\"#ffffff\",\"blocks\":[{\"id\":\"b_mtejaxnx_7bt0kv\",\"type\":\"header\",\"background\":\"#0a1628\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejb46d_jf3apg\",\"type\":\"image\",\"align\":\"center\",\"src\":\"/api/branding/file?name=email/mtejb860-28027-t.jpg\",\"alt\":\"لوناليزا للسياحة\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_ooagrc\",\"type\":\"heading\",\"text\":\"تذكير تأجير سيارة\",\"color\":\"#122033\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_etbnka\",\"type\":\"paragraph\",\"text\":\"مرحباً {{name}}\\n{{company}}\\nتفاصيل من لوناليزا للسياحة.\",\"color\":\"#5b4d3e\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_ot0qg1\",\"type\":\"button\",\"text\":\"متابعة من حسابك\",\"color\":\"#ffffff\",\"background\":\"#10b981\",\"align\":\"center\",\"hrefKey\":\"home\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_5tr9e9\",\"type\":\"divider\",\"color\":\"#e4d8c4\",\"align\":\"right\",\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_bo9v0g\",\"type\":\"bookingTable\",\"background\":\"#faf6ef\",\"align\":\"right\",\"rows\":[{\"label\":\"رقم الحجز\",\"value\":\"{{bookingId}}\"},{\"label\":\"المبلغ\",\"value\":\"{{amount}}\"}],\"logoBackground\":\"brand\"},{\"id\":\"b_mtejaxnx_2trmgs\",\"type\":\"footer\",\"color\":\"#6b5b4b\",\"background\":\"#faf6ef\",\"align\":\"right\",\"logoBackground\":\"brand\"}]}-->\n<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>لوناليزا للسياحة</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f4efe6;font-family:Tahoma,Arial,sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4efe6;padding:24px 8px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadfcd;\">\n          <tr><td style=\"background:#0a1628;padding:22px 28px 18px;text-align:center;\">\n        <!--EMAIL_LOGO_START--><img src=\"https://lonaliza.com/logo.png\" alt=\"لوناليزا للسياحة\" width=\"220\" style=\"display:block;margin:0 auto;max-width:220px;width:auto;height:auto;max-height:72px;object-fit:contain;background:transparent;border:0;outline:none;\" /><!--EMAIL_LOGO_END-->\n        <div style=\"margin-top:10px;font-size:16px;font-weight:700;color:#ffffff;\">لوناليزا للسياحة</div>\n      </td></tr>\n<tr><td style=\"padding:12px 28px;text-align:center;\">\n        <img src=\"https://lonaliza.com/api/branding/file?name=email/mtejb860-28027-t.jpg\" alt=\"لوناليزا للسياحة\" style=\"display:inline-block;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent;border:0;\" />\n      </td></tr>\n<tr><td style=\"padding:22px 28px 8px;text-align:right;direction:rtl;\">\n        <h1 style=\"margin:0;font-size:22px;line-height:1.45;color:#122033;font-weight:700;\">تذكير تأجير سيارة</h1>\n      </td></tr>\n<tr><td style=\"padding:6px 28px 10px;text-align:right;direction:rtl;\">\n        <p style=\"margin:0;font-size:15px;line-height:1.85;color:#5b4d3e;white-space:pre-wrap;\">مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.</p>\n      </td></tr>\n<tr><td style=\"padding:16px 28px;text-align:center;\">\n        <a href=\"https://lonaliza.com\" style=\"display:inline-block;background:#10b981;color:#ffffff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:700;font-size:14px;\">متابعة من حسابك</a>\n      </td></tr>\n<tr><td style=\"padding:8px 28px;\"><div style=\"border-top:1px solid #e4d8c4;font-size:0;line-height:0;\">&nbsp;</div></td></tr>\n<tr><td style=\"padding:10px 28px;\">\n        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf6ef;border-radius:12px;padding:8px 16px;\"><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">رقم الحجز</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{bookingId}}</td>\n            </tr><tr>\n              <td style=\"padding:8px 0;color:#6b5b4b;font-size:13px;text-align:right;\">المبلغ</td>\n              <td style=\"padding:8px 0;font-weight:700;font-size:13px;text-align:left;color:#122033;\">{{amount}}</td>\n            </tr></table>\n      </td></tr>\n<tr><td style=\"background:#faf6ef;padding:18px 28px;color:#6b5b4b;font-size:12px;line-height:1.7;text-align:center;\">\n        <!--EMAIL_FOOTER_START--><div style=\"font-weight:700;color:#0a1628;margin-bottom:4px;\">لوناليزا للسياحة</div>\n        \n        <div><a href=\"https://lonaliza.com\" style=\"color:#10b981;text-decoration:none;\">lonaliza.com</a></div><!--EMAIL_FOOTER_END-->\n      </td></tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+      "text_ar": "لوناليزا للسياحة\nلوناليزا للسياحة\nتذكير تأجير سيارة\nمرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.\nمتابعة من حسابك\nرقم الحجز: {{bookingId}}\nالمبلغ: {{amount}}\nلوناليزا للسياحة · lonaliza.com",
+      "text_en": "لوناليزا للسياحة\nلوناليزا للسياحة\nتذكير تأجير سيارة\nمرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.\nمتابعة من حسابك\nرقم الحجز: {{bookingId}}\nالمبلغ: {{amount}}\nلوناليزا للسياحة · lonaliza.com",
+      "is_builtin": false,
+      "source": "builtin",
+      "variables": [
+        "name",
+        "company",
+        "booking_id",
+        "bookingId",
+        "service_name",
+        "detail_ar",
+        "detail_en",
+        "amount",
+        "currency",
+        "cta_url",
+        "bookingId"
+      ],
+      "document": {
+        "version": 1,
+        "canvasBg": "#f4efe6",
+        "cardBg": "#ffffff",
+        "blocks": [
+          {
+            "id": "b_mtejaxnx_7bt0kv",
+            "type": "header",
+            "background": "#0a1628",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejb46d_jf3apg",
+            "type": "image",
+            "align": "center",
+            "src": "/api/branding/file?name=email/mtejb860-28027-t.jpg",
+            "alt": "لوناليزا للسياحة",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_ooagrc",
+            "type": "heading",
+            "text": "تذكير تأجير سيارة",
+            "color": "#122033",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_etbnka",
+            "type": "paragraph",
+            "text": "مرحباً {{name}}\n{{company}}\nتفاصيل من لوناليزا للسياحة.",
+            "color": "#5b4d3e",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_ot0qg1",
+            "type": "button",
+            "text": "متابعة من حسابك",
+            "color": "#ffffff",
+            "background": "#10b981",
+            "align": "center",
+            "hrefKey": "home",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_5tr9e9",
+            "type": "divider",
+            "color": "#e4d8c4",
+            "align": "right",
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_bo9v0g",
+            "type": "bookingTable",
+            "background": "#faf6ef",
+            "align": "right",
+            "rows": [
+              {
+                "label": "رقم الحجز",
+                "value": "{{bookingId}}"
+              },
+              {
+                "label": "المبلغ",
+                "value": "{{amount}}"
+              }
+            ],
+            "logoBackground": "brand"
+          },
+          {
+            "id": "b_mtejaxnx_2trmgs",
+            "type": "footer",
+            "color": "#6b5b4b",
+            "background": "#faf6ef",
+            "align": "right",
+            "logoBackground": "brand"
+          }
+        ]
+      }
+    }
+  ]
+}

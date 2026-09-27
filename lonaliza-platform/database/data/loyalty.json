@@ -1,0 +1,510 @@
+{
+  "settings": {
+    "enabled": true,
+    "pointsPerUsd": 10,
+    "pointsPerUsdByService": {},
+    "pointsPerUsdRedeem": 100,
+    "minConvertPoints": 100,
+    "requireAdminApproval": true,
+    "minBookingAmountUsd": 500,
+    "maxDiscountPercent": 15,
+    "maxVoucherDiscountUsd": 150,
+    "autoApproveVerifiedBookings": true
+  },
+  "coupons": [
+    {
+      "id": "cpn_lona10_public",
+      "code": "LONA10",
+      "service": "all",
+      "discountType": "percent",
+      "discountValue": 10,
+      "currency": "USD",
+      "validFrom": "2026-09-10",
+      "validTo": "2027-12-31",
+      "maxUsesTotal": 0,
+      "maxUsesPerUser": 0,
+      "minBookingAmount": 0,
+      "minBookingCurrency": "USD",
+      "newUserOnly": false,
+      "firstBookingOnly": false,
+      "active": true,
+      "title": {
+        "ar": "خصم لوناليزا 10%",
+        "en": "Lonaliza 10% off",
+        "tr": "Lonaliza %10 indirim"
+      },
+      "description": {
+        "ar": "خصم عام يظهر على أسعار البحث ويُطبَّق عند الدفع",
+        "en": "Public discount shown on search prices and applied at checkout",
+        "tr": "Arama fiyatlarında görünen ve ödemede uygulanan genel indirim"
+      },
+      "usedCount": 3,
+      "createdAt": "2026-09-10T18:50:00.000Z",
+      "updatedAt": "2026-09-22T09:14:52.802Z"
+    },
+    {
+      "id": "cpn_cb9b907095",
+      "code": "FIRST20",
+      "service": "all",
+      "discountType": "percent",
+      "discountValue": 20,
+      "currency": "USD",
+      "validFrom": "2026-08-30",
+      "validTo": "2027-12-31",
+      "maxUsesTotal": 0,
+      "maxUsesPerUser": 1,
+      "minBookingAmount": 0,
+      "minBookingCurrency": "USD",
+      "newUserOnly": false,
+      "firstBookingOnly": true,
+      "active": true,
+      "title": {
+        "ar": "خصم الحجز الأول 20%",
+        "en": "First booking 20% off",
+        "tr": "İlk rezervasyonda %20"
+      },
+      "description": {
+        "ar": "عروض الحجز الأول لعملاء لوناليزا",
+        "en": "First booking offer for Lonaliza guests",
+        "tr": "Lonaliza ilk rezervasyon teklifi"
+      },
+      "usedCount": 0,
+      "createdAt": "2026-08-30T13:50:08.113Z",
+      "updatedAt": "2026-09-22T09:14:52.803Z"
+    },
+    {
+      "id": "cpn_6257272001",
+      "code": "NEW350",
+      "service": "all",
+      "discountType": "fixed",
+      "discountValue": 50,
+      "currency": "USD",
+      "validFrom": "2026-08-30",
+      "validTo": "2027-12-31",
+      "maxUsesTotal": 0,
+      "maxUsesPerUser": 1,
+      "minBookingAmount": 80,
+      "minBookingCurrency": "USD",
+      "newUserOnly": true,
+      "firstBookingOnly": false,
+      "active": true,
+      "title": {
+        "ar": "خصم المستخدم الجديد حتى $50",
+        "en": "New guest discount up to $50",
+        "tr": "Yeni üye indirimi $50'ye kadar"
+      },
+      "description": {
+        "ar": "رمز خصم للمستخدم الجديد",
+        "en": "Promo code for new guests",
+        "tr": "Yeni kullanıcı promosyon kodu"
+      },
+      "usedCount": 0,
+      "createdAt": "2026-08-30T13:50:08.113Z",
+      "updatedAt": "2026-09-22T09:14:52.803Z"
+    }
+  ],
+  "wallets": [
+    {
+      "userId": "2229a9ozgxvswrc",
+      "points": 107,
+      "pendingPoints": 0,
+      "vouchers": [],
+      "ledger": [
+        {
+          "createdAt": "2026-09-04T14:41:31.099Z",
+          "id": "soc_ba112152fa",
+          "kind": "earn",
+          "note": "مكافأة تعليق في مجتمع السفر [cmt_1788532890996_kusdo]",
+          "points": 25,
+          "status": "confirmed",
+          "usdValue": 0.25,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T14:41:19.444Z",
+          "id": "soc_6bd4cc3c01",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [post_1788528241508_8bg6vi]",
+          "points": 2,
+          "status": "confirmed",
+          "usdValue": 0.02,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T13:26:10.336Z",
+          "id": "soc_b45e332edb",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [f01c5ddc4218b68380c69fa1ad51d799599a98a4920bce087d70c5a5e6a1de48]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T12:17:44.437Z",
+          "id": "soc_8bf8331a02",
+          "kind": "earn",
+          "note": "مكافأة تعليق في مجتمع السفر [cmt_1788524264335_5t96p]",
+          "points": 25,
+          "status": "confirmed",
+          "usdValue": 0.25,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T12:17:23.913Z",
+          "id": "soc_20978d34fb",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [post_1788519513862_nux1td]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T11:42:16.156Z",
+          "id": "soc_8399e174cb",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [reel_03]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T11:42:03.700Z",
+          "id": "soc_d143b7e66c",
+          "kind": "earn",
+          "note": "مكافأة تعليق في مجتمع السفر [cmt_1788522123495_58o2x]",
+          "points": 25,
+          "status": "confirmed",
+          "usdValue": 0.25,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T10:59:47.031Z",
+          "id": "soc_ea4da4fe05",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [5437c41cbc948ec22aed02855faecee20dd4acb804530498cb6face482dd6a9c]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T10:45:58.581Z",
+          "id": "soc_ffc4a64e47",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [nostr_travel_post_002]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        },
+        {
+          "createdAt": "2026-09-04T10:06:09.212Z",
+          "id": "soc_752787270a",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [nostr_travel_post_001]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "2229a9ozgxvswrc"
+        }
+      ]
+    },
+    {
+      "userId": "y1n205vw0elucff",
+      "points": 96,
+      "pendingPoints": 0,
+      "vouchers": [
+        {
+          "active": true,
+          "amountUsd": 20,
+          "code": "AR097D76",
+          "createdAt": "2026-09-04T09:17:11.432Z",
+          "id": "vch_20a4b1e975",
+          "remainingUsd": 20,
+          "service": "all",
+          "source": "points",
+          "userId": "y1n205vw0elucff"
+        }
+      ],
+      "ledger": [
+        {
+          "createdAt": "2026-09-04T10:47:32.983Z",
+          "id": "soc_5b903958a5",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [reel_01]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "y1n205vw0elucff"
+        },
+        {
+          "createdAt": "2026-09-04T09:55:11.520Z",
+          "id": "soc_3bcaad497a",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [nostr_travel_post_001]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "y1n205vw0elucff"
+        },
+        {
+          "createdAt": "2026-09-04T09:17:11.433Z",
+          "id": "ldg_30cc49639b",
+          "kind": "convert",
+          "note": "points_to_voucher",
+          "points": -2000,
+          "status": "confirmed",
+          "usdValue": 20,
+          "userId": "y1n205vw0elucff",
+          "voucherId": "vch_20a4b1e975"
+        },
+        {
+          "createdAt": "2026-09-04T09:16:01.254Z",
+          "id": "soc_31ec8700fe",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: إعجاب بتجربة سياحية [reel_02]",
+          "points": 5,
+          "status": "confirmed",
+          "usdValue": 0.05,
+          "userId": "y1n205vw0elucff"
+        },
+        {
+          "createdAt": "2026-09-04T09:15:14.021Z",
+          "id": "soc_a05838f0e0",
+          "kind": "earn",
+          "note": "مجتمع لوناليزا: مشاركة صور تجربة سياحية [53793c2675357f1f5075bbd03c12e5035f7ba6df13350431fdaae6633877889b]",
+          "points": 100,
+          "status": "confirmed",
+          "usdValue": 1,
+          "userId": "y1n205vw0elucff"
+        },
+        {
+          "bookingId": "qvz7g77lgoz5wmg",
+          "createdAt": "2026-08-30T13:50:08.113Z",
+          "id": "ldg_1418e0be9f",
+          "kind": "earn",
+          "points": 1981,
+          "service": "flights",
+          "status": "confirmed",
+          "usdValue": 19.81,
+          "userId": "y1n205vw0elucff"
+        }
+      ]
+    },
+    {
+      "userId": "current_user",
+      "points": 1050,
+      "pendingPoints": 0,
+      "vouchers": [],
+      "ledger": [
+        {
+          "approvedAt": "2026-09-05T15:06:16.745Z",
+          "approvedBy": "إدارة المنصة",
+          "createdAt": "2026-09-04T22:22:56.392Z",
+          "id": "soc_9cef0baaf8",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في كابادوكيا والمناطيد [post_1788560576253_knjtfg]",
+          "points": 50,
+          "status": "confirmed",
+          "usdValue": 0.5,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T18:21:05.923Z",
+          "id": "soc_3b00461e99",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في بورصة وأولوداغ [post_1788546065788_3of630]",
+          "points": 150,
+          "status": "confirmed",
+          "usdValue": 1.5,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T18:03:24.448Z",
+          "id": "soc_cdc71db088",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في اسطنبول [post_1788545004341_srceyz]",
+          "points": 50,
+          "status": "confirmed",
+          "usdValue": 0.5,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T13:24:01.763Z",
+          "id": "soc_146f1172ed",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في إسطنبول [post_1788528241508_8bg6vi]",
+          "points": 200,
+          "status": "confirmed",
+          "usdValue": 2,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T12:16:09.093Z",
+          "id": "soc_b16e2e2af2",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في إسطنبول [post_1788524168982_rc2p3l]",
+          "points": 200,
+          "status": "confirmed",
+          "usdValue": 2,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T10:58:33.963Z",
+          "id": "soc_fbe19939f0",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في اسطنبول [post_1788519513862_nux1td]",
+          "points": 150,
+          "status": "confirmed",
+          "usdValue": 1.5,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T10:57:28.842Z",
+          "id": "soc_a7981d35b1",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في اسطنبول [post_1788519448715_t8cgkf]",
+          "points": 100,
+          "status": "confirmed",
+          "usdValue": 1,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T10:01:03.477Z",
+          "id": "soc_69a8fb4397",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في اسطنبول [post_1788516063343_upnrif]",
+          "points": 100,
+          "status": "confirmed",
+          "usdValue": 1,
+          "userId": "current_user"
+        },
+        {
+          "createdAt": "2026-09-04T09:39:30.477Z",
+          "id": "soc_25be0a13bd",
+          "kind": "earn",
+          "note": "مكافأة نشر تجربة سياحية في اسطنبول [post_1788514770372_pufnd9]",
+          "points": 50,
+          "status": "confirmed",
+          "usdValue": 0.5,
+          "userId": "current_user"
+        }
+      ]
+    },
+    {
+      "userId": "fypk6qsauo22f6n",
+      "points": 0,
+      "pendingPoints": 23064,
+      "vouchers": [],
+      "ledger": [
+        {
+          "bookingId": "t9rtgoaorkoc3zf",
+          "createdAt": "2026-09-14T16:47:40.367Z",
+          "id": "ldg_e5a36876c7",
+          "kind": "earn",
+          "points": 16197,
+          "service": "hotels",
+          "status": "pending",
+          "usdValue": 161.97,
+          "userId": "fypk6qsauo22f6n"
+        },
+        {
+          "createdAt": "2026-09-14T16:37:18.973Z",
+          "id": "soc_40bdd2f8e8",
+          "kind": "earn",
+          "note": "مكافأة تعليق في مجتمع السفر [cmt_1789403838886_ezoi4]",
+          "points": 25,
+          "status": "pending",
+          "usdValue": 0.25,
+          "userId": "fypk6qsauo22f6n"
+        },
+        {
+          "bookingId": "i3k68uga2p2l118",
+          "createdAt": "2026-09-14T00:06:00.973Z",
+          "id": "ldg_a5c8c6b98f",
+          "kind": "earn",
+          "points": 3421,
+          "service": "flights",
+          "status": "pending",
+          "usdValue": 34.21,
+          "userId": "fypk6qsauo22f6n"
+        },
+        {
+          "bookingId": "k55el02b32nxbjk",
+          "createdAt": "2026-09-14T00:05:30.043Z",
+          "id": "ldg_46ebc07bd9",
+          "kind": "earn",
+          "points": 3421,
+          "service": "flights",
+          "status": "pending",
+          "usdValue": 34.21,
+          "userId": "fypk6qsauo22f6n"
+        }
+      ]
+    },
+    {
+      "userId": "vip_traveler",
+      "points": 750,
+      "pendingPoints": 0,
+      "vouchers": [],
+      "ledger": [
+        {
+          "id": "soc_f4e478ed9d",
+          "userId": "vip_traveler",
+          "kind": "earn",
+          "status": "confirmed",
+          "points": 250,
+          "usdValue": 2.5,
+          "note": "مكافأة مشاركة برنامج رحلة سياحية إلى Istanbul في مجتمع لوناليزا [trip_trip-mucggaku-b7ejf_shiq]",
+          "createdAt": "2026-09-22T09:14:53.038Z"
+        },
+        {
+          "createdAt": "2026-09-21T17:39:41.348Z",
+          "id": "soc_936cbcd8b2",
+          "kind": "earn",
+          "note": "مكافأة مشاركة برنامج رحلة سياحية إلى إسطنبول في مجتمع لوناليزا [trip_test_trip_123_a91b]",
+          "points": 250,
+          "status": "confirmed",
+          "usdValue": 2.5,
+          "userId": "vip_traveler"
+        },
+        {
+          "createdAt": "2026-09-21T16:19:48.121Z",
+          "id": "soc_8e540761a4",
+          "kind": "earn",
+          "note": "مكافأة مشاركة برنامج رحلة سياحية إلى Trabzon في مجتمع لوناليزا [trip_test_trip_123_ne3c]",
+          "points": 250,
+          "status": "confirmed",
+          "usdValue": 2.5,
+          "userId": "vip_traveler"
+        }
+      ]
+    }
+  ],
+  "redemptions": [
+    {
+      "id": "rdm_0fe503ce6d",
+      "couponId": "cpn_lona10_public",
+      "userId": "fypk6qsauo22f6n",
+      "createdAt": "2026-09-14T00:05:30.042Z",
+      "bookingId": "k55el02b32nxbjk"
+    },
+    {
+      "id": "rdm_101bcdda61",
+      "couponId": "cpn_lona10_public",
+      "userId": "fypk6qsauo22f6n",
+      "createdAt": "2026-09-14T00:06:00.973Z",
+      "bookingId": "i3k68uga2p2l118"
+    },
+    {
+      "id": "rdm_eac42408b2",
+      "couponId": "cpn_lona10_public",
+      "userId": "fypk6qsauo22f6n",
+      "createdAt": "2026-09-14T16:47:40.367Z",
+      "bookingId": "t9rtgoaorkoc3zf"
+    }
+  ]
+}

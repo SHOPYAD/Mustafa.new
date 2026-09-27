@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<title>JSON APIs: JSON API Air v11</title>
+	<GDS>1G – Travelport+, 1P - Worldspan, 1V - Apollo</GDS>
+	<role>Developer</role>
+    <url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/AirAPIs11.htm</loc>
+		<title>JSON APIs: Air v11 Online Help</title>
+		<keywords>JSON, Airv11, Air v11, JSON APIs</keywords>
+		<description>Help for JSON API Air v11</description>
+    </url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/NDCGuide.htm</loc>
+		<title>JSON APIs: NDC Guide</title>
+		<keywords>NDC, New Distribution Capability, NDC carriers, NDC support</keywords>
+		<description>This guide discusses general NDC support in the JSON APIs and high-level differences by API.</description>
+	</url>
+    <url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm</loc>
+		<title>JSON APIs: Authentication</title>
+		<keywords>OAuth, JSON APIs authentication, authentication, credentials </keywords>
+		<description>All Travelport JSON APIs require authentication with OAuth 2.0. Before calling any API, you must follow an OAuth-based authorization procedure to obtain an access token, and then provide that access token with every call.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.htm</loc>
+		<title>JSON APIs: Search API</title>
+		<keywords>Air Search, Search, catalogproductofferings, passengerTypeCode, SearchModifiersAir, search modifiers</keywords>
+		<description>The Search API is the first step in the travel booking workflow. Send a Search request to return offers for flights between the selected cities.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_NextLegSearch.htm</loc>
+		<title>JSON APIs: Next Leg Search API</title>
+		<keywords>Air Search, buildnext, CatalogProductOfferingsQueryBuildNext, build next</keywords>
+		<description>Use the Next Leg Search API to return offers for the remaining leg/s of an itinerary after a leg-based Search. A leg-based Search response returns offers for only the outbound leg of your itinerary, and you must send Next Leg Search to return offers for the remaining leg or legs of the trip.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/AirEndpointsList11.htm</loc>
+		<title>JSON APIs: Air APIs Endpoints</title>
+		<keywords>endpoints, JSON APIs endpoints</keywords>
+		<description>A consolidated list of endpoints and associated methods for all v11 Air APIs.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificRefPayload.htm</loc>
+		<title>JSON APIs: Flight Specific Search Reference Payload</title>
+		<keywords>Air Search, ProductIdentifier, reference payload, upsells</keywords>
+		<description>Use the Flight Specific Search API reference payload request to return additional upsells (you can set up to 99) for any product or products returned by a Search or Next Leg Search. The reference payload sends an identifier referencing a previous response and the offer and product identifiers. Supported for both GDS and NDC.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificFullPayload.htm</loc>
+		<title>JSON APIs: Flight Specific Search Full Payload</title>
+		<keywords>Air Search, full payload, buildoptions, upsells</keywords>
+		<description>Use the Flight Specific Search API's full payload request to return additional upsells (you can set up to 99) for one or more flights.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_AirPriceReferencePayload.htm</loc>
+		<title>JSON APIs: AirPrice Reference Payload</title>
+		<keywords>Price, Air Price, buildfromcatalogproductofferings, lowFareFinderInd, returnBrandedFaresInd, pricing modifiers</keywords>
+		<description>The AirPrice API confirms pricing on air search results. While air pricing is generally an optional but recommended step, it is required for low cost carriers and some NDC carriers.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_AirPriceFullPayload.htm</loc>
+		<title>JSON APIs: AirPrice Full Payload API Reference</title>
+		<keywords>Air Price, Price, buildfromproducts, full payload, BuildFromProductsRequest, OfferQueryBuildFromProducts</keywords>
+		<description>The AirPrice API confirms pricing on air search results. While air pricing is generally an optional but recommended step, it is required for low cost carriers and some NDC carriers. This API reference documents the full payload request, which sends full itinerary details without a reference to any previous search. This request can be used to price an itinerary returned from the Search API or from a non-Travelport source.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FullBrandPricing.htm</loc>
+		<title>JSON APIs: Full Brand Pricing API Reference</title>
+		<keywords>brand content, buildcompleteinfofromoffer, Air Price, Price, BrandQueryBuildCompleteInfoFromOffer, OfferIdentifier, ProductIdentifier</keywords>
+		<description>The full brand pricing request is a follow-on request to air pricing that returns any additional content for the branded fares returned. All attributes associated with that branded fare are returned along with any additional details available, such as beverages, mileage accrual, etc. If brand details are not available for that market, no additional details are returned. The full brand pricing request can be sent after either an AirPrice reference payload request or an AirPrice full payload request , as long as the request sent returnBrandedFaresInd set to true to return brand attributes.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareRules.htm</loc>
+		<title>JSON APIs: Fare Rules API Reference</title>
+		<keywords>fare rules, farerules, offerIdentifier, fareRuleType, fareRuleCategories</keywords>
+		<description>Fare rules are the conditions and restrictions that apply to any booking based on its fare type. These determine the price of the fare. Generally, less expensive fares have more restrictions and more expensive fares have fewer restrictions. Fare rules can include blackout dates, advanced reservation requirements, minimum and maximum stay requirements, and cancellation and change penalties.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchNewCreate.htm</loc>
+		<title>JSON APIs: New Workbench API Reference</title>
+		<keywords>session, reservationworkbench, ReservationID, work bench, workbench identifier</keywords>
+		<description>Use this request to initiate a workbench for a new reservation. This prerequisite step for booking creates the workbench session in which all booking details are added together to create a reservation at commit.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.htm</loc>
+		<title>JSON APIs: Post-Commit Workbench API Reference</title>
+		<keywords>booking, session, reservationworkbench, work bench, workbench, LocatorCode, Locator</keywords>
+		<description>Initiate a post-commit workbench to create a session for ticketing or updating an existing reservation. This is a prerequisite step for any transaction that modifies, updates, or tickets any reservation.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchRetrieve.htm</loc>
+		<title>JSON APIs: Retrieve Workbench API Reference</title>
+		<keywords>workbench, work bench, workbenchID</keywords>
+		<description>At any point in the booking session, you can retrieve the workbench. The response returns all details added to the workbench at that point.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchDiscard.htm</loc>
+		<title>JSON APIs: Discard Workbench API Reference</title>
+		<keywords>DEL, workbenchID, work bench</keywords>
+		<description>At any point in a booking or ticketing workflow, if necessary, you can discard the workbench and any information in it.</description>
+    </url>
+	<url>
+        <loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm</loc>
+		<title>JSON APIs: Workbench Commit API Reference</title>
+		<keywords>booking, session, workbenchID, work bench</keywords>
+		<description>After all required and any optional steps in a booking workbench session, send a POST request with the workbench identifier to commit the workbench. </description>
+    </url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferRefPayload.htm</loc>
+		<title>JSON APIs: Add Offer Reference Payload API Reference</title>
+		<keywords>booking, reservationworkbench, buildfromcatalogofferings, add offer, OfferQueryBuildFromCatalogProductOfferings</keywords>
+		<description>Use the Add Offer reference payload request to add an offer to the reservation workbench as part of the booking workflow. The reference payload request sends identifiers from the Search response instead of full itinerary details.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.htm</loc>
+		<title>JSON APIs: Add Offer Full Payload API Reference</title>
+		<keywords>booking, reservationworkbench, buildfromproducts, OfferQueryBuildFromProducts, add offer </keywords>
+		<description>Use the Add Offer full payload request to add an offer to the reservation workbench as part of the booking workflow. The full payload request sends full itinerary details instead of identifiers from the Search response as in the reference payload request.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelerAdd.htm</loc>
+		<title>JSON APIs: Add Traveler API Reference</title>
+		<keywords>traveler, traveller, passengerTypeCode, TravelerRef, Address, PassengerCriteria, frequent flyer, CustomerLoyalty, Customer Loyalty, TravelDocument, Travel Document</keywords>
+		<description>Send the Add Traveler request to add a traveler to the reservation workbench. You must add each traveler to the workbench in a separate POST request. Traveler information can include traveler name and contact details, add traveler-specific remarks including certain SSRs and travel documents such as a passport.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/RemarksGuide.htm</loc>
+		<title>JSON APIs: Remarks and Service Requests Guide and API Reference</title>
+		<keywords>remarks, comments, traveler document, SSR, DOCO, DOCS, FOID, form of ID, CHLD, CTCE, CTCM, CTCR, meal request, comment, OSI, document override remarks, accounting remarks, India GST</keywords>
+		<description>The JSON APIs support several types of comments and optional service requests. Some, such as travel document details and client delivery comments, are sent in the Add Traveler payload and can only be added in the initial booking workflow. Others are sent in a separate payload either during the initial booking workflow, or you can add them to an existing reservation. This combined guide and API reference provides the endpoint, payload, and examples for all comments and optional service requests. Each section notes whether the reservation retrieve returns that information.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.htm</loc>
+		<title>JSON APIs: Reservation Retrieve API Reference</title>
+		<keywords>booking, LocatorCode, reservation, retrieve, fareRuleRetrievalType</keywords>
+		<description>Retrieve details about a held booking, or reservation. While a reservation refers to a held booking that has not been ticketed, the reservation code persists after ticketing to provide the booking records. Once a reservation has been ticketed, you can still use Reservation Retrieve to return both booking and ticketing details.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelerUpdatableItems.htm</loc>
+		<title>JSON APIs: Traveler Updatable Items API Reference</title>
+		<keywords>traveler, traveller, update traveler, change traveler name, updatableitem, TravelerUpdatableItemsQueryBuildFromTraveler</keywords>
+		<description>The Updatable Items request retrieves by traveler ID a list of objects that are updatable for that traveler, and returns for each an indicator for whether that item can be added, modified, or deleted.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryShop.htm</loc>
+		<title>JSON APIs: Ancillary Shop API Reference</title>
+		<keywords>paid baggage, ancillary, ancillaries, ancillaryshop, CatalogOfferingsQueryAncillaries, AncillaryOfferings</keywords>
+		<description>The Ancillary Shop request searches for ancillaries available for the reservation. You must first create a new or post-commit workbench. After ancillary shop, send an ancillary price request (only for NDC), and then add the selected ancillary to the workbench.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryPrice.htm</loc>
+		<title>JSON APIs: Ancillary Price API Reference</title>
+		<keywords>paid baggage, ancillary, ancillaries, buildancillaryoffersfromcatalogofferings, CatalogOfferingsIdentifier</keywords>
+		<description>The Ancillary Price request confirms pricing request searches for a selected ancillary. You must first create a new or post-commit workbench and send an Ancillary Shop request. After pricing, add the selected ancillary to the workbench.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryBook.htm</loc>
+		<title>JSON APIs: Ancillary Book API Reference</title>
+		<keywords>ancillary, ancillaries, paid baggage, reservationworkbench, buildancillaryoffersfromcatalogofferings</keywords>
+		<description>The Ancillary Book request adds a selected ancillary or a paid seat to the new or post-commit workbench.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_EMDDisplay.htm</loc>
+		<title>JSON APIs: EMD Display API Reference</title>
+		<keywords>EMDNumber, EMD Number, EMD, ancillary, emddisplayvoid</keywords>
+		<description>Display an EMD to retrieve EMD details such as the amount paid and agency ticketing information.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_EMDVoid.htm</loc>
+		<title>JSON APIs: EMD Void API Reference</title>
+		<keywords>EMDNumber, void, EMD, emddisplayvoid, ancillary, EMDQueryUpdateEMD</keywords>
+		<description>Void an EMD to cancel it. You can also use EMD void with GDS Exchange Ticketing API to refund an EMD back to the FOP.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_SeatMap.htm</loc>
+		<title>JSON APIs: Seat Map API Reference</title>
+		<keywords>catalogofferingsancillaries, seatavailabilities, seat, seats, SeatAvailabilityOfferings, CatalogOfferingsQuerySeatAvailability</keywords>
+		<description>The Seat Map request returns seat availability for free and paid seats. </description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_SeatBook.htm</loc>
+		<title>JSON APIs: Seat Book API Reference</title>
+		<keywords>seat, seats, book seat, assign seats, buildancillaryoffersfromcatalogofferings, SeatAssignment</keywords>
+		<description>After retrieving available seats with a Seat Map request, you can send a Seat Book request to add a selected seat to the workbench.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_SeatCancel.htm</loc>
+		<title>JSON APIs: Seat Cancel API Reference</title>
+		<keywords>cancel seat, canceloffer, OfferQueryCancelOffer</keywords>
+		<description>The Seat Cancel API supports canceling free and paid seats for GDS and NDC as part of a workbench session. After canceling seats, if desired, you can select new seats in the same workbench session.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.htm</loc>
+		<title>JSON APIs: Form of Payment API Reference</title>
+		<keywords>formofpayment, form of payment, FOP, credit card, cash, agent invoice, FormOfPaymentPaymentCard, PaymentCard, FormOfPaymentCash, invoice, FormOfPaymentInvoice, InvoiceNumber</keywords>
+		<description>You can send an Add Form of Payment (FOP) request in either a booking or ticketing workbench session. FOPs of cash and credit are supported. FOPs of agent invoice and non-standard credit card are supported for GDS only. If FOP is not sent during booking it is required during ticketing.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.htm</loc>
+		<title>JSON APIs: Payment API Reference</title>
+		<keywords>payments, paymentoffer, payment, amount, FormOfPaymentIdentifier</keywords>
+		<description>The Add Payment step takes place in a ticketing workbench session and sends the payment. It references both the form of payment to be used for the payment and the offer to pay for. Form of payment information must already exist either in the reservation or the workbench. At workbench commit, tickets are issued for any offer for which payment has been sent.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_Queue.htm</loc>
+		<title>JSON APIs: Queue API Reference</title>
+		<keywords>queue, AgencyQueue, pcc override, pccOverride, category</keywords>
+		<description>Prior to ticketing, you can add queue placement information to a reservation. This adds a specific agency queue to the reservation so that any additional action can be managed as necessary. Queue placement is optional after booking and before ticketing.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketRetrieve.htm</loc>
+		<title>JSON APIs: Ticket Retrieve API Reference</title>
+		<keywords>ticketing, retrieve, ticket, reservations, booking file, retrieve ticket, retrieve booking file, ticketID</keywords>
+		<description>The Ticket Retrieve request returns details for a single ticket. To list ticket numbers for a single reservation, use the Ticket List request.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketList.htm</loc>
+		<title>JSON APIs: Ticket List API Reference</title>
+		<keywords>ticketing, LocatorCode, receipt, receipts, reservations, ticket, ticket list</keywords>
+		<description>Send a ticket list request to return a list of all ticket numbers on a reservation. </description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm</loc>
+		<title>JSON APIs: Exchange, Refund, and Void Guide</title>
+		<keywords>GDS exchanges, exchanges, void, exchange, refund, cancel, voluntary refund, manual refund, involuntary refund, automated refund</keywords>
+		<description>The JSON APIs support canceling GDS reservations, and voiding, exchanging, or refunding GDS tickets. This guide summarizes supported options.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/TicketCancelNDC.htm</loc>
+		<title>JSON APIs: Ticket Void and Cancel (NDC)</title>
+		<keywords>void, cancel, NDC, refund, retain ticket value</keywords>
+		<description>Explains how to void a ticket and cancel a reservation.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm</loc>
+		<title>JSON APIs: Exchange, Refund, and Void Guide</title>
+		<keywords>NDC, Air modify, modify air, exchange, exchange ticket, reprice, reshop, re-issue, reissue</keywords>
+		<description>This guide summarizes the options and workflows for modifying, exchanging, or canceling and refunding NDC bookings and tickets.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeEligibility.htm</loc>
+		<title>JSON APIs: Exchange Eligibility API Reference</title>
+		<keywords>GDS, exchange, exchanges, eligibility, ticketchangeeligibilities, ticket, locator</keywords>
+		<description>The Eligibility API is the first step in the GDS exchange workflow. Eligibility returns information about whether a ticket may have value in an exchange or refund scenario, and the range of potential exchange and refund fees. This information relates only to fees and not any fare or tax difference for the itinerary.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeSearch.htm</loc>
+		<title>JSON APIs: Exchange Search API Reference</title>
+		<keywords>GDS exchange, exchanges, exchangesearch, catalogofferingsairchange, CatalogOfferingsQueryAirChange, CatalogOfferingsAirChangeRequest</keywords>
+		<description>The Exchange Search API is the second step in the GDS exchange workflow, after Eligibility. It supports searching for an alternate itinerary for a possible exchange on a currently ticketed GDS itinerary. The response details any differences in base fare, taxes, fees, and total price between the currently ticketed itinerary and the possible new itinerary.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm</loc>
+		<title>JSON APIs: Exchange, Refund, and Void Guide</title>
+		<keywords>GDS exchange, workflows, ticket, ticket exchange, GDS, exchange, exchange ticket, buildfromcatalogofferings, OfferQueryBuildFromCatalogOfferings</keywords>
+		<description>Exchange Ticketing is the last step in the GDS exchange workflow, after the Exchange Search. Exchange Ticketing supports making changes to an existing GDS itinerary, and processing add collects, change fees, or refunds when applicable.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/CommonAirHeaders.htm</loc>
+		<title>JSON APIs: Common Headers</title>
+		<keywords>authentication, credentials, PCC, headers, header fields, Accept-Encoding, Cache-Control, application/json, Content-Type, Authorization, XAUTH_TRAVELPORT_ACCESSGROUP, Accept-Version, Content-Version</keywords>
+		<description>Provides required and additional header fields for all Air APIs.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/ReadytoCertify.htm</loc>
+		<title>JSON APIs: Ready to Certify</title>
+		<keywords>certify, JSON, JSON API, checklist, certification</keywords>
+		<description>To certify with any of the JSON APIs, follow this checklist and then enter a support request in your MyTravelport account.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm</loc>
+		<title>JSON APIs: Using Postman to Test APIs</title>
+		<keywords>Postman, credentials, test, testing</keywords>
+		<description>The free Postman GUI application allows you to test API requests and see examples before you add the API to your development environment.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/JSONAPIsGuide.htm</loc>
+		<title>JSON APIs: JSON Air APIs Guide</title>
+		<keywords>JSON APIs overview, overview, intro, JSON APIs, getting started, workflows</keywords>
+		<description>This guide provides a general introduction to using the JSON APIs to search for and book air travel. It discusses basic travel terms you need to know to develop your applications and how those terms are represented in the JSON responses. It also summarizes the general workflow from searching for flights through ticketing.
+</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/JSONAPIworkflow_required.htm</loc>
+		<title>JSON APIs: JSON APIs Required full workflow</title>
+		<keywords>overview, workflows, workflow, JSON APIs workflow</keywords>
+		<description>The following diagram shows the API requests in the minimum required workflow from beginning to end to ticket a flight in the JSON APIs.</description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/JSONAPIworkflow_optional.htm</loc>
+		<title>JSON APIs: JSON APIs Full Workflow with Optional Steps</title>
+		<keywords>overview, workflows, workflow, JSON APIs workflow</keywords>
+		<description>The following diagram shows all required API requests in the JSON API workflow plus several optional steps.</description>
+	</url>		
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/Search_all-workflows.htm</loc>
+		<title>JSON APIs: All Search Workflows</title>
+		<keywords>search, flight search, workflows, workflow, JSON APIs workflow</keywords>
+		<description>The Search APIs offer a number of workflows, determined by whether the initial Search response returns offers for all legs of the itinerary (journey-based search) or only the first leg (leg-based search).</description>
+	</url>		
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/Ancillary_workflow.htm</loc>
+		<title>JSON APIs: Ancillary Workflow</title>
+		<keywords>workflows, workflow, JSON APIs workflow</keywords>
+		<description>The diagram below illustrates the ancillary workflow to add ancillaries to an existing reservation, or during ticketing.</description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/Seats_workflow.htm</loc>
+		<title>JSON APIs: Seats Workflows</title>
+		<keywords>seat, seats, booking, seat workflow, workflows, workflow, JSON APIs workflow</keywords>
+		<description>The diagram below illustrates workflows to add seats during booking and to add seats to an existing reservation, and, optionally, to issue tickets in the same session.</description>
+	</url>		
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/BookTicket_all-workflows.htm</loc>
+		<title>JSON APIs: All Book and Ticketing Workflows</title>
+		<keywords>book, ticket, booking, ticketing, booking workflow, ticketing workflow, workflows, workflow, JSON APIs workflow</keywords>
+		<description>The following diagrams outline all supported book and ticketing workflows.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/GDSExchanges_workflow.htm</loc>
+		<title>JSON APIs: GDS Exchanges Workflow</title>
+		<keywords>GDS, GDS exchanges, ticket exchange, exchange, exchanges, exchange workflow, workflow, workflows, JSON APIs workflow</keywords>
+		<description>Exchange functionality for GDS itineraries is handled by the GDS Exchange APIs.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/NDCExchangeRefund_workflow.htm</loc>
+		<title>JSON APIs: NDC Exchange and Refund Workflow</title>
+		<keywords>NDC, NDC exchanges, refunds, ticket exchange, exchange, exchanges, exchange workflow, workflow, workflows, JSON APIs workflow</keywords>
+		<description>Exchange and refund functionality for NDC bookings and tickets is handled by a set of NDC-specific APIs.</description>
+	</url>			
+	<url>
+		<loc></loc>
+		<title>JSON APIs: </title>
+		<keywords></keywords>
+		<description></description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/AirShoppingGuide.htm</loc>
+		<title>JSON APIs: Air Search Guide</title>
+		<keywords>search, JSON APIs overview, overview, search modifiers, upsells, split ticketing, combinability, getting started</keywords>
+		<description>This guide details the terms and concepts for using the JSON Search APIs and their workflow.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/AirPricingGuide.htm</loc>
+		<title>JSON APIs: Air Pricing Guide</title>
+		<keywords>pricing, price flights, price, price modifiers, pricing modifiers, JSON APIs overview, overview, getting started</keywords>
+		<description>This guide details the terms and concepts for using the JSON AirPrice APIs and their workflow</description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/FareRulesGuide.htm</loc>
+		<title>JSON APIs: Fare Rules Guide</title>
+		<keywords>fare rules, fare rule, fare rule support, JSON APIs overview, overview, getting started</keywords>
+		<description>Fare rules are the conditions and restrictions that apply to any reservation based on its fare type. This guide discusses the Fare Rules API and when to use it.</description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/SeatsGuide.htm</loc>
+		<title>JSON APIs: Seats Guide</title>
+		<keywords>seats, seat booking, JSON APIs overview, overview, getting started</keywords>
+		<description>The Seats APIs support the optional selection and booking of free and paid seats for both GDS and NDC content. This guide discusses basic concepts and the Seats JSON APIs. </description>
+	</url>	
+	<url>
+		<loc></loc>
+		<title>JSON APIs: Guide</title>
+		<keywords>, JSON APIs overview, overview, getting started</keywords>
+		<description></description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/AncillaryGuide.htm</loc>
+		<title>JSON APIs: Ancillary Guide</title>
+		<keywords>ancillaries, baggage, JSON APIs overview, overview, getting started</keywords>
+		<description>Ancillaries are any paid optional services filed by airlines and travel providers as available for selected air segments. This guide discusses basic concepts and the Ancillary Shop and Book APIs.</description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/BookingGuide.htm</loc>
+		<title>JSON APIs: Booking Guide</title>
+		<keywords>booking, reservations, ticketing, shell reservations, shell bookings, involuntary flight change, JSON APIs overview, overview, getting started</keywords>
+		<description></description>
+	</url>	
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/BookingGuide.htm#custom</loc>
+		<title>JSON APIs: Booking Guide</title>
+		<keywords>rules, custom rules, JSON APIs overview, overview, getting started</keywords>
+		<description>The JSON Custom Rules APIs allow you to manage and use the custom rules set up for your PCC.</description>
+	</url>		
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/ReservationRetrieveGuide.htm</loc>
+		<title>JSON APIs: Reservation Retrieve Guide</title>
+		<keywords>booking, reservation, locator code, JSON APIs overview, overview, getting started</keywords>
+		<description>A reservation is a general term for a booking and all associated details about that booking. This guide details the reservation retrieve, which is used to verify booking details after the reservation is created.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelerModifyGuide.htm</loc>
+		<title>JSON APIs: Traveler Modify Guide</title>
+		<keywords>traveler, traveller, traveler update, update traveler, JSON APIs overview, overview, getting started</keywords>
+		<description>Traveler information sent in the Add Traveler request can be added, modified, and deleted using the Traveler Updatable Items and Traveler Update requests. This topic details the workflow and payloads for these requests.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/TicketingGuide.htm</loc>
+		<title>JSON APIs: Ticketing Guide</title>
+		<keywords>ticketing, payment, ticket, JSON APIs overview, overview, getting started</keywords>
+		<description>The AirTicketing API issues tickets for a held booking. This guide summarizes the required and optional steps in the ticketing workflow.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ExchangeRefundGuide.htm</loc>
+		<title>JSON APIs: Exchange, Refund, and Void Guide</title>
+		<keywords>GDS exchanges, exchange, exchanges, JSON APIs overview, overview, getting started</keywords>
+		<description>This guide details how to use the GDS Exchanges APIs to exchange a ticket, including support and concepts.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_AirAvailability.htm</loc>
+		<title>JSON APIs: Air Availability</title>
+		<keywords>air search, search, availability, flight search</keywords>
+		<description>Air Availability returns scheduled flights between a specified city pair on a specified day and time and indicates whether seats are available on those flights. Unlike the Search APIs, Air Availability focuses on seat availability by class of service. The response does not return pricing information.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareDisplay.htm</loc>
+		<title>JSON APIs: Fare Display API Reference</title>
+		<keywords>fare rules, fare display</keywords>
+		<description>The Fare Display API returns fare rule text based on the origin and destination location. This request does not require a preceding Search or AirPrice request.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_HostProfileMove.htm</loc>
+		<title>JSON APIs: Host Profile Move API Reference</title>
+		<keywords>copy a profile, traveler, traveller, traveler profile</keywords>
+		<description>The Host Profile Move request copies traveler profile information already stored in the Travelport system into the JSON API booking workflow so that this data does not need to be re-sent.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelAgencyCorpID.htm</loc>
+		<title>JSON APIs: Travel Agency Corporate ID API Reference</title>
+		<keywords>travel agency, travel agency ID, agency ID</keywords>
+		<description>The Corporate ID request adds a travel agency corporate ID to the booking.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelAgencyAddress.htm</loc>
+		<title>JSON APIs: Travel Agency Address API Reference</title>
+		<keywords>travel agency, travel agency address, address</keywords>
+		<description>The Corporate ID request adds a travel agency address to the booking.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_TicketAsFOP.htm</loc>
+		<title>JSON APIs: Ticket as FOP API Reference</title>
+		<keywords>FOP, form of payment, payment, ticket as payment, ticket form of payment</keywords>
+		<description>In certain scenarios, the JSON APIs support using the value on an unused ticket as form of payment (FOP) for ticketing a separate, held booking.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationDivide.htm</loc>
+		<title>JSON APIs: Reservation Divide API Reference</title>
+		<keywords>reservation divide, PNR divide, split a reservation</keywords>
+		<description>Use the Reservation Divide API to divide a reservation with multiple travelers into separate itineraries.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/AirReleaseNotes.htm</loc>
+		<title>JSON APIs: Release Notes</title>
+		<keywords>release notes, updates, changes</keywords>
+		<description>Updated releases of the JSON APIs.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/ErrorList.htm</loc>
+		<title>JSON APIs: Error Messaging</title>
+		<keywords>errors, error handling, error messages</keywords>
+		<description>JSON APIs error handling and messaging.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/helphelp.htm</loc>
+		<title>JSON APIs: Using the JSON APIs Online Help</title>
+		<keywords>getting started, JSON APIs, support</keywords>
+		<description>This topic orients you to the types of information you can find in the online help for the JSON APIs.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Support.htm</loc>
+		<title>JSON APIs: Support Options for the JSON APIs</title>
+		<keywords>JSON APIs, support</keywords>
+		<description>Support resources for the JSON APIs.</description>
+	</url>
+	<url>
+		<loc>https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Downloads.htm</loc>
+		<title>JSON APIs: Developer Toolkits for the JSON APIs</title>
+		<keywords>JSON APIs, downloads, testing, Postman</keywords>
+		<description>These downloads support you in building and testing APIs. Developer toolkits generally include Swagger files and Postman collections with saved request payloads and responses.</description>
+	</url>
+
+	<url>
+		<loc></loc>
+		<title>JSON APIs: </title>
+		<keywords></keywords>
+		<description></description>
+	</url>
+</urlset>

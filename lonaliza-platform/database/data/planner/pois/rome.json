@@ -1,0 +1,61 @@
+{
+  "cityKey": "rome",
+  "city": "Rome",
+  "lat": 41.9028,
+  "lng": 12.4964,
+  "fetchedAt": "2026-09-25T12:27:49.989Z",
+  "sources": [
+    "google_places_live",
+    "official_tourism"
+  ],
+  "pois": [
+    {
+      "titleEn": "The Colosseum",
+      "titleAr": "مدرج الكولوسيوم الروماني العظيم",
+      "detailEn": "Ancient monumental amphitheater built under the Flavian emperors, the ultimate icon of Imperial Rome.",
+      "detailAr": "إحدى عجائب الدنيا السبع الجديدة وأكبر مدرج تاريخي بني في الإمبراطورية الرومانية عام 80 للميلاد.",
+      "lat": 41.8902,
+      "lng": 12.4922,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Trevi Fountain",
+      "titleAr": "نافورة تريفي الأسطورية (تمنيات روما)",
+      "detailEn": "Breathtaking Baroque fountain designed by Nicola Salvi, celebrated for the tradition of coin tossing.",
+      "detailAr": "تحفة الباروك الأكثر رومانسية وشهرة في العالم، يلقي الزوار العملات المعدنية لضمان العودة لروما مجدداً.",
+      "lat": 41.9009,
+      "lng": 12.4833,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "Vatican Museums & Sistine Chapel",
+      "titleAr": "متاحف الفاتيكان وكنيسة سيستينا",
+      "detailEn": "Extraordinary papal collections including classical sculptures and Michelangelos ceiling frescoes in the Sistine Chapel.",
+      "detailAr": "أعظم مجموعة فنون كلاسيكية وبابوية تضم سقف كنيسة سيستينا التي رسمها العبقري مايكل أنجلو.",
+      "lat": 41.9065,
+      "lng": 12.4536,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    },
+    {
+      "titleEn": "The Pantheon",
+      "titleAr": "معبد البانثيون الروماني الخالد",
+      "detailEn": "Former Roman temple renowned for its monumental concrete dome with central open oculus.",
+      "detailAr": "أفضل المباني الرومانية القديمة حفظاً بقبته الخرسانية غير المسلحة وفتحة العين السماوية أوبيولوس (Oculus).",
+      "lat": 41.8986,
+      "lng": 12.4769,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80",
+      "popularity": 20,
+      "source": "google_places_live"
+    }
+  ]
+}

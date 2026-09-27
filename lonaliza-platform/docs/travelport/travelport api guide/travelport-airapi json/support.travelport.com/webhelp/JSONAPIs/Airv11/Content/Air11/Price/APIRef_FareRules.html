@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Pricing and Fare Rules" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareRules.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Fare Rules API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Fare Rules API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <p>The base path for all of the following endpoints is the same: </p>
+                                        <blockquote>
+                                            <p><b>Base path:</b>
+                                            </p>
+                                            <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                            <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                        </blockquote>
+                                        <h5>Fare rules request after Search</h5>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIGet">Get</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>farerule/farerules/fromcatalogproductofferings?catalogProductOfferingsIdentifier=<span class="Brand4">{responseIdentifier}</span>&amp;catalogProductOfferingID=<span class="Brand4">{offerID}</span>&amp;productIDs=<span class="Brand4">{productID}</span>&amp;fareRuleType=<span class="Brand4">{value}</span></p>
+                                                        <p>For <span class="Brand4">{responseIdentifier}</span> send the Search response identifier in CatalogProductOfferings/Identifier/value. For <span class="Brand4">{offerID}</span> send the offer identifier from the Search response for the offer to request fare rules for.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h5>Fare rules request after AirPrice</h5>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIGet">Get</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>farerule/farerules/fromoffer?offerIdentifier=<span class="Brand4">{offerID}</span>&amp;fareRuleType=<span class="Brand4">{value}</span></p>
+                                                        <p>For <span class="Brand4">{offerID}</span> send the offer identifier from the AirPrice response for the offer to request fare rules for.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h5>Fare rules request for existing reservation (after booking)</h5>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIGet">Get</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>farerule/farerules/fromreservation?reservationIdentifier=<span class="Brand4">{LocatorCode}</span>&amp;fareRuleType=<span class="Brand4">{value}</span></p>
+                                                        <p>For <span class="Brand4">{LocatorCode}</span>&#160;send the locator code of the reservation.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h5>Fare rules request after Fare Display</h5>
+                                        <div class="noteNote">GDS only; NDC does not support fare display functionality. Supports only short text and long text fare rules, not structured fare rules</div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIGet">Get</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>farerule/farerules/fromfaredisplay?fareRuleIdentifier=<span class="Brand4">{responseIdentifier}</span>&amp;fareID=<span class="Brand4">{sequence}</span>&amp;fareRuleType=<span class="Brand4">{value}</span></p>
+                                                        <p>For <span class="Brand4">{responseIdentifier}</span>&#160;send the value from FareDisplayResponse/Identifier/value for the Fare Display response. For <span class="Brand4">{sequence}</span> send the value from fareDisplay/fare/sequence for the fare to request fare rules for.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="FareRulesGuide.html"> Fare Rules Guide</a></p>
+                                        <p>Fare rules are the conditions and restrictions that apply to any booking based on its fare type. These determine the price of the fare. Generally, less expensive fares have more restrictions and more expensive fares have fewer restrictions. Fare rules can include blackout dates, advanced reservation requirements, minimum and maximum stay requirements, and cancellation and change penalties. </p>
+                                        <div class="noteWarning">See the <a href="FareRulesGuide.html">Fare Rules Guide</a> for details on where in the workflow these requests are supported for NDC&#160;and GDS. </div>
+                                        <h2><a name="req"></a>Requests</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters for Fare Rules Request after Search</h4>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Parameter</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Required/Optional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>catalogProductOfferingsIdentifier</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Value from <a href="../Search/APIRef_Search.html">Search</a> response in CatalogProductOfferings/Identifier/value..</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>catalogProductOfferingID</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Value from Search response in CatalogProductOffering/id for the offer to return fare rules for.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">productIDs</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Value from Search response in <br />CatalogProductOffering/ProductBrandOptions/ProductBrandOffering/Product/productRef for the product to return fare rules for.</p>
+                                                        <div class="noteWarning">Fare rules can be requested for one and only one product per request, using the productIDs query parameter. Multiple product IDs are not supported when requested after Search. </div>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">fareRuleType</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Enumeration for the type of fare rules requested. Supported values:</p>
+                                                        <ul>
+                                                            <li>ShortText</li>
+                                                            <li>LongText (GDS&#160;only)</li>
+                                                            <li>Structured (for NDC, structured fare rules are supported only for Penalties; warning message returned if no penalties are applicable to the fare)</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>fareRuleCategories</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Enumeration. Send only if requesting structured fare rules. If fareRuleType=Structured and fareRuleCategories is not sent,  all structured fare rules are returned. Supported values:</p>
+                                                        <ul>
+                                                            <li>AdvanceReservationTicketing (GDS&#160;only)</li>
+                                                            <li>MinimumStay
+(GDS&#160;only)</li>
+                                                            <li>MaximumStay
+(GDS&#160;only)</li>
+                                                            <li>Stopovers
+(GDS&#160;only)</li>
+                                                            <li>Penalties
+</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h4>Query Parameters for Fare Rules Request after AirPrice</h4>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Parameter</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Required/Optional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>offerIdentifier</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Value from <a href="APIRef_AirPriceReferencePayload.html">AirPrice</a> response for the offer to return fare rules for.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>productIDs</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Value from AirPrice response for the product to return fare rules for, if fare rules are desired for only one product (aka leg).</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">fareRuleType</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Enumeration for the type of fare rules requested.</p>
+                                                        <p>Supported values:</p>
+                                                        <ul>
+                                                            <li>ShortText</li>
+                                                            <li>LongText (GDS only)</li>
+                                                            <li>Structured
+(for NDC, structured fare rules are supported only for Penalties; warning message returned if no penalties are applicable to the fare)</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><span style="color: #ff4500;">Required</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>fareRuleCategories</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>Enumeration. Send only if requesting structured fare rules. If fareRuleType=Structured and fareRuleCategories is not sent,  all structured fare rules are returned. Supported values:</p>
+                                                        <ul>
+                                                            <li>AdvanceReservationTicketing (GDS&#160;only)</li>
+                                                            <li>MinimumStay
+(GDS&#160;only)</li>
+                                                            <li>MaximumStay
+(GDS&#160;only)</li>
+                                                            <li>Stopovers
+(GDS&#160;only)</li>
+                                                            <li>Penalties
+</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h4>Query Parameters for Fare Rules Request for existing reservation</h4>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Parameter</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Required/Optional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>reservationIdentifier</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Reservation locator code. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">fareRuleType</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Enumeration for the type of fare rules requested.</p>
+                                                        <p>Supported values:</p>
+                                                        <ul>
+                                                            <li>ShortText</li>
+                                                            <li>LongText (GDS only)</li>
+                                                            <li>Structured
+(for NDC, structured fare rules are supported only for Penalties; warning message returned if no penalties are applicable to the fare)</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><span style="color: #ff4500;">Required</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>fareRuleCategories</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Enumeration. Send only if requesting structured fare rules. If fareRuleType=Structured and fareRuleCategories is not sent,  all structured fare rules are returned. Supported values:</p>
+                                                        <ul>
+                                                            <li>AdvanceReservationTicketing (GDS&#160;only)</li>
+                                                            <li>MinimumStay
+(GDS&#160;only)</li>
+                                                            <li>MaximumStay
+(GDS&#160;only)</li>
+                                                            <li>Stopovers
+(GDS&#160;only)</li>
+                                                            <li>Penalties
+</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h4>Query Parameters for Fare Rules Request after Fare Display</h4>
+                                        <div class="noteNote">GDS only; NDC does not support fare display functionality. Supports only short text and long text fare rules, not structured fare rules</div>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" data-mc-conditions="">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Parameter</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Required/Optional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>fareRuleIdentifier</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Send the value from FareDisplayResponse/Identifier from the <a href="APIRef_FareDisplay.html">Fare Display</a> response. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1" style="color: #ff4500;">
+                                                        <p>Required</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>FareID</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Send the value from fareDisplay/fare/sequence from the Fare Display response for the fare to request fare rules for.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><span style="color: #ff4500;">Required</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">fareRuleType</td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                        <p>Enumeration for the type of fare rules requested. Supported values:</p>
+                                                        <ul>
+                                                            <li>ShortText</li>
+                                                            <li>LongText </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                        <p><span style="color: #ff4500;">Required</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h4>Request Body</h4>
+                                        <p>None.</p>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FareRuleListResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>transactionId</b>: System-generated unique ID for this response. Can be used for internal tracking and troubleshooting.</p>
+                                                                        <p><b>traceId</b>: Returned if a custom trace ID was sent in the request header. See <a href="../General/TraceIDs.html">Transaction and Trace IDs</a> for details.</p>
+                                                                        <div class="noteNote">See <a href="../General/AirAPIsGuide.html#identifiers">Identifiers in the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs</a> for more about identifiers across all <span class="mc-variable General.Product variable">JSON</span>&#160;APIs.</div>
+                                                                    </blockquote>
+                                                                    <p>Includes FareRule, Result, and Identifier objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>FareRule</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Array. One instance for each uniquely numbered fare rule. </p>
+                                                                    <p>Includes Flight object.</p>
+                                                                    <p>For long and short fare rules only, also includes TextFareRule object and the following key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>ruleNumber</b>: String. The rule number assigned to this fare rule.</p>
+                                                                        <p><b>id</b>: String. The id for this fare rule.</p>
+                                                                    </blockquote>
+                                                                    <p>For structured fare rules only, also includes StructuredFareRules object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Flight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>The flight to which this fare rule applies. </p>
+                                                                    <p>For structured fare rules, returned with @type FlightID. For long and short fare rules, returned with @type Flight.</p>
+                                                                    <p>Includes FlightRef.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>FlightRef</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>String. Returns an internal flight reference id that cross-references to consolidated flight details in ReferenceListFlight/Flight/id.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>TextFareRule</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returned for long and short fare rules. Array. Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>name</b>: Name of the fare rule.</p>
+                                                                        <p><b>value</b>: Freeform text of the rule itself.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>StructuredFareRules</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returned for structured fare rules. Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>passengerTypeCodes</b>: List of PTCs this fare rule applies to.</p>
+                                                                        <p><b>fareClassCode</b>: Single-character alphanumeric code of the fare class to which the rule applies, or the generic fare family, including special characters; no set format.</p>
+                                                                        <p><b>oneWayRoundTripRestrictions</b>:&#160;Enum indicating what restrictions apply to;  possible values include OneWay, RoundTrip, All. </p>
+                                                                    </blockquote>
+                                                                    <p>May include the Penalties, MinimumStay, MaximumStay, AdvanceReservation, AdvancePayment, or Stopover objects. For NDC, only Penalties is returned.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Penalties</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns change and cancel penalties in the standard Penalties object; see the <a href="APIRef_AirPriceReferencePayload.html#rsp">AirPrice Reference Payload response table</a> for details.</p>
+                                                                    <p>For a <a href="../Search/AirShoppingGuide.html#split">split ticketing itinerary</a>, ruleNumber, tariffNumber, and  farebasiscode are not returned for structured fare rules.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>MinimumStay, MaximumStay, AdvanceReservation, AdvancePayment, Stopover </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>See the Travelport API schema for details and supported values for these objects.</p>
+                                                                    <p>For a <a href="../Search/AirShoppingGuide.html#split">split ticketing itinerary</a>, ruleNumber, tariffNumber, and  farebasiscode are not returned for structured fare rules.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Result</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Any warning or error messages. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Identifier information for response.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>ReferenceList</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Returns one instance of ReferenceListFlight to consolidate flight information cross-referenced from a fare rule. See ReferenceListFlight table below.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p><a name="reflflight"></a>ReferenceList/ReferenceListFlight</p>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReferenceListFlight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns an array of Flight objects that match to the flights that make up a product. </p>
+                                                                    <div class="noteWarning">
+                                                                        <p style="font-weight: bold;"><span style="font-weight: normal;">ReferenceListFlight is a common object in the model. Not all objects in this table may be returned in this specific API.</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Flight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>One instance for one flight. </p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>distance</b>: Distance covered by the flight.</p>
+                                                                        <p><b>duration</b>: Time of the flight in hours (H) and minutes (M).</p>
+                                                                        <p><b>carrier</b>: Airline carrier.</p>
+                                                                        <p><b>number</b>: Flight number.</p>
+                                                                        <p><b>operatingCarrier</b>: When the carrier has filed a codeshare operating carrier for the flight, the IATA code for that codeshare carrier. </p>
+                                                                        <p><b>operatingCarrierName</b>: Name of the marketing operating carrier.</p>
+                                                                        <p><b>operatingCarrierNumber</b>:&#160;Number of the operating carrier flight. If there is no operating carrier number, then CO2 emission estimates for operating carriers is not supported. GDS only; not returned for NDC. Returned only in Search response.</p>
+                                                                        <p><b>equipment</b>: Equipment model. Note that TRN, TRS, and BUS equipment codes indicate ground transportation. </p>
+                                                                        <p><b>id</b>: id for internal flight reference number, also used in products and offers. For GDS, formatted as the letter ‘s’+ unique numeric value, as in <i>s1</i>. NDC flight ids include the NDC carrier code, as in <i>QFs1</i>. </p>
+                                                                        <p><b>subjectToGovernmentApproval</b>: Returned with value of <i>true</i> when an airline has filed in its schedule that availability for a specific flight is subject to
+government approval. GDS only, not supported for NDC. Returned only in the Search API&#160;response.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Departure, Arrival, AvailabilitySourceCode, and IntermediateStop objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Departure</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Departure details. Key value pairs are the <b>location</b>, <b>date</b>, <b>time</b>, and <b>terminal</b> of departure.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Arrival</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Arrival details. Key value pairs  are the <b>location</b>, <b>date</b>, <b>time</b>, and  <b>terminal</b> of arrival.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><a name="avail"></a><b>AvailabilitySourceCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returned to assist in troubleshooting. Returned in the Search, Air Availability, Exchange Search, AirPrice, and Workbench Commit responses. Recommended to send in the <a href="APIRef_AirPriceFullPayload.html">AirPrice Full Payload</a> and <a href="../Book/APIRef_AddOfferFullPayload.html">Add Offer Full Payload</a> requests. Not returned for  Ancillary Shop or Fare Rules.</p>
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Supported values and definitions for AvailabilitySourceCode:</p>
+                                                                    <ul>
+                                                                        <li>A:&#160;AVS (availability and schedules)</li>
+                                                                        <li>B:&#160;Travelport cache</li>
+                                                                        <li>C:&#160;AVS</li>
+                                                                        <li>D:&#160;Direct Access</li>
+                                                                        <li>E:&#160;Travelport cache</li>
+                                                                        <li>F: Travelport cache</li>
+                                                                        <li>G: Travelport cache</li>
+                                                                        <li>H: Travelport cache</li>
+                                                                        <li>I: Travelport cache</li>
+                                                                        <li>K: Travelport cache</li>
+                                                                        <li>L:&#160;Last seat availability</li>
+                                                                        <li>M:&#160;Unknown source</li>
+                                                                        <li>O: Travelport cache</li>
+                                                                        <li>P: Travelport cache</li>
+                                                                        <li>Q:&#160;Travelport cache</li>
+                                                                        <li>S:&#160;Seamless</li>
+                                                                        <li>T:&#160;Travelport cache</li>
+                                                                        <li>U:&#160;Unknown source</li>
+                                                                        <li>X:&#160;Customer reusing availability data from customer cache (data originally obtained from Travelport)</li>
+                                                                        <li>Y:&#160;Customer reusing data obtained from another system (e.g., another GDS) (data may be fresh or stored in customer cache)</li>
+                                                                        <li>Z:&#160;Customer sold from e-streamed data stored in customer cache</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>IntermediateStop</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>Returned if the flight has a technical stop but does not incur a change in flight number. </p>
+                                                                    <div class="noteNote">
+                                                                        <p>Returned in the Search, AirPrice, Exchange Search responses. In ReservationRetrieve, IntermediateStop is returned in Offer/Product/Flight instead of ReferenceListFlight. Not returned for  Ancillary Shop or Fare Rules.</p>
+                                                                    </div>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>arrivalFlightDuration:</b>  Length in hours and minutes of the flight arriving at the intermediate stop.</p>
+                                                                        <p><b>departureFlightDuration:</b> Length in hours and minutes of the flight departing the intermediate stop.</p>
+                                                                        <p><b>duration:</b> Length in hours and minutes between the arrival and departure at the intermediate stop.</p>
+                                                                        <p><b>equipment</b>: Equipment model, if there is a change of equipment during the stop.</p>
+                                                                        <p><![CDATA[  ]]><b>arrivalDate:</b> Arrival date for stop.</p>
+                                                                        <p><b>departureDate:</b> Departure date of stop.</p>
+                                                                        <p><b>arrivalTime:</b> Arrival time for stop.</p>
+                                                                        <p><b>departurelTime:</b>&#160;<i>sic; note spelling of departurelTime with the letter l between departure and time</i> Departure time for stop. </p>
+                                                                        <p><b>arrivalTerminal:</b> Arrival terminal for stop.</p>
+                                                                        <p><b>departureTerminal:</b> Departure terminal for stop. </p>
+                                                                        <p><b>value:</b> The code for the airport where the intermediate stop occurs.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Requests</h2>
+                                        <h5>Example GET Request for fare rules after Search response</h5>
+                                        <p>This example requests structured fare rules without specifying fare rule categories, so all fare rule categories are returned: </p>
+                                        <blockquote>
+                                            <p xml:space="preserve">
+                        <code class="language-json">
+https://api.travelport.com/11/air/farerule/farerules/fromcatalogproductofferings?catalogProductOfferingsIdentifier=dbbf8d3e-4a90-4ab1-bdbf-5e89e937cd2b&amp;catalogProductOfferingID=o1&amp;productIDs=p5&amp;fareRuleType=Structured</code>
+                    </p>
+                                        </blockquote>
+                                        <h5>Example GET Request for fare rules after AirPrice response</h5>
+                                        <p>This example requests short text fare rules for an offer after pricing: </p>
+                                        <blockquote>
+                                            <p xml:space="preserve">
+                        <code class="language-json">
+https://api.travelport.com/11/air/farerule/farerules/fromoffer?offerIdentifier=o0&amp;fareRuleType=ShortText</code>
+                    </p>
+                                        </blockquote>
+                                        <h5>Example GET Request for fare rules for existing reservation (after booking)</h5>
+                                        <p>This example requests long text fare rules for a held booking: </p>
+                                        <blockquote>
+                                            <p xml:space="preserve">
+                        <code class="language-json">
+https://api.travelport.com/11/air/farerule/farerules/fromreservation?reservationIdentifier=2BPWLP&amp;fareRuleType=LongText</code>
+                    </p>
+                                        </blockquote>
+                                        <h2><a name="exrsp"></a>Example Responses</h2>
+                                        <p>The response format is the same regardless of where in the workflow the request is sent.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example response for GDS&#160;structured fare rules</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "FareRuleListResponse": {
+  "@type": "FareRuleListResponse",
+  "transactionId": "bcb69bc5-9452-4e95-ba85-6753d9af182e",
+  "FareRule": [
+   {
+    "@type": "FareRuleStructured",
+    "Flight": [
+     {
+      "@type": "FlightID",
+      "FlightRef": "f1"
+     }
+    ],
+    "StructuredFareRules": [
+     {
+      "@type": "StructuredFareRules",
+      "passengerTypeCodes": [
+       "ADT"
+      ],
+      "fareClassCode": "&amp;&amp;&amp;YX&amp;&amp;&amp;",
+      "oneWayRoundTripRestrictions": "All",
+      "Penalties": [
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO16",
+        "tariffNumber": "060",
+        "Change": [
+         {
+          "@type": "ChangePermitted",
+          "penaltyTypes": [
+           "ExchangeRequired",
+           "ExchangeNotRequired"
+          ],
+          "Penalty": [
+           {
+            "@type": "PenaltyAmount",
+            "Amount": {
+             "code": "INR",
+             "minorUnit": 0,
+             "value": 3000
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO16",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "Penalty": [
+           {
+            "@type": "PenaltyAmount",
+            "Amount": {
+             "code": "INR",
+             "minorUnit": 0,
+             "value": 4000
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO16",
+        "tariffNumber": "060",
+        "Change": [
+         {
+          "@type": "ChangeNotPermitted",
+          "NotPermittedInd": "true"
+         }
+        ]
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO16",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelNotPermitted",
+          "NotPermittedInd": "true"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "MinimumStay": [
+       {
+        "@type": "MinimumStayIndeterminate",
+        "IndeterminateInd": "true"
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "MaximumStay": [
+       {
+        "@type": "MaximumStayIndeterminate",
+        "IndeterminateInd": "true"
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "passengerTypeCodes": [
+       "ADT"
+      ],
+      "oneWayRoundTripRestrictions": "All",
+      "Stopover": [
+       {
+        "@type": "StopoverNotPermitted",
+        "ruleNumber": "DO00",
+        "tariffNumber": "060",
+        "NotPermittedInd": "true"
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "passengerTypeCodes": [
+       "ADT"
+      ],
+      "oneWayRoundTripRestrictions": "All",
+      "AdvanceReservation": [
+       {
+        "@type": "AdvanceReservationRequired",
+        "instantPurchase": "No",
+        "ruleNumber": "DO00",
+        "tariffNumber": "060",
+        "WaitlistStandbyCondition": [
+         {
+          "value": "WaitlistStandbyNotPermitted"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "passengerTypeCodes": [
+       "ADT"
+      ],
+      "fareClassCode": "&amp;&amp;&amp;YX&amp;&amp;&amp;",
+      "oneWayRoundTripRestrictions": "All",
+      "Penalties": [
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "penaltyTypes": [
+           "Anytime"
+          ],
+          "PenaltyAppliesTo": "OneWay",
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "penaltyTypes": [
+           "Anytime"
+          ],
+          "PenaltyAppliesTo": "OneWay",
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        },
+        "PassengerTypeCodes": [
+         "INF"
+        ]
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "penaltyTypes": [
+           "BeforeDeparture"
+          ],
+          "PenaltyAppliesTo": "OneWay",
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime",
+          "PenaltyException": {
+           "period": "Hours",
+           "appliesAfterReservationInd": true,
+           "value": 24
+          }
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "penaltyTypes": [
+           "Anytime",
+           "BeforeDeparture"
+          ],
+          "PenaltyAppliesTo": "OneWay",
+          "Penalty": [
+           {
+            "@type": "PenaltyAmount",
+            "Amount": {
+             "code": "INR",
+             "minorUnit": 0,
+             "value": 4000
+            }
+           }
+          ],
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime",
+          "PeriodBeforeDeparture": {
+           "period": "Hours",
+           "value": 2
+          }
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelNotPermitted",
+          "penaltyTypes": [
+           "NoShow"
+          ],
+          "NotPermittedInd": "true"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO33",
+        "tariffNumber": "060",
+        "Cancel": [
+         {
+          "@type": "CancelPermitted",
+          "penaltyTypes": [
+           "AfterDeparture"
+          ],
+          "PenaltyAppliesTo": "OneWay",
+          "Penalty": [
+           {
+            "@type": "Penalty",
+            "application": "Full"
+           }
+          ],
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "33"
+        }
+       }
+      ]
+     },
+     {
+      "@type": "StructuredFareRules",
+      "passengerTypeCodes": [
+       "ADT"
+      ],
+      "fareClassCode": "&amp;&amp;&amp;YX&amp;&amp;&amp;",
+      "oneWayRoundTripRestrictions": "All",
+      "Penalties": [
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO31",
+        "tariffNumber": "060",
+        "Change": [
+         {
+          "@type": "ChangePermitted",
+          "penaltyTypes": [
+           "Anytime"
+          ],
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "31"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO31",
+        "tariffNumber": "060",
+        "Change": [
+         {
+          "@type": "ChangePermitted",
+          "penaltyTypes": [
+           "Anytime"
+          ],
+          "Penalty": [
+           {
+            "@type": "PenaltyAmount",
+            "Amount": {
+             "code": "INR",
+             "minorUnit": 0,
+             "value": 3000
+            }
+           }
+          ],
+          "PenaltyAppliesToPricingUnit": "Anytime",
+          "PenaltyAppliesToFareComponent": "Anytime"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "31"
+        }
+       },
+       {
+        "@type": "Penalties",
+        "ruleNumber": "DO31",
+        "tariffNumber": "060",
+        "Change": [
+         {
+          "@type": "ChangeNotPermitted",
+          "NotPermittedInd": "true"
+         }
+        ],
+        "PenaltySourceCode": {
+         "codeContext": "ATPCO",
+         "value": "31"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "Identifier": {
+   "value": "bcb69bc5-9452-4e95-ba85-6753d9af182e_PC_FR"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "FlightDetail",
+      "distance": 708,
+      "duration": "PT2H10M",
+      "carrier": "AI",
+      "number": "624",
+      "operatingCarrier": "AI",
+      "operatingCarrierName": "Air India",
+      "id": "f1",
+      "Departure": {
+       "@type": "Departure",
+       "location": "DEL",
+       "date": "2024-10-12",
+       "time": "19:10:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "BOM",
+       "date": "2024-10-12",
+       "time": "21:20:00"
+      },
+      "AvailabilitySourceCode": "S"
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following response returns short text fare rules for a <a href="../Search/AirShoppingGuide.html#split">split ticketing itinerary</a>. While there is no difference in the fare rules request, because the itinerary includes two one-way offers, the response is subject to the limitations noted in the <a href="FareRulesGuide.html#split">Fare Rules Guide</a>.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example fare rules for split ticket itinerary</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "FareRuleListResponse": {
+  "@type": "FareRuleListResponse",
+  "transactionId": "c333b955-1f78-4461-92c6-d734a42a07b1",
+  "FareRule": [
+   {
+    "@type": "FareRuleText",
+    "ruleNumber": "AEC4",
+    "tariffNumber": "033",
+    "id": "VAOXAEC4",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "f1"
+     },
+     {
+      "@type": "Flight",
+      "FlightRef": "f2"
+     }
+    ],
+    "TextFareRule": [
+     {
+      "name": "Eligibility",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Day/Time",
+      "value": ""
+     },
+     {
+      "name": "Seasonal",
+      "value": ""
+     },
+     {
+      "name": "Flight Application",
+      "value": "NOT SV 5000-9999.SV ONLY"
+     },
+     {
+      "name": "Advance Res/Tkt",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Minimum Stay",
+      "value": ""
+     },
+     {
+      "name": "Maximum Stay",
+      "value": ""
+     },
+     {
+      "name": "Stopovers",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Transfers/Routing",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Permitted Combinations",
+      "value": "SOJ/RT/CT"
+     },
+     {
+      "name": "Blackouts",
+      "value": ""
+     },
+     {
+      "name": "Surcharges",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Accompanied",
+      "value": ""
+     },
+     {
+      "name": "Travel Restrictions",
+      "value": ""
+     },
+     {
+      "name": "Sales Restrictions",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Penalties",
+      "value": "CHG BEF DEP-100SAR/CXL BEF DEP-150SAR/CHG CXL AFT DEP-550SAR"
+     },
+     {
+      "name": "Children's Discounts",
+      "value": "ACC CHD 2-11 75PCT.UNACC CHD 2-11 100PCT"
+     },
+     {
+      "name": "All other Disc",
+      "value": ""
+     }
+    ]
+   },
+   {
+    "@type": "FareRuleText",
+    "ruleNumber": "BLAE",
+    "tariffNumber": "033",
+    "id": "ULOWBLAE",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "f1"
+     },
+     {
+      "@type": "Flight",
+      "FlightRef": "f2"
+     }
+    ],
+    "TextFareRule": [
+     {
+      "name": "Eligibility",
+      "value": ""
+     },
+     {
+      "name": "Day/Time",
+      "value": ""
+     },
+     {
+      "name": "Seasonal",
+      "value": ""
+     },
+     {
+      "name": "Flight Application",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Advance Res/Tkt",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Minimum Stay",
+      "value": ""
+     },
+     {
+      "name": "Maximum Stay",
+      "value": ""
+     },
+     {
+      "name": "Stopovers",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Transfers/Routing",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Blackouts",
+      "value": ""
+     },
+     {
+      "name": "Surcharges",
+      "value": "CONDITIONS APPLY |"
+     },
+     {
+      "name": "Accompanied",
+      "value": ""
+     },
+     {
+      "name": "Travel Restrictions",
+      "value": ""
+     },
+     {
+      "name": "Sales Restrictions",
+      "value": "CONDITIONS APPLY"
+     },
+     {
+      "name": "Penalties",
+      "value": "CHG-3000INR/CXL-6000INR/CHG CXL-6000INR"
+     },
+     {
+      "name": "Children's Discounts",
+      "value": "ACC CHD 2-11 75PCT.UNACC CHD 5-11 100PCT"
+     },
+     {
+      "name": "All other Disc",
+      "value": ""
+     }
+    ]
+   }
+  ],
+  "Identifier": {
+   "value": "93d2091d-3d04-48ab-8091-6ae1525f02ea_PC_FR"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "FlightDetail",
+      "distance": 284,
+      "duration": "PT1H15M",
+      "carrier": "AI",
+      "number": "516",
+      "operatingCarrier": "AI",
+      "operatingCarrierName": "Air India",
+      "equipment": "321",
+      "id": "f1",
+      "Departure": {
+       "@type": "Departure",
+       "location": "BLR",
+       "date": "2024-10-23",
+       "time": "07:25:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "HYD",
+       "date": "2024-10-23",
+       "time": "08:40:00"
+      },
+      "AvailabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 1586,
+      "duration": "PT3H55M",
+      "carrier": "AI",
+      "number": "951",
+      "operatingCarrier": "AI",
+      "operatingCarrierName": "Air India",
+      "equipment": "32N",
+      "id": "f2",
+      "Departure": {
+       "@type": "Departure",
+       "location": "HYD",
+       "date": "2024-10-23",
+       "time": "20:00:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "DXB",
+       "date": "2024-10-23",
+       "time": "22:25:00"
+      },
+      "AvailabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 1048,
+      "duration": "PT3H25M",
+      "carrier": "SV",
+      "number": "551",
+      "operatingCarrier": "SV",
+      "operatingCarrierName": "Saudi Arabian Airlines",
+      "equipment": "320",
+      "id": "f1",
+      "Departure": {
+       "@type": "Departure",
+       "location": "DXB",
+       "date": "2024-10-27",
+       "time": "21:00:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "JED",
+       "date": "2024-10-27",
+       "time": "23:25:00"
+      },
+      "AvailabilitySourceCode": "A"
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 2597,
+      "duration": "PT5H20M",
+      "carrier": "SV",
+      "number": "866",
+      "operatingCarrier": "SV",
+      "operatingCarrierName": "Saudi Arabian Airlines",
+      "equipment": "333",
+      "id": "f2",
+      "Departure": {
+       "@type": "Departure",
+       "location": "JED",
+       "date": "2024-10-28",
+       "time": "01:25:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "BLR",
+       "date": "2024-10-28",
+       "time": "09:15:00"
+      },
+      "AvailabilitySourceCode": "A"
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>For NDC, structured fare rules are supported only for Penalties.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example NDC structured fare rules</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "FareRuleListResponse": {
+  "@type": "FareRuleListResponse",
+  "transactionId": "427eaa96-0bd4-4d55-b67b-ecfcdc042478",
+  "FareRule": [
+   {
+    "@type": "FareRuleStructured",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "AAs46"
+     },
+     {
+      "@type": "Flight",
+      "FlightRef": "AAs47"
+     },
+     {
+      "@type": "Flight",
+      "FlightRef": "AAs9"
+     }
+    ],
+    "StructuredFareRules": [
+     {
+      "@type": "StructuredFareRules",
+      "Penalties": [
+       {
+        "@type": "Penalties",
+        "Change": [
+         {
+          "@type": "ChangePermitted"
+         }
+        ],
+        "Cancel": [
+         {
+          "@type": "CancelPermitted"
+         }
+        ],
+        "PassengerTypeCodes": [
+         "ADT"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "Identifier": {
+   "value": "6f47ba13-8fac-4044-9398-a9c11672b6bd_FR"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "FlightDetail",
+      "distance": 3454,
+      "stops": 0,
+      "duration": "PT8H15M",
+      "carrier": "AA",
+      "number": "6944",
+      "operatingCarrier": "BA",
+      "operatingCarrierName": "British Airways",
+      "equipment": "777",
+      "id": "AAs46",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "5",
+       "location": "LHR",
+       "date": "2024-02-29",
+       "time": "10:45:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "B",
+       "location": "EWR",
+       "date": "2024-02-29",
+       "time": "14:00:00"
+      }
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 528,
+      "stops": 0,
+      "duration": "PT2H6M",
+      "carrier": "AA",
+      "number": "1790",
+      "equipment": "320",
+      "id": "AAs47",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "A",
+       "location": "EWR",
+       "date": "2024-02-29",
+       "time": "16:07:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "location": "CLT",
+       "date": "2024-02-29",
+       "time": "18:13:00"
+      }
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 226,
+      "stops": 0,
+      "duration": "PT1H13M",
+      "carrier": "AA",
+      "number": "763",
+      "equipment": "319",
+      "id": "AAs9",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "CLT",
+       "date": "2024-02-29",
+       "time": "20:20:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "N",
+       "location": "ATL",
+       "date": "2024-02-29",
+       "time": "21:33:00"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example response for NDC short fare rules </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "FareRuleListResponse": {
+  "transactionId": "b06015b1-6ddb-48a0-8083-5f440eba5a98:p",
+  "FareRule": [
+   {
+    "@type": "FareRuleText",
+    "ruleNumber": "70J",
+    "id": "NKSOA",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "f1"
+     }
+    ],
+    "TextFareRule": [
+     {
+      "name": "Cancel",
+      "value": "ADT:Allowed"
+     },
+     {
+      "name": "Change",
+      "value": "ADT:Allowed"
+     }
+    ]
+   }
+  ],
+  "Identifier": {
+   "value": "5e848a34-6ec1-4be3-bcd1-30d41c00e206_PC_FR"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "duration": "PT8H40M",
+      "carrier": "QF",
+      "number": "81",
+      "equipment": "333",
+      "id": "f1",
+      "FlightRef": "f1",
+      "Identifier": {
+       "value": "Isgm01004a1a265a6"
+      },
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "1",
+       "location": "SYD",
+       "date": "2022-07-09",
+       "time": "10:10:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "1",
+       "location": "SIN",
+       "date": "2022-07-09",
+       "time": "16:50:00"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example response for GDS long fare rules</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "FareRuleListResponse": {
+  "transactionId": "ef0b8a9c-0ff7-4cc1-a250-17755a6c8d22:p",
+  "FareRule": [
+   {
+    "@type": "FareRuleText",
+    "ruleNumber": "9000",
+    "id": "W0",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "s15"
+     }
+    ],
+    "TextFareRule": [
+     {
+      "name": "0.  APPLICATION AND OTHER CONDITIONS",
+      "value": "RULE - 011/9000\nUNLESS OTHERWISE SPECIFIED\nMAIN CABIN FARES\nAPPLICATION\nCLASS OF SERVICE\nTHESE FARES APPLY FOR ECONOMY CLASS SERVICE.\nCAPACITY LIMITATIONS\nSEATS ARE LIMITED"
+     },
+     {
+      "name": "4.  FLIGHT APPLICATION",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE FLT1 IN DGR\nAPPLIES\nUNLESS OTHERWISE SPECIFIED\nTHE FARE COMPONENT MUST BE ON\nONE OR MORE OF THE FOLLOWING\nANY DL FLIGHT."
+     },
+     {
+      "name": "5.  ADVANCE RES/TICKETING",
+      "value": "FOR W0 FARES\nRESERVATIONS ARE REQUIRED FOR ALL SECTORS.\nWHEN RESERVATIONS ARE MADE AT LEAST 33 DAYS BEFORE\nDEPARTURE TICKETING MUST BE COMPLETED AT LEAST 30 DAYS\nBEFORE DEPARTURE.\nOR - RESERVATIONS ARE REQUIRED FOR ALL SECTORS.\nWHEN RESERVATIONS ARE MADE AT LEAST 4 DAYS BEFORE\nDEPARTURE TICKETING MUST BE COMPLETED AT LEAST 3 DAYS\nBEFORE DEPARTURE.\nOR - RESERVATIONS ARE REQUIRED FOR ALL SECTORS.\nTICKETING MUST BE COMPLETED BY MIDNIGHT 1 DAY AFTER\nRESERVATIONS ARE MADE."
+     },
+     {
+      "name": "6.  MINIMUM STAY",
+      "value": "NONE FOR ONE WAY FARES"
+     },
+     {
+      "name": "7.  MAXIMUM STAY",
+      "value": "NONE FOR ONE WAY FARES"
+     },
+     {
+      "name": "8.  STOPOVERS",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE STOP IN DGR APPLIES\nUNLESS OTHERWISE SPECIFIED\nNO STOPOVERS PERMITTED."
+     },
+     {
+      "name": "9.  TRANSFERS",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE CAT9 IN DGR\nAPPLIES\nUNLESS OTHERWISE SPECIFIED\n2 TRANSFERS PERMITTED IN EACH DIRECTION\nONLINE ON THE PRIMARY CARRIER\nFARE BREAK AND EMBEDDED SURFACE SECTORS NOT PERMITTED ON\nTHE FARE COMPONENT."
+     },
+     {
+      "name": "10. PERMITTED COMBINATIONS",
+      "value": "UNLESS OTHERWISE SPECIFIED\nDOUBLE OPEN JAWS NOT PERMITTED.\nAPPLICABLE ADD-ON CONSTRUCTION IS ADDRESSED IN\nMISCELLANEOUS PROVISIONS - CATEGORY 23.\nEND-ON-END\nEND-ON-END COMBINATIONS PERMITTED. VALIDATE ALL FARE\nCOMPONENTS. SIDE TRIPS PERMITTED.\nPROVIDED -\nCOMBINATIONS ARE FOR CARRIER DL/AF/AZ/KL/VA\nEND-ON-END\nEND-ON-END COMBINATIONS PERMITTED WITH US-CANADA\nTRANSBORDER/DOMESTIC FARES. VALIDATE ALL FARE\nCOMPONENTS. SIDE TRIPS PERMITTED.\nPROVIDED -\nCOMBINATIONS ARE FOR CARRIER DL/UA/AS/WS/KS/HA/9K/7H\nOPEN JAWS/2-COMPONENT CIRCLE TRIPS/MULTI-COMPONENT CIRCLE\nTRIPS\nFARES MAY BE COMBINED ON A HALF ROUND TRIP BASIS WITH DL\nFARES IN ANY RULE AND TARIFF.\n-TO FORM SINGLE OPEN JAWS.\nA MAXIMUM OF 2 FARE COMPONENTS PERMITTED.\nMILEAGE OF THE OPEN SEGMENT MUST BE EQUAL/LESS THAN\nMILEAGE OF THE SHORTEST FLOWN FARE COMPONENT.\n-TO FORM 2-COMPONENT CIRCLE TRIPS\n-TO FORM MULTI-COMPONENT CIRCLE TRIPS\nA MAXIMUM OF 2 FARE BREAK POINTS PERMITTED.\nEND-ON-END\nEND-ON-END COMBINATIONS PERMITTED WITH FARES FROM/TO\nLWB/MEI/MSL/PIB/TUP/GLH/MCN/BIL. VALIDATE ALL FARE\nCOMPONENTS. SIDE TRIPS PERMITTED.\nPROVIDED -\nCOMBINATIONS ARE FOR CARRIER DL/3M\nNOTE - THE CITY PAIRS BELOW ARE CONSIDERED THE SAME POINT-\nBWI-WAS  FLL-MIA  LAX-ONT  LAX-SNA  NYC-EWR  OAK-SFO\nOAK-SJC  SFO-SJC  LAX-BUR"
+     },
+     {
+      "name": "12. SURCHARGES",
+      "value": "FOR W0 FARES   NOTE - RULE SCOT IN DGR ALSO APPLIES\nIF INFANT 0-1 WITHOUT A SEAT.\nTHERE IS NO CHARGE FOR TRAVEL PER FARE COMPONENT.\nA SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE ADDED\nTO THE APPLICABLE FARE FOR TRAVEL IN BOEING 767-300\nEQUIPMENT.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL IN AIRBUS\nINDUSTRIE A330-900NEO EQUIPMENT.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL IN AIRBUS\nINDUSTRIE A350-900 EQUIPMENT.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL IN BOEING\n767-400 EQUIPMENT.\nFROM/TO FLORIDA\nIF INFANT 0-1 WITHOUT A SEAT.\nTHERE IS NO CHARGE FOR TRAVEL PER FARE COMPONENT.\nTO FLORIDA -\nA SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 18FEB 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - FROM FLORIDA -\nA SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM 25FEB 23\nTHROUGH 26FEB 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n26MAY 22 THROUGH 27MAY 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 32.56 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 30MAY 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON MON/THU\nFROM 04JUN 22 THROUGH 13JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON FRI FROM\n04JUN 22 THROUGH 13JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 23.26 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON SAT FROM\n04JUN 22 THROUGH 13JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 32.56 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON SUN FROM\n04JUN 22 THROUGH 13JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n16JUN 22 THROUGH 17JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n18JUN 22 THROUGH 19JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 20JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 23JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 24JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 23.26 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 25JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 32.56 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 26JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 27JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 30JUN 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 01JUL 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 02JUL 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 04JUL 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 05JUL 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 06JUL 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON MON/THU\nFROM 07JUL 22 THROUGH 29AUG 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON FRI FROM\n07JUL 22 THROUGH 29AUG 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 23.26 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON SAT FROM\n07JUL 22 THROUGH 29AUG 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 32.56 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON SUN FROM\n07JUL 22 THROUGH 29AUG 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 23.26 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 01SEP 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 02SEP 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 32.56 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 05SEP 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 18NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 19NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 20NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 22NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 23NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 26NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 74.42 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 27NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 28NOV 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 17DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 18DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n20DEC 22 THROUGH 21DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 22DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 23DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 24DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 26DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 27DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n28DEC 22 THROUGH 31DEC 22.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 37.21 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 01JAN 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 46.51 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 02JAN 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 03JAN 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 13JAN 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 18.60 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 16JAN 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL FROM\n16FEB 23 THROUGH 17FEB 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS.\nAND - A SURCHARGE OF USD 27.91 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL ON 20FEB 23.\nNOTE -\nTHIS PEAK TRAVEL SURCHARGE IS ASSESSED ON A FARE\nCOMPONENT BASIS."
+     },
+     {
+      "name": "15. SALES RESTRICTIONS",
+      "value": "UNLESS OTHERWISE SPECIFIED\nTICKETS MAY NOT BE SOLD IN VENEZUELA/ZIMBABWE/ANGOLA/\nGABON/CAMEROON/CHAD/CONGO (BRAZZAVILLE).\nTICKETS MAY ONLY BE SOLD IN AREA 1/AREA 2/AREA 3."
+     },
+     {
+      "name": "16. PENALTIES",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE RFND IN DGR APPLIES\nUNLESS OTHERWISE SPECIFIED\nCANCELLATIONS\nCANCELLATIONS PERMITTED.\nCHANGES\nCHANGES PERMITTED.\nNOTE -\n----TICKET VALIDITY----\nTICKET IS VALID FOR 1 YEAR FROM THE DATE OF\nISSUE AND ALL TRAVEL MUST BE COMPLETED WITHIN\nVALIDITY PERIOD.  IF EXCHANGED WHETHER TRAVEL WAS\nSTARTED OR NOT THE TICKET MUST BE REISSUED AND\nALL TRAVEL COMPLETED WITHIN 1 YEAR FROM THE\nORIGINAL DATE OF ISSUE.\n.\n-FOR INFORMATION ON TICKET REISSUE PROCEDURES\nSEE DELTA/S DOMESTIC CONTRACT OF CARRIAGE RULE\n21 REROUTING"
+     },
+     {
+      "name": "19. CHILDREN DISCOUNTS",
+      "value": "UNLESS OTHERWISE SPECIFIED\n1ST INFANT UNDER 2 WITHOUT A SEAT - NO CHARGE\nTICKET DESIGNATOR - IN100.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME COMPARTMENT\nAT THIS RULE BY ADULT\nOR - INFANT UNDER 2 WITH A SEAT - CHARGE 100 PERCENT OF\nTHE FARE.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY ADULT\nOR - UNACCOMPANIED CHILD 5-14 - CHARGE 100 PERCENT OF THE\nFARE.\nTICKET DESIGNATOR - CH AND PERCENT OF DISCOUNT.\nNOTE -\nUNACCOMPANIED CHILDREN UNDER 5 YEARS OF AGE WILL\nNOT BE ACCEPTED FOR CARRIAGE UNDER ANY CONDITIONS.\nUNACCOMPANIED CHILDREN AGES 5 THROUGH 7 MAY TRAVEL\nON NON-STOP FLIGHTS ONLY AND MAY NOT CONNECT TO\nOTHER AIRLINES.\nCHILDREN AGES 8 THROUGH 14 MAY TRAVEL\nUNACCOMPANIED ON DELTAS NON-STOP OR CONNECTING\nFLIGHTS - BUT MAY NOT CONNECT TO OTHER AIRLINES\nWITH THE EXCEPTION OF DELTA CONNECTION/KLM AND\nAIR FRANCE."
+     },
+     {
+      "name": "23. MISCELLANEOUS PROVISIONS",
+      "value": "UNLESS OTHERWISE SPECIFIED\nTHIS FARE MUST NOT BE USED AS THE HIGH OR THE LOW FARE\nWHEN CALCULATING A DIFFERENTIAL. THIS FARE MUST NOT BE\nUSED AS THE THROUGH FARE WHEN PRICING A FARE COMPONENT\nWITH A DIFFERENTIAL."
+     },
+     {
+      "name": "31. VOLUNTARY CHANGES",
+      "value": "DO A CATEGORY 31 SPECIFIC TEXT ENTRY TO VIEW CONTENTS\nALSO REFERENCE 16 PENALTIES - FOR ADDITIONAL CHANGE INFORMATION"
+     },
+     {
+      "name": "33. VOLUNTARY REFUNDS",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE RFND IN DGR APPLIES\nFOR ONE WAY FARES\nREFUND MUST BE REQUESTED BEFORE DEPARTURE OF FARE\nCOMPONENT.\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER FARE\nCOMPONENT COLLECT EACH. IF MIX OF PER FARE COMPONENT AND\nPER PRICING UNIT CALCULATE EACH AS PER PRICING UNIT AND\nCOLLECT HIGHEST. DISCOUNT APPLIES TO CHILD/INFANT.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TRAVEL\nCOMMENCEMENT DATE IF PARTIALLY USED OR ONE YEAR AFTER\nTICKET ISSUANCE IF TICKET UNUSED. FORM OF REFUND -\nORIGINAL FORM OF PAYMENT. ONLY VALIDATING CARRIER MAY\nREFUND TICKET.\nOR -\nAPPLIES FOR FARE COMPONENTS THAT ARE PARTIALLY FLOWN.\nREFUND MUST BE REQUESTED AFTER DEPARTURE OF FARE\nCOMPONENT.\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER FARE\nCOMPONENT COLLECT EACH. IF MIX OF PER FARE COMPONENT AND\nPER PRICING UNIT CALCULATE EACH AS PER PRICING UNIT AND\nCOLLECT HIGHEST. DISCOUNT APPLIES TO CHILD/INFANT.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TRAVEL\nCOMMENCEMENT DATE IF PARTIALLY USED OR ONE YEAR AFTER\nTICKET ISSUANCE IF TICKET UNUSED. FORM OF REFUND -\nORIGINAL FORM OF PAYMENT. ONLY VALIDATING CARRIER MAY\nREFUND TICKET.\nREPRICE FLOWN PORTION USING FARES IN EFFECT ON TICKET\nISSUANCE DATE. FOR FULLY FLOWN FARE COMPONENTS FARE BREAK\nPOINTS MAY NOT BE CHANGED. FOR PARTIALLY FLOWN FARE\nCOMPONENTS ONLY DESTINATION FARE BREAK POINTS MAY BE\nCHANGED. REPRICE USING NORMAL/SPECIAL ONE WAY/ROUND TRIP\nFARES/ANY RULE/FARE CLASS/EQUAL OR HIGHER RBD. PUBLIC\nFARES ARE USED IF TICKETED FARE IS IN PUBLIC TARIFF.\nQUALIFIED PRIVATE FARES OR PUBLIC FARES ARE USED IF\nTICKETED FARE IS IN PRIVATE TARIFF. NEW FARE FOR FULLY\nFLOWN FARE COMPONENTS MUST BE EQUAL TO OR HIGHER THAN\nTICKETED FARE.\nOR -\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER FARE\nCOMPONENT COLLECT EACH. IF MIX OF PER FARE COMPONENT AND\nPER PRICING UNIT CALCULATE EACH AS PER PRICING UNIT AND\nCOLLECT HIGHEST. DISCOUNT APPLIES TO CHILD/INFANT.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TRAVEL\nCOMMENCEMENT DATE IF PARTIALLY USED OR ONE YEAR AFTER\nTICKET ISSUANCE IF TICKET UNUSED. FORM OF REFUND -\nORIGINAL FORM OF PAYMENT. ONLY VALIDATING CARRIER MAY\nREFUND TICKET.\nREPRICE FLOWN PORTION USING FARES IN EFFECT ON TICKET\nISSUANCE DATE. FOR FULLY FLOWN FARE COMPONENTS FARE BREAK\nPOINTS MAY NOT BE CHANGED. FOR PARTIALLY FLOWN FARE\nCOMPONENTS ONLY DESTINATION FARE BREAK POINTS MAY BE\nCHANGED. REPRICE USING NORMAL/SPECIAL ONE WAY FARES/ANY\nRULE/FARE CLASS/EQUAL OR HIGHER RBD. PUBLIC FARES ARE\nUSED IF TICKETED FARE IS IN PUBLIC TARIFF. QUALIFIED\nPRIVATE FARES OR PUBLIC FARES ARE USED IF TICKETED FARE\nIS IN PRIVATE TARIFF. NEW FARE FOR FULLY FLOWN FARE\nCOMPONENTS MUST BE EQUAL TO OR HIGHER THAN TICKETED FARE."
+     }
+    ]
+   },
+   {
+    "@type": "FareRuleText",
+    "ruleNumber": "EIK2",
+    "id": "QAA3AKIM",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "FlightRef": "s14"
+     }
+    ],
+    "TextFareRule": [
+     {
+      "name": "0.  APPLICATION AND OTHER CONDITIONS",
+      "value": "RULE - 011/EIK2\nUNLESS OTHERWISE SPECIFIED\nECONOMY PLUS OW/RT\nAPPLICATION\nCLASS OF SERVICE\nTHESE FARES APPLY FOR ECONOMY CLASS SERVICE.\nTYPES OF TRANSPORTATION\nTHIS RULE GOVERNS ONE-WAY AND ROUND-TRIP FARES.\nFARES GOVERNED BY THIS RULE CAN BE USED TO CREATE\nONE-WAY/ROUND-TRIP/CIRCLE-TRIP/OPEN-JAW JOURNEYS.\nCAPACITY LIMITATIONS\nSEATS ARE LIMITED"
+     },
+     {
+      "name": "2.  DAY/TIME",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE 02CT IN DGR APPLIES"
+     },
+     {
+      "name": "3.  SEASONALITY",
+      "value": "FOR &amp;&amp;&amp;&amp;&amp;&amp;&amp;M TYPE FARES   NOTE - RULE CAT3 IN DGR APPLIES"
+     },
+     {
+      "name": "4.  FLIGHT APPLICATION",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE 4CAT IN DGR APPLIES\nFOR &amp;&amp;&amp;&amp;&amp;&amp;I&amp; TYPE FARES\nTHE FARE COMPONENT MUST NOT BE\nON CANADAIR REGIONAL JET 200 AIRCRAFT.\nAND\nTHE FARE COMPONENT MUST NOT BE\nON CANADAIR REGIONAL JET AIRCRAFT.\nAND\nTHE FARE COMPONENT MUST NOT BE\nON EMBRAER RJ135/RJ140/RJ145 SERIES AIRCRAFT.\nAND\nTHE FARE COMPONENT MUST BE ON\nONE OR MORE OF THE FOLLOWING\nANY UA FLIGHT OPERATED BY UA."
+     },
+     {
+      "name": "5.  ADVANCE RES/TICKETING",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE 5CAT IN DGR APPLIES\nFOR &amp;&amp;&amp;&amp;&amp;&amp;I&amp; TYPE FARES\nRESERVATIONS FOR ALL SECTORS ARE REQUIRED AT LEAST 3 DAYS\nBEFORE DEPARTURE OF EACH TRIP.\nTICKETING FOR DEPARTURE OF EACH TRIP MUST BE COMPLETED\nWITHIN 1 DAY AFTER RESERVATIONS ARE MADE OR AT LEAST 3\nDAYS BEFORE DEPARTURE WHICHEVER IS EARLIER.\nNOTE -\nTHE FLIGHT NUMBER AND DATE MUST BE INDICATED\nON THE TICKET."
+     },
+     {
+      "name": "6.  MINIMUM STAY",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE 6CAT IN DGR APPLIES\nNONE UNLESS OTHERWISE SPECIFIED"
+     },
+     {
+      "name": "8.  STOPOVERS",
+      "value": "WITHIN CONTIGUOUS U.S.A.\nNO STOPOVERS PERMITTED.\nNO STOPOVER OCCURS IF PASSENGER TAKES NEXT AVAILABLE\nFLIGHT WITHIN 4 HOURS."
+     },
+     {
+      "name": "9.  TRANSFERS",
+      "value": "WITHIN CONTIGUOUS U.S.A. FOR ONE WAY FARES\n2 TRANSFERS PERMITTED IN EACH DIRECTION\nFARE BREAK SURFACE SECTORS NOT PERMITTED AND EMBEDDED\nSURFACE SECTORS PERMITTED ON THE FARE COMPONENT.\nNOTE -\nFARE BREAK SURFACE SECTORS ARE NOT PERMITTED."
+     },
+     {
+      "name": "10. PERMITTED COMBINATIONS",
+      "value": "FOR ONE WAY FARES\nDOUBLE OPEN JAWS NOT PERMITTED.\nAPPLICABLE ADD-ON CONSTRUCTION IS ADDRESSED IN\nMISCELLANEOUS PROVISIONS - CATEGORY 23.\nEND-ON-END\nEND-ON-END COMBINATIONS NOT PERMITTED WITH DOMESTIC/\nINTERNATIONAL FARES FROM/TO VENEZUELA. VALIDATE ALL FARE\nCOMPONENTS. SIDE TRIPS PERMITTED.\nEND-ON-END\nEND-ON-END COMBINATIONS PERMITTED. VALIDATE ALL FARE\nCOMPONENTS. SIDE TRIPS PERMITTED.\nPROVIDED -\nCOMBINATIONS ARE WITH ANY 4TH LEVEL ECONOMY\nUNRESTRICTED-TYPE FARES FOR CARRIER UA.\nCOMBINATIONS ARE IN ANY RULE IN TARIFF\nCDR     - WITHIN CANADA\nCPR     - BETWEEN THE UNITED STATES-CANADA\nDFR     - WITHIN THE UNITED STATES\nOR RULE ECC2/ECW2/UPP1 IN TARIFF\nDR01    - WITHIN THE UNITED STATES.\nCOMBINATIONS ARE FOR CARRIER UA IN ANY RULE IN TARIFF\nIPRW    - BETWEEN THE USA/CANADA-AREA 1\nVPCR    - BETWEEN PUERTO RICO/VIRGIN ISLANDS-CANADA\nVPDR    - BETWEEN PUERTO RICO/VIRGIN ISLANDS-THE USA.\nCOMBINATIONS ARE FOR CARRIER UA IN ANY RULE IN TARIFF\nFBRINPV - BETWEEN USA/CA-AREA 1/2/3.\nCOMBINATIONS ARE FOR CARRIER UA/AC IN ANY RULE IN\nTARIFF\nFBRNAPV - WITHIN NORTH AMERICA EXCEPT MEXICO.\nCOMBINATIONS ARE FOR CARRIER UA/LH/AC/LX/VO/SN/OS\nPUBLISHED FOR TRAVEL VIA THE ATLANTIC.\nCOMBINATIONS ARE FOR CARRIER UA/NH PUBLISHED FOR TRAVEL\nVIA THE PACIFIC.\nOPEN JAWS\nFARES MAY BE COMBINED ON A HALF ROUND TRIP BASIS\n-TO FORM SINGLE OPEN JAWS.\nA MAXIMUM OF 2 FARE COMPONENTS PERMITTED.\nMILEAGE OF THE OPEN SEGMENT MUST BE EQUAL/LESS THAN\nMILEAGE OF THE SHORTEST FLOWN FARE COMPONENT.\nPROVIDED -\nTHE OPEN SEGMENT MUST BE\n-BETWEEN THE UNITED STATES AND CANADA/BETWEEN THE\nUNITED STATES AND PUERTO RICO/BETWEEN CANADA AND\nPUERTO RICO/BETWEEN THE UNITED STATES AND US VIRGIN\nISLANDS/BETWEEN CANADA AND US VIRGIN ISLANDS/BETWEEN\nPUERTO RICO AND US VIRGIN ISLANDS\n-WITHIN THE UNITED STATES OR WITHIN PUERTO RICO OR\nWITHIN US VIRGIN ISLANDS.\nCOMBINATIONS ARE WITH ANY FARE FOR ANY CARRIER IN ANY\nRULE AND TARIFF.\n2-COMPONENT CIRCLE TRIPS/MULTI-COMPONENT CIRCLE TRIPS\nFARES MAY BE COMBINED ON A HALF ROUND TRIP BASIS\n-TO FORM 2-COMPONENT CIRCLE TRIPS/MULTI-COMPONENT CIRCLE\nTRIPS.\nPROVIDED -\nCOMBINATIONS ARE WITH ANY FARE FOR ANY CARRIER IN ANY\nRULE IN ANY TARIFF.\nNOTE - THE CITY PAIRS BELOW ARE CONSIDERED THE SAME POINT-\nBWI-WAS  FLL-MIA  FLL-PBI  MIA-PBI  BUR-LAX  BUR-ONT\nBUR-SNA  LAX-ONT  LAX-SNA  ONT-SNA  OAK-SFO  OAK-SJC\nSFO-SJC  EWR-HVN  EWR-ISP  EWR-NYC  EWR-HPN  HVN-ISP\nHVN-NYC  HVN-HPN  ISP-NYC  ISP-HPN  NYC-HPN  EFD-HOU\nEFD-IAH  IAD-DCA  MDW-ORD  LGA-JFK"
+     },
+     {
+      "name": "12. SURCHARGES",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE 12SC IN DGR ALSO\nAPPLIES\nIF INFANT 0-1 WITHOUT A SEAT.\nOR - EMF 0-1.\nOR - PIF 0-1.\nOR - CONTRACT BULK INFANT WITHOUT A SEAT 0-1.\nOR - CBI 0-1.\nOR - INCLUSIVE TOUR INFANT WITHOUT A SEAT 0-1.\nOR - SEAMAN INFANT WITHOUT A SEAT 0-1.\nTHERE IS NO CHARGE FOR TRAVEL PER FARE COMPONENT.\nTHE PROVISIONS BELOW APPLY ONLY AS FOLLOWS -\nTICKETS MUST BE ISSUED ON UA.\nTHERE IS NO CHARGE FOR TRAVEL PER FARE COMPONENT.\nOTHERWISE\nA SURCHARGE OF USD 93.02 PER FARE COMPONENT WILL BE\nADDED TO THE APPLICABLE FARE FOR TRAVEL."
+     },
+     {
+      "name": "15. SALES RESTRICTIONS",
+      "value": "UNLESS OTHERWISE SPECIFIED   NOTE - RULE CT15 IN DGR APPLIES\nUNLESS OTHERWISE SPECIFIED\nTICKETS MAY BE ISSUED BY PTA. PTA CONSTITUTES TICKETING.\nTICKETS MAY NOT BE SOLD IN NIGERIA/VENEZUELA/LEBANON/\nBELARUS/ANGOLA/SOUTH SUDAN/SUDAN/IRAN,ISLAMIC REPUBLIC OF.\nTICKETS MAY ONLY BE SOLD IN AREA 1/AREA 2/AREA 3.\nNOTE -\nFOR ITINERARIES SOLD OUTSIDE OF VE - CREDIT\nCARDS ISSUED IN VE ARE NOT ACCEPTED.\n----------------------\nEXTENSION OF TICKET VALIDITY PERMITTED UNDER\nGUIDELINES SET FORTH BY CARRIER.  CONTACT\nCARRIER FOR DETAILS."
+     },
+     {
+      "name": "16. PENALTIES",
+      "value": "FOR ONE WAY &amp;&amp;&amp;&amp;&amp;&amp;&amp;M TYPE FARES   NOTE - RULE REFX IN DGR\nAPPLIES\nUNLESS OTHERWISE SPECIFIED\nCANCELLATIONS\nBEFORE DEPARTURE\nCANCELLATIONS PERMITTED.\nNOTE -\n--\nEXCHANGE - CHANGE TO 1ST TICKETED FLIGHT COUPON\nOR  WHOLLY UNUSED TICKET\n--\nRESIDUAL VALUE MAY BE REFUNDED OR APPLIED\nTOWARD   MOST  DOMESTIC OR INTERNATIONAL\nNEW TICKET PURCHASE AT CURRENT FARE LEVELS.\nANY DIFFERENCE IN FARE / TAX\nCOLLECTED/REFUNDED AT TIME OF TICKET EXCHANGE.\n--\nTICKETS MUST BE REISSUED WHEN ANY VOLUNTARY\nCHANGE IS  MADE.\n.\n1. WHOLLY UNUSED TICKETS -\nCHANGE TO ORIGINATING FLIGHT -\n--\nREPRICE USING CURRENT QUALIFYING\nFARES IN EFFECT TODAY\n--\nNO CHARGE OR HIGHEST FEE OF ONLY CHANGED\nFARE COMPONENTS. ONLY CHARGE ONE FEE FOR ONLY\nCHANGED FARE COMPONENTS IF CHANGED FARE COMPONENTS\nHAVE A FEE TO CHARGE.\n--\n1. ANY CARRIER FARE TYPE EXCEPT EOU/ERU ARE USED\n2. ADV RES IS MEASURED FROM REISSUE DATE TO\nDEPARTURE OF PRICING UNIT\n--\nWHEN CHANGE RESULTS IN FARE DIFFERENCE --\n--\nREFUND RESIDUAL VIA ORIGINAL FORM OF PAYMENT //\nADD-COLLECT FARE DIFFERENCE IF ANY // CHARGE\nCHANGE FEE WHEN APPLICABLE\n--\nAFTER DEPARTURE\nCANCELLATIONS PERMITTED.\nNOTE -\n--\nCALCULATE DIFFERENCE BETWEEN FARE PAID AND\nQUALIFYING FARE FOR TRAVEL COMPLETE\nUSING FARES OF ORIGINAL TICKET DATE /\nREFUND RESIDUAL VALUE IF ANY TO ORIGINAL\nFORM OF PAYMENT\n--\nNOTE -\n--\nTICKETS MUST BE REISSUED WHEN ANY VOLUNTARY\nCHANGE IS  MADE\n--\nWHEN REFUNDABLE FARES ARE COMBINED ON A HALF\nROUND TRIP BASIS WITH PENALTY OR RESTRICTED FARES\nTO FORM A RT/CT/OJ ITINERARY THE MOST RESTRICTIVE\nPROVISIONS WILL APPLY TO THE PRICING UNIT\n--\nEXCEPTION -\nFARES COMBINED END-ON-END ON THE TICKET//IE\nFARES THAT COULD STAND ALONE IF ISSUED ON A\nSEPARATE TICKET// MAY BE CHANGED SEPARATELY\n--\nCHANGES\nBEFORE DEPARTURE\nCHANGES PERMITTED.\nNOTE -\n--\n-------------------------------\n--\nBEFORE DEPARTURE OF JOURNEY AND WITHIN TICKET\nVALIDITY CERTAIN DOMESTIC REISSUE PROVOSIONS\nMAY BE OVERRIDDEN BY THOSE OF UA INTERNATIONAL\nFARES.  -- NO CHARGE -- OR HIGHEST FEE OF\nONLY CHANGED FARE COMPONENT/S/ WITHIN JOURNEY.\n--\nONLY ONE FEE IS CHARGED FOR CHANGED FARE\nCOMPONENT/S/ IF FARE RULE NOTES CHANGE FEE.\n--\nDOWNLINE DATE CHANGE / FLIGHT CHANGE\nSAME BOOKING CODE /  KEEP THE FARE\n--\nREPRICE USING CURRENTLY TICKETED/HISTORICAL FARE\n--\nPROVIDED ALL OF THE FOLLOWING CONDITIONS ARE MET -\n--\n1. NO CHANGE TO 1ST FLIGHT COUPON/FARE BREAKS\n2. ALL TRAVEL REMAINS DOMESTIC\n3. SAME UA FARE USED\n4. ALL RULE AND BOOKING CODE PROVISIONS ARE MET\n5. VALIDATE ADVANCE RES/TICKETING FROM ORIGINAL\nTICKET DATE TO DEPARTURE OF PRICING UNIT\n--\nCHARGE CHANGE FEE WHEN APPLICABLE\n--\n--\nFARE BREAK POINT CHANGE PERMITTED\n--\nA. CHANGED FARE COMPONENTS USE FARE IN EFFECT\nTODAY\nB. ALL OTHERS USE CURRENTLY TKTD FARES\n--\nPROVIDED ALL OF THE FOLLOWING CONDITIONS ARE MET -\n1. ANY FARE TYPE EXCEPT EOU/ERU ARE USED\n2. TRAVEL IS DOMESTIC\n3. ALL RULE AND BOOKING CODE PROVISIONS ARE MET\n4. ADVANCE RES IS MEASURED FROM NEW TKT ISSUED\nDATE IF CURRENT FARES/FROM PREVIOUS TKT ISSUE\nDATE IF HISTORICAL FARES TO DEPARTURE OF\nPRICING UNIT\n--\nWHEN CHANGE RESULTS IN FARE DIFFERENCE--\n--\nREFUND RESIDUAL VIA ORIGINAL FORM OF PAYMENT //\nADD-COLLECT FARE DIFFERENCE IF ANY // CHARGE\nCHANGE FEE WHEN APPLICABLE\n--\nAFTER DEPARTURE\nCHANGES PERMITTED.\nNOTE -\n--\nAFTER DEPARTURE OF JOURNEY AND WITHIN TICKET\nVALIDITY CERTAIN DOMESTIC REISSUE PROVISIONS\nMAY BE OVERRIDDEN BY THOSE OF UA INTERNATIONAL\nFARES.\n--\nNO CHARGE -- OR HIGHEST FEE OF ANY CHANGED FARE\nCOMPONENT WITHIN JOURNEY -\n--\nONLY ONE CHANGE FEE CHARGED FOR CHANGED FARE\nCOMPONENT/S/ ONLY IF FARE RULE NOTES A CHANGE FEE\nIS TO BE CHARGED FOR CHANGE\n--\nREPRICE USING CURRENLTY TICKETED/HISTORICAL FARES\nDOWNLINE DATE CHANGE / FLIGHT CHANGE\nSAME BOOKING CODE / KEEP THE FARE\n--\nPROVIDED ALL OF THE FOLLOWING CONDITIONS ARE MET-\n1. NO CHANGE TO FARE BREAKS\n2. ALL TRAVEL REMAINS DOMESTIC\n3. FULLY FLOWN FARE NOT REPRICED TO FURTHER POINT\n4. UA FARES ARE USED\n5. ALL RULE AND BOOKING CODE PROVISIONS ARE MET\n6. ADV RES IS MEASURED FROM ORIGINAL TKT DATE TO\nDEPARTURE OF PRICING UNIT\n--\nFARE BREAK POINT CHANGE PERMITTED\n--\nA. FULLY FLOWN FARE COMPONENTS USE FARES IN\nEFFECT WHEN TKT WAS ISSUED\nB. ALL OTHERS USE FARES IN EFFECT TODAY\n--\nPROVIDED ALL OF THE FOLLOWING CONDITIONS ARE MET-\n1. NO CHANGE TO FARE BREAKS OF FULLY FLOWN\nFARE COMPONENTS\n2. ALL TRAVEL REMAINS DOMESTIC\n4. FULLY FLOWN FARE NOT REPRICED TO FURTHER POINT\n5. ANY FARE TYPE EXCEPT EOU/ERU ARE USED\n6. ALL RULE AND BOOKING CODE PROVISIONS ARE MET\n7. ADV RES IS MEASURED FROM ORIGINAL TKT DATE IF\nCURRENT FARES ARE USED/FROM PREVIOUS TKT DATE\nIF HISTORICAL FARES TO DEPARTURE OF PRICING UNIT\n--\nOR -\n--\nFARE BREAK POINT CHANGE PERMITTED\n--\nA. CHANGED FARE COMPONENETS USE FARE IN EFFECT\nTODAY.\nB. ALL OTHERS USE CURRENTLY TKTD FARE.\nPROVIDED ALL OF THE FOLLOWING CONDITIONS ARE MET-\n1. NO CHANGE TO FARE BREAKS UP TO THE FIRST\nCHANGED FARE COMPONENT\n2. ALL TRAVEL REMAINS DOMESTIC\n3. FULLY FLOWN FARE NOT REPRICED TO FURTHER POINT\n4. ANY UA FARE TYPE EXCEPT EOU/ERU ARE USED\n5. ALL RULE AND BOOKING CODE PROVISIONS ARE MET\n6. ADV RES IS MEASURED FROM NEW TKT ISSUE DATE\nIF CURRENT FARES/FROM PREVIOUS TKT ISSUE DATE\nIF HISTORICAL FARES TO DEPARTURE OF PRICING UNIT\n--\n--   WHEN CHANGE RESULTS IN FARE DIFFERENCE --\n--\nREFUND RESIDUAL VIA ORIGINAL FORM OF PAYMENT //\nADD COLLECT FARE DIFFERENCE IF ANY // CHARGE\nCHANGE FEE WHEN APPLICABLE\n--"
+     },
+     {
+      "name": "18. TICKET ENDORSEMENT",
+      "value": "FOR ONE WAY &amp;&amp;&amp;&amp;&amp;&amp;&amp;M TYPE FARES   NOTE - RULE REFX IN DGR\nAPPLIES\nUNLESS OTHERWISE SPECIFIED\nTHE ORIGINAL TICKET MUST BE ANNOTATED - REFUNDABLE - IN\nTHE ENDORSEMENT BOX."
+     },
+     {
+      "name": "19. CHILDREN DISCOUNTS",
+      "value": "UNLESS OTHERWISE SPECIFIED\nACCOMPANIED CHILD 2-11 - CHARGE 100 PERCENT OF THE FARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME COMPARTMENT\nBY ADULT 18 OR OLDER\nOR - CBC 2-11 - CHARGE 100 PERCENT OF THE FARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY PFA 18 OR OLDER\nOR - HNN 2-11 - CHARGE 100 PERCENT OF THE FARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY PFA 18 OR OLDER\nOR - CONTRACT BULK CHILD 2-11 - CHARGE 100 PERCENT OF THE\nFARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY CONTRACT BULK ADULT 18 OR OLDER\nOR - 1ST INFANT UNDER 2 WITHOUT A SEAT - NO CHARGE\nTICKET DESIGNATOR - IN.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY ADULT 18 OR OLDER\nOR - 1ST CONTRACT BULK INFANT WITHOUT A SEAT UNDER 2 - NO\nCHARGE\nTICKET DESIGNATOR - IN.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY CONTRACT BULK ADULT 18 OR OLDER\nOR - 1ST CBI UNDER 2 - NO CHARGE\nTICKET DESIGNATOR - IN.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY PFA 18 OR OLDER\nOR - 1ST PIF UNDER 2 - NO CHARGE\nTICKET DESIGNATOR - IN.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY PFA 18 OR OLDER\nOR - INFANT UNDER 2 WITH A SEAT - CHARGE 100 PERCENT OF\nTHE FARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY ADULT 18 OR OLDER\nOR - CONTRACT BULK INFANT WITH A SEAT UNDER 2 - CHARGE 100\nPERCENT OF THE FARE.\nTICKET DESIGNATOR - CH.\nMUST BE ACCOMPANIED ON ALL FLIGHTS IN SAME\nCOMPARTMENT BY CONTRACT BULK ADULT 18 OR OLDER\nOR - UNACCOMPANIED CHILD 5-14 - CHARGE 100 PERCENT OF THE\nFARE."
+     },
+     {
+      "name": "23. MISCELLANEOUS PROVISIONS",
+      "value": "UNLESS OTHERWISE SPECIFIED\nTHIS FARE MUST NOT BE USED AS THE HIGH OR THE LOW FARE\nWHEN CALCULATING A DIFFERENTIAL. THIS FARE MUST NOT BE\nUSED AS THE THROUGH FARE WHEN PRICING A FARE COMPONENT\nWITH A DIFFERENTIAL."
+     },
+     {
+      "name": "31. VOLUNTARY CHANGES",
+      "value": "DO A CATEGORY 31 SPECIFIC TEXT ENTRY TO VIEW CONTENTS\nALSO REFERENCE 16 PENALTIES - FOR ADDITIONAL CHANGE INFORMATION"
+     },
+     {
+      "name": "33. VOLUNTARY REFUNDS",
+      "value": "FOR ONE WAY &amp;&amp;&amp;&amp;&amp;&amp;&amp;M TYPE FARES   NOTE - RULE REFX IN DGR\nAPPLIES\nUNLESS OTHERWISE SPECIFIED\nREFUND MUST BE REQUESTED BEFORE DEPARTURE OF JOURNEY.\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER\nPRICING UNIT COLLECT HIGHEST. IF MIX OF PER FARE\nCOMPONENT AND PER PRICING UNIT CALCULATE EACH AS PER\nPRICING UNIT AND COLLECT HIGHEST.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TICKET\nISSUANCE. FORM OF REFUND - ORIGINAL FORM OF PAYMENT. ONLY\nVALIDATING CARRIER MAY REFUND TICKET.\nREPRICE USING EQUAL OR HIGHER RBD.\nOR -\nREFUND MUST BE REQUESTED AFTER DEPARTURE OF JOURNEY.\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER\nPRICING UNIT COLLECT HIGHEST. IF MIX OF PER FARE\nCOMPONENT AND PER PRICING UNIT CALCULATE EACH AS PER\nPRICING UNIT AND COLLECT HIGHEST.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TRAVEL\nCOMMENCEMENT DATE IF PARTIALLY USED OR ONE YEAR AFTER\nTICKET ISSUANCE IF TICKET UNUSED. FORM OF REFUND -\nORIGINAL FORM OF PAYMENT. ONLY VALIDATING CARRIER MAY\nREFUND TICKET.\nREPRICE FLOWN PORTION USING FARES IN EFFECT ON TICKET\nISSUANCE DATE. FOR FULLY FLOWN FARE COMPONENTS FARE BREAK\nPOINTS MAY NOT BE CHANGED. FOR PARTIALLY FLOWN FARE\nCOMPONENTS ONLY DESTINATION FARE BREAK POINTS MAY BE\nCHANGED. REPRICE USING NORMAL/SPECIAL ONE WAY/ROUND TRIP\nFARES/ANY RULE/FARE CLASS/EQUAL OR HIGHER RBD. PUBLIC\nFARES ARE USED IF TICKETED FARE IS IN PUBLIC TARIFF.\nQUALIFIED PRIVATE FARES OR PUBLIC FARES ARE USED IF\nTICKETED FARE IS IN PRIVATE TARIFF. NEW FARE FOR FULLY\nFLOWN FARE COMPONENTS MUST BE EQUAL TO OR HIGHER THAN\nTICKETED FARE.\nOR -\nAPPLIES FOR FARE COMPONENTS THAT ARE FULLY FLOWN. REFUND\nMUST BE REQUESTED AFTER DEPARTURE OF JOURNEY.\nNO CHARGE. IF ALL PENALTIES IN PRICING UNIT ARE PER\nPRICING UNIT COLLECT HIGHEST. IF MIX OF PER FARE\nCOMPONENT AND PER PRICING UNIT CALCULATE EACH AS PER\nPRICING UNIT AND COLLECT HIGHEST.\nREFUND REQUEST MUST BE LESS THAN ONE YEAR AFTER TRAVEL\nCOMMENCEMENT DATE IF PARTIALLY USED OR ONE YEAR AFTER\nTICKET ISSUANCE IF TICKET UNUSED. FORM OF REFUND -\nORIGINAL FORM OF PAYMENT. ONLY VALIDATING CARRIER MAY\nREFUND TICKET.\nREPRICE FLOWN PORTION USING FARES IN EFFECT ON TICKET\nISSUANCE DATE. FOR FULLY FLOWN FARE COMPONENTS FARE BREAK\nPOINTS MAY NOT BE CHANGED. FOR PARTIALLY FLOWN FARE\nCOMPONENTS ONLY DESTINATION FARE BREAK POINTS MAY BE\nCHANGED. REPRICE USING NORMAL/SPECIAL ONE WAY/ROUND TRIP\nFARES/ANY RULE/FARE CLASS/EQUAL OR HIGHER RBD. PUBLIC\nFARES ARE USED IF TICKETED FARE IS IN PUBLIC TARIFF.\nQUALIFIED PRIVATE FARES OR PUBLIC FARES ARE USED IF\nTICKETED FARE IS IN PRIVATE TARIFF. NEW FARE FOR FULLY\nFLOWN FARE COMPONENTS MUST BE EQUAL TO OR HIGHER THAN"
+     }
+    ]
+   }
+  ],
+  "Identifier": {
+   "value": "o1_FR"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "FlightDetail",
+      "distance": 1709,
+      "duration": "PT4H3M",
+      "carrier": "UA",
+      "number": "2188",
+      "equipment": "739",
+      "id": "s14",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "location": "DEN",
+       "date": "2022-07-06",
+       "time": "10:03:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "1",
+       "location": "FLL",
+       "date": "2022-07-06",
+       "time": "16:06:00"
+      },
+      "AvailabilitySourceCode": "S"
+     },
+     {
+      "@type": "FlightDetail",
+      "distance": 582,
+      "duration": "PT2H2M",
+      "carrier": "DL",
+      "number": "2516",
+      "equipment": "757",
+      "id": "s15",
+      "Departure": {
+       "@type": "DepartureDetail",
+       "terminal": "2",
+       "location": "FLL",
+       "date": "2022-07-06",
+       "time": "17:11:00"
+      },
+      "Arrival": {
+       "@type": "ArrivalDetail",
+       "terminal": "S",
+       "location": "ATL",
+       "date": "2022-07-06",
+       "time": "19:13:00"
+      },
+      "AvailabilitySourceCode": "S"
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareRules.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+</html>

@@ -1,0 +1,56 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-02-22",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "JFK"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "LHR"
+					}
+				}
+			],
+			"PassengerCriteria": [
+				{
+					"@type": "PassengerCriteriaAirChange",
+					"number": 1,
+					"age": 22,
+					"passengerTypeCode": "ADT",
+					"TravelerIdentifierRef": {
+						"id": "travelerRefId_1"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PrivateFaresOnly"
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "a6aeff49-9da1-494c-9623-ad7e7e6ee712"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_2"
+					}
+				]
+			}
+		}
+	}
+}

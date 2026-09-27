@@ -1,0 +1,4451 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Ticketing" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:29:53 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Workbench Commit API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Workbench Commit API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>book/reservation/reservations/<span class="Brand4">{workbenchID}</span></p>
+                                                        <p>For <span class="Brand4">{workbenchID}</span> send the workbench identifier returned in ReservationResponse/Identifer/value in the workbench create response.</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="../Book/BookingGuide.html"> Booking Guide</a>, <a href="../Ticketing/TicketingGuide.html">Ticketing Guide</a></p>
+                                        <p>The Workbench Commit request ends a workbench session and commits all requests made in that session. Depending on the requests sent in the workbench session, the workbench commit could result in any of the following:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Create a booking at the end of the initial booking workflow</p>
+                                            </li>
+                                            <li>
+                                                <p>Issue a ticket or EMD, after sending payment for that ticket or EMD in the workbench with the <a href="../Ticketing/APIRef_AddPayment.html">Payment</a> request</p>
+                                            </li>
+                                            <li>
+                                                <p>Modify or cancel a booking (you can cancel a booking or add or remove offers, products, or segments with <a href="APIRef_CancelWorkbenchItems.html">Cancel Workbench Items</a>) </p>
+                                            </li>
+                                            <li>
+                                                <p>Modify traveler data, after sending the <a href="../Book/APIRef_TravelerUpdatableItems.html">Traveler Updatable Items</a> and <a href="../Book/APIRef_TravelerUpdate.html">Traveler Update</a> requests in the workbench</p>
+                                            </li>
+                                            <li>
+                                                <p>Exchange a ticket using the <a href="../General/ExchangeRefundGuide.html">GDS Exchange APIs</a> (note that NDC&#160;exchanges use <a href="../NDC/APIRef_Modify.html">Modify</a> to end the exchange instead of Workbench Commit)</p>
+                                            </li>
+                                        </ul>
+                                        <p>The workbench commit supports several optional query parameters and payloads to carry out certain actions at commit. Some are supported only in specific flows, such as the initial booking flow, a ticketing commit, or an exchange commit, as specified. </p>
+                                        <div class="noteWarning">
+                                            <p>In the initial booking workflow, if any pricing modifier sent in the Add Offer <a href="../Book/APIRef_AddOfferFullPayload.html#addoffer">full payload</a> or <a href="../Book/APIRef_AddOfferRefPayload.html">reference payload</a> request does not have any fares associated with it, the commit will fail and return the error message <i>No Fare Found</i>. Pricing happens at the commit, not the Add Offer step.</p>
+                                            <p>NDC carrier British Airways (BA) does not guarantee the price of a held booking.  When ticketing a held booking, the workbench commit returns an error message if the price has changed. In this case, you must use the Reprice and Modify APIs (see the <a href="../General/ExchangeRefundGuide.html">Exchange,&#160;Refund, and Void Guide</a>) and send payment to complete ticketing. </p>
+                                        </div>
+                                        <div class="noteNote">
+                                            <p>Carrier code delay at booking: In some instances, the carrier requires additional time to return the carrier locator code. Because this can be an issue for agencies that require this code at the time of booking, AirReservation makes one additional attempt to retrieve the reservation from the carrier. If the carrier locator code cannot be retrieved,  and agencies must <a href="../Book/APIRef_ReservationRetrieve.html">retrieve the reservation</a> later. This can happen in any booking scenario upon commit but is most common when the booking contains an ancillary such as a wheelchair. </p>
+                                        </div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Parameter</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Description</th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Required/Optional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p><b>autoDeleteDate</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Optional. Use to create, update, or delete retention segments, and to create a shell booking for booking failures caused by specific scenarios. </p>
+                                                        <p><b>Retention Segments</b>
+                                                        </p>
+                                                        <p>By default, reservation details are stored for one month after all travel on the itinerary is completed. This means you can continue to retrieve the reservation&#160;for one month after travel, at which time the reservation&#160;is purged and no longer available. You can extend this time by setting a purge date that is up to 331 days from the date the reservation was created: In the commit of the <i>initial booking workbench session</i>, send autoDeleteDate with a date in YYYY-MM-DD format, as in <i>?autoDeleteDate=2024-08-12</i>.  Adding a purge date creates a retention segment on the host reservation. </p>
+                                                        <p>The autoDeleteDate value is returned in the Reservation Retrieve, Workbench Commit, and Post-Commit Workbench responses. To update or delete the autoDeleteDate, at the end of a <i>post-commit workbench session</i>, send autoDeleteDate with one of the following: </p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p>To update the purge date for an existing retention segment, send the new date; e.g., <i>?autoDeleteDate=2023-08-12</i></p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p> To delete the existing retention segment, send with the value <i>1000-01-01</i> </p>
+                                                            </li>
+                                                        </ol>
+                                                        <p><b>Create Reservation Shell (Shell Booking)</b>
+                                                        </p>
+                                                        <p>Sending autoDeleteDate with any date value in the commit of the <i>initial booking workbench session</i> creates a reservation shell if the booking fails either because the offer cannot be added or the fare cannot be quoted. This reservation shell contains traveler details and allows the booking to be completed later. See <a href="../Book/BookingGuide.html#shell">Create Shell Booking in Case of Booking Failure</a>.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p><a name="issuancequeryparameter"></a><b>Issuance</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Optional. Send with a value of BACKOFFICE to update any back office accounting systems. You can send Issuance in the workbench commit at the end of a booking session, or at ticketing. </p>
+                                                        <p>The response includes an interface control number.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p>Optional</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p><b>payLaterInd</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>For use only when exchanging GDS tickets; see  the <a href="../General/ExchangeRefundGuide.html">Exchanges, Refunds, and Void Guide</a> for details. Sets whether to issue the new ticket/s now, or create a held booking for later fulfillment. Supported values:</p>
+                                                        <blockquote>
+                                                            <p><b>true:</b> Holds changes for later fulfillment and ticketing. </p>
+                                                            <p><b>false:</b> Issues ticket and any other documents such as EMDs on commit.</p>
+                                                        </blockquote>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><span style="color: #ff4500;">Required</span> for a ticket exchange only</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p><b>DocumentValue</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>For use only when exchanging GDS tickets; see  the <a href="../General/ExchangeRefundGuide.html">Exchanges, Refunds, and Void Guide</a> for details. If sent, send with a value of <i>REFUND</i>, which refunds an EMD that has a refundable balance to the original FOP and is the only supported value.</p>
+                                                        <p>Refunds are indicated in the Exchange Search response by a negative amount in ModifyPrice/TotalPrice, and a value of either <i>EMD</i> or <i>MCO</i> in TermsAndConditions/FulfillmentMethod/RefundMethod.</p>
+                                                        <div class="noteNote">Alternately, you can refund or forfeit any EMD&#160;value using the <a href="../Ancillaries/APIRef_EMDVoid.html">EMD&#160;Void request</a>.</div>
+                                                        <div class="noteNote">If the new itinerary is ticketed at the time of reservation (pay now flow), and there is a residual balance  to an MCO&#160;(miscellaneous change order), the MCO is issued along with the ticket at workbench commit. If the new itinerary is booked but not ticketed (pay later flow), any MCO is created but not issued yet. This allows customers to display, modify, and issue their own MCO outside of the <span class="mc-variable General.Product variable">JSON</span> APIs if desired. If the reservation is subsequently ticketed using Exchange Ticketing, the MCO&#160;is issued at commit as usual. </div>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <p>Optional for a ticket exchange</p>
+                                                        <p>If not sent any value remains on the EMD.</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h4>Request Body</h4>
+                                        <p>Although a workbench commit does not require any message payload, it supports several optional actions that can be specified in an optional payload. The following table includes all objects that are supported for the optional workbench commit payload. See the following links in the Air Booking Guide for a full description of these optional actions supported at commit:</p>
+                                        <ul>
+                                            <li><a href="../Book/BookingGuide.html#twostepcommit">Enable Two-Step Commit and Warnings</a> for Price Change, Schedule Change, or Minimum Connect Time (MCT)</li>
+                                            <li>
+                                                <p><a href="../Book/BookingGuide.html#schedulechange">Accept involuntary schedule change</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Ticketing/TicketingGuide.html#queue">Specify a queue at ticketing</a> (Ticketing Guide) </p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Book/BookingGuide.html#tkttimelimt">Update or delete ticketing time limit date</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Book/BookingGuide.html#receivedfrom">Add ReceivedFrom for Deem</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Table for optional workbench commit request payload</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReservationQueryCommitReservation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top-level object. May include Notification and ReceivedFrom objects.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>scheduleChangeAcceptedInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Indicator to update the booking with an involuntary flight schedule change, which occurs  when an airline has modified a flight schedule. Used when a schedule change has occurred after the booking has been made. If you are only accepting a schedule change, you can but are not required to create a workbench session before this commit. </p>
+                                                                    <p>Boolean. Supported values:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>true:&#160;Accepts the schedule change.  </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>false: Does not update the booking with the schedule change. Default.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="noteNote">
+                                                                        <p>To check whether a flight schedule has been modified, send a <a href="../Book/APIRef_ReservationRetrieve.html">Reservation Retrieve</a> request. In the response:</p>
+                                                                        <ul>
+                                                                            <li>For GDS, a value in OfferStatus/StatusAir/code of either <i>TK</i>&#160;or <i>UN</i> indicates the flight has schedule change information.</li>
+                                                                            <li>For NDC, the response returns <i>NDC&#160;CONTENT&#160;HAS&#160;CHANGED</i> in ReservationComment when a schedule change has occurred. See <a href="../Book/BookingGuide.html#ndcdisruption">NDC&#160;Flight Disruption Handling</a> in the Booking Guide for details.</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>enableTwoStepCommitInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>In the initial booking workflow, or when adding an offer to an existing reservation, enables a two-step commit process that, when combined with errorWhenPriceChangesInd, errorWhenScheduleChangesInd, and/or overrideMCTInd, returns a warning if the error for that indicator occurs.  If so,  AirReservation keeps the workbench active and returns a warning message and additional details. </p>
+                                                                    <p>Boolean. Supported values:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p><b>true</b>:&#160;Enables a two-step commit that returns a warning message in selected scenarios instead of proceeding with the booking. </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p><b>false</b> or not sent (default): Does not enable two-step commit. In the case of a price or schedule change, or MCT violation, creates the booking and returns a warning message about the change. </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="noteNote">If a two-step commit is triggered, you must send an additional commit request if you want to complete the booking. See the <a href="../Book/BookingGuide.html#twostepcommit">Air Booking Guide</a> for a full description, examples, and alternative actions to proceeding with the booking.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>errorWhenPriceChangesInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Boolean. Supported values and behavior at <b>initial workbench commit</b>:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p><b>true</b>:&#160;When sent with enableTwoStepCommitInd=true, triggers a two-step commit if the price has changed since the offer was added to the workbench. The response includes the warning, and an Offer @type OfferModify object that returns priceUpdatedInd=true to note the updated price, returns the new price, and breaks down the price change. </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p><b>false</b> (default) or not sent:  In the case of a price change, creates the booking and returns a warning message about the change.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>If no price change occurs, AirReservation creates the booking at initial commit as usual.</p>
+                                                                    <p>If a two-step commit is triggered  and you want to proceed with the booking, for the <b>second workbench commit</b>, send with <b style="font-style: italic; font-weight: normal;">false</b> or do not send. Do not send with <b style="font-style: italic; font-weight: normal;">true</b>, which returns an error and discards the workbench.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>errorWhenScheduleChangesInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Boolean. Supported values and behavior at <b>initial workbench commit</b>:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p><b>true</b>:&#160;When sent with enableTwoStepCommitInd=true, triggers a two-step commit if the schedule has changed since the offer was added to the workbench. The response includes a warning,  an Offer @type OfferModify object that returns scheduleChangeInd=true to note the schedule change, and updated flight details in Product. </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p><b>false</b> (default)&#160;or not sent:  In the case of a schedule change, creates the booking and returns a warning message about the change. </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>If no schedule change occurs, AirReservation creates the booking at initial commit as usual.</p>
+                                                                    <p>If a two-step commit is triggered and you want to proceed with the booking, for the <b>second workbench commit</b>, send with <b style="font-style: italic; font-weight: normal;">false</b> or do not send. Do not send with <b style="font-style: italic; font-weight: normal;">true</b>, which returns an error and discards the workbench.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>overrideMCTInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>A Minimum Connect Time (MCT) violation occurs when an airline deems there is not sufficient time for passengers to reach their connecting flight. MCT thresholds are set by individual carriers.</p>
+                                                                    <p>Boolean. Supported values and behavior at <b>initial workbench commit</b></p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>true:&#160;In the case of MCT violation, AirReservation  overrides the warning, creates the booking (if successful), and returns the warning in the response. Default.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>false:  When sent with enableTwoStepCommitInd=true, triggers a two-step commit if the carrier returns an MCT&#160;violation, returning a response with a message that the connection duration cannot be less than the minimum connecting time. Note that if sent with <i>false</i> and enableTwoStepCommitInd=false or is not sent, an error occurs and the booking workbench is discarded.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>If no MCT violation occurs, AirReservation creates the booking at initial commit as usual.</p>
+                                                                    <p>If a two-step commit is triggered and you want to proceed with the booking, for the <b>second workbench commit</b>, send  overrideMCTInd as <b style="font-style: italic; font-weight: normal;">true</b>, or send empty or do not send,  to override the MCT&#160;message from the carrier and create the booking. Do not send again with <b style="font-style: italic; font-weight: normal;">false</b>, which discards the workbench. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReceivedFrom</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC. Supported for both ticketing and exchanges.</div>
+                                                                    <p>ReceivedFrom is used on the Deem platform to add name details for the person a backoffice comment was received from. After sending, receivedFrom details are viewable only in a terminal program, not in the <span class="mc-variable General.Product variable">JSON</span> Reservation Retrieve API.</p>
+                                                                    <p>String. Value to note received from.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Notification</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top-level object. May include QueueNumber and Date objects.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional; required for QueueNumber or Date objects</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>QueueNumber</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>After booking and either with or prior to ticketing, you can place a booking on a queue. (See <a href="../Ticketing/TicketingGuide.html#queue">Queues</a> in the Ticketing Guide for details.) If sending,  send with Notification; at a minimum must send queue number in <i>value</i> below.</p>
+                                                                    <p>This is one of two ways to specify a queue. Alternately, you can send the standalone <a href="../Ticketing/APIRef_Queue.html">Queue Placement</a> request anytime after booking and before ticketing.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>category</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Queue category.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>subcategory</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">String. Queue subcategory.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>overridePCC</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send only if overriding the default PCC.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Send&#160;the queue number.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span> with QueueNumber </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>Date</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>Send to update or delete the ticketing time limit on a booking. This is the last day to ticket the booking before the offer expires. If sending,  send with Notification, Send one of the following in YYYY-MM-DD format:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>To update or add a date: Send the new date in the local time.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>To delete the existing date: Send with a value of  <i>1000-01-01</i>.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The Workbench Commit response uses the same structure as the Reservation Retrieve response; see <a href="../Book/APIRef_ReservationRetrieve.html#rsp">Reservation Retrieve</a> response for full documentation. However, the Workbench Commit request does not support the query parameters available in&#160;Reservation Retrieve and so information such as fare rules and certain remarks are not returned. See the intro to the <a href="../Book/APIRef_ReservationRetrieve.html#rsp">Reservation Retrieve response</a>  for a full list.</p>
+                                        <h3>Response for first workbench commit at two-step commit</h3>
+                                        <div class="noteNote">See <a href="../Book/BookingGuide.html#twostepcommit">Enable Two-Step Commit and Warnings</a> in the Booking Guide for usage details and examples for two-step commit.</div>
+                                        <p>In the initial booking workflow, or when adding an offer to an existing reservation, you can send enableTwoStepCommitInd=true to enable a  two-step commit process that returns a warning if specific error scenarios occur. If a two-step commit is triggered, the booking is not created and  this first commit response differs from the typical commit response.</p>
+                                        <p>The following table lists the top-level objects returned in the first commit of the two-step commit response and details all objects that are returned <i>only</i> in that response. For objects that are the same as in the typical Workbench Commit response, see full descriptions in the <a href="../Book/APIRef_ReservationRetrieve.html">Reservation Retrieve API&#160;Reference</a>.</p>
+                                        <p>The response to a second commit that creates a booking uses the same structure as a Reservation Retrieve response, as outlined above.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table for first commit when two-step commit is triggered</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReservationResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object for response.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Result</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returns the error or warning message about the warning condition that triggered the two-step commit. Because the booking was not committed, Result/status is <i>Not Processed</i>. A descriptive error or warning is returned in Result/Error/Message or Result/Warning/Message, such as this example for a price increase: <i>"The Total Price has been increased from 725.0 GBP to 740.0 GBP".</i></p>
+                                                                    <p>See <a href="../General/ErrorList.html">Error Messaging</a> for additional details about errors. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1"><b>Identifier</b>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Standard Identifier object for the response.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Reservation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Top-level object for reservation details. </p>
+                                                                    <p>Generally includes the Identifier, Offer, Traveler,  Receipt, and ReservationDisplaySequence objects. May include additional objects if seats or other ancillaries were added to the workbench, or if two-step commit is triggered when adding an offer to an existing reservation.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Offer</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>In the two-step commit, several objects in Offer vary from the standard response. </p>
+                                                                    <p>The following differences apply in the event of a <b style="font-style: italic;">price change</b>:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>Offer is returned with @type&#160;OfferModify</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Offer returns the indicator priceUpdatedInd as <i>true</i></p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>The response does not return the previous price. </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>The updated price of the offer is returned in Offer/Price/TotalPrice.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Offer includes a ModifyPrice object that returns a breakdown of the difference between the new price and the price when the offer was added to the workbench:&#160;</p>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>Negative amounts in the Base, TotalTaxes, and/or TotalPrice objects indicate the new amount is <b>less than</b> the previous amount . </p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>Positive amounts in these objects indicate the new amount is <b>more than</b> the previous amount.</p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>Zero amounts (0) in these objects indicate the new amount is <b>the same as</b> the previous amount.</p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="APIRefDropDown">
+                                                                        <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Price and ModifyPrice objects for a price change</a></span>
+                                                                            <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                                                <p>In this excerpt, the Taxes object has been truncated for brevity. In this example, per ModifyPrice, the price of the base fare (Base) did not change, but the tax amount (TotalTaxes) and thus the TotalPrice both increased by 15.</p>
+                                                                                <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">    ...    "Price" : {
+          "@type" : "PriceDetail",
+          "id" : "price_1",
+          "CurrencyCode" : {
+            "value" : "USD",
+            "decimalPlace" : 2
+          },
+          "Base" : 625.0,
+          "TotalTaxes" : 115.0,
+          "TotalPrice" : 740.0,
+          "PriceBreakdown" : [ {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 2,
+            "requestedPassengerType" : "ADT",            
+            "Amount" : {
+              "@type" : "Amount",
+              "CurrencyCode" : {
+                "value" : "GBP",
+                "decimalPlace" : 2
+              },
+              "Base" : 250.0,
+              "Taxes" : {...}
+            }
+          },
+          {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "CHD",            
+            "Amount" : {
+              "@type" : "Amount",
+              "CurrencyCode" : {
+                "value" : "GBP",
+                "decimalPlace" : 2
+              },
+              "Base" : 125.0,
+              "Taxes" : {...}
+            }
+          } ]
+        },
+        "ModifyPrice" : {
+         "@type" : "ModifyPrice",
+         "id" : "modifyPrice_1",
+         "CurrencyCode" : {
+           "value" : "GBP",
+           "decimalPlace" : 2
+         },
+         "Base" : 0.0,
+         "TotalTaxes" : 15.0,
+         "TotalPrice" : 15.0
+        },   ...    
+</code></pre>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>The following differences apply in the event of a <b style="font-style: italic; font-weight: bold;">schedule change</b>:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p> Offer is returned with @type&#160;OfferModify</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p> Offer returns the indicator scheduleChangeInd as <i>true</i></p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>The Product object returns previous and updated schedule details in two instances of Product/FlightSegment as follows:</p>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>The <b>previous</b> flight segment is identified with <b>sequence=1</b> and <b>Flight/id=flight_1</b></p>
+                                                                                </li>
+                                                                            </ul>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>The <b>updated</b> flight segment is identified  with <b>sequence=2</b> and <b>Flight/id=flight_2</b></p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Offer includes a ModifyPrice object; however, unless a price change has also occurred, Offer/Price repeats the original price of the offer and Offer/ModifyPrice returns  all amounts as zero (0) to indicate there is no price change. </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="APIRefDropDown">
+                                                                        <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Product object for a schedule change</a></span>
+                                                                            <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                                                <p>In this excerpt, the PassengerFlight object has been truncated for brevity. In this case, the flight number (Flight/number) and the departure and arrival times (Flight/Departure/time and Flight/Arrival/time) have changed.</p>
+                                                                                <div><pre class="line-numbers"><code class="language-json">    ... "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "product_1",
+       "totalDuration": "PT1H30M",
+       "Identifier": {
+        "value": "A0656EFF-FAF4-456F-B061-0161008D7C4E",
+        "authority": "Travelport"
+       },
+       "Quantity": 3,
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "flightSegment_1",
+         "sequence": 1,
+         "Flight": {
+          "@type": "FlightDetail",
+          "id": "flight_1",
+          "carrier": "BA",
+          "number": "123",
+          "equipment": "777",
+          "Departure": {
+           "@type": "Departure",
+           "location": "LHR",
+           "date": "2025-11-24",
+           "time": "09:45:00-06:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "SIN",
+           "date": "2025-11-24",
+           "time": "14:15:00+06:00"
+          }
+         }
+        },
+        {
+         "@type": "FlightSegment",
+         "id": "flightSegment_1",
+         "sequence": 2,
+         "Flight": {
+          "@type": "FlightDetail",
+          "id": "flight_2",
+          "carrier": "BA",
+          "number": "234",
+          "equipment": "777",
+          "Departure": {
+           "@type": "Departure",
+           "location": "LHR",
+           "date": "2025-11-24",
+           "time": "11:45:00-06:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "SIN",
+           "date": "2025-11-24",
+           "time": "16:15:00+06:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [...]
+      }
+     ],...</code></pre>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>TermsAndConditionsFull</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Standard object, no changes for two-step commit.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p style="font-weight: bold;">Traveler</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Standard object; no changes for two-step commit.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>Receipt</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>In the event of a two-step commit for any reason, Receipt/Confirmation/OfferStatus/StatusAir/value is returned as <i>Rejected</i>, as the booking has not been committed.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>ReservationDisplaySequence</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns the chronological (by date) order of all offers on the booking. Includes DisplaySequence. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2" style="font-weight: bold;">
+                                                                    <p><b>DisplaySequence </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>Array. One instance for each offer. </p>
+                                                                    <p>In the event of a price change, no change from standard format. </p>
+                                                                    <p>In the event of a schedule change, note that one instance is returned for the <b>previous</b> flight segment, and a second instance is returned for the <b>updated</b> flight segment. Both instances have  the same OfferRef and ProductRef values; however, the Sequence values are different. To identify the Sequence value for each flight segment, check the values in Offer/Product/FlightSegment/sequence, as described above for the Offer object. </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <p>No message payload is required for a workbench commit. The following examples show some of the optional payloads supported.</p>
+                                        <p>The following optional payload triggers a two-step commit in the case of warnings about a schedule change, price change, and/or MCT warning. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example first workbench commit request for two-step commit and warnings</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">{
+ "ReservationQueryCommitReservation": {
+  "enableTwoStepCommitInd": true,
+  "overrideMCTInd": false,
+  "errorWhenScheduleChangesInd": true,
+  "errorWhenOfferPriceChangesInd": true,
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following optional payload accepts an involuntary schedule change from the carrier. This is not related to schedule changes at initial commit in the preceding example. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Workbench Commit payload to accept involuntary schedule change</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre><code class="language-json">{
+ "ReservationQueryCommitReservation": {
+  "@type": "ReservationQueryCommitReservation",
+  "scheduleChangeAcceptedInd": true
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following optional payload adds the booking to an agency queue (QueueNumber) and updates the ticketing time limit (Date object).</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Workbench Commit payload to place booking on queue and update ticketing time limit</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">{
+ "ReservationQueryCommitReservation": {
+  "@type": "ReservationQueryCommitReservation",
+  "Notification": [
+   {
+    "@type": "Notification",
+    "QueueNumber": [
+     {
+      "category": "DM",
+      "overridePCC": "39RA",
+      "value": 5
+     }
+    ],
+    "Date": "2026-10-16"
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following optional payload sends a ReceivedFrom object that allows online travel agencies (OTAs) and agents using the Deem platform to send a receive field at reservation creation or update. This object is not returned in the reservation retrieve. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example to add ReceivedFrom</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">{
+ "ReservationQueryCommitReservation": {
+  "ReceivedFrom": "BHarper"
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>The following examples show workbench commit responses for both GDS and NDC content.</p>
+                                        <div class="noteWarning">Because a workbench commit is used to conclude multiple scenarios - including but not limited to creating a reservation, updating an existing reservation, adding seats or ancillaries, exchanging a ticket - any workbench commit response may vary from the examples shown here. </div>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <div class="noteNote">See the <a href="../Book/BookingGuide.html#twostepcommit">Air Booking Guide</a> for a full description and examples of the two-step commit process, including examples of the responses returned for the price and schedule change warning scenarios. </div>
+                                        <h4><a name="exrspGDS"></a>GDS&#160;booking and ticketing examples</h4>
+                                        <p>The first example below is the response to a workbench commit at the end of the initial booking workflow. It creates a GDS booking with record locator BXPJVM. This is a one-way itinerary with one traveler.</p>
+                                        <p>For comparison purposes, this same example booking (locator code BXPJVM) is also shown in the following example response for the ticketing commit, in the <a href="APIRef_WorkbenchPostCreate.html">Post-Commit Workbench Create API&#160;Reference</a> example response, and in the <a href="../Book/APIRef_ReservationRetrieve.html#exrsp">Reservation Retrieve API&#160;Reference</a> example for the ticketed one-way GDS Itinerary. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example commit response for GDS at end of initial booking workflow</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "c1f71f98-58d4-44cf-b9cb-0c22357b9aae"
+     },
+     "ContentSource": "GDS",
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "product_1",
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_01",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H34M",
+          "carrier": "AA",
+          "number": "2755",
+          "equipment": "319",
+          "id": "Flight_01",
+          "Departure": {
+           "@type": "Departure",
+           "location": "ORD",
+           "date": "2025-06-28",
+           "time": "07:00:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "DEN",
+           "date": "2025-06-28",
+           "time": "08:39:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "Y",
+           "cabin": "Economy"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "id": "PriceDetail_1",
+      "CurrencyCode": {
+       "value": "AUD"
+      },
+      "Base": 854,
+      "TotalTaxes": 89.6,
+      "TotalFees": 0,
+      "TotalPrice": 943.6,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "currencySource": "Charged",
+         "approximateInd": true,
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 854,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 89.6,
+          "Tax": [
+           {
+            "currencyCode": "AUD",
+            "taxCode": "AY",
+            "value": 9.3
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "US",
+            "value": 64.1
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "XF",
+            "value": 7.5
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "ZP",
+            "value": 8.7
+           }
+          ]
+         },
+         "Total": 943.6
+        },
+        "FiledAmount": {
+         "currencyCode": "USD",
+         "decimalPlace": 2,
+         "value": 514.59
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "515849d1-5a35-43d1-abd3-a59df70247ed"
+       }
+      },
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2025-05-30T23:59:00Z",
+       "PaymentTimeLimit": "2025-05-30T23:59:00Z"
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "travelerRefId_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "cf222445-50ac-414e-a9b0-ee2f729406a9"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "TelephoneDetail",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "telephone_1",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "emailType": "TO",
+       "value": "TravelerOne@notmail.com"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      },
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-05-28",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "599f068a-8956-4c92-a997-3f28f394b21d"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-05-28",
+       "value": "BXPJVM"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "981d43eb-70fe-49ed-a4ff-46564705354d"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "value": "IUSHNW"
+      }
+     }
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The example below is the response to a workbench commit at the end of the ticketing workflow. It tickets the same booking in the previous example, with record locator BXPJVM. The FormOfPayment and Payment objects here were not returned in the first commit. In addition, Receipt includes an instance with @type ReceiptPayment that includes the Document object, which returns the ticket number in Number. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example workbench commit for ticketing the GDS&#160;booking from preceding example</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "10b0ef3b-0797-447b-9b82-0cb59e1494c1"
+     },
+     "ContentSource": "GDS",
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "product_1",
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_01",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H34M",
+          "carrier": "AA",
+          "number": "2755",
+          "equipment": "319",
+          "id": "Flight_01",
+          "Departure": {
+           "@type": "Departure",
+           "location": "ORD",
+           "date": "2025-06-28",
+           "time": "07:00:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "DEN",
+           "date": "2025-06-28",
+           "time": "08:39:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "Y",
+           "cabin": "Economy"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "id": "PriceDetail_1",
+      "CurrencyCode": {
+       "value": "AUD"
+      },
+      "Base": 854,
+      "TotalTaxes": 89.6,
+      "TotalFees": 0,
+      "TotalPrice": 943.6,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "USD"
+         },
+         "Base": 514.59
+        },
+        "TravelerRefs": [
+         "travelerRefId_1"
+        ]
+       },
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "currencySource": "Charged",
+         "approximateInd": true,
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 854,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 89.6,
+          "Tax": [
+           {
+            "currencyCode": "AUD",
+            "taxCode": "AY",
+            "value": 9.3
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "US",
+            "value": 64.1
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "XF",
+            "value": 7.5
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "ZP",
+            "value": 8.7
+           }
+          ]
+         },
+         "Total": 943.6
+        },
+        "FiledAmount": {
+         "currencyCode": "USD",
+         "decimalPlace": 2,
+         "value": 514.59
+        },
+        "TravelerRefs": [
+         "travelerRefId_1"
+        ],
+        "FareCalculation": "CHI AA DEN Q0.17 514.42B0AIZNN1 USD514.59END"
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "b4cf6d38-0a8c-4080-a524-fcffe6bd3633"
+       },
+       "ExpiryDate": "2025-05-29T23:59:00Z",
+       "PaymentTimeLimit": "2025-05-30T23:59:00Z"
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "travelerRefId_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "a493cb07-cae0-42fe-b80e-6278ce21c0d7"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "TelephoneDetail",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "telephone_1",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "emailType": "TO",
+       "value": "TravelerOne@gmail.com"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      },
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-05-28",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      }
+     ]
+    }
+   ],
+   "FormOfPayment": [
+    {
+     "@type": "FormOfPaymentCash",
+     "id": "formOfPayment_1",
+     "FormOfPaymentRef": "formOfPayment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "8bd8e02c-7a1d-4979-b563-4811095cbe42"
+     }
+    }
+   ],
+   "Payment": [
+    {
+     "@type": "Payment",
+     "id": "payment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "d95e702e-671f-4a3e-835f-4bdc78f6ec65"
+     },
+     "Amount": {
+      "code": "USD",
+      "minorUnit": 2,
+      "currencySource": "Charged",
+      "value": 943.6
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "formOfPayment_1",
+      "Identifier": {
+       "authority": "Travelport",
+       "value": "1546cc57-c5c3-4670-b555-fed35dd69ddf"
+      }
+     },
+     "OfferIdentifier": [
+      {
+       "id": "offer_1",
+       "offerRef": "offer_1",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "9829d223-66dc-4590-8a8e-66a1669f8b00"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "17653ad8-eeae-4e88-a537-9a8b55323bba"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-05-28",
+       "value": "BXPJVM"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "dfa0a8de-2e33-4f88-aed7-7afc197e9d30"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "value": "IUSHNW"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptPayment",
+     "Document": [
+      {
+       "@type": "DocumentTicket",
+       "Number": "0019905292727",
+       "TravelerIdentifierRef": {
+        "id": "travelerRefId_1",
+        "value": "a493cb07-cae0-42fe-b80e-6278ce21c0d7"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "Total": 943.6
+       }
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The next example shows the commit when exchanging a GDS ticket with the GDS Exchange APIs. While the commit response returns both the previous offer and the newly issued offer, subsequent <a href="../Book/APIRef_ReservationRetrieve.html">Reservation Retrieve</a> responses return only the new offer, which has several indicators that the offer has been exchanged. See the <a href="../General/ExchangeRefundGuide.html">Exchange, Refund, and Void Guide</a> for details on exchanges.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example commit response when exchanging GDS ticket</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "0ac7cfce-6192-4f32-b6b7-6dede455c17b"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "MTVhM2E4ZjQtM2Y2Mi00MzlmLTgyMzctYWVlYzMwZTA4ODY5fFA1QjQyQTU3My1CMTIxLTRGODMtODY3OHN4aHRiMTR5MjNydmMtMS0x"
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT2H29M",
+       "id": "product_1",
+       "Identifier": {
+        "authority": "AA",
+        "value": "3e08fb8b-b5ed-42e6-be7f-f0e628307d26"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H29M",
+          "carrier": "AA",
+          "number": "6221",
+          "equipment": "E75",
+          "id": "seg_1",
+          "Identifier": {
+           "authority": "AA",
+           "value": "6bc12b59-3387-4509-8975-64cd37e28d7d"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "0",
+           "location": "LAX",
+           "date": "2025-03-21",
+           "time": "09:22:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "location": "DEN",
+           "date": "2025-03-21",
+           "time": "12:51:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "L",
+           "cabin": "Economy",
+           "fareBasisCode": "LUAIYSN1",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "Brand",
+            "name": "Main Cabin"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 370,
+      "TotalTaxes": 51.8,
+      "TotalPrice": 421.8,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 370,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 51.8,
+          "Tax": [
+           {
+            "taxCode": "US",
+            "description": "U.S.A Transportation Tax",
+            "value": 27.7
+           },
+           {
+            "taxCode": "XF",
+            "description": "U.S Passenger Facility Charge",
+            "value": 7.1
+           },
+           {
+            "taxCode": "ZP",
+            "description": "U.S. Flight Segment Tax",
+            "value": 8.2
+           },
+           {
+            "taxCode": "AY",
+            "description": "Passenger Civil Aviation Security Service Fee",
+            "value": 8.8
+           }
+          ]
+         },
+         "Total": 421.8
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2025-02-23T23:59:00Z",
+       "TextBlock": [
+        {
+         "@type": "TextBlockDetail",
+         "description": "FARE RULES",
+         "title": "Ticketing",
+         "TextFormatted": [
+          {
+           "value": "NONREF/FAREDIF/"
+          },
+          {
+           "value": "CXL BY FLT TIME OR NOVALUE"
+          }
+         ]
+        }
+       ],
+       "BaggageAllowance": [
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 0
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "0PC"
+         ]
+        },
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "CarryOn",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 2
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "2PC"
+         ]
+        }
+       ],
+       "FareRuleInfo": [
+        {
+         "@type": "FareRuleInfoText",
+         "flightsRefs": [
+          "seg_1"
+         ],
+         "TextFareRule": [
+          {
+           "name": "Cancel",
+           "value": "Not Allowed"
+          }
+         ]
+        }
+       ],
+       "PaymentTimeLimit": "2025-02-23T23:59:00Z",
+       "Penalties": [
+        {
+         "@type": "Penalties",
+         "Change": [
+          {
+           "@type": "ChangePermitted",
+           "ProductRefs": [
+            "product_1"
+           ]
+          }
+         ],
+         "Cancel": [
+          {
+           "@type": "CancelNotPermitted",
+           "ProductRefs": [
+            "product_1"
+           ],
+           "NotPermittedInd": "true"
+          }
+         ],
+         "PassengerTypeCodes": [
+          "ADT"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "trav_1",
+     "TravelerRef": "trav_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "QURUfFQx"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "Telephone",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "4",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "id": "email_1",
+       "validInd": true,
+       "value": "TRAVELERONE@GMAIL.COM"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-02-21",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TestFirst",
+        "Surname": "TestLast"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "4afd7900-bcf6-4473-9109-44bd60d14ffb"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "OrderId",
+       "value": "AA001HGO3HWA4"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_2",
+     "Identifier": {
+      "authority": "AA",
+      "value": "ba4391ec-e0da-4290-98ca-f17d5b7b1060"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "VendorLocator",
+       "value": "IKRWES"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "seg_1"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "9acfe47e-c903-491b-b3d1-c8bb80970815"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-02-22",
+       "value": "B7KT1S"
+      }
+     }
+    }
+   ],
+   "ReservationComment": [
+    {
+     "@type": "ReservationComment",
+     "id": "reservationComment_1",
+     "Comment": [
+      {
+       "id": "comment_1",
+       "name": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST",
+       "language": "EN",
+       "value": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST"
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4><a name="exrspNDC"></a>NDC booking and ticketing examples</h4>
+                                        <p>The next three commit response examples are for NDC&#160;bookings. The first example is the commit response to hold an NDC&#160;booking, one-way with one traveler. This commit response shows the Travelport locator code B7KT1S.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example commit response for NDC at end of initial booking workflow</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "0ac7cfce-6192-4f32-b6b7-6dede455c17b"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "MTVhM2E4ZjQtM2Y2Mi00MzlmLTgyMzctYWVlYzMwZTA4ODY5fFA1QjQyQTU3My1CMTIxLTRGODMtODY3OHN4aHRiMTR5MjNydmMtMS0x"
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT2H29M",
+       "id": "product_1",
+       "Identifier": {
+        "authority": "AA",
+        "value": "3e08fb8b-b5ed-42e6-be7f-f0e628307d26"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H29M",
+          "carrier": "AA",
+          "number": "6221",
+          "equipment": "E75",
+          "id": "seg_1",
+          "Identifier": {
+           "authority": "AA",
+           "value": "6bc12b59-3387-4509-8975-64cd37e28d7d"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "0",
+           "location": "LAX",
+           "date": "2025-03-21",
+           "time": "09:22:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "location": "DEN",
+           "date": "2025-03-21",
+           "time": "12:51:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "L",
+           "cabin": "Economy",
+           "fareBasisCode": "LUAIYSN1",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "Brand",
+            "name": "Main Cabin"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 370,
+      "TotalTaxes": 51.8,
+      "TotalPrice": 421.8,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 370,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 51.8,
+          "Tax": [
+           {
+            "taxCode": "US",
+            "description": "U.S.A Transportation Tax",
+            "value": 27.7
+           },
+           {
+            "taxCode": "XF",
+            "description": "U.S Passenger Facility Charge",
+            "value": 7.1
+           },
+           {
+            "taxCode": "ZP",
+            "description": "U.S. Flight Segment Tax",
+            "value": 8.2
+           },
+           {
+            "taxCode": "AY",
+            "description": "Passenger Civil Aviation Security Service Fee",
+            "value": 8.8
+           }
+          ]
+         },
+         "Total": 421.8
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2025-02-23T23:59:00Z",
+       "TextBlock": [
+        {
+         "@type": "TextBlockDetail",
+         "description": "FARE RULES",
+         "title": "Ticketing",
+         "TextFormatted": [
+          {
+           "value": "NONREF/FAREDIF/"
+          },
+          {
+           "value": "CXL BY FLT TIME OR NOVALUE"
+          }
+         ]
+        }
+       ],
+       "BaggageAllowance": [
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 0
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "0PC"
+         ]
+        },
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "CarryOn",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 2
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "2PC"
+         ]
+        }
+       ],
+       "FareRuleInfo": [
+        {
+         "@type": "FareRuleInfoText",
+         "flightsRefs": [
+          "seg_1"
+         ],
+         "TextFareRule": [
+          {
+           "name": "Cancel",
+           "value": "Not Allowed"
+          }
+         ]
+        }
+       ],
+       "PaymentTimeLimit": "2025-02-23T23:59:00Z",
+       "Penalties": [
+        {
+         "@type": "Penalties",
+         "Change": [
+          {
+           "@type": "ChangePermitted",
+           "ProductRefs": [
+            "product_1"
+           ]
+          }
+         ],
+         "Cancel": [
+          {
+           "@type": "CancelNotPermitted",
+           "ProductRefs": [
+            "product_1"
+           ],
+           "NotPermittedInd": "true"
+          }
+         ],
+         "PassengerTypeCodes": [
+          "ADT"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "trav_1",
+     "TravelerRef": "trav_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "QURUfFQx"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "Telephone",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "4",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "id": "email_1",
+       "validInd": true,
+       "value": "TRAVELERONE@GMAIL.COM"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-02-21",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TestFirst",
+        "Surname": "TestLast"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "4afd7900-bcf6-4473-9109-44bd60d14ffb"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "OrderId",
+       "value": "AA001HGO3HWA4"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_2",
+     "Identifier": {
+      "authority": "AA",
+      "value": "ba4391ec-e0da-4290-98ca-f17d5b7b1060"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "VendorLocator",
+       "value": "IKRWES"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "seg_1"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "9acfe47e-c903-491b-b3d1-c8bb80970815"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-02-22",
+       "value": "B7KT1S"
+      }
+     }
+    }
+   ],
+   "ReservationComment": [
+    {
+     "@type": "ReservationComment",
+     "id": "reservationComment_1",
+     "Comment": [
+      {
+       "id": "comment_1",
+       "name": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST",
+       "language": "EN",
+       "value": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST"
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The example below shows the commit response when ticketing the same NDC&#160;booking in the preceding example, with the Travelport locator code B7KT1S.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example ticketing commit response for NDC booking</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "5dad819f-f6cf-4a62-9670-12e1e9b89cd3"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "QUEwMDFIR08zSFdBNHxQNUI0MkE1NzMtQjEyMS00RjgzLTg2NzhzeGh0YjE0eTIzcnZjLTEtMXxTdGF0dXM6VVNFRCBOVEFD"
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT2H29M",
+       "id": "product_1",
+       "Identifier": {
+        "authority": "AA",
+        "value": "2d30cc3f-bdff-4abf-ad3d-90a155905c6a"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "s1",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "distance": 860,
+          "duration": "PT2H29M",
+          "carrier": "AA",
+          "number": "6221",
+          "operatingCarrierName": "SKYWEST AIRLINES AS AMERICAN EAGLE",
+          "equipment": "E75",
+          "id": "Flight_01",
+          "Identifier": {
+           "authority": "AA",
+           "value": "2442a99c-51e3-471f-8357-4283a0f37853"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "0",
+           "location": "LAX",
+           "date": "2025-03-21",
+           "time": "09:22:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "location": "DEN",
+           "date": "2025-03-21",
+           "time": "12:51:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "L",
+           "cabin": "Economy",
+           "fareBasisCode": "LUAIYSN1",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "Brand",
+            "name": "Main Cabin"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 370,
+      "TotalTaxes": 51.8,
+      "TotalPrice": 421.8,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 370,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 51.8,
+          "Tax": [
+           {
+            "taxCode": "US",
+            "description": "U.S.A Transportation Tax",
+            "value": 27.7
+           },
+           {
+            "taxCode": "XF",
+            "description": "U.S Passenger Facility Charge",
+            "value": 7.1
+           },
+           {
+            "taxCode": "ZP",
+            "description": "U.S. Flight Segment Tax",
+            "value": 8.2
+           },
+           {
+            "taxCode": "AY",
+            "description": "Passenger Civil Aviation Security Service Fee",
+            "value": 8.8
+           }
+          ]
+         },
+         "Total": 421.8
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2025-02-23T23:59:00Z",
+       "BaggageAllowance": [
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 0
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "0PC"
+         ]
+        },
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "CarryOn",
+         "ProductRef": [
+          "product_1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "quantity": 2
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "2PC"
+         ]
+        }
+       ],
+       "FareRuleInfo": [
+        {
+         "@type": "FareRuleInfoText",
+         "flightsRefs": [
+          "s1"
+         ],
+         "TextFareRule": [
+          {
+           "name": "Ticketing",
+           "value": "NONREF/FAREDIF/"
+          },
+          {
+           "name": "Ticketing",
+           "value": "CXL BY FLT TIME OR NOVALUE"
+          },
+          {
+           "name": "Change",
+           "value": "Allowed"
+          },
+          {
+           "name": "Cancel",
+           "value": "Not Allowed"
+          },
+          {
+           "name": "AdvanceStay",
+           "value": "AdvancePurchase:P14D"
+          }
+         ]
+        }
+       ],
+       "PaymentTimeLimit": "2025-02-23T23:59:00Z",
+       "Penalties": [
+        {
+         "@type": "Penalties",
+         "Cancel": [
+          {
+           "@type": "CancelNotPermitted",
+           "ProductRefs": [
+            "product_1"
+           ],
+           "NotPermittedInd": "true"
+          }
+         ],
+         "PassengerTypeCodes": [
+          "ADT"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "trav_1",
+     "TravelerRef": "trav_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "QURUfFQx"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "TelephoneDetail",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "telephone_1",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "id": "email_1",
+       "emailType": "TO",
+       "validInd": true,
+       "value": "TRAVELERONE@GMAIL.COM"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-02-21",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "birthCountry": "US",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      }
+     ]
+    }
+   ],
+   "FormOfPayment": [
+    {
+     "@type": "FormOfPaymentPaymentCard",
+     "id": "formOfPayment_1",
+     "FormOfPaymentRef": "formOfPayment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "A0656EFF-FAF4-456F-B061-0161008D6FOP"
+     },
+     "PaymentCard": {
+      "@type": "PaymentCardDetail",
+      "id": "paymentCard_4",
+      "expireDate": "0139",
+      "CardType": "Credit",
+      "CardCode": "VI",
+      "CardHolderName": "JANE DOE",
+      "CardNumber": {
+       "@type": "CardNumber",
+       "PlainText": "XXXXXXXXXXXX8769"
+      },
+      "SeriesCode": {
+       "@type": "SeriesCode",
+       "PlainText": "123"
+      }
+     }
+    }
+   ],
+   "Payment": [
+    {
+     "@type": "Payment",
+     "id": "payment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "57f3d29b-aca0-483d-913f-1d11f86cfe30"
+     },
+     "Amount": {
+      "code": "AUD",
+      "minorUnit": 2,
+      "currencySource": "Charged",
+      "approximateInd": true,
+      "value": 421.8
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "formOfPayment_1",
+      "Identifier": {
+       "authority": "Travelport",
+       "value": "A0656EFF-FAF4-456F-B061-0161008D6FOP"
+      }
+     },
+     "OfferIdentifier": [
+      {
+       "offerRef": "offer_1",
+       "Identifier": {
+        "authority": "AA",
+        "value": "QUEwMDFIR08zSFdBNHxQNUI0MkE1NzMtQjEyMS00RjgzLTg2NzhzeGh0YjE0eTIzcnZjLTEtMXxTdGF0dXM6VVNFRCBOVEFD"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_1",
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "VendorLocator",
+       "value": "IKRWES"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_2",
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "AA",
+       "sourceContext": "OrderId",
+       "value": "AA001HGO3HWA4"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_3",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "11e196fb-9e04-4268-9330-e2e93ff19762"
+     },
+     "OfferRef": [],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-02-22",
+       "value": "B7KT1S"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01"
+         ],
+         "code": "ZK",
+         "value": "Pending"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptPayment",
+     "dateTime": "2025-02-22T11:13:00Z",
+     "id": "receipt_4",
+     "ReceiptRef": "receipt_1",
+     "Identifier": {
+      "authority": "AA",
+      "value": "OWM1MzQwMmUtMTk1NS00NzFjLWE3ZTUtNzJiZjI5ODI3YmI0"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Document": [
+      {
+       "@type": "DocumentTicket",
+       "Number": "0015756496641",
+       "TravelerIdentifierRef": {
+        "value": "trav_1"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "CurrencyCode": {
+         "value": "AUD"
+        },
+        "Total": 421.8
+       }
+      }
+     ],
+     "PaymentIdentifier": {
+      "id": "payment_1",
+      "PaymentRef": "payment_1",
+      "Identifier": {
+       "authority": "Travelport",
+       "value": "57f3d29b-aca0-483d-913f-1d11f86cfe30"
+      }
+     }
+    }
+   ],
+   "ReservationComment": [
+    {
+     "@type": "ReservationComment",
+     "id": "reservationComment_1",
+     "Comment": [
+      {
+       "id": "comment_1",
+       "name": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST",
+       "language": "EN",
+       "value": "SWITT1G/XB7/99999992/SYD/1G/T/AU/AUD/001TEST"
+      }
+     ]
+    },
+    {
+     "@type": "ReservationComment",
+     "shareWith": "Agency",
+     "id": "RSRVComment_1",
+     "Comment": [
+      {
+       "value": "* PNR CONTAINS NDC AIR SEGMENTS-SERVICE VIA SMARTPOINT NDC APP *"
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     }
+    ]
+   }
+  },
+  "SupplementalInformation": [
+   {
+    "@type": "SupplementalInformation",
+    "NameValuePair": [
+     {
+      "name": "AgreementPCC",
+      "value": "PCC"
+     },
+     {
+      "name": "EMDIndicator",
+      "value": "N"
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The next example shows the response for the NDC&#160;<a href="../Book/BookingGuide.html#ndcinstantpay">Instant Pay flow</a>, which books and issues the ticket in the same, initial booking workbench (NDC&#160;only; carrier support varies). Receipt/Document/Number returns the ticket number while Receipt/Document/contentSource returns <i>NDC</i>, indicating the ticket was issued on NDC. This is a round-trip itinerary with one traveler.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example NDC&#160;Instant Pay commit response</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "647583df-8d6f-4f8b-bcc5-e961100cb09f"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "1",
+     "Identifier": {
+      "authority": "SQ",
+      "value": "NUZLTjRLfFNRXzVGS040S19BSVItMS0yfFNRfFNRXzVGS040S3xwcm9kdWN0Ml9zMi1TRUcyOnByb2R1Y3QxX3MxLVNFRzF8QURUOlBBWDE="
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT4H",
+       "id": "product1",
+       "Identifier": {
+        "authority": "SQ",
+        "value": "ad94565e-5b81-497f-876b-f6723038ba98"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "s1",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT4H",
+          "carrier": "SQ",
+          "number": "899",
+          "operatingCarrier": "SQ",
+          "operatingCarrierName": "SINGAPORE AIRLINES",
+          "id": "seg1",
+          "Identifier": {
+           "authority": "SQ",
+           "value": "d350d71c-c1af-4518-a231-99ea00a3918a"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "1",
+           "location": "HKG",
+           "date": "2025-03-21",
+           "time": "09:05:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "terminal": "0",
+           "location": "SIN",
+           "date": "2025-03-21",
+           "time": "13:05:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "K",
+           "cabin": "Economy",
+           "fareBasisCode": "K16HKRPO/DP"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "@type": "ProductAir",
+       "totalDuration": "PT3H45M",
+       "id": "product2",
+       "Identifier": {
+        "authority": "SQ",
+        "value": "21f11ea0-8388-447c-a7c1-e2b07c8307c3"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "s2",
+         "sequence": 2,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT3H45M",
+          "carrier": "SQ",
+          "number": "874",
+          "operatingCarrier": "SQ",
+          "operatingCarrierName": "SINGAPORE AIRLINES",
+          "id": "seg2",
+          "Identifier": {
+           "authority": "SQ",
+           "value": "9c4e962f-b80c-49bf-aeb2-4fd518cf0539"
+          },
+          "Departure": {
+           "@type": "DepartureDetail",
+           "terminal": "3",
+           "location": "SIN",
+           "date": "2025-03-24",
+           "time": "07:35:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "terminal": "1",
+           "location": "HKG",
+           "date": "2025-03-24",
+           "time": "11:20:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            2
+           ],
+           "classOfService": "K",
+           "cabin": "Economy",
+           "fareBasisCode": "K16HKRPO/DP"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "AUD"
+      },
+      "Base": 378,
+      "TotalTaxes": 133.3,
+      "TotalFees": 0,
+      "TotalPrice": 511.3,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 378,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 133.3,
+          "Tax": [
+           {
+            "taxCode": "G3",
+            "value": 18.4
+           },
+           {
+            "taxCode": "HK",
+            "value": 24.5
+           },
+           {
+            "taxCode": "I5",
+            "value": 13.3
+           },
+           {
+            "taxCode": "L7",
+            "value": 12.8
+           },
+           {
+            "taxCode": "OP",
+            "value": 9.5
+           },
+           {
+            "taxCode": "SG",
+            "value": 54.8
+           }
+          ]
+         },
+         "Total": 511.3
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "BaggageAllowance": [
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product1"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "Measurement": [
+            {
+             "measurementType": "Weight",
+             "unit": "Kilograms",
+             "value": 25
+            }
+           ]
+          }
+         ],
+         "SegmentSequenceList": [
+          1
+         ],
+         "Text": [
+          "25K"
+         ]
+        },
+        {
+         "@type": "BaggageAllowanceDetail",
+         "passengerTypeCodes": [
+          "ADT"
+         ],
+         "baggageType": "FirstCheckedBag",
+         "ProductRef": [
+          "product2"
+         ],
+         "BaggageItem": [
+          {
+           "@type": "BaggageItem",
+           "Measurement": [
+            {
+             "measurementType": "Weight",
+             "unit": "Kilograms",
+             "value": 25
+            }
+           ]
+          }
+         ],
+         "SegmentSequenceList": [
+          2
+         ],
+         "Text": [
+          "25K"
+         ]
+        }
+       ],
+       "ValidatingAirline": [
+        {
+         "@type": "ValidatingAirline",
+         "ValidatingAirline": "SQ"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "trav_1",
+     "TravelerRef": "trav_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "QURUfFBBWDE="
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "Telephone",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "4",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "id": "email_1",
+       "value": "TRAVELERONE@GMAIL.COM"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2035-02-21",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TestFirst",
+        "Surname": "TestLast"
+       }
+      }
+     ]
+    }
+   ],
+   "FormOfPayment": [
+    {
+     "@type": "FormOfPaymentCash",
+     "id": "formOfPayment_1",
+     "Identifier": {
+      "authority": "SQ",
+      "value": "c2a72cc6-779d-4f72-b76c-87f9c78a4d5f"
+     }
+    }
+   ],
+   "Payment": [
+    {
+     "@type": "Payment",
+     "id": "payment_1",
+     "Identifier": {
+      "authority": "SQ",
+      "value": "NGI2NDExYmItZjk0ZS00N2UwLWEzZDEtMjg0ODI0NjNiMWVhfDpJTlY="
+     },
+     "Amount": {
+      "code": "AUD",
+      "value": 511.3
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "formOfPayment_1",
+      "Identifier": {
+       "authority": "SQ",
+       "value": "c2a72cc6-779d-4f72-b76c-87f9c78a4d5f"
+      }
+     },
+     "OfferIdentifier": [
+      {
+       "offerRef": "1",
+       "Identifier": {
+        "authority": "SQ",
+        "value": "NUZLTjRLfFNRXzVGS040S19BSVItMS0yfFNRfFNRXzVGS040S3xwcm9kdWN0Ml9zMi1TRUcyOnByb2R1Y3QxX3MxLVNFRzF8QURUOlBBWDE="
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_1",
+     "OfferRef": [
+      "1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "SQ",
+       "sourceContext": "VendorLocator",
+       "value": "5FKN4K"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "seg1",
+          "seg2"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "id": "receipt_2",
+     "OfferRef": [
+      "1"
+     ],
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "SQ",
+       "sourceContext": "OrderId",
+       "value": "SQ_5FKN4K"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptPayment",
+     "dateTime": "2025-02-22T01:05:52Z",
+     "id": "receipt_3",
+     "Identifier": {
+      "authority": "SQ",
+      "value": "OTRkYzljNDEtMTYwNy00YmM2LWFhMzEtYjBjMTA5OGQ1MzMz"
+     },
+     "OfferRef": [
+      "1"
+     ],
+     "Document": [
+      {
+       "@type": "DocumentTicket",
+       "contentSource": "NDC",
+       "Number": "6182461381138",
+       "TravelerIdentifierRef": {
+        "value": "trav_1"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "CurrencyCode": {
+         "decimalPlace": 2,
+         "value": "AUD"
+        },
+        "Total": 511.3
+       }
+      }
+     ],
+     "PaymentIdentifier": {
+      "id": "paymentIdentifier_1",
+      "PaymentRef": "payment_1"
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "3e4c843c-859f-4901-80b7-6438afc96ef4"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-02-22",
+       "value": "B7KT35"
+      }
+     }
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     },
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 2,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_2",
+      "Sequence": 2
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>GDS&#160;exchanged ticket example</h4>
+                                        <p>In the following example workbench commit response for an exchanged ticket, the previous itinerary is returned in the Offer object and the new itinerary is returned in OfferModify. For brevity, the text of TermsAndConditionsFull has been omitted and is shown as ... . </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example commit for GDS ticket exchange</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "transactionId": "Katalon_07032025133341",
+  "traceId": "b1744f10-6434-43d8-aec4-a93d72873172",
+  "Reservation": {
+   "@type": "Reservation",
+   "Identifier": {
+    "authority": "Travelport",
+    "value": "3f82e98f-3f5d-4507-84ae-b6cf9ce5b218"
+   },
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "00b23c24-3047-4a24-9d5f-f99f3062f905"
+     },
+     "ContentSource": "GDS",
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "product_1",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "fe5f3bac-5bbd-4054-b68b-7022dfc3c746"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_01",
+         "sequence": 1,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H45M",
+          "carrier": "TP",
+          "number": "1356",
+          "equipment": "32N",
+          "id": "Flight_01",
+          "Identifier": {
+           "authority": "Travelport",
+           "value": "268ba647-c23b-43ad-b3a4-286d34d6a7cc"
+          },
+          "Departure": {
+           "@type": "Departure",
+           "location": "LIS",
+           "date": "2025-07-18",
+           "time": "08:15:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "LHR",
+           "date": "2025-07-18",
+           "time": "11:00:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "L",
+           "cabin": "Economy",
+           "fareBasisCode": "LF0CLC00",
+           "fareType": "AirlinePrivateFare"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "@type": "ProductAir",
+       "id": "product_2",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "4abf7840-464b-4f7c-9d64-9acfec557374"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_02",
+         "sequence": 2,
+         "Flight": {
+          "@type": "Flight",
+          "duration": "PT2H45M",
+          "carrier": "TP",
+          "number": "1363",
+          "equipment": "32Q",
+          "id": "Flight_02",
+          "Identifier": {
+           "authority": "Travelport",
+           "value": "d90c6b83-2e0a-44d8-a642-d633129fb579"
+          },
+          "Departure": {
+           "@type": "Departure",
+           "location": "LHR",
+           "date": "2025-07-28",
+           "time": "06:00:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "LIS",
+           "date": "2025-07-28",
+           "time": "08:45:00"
+          }
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            2
+           ],
+           "classOfService": "K",
+           "cabin": "Economy",
+           "fareBasisCode": "KF0CLC00",
+           "fareType": "AirlinePrivateFare"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "id": "PriceDetail_1",
+      "CurrencyCode": {
+       "value": "EUR"
+      },
+      "Base": 188,
+      "TotalTaxes": 153.77,
+      "TotalFees": 0,
+      "TotalPrice": 341.77,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "EUR"
+         },
+         "Base": 188,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 153.77,
+          "Tax": [
+           {
+            "currencyCode": "EUR",
+            "taxCode": "J9",
+            "value": 2
+           },
+           {
+            "currencyCode": "EUR",
+            "taxCode": "PT",
+            "value": 8.93
+           },
+           {
+            "currencyCode": "EUR",
+            "taxCode": "YP",
+            "value": 28.41
+           },
+           {
+            "currencyCode": "EUR",
+            "taxCode": "GB",
+            "value": 15.19
+           },
+           {
+            "currencyCode": "EUR",
+            "taxCode": "UB",
+            "value": 27.24
+           },
+           {
+            "currencyCode": "EUR",
+            "taxCode": "YQ",
+            "value": 72
+           }
+          ]
+         },
+         "Total": 341.77
+        },
+        "Commission": {
+         "@type": "CommissionPercent",
+         "Percent": 0
+        },
+        "TravelerRefs": [
+         "travelerRefId_1"
+        ],
+        "NetBaseAmount": {
+         "currencyCode": "EUR",
+         "decimalPlace": 2,
+         "value": 188
+        },
+        "FareCalculation": "LIS TP LON Q16.97 84.86LF0CLC00 TP LIS Q16.97 93.92KF0CLC00 NUC212.72END ROE0.883723"
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [...]
+    },
+    {
+     "@type": "OfferModify",
+     "isNetted": "Some",
+     "id": "offerModify_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "9500e793-c0d5-48f6-9298-2321dad83172"
+     },
+     "ContentSource": "GDS",
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "p1",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "03215229-3834-4c3d-ab7c-f1f8bb14acee"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "sequence": 1,
+         "Flight": {
+          "@type": "FlightDetail",
+          "duration": "PT2H45M",
+          "carrier": "TP",
+          "number": "834",
+          "equipment": "321",
+          "id": "s4",
+          "Departure": {
+           "@type": "Departure",
+           "location": "LIS",
+           "date": "2025-07-18",
+           "time": "13:00:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "terminal": "1",
+           "location": "FCO",
+           "date": "2025-07-18",
+           "time": "16:45:00"
+          },
+          "AvailabilitySourceCode": "A"
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1
+           ],
+           "classOfService": "K",
+           "cabin": "Economy",
+           "fareBasisCode": "KF0CLC00",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "BrandID"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "@type": "ProductAir",
+       "id": "p2",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "1d7cba68-7c38-4ad5-95bf-ee4900be5fd5"
+       },
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "sequence": 2,
+         "Flight": {
+          "@type": "FlightDetail",
+          "duration": "PT3H10M",
+          "carrier": "TP",
+          "number": "831",
+          "equipment": "32N",
+          "id": "s5",
+          "Departure": {
+           "@type": "Departure",
+           "location": "FCO",
+           "date": "2025-07-28",
+           "time": "11:10:00"
+          },
+          "Arrival": {
+           "@type": "ArrivalDetail",
+           "terminal": "1",
+           "location": "LIS",
+           "date": "2025-07-28",
+           "time": "13:20:00"
+          },
+          "AvailabilitySourceCode": "A"
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            2
+           ],
+           "classOfService": "K",
+           "cabin": "Economy",
+           "fareBasisCode": "KF0CLC00",
+           "fareType": "PublicFare",
+           "Brand": {
+            "@type": "BrandID"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "EUR"
+      },
+      "Base": 190,
+      "TotalTaxes": 132.49,
+      "TotalFees": 40,
+      "TotalPrice": 362.49,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "EUR"
+         },
+         "Base": 190,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 137.86,
+          "Tax": [
+           {
+            "taxCode": "EX",
+            "value": 2.09
+           },
+           {
+            "taxCode": "HB",
+            "value": 7.5
+           },
+           {
+            "taxCode": "IT",
+            "value": 17.52
+           },
+           {
+            "taxCode": "J9",
+            "value": 2
+           },
+           {
+            "taxCode": "MJ",
+            "value": 1.21
+           },
+           {
+            "taxCode": "PT",
+            "value": 8.93
+           },
+           {
+            "taxCode": "VT",
+            "value": 3.35
+           },
+           {
+            "taxCode": "YP",
+            "value": 17.26
+           },
+           {
+            "taxCode": "YQ",
+            "value": 78
+           }
+          ]
+         },
+         "Fees": {
+          "@type": "FeesDetail",
+          "TotalFees": 40,
+          "Fee": [
+           {
+            "@type": "Fee",
+            "description": "Change Fee",
+            "FeeAmountOrPercent": {
+             "@type": "FeeAmountOrPercentAmount",
+             "Amount": {
+              "code": "EUR",
+              "minorUnit": 2,
+              "value": 40
+             }
+            }
+           }
+          ]
+         },
+         "Total": 362.49
+        },
+        "FiledAmount": {
+         "currencyCode": "EUR",
+         "decimalPlace": 2,
+         "value": 190
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [...],
+     "ModifyPrice": {
+      "@type": "ModifyPriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "EUR"
+      },
+      "Base": 2,
+      "TotalTaxes": -21.28,
+      "TotalFees": 40,
+      "TotalPrice": 20.72,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "EUR"
+         },
+         "Base": 2,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": -21.28,
+          "Tax": [
+           {
+            "taxCode": "EX",
+            "value": 2.09
+           },
+           {
+            "taxCode": "GB",
+            "value": -15.19
+           },
+           {
+            "taxCode": "HB",
+            "value": 7.5
+           },
+           {
+            "taxCode": "IT",
+            "value": 17.52
+           },
+           {
+            "taxCode": "MJ",
+            "value": 1.21
+           },
+           {
+            "taxCode": "PT",
+            "value": -5.37
+           },
+           {
+            "taxCode": "UB",
+            "value": -27.24
+           },
+           {
+            "taxCode": "VT",
+            "value": 3.35
+           },
+           {
+            "taxCode": "YP",
+            "value": -11.15
+           },
+           {
+            "taxCode": "YQ",
+            "value": 6
+           }
+          ]
+         },
+         "Fees": {
+          "@type": "FeesDetail",
+          "TotalFees": 40,
+          "Fee": [
+           {
+            "@type": "Fee",
+            "description": "Change Fee",
+            "FeeAmountOrPercent": {
+             "@type": "FeeAmountOrPercentAmount",
+             "Amount": {
+              "code": "EUR",
+              "minorUnit": 2,
+              "value": 40
+             }
+            }
+           }
+          ]
+         },
+         "Total": 20.72
+        },
+        "FareCalculation": "LIS TP ROM Q16.97 90.52TP LIS Q16.97 90.53NUC214.99END ROE.883723 TP"
+       }
+      ]
+     },
+     "ResidualPrice": {
+      "@type": "ResidualPriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "EUR"
+      },
+      "Base": 2,
+      "TotalTaxes": -58.95,
+      "TotalFees": 0,
+      "TotalPrice": -56.95,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "EUR"
+         },
+         "Base": 2,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": -58.95,
+          "Tax": [
+           {
+            "taxCode": "GB",
+            "value": -15.19
+           },
+           {
+            "taxCode": "PT",
+            "value": -5.37
+           },
+           {
+            "taxCode": "UB",
+            "value": -27.24
+           },
+           {
+            "taxCode": "YP",
+            "value": -11.15
+           }
+          ]
+         },
+         "Fees": {
+          "@type": "FeesDetail",
+          "TotalFees": 0,
+          "Fee": [
+           {
+            "@type": "Fee",
+            "description": "Change Fee",
+            "FeeAmountOrPercent": {
+             "@type": "FeeAmountOrPercentAmount",
+             "Amount": {
+              "code": "EUR",
+              "minorUnit": 2,
+              "value": 0
+             }
+            }
+           }
+          ]
+         },
+         "Total": -56.95
+        },
+        "FareCalculation": "LIS TP ROM Q16.97 90.52TP LIS Q16.97 90.53NUC214.99END ROE.883723 TP"
+       }
+      ]
+     },
+     "AdditionalCollectionPrice": {
+      "@type": "AdditionalCollectionPriceDetail",
+      "CurrencyCode": {
+       "decimalPlace": 2,
+       "value": "EUR"
+      },
+      "Base": 0,
+      "TotalTaxes": 37.67,
+      "TotalFees": 40,
+      "TotalPrice": 77.67,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "EUR"
+         },
+         "Base": 0,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 37.67,
+          "Tax": [
+           {
+            "taxCode": "EX",
+            "value": 2.09
+           },
+           {
+            "taxCode": "HB",
+            "value": 7.5
+           },
+           {
+            "taxCode": "IT",
+            "value": 17.52
+           },
+           {
+            "taxCode": "MJ",
+            "value": 1.21
+           },
+           {
+            "taxCode": "VT",
+            "value": 3.35
+           },
+           {
+            "taxCode": "YQ",
+            "value": 6
+           }
+          ]
+         },
+         "Fees": {
+          "@type": "FeesDetail",
+          "TotalFees": 40,
+          "Fee": [
+           {
+            "@type": "Fee",
+            "description": "Change Fee",
+            "FeeAmountOrPercent": {
+             "@type": "FeeAmountOrPercentAmount",
+             "Amount": {
+              "code": "EUR",
+              "minorUnit": 2,
+              "value": 40
+             }
+            }
+           }
+          ]
+         },
+         "Total": 77.67
+        },
+        "FareCalculation": "LIS TP ROM Q16.97 90.52TP LIS Q16.97 90.53NUC214.99END ROE.883723 TP"
+       }
+      ]
+     }
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "2004-06-03",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "travelerRefId_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "da1aec58-baae-4115-8136-9db2ccb87b23"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "PAXONE",
+      "Surname": "KATALON"
+     },
+     "Telephone": [
+      {
+       "@type": "TelephoneDetail",
+       "phoneNumber": "NNNN",
+       "id": "telephone_1"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "birthDate": "2004-06-03",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "PAXONE ",
+        "Surname": "KATALON"
+       }
+      }
+     ],
+     "Comments": {
+      "@type": "Comments",
+      "Comment": [
+       {
+        "id": "comment_1",
+        "value": "P-ADT"
+       }
+      ]
+     }
+    }
+   ],
+   "FormOfPayment": [
+    {
+     "@type": "FormOfPaymentCash",
+     "id": "formOfPayment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "91ec0250-6578-4fa4-9485-97387f18b650"
+     }
+    },
+    {
+     "@type": "FormOfPaymentPaymentCard",
+     "id": "KatalonFoP_CreditCard1",
+     "FormOfPaymentRef": "KatalonFoP_CreditCard1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "3f82e98f-3f5d-4507-84ae-b6cf9ce5b218"
+     },
+     "PaymentCard": {
+      "@type": "PaymentCard",
+      "id": "paymentCard_KatalonFoP_CreditCard1",
+      "expireDate": "0726",
+      "CardType": "Credit",
+      "CardCode": "VI",
+      "CardHolderName": "SMITH JOHN",
+      "CardNumber": {
+       "@type": "CardNumber",
+       "PlainText": "XXXXXXXXXXXX5550"
+      }
+     }
+    }
+   ],
+   "Payment": [
+    {
+     "@type": "Payment",
+     "id": "payment_1",
+     "PaymentRef": "payment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "c11abc7a-606d-4758-a729-26254e429a71"
+     },
+     "Amount": {
+      "minorUnit": 2,
+      "value": 341.77
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "formOfPayment_1"
+     }
+    },
+    {
+     "@type": "Payment",
+     "id": "KatalonPayment_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "3890b546-ad60-41ba-96fa-baf91de12aad"
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "KatalonFoP_CreditCard1"
+     },
+     "OfferIdentifier": [
+      {
+       "id": "offer_1",
+       "offerRef": "offer_1"
+      }
+     ],
+     "BaseAmount": {
+      "code": "EUR",
+      "value": 0
+     }
+    },
+    {
+     "@type": "Payment",
+     "id": "KatalonPayment_2",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "64970996-229f-465d-b43b-338a7fce6db4"
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "KatalonFoP_CreditCard1"
+     },
+     "OfferIdentifier": [
+      {
+       "id": "offer_1",
+       "offerRef": "offer_1"
+      }
+     ],
+     "Taxes": {
+      "@type": "TaxesDetail",
+      "TotalTaxes": 37.67
+     }
+    },
+    {
+     "@type": "Payment",
+     "id": "KatalonPayment_3",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "45696c24-39fa-4f13-8618-b35465c8e253"
+     },
+     "FormOfPaymentIdentifier": {
+      "FormOfPaymentRef": "KatalonFoP_CreditCard1"
+     },
+     "OfferIdentifier": [
+      {
+       "id": "offer_1",
+       "offerRef": "offer_1"
+      }
+     ],
+     "Fees": {
+      "@type": "FeesDetail",
+      "TotalFees": 40
+     }
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "892ac6a1-4e86-4769-940c-ad36c8f46652"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "creationDate": "2025-07-03",
+       "value": "CMR3T2"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01",
+          "Flight_02"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "213b1b06-d5b1-4426-9e4c-2afa64d5d4a8"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "TripContainer",
+       "creationDate": "2025-07-03",
+       "value": "69F21338-2A3C-0E00-0202-507031933580"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "1712a23d-88dc-4cee-977a-e298ab2c16b1"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1A",
+       "value": "XY5ROV"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptPayment",
+     "dateTime": "2025-07-03T19:34:00Z",
+     "id": "receipt_1",
+     "ReceiptRef": "receipt_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "454730b6-2000-4a12-b891-932e3147fe1b"
+     },
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Document": [
+      {
+       "@type": "DocumentTicketExchange",
+       "exchangeInd": true,
+       "Number": "0479905344241",
+       "TravelerIdentifierRef": {
+        "passengerTypeCode": "ADT",
+        "id": "travelerRefId_1",
+        "value": "99b73dd2-ac4a-4fff-aed3-431603faccf6"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "CurrencyCode": {
+         "decimalPlace": 2,
+         "value": "EUR"
+        },
+        "Base": 188,
+        "Taxes": {
+         "@type": "TaxesDetail",
+         "TotalTaxes": 153.77,
+         "Tax": [
+          {
+           "taxCode": "J9",
+           "value": 2
+          },
+          {
+           "taxCode": "PT",
+           "value": 8.93
+          },
+          {
+           "taxCode": "YP",
+           "value": 28.41
+          },
+          {
+           "taxCode": "GB",
+           "value": 15.19
+          },
+          {
+           "taxCode": "UB",
+           "value": 27.24
+          },
+          {
+           "taxCode": "YQ",
+           "value": 72
+          }
+         ]
+        },
+        "Total": 341.77
+       }
+      }
+     ],
+     "PaymentIdentifier": {
+      "id": "payment_1",
+      "PaymentRef": "payment_1",
+      "Identifier": {
+       "authority": "Travelport",
+       "value": "c11abc7a-606d-4758-a729-26254e429a71"
+      }
+     }
+    },
+    {
+     "@type": "ReceiptPayment",
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Document": [
+      {
+       "@type": "DocumentEMD",
+       "Number": "0479999059653",
+       "TravelerIdentifierRef": {
+        "name": "KATALON PAXONE",
+        "passengerTypeCode": "ADT",
+        "id": "travelerRefId_1",
+        "value": "da1aec58-baae-4115-8136-9db2ccb87b23"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "Total": 56.95
+       }
+      }
+     ]
+    },
+    {
+     "@type": "ReceiptPayment",
+     "OfferRef": [
+      "offer_1"
+     ],
+     "Document": [
+      {
+       "@type": "DocumentTicket",
+       "Number": "0479905344242",
+       "TravelerIdentifierRef": {
+        "name": "KATALON PAXONE",
+        "passengerTypeCode": "ADT",
+        "id": "travelerRefId_1",
+        "value": "da1aec58-baae-4115-8136-9db2ccb87b23"
+       },
+       "Amount": {
+        "@type": "Amount",
+        "Total": 267.67
+       }
+      }
+     ]
+    }
+   ],
+   "ReservationDisplaySequence": {
+    "@type": "ReservationDisplaySequence",
+    "DisplaySequence": [
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 1,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_1",
+      "Sequence": 1
+     },
+     {
+      "@type": "DisplaySequence",
+      "displaySequence": 2,
+      "OfferRef": "offer_1",
+      "ProductRef": "product_2",
+      "Sequence": 2
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:29:53 GMT -->
+</html>

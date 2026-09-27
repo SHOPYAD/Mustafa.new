@@ -1,0 +1,68 @@
+{
+  "mode": "single",
+  "providers": [
+    "live"
+  ],
+  "endpoints": {
+    "checkServer": {
+      "enabled": true,
+      "uses": "health"
+    },
+    "getConfig": {
+      "enabled": false,
+      "uses": "config"
+    },
+    "getLocale": {
+      "enabled": false,
+      "uses": "locale"
+    },
+    "getNearbyAirports": {
+      "enabled": true,
+      "uses": "nearby"
+    },
+    "searchAirport": {
+      "enabled": false,
+      "uses": "airports"
+    },
+    "getPriceCalendar": {
+      "enabled": true,
+      "uses": "calendar"
+    },
+    "searchFlights": {
+      "enabled": true,
+      "uses": "search"
+    },
+    "searchIncomplete": {
+      "enabled": true,
+      "uses": "poll"
+    },
+    "searchFlightsMultiStops": {
+      "enabled": true,
+      "uses": "multistop"
+    },
+    "searchFlightEverywhere": {
+      "enabled": false,
+      "uses": "everywhere"
+    },
+    "getFlightDetails": {
+      "enabled": true,
+      "uses": "details"
+    }
+  },
+  "markupRules": [
+    {
+      "id": "mk_default_all_18",
+      "enabled": true,
+      "priority": 100,
+      "scope": "all",
+      "origin": "",
+      "destination": "",
+      "type": "percent",
+      "value": 18,
+      "currency": "USD"
+    }
+  ],
+  "dealsSource": "live",
+  "provider": "live",
+  "updatedAt": "2026-09-12T13:06:44.133Z"
+}

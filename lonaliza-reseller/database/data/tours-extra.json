@@ -1,0 +1,46 @@
+{
+  "tours": [
+    {
+      "id": "tour_mtk99pit_g7cza",
+      "title": "باقة إسطنبول وطرابزون الساحرة (7 أيام / 6 ليالٍ VIP)",
+      "image": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+      "duration": "7 أيام / 6 ليالٍ",
+      "timing": "morning",
+      "rating": 4.8,
+      "reviewCount": 0,
+      "price": 850,
+      "originalPrice": 1062.5,
+      "highlights": [
+        "إقامة فندقية فاخرة 5 نجوم مع الإفطار",
+        "جولات خاصة بسيارة VIP وسائق خاص يتحدث العربية",
+        "زيارة معالم إسطنبول، بورصة، وأوزنجول ومرتفعات آيدر في الشمال التركي",
+        "شامل الاستقبال والتوديع من وإلى المطار وتذاكر الطيران الداخلي"
+      ],
+      "category": "VIP Day Tour",
+      "popular": true,
+      "isActive": true
+    },
+    {
+      "id": "tour_mtk97xns_8oin7",
+      "title": "باقة الرحلات السياحية الشاملة المميزة",
+      "image": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+      "duration": "5 أيام / 4 ليالٍ",
+      "timing": "morning",
+      "rating": 4.8,
+      "reviewCount": 0,
+      "price": 450,
+      "originalPrice": 562.5,
+      "highlights": [
+        "جولات سياحية يومية مع مرشد خاص",
+        "استقبال وتوديع VIP من المطار",
+        "إقامة فندقية فاخرة 5 نجوم شاملة الإفطار",
+        "تغطية لأبرز المعالم السياحية والطبيعية"
+      ],
+      "category": "VIP Day Tour",
+      "popular": true,
+      "isActive": true
+    }
+  ],
+  "deletedIds": [],
+  "updatedAt": "2026-09-02T15:33:10.901Z"
+}

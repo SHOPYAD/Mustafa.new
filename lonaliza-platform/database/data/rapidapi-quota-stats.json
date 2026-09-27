@@ -1,0 +1,53 @@
+{
+  "booking": {
+    "provider": "booking",
+    "monthKey": "2026-09",
+    "liveCalls": 25,
+    "success": 16,
+    "failed": 9,
+    "quota429": 9,
+    "headerLimit": 50,
+    "headerRemaining": 0,
+    "headerReset": "1777462",
+    "headerSeen": true,
+    "lastCallAt": "2026-09-22T23:59:15.612Z",
+    "lastCallPath": "/api/v1/hotels/searchDestination",
+    "lastHttpStatus": 429,
+    "last429At": "2026-09-22T23:59:15.612Z",
+    "last429Path": "/api/v1/hotels/searchDestination"
+  },
+  "travel_advisor": {
+    "provider": "travel_advisor",
+    "monthKey": "2026-09",
+    "liveCalls": 0,
+    "success": 0,
+    "failed": 0,
+    "quota429": 0,
+    "headerLimit": null,
+    "headerRemaining": null,
+    "headerReset": null,
+    "headerSeen": false,
+    "lastCallAt": null,
+    "lastCallPath": "",
+    "lastHttpStatus": null,
+    "last429At": null,
+    "last429Path": ""
+  },
+  "sky_scrapper": {
+    "provider": "sky_scrapper",
+    "monthKey": "2026-09",
+    "liveCalls": 242,
+    "success": 0,
+    "failed": 242,
+    "quota429": 242,
+    "headerLimit": 20,
+    "headerRemaining": 0,
+    "headerReset": "600424",
+    "headerSeen": true,
+    "lastCallAt": "2026-09-24T23:25:06.221Z",
+    "lastCallPath": "/api/v2/flights/searchFlights",
+    "lastHttpStatus": 429,
+    "last429At": "2026-09-24T23:25:06.221Z",
+    "last429Path": "/api/v2/flights/searchFlights"
+  }
+}

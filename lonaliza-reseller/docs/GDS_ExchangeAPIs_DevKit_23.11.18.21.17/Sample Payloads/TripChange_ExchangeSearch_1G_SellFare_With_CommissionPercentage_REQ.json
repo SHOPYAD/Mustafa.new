@@ -1,0 +1,66 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-12-15",
+                    "departureTime": "07:10:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "JFK"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SEA"
+                    }
+                }, {
+                    "departureDate": "2021-12-26",
+                    "departureTime": "08:30:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SEA"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "JFK"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "PrivateFaresOnly"
+                },
+                "OrganizationInformation": {
+                    "@type": "OrganizationInformation",
+                    "OrganizationIdentifier": [{
+                            "value": "APIARC",
+                            "supplier": "AS",
+                            "organizationCodeType": "Account"
+                        }
+                    ]
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "df1b58c0-7e1d-4bdc-b127-1952bf708576"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

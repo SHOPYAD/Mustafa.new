@@ -1,0 +1,164 @@
+{
+  "mode": "single",
+  "providers": [
+    "booking"
+  ],
+  "bookingEndpoints": {
+    "searchDestination": {
+      "enabled": true,
+      "uses": "destinations"
+    },
+    "getFilter": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "getSortBy": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "searchHotels": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "searchHotelsByCoordinates": {
+      "enabled": false,
+      "uses": "nearby"
+    },
+    "getHotelDetails": {
+      "enabled": false,
+      "uses": "details"
+    },
+    "getAvailability": {
+      "enabled": false,
+      "uses": "rooms"
+    },
+    "getDescriptionAndInfo": {
+      "enabled": false,
+      "uses": "details"
+    },
+    "getRoomList": {
+      "enabled": false,
+      "uses": "rooms"
+    },
+    "getPaymentFeatures": {
+      "enabled": false,
+      "uses": "policies"
+    },
+    "getHotelPolicies": {
+      "enabled": false,
+      "uses": "policies"
+    },
+    "propertyChildrenPolicies": {
+      "enabled": false,
+      "uses": "policies"
+    },
+    "getHotelReviewsFilterMetadata": {
+      "enabled": false,
+      "uses": "reviews"
+    },
+    "getHotelReviewScores": {
+      "enabled": true,
+      "uses": "reviews"
+    },
+    "getHotelReviewsSortOption": {
+      "enabled": false,
+      "uses": "reviews"
+    },
+    "getHotelReviews": {
+      "enabled": true,
+      "uses": "reviews"
+    },
+    "getQuestionAndAnswer": {
+      "enabled": false,
+      "uses": "questions"
+    },
+    "getNearbyCities": {
+      "enabled": false,
+      "uses": "nearby"
+    },
+    "getPopularAttractionNearBy": {
+      "enabled": false,
+      "uses": "nearby"
+    },
+    "getRoomListWithAvailability": {
+      "enabled": false,
+      "uses": "rooms"
+    },
+    "getHotelPhotos": {
+      "enabled": false,
+      "uses": "photos"
+    },
+    "getHotelFacilities": {
+      "enabled": false,
+      "uses": "facilities"
+    }
+  },
+  "travelAdvisorEndpoints": {
+    "locationsAutoComplete": {
+      "enabled": false,
+      "uses": "destinations"
+    },
+    "hotelsV2List": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelsList": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelsListByLatlng": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelsListInBoundary": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelFiltersV2": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelFiltersV1": {
+      "enabled": false,
+      "uses": "list"
+    },
+    "hotelsV2Details": {
+      "enabled": false,
+      "uses": "details"
+    },
+    "hotelsV1Details": {
+      "enabled": false,
+      "uses": "details"
+    },
+    "hotelsV2Photos": {
+      "enabled": false,
+      "uses": "photos"
+    },
+    "hotelsV1Photos": {
+      "enabled": false,
+      "uses": "photos"
+    },
+    "hotelsV2Offers": {
+      "enabled": false,
+      "uses": "rooms"
+    },
+    "hotelsV2Reviews": {
+      "enabled": true,
+      "uses": "reviews"
+    }
+  },
+  "markupRules": [
+    {
+      "id": "hmk_default_all_15",
+      "enabled": true,
+      "priority": 100,
+      "scope": "all",
+      "destination": "",
+      "provider": "",
+      "type": "percent",
+      "value": 15,
+      "currency": "USD"
+    }
+  ],
+  "updatedAt": "2026-09-13T15:42:18.348Z"
+}

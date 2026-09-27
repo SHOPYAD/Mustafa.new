@@ -1,0 +1,13 @@
+{
+    "FormOfPaymentWaiverCode": {
+        "id": "formOfPayment_3",
+        "FormOfPaymentRef": "formOfPayment_3",
+        "Identifier": {
+            "value": "A0656EFF-FAF4-456F-B061-0161008D7C4E",
+            "authority": "Travelport"
+        },
+        "WaiverCode" : {
+            "value" : "ABC123"
+        }
+    }
+}

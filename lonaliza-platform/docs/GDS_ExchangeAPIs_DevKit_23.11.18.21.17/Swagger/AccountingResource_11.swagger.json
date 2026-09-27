@@ -1,0 +1,762 @@
+{
+  "swagger": "2.0",
+  "x-otm-resource": {
+    "namespace": "http://www.travelport.com/model/reservation/workbench/v11",
+    "localName": "AccountingResource"
+  },
+  "info": {
+    "title": "AccountingResource",
+    "x-otm-library": {
+      "ResourceName": "AccountingResource",
+      "LibraryName": "ReservationWorkbenchResource",
+      "LibraryVersion": "11.0.0",
+      "LibraryStatus": "FINAL",
+      "SourceFile": "/ReservationWorkbenchResource_11_0_0.otm",
+      "CompilerVersion": "4.0.beta28",
+      "CompileDate": "2023-05-17T14:39:36.661+0530"
+    },
+    "version": "11.0.0"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/v11",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/accountings": {
+      "put": {
+        "summary": "AccountingResource - Update",
+        "operationId": "Update",
+        "consumes": [
+          "application/xml",
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "AccountingID",
+            "in": "body",
+            "description": "Accounting information",
+            "required": true,
+            "schema": {
+              "$ref": "Reservation_www.travelport.com_11_Trim.schema.json#/definitions/AccountingID"
+            },
+            "x-xml-schema": {
+              "$ref": "Reservation_www.travelport.com_11_0_0_Trim.xsd#/Accounting"
+            }
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "ReservationWorkbenchResource_11_Trim.schema.json#/definitions/AccountingResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "ReservationWorkbenchResource_11_0_0_Trim.xsd#/AccountingResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "AccountingResource - Create",
+        "operationId": "Create",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "AccountingID",
+            "in": "body",
+            "description": "Accounting information",
+            "required": true,
+            "schema": {
+              "$ref": "Reservation_www.travelport.com_11_Trim.schema.json#/definitions/AccountingID"
+            },
+            "x-xml-schema": {
+              "$ref": "Reservation_www.travelport.com_11_0_0_Trim.xsd#/Accounting"
+            }
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "ReservationWorkbenchResource_11_Trim.schema.json#/definitions/AccountingResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "ReservationWorkbenchResource_11_0_0_Trim.xsd#/AccountingResponse"
+            }
+          }
+        }
+      }
+    },
+    "/reservationworkbench/{ReservationResource_Identifier}/accountings": {
+      "put": {
+        "summary": "AccountingResource - Update",
+        "operationId": "Update2",
+        "consumes": [
+          "application/xml",
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "type": "string",
+            "maxLength": 128
+          },
+          {
+            "name": "AccountingID",
+            "in": "body",
+            "description": "Accounting information",
+            "required": true,
+            "schema": {
+              "$ref": "Reservation_www.travelport.com_11_Trim.schema.json#/definitions/AccountingID"
+            },
+            "x-xml-schema": {
+              "$ref": "Reservation_www.travelport.com_11_0_0_Trim.xsd#/Accounting"
+            }
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "ReservationWorkbenchResource_11_Trim.schema.json#/definitions/AccountingResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "ReservationWorkbenchResource_11_0_0_Trim.xsd#/AccountingResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "AccountingResource - Create",
+        "operationId": "Create2",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "type": "string",
+            "maxLength": 128
+          },
+          {
+            "name": "AccountingID",
+            "in": "body",
+            "description": "Accounting information",
+            "required": true,
+            "schema": {
+              "$ref": "Reservation_www.travelport.com_11_Trim.schema.json#/definitions/AccountingID"
+            },
+            "x-xml-schema": {
+              "$ref": "Reservation_www.travelport.com_11_0_0_Trim.xsd#/Accounting"
+            }
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "ReservationWorkbenchResource_11_Trim.schema.json#/definitions/AccountingResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "ReservationWorkbenchResource_11_0_0_Trim.xsd#/AccountingResponse"
+            }
+          }
+        }
+      }
+    },
+    "/accountings/{id}": {
+      "delete": {
+        "summary": "AccountingResource - Delete",
+        "operationId": "Delete",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/reservationworkbench/{ReservationResource_Identifier}/accountings/{id}": {
+      "delete": {
+        "summary": "AccountingResource - Delete",
+        "operationId": "Delete2",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "type": "string",
+            "maxLength": 128
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/reservationworkbench/{ReservationResource_Identifier}/accountings/{id}/namevaluepairs": {
+      "delete": {
+        "summary": "AccountingResource - DeleteNameValuePair",
+        "operationId": "DeleteNameValuePair",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "type": "string",
+            "maxLength": 128
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "NameValuePairIds",
+            "in": "query",
+            "description": "Comma separated list of nameValuePair IDs",
+            "required": false,
+            "type": "string",
+            "maxLength": 512
+          },
+          {
+            "$ref": "#/parameters/E2ETrackingId"
+          },
+          {
+            "$ref": "#/parameters/TraceId"
+          },
+          {
+            "$ref": "#/parameters/XAUTH_TRAVELPORT_ACCESSGROUP"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "402": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "CommonF_www.travelport.com_11_Trim.schema.json#/definitions/ErrorResponse"
+            },
+            "x-xml-schema": {
+              "$ref": "CommonF_www.travelport.com_11_0_0_Trim.xsd#/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "E2ETrackingId": {
+      "name": "E2ETrackingId",
+      "in": "header",
+      "description": "Identifier used to correlate API invocations with operations across all affected Travelport systems.",
+      "required": false,
+      "type": "string"
+    },
+    "TraceId": {
+      "name": "TraceId",
+      "in": "header",
+      "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+      "required": false,
+      "type": "string"
+    },
+    "XAUTH_TRAVELPORT_ACCESSGROUP": {
+      "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+      "in": "header",
+      "description": "Identifies the Travelport access group with which the caller is associated",
+      "required": false,
+      "type": "string"
+    }
+  },
+  "securityDefinitions": {
+    "BasicAuthSceme": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "BasicAuthSceme": []
+    }
+  ]
+}

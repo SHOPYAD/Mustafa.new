@@ -1,0 +1,242 @@
+{
+  "generatedAt": "2026-09-13T14:30:25.317Z",
+  "count": 12,
+  "topics": [
+    {
+      "id": "cappadocia-balloons",
+      "titleAr": "كابادوكيا ومنطاد الفجر: كيف تخطط الرحلة دون مفاجآت",
+      "titleEn": "Cappadocia sunrise balloons: how to plan the trip",
+      "titleTr": "Kapadokya balon turu planı",
+      "queryAr": "منطاد كابادوكيا",
+      "queryEn": "Cappadocia hot air balloon",
+      "destination": "cappadocia",
+      "angle": "balloons",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 90,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 84,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "istanbul-season-guide",
+      "titleAr": "أفضل وقت لزيارة إسطنبول: دليل المواسم للعائلات والأزواج",
+      "titleEn": "Best time to visit Istanbul: a seasonal guide",
+      "titleTr": "İstanbul’u ziyaret etmek için en iyi zaman",
+      "queryAr": "أفضل وقت للسفر إلى إسطنبول",
+      "queryEn": "best time to visit Istanbul",
+      "destination": "istanbul",
+      "angle": "seasons",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 88,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 83,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "turkey-visa-gcc",
+      "titleAr": "تأشيرة تركيا للمسافرين من الخليج: ما الذي تتحقق منه قبل الحجز",
+      "titleEn": "Turkey visa for GCC travelers: what to check before booking",
+      "titleTr": "Körfez’den Türkiye vizesi: rezervasyon öncesi kontrol",
+      "queryAr": "تأشيرة تركيا للسعودية",
+      "queryEn": "Turkey visa Saudi Arabia",
+      "destination": "visa",
+      "angle": "visa",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 86,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 82,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "antalya-summer",
+      "titleAr": "أنطاليا في الصيف: شواطئ، منتجعات، وكيف تختار البرنامج المناسب",
+      "titleEn": "Antalya in summer: beaches, resorts, and the right program",
+      "titleTr": "Yazın Antalya: plajlar ve tatil programı",
+      "queryAr": "سياحة أنطاليا صيف",
+      "queryEn": "Antalya summer holiday",
+      "destination": "antalya",
+      "angle": "beach",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 84,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 81,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "trabzon-nature",
+      "titleAr": "طرابزون وأوزونغول: طبيعة البحر الأسود للعائلات الخليجية",
+      "titleEn": "Trabzon and Uzungöl: Black Sea nature for families",
+      "titleTr": "Trabzon ve Uzungöl doğa tatili",
+      "queryAr": "سياحة طرابزون أوزونغول",
+      "queryEn": "Trabzon Uzungol travel",
+      "destination": "trabzon",
+      "angle": "nature",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 82,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 80,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "istanbul-cappadocia-combo",
+      "titleAr": "برنامج إسطنبول وكابادوكيا: كم يوماً يكفي وكيف تقسّم الرحلة",
+      "titleEn": "Istanbul and Cappadocia combo: how many days you need",
+      "titleTr": "İstanbul + Kapadokya kaç gün sürer",
+      "queryAr": "برنامج إسطنبول كابادوكيا",
+      "queryEn": "Istanbul Cappadocia itinerary",
+      "destination": "cappadocia",
+      "angle": "combo",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 80,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 79,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "bursa-uludag",
+      "titleAr": "بورصة وأولوداغ: رحلة قريبة من إسطنبول بين التاريخ والجبل",
+      "titleEn": "Bursa and Uludağ: a short trip from Istanbul",
+      "titleTr": "Bursa ve Uludağ İstanbul’a yakın kaçamak",
+      "queryAr": "رحلة بورصة من إسطنبول",
+      "queryEn": "Bursa day trip from Istanbul",
+      "destination": "bursa",
+      "angle": "short-trip",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 70,
+      "recencyScore": 62,
+      "relevanceScore": 92,
+      "score": 75,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "turkey-seasons",
+      "titleAr": "مواسم السياحة في تركيا: متى تذهب للبحر ومتى للجبال",
+      "titleEn": "Turkey travel seasons: sea vs highlands",
+      "titleTr": "Türkiye’de seyahat mevsimleri",
+      "queryAr": "أفضل موسم للسياحة في تركيا",
+      "queryEn": "best season to visit Turkey",
+      "destination": "season",
+      "angle": "seasons",
+      "sourceIds": [
+        "evergreen-alrayyan"
+      ],
+      "sourceTitles": [],
+      "trendInterest": 78,
+      "recencyScore": 62,
+      "relevanceScore": 70,
+      "score": 72,
+      "publishedAt": "2026-08-31T06:00:00.000Z"
+    },
+    {
+      "id": "rss-تركيا",
+      "titleAr": "تركيا",
+      "titleEn": "تركيا",
+      "titleTr": "تركيا",
+      "queryAr": "تركيا",
+      "queryEn": "تركيا",
+      "destination": "turkey",
+      "angle": "trends",
+      "sourceIds": [
+        "trends-sa"
+      ],
+      "sourceTitles": [
+        "تركيا"
+      ],
+      "publishedAt": "2026-09-13T13:40:00.000Z",
+      "trendInterest": 72,
+      "recencyScore": 100,
+      "relevanceScore": 48,
+      "score": 72
+    },
+    {
+      "id": "rss-kore-kültür-merkezi-nin-yeni-müdürü-park-türkiye",
+      "titleAr": "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor",
+      "titleEn": "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor",
+      "titleTr": "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor",
+      "queryAr": "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor",
+      "queryEn": "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor",
+      "destination": "turkey",
+      "angle": "rss",
+      "sourceIds": [
+        "aa-tr-culture"
+      ],
+      "sourceTitles": [
+        "Kore Kültür Merkezi'nin yeni müdürü Park, Türkiye'de \"deneyim\" odaklı kültürel diplomasi hedefliyor"
+      ],
+      "publishedAt": "2026-09-12T17:09:42.000Z",
+      "trendInterest": 48,
+      "recencyScore": 100,
+      "relevanceScore": 48,
+      "score": 61
+    },
+    {
+      "id": "rss-national-arab-orchestra-türkiye-de-ilk-defa-sana",
+      "titleAr": "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak",
+      "titleEn": "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak",
+      "titleTr": "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak",
+      "queryAr": "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak",
+      "queryEn": "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak",
+      "destination": "turkey",
+      "angle": "rss",
+      "sourceIds": [
+        "aa-tr-culture"
+      ],
+      "sourceTitles": [
+        "National Arab Orchestra, Türkiye'de ilk defa sanatseverlerle buluşacak"
+      ],
+      "publishedAt": "2026-09-11T16:43:32.000Z",
+      "trendInterest": 48,
+      "recencyScore": 100,
+      "relevanceScore": 48,
+      "score": 61
+    },
+    {
+      "id": "rss-türk-gezginlerin-yeni-gözdesi-st-petersburg-vize",
+      "titleAr": "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz",
+      "titleEn": "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz",
+      "titleTr": "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz",
+      "queryAr": "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz",
+      "queryEn": "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz",
+      "destination": "visa",
+      "angle": "rss",
+      "sourceIds": [
+        "hurriyet-seyahat"
+      ],
+      "sourceTitles": [
+        "Türk gezginlerin yeni gözdesi: St. Petersburg! Vize derdi yok ve çok ucuz"
+      ],
+      "publishedAt": "2026-07-06T07:22:00.000Z",
+      "trendInterest": 48,
+      "recencyScore": 22,
+      "relevanceScore": 92,
+      "score": 55
+    }
+  ]
+}

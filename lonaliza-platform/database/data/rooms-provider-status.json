@@ -1,0 +1,14 @@
+{
+  "host": "booking-com15.p.rapidapi.com",
+  "subscribeUrl": "https://rapidapi.com/DataCrawler/api/booking-com15",
+  "lastError": null,
+  "lastErrorCode": null,
+  "lastHotelName": "هيلتون مول أوف إسطنبول",
+  "lastBookingHotelId": "6621917",
+  "lastRoomCount": 0,
+  "lastSample": [],
+  "lastHttpStatus": 204,
+  "lastPath": "/api/v1/hotels/getRoomListWithAvailability",
+  "lastBodySnippet": "endpoint-disabled",
+  "updatedAt": "2026-09-21T22:27:15.335Z"
+}

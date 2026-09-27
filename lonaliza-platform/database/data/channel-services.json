@@ -1,0 +1,66 @@
+{
+  "websiteEnabled": {
+    "flight": true,
+    "holiday": true,
+    "hotel": true,
+    "tours": true,
+    "transfers": true,
+    "cars": true,
+    "insurance": false,
+    "visa": false,
+    "offers": false
+  },
+  "appEnabled": {
+    "flight": true,
+    "holiday": true,
+    "hotel": true,
+    "tours": true,
+    "transfers": true,
+    "cars": true,
+    "insurance": false,
+    "visa": false,
+    "offers": false
+  },
+  "order": [
+    "flight",
+    "hotel",
+    "cars",
+    "transfers",
+    "holiday",
+    "tours",
+    "insurance",
+    "visa",
+    "offers"
+  ],
+  "navVisibility": {
+    "home": "header-footer",
+    "holidays": "header-footer",
+    "flights": "header-footer",
+    "hotels": "header-footer",
+    "vipDailyTours": "header-footer",
+    "transfers": "header-footer",
+    "cars": "header-footer",
+    "visa": "header-footer",
+    "uaeTours": "hidden",
+    "blog": "footer",
+    "community": "header-footer",
+    "aiChat": "header",
+    "contact": "header-footer"
+  },
+  "navOrder": [
+    "home",
+    "flights",
+    "hotels",
+    "cars",
+    "transfers",
+    "holidays",
+    "vipDailyTours",
+    "visa",
+    "community",
+    "aiChat",
+    "contact",
+    "uaeTours",
+    "blog"
+  ],
+  "updatedAt": "2026-09-17T19:10:46.258Z"
+}

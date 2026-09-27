@@ -1,0 +1,866 @@
+{
+  "generatedAt": "2026-05-14T13:44:11.732Z",
+  "endpointCount": 78,
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "11/air/ancillaryprice/offers/buildancillaryoffersfromcatalogofferings",
+      "base": "11_AIR",
+      "raw": "POST ancillaryprice/offers/buildancillaryoffersfromcatalogofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ancillaryshop/catalogofferingsancillaries",
+      "base": "11_AIR",
+      "raw": "POST ancillaryshop/catalogofferingsancillaries",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/accounting/reservationworkbench/{workbenchID}/accountings",
+      "base": "11_AIR",
+      "raw": "POST book/accounting/reservationworkbench/{workbenchID}/accountings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildancillaryoffersfromcatalogofferings",
+      "base": "11_AIR",
+      "raw": "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildancillaryoffersfromcatalogofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings",
+      "base": "11_AIR",
+      "raw": "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromproducts",
+      "base": "11_AIR",
+      "raw": "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromproducts",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromunpricedsegments",
+      "base": "11_AIR",
+      "raw": "POST book/airoffer/reservationworkbench/{workbenchID}/offers/buildfromunpricedsegments",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/airoffer/reservationworkbench/{workbenchID}/offers/unpricedsegments",
+      "base": "11_AIR",
+      "raw": "POST book/airoffer/reservationworkbench/{workbenchID}/offers/unpricedsegments",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/book/customrule/customrules?PCC={PCC}",
+      "base": "11_AIR",
+      "raw": "GET book/customrule/customrules?PCC={PCC}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/book/customrule/customrules?PCC={PCC}?RuleRecordName={NAME}",
+      "base": "11_AIR",
+      "raw": "DELETE book/customrule/customrules?PCC={PCC}?RuleRecordName={NAME}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/book/customrule/customrules?PCC={PCC}?RuleRecordSequence={XYZ}",
+      "base": "11_AIR",
+      "raw": "GET book/customrule/customrules?PCC={PCC}?RuleRecordSequence={XYZ}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/customrule/customrules/{workbenchID}?RuleRecordName={NAME}",
+      "base": "11_AIR",
+      "raw": "POST book/customrule/customrules/{workbenchID}?RuleRecordName={NAME}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/documentoverride/Reservation/{workbenchID}/documentoverrides",
+      "base": "11_AIR",
+      "raw": "POST book/documentoverride/Reservation/{workbenchID}/documentoverrides",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/offer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings",
+      "base": "11_AIR",
+      "raw": "POST book/offer/reservationworkbench/{workbenchID}/offers/buildfromcatalogofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts",
+      "base": "11_AIR",
+      "raw": "POST book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts/{PrimaryContactID}",
+      "base": "11_AIR",
+      "raw": "DELETE book/primarycontact/reservationworkbench/{workbenchID}/primarycontacts/{PrimaryContactID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/profile/reservationworkbench/{workbenchID}/clientprofile",
+      "base": "11_AIR",
+      "raw": "POST book/profile/reservationworkbench/{workbenchID}/clientprofile",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/remarks/reservationworkbench/{workbenchID}/reservationcomments/list",
+      "base": "11_AIR",
+      "raw": "POST book/remarks/reservationworkbench/{workbenchID}/reservationcomments/list",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/book/reservation/reservations/{LocatorCode}",
+      "base": "11_AIR",
+      "raw": "GET book/reservation/reservations/{LocatorCode}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/reservation/reservations/{workbenchID}",
+      "base": "11_AIR",
+      "raw": "POST book/reservation/reservations/{workbenchID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/reservation/reservations/divide",
+      "base": "11_AIR",
+      "raw": "POST book/reservation/reservations/divide",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/session/reservationworkbench",
+      "base": "11_AIR",
+      "raw": "POST book/session/reservationworkbench",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/book/session/reservationworkbench/{workbenchID}",
+      "base": "11_AIR",
+      "raw": "DELETE book/session/reservationworkbench/{workbenchID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/book/session/reservationworkbench/{workbenchID}",
+      "base": "11_AIR",
+      "raw": "GET book/session/reservationworkbench/{workbenchID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/session/reservationworkbench/buildfromlocator?Locator={LocatorCode}",
+      "base": "11_AIR",
+      "raw": "POST book/session/reservationworkbench/buildfromlocator?Locator={LocatorCode}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/{SpecialServiceID}",
+      "base": "11_AIR",
+      "raw": "DELETE book/specialservices/reservationworkbench/{workbenchID}/specialservices/{SpecialServiceID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/deletemultiple",
+      "base": "11_AIR",
+      "raw": "DELETE book/specialservices/reservationworkbench/{workbenchID}/specialservices/deletemultiple",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/specialservices/reservationworkbench/{workbenchID}/specialservices/list",
+      "base": "11_AIR",
+      "raw": "POST book/specialservices/reservationworkbench/{workbenchID}/specialservices/list",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers",
+      "base": "11_AIR",
+      "raw": "POST book/traveler/reservationworkbench/{workbenchID}/travelers",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/list",
+      "base": "11_AIR",
+      "raw": "POST book/traveler/reservationworkbench/{workbenchID}/travelers/list",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/book/traveler/reservationworkbench/{workbenchID}/travelers/updatefromtravelerupdateditems/{TravelerID}",
+      "base": "11_AIR",
+      "raw": "PUT book/traveler/reservationworkbench/{workbenchID}/travelers/updatefromtravelerupdateditems/{TravelerID}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/book/updatableItem/reservationworkbench/{workbenchID}/travelerupdatableitems/buildfromtraveler",
+      "base": "11_AIR",
+      "raw": "POST book/updatableItem/reservationworkbench/{workbenchID}/travelerupdatableitems/buildfromtraveler",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/__tests__/unit/rateLimiter.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/catalog/search/catalogproductofferings",
+      "base": "11_AIR",
+      "raw": "POST catalog/search/catalogproductofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/catalog/search/catalogproductofferings/buildnext",
+      "base": "11_AIR",
+      "raw": "POST catalog/search/catalogproductofferings/buildnext",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/catalog/search/catalogproductofferings/buildoptions",
+      "base": "11_AIR",
+      "raw": "POST catalog/search/catalogproductofferings/buildoptions",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/catalog/search/catalogproductofferings/buildpremiumflexoptions",
+      "base": "11_AIR",
+      "raw": "POST catalog/search/catalogproductofferings/buildpremiumflexoptions",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/catalog/search/catalogproductofferings/premiumflex",
+      "base": "11_AIR",
+      "raw": "POST catalog/search/catalogproductofferings/premiumflex",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/emds/{EMDNumber}",
+      "base": "11_AIR",
+      "raw": "GET emds/{EMDNumber}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/emds/{EMDNumber}",
+      "base": "11_AIR",
+      "raw": "PUT emds/{EMDNumber}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/faredisplay/fares",
+      "base": "11_AIR",
+      "raw": "POST faredisplay/fares",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/farerule/farerules",
+      "base": "11_AIR",
+      "raw": "GET farerule/farerules",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts",
+        "erxes/backend/plugins/tourism_api/tests/travelportAirFollowup.test.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/payment/reservationworkbench/{workbenchID}/formofpayment",
+      "base": "11_AIR",
+      "raw": "POST payment/reservationworkbench/{workbenchID}/formofpayment",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}",
+      "base": "11_AIR",
+      "raw": "DELETE payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}",
+      "base": "11_AIR",
+      "raw": "PUT payment/reservationworkbench/{workbenchID}/formofpayment/{FormOfPayment_Identifier}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportPostBookingWorkbench.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/paymentoffer/reservationworkbench/{workbenchID}/payments",
+      "base": "11_AIR",
+      "raw": "POST paymentoffer/reservationworkbench/{workbenchID}/payments",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/paymentoffer/reservationworkbench/{workbenchID}/payments/{paymentID}",
+      "base": "11_AIR",
+      "raw": "POST paymentoffer/reservationworkbench/{workbenchID}/payments/{paymentID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/price/offers/buildfromcatalogproductofferings",
+      "base": "11_AIR",
+      "raw": "POST price/offers/buildfromcatalogproductofferings",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/price/offers/buildfromproducts",
+      "base": "11_AIR",
+      "raw": "POST price/offers/buildfromproducts",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportAirFollowup.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/air/receipt/reservation/{workbenchID}/receipts?OfferIdentifier={OfferID}",
+      "base": "11_AIR",
+      "raw": "POST receipt/reservation/{workbenchID}/receipts?OfferIdentifier={OfferID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "GET",
+      "path": "11/air/receipt/reservations/{LocatorCode}/receipts",
+      "base": "11_AIR",
+      "raw": "GET receipt/reservations/{LocatorCode}/receipts",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/receipt/reservations/{LocatorCode}/receipts",
+      "base": "11_AIR",
+      "raw": "POST receipt/reservations/{LocatorCode}/receipts",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/search/airAvailability",
+      "base": "11_AIR",
+      "raw": "POST search/airAvailability",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/search/seat/catalogofferingsancillaries/seatavailabilities",
+      "base": "11_AIR",
+      "raw": "POST search/seat/catalogofferingsancillaries/seatavailabilities",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airAdapter.ts",
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/airBookingAdapter.ts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "11/air/ticket/tickets/{ticketID}",
+      "base": "11_AIR",
+      "raw": "GET ticket/tickets/{ticketID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/tickets/getbylocator",
+      "base": "11_AIR",
+      "raw": "POST ticket/tickets/getbylocator",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/ticket/tickets/updatestatus/{ticketID}",
+      "base": "11_AIR",
+      "raw": "PUT ticket/tickets/updatestatus/{ticketID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency",
+      "base": "11_AIR",
+      "raw": "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addemail",
+      "base": "11_AIR",
+      "raw": "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addemail",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addtelephone",
+      "base": "11_AIR",
+      "raw": "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/addtelephone",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteaddress/{addressID}",
+      "base": "11_AIR",
+      "raw": "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteaddress/{addressID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletecorporatecode",
+      "base": "11_AIR",
+      "raw": "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletecorporatecode",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteemail/{emailID}",
+      "base": "11_AIR",
+      "raw": "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deleteemail/{emailID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletetelephone/{telephoneID}",
+      "base": "11_AIR",
+      "raw": "DELETE ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/deletetelephone/{telephoneID}",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress",
+      "base": "11_AIR",
+      "raw": "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress",
+      "base": "11_AIR",
+      "raw": "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateaddress",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatecorporatecode",
+      "base": "11_AIR",
+      "raw": "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatecorporatecode",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateemail",
+      "base": "11_AIR",
+      "raw": "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updateemail",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatetelephone",
+      "base": "11_AIR",
+      "raw": "PUT ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/{travelagencyID}/updatetelephone",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/air/ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/addcorporatecode",
+      "base": "11_AIR",
+      "raw": "POST ticket/travelagency/reservationworkbench/{workbenchID}/travelagency/addcorporatecode",
+      "implementation_status": "MISSING",
+      "gap_notes": "no static string match in tourism_api scan",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/book/reservationworkbench/{workbenchID}/reservations/cancelitems",
+      "base": "NON_AIR_BASE",
+      "raw": "POST book/reservationworkbench/{workbenchID}/reservations/cancelitems",
+      "implementation_status": "MISSING",
+      "gap_notes": "non-/11/air/ base; verify before wiring",
+      "code_refs": []
+    },
+    {
+      "method": "GET",
+      "path": "11/documents/documentlist/{LocatorCode}",
+      "base": "NON_AIR_BASE",
+      "raw": "GET documents/documentlist/{LocatorCode}",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/documents/history",
+      "base": "NON_AIR_BASE",
+      "raw": "POST documents/history",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/documents/void",
+      "base": "NON_AIR_BASE",
+      "raw": "POST documents/void",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/eligibility/ticketchangeeligibilities",
+      "base": "NON_AIR_BASE",
+      "raw": "POST eligibility/ticketchangeeligibilities",
+      "implementation_status": "MISSING",
+      "gap_notes": "non-/11/air/ base; verify before wiring",
+      "code_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "11/exchangesearch/catalogofferingsairchange",
+      "base": "NON_AIR_BASE",
+      "raw": "POST exchangesearch/catalogofferingsairchange",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/queue/queue",
+      "base": "NON_AIR_BASE",
+      "raw": "POST queue/queue",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/queue/queue/list",
+      "base": "NON_AIR_BASE",
+      "raw": "POST queue/queue/list",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "11/queue/queue/remove",
+      "base": "NON_AIR_BASE",
+      "raw": "POST queue/queue/remove",
+      "implementation_status": "IMPLEMENTED",
+      "code_refs": [
+        "erxes/backend/plugins/tourism_api/src/providers/travelport/air/travelportNonAirEndpoints.ts"
+      ]
+    }
+  ],
+  "apirefs": [
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryBook.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryPrice.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryShop.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_EMDDisplay.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_EMDVoid.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferRefPayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AutoPrice-ManualFare.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_DocumentHistory.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_DocumentList.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_HostProfileMove.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationCancelGDS.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationDivide.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelerAdd.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelerUpdatableItems.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_TravelerUpdate.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_UnpricedSegment.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelAgency/APIRef_TravelAgencyAddress.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelAgency/APIRef_TravelAgencyCorpID.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelAgency/APIRef_TravelAgencyDetails.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelAgency/APIRef_TravelAgencyEmail.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/TravelAgency/APIRef_TravelAgencyTelephone.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_AddModifyOfferReferencePayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeEligibility.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/GDSExchangesRefunds/APIRef_ExchangeSearch.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Cancel.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_CancelPayment.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Modify.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_RefundQuote.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reprice.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_Reshop.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_StandaloneReprice.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/NDC/APIRef_TicketAsFOP.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_AirPriceFullPayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_AirPriceReferencePayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareDisplay.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_FareRules.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Rules/APIRef_CustomRule.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_AirAvailability.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificFullPayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificRefPayload.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_NextLegSearch.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_Search.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_AncillaryCancel.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_SeatBook.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_SeatMap.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/APIRef_StandaloneSeatMap.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddFOP.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_AddPayment.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_BatchVoid.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_Queue.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_QueueList.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_QueueRemove.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketDisplay_GDS.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketList.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketRetrieve.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ticketing/APIRef_TicketVoidGDS.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_CancelWorkbenchItems.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchCommit.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchDiscard.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchNewCreate.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchPostCreate.html",
+    "docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workbench/APIRef_WorkbenchRetrieve.html"
+  ]
+}

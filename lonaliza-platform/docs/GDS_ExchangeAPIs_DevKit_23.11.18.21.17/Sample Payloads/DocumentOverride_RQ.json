@@ -1,0 +1,85 @@
+{
+"DocumentOverrides": {
+"id": "documentOverrides_1",
+"DocumentOverridesRef": "documentOverrides_1",
+ "TicketDesignator": "ABC123",
+"Commissions": [
+{
+"Commission": {
+"@type": "CommissionAmount",
+"Amount": {
+"code": "USD",
+"value": 123
+}
+}
+}
+],
+"Restrictions": [
+{
+"Restriction": [
+"NON Exchange"
+]
+}
+],{
+    "DocumentOverrides": {
+        "id": "documentOverrides_1",
+        "DocumentOverridesRef": "documentOverrides_1",
+        "Commissions": [
+            {
+                "Commission": {
+                    "@type": "CommissionAmount",
+                    "Amount": {
+                        "code": "USD",
+                        "value": 123
+                    }
+                },
+                "ApplyTo": "Base"
+            }
+        ],
+        "DestinationPurpose": [
+            {
+                "destination": "Europe",
+                "purpose": "Business"
+            }
+        ],
+        "Restrictions": [
+            {
+                "Restriction": [
+                    "NON Exchange"
+                ]
+            }
+        ],
+        "TourCodes": [
+            {
+                "TourCode": {
+                    "tourCodeType": "Inclusive Tour",
+                    "value": "123456"
+                }
+            }
+        ],
+        "ChangeFeeCollectionMethod": {
+            "extension": "Other_Value",
+            "code": "D",
+            "subCode": "997",
+            "description": "REBOOKING",
+            "value": "EMD",
+            "taxIncludedInBaseAmountInd": false
+        }
+    }
+}
+{
+"TourCode": {
+"tourCodeType": "Inclusive Tour",
+"value": "123456"
+}
+}
+],
+"ChangeFeeCollectionMethod": {
+"extension": "Other_Value",
+"code": "D",
+"subCode": "997",
+"description": "REBOOKINGG",
+"value": "EMD"
+}
+}
+}

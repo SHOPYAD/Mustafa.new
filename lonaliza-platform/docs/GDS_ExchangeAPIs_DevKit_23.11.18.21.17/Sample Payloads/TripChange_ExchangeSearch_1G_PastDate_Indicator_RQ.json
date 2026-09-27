@@ -1,0 +1,43 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-01-25",
+                    "departureTime": "07:15:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "FRA"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "LHR"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "FareSelection": {
+                    "@type": "FareSelection",
+                    "fareType": "PublicFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ],
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "2c08f27c-a4f4-4fc8-8dd9-d329e3e9bc6c"
+                    }
+                }
+            }
+        }
+    }
+}

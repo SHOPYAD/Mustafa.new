@@ -1,0 +1,70 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-09-25",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "LHR"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "LIS"
+					}
+				},
+				{
+					"departureDate": "2023-10-15",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "LIS"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "LHR"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PrivateFaresOnly"
+				},
+				"OrganizationInformation": {
+					"@type": "OrganizationInformation",
+					"OrganizationIdentifier": [
+						{
+							"value": "CLASSIC",
+							"supplier": "TP",
+							"organizationCodeType": "Account",
+							"accountCodeFaresOnlyInd": true
+						}
+					]
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "576f702f-062e-4ee5-8e30-5b2efc48e6e6"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_1"
+					},
+					{
+						"id": "product_2"
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,56 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Agency",
+                "Comment": [
+                    {
+                        "name": "HG",
+                        "value": "*******************************"
+                    },
+                    {
+                        "name": "HH",
+                        "value": "QF 674 E 25AUG ADLMEL HS2 0905 1055 O"
+                    },
+                    {
+                        "name": "HM",
+                        "value": "AJIT//07JUN//1139"
+                    },
+                    {
+                        "name": "HG",
+                        "value": "FT.ADT IRT 5.53WG - TIRT AUD5.53"
+                    },
+                    {
+                        "name": "HA",
+                        "value": "FD-$222.00/TAXES:WG-$1.49/WY-$4.88"
+                    },
+                    {
+                        "name": "HO",
+                        "value": "-.......................RAHUL/12OCT/1630"
+                    }
+                ]
+            },
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Agency",
+                "Comment": [
+                    {
+                        "name": "HQ",
+                        "value": "RAIL-12345/GBP/0.00/160.00/0.00"
+                    },
+                    {
+                        "name": "HM",
+                        "value": "PHOGAT // 20APR21// 2000"
+                    },
+                    {
+                        "name": "HQ",
+                        "value": "NEW TAX -AUD 43.72PP/87.44 TTL"
+                    }
+                ]
+            }
+        ]
+    }
+}

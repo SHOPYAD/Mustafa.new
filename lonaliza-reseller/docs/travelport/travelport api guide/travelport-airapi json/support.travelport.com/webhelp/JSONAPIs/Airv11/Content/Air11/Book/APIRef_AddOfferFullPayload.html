@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Booking" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:33 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Add Offer Full Payload API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Add Offer Full Payload API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>book/airoffer/reservationworkbench/<span class="Brand4">{workbenchID}</span>/offers/buildfromproducts</p>
+                                                        <p>For <span class="Brand4">{workbenchID}</span> send the workbench identifier returned in ReservationResponse/Identifer/value in the workbench create response.</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="BookingGuide.html"> Air Booking Guide</a>, <a href="../Workflows/Booking_workflow.html">Booking Session Workflow</a></p>
+                                        <p>Use the Add&#160;Offer full payload request to add an offer to the reservation workbench as part of the booking workflow. The full payload request sends full itinerary details instead of identifiers from the Search response as in the <a href="APIRef_AddOfferRefPayload.html">reference payload request</a>.</p>
+                                        <div class="noteNote">Full payload supported for NDC only on specific carriers. For other carriers,  use the reference payload instead.  For detailed NDC&#160;support by carrier, see the Knowledge Base article <a href="https://travelportprod.service-now.com/mytravelport_support?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=fd2d342347cd521051f0bc8f016d43ad&amp;searchTerm=NDC%20Capabilities%20by%20airline">NDC capabilities by airline through <span class="mc-variable General.Product variable">JSON</span> API</a> (see <a href="../NDC/NDCGuide.html#kbase">Knowledge Base NDC&#160;Resources</a> if you need login assistance). For GDS, you can send either a reference payload or a full payload. </div>
+                                        <div class="noteNote">
+                                            <h5>Add Multiple Offers (GDS)</h5>
+                                            <p>You can repeat the Add Offer request as needed to combine multiple offers into one reservation, either in the initial booking workflow or for an existing reservation. While there is no limit on the number of offers that can be combined, a reservation cannot have more than 16 flight segments.  Also supported in the <a href="APIRef_AddOfferRefPayload.html">Add Offer reference payload</a> request. Your PCC must be provisioned for multi-offers; contact your Travelport representative if necessary. GDS only; not supported for NDC.</p>
+                                        </div>
+                                        <div class="noteNote">
+                                            <h5>Add offer to expired booking (GDS&#160;only)</h5>
+                                            <p>You can use this or the reference payload request to add an offer to an existing reservation, such as when the previously added offer has expired and can no longer be booked. Start with a <a href="../Workbench/APIRef_WorkbenchPostCreate.html">post-commit workbench</a>. GDS only; not supported for NDC.</p>
+                                            <h5>Pricing modifiers and brand information</h5>
+                                            <p>The full payload request supports optional pricing modifiers and/or brand information. You must send these modifiers during the initial booking workbench session - you cannot add them later. </p>
+                                            <ul>
+                                                <li>
+                                                    <p>Pricing modifiers: If no pricing modifier is sent, the auto stored fare is added to the reservation. If a requested modifier does not have any fares associated with it, the Add Offer step returns a successful response but the Commit step will fail and return the error message <i>No Fare Found</i>. </p>
+                                                </li>
+                                                <li>
+                                                    <p>Brand information: You can store fares with brand information at either or both the offer or segment level.</p>
+                                                    <ul>
+                                                        <li>To store brand information at the offer level, send PricingModifiersAir/Brand/tier with any valid brand tier value. </li>
+                                                        <li>To store brand information at the segment level, send the brand tier with the flight segment in ProductCriteriaAir/SpecificFlightCriteria/brandtier. You can send brandTier for any or all segments.</li>
+                                                        <li>There is no change in the response when brand information is requested. Brand details are returned after booking in the <a href="APIRef_ReservationRetrieve.html">Reservation Retrieve</a>.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h3>Query Parameters</h3>
+                                        <p>None.</p>
+                                        <h3>Request Body</h3>
+                                        <h4>Basic Add Offer Request - Full Payload </h4>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Request Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>OfferQueryBuildFromProducts</b>
+                                                                    </p>
+                                                                    <p class="table-text">&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Top level object.</p>
+                                                                    <p class="table-text">Contains BuildFromProductsRequest.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>BuildFromProductsRequest</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Top level object. Contains PassengerCriteria, ProductCriteriaAir, and PricingModifiersAir  (optional).</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>OfferConstruction</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">GDS only; NDC does not support filed fares.</div>
+                                                                    <p>Send only to file separate filed fares by either traveler or segment, or both. </p>
+                                                                    <p>Must include either or both travelerRefs or specificFlightCriteriaRefs, and PricingModifiersAir.</p>
+                                                                    <p>After booking, fares can be autopriced as needed with the <a href="APIRef_AutoPrice-ManualFare.html">Autoprice / Manual Fare API</a>.</p>
+                                                                    <div class="APIRefDropDown">
+                                                                        <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example OfferConstruction object</a></span>
+                                                                            <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                                                <div><pre class="line-numbers"><code class="language-json">   "OfferConstruction": [
+    {
+     "@type": "OfferConstructionReservation",
+     "travelerRefs": [
+      "travelerRefId_1",
+      "travelerRefId_2",
+      "travelerRefId_3"
+     ],
+     "specificFlightCriteriaRefs": [
+      "SFC_1"
+     ],
+     "PricingModifiersAir": {
+      "@type": "PricingModifiersAir",
+      "TaxExemption": {
+       "@type": "TaxExemption",
+       "allTaxesExemptInd": true
+      },
+      "FareSelection": {
+       "@type": "FareSelectionDetail",
+       "fareType": "PublicFaresOnly"
+      }
+     }
+    }
+   ],</code></pre>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>travelerRefs</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String array. Send the travelerRef id/s of one or more traveler/s to apply the fare in PricingModifiersAir to. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional. Send with OfferConstruction</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>specificFlightCriteriaRefs</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">String array. Send the SpecificFlightCriteria id of the segment/s to apply the fare in PricingModifiersAir to. </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional. Send with OfferConstruction</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>PricingModifiersAir </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">Send the standard PricingModifiersAir object (see following table)&#160;to specify the fare to apply to this traveler, segment, or both.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">Required with OfferConstruction</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><a name="passcrit"></a><b>PassengerCriteria</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Defines the type of passenger. Send one PassengerCriteria object for each passenger type code (PTC).</p>
+                                                                    <p class="table-text">For a full list of PTCs, see the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">Tools</a> page for the SOAP/XML API&#160;Reference Data file. </p>
+                                                                    <p class="table-text">May include TravelerGeographicLocation.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>passengerTypeCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">The PTC of the passenger type. </p>
+                                                                    <div class="noteNote">
+                                                                        <p>Any traveler sent without a PTC value is defaulted to ADT. PTC can be sent or omitted for ADT passenger. AirReservation defaults the PTC&#160;to ADT and returns it in the Reservation Retrieve.</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>number</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">The number of passengers in that PTC for this request. Default is 1.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>age</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"> The age of the passenger. </p>
+                                                                    <div class="noteNote">
+                                                                        <h5>Notes on PTC and age</h5>
+                                                                        <ul>
+                                                                            <li>Travelport recommends sending age only with PTCs that require age for pricing.</li>
+                                                                            <li style="font-style: normal;">For child passengers, Travelport recommends sending the age of the child in the age attribute plus the PTC CNN. 
+Travelport recommends against sending CNN without age, or the CHD PTC. Many fares cannot be quoted for CHD.  </li>
+                                                                            <li>The age for CNN&#160;is generally between 2 and 11 inclusive, with ADT fares returned for ages 12 and up; however, this can vary by airline and country.</li>
+                                                                            <li>The age for INF&#160;must be either 0 or 1. </li>
+                                                                            <li>During booking, date of birth is required for all child and infant PTCs (<a href="APIRef_TravelerAdd.html">Add Traveler</a> payload in Traveler/birthDate).</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <p><b>TravelerGeographicLocation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="indent1">
+                                                                        <p>Optional object for requesting local citizen/local resident fares for Spain and associated islands.</p>
+                                                                        <div class="noteWarning">You must also send a PTC relevant to the local resident fares; e.g., ADR for adult resident, CHR for child resident.</div>
+                                                                        <div class="noteNote">GDS only; not supported for NDC.</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. IATA code specifying the location relevant to the local citizen//local resident fare.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="text-align: left;">
+                                                                    <blockquote>
+                                                                        <p>travelerGeographicLocationType</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. The type of location. Supported values are&#160;</p>
+                                                                    <ul>
+                                                                        <li>Country</li>
+                                                                        <li>City</li>
+                                                                        <li>State/Province</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>ProductCriteriaAir</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Array.  Each instance is one leg of the itinerary. </p>
+                                                                    <p class="table-text">Includes one or more SpecificFlightCriteria objects. Includes SupplierLocator when adding a passive segment.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>SpecificFlightCriteria </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Array.  Each instance is one flight on that leg. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>carrier</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">String. IATA code of airline carrier for flight.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>flightNumber</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Flight number assigned by airline.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>departureDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">String. Departure date of flight in YYYY-MM-DD format (e.g., departureDate="2024-12-06")</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>departureTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">String. Departure time of flight. HH:MM:SS (24-hour) format (e.g., departureTime="18:00").</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>arrivalDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">String. Arrival date of flight in YYYY-MM-DD format.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>arrivalTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">String. Arrival time of flight in HH:MM:SS (24-hour) format.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>from</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. IATA airport code of departure.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>to</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. IATA airport code of arrival.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>cabin</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">String. Cabin class to book.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>classOfService</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">String. Class of service to book.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>segmentSequence</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Order of this segment in this leg, starting with 1 for the first segment on the leg. A segment is one flight with the same flight number.</p>
+                                                                    <p>Note that  the segmentSequence value for connecting flights is the same; for example, for two connecting flights on the outbound or first leg of the itinerary, both flights have the segmentSequence value <i>1</i>.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text"><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>AvailabilitySourceCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Recommended to send in the full payload request. </p>
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Supported values and definitions for AvailabilitySourceCode:</p>
+                                                                    <ul>
+                                                                        <li>A:&#160;AVS (availability and schedules)</li>
+                                                                        <li>B:&#160;Travelport cache</li>
+                                                                        <li>C:&#160;AVS</li>
+                                                                        <li>D:&#160;Direct Access</li>
+                                                                        <li>E:&#160;Travelport cache</li>
+                                                                        <li>F: Travelport cache</li>
+                                                                        <li>G: Travelport cache</li>
+                                                                        <li>H: Travelport cache</li>
+                                                                        <li>I: Travelport cache</li>
+                                                                        <li>K: Travelport cache</li>
+                                                                        <li>L:&#160;Last seat availability</li>
+                                                                        <li>M:&#160;Unknown source</li>
+                                                                        <li>O: Travelport cache</li>
+                                                                        <li>P: Travelport cache</li>
+                                                                        <li>Q:&#160;Travelport cache</li>
+                                                                        <li>S:&#160;Seamless</li>
+                                                                        <li>T:&#160;Travelport cache</li>
+                                                                        <li>U:&#160;Unknown source</li>
+                                                                        <li>X:&#160;Customer reusing availability data from customer cache (data originally obtained from Travelport)</li>
+                                                                        <li>Y:&#160;Customer reusing data obtained from another system (e.g., another GDS) (data may be fresh or stored in customer cache)</li>
+                                                                        <li>Z:&#160;Customer sold from e-streamed data stored in customer cache</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional but recommended</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>boundFlightsInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <div class="noteNote">
+                                                                        <p>This indicator is not sent by the user but instead is sent if included in the information stored in the price by the carrier. </p>
+                                                                    </div>
+                                                                    <p class="table-text">The bound flights indicator <b>boundFlightsInd</b> is a Boolean variable indicating segments are married/bound. When returned with a value of true, the flight segments are polled together and usually share the same fare basis code and class of service. The indicator is returned as <i>true</i> for all leading segments on one leg of the flight, and not returned for the last segment of the bound flight leg journey, indicating where the bound flights end. For example, if an O&amp;D&#160;pair has 3 flight segments, boundFlightsInd is returned for the first two segments on that leg. If the segments are not bound, boundFlightsInd is false and not returned. Not returned for NDC.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">n/a</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>brandTier</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Send only if requesting to store brand information at the segment level. A segment is one flight with the same flight number. You can send brandTier for any or all instances of SpecificFlightCriteria.</p>
+                                                                    <p class="table-text">To store brand information at the offer level instead, see PricingModifiersAir below.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>passiveSegmentStatus </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <div class="noteNote">AirReservation 25.11.58 and later. GDS only; not supported for NDC. </div>
+                                                                    <div class="noteNote">See <a href="BookingGuide.html#passive">Passive Segments</a> in the <a href="BookingGuide.html">Air Booking Guide</a> for examples and more details.</div>
+                                                                    <p>String. Send only to add an air segment booked outside the Travelport GDS, called a <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm MCTextPopupHotSpot_" glossTerm="AirGlossary.Term5">passive segment<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>An air segment booked in a system outside the Travleport GDS. Adding a passive air segment to a booking maintains all travel details as part of the complete itinerary.</span></a>. Updates the Travelport booking with any details received from the supplier for the passive segment. Recommended to also send SupplierLocator per below. Supported for the following segment status codes: </p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>AK (passive segment confirmed outside the GDS) </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>BK (passive segment booked with carrier) segment statuses; </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>YK (Hold confirmed airline space)</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>SupplierLocator</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Send to add a locator code for a passive segment. Recommended to always send with SpecificFlightCriteria /passiveSegmentStatus per above. Required for ticket issuance; if not sent in Add Offer, must be added with a terminal program prior to ticketing.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Recommended if passiveSegmentStatus is sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>value</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Supplier/airline locator code for the passive segment.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Required if SupplierLocator is sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>supplierCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. Two-letter&#160;IATA carrier code for the airline the passive segment is booked on.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Required if SupplierLocator is sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>PricingModifiersAir</b>
+                                                                    </p>
+                                                                    <p class="table-text">&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Any optional pricing modifiers. See PricingModifiersAir table below.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>OrganizationInformation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Use to send optional India GST SSR&#160;Remarks in GSTRegistrationNumber. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>GSTRegistrationNumber</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Send to add India GST (Goods and Services Tax) SSRs.  If sent, all of the following are required; these are details for the  business purchasing the goods and services in the GST:</p>
+                                                                    <blockquote>
+                                                                        <p><b>country</b>: String. IATA country code, should be <i>IND</i>.</p>
+                                                                        <p><b>address</b>: String. Business address.</p>
+                                                                        <p><b>companyName</b>: String. Business name.</p>
+                                                                        <p><b>email</b>: String. Business email address.</p>
+                                                                        <p><b>telephone</b>: String. Business telephone number.</p>
+                                                                        <p><b>value</b>: String. GST&#160;registered number for the business.</p>
+                                                                    </blockquote>
+                                                                    <div class="noteWarning">See <a href="RemarksGuide.html#indiagst">India GST SSRs</a> in the Remarks &amp;&#160;Service Requests Guide for important details.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>All values are required if sent</p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>OrganizationInformation</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Any optional account codes.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p class="table-text"><b>GSTRegistrationNumber</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p class="table-text">Send to add India GST (Goods and Services Tax) SSRs.  If sent, all of the following are required; these are details for the  business purchasing the goods and services in the GST:</p>
+                                                                    <blockquote>
+                                                                        <p><b>country</b>: String. IATA country code, should be <i>IND</i>.</p>
+                                                                        <p><b>address</b>: String. Business address.</p>
+                                                                        <p><b>companyName</b>: String. Business name.</p>
+                                                                        <p><b>email</b>: String. Business email address.</p>
+                                                                        <p><b>telephone</b>: String. Business telephone number.</p>
+                                                                        <p><b>value</b>: String. GST&#160;registered number for the business.</p>
+                                                                    </blockquote>
+                                                                    <div class="noteWarning">See <a href="RemarksGuide.html#indiagst">India GST SSRs</a> in the Remarks &amp;&#160;Service Requests Guide for important details.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>All values are required if sent</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>PricingModifiersAir (optional pricing modifiers)</h4>
+                                        <p>Optionally, you can store fares with one or more pricing modifiers. If a pricing modifier is not added, the auto stored fare is added to the reservation. There is no change in the AirReservation response when pricing modifiers are requested. AirReservation applies modifiers from Add Offer and earlier steps as follows:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Modifiers sent in the Add Offer request (supported for both full and reference payload)</p>
+                                            </li>
+                                            <li>
+                                                <p>If no modifiers are sent in Add Offer, any pricing modifiers sent in AirPrice are applied</p>
+                                            </li>
+                                            <li>
+                                                <p>If no modifiers were sent in AirPrice,  or if AirPrice was not sent, any pricing modifiers sent in Search are applied</p>
+                                            </li>
+                                        </ul>
+                                        <div class="noteNote">GDS only; not supported for NDC.</div>
+                                        <div class="noteWarning">
+                                            <p>If the requested modifier does not have any fares associated with it, the <a href="../Workbench/APIRef_WorkbenchCommit.html#commit">workbench commit</a> fails and returns the error message <i>No Fare Found</i>. Pricing happens at commit, not at Add Offer.</p>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show PricingModifiersAir table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>PricingModifiersAir</b>
+                                                                    </p>
+                                                                    <p class="table-text">&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Any optional pricing modifiers.</p>
+                                                                    <p class="table-text">Required only when sending fare modifiers.</p>
+                                                                    <p class="table-text">Includes FareSelection.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>currencyCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">The currency code for overriding the default currency associated with your PCC provisioned by Travelport.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>TicketingPCC</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">GDS only, not supported for <a href="../NDC/NDCGuide.html">NDC</a>.</div>
+                                                                    <p>String, 2-10 characters supported. Overrides the ticketing PCC&#160;associated with your account to specify an alternate PCC and return pricing based on that PCC. (PCC is the pseudo city code; a travel provider's identification code for the <span class="mc-variable General.Product variable">JSON</span> APIs, provisioned from Travelport.)</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>PricingPCC</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <div class="noteNote">GDS only, not supported for <a href="../NDC/NDCGuide.html">NDC</a>.</div>
+                                                                    <p>String, 2-10 characters supported. Use to send a faring PCC for which a selective access or code group agreement exists between that PCC and the PCC associated with your account. The following combinations of PricingPCC and FareSelection/fareType=PrivateFaresOnly (see immediately below) return results as follows:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>PricingPCC sent and PrivateFaresOnly not requested: If a selective access or group agreement exists, both public and private fares (if available) are returned for the requesting and providing PCC.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>PricingPCC sent and PrivateFaresOnly not requested: If no selective access or group agreement exists, only public fares are returned.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>PricingPCC sent and PrivateFaresOnly is requested: If a selective access or group agreement exists that allows private fare access, private fares (if available) are returned for the requesting and providing PCC.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>PricingPCC sent and PrivateFaresOnly is requested: If a selective access or group agreement exists but does not allow private fares access, or if no agreement exists, an error is returned.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ManualFareAdjustment</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <div class="noteNote">AirReservation 24.11.50 and later. GDS only, not supported for NDC.</div>
+                                                                    <p>Number up to 2 decimal places. Send to manually adjust the base fare amount on all fares. You can adjust the base fare for all PTCs or only specified PTCs. You can increase or decrease the base fare by either an amount or a percentage. </p>
+                                                                    <p>Send with @type value <i>ManualFareAdjustmentDiscount</i> to decrease the base fare. Send with @type value <i>ManualFareAdjustmentIncrease</i> to increase the fare. </p>
+                                                                    <p>For an example see the <a href="APIRef_AddOfferRefPayload.html#req">Add Offer Reference Payload API&#160;Reference</a>.</p>
+                                                                    <p>If a fare is adjusted in Add Offer using ManualFareAdjustment, in the workbench commit and <a href="APIRef_ReservationRetrieve.html#rsp">Reservation Retrieve</a> responses, FareGuaranteePolicy/Code/value returns <i>M</i> to indicate the fare has been manipulated.</p>
+                                                                    <div class="noteNote">If the PCC currency and the country of origin currency are different, then the amount or percentage is applied to the filed amount base fare that is converted into the PCC currency.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>passengerTypeCodes</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send the PTC or PTCs to be increased or decreased. This increases or decreases the fare for all passengers with the PTC/s. If not sent, ManualFareAdjustment applies to all PTCs.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>AmountPercentPercent</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Send to adjust the base fare by a percentage as follows:</p>
+                                                                    <blockquote>
+                                                                        <p><b>Percent</b>:&#160;Send percentage of the base fare to be decreased or increased, up to two decimal places. For example, the value <i>20.5</i> would either increase (when sent in @type ManualFareAdjustmentIncrease) or decrease (when sent in @type ManualFareAdjustmentDiscount) the base fare by 20.5%.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Either AmountPercentPercent or AmountPercentAmount is required if ManualFareAdjustment is sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>AmountPercentAmount</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Send to adjust the base fare by an amount as follows:</p>
+                                                                    <blockquote>
+                                                                        <p><b>Amount</b>: Send the amount value to either increase or decrease the base fare, up to two decimal places. For example, the value <i>14.75</i> for a base fare in&#160;the currency USD would  either increase (when sent in @type ManualFareAdjustmentIncrease) or decrease (when sent in @type ManualFareAdjustmentDiscount) the base fare by $14.75.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Either AmountPercentPercent or AmountPercentAmount is required if ManualFareAdjustment is sent</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><a name="TaxExemption"></a>
+                                                                    </p>
+                                                                    <p><b>TaxExemption</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Sends specific tax codes to mark as tax exempt. </p>
+                                                                    <p class="table-text">TaxExemption supports up to nine values for countries, or nine values for taxCodes, or up to nine values in countries and taxCodes combined.</p>
+                                                                    <p class="table-text">Key value pairs; send either or both countries and taxCodes <i>or</i> allTaxesExemptInd:</p>
+                                                                    <ul>
+                                                                        <li>countries:&#160;Array. One or more countries in which the taxCodes sent are tax exempt. </li>
+                                                                        <li>taxCodes:&#160;Array. One or more tax codes to mark as exempt. </li>
+                                                                        <li>allTaxesExemptInd: Indicator. Send with value <i>true</i> to mark all taxes on the itinerary as tax exempt. </li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>FareSelection</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Additional optional fare modifiers.</p>
+                                                                    <p class="table-text">Stores fare types including private fares (negotiated), public fares (published), or net fares (consolidator fares, or any negotiated wholesale price that is further marked up for sale to customers).</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>fareType</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Allows you to store either a private fare or a public fare, or the lowest of either private or public fares. These can be combined.</p>
+                                                                    <p class="table-text">Supported values are:</p>
+                                                                    <ul>
+                                                                        <li>PublicFaresOnly:&#160;Only public fares for specified itinerary.</li>
+                                                                        <li>PrivateFaresOnly:&#160;Only private fares for the itinerary.</li>
+                                                                        <li>Private&amp;PublicFares:&#160;Lowest of all public and private fares.</li>
+                                                                        <li>NetFaresOnly:&#160;Only net fares.</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>refundableOnlyInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><i>true</i> stores only refundable fares, <i>false</i> stores only non-refundable fares.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>prohibitMinStayFaresInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><i>true</i> stores only fares that do not require a minimum stay; <i>false</i> allows minimum stay fares.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>prohibitMaxStayFaresInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><i>true</i> stores only fares that do not require a maximum stay; <i>false</i> allows maximum stay fares. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>prohibitAdvancePurchaseFaresInd</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><i>true</i> stores only fares that do not require advance purchase; <i>false</i> allows fares with advance purchase restrictions. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>validatingCarrier</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text">Allows you to specify the carrier to override the default validating carrier (the airline designator that the ticket is issued against).&#160;String to send the IATA code for a carrier to override the default validating carrier. </p>
+                                                                    <div class="noteWarning">
+                                                                        <p>If the validating carrier code is not supported for an itinerary, the response returns the error <i>Ticketing Agreement does not exist</i>.</p>
+                                                                        <p>If an invalid validating carrier code is sent in the request, the response returns the error <i>Unknown Carrier</i>.</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>Brand</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text">Send in PricingModifiersAir only if requesting to store a fare with brand details at the offer level. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <blockquote>
+                                                                        <p>tier</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p class="table-text">The brand tier.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p class="table-text">Optional</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The response returns the system-generated offer identifier. This identifier must be sent in several subsequent transactions, such as payment and ticketing.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Response Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p class="table-text"><b>OfferListResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p class="table-text">Top level object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p class="table-text"><b>OfferID</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p class="table-text">Top level object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p class="table-text"><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p class="table-text">Returns the system-generated offer identifier in the following key value pairs; in this case authority is <i>Travelport</i>:</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <p>The following example full payload request adds an offer for a one-way itinerary. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Offer full payload request for one-way</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "OfferQueryBuildFromProducts": {
+        "BuildFromProductsRequest": {
+            "@type": "BuildFromProductsRequestAir",
+            "PassengerCriteria": [
+                {
+                    "number": 1,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "ProductCriteriaAir": [
+                {
+                    "SpecificFlightCriteria": [
+                        {
+                            "flightNumber": "1177",
+                            "carrier": "UA",
+                            "departureDate": "2022-01-09",
+                            "departureTime": "10:15:00",
+                            "arrivalDate": "2022-01-09",
+                            "arrivalTime": "15:09:00",
+                            "from": "DEN",
+                            "to": "ATL",
+                            "classOfService": "P",
+                            "cabin": "First",
+                            "segmentSequence": 1,
+                            "brandTier": "9"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Offer&#160;full payload request for round trip</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "OfferQueryBuildFromProducts": {
+        "BuildFromProductsRequest": {
+            "@type": "BuildFromProductsRequestAir",
+            "PassengerCriteria": [
+                {
+                    "number": 1,
+                    "age": 25,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "ProductCriteriaAir": [
+                {
+                    "SpecificFlightCriteria": [
+                        {
+                            "flightNumber": "733",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-09",
+                            "departureTime": "08:35:00",
+                            "arrivalDate": "2022-01-09",
+                            "arrivalTime": "10:10:00",
+                            "from": "SYD",
+                            "to": "ADL",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 1,
+                            "brandTier": "1"
+                        },
+                        {
+                            "flightNumber": "680",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-09",
+                            "departureTime": "12:05:00",
+                            "arrivalDate": "2022-01-09",
+                            "arrivalTime": "13:50:00",
+                            "from": "ADL",
+                            "to": "MEL",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 2,
+                            "brandTier": "1"
+                        }
+                    ]
+                },
+                {
+                    "SpecificFlightCriteria": [
+                        {
+                            "flightNumber": "402",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-16",
+                            "departureTime": "06:00:00",
+                            "arrivalDate": "2022-01-16",
+                            "arrivalTime": "07:25:00",
+                            "from": "MEL",
+                            "to": "SYD",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 1,
+                            "brandTier": "1"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example payload to book a passive segment (book a segment from outside the <span class="mc-variable General.Product variable">JSON</span> APIs)</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+        "OfferQueryBuildFromProducts": {
+            "lowFareFinderInd": true,
+            "returnBrandedFaresInd": true,
+            "BuildFromProductsRequest": {
+                "@type": "BuildFromProductsRequestAir",
+                "PricingModifiersAir": {
+                    "@type": "PricingModifiersAirDetail"
+                },
+                "PassengerCriteria": [
+                    {
+                        "@type": "PassengerCriteria",
+                        "number": 1,
+                        "passengerTypeCode": "ADT"
+                    },
+                    {
+                        "@type": "PassengerCriteria",
+                        "number": 1,
+                        "passengerTypeCode": "CHD"
+                    }
+                ],
+                "ProductCriteriaAir": [
+                    {
+                        "SpecificFlightCriteria": [
+                            {
+                                "flightNumber": "1814",
+                                "carrier": "KL",
+                                "departureDate": "2025-04-26",
+                                "departureTime": "07:00:00",
+                                "arrivalDate": "2025-04-26",
+                                "arrivalTime": "08:05:00",
+                                "from": "FRA",
+                                "to": "AMS",
+                                "classOfService": "T",
+                                "cabin": "Economy",
+                                "segmentSequence": 1,
+                                "passiveSegmentStatus": "AK"
+                            }
+                        ],
+                        "SupplierLocator": {
+                            "value": "WTR84G",
+                            "supplierCode": "KL"
+                        }
+                    }
+                ]
+            }
+        }
+    },</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>The response returns the system-generated offer identifier. This identifier must be sent in several subsequent transactions, such as payment and ticketing.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Add Offer Response</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "OfferListResponse": {
+        "OfferID": [
+            {
+                "@type": "OfferIdentifier",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "ec33332f-bdde-4bca-bebf-e81568f0d205"
+                }
+            }
+        ]
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:33 GMT -->
+</html>

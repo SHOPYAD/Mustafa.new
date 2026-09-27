@@ -1,0 +1,1355 @@
+{
+  "version": 5,
+  "updatedAt": "2026-09-13T09:13:07.219Z",
+  "publishedAt": "2026-09-13T09:13:07.218Z",
+  "draft": {
+    "layout": [
+      {
+        "instanceId": "hero-default",
+        "type": "hero",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لوناليزا للسياحة",
+            "en": "Lonaliza Tourism",
+            "tr": "Lonaliza Turizm"
+          },
+          "title": {
+            "ar": "رحلة تركيا تُدار كما يجب ان تكون.",
+            "en": "A Turkey trip, handled properly",
+            "tr": "Türkiye seyahati, doğru şekilde"
+          },
+          "subtitle": {
+            "ar": "طيران، فنادق، باقات يومية وسيارات خاصة — من إسطنبول إلى كابادوكيا.",
+            "en": "Flights, hotels, day packages and private cars — from Istanbul to Cappadocia.",
+            "tr": "Uçuş, otel, günlük paket ve özel araç — İstanbul’dan Kapadokya’ya."
+          },
+          "cta": {
+            "ar": "ابدأ التخطيط",
+            "en": "Start planning",
+            "tr": "Planlamaya başla"
+          },
+          "heroPackagesJson": {
+            "ar": "",
+            "en": "[{\"id\":\"live-tp-01\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-01\"},{\"id\":\"live-tp-02\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-02\"},{\"id\":\"live-tp-03\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-03\"}]",
+            "tr": ""
+          },
+          "hero-pkg-live-tp-03": {
+            "ar": "/api/branding/file?name=branding%2Fmth6p1vd-28017-b.jpg&v=1788177469431",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "var(--brand-header)",
+          "accent": "var(--brand-primary)",
+          "textColor": "#ffffff",
+          "overlay": "linear-gradient(135deg, rgba(46,16,101,0.92) 0%, rgba(124,58,237,0.28) 100%)"
+        },
+        "settings": {
+          "showSearch": true,
+          "image": "",
+          "tabBarBg": "var(--brand-header)",
+          "tabActiveBg": "var(--theme-tab-active-bg)",
+          "tabActiveText": "#ffffff",
+          "tabIdleText": "#1e1b4b",
+          "panelBg": "#ffffff",
+          "showTabFlight": true,
+          "showTabHoliday": true,
+          "showTabHotel": true,
+          "showTabTours": true,
+          "showTabTransfers": true,
+          "showTabCars": true,
+          "showTabInsurance": true,
+          "showTabVisa": true,
+          "showTabOffers": true,
+          "iconFlight": "",
+          "iconHoliday": "",
+          "iconHotel": "",
+          "iconTours": "",
+          "iconTransfers": "",
+          "iconCars": "",
+          "iconInsurance": "",
+          "iconVisa": "",
+          "iconOffers": "",
+          "heroMinHeight": "520px",
+          "cardMotion": "slide-up",
+          "image.hero-pkg-live-tp-03": "/api/branding/file?name=branding%2Fmth6p1vd-28017-b.jpg&v=1788177469431"
+        }
+      },
+      {
+        "instanceId": "search-default",
+        "type": "search",
+        "hidden": true,
+        "texts": {
+          "title": {
+            "ar": "ابحث عن رحلتك",
+            "en": "Search your trip",
+            "tr": "Seferinizi arayın"
+          },
+          "subtitle": {
+            "ar": "طيران، فنادق، جولات أو سيارة — اختر التبويب وابدأ.",
+            "en": "Flights, hotels, tours or a car — pick a tab and go.",
+            "tr": "Uçuş, otel, tur veya araç — sekmeyi seçin."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "visible": true,
+          "tabBarBg": "var(--brand-header)",
+          "tabActiveBg": "var(--theme-tab-active-bg)",
+          "tabActiveText": "#ffffff",
+          "tabIdleText": "#1e1b4b",
+          "panelBg": "#ffffff",
+          "showTabFlight": true,
+          "showTabHoliday": true,
+          "showTabHotel": true,
+          "showTabTours": true,
+          "showTabTransfers": true,
+          "showTabCars": true,
+          "showTabInsurance": true,
+          "showTabVisa": true,
+          "showTabOffers": true,
+          "iconFlight": "",
+          "iconHoliday": "",
+          "iconHotel": "",
+          "iconTours": "",
+          "iconTransfers": "",
+          "iconCars": "",
+          "iconInsurance": "",
+          "iconVisa": "",
+          "iconOffers": ""
+        }
+      },
+      {
+        "instanceId": "destinations-default",
+        "type": "destinations",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "وجهات مختارة",
+            "en": "Curated destinations",
+            "tr": "Seçilmiş destinasyonlar"
+          },
+          "title": {
+            "ar": "أجمل مدن تركيا",
+            "en": "Turkey’s finest cities",
+            "tr": "Türkiye’nin en güzel şehirleri"
+          },
+          "subtitle": {
+            "ar": "إسطنبول، كابادوكيا، أنطاليا والمزيد — باقات تبدأ من سعر واضح.",
+            "en": "Istanbul, Cappadocia, Antalya and more — packages with a clear starting price.",
+            "tr": "İstanbul, Kapadokya, Antalya ve daha fazlası — net başlangıç fiyatı."
+          },
+          "dest-d4": {
+            "ar": "/api/branding/file?name=branding%2Fmth7pe7v-28019-b.jpg&v=1788179165056",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "image.dest-d4": "/api/branding/file?name=branding%2Fmth7pe7v-28019-b.jpg&v=1788179165056"
+        }
+      },
+      {
+        "instanceId": "flashDeals-default",
+        "type": "flashDeals",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لفترة محدودة",
+            "en": "Limited time",
+            "tr": "Sınırlı süre"
+          },
+          "title": {
+            "ar": "عروض سريعة",
+            "en": "Flash deals",
+            "tr": "Flaş fırsatlar"
+          },
+          "subtitle": {
+            "ar": "مقاعد وأسعار تتغير خلال ساعات.",
+            "en": "Seats and prices that move within hours.",
+            "tr": "Saatler içinde değişen koltuk ve fiyatlar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "packages-default",
+        "type": "packages",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "باقات العطلات",
+            "en": "Holiday packages",
+            "tr": "Tatil paketleri"
+          },
+          "title": {
+            "ar": "برامج مختارة بعناية",
+            "en": "Handpicked programs",
+            "tr": "Özenle seçilmiş programlar"
+          },
+          "subtitle": {
+            "ar": "أيام محسوبة، تنقل خاص، وفنادق تناسب أسلوب سفرك.",
+            "en": "Counted days, private transfers, and hotels that match how you travel.",
+            "tr": "Hesaplı günler, özel transfer ve seyahat tarza uyan oteller."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "hotels-default",
+        "type": "hotels",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "الإقامة",
+            "en": "Stays",
+            "tr": "Konaklama"
+          },
+          "title": {
+            "ar": "فنادق مختارة في تركيا",
+            "en": "Handpicked hotels in Turkey",
+            "tr": "Türkiye’de seçili oteller"
+          },
+          "subtitle": {
+            "ar": "من البوسفور إلى الكهوف — إقامات نراجعها قبل أن نعرضها.",
+            "en": "From the Bosphorus to cave suites — stays we review before we list.",
+            "tr": "Boğaz’dan mağara süitlerine — listelemeden önce incelediğimiz konaklamalar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "cars-default",
+        "type": "cars",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "التنقل",
+            "en": "Getting around",
+            "tr": "Ulaşım"
+          },
+          "title": {
+            "ar": "سيارات وتأجير من المطار",
+            "en": "Cars from the airport",
+            "tr": "Havalimanından araç kiralama"
+          },
+          "subtitle": {
+            "ar": "SUV، عائلية أو فان — استلام من مطارات تركيا الرئيسية.",
+            "en": "SUV, family or van — pickup at Turkey’s main airports.",
+            "tr": "SUV, aile veya van — Türkiye’nin ana havalimanlarından teslim."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "transfers-default",
+        "type": "transfers",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "المطار",
+            "en": "Airport",
+            "tr": "Havalimanı"
+          },
+          "title": {
+            "ar": "ترانسفير خاص من المطار",
+            "en": "Private airport transfers",
+            "tr": "Özel havalimanı transferi"
+          },
+          "subtitle": {
+            "ar": "سائق ينتظرك عند البوابة — إسطنبول، أنطاليا، بودروم والمزيد.",
+            "en": "A driver waiting at the gate — Istanbul, Antalya, Bodrum and more.",
+            "tr": "Kapıda sizi bekleyen şoför — İstanbul, Antalya, Bodrum ve daha fazlası."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "visa-default",
+        "type": "visa",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "تأشيرات إلكترونية",
+            "en": "eVisa services",
+            "tr": "e-Vize hizmetleri"
+          },
+          "subtitle": {
+            "ar": "إرشاد واضح قبل أن تبدأ الطلب.",
+            "en": "Clear guidance before you start the application.",
+            "tr": "Başvurudan önce net yönlendirme."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "flightDeals-default",
+        "type": "flightDeals",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "مسارات طيران مميزة",
+            "en": "Featured flight routes",
+            "tr": "Öne çıkan uçuş hatları"
+          },
+          "subtitle": {
+            "ar": "أسعار استرشادية لأكثر الوجهات طلباً.",
+            "en": "Guide prices on the most requested routes.",
+            "tr": "En çok istenen hatlarda yönlendirici fiyatlar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "vipTours-default",
+        "type": "vipTours",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "جولات يومية VIP",
+            "en": "VIP day tours",
+            "tr": "VIP günlük turlar"
+          },
+          "subtitle": {
+            "ar": "سائق خاص ومسار مرن داخل تركيا.",
+            "en": "A private driver and a flexible route in Turkey.",
+            "tr": "Türkiye’de özel şoför ve esnek rota."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "whyUs-default",
+        "type": "whyUs",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لماذا لوناليزا",
+            "en": "Why Lonaliza",
+            "tr": "Neden Lonaliza"
+          },
+          "title": {
+            "ar": "فريق يعرف تركيا عن قرب",
+            "en": "A team that knows Turkey",
+            "tr": "Türkiye’yi yakından bilen ekip"
+          },
+          "subtitle": {
+            "ar": "دعم عربي، سائقون محليون، وحجز واضح بلا مفاجآت.",
+            "en": "Arabic support, local drivers, and bookings without surprises.",
+            "tr": "Arapça destek, yerel sürücüler ve sürprizsiz rezervasyon."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "stats-default",
+        "type": "stats",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "أرقامنا",
+            "en": "By the numbers",
+            "tr": "Rakamlarla"
+          },
+          "title": {
+            "ar": "ثقة تُبنى بالحجوزات",
+            "en": "Trust built on bookings",
+            "tr": "Rezervasyonla kurulan güven"
+          },
+          "travelersLabel": {
+            "ar": "مسافر سعيد",
+            "en": "Happy travelers",
+            "tr": "Mutlu yolcu"
+          },
+          "destinationsLabel": {
+            "ar": "وجهة",
+            "en": "Destinations",
+            "tr": "Destinasyon"
+          },
+          "packagesLabel": {
+            "ar": "باقة",
+            "en": "Packages",
+            "tr": "Paket"
+          },
+          "yearsLabel": {
+            "ar": "سنة خبرة",
+            "en": "Years of care",
+            "tr": "Yıllık deneyim"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "travelers": 1500,
+          "destinations": 80,
+          "packages": 350,
+          "years": 12
+        }
+      },
+      {
+        "instanceId": "testimonials-default",
+        "type": "testimonials",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "قصص الضيوف",
+            "en": "Guest stories",
+            "tr": "Misafir hikâyeleri"
+          },
+          "title": {
+            "ar": "ماذا يقول من سافر معنا",
+            "en": "What our travelers say",
+            "tr": "Misafirlerimiz ne diyor"
+          },
+          "subtitle": {
+            "ar": "عائلات، رحلات عمل، ومنطاد عند الفجر — بنفس الاهتمام.",
+            "en": "Families, business trips, and dawn balloons — the same care.",
+            "tr": "Aileler, iş seyahatleri ve şafak balonu — aynı özen."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "trust-default",
+        "type": "trust",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "تحجز بثقة",
+            "en": "Book with confidence",
+            "tr": "Güvenle rezervasyon"
+          },
+          "subtitle": {
+            "ar": "",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "blog-default",
+        "type": "blog",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "دليل السفر",
+            "en": "Travel guide",
+            "tr": "Seyahat rehberi"
+          },
+          "title": {
+            "ar": "أحدث المقالات",
+            "en": "Latest articles",
+            "tr": "Son yazılar"
+          },
+          "subtitle": {
+            "ar": "نصائح عملية لتركيا: مواسم، أحياء، ومسارات يومية.",
+            "en": "Practical Turkey notes: seasons, neighborhoods, and day routes.",
+            "tr": "Pratik Türkiye notları: sezonlar, semtler ve günlük rotalar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "contact-default",
+        "type": "contact",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "نرد بسرعة — اترك رقمك",
+            "en": "We reply fast — leave your number",
+            "tr": "Hızlı dönüş — numaranızı bırakın"
+          },
+          "subtitle": {
+            "ar": "فريق لوناليزا يتواصل خلال دقائق لترتيب الرحلة.",
+            "en": "The Lonaliza team calls back within minutes to arrange the trip.",
+            "tr": "Lonaliza ekibi seyahati ayarlamak için dakikalar içinde arar."
+          },
+          "button": {
+            "ar": "اطلب اتصالاً",
+            "en": "Request a callback",
+            "tr": "Geri arama iste"
+          },
+          "ctaTitle": {
+            "ar": "جاهز لترتيب الرحلة؟",
+            "en": "Ready to arrange the trip?",
+            "tr": "Seyahati ayarlamaya hazır mısınız?"
+          },
+          "ctaSubtitle": {
+            "ar": "راسلنا أو ابحث الآن — فريق لوناليزا يرد بسرعة.",
+            "en": "Write to us or search now — the Lonaliza team replies quickly.",
+            "tr": "Yazın veya şimdi arayın — Lonaliza ekibi hızlı döner."
+          },
+          "ctaButton": {
+            "ar": "تواصل معنا",
+            "en": "Contact us",
+            "tr": "Bize yazın"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "categories-default",
+        "type": "categories",
+        "hidden": true,
+        "texts": {
+          "eyebrow": {
+            "ar": "خدماتنا",
+            "en": "Our services",
+            "tr": "Hizmetlerimiz"
+          },
+          "title": {
+            "ar": "كل رحلتك من تبويب واحد",
+            "en": "Your whole trip, one place",
+            "tr": "Tüm seyahatiniz tek yerde"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "partners-default",
+        "type": "partners",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "شركاء السفر",
+            "en": "Travel partners",
+            "tr": "Seyahat ortakları"
+          },
+          "subtitle": {
+            "ar": "شراكات طيران وضيافة مختارة لرحلتك في تركيا.",
+            "en": "Selected airline and hospitality partners for your Turkey trip.",
+            "tr": "Türkiye seyahatiniz için seçilmiş havayolu ve konaklama ortakları."
+          },
+          "statHotels": {
+            "ar": "200+",
+            "en": "200+",
+            "tr": "200+"
+          },
+          "statHotelsLabel": {
+            "ar": "فندق شريك",
+            "en": "Partner hotels",
+            "tr": "Partner oteller"
+          },
+          "statAirlines": {
+            "ar": "50+",
+            "en": "50+",
+            "tr": "50+"
+          },
+          "statAirlinesLabel": {
+            "ar": "شركة طيران",
+            "en": "Airlines",
+            "tr": "Havayolları"
+          },
+          "statCountries": {
+            "ar": "180+",
+            "en": "180+",
+            "tr": "180+"
+          },
+          "statCountriesLabel": {
+            "ar": "دولة",
+            "en": "Countries",
+            "tr": "Ülke"
+          },
+          "statSupport": {
+            "ar": "24/7",
+            "en": "24/7",
+            "tr": "24/7"
+          },
+          "statSupportLabel": {
+            "ar": "دعم",
+            "en": "Support",
+            "tr": "Destek"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      }
+    ],
+    "global": {
+      "navy": "#2e1065",
+      "emerald": "#7c3aed"
+    }
+  },
+  "published": {
+    "layout": [
+      {
+        "instanceId": "hero-default",
+        "type": "hero",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لوناليزا للسياحة",
+            "en": "Lonaliza Tourism",
+            "tr": "Lonaliza Turizm"
+          },
+          "title": {
+            "ar": "رحلة تركيا تُدار كما يجب ان تكون.",
+            "en": "A Turkey trip, handled properly",
+            "tr": "Türkiye seyahati, doğru şekilde"
+          },
+          "subtitle": {
+            "ar": "طيران، فنادق، باقات يومية وسيارات خاصة — من إسطنبول إلى كابادوكيا.",
+            "en": "Flights, hotels, day packages and private cars — from Istanbul to Cappadocia.",
+            "tr": "Uçuş, otel, günlük paket ve özel araç — İstanbul’dan Kapadokya’ya."
+          },
+          "cta": {
+            "ar": "ابدأ التخطيط",
+            "en": "Start planning",
+            "tr": "Planlamaya başla"
+          },
+          "heroPackagesJson": {
+            "ar": "",
+            "en": "[{\"id\":\"live-tp-01\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-01\"},{\"id\":\"live-tp-02\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-02\"},{\"id\":\"live-tp-03\",\"source\":\"live\",\"kind\":\"package\",\"liveId\":\"tp-03\"}]",
+            "tr": ""
+          },
+          "hero-pkg-live-tp-03": {
+            "ar": "/api/branding/file?name=branding%2Fmth6p1vd-28017-b.jpg&v=1788177469431",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "var(--brand-header)",
+          "accent": "var(--brand-primary)",
+          "textColor": "#ffffff",
+          "overlay": "linear-gradient(135deg, rgba(46,16,101,0.92) 0%, rgba(124,58,237,0.28) 100%)"
+        },
+        "settings": {
+          "showSearch": true,
+          "image": "",
+          "tabBarBg": "var(--brand-header)",
+          "tabActiveBg": "var(--theme-tab-active-bg)",
+          "tabActiveText": "#ffffff",
+          "tabIdleText": "#1e1b4b",
+          "panelBg": "#ffffff",
+          "showTabFlight": true,
+          "showTabHoliday": true,
+          "showTabHotel": true,
+          "showTabTours": true,
+          "showTabTransfers": true,
+          "showTabCars": true,
+          "showTabInsurance": true,
+          "showTabVisa": true,
+          "showTabOffers": true,
+          "iconFlight": "",
+          "iconHoliday": "",
+          "iconHotel": "",
+          "iconTours": "",
+          "iconTransfers": "",
+          "iconCars": "",
+          "iconInsurance": "",
+          "iconVisa": "",
+          "iconOffers": "",
+          "heroMinHeight": "520px",
+          "cardMotion": "slide-up",
+          "image.hero-pkg-live-tp-03": "/api/branding/file?name=branding%2Fmth6p1vd-28017-b.jpg&v=1788177469431"
+        }
+      },
+      {
+        "instanceId": "search-default",
+        "type": "search",
+        "hidden": true,
+        "texts": {
+          "title": {
+            "ar": "ابحث عن رحلتك",
+            "en": "Search your trip",
+            "tr": "Seferinizi arayın"
+          },
+          "subtitle": {
+            "ar": "طيران، فنادق، جولات أو سيارة — اختر التبويب وابدأ.",
+            "en": "Flights, hotels, tours or a car — pick a tab and go.",
+            "tr": "Uçuş, otel, tur veya araç — sekmeyi seçin."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "visible": true,
+          "tabBarBg": "var(--brand-header)",
+          "tabActiveBg": "var(--theme-tab-active-bg)",
+          "tabActiveText": "#ffffff",
+          "tabIdleText": "#1e1b4b",
+          "panelBg": "#ffffff",
+          "showTabFlight": true,
+          "showTabHoliday": true,
+          "showTabHotel": true,
+          "showTabTours": true,
+          "showTabTransfers": true,
+          "showTabCars": true,
+          "showTabInsurance": true,
+          "showTabVisa": true,
+          "showTabOffers": true,
+          "iconFlight": "",
+          "iconHoliday": "",
+          "iconHotel": "",
+          "iconTours": "",
+          "iconTransfers": "",
+          "iconCars": "",
+          "iconInsurance": "",
+          "iconVisa": "",
+          "iconOffers": ""
+        }
+      },
+      {
+        "instanceId": "destinations-default",
+        "type": "destinations",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "وجهات مختارة",
+            "en": "Curated destinations",
+            "tr": "Seçilmiş destinasyonlar"
+          },
+          "title": {
+            "ar": "أجمل مدن تركيا",
+            "en": "Turkey’s finest cities",
+            "tr": "Türkiye’nin en güzel şehirleri"
+          },
+          "subtitle": {
+            "ar": "إسطنبول، كابادوكيا، أنطاليا والمزيد — باقات تبدأ من سعر واضح.",
+            "en": "Istanbul, Cappadocia, Antalya and more — packages with a clear starting price.",
+            "tr": "İstanbul, Kapadokya, Antalya ve daha fazlası — net başlangıç fiyatı."
+          },
+          "dest-d4": {
+            "ar": "/api/branding/file?name=branding%2Fmth7pe7v-28019-b.jpg&v=1788179165056",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "image.dest-d4": "/api/branding/file?name=branding%2Fmth7pe7v-28019-b.jpg&v=1788179165056"
+        }
+      },
+      {
+        "instanceId": "flashDeals-default",
+        "type": "flashDeals",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لفترة محدودة",
+            "en": "Limited time",
+            "tr": "Sınırlı süre"
+          },
+          "title": {
+            "ar": "عروض سريعة",
+            "en": "Flash deals",
+            "tr": "Flaş fırsatlar"
+          },
+          "subtitle": {
+            "ar": "مقاعد وأسعار تتغير خلال ساعات.",
+            "en": "Seats and prices that move within hours.",
+            "tr": "Saatler içinde değişen koltuk ve fiyatlar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "packages-default",
+        "type": "packages",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "باقات العطلات",
+            "en": "Holiday packages",
+            "tr": "Tatil paketleri"
+          },
+          "title": {
+            "ar": "برامج مختارة بعناية",
+            "en": "Handpicked programs",
+            "tr": "Özenle seçilmiş programlar"
+          },
+          "subtitle": {
+            "ar": "أيام محسوبة، تنقل خاص، وفنادق تناسب أسلوب سفرك.",
+            "en": "Counted days, private transfers, and hotels that match how you travel.",
+            "tr": "Hesaplı günler, özel transfer ve seyahat tarza uyan oteller."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "hotels-default",
+        "type": "hotels",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "الإقامة",
+            "en": "Stays",
+            "tr": "Konaklama"
+          },
+          "title": {
+            "ar": "فنادق مختارة في تركيا",
+            "en": "Handpicked hotels in Turkey",
+            "tr": "Türkiye’de seçili oteller"
+          },
+          "subtitle": {
+            "ar": "من البوسفور إلى الكهوف — إقامات نراجعها قبل أن نعرضها.",
+            "en": "From the Bosphorus to cave suites — stays we review before we list.",
+            "tr": "Boğaz’dan mağara süitlerine — listelemeden önce incelediğimiz konaklamalar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "cars-default",
+        "type": "cars",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "التنقل",
+            "en": "Getting around",
+            "tr": "Ulaşım"
+          },
+          "title": {
+            "ar": "سيارات وتأجير من المطار",
+            "en": "Cars from the airport",
+            "tr": "Havalimanından araç kiralama"
+          },
+          "subtitle": {
+            "ar": "SUV، عائلية أو فان — استلام من مطارات تركيا الرئيسية.",
+            "en": "SUV, family or van — pickup at Turkey’s main airports.",
+            "tr": "SUV, aile veya van — Türkiye’nin ana havalimanlarından teslim."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "transfers-default",
+        "type": "transfers",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "المطار",
+            "en": "Airport",
+            "tr": "Havalimanı"
+          },
+          "title": {
+            "ar": "ترانسفير خاص من المطار",
+            "en": "Private airport transfers",
+            "tr": "Özel havalimanı transferi"
+          },
+          "subtitle": {
+            "ar": "سائق ينتظرك عند البوابة — إسطنبول، أنطاليا، بودروم والمزيد.",
+            "en": "A driver waiting at the gate — Istanbul, Antalya, Bodrum and more.",
+            "tr": "Kapıda sizi bekleyen şoför — İstanbul, Antalya, Bodrum ve daha fazlası."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "visa-default",
+        "type": "visa",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "تأشيرات إلكترونية",
+            "en": "eVisa services",
+            "tr": "e-Vize hizmetleri"
+          },
+          "subtitle": {
+            "ar": "إرشاد واضح قبل أن تبدأ الطلب.",
+            "en": "Clear guidance before you start the application.",
+            "tr": "Başvurudan önce net yönlendirme."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "flightDeals-default",
+        "type": "flightDeals",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "مسارات طيران مميزة",
+            "en": "Featured flight routes",
+            "tr": "Öne çıkan uçuş hatları"
+          },
+          "subtitle": {
+            "ar": "أسعار استرشادية لأكثر الوجهات طلباً.",
+            "en": "Guide prices on the most requested routes.",
+            "tr": "En çok istenen hatlarda yönlendirici fiyatlar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "vipTours-default",
+        "type": "vipTours",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "جولات يومية VIP",
+            "en": "VIP day tours",
+            "tr": "VIP günlük turlar"
+          },
+          "subtitle": {
+            "ar": "سائق خاص ومسار مرن داخل تركيا.",
+            "en": "A private driver and a flexible route in Turkey.",
+            "tr": "Türkiye’de özel şoför ve esnek rota."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "whyUs-default",
+        "type": "whyUs",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "لماذا لوناليزا",
+            "en": "Why Lonaliza",
+            "tr": "Neden Lonaliza"
+          },
+          "title": {
+            "ar": "فريق يعرف تركيا عن قرب",
+            "en": "A team that knows Turkey",
+            "tr": "Türkiye’yi yakından bilen ekip"
+          },
+          "subtitle": {
+            "ar": "دعم عربي، سائقون محليون، وحجز واضح بلا مفاجآت.",
+            "en": "Arabic support, local drivers, and bookings without surprises.",
+            "tr": "Arapça destek, yerel sürücüler ve sürprizsiz rezervasyon."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "stats-default",
+        "type": "stats",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "أرقامنا",
+            "en": "By the numbers",
+            "tr": "Rakamlarla"
+          },
+          "title": {
+            "ar": "ثقة تُبنى بالحجوزات",
+            "en": "Trust built on bookings",
+            "tr": "Rezervasyonla kurulan güven"
+          },
+          "travelersLabel": {
+            "ar": "مسافر سعيد",
+            "en": "Happy travelers",
+            "tr": "Mutlu yolcu"
+          },
+          "destinationsLabel": {
+            "ar": "وجهة",
+            "en": "Destinations",
+            "tr": "Destinasyon"
+          },
+          "packagesLabel": {
+            "ar": "باقة",
+            "en": "Packages",
+            "tr": "Paket"
+          },
+          "yearsLabel": {
+            "ar": "سنة خبرة",
+            "en": "Years of care",
+            "tr": "Yıllık deneyim"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {
+          "travelers": 1500,
+          "destinations": 80,
+          "packages": 350,
+          "years": 12
+        }
+      },
+      {
+        "instanceId": "testimonials-default",
+        "type": "testimonials",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "قصص الضيوف",
+            "en": "Guest stories",
+            "tr": "Misafir hikâyeleri"
+          },
+          "title": {
+            "ar": "ماذا يقول من سافر معنا",
+            "en": "What our travelers say",
+            "tr": "Misafirlerimiz ne diyor"
+          },
+          "subtitle": {
+            "ar": "عائلات، رحلات عمل، ومنطاد عند الفجر — بنفس الاهتمام.",
+            "en": "Families, business trips, and dawn balloons — the same care.",
+            "tr": "Aileler, iş seyahatleri ve şafak balonu — aynı özen."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "trust-default",
+        "type": "trust",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "تحجز بثقة",
+            "en": "Book with confidence",
+            "tr": "Güvenle rezervasyon"
+          },
+          "subtitle": {
+            "ar": "",
+            "en": "",
+            "tr": ""
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "blog-default",
+        "type": "blog",
+        "hidden": false,
+        "texts": {
+          "eyebrow": {
+            "ar": "دليل السفر",
+            "en": "Travel guide",
+            "tr": "Seyahat rehberi"
+          },
+          "title": {
+            "ar": "أحدث المقالات",
+            "en": "Latest articles",
+            "tr": "Son yazılar"
+          },
+          "subtitle": {
+            "ar": "نصائح عملية لتركيا: مواسم، أحياء، ومسارات يومية.",
+            "en": "Practical Turkey notes: seasons, neighborhoods, and day routes.",
+            "tr": "Pratik Türkiye notları: sezonlar, semtler ve günlük rotalar."
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "contact-default",
+        "type": "contact",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "نرد بسرعة — اترك رقمك",
+            "en": "We reply fast — leave your number",
+            "tr": "Hızlı dönüş — numaranızı bırakın"
+          },
+          "subtitle": {
+            "ar": "فريق لوناليزا يتواصل خلال دقائق لترتيب الرحلة.",
+            "en": "The Lonaliza team calls back within minutes to arrange the trip.",
+            "tr": "Lonaliza ekibi seyahati ayarlamak için dakikalar içinde arar."
+          },
+          "button": {
+            "ar": "اطلب اتصالاً",
+            "en": "Request a callback",
+            "tr": "Geri arama iste"
+          },
+          "ctaTitle": {
+            "ar": "جاهز لترتيب الرحلة؟",
+            "en": "Ready to arrange the trip?",
+            "tr": "Seyahati ayarlamaya hazır mısınız?"
+          },
+          "ctaSubtitle": {
+            "ar": "راسلنا أو ابحث الآن — فريق لوناليزا يرد بسرعة.",
+            "en": "Write to us or search now — the Lonaliza team replies quickly.",
+            "tr": "Yazın veya şimdi arayın — Lonaliza ekibi hızlı döner."
+          },
+          "ctaButton": {
+            "ar": "تواصل معنا",
+            "en": "Contact us",
+            "tr": "Bize yazın"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "categories-default",
+        "type": "categories",
+        "hidden": true,
+        "texts": {
+          "eyebrow": {
+            "ar": "خدماتنا",
+            "en": "Our services",
+            "tr": "Hizmetlerimiz"
+          },
+          "title": {
+            "ar": "كل رحلتك من تبويب واحد",
+            "en": "Your whole trip, one place",
+            "tr": "Tüm seyahatiniz tek yerde"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      },
+      {
+        "instanceId": "partners-default",
+        "type": "partners",
+        "hidden": false,
+        "texts": {
+          "title": {
+            "ar": "شركاء السفر",
+            "en": "Travel partners",
+            "tr": "Seyahat ortakları"
+          },
+          "subtitle": {
+            "ar": "شراكات طيران وضيافة مختارة لرحلتك في تركيا.",
+            "en": "Selected airline and hospitality partners for your Turkey trip.",
+            "tr": "Türkiye seyahatiniz için seçilmiş havayolu ve konaklama ortakları."
+          },
+          "statHotels": {
+            "ar": "200+",
+            "en": "200+",
+            "tr": "200+"
+          },
+          "statHotelsLabel": {
+            "ar": "فندق شريك",
+            "en": "Partner hotels",
+            "tr": "Partner oteller"
+          },
+          "statAirlines": {
+            "ar": "50+",
+            "en": "50+",
+            "tr": "50+"
+          },
+          "statAirlinesLabel": {
+            "ar": "شركة طيران",
+            "en": "Airlines",
+            "tr": "Havayolları"
+          },
+          "statCountries": {
+            "ar": "180+",
+            "en": "180+",
+            "tr": "180+"
+          },
+          "statCountriesLabel": {
+            "ar": "دولة",
+            "en": "Countries",
+            "tr": "Ülke"
+          },
+          "statSupport": {
+            "ar": "24/7",
+            "en": "24/7",
+            "tr": "24/7"
+          },
+          "statSupportLabel": {
+            "ar": "دعم",
+            "en": "Support",
+            "tr": "Destek"
+          }
+        },
+        "styles": {
+          "background": "",
+          "accent": "",
+          "textColor": "",
+          "overlay": ""
+        },
+        "settings": {}
+      }
+    ],
+    "global": {
+      "navy": "#2e1065",
+      "emerald": "#7c3aed"
+    }
+  }
+}

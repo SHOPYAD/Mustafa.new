@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/APIReferences.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:35:45 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>API&#160;References</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>API&#160;References</h1>
+                                        <p>The following table groups all API&#160;references by resource/domain. API&#160;References are grouped by functional area on the <i>API&#160;References</i> menu above.</p>
+                                        <p>Each reference describes the resources and operations for that call. References provide endpoints, object-level details with supported formats and values, plus sample requests and responses. </p>
+                                        <div class="noteNote">See the <a href="AirGuides.html">Guides</a> for overviews of each functional area of air travel, along with basic concepts, usage information, and business rules. </div>
+                                        <div class="noteNote">See <a href="General/AirEndpointsList11.html">Endpoints</a> for a consolidated list of all Air endpoints.</div>
+                                        <table style="width: 100%;border-spacing: 12px 12px;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col style="width: 33%;" class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col style="width: 33%;" class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <col style="width: 33%;" class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p class="APIRefHead"><span class="mc-variable General.AirAPI variable">Air</span> Shopping</p>
+                                                        <p style="font-family: 'Arial Black';">Search</p>
+                                                        <p><span class="APIPost">POST</span> <a href="Search/APIRef_Search.html" class="gridLink">Flight search</a></p>
+                                                        <p><span class="APIPost">POST</span> <a href="Search/APIRef_FlightSpecificRefPayload.html"><a href="Search/APIRef_NextLegSearch.html" class="gridLink">Search for flights on next leg</a></a></p>
+                                                        <p><span class="APIPost">POST</span><a href="Search/APIRef_FlightSpecificRefPayload.html" class="gridLink"> Return all upsells on a specific flight - reference payload</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Search/APIRef_FlightSpecificFullPayload.html" class="gridLink"> Return all upsells on a specific flight - full payload</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Search/APIRef_AirAvailability.html" class="gridLink"> Search by air availability</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p class="APIRefHead"><span class="mc-variable General.AirAPI variable">Air</span> Pricing</p>
+                                                        <p style="font-family: 'Arial Black';">Price</p>
+                                                        <p><span class="APIPost">POST</span><a href="Price/APIRef_AirPriceReferencePayload.html" class="gridLink"> Price reference payload request </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Price/APIRef_AirPriceFullPayload.html" class="gridLink"> Price full payload request  </a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">AirOffer</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_AutoPrice-ManualFare.html" class="gridLink"> Auto-price or build manual fare for unpriced segments</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p class="APIRefHead">Fare Display &amp; Rules</p>
+                                                        <p style="font-family: 'Arial Black';">FareRule</p>
+                                                        <p><span class="APIPost">POST</span><a href="Price/APIRef_FareRules.html" class="gridLink"> Fare rules</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Fares</p>
+                                                        <p><span class="APIPost">POST</span><a href="Price/APIRef_FareDisplay.html" class="gridLink"> Fare display (return all fares)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p class="APIRefHead">Seats</p>
+                                                        <p style="font-family: 'Arial Black';">Seat</p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_SeatMap.html" class="gridLink"> Seat map</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_StandaloneSeatMap.html" class="gridLink"> Standalone seat map</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Book (book/airoffer)</p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_SeatBook.html" class="gridLink"> Seat book </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_AncillaryCancel.html" class="gridLink"> Ancillary &amp; seat cancel</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p class="APIRefHead">Ancillaries &amp;&#160;EMDs</p>
+                                                        <p style="font-family: 'Arial Black';">AncillaryShop</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ancillaries/APIRef_AncillaryShop.html" class="gridLink"> Search for ancillaries</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">AncillaryPrice</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ancillaries/APIRef_AncillaryPrice.html" class="gridLink"> Confirm ancillary pricing (NDC only)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Book (book/airoffer)</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ancillaries/APIRef_AncillaryBook.html" class="gridLink"> Add ancillary offer (ancillary book)</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_AncillaryCancel.html" class="gridLink"> Ancillary &amp; seat cancel</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">EMDs</p>
+                                                        <p><span class="APIGet">GET</span><a href="Ancillaries/APIRef_EMDDisplay.html" class="gridLink"> Retrieve an EMD</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Ancillaries/APIRef_EMDVoid.html" class="gridLink"> Void an EMD</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p class="APIRefHead">Remarks &amp;&#160;Service&#160;requests</p>
+                                                        <p><i>These resources are under book, e.g., book/primarycontacts</i>
+                                                        </p>
+                                                        <p style="font-family: 'Arial Black';">PrimaryContacts</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/RemarksGuide.html#primarycontact" class="gridLink"> Add primary contact </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/RemarksGuide.html#primarycontact" class="gridLink"> Delete primary contact </a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">ReservationComments</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/RemarksGuide.html#reservationcomments" class="gridLink"> Add general, OSI, notepad, vendor, itinerary remarks </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/RemarksGuide.html#reservationcomments" class="gridLink"> Delete general, OSI, notepad, vendor, itinerary remarks </a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">SpecialServices</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/RemarksGuide.html#specialservicelist" class="gridLink"> Add special service request (disability and meals)</a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/RemarksGuide.html#specialservicelist" class="gridLink"> Delete special service request (meals only)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">DocumentOverride</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/RemarksGuide.html#docoverrides" class="gridLink"> Add document override remarks</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Accounting</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/RemarksGuide.html#accounting" class="gridLink"> Add accounting, historical, and DOCI remarks</a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/RemarksGuide.html#accounting" class="gridLink"> Delete accounting, historical, and DOCI remarks</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p class="APIRefHead">Booking &amp;&#160;Reservations</p>
+                                                        <p><i>These resources are under book, e.g., book/session</i>
+                                                        </p>
+                                                        <p style="font-family: 'Arial Black';">Session</p>
+                                                        <p><span class="APIPost">POST</span><a href="Workbench/APIRef_WorkbenchNewCreate.html" class="gridLink"> Create a workbench for new booking</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Workbench/APIRef_WorkbenchPostCreate.html" class="gridLink"> Create a workbench for existing booking</a>
+                                                        </p>
+                                                        <p><span class="APIGet">GET</span><a href="Workbench/APIRef_WorkbenchRetrieve.html" class="gridLink"> Retrieve workbench details</a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Workbench/APIRef_WorkbenchDiscard.html" class="gridLink"> Discard workbench</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">AirOffer</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_AddOfferRefPayload.html" class="gridLink"> Add offer to booking - reference payload</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_AddOfferFullPayload.html" class="gridLink"> Add offer to booking - full payload</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_UnpricedSegment.html" class="gridLink"> Add unpriced segment to booking</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_AutoPrice-ManualFare.html" class="gridLink"> Autoprice or build manual fare from unpriced segments</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ancillaries/APIRef_AncillaryBook.html" class="gridLink"> Add ancillary offer (ancillary book)</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_SeatBook.html" class="gridLink"> Add seat assignment (seat book) </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_RefundQuote.html" class="gridLink"> Refund quote when canceling and refunding an NDC&#160;ticket</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Seats/APIRef_SeatBook.html" class="gridLink"> Cancel a seat selection in workbench </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_TicketAsFOP.html" class="gridLink"> Unused ticket as form of payment (NDC&#160;only)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">CancelItem</p>
+                                                        <p><span class="APIPost">POST</span><a href="Workbench/APIRef_CancelWorkbenchItems.html" class="gridLink"> Cancel workbench items</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Traveler</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_TravelerAdd.html" class="gridLink"> Add traveler and traveler remarks to booking</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Book/APIRef_TravelerUpdate.html" class="gridLink"> Modify traveler information after Updatable Items request</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';"><i style="font-weight: bold; font-style: normal;">ClientProfile</i>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Book/APIRef_HostProfileMove.html" class="gridLink">Copy host profile to JSON</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">CustomRule</p>
+                                                        <p><span class="APIPost">POST</span><a href="Rules/APIRef_CustomRule.html" class="gridLink"> Add a custom rule to booking </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Rules/APIRef_CustomRule.html" class="gridLink"> Delete a custom rule from a booking</a>
+                                                        </p>
+                                                        <p><span class="APIGet">GET</span><a href="Rules/API_Ref_CustomRuleList.html#ticketretrieve" class="gridLink"> Retrieve list of all custom rules for a PCC</a>
+                                                        </p>
+                                                        <p><span class="APIGet">GET</span><a href="Rules/API_Ref_CustomRuleDetails.html#ticketretrieve" class="gridLink"> Retrieve details for one custom rule</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Reservations</p>
+                                                        <p><span class="APIPost">POST</span><a href="Workbench/APIRef_WorkbenchCommit.html" class="gridLink"> Commit workbench</a>
+                                                        </p>
+                                                        <p><span class="APIGet">GET</span><a href="Book/APIRef_ReservationRetrieve.html" class="gridLink"> Retrieve a reservation</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_ReservationCancelGDS.html" class="gridLink"> Cancel a reservation for GDS</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_ReservationDivide.html" class="gridLink"> Divide a reservation</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Documents</p>
+                                                        <p style="font-family: 'Arial Black';"><span class="APIGet">GET</span> <a href="Book/APIRef_DocumentList.html" class="gridLink">Retrieve all documents associated with a locator code</a></p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_DocumentHistory.html" class="gridLink"> Retrieve document history </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_BatchVoid.html" class="gridLink"> Batch void multiple tickets on a booking</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">UpdatableItem</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/APIRef_TravelerUpdatableItems.html" class="gridLink"> Retrieve a list of updatable items for traveler/s on the reservation</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p class="APIRefHead">Ticketing  &amp; Payment</p>
+                                                        <p style="font-family: 'Arial Black';">Payment</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_AddFOP.html" class="gridLink"> Add form of payment</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Ticketing/APIRef_AddFOP.html" class="gridLink"> Modify form of payment</a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Ticketing/APIRef_AddFOP.html" class="gridLink"> Delete form of payment</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">PaymentOffer</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_AddPayment.html" class="gridLink"> Add payment</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Cancel.html#cancelndc" class="gridLink"> Cancel; for NDC, voids ticket or cancels ticket or booking</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Receipt</p>
+                                                        <p><span class="APIGet">GET</span><a href="Ticketing/APIRef_TicketList.html#ticketindex" class="gridLink"> List all tickets on a reservation</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Cancel.html#cancelndc" class="gridLink"> NDC Order cancel - voids a ticket, or cancels a ticket or reservation (NDC only)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Ticket</p>
+                                                        <p><span class="APIGet">GET</span><a href="Ticketing/APIRef_TicketDisplay_GDS.html#ticketretrieve" class="gridLink"> Retrieve a single GDS ticket</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_TicketRetrieve.html#cancelndc" class="gridLink"> Retrieve a single NDC ticket</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Ticketing/APIRef_TicketVoidGDS.html#voidgds" class="gridLink"> Void single ticket for GDS</a>
+                                                        </p>
+                                                        <p class="APIRefSubHead">RESOURCE</p>
+                                                        <p style="font-family: 'Arial Black';">Queue</p>
+                                                        <p class="APIRefSubHead">ENDPOINTS</p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_Queue.html" class="gridLink"> Queue placement</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_QueueList.html" class="gridLink"> Queue list</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_QueueRemove.html" class="gridLink"> Remove booking from the queue</a>
+                                                        </p>
+                                                        <p style="font-family: 'Arial Black';">Travelagency (ticket/travelagency)</p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/TravelAgency/APIRef_TravelAgencyDetails.html" class="gridLink"> Add travel agency details to a booking in a single payload (corporate ID, address, email, and/or phone) </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/TravelAgency/APIRef_TravelAgencyCorpID.html" class="gridLink"> Add travel agency corporate ID</a>
+                                                        </p>
+                                                        <p style="color: #ff4500;"><span class="APIPut">PUT</span><a href="Book/TravelAgency/APIRef_TravelAgencyCorpID.html#voidgds" class="gridLink"> Update travel agency corporate ID </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/TravelAgency/APIRef_TravelAgencyCorpID.html" class="gridLink"> Delete travel agency corporate ID</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/TravelAgency/APIRef_TravelAgencyAddress.html" class="gridLink"> Add a travel agency address</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Book/TravelAgency/APIRef_TravelAgencyAddress.html" class="gridLink"> Update a travel agency address </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/TravelAgency/APIRef_TravelAgencyAddress.html" class="gridLink"> Delete a travel agency address</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/TravelAgency/APIRef_TravelAgencyEmail.html" class="gridLink"> Add a travel agency email only</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Book/TravelAgency/APIRef_TravelAgencyEmail.html" class="gridLink"> Update a travel agency email </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/TravelAgency/APIRef_TravelAgencyEmail.html" class="gridLink"> Delete a travel agency email </a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Book/TravelAgency/APIRef_TravelAgencyTelephone.html" class="gridLink"> Add a travel agency telephone</a>
+                                                        </p>
+                                                        <p><span class="APIPut">PUT</span><a href="Book/TravelAgency/APIRef_TravelAgencyTelephone.html" class="gridLink"> Update a travel agency telephone number </a>
+                                                        </p>
+                                                        <p><span class="APIDel">DEL</span><a href="Book/TravelAgency/APIRef_TravelAgencyTelephone.html" class="gridLink"> Delete a travel agency telephone number </a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p class="APIRefHead">GDS Exchanges</p>
+                                                        <p style="font-family: 'Arial Black';">Eligibility</p>
+                                                        <p><span class="APIGet">GET</span> <a href="GDSExchangesRefunds/APIRef_ExchangeEligibility.html" class="gridLink"> Verify exchange eligibility (GDS)</a></p>
+                                                        <p style="font-family: Impact;font-size: 10pt;color: #0a121a;">&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">ExchangeSearch</p>
+                                                        <p><span class="APIPost">POST</span><a href="GDSExchangesRefunds/APIRef_ExchangeSearch.html" class="gridLink"> Search for flights to exchange (GDS)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Add/Modify Offer </p>
+                                                        <p><span class="APIPost">POST</span><a href="GDSExchangesRefunds/APIRef_AddModifyOfferReferencePayload.html" class="gridLink"> Add/Modify Offer reference payload (GDS)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Payment, PaymentOffer, Reservations</p>
+                                                        <p>Same resources as for ticketing; for exchange details see the <a href="General/ExchangeRefundGuide.html">Exchange, Refund, and Void Guide</a></p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_AddFOP.html" class="gridLink"> Add form of payment</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Ticketing/APIRef_AddPayment.html" class="gridLink"> Add payment</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="Workbench/APIRef_WorkbenchCommit.html" class="gridLink"> Commit workbench</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p class="APIRefHead">GDS Refunds</p>
+                                                        <div class="noteNote">GDS refund functionality is not available in the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs.</div>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p class="APIRefHead">NDC Air Modify and Exchanges</p>
+                                                        <p style="font-family: 'Arial Black';">Change</p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Reshop.html#reshop" class="gridLink"> Reshop air itinerary on NDC booking or ticket</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Reprice</p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Reprice.html#reprice" class="gridLink"> Price new offer for NDC booking or ticket (Reprice)</a>
+                                                        </p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_StandaloneReprice.html#reprice" class="gridLink"> Reprice existing offer for NDC booking, before or after price guarantee expires (Standalone Reprice)</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Modify</p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Modify.html#reprice" class="gridLink"> Modify - commit exchange for NDC reservation or ticket </a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="text-align: left;vertical-align: top;" class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <p class="APIRefHead">NDC Void/Cancel and Refunds</p>
+                                                        <p style="font-family: 'Arial Black';">AirOffer</p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_RefundQuote.html" class="gridLink"> Refund quote</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p style="font-family: 'Arial Black';">Receipt</p>
+                                                        <p><span class="APIPost">POST</span><a href="NDC/APIRef_Cancel.html#cancelndc" class="gridLink"> Cancel; for NDC, voids ticket or cancels ticket or booking</a>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                        <p>For exchange details see the <a href="General/ExchangeRefundGuide.html">Exchange, Refund, and Void Guide</a></p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>&#160;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/APIReferences.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:07 GMT -->
+</html>

@@ -1,0 +1,597 @@
+{
+  "relays": [
+    {
+      "url": "wss://relay.primal.net",
+      "name": "Primal Relay (فائق السرعة والاستقرار)",
+      "active": true,
+      "isDefault": true,
+      "canRead": true,
+      "canWrite": true,
+      "read": true,
+      "write": true
+    },
+    {
+      "url": "wss://relay.damus.io",
+      "name": "Damus Global Relay (عالمي رئيسي)",
+      "active": true,
+      "isDefault": true,
+      "canRead": true,
+      "canWrite": true,
+      "read": true,
+      "write": true
+    },
+    {
+      "url": "wss://relay.nostr.band",
+      "name": "Nostr Band Indexer (فهرسة وبحث)",
+      "active": true,
+      "isDefault": true,
+      "canRead": true,
+      "canWrite": true,
+      "read": true,
+      "write": true
+    },
+    {
+      "url": "wss://nos.today",
+      "name": "Nos Today Hub",
+      "active": true,
+      "isDefault": false,
+      "canRead": true,
+      "canWrite": true,
+      "read": true,
+      "write": true
+    }
+  ],
+  "mediaServers": [
+    {
+      "url": "https://nostr.build",
+      "name": "Nostr.build (المعتمد الرئيسي للفيديوهات والصور)",
+      "active": true,
+      "isDefault": true
+    },
+    {
+      "url": "https://blossom.primal.net",
+      "name": "Primal Blossom Server",
+      "active": true,
+      "isDefault": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_hotels",
+      "slug": "hotels",
+      "nameAr": "فنادق ومنتجعات",
+      "nameEn": "Hotels & Resorts",
+      "nameTr": "Oteller ve Tatil Köyleri",
+      "nameFr": "Hôtels et Resorts",
+      "icon": "Hotel",
+      "color": "#059669",
+      "tag": "hotels",
+      "order": 1,
+      "active": true,
+      "name": {
+        "ar": "فنادق ومنتجعات",
+        "en": "Hotels & Resorts",
+        "tr": "Oteller ve Tatil Köyleri",
+        "fr": "Hôtels et Resorts"
+      }
+    },
+    {
+      "id": "cat_tours",
+      "slug": "tours",
+      "nameAr": "رحلات وبرامج سياحية",
+      "nameEn": "Tours & Packages",
+      "nameTr": "Turlar ve Paketler",
+      "nameFr": "Circuits et Séjours",
+      "icon": "Compass",
+      "color": "#d97706",
+      "tag": "tours",
+      "order": 2,
+      "active": true,
+      "name": {
+        "ar": "رحلات وبرامج سياحية",
+        "en": "Tours & Packages",
+        "tr": "Turlar ve Paketler",
+        "fr": "Circuits et Séjours"
+      }
+    },
+    {
+      "id": "cat_vip",
+      "slug": "vip-tours",
+      "nameAr": "تجارب ورحلات VIP",
+      "nameEn": "VIP Luxury Experiences",
+      "nameTr": "VIP Lüks Deneyimler",
+      "nameFr": "Expériences VIP",
+      "icon": "Crown",
+      "color": "#f59e0b",
+      "tag": "vip-tours",
+      "order": 3,
+      "active": true,
+      "name": {
+        "ar": "تجارب ورحلات VIP",
+        "en": "VIP Luxury Experiences",
+        "tr": "VIP Lüks Deneyimler",
+        "fr": "Expériences VIP"
+      }
+    },
+    {
+      "id": "cat_cars",
+      "slug": "cars",
+      "nameAr": "سيارات مع سائق VIP",
+      "nameEn": "Chauffeur & VIP Transfers",
+      "nameTr": "Şoförlü VIP Araçlar",
+      "nameFr": "Voitures avec Chauffeur",
+      "icon": "Car",
+      "color": "#3b82f6",
+      "tag": "transfers",
+      "order": 4,
+      "active": true,
+      "name": {
+        "ar": "سيارات مع سائق VIP",
+        "en": "Chauffeur & VIP Transfers",
+        "tr": "Şoförlü VIP Araçlar",
+        "fr": "Voitures avec Chauffeur"
+      }
+    },
+    {
+      "id": "cat_flights",
+      "slug": "flights",
+      "nameAr": "طيران ومطارات",
+      "nameEn": "Flights & Airports",
+      "nameTr": "Uçuşlar ve Havalimanları",
+      "nameFr": "Vols et Aéroports",
+      "icon": "Plane",
+      "color": "#8b5cf6",
+      "tag": "flights",
+      "order": 5,
+      "active": true,
+      "name": {
+        "ar": "طيران ومطارات",
+        "en": "Flights & Airports",
+        "tr": "Uçuşlar ve Havalimanları",
+        "fr": "Vols et Aéroports"
+      }
+    },
+    {
+      "id": "cat_activities",
+      "slug": "activities",
+      "nameAr": "أنشطة ومغامرات",
+      "nameEn": "Activities & Adventures",
+      "nameTr": "Aktiviteler ve Maceralar",
+      "nameFr": "Activités et Aventures",
+      "icon": "Mountain",
+      "color": "#ec4899",
+      "tag": "activities",
+      "order": 6,
+      "active": true,
+      "name": {
+        "ar": "أنشطة ومغامرات",
+        "en": "Activities & Adventures",
+        "tr": "Aktiviteler ve Maceralar",
+        "fr": "Activités et Aventures"
+      }
+    },
+    {
+      "id": "cat_dining",
+      "slug": "dining",
+      "nameAr": "مطاعم وتجارب محلية",
+      "nameEn": "Dining & Lifestyle",
+      "nameTr": "Restoranlar ve Yaşam",
+      "nameFr": "Restaurants et Gastronomie",
+      "icon": "Utensils",
+      "color": "#14b8a6",
+      "tag": "dining",
+      "order": 7,
+      "active": true,
+      "name": {
+        "ar": "مطاعم وتجارب محلية",
+        "en": "Dining & Lifestyle",
+        "tr": "Restoranlar ve Yaşam",
+        "fr": "Restaurants et Gastronomie"
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "dest_ist",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "إسطنبول",
+      "cityEn": "Istanbul",
+      "popular": true,
+      "active": true,
+      "slug": "dest_ist",
+      "country": "تركيا",
+      "name": {
+        "ar": "إسطنبول",
+        "en": "Istanbul",
+        "tr": "Istanbul",
+        "fr": "Istanbul"
+      }
+    },
+    {
+      "id": "dest_trz",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "طرابزون والشمال التركي",
+      "cityEn": "Trabzon",
+      "popular": true,
+      "active": true,
+      "slug": "dest_trz",
+      "country": "تركيا",
+      "name": {
+        "ar": "طرابزون والشمال التركي",
+        "en": "Trabzon",
+        "tr": "Trabzon",
+        "fr": "Trabzon"
+      }
+    },
+    {
+      "id": "dest_bur",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "بورصة وأولوداغ",
+      "cityEn": "Bursa",
+      "popular": true,
+      "active": true,
+      "slug": "dest_bur",
+      "country": "تركيا",
+      "name": {
+        "ar": "بورصة وأولوداغ",
+        "en": "Bursa",
+        "tr": "Bursa",
+        "fr": "Bursa"
+      }
+    },
+    {
+      "id": "dest_ant",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "أنطاليا والريفييرا",
+      "cityEn": "Antalya",
+      "popular": true,
+      "active": true,
+      "slug": "dest_ant",
+      "country": "تركيا",
+      "name": {
+        "ar": "أنطاليا والريفييرا",
+        "en": "Antalya",
+        "tr": "Antalya",
+        "fr": "Antalya"
+      }
+    },
+    {
+      "id": "dest_cap",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "كابادوكيا والمناطيد",
+      "cityEn": "Cappadocia",
+      "popular": true,
+      "active": true,
+      "slug": "dest_cap",
+      "country": "تركيا",
+      "name": {
+        "ar": "كابادوكيا والمناطيد",
+        "en": "Cappadocia",
+        "tr": "Cappadocia",
+        "fr": "Cappadocia"
+      }
+    },
+    {
+      "id": "dest_bod",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "بودروم ومارماريس",
+      "cityEn": "Bodrum",
+      "popular": true,
+      "active": true,
+      "slug": "dest_bod",
+      "country": "تركيا",
+      "name": {
+        "ar": "بودروم ومارماريس",
+        "en": "Bodrum",
+        "tr": "Bodrum",
+        "fr": "Bodrum"
+      }
+    },
+    {
+      "id": "dest_sap",
+      "countryCode": "TR",
+      "countryNameAr": "تركيا",
+      "countryNameEn": "Turkey",
+      "cityAr": "صبنجة والمعشوقية",
+      "cityEn": "Sapanca",
+      "popular": true,
+      "active": true,
+      "slug": "dest_sap",
+      "country": "تركيا",
+      "name": {
+        "ar": "صبنجة والمعشوقية",
+        "en": "Sapanca",
+        "tr": "Sapanca",
+        "fr": "Sapanca"
+      }
+    },
+    {
+      "id": "dest_dxb",
+      "countryCode": "AE",
+      "countryNameAr": "الإمارات",
+      "countryNameEn": "UAE",
+      "cityAr": "دبي",
+      "cityEn": "Dubai",
+      "popular": true,
+      "active": true,
+      "slug": "dest_dxb",
+      "country": "الإمارات",
+      "name": {
+        "ar": "دبي",
+        "en": "Dubai",
+        "tr": "Dubai",
+        "fr": "Dubai"
+      }
+    },
+    {
+      "id": "dest_auh",
+      "countryCode": "AE",
+      "countryNameAr": "الإمارات",
+      "countryNameEn": "UAE",
+      "cityAr": "أبوظبي",
+      "cityEn": "Abu Dhabi",
+      "popular": false,
+      "active": true,
+      "slug": "dest_auh",
+      "country": "الإمارات",
+      "name": {
+        "ar": "أبوظبي",
+        "en": "Abu Dhabi",
+        "tr": "Abu Dhabi",
+        "fr": "Abu Dhabi"
+      }
+    },
+    {
+      "id": "dest_ruh",
+      "countryCode": "SA",
+      "countryNameAr": "السعودية",
+      "countryNameEn": "Saudi Arabia",
+      "cityAr": "الرياض",
+      "cityEn": "Riyadh",
+      "popular": false,
+      "active": true,
+      "slug": "dest_ruh",
+      "country": "السعودية",
+      "name": {
+        "ar": "الرياض",
+        "en": "Riyadh",
+        "tr": "Riyadh",
+        "fr": "Riyadh"
+      }
+    },
+    {
+      "id": "dest_ula",
+      "countryCode": "SA",
+      "countryNameAr": "السعودية",
+      "countryNameEn": "Saudi Arabia",
+      "cityAr": "العُلا",
+      "cityEn": "AlUla",
+      "popular": true,
+      "active": true,
+      "slug": "dest_ula",
+      "country": "السعودية",
+      "name": {
+        "ar": "العُلا",
+        "en": "AlUla",
+        "tr": "AlUla",
+        "fr": "AlUla"
+      }
+    }
+  ],
+  "pointsConfig": {
+    "enabled": true,
+    "pointsPerPost": 150,
+    "pointsPerPhoto": 100,
+    "pointsPerPhotoPost": 100,
+    "pointsPerReel": 250,
+    "pointsPerComment": 25,
+    "pointsPerLike": 5,
+    "pointsPerBookingShare": 300,
+    "guestPointsPerPost": 40,
+    "guestPointsPerPhoto": 30,
+    "guestPointsPerReel": 75,
+    "guestPointsPerComment": 10,
+    "guestPointsPerLike": 2,
+    "dailyEarnCap": 1000,
+    "dailyCapPoints": 1000,
+    "weeklyEarnCap": 5000,
+    "monthlyEarnCap": 15000,
+    "maxPostsPerDay": 5,
+    "maxReelsPerDay": 3,
+    "minCooldownSeconds": 60,
+    "cooldownMinutes": 1,
+    "pointsPerUsd": 100,
+    "requireEngagementForPoints": true,
+    "minLikesForPoints": 50,
+    "minCommentsForPoints": 10
+  },
+  "tiers": [
+    {
+      "level": 1,
+      "id": "bronze",
+      "nameAr": "مستكشف برونزي",
+      "nameEn": "Bronze Explorer",
+      "nameTr": "Bronz Kaşif",
+      "nameFr": "Explorateur Bronze",
+      "minPoints": 0,
+      "badgeIcon": "Compass",
+      "badgeColor": "#cd7f32",
+      "rewardMultiplier": 1,
+      "badge": "",
+      "name": {
+        "ar": "مستكشف برونزي",
+        "en": "Bronze Explorer",
+        "tr": "Bronz Kaşif",
+        "fr": "Explorateur Bronze"
+      },
+      "perks": {
+        "ar": "مضاعف مكافآت x1 وخصم إضافي $0",
+        "en": "Multiplier x1",
+        "tr": "Çarpan x1",
+        "fr": "Multiplicateur x1"
+      }
+    },
+    {
+      "level": 2,
+      "id": "silver",
+      "nameAr": "مسافر فضي",
+      "nameEn": "Silver Voyager",
+      "nameTr": "Gümüş Gezgin",
+      "nameFr": "Voyageur Argent",
+      "minPoints": 500,
+      "badgeIcon": "Shield",
+      "badgeColor": "#94a3b8",
+      "rewardMultiplier": 1.1,
+      "bookingDiscountUsdBonus": 5,
+      "badge": "",
+      "name": {
+        "ar": "مسافر فضي",
+        "en": "Silver Voyager",
+        "tr": "Gümüş Gezgin",
+        "fr": "Voyageur Argent"
+      },
+      "perks": {
+        "ar": "مضاعف مكافآت x1.1 وخصم إضافي $5",
+        "en": "Multiplier x1.1",
+        "tr": "Çarpan x1.1",
+        "fr": "Multiplicateur x1.1"
+      }
+    },
+    {
+      "level": 3,
+      "id": "gold",
+      "nameAr": "رحالة ذهبي",
+      "nameEn": "Gold Globetrotter",
+      "nameTr": "Altın Seyyah",
+      "nameFr": "Globe-trotter Or",
+      "minPoints": 2000,
+      "badgeIcon": "Award",
+      "badgeColor": "#eab308",
+      "rewardMultiplier": 1.25,
+      "bookingDiscountUsdBonus": 15,
+      "badge": "",
+      "name": {
+        "ar": "رحالة ذهبي",
+        "en": "Gold Globetrotter",
+        "tr": "Altın Seyyah",
+        "fr": "Globe-trotter Or"
+      },
+      "perks": {
+        "ar": "مضاعف مكافآت x1.25 وخصم إضافي $15",
+        "en": "Multiplier x1.25",
+        "tr": "Çarpan x1.25",
+        "fr": "Multiplicateur x1.25"
+      }
+    },
+    {
+      "level": 4,
+      "id": "platinum",
+      "nameAr": "نخبة السفر البلاتينية",
+      "nameEn": "Platinum Jetsetter",
+      "nameTr": "Platin Seçkin",
+      "nameFr": "Élite Platine",
+      "minPoints": 5000,
+      "badgeIcon": "Gem",
+      "badgeColor": "#06b6d4",
+      "rewardMultiplier": 1.5,
+      "bookingDiscountUsdBonus": 30,
+      "badge": "",
+      "name": {
+        "ar": "نخبة السفر البلاتينية",
+        "en": "Platinum Jetsetter",
+        "tr": "Platin Seçkin",
+        "fr": "Élite Platine"
+      },
+      "perks": {
+        "ar": "مضاعف مكافآت x1.5 وخصم إضافي $30",
+        "en": "Multiplier x1.5",
+        "tr": "Çarpan x1.5",
+        "fr": "Multiplicateur x1.5"
+      }
+    },
+    {
+      "level": 5,
+      "id": "vip_ambassador",
+      "nameAr": "سفير لوناليزا VIP",
+      "nameEn": "Lonaliza VIP Ambassador",
+      "nameTr": "Lonaliza VIP Elçisi",
+      "nameFr": "Ambassadeur VIP Lonaliza",
+      "minPoints": 10000,
+      "badgeIcon": "Crown",
+      "badgeColor": "#f59e0b",
+      "rewardMultiplier": 2,
+      "bookingDiscountUsdBonus": 50,
+      "badge": "",
+      "name": {
+        "ar": "سفير لوناليزا VIP",
+        "en": "Lonaliza VIP Ambassador",
+        "tr": "Lonaliza VIP Elçisi",
+        "fr": "Ambassadeur VIP Lonaliza"
+      },
+      "perks": {
+        "ar": "مضاعف مكافآت x2 وخصم إضافي $50",
+        "en": "Multiplier x2",
+        "tr": "Çarpan x2",
+        "fr": "Multiplicateur x2"
+      }
+    }
+  ],
+  "moderation": {
+    "strictTourismFilter": true,
+    "aiAutoModeration": true,
+    "blockProfanity": true,
+    "blockNonTourism": true,
+    "aiSensitivity": "strict",
+    "tourismKeywords": [
+      "سياحة",
+      "فندق",
+      "رحلة",
+      "طيران",
+      "حجز",
+      "منتجع",
+      "إسطنبول",
+      "طرابزون",
+      "كبادوكيا",
+      "أنطاليا",
+      "مطعم",
+      "معالم",
+      "travel",
+      "tourism",
+      "hotel",
+      "istanbul"
+    ],
+    "blacklistedKeywords": [
+      "spam",
+      "crypto_airdrop",
+      "scam",
+      "adult",
+      "porn",
+      "casino"
+    ],
+    "bannedKeywords": [
+      "spam",
+      "crypto_airdrop",
+      "scam",
+      "adult",
+      "porn",
+      "casino"
+    ],
+    "mutedPubkeys": [],
+    "verifiedPubkeys": [],
+    "partnerPubkeys": [],
+    "hiddenEventIds": [],
+    "requireApproval": false
+  }
+}

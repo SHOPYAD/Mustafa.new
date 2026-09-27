@@ -1,0 +1,625 @@
+{
+  "cityKey": "tangier",
+  "city": "Tangier",
+  "lat": 35.7696302,
+  "lng": -5.8033522,
+  "fetchedAt": "2026-09-19T17:11:55.329Z",
+  "sources": [
+    "wikidata",
+    "wikipedia",
+    "osm"
+  ],
+  "pois": [
+    {
+      "titleEn": "Castle of Tarifa",
+      "titleAr": "قلعة طريفة",
+      "lat": 36.011696803,
+      "lng": -5.602677062,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 9,
+      "source": "wikidata",
+      "detailEn": "The Castle of Tarifa (Spanish: Castillo de Tarifa), also known as Castle of Guzmán el Bueno (\"Good Guzmán\", nickname of Alonso Pérez de Guzmán) or Castle of the Guzmáns (Alonso Pérez de Guzmán being the founder of the line from which the dukes of Medina Sidonia descend) is a castle in the coastal town of Tarifa in Spain."
+    },
+    {
+      "titleEn": "American Legation, Tangier",
+      "titleAr": "American Legation, Tangier",
+      "detailEn": "The Tangier American Legation (Arabic: المفوضية الأميركية في طنجة; French: Légation américaine de Tanger), officially the Tangier American Legation Institute for Moroccan Studies (TALIMS), is a building in the medina of Tangier, Morocco, that formerly housed the United States diplomatic mission to Morocco. It was the first American public property abroad and is the only U.S. National Historic Landmark in a foreign country.",
+      "lat": 35.78398,
+      "lng": -5.81068,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Kasbah Palace, Tangier",
+      "titleAr": "Kasbah Palace, Tangier",
+      "detailEn": "The Kasbah Palace, also known as Dar al-Makhzen, Sultan's Palace or Governor's Palace and formerly as the Sharifian Palace, is a historical building and museum in the Kasbah or citadel of Tangier, Morocco. Its site has long been the main seat of political power in Tangier.",
+      "lat": 35.78861111,
+      "lng": -5.81277778,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Fondation Lorin",
+      "titleAr": "Fondation Lorin",
+      "detailEn": "Fondation Lorin is an art museum located on the Rue Es-Siaghine in Tangier, Morocco. It is housed in a former synagogue, described as one of the oldest synagogues in the city.",
+      "lat": 35.78449167,
+      "lng": -5.81186389,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Grand Mosque of Tangier",
+      "titleAr": "Grand Mosque of Tangier",
+      "detailEn": "The Grand Mosque of Tangier (Arabic: مسجد طنجة الكبير) is the historic main mosque (Friday mosque) of Tangier, Morocco, located in the city's old medina. While the design of the current mosque dates from the early 19th century during the Alaouite period, the site has been occupied by a succession of religious buildings since antiquity.",
+      "lat": 35.78555556,
+      "lng": -5.80944444,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Abdelhafid Palace",
+      "titleAr": "Abdelhafid Palace",
+      "detailEn": "The Abdelhafid Palace or Moulay Hafid Palace is a historic structure at 23, rue Mohammed Ben Abedelouhab in the Hasnouna neighborhood of Tangier, Morocco. It was built in 1912–1913 as the intended main residence of former Sultan Abdelhafid following his abdication, but was never used for that purpose.",
+      "lat": 35.78557,
+      "lng": -5.82153,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Perdicaris Park",
+      "titleAr": "Perdicaris Park",
+      "detailEn": "The Perdicaris Park, also known as the Rmilat Forest and formerly as Villa Aidonia or Place of the Nightingales, is a public park covering 70 hectares in the Rmilat neighborhood of Tangier, Morocco. It is located on the northern slopes of the Jebel Kebir hill facing the Strait of Gibraltar, between the Cape Spartel reserve to its west and the Jebel Kebir Royal Palace to its east.",
+      "lat": 35.788,
+      "lng": -5.883,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Fort Aguada",
+      "titleAr": "Fort Aguada",
+      "detailEn": "Fort Aguada is a seventeenth-century Portuguese-era fort, built in 1612, along with a lighthouse, standing in Goa, India, on Sinquerim Beach, overlooking the Arabian Sea. It is an ASI protected Monument of National Importance in Goa.",
+      "lat": 15.488,
+      "lng": 73.763,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Mendoub's Residence",
+      "titleAr": "Mendoub's Residence",
+      "detailEn": "The Mendoub's Residence or Dar al-Mandub (Arabic: قصر مندوب, French: Palais du Mendoub), formerly known as the Forbes Museum of Tangier, is a cultural monument and 10-acre (40,000 m2) property located on Mohammed Tazi Street in the Marshan neighborhood of Tangier, Morocco.",
+      "lat": 35.79138611,
+      "lng": -5.82485833,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Morocco Pavilion at Epcot",
+      "titleAr": "Morocco Pavilion at Epcot",
+      "detailEn": "The Morocco Pavilion is a Moroccan-themed pavilion that is part of the World Showcase, within Epcot at Walt Disney World in Bay Lake, Florida, United States. It was the first expansion pavilion to be added to World Showcase, opening on September 7, 1984.",
+      "lat": 28.36805556,
+      "lng": -81.55166667,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Fortaleza da São Tomé",
+      "titleAr": "Fortaleza da São Tomé",
+      "detailEn": "The Fortaleza da São Tomé, also known as Cranganore Fort or Kottapuram Fort, is situated in Kodungallur of Thrissur District in Kerala, India. It was of 18 feet in thickness and was made of laterite.",
+      "lat": 10.197,
+      "lng": 76.212,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "São Sebastião Museum",
+      "titleAr": "São Sebastião Museum",
+      "detailEn": "São Sebastião Museum is a museum, housed in a 16th-century fortress in the city of São Tomé, São Tomé and Príncipe. It lies in the northeastern part of the city centre, at the southeastern end of Ana Chaves Bay.",
+      "lat": 0.34583333,
+      "lng": 6.73944444,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Alexander Graham Bell National Historic Site",
+      "titleAr": "Alexander Graham Bell National Historic Site",
+      "detailEn": "Alexander Graham Bell National Historic Site is a 10-hectare (25-acre) property in Baddeck, Cape Breton, Nova Scotia, Canada, overlooking the Bras d'Or Lakes.  The site is a unit of Parks Canada, the national park system, and includes the Alexander Graham Bell National Historic Site, which contains the largest repository of artifacts and documents from Bell's years of experimental work in Baddeck.",
+      "lat": 46.1028,
+      "lng": -60.7458,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Archaeological Museum of Tétouan",
+      "titleAr": "متحف تطوان الأثري",
+      "lat": 35.57069444,
+      "lng": -5.37069444,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 8,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Fort of Isabel II, Ceuta",
+      "titleAr": "Fort of Isabel II, Ceuta",
+      "lat": 35.892475,
+      "lng": -5.36562,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del río Guadalmedina",
+      "titleAr": "Torre del río Guadalmedina",
+      "lat": 36.03659376,
+      "lng": -5.521860331,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tour Al Qamra",
+      "titleAr": "برج القمرة",
+      "lat": 35.466277777,
+      "lng": -6.037777777,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Agattas Tower",
+      "titleAr": "برج أغطاس",
+      "lat": 35.571757161,
+      "lng": -5.374245979,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre de la Almedina",
+      "titleAr": "Torre de la Almedina",
+      "lat": 36.01195704,
+      "lng": -5.600904428,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Isabel II viewpoint",
+      "titleAr": "Isabel II viewpoint",
+      "lat": 35.892813628,
+      "lng": -5.363683104,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Baelo Claudia",
+      "titleAr": "Baelo Claudia",
+      "lat": 36.089930555,
+      "lng": -5.774611111,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 17,
+      "source": "wikidata",
+      "detailEn": "Baelo Claudia was an ancient Roman town in Hispania, located 22 kilometres (14 mi) outside of Tarifa, near the village of Bolonia, in southern Spain. Situated on the shore of the Strait of Gibraltar, the town began as a fishing village and trading hub when it was settled approximately 2,000 years ago."
+    },
+    {
+      "titleEn": "Café Hafa",
+      "titleAr": "Café Hafa",
+      "detailEn": "Café Hafa (Arabic: مقهى الحافة) is a cafe in Tangier, Morocco, located along the cliff top overlooking the Bay of Tangier. Opened in 1921, the cafe still maintains its original decor with multiple levels of terrace seating, facing the Strait of Gibraltar with Tarifa, Spain visible in the distance.",
+      "lat": 35.7915,
+      "lng": -5.8218,
+      "kind": "food",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Gran Teatro Cervantes",
+      "titleAr": "Gran Teatro Cervantes",
+      "detailEn": "Gran Teatro Cervantes is a theatre, dedicated to Miguel de Cervantes, in Tangier, Morocco. The theatre was built in 1913 by the Spanish.",
+      "lat": 35.782,
+      "lng": -5.8107,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Cape Spartel",
+      "titleAr": "Cape Spartel",
+      "detailEn": "Cape Spartel (Arabic: رأس سبارطيل; French: Cap Spartel; Spanish: Cabo Espartel) is a promontory in Morocco about 1,000 feet (300 m) above sea level at the entrance to the Strait of Gibraltar, 12 km west of Tangier. It is the northwesternmost point of the African continent.",
+      "lat": 35.80055556,
+      "lng": -5.90611111,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Beit Yehuda Synagogue",
+      "titleAr": "Beit Yehuda Synagogue",
+      "detailEn": "The Beit Yehuda Synagogue, also known as Assayag Synagogue, is a former Jewish congregation and synagogue, located in Tangier, Morocco. The synagogue was completed in 1890.",
+      "lat": 35.78550556,
+      "lng": -5.81134167,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Tangier Grand Stadium",
+      "titleAr": "Tangier Grand Stadium",
+      "detailEn": "The Tangier Grand Stadium, commonly known as Ibn Battouta Stadium (Arabic: ملعب طنجة الكبير; Tamazight: ⴰⵏⵏⴰⵔ ⴰⵎⵇⵔⴰⵏ ⵏ ⵟⴰⵏⵊⴰ), is a stadium in Tangier, Morocco. It is used mostly for football matches and big events such as ceremonies or concerts.",
+      "lat": 35.741211,
+      "lng": -5.858105,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Hotel Continental (Tangier)",
+      "titleAr": "Hotel Continental (Tangier)",
+      "detailEn": "The Hotel Continental, built in 1870, is one of the oldest hotels in Tangier, Morocco. It was founded by the Ben Dahans, an old Jewish family of Tangier.",
+      "lat": 35.7875,
+      "lng": -5.80944444,
+      "kind": "hotel",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Msoura Stone Circle",
+      "titleAr": "مزورة (المغرب)",
+      "lat": 35.404,
+      "lng": -5.944,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 9,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "St Andrew's Church, Tangier",
+      "titleAr": "St Andrew's Church, Tangier",
+      "lat": 35.78472222,
+      "lng": -5.82305556,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Faro de Camarinal",
+      "titleAr": "Faro de Camarinal",
+      "lat": 36.09014151,
+      "lng": -5.810462003,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 5,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kouass",
+      "titleAr": "أقواس",
+      "lat": 35.5315,
+      "lng": -5.995972,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Iulia Constantia Zilil",
+      "titleAr": "زليل",
+      "lat": 35.51418,
+      "lng": -5.912359,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del Fraile",
+      "titleAr": "Torre del Fraile",
+      "lat": 36.0574607,
+      "lng": -5.452761627,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tarifa Lighthouse",
+      "titleAr": "Tarifa Lighthouse",
+      "lat": 36.0011,
+      "lng": -5.609588888,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Fuerte de San Diego",
+      "titleAr": "Fuerte de San Diego",
+      "lat": 36.0583,
+      "lng": -5.4486,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Embalse del Renegado",
+      "titleAr": "Embalse del Renegado",
+      "lat": 35.896111111,
+      "lng": -5.349722222,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Embalse del Infierno",
+      "titleAr": "Embalse del Infierno",
+      "lat": 35.89,
+      "lng": -5.348888888,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Maison d'Art Contemporain Asilah",
+      "titleAr": "دار الفن المعاصر",
+      "lat": 35.53584513,
+      "lng": -6.005884147,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del Arroyo del Lobo",
+      "titleAr": "Torre del Arroyo del Lobo",
+      "lat": 36.090600382,
+      "lng": -5.454025062,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del Tajo",
+      "titleAr": "Torre del Tajo",
+      "lat": 36.17876475,
+      "lng": -5.972832634,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre de la Peña",
+      "titleAr": "Torre de la Peña",
+      "lat": 36.05698035,
+      "lng": -5.659050352,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Vigía de la Punta del Chiclón",
+      "titleAr": "Vigía de la Punta del Chiclón",
+      "lat": 35.900188,
+      "lng": -5.298516,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Castillo",
+      "titleAr": "Castillo",
+      "lat": 36.187150998,
+      "lng": -5.923017436,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Laguna de la Playa de Los Lances",
+      "titleAr": "Laguna de la Playa de Los Lances",
+      "lat": 36.033949073,
+      "lng": -5.62528558,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Salinas de Barbate",
+      "titleAr": "Salinas de Barbate",
+      "lat": 36.190957925,
+      "lng": -5.910068443,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tanjazz",
+      "titleAr": "Tanjazz",
+      "lat": 35.76666667,
+      "lng": -5.8,
+      "kind": "attraction",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Ancient Cotta",
+      "titleAr": "Ancient Cotta",
+      "lat": 35.755072931,
+      "lng": -5.935953046,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Ad Mercuri (Samian Ware Discovery Site)",
+      "titleAr": "Ad Mercuri (Samian Ware Discovery Site)",
+      "lat": 35.55,
+      "lng": -5.92,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre de Bulhões",
+      "titleAr": "Torre de Bulhões",
+      "lat": 35.908363517,
+      "lng": -5.389775292,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Alcácer o Velho",
+      "titleAr": "Alcácer o Velho",
+      "lat": 35.849829706,
+      "lng": -5.542955222,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Jorf el-Hamra (Samian Ware Discovery Site)",
+      "titleAr": "Jorf el-Hamra (Samian Ware Discovery Site)",
+      "lat": 35.75,
+      "lng": -5.87,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del Rayo",
+      "titleAr": "Torre del Rayo",
+      "lat": 36.12114716,
+      "lng": -5.647050326,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Ponte Quebrada",
+      "titleAr": "Ponte Quebrada",
+      "lat": 35.8907548,
+      "lng": -5.325739893,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre del Cabo de la Plata",
+      "titleAr": "Torre del Cabo de la Plata",
+      "lat": 36.102882,
+      "lng": -5.824473,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Aljazira",
+      "titleAr": "Aljazira",
+      "lat": 35.890016286,
+      "lng": -5.331768969,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tahadart (Samian Ware Discovery Site)",
+      "titleAr": "Tahadart (Samian Ware Discovery Site)",
+      "lat": 35.58,
+      "lng": -5.97,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Torre de Valdevaqueros",
+      "titleAr": "Torre de Valdevaqueros",
+      "lat": 36.067916642,
+      "lng": -5.681319635,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Mohammed V Mosque, Tangier",
+      "titleAr": "Mohammed V Mosque, Tangier",
+      "detailEn": "The Mohammed V Mosque (Arabic: مسجد محمد الخامس) is a large mosque in Tangier, Morocco, completed in 1983.\nIt was erected on the initiative of then Crown Prince Mohammed of Morocco, now King Mohammed VI, and named after his grandfather Mohammed V who had given a historic address in Tangier in 1947.",
+      "lat": 35.781,
+      "lng": -5.8197,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "French Church of Tangier",
+      "titleAr": "French Church of Tangier",
+      "detailEn": "The French Church of Tangier, formally the Church of Our Lady of the Assumption and of Saint Joan of Arc (French: Église Notre-Dame-de-l'Assomption et Sainte-Jeanne-d'Arc), also known as Sainte-Marie-Sainte-Jeanne-d'Arc, shorthand Sainte-Marie-Jeanne, or the Église des Sables (lit. 'Sands Church'), is a parish church in Tangier, Morocco. It was built in 1949–1953 for the French community in the Tangier International Zone.",
+      "lat": 35.7747,
+      "lng": -5.8071,
+      "kind": "shopping",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Lalla Abla Mosque",
+      "titleAr": "Lalla Abla Mosque",
+      "detailEn": "The Lalla Abla Mosque (Arabic: مسجد للا عبلة), also known as the Port Mosque, is a mosque in Tangier, Morocco, completed in 2017 and dedicated by King Mohammed VI in July 2018. It replaced a smaller mosque at a nearby location, also known as the Port Mosque.",
+      "lat": 35.78946,
+      "lng": -5.807,
+      "kind": "shopping",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    }
+  ]
+}

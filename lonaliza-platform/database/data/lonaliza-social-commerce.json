@@ -1,0 +1,465 @@
+{
+  "threads": [
+    {
+      "id": "th_mubkvjuq_9uzcu9",
+      "userId": "y1n205vw0elucff",
+      "peerUserId": "usr_buddy_08",
+      "participantIds": [
+        "y1n205vw0elucff",
+        "usr_buddy_08"
+      ],
+      "type": "buddy",
+      "title": "هدى العلي (Huda Al-Ali)",
+      "peerName": "هدى العلي (Huda Al-Ali)",
+      "peerAvatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+      "peerNostrPubkey": "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a",
+      "unread": 0,
+      "unreadBy": {
+        "usr_buddy_08": 2,
+        "y1n205vw0elucff": 0
+      },
+      "lastPreview": "يسبيليس",
+      "updatedAt": "2026-09-21T18:28:08.776Z",
+      "messages": [
+        {
+          "id": "msg_mubkvncm_cibi7s",
+          "threadId": "th_mubkvjuq_9uzcu9",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "شسيسبل",
+          "encrypted": false,
+          "preview": "شسيسبل",
+          "createdAt": "2026-09-21T18:27:57.046Z"
+        },
+        {
+          "id": "msg_mubkvweg_9usr71",
+          "threadId": "th_mubkvjuq_9uzcu9",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "يسبيليس",
+          "encrypted": false,
+          "preview": "يسبيليس",
+          "createdAt": "2026-09-21T18:28:08.776Z"
+        }
+      ]
+    },
+    {
+      "id": "th_mubbce7v_xzy3tl",
+      "userId": "y1n205vw0elucff",
+      "peerUserId": "usr_buddy_05",
+      "participantIds": [
+        "y1n205vw0elucff",
+        "usr_buddy_05"
+      ],
+      "type": "buddy",
+      "title": "Emre Can Öztürk",
+      "peerName": "Emre Can Öztürk",
+      "peerAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300",
+      "peerNostrPubkey": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+      "unread": 0,
+      "unreadBy": {
+        "usr_buddy_05": 3,
+        "y1n205vw0elucff": 0
+      },
+      "lastPreview": "سيببسلسي",
+      "updatedAt": "2026-09-21T18:28:19.354Z",
+      "messages": [
+        {
+          "id": "msg_mubf2gl6_mf29rq",
+          "threadId": "th_mubbce7v_xzy3tl",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "بيليلب",
+          "encrypted": false,
+          "preview": "بيليلب",
+          "createdAt": "2026-09-21T15:45:17.178Z"
+        },
+        {
+          "id": "msg_mubkvr29_j82z2j",
+          "threadId": "th_mubbce7v_xzy3tl",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "يبسيلؤ",
+          "encrypted": false,
+          "preview": "يبسيلؤ",
+          "createdAt": "2026-09-21T18:28:01.857Z"
+        },
+        {
+          "id": "msg_mubkw4ka_3og2jh",
+          "threadId": "th_mubbce7v_xzy3tl",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "سيببسلسي",
+          "encrypted": false,
+          "preview": "سيببسلسي",
+          "createdAt": "2026-09-21T18:28:19.354Z"
+        }
+      ]
+    },
+    {
+      "id": "th_mubbc901_6egnon",
+      "userId": "y1n205vw0elucff",
+      "peerUserId": "usr_buddy_06",
+      "participantIds": [
+        "y1n205vw0elucff",
+        "usr_buddy_06"
+      ],
+      "type": "buddy",
+      "title": "ليلى بناني (Leila Bennani)",
+      "peerName": "ليلى بناني (Leila Bennani)",
+      "peerAvatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300",
+      "peerNostrPubkey": "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "unread": 0,
+      "unreadBy": {
+        "usr_buddy_06": 3,
+        "y1n205vw0elucff": 0
+      },
+      "lastPreview": "سيبليبايبا",
+      "updatedAt": "2026-09-21T18:28:37.073Z",
+      "messages": [
+        {
+          "id": "msg_mubf26we_9p0bgu",
+          "threadId": "th_mubbc901_6egnon",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "بيليليل",
+          "encrypted": false,
+          "preview": "بيليليل",
+          "createdAt": "2026-09-21T15:45:04.622Z"
+        },
+        {
+          "id": "msg_mubf2cve_xrj7c6",
+          "threadId": "th_mubbc901_6egnon",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "يبلبلبلب",
+          "encrypted": false,
+          "preview": "يبلبلبلب",
+          "createdAt": "2026-09-21T15:45:12.362Z"
+        },
+        {
+          "id": "msg_mubkwi8h_fd2swh",
+          "threadId": "th_mubbc901_6egnon",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "سيبليبايبا",
+          "encrypted": false,
+          "preview": "سيبليبايبا",
+          "createdAt": "2026-09-21T18:28:37.073Z"
+        }
+      ]
+    },
+    {
+      "id": "th_mu05ffm9_4kuare",
+      "userId": "y1n205vw0elucff",
+      "peerUserId": "usr_buddy_01",
+      "participantIds": [
+        "y1n205vw0elucff",
+        "usr_buddy_01"
+      ],
+      "type": "buddy",
+      "title": "سارة المنصوري",
+      "peerName": "سارة المنصوري",
+      "peerAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200",
+      "peerNostrPubkey": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unread": 0,
+      "updatedAt": "2026-09-21T18:28:14.954Z",
+      "lastPreview": "لبيليبليب",
+      "messages": [
+        {
+          "id": "msg_sample_01",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "مرحباً سارة، رأيت أنكِ متجهة إلى باريس من إسطنبول؟",
+          "createdAt": "2026-09-21T13:20:00.000Z"
+        },
+        {
+          "id": "msg_sample_02",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "peer",
+          "fromUserId": "usr_buddy_01",
+          "text": "أهلاً بك! أنا مسافرة إلى باريس، يسعدني التنسيق معك لمشاركة الجولات!",
+          "createdAt": "2026-09-21T13:30:00.000Z"
+        },
+        {
+          "id": "msg_mubbdiex_4ooksq",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "Amd9uzfnWYB5/G05lKOEW/Hwdv4qi/KnBZWmJU+SayuGe+dy2qvkJtjT1pJcF+mQvekWPdNybXyptABs0yJuxCIFOOoRk4pFpIb8xsT4aOxkjl4Z8UYKeZniGAL9M+gvXk/w",
+          "encrypted": true,
+          "cipherVersion": "nip44-v2",
+          "preview": "hi",
+          "giftWrapId": "2b9aacb0a97c6d792d65d031cdb4b6f982890b364f58da12337a6445c1d15ccc",
+          "createdAt": "2026-09-21T14:01:54.297Z"
+        },
+        {
+          "id": "msg_mubbdry7_el521z",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "voice",
+          "encrypted": false,
+          "cipherVersion": "nip44-v2",
+          "preview": "تسجيل صوتي",
+          "media": {
+            "kind": "voice",
+            "url": "https://blossom.primal.net/e43b6beed6b20612b3f9e3bd3e1c75ee5696bf78e045c23216b5b6db8259b7a7.webm",
+            "mime": "audio/webm;codecs=opus",
+            "durationMs": 6073,
+            "size": 52460,
+            "wrappedKey": ""
+          },
+          "createdAt": "2026-09-21T14:02:06.655Z"
+        },
+        {
+          "id": "msg_mubeykfh_uvi7az",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "Alw2njuI8AUCGpLGjhNPUfKYKzbsFu5hwXPg9pQ/TuJ3GtK+gwB2Gh1Fo7/49hJ29zwTvI4Nk2W8Vg+WUMWnZAAr+XdpwRNtq2AIHr4016DL7xWYVsqyds9eGoXvGn0RPvvRqRSLEACHTwtgLpTlqNEtEe7TzgLsLthZb/RRN8xU5eE=",
+          "encrypted": true,
+          "cipherVersion": "nip44-v2",
+          "preview": "هااااااااااااااااي",
+          "giftWrapId": "31cbafa7b6fbe6c2572ab4e0be3acb910feb4fa9fab712620657f660dbad3f66",
+          "createdAt": "2026-09-21T15:42:15.533Z"
+        },
+        {
+          "id": "msg_mubezc0c_4utkou",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "voice",
+          "encrypted": false,
+          "preview": "تسجيل صوتي",
+          "media": {
+            "kind": "voice",
+            "url": "https://blossom.primal.net/bbc3cd759c97e93c6df65f57710876fa6f8ffafb58156fbe037f672c5882ba7a.webm",
+            "mime": "audio/webm;codecs=opus",
+            "durationMs": 23095,
+            "size": 138434,
+            "wrappedKey": ""
+          },
+          "createdAt": "2026-09-21T15:42:51.276Z"
+        },
+        {
+          "id": "msg_mubf23c8_lpvomq",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "Aq7xjiUodnURC2VRQ2j5JQZ6MkR3Wd5zSBW4K9+L9tje63y5wSIZY61AW4vRpZ6cyUuWDBcvJ1+gFYG+e8Q3U5WNINdmobtMOk0+1M3vT1DK39Dee9xhxfG+q++9kJvtFknV",
+          "encrypted": true,
+          "cipherVersion": "nip44-v2",
+          "preview": "باالا",
+          "giftWrapId": "af73bf8624a54203966256965a025a6567ce5f945c8662f776063a672094e94d",
+          "createdAt": "2026-09-21T15:45:00.008Z"
+        },
+        {
+          "id": "msg_mubkw162_ryirkz",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "ApC29VsYSWpugtpCj+DzJIH/I1UfBC73spXlgIRS5BK4vL9rzatdNLUmiXK0bsXR6muhzs+fqwsXVt1vAe9X2tTrO9D3oo+YRALgkBvSNWxb62fsoP4mQY/UafmuGXJrEPAG",
+          "encrypted": true,
+          "cipherVersion": "nip44-v2",
+          "preview": "لبيليبليب",
+          "giftWrapId": "038e0e9c587d3f4ae1e8b4e3679ce0b244df2bd68114babc39bb272fb8992a1a",
+          "createdAt": "2026-09-21T18:28:14.954Z"
+        }
+      ],
+      "unreadBy": {
+        "y1n205vw0elucff": 0,
+        "usr_buddy_01": 6
+      }
+    }
+  ],
+  "buddies": [
+    {
+      "id": "buddy_muba5ie0_in8u1n",
+      "userId": "y1n205vw0elucff",
+      "name": "ferdos elhayat",
+      "city": "إسطنبول",
+      "destination": "Paris",
+      "dateFrom": "2026-09-30",
+      "dateTo": "2026-10-08",
+      "language": "العربية",
+      "bio": "مسافر مهتم باكتشاف معالم اسطنبول ومتاحفها وجولاتها الفنية وتشارك تكاليف الجولات.ابحث عن رفقاء سفر لتقاسم مصاريف الاقامة والجولات بالسيارة الخاصة",
+      "avatarUrl": "/api/branding/file?name=media/mtqqr7t8-gemini-generated-image-yshflyshflyshfly.jpg",
+      "createdAt": "2026-09-21T13:27:41.400Z",
+      "nostrPubkey": "9858fe57f676993b9350243b101cab5de257d752f51914c4977d1179bba8fe98"
+    },
+    {
+      "id": "buddy_seed_01",
+      "userId": "usr_buddy_01",
+      "name": "سارة المنصوري (Sarah M.)",
+      "city": "Istanbul",
+      "destination": "Paris",
+      "dateFrom": "2026-10-05",
+      "dateTo": "2026-10-18",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300",
+      "bio": "مصورة فوتوغرافية ومحبة للفنون والمقاهي التاريخية. أبحث عن رفيقة سفر لاستكشاف شوارع باريس ومتاحف اللوفر وأورسي وتشارك تكاليف الجولات.",
+      "nostrPubkey": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "createdAt": "2026-09-18T10:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_02",
+      "userId": "usr_buddy_02",
+      "name": "عمر الشريف (Omar El-Sherif)",
+      "city": "Istanbul",
+      "destination": "Paris",
+      "dateFrom": "2026-10-10",
+      "dateTo": "2026-10-22",
+      "language": "العربية، Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300",
+      "bio": "مهندس معماري مقيم بإسطنبول ومسافر إلى باريس لحضور معارض معمارية واستكشاف معالم فرنسا وقصور فرساي. يسعدني مرافقة مهتمين بالاستكشاف الثقافي.",
+      "nostrPubkey": "8b5a2f3a4b6c8d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "createdAt": "2026-09-18T11:30:00.000Z"
+    },
+    {
+      "id": "buddy_seed_03",
+      "userId": "usr_buddy_03",
+      "name": "Zeynep Demir",
+      "city": "Istanbul",
+      "destination": "London",
+      "dateFrom": "2026-11-01",
+      "dateTo": "2026-11-12",
+      "language": "Türkçe, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
+      "bio": "İstanbul'dan Londra'ya seyahat planlıyorum. Müzeleri gezmek, sokak lezzetlerini tatmak ve şehri yürüyerek keşfetmek isteyen yol arkadaşları arıyorum.",
+      "nostrPubkey": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+      "createdAt": "2026-09-18T14:15:00.000Z"
+    },
+    {
+      "id": "buddy_seed_04",
+      "userId": "usr_buddy_04",
+      "name": "أحمد الراجحي (Ahmed Al-Rajhi)",
+      "city": "Riyadh",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-15",
+      "dateTo": "2026-10-28",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
+      "bio": "مسافر من الرياض إلى إسطنبول للاستجمام وزيارة البوسفور وصبنجة وبورصة، أبحث عن رفاق سفر لتنظيم رحلات يومية وتأجير سيارة VIP خاصة.",
+      "nostrPubkey": "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c",
+      "createdAt": "2026-09-19T08:45:00.000Z"
+    },
+    {
+      "id": "buddy_seed_05",
+      "userId": "usr_buddy_05",
+      "name": "Emre Can Öztürk",
+      "city": "Istanbul",
+      "destination": "Dubai",
+      "dateFrom": "2026-11-15",
+      "dateTo": "2026-11-25",
+      "language": "Türkçe, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300",
+      "bio": "Dijital göçebe ve teknoloji meraklısı. Dubai GITEX fuarı ve çöl safarisi için yol arkadaşı arıyorum.",
+      "nostrPubkey": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+      "createdAt": "2026-09-19T09:20:00.000Z"
+    },
+    {
+      "id": "buddy_seed_06",
+      "userId": "usr_buddy_06",
+      "name": "ليلى بناني (Leila Bennani)",
+      "city": "Casablanca",
+      "destination": "Paris",
+      "dateFrom": "2026-10-20",
+      "dateTo": "2026-11-02",
+      "language": "العربية، Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300",
+      "bio": "رحالة شغوفة بالتسوق وزيارة معارض الأزياء والآثار في باريس، أرحب برفيقة سفر لمشاركتي الجولات والتنقلات ومطاعم باريس الراقية.",
+      "nostrPubkey": "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "createdAt": "2026-09-19T10:10:00.000Z"
+    },
+    {
+      "id": "buddy_seed_07",
+      "userId": "usr_buddy_07",
+      "name": "Alexandre Laurent",
+      "city": "Paris",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-18",
+      "dateTo": "2026-10-30",
+      "language": "Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300",
+      "bio": "Photographe voyageur passionné d'histoire byzantine et ottomane. Je viens à Istanbul pour 12 jours et cherche des compagnons pour explorer Sainte-Sophie et le Bosphore.",
+      "nostrPubkey": "5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f",
+      "createdAt": "2026-09-19T11:40:00.000Z"
+    },
+    {
+      "id": "buddy_seed_08",
+      "userId": "usr_buddy_08",
+      "name": "هدى العلي (Huda Al-Ali)",
+      "city": "Dubai",
+      "destination": "Antalya",
+      "dateFrom": "2026-10-12",
+      "dateTo": "2026-10-24",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+      "bio": "رحلة استجمام ساحلية إلى منتجعات أنطاليا وشلالات دودين، يسعدني التعرف على عائلات ومسافرات للاستمتاع بالأنشطة البحرية والرحلات المشتركة.",
+      "nostrPubkey": "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a",
+      "createdAt": "2026-09-19T13:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_09",
+      "userId": "usr_buddy_09",
+      "name": "كريم حسني (Karim Hosni)",
+      "city": "Cairo",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-25",
+      "dateTo": "2026-11-05",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
+      "bio": "مسافر مصري مهتم بالتاريخ والجولات البحرية والتسوق في البازار الكبير والسوق المصري، أبحث عن رفاق سفر شبابيين لخوض تجارب ممتعة.",
+      "nostrPubkey": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+      "createdAt": "2026-09-19T14:30:00.000Z"
+    },
+    {
+      "id": "buddy_seed_10",
+      "userId": "usr_buddy_10",
+      "name": "فاطمة الزهراء (Fatima Zahra)",
+      "city": "Istanbul",
+      "destination": "Rome",
+      "dateFrom": "2026-11-05",
+      "dateTo": "2026-11-15",
+      "language": "العربية، Italiano, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300",
+      "bio": "طالبة دراسات عليا بإسطنبول، أنظم رحلة لاستكشاف روما والفاتيكان وفلورنسا وتذوق الأطباق الإيطالية الأصيلة. أرحب برفيقة سفر لمشاركتي المغامرة.",
+      "nostrPubkey": "8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+      "createdAt": "2026-09-19T15:20:00.000Z"
+    },
+    {
+      "id": "buddy_seed_11",
+      "userId": "usr_buddy_11",
+      "name": "سلطان العتيبي (Sultan Al-Otaibi)",
+      "city": "Riyadh",
+      "destination": "Trabzon",
+      "dateFrom": "2026-10-08",
+      "dateTo": "2026-10-20",
+      "language": "العربية",
+      "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300",
+      "bio": "عاشق للطبيعة والجبال والشلالات في الشمال التركي (أوزنجول، آيدر، حيدر نبي). أبحث عن رفقاء سفر لاستئجار سيارة رباعية الدفع واستكشاف المرتفعات.",
+      "nostrPubkey": "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d",
+      "createdAt": "2026-09-19T16:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_12",
+      "userId": "usr_buddy_12",
+      "name": "مريم الكعبي (Mariam Al-Kaabi)",
+      "city": "Doha",
+      "destination": "Paris",
+      "dateFrom": "2026-10-14",
+      "dateTo": "2026-10-26",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+      "bio": "رحلة تسوق وسياحة عائلية إلى باريس وديزني لاند باريس، يسعدني التنسيق ومشاركة التوصيات والجولات الخاصة.",
+      "nostrPubkey": "0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e",
+      "createdAt": "2026-09-19T17:15:00.000Z"
+    }
+  ],
+  "buddyRequests": [],
+  "gifts": [],
+  "recent": [],
+  "cards": []
+}

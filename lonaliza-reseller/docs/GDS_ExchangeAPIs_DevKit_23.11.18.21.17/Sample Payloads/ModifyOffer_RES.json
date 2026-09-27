@@ -1,0 +1,14 @@
+{
+    "OfferListResponse": {
+        "@type": "OfferListResponse",
+        "Offer": [
+            {
+                "@type": "Offer",
+                "id": "o0.0",
+                "Identifier": {
+                    "value": "be5dd30f-0623-4a90-8ac0-fea8c3986e53"
+                }
+            }
+        ]
+    }
+}

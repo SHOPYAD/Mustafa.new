@@ -1,0 +1,39 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-08-12",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "KKN"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "TOS"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "keepToBrandInd": false
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "c20a9be5-8159-42d5-afea-cd60b0ae6430"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

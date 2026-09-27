@@ -1,0 +1,53 @@
+{
+  "booking": {
+    "provider": "booking",
+    "monthKey": "2026-09",
+    "liveCalls": 0,
+    "success": 0,
+    "failed": 0,
+    "quota429": 0,
+    "headerLimit": null,
+    "headerRemaining": null,
+    "headerReset": null,
+    "headerSeen": false,
+    "lastCallAt": null,
+    "lastCallPath": "",
+    "lastHttpStatus": null,
+    "last429At": null,
+    "last429Path": ""
+  },
+  "travel_advisor": {
+    "provider": "travel_advisor",
+    "monthKey": "2026-09",
+    "liveCalls": 0,
+    "success": 0,
+    "failed": 0,
+    "quota429": 0,
+    "headerLimit": null,
+    "headerRemaining": null,
+    "headerReset": null,
+    "headerSeen": false,
+    "lastCallAt": null,
+    "lastCallPath": "",
+    "lastHttpStatus": null,
+    "last429At": null,
+    "last429Path": ""
+  },
+  "sky_scrapper": {
+    "provider": "sky_scrapper",
+    "monthKey": "2026-09",
+    "liveCalls": 131,
+    "success": 0,
+    "failed": 131,
+    "quota429": 131,
+    "headerLimit": 20,
+    "headerRemaining": 0,
+    "headerReset": "1381304",
+    "headerSeen": true,
+    "lastCallAt": "2026-09-15T22:30:26.084Z",
+    "lastCallPath": "/api/v1/flights/searchAirport",
+    "lastHttpStatus": 429,
+    "last429At": "2026-09-15T22:30:26.084Z",
+    "last429Path": "/api/v1/flights/searchAirport"
+  }
+}

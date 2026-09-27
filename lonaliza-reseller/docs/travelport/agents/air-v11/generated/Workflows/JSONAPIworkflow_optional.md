@@ -1,0 +1,11 @@
+# JSON&#160;APIs Full Workflow with Optional Steps
+
+## Source
+
+- **Local HTML:** `docs/travelport/travelport api guide/travelport-airapi json/support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/JSONAPIworkflow_optional.html` (UTF-8 mirror)
+- **Official base:** `https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/` + same relative path
+
+## Plaintext extract (lossy)
+
+JSON&#160;APIs Full Workflow with Optional Steps Skip To Main Content Account Settings Logout placeholder Account Settings Logout Filter: All Files Submit Search Filter: All Files Submit Search JSON &#160;APIs Full Workflow with Optional Steps The following diagram shows all required API&#160;requests in the JSON &#160;API workflow plus several optional steps. Each box in the diagram represents one API call in the workflow. Some of these steps can take place at other points in the workflow; see these guides for support details: See All Book and Ticketing Workflows for all booking options. Fare Rules can be requested after Search, after Price, or for an existing reservation. Seats and ancillaries can be added either during booking or ticketing, or in a separate workbench session, per the Seats and Ancillaries guides. Comments and special service requests can be added either in the initial booking flow or in a post-commit session. Form of payment for GDS can be added during either initial booking or ticketing. Form of payment for NDC can be added at ticketing. Related Content: JSON APIs Required Full Workflow , JSON Air APIs Guide , Air Search Guide , Booking Guide , Seats Guide , Ticketing Guide Note that the above Air APIs workflow uses reference payload requests, which send identifiers to select an offer from previous&#160;API responses. Optionally, you can send the AirPrice full payload request and omit the Search request, or send an Add Offer full payload request and omit the Search and AirPrice requests. This allows you to source your flights outside the JSON APIs and skip these steps of the JSON workflow. Paid ancillaries such as seats or baggage require a separate payment, which issues an EMD. This payment can be added during booking or later. If payment is sent for both the ancillary and the offer, both an EMD and ticket/s are issued. Or, you can send payment for only the ancillary and issue only the EMD at commit.
+

@@ -1,0 +1,31 @@
+{
+  "host": "booking-com15.p.rapidapi.com",
+  "subscribeUrl": "https://rapidapi.com/DataCrawler/api/booking-com15",
+  "lastError": null,
+  "lastErrorCode": null,
+  "lastHotelName": "فندق جوريون إسطنبول",
+  "lastBookingHotelId": "1040744",
+  "lastRoomCount": 7,
+  "lastSample": [
+    {
+      "name": "غرفة كمفورت توأم",
+      "photo": "https://cf.bstatic.com/xdata/images/hotel/square1024/51718230.jpg?k=7f2688b2a815287a4a1b79c972f337a8dffecf222411a2052542135f236c574e&o="
+    },
+    {
+      "name": "غرفة كمفورت مزدوجة",
+      "photo": "https://cf.bstatic.com/xdata/images/hotel/square1024/51706353.jpg?k=014797542e43d53dcc2ce0c7e78e7c7eb48a8f5cc0675fb242c0bffd7351d2e9&o="
+    },
+    {
+      "name": "غرفة زاوية تنفيذية مع سرير أريكة",
+      "photo": "https://cf.bstatic.com/xdata/images/hotel/square1024/564209693.jpg?k=f958efe7dca9071528247cb7e580b83c3b097a0c3954089013b60cd64cb1d7fd&o="
+    },
+    {
+      "name": "Executive Corner Room with Bath",
+      "photo": "https://cf.bstatic.com/xdata/images/hotel/square1024/564204557.jpg?k=e3e1bfbda28067ed8d12a436899288019a19cfb7a5492cd24ac3aae3b0bf29e6&o="
+    }
+  ],
+  "lastHttpStatus": 204,
+  "lastPath": "/api/v1/hotels/getRoomListWithAvailability",
+  "lastBodySnippet": "endpoint-disabled",
+  "updatedAt": "2026-09-11T13:46:27.168Z"
+}

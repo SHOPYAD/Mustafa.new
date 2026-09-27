@@ -1,0 +1,10 @@
+{
+  "state": "succeeded",
+  "stage": "completed",
+  "progress": 100,
+  "artifact": "/www/wwwroot/lonaliza.com/Lonalizamobilapp/build/app/outputs/flutter-apk/app-lonaliza-release.apk",
+  "iosArtifact": "/www/wwwroot/lonaliza.com/Lonalizamobilapp/build/ios-export-bundle.zip",
+  "apkSize": 21375208,
+  "startedAt": "2026-09-15T13:32:21.088Z",
+  "finishedAt": "2026-09-15T13:34:37.110Z"
+}

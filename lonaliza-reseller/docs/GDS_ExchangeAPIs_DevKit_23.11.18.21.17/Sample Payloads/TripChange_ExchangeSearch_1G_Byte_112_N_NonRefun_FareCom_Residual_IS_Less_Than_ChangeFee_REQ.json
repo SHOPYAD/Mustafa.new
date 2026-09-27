@@ -1,0 +1,39 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-11-15",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "BUF"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "EWR"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "keepToBrandInd": false
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "4583214f-ee9b-4a87-9ccd-6e6dab82ceda"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

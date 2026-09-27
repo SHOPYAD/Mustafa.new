@@ -1,0 +1,42 @@
+{
+    "Payment": {
+        "id": "payment_2",
+        "Identifier": {
+            "authority": "Travelport",
+            "value": "A0656EFF-FAF4-456F-B061-0161008D6A5E"
+        },
+        "Taxes": {
+            "@type": "TaxesDetail",
+            "Tax": [
+                {
+                    "taxCode": "CZ",
+                    "value": -2.2
+                }
+            ]
+        },
+        "FormOfPaymentIdentifier": {
+            "id": "formOfPayment_2",
+            "FormOfPaymentRef": "formOfPayment_2",
+            "Identifier": {
+                "authority": "Travelport",
+                "value": "a26164ec-02b8-41ef-af61-a837a76d5adb"
+            }
+        },
+        "OfferIdentifier": [
+            {
+                "id": "offer_1",
+                "offerRef": "offer_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "58100d86-b984-432b-82eb-c7286c061193"
+                }
+            }
+        ],
+        "TravelerIdentifierRef": [
+            {
+                "passengerTypeCode": "ADT",
+                "id": "travelerRefId_1"
+            }
+        ]
+    }
+}

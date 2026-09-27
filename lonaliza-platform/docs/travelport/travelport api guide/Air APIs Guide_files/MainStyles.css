@@ -1,0 +1,1453 @@
+/*<meta />*/
+
+@import url('prism.css');
+
+@namespace MadCap url(http://www.madcapsoftware.com/Schemas/MadCap.xsd);
+
+/*==Topic General Styles==*/
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+table,
+li
+{
+	font-family: Arial, sans-serif;
+	font-weight: 400;
+}
+
+:root
+{
+	--Brand: #4E6659;
+	/* olive */
+	--TPBlack: #0A121A;
+	--TPBlack700: #3F464C;
+	--TPBlack600: #5D6268;
+	--TPBlack500: #7B7F84;
+	--TPBlack300: #B7B9BB;
+	--TPBlack100: #E7E7E8;
+	--TPBlack75: #f2f2f3;
+	--TPBlack50: #F9F9F9;
+	--Sand: #F7E4CB;
+	--Sand50: #FDFAF5;
+	--Sand100: #FBF1E4;
+	--Sand300: #E1CEB6;
+	--Sand400: #C7B49E;
+	--brandSand40: #FCF4EA;
+	--White: #ffffff;
+	--promoColor-90: #FF5E6F;
+	/* Coral */
+	--promoColor-10: #fff0f1;
+	--errorColor100: #A30E0E;
+	--Black: #000000;
+	--decorativeB700: #21614F;
+	--link: #296BBD;
+	--linkHover: #22589B;
+	--primary700: #3F464C;
+}
+
+body
+{
+	font-style: normal;
+	font-size: 11pt;
+	margin: 0px;
+}
+
+h1
+{
+	padding-bottom: 9px;
+	padding-top: 10px;
+	margin: 0px 0px;
+	font-weight: 400;
+	font-size: 40px;
+	border: none;
+	color: var(--TPBlack);
+	line-height: 50px;
+	font-family: Impact, Arial, sans-serif;
+	text-transform: uppercase;
+}
+
+h2
+{
+	font-weight: bold;
+	margin-top: 25px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	mc-heading-level: 2;
+	font-size: 28px;
+	line-height: 40px;
+	color: var(--TPBlack);
+}
+
+h3
+{
+	margin-top: 15px;
+	margin-bottom: 0px;
+	mc-heading-level: 3;
+	font-weight: bold;
+	font-size: 22px;
+	color: var(--TPBlack);
+	line-height: 33px;
+}
+
+h4
+{
+	margin-top: 20pt;
+	margin-bottom: 3pt;
+	mc-heading-level: 4;
+	font-weight: bold;
+	font-size: 18px;
+	color: var(--TPBlack);
+	line-height: 26px;
+}
+
+h5	/* not updated 02Jul2021 */
+{
+	margin-top: 12px;
+	margin-bottom: 0pt;
+	mc-heading-level: 5;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+	color: var(--TPBlack);
+}
+
+h6	/* not updated 02Jul2021 */
+{
+	color: var(--TPBlack);
+	font-weight: bold;
+	font-style: italic;
+	margin-bottom: 0.6em;
+	font-size: 14px;
+}
+
+p
+{
+	font-style: normal;
+	font-size: 11pt;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	line-height: 19px;
+}
+
+p.table-text
+{
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+/* APIRef styles used in API Reference pages */
+
+p.APIRefHead
+{
+	text-transform: uppercase;
+	padding-bottom: 4px;
+	padding-top: 12px;
+	color: var(--TPBlack);
+	font-size: 14pt;
+	font-weight: bold;
+	font-family: Roboto, Arial;
+}
+
+p.APIRefSubHead
+{
+	padding-bottom: 4px;
+	padding-top: 10px;
+	color: var(--TPBlack600);
+	font-size: 10pt;
+	text-transform: uppercase;
+	font-family: 'Arial Black', Arial;
+}
+
+span.APIPost
+{
+	color: var(--decorativeB700);
+	font-weight: bold;
+	text-transform: uppercase;
+	background: #EFF4F1;
+	width: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px #eff4f1;
+	border-radius: 4px;
+}
+
+span.APIGet
+{
+	color: #4169e1;
+	font-weight: bold;
+	text-transform: uppercase;
+	background: #EEF6FE;
+	width: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px #EEF6FE;
+	border-radius: 4px;
+}
+
+span.APIDel
+{
+	color: #BE2020;
+	font-weight: bold;
+	text-transform: uppercase;
+	background: #F8E7E7;
+	width: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px #F8E7E7;
+	border-radius: 4px;
+}
+
+span.APIPut
+{
+	color: #F39200;
+	font-weight: bold;
+	text-transform: uppercase;
+	background: #FCE8C9;
+	width: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid 1px #FCE8C9;
+	border-radius: 4px;
+}
+
+/* Other styles */
+
+.bodytext
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* .UpdateModel
+{
+	mc-conditions: 'JSONAPI.UpdateModel';
+	background-color: #c0c0c0;
+} */
+
+/*( [MadCap\:conditions*="JSONAPIs.UpdateModel"] 
+{ 
+    background-color: #C0C0C0; 
+} */
+
+.internal
+{
+	mc-conditions: 'Default.Internal';
+	color: #5E2751;
+	background-color: #eef8fc;
+}
+
+.Important
+{
+	color: var(--errorColor100);
+	font-weight: bold;
+}
+
+.Brand4
+{
+	color: var(--promoColor-90);
+}
+
+span.Brand3
+{
+	color: var(--Brand);
+}
+
+span.Note
+{
+	font-weight: bold;
+	color: var(--TPBlack);
+}
+
+p.Question
+{
+	margin-bottom: 0px;
+	margin-top: 12px;
+	font-weight: bold;
+	color: var(--primary700);
+}
+
+div.Answer
+{
+	margin: 4px 0px 4px 15px;
+	background-color: #fefbf8;
+	padding-left: 10px;
+	width: 90%;
+}
+
+/*==Mad Cap proxy/editor assigned styles==*/
+
+img	/*Setting max-width: 100%; property makes images always fit the width of the container*/
+{
+	max-width: 100%;
+}
+
+img.thumbnail
+{
+	mc-thumbnail: popup;
+}
+
+table
+{
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+}
+
+MadCap|breadcrumbsProxy
+{
+	border-bottom: none;
+	font-size: .7em;
+	font-style: italic;
+	mc-breadcrumbs-prefix: 'You are here: ';
+	margin-top: 5px;
+	padding-bottom: 0px;
+	margin-bottom: 5px;
+}
+
+/* Links */
+
+a
+{
+	color: var(--link);
+}
+
+a:link
+{
+	color: var(--link);
+}
+
+a:hover
+{
+	color: var(--linkHover);
+}
+
+nav.top > a:hover
+{
+	color: var(--linkHover) !important;
+}
+
+nav.inTopic > a:hover
+{
+	color: var(--linkHover) !important;
+}
+
+/*== Master Page top TOC Links -- archived no longer used 
+
+a.logo
+{
+	color: var(--Sand);
+	font-size: 12pt;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	text-decoration: none;
+}
+
+a.logo:hover
+{
+	border-bottom: solid 2px #f7e4cb;
+	padding-bottom: 3px;
+}  */
+
+/* Grid page links */
+
+a.gridLink
+{
+	text-decoration: none;
+	color: var(--TPBlack700) !important;
+	margin-bottom: 1px;
+	width: 100%;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 10px;
+}
+
+a.gridLink:hover
+{
+	color: var(--linkHover) !important;
+	background-color: var(--Sand100);
+}
+
+/* Styles used for navigation links at the top of each topic */
+
+nav.top
+{
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-right: 2rem;
+	float: right;
+	padding-right: 15px;
+}
+
+nav.top > a
+{
+	font-size: 14px;
+	color: var(--TPBlack700) !important;
+	font-weight: bold;
+	margin-left: 1rem;
+}
+
+/* Links within the topic for navigation */
+
+nav.inTopic
+{
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+}
+
+nav.inTopic > a
+{
+	font-size: 15px;
+	color: var(--TPBlack700) !important;
+	font-weight: bold;
+	margin-right: 1.5rem;
+}
+
+/* Madcap dynamic links */
+/* Drop downs for most of the project */
+
+MadCap|dropDown
+{
+	padding-top: .4em;
+	mc-open-image: url('../Images/css/arrow-down-gray.png');
+	mc-closed-image: url('../Images/css/arrow-right-gray.png');
+}
+
+MadCap|dropDownBody
+{
+	border-bottom: solid 1px;
+	padding-left: 10px;
+	background-color: var(--Sand50);
+	border-bottom-color: var(--TPBlack300);
+}
+
+MadCap|dropDownHotspot
+{
+	color: var(--Brand);
+}
+
+/* drop downs specific to API Reference pages. Use inside div class=APIRef */
+
+MadCap|dropDown.APIRef
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	mc-open-image: url('../Images/css/arrow-down-gray.png');
+	mc-closed-image: url('../Images/css/arrow-right-gray.png');
+}
+
+MadCap|dropDownHotspot.APIRef
+{
+	color: var(--link);
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+MadCap|dropDownBody.APIRef
+{
+	padding-left: 0px;
+	background-color: var(--TPBlack50);
+	border-bottom: none;
+}
+
+/* These next 2 items with .Responsive are used in hotel API Refs for object drop downs */
+
+MadCap|dropDownBody.Responsive
+{
+	border-bottom: solid 1px;
+	padding-left: 10px;
+	background-color: #fafafa;
+	border-bottom-color: var(--TPBlack300);
+	margin-top: 10px;
+}
+
+MadCap|dropDownHotspot.Responsive
+{
+	color: var(--Brand);
+	font-size: 12pt;
+	font-weight: bold;
+	margin: 10px 0px 18px 0px;
+}
+
+MadCap|expandingBody
+{
+	color: var(--TPBlack600);
+	font-style: italic;
+}
+
+MadCap|expandingHead
+{
+	font-style: italic;
+	font-weight: normal;
+	cursor: hand;
+	text-decoration: none;
+	color: var(--Brand);
+}
+
+MadCap|xref
+{
+	font-weight: bold;
+	mc-format: '{para}';
+	text-decoration: underline;
+	color: var(--Brand);
+}
+
+/* Lists */
+
+ol
+{
+	list-style-type: decimal;
+	padding-left: 50px;
+}
+
+ul
+{
+	list-style-type: disc;
+	padding-left: 25px;
+}
+
+li
+{
+	margin-bottom: 6px;
+	margin-top: 6px;
+}
+
+/* Direct child complex selector; only li tags that fall directly within ol tags will be affected */
+
+ol > li
+{
+	padding-left: 5px;
+}
+
+ul.ul_1
+{
+	margin-left: 1.125em;
+	margin-bottom: 1em;
+	margin-top: .6em;
+}
+
+ol.ol_1
+{
+	margin-left: 15pt;
+	margin-bottom: 1em;
+	margin-top: .6em;
+}
+
+ol.ol_2
+{
+	list-style-type: decimal;
+	margin-left: 18pt;
+}
+
+ol ol
+{
+	list-style-type: lower-alpha;
+}
+
+ul ol
+{
+	list-style-type: decimal;
+	list-style-image: none;
+}
+
+ol ol ol
+{
+	list-style-type: lower-roman;
+}
+
+ul ol ol
+{
+	list-style-type: lower-alpha;
+}
+
+ul ul ol
+{
+	list-style-type: decimal;
+}
+
+ol ul ol
+{
+	list-style-type: lower-alpha;
+}
+
+ul ul
+{
+	list-style-type: circle;
+}
+
+ol ul
+{
+	list-style-type: disc;
+}
+
+ul ul ul
+{
+	list-style-type: square;
+}
+
+ol ul ul
+{
+	list-style-type: circle;
+}
+
+ol ol ul
+{
+	list-style: disc;
+}
+
+ul ol ul
+{
+	list-style: circle;
+}
+
+li
+{
+	margin-bottom: 6px;
+	margin-top: 6px;
+}
+
+.spaceList
+{
+	margin-top: 4pt;
+	margin-bottom: 4pt;
+}
+
+.spaceListMore
+{
+	margin-top: 9pt;
+	margin-bottom: 9pt;
+}
+
+/* API reference tables use with div */
+
+table.APIRef
+{
+	background-color: var(--Sand50);
+	border: 1px solid var(--TPBlack300);
+	margin-bottom: 2rem;
+	font-size: 14px;
+	color: var(--TPBlack700);
+	border-radius: 4px;
+}
+
+p.APICall
+{
+	color: var(--Brand) !important;
+	font-weight: bold;
+}
+
+/* Other styles */
+
+div.codeBlock
+{
+	line-height: 1em;
+	display: block;
+	margin: 0 0 10px;
+	color: #333;
+	overflow-y: scroll;
+	max-height: 340px;
+	word-wrap: break-word;
+	width: 98%;
+	background-color: var(--Sand50);
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 5px;
+	font-size: 11pt;
+	font-family: monospace;
+}
+
+/* Not used anywhere, I don't think
+pre + button
+{
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	background-color: #00A3AD;
+} */
+
+/* No longer used
+button
+{
+	position: relative;
+	margin: 10px 10px 10px 0px;
+	box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+	background: linear-gradient(to bottom, #79bbff 5%, #0075b0 100%);
+	background-color: #0075b0;
+	border-radius: 6px;
+	border: 1px solid #84bbf3;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 6px 10px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #528ecc;
+}
+
+button:hover
+{
+	background: linear-gradient(to bottom, #0075b0 5%, #79bbff 100%);
+	background-color: #0075b0;
+} */
+
+div.noteNote
+{
+	background-color: var(--Sand50);
+	border-left: solid 4px var(--Brand);
+	line-height: 18px;
+	overflow: hidden;
+	padding: 6px 3px 6px 10px;
+	margin-bottom: 10px;
+}
+
+div.noteWarning
+{
+	background-color: var(--brandSand40);
+	line-height: 16px;
+	/* mc-auto-number-format: '{b}Try Me{/b}';  */
+	overflow: hidden;
+	border-left: solid 4px var(--promoColor-90);
+	padding: 6px 3px 6px 10px;
+	margin-bottom: 10px;
+}
+
+/* noteAPIRef used in hotel API Ref responsive layout. Has a gray background because those topics have a lot of sand */
+
+div.noteAPIRef
+{
+	background-color: var(--TPBlack75);
+	border-left: solid 4px var(--Brand);
+	line-height: 18px;
+	overflow: hidden;
+	padding: 6px 3px 6px 10px;
+	margin-bottom: 10px;
+}
+
+/* WarningAPIRef used in hotel API Ref responsive layout. Has light red background because those topics have a lot of sand */
+
+div.WarningAPIRef
+{
+	background-color: var(--TPBlack75);
+	line-height: 16px;
+	/* mc-auto-number-format: '{b}Try Me{/b}';  */
+	overflow: hidden;
+	border-left: solid 4px var(--promoColor-90);
+	padding: 6px 3px 6px 10px;
+	margin-bottom: 10px;
+}
+
+div.APIRefDropDown
+{
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 98%;
+	background-color: var(--TPBlack50);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/* .SectionBreak is a gray line used between Hotel APIRef objects when they are fully listed out (often in the request) */
+
+hr.APIBreak
+{
+	border: none;
+	/* Remove default border */
+	height: 1px;
+	/* Set height/thickness */
+	background-color: #c5c7c9;
+	/* Set color */
+	margin: 20px 15px;
+	/* Add some spacing above and below */
+	width: 80%;
+}
+
+/* .SectionBreak is a thicker olive line used between Hotel APIRef objects that are only drop-downs, use the .Responsive hotspot and body styles with it */
+
+hr.SectionBreak
+{
+	border: none;
+	/* Remove default border */
+	height: 3px;
+	background-color: #4E6659;
+	margin: 30px;
+	width: 90%;
+}
+
+MadCap|codeSnippet
+{
+	max-width: 700px;
+	max-height: 400px;
+	word-wrap: yes;
+	margin-bottom: 15px;
+	padding: .5em;
+	background: var(--Sand50);
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+/*==Master Page Topic Layout==*/
+
+div.topic-layout	/*This layout was created using the Responsive Layout Editor in MadCap Flare. Go to: Home Ribbon > Styles Section > Responsive Layout*/
+{
+	mc-grid-row: true;
+	/* margin: 0 auto; */
+	margin: 5px 5px;
+	background-color: #FFF;
+	min-height: 85vh;
+	margin-top: 5px;
+}
+
+div.topic-layout::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.topic-layout::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.topic-layout > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.topic-layout > div:nth-child(1)
+{
+	border-right: solid 1px #d3d3d3;
+	padding-right: 20px;
+	padding-left: 10px;
+	margin-top: 5px;
+	padding-right: 15px;
+	min-height: 85vh;
+	/*ensures that the vertical border line reaches the bottom of the topic container*/
+	width: 73%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+div.topic-layout > div:nth-child(2)	/*Menu Proxy and toolbar container*/
+{
+	padding: 10px 5px;
+	width: 25%;
+	margin-left: 5px;
+}
+
+pre
+{
+	font-family: Lucida Console, Consolas, Verdana, monospace;
+}
+
+pre.terminal
+{
+	font-family: Consolas, 'Courier New', monospace;
+	font-size: 1em;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+div.GlossaryPageHeading
+{
+	color: #4e6659;
+	mc-heading-format: 'A';
+	font-size: 16pt;
+}
+
+div.GlossaryPageTerm
+{
+	color: #4e6659;
+	font-size: 12pt;
+	mc-expandable: false;
+	padding-top: 6pt;
+	padding-bottom: 3pt;
+}
+
+li.GlossaryPageEntry	/* Required to suppress bullets in HTML5 target */
+{
+	list-style-type: none;
+}
+
+a.GlossaryPageLink:hover	/* Flare wraps Glossary terms in this anchor tag; used exclusively for Glossary page */
+{
+	text-decoration: none;
+	color: #4e6659;
+}
+
+a.GlossaryPageLink	/* Flare wraps Glossary terms in this anchor tag; used exclusively for Glossary page */
+{
+	color: #4e6659;
+}
+
+div.GlossaryPageDefinition
+{
+	padding-left: 25px;
+}
+
+div.GlossaryPageEntry
+{
+	margin-top: 15px;
+}
+
+div.HotelIntro-2Col	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--Sand);
+	padding: 8px;
+}
+
+div.HotelIntro-2Col::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.HotelIntro-2Col::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.HotelIntro-2Col > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.HotelIntro-2Col > div:nth-child(1)
+{
+	width: 66.66667%;
+	margin-left: 0%;
+	padding-right: 50px;
+}
+
+div.HotelIntro-2Col > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+MadCap|codeSnippetBody
+{
+	font-size: 11pt;
+}
+
+/*===========================================================================================================================================================
+Styles after this point are styles that are for specific mediums. If any additional styles are added to this template they will be listed after mediums.
+[@media tablet] declares styles that will apply when the screen is in tablet view
+[@media mobile] declares styles that will apply when the screen is in mobile view
+===========================================================================================================================================================*/
+
+@media only screen and (max-device-width: 1279px)
+{
+	div.topic-layout > div:nth-child(1)
+	{
+		width: 100%;
+		border-right: none;
+	}
+
+	div.topic-layout > div:nth-child(2)
+	{
+		display: none;
+	}
+
+	img.diagram
+	{
+		max-width: 95%;
+	}
+
+	div.APIRef-2Col1 > div:nth-child(1)
+	{
+		width: 66.66667%;
+		margin-left: 0%;
+	}
+
+	div.APIRef-2Col1 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+}
+
+.TConly	/* TechComm only generic style that also applies TC condition */
+{
+	font-family: Arial, sans-serif;
+	font-weight: 400;
+	color: #ff00ff;
+	mc-conditions: 'JSONAPIs.TechCommOnly';
+}
+
+span.APIRef_methodName
+{
+	font-family: 'Arial Bold';
+	font-size: 12pt;
+	background-color: #ffffff;
+	color: ffffff;
+}
+
+span.APIRef_methodURL
+{
+	font-size: 12pt;
+	color: 0A121A;
+}
+
+.variable_coral
+{
+	color: 4E6659;
+}
+
+p.APIRef_method
+{
+	font-size: 14pt;
+	color: ffffff;
+	background: 4E6659;
+	font-family: Lucida Console, Arial Black, sans-serif;
+}
+
+p.APIRef_url
+{
+	font-family: Lucida Console, Arial, sans-serif;
+	background: F7E4CB;
+}
+
+/* following responsive layout definition exclusively used for rightToc.flmsp layout */
+
+div.NewRowClass1	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass1::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass1::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass1 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass1 > div:nth-child(1)
+{
+	width: 75%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(2)
+{
+	width: 25%;
+	margin-left: 0%;
+}
+
+div.NewRowClass2	/*This is a custom responsive layout row style (div class) in your stylesheet. Used in right toc nav for page on welcome kits with 75/25 split.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass2::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass2::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass2 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass2 > div:nth-child(1)
+{
+	width: 74.66667%;
+	margin-left: 0%;
+}
+
+div.NewRowClass2 > div:nth-child(2)
+{
+	width: 24.33333%;
+	margin-left: 0%;
+}
+
+div.APIRef-2Col-Request
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.APIRef-2Col-Request::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.APIRef-2Col-Request::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.APIRef-2Col-Request > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.APIRef-2Col-Request > div:nth-child(1)
+{
+	width: 60%;
+	margin-left: 0%;
+	max-height: 600px;
+	overflow: auto;
+	border-right: 4px solid #ccc;
+	background-color: #fdf9f3;
+	padding: .5em;
+}
+
+div.APIRef-2Col-Request > div:nth-child(2)
+{
+	width: 40%;
+	margin-left: 0%;
+	padding-left: .3em;
+	max-height: 600px;
+	overflow: auto;
+}
+
+div.APIRef-2Col-Response	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.APIRef-2Col-Response::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.APIRef-2Col-Response::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.APIRef-2Col-Response > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.APIRef-2Col-Response > div:nth-child(1)
+{
+	width: 60%;
+	margin-left: 0%;
+	max-height: 600px;
+	overflow: auto;
+	border-right: 4px solid #ccc;
+	background-color: #faefe1;
+	padding: .5em;
+}
+
+div.APIRef-2Col-Response > div:nth-child(2)
+{
+	width: 40%;
+	margin-left: 0%;
+	padding-left: .3em;
+	max-height: 600px;
+	overflow: auto;
+}
+
+.required
+{
+	color: #FF0000;
+	font-weight: bold;
+}
+
+/* This div can be used for APIRefs when there is no example, so it is similar to just showing the left side of the responsive layout */
+
+div.APIRef-Single
+{
+	background-color: #fdf9f3;
+	padding: 10px 10px;
+	max-width: 70%;
+}
+
+/* Following styles used exclusively with rightToc.flmsp to create an "on this page" right menu that takes the H2 and H3 text and makes them links */
+
+p.boxHeading
+{
+	color: var(--TPBlack700);
+	margin-top: 8px;
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#page-toc	/* container for topic navigation control */
+{
+	display: none;
+	background-color: var(--Sand100);
+	padding-top: .1em;
+	padding-left: .5em;
+	padding-bottom: .1em;
+	margin-top: 1.5em;
+	margin-left: 1em;
+	color: var(--TPBlack700);
+}
+
+li.H2	/*Used by 'on this page' right toc */
+{
+	color: var(--TPBlack700);
+	list-style-image: none;
+	display: block;
+	margin-bottom: 1px;
+	line-height: 1.5em;
+	padding-left: 0em;
+}
+
+li.H3	/*Used by 'on this page' right toc */
+{
+	color: var(--TPBlack700);
+	list-style-image: none;
+	display: block;
+	margin-bottom: 1.2px;
+	line-height: 1.5em;
+	padding-left: 1em;
+}
+
+a.pagetoc	/*Used in right menu for headings in page*/
+{
+	color: var(--TPBlack700);
+	text-decoration: none;
+}
+
+a.pagetoc:hover
+{
+	color: var(--linkHover);
+}
+
+ul.toc
+{
+	padding-left: 10px;
+	list-style-type: none;
+}
+
+/* topTOC is used to create a table of mid-topic links for long topcis. */
+
+div.topTOC
+{
+	line-height: 1.2em;
+	display: block;
+	width: 70%;
+	color: #ffffff;
+	margin: 0;
+	padding: 10px;
+	font-weight: 500;
+	background-color: var(--Brand);
+}
+
+/* This link settings only applied to links within the div.topTOC */
+
+div.topTOC a
+{
+	color: #ffffff;
+}
+
+/* myBtn and button styles used by Back to Top button, linked from templates */
+
+#myBtn
+{
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99;
+	font-size: 15px;
+	font-weight: bold;
+	outline: none;
+	color: #ffffff;
+	cursor: pointer;
+	padding: 8px;
+	width: 60px;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: solid 1px #4e6659;
+}
+
+#myBtn:hover
+{
+	background-color: #405348;
+	/* original value transparent */
+}
+
+button
+{
+	background-color: #4E6659;
+}
+
+/* Search bar proxy settings used in OtherTopics masterpage */
+
+div.search-bar
+{
+	margin-left: 0px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	/*	width: 250px; */
+	float: right;
+	padding-right: 0px;
+}
+
+p.Version
+{
+	font-size: 12pt;
+	font-weight: bold;
+	margin-bottom: 2px;
+	margin-top: 10px;
+	line-height: 20px;
+	color: var(--Brand);
+}
+
+/* Mark tags are used in syntax highlighting to identify parts of code */
+
+mark
+{
+	background-color: yellow;
+}
+
+mark.blue
+{
+	background-color: #b0e0e6;
+}
+
+mark.gray
+{
+	background-color: #cfd2d4;
+}
+
+mark.green
+{
+	background-color: #98fb98;
+}
+
+/* Toc version identifier */
+
+ul.navigation li.TOCVersion
+{
+	padding-right: 0px;
+	padding-left: 5px;
+}
+
+ul.navigation li.TOCVersion a
+{
+	font-weight: bold;
+	color: var(--promoColor-90) !important;
+	/* Set the default cursor so it doesn't look like this is a link */
+	cursor: default;
+}
+
+ul.navigation ul > li.TOCVersion:hover
+{
+	background: #0a121a;
+}
+
+img.diagram
+{
+	max-width: 650px;
+}
+
+@media only screen and (max-device-width: 767px)
+{
+	img.diagram
+	{
+		max-width: 95%;
+	}
+
+	div.APIRef-2Col1 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.APIRef-2Col1 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+}
+
+/* The following hyperlink style is used to force HTM files to be included in the output. 
+Used in v11 AirGuides.htm at the bottom of the page to force the Welcome.htm page to be included. 
+This page is referenced from the old TripServices help because the links are hardcoded into the welcome letters */
+
+a.Hidden
+{
+	color: transparent;
+	mc-hidden: hidden;
+}
+
+/* Forces sitemap to build in output. Sitemap is used by ServiceNow as an external source */
+
+span.DoNotUse
+{
+	list-style-image: url('../../Air11/sitemapSN.xml');
+	list-style-image: url('../../Hotel11/sitemapSN.xml');
+	list-style-image: url('../../Payv11/sitemapSN.xml');
+	list-style-image: url('../../Air11/GDSExchangesRefunds/GDSRefunds.htm');
+}
+
+/*<meta sourceDocument="C:\Users\C158158\OneDrive - Travelport\Projects\JSON API\Hotel\HotelGuide2.1Import.docx" />*/
+
+table.TableGrid
+{
+	border-collapse: collapse;
+	margin-left: 0pt;
+}
+
+/*<meta sourceDocument="C:\Users\C158158\OneDrive - Travelport\Temp\MarriottACRSMigration.docx" />*/
+

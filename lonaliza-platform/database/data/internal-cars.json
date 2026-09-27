@@ -1,0 +1,543 @@
+{
+  "cars": [
+    {
+      "id": "car-renault-clio",
+      "slug": "renault-clio-economy",
+      "name": "Renault Clio",
+      "nameAr": "رينو كليو",
+      "nameTr": "Renault Clio",
+      "category": "economy",
+      "passengers": 4,
+      "transmission": "manual",
+      "airConditioning": true,
+      "doors": 5,
+      "luggage": 2,
+      "image": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1600&q=80",
+      "pricePerDay": 28,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "ankara",
+        "airport-esb",
+        "izmir",
+        "airport-adb",
+        "antalya",
+        "airport-ayt",
+        "bodrum",
+        "airport-bjv",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "alanya",
+        "airport-gzp",
+        "cappadocia",
+        "nevsehir",
+        "airport-nav",
+        "kayseri",
+        "airport-asr",
+        "trabzon",
+        "airport-tzx",
+        "gaziantep",
+        "airport-gzt",
+        "bursa",
+        "airport-yei",
+        "kusadasi",
+        "cesme"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 0,
+          "included": true
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-fiat-egea",
+      "slug": "fiat-egea-economy-auto",
+      "name": "Fiat Egea Automatic",
+      "nameAr": "فيات إيجيا أوتوماتيك",
+      "nameTr": "Fiat Egea Otomatik",
+      "category": "economy",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 4,
+      "luggage": 2,
+      "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1600&q=80",
+      "pricePerDay": 32,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "antalya",
+        "airport-ayt",
+        "alanya",
+        "airport-gzp",
+        "side",
+        "belek",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "oludeniz",
+        "kas",
+        "kalkan",
+        "ankara",
+        "airport-esb",
+        "izmir",
+        "airport-adb"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 4,
+          "included": false
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-vw-polo",
+      "slug": "volkswagen-polo-compact",
+      "name": "Volkswagen Polo",
+      "nameAr": "فولكسفاغن بولو",
+      "nameTr": "Volkswagen Polo",
+      "category": "compact",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 5,
+      "luggage": 2,
+      "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1600&q=80",
+      "pricePerDay": 36,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "izmir",
+        "airport-adb",
+        "bodrum",
+        "airport-bjv",
+        "kusadasi",
+        "cesme",
+        "didim",
+        "mugla",
+        "antalya",
+        "airport-ayt",
+        "alanya",
+        "airport-gzp",
+        "side",
+        "belek",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "oludeniz",
+        "kas",
+        "kalkan"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 4,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 4,
+          "included": false
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-hyundai-elantra",
+      "slug": "hyundai-elantra-sedan",
+      "name": "Hyundai Elantra",
+      "nameAr": "هيونداي إلنترا",
+      "nameTr": "Hyundai Elantra",
+      "category": "sedan",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 4,
+      "luggage": 3,
+      "image": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1600&q=80",
+      "pricePerDay": 45,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "ankara",
+        "airport-esb",
+        "antalya",
+        "airport-ayt",
+        "alanya",
+        "airport-gzp",
+        "side",
+        "belek",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "oludeniz",
+        "kas",
+        "kalkan",
+        "cappadocia",
+        "nevsehir",
+        "goreme",
+        "airport-nav",
+        "kayseri",
+        "airport-asr"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 4,
+          "included": false
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-vw-passat",
+      "slug": "volkswagen-passat-sedan",
+      "name": "Volkswagen Passat",
+      "nameAr": "فولكسفاغن باسات",
+      "nameTr": "Volkswagen Passat",
+      "category": "sedan",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 4,
+      "luggage": 4,
+      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80",
+      "pricePerDay": 58,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "ankara",
+        "airport-esb",
+        "izmir",
+        "airport-adb",
+        "antalya",
+        "airport-ayt",
+        "alanya",
+        "airport-gzp",
+        "side",
+        "belek",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "oludeniz",
+        "kas",
+        "kalkan"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 10,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 0,
+          "included": true
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-bmw-3",
+      "slug": "bmw-3-series-luxury",
+      "name": "BMW 3 Series",
+      "nameAr": "بي إم دبليو الفئة الثالثة",
+      "nameTr": "BMW 3 Serisi",
+      "category": "luxury",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 4,
+      "luggage": 3,
+      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1600&q=80",
+      "pricePerDay": 110,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "ankara",
+        "airport-esb",
+        "izmir",
+        "airport-adb",
+        "antalya",
+        "airport-ayt"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 0,
+          "included": true
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 18,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-mercedes-eclass",
+      "slug": "mercedes-e-class-luxury",
+      "name": "Mercedes-Benz E-Class",
+      "nameAr": "مرسيدس إي كلاس",
+      "nameTr": "Mercedes-Benz E-Serisi",
+      "category": "luxury",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 4,
+      "luggage": 3,
+      "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+      "pricePerDay": 135,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "ankara",
+        "airport-esb",
+        "antalya",
+        "airport-ayt",
+        "alanya",
+        "airport-gzp",
+        "side",
+        "belek",
+        "dalaman",
+        "airport-dlm",
+        "fethiye",
+        "marmaris",
+        "oludeniz",
+        "kas",
+        "kalkan",
+        "izmir",
+        "airport-adb"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 8,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 0,
+          "included": true
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 20,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 15,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "car-mercedes-gle",
+      "slug": "mercedes-gle-luxury-suv",
+      "name": "Mercedes-Benz GLE",
+      "nameAr": "مرسيدس جي إل إي",
+      "nameTr": "Mercedes-Benz GLE",
+      "category": "luxury",
+      "passengers": 5,
+      "transmission": "automatic",
+      "airConditioning": true,
+      "doors": 5,
+      "luggage": 5,
+      "image": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1600&q=80",
+      "pricePerDay": 175,
+      "currency": "USD",
+      "pickupLocationIds": [
+        "istanbul",
+        "airport-ist",
+        "airport-saw",
+        "antalya",
+        "airport-ayt",
+        "bodrum",
+        "airport-bjv"
+      ],
+      "extras": [
+        {
+          "key": "additionalDriver",
+          "pricePerDay": 15,
+          "included": false
+        },
+        {
+          "key": "childSeat",
+          "pricePerDay": 5,
+          "included": false
+        },
+        {
+          "key": "gps",
+          "pricePerDay": 0,
+          "included": true
+        },
+        {
+          "key": "fullInsurance",
+          "pricePerDay": 25,
+          "included": false
+        },
+        {
+          "key": "excessReduction",
+          "pricePerDay": 12,
+          "included": false
+        }
+      ],
+      "isActive": true,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "updatedAt": "2026-09-21T18:34:34.932Z"
+}

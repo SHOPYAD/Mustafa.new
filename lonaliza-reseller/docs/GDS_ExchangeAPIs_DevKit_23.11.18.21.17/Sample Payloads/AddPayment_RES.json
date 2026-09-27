@@ -1,0 +1,10 @@
+{
+  "PaymentResponse" : {
+    "Payment" : {
+      "@type" : "PaymentIdentifier",
+      "Identifier" : {
+        "authority" : "Travelport",
+        "value" : "246180c1-2a79-4f56-8c21-2ca5cc41e866"
+      }
+    }
+  }

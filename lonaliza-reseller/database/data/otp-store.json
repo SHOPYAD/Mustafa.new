@@ -1,0 +1,46 @@
+{
+  "905015709201:phone_update": {
+    "id": "otp_21a99c38ca82",
+    "to": "905015709201",
+    "purpose": "phone_update",
+    "channel": "whatsapp",
+    "hash": "a1c9d9337654be37540ed88d667f69e3a969c0d2127decb99cf1ef4c98d5b73e",
+    "expiresAt": 1788352338898,
+    "attempts": 1,
+    "consumed": true,
+    "createdAt": 1788351738898
+  },
+  "971500000000:phone_update": {
+    "id": "otp_c7abcae1be10",
+    "to": "971500000000",
+    "purpose": "phone_update",
+    "channel": "whatsapp",
+    "hash": "f4c0e8a650535623faeac60f857bae896b5e267c5715a3a46b088a9b48f14f32",
+    "expiresAt": 1788352963255,
+    "attempts": 0,
+    "consumed": false,
+    "createdAt": 1788352363255
+  },
+  "00905015709201:register": {
+    "id": "otp_6d483993fd52",
+    "to": "00905015709201",
+    "purpose": "register",
+    "channel": "whatsapp",
+    "hash": "434b9df5490734280fd3ec07ae49ea20e3b46390a67b4e5e400971ad43094ef9",
+    "expiresAt": 1789333333389,
+    "attempts": 0,
+    "consumed": false,
+    "createdAt": 1789332733389
+  },
+  "905015709201:booking_confirm": {
+    "id": "otp_1c7c271ab0a9",
+    "to": "905015709201",
+    "purpose": "booking_confirm",
+    "channel": "whatsapp",
+    "hash": "0dba3adc23c7919d82ae08abf0aba871d88fcec18171700529d62a55345115c0",
+    "expiresAt": 1789405060806,
+    "attempts": 0,
+    "consumed": false,
+    "createdAt": 1789404460806
+  }
+}

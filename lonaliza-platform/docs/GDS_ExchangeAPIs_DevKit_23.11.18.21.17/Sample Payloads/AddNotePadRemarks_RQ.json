@@ -1,0 +1,21 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Agency",
+                "Comment": [
+                    {
+                        "name": "YT",
+                        "value": "This is notepad remarks one"
+                    },
+                    {
+                        "name": "UA",
+                        "value": "This is notepad remarks two"
+                    }
+                ]
+            }
+        ]
+    }
+}

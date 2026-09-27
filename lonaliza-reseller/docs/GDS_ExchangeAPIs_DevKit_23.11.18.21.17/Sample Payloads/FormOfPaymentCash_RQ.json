@@ -1,0 +1,10 @@
+{
+"FormOfPaymentCash" : {
+"id" : "formOfPayment_1",
+"FormOfPaymentRef" : "formOfPayment_1",
+"Identifier" : {
+"value" : "A0656EFF-FAF4-456F-B061-0161008D7C4E",
+"authority" : "Travelport"
+}
+}
+}

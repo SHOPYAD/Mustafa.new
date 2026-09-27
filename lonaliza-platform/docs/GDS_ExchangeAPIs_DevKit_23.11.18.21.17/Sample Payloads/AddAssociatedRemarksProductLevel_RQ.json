@@ -1,0 +1,36 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Traveler",
+                "Comment": [
+                    {
+                        "name": "ITIN COMMENTS",
+                        "value": "This is single comment with single product 1"
+                    }
+                ],
+                "AppliesTo": [
+                    {
+                        "@type": "AppliesToOfferProduct",
+                        "OfferIdentifier": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "8aafc8a4-20f2-48d0-ad69-5d95e886273b"
+                            }
+                        },
+                        "ProductIdentifier": [
+                            {
+                                "Identifier": {
+                                    "authority": "Travelport",
+                                    "value": "c8c52555-9fa3-4d5f-af3d-619e7a7e517c"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

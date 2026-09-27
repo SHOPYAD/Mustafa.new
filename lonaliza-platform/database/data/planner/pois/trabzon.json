@@ -1,0 +1,1245 @@
+{
+  "cityKey": "trabzon",
+  "city": "Trabzon",
+  "lat": 41.0054605,
+  "lng": 39.7301463,
+  "fetchedAt": "2026-09-21T12:27:20.828Z",
+  "sources": [
+    "wikidata",
+    "wikipedia"
+  ],
+  "pois": [
+    {
+      "titleEn": "Hagia Sophia, Trabzon",
+      "titleAr": "كنيسة آيا صوفيا",
+      "lat": 41.003333333,
+      "lng": 39.696111111,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 28,
+      "source": "wikidata",
+      "detailEn": "Hagia Sophia (Greek: Αγία Σοφία, meaning 'the Holy Wisdom'; Turkish: Ayasofya) is a formerly Greek Orthodox church that was converted into a mosque following the conquest of Trabzon by Mehmed II in 1461. It is located in Trabzon, northeastern Turkey."
+    },
+    {
+      "titleEn": "Satala",
+      "titleAr": "ساتالا",
+      "lat": 40.02611111,
+      "lng": 39.59055556,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 16,
+      "source": "wikidata",
+      "detailEn": "Located in Turkey, the settlement of Satala (Old Armenian: Սատաղ Satał, Ancient Greek: Σάταλα), according to the ancient geographers, was situated in a valley surrounded by mountains, a little north of the Euphrates, where the road from Trapezus to Samosata crossed the boundary of the Roman Empire, when it was a bishopric, which remains a Latin Catholic titular see. Later it was connected with Nicopolis by two highways."
+    },
+    {
+      "titleEn": "Trabzon Museum",
+      "titleAr": "متحف طرابزون",
+      "lat": 41.00505,
+      "lng": 39.72657,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikidata",
+      "detailEn": "The Trabzon Museum (Turkish: Trabzon Müzesi), also known as Kostaki Mansion (Kostaki Konağı), is a historic house museum with archeological and ethnographic exhibitions located in Trabzon, Turkey."
+    },
+    {
+      "titleEn": "Baksı Museum",
+      "titleAr": "Baksı Museum",
+      "lat": 40.385639,
+      "lng": 40.566417,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikidata",
+      "detailEn": "Baksı Museum is a museum located in Bayburt, Turkey. “Baksı” literally means “healer, helper, protector” in Turkic languages."
+    },
+    {
+      "titleEn": "Kalepark",
+      "titleAr": "Kalepark",
+      "lat": 41.0075989,
+      "lng": 39.7344513,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 8,
+      "source": "wikidata",
+      "detailEn": "Kalepark (originally called Leonkastron; and later Güzelhisar, meaning \"Beautiful Castle\" in Turkish) was procured and further fortified by Genoese merchants as a medieval fortress on the east side of Trabzon, Turkey. The fortress was built on a rocky outcrop strategically overlooking both harbors of the city: the summer harbor at a distance to the west, and the winter harbor just to the east of it."
+    },
+    {
+      "titleEn": "Bayburt Castle",
+      "titleAr": "Bayburt Castle",
+      "lat": 40.2636,
+      "lng": 40.2294,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 5,
+      "source": "wikidata",
+      "detailEn": "Bayburt Castle (Turkish: Bayburt Kalesi) is a historic castle on a hill overlooking Bayburt, Turkey."
+    },
+    {
+      "titleEn": "Rize Castle",
+      "titleAr": "Rize Castle",
+      "lat": 41.02756,
+      "lng": 40.51018,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Rize Castle (Turkish: Rize Kalesi) is a partly-ruined medieval castle located in Rize, northeastern Turkey.\nRize Castle is situated on a hill southwest of the city center, and offers a panoramic view of the city."
+    },
+    {
+      "titleEn": "Rize Atatürk Museum",
+      "titleAr": "Rize Atatürk Museum",
+      "lat": 41.023333333,
+      "lng": 40.534166666,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Rize Atatürk Museum (Turkish: Atatürk Evi Müzesi, also known as Mehmet Mataracı Konağı) is a museum in Rize, Turkey. The museum is in the Müftü quarter of Rize, and is locally known as Mehmet Mataracı mansion."
+    },
+    {
+      "titleEn": "Panagia Theoskepastos Monastery",
+      "titleAr": "Panagia Theoskepastos Monastery",
+      "detailEn": "The Panagia Theoskepastos Monastery (Greek: Παναγία Θεοσκέπαστος, \"Panagia the God-guarded\"), today known in Turkish as Kızlar Monastery, is a former female monastery built during the Empire of Trebizond.\nIt lies at the foot of Boztepe mountain overlooking the city of Trabzon.",
+      "lat": 40.9985,
+      "lng": 39.729,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Kaçkar Mountains",
+      "titleAr": "Kaçkar Mountains",
+      "detailEn": "The Kaçkar Mountains (Turkish: Kaçkar Dağları; Armenian: Քաջքար, Kajkar), formerly known as the Lazistan Mountains or the Mountains of Khaghtik(Armenian: Խաղտեաց լեռներ), are a mountain range that rises above the Black Sea coast in northeastern Turkey.\nWith the highest peak, Kaçkar Dağı, at an elevation of 3,937 metres (12,917 ft), and mountain plateaus at about 3,000 m (9,800 ft) in elevation, the range is the highest part of the Pontic Mountains.",
+      "lat": 40.83333333,
+      "lng": 41.15,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Vazelon Monastery",
+      "titleAr": "Vazelon Monastery",
+      "detailEn": "Vazelon Monastery (Greek: Μονή Βαζελώνος, romanized: Moni Vazelonos) is a ruined Christian building located in the Black Sea region of Turkey. It was built in 270, the ruin is 40 km (25 mi) south of Trabzon.",
+      "lat": 40.76,
+      "lng": 39.53,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Abkhazian State Museum",
+      "titleAr": "Abkhazian State Museum",
+      "lat": 41.0039556,
+      "lng": 41.0230667,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 5,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Atatürk Köşk",
+      "titleAr": "Atatürk Köşk",
+      "lat": 40.979777777,
+      "lng": 39.697472222,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kenan Yavuz Museum of Ethnography",
+      "titleAr": "Kenan Yavuz Museum of Ethnography",
+      "lat": 40.030804,
+      "lng": 39.855437,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Şamil Ekinci Museum",
+      "titleAr": "Şamil Ekinci Museum",
+      "lat": 41.00614,
+      "lng": 39.72782,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Ağaran Waterfall",
+      "titleAr": "Ağaran Waterfall",
+      "lat": 41.04499,
+      "lng": 40.80879,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Palovit Waterfall",
+      "titleAr": "Palovit Waterfall",
+      "lat": 40.94144,
+      "lng": 40.99319,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Lake Limni",
+      "titleAr": "Lake Limni",
+      "lat": 40.610833333,
+      "lng": 39.413055555,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Sümela Monastery",
+      "titleAr": "دير سوميلا",
+      "lat": 40.69,
+      "lng": 39.65833333,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 34,
+      "source": "wikidata",
+      "detailEn": "Sumela Monastery (Greek: Μονή Παναγίας Σουμελά, Moní Panagías Soumelá; Turkish: Sümela Manastırı) is a museum and former Greek Orthodox monastery in the Pontic Mountains, in the Maçka district of Trabzon province, Turkey. Dating back to ancient times, it was in use until the Greco-Turkish population exchange in 1923."
+    },
+    {
+      "titleEn": "Akcakale castle",
+      "titleAr": "Akcakale castle",
+      "detailEn": "Akcakale castle is a Byzantine fortress in Akcakale (the previous name was Kordyle) at Akçaabat, Turkey, lying 18 km (11 mi) west of Trabzon. Built on a terrace facing the sea the fortress is believed to have been built by emperor Alexios II of Trebizond (1297–1330) for protection against the Seljuk attacks.",
+      "lat": 41.0787,
+      "lng": 39.5032,
+      "kind": "attraction",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Trabzon Literature Museum",
+      "titleAr": "Trabzon Literature Museum",
+      "lat": 41.004588,
+      "lng": 39.718802,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 12,
+      "source": "wikidata",
+      "detailEn": "The Fatih Mosque (Turkish: Fatih Camii, \"Conqueror's Mosque\") is a mosque in Ortahisar district of Trabzon Province, Turkey. It was originally built in Byzantine times as the Panagia Chrysokephalos Church (Greek: Παναγία Χρυσοκέφαλος, \"Panagia the Golden-Headed\"), serving as both the catholicon for the see of Trebizond, and a church for a monastery."
+    },
+    {
+      "titleEn": "Karadeniz Technical University",
+      "titleAr": "Karadeniz Technical University",
+      "detailEn": "Karadeniz Technical University (Turkish: Karadeniz Teknik Üniversitesi or KTÜ) is a public research university located in Trabzon, in the Black Sea Region of Turkey. Established in 1955, it is the fourth oldest university in the country.",
+      "lat": 40.99242778,
+      "lng": 39.76836389,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Lake Sera",
+      "titleAr": "Lake Sera",
+      "lat": 40.98527,
+      "lng": 39.61485,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Eskipazar Castle",
+      "titleAr": "Eskipazar Castle",
+      "lat": 40.971,
+      "lng": 40.312333333,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Rize Museum",
+      "titleAr": "Rize Museum",
+      "lat": 41.024427,
+      "lng": 40.515874,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Çaykara Castle",
+      "titleAr": "Çaykara Castle",
+      "lat": 40.7450294,
+      "lng": 40.2565002,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Uzungöl Dursun Ali İnan Museum",
+      "titleAr": "Uzungöl Dursun Ali İnan Museum",
+      "lat": 40.617669444,
+      "lng": 40.303961111,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Cevdet Sunay Museum",
+      "titleAr": "Cevdet Sunay Museum",
+      "lat": 40.7001,
+      "lng": 40.22945,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Pileki Cave",
+      "titleAr": "Pileki Cave",
+      "lat": 40.989947359,
+      "lng": 40.37495068,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Çal Cave",
+      "titleAr": "Çal Cave",
+      "lat": 40.8649567,
+      "lng": 39.3794288,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Of Castle",
+      "titleAr": "Of Castle",
+      "lat": 40.9350281,
+      "lng": 40.2459335,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Çayeli Natural Life Museum",
+      "titleAr": "Çayeli Natural Life Museum",
+      "lat": 41.082865,
+      "lng": 40.719604,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Büyüktepe Mound",
+      "titleAr": "Büyüktepe Mound",
+      "lat": 40.2061805,
+      "lng": 39.9148041,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Aşut Castle",
+      "titleAr": "Aşut Castle",
+      "lat": 40.086892,
+      "lng": 39.44191,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Süme Castle",
+      "titleAr": "Süme Castle",
+      "lat": 40.6933327,
+      "lng": 39.1613884,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Eynesil Castle",
+      "titleAr": "Eynesil Castle",
+      "lat": 41.078251,
+      "lng": 39.16347,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kopuz Castle",
+      "titleAr": "Kopuz Castle",
+      "lat": 40.4741669,
+      "lng": 39.0711098,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Edire Castle",
+      "titleAr": "Edire Castle",
+      "lat": 40.4117317,
+      "lng": 39.370533,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Manastır Castle",
+      "titleAr": "Manastır Castle",
+      "lat": 40.5908318,
+      "lng": 39.1302795,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Krom Castle",
+      "titleAr": "Krom Castle",
+      "lat": 40.5673752,
+      "lng": 39.5785408,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kürtün Castle",
+      "titleAr": "Kürtün Castle",
+      "lat": 40.7008324,
+      "lng": 39.1194458,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kalegüney Castle",
+      "titleAr": "Kalegüney Castle",
+      "lat": 40.9920578,
+      "lng": 39.1761513,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "İskefiye Castle",
+      "titleAr": "İskefiye Castle",
+      "lat": 40.9849167,
+      "lng": 39.371418,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Keçi Castle (Gümüşhane)",
+      "titleAr": "Keçi Castle (Gümüşhane)",
+      "lat": 40.385904,
+      "lng": 39.699558,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Bayrampaşa Castle",
+      "titleAr": "Bayrampaşa Castle",
+      "lat": 40.1846466,
+      "lng": 39.8321495,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kitre Castle (Bayburt)",
+      "titleAr": "Kitre Castle (Bayburt)",
+      "lat": 40.312528,
+      "lng": 39.853631,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kudula Castle",
+      "titleAr": "Kudula Castle",
+      "lat": 40.7541122,
+      "lng": 39.5954247,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Andoz Castle",
+      "titleAr": "Andoz Castle",
+      "lat": 40.939209,
+      "lng": 38.692067,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Araklı Kalecik Castle",
+      "titleAr": "Araklı Kalecik Castle",
+      "lat": 40.9584007,
+      "lng": 40.0284996,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Sürmene Castle",
+      "titleAr": "Sürmene Castle",
+      "lat": 40.9033737,
+      "lng": 40.1260033,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Teçik Tepecik Höyüğü (Oruçbeyli)",
+      "titleAr": "Teçik Tepecik Höyüğü (Oruçbeyli)",
+      "lat": 40.248336,
+      "lng": 39.9594,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kilisetepe Höyük (Köse)",
+      "titleAr": "Kilisetepe Höyük (Köse)",
+      "lat": 40.245384,
+      "lng": 39.8105,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Erenkaya Hill Höyük (Şiran)",
+      "titleAr": "Erenkaya Hill Höyük (Şiran)",
+      "lat": 40.230758,
+      "lng": 39.109018,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kaletepe Höyük Kelkit",
+      "titleAr": "Kaletepe Höyük Kelkit",
+      "lat": 40.064356,
+      "lng": 39.437772,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Trabzon Education History Museum",
+      "titleAr": "Trabzon Education History Museum",
+      "lat": 41.0057218,
+      "lng": 39.7084458,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Trabzon History Museum",
+      "titleAr": "Trabzon History Museum",
+      "lat": 41.005019,
+      "lng": 39.72112,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Trabzon Chamber of Commerce and Industry Silk Road Museum",
+      "titleAr": "Trabzon Chamber of Commerce and Industry Silk Road Museum",
+      "lat": 41.008633,
+      "lng": 39.719591,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Çimentepe Höyüğü",
+      "titleAr": "Çimentepe Höyüğü",
+      "lat": 40.1072844,
+      "lng": 39.7052851,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Lake Dipsiz (Göztepe)",
+      "titleAr": "Lake Dipsiz (Göztepe)",
+      "lat": 40.3732,
+      "lng": 40.7276,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Abdulvehhab Gazi Tomb",
+      "titleAr": "Abdulvehhab Gazi Tomb",
+      "lat": 40.263407,
+      "lng": 40.244205,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tombs of Martyr Osman",
+      "titleAr": "Tombs of Martyr Osman",
+      "lat": 40.2610168,
+      "lng": 40.2198529,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Cagrigan Baba Tomb",
+      "titleAr": "Cagrigan Baba Tomb",
+      "lat": 40.417846,
+      "lng": 39.591369,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Firdevs Hatun Tomb",
+      "titleAr": "Firdevs Hatun Tomb",
+      "lat": 40.1694679,
+      "lng": 39.2036552,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Haji Abdullah Tomb",
+      "titleAr": "Haji Abdullah Tomb",
+      "lat": 40.7598839,
+      "lng": 38.6305656,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Hacı Hasan Efendi Tomb",
+      "titleAr": "Hacı Hasan Efendi Tomb",
+      "lat": 40.270764,
+      "lng": 38.897432,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Mısırlıoğlu Tomb",
+      "titleAr": "Mısırlıoğlu Tomb",
+      "lat": 40.452065,
+      "lng": 39.454683,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tomb of Seyyid Mahmut Çağırgan Baba",
+      "titleAr": "Tomb of Seyyid Mahmut Çağırgan Baba",
+      "lat": 40.372562,
+      "lng": 38.902334,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Tomb of Pir Ahmed",
+      "titleAr": "Tomb of Pir Ahmed",
+      "lat": 40.39571,
+      "lng": 39.6025085,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "İmaret Hill Martyrs' Cemetery, Bayburt",
+      "titleAr": "İmaret Hill Martyrs' Cemetery, Bayburt",
+      "lat": 40.254537,
+      "lng": 40.224744,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kabaktepe Martyrs' Cemetery, Kürtün",
+      "titleAr": "Kabaktepe Martyrs' Cemetery, Kürtün",
+      "lat": 40.652488,
+      "lng": 39.057124,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kışla Fountain",
+      "titleAr": "Kışla Fountain",
+      "lat": 40.255757,
+      "lng": 40.221099,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Paşaoğlu Said Bey Fountain",
+      "titleAr": "Paşaoğlu Said Bey Fountain",
+      "lat": 40.256408,
+      "lng": 40.223204,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Ahi Emir Ahmet Türbesi (Bayburt)",
+      "titleAr": "Ahi Emir Ahmet Türbesi (Bayburt)",
+      "lat": 40.2585411,
+      "lng": 40.2240295,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Uzungöl",
+      "titleAr": "أوزنغول",
+      "lat": 40.61929,
+      "lng": 40.29486,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 22,
+      "source": "wikidata",
+      "detailEn": "Uzungöl (lit. 'Long Lake'), or in the local Romeyka language: Şeraho, is a lake situated to the south of the city of Trabzon, in the Çaykara district of Trabzon Province, Turkey. Uzungöl is also the name of the village on the lake's coast."
+    },
+    {
+      "titleEn": "Karaca Cave",
+      "titleAr": "كهف كاراجا",
+      "lat": 40.5442,
+      "lng": 39.4028,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 11,
+      "source": "wikidata",
+      "detailEn": "Karaca Cave (Turkish: Karaca Mağarası)  is a network of caves located near the town of Torul in Gümüşhane Province, Turkey.\nAlthough the cave was known to the people living in that region, it became open to tourism as a result of the scientific research conducted by Sukru Eroz, a geological engineer from Cebeli Village, between the years 1983-1990."
+    },
+    {
+      "titleEn": "Altındere Valley National Park",
+      "titleAr": "منتزه وادي ألتيندير الوطني",
+      "lat": 40.70878333,
+      "lng": 39.64866111,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 9,
+      "source": "wikidata",
+      "detailEn": "Altındere Valley National Park (Turkish: Altındere Vadisi Milli Parkı), established on September 9, 1987, is a national park in northeastern Turkey. The national park is located in Maçka district of Trabzon Province."
+    },
+    {
+      "titleEn": "Lake Aygır",
+      "titleAr": "Lake Aygır",
+      "lat": 40.5265,
+      "lng": 40.3905,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Lake Aygır (Turkish: Aygır Gölü) is a lake in the Adilcevaz district of Bitlis province. It is located at the southern foot of Süphan Mountain.."
+    },
+    {
+      "titleEn": "Coralla",
+      "titleAr": "Coralla",
+      "lat": 41.075138,
+      "lng": 39.165352,
+      "kind": "attraction",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Coralla or Koralla (Ancient Greek: τὰ Κόραλλα) was a town of ancient Pontus on a cape of the same name. It is placed by Arrian, and the anonymous author of the Periplus, 100 stadia east of Philocaleia, and Philocaleia is 110 stadia east of Tripolis, a well-known position."
+    },
+    {
+      "titleEn": "Cordyle",
+      "titleAr": "Cordyle",
+      "lat": 41.081598,
+      "lng": 39.496726,
+      "kind": "attraction",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Cordyle or Kordyle (Ancient Greek: Κορδύλη), also called Portus Chordyle, was a town of ancient Pontus, on the Black Sea coast, 40 or 45 stadia east of Hieron Oros or Yoros. The name occurs in the Tabula Peutingeriana in the form Cordile."
+    },
+    {
+      "titleEn": "Hyssus",
+      "titleAr": "Hyssus",
+      "lat": 40.942435,
+      "lng": 40.039388,
+      "kind": "attraction",
+      "popularity": 4,
+      "source": "wikidata",
+      "detailEn": "Hyssus, also spelled Hyssos (Ancient Greek: Ὕσσος) and known as Hyssi portus, or Susarmia (Σουσάρμια), or Susurmaina (Σουσούρμαινα), or Psoron Limen (Ψωρῶν λιμήν), was a port-town of ancient Pontus on the Black Sea coast, at the mouth of the Hyssus River, 180 stadia east of Trapezus. The Tabula Peutingeriana calls it Hyssilime."
+    },
+    {
+      "titleEn": "Patara",
+      "titleAr": "Patara",
+      "lat": 40.543937,
+      "lng": 39.648355,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata",
+      "detailEn": "Patara may refer to the following places and jurisdictions:"
+    },
+    {
+      "titleEn": "Trabzon University",
+      "titleAr": "Trabzon University",
+      "detailEn": "Trabzon University (Turkish: Trabzon Üniversitesi, TRÜ) is a public university established in Akçaabat, Trabzon, Turkey on 8 May 2018, following the separation from Karadeniz Technical University. As of 2025, the university hosts approximately 12,000 students.",
+      "lat": 41.01049,
+      "lng": 39.609821,
+      "kind": "attraction",
+      "popularity": 18,
+      "source": "wikipedia"
+    },
+    {
+      "titleEn": "Bekheirias",
+      "titleAr": "Bekheirias",
+      "lat": 41.020833333,
+      "lng": 40.521944444,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Argyria",
+      "titleAr": "Argyria",
+      "lat": 41.005623,
+      "lng": 38.869903,
+      "kind": "attraction",
+      "popularity": 3,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Hieron Oros",
+      "titleAr": "Hieron Oros",
+      "lat": 41.099978,
+      "lng": 39.423999,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Libiopolis",
+      "titleAr": "Libiopolis",
+      "lat": 41.068855,
+      "lng": 39.198236,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Philocaleia",
+      "titleAr": "Philocaleia",
+      "lat": 41.034353,
+      "lng": 38.984957,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Odeinios",
+      "titleAr": "Odeinios",
+      "lat": 41.175,
+      "lng": 40.603888888,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Ophis",
+      "titleAr": "Ophis",
+      "lat": 40.937952,
+      "lng": 40.264282,
+      "kind": "attraction",
+      "popularity": 2,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Askoroz Falls",
+      "titleAr": "Askoroz Falls",
+      "lat": 40.86797,
+      "lng": 40.58402,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Eğvane Falls",
+      "titleAr": "Eğvane Falls",
+      "lat": 40.7815,
+      "lng": 40.64865,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Lakubar Falls",
+      "titleAr": "Lakubar Falls",
+      "lat": 40.866167,
+      "lng": 40.984467,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Paslakum Falls",
+      "titleAr": "Paslakum Falls",
+      "lat": 40.921767,
+      "lng": 40.9595,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Rüzgarlı Falls",
+      "titleAr": "Rüzgarlı Falls",
+      "lat": 40.743,
+      "lng": 40.531017,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Faso Falls",
+      "titleAr": "Faso Falls",
+      "lat": 40.78368,
+      "lng": 40.60744,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Karakaş Falls",
+      "titleAr": "Karakaş Falls",
+      "lat": 40.90355,
+      "lng": 40.7583,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Alişor Falls",
+      "titleAr": "Alişor Falls",
+      "lat": 40.861783,
+      "lng": 40.557667,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Değirmendere Falls",
+      "titleAr": "Değirmendere Falls",
+      "lat": 40.892317,
+      "lng": 40.577933,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Şimadoz Falls",
+      "titleAr": "Şimadoz Falls",
+      "lat": 40.898117,
+      "lng": 40.5307,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Gürdere Falls",
+      "titleAr": "Gürdere Falls",
+      "lat": 40.806683,
+      "lng": 40.55405,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Anzer Falls",
+      "titleAr": "Anzer Falls",
+      "lat": 40.548133,
+      "lng": 40.5075,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Karap Falls",
+      "titleAr": "Karap Falls",
+      "lat": 40.892017,
+      "lng": 40.747733,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Köprülü Falls",
+      "titleAr": "Köprülü Falls",
+      "lat": 40.985133,
+      "lng": 40.518067,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Paşaca Falls",
+      "titleAr": "Paşaca Falls",
+      "lat": 40.92164,
+      "lng": 39.09833,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Vandri Falls",
+      "titleAr": "Vandri Falls",
+      "lat": 40.92669,
+      "lng": 40.46393,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Akırger Falls",
+      "titleAr": "Akırger Falls",
+      "lat": 40.7449,
+      "lng": 40.70328,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Manle Falls",
+      "titleAr": "Manle Falls",
+      "lat": 40.7775,
+      "lng": 40.55535,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Katarahte Falls",
+      "titleAr": "Katarahte Falls",
+      "lat": 40.96825,
+      "lng": 40.604117,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Eskitoğlu Falls",
+      "titleAr": "Eskitoğlu Falls",
+      "lat": 41.0167,
+      "lng": 40.416,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Zephyrium",
+      "titleAr": "Zephyrium",
+      "lat": 40.9647,
+      "lng": 38.6524,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Akyamaç Falls",
+      "titleAr": "Akyamaç Falls",
+      "lat": 41.044371,
+      "lng": 40.909282,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Peçamçoy Falls",
+      "titleAr": "Peçamçoy Falls",
+      "lat": 41.04736,
+      "lng": 41.00306,
+      "kind": "attraction",
+      "popularity": 1,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Akşar Höyük",
+      "titleAr": "Akşar Höyük",
+      "lat": 40.341321,
+      "lng": 39.975711,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Söğütlü Höyük (Bayburt)",
+      "titleAr": "Söğütlü Höyük (Bayburt)",
+      "lat": 40.217606,
+      "lng": 40.052061,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Beşpınar Höyüğü",
+      "titleAr": "Beşpınar Höyüğü",
+      "lat": 40.0372654,
+      "lng": 39.8463776,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Dikmetaş Höyüğü",
+      "titleAr": "Dikmetaş Höyüğü",
+      "lat": 40.0179676,
+      "lng": 39.7962115,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Yazıbaşı Höyüğü",
+      "titleAr": "Yazıbaşı Höyüğü",
+      "lat": 40.0658784,
+      "lng": 39.8784014,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Salyazı Höyüğü",
+      "titleAr": "Salyazı Höyüğü",
+      "lat": 40.2517646,
+      "lng": 39.8164921,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Gökçedere Höyüğü",
+      "titleAr": "Gökçedere Höyüğü",
+      "lat": 40.1312547,
+      "lng": 39.7519345,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Daltaban Fountain",
+      "titleAr": "Daltaban Fountain",
+      "lat": 40.4606323,
+      "lng": 39.4691963,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Commissioner's Fountain",
+      "titleAr": "Commissioner's Fountain",
+      "lat": 40.449217,
+      "lng": 39.453765,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Emirler Fountain",
+      "titleAr": "Emirler Fountain",
+      "lat": 40.5165062,
+      "lng": 39.1954079,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Godosh Fountain",
+      "titleAr": "Godosh Fountain",
+      "lat": 40.2056618,
+      "lng": 39.4345589,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Hayrat Fountain",
+      "titleAr": "Hayrat Fountain",
+      "lat": 40.512835,
+      "lng": 39.213866,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Karaca Fountain",
+      "titleAr": "Karaca Fountain",
+      "lat": 40.1881828,
+      "lng": 39.127224,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Kabaköy Fountain",
+      "titleAr": "Kabaköy Fountain",
+      "lat": 40.436688,
+      "lng": 39.695263,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Yayıkçılar Neighborhood Fountain",
+      "titleAr": "Yayıkçılar Neighborhood Fountain",
+      "lat": 40.494113,
+      "lng": 39.149611,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Maselevat Falls",
+      "titleAr": "Maselevat Falls",
+      "lat": 41.04602,
+      "lng": 41.00469,
+      "kind": "attraction",
+      "popularity": 18,
+      "source": "wikidata",
+      "detailEn": "Maselevat Waterfalls (Laz language: Ketekalivi Waterfalls), are a group of waterfalls located in the Çamlıhemşin District of Rize Province. Their source is Fırtına River."
+    },
+    {
+      "titleEn": "Övündü Köyü Castle",
+      "titleAr": "Övündü Köyü Castle",
+      "lat": 40.5245628,
+      "lng": 39.3377991,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Altınyayla Village Fountain 1",
+      "titleAr": "Altınyayla Village Fountain 1",
+      "lat": 40.5297852,
+      "lng": 39.101738,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    },
+    {
+      "titleEn": "Altınyayla Village Fountain 2",
+      "titleAr": "Altınyayla Village Fountain 2",
+      "lat": 40.5322227,
+      "lng": 39.1051064,
+      "kind": "attraction",
+      "popularity": 0,
+      "source": "wikidata"
+    }
+  ]
+}

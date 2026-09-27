@@ -1,0 +1,993 @@
+{
+    "CatalogOfferingsAirChangeResponse": {
+        "traceId": "23200890-04ec-41ce-bd1b-51e113d600f0",
+        "CatalogOfferings": {
+            "@type": "CatalogOfferings",
+            "Identifier": {
+                "value": "5b567ad6-244d-4c0d-b7f8-db60c95cd25b"
+            },
+            "CatalogOffering": [{
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "1",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S1"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S2"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1109.85,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7055.85
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [2],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1024.8,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 6970.8
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "2",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S1"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S3"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1109.85,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7055.85
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [2],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1024.8,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 6970.8
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "3",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S1"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1249.98,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7195.98
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [2],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1164.93,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7110.93
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "4",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S5"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S6"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1508.25,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7454.25
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "SegmentSequenceList": [2]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1423.2,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7369.2
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "5",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S5"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S7"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1508.25,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7454.25
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "SegmentSequenceList": [2]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1423.2,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7369.2
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "6",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "P1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S5"
+                                            }
+                                        }, {
+                                            "sequence": 2,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "S8"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 3,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1, 2],
+                                                    "classOfService": "B",
+                                                    "fareBasisCode": "BFFGBOWW"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1596.06,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7542.06
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/UA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 72.0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1, 2],
+                                "Text": ["1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "CARRY ON HAND BAGGAGE"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["P1"],
+                                "SegmentSequenceList": [2]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* DIWVRRF/NONREF 187.14 USD/REFUNDABLE"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "UA"
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 5946.0,
+                        "TotalTaxes": 1511.01,
+                        "TotalFees": 0.0,
+                        "TotalPrice": 7457.01
+                    }
+                }
+            ]
+        },
+        "ReferenceList": [{
+                "@type": "ReferenceListFlight",
+                "Flight": [{
+                        "@type": "Flight",
+                        "duration": "PT8H",
+                        "carrier": "UA",
+                        "number": "15",
+                        "equipment": "781",
+                        "id": "S1",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2021-03-19",
+                            "time": "09:00:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "EWR",
+                            "date": "2021-03-19",
+                            "time": "13:00:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT4H17M",
+                        "carrier": "UA",
+                        "number": "3584",
+                        "operatingCarrierName": "REPUBLIC AIRWAYS DBA UNITED EXPRESS",
+                        "equipment": "E70",
+                        "id": "S2",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "EWR",
+                            "date": "2021-03-19",
+                            "time": "18:25:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-19",
+                            "time": "21:42:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT4H17M",
+                        "carrier": "UA",
+                        "number": "3502",
+                        "operatingCarrierName": "REPUBLIC AIRWAYS DBA UNITED EXPRESS",
+                        "equipment": "E70",
+                        "id": "S3",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "EWR",
+                            "date": "2021-03-19",
+                            "time": "14:45:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-19",
+                            "time": "18:02:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT4H10M",
+                        "carrier": "UA",
+                        "number": "592",
+                        "equipment": "738",
+                        "id": "S4",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "EWR",
+                            "date": "2021-03-20",
+                            "time": "09:00:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-20",
+                            "time": "12:10:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT8H50M",
+                        "carrier": "UA",
+                        "number": "928",
+                        "equipment": "789",
+                        "id": "S5",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2021-03-19",
+                            "time": "08:30:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "ORD",
+                            "date": "2021-03-19",
+                            "time": "12:20:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT2H46M",
+                        "carrier": "UA",
+                        "number": "3476",
+                        "operatingCarrierName": "REPUBLIC AIRWAYS DBA UNITED EXPRESS",
+                        "equipment": "E70",
+                        "id": "S6",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "ORD",
+                            "date": "2021-03-19",
+                            "time": "19:45:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-19",
+                            "time": "22:31:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT2H40M",
+                        "carrier": "UA",
+                        "number": "1227",
+                        "equipment": "319",
+                        "id": "S7",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "ORD",
+                            "date": "2021-03-19",
+                            "time": "14:05:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-19",
+                            "time": "16:45:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT2H49M",
+                        "carrier": "UA",
+                        "number": "3545",
+                        "operatingCarrierName": "REPUBLIC AIRWAYS DBA UNITED EXPRESS",
+                        "equipment": "E7W",
+                        "id": "S8",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "ORD",
+                            "date": "2021-03-20",
+                            "time": "08:55:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "DFW",
+                            "date": "2021-03-20",
+                            "time": "11:44:00"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

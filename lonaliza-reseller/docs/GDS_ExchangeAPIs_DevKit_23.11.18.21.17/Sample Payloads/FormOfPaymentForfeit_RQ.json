@@ -1,0 +1,11 @@
+{
+  "FormOfPaymentForfeit" : {
+    "forfeitInd" : true,
+    "id" : "formOfPayment_4",
+    "FormOfPaymentRef" : "formOfPayment_4",
+    "Identifier" : {
+      "authority" : "Travelport",
+      "value" : "2e88da9b-f4c2-4044-8607-c7b74ba4c657"
+    }
+  }
+}

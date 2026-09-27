@@ -1,0 +1,55 @@
+{
+  "day": "2026-09-15",
+  "hotelbedsRequestsToday": 0,
+  "hotelbedsCursor": null,
+  "lastTickAt": "2026-09-15T23:25:38.054Z",
+  "lastSyncAt": null,
+  "lastRateHawkDumpAt": null,
+  "lastRateHawkIncrementalAt": null,
+  "seededGlobalAt": "2026-09-15T22:28:10.717Z",
+  "ticks": 38,
+  "lastResult": {
+    "at": "2026-09-15T23:25:43.895Z",
+    "durationMs": 5854,
+    "steps": [
+      {
+        "step": "seedDestinations",
+        "status": "done",
+        "count": 0
+      },
+      {
+        "step": "syncDiskCache",
+        "status": "done",
+        "count": 300,
+        "detail": "1080 pending"
+      },
+      {
+        "step": "hotelbeds",
+        "status": "skipped",
+        "count": 0,
+        "requests": 0,
+        "detail": "Hotelbeds not enabled"
+      },
+      {
+        "step": "travelport",
+        "status": "skipped",
+        "detail": "Travelport hotels not enabled"
+      },
+      {
+        "step": "ratehawk",
+        "status": "skipped",
+        "detail": "RateHawk credentials missing"
+      },
+      {
+        "step": "identity",
+        "status": "done",
+        "count": 0
+      },
+      {
+        "step": "seeru",
+        "status": "skipped",
+        "detail": "Seeru Hotels API v1 exposes no static content endpoint"
+      }
+    ]
+  }
+}

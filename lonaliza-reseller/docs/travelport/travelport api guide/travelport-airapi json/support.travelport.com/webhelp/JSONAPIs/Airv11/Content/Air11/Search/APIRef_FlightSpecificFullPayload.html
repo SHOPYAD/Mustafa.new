@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Air Searches" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificFullPayload.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Flight Specific Search Full Payload API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Flight Specific Search Full Payload API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>catalog/search/catalogproductofferings/buildoptions</p>
+                                                        <p data-mc-conditions="JSONAPIs.UpdateModel">When sending a Premium Flex request, use the endpoint catalog/search/catalogproductofferings/buildpremiumflexoptions</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="AirShoppingGuide.html"><span class="mc-variable General.AirAPI variable">Air</span> Search Guide</a>, <a href="../Workflows/Search_all-workflows.html">Search Workflow Diagrams</a></p>
+                                        <p>Use the Flight Specific Search full payload request to return additional upsells for one or more flights. You must send all required flight details; a preceding Search or Next Leg Search is not required. You can request up to 99 upsells. </p>
+                                        <div class="noteNote">GDS&#160;only, not supported for NDC.</div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="../General/CommonAirHeaders.html">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None.</p>
+                                        <h4>Request Body</h4>
+                                        <p>The Flight Specific Search POST request requires a message payload with itinerary details. The following table details the required objects. </p>
+                                        <div class="noteNote">If SpecificFlightCriteria/cabin or /classOfService is sent, those are ignored.</div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Request Body Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">&#160;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogProductOfferingsQueryBuildOptions</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object for request.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>BuildOptions</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <blockquote>
+                                                                        <p>maxNumberOfUpsellsToReturn</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Number of upsells to return. Valid values are 0 to 99 inclusive. If the carrier has filed fewer upsells, all filed upsells are returned.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Optional</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>BuildFromProductsRequest</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                    <p>Includes PassengerCriteria and ProductCriteriaAir.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p><b>PassengerCriteria</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Array. Defines the type of passenger to search for. </p>
+                                                                    <p>Send one PassengerCriteria for each passenger type code (PTC).</p>
+                                                                    <div class="noteWarning">Flight Specific Search supports up to 9 total passengers across all PTCs. </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <blockquote>
+                                                                        <p>passengerTypeCode</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. The passenger type code for the passengers on the itinerary. Common PTCs are:</p>
+                                                                    <ul>
+                                                                        <li>ADT: adult</li>
+                                                                        <li>CHD: child of unknown age (see <i>Notes on PTC and age</i>  below)</li>
+                                                                        <li>CNN:&#160;child when age is known</li>
+                                                                        <li>INF:&#160;infant without a seat</li>
+                                                                        <li>INS:&#160;infant with a seat</li>
+                                                                        <li>UNN:&#160;unaccompanied child</li>
+                                                                    </ul>
+                                                                    <p>See the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">Downloads</a> page to download a full list of PTCs. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <blockquote>
+                                                                        <p>number</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Number. The number of passengers with this PTC. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <blockquote>
+                                                                        <p>age</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Number. The age of the passenger. </p>
+                                                                    <div class="noteNote">
+                                                                        <h5>Notes on PTC and age</h5>
+                                                                        <ul>
+                                                                            <li>Travelport recommends sending age only with PTCs that require age for pricing.</li>
+                                                                            <li style="font-style: normal;">For child passengers, Travelport recommends sending the age of the child in the age attribute plus the PTC CNN. 
+Travelport recommends against sending CNN without age, or the CHD PTC. Many fares cannot be quoted for CHD.  </li>
+                                                                            <li>The age for CNN&#160;is generally between 2 and 11 inclusive, with ADT fares returned for ages 12 and up; however, this can vary by airline and country.</li>
+                                                                            <li>The age for INF&#160;must be either 0 or 1. </li>
+                                                                            <li>During booking, date of birth is required for all child and infant PTCs (<a href="../Book/APIRef_TravelerAdd.html">Add Traveler</a> payload in Traveler/birthDate).</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <p><b>ProductCriteriaAir</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Includes SpecificFlightCriteria.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: normal;">
+                                                                    <p><b>SpecificFlightCriteria</b>
+                                                                    </p>
+                                                                    <p>&#160;</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Array. Provides details for one flight to search for upsells for. </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>carrier</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>IATA code for the airline carrier for this flight.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>flightNumber</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Flight number.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>departureDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">String. Date of departure in YYYY-MM-DD format (e.g., departureDate="2022-12-06").</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>departureTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Time of departure in HH:MM:SS format (e.g., departureTime="18:00:00"). </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>arrivalDate</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">String. Date of arrival in YYYY-MM-DD format (e.g., arrivalDate="2022-12-06").</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>arrivalTime</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>String. Time of arrival in HH:MM:SS format (e.g., arrivalTime="22:30:00"). </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>from</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>String. The IATA location code for the departure airport/city for this flight.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>to</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">String. The IATA location code for the arrival airport/city for this flight.</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: normal;">
+                                                                    <blockquote>
+                                                                        <p>segmentSequence</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Number. Order of this flight in the sequence; e.g., <i>1</i> for the departure flight and <i>2</i> for the return flight.</p>
+                                                                    <p>The segmentSequence value for connecting flights should be the same. For example, for two connecting flights on the outbound leg of the itinerary, send both flights with the segmentSequence=1</p>
+                                                                    <p>The segmentSequence value for stopover flights should be sequential, e.g., values <i>1</i> and <i>2</i>.</p>
+                                                                    <div class="noteNote">
+                                                                        <h5>Example segmentSequence scenario</h5>
+                                                                        <p>On an example itinerary DEL&gt;LON&gt;JFK&gt;PAR&gt;DEL, in which LON is a connecting city and PAR is a stopover city, send segmentSequence values as follows:</p>
+                                                                        <ul>
+                                                                            <li>For Leg 1, from origin DEL to destination JFK, send both the segments DEL&gt;LON&#160;and LON&gt;JFK with segmentSequence=1</li>
+                                                                            <li>For Leg 2, from origin JFK to destination PAR, send the segment JFK&gt;PAR with segmentSequence=2</li>
+                                                                            <li>For Leg 3, from origin PAR to destination DEL, send the segment PAR&gt;DEL with segmentSequence=3</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required for round-trip and multi-leg</span>
+                                                                    </p>
+                                                                    <p>Optional for one-way</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">&#160;</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2" data-mc-conditions="JSONAPIs.UpdateModel">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>MultiPricingAgency</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>String array. Invokes <a href="AirShoppingGuide.html#flex">Premium Flex Search POS</a> feature. Send up to three PCCs to return offers for those point of sale agencies in addition to your provisioned PCC.</p>
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC. Must append /buildpremiumflexoptions to the endpoint. See <a href="AirShoppingGuide.html#flex">Premium Flex Search</a> in the <span class="mc-variable General.AirAPI variable">Air</span> Search&#160;Guide for usage and examples, and usage of the Accept header value to specify returning aggregated or streamed content.</div>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p>Optional</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">&#160;</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The Flight Specific Search response uses the same structure and returns the same objects as the <a href="APIRef_Search.html#resp">Search response</a>. The differences are:</p>
+                                        <ul>
+                                            <li>Only one instance of CatalogProductOffering (id o1) is returned, as this includes all upsells for the one product sent in the request.</li>
+                                            <li>Only one instance of ReferenceListProduct/Product is returned, as one product was sent in the request. </li>
+                                        </ul>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <p>The following example request sends full flight details to request all upsells on a one-way GDS itinerary with connecting flights. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example request</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogProductOfferingsQueryBuildOptions": {
+  "BuildOptions": {
+   "@type": "BuildOptionsFromProducts",
+   "maxNumberOfUpsellsToReturn": 99,
+   "BuildFromProductsRequest": {
+    "@type": "BuildFromProductsRequestAir",
+    "PassengerCriteria": [
+     {
+      "@type": "PassengerCriteria",
+      "number": 1,
+      "passengerTypeCode": "ADT"
+     }
+    ],
+    "ProductCriteriaAir": [
+     {
+      "SpecificFlightCriteria": [
+       {
+        "flightNumber": "481",
+        "carrier": "AA",
+        "departureDate": "2024-01-07",
+        "departureTime": "10:06:00",
+        "arrivalDate": "2024-01-07",
+        "arrivalTime": "12:45:00",
+        "from": "ORD",
+        "to": "DFW",
+        "classOfService": "L",
+        "cabin": "Economy",
+        "segmentSequence": 1,
+        "brandTier": "7",
+        "boundFlightsInd": true,
+        "AvailabilitySourceCode": "S",
+        "ContentSource": "GDS"
+       },
+       {
+        "flightNumber": "1832",
+        "carrier": "AA",
+        "departureDate": "2024-01-07",
+        "departureTime": "14:45:00",
+        "arrivalDate": "2024-01-07",
+        "arrivalTime": "15:50:00",
+        "from": "DFW",
+        "to": "DEN",
+        "classOfService": "L",
+        "cabin": "Economy",
+        "segmentSequence": 2,
+        "brandTier": "7",
+        "AvailabilitySourceCode": "S",
+        "ContentSource": "GDS"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>The following example response excerpt returns the base fare (b0) and 11upsell fares (b1-11), each in an instance of ProductBrandOffering. The Result and ReferenceList objects have been edited out for brevity; see the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> for full examples.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogProductOfferingsResponse": {
+  "@type": "CatalogProductOfferingsResponse",
+  "transactionId": "4a3c23fa-b2e9-413e-9573-a2f4b49785db:ppnd1003",
+  "CatalogProductOfferings": {
+   "@type": "CatalogProductOfferings",
+   "Identifier": {
+    "value": "19c6b779-8fae-40ff-a2f0-7a10d592a7fd"
+   },
+   "CatalogProductOffering": [
+    {
+     "@type": "CatalogProductOffering",
+     "sequence": 1,
+     "id": "o1",
+     "Departure": "ORD",
+     "Arrival": "DEN",
+     "Brand": [
+      {
+       "@type": "BrandID",
+       "BrandRef": "b0"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b1"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b2"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b3"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b4"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b5"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b6"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b7"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b8"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b9"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b10"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "b11"
+      }
+     ],
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "flightRefs": [
+        "s1",
+        "s2"
+       ],
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Price": {
+          "@type": "PriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 1610,
+          "TotalTaxes": 313,
+          "TotalFees": 0,
+          "TotalPrice": 1923,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 1610,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 313,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 121
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 1923
+            },
+            "Surcharges": {
+             "@type": "SurchargesDetail",
+             "approximateInd": true,
+             "TotalSurcharges": 80,
+             "Surcharge": [
+              {
+               "currencyCode": "HKD",
+               "purpose": "Other",
+               "decimalPlace": 0,
+               "value": 80
+              }
+             ]
+            }
+           }
+          ]
+         },
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "b0"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p0"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "T0"
+         },
+         "CombinabilityCode": [
+          "j1"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 1610,
+          "TotalTaxes": 313,
+          "TotalPrice": 1923,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 1610,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 313,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 121
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Total": 1923
+            }
+           }
+          ]
+         }
+        },
+        {
+         "@type": "ProductBrandOffering",
+         "Price": {
+          "@type": "PriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 3420,
+          "TotalTaxes": 449,
+          "TotalFees": 0,
+          "TotalPrice": 3869,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 3420,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 449,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 257
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 3869
+            },
+            "Surcharges": {
+             "@type": "SurchargesDetail",
+             "approximateInd": true,
+             "TotalSurcharges": 80,
+             "Surcharge": [
+              {
+               "currencyCode": "HKD",
+               "purpose": "Other",
+               "decimalPlace": 0,
+               "value": 80
+              }
+             ]
+            }
+           }
+          ]
+         },
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "b8"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p1"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "T1"
+         },
+         "CombinabilityCode": [
+          "j2"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 3420,
+          "TotalTaxes": 449,
+          "TotalPrice": 3869,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 3420,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 449,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 257
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Total": 3869
+            }
+           }
+          ]
+         }
+        },
+        {
+         "@type": "ProductBrandOffering",
+         "Price": {
+          "@type": "PriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 3380,
+          "TotalTaxes": 446,
+          "TotalFees": 0,
+          "TotalPrice": 3826,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 3380,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 446,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 254
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 3826
+            },
+            "Surcharges": {
+             "@type": "SurchargesDetail",
+             "approximateInd": true,
+             "TotalSurcharges": 80,
+             "Surcharge": [
+              {
+               "currencyCode": "HKD",
+               "purpose": "Other",
+               "decimalPlace": 0,
+               "value": 80
+              }
+             ]
+            }
+           }
+          ]
+         },
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "b9"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p2"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "T2"
+         },
+         "CombinabilityCode": [
+          "j3"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 3380,
+          "TotalTaxes": 446,
+          "TotalPrice": 3826,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 3380,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 446,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 254
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Total": 3826
+            }
+           }
+          ]
+         }
+        },
+        {
+         "@type": "ProductBrandOffering",
+         "Price": {
+          "@type": "PriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 4470,
+          "TotalTaxes": 528,
+          "TotalFees": 0,
+          "TotalPrice": 4998,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 4470,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 528,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 336
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 4998
+            },
+            "Surcharges": {
+             "@type": "SurchargesDetail",
+             "approximateInd": true,
+             "TotalSurcharges": 80,
+             "Surcharge": [
+              {
+               "currencyCode": "HKD",
+               "purpose": "Other",
+               "decimalPlace": 0,
+               "value": 80
+              }
+             ]
+            }
+           }
+          ]
+         },
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "b10"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p3"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "T3"
+         },
+         "CombinabilityCode": [
+          "j4"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 4470,
+          "TotalTaxes": 528,
+          "TotalPrice": 4998,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 4470,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 528,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 336
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Total": 4998
+            }
+           }
+          ]
+         }
+        },
+        {
+         "@type": "ProductBrandOffering",
+         "Price": {
+          "@type": "PriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 48280,
+          "TotalTaxes": 3813,
+          "TotalFees": 0,
+          "TotalPrice": 52093,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 48280,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 3813,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 3621
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 52093
+            }
+           }
+          ]
+         },
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "b11"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "p4"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "T4"
+         },
+         "CombinabilityCode": [
+          "j5"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "HKD"
+          },
+          "Base": 48280,
+          "TotalTaxes": 3813,
+          "TotalPrice": 52093,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "HKD"
+             },
+             "Base": 48280,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 3813,
+              "Tax": [
+               {
+                "taxCode": "AY",
+                "value": 44
+               },
+               {
+                "taxCode": "US",
+                "value": 3621
+               },
+               {
+                "taxCode": "XF",
+                "value": 72
+               },
+               {
+                "taxCode": "ZP",
+                "value": 76
+               }
+              ]
+             },
+             "Total": 52093
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Result": {...},
+  "ReferenceList": [...]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/APIRef_FlightSpecificFullPayload.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:30 GMT -->
+</html>

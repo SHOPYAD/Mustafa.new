@@ -1,0 +1,711 @@
+{
+    "ReservationResponse": {
+        "@type": "ReservationResponse",
+        "Reservation": {
+            "@type": "Reservation",
+            "Identifier": {
+                "authority": "Travelport",
+                "value": "20a3ba90-1566-42d6-a9c9-c8668b0b462c"
+            },
+            "Offer": [
+                {
+                    "@type": "Offer",
+                    "id": "offer_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "f738ad94-54d3-434b-be48-865703e3e0dd"
+                    },
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "product_1",
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "c44f3309-12e9-46d5-be32-e8b5e45390d8"
+                            },
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "id": "FlightSegment_01",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT1H20M",
+                                        "carrier": "LH",
+                                        "number": "2085",
+                                        "equipment": "321",
+                                        "id": "Flight_01",
+                                        "Identifier": {
+                                            "authority": "Travelport",
+                                            "value": "4d6509da-8f75-47c9-9045-08dd4a92ab96"
+                                        },
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "HAM",
+                                            "date": "2022-12-10",
+                                            "time": "06:20:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "Arrival",
+                                            "location": "MUC",
+                                            "date": "2022-12-10",
+                                            "time": "07:40:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "fareBasisCode": "YDELGTG9",
+                                            "fareType": "PublicFare"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "id": "PriceDetail_1",
+                        "CurrencyCode": {
+                            "value": "AUD"
+                        },
+                        "Base": 484,
+                        "TotalTaxes": 153.4,
+                        "TotalFees": 0,
+                        "TotalPrice": 637.4,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "EUR"
+                                    },
+                                    "Base": 331
+                                }
+                            },
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "currencySource": "Charged",
+                                    "approximateInd": true,
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": 484,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 153.4,
+                                        "Tax": [
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "DE",
+                                                "value": 12.3
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "OY",
+                                                "value": 22.2
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "RD",
+                                                "value": 19.5
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "YQ",
+                                                "value": 65.8
+                                            },
+                                            {
+                                                "currencyCode": "AUD",
+                                                "taxCode": "YR",
+                                                "value": 33.6
+                                            }
+                                        ]
+                                    },
+                                    "Total": 637.4
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "EUR",
+                                    "decimalPlace": 2,
+                                    "value": 331
+                                },
+                                "FareCalculation": "HAM LH MUC 331.00YDELGTG9 EUR331.00END"
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "5926c0b3-165b-497b-957d-2e4b20399b13"
+                            },
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0PC"
+                                    ]
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "LH"
+                                }
+                            ],
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "Code": {
+                                        "value": "G"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "Restriction": [
+                                {
+                                    "value": "FARE RESTRICTION MAY APPLY"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferModify",
+                    "id": "offerModify_1",
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "p1",
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT1H20M",
+                                        "carrier": "LH",
+                                        "number": "2089",
+                                        "equipment": "321",
+                                        "id": "s1",
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "HAM",
+                                            "date": "2022-12-10",
+                                            "time": "07:50:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "ArrivalDetail",
+                                            "terminal": "1",
+                                            "location": "MUC",
+                                            "date": "2022-12-10",
+                                            "time": "09:10:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "YDELGTG9",
+                                            "fareType": "PublicFare",
+                                            "Brand": {
+                                                "@type": "BrandID"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "AUD"
+                        },
+                        "Base": 484.00,
+                        "TotalTaxes": 119.80,
+                        "TotalFees": 103.00,
+                        "TotalPrice": 706.80,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": 484.00,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 119.80,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "DE",
+                                                "value": 12.3
+                                            },
+                                            {
+                                                "taxCode": "OY",
+                                                "value": 22.2
+                                            },
+                                            {
+                                                "taxCode": "RD",
+                                                "value": 19.5
+                                            },
+                                            {
+                                                "taxCode": "YQ",
+                                                "value": 65.8
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 103.00,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "AUD",
+                                                        "minorUnit": 2,
+                                                        "value": 103.0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 706.80
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "EUR",
+                                    "decimalPlace": 2,
+                                    "value": 331.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAirChange",
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/LH",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "FirstCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "EUR",
+                                                "value": 50.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/LH",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "SecondCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "EUR",
+                                                "value": 70.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "CarryOn",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "AUD",
+                                                "value": 0
+                                            },
+                                            "Text": "UPTO18LB/8KG AND UPTO46LI/118LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1P"
+                                    ]
+                                }
+                            ],
+                            "Restriction": [
+                                {
+                                    "value": "* NONREF 513.32 AUD/FARE RESTRICTION MAY APPLY"
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "LH"
+                                }
+                            ],
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "EligibleforADMReview": "Yes",
+                                    "Code": {
+                                        "codeContext": "Travelport",
+                                        "value": "G"
+                                    }
+                                }
+                            ],
+                            "FulfillmentMethod": [
+                                {
+                                    "@type": "FulfillmentMethod",
+                                    "ChangeFeeCollectionMethod": {
+                                        "value": "EMD"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "AUD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 103.00,
+                        "TotalPrice": 103.00,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "AUD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 103.00,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "AUD",
+                                                        "minorUnit": 2,
+                                                        "value": 103.0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 103.00
+                                },
+                                "FareCalculation": "HAM LH MUC331.00EUR331.00END LH"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "Traveler": [
+                {
+                    "@type": "Traveler",
+                    "passengerTypeCode": "ADT",
+                    "id": "travelerRefId_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "37067875-8fc4-4763-9cda-597be7c58520"
+                    },
+                    "PersonName": {
+                        "@type": "PersonName",
+                        "Given": "KUMAR",
+                        "Surname": "ANANDA"
+                    },
+                    "Telephone": [
+                        {
+                            "@type": "TelephoneDetail",
+                            "phoneNumber": "NNNN",
+                            "id": "telephone_1"
+                        }
+                    ]
+                }
+            ],
+            "FormOfPayment": [
+                {
+                    "@type": "FormOfPaymentCash",
+                    "id": "formOfPayment_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "72ef5084-ea38-4254-8c17-05ec95ee076b"
+                    }
+                }
+            ],
+            "Payment": [
+                {
+                    "@type": "Payment",
+                    "id": "payment_1",
+                    "PaymentRef": "payment_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "a04b2b6f-29c7-4ec2-bc0d-db6382eabc7c"
+                    },
+                    "Amount": {
+                        "value": 637.4
+                    },
+                    "FormOfPaymentIdentifier": {
+                        "FormOfPaymentRef": "formOfPayment_1"
+                    }
+                }
+            ],
+            "Receipt": [
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "db3475cd-b5ba-4dfe-bb8a-d177a18c9376"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "1G",
+                            "value": "2CMMQM"
+                        },
+                        "OfferStatus": {
+                            "@type": "OfferStatusAir",
+                            "StatusAir": [
+                                {
+                                    "flightRefs": [
+                                        "Flight_01"
+                                    ],
+                                    "code": "HK",
+                                    "value": "Confirmed"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "0112672b-4daf-462b-bbcc-52fa49df9ee8"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "TripContainer",
+                            "value": "71D22ED4-1EE0-0000-0202-210161206408"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "416fc413-a1cb-4075-8091-094289b23213"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "1A",
+                            "value": "6NCI5P"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "dateTime": "2022-10-16T12:06:00Z",
+                    "id": "receipt_1",
+                    "ReceiptRef": "receipt_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "b2e7b2ee-7f2d-43f5-b4be-c34fac3476b7"
+                    },
+                    "OfferRef": [
+                        "offer_1"
+                    ],
+                    "PaymentIdentifier": {
+                        "PaymentRef": "payment_1"
+                    },
+                    "Document": [
+                        {
+                            "@type": "DocumentTicket",
+                            "Number": "2203532402551",
+                            "TravelerIdentifierRef": {
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": ""
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "CurrencyCode": {
+                                    "decimalPlace": 2,
+                                    "value": "AUD"
+                                },
+                                "Base": 484,
+                                "Taxes": {
+                                    "@type": "TaxesDetail",
+                                    "TotalTaxes": 153.4,
+                                    "Tax": [
+                                        {
+                                            "taxCode": "DE",
+                                            "value": 12.3
+                                        },
+                                        {
+                                            "taxCode": "OY",
+                                            "value": 22.2
+                                        },
+                                        {
+                                            "taxCode": "RD",
+                                            "value": 19.5
+                                        },
+                                        {
+                                            "taxCode": "YQ",
+                                            "value": 65.8
+                                        },
+                                        {
+                                            "taxCode": "YR",
+                                            "value": 33.6
+                                        }
+                                    ]
+                                },
+                                "Total": 637.4
+                            },
+                            "Commission": {
+                                "@type": "CommissionPercent",
+                                "Percent": 1
+                            },
+                            "IssuingPCC": "79JP",
+                            "FiledAmount": {
+                                "currencyCode": "EUR",
+                                "decimalPlace": 2,
+                                "value": 331
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ReservationComment": [
+                {
+                    "@type": "ReservationComment",
+                    "commentSource": "Supplier",
+                    "shareWithSupplier": [
+                        "LH"
+                    ],
+                    "Comment": [
+                        {
+                            "value": "MISSING SSR CTCM MOBILE OR SSR CTCE EMAIL OR SSR CTCR NON-CONSENT FOR LH"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Result": {
+            "@type": "Result",
+            "Error": [
+                {
+                    "@type": "ErrorDetail",
+                    "StatusCode": 400,
+                    "Message": "Subcode length should be 3 when ChangeFeeCollectionMethod value = EMD",
+                    "SourceCode": "21005"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "id": "reservationComment_1",
+                "commentSource": "Agency",
+                "shareWith": "Supplier",
+                "shareWithSupplier": [
+                    "UA"
+                ],
+                "Comment": [
+                    {
+                        "id": "comment_1",
+                        "name": "Vendor Remarks",
+                        "language": "EN",
+                        "value": "Testing with carrier code for GDS OW"
+                    }
+                ]
+            }
+        ]
+    }
+}

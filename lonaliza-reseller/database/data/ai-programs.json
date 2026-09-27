@@ -1,0 +1,3369 @@
+{
+  "programs": [
+    {
+      "id": "aip_mu1xqcgo_g7wbin",
+      "titleAr": "برنامج طرابزون والشمال التركي الفاخر - 10 أيام",
+      "titleEn": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+      "destination": "Trabzon",
+      "nights": 9,
+      "people": 2,
+      "arrivalDate": "2026-04-15",
+      "departureDate": "2026-04-24",
+      "priceFromUsd": 386,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "الإقامة في فنادق 4 و 5 نجوم مع الإفطار",
+        "الإقامة في كوخ ريفي فاخر في آيدر",
+        "سيارة مرسيدس فيتو خاصة مع سائق طوال أيام الرحلة",
+        "استقبال وتوديع المطار",
+        "الجولات السياحية اليومية"
+      ],
+      "includesEn": [
+        "4-5 star hotel accommodation with breakfast",
+        "Luxury wooden cabin stay in Ayder",
+        "Private Mercedes-Benz Vito with driver for all days",
+        "Airport transfers",
+        "Daily sightseeing tours"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج طرابزون والشمال التركي الفاخر - 10 أيام",
+        "titleEn": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول إلى طرابزون واستلام السيارة والتوجه للفندق",
+            "titleEn": "Arrival in Trabzon & Hotel Check-in",
+            "detailAr": "الاستقبال في مطار طرابزون عبر السائق الخاص بسيارة الفيتو، التوجه إلى الفندق لتسجيل الغرف والراحة من سفر السفر، ثم جولة مسائية قصيرة في ميدان طرابزون الحيوي.",
+            "detailEn": "Arrival at Trabzon airport, private VIP transfer to the hotel, check-in, and a relaxing evening stroll around Trabzon Square.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "flight",
+                "labelAr": "الوصول إلى مطار طرابزون",
+                "labelEn": "Arrival at Trabzon Airport"
+              },
+              {
+                "time": "12:00",
+                "kind": "transfer",
+                "labelAr": "الاستقبال والتوجه لفندق طرابزون",
+                "labelEn": "Transfer to Trabzon Hotel"
+              },
+              {
+                "time": "16:00",
+                "kind": "activity",
+                "labelAr": "جولة خفيفة في ميدان طرابزون",
+                "labelEn": "Light tour in Trabzon Square"
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة دير سوميلا ومرتفعات زيجانا وهامشيكوي",
+            "titleEn": "Sumela Monastery & Zigana Tour",
+            "detailAr": "صباحاً الانطلاق لزيارة دير سوميلا التاريخي المنحوت في الصخر، ثم زيارة قرية هامشيكوي لتذوق المهلبية الشهيرة، والتوجه لمرتفعات زيجانا للاستتمتاع بالطبيعة الساحرة.",
+            "detailEn": "Morning tour to the historic Sumela Monastery, followed by Hamsiköy village and Zigana heights.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "زيارة دير سوميلا التاريخي",
+                "labelEn": "Visit Sumela Monastery"
+              },
+              {
+                "time": "13:30",
+                "kind": "activity",
+                "labelAr": "الغداء وتذوق مهلبية هامشيكوي",
+                "labelEn": "Lunch and Hamsiköy pudding"
+              },
+              {
+                "time": "16:00",
+                "kind": "activity",
+                "labelAr": "مرتفعات زيجانا",
+                "labelEn": "Zigana Highlands"
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "titleAr": "جولة بحيرة أوزونجول الخلابة",
+            "titleEn": "Uzungöl Lake Excursion",
+            "detailAr": "الانطلاق صباحاً نحو بحيرة أوزونجول الشهيرة بين الجبال الشاهقة، زيارة شلالات أوزونجول، والصعود إلى شرفات المراقبة المطلة على البحيرة كاملة.",
+            "detailEn": "Trip to the famous Uzungöl Lake, visiting waterfalls and viewpoints.",
+            "items": [
+              {
+                "time": "09:00",
+                "kind": "transfer",
+                "labelAr": "التحرك باتجاه أوزونجول",
+                "labelEn": "Drive towards Uzungöl"
+              },
+              {
+                "time": "11:00",
+                "kind": "activity",
+                "labelAr": "جولة حول بحيرة أوزونجول والشلالات",
+                "labelEn": "Lake tour and waterfalls"
+              },
+              {
+                "time": "16:00",
+                "kind": "activity",
+                "labelAr": "شرفة المراقبة المطلة على أوزونجول",
+                "labelEn": "Uzungöl viewpoint terrace"
+              }
+            ]
+          },
+          {
+            "day": 4,
+            "titleAr": "التوجه إلى آيدر والإقامة في الكوخ الريفي الساحر",
+            "titleEn": "Transfer to Ayder & Mountain Cabin Stay",
+            "detailAr": "مغادرة فندق طرابزون والتوجه شرقاً نحو ريزه ومرتفعات آيدر، تسجيل الوصول في كوخ خشبي فاخر بين الطبيعة، والاسترخاء بجانب الأنهار والشلالات.",
+            "detailEn": "Departing Trabzon to Ayder highlands, checking into a luxury wooden cabin.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "transfer",
+                "labelAr": "الانتقال من طرابزون إلى آيدر",
+                "labelEn": "Transfer from Trabzon to Ayder"
+              },
+              {
+                "time": "13:00",
+                "kind": "activity",
+                "labelAr": "تسجيل الوصول في الكوخ الريفي",
+                "labelEn": "Cabin check-in"
+              },
+              {
+                "time": "15:30",
+                "kind": "activity",
+                "labelAr": "استكشاف شلالات آيدر والحمامات الكبريتية",
+                "labelEn": "Ayder waterfalls and thermal springs"
+              }
+            ]
+          },
+          {
+            "day": 5,
+            "titleAr": "جولة وديان ريزه ومرتفعات هاثيرلا",
+            "titleEn": "Rize Valleys & Huser Highlands Tour",
+            "detailAr": "استكشاف وادي فرتينا مع إمكانية تجربة التجديف (الرافتينغ) والزيبلاين، ثم الصعود بسيارة الفيتو إلى مرتفعات هاثيرلا لمشاهدة بحر السحب وقت الغروب.",
+            "detailEn": "Exploring Fırtına Valley, rafting, and heading up to Huser Highlands for the sea of clouds.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "وادي فرتينا وأنشطة الرافتينغ",
+                "labelEn": "Fırtına Valley and rafting"
+              },
+              {
+                "time": "14:00",
+                "kind": "activity",
+                "labelAr": "زيارة قلعة زيل التاريخية",
+                "labelEn": "Visit Zil Castle"
+              },
+              {
+                "time": "17:00",
+                "kind": "activity",
+                "labelAr": "مرتفعات هاثيرلا ومشاهدة الغروب فوق السحب",
+                "labelEn": "Huser Highlands sunset over clouds"
+              }
+            ]
+          },
+          {
+            "day": 6,
+            "titleAr": "العودة إلى طرابزون وزيارة قصر أتاتورك ومجمع فوروم",
+            "titleEn": "Return to Trabzon & City Sightseeing",
+            "detailAr": "مغادرة الكوخ والعودة نحو مدينة طرابزون، زيارة قصر أتاتورك التاريخي وسط الحدائق، ثم وقت للتبضع في مجمع فوروم طرابزون.",
+            "detailEn": "Returning to Trabzon, visiting Atatürk Pavilion and Forum Trabzon mall.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "transfer",
+                "labelAr": "العودة من آيدر إلى طرابزون",
+                "labelEn": "Return from Ayder to Trabzon"
+              },
+              {
+                "time": "13:30",
+                "kind": "activity",
+                "labelAr": "زيارة قصر أتاتورك التاريخي",
+                "labelEn": "Visit Atatürk Pavilion"
+              },
+              {
+                "time": "16:00",
+                "kind": "activity",
+                "labelAr": "تسوق في فوروم طرابزون",
+                "labelEn": "Shopping at Forum Trabzon"
+              },
+              {
+                "time": "19:00",
+                "kind": "hotel",
+                "labelAr": "تسجيل الوصول بالفندق في طرابزون",
+                "labelEn": "Check-in at Trabzon hotel"
+              }
+            ]
+          },
+          {
+            "day": 7,
+            "titleAr": "جولة مدينة أوردو وتلفريك بوستبي",
+            "titleEn": "Ordu City & Boztepe Cable Car Tour",
+            "detailAr": "يوم كامل في مدينة أوردو الساحرة، ركوب التلفريك الشهير صعوداً إلى قمة بوستبي للاستمتاع بإطلالة بانورامية على البحر الأسود والمدينة.",
+            "detailEn": "Full day trip to Ordu, riding Boztepe cable car for panoramic Black Sea views.",
+            "items": [
+              {
+                "time": "08:30",
+                "kind": "transfer",
+                "labelAr": "الانطلاق نحو مدينة أوردو",
+                "labelEn": "Drive to Ordu"
+              },
+              {
+                "time": "11:30",
+                "kind": "activity",
+                "labelAr": "ركوب تلفريك بوستبي أوردو",
+                "labelEn": "Boztepe cable car ride"
+              },
+              {
+                "time": "15:00",
+                "kind": "activity",
+                "labelAr": "جولة كورنيش أوردو وأسواق البندق",
+                "labelEn": "Ordu corniche and hazelnut markets"
+              }
+            ]
+          },
+          {
+            "day": 8,
+            "titleAr": "جولة مغارة تشال ومحيط طرابزون الطبيعي",
+            "titleEn": "Çal Cave & Natural Surroundings Tour",
+            "detailAr": "زيارة مغارة تشال (ثاني أطول مغارة في العالم) بممراتها المائية والكهفية الساحرة، ثم زيارة بحيرة سيرا جول وجلسات هادئة حول الطبيعة.",
+            "detailEn": "Visiting Çal Cave (one of the world's longest caves) and Sera Göl lake.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "زيارة مغارة تشال العجيبة",
+                "labelEn": "Visit Çal Cave"
+              },
+              {
+                "time": "13:30",
+                "kind": "activity",
+                "labelAr": "الغداء وجولة بحيرة سيرا جول",
+                "labelEn": "Lunch and Sera Göl lake tour"
+              }
+            ]
+          },
+          {
+            "day": 9,
+            "titleAr": "يوم حر للتسوق واقتناء الهدايا التذكارية في طرابزون",
+            "titleEn": "Free Day for Shopping & Souvenirs",
+            "detailAr": "يوم حر للاسترخاء وتسوق الهدايا الشعبية والشاي التركي الفاخر والبهارات من السوق الطويل وسوق البازار التاريخي في طرابزون.",
+            "detailEn": "Free day for leisure, shopping for Turkish tea, spices, and local souvenirs.",
+            "items": [
+              {
+                "time": "10:30",
+                "kind": "activity",
+                "labelAr": "جولة السوق الطويل والبازار القديم",
+                "labelEn": "Long Street and Old Bazaar tour"
+              },
+              {
+                "time": "16:00",
+                "kind": "activity",
+                "labelAr": "جلسة مقهى مطلة على البحر الأسود",
+                "labelEn": "Black Sea view café session"
+              }
+            ]
+          },
+          {
+            "day": 10,
+            "titleAr": "المغادرة والعودة إلى أرض الوطن",
+            "titleEn": "Departure Day",
+            "detailAr": "تناول الإفطار بالفندق، إتمام إجراءات الخروج، ثم الانتقال بسيارة الفيتو الخاصة إلى مطار طرابزون للعودة بالسلامة.",
+            "detailEn": "Breakfast, hotel check-out, and private transfer to Trabzon airport for departure.",
+            "items": [
+              {
+                "time": "09:00",
+                "kind": "transfer",
+                "labelAr": "التوجه من الفندق إلى مطار طرابزون",
+                "labelEn": "Transfer from hotel to Trabzon airport"
+              },
+              {
+                "time": "12:00",
+                "kind": "flight",
+                "labelAr": "رحلة العودة الموفقة",
+                "labelEn": "Departure flight"
+              }
+            ]
+          }
+        ],
+        "totalBasePrice": 2100,
+        "totalClientPrice": 386,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 8 أيام",
+          "subtitleEn": "$42/day × 8 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 336,
+          "clientPrice": 386,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-29&returnDate=2026-10-07&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 8,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 8 أيام",
+          "subtitleEn": "$95/day × 8 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 760,
+          "clientPrice": 874,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-29&returnDate=2026-10-07&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 8,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=RUH&to=TZX&date=2026-09-29&returnDate=2026-10-07&guests=2&flightType=round-trip&class=economy&flightSearch=RUH2909TZX07102",
+      "transferHref": "/transfers?from=TZX+Airport&to=Trabzon&pickup=TZX+Airport&dropoff=Trabzon&date=2026-09-29&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-29&returnDate=2026-10-07&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-15T00:30:02.904Z"
+    },
+    {
+      "id": "aip_mu1xj1mj_8u057v",
+      "titleAr": "برنامج إسطنبول التراثي والترفيهي لمدة 5 أيام",
+      "titleEn": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+      "destination": "Istanbul",
+      "nights": 4,
+      "people": 2,
+      "arrivalDate": "2026-09-10",
+      "departureDate": "2026-09-14",
+      "priceFromUsd": 435,
+      "thumbnail": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1600&q=80",
+      "includesAr": [
+        "الإقامة في فندق مميز مع الإفطار",
+        "الاستقبال والمغادرة بترانسفير خاص",
+        "جولات سياحية مخصصة"
+      ],
+      "includesEn": [
+        "Hotel accommodation with breakfast",
+        "Private airport transfers",
+        "Custom guided tours"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج إسطنبول التراثي والترفيهي لمدة 5 أيام",
+        "titleEn": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "اليوم الأول: الوصول والاستقبال الفاخر والاستقرار في الفندق",
+            "titleEn": "Day 1: Arrival, VIP Transfer and Hotel Check-in",
+            "detailAr": "الوصول إلى مطار إسطنبول الدولي حيث سيكون مندوب لوناليزا للسياحة والسفر في انتظاركم مع لوحة تحمل اسمكم. الانتقال بسيارة مرسيدس خاصة إلى الفندق لتسجيل الغرف وأخذ قسط من الراحة، يليه جولة مسائية قصيرة لاستكشاف محيط الفندق وتناول العشاء.",
+            "detailEn": "Arrival at Istanbul Airport, private transfer to the hotel, check-in, and a relaxing evening stroll around the neighborhood.",
+            "items": [
+              {
+                "time": "14:00",
+                "kind": "transfer",
+                "labelAr": "استقبال من المطار والانتقال للفندق",
+                "labelEn": "Airport pickup & transfer to hotel"
+              },
+              {
+                "time": "18:00",
+                "kind": "activity",
+                "labelAr": "عشاء ترحيب إسطنبولي",
+                "labelEn": "Welcome Istanbul dinner"
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "titleAr": "اليوم الثاني: عبق التاريخ في السلطان أحمد",
+            "titleEn": "Day 2: Historic Old City & Sultanahmet Tour",
+            "detailAr": "صباحاً، زيارة جامع السلطان أحمد (الجامع الأزرق) وآيا صوفيا وميدان الهيبودروم العريق. بعد الغداء في مطعم تقليدي مطل على المآذن، نتجه لزيارة قصر طوب قابي ومتحف الآثار الإسلامية.",
+            "detailEn": "Morning visit to Blue Mosque, Hagia Sophia, and Hippodrome. Afternoon at Topkapi Palace.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "جولة السلطان أحمد التاريخية",
+                "labelEn": "Sultanahmet historical tour"
+              },
+              {
+                "time": "14:00",
+                "kind": "activity",
+                "labelAr": "زيارة قصر طوب قابي",
+                "labelEn": "Topkapi Palace visit"
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "titleAr": "اليوم الثالث: سحر مضيق البوسفور وجولة اليخوت الخاصة",
+            "titleEn": "Day 3: Bosphorus Cruise & Asian Side",
+            "detailAr": "جولة صباحية بحرية في مضيق البوسفور على متن يخت خاص لمشاهدة القصور التاريخية والجسور المعلقة. ثم التوجه إلى الجانب الآسيوي لزيارة تل العرضيات (تشامليجا) وبرج القز قولي (برج الفتاة) وتناول القهوة في منطقة أسكودار.",
+            "detailEn": "Morning private Bosphorus yacht cruise. Afternoon visit to Asian side, Çamlıca Hill, and Maiden's Tower view.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "activity",
+                "labelAr": "رحلة يخت في البوسفور",
+                "labelEn": "Bosphorus yacht cruise"
+              },
+              {
+                "time": "15:00",
+                "kind": "activity",
+                "labelAr": "استكشاف الجانب الآسيوي وتل تشامليجا",
+                "labelEn": "Asian side & Çamlıca Hill exploration"
+              }
+            ]
+          },
+          {
+            "day": 4,
+            "titleAr": "اليوم الرابع: التسوق التراثي والحديث في إسطنبول",
+            "titleEn": "Day 4: Grand Bazaar, Spice Market & Modern Shopping",
+            "detailAr": "زيارة السوق المغلق (البازار الكبير) لشراء الهدايا التذكارية والمجوهرات والتوابل في السوق المصري التاريخي. بعد الظهر، الانتقال إلى شارع الاستقلال وميدان تقسيم للاستمتاع بالأجواء الحية وزيارة مراكز التسوق الحديثة.",
+            "detailEn": "Visit Grand Bazaar and Spice Bazaar. Afternoon at Istiklal Street and Taksim Square.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "activity",
+                "labelAr": "جولة البازار الكبير والسوق المصري",
+                "labelEn": "Grand Bazaar & Spice Market tour"
+              },
+              {
+                "time": "15:00",
+                "kind": "activity",
+                "labelAr": "جولة شارع الاستقلال وتقسيم",
+                "labelEn": "Istiklal Street & Taksim tour"
+              }
+            ]
+          },
+          {
+            "day": 5,
+            "titleAr": "اليوم الخامس: الوداع والعودة الموفقة",
+            "titleEn": "Day 5: Departure and Transfer to Airport",
+            "detailAr": "تناول الإفطار في الفندق وتسجيل الغرف، ثم الاستعداد للانتقال بسيارة خاصة إلى مطار إسطنبول الدولي للعودة إلى أرض الوطن بسلامة الله ذكريات لا تُنسى.",
+            "detailEn": "Breakfast at hotel, check-out, and private transfer to Istanbul Airport for departure.",
+            "items": [
+              {
+                "time": "12:00",
+                "kind": "transfer",
+                "labelAr": "الانتقال إلى مطار إسطنبول",
+                "labelEn": "Transfer to Istanbul Airport"
+              }
+            ]
+          }
+        ],
+        "totalBasePrice": 599,
+        "totalClientPrice": 435.21,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "hotel",
+          "id": "hb_750213",
+          "titleAr": "Melas Hotel Istanbul",
+          "titleEn": "Melas Hotel Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/75/750213/750213a_hb_a_001_20260801_093515.jpg",
+          "basePrice": 397.05,
+          "clientPrice": 397.05,
+          "currency": "USD",
+          "href": "/hotels/hb_750213?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_8b2ea65ed0763e0a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe French Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 132.35,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe French Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_474021",
+          "titleAr": "Wish More Hotel",
+          "titleEn": "Wish More Hotel",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/47/474021/474021a_hb_a_002.jpg",
+          "basePrice": 370964.04,
+          "clientPrice": 370964.04,
+          "currency": "USD",
+          "href": "/hotels/hb_474021?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_62874ccdedf04f5a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Triple Standard Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123654.68,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Triple Standard Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_615722",
+          "titleAr": "Somerset Maslak Istanbul",
+          "titleEn": "Somerset Maslak Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/61/615722/615722a_hb_a_009_20250814_133237.jpg",
+          "basePrice": 371.84,
+          "clientPrice": 371.84,
+          "currency": "USD",
+          "href": "/hotels/hb_615722?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_8914b263ce36137b",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Studio Deluxe with View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123.95,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Studio Deluxe with View"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_2832",
+          "titleAr": "Divan Istanbul Hotel",
+          "titleEn": "Divan Istanbul Hotel",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/00/002832/002832a_hb_a_004.jpg",
+          "basePrice": 563.75,
+          "clientPrice": 563.75,
+          "currency": "USD",
+          "href": "/hotels/hb_2832?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_25974945ffc9789e",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe Room Twin Bed",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 187.92,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe Room Twin Bed"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_859302",
+          "titleAr": "Cher Hotel & SPA istanbul",
+          "titleEn": "Cher Hotel & SPA istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/85/859302/859302a_hb_a_001.jpg",
+          "basePrice": 290.21,
+          "clientPrice": 290.21,
+          "currency": "USD",
+          "href": "/hotels/hb_859302?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_9c5e2a817a85795b",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe Double or Twin Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 96.74,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe Double or Twin Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_179249",
+          "titleAr": "Radisson Blu Hotel Istanbul Sisli",
+          "titleEn": "Radisson Blu Hotel Istanbul Sisli",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/17/179249/179249a_hb_a_001.jpg",
+          "basePrice": 426.34,
+          "clientPrice": 426.34,
+          "currency": "USD",
+          "href": "/hotels/hb_179249?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_84d3f414f56f0fef",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Standard Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 142.12,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Standard Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_649716",
+          "titleAr": "Radisson Collection Hotel Vadistanbul",
+          "titleEn": "Radisson Collection Hotel Vadistanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/64/649716/649716a_hb_a_002.jpg?20240712153651?20250514154731",
+          "basePrice": 496.73,
+          "clientPrice": 496.73,
+          "currency": "USD",
+          "href": "/hotels/hb_649716?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_f85dec3838011809",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Collection Room City View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 165.58,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Collection Room City View"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_162502",
+          "titleAr": "فندق مركز مؤتمرات كايا اسطنبول فير",
+          "titleEn": "فندق مركز مؤتمرات كايا اسطنبول فير",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/16/162502/162502a_hb_a_004.jpg",
+          "basePrice": 541.2,
+          "clientPrice": 541.2,
+          "currency": "USD",
+          "href": "/hotels/hb_162502?checkIn=2026-09-29&checkOut=2026-10-02&adults=2&sid=1c045425d4a30b933cd5&master=m_5e97f777477a2252",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 180.4,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe Room"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 3 أيام",
+          "subtitleEn": "$42/day × 3 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 126,
+          "clientPrice": 145,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-29&returnDate=2026-10-02&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 3,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 3 أيام",
+          "subtitleEn": "$95/day × 3 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 285,
+          "clientPrice": 328,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-29&returnDate=2026-10-02&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 3,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=DXB&to=IST&date=2026-09-29&returnDate=2026-10-02&guests=2&flightType=round-trip&class=economy&flightSearch=DXB2909IST02102",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-09-29&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-29&returnDate=2026-10-02&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-15T00:24:22.267Z"
+    },
+    {
+      "id": "aip_mu1se468_dnq1r8",
+      "titleAr": "خطة رحلة إسطنبول الفاخرة",
+      "titleEn": "Luxury Istanbul Itinerary",
+      "destination": "Istanbul",
+      "nights": 4,
+      "people": 2,
+      "arrivalDate": "2026-09-10",
+      "departureDate": "2026-09-14",
+      "priceFromUsd": 435,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "إقامة فندقية فاخرة",
+        "إفطار يومي",
+        "ترانسفير خاص",
+        "جولات سياحية"
+      ],
+      "includesEn": [
+        "Luxury hotel stay",
+        "Daily breakfast",
+        "Private transfers",
+        "Guided tours"
+      ],
+      "itinerary": {
+        "titleAr": "خطة رحلة إسطنبول الفاخرة",
+        "titleEn": "Luxury Istanbul Itinerary",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال الفاخر",
+            "titleEn": "Arrival & VIP Transfer",
+            "detailAr": "الوصول إلى مطار إسطنبول، الاستقبال من قبل مندوب لوناليزا والتوجه بسيارة مرسيدس الخاصة إلى الفندق لتسجيل الغرف واستراحة قصيرة.",
+            "detailEn": "Arrive at Istanbul Airport, VIP welcome by Lonaliza representative, and private transfer to the hotel.",
+            "items": [
+              {
+                "time": "14:00",
+                "kind": "transfer",
+                "labelAr": "ترانسفير خاص من المطار إلى الفندق",
+                "labelEn": "Private Airport Transfer"
+              },
+              {
+                "time": "16:00",
+                "kind": "hotel",
+                "labelAr": "تسجيل الدخول في الفندق والراحة",
+                "labelEn": "Hotel Check-in & Relaxation"
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة إسطنبول التاريخية",
+            "titleEn": "Old City Heritage Tour",
+            "detailAr": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر طوب قابي، وتناول الغداء في مطعم عريق مطل على مضيق البوسفور.",
+            "detailEn": "Visit Sultanahmet district, Hagia Sophia, Topkapi Palace, and lunch overlooking the Bosphorus.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "جولة السلطان أحمد وآيا صوفيا",
+                "labelEn": "Sultanahmet & Hagia Sophia Tour"
+              },
+              {
+                "time": "13:30",
+                "kind": "activity",
+                "labelAr": "غداء فاخر على البوسفور",
+                "labelEn": "Bosphorus Lunch"
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "titleAr": "رحلة مضيق البوسفور والجانب الآسيوي",
+            "titleEn": "Bosphorus Cruise & Asian Side",
+            "detailAr": "جولة بحرية خاصة في مضيق البوسفور، زيارة برج العذراء، والتجول في حي كاديكوي وشارع بغداد الشهير.",
+            "detailEn": "Private Bosphorus cruise, Maiden's Tower view, and exploring Kadikoy and Baghdad Avenue.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "activity",
+                "labelAr": "رحلة بحرية في البوسفور",
+                "labelEn": "Bosphorus Boat Cruise"
+              },
+              {
+                "time": "15:00",
+                "kind": "activity",
+                "labelAr": "استكشاف الجانب الآسيوي",
+                "labelEn": "Asian Side Exploration"
+              }
+            ]
+          },
+          {
+            "day": 4,
+            "titleAr": "يولة التسوق الحديث والترفيه",
+            "titleEn": "Shopping & Modern Districts",
+            "detailAr": "زيارة مركز زورلو سنتر للتسوق الفاخر، صعود برج غلطة للاستمتاع بإطلالة بانورامية على المدينة، وقضاء أمسية في تقاطع تقسيم.",
+            "detailEn": "Visit Zorlu Center, Galata Tower panoramic views, and Taksim evening stroll.",
+            "items": [
+              {
+                "time": "11:00",
+                "kind": "activity",
+                "labelAr": "التسوق في زورلو سنتر",
+                "labelEn": "Shopping at Zorlu Center"
+              },
+              {
+                "time": "17:00",
+                "kind": "activity",
+                "labelAr": "زيارة برج غلطة وشارع الاستقلال",
+                "labelEn": "Galata Tower & Istiklal Street"
+              }
+            ]
+          }
+        ],
+        "totalBasePrice": 899,
+        "totalClientPrice": 435.21,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "hotel",
+          "id": "hb_750213",
+          "titleAr": "Melas Hotel Istanbul",
+          "titleEn": "Melas Hotel Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/75/750213/750213a_hb_a_001_20260801_093515.jpg",
+          "basePrice": 409.45,
+          "clientPrice": 409.45,
+          "currency": "USD",
+          "href": "/hotels/hb_750213?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_8b2ea65ed0763e0a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe French Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 136.48,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe French Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_517421",
+          "titleAr": "AJWA Sultanahmet",
+          "titleEn": "AJWA Sultanahmet",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/51/517421/517421a_hb_a_017.jpg?20241017080138?20250626162108",
+          "basePrice": 1334.43,
+          "clientPrice": 1334.43,
+          "currency": "USD",
+          "href": "/hotels/hb_517421?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_45827d3b7b41b480",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "FAMILY ROOM CONNECTING ROOM",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 444.81,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "FAMILY ROOM CONNECTING ROOM"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_474021",
+          "titleAr": "Wish More Hotel",
+          "titleEn": "Wish More Hotel",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/47/474021/474021a_hb_a_002.jpg",
+          "basePrice": 370964.04,
+          "clientPrice": 370964.04,
+          "currency": "USD",
+          "href": "/hotels/hb_474021?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_62874ccdedf04f5a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Triple Standard Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123654.68,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Triple Standard Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_615722",
+          "titleAr": "Somerset Maslak Istanbul",
+          "titleEn": "Somerset Maslak Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/61/615722/615722a_hb_a_009_20250814_133237.jpg",
+          "basePrice": 371.84,
+          "clientPrice": 371.84,
+          "currency": "USD",
+          "href": "/hotels/hb_615722?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_8914b263ce36137b",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Studio Deluxe with View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123.95,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Studio Deluxe with View"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_2832",
+          "titleAr": "Divan Istanbul Hotel",
+          "titleEn": "Divan Istanbul Hotel",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/00/002832/002832a_hb_a_004.jpg",
+          "basePrice": 565.18,
+          "clientPrice": 565.18,
+          "currency": "USD",
+          "href": "/hotels/hb_2832?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_25974945ffc9789e",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe Room Twin Bed",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 188.39,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe Room Twin Bed"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_859302",
+          "titleAr": "Cher Hotel & SPA istanbul",
+          "titleEn": "Cher Hotel & SPA istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/85/859302/859302a_hb_a_001.jpg",
+          "basePrice": 290.21,
+          "clientPrice": 290.21,
+          "currency": "USD",
+          "href": "/hotels/hb_859302?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_9c5e2a817a85795b",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe Double or Twin Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 96.74,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe Double or Twin Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_179249",
+          "titleAr": "Radisson Blu Hotel Istanbul Sisli",
+          "titleEn": "Radisson Blu Hotel Istanbul Sisli",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/17/179249/179249a_hb_a_001.jpg",
+          "basePrice": 439.25,
+          "clientPrice": 439.25,
+          "currency": "USD",
+          "href": "/hotels/hb_179249?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_84d3f414f56f0fef",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Standard Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 146.42,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Standard Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_649716",
+          "titleAr": "Radisson Collection Hotel Vadistanbul",
+          "titleEn": "Radisson Collection Hotel Vadistanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/64/649716/649716a_hb_a_002.jpg?20240712153651?20250514154731",
+          "basePrice": 496.73,
+          "clientPrice": 496.73,
+          "currency": "USD",
+          "href": "/hotels/hb_649716?checkIn=2026-09-28&checkOut=2026-10-01&adults=2&sid=328e111378fe1c886e61&master=m_f85dec3838011809",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Collection Room City View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 165.58,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Collection Room City View"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 3 أيام",
+          "subtitleEn": "$42/day × 3 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 126,
+          "clientPrice": 145,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-28&returnDate=2026-10-01&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 3,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 3 أيام",
+          "subtitleEn": "$95/day × 3 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 285,
+          "clientPrice": 328,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-28&returnDate=2026-10-01&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 3,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=DXB&to=IST&date=2026-09-28&returnDate=2026-10-01&guests=2&flightType=round-trip&class=economy&flightSearch=DXB2809IST01102",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-09-28&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-28&returnDate=2026-10-01&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-14T22:00:34.209Z"
+    },
+    {
+      "id": "aip_mu0aqt37_65cim5",
+      "titleAr": "رحلة الفخامة والاستجمام العائلية في أنطاليا — 10 أيام",
+      "titleEn": "Antalya Luxury Family Escape — 10 Days",
+      "destination": "Antalya",
+      "nights": 9,
+      "people": 5,
+      "arrivalDate": "2026-10-10",
+      "departureDate": "2026-10-19",
+      "priceFromUsd": 1557,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "الإقامة في فندق 5 نجوم فاخر",
+        "الإفطار اليومي والمرافق الشاملة",
+        "الترانسفير الخاص من وإلى المطار",
+        "دخول لاند أوف ليجندز"
+      ],
+      "includesEn": [
+        "5-star luxury hotel stay",
+        "Daily breakfast and all-inclusive features",
+        "Private airport transfers",
+        "Land of Legends access"
+      ],
+      "itinerary": {
+        "titleAr": "رحلة الفخامة والاستجمام العائلية في أنطاليا — 10 أيام",
+        "titleEn": "Antalya Luxury Family Escape — 10 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال والاستقرار في الفندق",
+            "titleEn": "Arrival & Hotel Check-in",
+            "detailAr": "الوصول إلى مطار أنطاليا والاستقبال بالسيارة الخاصة والتوجه إلى فندق ريكسوس بريميوم بيليك.",
+            "detailEn": "Arrival at Antalya airport, private transfer to Rixos Premium Belek hotel."
+          },
+          {
+            "day": 2,
+            "titleAr": "مغامرات لاند أوف ليجندز الترفيهية",
+            "titleEn": "Land of Legends Adventure",
+            "detailAr": "قضاء اليوم كاملاً في المدينة الترفيهية المائية والاستمتاع بالعروض المسائية.",
+            "detailEn": "Full day at the theme park and enjoying evening shows."
+          },
+          {
+            "day": 3,
+            "titleAr": "شلالات دودان وبلدة كاليجي التاريخية",
+            "titleEn": "Düden Waterfalls & Old City Kaleiçi",
+            "detailAr": "زيارة الشلالات صباحاً وجولة مسائية في البلدة التاريخية والميناء.",
+            "detailEn": "Morning waterfall visit and evening walk in Kaleiçi old town."
+          },
+          {
+            "day": 4,
+            "titleAr": "رحلة بحرية في خليج كيمر",
+            "titleEn": "Kemer Boat Trip",
+            "detailAr": "رحلة بحرية خاصة في مياه كيمر الصافية والسباحة في الخلجان الخلابة.",
+            "detailEn": "Private boat cruise in Kemer crystal clear waters."
+          },
+          {
+            "day": 5,
+            "titleAr": "يوم استجمام وسبا شاطئي",
+            "titleEn": "Beach & Spa Relaxation",
+            "detailAr": "الاستمتاع بالشاطئ الخاص وخدمات السبا الفاخرة في المنتجع.",
+            "detailEn": "Enjoying the private beach and luxury spa facilities."
+          },
+          {
+            "day": 6,
+            "titleAr": "رحلة جبلية وإطلالات بانورامية",
+            "titleEn": "Mountain View Tour",
+            "detailAr": "الاستمتاع بالمناظر الطبيعية والجلوس في المقاهي الجبلية الهادئة.",
+            "detailEn": "Enjoying nature views and quiet mountain cafes."
+          },
+          {
+            "day": 7,
+            "titleAr": "سحر الوادي الأخضر",
+            "titleEn": "Green Canyon Tour",
+            "detailAr": "رحلة نهارية إلى الوادي الأخضر والقيام بجولة بالقارب وسط الغابات.",
+            "detailEn": "Day trip to Green Canyon with boat tour."
+          },
+          {
+            "day": 8,
+            "titleAr": "التسوق واستكشاف أسواق المدينة",
+            "titleEn": "Shopping & City Exploration",
+            "detailAr": "زيارة أرقى مراكز التسوق في أنطاليا لشراء الهدايا التذكارية.",
+            "detailEn": "Visit top shopping malls in Antalya for souvenirs."
+          },
+          {
+            "day": 9,
+            "titleAr": "يوم حر واحتفال ختامي",
+            "titleEn": "Free Day & Farewell Dinner",
+            "detailAr": "وقت حر للتسوق الشخصي أو الراحة مع عشاء ختامي فاخر.",
+            "detailEn": "Free time for personal leisure with a farewell dinner."
+          },
+          {
+            "day": 10,
+            "titleAr": "المغادرة والعودة إلى الوطن",
+            "titleEn": "Departure",
+            "detailAr": "تسجيل المغادرة والتوجه إلى مطار أنطاليا للعودة.",
+            "detailEn": "Check-out and transfer to Antalya airport for departure."
+          }
+        ],
+        "totalBasePrice": 3480,
+        "totalClientPrice": 1557,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "RUH-AYT",
+          "titleAr": "طيران RUH → AYT",
+          "titleEn": "Flights RUH → AYT",
+          "subtitleAr": "2026-10-10 → 2026-10-19",
+          "subtitleEn": "2026-10-10 → 2026-10-19",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=AYT&date=2026-10-10&returnDate=2026-10-19&guests=5&flightType=round-trip&class=economy&flightSearch=RUH1010AYT19105",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_136360",
+          "titleAr": "Megasaray West Beach Antalya",
+          "titleEn": "Megasaray West Beach Antalya",
+          "subtitleAr": "أنطاليا",
+          "subtitleEn": "أنطاليا",
+          "image": "https://photos.hotelbeds.com/giata/bigger/13/136360/136360a_hb_a_011.jpg",
+          "basePrice": 936,
+          "clientPrice": 1076,
+          "currency": "USD",
+          "href": "/hotels/hb_136360?checkIn=2026-10-10&checkOut=2026-10-19&adults=5&sid=a642a7d8368ad398b77b&master=m_b2d0b037f89b9544",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "إلغاء مجاني",
+            "إفطار مشمول"
+          ],
+          "pricePending": false,
+          "unitPrice": 935.69,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "live"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_181029",
+          "titleAr": "White City Resort Hotel",
+          "titleEn": "White City Resort Hotel",
+          "subtitleAr": "أنطاليا",
+          "subtitleEn": "أنطاليا",
+          "image": "https://photos.hotelbeds.com/giata/bigger/18/181029/181029a_hb_a_016.jpg",
+          "basePrice": 3933,
+          "clientPrice": 4523,
+          "currency": "USD",
+          "href": "/hotels/hb_181029?checkIn=2026-10-10&checkOut=2026-10-19&adults=5&sid=a642a7d8368ad398b77b&master=m_3609c59018464f03",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "إلغاء مجاني",
+            "إفطار مشمول"
+          ],
+          "pricePending": false,
+          "unitPrice": 437.03,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "live"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_183508",
+          "titleAr": "Corendon Grand Park Lara",
+          "titleEn": "Corendon Grand Park Lara",
+          "subtitleAr": "أنطاليا",
+          "subtitleEn": "أنطاليا",
+          "image": "https://photos.hotelbeds.com/giata/bigger/18/183508/183508a_hb_a_005.jpg",
+          "basePrice": 4078,
+          "clientPrice": 4690,
+          "currency": "USD",
+          "href": "/hotels/hb_183508?checkIn=2026-10-10&checkOut=2026-10-19&adults=5&sid=a642a7d8368ad398b77b&master=m_b0bc7c5080da7a09",
+          "badges": [
+            "4★"
+          ],
+          "highlights": [
+            "إلغاء مجاني",
+            "إفطار مشمول"
+          ],
+          "pricePending": false,
+          "unitPrice": 453.15,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "live"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-6",
+          "titleAr": "ترانسفير مطار أنطاليا → فنادق المدينة",
+          "titleEn": "AYT Airport → Antalya Hotels Transfer",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+          "basePrice": 40,
+          "clientPrice": 46,
+          "currency": "USD",
+          "href": "/transfers/ayt-airport-antalya-hotels?date=2026-10-10&guests=5",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "استقبال في المطار",
+            "Kaleiçi وLara وBelek",
+            "سائق يتحدث العربية"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 9 أيام",
+          "subtitleEn": "$42/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 378,
+          "clientPrice": 435,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&location=Antalya+Airport+%28AYT%29&date=2026-10-10&returnDate=2026-10-19&guests=5&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 9 أيام",
+          "subtitleEn": "$95/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 855,
+          "clientPrice": 983,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&location=Antalya+Airport+%28AYT%29&date=2026-10-10&returnDate=2026-10-19&guests=5&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=RUH&to=AYT&date=2026-10-10&returnDate=2026-10-19&guests=5&flightType=round-trip&class=economy&flightSearch=RUH1010AYT19105",
+      "transferHref": "/transfers?from=AYT+Airport&to=Belek&pickup=AYT+Airport&dropoff=Belek&date=2026-10-10&time=12%3A00&guests=5&passengers=5&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&location=Antalya+Airport+%28AYT%29&date=2026-10-10&returnDate=2026-10-19&guests=5&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-13T20:58:47.108Z"
+    },
+    {
+      "id": "aip_mtyjl7z9_g2an3h",
+      "titleAr": "برنامج إسطنبول السياحي - 5 أيام",
+      "titleEn": "Istanbul Tour Program - 5 Days",
+      "destination": "Istanbul",
+      "nights": 4,
+      "people": 2,
+      "arrivalDate": "2026-06-01",
+      "departureDate": "2026-06-05",
+      "priceFromUsd": 2188,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "الإقامة الفندقية",
+        "الاستقبال والتوديع في المطار",
+        "الإفطار اليومي"
+      ],
+      "includesEn": [
+        "Hotel Accommodation",
+        "Airport Transfers",
+        "Daily Breakfast"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج إسطنبول السياحي - 5 أيام",
+        "titleEn": "Istanbul Tour Program - 5 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال في المطار",
+            "titleEn": "Arrival & Airport Transfer",
+            "detailAr": "الوصول إلى مطار إسطنبول، الاستقبال من قبل ممثل لوناليزا والانتقال إلى الفندق بسيارة خاصة.",
+            "detailEn": "Arrive at Istanbul Airport, meet and greet by Lonaliza representative, transfer to hotel."
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة معالم إسطنبول التاريخية",
+            "titleEn": "Old City Heritage Tour",
+            "detailAr": "زيارة آيا صوفيا، المسجد الأزرق، وقصر طوب قابي، ثم البازار الكبير.",
+            "detailEn": "Visit Hagia Sophia, Blue Mosque, Topkapi Palace, and Grand Bazaar."
+          },
+          {
+            "day": 3,
+            "titleAr": "سحر البوسفور والجانب الآسيوي",
+            "titleEn": "Bosphorus & Asian Side",
+            "detailAr": "رحلة بحرية في مضيق البوسفور وزيارة تلة العرائس وأوسكودار.",
+            "detailEn": "Bosphorus cruise and visit to Çamlıca Hill and Üsküdar."
+          },
+          {
+            "day": 4,
+            "titleAr": "جواهر إسطنبول الحديثة والتسوق",
+            "titleEn": "Modern Istanbul & Shopping",
+            "detailAr": "زيارة ميدان تقسيم وشارع الاستقلال وغالاتا بورت.",
+            "detailEn": "Visit Taksim Square, Istiklal Street, and Galataport."
+          },
+          {
+            "day": 5,
+            "titleAr": "المغادرة والعودة إلى الرياض",
+            "titleEn": "Departure to Riyadh",
+            "detailAr": "تسجيل الخروج من الفندق والتوجه إلى المطار للعودة.",
+            "detailEn": "Check out from hotel and transfer to airport for departure."
+          }
+        ],
+        "totalBasePrice": 345,
+        "totalClientPrice": 2188,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "RUH-IST",
+          "titleAr": "طيران RUH → IST",
+          "titleEn": "Flights RUH → IST",
+          "subtitleAr": "2026-06-01 → 2026-06-05",
+          "subtitleEn": "2026-06-01 → 2026-06-05",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-06-01&returnDate=2026-06-05&guests=2&flightType=round-trip&class=economy&flightSearch=RUH0106IST05062",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "1",
+          "titleAr": "قصر تشراغان كمبينسكي إسطنبول",
+          "titleEn": "Çırağan Palace Kempinski Istanbul",
+          "subtitleAr": "بشكتاش / البوسفور",
+          "subtitleEn": "Beşiktaş / Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 1680,
+          "clientPrice": 1932,
+          "currency": "USD",
+          "href": "/hotels/ciragan-palace-kempinski-istanbul?checkIn=2026-06-01&checkOut=2026-06-05&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "القصر العثماني الوحيد كفندق على البوسفور",
+            "مسبح لانهائي مطل على المضيق",
+            "سبا سانيتاس مع حمّام تركي"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "2",
+          "titleAr": "رافلز إسطنبول",
+          "titleEn": "Raffles Istanbul",
+          "subtitleAr": "زولرو سنتر / ليفنت",
+          "subtitleEn": "Zorlu Center / Levent",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 1680,
+          "clientPrice": 1932,
+          "currency": "USD",
+          "href": "/hotels/raffles-istanbul?checkIn=2026-06-01&checkOut=2026-06-05&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "خدمة خادم شخصي",
+            "سبا فوربس خمس نجوم",
+            "موقع مركز زورلو"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "3",
+          "titleAr": "فور سيزونز إسطنبول على البوسفور",
+          "titleEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+          "subtitleAr": "البوسفور",
+          "subtitleEn": "Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 1680,
+          "clientPrice": 1932,
+          "currency": "USD",
+          "href": "/hotels/four-seasons-bosphorus?checkIn=2026-06-01&checkOut=2026-06-05&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "قصر عثماني على البوسفور",
+            "مسبح داخلي وخارجي مُدفأ",
+            "تراس مطعم أكوا"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-1",
+          "titleAr": "ترانسفير مطار إسطنبول → سلطان أحمت — سيدان فاخرة",
+          "titleEn": "IST Airport → Sultanahmet Luxury Sedan",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=80",
+          "basePrice": 55,
+          "clientPrice": 63,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-sultanahmet-luxury-sedan?date=2026-06-01&guests=2",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "استقبال في الصالة مع لوحة الاسم",
+            "تتبع الرحلة في الوقت الفعلي",
+            "مياه معدنية وواي فاي"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-3",
+          "titleAr": "ترانسفير مطار إسطنبول → بشيكتاش",
+          "titleEn": "IST Airport → Beşiktaş Transfer",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+          "basePrice": 58,
+          "clientPrice": 67,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-besiktas-transfer?date=2026-06-01&guests=2",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "وصول مباشر إلى البوسفور",
+            "سائق يعرف طرق إسطنبول",
+            "استقبال شخصي في المطار"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 4 أيام",
+          "subtitleEn": "$42/day × 4 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 168,
+          "clientPrice": 193,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-06-01&returnDate=2026-06-05&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 4,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 4 أيام",
+          "subtitleEn": "$95/day × 4 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 380,
+          "clientPrice": 437,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-06-01&returnDate=2026-06-05&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 4,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=RUH&to=IST&date=2026-06-01&returnDate=2026-06-05&guests=2&flightType=round-trip&class=economy&flightSearch=RUH0106IST05062",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-06-01&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-06-01&returnDate=2026-06-05&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-12T15:30:50.662Z"
+    },
+    {
+      "id": "aip_mtsvjaoe_1s9qkb",
+      "titleAr": "برنامج الرياض السريع — يوم واحد",
+      "titleEn": "Quick Riyadh Day Program",
+      "destination": "Riyadh",
+      "nights": 1,
+      "people": 1,
+      "arrivalDate": "2026-09-24",
+      "departureDate": "2026-09-24",
+      "priceFromUsd": 48,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "إقامة فندقية",
+        "ترانسفير خاص",
+        "إفطار"
+      ],
+      "includesEn": [
+        "Hotel Stay",
+        "Private Transfer",
+        "Breakfast"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج الرياض السريع — يوم واحد",
+        "titleEn": "Quick Riyadh Day Program",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول وجولة الاستكشاف",
+            "titleEn": "Arrival & City Exploration",
+            "detailAr": "الوصول إلى مطار الملك خالد الدولي (RUH) برحلة طيران VF213، استقبال من قبل السائق الخاص والتوجه للفندق، ثم قضاء فترة ما بعد الظهر في استكشاف المعالم الحضرية الحديثة للرياض.",
+            "detailEn": "Arrival at RUH via flight VF213, private transfer to the hotel, and afternoon city exploration."
+          }
+        ],
+        "totalBasePrice": 400,
+        "totalClientPrice": 48,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "IST-RUH",
+          "titleAr": "طيران IST → RUH",
+          "titleEn": "Flights IST → RUH",
+          "subtitleAr": "2026-09-24 → 2026-09-24",
+          "subtitleEn": "2026-09-24 → 2026-09-24",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=IST&to=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&flightType=round-trip&class=economy&flightSearch=IST2409RUH24091",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 1 أيام",
+          "subtitleEn": "$42/day × 1 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 42,
+          "clientPrice": 48,
+          "currency": "USD",
+          "href": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 1,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 1 أيام",
+          "subtitleEn": "$95/day × 1 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 95,
+          "clientPrice": 109,
+          "currency": "USD",
+          "href": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 1,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=IST&to=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&flightType=round-trip&class=economy&flightSearch=IST2409RUH24091",
+      "transferHref": "/transfers?from=RUH+Airport&to=Riyadh&pickup=RUH+Airport&dropoff=Riyadh&date=2026-09-24&time=12%3A00&guests=1&passengers=1&currency=usd",
+      "carsHref": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-08T16:18:39.182Z"
+    },
+    {
+      "id": "aip_mtsviq1f_qe0bxy",
+      "titleAr": "برنامج الرياض اليومي الاستثنائي — ليوم واحد",
+      "titleEn": "Exclusive Riyadh Day Program",
+      "destination": "Riyadh",
+      "nights": 1,
+      "people": 1,
+      "arrivalDate": "2026-09-24",
+      "departureDate": "2026-09-24",
+      "priceFromUsd": 48,
+      "thumbnail": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "includesAr": [
+        "إقامة فندقية فاخرة",
+        "ترانسفير خاص من وإلى المطار",
+        "جولة ثقافية خاصة"
+      ],
+      "includesEn": [
+        "Luxury hotel stay",
+        "Private airport transfer",
+        "Private cultural tour"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج الرياض اليومي الاستثنائي — ليوم واحد",
+        "titleEn": "Exclusive Riyadh Day Program",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول، الجولة الثقافية والترفيهية",
+            "titleEn": "Arrival, Cultural & Leisure Tour",
+            "detailAr": "الاستقبال الخاص من مطار الملك خالد (RUH) والتجهيز لدخول فندق نارسيس. تبدأ الجولة بزيارة قصر المصمك التاريخي ومنطقة الدرعية التاريخية (اتريا)، تليها استراحة مسائية في أحد أفخم مطاعم بوليفارد الرياض.",
+            "detailEn": "Private pickup from RUH airport and check-in at Narcissus Hotel. Visit Al-Masmak fortress and historic Diriyah, followed by an evening dinner at Boulevard Riyadh."
+          }
+        ],
+        "totalBasePrice": 260,
+        "totalClientPrice": 48,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "DXB-RUH",
+          "titleAr": "طيران DXB → RUH",
+          "titleEn": "Flights DXB → RUH",
+          "subtitleAr": "2026-09-24 → 2026-09-24",
+          "subtitleEn": "2026-09-24 → 2026-09-24",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=DXB&to=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&flightType=round-trip&class=economy&flightSearch=DXB2409RUH24091",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 1 أيام",
+          "subtitleEn": "$42/day × 1 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 42,
+          "clientPrice": 48,
+          "currency": "USD",
+          "href": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 1,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 1 أيام",
+          "subtitleEn": "$95/day × 1 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 95,
+          "clientPrice": 109,
+          "currency": "USD",
+          "href": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 1,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=DXB&to=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&flightType=round-trip&class=economy&flightSearch=DXB2409RUH24091",
+      "transferHref": "/transfers?from=RUH+Airport&to=Riyadh&pickup=RUH+Airport&dropoff=Riyadh&date=2026-09-24&time=12%3A00&guests=1&passengers=1&currency=usd",
+      "carsHref": "/cars?pickup=RUH&dropoff=RUH&location=RUH&date=2026-09-24&returnDate=2026-09-24&guests=1&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-08T16:18:12.439Z"
+    },
+    {
+      "id": "aip_mtq73igs_x2qykn",
+      "titleAr": "برنامج إسطنبول الساحرة — 10 أيام (5 أشخاص)",
+      "titleEn": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+      "destination": "Istanbul",
+      "nights": 9,
+      "people": 5,
+      "arrivalDate": "2026-10-05",
+      "departureDate": "2026-10-15",
+      "priceFromUsd": 4893,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "الإقامة لمدة 9 ليالٍ في فندق 5 نجوم مع الإفطار",
+        "الترانسفير الخاص من وإلى المطار (مرسيدس فيتو)",
+        "جولات سياحية خاصة لـ 5 أشخاص",
+        "مرسيدس سبرينتر / فيتو للجولات اليومية"
+      ],
+      "includesEn": [
+        "9 nights 5-star hotel with breakfast",
+        "Private airport transfers (Mercedes Vito)",
+        "Private daily tours for 5 guests",
+        "Dedicated VIP vehicle for day trips"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج إسطنبول الساحرة — 10 أيام (5 أشخاص)",
+        "titleEn": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال في المطار والتسكين بالفندق",
+            "titleEn": "Arrival & Hotel Check-in",
+            "detailAr": "استقبالكم من مطار إسطنبول عبر سيارة مرسيدس فيتو الخاصة بنا، التوجه إلى الفندق وتسجيل الغرف، ثم أخذ جولة خفيفة بالقرب من ميدان تقسيم أو أورتاكöy.",
+            "detailEn": "Airport pick-up with private Mercedes Vito, hotel check-in, and relaxing evening around Taksim or Ortaköy."
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة إسطنبول التاريخية (السلطان أحمد)",
+            "titleEn": "Old City Istanbul Tour",
+            "detailAr": "زيارة جامع آيا صوفيا، المسجد الأزرق، قصر توبكابي، وميدان الهيبودروم مع مرشد سياحي خاص.",
+            "detailEn": "Visit Hagia Sophia, Blue Mosque, Topkapi Palace, and Hippodrome with a private guide."
+          },
+          {
+            "day": 3,
+            "titleAr": "رحلة مضيق البوسفور وجولة التلفريك وأورتاكوي",
+            "titleEn": "Bosphorus Cruise & Ortaköy",
+            "detailAr": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس (تشامليجا)، وجلسة مسائية في أورتاكوي للاستمتاع بالبطاطس المشوية والإطلالة.",
+            "detailEn": "Private Bosphorus boat cruise, Camlica Hill panoramic view, and evening in Ortaköy."
+          },
+          {
+            "day": 4,
+            "titleAr": "رحلة يوم كامل إلى مدينة بورصة الخضراء",
+            "titleEn": "Bursa Full Day Trip",
+            "detailAr": "التوجه مبكراً لركوب العبارة أو القيادة نحو بورصة، صعود جبل أولوداغ بالتلفريك، زيارة الشجرة التاريخية والجامع الكبير والسوق التاريخي.",
+            "detailEn": "Day trip to Bursa, Uludağ mountain cable car, Historic Tree, and Silk Bazaar."
+          },
+          {
+            "day": 5,
+            "titleAr": "يوم التسوق والترفيه في زورلو سنتر ووادي إسطنبول",
+            "titleEn": "Shopping & Leisure Day",
+            "detailAr": "زيارة أحدث المراكز التجارية في إسطنبول (زورلو سنتر أو وادي إسطنبول)، مع وقت للاستمتاع بالمطاعم الفاخرة والمقاهي.",
+            "detailEn": "Shopping at upscale malls like Zorlu Center and Vadistanbul with fine dining options."
+          },
+          {
+            "day": 6,
+            "titleAr": "رحلة سبانجا والمعشوقية الطبيعية",
+            "titleEn": "Sapanca & Masukiye Nature Tour",
+            "detailAr": "الاستمتاع ببحيرة سبانجا الساحرة، زيارة شلالات المعشوقية، ركوب الدراجات الرباعية أو زيارة حديقة الحيوانات، والغداء على ضفاف النهر.",
+            "detailEn": "Visit Lake Sapanca, Masukiye waterfalls, optional ATV safari, and riverside lunch."
+          },
+          {
+            "day": 7,
+            "titleAr": "جزر الأميرات الهادئة (بيوك أدا)",
+            "titleEn": "Princes' Islands (Büyükada)",
+            "detailAr": "ركوب العبارة إلى جزر الأميرات، استئجار الدراجات الكهربائية أو العربات الكهربائية لجولة في الطبيعة الخلابة بعيداً عن صخب المدينة.",
+            "detailEn": "Ferry ride to Büyükada, island tour by electric vehicles, and peaceful nature views."
+          },
+          {
+            "day": 8,
+            "titleAr": "قصر دولما باهçe وتلة أولوس بارك",
+            "titleEn": "Dolmabahçe Palace & Ulus Park",
+            "detailAr": "زيارة قصر سلاطين العثمانيين الفاخر (دولما باهçe) على ضفاف البوسفور، ثم الاسترخاء في أولوس بارك مع إطلالة بانورامية خلابة.",
+            "detailEn": "Visit opulent Dolmabahçe Palace and enjoy panoramic views at Ulus Park."
+          },
+          {
+            "day": 9,
+            "titleAr": "السوق المصري (البازار الكبير) ووقت حُر للترفيه",
+            "titleEn": "Grand Bazaar & Free Time",
+            "detailAr": "جولة في البازار الكبير والسوق المصري لشراء التوابل والهدايا التذكارية، تليها سهرة عشاء في مطعم مطل على البوسفور.",
+            "detailEn": "Explore Grand Bazaar and Spice Market for souvenirs, followed by a Bosphorus dinner."
+          },
+          {
+            "day": 10,
+            "titleAr": "المغادرة والتوجه إلى المطار",
+            "titleEn": "Departure Day",
+            "detailAr": "تسجيل خروج من الفندق والتوجه بسيارة الترانسفير الخاصة إلى مطار إسطنبول للعودة إلى الوطن بسلامة الله.",
+            "detailEn": "Hotel check-out and private transfer to Istanbul airport for flight back home."
+          }
+        ],
+        "totalBasePrice": 4130,
+        "totalClientPrice": 4893,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "SAW-IST",
+          "titleAr": "طيران SAW → IST",
+          "titleEn": "Flights SAW → IST",
+          "subtitleAr": "2026-10-05 → 2026-10-15",
+          "subtitleEn": "2026-10-05 → 2026-10-15",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=SAW&to=IST&date=2026-10-05&returnDate=2026-10-15&guests=5&flightType=round-trip&class=economy&flightSearch=SAW0510IST15105",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "1",
+          "titleAr": "قصر تشراغان كمبينسكي إسطنبول",
+          "titleEn": "Çırağan Palace Kempinski Istanbul",
+          "subtitleAr": "بشكتاش / البوسفور",
+          "subtitleEn": "Beşiktaş / Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/ciragan-palace-kempinski-istanbul?checkIn=2026-10-05&checkOut=2026-10-15&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "القصر العثماني الوحيد كفندق على البوسفور",
+            "مسبح لانهائي مطل على المضيق",
+            "سبا سانيتاس مع حمّام تركي"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "2",
+          "titleAr": "رافلز إسطنبول",
+          "titleEn": "Raffles Istanbul",
+          "subtitleAr": "زولرو سنتر / ليفنت",
+          "subtitleEn": "Zorlu Center / Levent",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/raffles-istanbul?checkIn=2026-10-05&checkOut=2026-10-15&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "خدمة خادم شخصي",
+            "سبا فوربس خمس نجوم",
+            "موقع مركز زورلو"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "3",
+          "titleAr": "فور سيزونز إسطنبول على البوسفور",
+          "titleEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+          "subtitleAr": "البوسفور",
+          "subtitleEn": "Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/four-seasons-bosphorus?checkIn=2026-10-05&checkOut=2026-10-15&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "قصر عثماني على البوسفور",
+            "مسبح داخلي وخارجي مُدفأ",
+            "تراس مطعم أكوا"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-1",
+          "titleAr": "ترانسفير مطار إسطنبول → سلطان أحمت — سيدان فاخرة",
+          "titleEn": "IST Airport → Sultanahmet Luxury Sedan",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=80",
+          "basePrice": 55,
+          "clientPrice": 63,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-sultanahmet-luxury-sedan?date=2026-10-05&guests=5",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "استقبال في الصالة مع لوحة الاسم",
+            "تتبع الرحلة في الوقت الفعلي",
+            "مياه معدنية وواي فاي"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-3",
+          "titleAr": "ترانسفير مطار إسطنبول → بشيكتاش",
+          "titleEn": "IST Airport → Beşiktaş Transfer",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+          "basePrice": 58,
+          "clientPrice": 67,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-besiktas-transfer?date=2026-10-05&guests=5",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "وصول مباشر إلى البوسفور",
+            "سائق يعرف طرق إسطنبول",
+            "استقبال شخصي في المطار"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 10 أيام",
+          "subtitleEn": "$42/day × 10 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 420,
+          "clientPrice": 483,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-05&returnDate=2026-10-15&guests=5&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 10,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 10 أيام",
+          "subtitleEn": "$95/day × 10 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 950,
+          "clientPrice": 1093,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-05&returnDate=2026-10-15&guests=5&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 10,
+          "source": "catalog"
+        },
+        {
+          "type": "package",
+          "id": "tp-04",
+          "titleAr": "برنامج إسطنبول الشامل والمميز — 10 أيام",
+          "titleEn": "Istanbul Ultimate Experience — 10 Days",
+          "subtitleAr": "أفضل المعالم السياحية والجولات الخاصة",
+          "subtitleEn": "Best sights and private VIP tours",
+          "image": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1600&q=80",
+          "basePrice": 1200,
+          "clientPrice": 1380,
+          "currency": "USD",
+          "href": "/holidays",
+          "badges": [
+            "10 أيام",
+            "عائلي"
+          ],
+          "highlights": [
+            "جولات البوسفور",
+            "جولة بورصة",
+            "جزر الأميرات"
+          ],
+          "pricePending": false
+        }
+      ],
+      "flightHref": "/flights?from=SAW&to=IST&date=2026-10-05&returnDate=2026-10-15&guests=5&flightType=round-trip&class=economy&flightSearch=SAW0510IST15105",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-10-05&time=12%3A00&guests=5&passengers=5&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-05&returnDate=2026-10-15&guests=5&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-06T19:18:59.644Z"
+    },
+    {
+      "id": "aip_mtnj73po_beox6w",
+      "titleAr": "البرنامج الشامل: إسطنبول، صبنجة، بورصة ويالوفا — 10 أيام",
+      "titleEn": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+      "destination": "Istanbul, Sapanca & Bursa",
+      "nights": 9,
+      "people": 2,
+      "arrivalDate": "2026-09-10",
+      "departureDate": "2026-09-20",
+      "priceFromUsd": 4893,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80",
+      "includesAr": [
+        "الإقامة في فندق 5 نجوم بإسطنبول + أكواخ ريفية فاخرة في صبنجة وبورصة",
+        "الإفطار اليومي لجميع الأيام",
+        "الاستقبال والتوديع في المطار بسيارة خاصة مرسيدس",
+        "جولات VIP خاصة (صبنجة، معشوقية، بورصة ويالوفا)",
+        "المرافقة والتنسيق الكامل طوال فترة الرحلة"
+      ],
+      "includesEn": [
+        "5-star hotel in Istanbul + luxury wooden chalets in Sapanca & Bursa",
+        "Daily breakfast",
+        "Private airport transfers by Mercedes",
+        "VIP private daily tours (Sapanca, Masukiye, Bursa & Yalova)",
+        "Full itinerary coordination and support"
+      ],
+      "itinerary": {
+        "titleAr": "البرنامج الشامل: إسطنبول، صبنجة، بورصة ويالوفا — 10 أيام",
+        "titleEn": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال في إسطنبول",
+            "titleEn": "Arrival & Transfer in Istanbul",
+            "detailAr": "الاستقبال من مطار إسطنبول بسيارة خاصة، التوجه إلى الفندق للاستراحة، وجولة مسائية خفيفة في ميدان تقسيم وسكك استقلال الحيوية.",
+            "detailEn": "Arrival at Istanbul airport, private transfer to hotel, evening walk around Taksim Square and Istiklal Street."
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة إسطنبول التاريخية (الجانب الأوروبي)",
+            "titleEn": "Old City Istanbul Tour (European Side)",
+            "detailAr": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر توبكابي، ومسجد السلطان أحمد الأزرق، مع تناول الغداء بالقرب من مضيق البوسفور.",
+            "detailEn": "Visit Sultanahmet square, Hagia Sophia, Topkapi Palace, and Blue Mosque, with lunch by the Bosphorus."
+          },
+          {
+            "day": 3,
+            "titleAr": "سحر البوسفور والجانب الآسيوي",
+            "titleEn": "Bosphorus & Asian Side Discovery",
+            "detailAr": "رحلة بحرية في مضيق البوسفور، زيارة برج العذراء من الخارج، تلة تشامليجا في الجانب الآسيوي، وسوق كاديكوي العريق.",
+            "detailEn": "Bosphorus cruise, Maiden's Tower viewpoint, Camlica Hill on the Asian side, and Kadikoy historic market."
+          },
+          {
+            "day": 4,
+            "titleAr": "الانتقال إلى صبنجة والمعشوقية وأزميت",
+            "titleEn": "الانتقال إلى صبنجة والمعشوقية وأزميت",
+            "detailAr": "التوجه صباحاً نحو صبنجة، زيارة بحيرة صبنجة الساحرة، صعود شلالات المعشوقية وتجربة السفاري، ثم جولة سريعة في أزميت والمبيت في كوخ ريفي فاخر.",
+            "detailEn": "Morning departure to Sapanca, visiting Sapanca Lake, Masukiye waterfalls, safari experience, and overnight in a luxury wooden chalet."
+          },
+          {
+            "day": 5,
+            "titleAr": "طبيعة صبنجة والاسترخاء الريفي",
+            "titleEn": "Sapanca Nature & Relaxation",
+            "detailAr": "يوم حر للاستمتاع بإفطار ريفي تقليدي بجانب البحيرة، ركوب الدراجات، وجلسات هادئة وسط الطبيعة الخضراء والغابات المحيطة بالكوخ.",
+            "detailEn": "Free day to enjoy traditional breakfast by the lake, cycling, and peaceful moments in the green forests around the chalet."
+          },
+          {
+            "day": 6,
+            "titleAr": "الرحلة إلى بورصة الخضراء",
+            "titleEn": "Journey to Green Bursa",
+            "detailAr": "المغادرة صباحاً باتجاه بورصة، زيارة الشجرة التاريخية المعمرة، السوق التاريخي المسقوف، وصعود جبل أولوداغ بواسطة التلفريك أو السيارة.",
+            "detailEn": "Morning departure to Bursa, visiting the Historic Tree, Covered Bazaar, and ascending Mount Uludag."
+          },
+          {
+            "day": 7,
+            "titleAr": "معالم بورصة التاريخية والحرير",
+            "titleEn": "Bursa Historical Sites & Silk Market",
+            "detailAr": "زيارة الجامع الكبير (ولو جامع)، سوق الحرير التاريخي (كوزا خان)، وتذوق كباب بورصة الشهير، مع وقت للتسوق الحر.",
+            "detailEn": "Visit the Grand Mosque (Ulu Cami), Koza Han silk market, tasting traditional Iskender kebab, and free shopping time."
+          },
+          {
+            "day": 8,
+            "titleAr": "يالوفا والينابيع الحارة (تيرمال)",
+            "titleEn": "Yalova & Thermal Springs",
+            "detailAr": "الانتقال من بورصة إلى يالوفا، زيارة قرية تيرمال والاسترخاء في المنتجعات العلاجية ذات المياه الكبريتية الحارة، ثم العودة لإسطنبول.",
+            "detailEn": "Move from Bursa to Yalova, visit Termal village for relaxing sulfur hot springs, then return to Istanbul."
+          },
+          {
+            "day": 9,
+            "titleAr": "جزر الأميرات أو التسوق الفاخر في إسطنبول",
+            "titleEn": "Princes' Islands or Luxury Shopping in Istanbul",
+            "detailAr": "رحلة بحرية إلى جزر الأميرات الهادئة (بدون سيارات) واستئجار الدراجات، أو تخصيص اليوم للتسوق في أضخم مولات إسطنبول (زورلو وادي إسطنبول).",
+            "detailEn": "Boat trip to Princes' Islands (car-free) with bicycle rentals, or shopping at Istanbul's premier malls (Zorlu Center / Vadistanbul)."
+          },
+          {
+            "day": 10,
+            "titleAr": "الوداع والعودة إلى أرض الوطن",
+            "titleEn": "Departure & Farewell",
+            "detailAr": "تفريغ الحقائب، جولة أخيرة لشراء الهدايا التذكارية التركية، ثم الانتقال الخاص إلى مطار إسطنبول الدولي للعودة الموفقة بحفظ الله.",
+            "detailEn": "Last-minute souvenir shopping, and private transfer to Istanbul International Airport for your departure flight."
+          }
+        ],
+        "totalBasePrice": 1900,
+        "totalClientPrice": 4893,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "DXB-IST",
+          "titleAr": "طيران DXB → IST",
+          "titleEn": "Flights DXB → IST",
+          "subtitleAr": "2026-09-10 → 2026-09-20",
+          "subtitleEn": "2026-09-10 → 2026-09-20",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=DXB&to=IST&date=2026-09-10&returnDate=2026-09-20&guests=2&flightType=round-trip&class=economy&flightSearch=DXB1009IST20092",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "1",
+          "titleAr": "قصر تشراغان كمبينسكي إسطنبول",
+          "titleEn": "Çırağan Palace Kempinski Istanbul",
+          "subtitleAr": "بشكتاش / البوسفور",
+          "subtitleEn": "Beşiktaş / Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/ciragan-palace-kempinski-istanbul?checkIn=2026-09-10&checkOut=2026-09-20&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "القصر العثماني الوحيد كفندق على البوسفور",
+            "مسبح لانهائي مطل على المضيق",
+            "سبا سانيتاس مع حمّام تركي"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "2",
+          "titleAr": "رافلز إسطنبول",
+          "titleEn": "Raffles Istanbul",
+          "subtitleAr": "زولرو سنتر / ليفنت",
+          "subtitleEn": "Zorlu Center / Levent",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/raffles-istanbul?checkIn=2026-09-10&checkOut=2026-09-20&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "خدمة خادم شخصي",
+            "سبا فوربس خمس نجوم",
+            "موقع مركز زورلو"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "3",
+          "titleAr": "فور سيزونز إسطنبول على البوسفور",
+          "titleEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+          "subtitleAr": "البوسفور",
+          "subtitleEn": "Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/four-seasons-bosphorus?checkIn=2026-09-10&checkOut=2026-09-20&adults=2",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "قصر عثماني على البوسفور",
+            "مسبح داخلي وخارجي مُدفأ",
+            "تراس مطعم أكوا"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-1",
+          "titleAr": "ترانسفير مطار إسطنبول → سلطان أحمت — سيدان فاخرة",
+          "titleEn": "IST Airport → Sultanahmet Luxury Sedan",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=80",
+          "basePrice": 55,
+          "clientPrice": 63,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-sultanahmet-luxury-sedan?date=2026-09-10&guests=2",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "استقبال في الصالة مع لوحة الاسم",
+            "تتبع الرحلة في الوقت الفعلي",
+            "مياه معدنية وواي فاي"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-3",
+          "titleAr": "ترانسفير مطار إسطنبول → بشيكتاش",
+          "titleEn": "IST Airport → Beşiktaş Transfer",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+          "basePrice": 58,
+          "clientPrice": 67,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-besiktas-transfer?date=2026-09-10&guests=2",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "وصول مباشر إلى البوسفور",
+            "سائق يعرف طرق إسطنبول",
+            "استقبال شخصي في المطار"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 10 أيام",
+          "subtitleEn": "$42/day × 10 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 420,
+          "clientPrice": 483,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-10&returnDate=2026-09-20&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 10,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 10 أيام",
+          "subtitleEn": "$95/day × 10 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 950,
+          "clientPrice": 1093,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-10&returnDate=2026-09-20&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 10,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=DXB&to=IST&date=2026-09-10&returnDate=2026-09-20&guests=2&flightType=round-trip&class=economy&flightSearch=DXB1009IST20092",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-09-10&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-09-10&returnDate=2026-09-20&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-04T22:34:24.012Z"
+    },
+    {
+      "id": "aip_mtlzxk5c_zkpogo",
+      "titleAr": "برنامج إسطنبول وطرابزون وأكواخ ريزا الفاخرة (10 أيام / 5 أشخاص)",
+      "titleEn": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+      "destination": "Istanbul & Trabzon",
+      "nights": 9,
+      "people": 5,
+      "arrivalDate": "2026-10-01",
+      "departureDate": "2026-10-10",
+      "priceFromUsd": 4845,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80",
+      "includesAr": [
+        "الإقامة في فنادق 5 نجوم في إسطنبول وطرابزون",
+        "إقامة ليلتين في كوخ ريفي فاخر في ريزا",
+        "الاستقبال والتوديع وكافة التنقلات بسيارة مرسيدس فيتو خاصة",
+        "الجولات السياحية اليومية مع سائق خاص",
+        "وجبات الإفطار اليومية"
+      ],
+      "includesEn": [
+        "5-star hotel stays in Istanbul & Trabzon",
+        "2 nights in a luxury mountain lodge in Rize",
+        "Private airport transfers & Mercedes Vito transport",
+        "Daily private guided tours with driver",
+        "Daily breakfast"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج إسطنبول وطرابزون وأكواخ ريزا الفاخرة (10 أيام / 5 أشخاص)",
+        "titleEn": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول إلى إسطنبول والاستقبال",
+            "titleEn": "Arrival in Istanbul & Transfer",
+            "detailAr": "الوصول إلى مطار إسطنبول، استقبال من قبل ممثل الوكالة بالسيارة الخاصة (مرسيدس فيتو) والتجهيز للتوجه إلى الفندق 5 نجوم واستلام الغرف والراحة.",
+            "detailEn": "Arrive at Istanbul Airport, private Mercedes Vito transfer to 5-star hotel and check-in."
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة معالم إسطنبول التاريخية",
+            "titleEn": "Istanbul Old City Tour",
+            "detailAr": "جولة خاصة مغطاة بأهم معالم السلطان أحمد، أيا صوفيا، قصر توبكابي، وجولة في البازار الكبير.",
+            "detailEn": "Private guided tour of Sultanahmet, Hagia Sophia, Topkapi Palace, and Grand Bazaar."
+          },
+          {
+            "day": 3,
+            "titleAr": "رحلة البوسفور والتسوق",
+            "titleEn": "Bosphorus Cruise & Shopping",
+            "detailAr": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس في الجانب الآسيوي، ووقت حُر للتسوق في أسواق إسطنبول الحديثة.",
+            "detailEn": "Private Bosphorus cruise, Çamlıca Hill on Asian side, and leisure shopping time."
+          },
+          {
+            "day": 4,
+            "titleAr": "الطيران الداخلي إلى طرابزون والتوجه لريزا",
+            "titleEn": "Flight to Trabzon & Transfer to Rize",
+            "detailAr": "الانتقال إلى مطار إسطنبول للرحلة الداخلية إلى طرابزون، الاستقبال والاستلام بالسائق الخاص والانطلاق مباشرة إلى المرتفعات للجلوس في كوخ ريفي فاخر في ريزا.",
+            "detailEn": "Domestic flight to Trabzon, private transfer to scenic Rize wooden mountain lodge."
+          },
+          {
+            "day": 5,
+            "titleAr": "استكشاف مرتفعات ريزا وآيدر",
+            "titleEn": "Rize & Ayder Highlands Exploration",
+            "detailAr": "يوم كامل لاستكشاف شلالات آيدر، الحمامات الكبريتية، جسور العصر العثماني التاريخية، والاستمتاع بإفطار ريفي جبلي فاخر.",
+            "detailEn": "Full day exploring Ayder waterfalls, thermal springs, historical bridges, and mountain breakfast."
+          },
+          {
+            "day": 6,
+            "titleAr": "العودة إلى طرابزون والإقامة بالفندق",
+            "titleEn": "Return to Trabzon & Hotel Check-in",
+            "detailAr": "مغادرة الكوخ والتوجه نحو مدينة طرابزون، زيارة قصر آتاتورك وبحيرة سيراجول وتسجيل الدخول في فندق 5 نجوم.",
+            "detailEn": "Depart the lodge to Trabzon city, visit Atatürk Pavilion, Sera Lake, and check-in to 5-star hotel."
+          },
+          {
+            "day": 7,
+            "titleAr": "جولة بحيرة أوزنجول الساحرة",
+            "titleEn": "Uzungöl Lake Tour",
+            "detailAr": "جولة خاصة ليوم كامل إلى بحيرة أوزنجول الشهيرة، الاستمتاع بالإطلالات البانورامية من مزارع الشاي وجبال الشاكر سو.",
+            "detailEn": "Full day private tour to Uzungöl Lake, panoramic viewpoints, and tea plantations."
+          },
+          {
+            "day": 8,
+            "titleAr": "جولة دير سوميلا ومغارة كاراكا",
+            "titleEn": "Sumela Monastery & Karaca Cave",
+            "detailAr": "زيارة دير سوميلا التاريخي المنحوت في الصخر داخل حديقة آلتينديري الوطنية، ثم زيارة مغارة كاراكا الشهيرة.",
+            "detailEn": "Visit the historic cliffside Sumela Monastery and Karaca Cave."
+          },
+          {
+            "day": 9,
+            "titleAr": "العودة إلى إسطنبول والتسوق الأخير",
+            "titleEn": "Return to Istanbul & Final Shopping",
+            "detailAr": "الوصول لمطار طرابزون للعودة إلى إسطنبول، وقت حر للتسوق وشراء الهدايا التذكارية وتجهيز الحقائب.",
+            "detailEn": "Fly back to Istanbul, free afternoon for souvenir shopping and final preparations."
+          },
+          {
+            "day": 10,
+            "titleAr": "التوديع والمغادرة إلى الرياض",
+            "titleEn": "Departure to Riyadh",
+            "detailAr": "تسجيل الخروج من الفندق في إسطنبول، والتوجه بمركبة خاصة إلى المطار للرحلة الدولية المتجهة إلى الرياض مع ختام متميز للرحلة.",
+            "detailEn": "Hotel check-out and private transfer to Istanbul Airport for international flight back to Riyadh."
+          }
+        ],
+        "totalBasePrice": 3500,
+        "totalClientPrice": 4845,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "RUH-IST",
+          "titleAr": "طيران RUH → IST",
+          "titleEn": "Flights RUH → IST",
+          "subtitleAr": "2026-10-01 → 2026-10-10",
+          "subtitleEn": "2026-10-01 → 2026-10-10",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-01&returnDate=2026-10-10&guests=5&flightType=round-trip&class=economy&flightSearch=RUH0110IST10105",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "1",
+          "titleAr": "قصر تشراغان كمبينسكي إسطنبول",
+          "titleEn": "Çırağan Palace Kempinski Istanbul",
+          "subtitleAr": "بشكتاش / البوسفور",
+          "subtitleEn": "Beşiktaş / Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/ciragan-palace-kempinski-istanbul?checkIn=2026-10-01&checkOut=2026-10-10&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "القصر العثماني الوحيد كفندق على البوسفور",
+            "مسبح لانهائي مطل على المضيق",
+            "سبا سانيتاس مع حمّام تركي"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "2",
+          "titleAr": "رافلز إسطنبول",
+          "titleEn": "Raffles Istanbul",
+          "subtitleAr": "زولرو سنتر / ليفنت",
+          "subtitleEn": "Zorlu Center / Levent",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/raffles-istanbul?checkIn=2026-10-01&checkOut=2026-10-10&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "خدمة خادم شخصي",
+            "سبا فوربس خمس نجوم",
+            "موقع مركز زورلو"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "hotel",
+          "id": "3",
+          "titleAr": "فور سيزونز إسطنبول على البوسفور",
+          "titleEn": "Four Seasons Hotel Istanbul at the Bosphorus",
+          "subtitleAr": "البوسفور",
+          "subtitleEn": "Bosphorus",
+          "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "basePrice": 3780,
+          "clientPrice": 4347,
+          "currency": "USD",
+          "href": "/hotels/four-seasons-bosphorus?checkIn=2026-10-01&checkOut=2026-10-10&adults=5",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "قصر عثماني على البوسفور",
+            "مسبح داخلي وخارجي مُدفأ",
+            "تراس مطعم أكوا"
+          ],
+          "pricePending": false,
+          "unitPrice": 420,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-1",
+          "titleAr": "ترانسفير مطار إسطنبول → سلطان أحمت — سيدان فاخرة",
+          "titleEn": "IST Airport → Sultanahmet Luxury Sedan",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=80",
+          "basePrice": 55,
+          "clientPrice": 63,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-sultanahmet-luxury-sedan?date=2026-10-01&guests=5",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "استقبال في الصالة مع لوحة الاسم",
+            "تتبع الرحلة في الوقت الفعلي",
+            "مياه معدنية وواي فاي"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-3",
+          "titleAr": "ترانسفير مطار إسطنبول → بشيكتاش",
+          "titleEn": "IST Airport → Beşiktaş Transfer",
+          "subtitleAr": "Mercedes-Benz E-Class · 3 مقاعد",
+          "subtitleEn": "Mercedes-Benz E-Class · 3 seats",
+          "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80",
+          "basePrice": 58,
+          "clientPrice": 67,
+          "currency": "USD",
+          "href": "/transfers/ist-airport-besiktas-transfer?date=2026-10-01&guests=5",
+          "badges": [
+            "Luxury"
+          ],
+          "highlights": [
+            "وصول مباشر إلى البوسفور",
+            "سائق يعرف طرق إسطنبول",
+            "استقبال شخصي في المطار"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 9 أيام",
+          "subtitleEn": "$42/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 378,
+          "clientPrice": 435,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-01&returnDate=2026-10-10&guests=5&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 9 أيام",
+          "subtitleEn": "$95/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 855,
+          "clientPrice": 983,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-01&returnDate=2026-10-10&guests=5&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=RUH&to=IST&date=2026-10-01&returnDate=2026-10-10&guests=5&flightType=round-trip&class=economy&flightSearch=RUH0110IST10105",
+      "transferHref": "/transfers?from=IST+Airport&to=Sultanahmet&pickup=IST+Airport&dropoff=Sultanahmet&date=2026-10-01&time=12%3A00&guests=5&passengers=5&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84+%28IST%29&location=Istanbul+Airport+%28IST%29&date=2026-10-01&returnDate=2026-10-10&guests=5&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-09-03T20:47:19.873Z"
+    },
+    {
+      "id": "aip_mtaemomv_lvhbof",
+      "titleAr": "شهر عسل الأحلام في طرابزون وريزة — 9 أيام",
+      "titleEn": "Trabzon & Rize Honeymoon Dream — 9 Days",
+      "destination": "Trabzon & Rize",
+      "nights": 8,
+      "people": 2,
+      "arrivalDate": "2026-09-06",
+      "departureDate": "2026-09-15",
+      "priceFromUsd": 146868,
+      "thumbnail": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600&q=80",
+      "includesAr": [
+        "الإقامة في فنادق طرابزون وأكواخ ريزة",
+        "الإفطار اليومي لشخصين",
+        "استقبال وتوديع مطار طرابزون الخاص",
+        "الجولات السياحية المذكورة بسيارة خاصة مع سائق",
+        "الضرائب ورسوم الخدمة"
+      ],
+      "includesEn": [
+        "Hotel & Rize bungalow accommodation",
+        "Daily breakfast for 2",
+        "Private airport transfers (TZX roundtrip)",
+        "Private guided day tours with driver",
+        "All taxes and service fees"
+      ],
+      "itinerary": {
+        "titleAr": "شهر عسل الأحلام في طرابزون وريزة — 9 أيام",
+        "titleEn": "Trabzon & Rize Honeymoon Dream — 9 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "اليوم الأول: الوصول والاستقبال في مطار طرابزون",
+            "titleEn": "Day 1: Arrival & TZX Airport Greeting",
+            "detailAr": "استقبال من مطار طرابزون بلوحة تحمل اسمكم، التوجه بسيارة مرسيدس خاصة إلى الفندق في طرابزون لتسجيل الغرفة والراحة بعد السفر.",
+            "detailEn": "Greeting at TZX Airport with a name sign, private Mercedes transfer to your Trabzon hotel for check-in and rest."
+          },
+          {
+            "day": 2,
+            "titleAr": "اليوم الثاني: جولة مدينة طرابزون التاريخية",
+            "titleEn": "Day 2: Trabzon City & Cultural Tour",
+            "detailAr": "زيارة قصر أتاتورك التاريخي، جامع أيا صوفيا، والتلّة الشهيرة بوزتبي المطلة على المدينة والبحر الأسود مع وقت للقهوة.",
+            "detailEn": "Visit Ataturk Pavilion, Hagia Sophia Mosque, and Boztepe hill overlooking the city and Black Sea."
+          },
+          {
+            "day": 3,
+            "titleAr": "اليوم الثالث: جولة مرتفعات حيدر نبي ومغارة تشال",
+            "titleEn": "Day 3: Hıdırnebi Plateaus & Çal Cave",
+            "detailAr": "رحلة إلى مرتفعات حيدر نبي الساحرة، الاستمتاع بالضباب والطبيعة، ثم زيارة مغارة تشال الثانية أطول مغارة في العالم.",
+            "detailEn": "Trip to Hıdırnebi highlands, enjoying mist and nature, followed by Çal Cave exploration."
+          },
+          {
+            "day": 4,
+            "titleAr": "اليوم الرابع: الانتقال إلى ريزة والإقامة في الأكواخ الريفية",
+            "titleEn": "Day 4: Transfer to Rize & Luxury Bungalow Stay",
+            "detailAr": "تسجيل الخروج والانتقال من طرابزون إلى ريزة، التوقف في مزارع الشاي الشهيرة (معمل الشاي)، ثم تسجيل الوصول في الكوخ الجبلي الرومانسي.",
+            "detailEn": "Check out, transfer to Rize, stop by tea gardens and tea factory, then check into your romantic mountain bungalow."
+          },
+          {
+            "day": 5,
+            "titleAr": "اليوم الخامس: استكشاف آيدر وشلالات فارتالينا",
+            "titleEn": "Day 5: Ayder Plateau & Fırtına Valley Waterfalls",
+            "detailAr": "جولة في وادي فارتالينا، تجربة التجديف (Rafting) الاختيارية أو زيارة الجسور العثمانية التاريخية، والصعود إلى مرتفعات آيدر وجسر العشاق والشلالات.",
+            "detailEn": "Fırtına Valley tour, optional rafting, historic Ottoman bridges, ascending to Ayder plateau and Bridal Veil waterfall."
+          },
+          {
+            "day": 6,
+            "titleAr": "اليوم السادس: بحيرة أوزونجول العجيبة",
+            "titleEn": "Day 6: Magical Uzungöl Lake",
+            "detailAr": "التوجه إلى بحيرة أوزونجول المحاطة بالغابات والجبال، الصعود إلى شرفة الإطلاق (مطل أوزونجول) للاستمتاع بانوراما البحيرة الساحرة، وقت مجاني للتسوق والتمشية.",
+            "detailEn": "Head to Uzungöl lake surrounded by forests, hike up to the viewpoint terrace for a panoramic view, free time for walking."
+          },
+          {
+            "day": 7,
+            "titleAr": "اليوم السابع: جولة دير سوميلا ووادي آلتينديре",
+            "titleEn": "Day 7: Sümela Monastery & Altındere Valley",
+            "detailAr": "رحلة فريدة إلى دير سوميلا التاريخي المنحوت في الصخر ضمن محمية وادي آلتينديرا الطبيعية، وتناول الغداء بجانب النهر الجبلي.",
+            "detailEn": "Unique trip to historical Sümela Monastery carved into cliffside in Altındere National Park, riverside lunch."
+          },
+          {
+            "day": 8,
+            "titleAr": "اليوم الثامن: يوم حر للاسترخاء في طرابزون",
+            "titleEn": "Day 8: Free Relaxation Day in Trabzon",
+            "detailAr": "العودة إلى طرابزون والتمتع بيوم حر للتسوق في مول فوروم طرابزون أو السوق الطويل وشراء الهدايا التذكارية والعسل الطبيعي.",
+            "detailEn": "Return to Trabzon for a free leisure day shopping at Forum Trabzon or Long Street for souvenirs and local honey."
+          },
+          {
+            "day": 9,
+            "titleAr": "اليوم التاسع: التوديع والعودة إلى أرض الوطن",
+            "titleEn": "Day 9: Departure & TZX Airport Transfer",
+            "detailAr": "تسجيل الخروج من الفندق، وتأمين ترانسفير خاص إلى مطار طرابزون الدولي للعودة الموفقة بالسلامة.",
+            "detailEn": "Hotel check-out and private transfer to TZX International Airport for your return flight."
+          }
+        ],
+        "totalBasePrice": 1590,
+        "totalClientPrice": 146868,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "DXB-TZX",
+          "titleAr": "طيران DXB → TZX",
+          "titleEn": "Flights DXB → TZX",
+          "subtitleAr": "2026-09-06 → 2026-09-15",
+          "subtitleEn": "2026-09-06 → 2026-09-15",
+          "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "basePrice": 0,
+          "clientPrice": 0,
+          "currency": "USD",
+          "href": "/flights?from=DXB&to=TZX&date=2026-09-06&returnDate=2026-09-15&guests=2&flightType=round-trip&class=economy&flightSearch=DXB0609TZX15092",
+          "badges": [
+            "round-trip"
+          ],
+          "pricePending": true,
+          "source": "pending"
+        },
+        {
+          "type": "hotel",
+          "id": "8364987",
+          "titleAr": "Romance Istanbul Hotel",
+          "titleEn": "Romance Istanbul Hotel",
+          "subtitleAr": "Trabzon",
+          "subtitleEn": "Trabzon",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/e3/81/23/caption.jpg?w=1200&h=800&s=1",
+          "basePrice": 147353,
+          "clientPrice": 169456,
+          "currency": "USD",
+          "href": "/hotels/ta-8364987?checkIn=2026-09-06&checkOut=2026-09-15&adults=2",
+          "badges": [
+            "4★"
+          ],
+          "highlights": [
+            "Free breakfast available"
+          ],
+          "pricePending": false,
+          "unitPrice": 18419,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 8,
+          "source": "live"
+        },
+        {
+          "type": "hotel",
+          "id": "4990603",
+          "titleAr": "Golden Horn Bosphorus Hotel",
+          "titleEn": "Golden Horn Bosphorus Hotel",
+          "subtitleAr": "Trabzon",
+          "subtitleEn": "Trabzon",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/33/db/f6/caption.jpg?w=1200&h=800&s=1",
+          "basePrice": 127341,
+          "clientPrice": 146442,
+          "currency": "USD",
+          "href": "/hotels/ta-4990603?checkIn=2026-09-06&checkOut=2026-09-15&adults=2",
+          "badges": [
+            "4★"
+          ],
+          "highlights": [],
+          "pricePending": false,
+          "unitPrice": 15918,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 8,
+          "source": "live"
+        },
+        {
+          "type": "hotel",
+          "id": "1732739",
+          "titleAr": "Hotel Sultania",
+          "titleEn": "Hotel Sultania",
+          "subtitleAr": "Trabzon",
+          "subtitleEn": "Trabzon",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/7e/b6/37/hotel-sultania.jpg?w=1200&h=800&s=1",
+          "basePrice": 127288,
+          "clientPrice": 146381,
+          "currency": "USD",
+          "href": "/hotels/ta-1732739?checkIn=2026-09-06&checkOut=2026-09-15&adults=2",
+          "badges": [
+            "4★"
+          ],
+          "highlights": [],
+          "pricePending": false,
+          "unitPrice": 15911,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 8,
+          "source": "live"
+        },
+        {
+          "type": "transfer",
+          "id": "tr-7",
+          "titleAr": "ترانسفير مطار Trabzon → وسط المدينة",
+          "titleEn": "TZX Airport → Trabzon City Transfer",
+          "subtitleAr": "Mercedes-Benz Vito · 6 مقاعد",
+          "subtitleEn": "Mercedes-Benz Vito · 6 seats",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 45,
+          "clientPrice": 52,
+          "currency": "USD",
+          "href": "/transfers/tzx-airport-trabzon-transfer?date=2026-09-06&guests=2",
+          "badges": [
+            "Premium"
+          ],
+          "highlights": [
+            "سائق محلي خبير",
+            "خيار Uzungöl وAyder",
+            "فان للعائلات"
+          ],
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-toyota-corolla",
+          "titleAr": "تويوتا كورولا",
+          "titleEn": "Toyota Corolla",
+          "subtitleAr": "42 دولار/يوم × 9 أيام",
+          "subtitleEn": "$42/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1623869675781-80daad0dbe65?w=1600&q=80",
+          "basePrice": 378,
+          "clientPrice": 435,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-06&returnDate=2026-09-15&guests=2&currency=usd",
+          "badges": [
+            "sedan"
+          ],
+          "highlights": [
+            "5 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 48,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        },
+        {
+          "type": "car",
+          "id": "car-mercedes-vito",
+          "titleAr": "مرسيدس فيتو",
+          "titleEn": "Mercedes-Benz Vito",
+          "subtitleAr": "95 دولار/يوم × 9 أيام",
+          "subtitleEn": "$95/day × 9 days",
+          "image": "https://images.unsplash.com/photo-1544620341-f53c95b3b9a7?w=1600&q=80",
+          "basePrice": 855,
+          "clientPrice": 983,
+          "currency": "USD",
+          "href": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-06&returnDate=2026-09-15&guests=2&currency=usd",
+          "badges": [
+            "minivan"
+          ],
+          "highlights": [
+            "8 pax",
+            "automatic",
+            "A/C"
+          ],
+          "unitPrice": 109,
+          "unitLabelAr": "لليوم",
+          "unitLabelEn": "per day",
+          "days": 9,
+          "source": "catalog"
+        }
+      ],
+      "flightHref": "/flights?from=DXB&to=TZX&date=2026-09-06&returnDate=2026-09-15&guests=2&flightType=round-trip&class=economy&flightSearch=DXB0609TZX15092",
+      "transferHref": "/transfers?from=TZX+Airport&to=Trabzon&pickup=TZX+Airport&dropoff=Trabzon&date=2026-09-06&time=12%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-06&returnDate=2026-09-15&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-08-26T18:05:32.599Z"
+    },
+    {
+      "id": "aip_mta4o1gj_zgw2c3",
+      "titleAr": "برنامج 7 أيام في أنطاليا — الفخامة والطبيعة",
+      "titleEn": "Antalya 7-Day Luxury & Nature Itinerary",
+      "destination": "Antalya",
+      "nights": 6,
+      "people": 2,
+      "arrivalDate": "2026-06-01",
+      "departureDate": "2026-06-07",
+      "priceFromUsd": 3243,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+      "includesAr": [
+        "الإقامة 6 ليالي في منتجع 5 نجوم (شامل كلياً إفطار وغداء وعشاء)",
+        "الترانسفير الخاص من وإلى المطار",
+        "الجولات السياحية والبرنامج المذكور"
+      ],
+      "includesEn": [
+        "6 nights 5-star resort (All-Inclusive)",
+        "Private airport transfers",
+        "Curated VIP tours"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج 7 أيام في أنطاليا — الفخامة والطبيعة",
+        "titleEn": "Antalya 7-Day Luxury & Nature Itinerary",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال الملكي",
+            "titleEn": "Arrival & VIP Welcome",
+            "detailAr": "استقبال خاص بمطار أنطاليا (AYT) بواسطة سائقنا والتوجه إلى منتجع ريكسوس بريميوم بيليك لتسجيل الغرف والاستمتاع بمرافق المنتجع الفاخرة وجولة الشاطئ.",
+            "detailEn": "VIP airport pickup and private transfer to Rixos Premium Belek resort. Check-in and enjoy resort facilities and beach."
+          },
+          {
+            "day": 2,
+            "titleAr": "استكشاف كالييتشي والمدينة القديمة",
+            "titleEn": "Kaleici Old Town & Marina",
+            "detailAr": "جولة خاصة في أزقة كالييتشي العريقة، الميناء القديم، وبوابة هادريان التاريخية، مع وقت للتسوق وتناول الغداء بإطلالة بانورامية على البحر المتوسط.",
+            "detailEn": "Private tour of Kaleici historic district, Old Marina, Hadrian's Gate, and scenic Mediterranean lunch."
+          },
+          {
+            "day": 3,
+            "titleAr": "شلالات دودان ونهر أوشكان",
+            "titleEn": "Düden Waterfalls & Nature",
+            "detailAr": "زيارة شلالات دودان الشهيرة حيث يصب الماء مباشرة في البحر، تليها جولة بالقارب واستراحة قهوة وسط الطبيعة الساحرة.",
+            "detailEn": "Visit the stunning Düden Waterfalls flowing into the sea, followed by a coastal boat cruise."
+          },
+          {
+            "day": 4,
+            "titleAr": "يوم ترفيهي في لاند أوف ليجندز",
+            "titleEn": "The Land of Legends Theme Park",
+            "detailAr": "يوم كامل مخصص لمدينة الألعاب والملاهي المائية العالمية (دخول مجاني ومميز لضيوف ريكسوس) مع عروض الألعاب النارية المسائية.",
+            "detailEn": "Full day at The Land of Legends theme park with exclusive access, water slides, and evening shows."
+          },
+          {
+            "day": 5,
+            "titleAr": "رحلة جبال طوروس وتونس القديمة",
+            "titleEn": "Taurus Mountains & Ancient City",
+            "detailAr": "رحلة استكشافية إلى مرتفعات جبال طوروس، زيارة الآثار الرومانية العريقة في أسبيندوس، وتجربة طعام محلية أصيلة في الطبيعة.",
+            "detailEn": "Excursion to the Taurus Mountains, ancient Aspendos Roman theater, and authentic local dining."
+          },
+          {
+            "day": 6,
+            "titleAr": "يوم الاسترخاء الشاطئي والسبا",
+            "titleEn": "Beach Relaxation & Spa Day",
+            "detailAr": "يوم حر للاسترخاء على شاطئ المنتجع الخاص، الاستمتاع بجلسات المساج التركي في سبا أنجانا، وحفل عشاء فاخر مسائي.",
+            "detailEn": "Leisure day at the private beach, indulging in Anjana Spa treatments and a gourmet dinner."
+          },
+          {
+            "day": 7,
+            "titleAr": "الوداع والعودة الموفقة",
+            "titleEn": "Departure",
+            "detailAr": "تسجيل الغرف صباحاً، والتوجه بمرسيدس بنز الخاصة إلى مطار أنطاليا الدولي للعودة إلى أرض الوطن سالمين.",
+            "detailEn": "Morning check-out and private transfer to Antalya International Airport for your departure flight."
+          }
+        ],
+        "totalBasePrice": 2820,
+        "totalClientPrice": 3243,
+        "currency": "USD"
+      },
+      "flightHref": "/flights?from=DXB&to=AYT&date=2026-06-01&returnDate=2026-06-07&guests=2&flightType=round-trip&class=economy&flightSearch=DXB0106AYT07062",
+      "transferHref": "/transfers?from=AYT+Airport&to=Rixos+Premium+Belek&pickup=AYT+Airport&dropoff=Rixos+Premium+Belek&date=2026-06-01&time=14%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%A3%D9%86%D8%B7%D8%A7%D9%84%D9%8A%D8%A7+%28AYT%29&location=Antalya+Airport+%28AYT%29&date=2026-06-02&returnDate=2026-06-06&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-08-26T13:26:39.715Z"
+    },
+    {
+      "id": "aip_mt97b0ux_pw8ecr",
+      "titleAr": "برنامج شهر العسل طرابزون وآيدر - 10 أيام",
+      "titleEn": "Trabzon & Ayder Honeymoon Program - 10 Days",
+      "destination": "Trabzon",
+      "nights": 9,
+      "people": 2,
+      "arrivalDate": "2026-09-01",
+      "departureDate": "2026-09-10",
+      "priceFromUsd": 3680,
+      "thumbnail": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600&q=80",
+      "includesAr": [
+        "إقامة 9 ليالٍ (فنادق 5 نجوم + أكواخ VIP بجاكوزي)",
+        "سيارة خاصة مرسيدس فيتو مع سائق طوال الـ 10 أيام",
+        "الإفطار اليومي لشخصين",
+        "تزيين وترتيبات خاصة بشهر العسل",
+        "رسوم الوقود والطرق والانتقالات من وإلى مطار طرابزون"
+      ],
+      "includesEn": [
+        "9 nights accommodation (5-star hotels + VIP Jacuzzi bungalows)",
+        "Private Mercedes Vito car with driver for 10 days",
+        "Daily breakfast for 2 persons",
+        "Special honeymoon room setup",
+        "Fuel, road fees & airport transfers included"
+      ],
+      "itinerary": {
+        "titleAr": "برنامج شهر العسل طرابزون وآيدر - 10 أيام",
+        "titleEn": "Trabzon & Ayder Honeymoon Program - 10 Days",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول والاستقبال VIP",
+            "titleEn": "Arrival & VIP Welcome",
+            "detailAr": "استقبال في مطار طرابزون بنقل خاص VIP والتوجه للفندق للاستراحة ثم جولة خفيفة على الكورنيش.",
+            "detailEn": "VIP private pickup at Trabzon airport, hotel check-in, and evening seafront walk."
+          },
+          {
+            "day": 2,
+            "titleAr": "معالم طرابزون ومطل بوزتبه",
+            "titleEn": "Trabzon City & Boztepe Sunset",
+            "detailAr": "زيارة متحف آيا صوفيا، قصر أتاتورك، واستراحة شاي رومانسية في قمة بوزتبه عند الغروب.",
+            "detailEn": "Hagia Sophia Trabzon, Atatürk Pavilion, and sunset tea at Boztepe Hill."
+          },
+          {
+            "day": 3,
+            "titleAr": "دير سوميلا وهامسي كوي",
+            "titleEn": "Sümela Monastery & Hamsiköy",
+            "detailAr": "رحلة بين الجبال إلى دير سوميلا الشاهق ثم قرية هامسي كوي لتذوق المهلبية التركية الشهيرة.",
+            "detailEn": "Historic Sümela Monastery visit and tasting famous rice pudding in Hamsiköy village."
+          },
+          {
+            "day": 4,
+            "titleAr": "الانتقال إلى أوزنجول",
+            "titleEn": "Transfer to Uzungöl",
+            "detailAr": "جولة في الطريق إلى أوزنجول، استكشاف البحيرة، والتسكين في كوخ فاخر بخدمات شهر العسل.",
+            "detailEn": "Scenic drive to Uzungöl, lake promenade, and check-in to a luxury honeymoon bungalow."
+          },
+          {
+            "day": 5,
+            "titleAr": "مرتفعات أوزنجول وكارستر",
+            "titleEn": "Uzungöl Heights & Karester",
+            "detailAr": "الصعود بالسيارة الخاصة إلى مرتفعات كارستر ولوسترا لمشاهدة أوزنجول من الأعلى بين السحاب.",
+            "detailEn": "VIP drive to Karester plateau overlooking Uzungöl lake from high above."
+          },
+          {
+            "day": 6,
+            "titleAr": "وادي فرتنا وهضبة آيدر",
+            "titleEn": "Fırtına Valley & Ayder Plateau",
+            "detailAr": "زيارة الجسور العثمانية، قلعة زيلكالي، وشلال بالوفيت ثم التسكين في كوخ آيدر مع جاكوزي خاص.",
+            "detailEn": "Fırtına river, Zilkale castle, Palovit waterfall, and check-in to Ayder Jacuzzi bungalow."
+          },
+          {
+            "day": 7,
+            "titleAr": "مرتفعات آيدر وقمة هوسر",
+            "titleEn": "Ayder & Huser Cloud Sea Sunset",
+            "detailAr": "استكشاف شلالات آيدر ثم الانطلاق لقمة هوسر لمشاهدة ظاهرة بحر السحاب والغيمة الأرجوانية.",
+            "detailEn": "Ayder waterfalls and sunset above the clouds at Huser plateau."
+          },
+          {
+            "day": 8,
+            "titleAr": "بحيرة سيرا جول والعودة لطرابزون",
+            "titleEn": "Sera Lake & Return to Trabzon",
+            "detailAr": "العودة باتجاه طرابزون، جولة قارب رومانسية في بحيرة سيرا جول ثم الإقامة في فندق 5 نجوم.",
+            "detailEn": "Drive back towards Trabzon, boat ride at Sera Lake, and 5-star hotel check-in."
+          },
+          {
+            "day": 9,
+            "titleAr": "التسوق ومزارع الشاي",
+            "titleEn": "Tea Gardens & Shopping Day",
+            "detailAr": "زيارة مزارع ومصنع الشاي في أوف، ثم جولة تسوق في فوروم طرابزون وجواهر مول.",
+            "detailEn": "Tea gardens experience in Of, followed by shopping at Forum Trabzon & Cevahir Mall."
+          },
+          {
+            "day": 10,
+            "titleAr": "التوديع والمغادرة",
+            "titleEn": "Departure",
+            "detailAr": "تسليم الغرف والتوصيل بسيارة VIP إلى مطار طرابزون للعودة بالسلامة.",
+            "detailEn": "Hotel check-out and VIP transfer to Trabzon airport for final departure."
+          }
+        ],
+        "totalBasePrice": 3200,
+        "totalClientPrice": 3680,
+        "currency": "USD"
+      },
+      "flightHref": "/flights?from=DXB&to=TZX&date=2026-09-01&returnDate=2026-09-10&guests=2&flightType=round-trip&class=economy&flightSearch=DXB0109TZX10092",
+      "transferHref": "/transfers?from=TZX+Airport&to=Trabzon+Hotel+%2F+Bungalow&pickup=TZX+Airport&dropoff=Trabzon+Hotel+%2F+Bungalow&date=2026-09-01&time=14%3A00&guests=2&passengers=2&currency=usd",
+      "carsHref": "/cars?pickup=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&dropoff=%D9%85%D8%B7%D8%A7%D8%B1+%D8%B7%D8%B1%D8%A7%D8%A8%D8%B2%D9%88%D9%86+%28TZX%29&location=Trabzon+Airport+%28TZX%29&date=2026-09-01&returnDate=2026-09-10&guests=2&currency=usd",
+      "hidden": false,
+      "createdAt": "2026-08-25T21:52:45.081Z"
+    }
+  ],
+  "updatedAt": "2026-09-15T00:30:02.905Z"
+}

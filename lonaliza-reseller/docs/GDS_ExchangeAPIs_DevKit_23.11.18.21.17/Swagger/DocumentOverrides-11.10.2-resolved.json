@@ -1,0 +1,1561 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book_DocumentOverrides",
+    "description": "Book_DocumentOverrides",
+    "version": "11.10.2"
+  },
+  "servers": [
+    {
+      "url": "https://api.pp.travelport.com/11/air/book/documentoverride"
+    },
+    {
+      "url": "https://api.travelport.com/11/air/book/documentoverride"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "paths": {
+    "/Reservation/{ReservationResource_Identifier}/documentoverrides": {
+      "post": {
+        "tags": [
+          "Workbench - Manage Document Overrides"
+        ],
+        "summary": "Add document override remark",
+        "description": "Use document override to send remarks such as tour code, commission, or endorsements/restrictions.Document override remarks are returned in the PNR retrieve only when the detailViewInd query parameter is set to true. Document override remarks can be added to an existing PNR but cannot be modified or deleted; see PNR Modify Guide.",
+        "operationId": "CreateDocumentOverrides",
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            }
+          },
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentOverrides"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentOverridesResponseWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Reservation/{ReservationResource_Identifier}/documentoverrides/{id}": {
+      "put": {
+        "tags": [
+          "Workbench - Manage Document Overrides"
+        ],
+        "summary": "Update document overrides",
+        "operationId": "UpdateDocumentOverrides",
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The reporting number.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentOverrides"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentOverridesResponseWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Workbench - Manage Document Overrides"
+        ],
+        "summary": "Delete document overrides",
+        "operationId": "DeleteDocumentOverrides",
+        "parameters": [
+          {
+            "name": "ReservationResource_Identifier",
+            "in": "path",
+            "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The reporting number.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Successful Response - 200"
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DocumentOverrides": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DocumentOverridesID"
+          },
+          {
+            "properties": {
+              "OfferIdentifier": {
+                "$ref": "#/components/schemas/OfferIdentifier"
+              },
+              "ProductIdentifier": {
+                "$ref": "#/components/schemas/ProductIdentifier"
+              },
+              "Commissions": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Commissions"
+                }
+              },
+              "DestinationPurpose": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DestinationPurpose"
+                }
+              },
+              "Restrictions": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Restrictions"
+                }
+              },
+              "TourCodes": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TourCodes"
+                }
+              },
+              "ChangeFeeCollectionMethod": {
+                "$ref": "#/components/schemas/ChangeFeeCollectionMethod"
+              },
+              "NetRemitInfo": {
+                "$ref": "#/components/schemas/NetRemitInfo"
+              }
+            }
+          }
+        ]
+      },
+      "DocumentOverridesID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "DocumentOverrides"
+          },
+          "id": {
+            "type": "string",
+            "description": "The reporting number."
+          },
+          "DocumentOverridesRef": {
+            "type": "string"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Identifier": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string",
+            "example": "A0656EFF-FAF4-456F-B061-0161008D7C4E"
+          },
+          "authority": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Name of the authoritative system that created this Guid",
+            "example": "TVPT"
+          }
+        },
+        "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database."
+      },
+      "OfferIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "offer_1"
+          },
+          "offerRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "offer_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "ProductIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "product_1"
+          },
+          "productRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "product_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "Commissions": {
+        "required": [
+          "Commission"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Commissions"
+          },
+          "TravelerIdentifierRef": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelerIdentifierRef"
+            }
+          },
+          "Commission": {
+            "$ref": "#/components/schemas/Commission"
+          },
+          "ApplyTo": {
+            "$ref": "#/components/schemas/CommissionApplyEnum"
+          }
+        }
+      },
+      "TravelerIdentifierRef": {
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Traveler identifier"
+          },
+          "passengerTypeCode": {
+            "maxLength": 5,
+            "minLength": 3,
+            "pattern": "([a-zA-Z0-9]{3,5})",
+            "type": "string",
+            "description": "Passenger Type code",
+            "example": "ADT"
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/IdentifierRef"
+          }
+        ]
+      },
+      "IdentifierRef": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "A locally referenced ID"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text used to identify the contents of a target object"
+          },
+          "uris": {
+            "type": "array",
+            "description": "Uniform Resource Identifier",
+            "items": {
+              "type": "string",
+              "example": "google.com"
+            }
+          }
+        }
+      },
+      "Commission": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Commission"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CommissionEnum": {
+        "type": "string",
+        "description": "Type of commission",
+        "enum": [
+          "Full",
+          "Partial",
+          "Non-paying",
+          "No-show",
+          "Adjustment",
+          "Commissionable"
+        ]
+      },
+      "CommissionApplyEnum": {
+        "type": "string",
+        "example": "Base",
+        "enum": [
+          "Base",
+          "Fee"
+        ]
+      },
+      "DestinationPurpose": {
+        "required": [
+          "destination",
+          "purpose"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "DestinationPurpose"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/DestinationEnum"
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/PurposeEnum"
+          }
+        }
+      },
+      "DestinationEnum": {
+        "type": "string",
+        "enum": [
+          "United States of America",
+          "Mexico / Central America / Canal Zone/ Costa Rica",
+          "Islands and Countries of the Caribbean",
+          "South America",
+          "Europe",
+          "Africa",
+          "Middle East / Western Asia",
+          "Asia",
+          "Australia / New Zealand / Pacific Islands",
+          "Canada and Greenland"
+        ]
+      },
+      "PurposeEnum": {
+        "type": "string",
+        "enum": [
+          "Business",
+          "Pleasure",
+          "Charter Service"
+        ]
+      },
+      "Restrictions": {
+        "required": [
+          "Restriction"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Restrictions"
+          },
+          "TravelerIdentifierRef": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelerIdentifierRef"
+            }
+          },
+          "Restriction": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "maxLength": 128,
+              "type": "string"
+            }
+          },
+          "DocumentType": {
+            "$ref": "#/components/schemas/DocumentTypeEnum"
+          }
+        }
+      },
+      "DocumentTypeEnum": {
+        "type": "string",
+        "description": "Document type like EMD, MCO",
+        "example": "Ticket",
+        "enum": [
+          "EMD",
+          "MCO",
+          "Ticket"
+        ]
+      },
+      "TourCodes": {
+        "required": [
+          "TourCode"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TourCodes"
+          },
+          "TravelerIdentifierRef": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelerIdentifierRef"
+            }
+          },
+          "TourCode": {
+            "$ref": "#/components/schemas/TourCode"
+          }
+        }
+      },
+      "TourCode": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string"
+          },
+          "tourCodeType": {
+            "$ref": "#/components/schemas/TourCodeTypeEnum"
+          }
+        },
+        "description": "Tour code"
+      },
+      "TourCodeTypeEnum": {
+        "type": "string",
+        "enum": [
+          "Bulk Tour",
+          "Inclusive Tour"
+        ]
+      },
+      "ChangeFeeCollectionMethod": {
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ChangeFeeMethodEnum"
+          },
+          "code": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The code value",
+            "example": "f2142"
+          },
+          "subCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The subcode value",
+            "example": "631b"
+          },
+          "description": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "The description value",
+            "example": "Change fee collection method"
+          },
+          "changeFeeIssuedSeparatelyInd": {
+            "type": "boolean",
+            "description": "if true, the change fee will be issued as a separate transaction to the residual amount",
+            "example": true
+          },
+          "taxIncludedInBaseAmountInd": {
+            "type": "boolean",
+            "description": "If true, the tax  on the fee will be included in the base fee amount and sent as a single value to the supplier for fulfilment",
+            "example": true
+          }
+        }
+      },
+      "ChangeFeeMethodEnum": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ChangeFeeMethodEnum_Base"
+          }
+        }
+      },
+      "ChangeFeeMethodEnum_Base": {
+        "type": "string",
+        "example": "EMD",
+        "enum": [
+          "EMD",
+          "MCO",
+          "Tax",
+          "Unknown"
+        ]
+      },
+      "NetRemitInfo": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "NetRemitInfo"
+          },
+          "CarCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The CAR code applied to this product for use in net remit",
+            "example": "ACAR"
+          },
+          "ValueCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The Value code applied to this product for use in net remit",
+            "example": "D1000"
+          },
+          "ActualSellingFare": {
+            "type": "number",
+            "description": "The actual selling fare which will override the Offer base fare on the document",
+            "format": "float",
+            "example": 100.5
+          },
+          "NetBaseAmount": {
+            "$ref": "#/components/schemas/FiledAmount"
+          }
+        }
+      },
+      "FiledAmount": {
+        "required": [
+          "codeAuthority",
+          "decimalPlace"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Filed amount value",
+            "format": "float",
+            "example": 43.3422
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Filed amount currency code",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Filed amount currency code authority",
+            "example": "Australian Dollar"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "ISO 4217 standard has a different number of decimals",
+            "format": "int32",
+            "example": 3
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "ISO 4217 standard decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "The base amount of a ticket price or net price that is filed in local currency"
+      },
+      "DocumentOverridesResponseWrapper": {
+        "properties": {
+          "DocumentOverridesResponse": {
+            "$ref": "#/components/schemas/DocumentOverridesResponse"
+          }
+        }
+      },
+      "DocumentOverridesResponse": {
+        "properties": {
+          "DocumentOverrides": {
+            "$ref": "#/components/schemas/DocumentOverridesID"
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          }
+        ]
+      },
+      "BaseResponse": {
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId."
+          },
+          "traceId": {
+            "type": "string",
+            "description": "Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId."
+          },
+          "Result": {
+            "$ref": "#/components/schemas/Result"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          },
+          "NextSteps": {
+            "$ref": "#/components/schemas/NextSteps"
+          },
+          "ReferenceList": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReferenceList"
+            }
+          },
+          "CurrencyRateConversion": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyRateConversion"
+            }
+          }
+        }
+      },
+      "Result": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Result"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResultStatusEnum"
+          },
+          "Error": {
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          },
+          "Warning": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          }
+        }
+      },
+      "ResultStatusEnum": {
+        "type": "string",
+        "description": "The status of an error or warning",
+        "enum": [
+          "Not processed",
+          "Incomplete",
+          "Complete",
+          "Unknown"
+        ]
+      },
+      "Error": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NameValuePair": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "value": {
+            "maxLength": 512,
+            "type": "string",
+            "example": "Sunday"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "6"
+          },
+          "name": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Key",
+            "example": "Day1"
+          }
+        },
+        "description": "Used for data stored in Name Value pairs"
+      },
+      "Warning": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NextSteps": {
+        "required": [
+          "NextStep",
+          "baseURI"
+        ],
+        "properties": {
+          "baseURI": {
+            "type": "string",
+            "description": "The base portion of the uri in order to shorten the uri's in the individual steps"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "5"
+          },
+          "NextStep": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NextStep"
+            }
+          }
+        }
+      },
+      "NextStep": {
+        "required": [
+          "action",
+          "method"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "www.resourcelocation.com"
+          },
+          "id": {
+            "type": "string",
+            "description": "Identifier for the Next Step",
+            "example": "2"
+          },
+          "action": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The action this next step is intended to achieve",
+            "example": "cancel"
+          },
+          "method": {
+            "$ref": "#/components/schemas/NextStepMethodEnum"
+          },
+          "description": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Additional clarification for the next step",
+            "example": "remove offer from the order"
+          }
+        },
+        "description": "A URL that describes a step that can be applied to the resource containing the next step structure."
+      },
+      "NextStepMethodEnum": {
+        "type": "string",
+        "description": "Describes the set of potential methods that can be taken after an operation.",
+        "enum": [
+          "GET",
+          "DELETE",
+          "PUT",
+          "POST"
+        ]
+      },
+      "ReferenceList": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ReferenceListFlight"
+          },
+          "id": {
+            "type": "string",
+            "description": "Uniquely identifies for the Reference List"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CurrencyRateConversion": {
+        "required": [
+          "ConversionRate",
+          "SourceCurrency",
+          "TargetCurrency"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CurrencyRateConversion"
+          },
+          "SourceCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "TargetCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "ConversionRate": {
+            "$ref": "#/components/schemas/ConversionRate"
+          }
+        }
+      },
+      "CurrencyCode": {
+        "properties": {
+          "value": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code authority",
+            "example": "ISO 4217"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Currency code decimal place",
+            "format": "int32",
+            "example": 4
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "Currency codes are the three-letter alphabetic codes that represent the various currencies used throughout the world."
+      },
+      "ConversionRate": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float"
+          },
+          "rateAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Rate authority",
+            "example": "ISO 4217"
+          },
+          "rateAsOf": {
+            "type": "string",
+            "description": "Rate as of",
+            "format": "date-time"
+          }
+        },
+        "description": "A conversion metric from standard to another with the contextual authority such as IATA, OAG, ISO, etc."
+      },
+      "ErrorResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          }
+        ]
+      },
+      "AmountPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "AmountPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "AmountPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CurrencyAmount": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 124.56
+          },
+          "code": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "An ISO 4217 alpha character code that specifies a money unit",
+            "example": "USD"
+          },
+          "minorUnit": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Minor units are a mechanism for expressing the relationship between a major currency unit and its corresponding minor currency unit.",
+            "format": "int32",
+            "example": 2
+          },
+          "currencySource": {
+            "$ref": "#/components/schemas/CurrencySourceEnum"
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "True if the currency amount has been converted from the original amount",
+            "example": true
+          }
+        },
+        "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included."
+      },
+      "CurrencySourceEnum": {
+        "type": "string",
+        "description": "The system requesting or returning the currency code specified in the attribute",
+        "enum": [
+          "Supplier",
+          "Charged",
+          "Requested"
+        ]
+      },
+      "AmountPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FeeAmountOrPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "FeeAmountOrPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "CommissionAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "CommissionPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "PenaltyAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "Penalty": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PenaltyAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "PenaltyPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad Request- 400",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized - 401",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "PaymentRequired": {
+        "description": "PaymentRequired - 402",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden - 403",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not Found - 404",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error - 500",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://oauth.travelport.com/oauth/oauth20/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

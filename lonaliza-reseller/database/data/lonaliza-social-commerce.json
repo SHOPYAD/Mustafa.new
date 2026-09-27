@@ -1,0 +1,235 @@
+{
+  "threads": [
+    {
+      "id": "th_mu05ffm9_4kuare",
+      "userId": "y1n205vw0elucff",
+      "peerUserId": "usr_buddy_01",
+      "participantIds": ["y1n205vw0elucff", "usr_buddy_01"],
+      "type": "buddy",
+      "title": "سارة المنصوري",
+      "peerName": "سارة المنصوري",
+      "peerAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200",
+      "peerNostrPubkey": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unread": 0,
+      "updatedAt": "2026-09-21T11:20:00.000Z",
+      "lastPreview": "أهلاً بك! أنا مسافرة إلى باريس الأسبوع القادم، يسعدني التنسيق معك!",
+      "messages": [
+        {
+          "id": "msg_sample_01",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "customer",
+          "fromUserId": "y1n205vw0elucff",
+          "text": "مرحباً سارة، رأيت أنكِ متجهة إلى باريس من إسطنبول؟",
+          "createdAt": "2026-09-21T11:15:00.000Z"
+        },
+        {
+          "id": "msg_sample_02",
+          "threadId": "th_mu05ffm9_4kuare",
+          "from": "peer",
+          "fromUserId": "usr_buddy_01",
+          "text": "أهلاً بك! أنا مسافرة إلى باريس الأسبوع القادم، يسعدني التنسيق معك!",
+          "createdAt": "2026-09-21T11:20:00.000Z"
+        }
+      ],
+      "unreadBy": {
+        "y1n205vw0elucff": 0,
+        "usr_buddy_01": 0
+      }
+    }
+  ],
+  "buddies": [
+    {
+      "id": "buddy_mu05evcg_an5lyp",
+      "userId": "y1n205vw0elucff",
+      "name": "ferdos elhayat",
+      "city": "Istanbul",
+      "destination": "paris",
+      "avatarUrl": "",
+      "bio": "مسافر مهتم باكتشاف معالم باريس ومتاحفها وجولاتها الفنية.",
+      "nostrPubkey": "9858fe57f676993b9350243b101cab5de257d752f51914c4977d1179bba8fe98",
+      "createdAt": "2026-09-13T18:29:32.080Z"
+    },
+    {
+      "id": "buddy_seed_01",
+      "userId": "usr_buddy_01",
+      "name": "سارة المنصوري (Sarah M.)",
+      "city": "Istanbul",
+      "destination": "Paris",
+      "dateFrom": "2026-10-05",
+      "dateTo": "2026-10-18",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300",
+      "bio": "مصورة فوتوغرافية ومحبة للفنون والمقاهي التاريخية. أبحث عن رفيقة سفر لاستكشاف شوارع باريس ومتاحف اللوفر وأورسي وتشارك تكاليف الجولات.",
+      "nostrPubkey": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "createdAt": "2026-09-18T10:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_02",
+      "userId": "usr_buddy_02",
+      "name": "عمر الشريف (Omar El-Sherif)",
+      "city": "Istanbul",
+      "destination": "Paris",
+      "dateFrom": "2026-10-10",
+      "dateTo": "2026-10-22",
+      "language": "العربية، Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300",
+      "bio": "مهندس معماري مقيم بإسطنبول ومسافر إلى باريس لحضور معارض معمارية واستكشاف معالم فرنسا وقصور فرساي. يسعدني مرافقة مهتمين بالاستكشاف الثقافي.",
+      "nostrPubkey": "8b5a2f3a4b6c8d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "createdAt": "2026-09-18T11:30:00.000Z"
+    },
+    {
+      "id": "buddy_seed_03",
+      "userId": "usr_buddy_03",
+      "name": "Zeynep Demir",
+      "city": "Istanbul",
+      "destination": "London",
+      "dateFrom": "2026-11-01",
+      "dateTo": "2026-11-12",
+      "language": "Türkçe, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300",
+      "bio": "İstanbul'dan Londra'ya seyahat planlıyorum. Müzeleri gezmek, sokak lezzetlerini tatmak ve şehri yürüyerek keşfetmek isteyen yol arkadaşları arıyorum.",
+      "nostrPubkey": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+      "createdAt": "2026-09-18T14:15:00.000Z"
+    },
+    {
+      "id": "buddy_seed_04",
+      "userId": "usr_buddy_04",
+      "name": "أحمد الراجحي (Ahmed Al-Rajhi)",
+      "city": "Riyadh",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-15",
+      "dateTo": "2026-10-28",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300",
+      "bio": "مسافر من الرياض إلى إسطنبول للاستجمام وزيارة البوسفور وصبنجة وبورصة، أبحث عن رفاق سفر لتنظيم رحلات يومية وتأجير سيارة VIP خاصة.",
+      "nostrPubkey": "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c",
+      "createdAt": "2026-09-19T08:45:00.000Z"
+    },
+    {
+      "id": "buddy_seed_05",
+      "userId": "usr_buddy_05",
+      "name": "Emre Can Öztürk",
+      "city": "Istanbul",
+      "destination": "Dubai",
+      "dateFrom": "2026-11-15",
+      "dateTo": "2026-11-25",
+      "language": "Türkçe, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300",
+      "bio": "Dijital göçebe ve teknoloji meraklısı. Dubai GITEX fuarı ve çöl safarisi için yol arkadaşı arıyorum.",
+      "nostrPubkey": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+      "createdAt": "2026-09-19T09:20:00.000Z"
+    },
+    {
+      "id": "buddy_seed_06",
+      "userId": "usr_buddy_06",
+      "name": "ليلى بناني (Leila Bennani)",
+      "city": "Casablanca",
+      "destination": "Paris",
+      "dateFrom": "2026-10-20",
+      "dateTo": "2026-11-02",
+      "language": "العربية، Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300",
+      "bio": "رحالة شغوفة بالتسوق وزيارة معارض الأزياء والآثار في باريس، أرحب برفيقة سفر لمشاركتي الجولات والتنقلات ومطاعم باريس الراقية.",
+      "nostrPubkey": "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+      "createdAt": "2026-09-19T10:10:00.000Z"
+    },
+    {
+      "id": "buddy_seed_07",
+      "userId": "usr_buddy_07",
+      "name": "Alexandre Laurent",
+      "city": "Paris",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-18",
+      "dateTo": "2026-10-30",
+      "language": "Français, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300",
+      "bio": "Photographe voyageur passionné d'histoire byzantine et ottomane. Je viens à Istanbul pour 12 jours et cherche des compagnons pour explorer Sainte-Sophie et le Bosphore.",
+      "nostrPubkey": "5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f",
+      "createdAt": "2026-09-19T11:40:00.000Z"
+    },
+    {
+      "id": "buddy_seed_08",
+      "userId": "usr_buddy_08",
+      "name": "هدى العلي (Huda Al-Ali)",
+      "city": "Dubai",
+      "destination": "Antalya",
+      "dateFrom": "2026-10-12",
+      "dateTo": "2026-10-24",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+      "bio": "رحلة استجمام ساحلية إلى منتجعات أنطاليا وشلالات دودين، يسعدني التعرف على عائلات ومسافرات للاستمتاع بالأنشطة البحرية والرحلات المشتركة.",
+      "nostrPubkey": "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a",
+      "createdAt": "2026-09-19T13:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_09",
+      "userId": "usr_buddy_09",
+      "name": "كريم حسني (Karim Hosni)",
+      "city": "Cairo",
+      "destination": "Istanbul",
+      "dateFrom": "2026-10-25",
+      "dateTo": "2026-11-05",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300",
+      "bio": "مسافر مصري مهتم بالتاريخ والجولات البحرية والتسوق في البازار الكبير والسوق المصري، أبحث عن رفاق سفر شبابيين لخوض تجارب ممتعة.",
+      "nostrPubkey": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+      "createdAt": "2026-09-19T14:30:00.000Z"
+    },
+    {
+      "id": "buddy_seed_10",
+      "userId": "usr_buddy_10",
+      "name": "فاطمة الزهراء (Fatima Zahra)",
+      "city": "Istanbul",
+      "destination": "Rome",
+      "dateFrom": "2026-11-05",
+      "dateTo": "2026-11-15",
+      "language": "العربية، Italiano, English",
+      "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300",
+      "bio": "طالبة دراسات عليا بإسطنبول، أنظم رحلة لاستكشاف روما والفاتيكان وفلورنسا وتذوق الأطباق الإيطالية الأصيلة. أرحب برفيقة سفر لمشاركتي المغامرة.",
+      "nostrPubkey": "8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+      "createdAt": "2026-09-19T15:20:00.000Z"
+    },
+    {
+      "id": "buddy_seed_11",
+      "userId": "usr_buddy_11",
+      "name": "سلطان العتيبي (Sultan Al-Otaibi)",
+      "city": "Riyadh",
+      "destination": "Trabzon",
+      "dateFrom": "2026-10-08",
+      "dateTo": "2026-10-20",
+      "language": "العربية",
+      "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300",
+      "bio": "عاشق للطبيعة والجبال والشلالات في الشمال التركي (أوزنجول، آيدر، حيدر نبي). أبحث عن رفقاء سفر لاستئجار سيارة رباعية الدفع واستكشاف المرتفعات.",
+      "nostrPubkey": "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d",
+      "createdAt": "2026-09-19T16:00:00.000Z"
+    },
+    {
+      "id": "buddy_seed_12",
+      "userId": "usr_buddy_12",
+      "name": "مريم الكعبي (Mariam Al-Kaabi)",
+      "city": "Doha",
+      "destination": "Paris",
+      "dateFrom": "2026-10-14",
+      "dateTo": "2026-10-26",
+      "language": "العربية، English",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+      "bio": "رحلة تسوق وسياحة عائلية إلى باريس وديزني لاند باريس، يسعدني التنسيق ومشاركة التوصيات والجولات الخاصة.",
+      "nostrPubkey": "0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e",
+      "createdAt": "2026-09-19T17:15:00.000Z"
+    }
+  ],
+  "buddyRequests": [],
+  "gifts": [
+    {
+      "id": "gift_mu284p3m_ct56mn",
+      "code": "LNZ-Q6ZRU4",
+      "amount": 50,
+      "currency": "USD",
+      "purchaserId": "admin",
+      "status": "active",
+      "createdAt": "2026-09-15T05:21:08.626Z"
+    }
+  ],
+  "recent": [],
+  "cards": []
+}

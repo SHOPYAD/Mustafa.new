@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="" data-mc-conditions="JSONAPIs.Air11,JSONAPIs.UpdateDevX" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/AirAPIsGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:38 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Air APIs Guide</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1><span class="mc-variable General.AirAPI variable">Air</span> APIs Guide</h1>
+                                        <p>This guide provides a general introduction to using the <span class="mc-variable General.AirAPI variable">Air</span> APIs to search for and book air travel. It discusses basic travel terms you need to know to develop your applications and how those terms are represented in the responses. It also summarizes the general workflow from searching for flights through ticketing. </p>
+                                        <p>The terms and concepts in this guide are essential to understanding travel development for all the  <span class="mc-variable General.AirAPI variable">Air</span> APIs.</p>
+                                        <div class="noteNote">After this guide, continue with the <a href="../Search/AirShoppingGuide.html"><span class="mc-variable General.AirAPI variable">Air</span> Search Guide</a>.  Also see <a href="helphelp.html">Using the Help</a> for details about the information in this online help. </div>
+                                        <p><b>In this guide:</b>
+                                        </p>
+                                        <ul data-mc-continue="true">
+                                            <li><a href="#concepts">Basic Concepts</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#term">PTCs, Service Levels, Branded Fares</a>
+                                                    </li>
+                                                    <li><a href="#term">Itinerary, Leg, Segment</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#offers">Offers in the <span class="mc-variable General.AirAPI variable">Air</span> APIs</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#offerssearch">Offers in Search Responses</a>
+                                                    </li>
+                                                    <li><a href="#offersbook">Offers in Booking, Ticketing, and Exchanges/Refunds</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#reffullpayload">Reference Payload and Full Payload Request Formats </a>
+                                            </li>
+                                            <li><a href="#identifiers">Identifiers in the <span class="mc-variable General.AirAPI variable">Air</span> APIs </a>
+                                            </li>
+                                            <li><a href="#gdsndc">GDS&#160;and NDC Content</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#gdsndcids">Identifiers for NDC and GDS</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#sum"><span class="mc-variable General.Product variable">JSON</span> APIs List by Functional Area </a>
+                                            </li>
+                                            <li><a href="#workflow"><span class="mc-variable General.Product variable">JSON</span> APIs&#160;End-to-End Workflows</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#reqworkflow">Minimum Required Workflow </a>
+                                                    </li>
+                                                    <li><a href="#optionalworkflow">Full Workflow with Optional Steps </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <h2><a name="concepts"></a>Basic Concepts</h2>
+                                        <p>First let's look at terms used across the travel industry. These help you understand the request and response structure of all <span class="mc-variable General.AirAPI variable">Air</span> APIs.</p>
+                                        <h3><a name="term"></a>PTCs, Service Levels, Branded Fares</h3>
+                                        <p>The Travelport Search APIs support any of the following types of itineraries. An <b class="Brand4">itinerary</b> is the entire trip a traveler wants to book.</p>
+                                        <ul>
+                                            <li>One way:&#160;Trip to a single destination; e.g., LHR &gt; CDG.</li>
+                                            <li>
+Round trip: Trip to a single destination and back to the original point of departure; e.g., LHR &gt; CDG and CDG &gt; LHR</li>
+                                            <li>Multi-city: Trip to multiple destinations; e.g., LHR &gt; CDG &gt; AMS &gt; BCN.</li>
+                                            <li>Open-jaw: Trip to one destination and a return from another city; e.g., LHR &gt; CDG and AMS &gt; LHR.</li>
+                                        </ul>
+                                        <p>The airline industry categorizes travelers under various <b class="Brand4">passenger type codes (PTCs)</b>. The most common PTCs are Adult (ADT), Child (CNN), and Infant (INF). You can request a maximum of nine passengers in one search.</p>
+                                        <p>An airfare with certain features included in the price is a <b class="Brand4">branded fare</b>. For example, a branded fare may include a seat assignment choice and wifi at no extra charge. An <b class="Brand4">upsell</b> is a fare presented along with the base fare as a higher level of service, and is usually a branded fare. Upsell to a higher brand is an integral part of branding. <a href="../Search/AirShoppingGuide.html#branded-upsells">Branded fares and upsells</a> are detailed in the <span class="mc-variable General.AirAPI variable">Air</span> Search Guide. </p>
+                                        <p>Airlines provide different <b class="Brand4">service levels</b>, grouping services into <b class="Brand4">cabin classes</b>. The following are standard cabin classes:</p>
+                                        <ul>
+                                            <li>Economy: Travelers receive standard services with no perks. Identified by cabin class code Y or the word <i>COACH</i>.</li>
+                                            <li>Premium Economy: Travelers receive a better seating preference than Economy class. Identified by cabin class code <i>W</i>.</li>
+                                            <li>Business: Travelers receive more service than economy but fewer than First. Identified by cabin class code <i>C.</i></li>
+                                            <li>First:&#160;Travelers receive upgraded service; the most expensive fares. Identified by cabin class code <i>F. </i></li>
+                                        </ul>
+                                        <h3><a name="termsitinerary"></a>Itinerary, Leg, Segment</h3>
+                                        <p>Next, let's look at the parts of an itinerary, sometimes called a journey. </p>
+                                        <p>To illustrate let's use an example round-trip booking from LAX&gt;MSP: The trip starts with a direct flight from LAX&gt;MSP. The return has a change of planes in DEN, so MSP&gt;DEN&gt;LAX. </p>
+                                        <blockquote>
+                                            <p>In our example, the itinerary includes everything: LAX&gt;MSP and MSP&gt;DEN&gt;LAX.</p>
+                                        </blockquote>
+                                        <p>A <b class="Brand4">leg</b> is the part of the itinerary from one origin to one destination. A leg is also called an origin and destination (O&amp;D) pair. </p>
+                                        <p style="text-indent: 0.5in;">Our example has two legs:  </p>
+                                        <p style="text-indent: 1in;">LAX&gt;MSP is the first leg, also called the outbound leg. </p>
+                                        <p style="text-indent: 1in;">MSP&gt;DEN&gt;LAX is the second leg, also called the return or inbound leg.</p>
+                                        <p>A <b class="Brand4">segment</b> is one single flight on a leg. </p>
+                                        <p style="text-indent: 0.5in;">In our example, the first leg has one segment (LAX&gt;MSP). The return leg has two segments (MSP&gt;DEN and DEN&gt;LAX) because there is a change of plane.</p>
+                                        <div class="noteNote">A flight on a single segment can have one or more stops that don't require a change of plane. In this case the flight number remains the same. This is called a <b class="Brand4">direct flight</b> and is not the same as a nonstop flight. A <b class="Brand4">nonstop flight</b> does not make any stop between the origin and destination.</div>
+                                        <h2><a name="offers"></a>Offers in the <span class="mc-variable General.AirAPI variable">Air</span> APIs</h2>
+                                        <p>Now let's look at how these terms are represented in the actual JSON code used to request and return air travel. </p>
+                                        <p>Here's the basic workflow for travel booking, described later in <a href="#sum">Workflow Summary</a>:</p>
+                                        <ol>
+                                            <li value="1">
+                                                <p><b class="Brand4">Search</b>:&#160;Enter itinerary details and shop for flights.</p>
+                                            </li>
+                                            <li value="2">
+                                                <p><b class="Brand4">Price</b>: Confirm pricing on flights (optional in some cases; required for NDC and some low-cost carriers).</p>
+                                            </li>
+                                            <li value="3">
+                                                <p><b class="Brand4">Book</b>: A workflow of linked API calls to establish a workbench session, add an <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term5">offer<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>In the  Search APIs, an offer is a product available at a specific price under a set of terms and conditions. An offer includes the flight or connecting flights for one leg of the itinerary, plus a service level that includes the cabin class and any fare codes that may apply. At booking, the selected offer from the Search response - including the flight/s, service level, price, terms and conditions, and brand if applicable - is converted into a single Offer object that is subsequently returned for that booking.</span></a> and traveler data to the workbench, and commit the workbench to create a held booking, aka reservation. </p>
+                                            </li>
+                                            <li value="4">
+                                                <p><b class="Brand4">Ticket</b>: Issue tickets for the held booking.</p>
+                                            </li>
+                                        </ol>
+                                        <h3><a name="offerssearch"></a>Offers in Search Responses</h3>
+                                        <p>In the  Search APIs, the various options a customer can choose from are called <b class="Brand4">offers</b>. Offers are returned in the  responses through the full workflow. Starting with the Search APIs, a search returns multiple offers for each leg on the itinerary, depending on availability on that route. Offers for each <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term14">leg<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>The flight or connecting flights between one origin and destination pair. For example, on a round-trip flight, LAX &gt; MSP could be the first leg (aka outbound leg) and MSP &gt; DEN &gt; LAX could be the second leg (aka inbound leg). The  APIs use the term product for one leg of the itinerary.</span></a> are returned in the <b class="Brand4">CatalogProductOffering</b> object. </p>
+                                        <blockquote>
+                                            <p>Key point: <b>One leg = CatalogProductOffering object</b></p>
+                                        </blockquote>
+                                        <p>In the example below, one instance of CatalogProductOffering is the O&amp;D&#160;pair ORD &gt; ATL. The second instance is the return/inbound leg ATL &gt; ORD.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example CatalogProductOffering objects for two legs</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>
+                                                        <img src="helpimages/CatalogProductOffering-text.jpg" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The core of each offer is the <b class="Brand4">product</b>, which is the flight or connecting flights on that leg plus a service level. The service level includes the cabin class and any applicable fare codes. </p>
+                                        <blockquote>
+                                            <p>Key point: <b>Flight + service level = Product object</b></p>
+                                        </blockquote>
+                                        <p>Each offer presents a product that's available at a specific price under a set of terms and conditions. These may include minimum stay requirements or the number of checked bags allowed. In the Search APIs, this information is combined in the <b class="Brand4">ProductBrandOffering</b> object. </p>
+                                        <blockquote>
+                                            <p>Key point: <b>Product  + price +&#160;terms and conditions = ProductBrandOffering object</b></p>
+                                        </blockquote>
+                                        <p>This concept of an offer continues throughout the <span class="mc-variable General.Product variable">JSON</span> API booking workflow and is frequently used in this online help.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example ProductBrandOffering object for one offer</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>
+                                                        <img src="helpimages/ProductBrandOptions-text.jpg" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The same product may be returned in multiple offers at different price points and terms and conditions, and included in various brands. Instead of repeating all this common information in each offer, the Search APIs consolidate it in the ReferenceList object later in the response. So, each offer returns a price and cross-references to the details of its product, brand, and set of terms and conditions. </p>
+                                        <p>For example, product details are returned in ReferenceListProduct. The example code below shows all the information returned for one product. The product <i>p0</i> provides the specific class of service, cabin class, and the fare basis code and type, and cross-references to a set of connecting flights. Flight details are returned in instances of ReferenceListFlight for s16 and s17 (not shown here).</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Product details</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre><code class="language-json">      {
+        "@type": "ReferenceListProduct",
+        "Product": [
+          {
+            "@type": "ProductAir",
+            "totalDuration": "PT6H13M",
+            "id": "p0",
+            "Quantity": 1,
+            "FlightSegment": [
+              {
+                "@type": "FlightSegment",
+                "sequence": 1,
+                "connectionDuration": "PT1H11M",
+                "boundFlightsInd": true,
+                "Flight": {
+                  "@type": "FlightID",
+                  "FlightRef": "s16"
+                }
+              },
+              {
+                "@type": "FlightSegment",
+                "sequence": 2,
+                "Flight": {
+                  "@type": "FlightID",
+                  "FlightRef": "s17"
+                }
+              }
+            ],
+            "PassengerFlight": [
+              {
+                "@type": "PassengerFlight",
+                "passengerQuantity": 1,
+                "passengerTypeCode": "ADT",
+                "FlightProduct": [
+                  {
+                    "@type": "FlightProduct",
+                    "segmentSequence": [
+                      1,
+                      2
+                    ],
+                    "classOfService": "C",
+                    "cabin": "First",
+                    "fareBasisCode": "BAA0AFFN",
+                    "fareType": "PublicFare",
+                    "Brand": {
+                      "@type": "BrandID",
+                      "BrandRef": "b0"
+                    }
+                  }
+                ]
+              }
+            ]
+          },</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a name="offersbook"></a>Offers in Booking, Ticketing, and Exchanges/Refunds</h3>
+                                        <p>After the Search and optional <a href="../Price/AirPricingGuide.html">price confirmation</a> steps, book the flight/s: </p>
+                                        <ol>
+                                            <li value="1">
+                                                <p>Initiate a workbench session.</p>
+                                            </li>
+                                            <li value="2">
+                                                <p>Send a selected offer from a Search response.</p>
+                                            </li>
+                                            <li value="3">
+                                                <p>Send traveler details. </p>
+                                            </li>
+                                            <li value="4">
+                                                <p>Commit the workbench to create a booking. </p>
+                                            </li>
+                                        </ol>
+                                        <p>At that point the <b class="Brand4">offer</b> from the Search response - including the service level, price, and terms and conditions - is converted into a single <b class="Brand4">Offer</b> object. This offer data remains the same for all subsequent calls for that booking, including ticketing, modifications, and exchanges/refunds. </p>
+                                        <blockquote>
+                                            <p>Key point: <b>Product  + price +&#160;terms and conditions = Offer object in Book and following transactions</b></p>
+                                        </blockquote>
+                                        <p>The example below shows the structure of the entire Offer object after the booking commit. The single Identifer/value <i>a83529a3-b291-493c-bdde-e2135f8eb3a4</i> and Offer/id <i>offer_1</i> can be used from this point on to refer to that offer as a whole. In addition, the Receipt object returns a booking confirmation code, also called a locator code or PNR. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Offer object after booking selected offer</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>
+                                                        <img src="helpimages/BookOffer-text.jpg" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The example below shows the complete JSON&#160;code of the booking commit response.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Book Commit response - consolidated offer details</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "ReservationResponse": {
+  "@type": "ReservationResponse",
+  "Reservation": {
+   "@type": "Reservation",
+   "Offer": [
+    {
+     "@type": "Offer",
+     "id": "offer_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "a83529a3-b291-493c-bdde-e2135f8eb3a4"
+     },
+     "Product": [
+      {
+       "@type": "ProductAir",
+       "id": "product_1",
+       "FlightSegment": [
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_01",
+         "sequence": 1,
+         "connectionDuration": "PT50M",
+         "boundFlightsInd": true,
+         "Flight": {
+          "@type": "FlightDetail",
+          "duration": "PT2H22M",
+          "carrier": "UA",
+          "number": "763",
+          "equipment": "777",
+          "id": "Flight_01",
+          "Departure": {
+           "@type": "Departure",
+           "location": "ORD",
+           "date": "2023-03-03",
+           "time": "09:45:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "ATL",
+           "date": "2023-03-03",
+           "time": "13:07:00"
+          },
+          "AvailabilitySourceCode": "P"
+         }
+        },
+        {
+         "@type": "FlightSegment",
+         "id": "FlightSegment_02",
+         "sequence": 2,
+         "Flight": {
+          "@type": "FlightDetail",
+          "duration": "PT1H57M",
+          "carrier": "UA",
+          "number": "2290",
+          "equipment": "319",
+          "id": "Flight_02",
+          "Departure": {
+           "@type": "Departure",
+           "location": "ATL",
+           "date": "2023-03-03",
+           "time": "13:57:00"
+          },
+          "Arrival": {
+           "@type": "Arrival",
+           "location": "DEN",
+           "date": "2023-03-03",
+           "time": "16:54:00"
+          },
+          "AvailabilitySourceCode": "P"
+         }
+        }
+       ],
+       "PassengerFlight": [
+        {
+         "@type": "PassengerFlight",
+         "passengerQuantity": 1,
+         "passengerTypeCode": "ADT",
+         "FlightProduct": [
+          {
+           "@type": "FlightProduct",
+           "segmentSequence": [
+            1,
+            2
+           ],
+           "classOfService": "S",
+           "cabin": "Economy"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Price": {
+      "@type": "PriceDetail",
+      "id": "PriceDetail_1",
+      "CurrencyCode": {
+       "value": "AUD"
+      },
+      "Base": 272,
+      "TotalTaxes": 55.3,
+      "TotalFees": 0,
+      "TotalPrice": 327.3,
+      "PriceBreakdown": [
+       {
+        "@type": "PriceBreakdownAir",
+        "quantity": 1,
+        "requestedPassengerType": "ADT",
+        "Amount": {
+         "@type": "Amount",
+         "currencySource": "Charged",
+         "approximateInd": true,
+         "CurrencyCode": {
+          "decimalPlace": 2,
+          "value": "AUD"
+         },
+         "Base": 272,
+         "Taxes": {
+          "@type": "TaxesDetail",
+          "TotalTaxes": 55.3,
+          "Tax": [
+           {
+            "currencyCode": "AUD",
+            "taxCode": "AY",
+            "value": 8.1
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "US",
+            "value": 20.4
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "XF",
+            "value": 13
+           },
+           {
+            "currencyCode": "AUD",
+            "taxCode": "ZP",
+            "value": 13.8
+           }
+          ]
+         },
+         "Total": 327.3
+        },
+        "FiledAmount": {
+         "currencyCode": "USD",
+         "decimalPlace": 2,
+         "value": 189.77
+        }
+       }
+      ]
+     },
+     "TermsAndConditionsFull": [
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "Identifier": {
+        "authority": "Travelport",
+        "value": "cc6d639c-a1dc-4226-be71-ac3d62806d88"
+       }
+      },
+      {
+       "@type": "TermsAndConditionsFullAir",
+       "ExpiryDate": "2023-02-02T23:59:00Z",
+       "PaymentTimeLimit": "2023-02-02T23:59:00Z"
+      }
+     ]
+    }
+   ],
+   "Traveler": [
+    {
+     "@type": "Traveler",
+     "birthDate": "1986-11-11",
+     "gender": "Male",
+     "passengerTypeCode": "ADT",
+     "id": "travelerRefId_1",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "0d6b4ede-db45-4bfa-bdd6-68e04e795278"
+     },
+     "PersonName": {
+      "@type": "PersonName",
+      "Given": "TESTFIRST",
+      "Surname": "TESTLAST"
+     },
+     "Telephone": [
+      {
+       "@type": "TelephoneDetail",
+       "countryAccessCode": "1",
+       "phoneNumber": "212456121",
+       "id": "telephone_1",
+       "cityCode": "ORD",
+       "role": "Home"
+      }
+     ],
+     "Email": [
+      {
+       "value": "Traveler*On*e@gmail.com"
+      }
+     ],
+     "TravelDocument": [
+      {
+       "@type": "TravelDocumentDetail",
+       "docNumber": "A123123",
+       "docType": "Passport",
+       "expireDate": "2033-01-31",
+       "issueCountry": "US",
+       "birthDate": "1986-11-11",
+       "Gender": "Male",
+       "PersonName": {
+        "@type": "PersonName",
+        "Given": "TESTFIRST",
+        "Surname": "TESTLAST"
+       }
+      }
+     ]
+    }
+   ],
+   "Receipt": [
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "eccd6c3e-f9c3-428c-94e0-cf0b604d8af6"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "1G",
+       "value": "3HQHK3"
+      },
+      "OfferStatus": {
+       "@type": "OfferStatusAir",
+       "StatusAir": [
+        {
+         "flightRefs": [
+          "Flight_01",
+          "Flight_02"
+         ],
+         "code": "HK",
+         "value": "Confirmed"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "@type": "ReceiptConfirmation",
+     "Identifier": {
+      "authority": "Travelport",
+      "value": "1738f433-7f18-4f9b-9665-cc7e804f22ba"
+     },
+     "Confirmation": {
+      "@type": "ConfirmationHold",
+      "Locator": {
+       "source": "UA",
+       "value": "IYF0MD"
+      }
+     }
+    }
+   ],
+   "ReservationComment": [
+    {
+     "@type": "ReservationComment",
+     "commentSource": "Agency"
+    }
+   ]
+  },
+ }
+},</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="reffullpayload"></a>Reference and Full Payload Requests </h2>
+                                        <p>Using the identifiers detailed above, many of the <span class="mc-variable General.AirAPI variable">Air</span> APIs allow you to send information either by referring to a previous result. Several APIs also support sending full details instead.</p>
+                                        <ul>
+                                            <li><b class="Brand4">Reference payload request</b>: Sends reference identifiers from a previous response. Supported for NDC and GDS.</li>
+                                            <li><b class="Brand4">Full payload request</b>: Sends full details without a reference to any previous response. Can be used to send information returned in a previous <span class="mc-variable General.Product variable">JSON</span> API&#160;response or from a non-Travelport source. </li>
+                                        </ul>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> APIs provide support for NDC only through reference payload requests that refer to previous responses in the workflow. For this reason, full payload requests are not supported for NDC in most cases.</p>
+                                        <p>The examples below show a reference payload Add Offer request, and then a full payload Add Offer request. The reference payload example sends response, offer, and product identifiers from a cached, previous AirPrice response while the second, full payload example sends complete flight details. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example reference payload request for Add Offer </a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+ "OfferQueryBuildFromCatalogProductOfferings": {
+  "BuildFromCatalogProductOfferingsRequest": {
+   "@type": "BuildFromCatalogProductOfferingsRequestAir",
+   "CatalogProductOfferingsIdentifier": {
+    "Identifier": {
+     "value": "1fceb004-aaca-4657-930a-cb6304fa89e2"
+    }
+   },
+   "CatalogProductOfferingSelection": [
+    {
+     "CatalogProductOfferingIdentifier": {
+      "Identifier": {
+       "value": "QF_CPO0"
+      }
+     },
+     "ProductIdentifier": [
+      {
+       "Identifier": {
+        "value": "QFp0"
+       }
+      }
+     ]
+    },
+    {
+     "CatalogProductOfferingIdentifier": {
+      "Identifier": {
+       "value": "QF_CPO1"
+      }
+     },
+     "ProductIdentifier": [
+      {
+       "Identifier": {
+        "value": "QFp24"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example full payload request for Add Offer</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef"><pre class="line-numbers"><code class="language-json">{
+    "OfferQueryBuildFromProducts": {
+        "BuildFromProductsRequest": {
+            "@type": "BuildFromProductsRequestAir",
+            "PassengerCriteria": [
+                {
+                    "number": 1,
+                    "age": 25,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "ProductCriteriaAir": [
+                {
+                    "SpecificFlightCriteria": [
+                        {
+                            "flightNumber": "733",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-09",
+                            "departureTime": "08:35:00",
+                            "arrivalDate": "2022-01-09",
+                            "arrivalTime": "10:10:00",
+                            "from": "SYD",
+                            "to": "ADL",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 1,
+                            "brandTier": "1"
+                        },
+                        {
+                            "flightNumber": "680",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-09",
+                            "departureTime": "12:05:00",
+                            "arrivalDate": "2022-01-09",
+                            "arrivalTime": "13:50:00",
+                            "from": "ADL",
+                            "to": "MEL",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 2,
+                            "brandTier": "1"
+                        }
+                    ]
+                },
+                {
+                    "SpecificFlightCriteria": [
+                        {
+                            "flightNumber": "402",
+                            "carrier": "QF",
+                            "departureDate": "2022-01-16",
+                            "departureTime": "06:00:00",
+                            "arrivalDate": "2022-01-16",
+                            "arrivalTime": "07:25:00",
+                            "from": "MEL",
+                            "to": "SYD",
+                            "classOfService": "Q",
+                            "cabin": "Economy",
+                            "segmentSequence": 1,
+                            "brandTier": "1"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="identifiers"></a>Identifiers in the <span class="mc-variable General.AirAPI variable">Air</span> APIs</h2>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> APIs rely on several types of identifiers used for different purposes:</p>
+                                        <ol>
+                                            <li value="1">
+                                                <p><b>Troubleshooting and tracking ids</b>: The <span class="mc-variable General.Product variable">JSON</span>&#160;<span class="mc-variable General.AirAPI variable">Air</span> APIs include two objects that can be used to track API calls throughout the <a href="#reqworkflow">workflow</a>. First is the <span class="Brand4" style="font-weight: bold;">transactionId</span> object returned under the first top-level object of every response. This unique system-generated ID is generated by the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs and returned automatically. The same value is returned for all API calls that are connected in a workflow, such as if a reference AirPrice request is sent after a Search request, or if a series of API&#160;calls are made in the workbench. The transaction ID&#160;is returned in two places:&#160;the <span class="Brand4" style="font-weight: bold;">transactionId</span> object and the the <span class="Brand4" style="font-weight: bold;">E2EtrackingId</span> header field. Optionally, developers can send their own custom trace ID in the traceID field in the header to serve as their own tracking number; if a traceId is sent, all responses in the workflow return that string in the <span class="Brand4" style="font-weight: bold;">traceId</span> object. In the example below, no trace ID was sent in the request header so only transactionId is returned. For details see <a href="TraceIDs.html">Transaction and Trace IDs</a>. </p>
+                                            </li>
+                                            <li value="2">
+                                                <p><b>Long  identifiers</b>: Many objects in the same response return an <span class="Brand4" style="font-weight: bold;">identifier</span> in <b>Identifier/value</b>. This is always a long system-generated string, for example, <i>3cecf1be-0b21-4881-8f33-ae11c8d7b708</i>. Such identifier values are unique within the same transaction and across all Search transactions. These identifiers must frequently be sent in subsequent <a href="#reffullpayload">reference payload</a> requests to refer to data in a preceding response.</p>
+                                            </li>
+                                            <li value="3">
+                                                <p><b>Short reference ids</b>: An <span class="Brand4" style="font-weight: bold;">id</span> is an internal reference number in the <b>id</b> object and is always a short, system-generated string, such as <i>p1</i> or <i>SQ_CPO1</i>. An id is unique within the response but not across multiple responses. This type of id is used to cross-reference  details in a offer with consolidated reference information in the same response for offers, products, brands, flights, etc., or to provide a short identifier for an object, such as Offer/id <i>offer_1</i>.</p>
+                                            </li>
+                                        </ol>
+                                        <div class="noteWarning">Be sure to code your API to send the correct id and/or identifier values from the response when required in a subsequent request. These mappings are noted in the API&#160;references for each API.</div>
+                                        <p>The following example shows several types of identifiers in a Search API&#160;response.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Identifiers</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>
+                                                        <img src="helpimages/Identifiers-text.jpg" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="gdsndc"></a>GDS and NDC Content</h2>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> APIs support both NDC&#160;and GDS content, or simply NDC and GDS. These terms refer to the content distribution method:</p>
+                                        <ul>
+                                            <li>
+                                                <p><b class="Brand4">GDS</b> stands for Global Distribution System. A GDS aggregates and distributes air, hotel, and car rental content such as schedules, fares, and upsells. Travelport owns the Galileo, Worldspan, and Apollo GDSs, which are also known by the IATA abbreviations 1G, 1P, and 1V.</p>
+                                            </li>
+                                            <li>
+                                                <p><b class="Brand4">NDC</b> is for New Distribution Capability,&#160;a program launched by the International Air Transport Association (IATA), the trade association for the world's airlines. NDC distributes content
+directly from airlines to online travel agencies. NDC content is provided and fulfilled directly by the airline, and may include differentiated content available only through the airlines' direct channels.</p>
+                                            </li>
+                                        </ul>
+                                        <p> Although most workflows, requests, and responses are the same for both&#160;GDS&#160;and NDC, airline-specific processes do create some differences. Some functionality is supported only for NDC or only for GDS. </p>
+                                        <p>The <a href="../NDC/NDCGuide.html">NDC Guide</a> compares NDC and GDS and details high-level differences by API. Individual <a href="../APIReferences.html">API&#160;references</a> provide object-level details on differences in usage or responses. Because NDC is only available to provisioned customers,  the online help has a separate NDC top-level menu  to group information that is applicable only to NDC.</p>
+                                        <div class="noteNote">If the online help doesn't include the text <i>GDS only; not supported for NDC</i> or vice versa, the functionality presented is supported for both NDC and GDS in the same way. Any differences in NDC and GDS functionality are noted where applicable.</div>
+                                        <div class="noteNote">To access NDC&#160;content you must be provisioned for NDC with Travelport and registered with the NDC&#160;airline.</div>
+                                        <p>Content for both NDC&#160;and GDS in the <span class="mc-variable General.Product variable">JSON</span>&#160;APIs is sourced from the Galileo GDS (Global Distribution System) for most customers. NDC content from the Apollo and Worldspan GDSs is available to specifically provisioned customers. See the <a href="../NDC/NDCPVGuide.html">NDC Guide for Apollo and Worldspan</a>.</p>
+                                        <h3><a name="gdsndcids"></a>Identifiers for NDC and GDS</h3>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> APIs APIs return slightly different <a href="#identifiers">identifiers</a> for NDC&#160;and GDS. In the short ids for brands, flights, terms and conditions, etc., NDC incorporates the carrier code and GDS does not.&#160;For example, NDC products on Singapore Airlines are numbered SQp0, SQp1, and so on., while GDS product identifiers are p0, p1, and so on.</p>
+                                        <h2><a name="sum"></a><span class="mc-variable General.AirAPI variable">Air</span> APIs List by Functional Area</h2>
+                                        <p>The following table lists the general areas of the <span class="mc-variable General.Product variable">JSON</span> <span class="mc-variable General.AirAPI variable">Air</span> APIs and summarizes the functionality available in each. </p>
+                                        <p>This general description does not cover all possible options. See the workflow diagrams in the following section. Also see the linked <a href="../AirGuides.html">guides</a> (guides provide a functional overview and basic usage information for each type of API) and the <a href="../APIReferences.html">API&#160;references</a> (a full technical reference for every API, including endpoints, headers, and object-level details such as supported formats and values).</p>
+                                        <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                            </col>
+                                            <thead>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Step</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p><span class="mc-variable General.AirAPI variable">Air</span> APIs</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                        <p>Description</p>
+                                                    </th>
+                                                    <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                        <p>Associated Guide</p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p><b>Search</b>
+                                                        </p>
+                                                        <p>&#160;</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Search </p>
+                                                        <p>Next Leg Search </p>
+                                                        <p>Flight Specific Search</p>
+                                                        <p>Air Availability</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Search for flights for either the entire itinerary at once (Search API), or the first leg and then the subsequent leg (Search +&#160;Next Leg Search APIs). Flights are returned as <a href="#offers">offers</a> in the search results. </p>
+                                                        <p>If desired, use the Flight Specific Search API to return additional upsell options on selected flights.</p>
+                                                        <p>Alternately, you can use <a href="../Search/APIRef_AirAvailability.html">Air Availability</a> to focus your search on availability rather than cost. Air Availability returns flights along with seat availability by class of service. It does not return pricing information.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="../Search/AirShoppingGuide.html"><span class="mc-variable General.AirAPI variable">Air</span>Search Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p><b>Price</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>AirPrice</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Confirm pricing on a selected offer. Optional for most carriers; required for some NDC and low-cost carriers. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="../Price/AirPricingGuide.html">Air Pricing Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p><b>Fare Rules</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Fare Rules</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Request fare rules by type (short, long, structured). Optional.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="../Price/FareRulesGuide.html">Fare Rules Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p><b>Book</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Create Initial Workbench</p>
+                                                        <p>Add Offer</p>
+                                                        <p>Add&#160;Traveler</p>
+                                                        <p>Workbench Commit</p>
+                                                        <p>Reservation Retrieve</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Establish a workbench session for sending requests to book an offer:</p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p>Initiate a workbench session.</p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p>Add the offer you want to book using either of the following: </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <p>Send Add Offer with reference identifiers from for the offer to book from a previous Search or AirPrice response. Reference payload request.</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>Send Add Offer with all required itinerary details. Full payload request. Can be sent with or without first using the <span class="mc-variable General.Product variable">JSON</span> Search APIs.</p>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p>Add traveler details to the booking using either of the following: </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <p>Send Add Traveler with required traveler details.</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>If your agency already has traveler details stored in the Travelport host system, you can send Host Profile Move to copy traveler details from the host into the <span class="mc-variable General.Product variable">JSON</span> API&#160;booking workbench.</p>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li value="4">
+                                                                <p>Commit the workbench to create a held booking, or reservation. </p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="../Book/BookingGuide.html">Booking Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p><b>Seats </b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Seat Map</p>
+                                                        <p>Seat Book</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Optional. You can check seat availability and book seats at various points in the workfow. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="../Seats/SeatsGuide.html">Seats Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p><b>Ancillaries</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Ancillary Shop</p>
+                                                        <p>Ancillary Price</p>
+                                                        <p>Ancillary Book</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Optional. You can shop for and book paid ancillaries such as paid baggage at various points in the workfow. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="../Ancillaries/AncillaryGuide.html">Ancillary and EMD Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p><b>Remarks</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Various Traveler and Remarks payloads</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">Optional. Several APIs support adding special service requests and remarks at various points in the workflow. Some remarks are required by certain carriers. </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="../Book/RemarksGuide.html">Remarks &amp;&#160;Service Requests Guide &amp; API&#160;Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                        <p><b>Custom Rules</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Custom&#160;Rule APIs</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                        <p>Optional. If your agency has configured custom rules in a separate booking file management tool, you can add them to bookings to validate against specific criteria when you commit the workbench. </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                        <p><a href="../Book/BookingGuide.html#custom">Booking Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                        <p><b>Travel Agency Details</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Travel Agency APIs</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                        <p>Optional. Add and manage travel agency details for your bookings.</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                        <p><a href="../Book/TravelAgency/APIRef_TravelAgencyDetails.html">Travel Agency Details API&#160;Reference</a>
+                                                        </p>
+                                                        <p><a href="../Book/TravelAgency/APIRef_TravelAgencyCorpID.html">Travel Agency Corporate ID API Reference</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2" style="font-weight: bold;">
+                                                        <p><b>Ticket</b>
+                                                        </p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>Post-Commit Workbench</p>
+                                                        <p>Add Form of Payment (FOP)</p>
+                                                        <p>Add&#160;Payment</p>
+                                                        <p>Workbench Commit</p>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                        <p>A booking must be ticketed within a certain time or it expires. Send requests in a workbench to ticket a held booking:</p>
+                                                        <ol>
+                                                            <li value="1">
+                                                                <p>Initiate a workbench session.</p>
+                                                            </li>
+                                                            <li value="2">
+                                                                <p>Send details for the form of payment to use.</p>
+                                                            </li>
+                                                            <li value="3">
+                                                                <p>Send that payment.</p>
+                                                            </li>
+                                                            <li value="4">
+                                                                <p>Commit the workbench to issue tickets. </p>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                        <p><a href="../Ticketing/TicketingGuide.html">Ticketing Guide</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2><a name="workflow"></a> <span class="mc-variable General.AirAPI variable">Air</span> APIs End-to-End Workflows</h2>
+                                        <h3><a name="reqworkflow"></a>Minimum Required Workflow</h3>
+                                        <p>The following diagram shows the API requests in the minimum required workflow to search, book, and ticket a flight in the <span class="mc-variable General.AirAPI variable">Air</span> APIs. </p>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> APIs provide additional options for some of these steps; see the preceding section for a full list.</p>
+                                        <p>Each box in the diagram represents one API call in the workflow.</p>
+                                        <p>
+                                            <img src="../Workflows/FullJSONWorkflow-required.jpg" style="max-width: 90%;" />
+                                        </p>
+                                        <p>Note that the above <span class="mc-variable General.AirAPI variable">Air</span> APIs workflow uses reference payload requests, which send identifiers to select an offer from previous&#160;API responses. Optionally, you can  send the <a href="../Price/APIRef_AirPriceFullPayload.html">AirPrice full payload</a> request and omit the Search request, or send an <a href="../Book/APIRef_AddOfferFullPayload.html">Add Offer full payload</a> request and omit the Search and AirPrice requests. This allows you to source your flights outside the <span class="mc-variable General.Product variable">JSON</span> APIs and skip these steps of the <span class="mc-variable General.Product variable">JSON</span> workflow.</p>
+                                        <h3><a name="optionalworkflow"></a>Full Workflow with Optional Steps</h3>
+                                        <p>The following diagram shows all required API&#160;requests in the <span class="mc-variable General.Product variable">JSON</span>&#160;API workflow plus several optional steps. </p>
+                                        <p>Each box in the diagram represents one API call in the workflow.</p>
+                                        <p>Some steps can take place at other points in the workflow; see these guides for support details: </p>
+                                        <ul>
+                                            <li>
+                                                <p>See <a href="../Workflows/BookTicket_all-workflows.html">All Book and Ticketing Workflows</a> for all book and ticketing options. </p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Price/FareRulesGuide.html">Fare Rules</a> can be requested after Search, after Price, or for an existing reservation. </p>
+                                            </li>
+                                            <li>
+                                                <p>Seats and ancillaries can be shopped and/or added at various points in the workflow per the <a href="../Seats/SeatsGuide.html">Seats</a> and <a href="../Ancillaries/AncillaryGuide.html">Ancillaries</a> guides.</p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Book/RemarksGuide.html">Comments and special service requests</a> can be added either in the initial booking flow or in a post-commit session.</p>
+                                            </li>
+                                            <li>
+                                                <p><a href="../Book/BookingGuide.html">Form of payment</a> for GDS can be added during either initial booking or ticketing. Form of payment for NDC can be added at ticketing unless you use the NDC-only <a href="../Ticketing/BookTicketWorkflows.html">Instant Pay Workflow</a>.</p>
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <img src="../Workflows/FullJSONWorkflow-optional.jpg" style="max-width: 90%;" />
+                                        </p>
+                                        <p>Note that the above <span class="mc-variable General.AirAPI variable">Air</span> APIs workflow uses reference payload requests, which send identifiers to select an offer from previous&#160;API responses. Optionally, you can  send the <a href="../Price/APIRef_AirPriceFullPayload.html">AirPrice full payload</a> request and omit the Search request, or send an <a href="../Book/APIRef_AddOfferFullPayload.html">Add Offer full payload</a> request and omit the Search and AirPrice requests. This allows you to source your flights outside the <span class="mc-variable General.Product variable">JSON</span> APIs and skip these steps of the <span class="mc-variable General.Product variable">JSON</span> workflow.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/AirAPIsGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:41 GMT -->
+</html>

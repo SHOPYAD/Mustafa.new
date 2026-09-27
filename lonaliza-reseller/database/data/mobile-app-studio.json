@@ -1,0 +1,244 @@
+{
+  "displayName": "Lonaliza QA",
+  "displayNameAr": "لوناليزا",
+  "displayNameEn": "Lonaliza",
+  "applicationId": "com.lonaliza.app",
+  "apiBase": "https://lonaliza.com",
+  "primaryColor": "#7C3AED",
+  "royalPurple": "#2E1065",
+  "amberColor": "#F59E0B",
+  "pageBg": "#F7F4FC",
+  "logoUrl": "/logo.png",
+  "iconUrl": "/logo.png",
+  "splashSloganAr": "سفر فاخر بأسعار واضحة",
+  "splashSloganEn": "Luxury Travel at Transparent Prices",
+  "homeSections": [
+    {
+      "id": "hero_search",
+      "nameAr": "الهيدر والبحث الذكي",
+      "nameEn": "Hero & AI Search",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "services_grid",
+      "nameAr": "شبكة الخدمات السريعة",
+      "nameEn": "Services Grid",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "flash_deals",
+      "nameAr": "بانر الصفقات الخاطفة",
+      "nameEn": "Flash Deals Banner",
+      "enabled": true,
+      "order": 3,
+      "badge": "خصم 25%"
+    },
+    {
+      "id": "flight_deals",
+      "nameAr": "سلايدر عروض الطيران الحية",
+      "nameEn": "Flight Deals Carousel",
+      "enabled": true,
+      "order": 4,
+      "subtitleAr": "أسعار مباشرة من كبرى الخطوط"
+    },
+    {
+      "id": "featured_hotels",
+      "nameAr": "معرض الفنادق الفاخرة",
+      "nameEn": "Luxury Hotels Showcase",
+      "enabled": true,
+      "order": 5,
+      "subtitleAr": "إقامات 5 نجوم وبوسفور"
+    },
+    {
+      "id": "packages_tours",
+      "nameAr": "سلايدر البرامج السياحية",
+      "nameEn": "Tour Packages Carousel",
+      "enabled": true,
+      "order": 6,
+      "subtitleAr": "جداول سياحية متكاملة"
+    },
+    {
+      "id": "featured_cars",
+      "nameAr": "سلايدر أسطول السيارات",
+      "nameEn": "Car Rentals Highlights",
+      "enabled": true,
+      "order": 7,
+      "subtitleAr": "تأمين شامل واستلام فوري"
+    },
+    {
+      "id": "trending_reels",
+      "nameAr": "فيديوهات الريلز المتصدرة",
+      "nameEn": "Trending Reels Slider",
+      "enabled": true,
+      "order": 8,
+      "subtitleAr": "تجارب مسافرين حقيقية"
+    },
+    {
+      "id": "loyalty_rewards",
+      "nameAr": "بانر برنامج الولاء والمحفظة",
+      "nameEn": "Loyalty & Wallet Banner",
+      "enabled": true,
+      "order": 9
+    },
+    {
+      "id": "trust_partners",
+      "nameAr": "شريط الشركاء وشهادات الثقة",
+      "nameEn": "Trust Badges & Partners",
+      "enabled": true,
+      "order": 10
+    }
+  ],
+  "flashDeal": {
+    "enabled": true,
+    "titleAr": "صفقة الموسم: خصم 25% على رحلات إسطنبول وطرابزون",
+    "titleEn": "Seasonal Deal: 25% off Istanbul & Trabzon bookings",
+    "discountPercent": 25,
+    "endsAt": "2026-09-15T14:30:53.705Z",
+    "targetRoute": "/flights",
+    "badgeText": "لفترة محدودة"
+  },
+  "bottomNavTabs": [
+    {
+      "id": "tab_home",
+      "titleAr": "الرئيسية",
+      "titleEn": "Home",
+      "path": "/",
+      "icon": "home",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "tab_wallet",
+      "titleAr": "المحفظة",
+      "titleEn": "Wallet",
+      "path": "/account?tab=wallet",
+      "icon": "wallet",
+      "badge": "كاش باك",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "tab_reels",
+      "titleAr": "السوشيال والريلز",
+      "titleEn": "Community",
+      "path": "/community",
+      "icon": "reels",
+      "badge": "بث حي",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "tab_account",
+      "titleAr": "حسابي",
+      "titleEn": "Account",
+      "path": "/account",
+      "icon": "user",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "id": "tab_more",
+      "titleAr": "المزيد",
+      "titleEn": "More",
+      "path": "/menu",
+      "icon": "menu",
+      "enabled": true,
+      "order": 5
+    }
+  ],
+  "splashSlides": [
+    {
+      "id": "slide_flights",
+      "titleAr": "طيران مباشر وتأكيد فوري",
+      "titleEn": "Live Airline Engine",
+      "descAr": "ربط مباشر مع أكثر من 500 شركة طيران بأسعار حية ومحدثة لحظياً.",
+      "descEn": "Direct connection with over 500 airlines with live real-time prices.",
+      "tagAr": "محرك الطيران الحي",
+      "tagEn": "Live Airline Engine",
+      "icon": "plane",
+      "badgeColor": "#10B981",
+      "imageUrl": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80",
+      "animationType": "slide-up",
+      "themeStyle": "royal",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "slide_hotels",
+      "titleAr": "+2,000,000 فندق وشقة حول العالم",
+      "titleEn": "Best Price Guarantee",
+      "descAr": "أفضل أسعار الإقامة الفندقية مع تأكيد فوري وخيارات إلغاء مرنة.",
+      "descEn": "Unbeatable hotel rates worldwide with flexible cancellation.",
+      "tagAr": "أفضل سعر مؤكد",
+      "tagEn": "Best Price Guarantee",
+      "icon": "hotel",
+      "badgeColor": "#3B82F6",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      "animationType": "zoom-fade",
+      "themeStyle": "blue",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "slide_social",
+      "titleAr": "سوشيال وريلز السفر الحية (Nostr)",
+      "titleEn": "Decentralized Social",
+      "descAr": "عش تجربة الوجهة مع ريلز المسافرين الحقيقية قبل انطلاق رحلتك.",
+      "descEn": "Real traveler video stories and live destination vibes.",
+      "tagAr": "شبكة سفر لا مركزية",
+      "tagEn": "Decentralized Social",
+      "icon": "reels",
+      "badgeColor": "#EC4899",
+      "imageUrl": "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=800&q=80",
+      "animationType": "shimmer-glow",
+      "themeStyle": "amber",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "slide_wallet",
+      "titleAr": "محفظة كاش باك ومكافآت VIP",
+      "titleEn": "Instant Cashback",
+      "descAr": "استرداد نقدي فوري على كل حجز ونقاط مكافآت تضاعف رصيدك.",
+      "descEn": "Instant cashback on every booking plus VIP reward multipliers.",
+      "tagAr": "كاش باك فوري",
+      "tagEn": "Instant Cashback",
+      "icon": "wallet",
+      "badgeColor": "#F59E0B",
+      "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80",
+      "animationType": "cinematic",
+      "themeStyle": "emerald",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "id": "slide_ai",
+      "titleAr": "مساعد الذكاء الاصطناعي 24/7",
+      "titleEn": "Gemini AI Concierge",
+      "descAr": "مستشارك السياحي الخاص لتخطيط جدول الرحلة وحجز التذاكر بضغطة زر.",
+      "descEn": "Personal AI travel concierge planning custom itineraries.",
+      "tagAr": "مستشار ذكي فوري",
+      "tagEn": "Gemini AI Concierge",
+      "icon": "ai",
+      "badgeColor": "#8B5CF6",
+      "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+      "animationType": "zoom-fade",
+      "themeStyle": "royal",
+      "enabled": true,
+      "order": 5
+    }
+  ],
+  "bottomNavBg": "#ffffff",
+  "bottomNavActiveColor": "#2E1065",
+  "bottomNavInactiveColor": "#64748B",
+  "githubRepo": "",
+  "githubToken": "",
+  "githubBranch": "main",
+  "githubWorkflowAndroid": "mobile-android.yml",
+  "githubWorkflowIos": "mobile-ios.yml",
+  "googlePlayUrl": "",
+  "appStoreUrl": "",
+  "pwaBannerEnabled": true
+}

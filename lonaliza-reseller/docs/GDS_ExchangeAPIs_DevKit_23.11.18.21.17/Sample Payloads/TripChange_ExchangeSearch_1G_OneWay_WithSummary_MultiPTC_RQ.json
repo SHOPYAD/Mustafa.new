@@ -1,0 +1,54 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-03-19",
+                    "departureTime": "10:00:00",
+                    "From": {
+                        "value": "LON"
+                    },
+                    "To": {
+                        "value": "DFW"
+                    }
+                }
+            ],
+            "PassengerCriteria": [{
+                    "@type": "PassengerCriteriaAirChange",
+                    "passengerTypeCode": "ADT",
+                    "TravelerIdentifierRef": {
+                        "id": "travelerRefId_1"
+                    }
+                }, {
+                    "@type": "PassengerCriteriaAirChange",
+                    "passengerTypeCode": "ADT",
+                    "TravelerIdentifierRef": {
+                        "id": "travelerRefId_2"
+                    }
+                }, {
+                    "@type": "PassengerCriteriaAirChange",
+                    "passengerTypeCode": "ADT",
+                    "TravelerIdentifierRef": {
+                        "id": "travelerRefId_3"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "11ecc795-8c59-4359-aa23-a9214d1997e2"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

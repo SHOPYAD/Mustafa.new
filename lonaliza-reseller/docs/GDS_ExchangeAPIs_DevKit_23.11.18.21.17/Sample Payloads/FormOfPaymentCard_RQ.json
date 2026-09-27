@@ -1,0 +1,17 @@
+{
+  "FormOfPaymentPaymentCard" : {
+    "id" : "formOfPayment_4",
+    "FormOfPaymentRef" : "formOfPayment_4",
+    "PaymentCard" : {
+      "@type" : "PaymentCard",
+      "id" : "paymentCard_4",
+      "expireDate" : "1222",
+      "CardType" : "Credit",
+      "CardCode" : "VI",
+      "CardHolderName" : "JOHN",
+      "CardNumber" : {
+        "PlainText" : "4005520000000129"
+      }
+    }
+  }
+}

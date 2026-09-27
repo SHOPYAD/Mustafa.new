@@ -1,0 +1,2621 @@
+{
+    "CatalogOfferingsAirChangeResponse": {
+        "transactionId": "4ac529ef-635b-45d5-b941-034c22d0fe83",
+        "traceId": "ARNK_Test-12607",
+        "CatalogOfferings": {
+            "@type": "CatalogOfferings",
+            "Identifier": {
+                "value": "065612e4-e207-4090-87a5-d0b749ca2c76"
+            },
+            "CatalogOffering": [{
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o0.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s1"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, {
+                            "@type": "ProductOptions",
+                            "sequence": 2,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p2",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 2,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 3,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 4,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        2
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }, {
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        3,
+                                                        4
+                                                    ],
+                                                    "classOfService": "U",
+                                                    "fareBasisCode": "UHAPPYK",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 404,
+                        "TotalTaxes": 154,
+                        "TotalFees": 69,
+                        "TotalPrice": 627,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 404,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 154,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 18.2
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 59.8
+                                            }, {
+                                                "taxCode": "YQ",
+                                                "value": 38.6
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 37.4
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 627
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 3537
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    3
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    4
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 404.02 USD//RESTR APPLY PER FARE COMP/"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ],
+                        "FulfillmentMethod": [{
+                                "@type": "FulfillmentMethod",
+                                "ChangeFeeCollectionMethod": {
+                                    "value": "EMD"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 69,
+                        "TotalPrice": 69,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 69
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o1.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s5"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, {
+                            "@type": "ProductOptions",
+                            "sequence": 2,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p2",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 2,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 3,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 4,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        2
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }, {
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        3,
+                                                        4
+                                                    ],
+                                                    "classOfService": "U",
+                                                    "fareBasisCode": "UHAPPYK",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 404,
+                        "TotalTaxes": 154,
+                        "TotalFees": 69,
+                        "TotalPrice": 627,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 404,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 154,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 18.2
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 59.8
+                                            }, {
+                                                "taxCode": "YQ",
+                                                "value": 38.6
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 37.4
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 627
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 3537
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    3
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    4
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 404.02 USD//RESTR APPLY PER FARE COMP/"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ],
+                        "FulfillmentMethod": [{
+                                "@type": "FulfillmentMethod",
+                                "ChangeFeeCollectionMethod": {
+                                    "value": "EMD"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 69,
+                        "TotalPrice": 69,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 69
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o2.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s6"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, {
+                            "@type": "ProductOptions",
+                            "sequence": 2,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p2",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 2,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 3,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 4,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        2
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }, {
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        3,
+                                                        4
+                                                    ],
+                                                    "classOfService": "U",
+                                                    "fareBasisCode": "UHAPPYK",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 404,
+                        "TotalTaxes": 154,
+                        "TotalFees": 69,
+                        "TotalPrice": 627,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 404,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 154,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 18.2
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 59.8
+                                            }, {
+                                                "taxCode": "YQ",
+                                                "value": 38.6
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 37.4
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 627
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 3537
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    3
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    4
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 404.02 USD//RESTR APPLY PER FARE COMP/"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ],
+                        "FulfillmentMethod": [{
+                                "@type": "FulfillmentMethod",
+                                "ChangeFeeCollectionMethod": {
+                                    "value": "EMD"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 69,
+                        "TotalPrice": 69,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 69
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o3.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s7"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, {
+                            "@type": "ProductOptions",
+                            "sequence": 2,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p2",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 2,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 3,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 4,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        2
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }, {
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        3,
+                                                        4
+                                                    ],
+                                                    "classOfService": "U",
+                                                    "fareBasisCode": "UHAPPYK",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 404,
+                        "TotalTaxes": 154,
+                        "TotalFees": 69,
+                        "TotalPrice": 627,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 404,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 154,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 18.2
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 59.8
+                                            }, {
+                                                "taxCode": "YQ",
+                                                "value": 38.6
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 37.4
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 627
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 3537
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    3
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    4
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 404.02 USD//RESTR APPLY PER FARE COMP/"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ],
+                        "FulfillmentMethod": [{
+                                "@type": "FulfillmentMethod",
+                                "ChangeFeeCollectionMethod": {
+                                    "value": "EMD"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 69,
+                        "TotalPrice": 69,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 69
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o4.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s8"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        1
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, {
+                            "@type": "ProductOptions",
+                            "sequence": 2,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p2",
+                                    "FlightSegment": [{
+                                            "@type": "FlightSegment",
+                                            "sequence": 2,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 3,
+                                            "boundFlightsInd": true,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }, {
+                                            "@type": "FlightSegment",
+                                            "sequence": 4,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "@type": "PassengerFlight",
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        2
+                                                    ],
+                                                    "classOfService": "Q",
+                                                    "fareBasisCode": "QHAPPY",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }, {
+                                                    "@type": "FlightProduct",
+                                                    "segmentSequence": [
+                                                        3,
+                                                        4
+                                                    ],
+                                                    "classOfService": "U",
+                                                    "fareBasisCode": "UHAPPYK",
+                                                    "fareType": "PublicFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 404,
+                        "TotalTaxes": 154,
+                        "TotalFees": 69,
+                        "TotalPrice": 627,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 404,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 154,
+                                        "Tax": [{
+                                                "taxCode": "G2",
+                                                "value": 18.2
+                                            }, {
+                                                "taxCode": "NV",
+                                                "value": 59.8
+                                            }, {
+                                                "taxCode": "YQ",
+                                                "value": 38.6
+                                            }, {
+                                                "taxCode": "ZN",
+                                                "value": 37.4
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 627
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "NOK",
+                                    "decimalPlace": 0,
+                                    "value": 3537
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/WF",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "NOK",
+                                            "value": 500
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2,
+                                    3,
+                                    4
+                                ],
+                                "Text": [
+                                    "1P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p1"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    1
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    2
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    3
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": [
+                                    "ADT"
+                                ],
+                                "baggageType": "CarryOn",
+                                "ProductRef": [
+                                    "p2"
+                                ],
+                                "BaggageItem": [{
+                                        "@type": "BaggageItem",
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "USD",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO18LB/8KG AND UPTO45LI/115LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [
+                                    4
+                                ],
+                                "Text": [
+                                    "1P"
+                                ]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 404.02 USD//RESTR APPLY PER FARE COMP/"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "@type": "ValidatingAirline",
+                                "ValidatingAirline": "SK"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "@type": "FareGuaranteePolicy",
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "G"
+                                }
+                            }
+                        ],
+                        "FulfillmentMethod": [{
+                                "@type": "FulfillmentMethod",
+                                "ChangeFeeCollectionMethod": {
+                                    "value": "EMD"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 69,
+                        "TotalPrice": 69,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 69,
+                                        "Fee": [{
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 61.61
+                                                    }
+                                                },
+                                                "Tax": [{
+                                                        "currencyCode": "USD",
+                                                        "taxCode": "NV",
+                                                        "description": "VAT on Change Fee",
+                                                        "decimalPlace": 2,
+                                                        "value": 7.39
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "Total": 69
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "ReferenceList": [{
+                "@type": "ReferenceListFlight",
+                "Flight": [{
+                        "@type": "Flight",
+                        "duration": "PT1H15M",
+                        "carrier": "WF",
+                        "number": "915",
+                        "equipment": "DH1",
+                        "id": "s1",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "KKN",
+                            "date": "2022-08-12",
+                            "time": "10:55:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "TOS",
+                            "date": "2022-08-12",
+                            "time": "12:10:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT40M",
+                        "carrier": "WF",
+                        "number": "926",
+                        "equipment": "DH1",
+                        "id": "s2",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "TOS",
+                            "date": "2022-09-10",
+                            "time": "17:00:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "ALF",
+                            "date": "2022-09-10",
+                            "time": "17:40:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT45M",
+                        "carrier": "WF",
+                        "number": "968",
+                        "equipment": "DH1",
+                        "id": "s3",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "ALF",
+                            "date": "2022-09-11",
+                            "time": "16:25:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "VDS",
+                            "date": "2022-09-11",
+                            "time": "17:10:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H",
+                        "carrier": "WF",
+                        "number": "976",
+                        "equipment": "DH1",
+                        "id": "s4",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "VDS",
+                            "date": "2022-09-11",
+                            "time": "18:25:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "KKN",
+                            "date": "2022-09-11",
+                            "time": "19:25:00"
+                        },
+                        "IntermediateStop": [{
+                                "duration": "PT15M",
+                                "value": "VAW"
+                            }
+                        ]
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H15M",
+                        "carrier": "WF",
+                        "number": "919",
+                        "equipment": "DH1",
+                        "id": "s5",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "KKN",
+                            "date": "2022-08-12",
+                            "time": "19:45:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "TOS",
+                            "date": "2022-08-12",
+                            "time": "21:00:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H45M",
+                        "carrier": "WF",
+                        "number": "972",
+                        "equipment": "DH1",
+                        "id": "s6",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "KKN",
+                            "date": "2022-08-12",
+                            "time": "08:00:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "TOS",
+                            "date": "2022-08-12",
+                            "time": "09:45:00"
+                        },
+                        "IntermediateStop": [{
+                                "duration": "PT15M",
+                                "value": "VDS"
+                            }
+                        ]
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT2H40M",
+                        "carrier": "WF",
+                        "number": "971",
+                        "equipment": "DH1",
+                        "id": "s7",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "KKN",
+                            "date": "2022-08-12",
+                            "time": "04:45:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "TOS",
+                            "date": "2022-08-12",
+                            "time": "07:25:00"
+                        },
+                        "IntermediateStop": [{
+                                "duration": "PT15M",
+                                "value": "VDS"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "ALF"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "SOJ"
+                            }
+                        ]
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT4H",
+                        "carrier": "WF",
+                        "number": "977",
+                        "equipment": "DH1",
+                        "id": "s8",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "KKN",
+                            "date": "2022-08-12",
+                            "time": "21:10:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "TOS",
+                            "date": "2022-08-13",
+                            "time": "01:10:00"
+                        },
+                        "IntermediateStop": [{
+                                "duration": "PT15M",
+                                "value": "VDS"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "VAW"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "BJF"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "BVG"
+                            }, {
+                                "duration": "PT15M",
+                                "value": "HFT"
+                            }
+                        ]
+                    }
+                ]
+            }, {
+                "@type": "ReferenceListBrand",
+                "Brand": [{
+                        "@type": "Brand",
+                        "name": "ECONOMY",
+                        "tier": 6,
+                        "id": "b1",
+                        "BrandRef": "b1",
+                        "Identifier": {
+                            "value": "0000000000001041207"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-08-15",
+                    "From": {
+                        "City or Airport": "Airport Only",
+                        "value": "DUB"
+                    },
+                    "To": {
+                        "City or Airport": "City or Airport",
+                        "value": "JFK"
+                    }
+                }, {
+                    "departureDate": "2021-09-15",
+                    "From": {
+                        "type": "Airport Only",
+                        "value": "JFK"
+                    },
+                    "To": {
+                        "type": "City or Airport",
+                        "value": "DUB"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "@type": "PricingModifiersAirChange",
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "NetFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "20452988-ce81-4c5a-ae4c-432894d1a8e0"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-01-20",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "SYD"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "SIN"
+					}
+				}
+			],
+			"PassengerCriteria": [
+				{
+					"@type": "PassengerCriteriaAirChange",
+					"number": 1,
+					"age": 22,
+					"passengerTypeCode": "ADT",
+					"TravelerIdentifierRef": {
+						"id": "travelerRefId_1"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PublicFaresOnly"
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "a0ae2d63-185e-4aca-855f-1a3b4c4b767a"
+					}
+				}
+			}
+		}
+	}
+}

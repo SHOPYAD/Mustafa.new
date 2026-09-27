@@ -1,0 +1,54 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-12-10",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "SYD"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "PER"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PublicFaresOnly"
+				},
+				"CalculatedFareAdjustment": {
+					"@type": "CalculatedFareAdjustmentDiscount",
+					"AmountPercent": {
+						"@type": "AmountPercentAmount",
+						"Amount": {
+							"value": 20
+						}
+					}
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "c8ab823f-0e8c-4fa4-842e-9e01c69f7cc4"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_2"
+					}
+				]
+			}
+		}
+	}
+}

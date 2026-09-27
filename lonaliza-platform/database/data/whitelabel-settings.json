@@ -1,0 +1,38 @@
+{
+  "flightsEnabledSuppliers": [
+    "pkfare",
+    "seeru",
+    "travelport_flights",
+    "biletbank"
+  ],
+  "flightsMarkupPercent": 5,
+  "hotelsEnabledSuppliers": [
+    "ratehawk",
+    "hotelbeds",
+    "seeru_hotels",
+    "travelport_hotels"
+  ],
+  "hotelsMarkupPercent": 8,
+  "transfersEnabledSuppliers": [
+    "seeru_transfers",
+    "transfers_internal",
+    "cars_internal"
+  ],
+  "transfersMarkupPercent": 10,
+  "paidTierMonthlyPrice": 199,
+  "minDepositAmount": 2000,
+  "cardFeePercent": 2.9,
+  "cardHoldDays": 7,
+  "bankName": "Ziraat Bankası / Lon Aliza Turizm A.Ş.",
+  "bankBeneficiary": "LONALIZA TURIZM VE TICARET ANONIM SIRKETI",
+  "bankIban": "TR76 0001 0090 1000 0000 0000 01",
+  "bankSwift": "TCZBTR2A",
+  "bankCurrency": "USD",
+  "bankInstructions": "يرجى تحويل مبلغ الديبوزيت بالدولار الأمريكي مع كتابة اسم شركتك ورقم الحساب في خانة البيان (Açıklama). التفعيل يتم فور تدقيق إشعار الإيداع.",
+  "planFeaturesOverrides": {
+    "whitelabel_free": {},
+    "whitelabel_paid": {},
+    "ownership": {}
+  },
+  "updatedAt": "2026-09-08T21:07:05.597Z"
+}

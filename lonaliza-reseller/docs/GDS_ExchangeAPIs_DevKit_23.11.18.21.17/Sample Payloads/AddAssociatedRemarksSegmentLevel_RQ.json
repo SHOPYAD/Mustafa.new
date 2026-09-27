@@ -1,0 +1,35 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Traveler",
+                "Comment": [
+                    {
+                        "name": "ITIN COMMENTS",
+                        "value": "Testing single ITIN associated remarks -per segment"
+                    }
+                ],
+                "AppliesTo": [
+                    {
+                        "@type": "AppliesToOfferProductSegment",
+                        "OfferIdentifier": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "3fe27069-2426-4e01-b111-29476937ba07"
+                            }
+                        },
+                        "ProductIdentifier": {
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "e6c8eec8-a837-487e-8430-61f1091dbf59"
+                            }
+                        },
+                        "SegmentSequenceList": [1]
+                    }
+                ]
+            }
+        ]
+    }
+}

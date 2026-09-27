@@ -1,0 +1,123 @@
+{
+    "TicketChangeEligibilityListResponse": {
+        "@type": "TicketChangeEligibilityListResponse",
+        "transactionId": "3782faa3-4de3-459f-9d6d-1d197d9970db",
+        "traceId": "Reporting-07042022_1",
+        "TicketChangeEligibilityID": [{
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "All",
+                "objID": "ticketChangeEligibility_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "0815048173559"
+                },
+                "Penalties": {
+                    "@type": "Penalties",
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Maximum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Minimum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "Cancel": [{
+                            "@type": "CancelPermitted",
+                            "penaltyTypes": [],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 200
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }, {
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "All",
+                "objID": "ticketChangeEligibility_2",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "0815048173558"
+                },
+                "Penalties": {
+                    "@type": "Penalties",
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Maximum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Minimum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "Cancel": [{
+                            "@type": "CancelPermitted",
+                            "penaltyTypes": [],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "AUD",
+                                        "minorUnit": 2,
+                                        "value": 200
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }
+        ]
+    }
+}

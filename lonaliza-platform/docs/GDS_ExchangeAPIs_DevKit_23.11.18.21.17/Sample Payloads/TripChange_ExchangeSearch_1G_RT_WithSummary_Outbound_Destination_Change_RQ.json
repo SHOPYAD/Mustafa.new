@@ -1,0 +1,34 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-04-25",
+                    "departureTime": "15:55:00",
+                    "From": {
+                        "value": "DEN"
+                    },
+                    "To": {
+                        "value": "ATL"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "6c985eba-b63d-41bd-a73f-e7b717dda440"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ]
+            }
+        }
+    }
+}

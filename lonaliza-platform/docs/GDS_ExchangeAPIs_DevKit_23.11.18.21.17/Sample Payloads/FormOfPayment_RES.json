@@ -1,0 +1,11 @@
+{
+  "FormOfPaymentResponse" : {
+    "FormOfPayment" : {
+      "@type" : "FormOfPaymentIdentifier",
+      "Identifier" : {
+        "authority" : "Travelport",
+        "value" : "e9e619a9-bffe-4f88-af59-b5cfebf41f6a"
+      }
+    }
+  }
+}

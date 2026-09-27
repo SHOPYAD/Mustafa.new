@@ -1,0 +1,693 @@
+{
+  "ReservationResponse" : {
+    "Reservation" : {
+      "@type" : "Reservation",
+      "Identifier" : {
+        "authority" : "Travelport",
+        "value" : "c4dc4c87-e113-4f80-93fb-9d7b2b453003"
+      },
+      "Offer" : [ {
+        "@type" : "Offer",
+        "id" : "offer_1",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "e5d23659-3759-4ff3-8954-ad3e13660a4d"
+        },
+        "Product" : [ {
+          "@type" : "ProductAir",
+          "id" : "product_1",
+          "Identifier" : {
+            "authority" : "Travelport",
+            "value" : "b3e4af8b-65ed-402f-930e-bde39d5ab856"
+          },
+          "FlightSegment" : [ {
+            "id" : "FlightSegment_01",
+            "sequence" : 1,
+            "Flight" : {
+              "@type" : "Flight",
+              "duration" : "PT1H25M",
+              "carrier" : "BA",
+              "number" : "1472",
+              "equipment" : "319",
+              "id" : "Flight_01",
+              "Identifier" : {
+                "authority" : "Travelport",
+                "value" : "ca7eaa2e-1d7e-4e93-9fad-e351e8695832"
+              },
+              "Departure" : {
+                "@type" : "Departure",
+                "location" : "LHR",
+                "date" : "2021-08-27",
+                "time" : "07:10:00"
+              },
+              "Arrival" : {
+                "@type" : "Arrival",
+                "location" : "GLA",
+                "date" : "2021-08-27",
+                "time" : "08:35:00"
+              }
+            }
+          } ],
+          "PassengerFlight" : [ {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "ADT",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 1 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3R",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "INF",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 1 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3R/IN",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "SRC",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 1 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3R",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "MIL",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 1 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3R",
+              "fareType" : "PublicFare"
+            } ]
+          } ]
+        }, {
+          "@type" : "ProductAir",
+          "id" : "product_2",
+          "Identifier" : {
+            "authority" : "Travelport",
+            "value" : "8c1febff-4322-4234-a7b5-2da8a9426919"
+          },
+          "FlightSegment" : [ {
+            "id" : "FlightSegment_02",
+            "sequence" : 2,
+            "Flight" : {
+              "@type" : "Flight",
+              "duration" : "PT1H30M",
+              "carrier" : "BA",
+              "number" : "8727",
+              "operatingCarrier" : "CJ",
+              "operatingCarrierName" : "BA CITY FLYER",
+              "equipment" : "E90",
+              "id" : "Flight_02",
+              "Identifier" : {
+                "authority" : "Travelport",
+                "value" : "5235474b-9cd8-4661-89e2-5a078c49e95c"
+              },
+              "Departure" : {
+                "@type" : "Departure",
+                "location" : "GLA",
+                "date" : "2021-09-01",
+                "time" : "14:55:00"
+              },
+              "Arrival" : {
+                "@type" : "Arrival",
+                "location" : "LCY",
+                "date" : "2021-09-01",
+                "time" : "16:25:00"
+              }
+            }
+          } ],
+          "PassengerFlight" : [ {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "ADT",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 2 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3Y",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "INF",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 2 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3Y/IN",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "SRC",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 2 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3Y",
+              "fareType" : "PublicFare"
+            } ]
+          }, {
+            "passengerQuantity" : 1,
+            "passengerTypeCode" : "MIL",
+            "FlightProduct" : [ {
+              "segmentSequence" : [ 2 ],
+              "classOfService" : "Y",
+              "cabin" : "Economy",
+              "fareBasisCode" : "YV3Y",
+              "fareType" : "PublicFare"
+            } ]
+          } ]
+        } ],
+        "Price" : {
+          "@type" : "PriceDetail",
+          "id" : "PriceDetail_1",
+          "Base" : 3298.0,
+          "TotalTaxes" : 390.2,
+          "TotalFees" : 0,
+          "TotalPrice" : 3688.2,
+          "PriceBreakdown" : [ {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "ADT",
+            "Amount" : {
+              "CurrencyCode" : {
+                "value" : "GBP"
+              },
+              "Base" : 590.0
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "ADT",
+            "Amount" : {
+              "currencySource" : "Charged",
+              "approximateInd" : true,
+              "CurrencyCode" : {
+                "value" : "AUD"
+              },
+              "Base" : 1065.0,
+              "Taxes" : {
+                "@type" : "TaxesDetail",
+                "TotalTaxes" : 109.3,
+                "Tax" : [ {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "GB",
+                  "value" : 47.0
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "R1",
+                  "value" : 16.1
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "UB",
+                  "value" : 46.2
+                } ]
+              },
+              "Total" : 1174.3
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "INF",
+            "Amount" : {
+              "CurrencyCode" : {
+                "value" : "GBP"
+              },
+              "Base" : 57.0
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "INF",
+            "Amount" : {
+              "currencySource" : "Charged",
+              "approximateInd" : true,
+              "CurrencyCode" : {
+                "value" : "AUD"
+              },
+              "Base" : 103.0,
+              "Taxes" : {
+                "@type" : "TaxesDetail",
+                "TotalTaxes" : 62.3,
+                "Tax" : [ {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "R1",
+                  "value" : 16.1
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "UB",
+                  "value" : 46.2
+                } ]
+              },
+              "Total" : 165.3
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "SRC",
+            "Amount" : {
+              "CurrencyCode" : {
+                "value" : "GBP"
+              },
+              "Base" : 590.0
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "SRC",
+            "Amount" : {
+              "currencySource" : "Charged",
+              "approximateInd" : true,
+              "CurrencyCode" : {
+                "value" : "AUD"
+              },
+              "Base" : 1065.0,
+              "Taxes" : {
+                "@type" : "TaxesDetail",
+                "TotalTaxes" : 109.3,
+                "Tax" : [ {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "GB",
+                  "value" : 47.0
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "R1",
+                  "value" : 16.1
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "UB",
+                  "value" : 46.2
+                } ]
+              },
+              "Total" : 1174.3
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "MIL",
+            "Amount" : {
+              "CurrencyCode" : {
+                "value" : "GBP"
+              },
+              "Base" : 590.0
+            }
+          }, {
+            "@type" : "PriceBreakdownAir",
+            "quantity" : 1,
+            "requestedPassengerType" : "MIL",
+            "Amount" : {
+              "currencySource" : "Charged",
+              "approximateInd" : true,
+              "CurrencyCode" : {
+                "value" : "AUD"
+              },
+              "Base" : 1065.0,
+              "Taxes" : {
+                "@type" : "TaxesDetail",
+                "TotalTaxes" : 109.3,
+                "Tax" : [ {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "GB",
+                  "value" : 47.0
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "R1",
+                  "value" : 16.1
+                }, {
+                  "currencyCode" : "AUD",
+                  "taxCode" : "UB",
+                  "value" : 46.2
+                } ]
+              },
+              "Total" : 1174.3
+            }
+          } ]
+        }
+      } ],
+      "Traveler" : [ {
+        "@type" : "Traveler",
+        "birthDate" : "1995-02-11",
+        "gender" : "Male",
+        "passengerTypeCode" : "ADT",
+        "id" : "travelerRefId_1",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "c40d1b09-5d97-4c49-99f0-68f323e2911e"
+        },
+        "PersonName" : {
+          "@type" : "PersonName",
+          "Given" : "PX ADTONEMDNM MR",
+          "Surname" : "SRNMONEADT"
+        },
+        "Telephone" : [ {
+          "@type" : "TelephoneDetail",
+          "countryAccessCode" : "1",
+          "areaCityCode" : "909",
+          "phoneNumber" : "212456121",
+          "extension" : "1243",
+          "id" : "telephone_1",
+          "cityCode" : "ORD",
+          "role" : "Office"
+        } ],
+        "Email" : [ {
+          "value" : "TravelerOneOne@gmail.com"
+        }, {
+          "value" : "TravelerOneOne@gmail.com"
+        }, {
+          "value" : "TravelerOneOne@gmail.com"
+        }, {
+          "value" : "TravelerOneOne@gmail.com"
+        } ],
+        "CustomerLoyalty" : [ {
+          "supplier" : "DL",
+          "value" : "DL2071983684"
+        } ],
+        "TravelDocument" : [ {
+          "@type" : "TravelDocumentDetail",
+          "docNumber" : "H294F4",
+          "docType" : "Passport",
+          "expireDate" : "2021-12-05",
+          "issueCountry" : "IND",
+          "birthDate" : "1995-02-11",
+          "Gender" : "Male",
+          "PersonName" : {
+            "@type" : "PersonName",
+            "Given" : "PX ONE",
+            "Middle" : "MDNM ONE",
+            "Surname" : "SRNMONE"
+          }
+        } ]
+      }, {
+        "@type" : "Traveler",
+        "birthDate" : "2019-11-22",
+        "gender" : "Male",
+        "passengerTypeCode" : "INF",
+        "id" : "travelerRefId_2",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "3a4c571c-c107-4c2b-bc62-404e4ed09060"
+        },
+        "PersonName" : {
+          "@type" : "PersonName",
+          "Given" : "PX INFONE",
+          "Surname" : "SRNMONEINF"
+        },
+        "Telephone" : [ {
+          "@type" : "TelephoneDetail",
+          "countryAccessCode" : "1",
+          "areaCityCode" : "909",
+          "phoneNumber" : "212456121",
+          "extension" : "1243",
+          "id" : "telephone_1",
+          "cityCode" : "ORD",
+          "role" : "Office"
+        } ],
+        "TravelDocument" : [ {
+          "@type" : "TravelDocumentDetail",
+          "docNumber" : "H294F4",
+          "docType" : "Passport",
+          "expireDate" : "2021-12-05",
+          "issueCountry" : "IND",
+          "birthDate" : "1995-02-11",
+          "Gender" : "Male",
+          "PersonName" : {
+            "@type" : "PersonName",
+            "Given" : "PX ONE",
+            "Middle" : "MDNM ONE",
+            "Surname" : "SRNMONE"
+          }
+        } ]
+      }, {
+        "@type" : "Traveler",
+        "birthDate" : "1995-02-11",
+        "gender" : "Male",
+        "passengerTypeCode" : "SRC",
+        "id" : "travelerRefId_3",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "9d8f294a-6ee4-4e08-9900-f16f896ced96"
+        },
+        "PersonName" : {
+          "@type" : "PersonName",
+          "Given" : "PX SRCONEMDNM MR",
+          "Surname" : "SRNMONESRC"
+        },
+        "Telephone" : [ {
+          "@type" : "TelephoneDetail",
+          "countryAccessCode" : "1",
+          "areaCityCode" : "909",
+          "phoneNumber" : "212456121",
+          "extension" : "1243",
+          "id" : "telephone_1",
+          "cityCode" : "ORD",
+          "role" : "Office"
+        } ],
+        "CustomerLoyalty" : [ {
+          "supplier" : "DL",
+          "value" : "DL2071983684"
+        } ],
+        "TravelDocument" : [ {
+          "@type" : "TravelDocumentDetail",
+          "docNumber" : "H294F4",
+          "docType" : "Passport",
+          "expireDate" : "2021-12-05",
+          "issueCountry" : "IND",
+          "birthDate" : "1995-02-11",
+          "Gender" : "Male",
+          "PersonName" : {
+            "@type" : "PersonName",
+            "Given" : "PX ONE",
+            "Middle" : "MDNM ONE",
+            "Surname" : "SRNMONE"
+          }
+        } ]
+      }, {
+        "@type" : "Traveler",
+        "birthDate" : "1995-02-11",
+        "gender" : "Male",
+        "passengerTypeCode" : "MIL",
+        "id" : "travelerRefId_4",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "2cbd3937-74c1-496e-b806-1cc6612dbed6"
+        },
+        "PersonName" : {
+          "@type" : "PersonName",
+          "Given" : "PX MILONEMDNM MR",
+          "Surname" : "SRNMONEMIL"
+        },
+        "Telephone" : [ {
+          "@type" : "TelephoneDetail",
+          "countryAccessCode" : "1",
+          "areaCityCode" : "909",
+          "phoneNumber" : "212456121",
+          "extension" : "1243",
+          "id" : "telephone_1",
+          "cityCode" : "ORD",
+          "role" : "Office"
+        } ],
+        "CustomerLoyalty" : [ {
+          "supplier" : "DL",
+          "value" : "DL2071983684"
+        } ],
+        "TravelDocument" : [ {
+          "@type" : "TravelDocumentDetail",
+          "docNumber" : "H294F4",
+          "docType" : "Passport",
+          "expireDate" : "2021-12-05",
+          "issueCountry" : "IND",
+          "birthDate" : "1995-02-11",
+          "Gender" : "Male",
+          "PersonName" : {
+            "@type" : "PersonName",
+            "Given" : "PX ONE",
+            "Middle" : "MDNM ONE",
+            "Surname" : "SRNMONE"
+          }
+        } ]
+      } ],
+      "FormOfPayment" : [ {
+        "@type" : "FormOfPaymentPaymentCard",
+        "id" : "formOfPayment_1",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "8da75ea2-55ee-4c63-b125-be247274c91a"
+        },
+        "PaymentCard" : {
+          "@type" : "PaymentCard",
+          "expireDate" : "1222",
+          "CardCode" : "VI",
+          "CardNumber" : {
+            "PlainText" : "XXXXXXXXXXXX0129"
+          }
+        }
+      } ],
+      "Receipt" : [ {
+        "@type" : "ReceiptConfirmation",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "8cfcd895-2944-4a88-9032-685038964eeb"
+        },
+        "Confirmation" : {
+          "@type" : "ConfirmationHold",
+          "Locator" : {
+            "source" : "1G",
+            "value" : "3TGF22"
+          },
+          "OfferStatus" : {
+            "@type" : "OfferStatusAir",
+            "StatusAir" : [ {
+              "flightRefs" : [ "Flight_01", "Flight_02" ],
+              "code" : "HK",
+              "value" : "Confirmed"
+            } ]
+          }
+        }
+      }, {
+        "@type" : "ReceiptConfirmation",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "0c754755-7645-4c17-9ddd-cab242def9b0"
+        },
+        "Confirmation" : {
+          "@type" : "ConfirmationHold",
+          "Locator" : {
+            "source" : "1A",
+            "value" : "5SXPI7"
+          }
+        }
+      }, {
+        "@type" : "ReceiptPayment",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "4fbc269b-1ecc-4406-8837-4bcd152051b3"
+        },
+        "Document" : [ {
+          "@type" : "DocumentTicket",
+          "Number" : "1253768045726",
+          "TravelerIdentifierRef" : {
+            "passengerTypeCode" : "ADT",
+            "id" : "travelerRefId_1",
+            "value" : "c40d1b09-5d97-4c49-99f0-68f323e2911e"
+          },
+          "Amount" : {
+            "Total" : 1174.3
+          }
+        }, {
+          "@type" : "DocumentTicket",
+          "Number" : "1253768045727",
+          "TravelerIdentifierRef" : {
+            "passengerTypeCode" : "INF",
+            "id" : "travelerRefId_2",
+            "value" : "3a4c571c-c107-4c2b-bc62-404e4ed09060"
+          },
+          "Amount" : {
+            "Total" : 165.3
+          }
+        }, {
+          "@type" : "DocumentTicket",
+          "Number" : "1253768045728",
+          "TravelerIdentifierRef" : {
+            "passengerTypeCode" : "SRC",
+            "id" : "travelerRefId_3",
+            "value" : "9d8f294a-6ee4-4e08-9900-f16f896ced96"
+          },
+          "Amount" : {
+            "Total" : 1174.3
+          }
+        }, {
+          "@type" : "DocumentTicket",
+          "Number" : "1253768045729",
+          "TravelerIdentifierRef" : {
+            "passengerTypeCode" : "MIL",
+            "id" : "travelerRefId_4",
+            "value" : "2cbd3937-74c1-496e-b806-1cc6612dbed6"
+          },
+          "Amount" : {
+            "Total" : 1174.3
+          }
+        } ]
+      } ],
+      "ReservationComment" : [ {
+        "@type" : "ReservationComment",
+        "commentSource" : "Agency",
+        "Comment" : [ {
+          "name" : "AD",
+          "value" : "THANKS FOR BOOKING WITH US"
+        }, {
+          "name" : "RD",
+          "value" : "Have a Nice Day"
+        } ]
+      } ]
+    },
+    "Identifier" : {
+      "authority" : "Travelport",
+      "value" : "c4dc4c87-e113-4f80-93fb-9d7b2b453003"
+    },
+    "ReferenceList" : [ {
+      "@type" : "ReferenceListTermsAndConditions",
+      "TermsAndConditions" : [ {
+        "@type" : "TermsAndConditionsAir",
+        "Identifier" : {
+          "authority" : "Travelport",
+          "value" : "eb263cc7-d67d-4237-893f-61c842a0d050"
+        },
+        "BaggageAllowance" : [ {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "ADT" ],
+          "SegmentSequenceList" : [ 1 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "INF" ],
+          "SegmentSequenceList" : [ 1 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "SRC" ],
+          "SegmentSequenceList" : [ 1 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "MIL" ],
+          "SegmentSequenceList" : [ 1 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "ADT" ],
+          "SegmentSequenceList" : [ 2 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "INF" ],
+          "SegmentSequenceList" : [ 2 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "SRC" ],
+          "SegmentSequenceList" : [ 2 ],
+          "Text" : [ "1PC" ]
+        }, {
+          "@type" : "BaggageAllowanceDetail",
+          "passengerTypeCodes" : [ "MIL" ],
+          "SegmentSequenceList" : [ 2 ],
+          "Text" : [ "1PC" ]
+        } ],
+        "ValidatingAirline" : [ {
+          "ValidatingAirline" : "BA"
+        } ]
+      } ]
+    } ]
+  }
+}
+

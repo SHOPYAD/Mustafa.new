@@ -1,0 +1,43 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-01-20",
+                    "departureTime": "07:35:00",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "LHR"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "GLA"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {
+                "FareSelection": {
+                    "@type": "FareSelectionDetail",
+                    "fareType": "AirlinePrivateFaresOnly"
+                }
+            },
+            "BuildFromReservationWorkbench": {
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }
+                ],
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "06a6a864-7f67-46a8-884c-396084495641"
+                    }
+                }
+            }
+        }
+    }
+}

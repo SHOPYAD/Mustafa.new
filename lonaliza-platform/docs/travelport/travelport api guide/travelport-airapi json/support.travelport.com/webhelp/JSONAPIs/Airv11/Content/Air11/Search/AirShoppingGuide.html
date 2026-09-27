@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References" data-mc-conditions="JSONAPIs.Air11,JSONAPIs.UpdateDevX" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/AirShoppingGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:45 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Air Search Guide</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1><span class="mc-variable General.AirAPI variable">Air</span> Search Guide</h1>
+                                        <p>Use the following Travelport <span class="mc-variable General.Product variable">JSON</span>&#160;Search APIs to shop for flights:&#160;</p>
+                                        <ul>
+                                            <li>
+                Search            </li>
+                                            <li>
+                Next&#160;Leg Search
+            </li>
+                                            <li>
+                Flight Specific Search
+</li>
+                                            <li><span class="mc-variable General.AirAPI variable">Air</span> Availability          </li>
+                                        </ul>
+                                        <p>This guide details the terms and concepts for using these APIs and their workflow. For technical references, see the API&#160;references for each API, linked next.</p>
+                                        <div class="noteNote">See the <a href="../General/AirAPIsGuide.html"><span class="mc-variable General.Product variable">JSON</span> <span class="mc-variable General.AirAPI variable">Air</span> APIs Guide</a>   for the basic travel terms you need to know to develop your applications, how the <span class="mc-variable General.Product variable">JSON</span> APIs represent those terms in code, and a workflow summary.</div>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <![CDATA[  ]]><a href="../General/AirAPIsGuide.html"> <span class="mc-variable General.Product variable">JSON</span> <span class="mc-variable General.AirAPI variable">Air</span> APIs Guide</a>, <a href="APIRef_Search.html">Search API Reference</a>, <a href="APIRef_NextLegSearch.html">Next Leg Search API Reference</a>, Flight Specific Search <a href="APIRef_FlightSpecificRefPayload.html">Reference Payload</a> and  <a href="APIRef_FlightSpecificFullPayload.html">Full Payload</a> API references</p>
+                                        <p><b>In this guide:</b>
+                                        </p>
+                                        <ul data-mc-continue="true">
+                                            <li><a href="#concepts">Basic Concepts</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#journeyleg">Journey-based and Leg-based Searches</a>
+                                                    </li>
+                                                    <li><a href="#branded-upsells">Branded Fares and Upsells</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#searchapi">Search API</a>
+                                                <ul>
+                                                    <li><a href="#reqjourneyleg">Journey/Leg-Based Searches and Caching (SearchRepresentation and offersPerPage)  </a>
+                                                    </li>
+                                                    <li><a href="#reqndccontent">NDC and GDS Content (contentSourceList)</a>
+                                                    </li>
+                                                    <li><a href="#requpsell">Upsell Fares (maxNumberOfUpsellsToReturn)</a>
+                                                    </li>
+                                                    <li><a href="#modifiers">Search and Pricing Modifiers</a>
+                                                    </li>
+                                                    <li><a href="#split">Split Ticketing</a>
+                                                    </li>
+                                                    <li><a href="#flex">Premium Flex Search (Date and PCC Flexibility)</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#nextleg">Next Leg Search API</a>
+                                            </li>
+                                            <li><a href="#fss">Flight Specific Search API</a>
+                                            </li>
+                                            <li><a href="#basicrsp">Search  Responses (all Search APIs)</a>
+                                                <ul>
+                                                    <li><a href="#combinability">CombinabilityCode and BestCombinablePrice</a>
+                                                    </li>
+                                                    <li><a href="#priceupdate">Multi-city Offers with Stopovers (Price details in BestCombinablePrice )</a>
+                                                    </li>
+                                                    <li><a href="#referencelist">Consolidated Product, Flight, Brand, and Terms (ReferenceList)</a>
+                                                    </li>
+                                                    <li><a href="#branded-upsells">Brand Attributes</a>
+                                                    </li>
+                                                    <li><a href="#ccl">Merged GDS and NDC Offers (Content Curation Layer)</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#workflow">Search Workflows</a>
+                                            </li>
+                                            <li><a href="#dia">Request and Response Layout Diagrams</a>
+                                                <ul data-mc-continue="true">
+                                                    <li><a href="#diasearch">Search Request Diagram</a>
+                                                    </li>
+                                                    <li><a href="#dianextleg">Next Leg Search Request Diagram</a>
+                                                    </li>
+                                                    <li><a href="#diaflightspecific">Flight Specific Search Request Diagram</a>
+                                                    </li>
+                                                    <li><a href="#diarsp">Search Responses Diagram</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#availability"><span class="mc-variable General.AirAPI variable">Air</span> Availability API</a>
+                                            </li>
+                                        </ul>
+                                        <h2><a name="concepts"></a>Basic Concepts</h2>
+                                        <div class="noteNote">Be sure to see the detailed discussion of <a href="../General/AirAPIsGuide.html#offers">Offers in the <span class="mc-variable General.Product variable">JSON</span> APIs</a> to understand the structure of the Search APIs. </div>
+                                        <p>In addition to the travel terms and corresponding JSON code details in the <a href="../General/AirAPIsGuide.html"><span class="mc-variable General.Product variable">JSON</span> <span class="mc-variable General.AirAPI variable">Air</span> APIs Guide</a>, this section covers terms specific to the Search APIs. </p>
+                                        <p>The <span class="mc-variable General.Product variable">JSON</span> APIs provide three APIs for searching for flights: </p>
+                                        <ul>
+                                            <li>
+                                                <p><span class="Brand4" style="font-weight: bold;">Search API</span>: Search for flights for either the entire itinerary (journey-based search) or only the first leg (leg-based search).  Supports one-way, round-trip, and open-jaw itineraries. </p>
+                                            </li>
+                                            <li>
+                                                <p><span class="Brand4" style="font-weight: bold;">Next Leg Search API</span>: Return flights on the subsequent leg following a leg-based search with the Search API.</p>
+                                            </li>
+                                            <li>
+                                                <p><span class="Brand4" style="font-weight: bold;">Flight Specific Search API</span>: Return additional upsells for a flight/s, up to a maximum of 99 upsells. (Search and Next Leg Search return a maximum of 4 upsells per <a href="../General/AirAPIsGuide.html#offers">offer</a>.)</p>
+                                            </li>
+                                        </ul>
+                                        <h3><a name="journeyleg"></a>Journey-based and Leg-based Searches</h3>
+                                        <p>You can use the Search API&#160;alone for all air shopping, or combine it with the Next Leg Search and/or Flight Specific Search APIs. </p>
+                                        <p>You can set your initial search request to return flight results for either the entire itinerary. or leg by leg: </p>
+                                        <ul>
+                                            <li><span class="Brand4" style="font-weight: bold;">Journey-based searches</span>:&#160;Returns offers for all legs on the itinerary in the same request. A journey-based request is a standalone search - no additional search requests are required. </li>
+                                            <li><span class="Brand4" style="font-weight: bold;">Leg-based searches</span>:&#160;Returns offers for <i>only</i> the first leg of the itinerary. You must then send a <span class="Brand4" style="font-weight: bold;">Next Leg Search</span> request that sends the selected offer for the first leg and returns offers to combine with that leg. A multi-city itinerary requires a second Next Leg Search for the third leg.</li>
+                                        </ul>
+                                        <p>See <a href="#reqjourneyleg">Journey/Leg-Based Searches and Caching (SearchRepresentation and offersPerPage)</a> below for details and the settings to use.</p>
+                                        <p>For multi-city itineraries, you can search for up to six O&amp;D&#160;pairs (legs of the itinerary) for GDS, and up to three for NDC.</p>
+                                        <div class="noteWarning">If your workflow subsequently references a <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term3">journey-based<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>A search that returns offers for all legs on the itinerary. A journey-based Search request is a standalone search.&#160;No additional search requests are required.</span></a> search result, the Search request <b>must</b> send <a href="APIRef_Search.html#offersperpage" style="font-style: normal;font-weight: normal;">offersPerPage</a> set&#160;to any positive number. This setting invokes caching to allow subsequent requests to refer to these search results. <b>If a journey-based Search request does not send offersPerPage, any subsequent reference payload requests fail</b>, including the Flight Specific Search, AirPrice, and Add Offer reference payloads.</div>
+                                        <h3><a name="branded-upsells"></a>Branded Fares and Upsells</h3>
+                                        <p>A key search feature is support for branded fares and upsells. </p>
+                                        <p>A <b class="Brand4">branded fare</b> is an airfare that is bundled with certain features included in the price. For example, a branded fare might include free seat selection and a carry-on bag. All Search APIs return branded fares by default when available. <b class="Brand4">Brand attributes</b> list whether features such as wifi, assigned seats, baggage, and refunds are available and either included in the fare, available at an extra charge, or not available. </p>
+                                        <p>In the search API response, an offer might include the following brand options, for example: </p>
+                                        <ul>
+                                            <li>A base fare (usually identified with Brand/BrandRef value b0) that includes only the fare itself; customers must purchase any extras separately. </li>
+                                            <li>Brand 1 (e.g., b1) that includes seat selection and a free carry-on.</li>
+                                            <li>Brand 2 (e.g., b2) that includes the features above plus in-flight wifi and a free checked bag. </li>
+                                        </ul>
+                                        <p>Details for brands across all offers are consolidated in <b>ReferenceList/ReferenceListBrand</b>. This section returns the brand name, tier, id (the internal reference number matching to Brand/BrandRef in an offer), the airline brand identifier, and <b class="Brand4">brand attributes</b>, which describe what is included in the brand. See <a href="#brandattributes">Brand Attributes</a> below for a full list of attributes.</p>
+                                        <p>An <b class="Brand4">upsell</b> is an offer to upgrade to a more expensive option, and may also be a branded fare. To return upsells in the Search and Next Leg Search APIs, you must request them by sending <b>maxNumberOfUpsellsToReturn</b> and specify how many:</p>
+                                        <ul>
+                                            <li>Itineraries with one or two O&amp;D pairs (one-way and round-trip) can return up to four upsells.</li>
+                                            <li>Itineraries with three O&amp;D pairs can return up to two upsells.</li>
+                                            <li>Itineraries with four to six O&amp;D pairs are limited to one upsell.</li>
+                                        </ul>
+                                        <p>To see more upsell options, you can send a Flight Specific Search request for any flight returned by the Search or Next Leg Search API. Flight Specific Search can return up to 99 upsells, or the maximum available for the flight if less than 99. </p>
+                                        <h2><a name="searchapi"></a>Search API</h2>
+                                        <p>Search sends details about the number and type of passengers, the location and date for departure and arrival for each leg of the itinerary, and optional search and pricing modifiers. </p>
+                                        <p>The responses for Search, Next Leg Search, and Flight Specific Search share the same structure, diagrammed and described in <a href="#basicrsp">Search Responses</a>.</p>
+                                        <h3><a name="reqjourneyleg"></a>Journey/Leg-Based Searches and Caching (SearchRepresentation and offersPerPage)</h3>
+                                        <p>Among other criteria, the Search request must send the O&amp;D&#160;pair (departure and arrival location) for each leg of the itinerary. You can set whether the response should include offers for all legs (<span class="Brand4" style="font-weight: bold;">journey-based search</span>) or only the first leg (<span class="Brand4" style="font-weight: bold;">leg-based search</span>). To specify, send <a href="APIRef_Search.html#searchrepresentation">SearchRepresentation (see the Search API Reference</a>) with either <i>Journey</i> or <i>Leg</i>. If SearchRepresentation is not sent, the response defaults to journey-based and returns offers for all legs. </p>
+                                        <p>Every Search request must specify all O&amp;D pairs for all legs of the itinerary, even for a leg-based search. </p>
+                                        <p>This setting does not affect one-way itineraries. </p>
+                                        <p>With any search request, especially a journey-based search, you may also need to send <a href="APIRef_Search.html#offersperpage">offersPerPage (see the Search API Reference</a>) with any positive number. offersPerPage has two functions:.</p>
+                                        <ul>
+                                            <li>
+                                                <p>Caching: Sets whether to invoke caching so that <a href="#searchrepresentation">journey-based</a> search results can be referenced by subsequent reference payload requests. To invoke caching, send with any number equal to or greater than <i>1</i>. No maximum value.<br /></p>
+                                            </li>
+                                            <li>
+                                                <p>Maximum offers returned: Also sets the maximum number of offers returned. If sent with <i>0</i> or not sent, Search returns all offers. If the response is not returning an adequate selection of offers, try increasing the value in offersPerPage.<br /></p>
+                                            </li>
+                                        </ul>
+                                        <div class="noteWarning">If your workflow subsequently references a <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term3">journey-based<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>A search that returns offers for all legs on the itinerary. A journey-based Search request is a standalone search.&#160;No additional search requests are required.</span></a> search result, the Search request <b>must</b> send <a href="APIRef_Search.html#offersperpage" style="font-style: normal;font-weight: normal;">offersPerPage</a> set&#160;to any positive number. This setting invokes caching to allow subsequent requests to refer to these search results. <b>If a journey-based Search request does not send offersPerPage, any subsequent reference payload requests fail</b>, including the Flight Specific Search, AirPrice, and Add Offer reference payloads.</div>
+                                        <h3><a name="reqndccontent"></a>NDC and GDS Content (contentSourceList)</h3>
+                                        <p>Request the return of both <a href="../General/AirAPIsGuide.html#gdsndc">NDC and GDS&#160;content</a> with the optional contentSourceList  indicator as follows:</p>
+                                        <ul>
+                                            <li>
+                                                <p><i>GDS</i> to return only GDS content</p>
+                                            </li>
+                                            <li>
+                                                <p><i>NDC</i> to return only NDC&#160;content</p>
+                                            </li>
+                                            <li>
+                                                <p>both <i>GDS</i>&#160;and <i>NDC</i> to return both</p>
+                                            </li>
+                                        </ul>
+                                        <p>If contentSourceList is not sent, only&#160;GDS content is returned. You must be provisioned for NDC with both the NDC carrier/s and Travelport to receive NDC&#160;content. For more about NDC, and basic differences between GDS&#160;and NDC in the <span class="mc-variable General.Product variable">JSON</span> APIs, see the <a href="../NDC/NDCGuide.html">NDC Guide</a>.</p>
+                                        <h3><a name="requpsell"></a>Upsell Fares (maxNumberOfUpsellsToReturn)</h3>
+                                        <p>To return upsell fares, send maxNumberOfUpsellsToReturn with a value from 1-4 inclusive. Sending maxNumberOfUpsellsToReturn also returns upsells in any subsequent Next&#160;Leg Search request.</p>
+                                        <p>Although maxNumberOfUpsellsToReturn accepts values from 0-99, Search and Next Leg Search return a maximum of four upsells. You can use <a href="#fss">Flight Specific Search</a> to return all upsells filed by the carrier, up to 99. </p>
+                                        <div class="noteNote">
+                                            <p>Note the following differences between NDC&#160;and GDS for maxNumberOfUpsellsToReturn:</p>
+                                            <ul>
+                                                <li>For GDS, if maxNumberOfUpsellsToReturn is either not provided or is sent as <i>0</i>, the lowest priced offer is returned (i.e., the base fare). </li>
+                                                <li>For NDC:<ul><li>If maxNumberOfUpsellsToReturn is not sent, the response returns the lowest priced offer of each available brand or cabin.</li><li>If maxNumberOfUpsellsToReturn is sent as <i>0</i>, the response returns the lowest priced offer (i.e., the base fare).</li></ul></li>
+                                            </ul>
+                                        </div>
+                                        <h3><a name="modifiers"></a>Search and Pricing Modifiers</h3>
+                                        <p>The Search API supports optional journey and pricing modifiers that allow you to set conditions on the itineraries to search for. You can send multiple modifiers in the same request. See the <a href="APIRef_Search.html">Search API&#160;Reference</a> for details and supported values and formats.</p>
+                                        <p><b class="Brand4">Pricing modifiers</b> refine the basic search based on fare and ticketing options and are sent in the <b>PricingModifiersAir</b> object: </p>
+                                        <ul>
+                                            <li>Fare type: Request specific fare types including private fares (negotiated), public fares (published), or net fares (consolidator fares, or any negotiated wholesale price that is further marked up for sale to customers).</li>
+                                            <li>Fare restrictions: Include or exclude fares that require an advance purchase, min/max stay, or that are non-refundable.</li>
+                                            <li>Account codes: Send your account code/corporate ID for each airline to return negotiated fares for those airlines.</li>
+                                            <li>Currency override: Change the default currency of results, which is set in your PCC provided upon provisioning with Travelport.</li>
+                                            <li>Sale and ticketing location: Return fares based on the sell and/or ticket location.</li>
+                                        </ul>
+                                        <p><b class="Brand4">Journey modifiers</b> refine the search based on elements of the air travel itself, such as carriers,  cabin classes, and/or connection times. Journey modifiers are sent in the <b>SearchModifiersAir</b> object: </p>
+                                        <ul>
+                                            <li>Carrier preferences: Permit only, prohibit, or prefer (weight towards) one or more airlines.</li>
+                                            <li>Cabin Preferences: Permit only, prohibit, or prefer (weight towards) a cabin class.</li>
+                                            <li>Flight type: Preferences around connections and stops. </li>
+                                            <li>Class of service:&#160;Preferences around class of service to return.</li>
+                                            <li>Exclude ground transportation:&#160;Do not return ground transportation options.</li>
+                                            <li>Max connection duration: Do not return options that exceed a specified length of time between flights on the same leg.</li>
+                                            <li>Max overnight duration: Limit duration of any overnight connection.</li>
+                                            <li>Prohibit change of airport:&#160;Do not return options that change airport. </li>
+                                            <li>Return only fares with specified brand key value pairs Limit the fares returned to <i>only</i> fares that include the specified brand attributes in the price.</li>
+                                            <li>Configure brand attributes returned: Return only information about the specified brand attributes and <i>not</i> return any other brand attributes for those fares.</li>
+                                            <li>Exclude CAT16 penalties: Whether to return CAT16 change and cancel penalties.</li>
+                                        </ul>
+                                        <h3><a name="split"></a>Split Ticketing</h3>
+                                        <div class="noteNote">GDS only; not supported for NDC.</div>
+                                        <div class="noteWarning">Split ticketing is available only for customers specifically provisioned for split ticketing. Split ticketing returns one-way outbound and one-way inbound fares in addition to round-trip offers. Split ticket offers are identified with CombinabilityCode  j0. If your account is not configured for split ticketing, sending includeSplitPaymentInd returns a response without split ticket offers and a warning message. GDS only, not supported for <a href="../NDC/NDCGuide.html">NDC</a>.</div>
+                                        <p>The Search Split Ticketing feature returns one-way outbound and one-way inbound fares in addition to round-trip options. This may result in lower fares than the same or similar round-trip itinerary. Note that the Split Ticketing Search response may return only the one-way outbound and one-way inbound fares, or only the round-trip fares.  This can happen when there is no flight availability or available fares for one-ways or round trips.</p>
+                                        <p>To request split ticketing, send PricingModifiersAir/<a href="APIRef_Search.html#splitticketing">includeSplitPaymentInd</a>=true . By default, Search divides the response into 34% round-trip offerings and the remainder as outbound and inbound one-way fares. To change this percentage, send PricingModifiersAir/SplitPaymentOfferings with the requested percentage. </p>
+                                        <p> The Search response returns offers in the following order:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Outbound one-way offers</p>
+                                            </li>
+                                            <li>
+                                                <p>Inbound one-way offers</p>
+                                            </li>
+                                            <li>
+                                                <p>Round trip offers</p>
+                                            </li>
+                                        </ul>
+                                        <p>The response identifies the one-way outbound and inbound offers with the <a href="#combinability">CombinabilityCode</a> value <i>j0</i>.  The round-trip offers are identified with CombinabilityCode values starting with <i>j1</i> and incremented by one.  </p>
+                                        <p>The following are in scope for split ticketing:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Search requests</p>
+                                            </li>
+                                            <li>
+                                                <p>GDS content</p>
+                                            </li>
+                                            <li>
+                                                <p><a href="#journeyleg">Round trip journey-based offerings</a> (CustomResponseModifiersAir/SearchRepresentation is not sent or is sent with value <i>Journey</i>)</p>
+                                            </li>
+                                            <li>
+                                                <p><a href="#branded-upsells">Upsells</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <p>The following are not supported for split ticketing:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Next Leg Search and Flight Specific Search</p>
+                                            </li>
+                                            <li>
+                                                <p>One way, circle trip, open jaw, and multiple origin/destination search</p>
+                                            </li>
+                                            <li>
+                                                <p><a href="#journeyleg">Round trip leg-based offerings</a> </p>
+                                            </li>
+                                            <li>
+                                                <p>Virtual interlining</p>
+                                            </li>
+                                            <li>
+                                                <p>NDC content</p>
+                                            </li>
+                                            <li>
+                                                <p>Premium Flex Search</p>
+                                            </li>
+                                        </ul>
+                                        <p>For any search requests for the above scenarios that also send includeSplitPaymentInd set to <i>true</i>, Search ignores the split ticketing indicator, returns a normal Search response, and returns in the Result object the warning message <i>Split Ticketing is not supported and has been ignored.</i></p>
+                                        <h3><a name="flex"></a>Premium&#160;Flex Search</h3>
+                                        <div class="noteNote">GDS only; not supported for NDC. Available only to specifically provisioned customers; contact your account representative for more information.</div>
+                                        <p>Premium Flex Search provides flexibility around search dates and PCCs as follows:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Premium Flex Search point of sale (POS): In the <a href="APIRef_Search.html#req">Search</a> request, send PricingModifiersAir/MultiPricingAgency with up to three PCCs to search in addition to the provisioned PCC. PCCs must be a branch agency provisioned with access for the requested PCC. The flex search options sent in Search carry over to any subsequent Next Leg Search request.</p>
+                                            </li>
+                                            <li>
+                                                <p>Premium Flex Search dates: In the <a href="APIRef_Search.html#req">Search</a> request, send SearchCriteriaFlight/daysBeforeDeparture and/or /daysAfterDeparture with the value/s 1, 2, or 3 to search up to that number of days before and/or after the departure date. The flex search options sent in Search carry over to any subsequent Next Leg Search and Flight Specific Search reference payload request.</p>
+                                            </li>
+                                        </ul>
+                                        <p>When sending flex search requests, append /premiumflex to the existing Search API endpoint.</p>
+                                        <p>Scope and support:</p>
+                                        <ul>
+                                            <li>
+                                                <p>GDS only; not supported for NDC.</p>
+                                            </li>
+                                            <li>
+                                                <p>Not supported for split ticketing or sorting.</p>
+                                            </li>
+                                            <li>
+                                                <p>Only one flex search capability can be sent in a request (either dates or PCC but not both).</p>
+                                            </li>
+                                            <li>
+                                                <p>Supported in the Search API for  journey- and leg-based searches for one and two O&amp;Ds; three or more O&amp;Ds are out of scope.</p>
+                                            </li>
+                                            <li>
+                                                <p>Any flex options sent in the Search request carry over to any subsequent Next Leg Search and Flight Specific Search reference payload requests.</p>
+                                            </li>
+                                            <li>
+                                                <p>Flight Specific Search supports Flex Search POS for both the reference and full payload. Neither payload supports Flex Search Dates.</p>
+                                            </li>
+                                        </ul>
+                                        <h4>Aggregated and Streamed Responses</h4>
+                                        <p>The Accept header value controls the format of the response; see <a href="../General/CommonAirHeaders.html">Common Headers</a> for details:</p>
+                                        <ul>
+                                            <li>
+                                                <p>for aggregated content (all offers are combined into a single CatalogProductOfferingsResponse object), send with the value <i>application/json</i></p>
+                                            </li>
+                                            <li>
+                                                <p>for streamed content (multiple CatalogProductOfferingsResponse objects are returned consecutively) send with the value <i>application/stream+json</i></p>
+                                            </li>
+                                        </ul>
+                                        <h4>Numbering Formats in References for Aggregated Content</h4>
+                                        <p>For aggregated content for both flex POS and dates, a single CatalogProductOfferingsResponse object contains offers departing on different dates or offers for different PCCs. To identify offers by dates or POS, the internal IDs in flex search responses have been updated with the letter <i>f</i> and a number:</p>
+                                        <ul>
+                                            <li>
+                offer ids: f1o1, f1o2, and so on in the first offer, f2o1, f2o2 and so on in the second offer, etc.<![CDATA[
+]]></li>
+                                            <blockquote>
+                                                <div class="noteWarning">Do not assume that CatalogProductOffering/id values follow a sequential pattern (e.g., f1, f2, f3) in aggregated flex search responses. Implementations must not rely on this ordering when consuming the data.</div>
+                                            </blockquote>
+                                            <li>CombinabilityCode: f1j0, f1j1 and so on  in the first offer, f2j0, f2j1, and so on in the second offer.</li>
+                                            <li>ProductRef: f1p0, f1p1, and so on in the first offer, f2p0, f2p1, and so on in the second offer.</li>
+                                            <li>BrandRef: f1b0, f1b1, and so on  in the first offer, f2b0, f2b1 and so on in the second offer.</li>
+                                            <li>flightRef: f1s1, f1s2, and so on in the first offer, f2s1, f2s2, and so on in the second offer.</li>
+                                            <li>TermsAndConditionsRef: f1T0, f1T1, and so on in the first offer, f2T0, f2T1,and so on in for the second offer.
+</li>
+                                        </ul>
+                                        <p>For streamed content for both flex POS and dates, offers are separated into individual CatalogProductOfferingsResponse objects. Each CatalogProductOfferingsResponse contains offers for only one PCC&#160;or one date, so the f<i>x</i> numbering format is not used in streamed content.</p>
+                                        <h4>Flex Search Point of Sale (POS)</h4>
+                                        <p>Flex Search Point of Sale (POS)&#160;allows you to expand your offer options for customers based on the point of sale of your branch agencies. The response returns offers in geographic locations for up to three  <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term60">PCCs<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>Pseudo city code. A travel provider's identification code for the  APIs, provisioned from Travelport. Used to determine access and other settings in the  APIs for your company.</span></a> sent in PricingModifiersAir/MultiPricingAgency.</p>
+                                        <p>In the response, each offer returns its corresponding PCC in ReferenceListTermsAndConditions/TermsAndConditions @TermsAndConditionsAir/Pricing Agency.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Flex Search Point of Sale (PCC) request</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogProductOfferingsQueryRequest": {
+  "CatalogProductOfferingsRequest": {
+   "@type": "CatalogProductOfferingsRequestAir",
+   "contentSourceList": [
+    "GDS"
+   ],
+   "maxNumberOfUpsellsToReturn": 0,
+   "PassengerCriteria": [
+    {
+     "@type": "PassengerCriteria",
+     "number": 1,
+     "passengerTypeCode": "ADT"
+    },
+    {
+     "@type": "PassengerCriteria",
+     "number": 1,
+     "passengerTypeCode": "CHD"
+    }
+   ],
+   "SearchCriteriaFlight": [
+    {
+     "@type": "SearchCriteriaFlight",
+     "departureDate": "2026-04-15",
+     "From": {
+      "value": "MOW"
+     },
+     "To": {
+      "value": "DXB"
+     }
+    }
+   ],
+   "PricingModifiersAir": {
+    "@type": "PricingModifiersAir",
+    "fareSelection": {
+     "@type": "FareSelectionDetail",
+     "fareType": "PrivateFaresOnly"
+    },
+    "MultiPricingAgency": [
+     "DU7",
+     "EA9"
+    ]
+   },
+   "CustomResponseModifiersAir": {
+    "SearchRepresentation": "Journey",
+    "includeFareCalculationInd": false
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following example shows the high-level structure of a streamed response to a flex POS request. All major objects except for instance of CatalogProductOffering have been replaced with ... to emphasize the overall structure of returning multiple CatalogProductOfferingsResponse objects. For the one offer shown below, the corresponding ReferenceListTermsAndConditions returns PricingAgency with the PCC for that offer.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example flex POS response - streamed</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+    "CatalogProductOfferingsResponse": {
+        "@type": "CatalogProductOfferingsResponse",
+        "transactionId": "flex01_ef8610048c354e250dcc911d46c5e80f",
+        "traceId": "TraceID|dl*",
+        "CatalogProductOfferings": {
+            "@type": "CatalogProductOfferings",
+            "CatalogProductOffering": [
+                {...},
+                {...}
+            ]
+        },
+        "Result": {...},
+        "ReferenceList": [...]
+    }
+}{
+    "CatalogProductOfferingsResponse": {
+        "@type": "CatalogProductOfferingsResponse",
+        "transactionId": "flex00_ef8610048c354e250dcc911d46c5e80f",
+        "traceId": "TraceID|dl*",
+        "CatalogProductOfferings": {
+            "@type": "CatalogProductOfferings",
+            "CatalogProductOffering": [
+                {...},
+                {
+                    "@type": "CatalogProductOffering",
+                    "sequence": 1,
+                    "id": "o2",
+                    "Departure": "DME",
+                    "Arrival": "DXB",
+                    "Brand": [
+                        {
+                            "@type": "BrandID",
+                            "BrandRef": "b0"
+                        }
+                    ],
+                    "ProductBrandOptions": [
+                        {
+                            "@type": "ProductBrandOptions",
+                            "flightRefs": [
+                                "s1",
+                                "s2"
+                            ],
+                            "ProductBrandOffering": [
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Brand": {
+                                        "@type": "BrandID",
+                                        "BrandRef": "b0"
+                                    },
+                                    "Product": [
+                                        {
+                                            "@type": "ProductID",
+                                            "productRef": "p1"
+                                        }
+                                    ],
+                                    "TermsAndConditions": {
+                                        "@type": "TermsAndConditionsID",
+                                        "termsAndConditionsRef": "T1"
+                                    },
+                                    "CombinabilityCode": [
+                                        "j2"
+                                    ],
+                                    "BestCombinablePrice": {...},
+                                    "ContentSource": "GDS"
+                                }
+                            ]
+                        },
+                        {...}
+                    ]
+                }
+            ]
+        },
+        "Result": {
+            "@type": "Result"
+        },
+        "ReferenceList": [
+            {
+                "@type": "ReferenceListFlight",
+                "Flight": [...]
+            },
+            {
+                "@type": "ReferenceListProduct",
+                "Product": [...]
+            },
+            {
+                "@type": "ReferenceListBrand",
+                "Brand": [...]
+            },
+            {
+                "@type": "ReferenceListTermsAndConditions",
+                "TermsAndConditions": [
+                    {
+                        "@type": "TermsAndConditionsAir",
+                        "id": "T1",
+                        "BaggageAllowance": [...],
+                        "ValidatingAirline": [...],
+                        "TicketingAgency": [...],
+                        "PaymentTimeLimit": "2026-04-15T23:59:00Z",
+                        "Penalties": [...],
+                        "TourCodes": [...],
+                        "PricingAgency": [
+                            {
+                                "@type": "PricingAgency",
+                                "Code": "DU7"
+                            }
+                        ]
+                    },
+                    {...}
+                ]
+            }
+        ]
+    }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>Flex Search Dates</h4>
+                                        <p>Flex Search Dates&#160;allows you to return offers for a range of dates around the specified departure date. In the request, in either or both daysBeforeDeparture and/or daysAfterDeparture in each instance of SearchCriteriaFlight, send the value 1, 2, or 3 to specify that many days to search before and/or after the date in departureDate.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Flex Search Dates request</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogProductOfferingsQueryRequest": {
+  "CatalogProductOfferingsRequest": {
+   "@type": "CatalogProductOfferingsRequestAir",
+   "contentSourceList": [
+    "GDS"
+   ],
+   "maxNumberOfUpsellsToReturn": 4,
+   "PassengerCriteria": [
+    {
+     "number": 1,
+     "passengerTypeCode": "ADT"
+    }
+   ],
+   "SearchCriteriaFlight": [
+    {
+     "departureDate": "2026-02-09",
+     "daysBeforeDeparture": 1,
+     "daysAfterDeparture": 2,
+     "From": {
+      "value": "PEN"
+     },
+     "To": {
+      "value": "MEL"
+     }
+    },
+    {
+     "departureDate": "2026-02-18",
+     "daysBeforeDeparture": 2,
+     "daysAfterDeparture": 1,
+     "From": {
+      "value": "MEL"
+     },
+     "To": {
+      "value": "PEN"
+     }
+    }
+   ]
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>The following example shows an aggregated response to a flex search dates request. For brevity, only two offers are shown, and the Result and ReferenceList objects have been replaced with ... to show the overall structure. For aggregated content for a leg-based search, per below, each offer returns FlexNextLeg to identify the return date of the product (the next leg) that is combinable with the outbound product at the price and terms and conditions in that offer.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example flex dates response - aggregated</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">{
+ "CatalogProductOfferingsResponse": {
+  "@type": "CatalogProductOfferingsResponse",
+  "transactionId": "d35b3ec7-37ae-412c-aef3-023900cff67b",
+  "CatalogProductOfferings": {
+   "@type": "CatalogProductOfferings",
+   "Identifier": {
+    "value": "20586926-b2da-4cfa-9672-877a05378d8b"
+   },
+   "CatalogProductOffering": [
+    {
+     "@type": "CatalogProductOffering",
+     "sequence": 1,
+     "id": "f1o1",
+     "Departure": "NRT",
+     "Arrival": "BKK",
+     "FlexNextLeg": [
+      {
+       "@type": "FlexNextLeg",
+       "departureDate": "2026-03-27"
+      }
+     ],
+     "Brand": [
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b0"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b1"
+      }
+     ],
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "flightRefs": [
+        "f1s18"
+       ],
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "f1b0"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "f1p0"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "f1T0"
+         },
+         "CombinabilityCode": [
+          "f1j1"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "RUB"
+          },
+          "Base": 20450,
+          "TotalTaxes": 8978,
+          "TotalFees": 0,
+          "TotalPrice": 29428,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "RUB"
+             },
+             "Base": 20450,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 8978,
+              "Tax": [...]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 29428
+            }
+           }
+          ]
+         },
+         "ContentSource": "GDS"
+        },
+        {
+         "@type": "ProductBrandOffering",
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "f1b1"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "f1p1"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "f1T1"
+         },
+         "CombinabilityCode": [
+          "f1j2"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "RUB"
+          },
+          "Base": 132865,
+          "TotalTaxes": 8978,
+          "TotalFees": 0,
+          "TotalPrice": 141843,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "RUB"
+             },
+             "Base": 132865,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 8978,
+              "Tax": [...]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 141843
+            }
+           }
+          ]
+         },
+         "ContentSource": "GDS"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "@type": "CatalogProductOffering",
+     "sequence": 1,
+     "id": "f1o3",
+     "Departure": "NRT",
+     "Arrival": "BKK",
+     "FlexNextLeg": [
+      {
+       "@type": "FlexNextLeg",
+       "departureDate": "2026-03-27"
+      }
+     ],
+     "Brand": [
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b2"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b3"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b4"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b5"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b6"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b7"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b8"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b9"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b10"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b11"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b12"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b13"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b14"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b15"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b16"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b17"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b18"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b19"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b20"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b21"
+      },
+      {
+       "@type": "BrandID",
+       "BrandRef": "f1b22"
+      }
+     ],
+     "ProductBrandOptions": [
+      {
+       "@type": "ProductBrandOptions",
+       "flightRefs": [
+        "f1s19"
+       ],
+       "ProductBrandOffering": [
+        {
+         "@type": "ProductBrandOffering",
+         "Brand": {
+          "@type": "BrandID",
+          "BrandRef": "f1b2"
+         },
+         "Product": [
+          {
+           "@type": "ProductID",
+           "productRef": "f1p4"
+          }
+         ],
+         "TermsAndConditions": {
+          "@type": "TermsAndConditionsID",
+          "termsAndConditionsRef": "f1T4"
+         },
+         "CombinabilityCode": [
+          "f1j3"
+         ],
+         "BestCombinablePrice": {
+          "@type": "BestCombinablePriceDetail",
+          "CurrencyCode": {
+           "decimalPlace": 0,
+           "value": "RUB"
+          },
+          "Base": 23040,
+          "TotalTaxes": 8338,
+          "TotalFees": 0,
+          "TotalPrice": 31378,
+          "PriceBreakdown": [
+           {
+            "@type": "PriceBreakdownAir",
+            "quantity": 1,
+            "requestedPassengerType": "ADT",
+            "Amount": {
+             "@type": "Amount",
+             "CurrencyCode": {
+              "decimalPlace": 0,
+              "value": "RUB"
+             },
+             "Base": 23040,
+             "Taxes": {
+              "@type": "TaxesDetail",
+              "TotalTaxes": 8338,
+              "Tax": [...]
+             },
+             "Fees": {
+              "@type": "FeesDetail",
+              "TotalFees": 0
+             },
+             "Total": 31378
+            }
+           }
+          ]
+         },
+         "ContentSource": "GDS"
+        }
+       ]
+      }
+     ]
+    }]
+  },
+  "Result": {...},
+  "ReferenceList": [...]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="nextleg"></a>Next Leg Search API</h2>
+                                        <p>If you request a <a href="#journeyleg">leg-based search</a>, the Search response returns offers for only the outbound leg of the itinerary. You must then use the Next Leg Search API to return offers for the next leg of the trip. </p>
+                                        <div class="noteNote">Note that any applicable modifiers or indicators sent in the Search request carry over to the Next Leg Search request and are not re-sent. </div>
+                                        <h3><a name="nextlegreq"></a>Next Leg Search Request</h3>
+                                        <p> The <a href="APIRef_NextLegSearch.html">Next Leg Search request</a> sends a payload with several identifiers from the preceding Search response:&#160;an identifier for the search response as a whole, plus identifiers for the offer and product you want to select from that search result for the first leg of the trip. Next Leg Search uses the itinerary details and any modifiers sent in the initial Search request to return offers for the next leg of the itinerary.</p>
+                                        <h5>Multi-city Itineraries</h5>
+                                        <p>For a multi-city itinerary, send a Search request for the first leg, a Next Leg Search for the second leg, and another Next Leg Search request for the third leg. In this case, for the second Next Leg Search request, send identifiers from the preceding Next Leg Search request instead of the Search request. </p>
+                                        <p>GDS supports searching for up to six O&amp;D&#160;pairs (legs of the itinerary) while three are supported for NDC.</p>
+                                        <p>For example, a search for an itinerary from DEN &gt;&#160;LAX, LAX &gt; ATL, and ATL &gt; DEN would use this workflow:</p>
+                                        <ol>
+                                            <li value="1">Leg-based Search request with one instance of SearchCriteriaFlight for DEN &gt;&#160;LAX.</li>
+                                            <li value="2">Next Leg Search request for LAX &gt; ATL that sends identifiers for the response, selected offer, and selected product from the Search response from step 1.</li>
+                                            <li value="3"> Next Leg Search request for ATL &gt; DEN that sends identifiers for the response, selected offer, and selected product from the Next Leg Search response  from step 2.</li>
+                                        </ol>
+                                        <h3><a name="nextlegsearchresp"></a>Next Leg Search Response</h3>
+                                        <p>The Next Leg Search response returns offers that can be combined with the offer and product selected for the preceding leg of the itinerary and sent in the Next Leg Search request.</p>
+                                        <p>The responses for Search, Next Leg Search, and Flight Specific Search share the same structure per <a href="#basicrsp">Search Responses</a> below.</p>
+                                        <div class="noteNote">In the Next Leg Search response, the first instance of CatalogProductOffering  is the offer and product sent in the Next&#160;Leg Search request. <i>This is the selected offer and product for the first leg.</i> This first instance of CatalogProductOffering does not return upsells, as the leg and fare have already been selected.</div>
+                                        <p>Each instance of CatalogProductOffering with ids o2 and higher may return multiple brands, if upsells were requested in the Search request. Usually the first instance is the lowest fare and additional instances are the available upsell fares. </p>
+                                        <p>The Next Leg Search response includes <a href="#combinability">combinability codes</a>, which should be ignored.  The selected offer and product for the first leg is combinable with each instance of CatalogProductOffering with ids o2 and higher.</p>
+                                        <p>After all instances of CatalogProductOffering, a <b>ReferenceList</b> object consolidates details across all itineraries using the same structure as in the Search response.</p>
+                                        <h2><a name="fss"></a>Flight Specific Search API</h2>
+                                        <div class="noteNote">GDS&#160;only, not supported for NDC.</div>
+                                        <p>The Flight Specific Search API retrieves additional filed fares for any selected offer and product in a preceding Search or Next Leg Search response. (Search and Next Leg Search return a maximum of 4 upsells for an offer.)</p>
+                                        <h3><a name="fssrep"></a>Flight Specific Search Request</h3>
+                                        <p> The Flight Specific Search request can be sent as either: </p>
+                                        <ul>
+                                            <li>a <a href="APIRef_FlightSpecificRefPayload.html">reference payload request</a> that sends an identifier for a preceding response, plus identifiers for the offer and the product/s to return additional upsells for. </li>
+                                            <li>a <a href="APIRef_FlightSpecificFullPayload.html">full payload request</a>, which sends all itinerary details without a reference to a preceding search response. </li>
+                                        </ul>
+                                        <p>In the request, set <b>maximumNumberOfUpsellsToReturn</b> up to the maximum allowable value of 99 (effectively, all upsells filed) to return additional filed fares for that product. </p>
+                                        <h3><a name="fssresp"></a>Flight Specific Search Response</h3>
+                                        <p>The responses for Search, Next Leg Search, and Flight Specific Search share the same structure per <a href="#basicrsp">Search Responses</a> below.</p>
+                                        <h2><a name="basicrsp"></a>Search Responses (all Search APIs)</h2>
+                                        <p>The Search, Next Leg Search, and Flight Specific Search responses use the same structure and return the following primary objects:</p>
+                                        <ul>
+                                            <li><b>CatalogProductOfferings:</b> Information about the offers available for each leg. Each offer includes a price, and reference numbers for the product, brand, and terms and conditions in that offer available at that price. </li>
+                                            <li><b>ReferenceList</b>: Details about the flights, products, brands, and terms and conditions that make up each offer. </li>
+                                            <li><b>Result</b>: Any error or warning messages (not represented in the diagram below).</li>
+                                        </ul>
+                                        <p style="font-weight: bold;">Key points for all search API responses: </p>
+                                        <ul>
+                                            <li>Responses consolidate common details into the <a href="#referencelist">ReferenceList</a> object to reduce response time: <ul><li>Multiple offers are likely to include the same flights, products, terms and conditions, and brands in various combinations. Instead of repeating all details in every offer, the offer instead returns a price at which a specific product is available for a specific brand at a set of terms and conditions. A product is a flight or connecting flights and an associated service level.</li><li>Each offer returns cross references to the product, brand, and terms and conditions that make up that offer. Products return cross-reference to the flights included that product. These references match to the flights, products, terms and conditions, and brands in ReferenceList. </li><li>For more about offers and the Search response structure, see <a href="../General/AirAPIsGuide.html#offers">Offers in the <span class="mc-variable General.Product variable">JSON</span> APIs</a> in the <span class="mc-variable General.Product variable">JSON</span> <span class="mc-variable General.AirAPI variable">Air</span> APIs Guide.</li></ul></li>
+                                            <li>Responses always return details about <a href="#branded-upsells">branded fares</a>, if filed by the airline.</li>
+                                            <li>Responses include <a href="#combinability">combinability details</a> for the product combinations create the lowest fare possible for that combination.</li>
+                                            <li>Responses return <a href="#branded-upsells">upsells</a> if requested with <b><a href="#requpsell">maxNumberOfUpsellsToReturn</a></b>.</li>
+                                            <li>NDC&#160;content is returned only if requested with <a href="#reqndccontent">contentSourceList</a>.</li>
+                                        </ul>
+                                        <h3><a name="combinability"></a>CombinabilityCode and BestCombinablePrice</h3>
+                                        <p>To assist in combining products for round-trip and multi-city itineraries (a product is one leg of the itinerary), the Search response returns for each product a CombinabilityCode that identifies which products combine for the lowest price available. This lowest price is returned in BestCombinablePrice. </p>
+                                        <p>For example, on a round-trip search, if product p6 on the outbound leg and product p24 on the inbound leg both have a CombinabilityCode value of j2, you can select these two products for the price returned in BestCombinablePrice, which lists the base fare, taxes, and total price for the combined itinerary. If more than two products have the same CombinabilityCode value, then any outbound/inbound combination of those products are available at the same price.</p>
+                                        <p>CombinabilityCode formats start with the letter <i>j</i> and a number, as in <i>j1</i>, <i>j2</i>, and so on.&#160;Exceptions are as follows:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Per <a href="#priceupdate">Multi-city Offers with Stopovers</a> below, the letter <i>c</i> is added to CombinabilityCode formats to identify multi-city offers with a stopover, as in <i>jc1</i>, <i>jc2</i>, and so on. </p>
+                                            </li>
+                                            <li>
+                                                <p>In the response for any type of <a href="#flex">Premium Flex Search</a>, CombinabilityCode values start with the letter <i>f</i> and a number, as in <i>f1j0</i>, <i>f1j1</i>, and so on.</p>
+                                            </li>
+                                        </ul>
+                                        <div class="noteNote">
+                                            <p>One-way responses return CombinabilityCode for consistency but this data has no use and should be ignored. The price in BestCombinablePrice applies to the one-way itinerary.</p>
+                                        </div>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Response excerpt with combinability details</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>In this example excerpt, product p5 can be combined with any other product that has a CombinabilityCode of j2 for the lowest available price of 1344 HKD. </p><pre class="line-numbers" xml:space="preserve"><code class="language-json">
+                  "Brand": {
+                    "@type": "Brand",
+                    "BrandRef": "b0"
+                  },
+                  "Product": [
+                    {
+                      "@type": "Product",
+                      "productRef": "p5"
+                    }
+                  ],
+                  "TermsAndConditions": {
+                    "@type": "TermsAndConditionsAir",
+                    "termsAndConditionsRef": "T3"
+                  },
+                  "CombinabilityCode": [
+                    "j2"
+                  ],
+                  "BestCombinablePrice": {
+                    "@type": "BestCombinablePriceDetail",
+                    "CurrencyCode": {
+                      "decimalPlace": 0,
+                      "value": "HKD"
+                    },
+                    "Base": 1040,
+                    "TotalTaxes": 304,
+                    "TotalPrice": 1344,
+                    "PriceBreakdown": [
+                      {
+                        "@type": "PriceBreakdownAir",
+                        "quantity": 1,
+                        "requestedPassengerType": "ADT",
+                        "Amount": {
+                          "CurrencyCode": {
+                            "decimalPlace": 0,
+                            "value": "HKD"
+                          },
+                          "Base": 1040,
+                          "Taxes": {
+                            "@type": "TaxesDetail",
+                            "TotalTaxes": 304,
+                            "Tax": [
+                              {
+                                "taxCode": "AY",
+                                "value": 88
+                              },
+                              {
+                                "taxCode": "US",
+                                "value": 78
+                              },
+                              {
+                                "taxCode": "XF",
+                                "value": 70
+                              },
+                              {
+                                "taxCode": "ZP",
+                                "value": 68
+                              }
+                            ]
+                          },
+                          "Total": 1344
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+ ... </code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a name="priceupdate"></a>Multi-city Offers with Stopovers (price details in BestCombinablePrice only)</h3>
+                                        <div class="noteWarning">For both GDS and NDC content in all search responses, ProductBrandOffering no longer returns the Price object.  All customers must update their code to validate pricing in ProductBrandOffering/BestCombinablePrice, not Price. You can opt out of this change by contacting your Travelport representative. If so, multi-city offers with stopovers will not be returned for your PCC, and all offers will continue to return both Price and BestCombinablePrice.</div>
+                                        <p>With Air Offer 25.11.51.3 and later, for GDS&#160;only, all search responses support returning multi-city offers with stopovers when available. This enables the return of lower fares and additional itinerary options. Such multi-city offers are identified by CombinabilityCode values using the new format <i>jc</i> instead of <i>j</i>, as in jc1, jc2, and so on. </p>
+                                        <p>For example, if a traveler wants to fly from BRU &gt; NYC &gt; SFO &gt; BRU, the request has three legs: BRU &gt; NYC, followed by NYC &gt; SFO, and ending with SFO &gt; BRU. An example multi-city with a stopover would be a round trip fare BRU &gt; SFO &gt; BRU with a stopover in NYC. </p>
+                                        <p>As part of this change, all offers in all search responses no longer return price details in both ProductBrandOffering/Price and ProductBrandOffering/BestCombinablePrice. Instead, ProductBrandOffering returns pricing only in BestCombinablePrice, and no longer returns the Price object. This applies to all Search, Next Leg Search, and Flight Specific Search responses. Although multi-city offers are not returned for split ticketing, ProductBrandOffering/Price has also been removed from split ticketing offers.</p>
+                                        <p>Although multi-city offers with stopovers are not supported for NDC, ProductBrandOffering/Price has also been removed from NDC offers.</p>
+                                        <p>To summarize, for all offers in all search responses:</p>
+                                        <ul>
+                                            <li>
+                                                <p>The Price object is no longer returned (ProductBrandOffering/<b>Price</b>).</p>
+                                            </li>
+                                            <li>
+                                                <p>The BestCombinablePrice object continues to return pricing information for the offer (ProductBrandOffering/<b>BestCombinablePrice</b>). The structure of BestCombinablePrice is unchanged.</p>
+                                            </li>
+                                            <li>
+                                                <p>For GDS only, multi-city offers with stopovers are returned when available. BestCombinablePrice returns surcharges and commission amounts when applicable in the Surcharges and Commission objects; these are for the entire journey.  For all other offers, the surcharges and commission amounts are for each leg (origin and destination pair) of the journey. </p>
+                                            </li>
+                                            <li>
+                                                <p>A multi-city offer can be identified by the <i>jc</i> in its CombinabilityCode: <i>jc1</i>, <i>jc2</i>, and so on. The CombinabilityCode for other offers starts with only <i>j</i>, as in  <i>j1</i>, <i>j2</i>, and so on.</p>
+                                            </li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example  ProductBrandOffering format</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>All search responses return offers in the following format with Air Offer 25.11.51.3 and later. </p>
+                                                    <div><pre class="line-numbers" xml:space="preserve"><code class="language-json">...{
+ "@type": "ProductBrandOffering",
+ "Brand": {
+  "@type": "BrandID",
+  "BrandRef": "b0"
+ },
+ "Product": [
+  {
+   "@type": "ProductID",
+   "productRef": "p0"
+  }
+ ],
+ "TermsAndConditions": {
+  "@type": "TermsAndConditionsID",
+  "termsAndConditionsRef": "T0"
+ },
+ "CombinabilityCode": [
+  "jc1"
+ ],
+ "BestCombinablePrice": {
+  "@type": "BestCombinablePriceDetail",
+  "CurrencyCode": {
+   "decimalPlace": 0,
+   "value": "HKD"
+  },
+  "Base": 12920,
+  "TotalTaxes": 720,
+  "TotalFees": 0,
+  "TotalPrice": 13640,
+  "PriceBreakdown": [
+   {
+    "@type": "PriceBreakdownAir",
+    "quantity": 1,
+    "requestedPassengerType": "ADT",
+    "Amount": {
+     "@type": "Amount",
+     "CurrencyCode": {
+      "decimalPlace": 0,
+      "value": "HKD"
+     },
+     "Base": 12920,
+     "Taxes": {
+      "@type": "TaxesDetail",
+      "TotalTaxes": 720,
+      "Tax": [
+       {
+        "taxCode": "JD",
+        "value": 178
+       },
+       {
+        "taxCode": "OG",
+        "value": 6
+       },
+       {
+        "taxCode": "QV",
+        "value": 31
+       },
+       {
+        "taxCode": "DY",
+        "value": 117
+       },
+       {
+        "taxCode": "HW",
+        "value": 388
+       }
+      ]
+     },
+     "Fees": {
+      "@type": "FeesDetail",
+      "TotalFees": 0
+     },
+     "Total": 13640
+    },
+    "FareCalculation": "MAD LA LIM LA AQP M808.51LLEKM00R /-CUZ LA X/LIM LA MAD M808.51LLEKM00R NUC1617.02END ROE0.915261"
+   }
+  ]
+ }
+}...</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a name="referencelist"></a>Consolidated Details for Products, Flights, Brands, and Terms (ReferenceList)</h3>
+                                        <p>The ReferenceList object consolidates common information across the offers in CatalogProductOffering. ReferenceList is an array that returns one instance each of four types:</p>
+                                        <ul>
+                                            <li>
+                                                <p><b>ReferenceListFlight</b> includes the Flight array. Each instance returns one flight with a&#160;unique internal ID (FlightRef, numbered as in <i>s1</i> or <i>QFs1</i>) and the flight number, carrier, equipment, etc.</p>
+                                            </li>
+                                            <li>
+                                                <p><b>ReferenceListProduct</b>  includes the Product array. Each instance returns one product:<ul><li>A product is the flight/s that make up one leg of an itinerary.</li><li>Product does not include flight details but does list a FlightRef IDs for each flight in that product.</li><li>Each Product has a unique internal ID (ProductRef, e.g., <i>p12</i> or <i>QFp12</i>). </li><li>For each PTC type requested, Product returns the class of service, cabin, fare basis code, and fare type information as well as the brand identifier if it is a branded fare. </li></ul></p>
+                                            </li>
+                                            <li>
+                                                <p><b>ReferenceListTermsAndConditions</b>  includes the TermsAndConditions array. Each instance returns one set of terms and conditions (T&amp;C):<ul><li>T&amp;C include fare rules, baggage allowance, last date/time to book and ticket, etc. </li><li>Each has a unique internal ID (TermsAndConditionsRef, e.g., <i>t8</i> or <i>SQt8.</i></li><li>Each set of terms and conditions applies to one or more products. </li><li>Includes a list of ProductRef ids to which that set of T&amp;C applies.</li></ul></p>
+                                            </li>
+                                            <li>
+                                                <p><b>ReferenceListBrand</b>  includes the Brand array. Each instance returns details for one brand:<ul><li>Details include brand name, tier (tier not supported for NDC), and brand attributes (such as carry-on baggage, checked baggage, wifi)&#160;and whether  each attribute is included in the fare.</li><li>Unique internal brand identifier (e.g., <i>b44</i> or <i>AAb44</i>). </li></ul></p>
+                                            </li>
+                                        </ul>
+                                        <h3><a name="branded-upsells"></a><a name="brandattributes"></a>Brand Attributes</h3>
+                                        <p>The Search APIs return <b class="Brand4">brand attributes</b> that describe what is included in the brand. The <b>BrandAttribute</b>object is an array of the classification and inclusion key value pairs. Classification tells you what the feature is, and inclusion tells you whether that feature is available:</p>
+                                        <ul>
+                                            <li><b>classification:</b>
+                                                <ul>
+                                                    <li>CarryOn</li>
+                                                    <li>Refund</li>
+                                                    <li>Meals</li>
+                                                    <li>Rebooking</li>
+                                                    <li>CheckedBag</li>
+                                                    <li>SeatAssignment</li>
+                                                    <li>WiFi
+</li>
+                                                    <li>PremiumSeat</li>
+                                                    <li>LieFlatSeat</li>
+                                                    <li>PersonalItem</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li><b>inclusion:</b>
+                                                <ul>
+                                                    <li>Included: Attribute  included at no additional charge.</li>
+                                                    <li>Chargeable: Attribute can be purchased at an additional cost.</li>
+                                                    <li>NotOffered:&#160;Attribute is not available for a flight.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />See Example Response excerpt for ReferenceListBrand/Brand</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>In this example excerpt for brand id b0, several features are included while rebooking and refunds are available at charge per the terms and conditions. </p><pre class="line-numbers" xml:space="preserve"><code class="language-json">
+        "Brand": [
+          {
+            "@type": "Brand",
+            "name": "Red eDeal",
+            "tier": 1,
+            "shelfNumbers": [],
+            "id": "b0",
+            "Identifier": {
+              "value": "1125969"
+            },
+            "BrandAttribute": [
+              {
+                "@type": "BrandAttribute",
+                "classification": "CarryOn",
+                "inclusion": "Included"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "Meals",
+                "inclusion": "Included"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "LieFlatSeat",
+                "inclusion": "Included"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "PremiumSeat",
+                "inclusion": "Included"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "SeatAssignment",
+                "inclusion": "Included"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "Rebooking",
+                "inclusion": "Chargeable"
+              },
+              {
+                "@type": "BrandAttribute",
+                "classification": "Refund",
+                "inclusion": "Chargeable"
+              }
+            ],
+  </code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>In addition to the standard brand attributes above, the following additional brand attributes are returned in Brand/AdditionalBrandAttribute for any brand that has them: </p>
+                                        <ul>
+                                            <li>
+                        ChauffeurTransfer
+                    </li>
+                                            <li>
+                        ExtraLegroom
+                    </li>
+                                            <li>
+                        InFlightEntertainment
+                    </li>
+                                            <li>
+                        LoungeAccess
+                    </li>
+                                            <li>
+                        PriorityBaggage
+                    </li>
+                                            <li>
+                        PriorityBoarding
+                    </li>
+                                            <li>
+                        PriorityCheckIn
+                    </li>
+                                            <li>
+                        PrioritySecurity
+                    </li>
+                                            <li>
+                        PriorityServices
+                    </li>
+                                            <li>
+                        MileageAccrual
+                    </li>
+                                            <li>
+                        Upgrades
+                    </li>
+                                            <li>
+                        USB</li>
+                                        </ul>
+                                        <p>The Search API provides modifiers that affect how brands are returned:</p>
+                                        <ul>
+                                            <li>ProductInclusionPreference:  Limits the offerings returned to <i>only</i> fares that include the specified brand attributes. The response also returns information about other brand attributes, which may be included, chargeable, or not offered. GDS&#160;only; not supported for NDC.</li>
+                                            <li>BrandAttributeInclusion: Returns information about only the specified brand attributes and does <i>not</i> return any other brand attributes for those fares. The specified brand attributes returned may be included, chargeable, or not offered.</li>
+                                            <li>AdditionalClassification:&#160;Filters out specified additional brand attributes from the response.</li>
+                                        </ul>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Request excerpt for ProductInclusionPreference</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following SearchModifiersAir excerpt uses ProductInclusionPreference to request only fares that include a checked bag, seat assignment, and carry-on bag. The response still returns other brand attributes for that fare, which may be included, chargeable, or not offered. </p><pre class="line-numbers" xml:space="preserve"><code class="language-json">
+...
+   "SearchModifiersAir": {
+      "@type": "SearchModifiersAir",
+      "ProductInclusionPreference": [
+         {
+            "Classification": [
+               "CheckedBag",
+               "SeatAssignment",
+               "CarryOn"
+            ]
+         }
+  ...
+  </code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a name="ccl"></a>Merged GDS and NDC Offers (Content Curation Layer)</h3>
+                                        <p>If the response includes offers for the same itinerary at the same price from GDS and NDC sources, Search combines those offers into a single merged offer to avoid duplication.  CCL merges offers by comparing flights based on the following:</p>
+                                        <ol>
+                                            <li value="1">
+                                                <p>Carrier/airline </p>
+                                            </li>
+                                            <li value="2">
+                                                <p>Flight number/s</p>
+                                            </li>
+                                            <li value="3">
+                                                <p>Fare brand/s</p>
+                                            </li>
+                                            <li value="4">
+                                                <p>Total price including taxes, fees, and surcharges where known</p>
+                                            </li>
+                                        </ol>
+                                        <p>A merged offer returns a CatalogProductOffering/id value that combines the standard GDS and NDC id numbers. For example, if a GDS offer that has id <i>03</i> is merged with an NDC offer that has id <i>UA_CPO0</i>, the merged id is <i>03-UA_CPO0</i>. </p>
+                                        <p>Customers must request both GDS and NDC&#160;content with CatalogProductOfferingsRequest/contentSourceList in the request to receive merged offers. Search continues to provide content unique to NDC or GDS as it currently does.</p>
+                                        <p>Future releases will expand on the above list to include more detailed assessment of attributes and additional business rules to determine what offers should be returned and under what conditions. </p>
+                                        <div class="noteNote">All search responses for all customers merge duplicate GDS and NDC offers and remove the duplicated offers. If you would like to opt out of this duplication removal feature, in which case your Search responses may contain duplicate GDS and NDC content, contact your Travelport representative.</div>
+                                        <h2><a name="workflow"></a>Search Workflows</h2>
+                                        <p>You can combine the Search APIs into various workflows, determined by whether you want more upsells, and whether you want the initial Search to return offers for all legs of the itinerary ( a journey-based search) or only the first leg (a leg-based search). A leg-based search must be followed by a Next&#160;Leg Search to return offers on the subsequent leg of the itinerary. For a leg-based, multi-city itinerary you would send Next Leg Search again for the third leg, and so on for additional legs (not shown below).</p>
+                                        <p>To set whether the search is journey- or leg-based, send <a href="APIRef_Search.html#searchrepresentation">SearchRepresentation</a> with the value <i>Leg</i> for a leg-based search or <i>Journey</i> for a journey-based search. If SearchRepresentation is not sent, the default is a journey-based response. This setting does not apply to one-way searches and is ignored if sent for one-way.</p>
+                                        <p>To request upsells in the initial Search response, send <a href="APIRef_Search.html#upsellrequest">maxNumberOfUpsellsToReturn</a> to return up to 4 upsells. For more, you can add the Flight&#160;Specific Search API to the workflow. Flight Specific Search is an optional request to return up to 99 upsells (up to as many as the carrier has filed), for any <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term14">leg<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>The flight or connecting flights between one origin and destination pair. For example, on a round-trip flight, LAX &gt; MSP could be the first leg (aka outbound leg) and MSP &gt; DEN &gt; LAX could be the second leg (aka inbound leg). The  APIs use the term product for one leg of the itinerary.</span></a> or <a href="#" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open glossaryTerm glossaryTermPopup MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup" glossTerm="JSONAPIGlossary.Term5">offer<img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"> </span>In the  Search APIs, an offer is a product available at a specific price under a set of terms and conditions. An offer includes the flight or connecting flights for one leg of the itinerary, plus a service level that includes the cabin class and any fare codes that may apply. At booking, the selected offer from the Search response - including the flight/s, service level, price, terms and conditions, and brand if applicable - is converted into a single Offer object that is subsequently returned for that booking.</span></a> returned in a preceding Search or Next Leg Search.</p>
+                                        <p>Note that you can send Flight Specific Search any time in the workflow after the initial search, and you can send it multiple times. For example, in the last diagram below, you could send Flight Specific Search after Search, either in addition to or instead of sending it after Next Leg Search. Sending Flight Specific Search after the first search allows you consider upsells before requesting options in your Next Leg Search.</p>
+                                        <p>Each box in the diagram represents one API call in the workflow.</p>
+                                        <p> <img src="../Workflows/Search_workflows.jpg" style="max-width: 60%;" /></p>
+                                        <h2><a name="dia"></a>Search Request and Response Layout Diagrams</h2>
+                                        <p>The following overview diagrams illustrates the basic structure of the requests and responses for the search APIs. These diagrams don't include every object that might be returned, and diagrams may not reflect minor updates.  </p>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <div class="noteNote">For each leg, the search responses combine a flight or connecting flights into a product available at a specific price and terms and conditions - this is called an <b class="Brand4">offer</b>. Be sure to see the detailed discussion of <a href="../General/AirAPIsGuide.html#offers">Offers in the <span class="mc-variable General.Product variable">JSON</span> APIs</a> to understand the structure of the Search API responses.</div>
+                                        <h3><a name="diasearch"></a>Search Request Diagram </h3>
+                                        <p>The following diagram shows the high-level objects in the Search request.</p>
+                                        <p>
+                                            <img src="../Workflows/LayoutDiagrams/SearchReq.jpg" />
+                                        </p>
+                                        <h3><a name="dianextleg"></a>Next Leg Search Request Diagram </h3>
+                                        <p>The following diagram shows the high-level objects in the Next Leg Search request.</p>
+                                        <p>
+                                            <img src="../Workflows/LayoutDiagrams/NextLegSearchReq.jpg" />
+                                        </p>
+                                        <h3><a name="diaflightspecific"></a>Flight Specific Search Request Diagram </h3>
+                                        <p>The following diagram shows the high-level objects in the Flight Specific Search request.</p>
+                                        <p>
+                                            <img src="../Workflows/LayoutDiagrams/FlightSpecificSearchReq.jpg" />
+                                        </p>
+                                        <h3><a name="diarsp"></a>Search Response Diagram </h3>
+                                        <p>The following overview diagrams illustrates the basic structure used in all search responses. Differences are noted above in the individual sections for each API.</p>
+                                        <p>
+                                            <img src="../Workflows/LayoutDiagrams/SearchResp.jpg" />
+                                        </p>
+                                        <h2><a name="availability"></a><span class="mc-variable General.AirAPI variable">Air</span> Availability API</h2>
+                                        <p>The <span class="mc-variable General.Product variable">JSON</span> <a href="APIRef_AirAvailability.html"><span class="mc-variable General.AirAPI variable">Air</span> Availability API</a> returns scheduled flights between a specified city pair on a specified day and time and indicates whether seats are available on those flights.  This offers corporate accounts a single source of air availability data for GDS content and reduces sell failures at book. The response does not include pricing information.</p>
+                                        <p>An <span class="mc-variable General.AirAPI variable">Air</span> Availability request can be followed by either pricing or booking:</p>
+                                        <ul>
+                                            <li>
+                                                <p>To price an itinerary from the <span class="mc-variable General.AirAPI variable">Air</span> Availability response before booking, send an <a href="../Price/APIRef_AirPriceFullPayload.html">AirPrice full payload</a> request.</p>
+                                            </li>
+                                            <li>
+                                                <p>To book an itinerary from the <span class="mc-variable General.AirAPI variable">Air</span> Availability response, start a <a href="../Workbench/APIRef_WorkbenchNewCreate.html">workbench session</a> and use the <a href="../Book/APIRef_AddOfferFullPayload.html">Add Offer full payload request</a> to add an offer to the workbench. Optionally, you can price or build a manual fare during booking with the <a href="../Book/APIRef_AutoPrice-ManualFare.html">AutoPrice/Manual Fares API</a>. </p>
+                                            </li>
+                                        </ul>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> Availability request at a minimum requires SearchCriteriaFlight. SearchCriteriaFlight specifies availability details such as departure date and time or arrival date and time, and location of departure and arrival. Best practice when sending an arrival date is to also send the arrival time.  Sending both departure date and arrival date is not supported; if an arrival date is sent, the departure date is ignored.</p>
+                                        <p><span class="mc-variable General.AirAPI variable">Air</span> Availability supports the following optional search modifiers; no other search modifiers and no pricing modifiers are supported:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Carrier preferences: Permit only one or more airlines. Preferred and prohibited carrier preferences are not supported.</p>
+                                            </li>
+                                            <li>
+                                                <p>Connection preferences: Permit only or prohibit one or more cities or airports. Sending both permitted and prohibited connection preferences for one Origin and Destination is not supported.  Preferred connection preference is not supported.</p>
+                                            </li>
+                                        </ul>
+                                        <p>The <span class="mc-variable General.AirAPI variable">Air</span> Availability response includes the following information.</p>
+                                        <ul>
+                                            <li>
+                                                <p>CatalogProductOfferings: One instance for each leg, including an array of the products available on that leg.</p>
+                                            </li>
+                                            <li>
+                                                <p>ReferenceListFlight: Details for each flight including arrival and departure times, flight number, duration, etc. When applicable, includes the OperationalStatus of the flight (Flight Cancelled, FlightDeparted, FlightPastScheduledDeparture, FlightBoarding, NotAvailableUseSearch).</p>
+                                            </li>
+                                            <li>
+                                                <p>ReferenceListProduct: Details for each product. Includes ClassOfServiceAvailability, which defines the class of service, the number of seats available for the class of service, and the status of the class of service (e.g., Available).  If there are no seats available for a class of service, the status can be Not Available, Request, Waitlist, Waitlist Closed.</p>
+                                            </li>
+                                        </ul>
+                                        <p>Additional information:</p>
+                                        <ul>
+                                            <li>
+                                                <p>Not supported for NDC content.</p>
+                                            </li>
+                                            <li>
+                                                <p>Not supported for low cost carriers such as 6E (IndiGo) and FR (Ryan Air).</p>
+                                            </li>
+                                            <li>
+                                                <p>When availability for a direct flight making one or more stops between the origin and destination is returned, the <span class="mc-variable General.AirAPI variable">Air</span> Availability response returns FlightDetail/stops with the number of stops. Air Availability does not return IntermediateStop as does Search.</p>
+                                            </li>
+                                            <li>
+                                                <p>Caching is not supported. All subsequent requests for offers returned in <span class="mc-variable General.AirAPI variable">Air</span> Availability must be full payload requests. </p>
+                                            </li>
+                                            <li>
+                                                <p>When no classes of service are returned for a flight, or the flight status is unknown, the response returns OperationalStatus with the value <i>NotAvailableUseSearch</i>.</p>
+                                            </li>
+                                            <li>
+                                                <p>Sending departureTime or arrivalTime with "00:00:00" is not supported.  An error is returned.</p>
+                                            </li>
+                                        </ul>
+                                        <p>&#160;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Search/AirShoppingGuide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:36:46 GMT -->
+</html>

@@ -1,0 +1,1304 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ExchangeEligibility",
+    "version": "11.11.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.pp.travelport.com/11/eligibility"
+    },
+    {
+      "url": "https://api.travelport.com/11/eligibility"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "paths": {
+    "/ticketchangeeligibilities": {
+      "get": {
+        "tags": [
+          "Search Exchange Eligibility"
+        ],
+        "summary": "Verify exchange eligibility",
+        "description": "The Eligibility API is the first step in the GDS exchange workflow. Eligibility returns information about whether a ticket may have value in an exchange or refund scenario, and the range of potential exchange and refund fees. This information relates only to fees and not any fare or tax difference for the itinerary.",
+        "operationId": "GetEligibility",
+        "parameters": [
+          {
+            "name": "Locator",
+            "in": "query",
+            "description": "The identifier used to retrieve a Reservation from an internal or external source",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            },
+            "example": "ABC123"
+          },
+          {
+            "name": "authority",
+            "in": "query",
+            "description": "Name of the authoritative system that created this guid",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            },
+            "example": "Travelport"
+          },
+          {
+            "name": "Ticket",
+            "in": "query",
+            "description": "The identifier used to retrieve a Ticket from an internal or external source",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "maxLength": 128,
+              "type": "string"
+            },
+            "example": 1259900123456
+          },
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 0,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 89,
+              "minLength": 10,
+              "pattern": "(^[a-zA-Z-0-9_]*[-]?[+]?$)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 36,
+              "minLength": 36,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Successful Response - 200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketChangeEligibilityListResponseWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TicketChangeEligibilityListResponseWrapper": {
+        "properties": {
+          "TicketChangeEligibilityListResponse": {
+            "$ref": "#/components/schemas/TicketChangeEligibilityListResponse"
+          }
+        }
+      },
+      "TicketChangeEligibilityListResponse": {
+        "properties": {
+          "TicketChangeEligibility": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TicketChangeEligibility"
+            }
+          }
+        }
+      },
+      "TicketChangeEligibility": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TicketChangeEligibilityID"
+          },
+          {
+            "properties": {
+              "exchangeable": {
+                "$ref": "#/components/schemas/AllSomeNoneEnum"
+              },
+              "refundable": {
+                "$ref": "#/components/schemas/AllSomeNoneEnum"
+              },
+              "Penalties": {
+                "$ref": "#/components/schemas/Penalties"
+              },
+              "PassengerTypeCode": {
+                "maxLength": 5,
+                "minLength": 3,
+                "pattern": "([a-zA-Z0-9]{3,5})",
+                "type": "string",
+                "description": "Pessanger Type Code",
+                "example": "ADT"
+              },
+              "automationNotSupportedInd": {
+                "type": "boolean",
+                "description": "automation process not supported for this eligibility"
+              }
+            }
+          }
+        ]
+      },
+      "TicketChangeEligibilityID": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TicketChangeEligibility"
+          },
+          "objID": {
+            "type": "string"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "Identifier": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string",
+            "example": "A0656EFF-FAF4-456F-B061-0161008D7C4E"
+          },
+          "authority": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Name of the authoritative system that created this Guid",
+            "example": "TVPT"
+          }
+        },
+        "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database."
+      },
+      "AllSomeNoneEnum": {
+        "type": "string",
+        "description": "Used to indicate if all, some, or none of the ticket can be exchanged or         refunded",
+        "enum": [
+          "All",
+          "Some",
+          "None"
+        ]
+      },
+      "Penalties": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Penalties"
+          },
+          "Change": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Change"
+            }
+          },
+          "Cancel": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Cancel"
+            }
+          },
+          "Waiver": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaiverEnum"
+            }
+          },
+          "PenaltySourceCode": {
+            "$ref": "#/components/schemas/PenaltySourceCode"
+          },
+          "PassengerTypeCodes": {
+            "type": "array",
+            "description": "The passenger type codes that this penalty applies to",
+            "example": [
+              "CHD",
+              "UMNR",
+              "CNN"
+            ],
+            "items": {
+              "maxLength": 5,
+              "minLength": 3,
+              "pattern": "([a-zA-Z0-9]{3,5})",
+              "type": "string"
+            }
+          },
+          "involuntaryInd": {
+            "type": "boolean",
+            "description": "Penalties apply for involuntary changes initiated by the airline",
+            "example": true
+          }
+        }
+      },
+      "Change": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ChangePermitted"
+          },
+          "ProductRefs": {
+            "type": "array",
+            "description": "The productRefs this change or cancel applies to",
+            "example": [
+              "baloon",
+              "food",
+              "accesories"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "SegmentSequence": {
+            "type": "array",
+            "description": "The SegmentSequence of the product this change or cancel applies to",
+            "example": [
+              34,
+              56,
+              678,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Cancel": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CancelPermitted"
+          },
+          "ProductRefs": {
+            "type": "array",
+            "description": "The productRefs this change or cancel applies to",
+            "example": [
+              "baloon",
+              "food",
+              "accesories"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "SegmentSequence": {
+            "type": "array",
+            "description": "The SegmentSequence of the product this change or cancel applies to",
+            "example": [
+              34,
+              56,
+              678,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "WaiverEnum": {
+        "type": "string",
+        "description": "Type of Waiver like Death of Pessanger,illness Of Passenger, Death of Immediate Family Member  etc",
+        "example": "TicketUpgrade",
+        "enum": [
+          "DeathOfPassenger",
+          "IllnessOfPassenger",
+          "DeathOfImmediateFamilyMember",
+          "IllnessOfImmediateFamilyMember",
+          "TicketUpgrade",
+          "ScheduleChange"
+        ]
+      },
+      "PenaltySourceCode": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "Properties of the penalty"
+          },
+          "codeContext": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Penalty source code context",
+            "example": "The context of the penalty source"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          }
+        ]
+      },
+      "BaseResponse": {
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId."
+          },
+          "traceId": {
+            "type": "string",
+            "description": "Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId."
+          },
+          "Result": {
+            "$ref": "#/components/schemas/Result"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          },
+          "NextSteps": {
+            "$ref": "#/components/schemas/NextSteps"
+          },
+          "ReferenceList": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReferenceList"
+            }
+          },
+          "CurrencyRateConversion": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyRateConversion"
+            }
+          }
+        }
+      },
+      "Result": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "Result"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResultStatusEnum"
+          },
+          "Error": {
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          },
+          "Warning": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          }
+        }
+      },
+      "ResultStatusEnum": {
+        "type": "string",
+        "description": "The status of an error or warning",
+        "enum": [
+          "Not processed",
+          "Incomplete",
+          "Complete",
+          "Unknown"
+        ]
+      },
+      "Error": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NameValuePair": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "value": {
+            "maxLength": 512,
+            "type": "string",
+            "example": "Sunday"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "6"
+          },
+          "name": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Key",
+            "example": "Day1"
+          }
+        },
+        "description": "Used for data stored in Name Value pairs"
+      },
+      "Warning": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NextSteps": {
+        "required": [
+          "NextStep",
+          "baseURI"
+        ],
+        "properties": {
+          "baseURI": {
+            "type": "string",
+            "description": "The base portion of the uri in order to shorten the uri's in the individual steps"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "5"
+          },
+          "NextStep": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NextStep"
+            }
+          }
+        }
+      },
+      "NextStep": {
+        "required": [
+          "action",
+          "method"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "www.resourcelocation.com"
+          },
+          "id": {
+            "type": "string",
+            "description": "Identifier for the Next Step",
+            "example": "2"
+          },
+          "action": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The action this next step is intended to achieve",
+            "example": "cancel"
+          },
+          "method": {
+            "$ref": "#/components/schemas/NextStepMethodEnum"
+          },
+          "description": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Additional clarification for the next step",
+            "example": "remove offer from the order"
+          }
+        },
+        "description": "A URL that describes a step that can be applied to the resource containing the next step structure."
+      },
+      "NextStepMethodEnum": {
+        "type": "string",
+        "description": "Describes the set of potential methods that can be taken after an operation.",
+        "enum": [
+          "GET",
+          "DELETE",
+          "PUT",
+          "POST"
+        ]
+      },
+      "ReferenceList": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ReferenceListFlight"
+          },
+          "id": {
+            "type": "string",
+            "description": "Uniquely identifies for the Reference List"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CurrencyRateConversion": {
+        "required": [
+          "ConversionRate",
+          "SourceCurrency",
+          "TargetCurrency"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "CurrencyRateConversion"
+          },
+          "SourceCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "TargetCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "ConversionRate": {
+            "$ref": "#/components/schemas/ConversionRate"
+          }
+        }
+      },
+      "CurrencyCode": {
+        "properties": {
+          "value": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code authority",
+            "example": "ISO 4217"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Currency code decimal place",
+            "format": "int32",
+            "example": 4
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "Currency codes are the three-letter alphabetic codes that represent the various currencies used throughout the world."
+      },
+      "ConversionRate": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float"
+          },
+          "rateAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Rate authority",
+            "example": "ISO 4217"
+          },
+          "rateAsOf": {
+            "type": "string",
+            "description": "Rate as of",
+            "format": "date-time"
+          }
+        },
+        "description": "A conversion metric from standard to another with the contextual authority such as IATA, OAG, ISO, etc."
+      },
+      "AmountPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "AmountPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "AmountPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CommissionEnum": {
+        "type": "string",
+        "description": "Type of commission",
+        "enum": [
+          "Full",
+          "Partial",
+          "Non-paying",
+          "No-show",
+          "Adjustment",
+          "Commissionable"
+        ]
+      },
+      "CurrencyAmount": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 124.56
+          },
+          "code": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "An ISO 4217 alpha character code that specifies a money unit",
+            "example": "USD"
+          },
+          "minorUnit": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Minor units are a mechanism for expressing the relationship between a major currency unit and its corresponding minor currency unit.",
+            "format": "int32",
+            "example": 2
+          },
+          "currencySource": {
+            "$ref": "#/components/schemas/CurrencySourceEnum"
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "True if the currency amount has been converted from the original amount",
+            "example": true
+          }
+        },
+        "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included."
+      },
+      "CurrencySourceEnum": {
+        "type": "string",
+        "description": "The system requesting or returning the currency code specified in the attribute",
+        "enum": [
+          "Supplier",
+          "Charged",
+          "Requested"
+        ]
+      },
+      "AmountPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FeeAmountOrPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "FeeAmountOrPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "CommissionAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "Commission": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Commission"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CommissionPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "PenaltyAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "Penalty": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PenaltyAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "PenaltyPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "CancelPermitted": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Cancel"
+          },
+          {
+            "required": [
+              "penaltyTypes"
+            ],
+            "properties": {
+              "penaltyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PenaltyTypeEnum"
+                }
+              },
+              "PenaltyAppliesTo": {
+                "$ref": "#/components/schemas/PenaltyAppliesToEnum"
+              },
+              "Penalty": {
+                "maxItems": 2,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Penalty"
+                }
+              },
+              "higherPenatltyAppliesInd": {
+                "type": "boolean",
+                "description": "If true, when an amount and a percent are specified in the Penalty then the higher of these apply",
+                "example": true
+              }
+            }
+          }
+        ]
+      },
+      "PenaltyTypeEnum": {
+        "type": "string",
+        "enum": [
+          "BeforeDeparture",
+          "AfterDeparture",
+          "Anytime",
+          "NoShow",
+          "Minimum",
+          "Maximum",
+          "ExchangeRequired",
+          "ExchangeNotRequired"
+        ]
+      },
+      "PenaltyAppliesToEnum": {
+        "type": "string",
+        "description": "Penalty applicable list",
+        "example": "OneWay",
+        "enum": [
+          "OneWay",
+          "RoundTrip",
+          "PerTicket",
+          "PerCoupon",
+          "PerDirectionOfTravel"
+        ]
+      },
+      "CancelNotPermitted": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Cancel"
+          },
+          {
+            "properties": {
+              "NotPermittedInd": {
+                "type": "boolean",
+                "description": "Changes are not permitted",
+                "example": true
+              },
+              "penaltyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PenaltyTypeEnum"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CancelIndeterminate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Cancel"
+          },
+          {
+            "properties": {
+              "IndeterminateInd": {
+                "type": "boolean",
+                "description": "structured fare rules could not be determined for this category",
+                "example": true
+              }
+            }
+          }
+        ]
+      },
+      "ChangeIndeterminate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Change"
+          },
+          {
+            "properties": {
+              "IndeterminateInd": {
+                "type": "boolean",
+                "description": "structured fare rules could not be determined for this category",
+                "example": true
+              }
+            }
+          }
+        ]
+      },
+      "ChangeNotPermitted": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Change"
+          },
+          {
+            "properties": {
+              "NotPermittedInd": {
+                "type": "boolean",
+                "description": "Changes are not permitted",
+                "example": true
+              },
+              "penaltyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PenaltyTypeEnum"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ChangePermitted": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Change"
+          },
+          {
+            "required": [
+              "penaltyTypes"
+            ],
+            "properties": {
+              "penaltyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PenaltyTypeEnum"
+                }
+              },
+              "PenaltyAppliesTo": {
+                "$ref": "#/components/schemas/PenaltyAppliesToEnum"
+              },
+              "Penalty": {
+                "maxItems": 2,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Penalty"
+                }
+              },
+              "higherPenatltyAppliesInd": {
+                "type": "boolean",
+                "description": "If true, when an amount and a percent are specified in the Penalty then the higher of these apply",
+                "example": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad Request- 400",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized - 401",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "PaymentRequired": {
+        "description": "PaymentRequired - 402",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden - 403",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not Found - 404",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error - 500",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "TravelportPlusSessionID": {
+        "name": "TravelportPlusSessionID",
+        "in": "header",
+        "description": "Travelport Plus Session ID used to maintain an established agency session",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 100,
+          "minLength": 0,
+          "pattern": "([a-zA-Z-0-9-_]*)",
+          "type": "string"
+        }
+      },
+      "TraceId": {
+        "name": "TraceId",
+        "in": "header",
+        "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 89,
+          "minLength": 10,
+          "pattern": "(^[a-zA-Z-0-9_]*[-]?[+]?$)",
+          "type": "string"
+        }
+      },
+      "XAUTH_TRAVELPORT_ACCESSGROUP": {
+        "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+        "in": "header",
+        "description": "Identifies the Travelport access group with which the caller is associated",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 36,
+          "minLength": 36,
+          "pattern": "([a-zA-Z-0-9-_]*)",
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://oauth.travelport.com/oauth/oauth20/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

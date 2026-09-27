@@ -1,0 +1,21 @@
+{
+  "otpEnabled": true,
+  "otpChannels": [
+    "whatsapp",
+    "telegram",
+    "email"
+  ],
+  "otpTtlSec": 600,
+  "whatsappMode": "qr",
+  "whatsappPhoneNumberId": "",
+  "whatsappAccessToken": "",
+  "whatsappWabaId": "",
+  "whatsappVerifyToken": "lonaliza_whatsapp_webhook_2026",
+  "whatsappGraphVersion": "v21.0",
+  "whatsappOtpTemplate": "otp_code",
+  "whatsappTransactionalTemplate": "",
+  "whatsappMarketingTemplate": "",
+  "telegramBotToken": "8830479992:AAHl2lCBb0b3uA9hr0T6puZZA-qD4bciHTA",
+  "telegramDefaultChatId": "5805365203",
+  "rateLimitPerMinute": 20
+}

@@ -1,0 +1,1001 @@
+{
+    "ReservationResponse": {
+        "@type": "ReservationResponse",
+        "Reservation": {
+            "@type": "Reservation",
+            "Identifier": {
+                "authority": "Travelport",
+                "value": "fd33be1a-f4fd-4410-9fb8-e2dfa8cad7de"
+            },
+            "Offer": [
+                {
+                    "@type": "Offer",
+                    "id": "offer_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "3ecc4b54-c1e9-4ecf-b106-2284d3ae1bb7"
+                    },
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "product_1",
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "bbc6c1d6-738b-4390-9d5e-ceb5eabe889f"
+                            },
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "id": "FlightSegment_01",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT2H43M",
+                                        "carrier": "DL",
+                                        "number": "1310",
+                                        "equipment": "319",
+                                        "id": "Flight_01",
+                                        "Identifier": {
+                                            "authority": "Travelport",
+                                            "value": "5cff4dcc-ff66-4c17-9523-b5e661dd557f"
+                                        },
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "DEN",
+                                            "date": "2022-11-12",
+                                            "time": "06:03:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "Arrival",
+                                            "location": "LAX",
+                                            "date": "2022-11-12",
+                                            "time": "07:46:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "Y0N",
+                                            "fareType": "PublicFare"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "SRC",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "Y",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "Y0N",
+                                            "fareType": "PublicFare"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "id": "PriceDetail_1",
+                        "CurrencyCode": {
+                            "value": "USD"
+                        },
+                        "Base": 1737.68,
+                        "TotalTaxes": 159.52,
+                        "TotalFees": 0,
+                        "TotalPrice": 1897.2,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 868.84,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 79.76,
+                                        "Tax": [
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "AY",
+                                                "value": 5.6
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "US",
+                                                "value": 65.16
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "XF",
+                                                "value": 4.5
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "ZP",
+                                                "value": 4.5
+                                            }
+                                        ]
+                                    },
+                                    "Total": 948.6
+                                },
+                                "FareCalculation": "DEN DL LAX 868.84Y0N USD868.84END"
+                            },
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "SRC",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 868.84,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 79.76,
+                                        "Tax": [
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "AY",
+                                                "value": 5.6
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "US",
+                                                "value": 65.16
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "XF",
+                                                "value": 4.5
+                                            },
+                                            {
+                                                "currencyCode": "USD",
+                                                "taxCode": "ZP",
+                                                "value": 4.5
+                                            }
+                                        ]
+                                    },
+                                    "Total": 948.6
+                                },
+                                "FareCalculation": "DEN DL LAX 868.84Y0N USD868.84END"
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "secureFlightPassengerDataRequiredInd": true,
+                            "Identifier": {
+                                "authority": "Travelport",
+                                "value": "d3305c96-0f3f-447b-942e-c15b8038e961"
+                            },
+                            "ExpiryDate": "2022-11-08T23:59:00Z",
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0PC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "SRC"
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0PC"
+                                    ]
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "DL"
+                                }
+                            ],
+                            "PaymentTimeLimit": "2022-11-08T23:59:00Z",
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "passengerTypeCodes": [
+                                        "ADT",
+                                        "SRC"
+                                    ],
+                                    "Code": {
+                                        "value": "G"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "TermsAndConditionsFullAir",
+                            "Restriction": [
+                                {
+                                    "value": "NONREF/CHANGES PERMITTED"
+                                },
+                                {
+                                    "value": "NONREF/CHANGES PERMITTED"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferModify",
+                    "id": "offerModify_1",
+                    "Product": [
+                        {
+                            "@type": "ProductAir",
+                            "id": "p1",
+                            "FlightSegment": [
+                                {
+                                    "@type": "FlightSegment",
+                                    "sequence": 1,
+                                    "Flight": {
+                                        "@type": "Flight",
+                                        "duration": "PT2H43M",
+                                        "carrier": "DL",
+                                        "number": "1310",
+                                        "equipment": "319",
+                                        "id": "s1",
+                                        "Departure": {
+                                            "@type": "Departure",
+                                            "location": "DEN",
+                                            "date": "2022-11-27",
+                                            "time": "06:03:00"
+                                        },
+                                        "Arrival": {
+                                            "@type": "ArrivalDetail",
+                                            "terminal": "1",
+                                            "location": "LAX",
+                                            "date": "2022-11-27",
+                                            "time": "07:46:00"
+                                        }
+                                    }
+                                }
+                            ],
+                            "PassengerFlight": [
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "ADT",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "K",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "KAUOA0MQ",
+                                            "fareType": "PublicFare",
+                                            "Brand": {
+                                                "@type": "BrandID"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "@type": "PassengerFlight",
+                                    "passengerQuantity": 1,
+                                    "passengerTypeCode": "SRC",
+                                    "FlightProduct": [
+                                        {
+                                            "@type": "FlightProduct",
+                                            "segmentSequence": [
+                                                1
+                                            ],
+                                            "classOfService": "K",
+                                            "cabin": "Economy",
+                                            "fareBasisCode": "KAUOA0MQ",
+                                            "fareType": "PublicFare",
+                                            "Brand": {
+                                                "@type": "BrandID"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": 565.58,
+                        "TotalTaxes": 71.62,
+                        "TotalFees": 0,
+                        "TotalPrice": 637.20,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 282.79,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 35.81,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "AY",
+                                                "value": 5.6
+                                            },
+                                            {
+                                                "taxCode": "US",
+                                                "value": 21.21
+                                            },
+                                            {
+                                                "taxCode": "XF",
+                                                "value": 4.5
+                                            },
+                                            {
+                                                "taxCode": "ZP",
+                                                "value": 4.5
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 318.60
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "USD",
+                                    "decimalPlace": 2,
+                                    "value": 282.79
+                                }
+                            },
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "SRC",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": 282.79,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 35.81,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "AY",
+                                                "value": 5.6
+                                            },
+                                            {
+                                                "taxCode": "US",
+                                                "value": 21.21
+                                            },
+                                            {
+                                                "taxCode": "XF",
+                                                "value": 4.5
+                                            },
+                                            {
+                                                "taxCode": "ZP",
+                                                "value": 4.5
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 318.60
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "USD",
+                                    "decimalPlace": 2,
+                                    "value": 282.79
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditionsFull": [
+                        {
+                            "@type": "TermsAndConditionsFullAirChange",
+                            "BaggageAllowance": [
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/DL",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "FirstCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 30.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/DL",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "SecondCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 40.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "ADT"
+                                    ],
+                                    "baggageType": "CarryOn",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 0
+                                            },
+                                            "Text": "UPTO45LI/115LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1P"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/DL",
+                                    "passengerTypeCodes": [
+                                        "SRC"
+                                    ],
+                                    "baggageType": "FirstCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 30.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/DL",
+                                    "passengerTypeCodes": [
+                                        "SRC"
+                                    ],
+                                    "baggageType": "SecondCheckedBag",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 40.0
+                                            },
+                                            "Text": "UPTO50LB/23KG AND UPTO62LI/158LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "0P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+                                    ]
+                                },
+                                {
+                                    "@type": "BaggageAllowanceDetail",
+                                    "passengerTypeCodes": [
+                                        "SRC"
+                                    ],
+                                    "baggageType": "CarryOn",
+                                    "ProductRef": [
+                                        "p1"
+                                    ],
+                                    "BaggageItem": [
+                                        {
+                                            "@type": "BaggageItem",
+                                            "quantity": 1,
+                                            "BaggageFee": {
+                                                "code": "USD",
+                                                "value": 0
+                                            },
+                                            "Text": "UPTO45LI/115LCM"
+                                        }
+                                    ],
+                                    "SegmentSequenceList": [
+                                        1
+                                    ],
+                                    "Text": [
+                                        "1P"
+                                    ]
+                                }
+                            ],
+                            "Restriction": [
+                                {
+                                    "value": "* NONREF 868.84 USD/CHANGES PERMITTED"
+                                }
+                            ],
+                            "ValidatingAirline": [
+                                {
+                                    "@type": "ValidatingAirline",
+                                    "ValidatingAirline": "DL"
+                                }
+                            ],
+                            "FareGuaranteePolicy": [
+                                {
+                                    "@type": "FareGuaranteePolicy",
+                                    "EligibleforADMReview": "Yes",
+                                    "Code": {
+                                        "codeContext": "Travelport",
+                                        "value": "G"
+                                    }
+                                }
+                            ],
+                            "FulfillmentMethod": [
+                                {
+                                    "@type": "FulfillmentMethod",
+                                    "RefundMethod": {
+                                        "value": "MCO"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "USD"
+                        },
+                        "Base": -1172.10,
+                        "TotalTaxes": -87.90,
+                        "TotalFees": 0,
+                        "TotalPrice": -1260.00,
+                        "PriceBreakdown": [
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": -586.05,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": -43.95,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "US",
+                                                "value": -43.95
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": -630.00
+                                },
+                                "FareCalculation": "DEN DL LAX Q74.42 208.37USD282.79END DL ZPDEN XF DEN4.5"
+                            },
+                            {
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "SRC",
+                                "Amount": {
+                                    "@type": "Amount",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "USD"
+                                    },
+                                    "Base": -586.05,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": -43.95,
+                                        "Tax": [
+                                            {
+                                                "taxCode": "US",
+                                                "value": -43.95
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [
+                                            {
+                                                "@type": "Fee",
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "USD",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": -630.00
+                                },
+                                "FareCalculation": "DEN DL LAX Q74.42 208.37USD282.79END DL ZPDEN XF DEN4.5"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "Traveler": [
+                {
+                    "@type": "Traveler",
+                    "birthDate": "1976-07-12",
+                    "gender": "Male",
+                    "passengerTypeCode": "ADT",
+                    "id": "travelerRefId_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "ff9c0c5c-28da-43fd-b736-df03e42ab54e"
+                    },
+                    "PersonName": {
+                        "@type": "PersonName",
+                        "Given": "ONE",
+                        "Surname": "TEST"
+                    },
+                    "Telephone": [
+                        {
+                            "@type": "TelephoneDetail",
+                            "phoneNumber": "NONE",
+                            "id": "telephone_1"
+                        }
+                    ]
+                },
+                {
+                    "@type": "Traveler",
+                    "birthDate": "1976-07-12",
+                    "gender": "Male",
+                    "passengerTypeCode": "SRC",
+                    "id": "travelerRefId_2",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "8d718c6b-46db-409a-9f43-82836c243970"
+                    },
+                    "PersonName": {
+                        "@type": "PersonName",
+                        "Given": "SWEETY",
+                        "Surname": "PINKY"
+                    }
+                }
+            ],
+            "FormOfPayment": [
+                {
+                    "@type": "FormOfPaymentCash",
+                    "id": "formOfPayment_1",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "e604ae5d-c7b8-4edd-b7a0-6ea6974b79d8"
+                    }
+                }
+            ],
+            "Receipt": [
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "eebe279a-2627-4870-9c73-28b510f97cc2"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "1G",
+                            "value": "2WRDFL"
+                        },
+                        "OfferStatus": {
+                            "@type": "OfferStatusAir",
+                            "StatusAir": [
+                                {
+                                    "flightRefs": [
+                                        "Flight_01"
+                                    ],
+                                    "code": "HK",
+                                    "value": "Confirmed"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "a2ae5836-bdc5-4706-8993-c748c48ad881"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "TripContainer",
+                            "value": "442E0EBE-1EE0-0000-0202-211071138140"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptConfirmation",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "fa4f704a-974e-43ec-89fb-5e829502feed"
+                    },
+                    "Confirmation": {
+                        "@type": "ConfirmationHold",
+                        "Locator": {
+                            "source": "DL",
+                            "value": "HY6UH6"
+                        }
+                    }
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "5b1c8b69-8f12-4a83-91fe-1fd55b6f68e4"
+                    },
+                    "Document": [
+                        {
+                            "@type": "DocumentTicketExchange",
+                            "exchangeInd": true,
+                            "Number": "0067854766959",
+                            "TravelerIdentifierRef": {
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "ff9c0c5c-28da-43fd-b736-df03e42ab54e"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 948.60
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "c2a9251c-fa0c-44a2-bce0-078d673a80e1"
+                    },
+                    "Document": [
+                        {
+                            "@type": "DocumentTicketExchange",
+                            "exchangeInd": true,
+                            "Number": "0067854766960",
+                            "TravelerIdentifierRef": {
+                                "passengerTypeCode": "SRC",
+                                "id": "travelerRefId_2",
+                                "value": "8d718c6b-46db-409a-9f43-82836c243970"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 948.60
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Document": [
+                        {
+                            "@type": "DocumentTicket",
+                            "Number": "0067854766969",
+                            "TravelerIdentifierRef": {
+                                "name": "TEST ONE",
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "ff9c0c5c-28da-43fd-b736-df03e42ab54e"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 318.60
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Document": [
+                        {
+                            "@type": "DocumentTicket",
+                            "Number": "0067854766970",
+                            "TravelerIdentifierRef": {
+                                "name": "PINKY SWEETY",
+                                "passengerTypeCode": "SRC",
+                                "id": "travelerRefId_2",
+                                "value": "8d718c6b-46db-409a-9f43-82836c243970"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 318.60
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Document": [
+                        {
+                            "@type": "DocumentMCO",
+                            "Number": "0068994560931",
+                            "TravelerIdentifierRef": {
+                                "name": "TEST ONE",
+                                "passengerTypeCode": "ADT",
+                                "id": "travelerRefId_1",
+                                "value": "ff9c0c5c-28da-43fd-b736-df03e42ab54e"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 630.00
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "ReceiptPayment",
+                    "Document": [
+                        {
+                            "@type": "DocumentMCO",
+                            "Number": "0068994560932",
+                            "TravelerIdentifierRef": {
+                                "name": "PINKY SWEETY",
+                                "passengerTypeCode": "SRC",
+                                "id": "travelerRefId_2",
+                                "value": "8d718c6b-46db-409a-9f43-82836c243970"
+                            },
+                            "Amount": {
+                                "@type": "Amount",
+                                "Total": 630.00
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

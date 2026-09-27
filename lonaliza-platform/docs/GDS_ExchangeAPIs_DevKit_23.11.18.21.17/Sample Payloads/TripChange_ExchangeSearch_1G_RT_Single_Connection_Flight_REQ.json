@@ -1,0 +1,48 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2022-11-18",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "CDG"
+                    }
+                }, {
+                    "departureDate": "2022-12-20",
+                    "From": {
+                        "cityOrAirport": "Airport Only",
+                        "value": "CDG"
+                    },
+                    "To": {
+                        "cityOrAirport": "City or Airport",
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "dc4b161c-8bf8-44e8-a105-ceda180787b3"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

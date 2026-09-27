@@ -1,0 +1,1289 @@
+[
+  {
+    "iata": "EK",
+    "icao": "UAE",
+    "name": "Emirates",
+    "country": "United Arab Emirates",
+    "logoUrl": "https://images.kiwi.com/airlines/64/EK.png",
+    "aliases": [
+      "emirates",
+      "emirates"
+    ]
+  },
+  {
+    "iata": "EY",
+    "icao": "ETD",
+    "name": "Etihad Airways",
+    "country": "United Arab Emirates",
+    "logoUrl": "https://images.kiwi.com/airlines/64/EY.png",
+    "aliases": [
+      "etihad airways",
+      "etihad airways"
+    ]
+  },
+  {
+    "iata": "QR",
+    "icao": "QTR",
+    "name": "Qatar Airways",
+    "country": "Qatar",
+    "logoUrl": "https://images.kiwi.com/airlines/64/QR.png",
+    "aliases": [
+      "qatar airways",
+      "qatar airways"
+    ]
+  },
+  {
+    "iata": "GF",
+    "icao": "GFA",
+    "name": "Gulf Air",
+    "country": "Bahrain",
+    "logoUrl": "https://images.kiwi.com/airlines/64/GF.png",
+    "aliases": [
+      "gulf air",
+      "gulf air"
+    ]
+  },
+  {
+    "iata": "WY",
+    "icao": "OMA",
+    "name": "Oman Air",
+    "country": "Oman",
+    "logoUrl": "https://images.kiwi.com/airlines/64/WY.png",
+    "aliases": [
+      "oman air",
+      "oman air"
+    ]
+  },
+  {
+    "iata": "SV",
+    "icao": "SVA",
+    "name": "Saudia",
+    "country": "Saudi Arabia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SV.png",
+    "aliases": [
+      "saudia",
+      "saudia"
+    ]
+  },
+  {
+    "iata": "XY",
+    "icao": "KNE",
+    "name": "Flynas",
+    "country": "Saudi Arabia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/XY.png",
+    "aliases": [
+      "flynas",
+      "flynas"
+    ]
+  },
+  {
+    "iata": "F3",
+    "icao": "FAD",
+    "name": "flyadeal",
+    "country": "Saudi Arabia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/F3.png",
+    "aliases": [
+      "flyadeal",
+      "flyadeal"
+    ]
+  },
+  {
+    "iata": "FZ",
+    "icao": "FDB",
+    "name": "flydubai",
+    "country": "United Arab Emirates",
+    "logoUrl": "https://images.kiwi.com/airlines/64/FZ.png",
+    "aliases": [
+      "flydubai",
+      "flydubai"
+    ]
+  },
+  {
+    "iata": "G9",
+    "icao": "ABY",
+    "name": "Air Arabia",
+    "country": "United Arab Emirates",
+    "logoUrl": "https://images.kiwi.com/airlines/64/G9.png",
+    "aliases": [
+      "air arabia",
+      "air arabia"
+    ]
+  },
+  {
+    "iata": "3L",
+    "icao": "ADY",
+    "name": "Air Arabia Abu Dhabi",
+    "country": "United Arab Emirates",
+    "logoUrl": "https://images.kiwi.com/airlines/64/3L.png",
+    "aliases": [
+      "air arabia abu dhabi",
+      "air arabia abu dhabi"
+    ]
+  },
+  {
+    "iata": "J9",
+    "icao": "JZR",
+    "name": "Jazeera Airways",
+    "country": "Kuwait",
+    "logoUrl": "https://images.kiwi.com/airlines/64/J9.png",
+    "aliases": [
+      "jazeera airways",
+      "jazeera airways"
+    ]
+  },
+  {
+    "iata": "KU",
+    "icao": "KAC",
+    "name": "Kuwait Airways",
+    "country": "Kuwait",
+    "logoUrl": "https://images.kiwi.com/airlines/64/KU.png",
+    "aliases": [
+      "kuwait airways",
+      "kuwait airways"
+    ]
+  },
+  {
+    "iata": "OV",
+    "icao": "OMS",
+    "name": "SalamAir",
+    "country": "Oman",
+    "logoUrl": "https://images.kiwi.com/airlines/64/OV.png",
+    "aliases": [
+      "salamair",
+      "salamair"
+    ]
+  },
+  {
+    "iata": "RJ",
+    "icao": "RJA",
+    "name": "Royal Jordanian",
+    "country": "Jordan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/RJ.png",
+    "aliases": [
+      "royal jordanian",
+      "royal jordanian"
+    ]
+  },
+  {
+    "iata": "ME",
+    "icao": "MEA",
+    "name": "Middle East Airlines",
+    "country": "Lebanon",
+    "logoUrl": "https://images.kiwi.com/airlines/64/ME.png",
+    "aliases": [
+      "middle east airlines",
+      "middle east"
+    ]
+  },
+  {
+    "iata": "MS",
+    "icao": "MSR",
+    "name": "Egyptair",
+    "country": "Egypt",
+    "logoUrl": "https://images.kiwi.com/airlines/64/MS.png",
+    "aliases": [
+      "egyptair",
+      "egyptair"
+    ]
+  },
+  {
+    "iata": "NP",
+    "icao": "NIA",
+    "name": "Nile Air",
+    "country": "Egypt",
+    "logoUrl": "https://images.kiwi.com/airlines/64/NP.png",
+    "aliases": [
+      "nile air",
+      "nile air"
+    ]
+  },
+  {
+    "iata": "SM",
+    "icao": "MSC",
+    "name": "Air Cairo",
+    "country": "Egypt",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SM.png",
+    "aliases": [
+      "air cairo",
+      "air cairo"
+    ]
+  },
+  {
+    "iata": "IA",
+    "icao": "IAW",
+    "name": "Iraqi Airways",
+    "country": "Iraq",
+    "logoUrl": "https://images.kiwi.com/airlines/64/IA.png",
+    "aliases": [
+      "iraqi airways",
+      "iraqi airways"
+    ]
+  },
+  {
+    "iata": "IF",
+    "icao": "FBA",
+    "name": "Fly Baghdad",
+    "country": "Iraq",
+    "logoUrl": "https://images.kiwi.com/airlines/64/IF.png",
+    "aliases": [
+      "fly baghdad",
+      "fly baghdad"
+    ]
+  },
+  {
+    "iata": "CY",
+    "icao": "CYP",
+    "name": "Cyprus Airways",
+    "country": "Cyprus",
+    "logoUrl": "https://images.kiwi.com/airlines/64/CY.png",
+    "aliases": [
+      "cyprus airways",
+      "cyprus airways"
+    ]
+  },
+  {
+    "iata": "LY",
+    "icao": "ELY",
+    "name": "El Al",
+    "country": "Israel",
+    "logoUrl": "https://images.kiwi.com/airlines/64/LY.png",
+    "aliases": [
+      "el al",
+      "el al"
+    ]
+  },
+  {
+    "iata": "TK",
+    "icao": "THY",
+    "name": "Turkish Airlines",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TK.png",
+    "aliases": [
+      "turkish airlines",
+      "turkish"
+    ]
+  },
+  {
+    "iata": "PC",
+    "icao": "PGT",
+    "name": "Pegasus Airlines",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/PC.png",
+    "aliases": [
+      "pegasus airlines",
+      "pegasus"
+    ]
+  },
+  {
+    "iata": "VF",
+    "icao": "TKJ",
+    "name": "AJet",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/VF.png",
+    "aliases": [
+      "ajet",
+      "ajet"
+    ]
+  },
+  {
+    "iata": "XQ",
+    "icao": "SXS",
+    "name": "SunExpress",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/XQ.png",
+    "aliases": [
+      "sunexpress",
+      "sunexpress"
+    ]
+  },
+  {
+    "iata": "FH",
+    "icao": "FHY",
+    "name": "Freebird Airlines",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/FH.png",
+    "aliases": [
+      "freebird airlines",
+      "freebird"
+    ]
+  },
+  {
+    "iata": "XC",
+    "icao": "CAI",
+    "name": "Corendon Airlines",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/XC.png",
+    "aliases": [
+      "corendon airlines",
+      "corendon"
+    ]
+  },
+  {
+    "iata": "TI",
+    "icao": "TWI",
+    "name": "Tailwind Airlines",
+    "country": "Turkey",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TI.png",
+    "aliases": [
+      "tailwind airlines",
+      "tailwind"
+    ]
+  },
+  {
+    "iata": "AT",
+    "icao": "RAM",
+    "name": "Royal Air Maroc",
+    "country": "Morocco",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AT.png",
+    "aliases": [
+      "royal air maroc",
+      "royal air maroc"
+    ]
+  },
+  {
+    "iata": "TU",
+    "icao": "TAR",
+    "name": "Tunisair",
+    "country": "Tunisia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TU.png",
+    "aliases": [
+      "tunisair",
+      "tunisair"
+    ]
+  },
+  {
+    "iata": "AH",
+    "icao": "DAH",
+    "name": "Air Algérie",
+    "country": "Algeria",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AH.png",
+    "aliases": [
+      "air algerie",
+      "air algerie"
+    ]
+  },
+  {
+    "iata": "BJ",
+    "icao": "LBT",
+    "name": "Nouvelair",
+    "country": "Tunisia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/BJ.png",
+    "aliases": [
+      "nouvelair",
+      "nouvelair"
+    ]
+  },
+  {
+    "iata": "8U",
+    "icao": "AAW",
+    "name": "Afriqiyah Airways",
+    "country": "Libya",
+    "logoUrl": "https://images.kiwi.com/airlines/64/8U.png",
+    "aliases": [
+      "afriqiyah airways",
+      "afriqiyah airways"
+    ]
+  },
+  {
+    "iata": "LH",
+    "icao": "DLH",
+    "name": "Lufthansa",
+    "country": "Germany",
+    "logoUrl": "https://images.kiwi.com/airlines/64/LH.png",
+    "aliases": [
+      "lufthansa",
+      "lufthansa"
+    ]
+  },
+  {
+    "iata": "BA",
+    "icao": "BAW",
+    "name": "British Airways",
+    "country": "United Kingdom",
+    "logoUrl": "https://images.kiwi.com/airlines/64/BA.png",
+    "aliases": [
+      "british airways",
+      "british airways"
+    ]
+  },
+  {
+    "iata": "AF",
+    "icao": "AFR",
+    "name": "Air France",
+    "country": "France",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AF.png",
+    "aliases": [
+      "air france",
+      "air france"
+    ]
+  },
+  {
+    "iata": "KL",
+    "icao": "KLM",
+    "name": "KLM",
+    "country": "Netherlands",
+    "logoUrl": "https://images.kiwi.com/airlines/64/KL.png",
+    "aliases": [
+      "klm",
+      "klm"
+    ]
+  },
+  {
+    "iata": "IB",
+    "icao": "IBE",
+    "name": "Iberia",
+    "country": "Spain",
+    "logoUrl": "https://images.kiwi.com/airlines/64/IB.png",
+    "aliases": [
+      "iberia",
+      "iberia"
+    ]
+  },
+  {
+    "iata": "AZ",
+    "icao": "ITY",
+    "name": "ITA Airways",
+    "country": "Italy",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AZ.png",
+    "aliases": [
+      "ita airways",
+      "ita airways"
+    ]
+  },
+  {
+    "iata": "LX",
+    "icao": "SWR",
+    "name": "Swiss",
+    "country": "Switzerland",
+    "logoUrl": "https://images.kiwi.com/airlines/64/LX.png",
+    "aliases": [
+      "swiss",
+      "swiss"
+    ]
+  },
+  {
+    "iata": "OS",
+    "icao": "AUA",
+    "name": "Austrian Airlines",
+    "country": "Austria",
+    "logoUrl": "https://images.kiwi.com/airlines/64/OS.png",
+    "aliases": [
+      "austrian airlines",
+      "austrian"
+    ]
+  },
+  {
+    "iata": "SN",
+    "icao": "BEL",
+    "name": "Brussels Airlines",
+    "country": "Belgium",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SN.png",
+    "aliases": [
+      "brussels airlines",
+      "brussels"
+    ]
+  },
+  {
+    "iata": "SK",
+    "icao": "SAS",
+    "name": "SAS",
+    "country": "Sweden",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SK.png",
+    "aliases": [
+      "sas",
+      "sas"
+    ]
+  },
+  {
+    "iata": "AY",
+    "icao": "FIN",
+    "name": "Finnair",
+    "country": "Finland",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AY.png",
+    "aliases": [
+      "finnair",
+      "finnair"
+    ]
+  },
+  {
+    "iata": "TP",
+    "icao": "TAP",
+    "name": "TAP Air Portugal",
+    "country": "Portugal",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TP.png",
+    "aliases": [
+      "tap air portugal",
+      "tap air portugal"
+    ]
+  },
+  {
+    "iata": "EI",
+    "icao": "EIN",
+    "name": "Aer Lingus",
+    "country": "Ireland",
+    "logoUrl": "https://images.kiwi.com/airlines/64/EI.png",
+    "aliases": [
+      "aer lingus",
+      "aer lingus"
+    ]
+  },
+  {
+    "iata": "A3",
+    "icao": "AEE",
+    "name": "Aegean Airlines",
+    "country": "Greece",
+    "logoUrl": "https://images.kiwi.com/airlines/64/A3.png",
+    "aliases": [
+      "aegean airlines",
+      "aegean"
+    ]
+  },
+  {
+    "iata": "W6",
+    "icao": "WZZ",
+    "name": "Wizz Air",
+    "country": "Hungary",
+    "logoUrl": "https://images.kiwi.com/airlines/64/W6.png",
+    "aliases": [
+      "wizz air",
+      "wizz air"
+    ]
+  },
+  {
+    "iata": "FR",
+    "icao": "RYR",
+    "name": "Ryanair",
+    "country": "Ireland",
+    "logoUrl": "https://images.kiwi.com/airlines/64/FR.png",
+    "aliases": [
+      "ryanair",
+      "ryanair"
+    ]
+  },
+  {
+    "iata": "U2",
+    "icao": "EZY",
+    "name": "easyJet",
+    "country": "United Kingdom",
+    "logoUrl": "https://images.kiwi.com/airlines/64/U2.png",
+    "aliases": [
+      "easyjet",
+      "easyjet"
+    ]
+  },
+  {
+    "iata": "LS",
+    "icao": "EXS",
+    "name": "Jet2.com",
+    "country": "United Kingdom",
+    "logoUrl": "https://images.kiwi.com/airlines/64/LS.png",
+    "aliases": [
+      "jet2 com",
+      "jet2 com"
+    ]
+  },
+  {
+    "iata": "EW",
+    "icao": "EWG",
+    "name": "Eurowings",
+    "country": "Germany",
+    "logoUrl": "https://images.kiwi.com/airlines/64/EW.png",
+    "aliases": [
+      "eurowings",
+      "eurowings"
+    ]
+  },
+  {
+    "iata": "VY",
+    "icao": "VLG",
+    "name": "Vueling",
+    "country": "Spain",
+    "logoUrl": "https://images.kiwi.com/airlines/64/VY.png",
+    "aliases": [
+      "vueling",
+      "vueling"
+    ]
+  },
+  {
+    "iata": "DY",
+    "icao": "NAX",
+    "name": "Norwegian",
+    "country": "Norway",
+    "logoUrl": "https://images.kiwi.com/airlines/64/DY.png",
+    "aliases": [
+      "norwegian",
+      "norwegian"
+    ]
+  },
+  {
+    "iata": "LO",
+    "icao": "LOT",
+    "name": "LOT Polish Airlines",
+    "country": "Poland",
+    "logoUrl": "https://images.kiwi.com/airlines/64/LO.png",
+    "aliases": [
+      "lot polish airlines",
+      "lot polish"
+    ]
+  },
+  {
+    "iata": "OK",
+    "icao": "CSA",
+    "name": "Czech Airlines",
+    "country": "Czechia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/OK.png",
+    "aliases": [
+      "czech airlines",
+      "czech"
+    ]
+  },
+  {
+    "iata": "RO",
+    "icao": "ROT",
+    "name": "TAROM",
+    "country": "Romania",
+    "logoUrl": "https://images.kiwi.com/airlines/64/RO.png",
+    "aliases": [
+      "tarom",
+      "tarom"
+    ]
+  },
+  {
+    "iata": "JU",
+    "icao": "ASL",
+    "name": "Air Serbia",
+    "country": "Serbia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/JU.png",
+    "aliases": [
+      "air serbia",
+      "air serbia"
+    ]
+  },
+  {
+    "iata": "BT",
+    "icao": "BTI",
+    "name": "airBaltic",
+    "country": "Latvia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/BT.png",
+    "aliases": [
+      "airbaltic",
+      "airbaltic"
+    ]
+  },
+  {
+    "iata": "HV",
+    "icao": "TRA",
+    "name": "Transavia",
+    "country": "Netherlands",
+    "logoUrl": "https://images.kiwi.com/airlines/64/HV.png",
+    "aliases": [
+      "transavia",
+      "transavia"
+    ]
+  },
+  {
+    "iata": "DE",
+    "icao": "CFG",
+    "name": "Condor",
+    "country": "Germany",
+    "logoUrl": "https://images.kiwi.com/airlines/64/DE.png",
+    "aliases": [
+      "condor",
+      "condor"
+    ]
+  },
+  {
+    "iata": "X3",
+    "icao": "TUI",
+    "name": "TUI fly",
+    "country": "Germany",
+    "logoUrl": "https://images.kiwi.com/airlines/64/X3.png",
+    "aliases": [
+      "tui fly",
+      "tui fly"
+    ]
+  },
+  {
+    "iata": "V7",
+    "icao": "VOE",
+    "name": "Volotea",
+    "country": "Spain",
+    "logoUrl": "https://images.kiwi.com/airlines/64/V7.png",
+    "aliases": [
+      "volotea",
+      "volotea"
+    ]
+  },
+  {
+    "iata": "QS",
+    "icao": "TVS",
+    "name": "Smartwings",
+    "country": "Czechia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/QS.png",
+    "aliases": [
+      "smartwings",
+      "smartwings"
+    ]
+  },
+  {
+    "iata": "AA",
+    "icao": "AAL",
+    "name": "American Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AA.png",
+    "aliases": [
+      "american airlines",
+      "american"
+    ]
+  },
+  {
+    "iata": "DL",
+    "icao": "DAL",
+    "name": "Delta Air Lines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/DL.png",
+    "aliases": [
+      "delta air lines",
+      "delta air lines"
+    ]
+  },
+  {
+    "iata": "UA",
+    "icao": "UAL",
+    "name": "United Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/UA.png",
+    "aliases": [
+      "united airlines",
+      "united"
+    ]
+  },
+  {
+    "iata": "WN",
+    "icao": "SWA",
+    "name": "Southwest Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/WN.png",
+    "aliases": [
+      "southwest airlines",
+      "southwest"
+    ]
+  },
+  {
+    "iata": "B6",
+    "icao": "JBU",
+    "name": "JetBlue",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/B6.png",
+    "aliases": [
+      "jetblue",
+      "jetblue"
+    ]
+  },
+  {
+    "iata": "AS",
+    "icao": "ASA",
+    "name": "Alaska Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AS.png",
+    "aliases": [
+      "alaska airlines",
+      "alaska"
+    ]
+  },
+  {
+    "iata": "NK",
+    "icao": "NKS",
+    "name": "Spirit Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/NK.png",
+    "aliases": [
+      "spirit airlines",
+      "spirit"
+    ]
+  },
+  {
+    "iata": "F9",
+    "icao": "FFT",
+    "name": "Frontier Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/F9.png",
+    "aliases": [
+      "frontier airlines",
+      "frontier"
+    ]
+  },
+  {
+    "iata": "HA",
+    "icao": "HAL",
+    "name": "Hawaiian Airlines",
+    "country": "United States",
+    "logoUrl": "https://images.kiwi.com/airlines/64/HA.png",
+    "aliases": [
+      "hawaiian airlines",
+      "hawaiian"
+    ]
+  },
+  {
+    "iata": "AC",
+    "icao": "ACA",
+    "name": "Air Canada",
+    "country": "Canada",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AC.png",
+    "aliases": [
+      "air canada",
+      "air canada"
+    ]
+  },
+  {
+    "iata": "WS",
+    "icao": "WJA",
+    "name": "WestJet",
+    "country": "Canada",
+    "logoUrl": "https://images.kiwi.com/airlines/64/WS.png",
+    "aliases": [
+      "westjet",
+      "westjet"
+    ]
+  },
+  {
+    "iata": "AM",
+    "icao": "AMX",
+    "name": "Aeroméxico",
+    "country": "Mexico",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AM.png",
+    "aliases": [
+      "aeromexico",
+      "aeromexico"
+    ]
+  },
+  {
+    "iata": "SQ",
+    "icao": "SIA",
+    "name": "Singapore Airlines",
+    "country": "Singapore",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SQ.png",
+    "aliases": [
+      "singapore airlines",
+      "singapore"
+    ]
+  },
+  {
+    "iata": "CX",
+    "icao": "CPA",
+    "name": "Cathay Pacific",
+    "country": "Hong Kong",
+    "logoUrl": "https://images.kiwi.com/airlines/64/CX.png",
+    "aliases": [
+      "cathay pacific",
+      "cathay pacific"
+    ]
+  },
+  {
+    "iata": "NH",
+    "icao": "ANA",
+    "name": "ANA",
+    "country": "Japan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/NH.png",
+    "aliases": [
+      "ana",
+      "ana"
+    ]
+  },
+  {
+    "iata": "JL",
+    "icao": "JAL",
+    "name": "Japan Airlines",
+    "country": "Japan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/JL.png",
+    "aliases": [
+      "japan airlines",
+      "japan"
+    ]
+  },
+  {
+    "iata": "KE",
+    "icao": "KAL",
+    "name": "Korean Air",
+    "country": "South Korea",
+    "logoUrl": "https://images.kiwi.com/airlines/64/KE.png",
+    "aliases": [
+      "korean air",
+      "korean air"
+    ]
+  },
+  {
+    "iata": "OZ",
+    "icao": "AAR",
+    "name": "Asiana Airlines",
+    "country": "South Korea",
+    "logoUrl": "https://images.kiwi.com/airlines/64/OZ.png",
+    "aliases": [
+      "asiana airlines",
+      "asiana"
+    ]
+  },
+  {
+    "iata": "CI",
+    "icao": "CAL",
+    "name": "China Airlines",
+    "country": "Taiwan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/CI.png",
+    "aliases": [
+      "china airlines",
+      "china"
+    ]
+  },
+  {
+    "iata": "BR",
+    "icao": "EVA",
+    "name": "EVA Air",
+    "country": "Taiwan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/BR.png",
+    "aliases": [
+      "eva air",
+      "eva air"
+    ]
+  },
+  {
+    "iata": "TG",
+    "icao": "THA",
+    "name": "Thai Airways",
+    "country": "Thailand",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TG.png",
+    "aliases": [
+      "thai airways",
+      "thai airways"
+    ]
+  },
+  {
+    "iata": "MH",
+    "icao": "MAS",
+    "name": "Malaysia Airlines",
+    "country": "Malaysia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/MH.png",
+    "aliases": [
+      "malaysia airlines",
+      "malaysia"
+    ]
+  },
+  {
+    "iata": "GA",
+    "icao": "GIA",
+    "name": "Garuda Indonesia",
+    "country": "Indonesia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/GA.png",
+    "aliases": [
+      "garuda indonesia",
+      "garuda indonesia"
+    ]
+  },
+  {
+    "iata": "PR",
+    "icao": "PAL",
+    "name": "Philippine Airlines",
+    "country": "Philippines",
+    "logoUrl": "https://images.kiwi.com/airlines/64/PR.png",
+    "aliases": [
+      "philippine airlines",
+      "philippine"
+    ]
+  },
+  {
+    "iata": "VN",
+    "icao": "HVN",
+    "name": "Vietnam Airlines",
+    "country": "Vietnam",
+    "logoUrl": "https://images.kiwi.com/airlines/64/VN.png",
+    "aliases": [
+      "vietnam airlines",
+      "vietnam"
+    ]
+  },
+  {
+    "iata": "QF",
+    "icao": "QFA",
+    "name": "Qantas",
+    "country": "Australia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/QF.png",
+    "aliases": [
+      "qantas",
+      "qantas"
+    ]
+  },
+  {
+    "iata": "NZ",
+    "icao": "ANZ",
+    "name": "Air New Zealand",
+    "country": "New Zealand",
+    "logoUrl": "https://images.kiwi.com/airlines/64/NZ.png",
+    "aliases": [
+      "air new zealand",
+      "air new zealand"
+    ]
+  },
+  {
+    "iata": "AI",
+    "icao": "AIC",
+    "name": "Air India",
+    "country": "India",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AI.png",
+    "aliases": [
+      "air india",
+      "air india"
+    ]
+  },
+  {
+    "iata": "6E",
+    "icao": "IGO",
+    "name": "IndiGo",
+    "country": "India",
+    "logoUrl": "https://images.kiwi.com/airlines/64/6E.png",
+    "aliases": [
+      "indigo",
+      "indigo"
+    ]
+  },
+  {
+    "iata": "UK",
+    "icao": "VTI",
+    "name": "Vistara",
+    "country": "India",
+    "logoUrl": "https://images.kiwi.com/airlines/64/UK.png",
+    "aliases": [
+      "vistara",
+      "vistara"
+    ]
+  },
+  {
+    "iata": "SG",
+    "icao": "SEJ",
+    "name": "SpiceJet",
+    "country": "India",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SG.png",
+    "aliases": [
+      "spicejet",
+      "spicejet"
+    ]
+  },
+  {
+    "iata": "CA",
+    "icao": "CCA",
+    "name": "Air China",
+    "country": "China",
+    "logoUrl": "https://images.kiwi.com/airlines/64/CA.png",
+    "aliases": [
+      "air china",
+      "air china"
+    ]
+  },
+  {
+    "iata": "MU",
+    "icao": "CES",
+    "name": "China Eastern",
+    "country": "China",
+    "logoUrl": "https://images.kiwi.com/airlines/64/MU.png",
+    "aliases": [
+      "china eastern",
+      "china eastern"
+    ]
+  },
+  {
+    "iata": "CZ",
+    "icao": "CSN",
+    "name": "China Southern",
+    "country": "China",
+    "logoUrl": "https://images.kiwi.com/airlines/64/CZ.png",
+    "aliases": [
+      "china southern",
+      "china southern"
+    ]
+  },
+  {
+    "iata": "HU",
+    "icao": "CHH",
+    "name": "Hainan Airlines",
+    "country": "China",
+    "logoUrl": "https://images.kiwi.com/airlines/64/HU.png",
+    "aliases": [
+      "hainan airlines",
+      "hainan"
+    ]
+  },
+  {
+    "iata": "TR",
+    "icao": "TGW",
+    "name": "Scoot",
+    "country": "Singapore",
+    "logoUrl": "https://images.kiwi.com/airlines/64/TR.png",
+    "aliases": [
+      "scoot",
+      "scoot"
+    ]
+  },
+  {
+    "iata": "AK",
+    "icao": "AXM",
+    "name": "AirAsia",
+    "country": "Malaysia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/AK.png",
+    "aliases": [
+      "airasia",
+      "airasia"
+    ]
+  },
+  {
+    "iata": "FD",
+    "icao": "AIQ",
+    "name": "Thai AirAsia",
+    "country": "Thailand",
+    "logoUrl": "https://images.kiwi.com/airlines/64/FD.png",
+    "aliases": [
+      "thai airasia",
+      "thai airasia"
+    ]
+  },
+  {
+    "iata": "5J",
+    "icao": "CEB",
+    "name": "Cebu Pacific",
+    "country": "Philippines",
+    "logoUrl": "https://images.kiwi.com/airlines/64/5J.png",
+    "aliases": [
+      "cebu pacific",
+      "cebu pacific"
+    ]
+  },
+  {
+    "iata": "D7",
+    "icao": "XAX",
+    "name": "AirAsia X",
+    "country": "Malaysia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/D7.png",
+    "aliases": [
+      "airasia x",
+      "airasia x"
+    ]
+  },
+  {
+    "iata": "ET",
+    "icao": "ETH",
+    "name": "Ethiopian Airlines",
+    "country": "Ethiopia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/ET.png",
+    "aliases": [
+      "ethiopian airlines",
+      "ethiopian"
+    ]
+  },
+  {
+    "iata": "KQ",
+    "icao": "KQA",
+    "name": "Kenya Airways",
+    "country": "Kenya",
+    "logoUrl": "https://images.kiwi.com/airlines/64/KQ.png",
+    "aliases": [
+      "kenya airways",
+      "kenya airways"
+    ]
+  },
+  {
+    "iata": "SA",
+    "icao": "SAA",
+    "name": "South African Airways",
+    "country": "South Africa",
+    "logoUrl": "https://images.kiwi.com/airlines/64/SA.png",
+    "aliases": [
+      "south african airways",
+      "south african airways"
+    ]
+  },
+  {
+    "iata": "WB",
+    "icao": "RWD",
+    "name": "RwandAir",
+    "country": "Rwanda",
+    "logoUrl": "https://images.kiwi.com/airlines/64/WB.png",
+    "aliases": [
+      "rwandair",
+      "rwandair"
+    ]
+  },
+  {
+    "iata": "HM",
+    "icao": "SEY",
+    "name": "Air Seychelles",
+    "country": "Seychelles",
+    "logoUrl": "https://images.kiwi.com/airlines/64/HM.png",
+    "aliases": [
+      "air seychelles",
+      "air seychelles"
+    ]
+  },
+  {
+    "iata": "KC",
+    "icao": "KZR",
+    "name": "Air Astana",
+    "country": "Kazakhstan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/KC.png",
+    "aliases": [
+      "air astana",
+      "air astana"
+    ]
+  },
+  {
+    "iata": "HY",
+    "icao": "UZB",
+    "name": "Uzbekistan Airways",
+    "country": "Uzbekistan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/HY.png",
+    "aliases": [
+      "uzbekistan airways",
+      "uzbekistan airways"
+    ]
+  },
+  {
+    "iata": "J2",
+    "icao": "AHY",
+    "name": "Azerbaijan Airlines",
+    "country": "Azerbaijan",
+    "logoUrl": "https://images.kiwi.com/airlines/64/J2.png",
+    "aliases": [
+      "azerbaijan airlines",
+      "azerbaijan"
+    ]
+  },
+  {
+    "iata": "A9",
+    "icao": "TGZ",
+    "name": "Georgian Airways",
+    "country": "Georgia",
+    "logoUrl": "https://images.kiwi.com/airlines/64/A9.png",
+    "aliases": [
+      "georgian airways",
+      "georgian airways"
+    ]
+  },
+  {
+    "iata": "IR",
+    "icao": "IRA",
+    "name": "Iran Air",
+    "country": "Iran",
+    "logoUrl": "https://images.kiwi.com/airlines/64/IR.png",
+    "aliases": [
+      "iran air",
+      "iran air"
+    ]
+  },
+  {
+    "iata": "W5",
+    "icao": "IRM",
+    "name": "Mahan Air",
+    "country": "Iran",
+    "logoUrl": "https://images.kiwi.com/airlines/64/W5.png",
+    "aliases": [
+      "mahan air",
+      "mahan air"
+    ]
+  }
+]

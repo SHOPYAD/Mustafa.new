@@ -1,0 +1,52 @@
+{
+    "TicketChangeEligibilityListResponse": {
+        "@type": "TicketChangeEligibilityListResponse",
+        "transactionId": "ef7a4798-3c87-4b8e-9714-44f32538ff7e",
+        "traceId": "PP_E_JK_03272022_1",
+        "TicketChangeEligibility": [{
+                "@type": "TicketChangeEligibility",
+                "exchangeable": "All",
+                "refundable": "None",
+                "objID": "ticketChangeEligibility_1",
+                "Identifier": {
+                    "authority": "Travelport",
+                    "value": "2203364634116"
+                },
+                "Penalties": {
+                    "@type": "Penalties",
+                    "Change": [{
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Maximum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "EUR",
+                                        "minorUnit": 2,
+                                        "value": 35.00
+                                    }
+                                }
+                            ]
+                        }, {
+                            "@type": "ChangePermitted",
+                            "penaltyTypes": [
+                                "Minimum"
+                            ],
+                            "Penalty": [{
+                                    "@type": "PenaltyAmount",
+                                    "Amount": {
+                                        "code": "EUR",
+                                        "minorUnit": 2,
+                                        "value": 35.00
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PassengerTypeCode": "ADT"
+            }
+        ]
+    }
+}

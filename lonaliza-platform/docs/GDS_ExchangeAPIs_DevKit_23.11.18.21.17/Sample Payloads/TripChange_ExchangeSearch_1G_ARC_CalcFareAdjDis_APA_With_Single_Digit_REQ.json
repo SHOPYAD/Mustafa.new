@@ -1,0 +1,52 @@
+{
+	"CatalogOfferingsQueryAirChange": {
+		"CatalogOfferingsAirChangeRequest": {
+			"@type": "CatalogOfferingsAirChangeRequestReservation",
+			"returnBrandedFaresInd": true,
+			"detailViewInd": true,
+			"SearchCriteriaFlight": [
+				{
+					"departureDate": "2023-10-10",
+					"From": {
+						"cityOrAirport": "Airport Only",
+						"value": "SIN"
+					},
+					"To": {
+						"cityOrAirport": "City or Airport",
+						"value": "JFK"
+					}
+				}
+			],
+			"PricingModifiersAirChange": {
+				"@type": "PricingModifiersAirChange",
+				"FareSelection": {
+					"@type": "FareSelectionDetail",
+					"fareType": "PrivateFaresOnly"
+				},
+				"CalculatedFareAdjustment": {
+					"@type": "CalculatedFareAdjustmentDiscount",
+					"AmountPercent": {
+						"@type": "AmountPercentPercent",
+						"Percent": 5
+					}
+				}
+			},
+			"BuildFromReservationWorkbench": {
+				"ReservationIdentifier": {
+					"Identifier": {
+						"authority": "Travelport",
+						"value": "fb8992dc-3a98-4c8d-bd11-51c24e126a54"
+					}
+				},
+				"OfferIdentifier": {
+					"id": "offer_1"
+				},
+				"ProductIdentifier": [
+					{
+						"id": "product_1"
+					}
+				]
+			}
+		}
+	}
+}

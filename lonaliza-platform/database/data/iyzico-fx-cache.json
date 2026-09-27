@@ -1,0 +1,11 @@
+{
+  "pairs": {
+    "TRY_USD": {
+      "rate": 0.020436106512987145,
+      "source": "open.er-api.com+frankfurter.app",
+      "at": "2026-09-27T19:57:37.782Z",
+      "stale": false,
+      "expiresAt": 1790539777785
+    }
+  }
+}

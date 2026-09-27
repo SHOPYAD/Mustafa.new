@@ -1,0 +1,517 @@
+[
+  {
+    "id": "trip_trip-mucggaku-b7ejf_shiq",
+    "pubkey": "vip_traveler",
+    "created_at": 1790068492,
+    "content": "افضل برنامج\n\n🌟 مسار الرحلة المقترح: برنامج Istanbul — 5 أيام فاخر\n📍 الوجهة: Istanbul (5 أيام)\n\n• اليوم 1: نبض التاريخ العريق (7 مزارات)\n• اليوم 2: ضفاف البوسفور وأسرار الأفق (6 مزارات)\n• اليوم 3: عوالم من الثقافة والقصص (6 مزارات)\n• اليوم 4: جسور الماء والقصور الملكية (6 مزارات)\n\n#خطة_سفر #Istanbul #لوناليزا_VIP",
+    "category": "itinerary",
+    "categoryName": "برامج سياحية متكاملة",
+    "destination": "Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "location": "Istanbul",
+    "images": [
+      "https://photos.hotelbeds.com/giata/bigger/99/999924/999924a_hb_a_001.jpg",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800",
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200"
+    ],
+    "authorName": "مسافر لوناليزا VIP",
+    "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D9%85%D8%B3%D8%A7%D9%81%D8%B1%20%D9%84%D9%88%D9%86%D8%A7%D9%84%D9%8A%D8%B2%D8%A7%20VIP",
+    "author": {
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D9%85%D8%B3%D8%A7%D9%81%D8%B1%20%D9%84%D9%88%D9%86%D8%A7%D9%84%D9%8A%D8%B2%D8%A7%20VIP",
+      "tier": "Gold VIP Explorer",
+      "pubkey": "vip_traveler"
+    },
+    "likesCount": 1,
+    "commentsCount": 0,
+    "tags": [
+      "خطة_سفر",
+      "Istanbul",
+      "برنامج_سياحي",
+      "لوناليزا_VIP"
+    ],
+    "sharedService": {
+      "id": "trip-mucggaku-b7ejf",
+      "type": "package",
+      "title": "برنامج Istanbul — 5 أيام فاخر",
+      "destination": "Istanbul",
+      "price": 0,
+      "currency": "USD",
+      "imageUrl": "https://photos.hotelbeds.com/giata/bigger/99/999924/999924a_hb_a_001.jpg"
+    },
+    "pointsAwarded": true,
+    "eligiblePoints": 250,
+    "authorUserId": "vip_traveler"
+  },
+  {
+    "id": "trip_test_trip_123_a91b",
+    "pubkey": "vip_traveler",
+    "created_at": 1790012380,
+    "content": "🌟 شاركت معكم خطتي السياحية الفاخرة إلى إسطنبول لمدة 5 أيام عبر لوناليزا!\n\nبرنامج إسطنبول — 5 أيام فاخر\n\nأبرز المحطات اليومية:\n• اليوم 1: اليوم الأول (1 مزارات)\n\nما رأيكم في هذا المسار وهل تنصحون بمطاعم أو فعاليات إضافية هناك؟ ✈️✨\n#خطة_سفر #إسطنبول #لوناليزا_VIP #سياحة",
+    "category": "itinerary",
+    "categoryName": "برامج سياحية متكاملة",
+    "destination": "إسطنبول",
+    "city": "إسطنبول",
+    "country": "Turkey",
+    "location": "إسطنبول",
+    "images": [
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800"
+    ],
+    "authorName": "Mustafa VIP",
+    "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Mustafa%20VIP",
+    "author": {
+      "name": "Mustafa VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Mustafa%20VIP",
+      "tier": "Gold VIP Explorer",
+      "pubkey": "vip_traveler"
+    },
+    "likesCount": 1,
+    "commentsCount": 0,
+    "tags": [
+      "خطة_سفر",
+      "إسطنبول",
+      "برنامج_سياحي",
+      "لوناليزا_VIP"
+    ],
+    "sharedService": {
+      "id": "test_trip_123",
+      "type": "package",
+      "title": "برنامج إسطنبول — 5 أيام فاخر",
+      "destination": "إسطنبول",
+      "price": 0,
+      "currency": "USD",
+      "imageUrl": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800"
+    },
+    "pointsAwarded": true,
+    "eligiblePoints": 250,
+    "authorUserId": "vip_traveler"
+  },
+  {
+    "id": "trip_test_trip_123_ne3c",
+    "pubkey": "vip_traveler",
+    "created_at": 1790007587,
+    "content": "رحلة ممتعة جدا وموصى بها للعائلات\n\n🌟 مسار الرحلة المقترح: undefined\n📍 الوجهة: Trabzon (4 أيام)\n💰 التكلفة التقديرية: $490\n\n• اليوم 1: استقبال في مطار طرابزون وبحيرة سيرا (0 مزارات)\n• اليوم 2: جولة دير سوميلا ومغارة تشال (0 مزارات)\n\n#خطة_سفر #Trabzon #لوناليزا_VIP",
+    "category": "itinerary",
+    "categoryName": "برامج سياحية متكاملة",
+    "destination": "Trabzon",
+    "city": "Trabzon",
+    "country": "Turkey",
+    "location": "Trabzon",
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800"
+    ],
+    "authorName": "مسافر لوناليزا VIP",
+    "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D9%85%D8%B3%D8%A7%D9%81%D8%B1%20%D9%84%D9%88%D9%86%D8%A7%D9%84%D9%8A%D8%B2%D8%A7%20VIP",
+    "author": {
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D9%85%D8%B3%D8%A7%D9%81%D8%B1%20%D9%84%D9%88%D9%86%D8%A7%D9%84%D9%8A%D8%B2%D8%A7%20VIP",
+      "tier": "Gold VIP Explorer",
+      "pubkey": "vip_traveler"
+    },
+    "likesCount": 1,
+    "commentsCount": 0,
+    "tags": [
+      "خطة_سفر",
+      "Trabzon",
+      "برنامج_سياحي",
+      "لوناليزا_VIP"
+    ],
+    "sharedService": {
+      "id": "test_trip_123",
+      "type": "package",
+      "destination": "Trabzon",
+      "price": 490,
+      "currency": "USD",
+      "imageUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800"
+    },
+    "pointsAwarded": true,
+    "eligiblePoints": 250,
+    "authorUserId": "vip_traveler"
+  },
+  {
+    "id": "post_1789400714348_i4ojdp",
+    "pubkey": "npub1user1789400714348gen5",
+    "content": "حضور العرض الجوي بمناسبة عيد النصر في ساحة ينيكابي كان بدون شك أحد أجمل وأحمس الفعاليات التي شهدتها مع عائلتي خلال رحلتتي في اسطنبول",
+    "created_at": 1789400714,
+    "category": "activities",
+    "categoryName": "أنشطة ومغامرات",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [],
+    "videos": [
+      "https://blossom.primal.net/0e056032097b6d4a11462114ed92a3a9b707e4e1abc024e68b2cc5775e3a8741.mp4"
+    ],
+    "likesCount": 2,
+    "commentsCount": 1,
+    "userHasLiked": true,
+    "authorIsAdmin": false,
+    "author": {
+      "pubkey": "npub1user1789400714348gen5",
+      "name": "رحّالة الأناقة الملكية",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    },
+    "pointsAwarded": false,
+    "eligiblePoints": 150,
+    "authorUserId": "fypk6qsauo22f6n",
+    "kind": "reel",
+    "isReel": true,
+    "isVideo": true,
+    "videoUrl": "https://blossom.primal.net/0e056032097b6d4a11462114ed92a3a9b707e4e1abc024e68b2cc5775e3a8741.mp4",
+    "comments": [
+      {
+        "id": "cmt_1789403838886_ezoi4",
+        "postId": "post_1789400714348_i4ojdp",
+        "authorName": "Ghizlane",
+        "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Ghizlane",
+        "authorTier": "Silver Explorer",
+        "text": "احتفال جميل",
+        "createdAt": 1789403838,
+        "likesCount": 1,
+        "userHasLiked": true
+      }
+    ],
+    "viewsCount": 5
+  },
+  {
+    "id": "post_1789333830593_gve1ej",
+    "pubkey": "npub1user1789333830593iqde",
+    "content": "أشارككم اليوم تقييمي لإحدى أجمل الإقامات الفندقية التي جربتها مؤخراً في اسطنبول، والتقييم بالتأكيد 5 من 5 نجوم.\n\nكانت الإقامة فاخرة بكل المقاييس ومريحة للغاية، حيث تميزت الغرف بالتصميم الراقٍ والنظافة الفائقة. أكثر ما أسرني خلال هذه الإقامة هو الإطلالة البانورامية الساحرة ..",
+    "created_at": 1789333830,
+    "category": "activities",
+    "categoryName": "أنشطة ومغامرات",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [
+      "https://blossom.primal.net/92a4fd2ec2de9325261edd03e97cab3f081d746e2caa0ac6949dd82fba02aaf5.jpg"
+    ],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "authorIsAdmin": false,
+    "author": {
+      "pubkey": "npub1user1789333830593iqde",
+      "name": "فارس الوجهات الساحرة",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    },
+    "pointsAwarded": false,
+    "eligiblePoints": 100,
+    "authorUserId": "fypk6qsauo22f6n",
+    "kind": "post",
+    "isReel": false,
+    "isVideo": false
+  },
+  {
+    "id": "post_1789324407832_fmm38q",
+    "pubkey": "npub1user1789324407832kkdd",
+    "content": "رحلة فخمة الله يبارك",
+    "created_at": 1789324407,
+    "category": "hotels",
+    "categoryName": "فنادق ومنتجعات",
+    "destination": "RUH",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "booking": {
+      "id": "qvz7g77lgoz5wmg",
+      "type": "hotel",
+      "typeLabel": "حجز فندقي فاخر",
+      "title": "SAW → RUH",
+      "destination": "RUH",
+      "date": "2026-09-25 00:00:00.000Z - 2026-09-25 00:00:00.000Z",
+      "price": 198.12,
+      "currency": "USD",
+      "verified": true
+    },
+    "authorIsAdmin": false,
+    "author": {
+      "pubkey": "npub1user1789324407832kkdd",
+      "name": "قبطان التجارب الحصرية",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    },
+    "pointsAwarded": false,
+    "eligiblePoints": 300,
+    "authorUserId": "y1n205vw0elucff",
+    "kind": "post",
+    "bookingId": "qvz7g77lgoz5wmg",
+    "isReel": false,
+    "isVideo": false
+  },
+  {
+    "id": "post_1788951112774_ulbd37",
+    "pubkey": "npub1user1788951112774bz2f",
+    "content": "رحلة اقتصادية وسعر ممتاز من اسطنبول الى دبي",
+    "created_at": 1788951112,
+    "category": "flights",
+    "categoryName": "طيران ومطارات",
+    "destination": "دبي",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "sharedService": {
+      "id": "seeru_SAW|2026-09-30|PC|21:10|03:15|2026-10-01|DXB|0 kg",
+      "type": "flight",
+      "title": "رحلة طيران: إسطنبول ← دبي (طيران بيغاسوس)",
+      "destination": "دبي",
+      "price": "159.85",
+      "currency": "USD",
+      "imageUrl": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
+      "url": "https://lonaliza.com/flights/search?tripType=one-way&originSkyId=ISTA&originEntityId=27542903&originIata=ISTA&originLabel=Istanbul&originName=Istanbul&originCountry=Turkey&originKind=airport&destinationSkyId=DXB&destinationEntityId=27539524&destinationIata=DXB&destinationLabel=Dubai&destinationName=Dubai+International&destinationCountry=United+Arab+Emirates&destinationKind=airport&date=2026-09-30&adults=1&cabinClass=economy&currency=USD&from=ISTA&to=DXB&flightType=one-way&class=economy"
+    },
+    "authorIsAdmin": true,
+    "author": {
+      "pubkey": "npub1user1788951112774bz2f",
+      "name": "إدارة المنصة العامة",
+      "avatar": "/favicon.png",
+      "tier": "إدارة المنصة العامة (Official Admin)"
+    },
+    "pointsAwarded": false,
+    "eligiblePoints": 200,
+    "authorUserId": "y1n205vw0elucff"
+  },
+  {
+    "id": "post_1788808799808_4gepyx",
+    "pubkey": "npub1user178880879980850k0",
+    "content": "تجربة سفر رائعة إلى إسطنبول",
+    "created_at": 1788808799,
+    "category": "hotels",
+    "categoryName": "فنادق ومنتجعات",
+    "destination": "إسطنبول",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "authorIsAdmin": false,
+    "author": {
+      "pubkey": "npub1user178880879980850k0",
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    },
+    "pointsAwarded": false,
+    "eligiblePoints": 50,
+    "authorUserId": "npub1user178880879980850k0"
+  },
+  {
+    "id": "post_1788560576253_knjtfg",
+    "pubkey": "npub1user1788560576253jtrq",
+    "content": "أشارككم تجربتي الاستثنائية خلال 4 أيام قضيتها مع عائلتي في كابادوكيا، والتي كانت بكل أمانة واحدة من أجمل المغام",
+    "created_at": 1788560576,
+    "category": "activities",
+    "categoryName": "أنشطة ومغامرات",
+    "destination": "كابادوكيا والمناطيد",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "authorIsAdmin": false,
+    "author": {
+      "pubkey": "npub1user1788560576253jtrq",
+      "name": "صقر الأناضول الذهبي",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    }
+  },
+  {
+    "id": "post_1788546065788_3of630",
+    "pubkey": "npub1user17885460657881qoi",
+    "content": "**رحلتي الأخيرة إلى بورصة وجبل أولوداغ كانت من أجمل التجارب التي قضيتها مع عائلتي هذا العام، وأحببت أن أشارككم تفاصيل هذا البرنامج الممتع الذي زرنا فيه أجمل معالم المدينة.**",
+    "created_at": 1788546065,
+    "category": "tours",
+    "categoryName": "رحلات وبرامج سياحية",
+    "destination": "بورصة وأولوداغ",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "sharedService": {
+      "id": "LON-2027-2BK5P",
+      "type": "package",
+      "title": "سحر بورصة الخضراء وجبل أولوداغ الفاخر (5 أيام)",
+      "destination": "بورصة وجبل أولوداغ، تركيا",
+      "price": "1250",
+      "currency": "USD",
+      "imageUrl": "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80",
+      "url": "/package/bursa-mount-uludag-5-days-luxury-mtn6hrl3"
+    },
+    "authorIsAdmin": true,
+    "author": {
+      "pubkey": "npub1user17885460657881qoi",
+      "name": "المشرف العام",
+      "avatar": "/favicon.png",
+      "tier": "المشرف العام • إدارة لوناليزا"
+    }
+  },
+  {
+    "id": "post_1788545004341_srceyz",
+    "pubkey": "npub1user1788545004341h7g3",
+    "content": "كانت جولة اليخت الخاص في مضيق البوسفور وقت الغروب هي التوب بالنسبة لي وأجمل تجربة عشتها خلال زيارتي الأخيرة لإسطنبول",
+    "created_at": 1788545004,
+    "category": "vip-tours",
+    "categoryName": "تجارب ورحلات VIP",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "authorIsAdmin": true,
+    "author": {
+      "pubkey": "npub1user1788545004341h7g3",
+      "name": "المشرف العام",
+      "avatar": "/favicon.png",
+      "tier": "المشرف العام • إدارة لوناليزا"
+    }
+  },
+  {
+    "id": "post_1788524168982_rc2p3l",
+    "pubkey": "npub1user1788524168982kuec",
+    "content": "حجزت طيران خدمة ممتازة وموثوقة وبسعر ارخص من السوق ممتن جدا",
+    "created_at": 1788524168,
+    "category": "flights",
+    "categoryName": "طيران ومطارات",
+    "destination": "إسطنبول",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "booking": {
+      "id": "bk_turkish_airlines_vip",
+      "type": "flight",
+      "typeLabel": "تذكرة طيران VIP",
+      "title": "الخطوط الجوية التركية - درجة رجال الأعمال",
+      "destination": "إسطنبول",
+      "date": "تذكرة مؤكدة",
+      "price": 640,
+      "currency": "USD",
+      "verified": true
+    },
+    "author": {
+      "pubkey": "npub1user1788524168982kuec",
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    }
+  },
+  {
+    "id": "post_1788519448715_t8cgkf",
+    "pubkey": "npub1user17885194487158bsj",
+    "content": "✨ عندما تتعانق الفخامة العثمانية مع سحر البوسفور الخالد، تبدأ حكاية استثنائية في قلب إسطنبول الساحرة، حيث تلتقي الأصالة بأعلى معايير الضيافة العالمية.\n\nمنذ لحظة وصولك، تأسر حواسك الأجواء الملكية الممزوجة بلمسات معماريّة عصرية فاخرة. الإطلالة البانورامية المشرفة على المضيق تأخذ الأنفاس، حيث تتماوج مياه البوسفور تحت أشعة الشمس الذهبية، لتبث في روحك شعورًا لا يُنوّس بالسكينة والرفاهية المطلقة.\n\nتتجلى الفخامة الفندقية (بتقييم 5/5) في تفاصيل الأجنحة المجهزة بأعلى معايير الراحة، والخدمة الاستثنائية التي تسبق توقعاتك. أعد اكتشاف الاسترخاء أمام المسبح البانورامي الساحر، واستمتع بشروق الشمس أثناء تناول إفطار فاخر يضم أشهى المبتكرات العالمية والأطباق التركية الأصيلة المعدّة بإتقان متناهٍ.\n\n💡 **نصيحة لوناليزا الذهبية:** احرص على حجز جناحك المطل مباشرة على المضيق في الأدوار العليا، ولا تفوّت",
+    "created_at": 1788519448,
+    "category": "hotels",
+    "categoryName": "فنادق ومنتجعات",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [
+      "https://blossom.primal.net/9b464b55ff8585f20958ee0b766de18e723138bda1e4e6d3a6cf950cc1918575.jpg",
+      "https://blossom.primal.net/706a7588b87e3771ca07135f2451380540009d721716a031c04bd6827c6f4cb2.jpg",
+      "https://blossom.primal.net/5c041a5bab4b29fe507c857735b0cdea613ac783488724ab3bc9d6eb7c9fbb85.jpg",
+      "https://blossom.primal.net/c83fcc725a9d8f67d50ada59a60ef18aac812944779dbe3351b17e8ff8443823.jpg",
+      "https://blossom.primal.net/f7d8385fb06699f5024ae3988e32f808f70009dcd696435eabb97bcd972bbd1e.jpg"
+    ],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 0,
+    "userHasLiked": true,
+    "author": {
+      "pubkey": "npub1user17885194487158bsj",
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    }
+  },
+  {
+    "id": "post_1788516063343_upnrif",
+    "pubkey": "npub1user178851606334333nj",
+    "content": "سحر إسطنبول لا يكتمل إلا بإقامة فاخرة تعكس جمال هذه المدينة العريقة! 🌟✨\n\nأشارككم اليوم تجربتي الاستثنائية في",
+    "created_at": 1788516063,
+    "category": "hotels",
+    "categoryName": "فنادق ومنتجعات",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [
+      "https://blossom.primal.net/b652ed7edc763597fee595edc85b5d2cfc7fb6cc44f46755023c47fa5449d0ff.webp",
+      "https://blossom.primal.net/4fff8c4e14dcf6589c993cb4a76499bba9b0024035f2e38fb2d76ef90506e020.webp",
+      "https://blossom.primal.net/cdae2596fd44c51ceaac4e39695a759e208a761d75d706b4714888463e2453d5.webp",
+      "https://blossom.primal.net/69d0f5e59fd948cd59faf96faed9d8045fa94c147ce941e64d86fd36b3cbd87f.webp",
+      "https://blossom.primal.net/4a084d25fdc737a8d2e8e8cf209daebcedf9b210d0f5e6783a58d00551126a7d.webp"
+    ],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 2,
+    "userHasLiked": true,
+    "author": {
+      "pubkey": "npub1user178851606334333nj",
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    },
+    "comments": [
+      {
+        "id": "cmt_1788516971848_e8hvu",
+        "postId": "post_1788516063343_upnrif",
+        "authorName": "د. خالد المنصوري",
+        "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D8%AF.%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D9%8A",
+        "authorTier": "Silver Explorer",
+        "text": "تجربة مميزة جداً! هل كان المسبح دافئاً وقت إقامتكم؟",
+        "createdAt": 1788516971,
+        "likesCount": 1,
+        "userHasLiked": true
+      },
+      {
+        "id": "cmt_1788516989819_1h549",
+        "postId": "post_1788516063343_upnrif",
+        "authorName": "مسافر لوناليزا VIP",
+        "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=%D9%85%D8%B3%D8%A7%D9%81%D8%B1%20%D9%84%D9%88%D9%86%D8%A7%D9%84%D9%8A%D8%B2%D8%A7%20VIP",
+        "authorTier": "Silver Explorer",
+        "text": "نعم المسبح مدفأ وجميل جداً ومناسب للاسترخاء!",
+        "createdAt": 1788516989,
+        "likesCount": 1,
+        "userHasLiked": true,
+        "parentId": "cmt_1788516971848_e8hvu",
+        "replyToName": "د. خالد المنصوري"
+      }
+    ]
+  },
+  {
+    "id": "post_1788514770372_pufnd9",
+    "pubkey": "npub1user1788514770372njk9",
+    "content": "تجربة رائعة جداً في فندق قصر سيراجان كمبنسكي اسطنبول! الإفطار الفاخر والخدمة خمس نجوم والإطلالة مذهلة.",
+    "created_at": 1788514770,
+    "category": "hotels",
+    "categoryName": "فنادق ومنتجعات",
+    "destination": "اسطنبول",
+    "rating": 5,
+    "images": [],
+    "videos": [],
+    "likesCount": 1,
+    "commentsCount": 1,
+    "userHasLiked": true,
+    "author": {
+      "pubkey": "npub1user1788514770372njk9",
+      "name": "مسافر لوناليزا VIP",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=npub1user1",
+      "tier": "Gold VIP Traveler"
+    }
+  }
+]

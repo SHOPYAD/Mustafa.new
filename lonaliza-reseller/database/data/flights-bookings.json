@@ -1,0 +1,3392 @@
+{
+  "sessions": [
+    {
+      "id": "flt_mtfv9mj6_528ad0e5",
+      "locale": "ar",
+      "createdAt": "2026-08-30T13:50:07.699Z",
+      "itineraryId": "16096-2609250025--31973-0-16029-2609250405",
+      "legs": "[{\"origin\":\"SAW\",\"destination\":\"RUH\",\"date\":\"2026-09-25\"}]",
+      "sessionId": "KLUv_SCP5QMA8ggeHbDrDEt4wKVLlS5lkln8_UWSyCSTkuAx16CJDjYEThMggdHiY5gpsz_f1l7a57D3n8p1xnUvjEfTRCkFYHRlXRlG_KvVX872sy2VLW1dXq_kSBe2g_VFlxwAAWWFzevPKH1fnXGZuZdplPuQqXQuLhmc4SkAARoCAA==",
+      "price": {
+        "base": 0,
+        "client": 0,
+        "currency": "USD",
+        "fareChanged": true
+      },
+      "quotedClient": 198.12,
+      "itinerary": null,
+      "passengers": {
+        "adults": 1,
+        "children": 0,
+        "infants": 0
+      },
+      "contact": {
+        "name": "ferdos elhayat",
+        "email": "elhayatferdos@gmail.com",
+        "phone": "+905313591394"
+      },
+      "travelers": [
+        {
+          "kind": "adult",
+          "title": "mr",
+          "firstName": "ferdos",
+          "lastName": "elhayat",
+          "gender": "male",
+          "dateOfBirth": "1989-07-20",
+          "nationality": "morocoo",
+          "passportNumber": "pj6413113",
+          "passportCountry": "morocoo",
+          "passportExpiry": "2031-10-21"
+        }
+      ],
+      "pocketbaseId": "qmana5y5a1ua3rz",
+      "supplier": "unknown",
+      "ticketNumbers": [],
+      "fulfilment": {
+        "status": "awaiting_payment"
+      }
+    },
+    {
+      "id": "flt_mu0hewp4_d1d31ae3",
+      "locale": "ar",
+      "createdAt": "2026-09-14T00:05:29.224Z",
+      "updatedAt": "2026-09-14T00:05:29.583Z",
+      "itineraryId": "pk_ktdapc",
+      "legs": "[\"pk_ktdapc_leg_0\"]",
+      "sessionId": "ses_mu0h4czg",
+      "supplier": "pkfare",
+      "price": {
+        "base": 279.62,
+        "client": 329.95,
+        "currency": "USD",
+        "fareChanged": false
+      },
+      "quotedClient": 329.95,
+      "itinerary": {
+        "id": "pk_ktdapc",
+        "legs": [
+          {
+            "id": "pk_ktdapc_leg_0",
+            "origin": {
+              "skyId": "TZX",
+              "displayCode": "TZX"
+            },
+            "destination": {
+              "skyId": "DMM",
+              "displayCode": "DMM"
+            },
+            "departure": "2026-09-22T19:05:00",
+            "arrival": "2026-09-22T22:40:00",
+            "durationMinutes": 215,
+            "stopCount": 0,
+            "carrierName": "طيران ناس",
+            "carrierCode": "XY",
+            "segments": [
+              {
+                "flightNumber": "XY842",
+                "airline": "طيران ناس",
+                "airlineCode": "XY",
+                "aircraft": "320",
+                "origin": {
+                  "skyId": "TZX",
+                  "displayCode": "TZX"
+                },
+                "destination": {
+                  "skyId": "DMM",
+                  "displayCode": "DMM"
+                },
+                "departure": "2026-09-22T19:05:00",
+                "arrival": "2026-09-22T22:40:00",
+                "durationMinutes": 215
+              }
+            ]
+          }
+        ],
+        "price": {
+          "base": 279.62,
+          "client": 329.95,
+          "currency": "USD"
+        },
+        "stops": 0,
+        "durationMinutes": 215,
+        "airlines": [
+          "XY"
+        ],
+        "badges": [
+          "مباشر",
+          "بدون أمتعة مسجلة"
+        ],
+        "fareFamilies": [
+          {
+            "id": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+            "name": "غير قابل للاسترداد · غير قابل للتغيير · بدون أمتعة مسجلة",
+            "nameSource": "derived",
+            "cabin": "ECONOMY",
+            "price": {
+              "base": 242.66,
+              "client": 329.95,
+              "currency": "USD",
+              "taxes": 36.96
+            },
+            "baggage": "0kg",
+            "baggageDetail": {
+              "checked": {
+                "status": "none",
+                "text": "0PC"
+              },
+              "cabin": {
+                "status": "none",
+                "text": "0PC"
+              }
+            },
+            "attributes": {
+              "refund": "not_available",
+              "change": "not_available",
+              "seat": "unknown",
+              "meal": "unknown",
+              "priority": "unknown"
+            },
+            "penalties": [
+              {
+                "type": "cancel",
+                "currency": "USD",
+                "window": "before departure",
+                "text": "Non-refundable"
+              },
+              {
+                "type": "change",
+                "currency": "USD",
+                "window": "before departure",
+                "text": "Non-changeable"
+              }
+            ],
+            "refundable": false,
+            "changeable": false,
+            "isBestPrice": true,
+            "canAddPaidBaggage": true
+          }
+        ],
+        "baggage": {
+          "checked": {
+            "status": "none",
+            "text": "0PC"
+          },
+          "cabin": {
+            "status": "none",
+            "text": "0PC"
+          }
+        },
+        "baggageAllowance": "0kg",
+        "canAddPaidBaggage": true,
+        "farePolicy": {
+          "provider": "pkfare",
+          "validatingCarrier": "XY",
+          "refundable": false,
+          "modifiable": false,
+          "canVoid": false,
+          "canHold": false,
+          "baggage": {
+            "checked": {
+              "status": "none",
+              "text": "0PC"
+            },
+            "cabin": {
+              "status": "none",
+              "text": "0PC"
+            }
+          }
+        }
+      },
+      "passengers": {
+        "adults": 1,
+        "children": 0,
+        "infants": 0
+      },
+      "contact": {
+        "name": "Ghizlane El kandoussi",
+        "email": "flymefy@gmail.com",
+        "phone": "+905015709201"
+      },
+      "travelers": [
+        {
+          "kind": "adult",
+          "title": "mr",
+          "firstName": "Ghizlane",
+          "lastName": "El kandoussi",
+          "gender": "female",
+          "dateOfBirth": "1990-09-12",
+          "nationality": "Morocco ",
+          "passportNumber": "İg44566456",
+          "passportCountry": "Morocco ",
+          "passportExpiry": "2034-09-14"
+        }
+      ],
+      "userId": "fypk6qsauo22f6n",
+      "fareId": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+      "fareToken": {
+        "fareId": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+        "offerId": "pk_ktdapc",
+        "supplier": "pkfare",
+        "supplierToken": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+        "supplierContext": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "shoppingKey": "8bdec2356a482cfa1fa9fa687cb5164e",
+          "tag": "",
+          "brandFare": "",
+          "fareType": "PUBLIC",
+          "lastTktTime": ""
+        },
+        "price": {
+          "total": 279.62,
+          "base": 242.66,
+          "taxes": 36.96,
+          "currency": "USD"
+        },
+        "brandName": "غير قابل للاسترداد · غير قابل للتغيير · بدون أمتعة مسجلة",
+        "cabin": "ECONOMY"
+      },
+      "rawOffer": {
+        "solution": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+          "fareType": "PUBLIC",
+          "currency": "USD",
+          "adtFare": 242.66,
+          "adtTax": 36.96,
+          "chdFare": 0,
+          "chdTax": 0,
+          "qCharge": 0,
+          "tktFee": 0,
+          "platformServiceFee": 0,
+          "comments": null,
+          "journeys": {
+            "journey_0": [
+              "743ec2f25b1a3a1ac1f35c883ab58d03"
+            ]
+          },
+          "fareRule": null,
+          "rule": null,
+          "platingCarrier": "XY",
+          "prices": null,
+          "merchantFee": 0,
+          "adults": 1,
+          "children": 0,
+          "infants": 0,
+          "baggageMap": {
+            "ADT": [
+              {
+                "segmentIndexList": [
+                  1
+                ],
+                "baggageAmount": "0PC",
+                "baggageWeight": null,
+                "carryOnAmount": "0PC",
+                "carryOnWeight": null,
+                "carryOnSize": null
+              }
+            ]
+          },
+          "miniRuleMap": {
+            "ADT": [
+              {
+                "segmentIndex": [
+                  1
+                ],
+                "miniRules": [
+                  {
+                    "penaltyType": 0,
+                    "isPermited": 0,
+                    "when": 0,
+                    "noShowTime": "-1",
+                    "noShowTimeUnit": "H",
+                    "amount": null,
+                    "currencyCode": null,
+                    "percent": null,
+                    "baseType": null
+                  },
+                  {
+                    "penaltyType": 2,
+                    "isPermited": 0,
+                    "when": 0,
+                    "noShowTime": "-1",
+                    "noShowTimeUnit": "H",
+                    "amount": null,
+                    "currencyCode": null,
+                    "percent": null,
+                    "baseType": null
+                  }
+                ]
+              }
+            ]
+          },
+          "afterSaleRule": null,
+          "category": null,
+          "multiTags": null
+        },
+        "solutions": [
+          {
+            "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+            "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+            "fareType": "PUBLIC",
+            "currency": "USD",
+            "adtFare": 242.66,
+            "adtTax": 36.96,
+            "chdFare": 0,
+            "chdTax": 0,
+            "qCharge": 0,
+            "tktFee": 0,
+            "platformServiceFee": 0,
+            "comments": null,
+            "journeys": {
+              "journey_0": [
+                "743ec2f25b1a3a1ac1f35c883ab58d03"
+              ]
+            },
+            "fareRule": null,
+            "rule": null,
+            "platingCarrier": "XY",
+            "prices": null,
+            "merchantFee": 0,
+            "adults": 1,
+            "children": 0,
+            "infants": 0,
+            "baggageMap": {
+              "ADT": [
+                {
+                  "segmentIndexList": [
+                    1
+                  ],
+                  "baggageAmount": "0PC",
+                  "baggageWeight": null,
+                  "carryOnAmount": "0PC",
+                  "carryOnWeight": null,
+                  "carryOnSize": null
+                }
+              ]
+            },
+            "miniRuleMap": {
+              "ADT": [
+                {
+                  "segmentIndex": [
+                    1
+                  ],
+                  "miniRules": [
+                    {
+                      "penaltyType": 0,
+                      "isPermited": 0,
+                      "when": 0,
+                      "noShowTime": "-1",
+                      "noShowTimeUnit": "H",
+                      "amount": null,
+                      "currencyCode": null,
+                      "percent": null,
+                      "baseType": null
+                    },
+                    {
+                      "penaltyType": 2,
+                      "isPermited": 0,
+                      "when": 0,
+                      "noShowTime": "-1",
+                      "noShowTimeUnit": "H",
+                      "amount": null,
+                      "currencyCode": null,
+                      "percent": null,
+                      "baseType": null
+                    }
+                  ]
+                }
+              ]
+            },
+            "afterSaleRule": null,
+            "category": null,
+            "multiTags": null
+          }
+        ],
+        "flights": [
+          {
+            "flightId": "051e2f5c5e4bc77e81bf8176b97fc60d",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "e68c5a8653b1ebc4ccc0ff05f51e8e86"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d9366ae39b46f577e6becd55396564c4",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "0789fb56088f2e3c6b32a5d6639d7c28"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "c0d9fc7a2158f956a8f8675ae837eb95",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "902b94d0a0ede69642b68de0fad064be"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "ccc70bc7299397b2f556c146cb102de6",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "aa94d4b5ce71993c919670dd16c1f26f",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e135fbee34e0db10628a359e72b38e48",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "215e3d5e630f73d0215922bda8ae9e5d",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "743ec2f25b1a3a1ac1f35c883ab58d03",
+            "journeyTime": 215,
+            "transferCount": 0,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "6b4c08626ced50ec51480125c9239bd5"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "70fd3aed3b27dcf32e545ccc6d2ef2de",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "078f36f4a19b20d8953e008b75d94089",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d20abf33eefb07882e7265de5e88de72",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "80c697a2b7d0acaf8e10a47d5190f766"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "9cc9adc039c4b3ea8d6bb8bf5d178fc1",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "0789fb56088f2e3c6b32a5d6639d7c28"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "58b0cdbc7ac7b35c2d501a7a40e6e3d8",
+            "journeyTime": 290,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "9ffd515fb370655d15f0a5143c52f871",
+              "d25c73c8db6f13e0599e1b69fa650b77"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d6828002433d34a857776053f43dea09",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "f58c064bcdc082d6baa1d79827bdefff"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "8fbe3d29c4bd1481e487c47fb4ace5d0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "f58c064bcdc082d6baa1d79827bdefff"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "6e6d9b9d64cda957edc105fe80e30d5b",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "983445ef65bc5a3ec72000ba26d8dc35",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "76570816c3356043fab838ae6aa8f1e0",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "35ed12f0aa7b17d3e6ccced3d4b2c374",
+              "3c0b46bbc8635a187084c91a8efe9e35"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "0ac688069442fb429f88ae86a1618106",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "e68c5a8653b1ebc4ccc0ff05f51e8e86"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a88e21252e9f7ac607a7855d685a0ea6",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "902b94d0a0ede69642b68de0fad064be"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "52c29ba6e694fc733594efeee25b9f64",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "0b6b61ec1f61c926ba8cf4500a15752e",
+              "3c0b46bbc8635a187084c91a8efe9e35"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "8920ad4a154398daa242106b5d6b42ed",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "e4eb94f4af199389b358a2d244f8f718"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "990c8e76a585a443505b6d1e700ced82",
+            "journeyTime": 290,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "9ffd515fb370655d15f0a5143c52f871",
+              "6ded72abbba5e9aebe1268c81e3b1fba"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "5b95a9965aa07b9b4d199cf838f678a1",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "06c62c55f04c408c4e6010c3144ca8f7",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "1b04c488e8a340d8a67a6611b8b09d5f",
+            "journeyTime": 355,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "e59b5243a2d2071e09c290174a7344bc",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "2b213e4f1ac0edabdd98025df4a055b0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "cd2917dbac91f945c7575c5d6efd4208"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a789dad7aff62542d82e00470917f93f",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "36134d387b981a47f8553bda00b10222"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "6708fd5309b1604f0a7bf1e4f2b9b092",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "35ed12f0aa7b17d3e6ccced3d4b2c374",
+              "c9dc7460f00f5641c547926b59639a1c"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "4804b8c45987e8bc529935572ce5eb44",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "b1771fb897b9dc583c551c8e80a093d9"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "61a9a55dcb75dd827dfaae634cd0fa78",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "80c697a2b7d0acaf8e10a47d5190f766"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a51d70000285d64a3c89f460476c72c4",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "2977503dd0ccd6c45e53f7629da4440b",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "cc19812123e0bb4f9e45bd58e24e3ee7",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "36134d387b981a47f8553bda00b10222"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "162667a170383b4879c99c64eef9a6fa",
+            "journeyTime": 370,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "76170326cf30df18c64b829bb29774c7",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d472022d119df6a004db50771e20d930",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "cd2917dbac91f945c7575c5d6efd4208"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "9d64b5e298599396931ca82d26b817a3",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "b1771fb897b9dc583c551c8e80a093d9"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e24e3f449771c0f666c154a64a4de105",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "0472842e3d5bd6555da9bb8252c2bedb",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "ea3ed313795f74052dd5975ce0bb89d0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "e4eb94f4af199389b358a2d244f8f718"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e8aef30b98c6c76d8590b0925bfec2fd",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "34c0dcc7288d6c791f932ac19ca2f1dc",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          }
+        ],
+        "segments": [
+          {
+            "segmentId": "9ffd515fb370655d15f0a5143c52f871",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": "",
+            "arrivalTerminal": "1",
+            "departureDate": 1790076000000,
+            "arrivalDate": 1790089200000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:00"
+          },
+          {
+            "segmentId": "80c697a2b7d0acaf8e10a47d5190f766",
+            "airline": "XY",
+            "flightNum": "304",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790139000000,
+            "arrivalDate": 1790146500000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "12:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "14:55"
+          },
+          {
+            "segmentId": "59c31ce2b8a4db90a87fa2393fb9c24f",
+            "airline": "XY",
+            "flightNum": "622",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "P",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "JED",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790086800000,
+            "arrivalDate": 1790099700000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "PLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "22:20",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "01:55"
+          },
+          {
+            "segmentId": "e59b5243a2d2071e09c290174a7344bc",
+            "airline": "TK",
+            "flightNum": "2841",
+            "equipment": "73J",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790019300000,
+            "arrivalDate": 1790026200000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "03:35",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "05:30"
+          },
+          {
+            "segmentId": "e68c5a8653b1ebc4ccc0ff05f51e8e86",
+            "airline": "XY",
+            "flightNum": "302",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790116800000,
+            "arrivalDate": 1790124300000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "06:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:45"
+          },
+          {
+            "segmentId": "76170326cf30df18c64b829bb29774c7",
+            "airline": "TK",
+            "flightNum": "2821",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790045400000,
+            "arrivalDate": 1790053200000,
+            "flightTime": 130,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "10:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "13:00"
+          },
+          {
+            "segmentId": "b1771fb897b9dc583c551c8e80a093d9",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790162400000,
+            "arrivalDate": 1790169900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "21:25"
+          },
+          {
+            "segmentId": "d25c73c8db6f13e0599e1b69fa650b77",
+            "airline": "XY",
+            "flightNum": "68",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "3",
+            "arrivalTerminal": "",
+            "departureDate": 1790121300000,
+            "arrivalDate": 1790125500000,
+            "flightTime": 70,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "07:55",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "09:05"
+          },
+          {
+            "segmentId": "0789fb56088f2e3c6b32a5d6639d7c28",
+            "airline": "XY",
+            "flightNum": "402",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790117100000,
+            "arrivalDate": 1790124600000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "06:45",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:50"
+          },
+          {
+            "segmentId": "0472842e3d5bd6555da9bb8252c2bedb",
+            "airline": "TK",
+            "flightNum": "2817",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790036700000,
+            "arrivalDate": 1790043900000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "08:25",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "10:25"
+          },
+          {
+            "segmentId": "983445ef65bc5a3ec72000ba26d8dc35",
+            "airline": "TK",
+            "flightNum": "2837",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790087100000,
+            "arrivalDate": 1790094300000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "22:25",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "00:25"
+          },
+          {
+            "segmentId": "8507526ff97e9b2752c1cc86a1e49b91",
+            "airline": "XY",
+            "flightNum": "640",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "D",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "JED",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790078100000,
+            "arrivalDate": 1790091000000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "DLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:55",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:30"
+          },
+          {
+            "segmentId": "c9dc7460f00f5641c547926b59639a1c",
+            "airline": "XY",
+            "flightNum": "256",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "2",
+            "arrivalTerminal": null,
+            "departureDate": 1790085000000,
+            "arrivalDate": 1790088900000,
+            "flightTime": 65,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "21:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:55"
+          },
+          {
+            "segmentId": "6b4c08626ced50ec51480125c9239bd5",
+            "airline": "XY",
+            "flightNum": "842",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 2,
+            "departure": "TZX",
+            "arrival": "DMM",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790075100000,
+            "arrivalDate": 1790088000000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:05",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:40"
+          },
+          {
+            "segmentId": "b1a7db824c1cdfc180316076aa93462e",
+            "airline": "PC",
+            "flightNum": "614",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Z",
+            "availabilityCount": 3,
+            "departure": "SAW",
+            "arrival": "DMM",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790091600000,
+            "arrivalDate": 1790105400000,
+            "flightTime": 230,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "23:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "03:30"
+          },
+          {
+            "segmentId": "0b6b61ec1f61c926ba8cf4500a15752e",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790076000000,
+            "arrivalDate": 1790089200000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "NLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:00"
+          },
+          {
+            "segmentId": "36134d387b981a47f8553bda00b10222",
+            "airline": "XY",
+            "flightNum": "416",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790123700000,
+            "arrivalDate": 1790131200000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "08:35",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "10:40"
+          },
+          {
+            "segmentId": "35ed12f0aa7b17d3e6ccced3d4b2c374",
+            "airline": "XY",
+            "flightNum": "360",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790056500000,
+            "arrivalDate": 1790069700000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "NLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "13:55",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "17:35"
+          },
+          {
+            "segmentId": "34c0dcc7288d6c791f932ac19ca2f1dc",
+            "airline": "PC",
+            "flightNum": "2817",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "E",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790066700000,
+            "arrivalDate": 1790073600000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "16:45",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "18:40"
+          },
+          {
+            "segmentId": "078f36f4a19b20d8953e008b75d94089",
+            "airline": "TK",
+            "flightNum": "2829",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790064900000,
+            "arrivalDate": 1790072100000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTGNO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "16:15",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "18:15"
+          },
+          {
+            "segmentId": "215e3d5e630f73d0215922bda8ae9e5d",
+            "airline": "PC",
+            "flightNum": "2813",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "W",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790050500000,
+            "arrivalDate": 1790057400000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "WAOW/2",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "12:15",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "14:10"
+          },
+          {
+            "segmentId": "6ded72abbba5e9aebe1268c81e3b1fba",
+            "airline": "XY",
+            "flightNum": "70",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "3",
+            "arrivalTerminal": "",
+            "departureDate": 1790131800000,
+            "arrivalDate": 1790136000000,
+            "flightTime": 70,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "10:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "12:00"
+          },
+          {
+            "segmentId": "055e4079a991e51604f982fc3698b02b",
+            "airline": "TK",
+            "flightNum": "150",
+            "equipment": "32Q",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "T",
+            "availabilityCount": 9,
+            "departure": "IST",
+            "arrival": "DMM",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790079300000,
+            "arrivalDate": 1790093700000,
+            "flightTime": 240,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "20:15",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "00:15"
+          },
+          {
+            "segmentId": "2977503dd0ccd6c45e53f7629da4440b",
+            "airline": "TK",
+            "flightNum": "2835",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790080200000,
+            "arrivalDate": 1790087400000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "20:30",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:30"
+          },
+          {
+            "segmentId": "06c62c55f04c408c4e6010c3144ca8f7",
+            "airline": "PC",
+            "flightNum": "2815",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "E",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790043900000,
+            "arrivalDate": 1790050800000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "10:25",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "12:20"
+          },
+          {
+            "segmentId": "aa94d4b5ce71993c919670dd16c1f26f",
+            "airline": "TK",
+            "flightNum": "2833",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790074200000,
+            "arrivalDate": 1790081400000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "18:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "20:50"
+          },
+          {
+            "segmentId": "cd2917dbac91f945c7575c5d6efd4208",
+            "airline": "XY",
+            "flightNum": "420",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790149200000,
+            "arrivalDate": 1790156700000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "15:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "17:45"
+          },
+          {
+            "segmentId": "3c0b46bbc8635a187084c91a8efe9e35",
+            "airline": "XY",
+            "flightNum": "250",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "2",
+            "arrivalTerminal": null,
+            "departureDate": 1790119800000,
+            "arrivalDate": 1790123700000,
+            "flightTime": 65,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "07:30",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:35"
+          },
+          {
+            "segmentId": "902b94d0a0ede69642b68de0fad064be",
+            "airline": "XY",
+            "flightNum": "408",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790171400000,
+            "arrivalDate": 1790178900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "21:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "23:55"
+          },
+          {
+            "segmentId": "f58c064bcdc082d6baa1d79827bdefff",
+            "airline": "XY",
+            "flightNum": "406",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790138400000,
+            "arrivalDate": 1790145900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "12:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "14:45"
+          },
+          {
+            "segmentId": "e4eb94f4af199389b358a2d244f8f718",
+            "airline": "XY",
+            "flightNum": "421",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790164500000,
+            "arrivalDate": 1790172000000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "19:55",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "22:00"
+          },
+          {
+            "segmentId": "55a40d436de80c11f97294817be40426",
+            "airline": "TK",
+            "flightNum": "150",
+            "equipment": "32Q",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "T",
+            "availabilityCount": 9,
+            "departure": "IST",
+            "arrival": "DMM",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790165700000,
+            "arrivalDate": 1790180100000,
+            "flightTime": 240,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "20:15",
+            "strArrivalDate": "2026-09-24",
+            "strArrivalTime": "00:15"
+          }
+        ],
+        "shoppingKey": "8bdec2356a482cfa1fa9fa687cb5164e"
+      },
+      "verifiedPayload": {
+        "solution": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+          "fareType": "PUBLIC",
+          "currency": "USD",
+          "adtFare": 242.66,
+          "adtTax": 36.96,
+          "chdFare": 0,
+          "chdTax": 0,
+          "tktFee": 0,
+          "platformServiceFee": 0,
+          "journeys": {
+            "journey_0": [
+              "743ec2f25b1a3a1ac1f35c883ab58d03"
+            ]
+          },
+          "platingCarrier": "XY",
+          "merchantFee": 0,
+          "adults": 1,
+          "children": 0,
+          "infants": 0,
+          "baggages": {
+            "1": {
+              "carryOn": "0PC",
+              "baggage": "0PC"
+            }
+          },
+          "baggageMap": {
+            "ADT": [
+              {
+                "segmentIndexList": [
+                  1
+                ],
+                "baggageAmount": "0PC",
+                "carryOnAmount": "0PC"
+              }
+            ]
+          },
+          "miniRuleMap": {
+            "ADT": [
+              {
+                "segmentIndex": [
+                  1
+                ],
+                "miniRules": [
+                  {
+                    "penaltyType": 0,
+                    "isPermitted": 0,
+                    "when": 0,
+                    "remark": "",
+                    "conditions": [
+                      {
+                        "timeFrom": -365,
+                        "timeFromUnit": "D",
+                        "timeTo": 365,
+                        "timeToUnit": "D",
+                        "isPermitted": 0
+                      }
+                    ]
+                  },
+                  {
+                    "penaltyType": 2,
+                    "isPermitted": 0,
+                    "when": 0,
+                    "remark": "",
+                    "conditions": [
+                      {
+                        "timeFrom": -365,
+                        "timeFromUnit": "D",
+                        "timeTo": 365,
+                        "timeToUnit": "D",
+                        "isPermitted": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "bookingWithoutCard": 0
+        }
+      },
+      "quote": {
+        "supplier": "pkfare",
+        "supplierTotal": 279.62,
+        "supplierCurrency": "USD",
+        "sellingTotal": 329.95,
+        "clientTotal": 329.95,
+        "clientCurrency": "USD",
+        "quotedAt": "2026-09-14T00:05:29.224Z",
+        "expiresAt": "2026-09-14T00:20:29.224Z",
+        "fareChanged": false,
+        "previousClientTotal": 329.95
+      },
+      "ticketNumbers": [],
+      "ticketNumber": "",
+      "ticketIssued": false,
+      "fulfilment": {
+        "status": "awaiting_payment"
+      },
+      "pocketbaseId": "h3nl4ngxjf8supw",
+      "hotelBookingId": "k55el02b32nxbjk"
+    },
+    {
+      "id": "flt_mu0hfka6_54d1d694",
+      "locale": "ar",
+      "createdAt": "2026-09-14T00:05:59.790Z",
+      "updatedAt": "2026-09-14T00:06:00.214Z",
+      "itineraryId": "pk_ktdapc",
+      "legs": "[\"pk_ktdapc_leg_0\"]",
+      "sessionId": "ses_mu0h4czg",
+      "supplier": "pkfare",
+      "price": {
+        "base": 279.62,
+        "client": 329.95,
+        "currency": "USD",
+        "fareChanged": false
+      },
+      "quotedClient": 329.95,
+      "itinerary": {
+        "id": "pk_ktdapc",
+        "legs": [
+          {
+            "id": "pk_ktdapc_leg_0",
+            "origin": {
+              "skyId": "TZX",
+              "displayCode": "TZX"
+            },
+            "destination": {
+              "skyId": "DMM",
+              "displayCode": "DMM"
+            },
+            "departure": "2026-09-22T19:05:00",
+            "arrival": "2026-09-22T22:40:00",
+            "durationMinutes": 215,
+            "stopCount": 0,
+            "carrierName": "طيران ناس",
+            "carrierCode": "XY",
+            "segments": [
+              {
+                "flightNumber": "XY842",
+                "airline": "طيران ناس",
+                "airlineCode": "XY",
+                "aircraft": "320",
+                "origin": {
+                  "skyId": "TZX",
+                  "displayCode": "TZX"
+                },
+                "destination": {
+                  "skyId": "DMM",
+                  "displayCode": "DMM"
+                },
+                "departure": "2026-09-22T19:05:00",
+                "arrival": "2026-09-22T22:40:00",
+                "durationMinutes": 215
+              }
+            ]
+          }
+        ],
+        "price": {
+          "base": 279.62,
+          "client": 329.95,
+          "currency": "USD"
+        },
+        "stops": 0,
+        "durationMinutes": 215,
+        "airlines": [
+          "XY"
+        ],
+        "badges": [
+          "مباشر",
+          "بدون أمتعة مسجلة"
+        ],
+        "fareFamilies": [
+          {
+            "id": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+            "name": "غير قابل للاسترداد · غير قابل للتغيير · بدون أمتعة مسجلة",
+            "nameSource": "derived",
+            "cabin": "ECONOMY",
+            "price": {
+              "base": 242.66,
+              "client": 329.95,
+              "currency": "USD",
+              "taxes": 36.96
+            },
+            "baggage": "0kg",
+            "baggageDetail": {
+              "checked": {
+                "status": "none",
+                "text": "0PC"
+              },
+              "cabin": {
+                "status": "none",
+                "text": "0PC"
+              }
+            },
+            "attributes": {
+              "refund": "not_available",
+              "change": "not_available",
+              "seat": "unknown",
+              "meal": "unknown",
+              "priority": "unknown"
+            },
+            "penalties": [
+              {
+                "type": "cancel",
+                "currency": "USD",
+                "window": "before departure",
+                "text": "Non-refundable"
+              },
+              {
+                "type": "change",
+                "currency": "USD",
+                "window": "before departure",
+                "text": "Non-changeable"
+              }
+            ],
+            "refundable": false,
+            "changeable": false,
+            "isBestPrice": true,
+            "canAddPaidBaggage": true
+          }
+        ],
+        "baggage": {
+          "checked": {
+            "status": "none",
+            "text": "0PC"
+          },
+          "cabin": {
+            "status": "none",
+            "text": "0PC"
+          }
+        },
+        "baggageAllowance": "0kg",
+        "canAddPaidBaggage": true,
+        "farePolicy": {
+          "provider": "pkfare",
+          "validatingCarrier": "XY",
+          "refundable": false,
+          "modifiable": false,
+          "canVoid": false,
+          "canHold": false,
+          "baggage": {
+            "checked": {
+              "status": "none",
+              "text": "0PC"
+            },
+            "cabin": {
+              "status": "none",
+              "text": "0PC"
+            }
+          }
+        }
+      },
+      "passengers": {
+        "adults": 1,
+        "children": 0,
+        "infants": 0
+      },
+      "contact": {
+        "name": "Ghizlane El kandoussi",
+        "email": "flymefy@gmail.com",
+        "phone": "+905015709201"
+      },
+      "travelers": [
+        {
+          "kind": "adult",
+          "title": "mr",
+          "firstName": "Ghizlane",
+          "lastName": "El kandoussi",
+          "gender": "female",
+          "dateOfBirth": "1990-09-12",
+          "nationality": "Morocco ",
+          "passportNumber": "İg44566456",
+          "passportCountry": "Morocco ",
+          "passportExpiry": "2034-09-14"
+        }
+      ],
+      "userId": "fypk6qsauo22f6n",
+      "fareId": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+      "fareToken": {
+        "fareId": "pk_/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+        "offerId": "pk_ktdapc",
+        "supplier": "pkfare",
+        "supplierToken": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+        "supplierContext": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "shoppingKey": "8bdec2356a482cfa1fa9fa687cb5164e",
+          "tag": "",
+          "brandFare": "",
+          "fareType": "PUBLIC",
+          "lastTktTime": ""
+        },
+        "price": {
+          "total": 279.62,
+          "base": 242.66,
+          "taxes": 36.96,
+          "currency": "USD"
+        },
+        "brandName": "غير قابل للاسترداد · غير قابل للتغيير · بدون أمتعة مسجلة",
+        "cabin": "ECONOMY"
+      },
+      "rawOffer": {
+        "solution": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+          "fareType": "PUBLIC",
+          "currency": "USD",
+          "adtFare": 242.66,
+          "adtTax": 36.96,
+          "chdFare": 0,
+          "chdTax": 0,
+          "qCharge": 0,
+          "tktFee": 0,
+          "platformServiceFee": 0,
+          "comments": null,
+          "journeys": {
+            "journey_0": [
+              "743ec2f25b1a3a1ac1f35c883ab58d03"
+            ]
+          },
+          "fareRule": null,
+          "rule": null,
+          "platingCarrier": "XY",
+          "prices": null,
+          "merchantFee": 0,
+          "adults": 1,
+          "children": 0,
+          "infants": 0,
+          "baggageMap": {
+            "ADT": [
+              {
+                "segmentIndexList": [
+                  1
+                ],
+                "baggageAmount": "0PC",
+                "baggageWeight": null,
+                "carryOnAmount": "0PC",
+                "carryOnWeight": null,
+                "carryOnSize": null
+              }
+            ]
+          },
+          "miniRuleMap": {
+            "ADT": [
+              {
+                "segmentIndex": [
+                  1
+                ],
+                "miniRules": [
+                  {
+                    "penaltyType": 0,
+                    "isPermited": 0,
+                    "when": 0,
+                    "noShowTime": "-1",
+                    "noShowTimeUnit": "H",
+                    "amount": null,
+                    "currencyCode": null,
+                    "percent": null,
+                    "baseType": null
+                  },
+                  {
+                    "penaltyType": 2,
+                    "isPermited": 0,
+                    "when": 0,
+                    "noShowTime": "-1",
+                    "noShowTimeUnit": "H",
+                    "amount": null,
+                    "currencyCode": null,
+                    "percent": null,
+                    "baseType": null
+                  }
+                ]
+              }
+            ]
+          },
+          "afterSaleRule": null,
+          "category": null,
+          "multiTags": null
+        },
+        "solutions": [
+          {
+            "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+            "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+            "fareType": "PUBLIC",
+            "currency": "USD",
+            "adtFare": 242.66,
+            "adtTax": 36.96,
+            "chdFare": 0,
+            "chdTax": 0,
+            "qCharge": 0,
+            "tktFee": 0,
+            "platformServiceFee": 0,
+            "comments": null,
+            "journeys": {
+              "journey_0": [
+                "743ec2f25b1a3a1ac1f35c883ab58d03"
+              ]
+            },
+            "fareRule": null,
+            "rule": null,
+            "platingCarrier": "XY",
+            "prices": null,
+            "merchantFee": 0,
+            "adults": 1,
+            "children": 0,
+            "infants": 0,
+            "baggageMap": {
+              "ADT": [
+                {
+                  "segmentIndexList": [
+                    1
+                  ],
+                  "baggageAmount": "0PC",
+                  "baggageWeight": null,
+                  "carryOnAmount": "0PC",
+                  "carryOnWeight": null,
+                  "carryOnSize": null
+                }
+              ]
+            },
+            "miniRuleMap": {
+              "ADT": [
+                {
+                  "segmentIndex": [
+                    1
+                  ],
+                  "miniRules": [
+                    {
+                      "penaltyType": 0,
+                      "isPermited": 0,
+                      "when": 0,
+                      "noShowTime": "-1",
+                      "noShowTimeUnit": "H",
+                      "amount": null,
+                      "currencyCode": null,
+                      "percent": null,
+                      "baseType": null
+                    },
+                    {
+                      "penaltyType": 2,
+                      "isPermited": 0,
+                      "when": 0,
+                      "noShowTime": "-1",
+                      "noShowTimeUnit": "H",
+                      "amount": null,
+                      "currencyCode": null,
+                      "percent": null,
+                      "baseType": null
+                    }
+                  ]
+                }
+              ]
+            },
+            "afterSaleRule": null,
+            "category": null,
+            "multiTags": null
+          }
+        ],
+        "flights": [
+          {
+            "flightId": "051e2f5c5e4bc77e81bf8176b97fc60d",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "e68c5a8653b1ebc4ccc0ff05f51e8e86"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d9366ae39b46f577e6becd55396564c4",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "0789fb56088f2e3c6b32a5d6639d7c28"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "c0d9fc7a2158f956a8f8675ae837eb95",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "902b94d0a0ede69642b68de0fad064be"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "ccc70bc7299397b2f556c146cb102de6",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "aa94d4b5ce71993c919670dd16c1f26f",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e135fbee34e0db10628a359e72b38e48",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "215e3d5e630f73d0215922bda8ae9e5d",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "743ec2f25b1a3a1ac1f35c883ab58d03",
+            "journeyTime": 215,
+            "transferCount": 0,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "6b4c08626ced50ec51480125c9239bd5"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "70fd3aed3b27dcf32e545ccc6d2ef2de",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "078f36f4a19b20d8953e008b75d94089",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d20abf33eefb07882e7265de5e88de72",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "80c697a2b7d0acaf8e10a47d5190f766"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "9cc9adc039c4b3ea8d6bb8bf5d178fc1",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "0789fb56088f2e3c6b32a5d6639d7c28"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "58b0cdbc7ac7b35c2d501a7a40e6e3d8",
+            "journeyTime": 290,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "9ffd515fb370655d15f0a5143c52f871",
+              "d25c73c8db6f13e0599e1b69fa650b77"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d6828002433d34a857776053f43dea09",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "f58c064bcdc082d6baa1d79827bdefff"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "8fbe3d29c4bd1481e487c47fb4ace5d0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "f58c064bcdc082d6baa1d79827bdefff"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "6e6d9b9d64cda957edc105fe80e30d5b",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "983445ef65bc5a3ec72000ba26d8dc35",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "76570816c3356043fab838ae6aa8f1e0",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "35ed12f0aa7b17d3e6ccced3d4b2c374",
+              "3c0b46bbc8635a187084c91a8efe9e35"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "0ac688069442fb429f88ae86a1618106",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "e68c5a8653b1ebc4ccc0ff05f51e8e86"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a88e21252e9f7ac607a7855d685a0ea6",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "902b94d0a0ede69642b68de0fad064be"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "52c29ba6e694fc733594efeee25b9f64",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "0b6b61ec1f61c926ba8cf4500a15752e",
+              "3c0b46bbc8635a187084c91a8efe9e35"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "8920ad4a154398daa242106b5d6b42ed",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "e4eb94f4af199389b358a2d244f8f718"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "990c8e76a585a443505b6d1e700ced82",
+            "journeyTime": 290,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "9ffd515fb370655d15f0a5143c52f871",
+              "6ded72abbba5e9aebe1268c81e3b1fba"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "5b95a9965aa07b9b4d199cf838f678a1",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "06c62c55f04c408c4e6010c3144ca8f7",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "1b04c488e8a340d8a67a6611b8b09d5f",
+            "journeyTime": 355,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "e59b5243a2d2071e09c290174a7344bc",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "2b213e4f1ac0edabdd98025df4a055b0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "cd2917dbac91f945c7575c5d6efd4208"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a789dad7aff62542d82e00470917f93f",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "36134d387b981a47f8553bda00b10222"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "6708fd5309b1604f0a7bf1e4f2b9b092",
+            "journeyTime": 285,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "35ed12f0aa7b17d3e6ccced3d4b2c374",
+              "c9dc7460f00f5641c547926b59639a1c"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "4804b8c45987e8bc529935572ce5eb44",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "b1771fb897b9dc583c551c8e80a093d9"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "61a9a55dcb75dd827dfaae634cd0fa78",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "80c697a2b7d0acaf8e10a47d5190f766"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "a51d70000285d64a3c89f460476c72c4",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "2977503dd0ccd6c45e53f7629da4440b",
+              "55a40d436de80c11f97294817be40426"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "cc19812123e0bb4f9e45bd58e24e3ee7",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "36134d387b981a47f8553bda00b10222"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "162667a170383b4879c99c64eef9a6fa",
+            "journeyTime": 370,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "76170326cf30df18c64b829bb29774c7",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "d472022d119df6a004db50771e20d930",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "cd2917dbac91f945c7575c5d6efd4208"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "9d64b5e298599396931ca82d26b817a3",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "8507526ff97e9b2752c1cc86a1e49b91",
+              "b1771fb897b9dc583c551c8e80a093d9"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e24e3f449771c0f666c154a64a4de105",
+            "journeyTime": 360,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "0472842e3d5bd6555da9bb8252c2bedb",
+              "055e4079a991e51604f982fc3698b02b"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "ea3ed313795f74052dd5975ce0bb89d0",
+            "journeyTime": 340,
+            "transferCount": 1,
+            "lastTktTime": "2026-09-15 03:59:00",
+            "segmengtIds": [
+              "59c31ce2b8a4db90a87fa2393fb9c24f",
+              "e4eb94f4af199389b358a2d244f8f718"
+            ],
+            "selfTransferSegmentIds": null
+          },
+          {
+            "flightId": "e8aef30b98c6c76d8590b0925bfec2fd",
+            "journeyTime": 345,
+            "transferCount": 1,
+            "lastTktTime": null,
+            "segmengtIds": [
+              "34c0dcc7288d6c791f932ac19ca2f1dc",
+              "b1a7db824c1cdfc180316076aa93462e"
+            ],
+            "selfTransferSegmentIds": null
+          }
+        ],
+        "segments": [
+          {
+            "segmentId": "9ffd515fb370655d15f0a5143c52f871",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": "",
+            "arrivalTerminal": "1",
+            "departureDate": 1790076000000,
+            "arrivalDate": 1790089200000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:00"
+          },
+          {
+            "segmentId": "80c697a2b7d0acaf8e10a47d5190f766",
+            "airline": "XY",
+            "flightNum": "304",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790139000000,
+            "arrivalDate": 1790146500000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "12:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "14:55"
+          },
+          {
+            "segmentId": "59c31ce2b8a4db90a87fa2393fb9c24f",
+            "airline": "XY",
+            "flightNum": "622",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "P",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "JED",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790086800000,
+            "arrivalDate": 1790099700000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "PLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "22:20",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "01:55"
+          },
+          {
+            "segmentId": "e59b5243a2d2071e09c290174a7344bc",
+            "airline": "TK",
+            "flightNum": "2841",
+            "equipment": "73J",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790019300000,
+            "arrivalDate": 1790026200000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "03:35",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "05:30"
+          },
+          {
+            "segmentId": "e68c5a8653b1ebc4ccc0ff05f51e8e86",
+            "airline": "XY",
+            "flightNum": "302",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790116800000,
+            "arrivalDate": 1790124300000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "06:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:45"
+          },
+          {
+            "segmentId": "76170326cf30df18c64b829bb29774c7",
+            "airline": "TK",
+            "flightNum": "2821",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790045400000,
+            "arrivalDate": 1790053200000,
+            "flightTime": 130,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "10:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "13:00"
+          },
+          {
+            "segmentId": "b1771fb897b9dc583c551c8e80a093d9",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "S",
+            "arrivalTerminal": null,
+            "departureDate": 1790162400000,
+            "arrivalDate": 1790169900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "21:25"
+          },
+          {
+            "segmentId": "d25c73c8db6f13e0599e1b69fa650b77",
+            "airline": "XY",
+            "flightNum": "68",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "3",
+            "arrivalTerminal": "",
+            "departureDate": 1790121300000,
+            "arrivalDate": 1790125500000,
+            "flightTime": 70,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "07:55",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "09:05"
+          },
+          {
+            "segmentId": "0789fb56088f2e3c6b32a5d6639d7c28",
+            "airline": "XY",
+            "flightNum": "402",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790117100000,
+            "arrivalDate": 1790124600000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "06:45",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:50"
+          },
+          {
+            "segmentId": "0472842e3d5bd6555da9bb8252c2bedb",
+            "airline": "TK",
+            "flightNum": "2817",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790036700000,
+            "arrivalDate": 1790043900000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "08:25",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "10:25"
+          },
+          {
+            "segmentId": "983445ef65bc5a3ec72000ba26d8dc35",
+            "airline": "TK",
+            "flightNum": "2837",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790087100000,
+            "arrivalDate": 1790094300000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "22:25",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "00:25"
+          },
+          {
+            "segmentId": "8507526ff97e9b2752c1cc86a1e49b91",
+            "airline": "XY",
+            "flightNum": "640",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "D",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "JED",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790078100000,
+            "arrivalDate": 1790091000000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "DLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:55",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:30"
+          },
+          {
+            "segmentId": "c9dc7460f00f5641c547926b59639a1c",
+            "airline": "XY",
+            "flightNum": "256",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "2",
+            "arrivalTerminal": null,
+            "departureDate": 1790085000000,
+            "arrivalDate": 1790088900000,
+            "flightTime": 65,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "21:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:55"
+          },
+          {
+            "segmentId": "6b4c08626ced50ec51480125c9239bd5",
+            "airline": "XY",
+            "flightNum": "842",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 2,
+            "departure": "TZX",
+            "arrival": "DMM",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790075100000,
+            "arrivalDate": 1790088000000,
+            "flightTime": 215,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:05",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:40"
+          },
+          {
+            "segmentId": "b1a7db824c1cdfc180316076aa93462e",
+            "airline": "PC",
+            "flightNum": "614",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Z",
+            "availabilityCount": 3,
+            "departure": "SAW",
+            "arrival": "DMM",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790091600000,
+            "arrivalDate": 1790105400000,
+            "flightTime": 230,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "23:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "03:30"
+          },
+          {
+            "segmentId": "0b6b61ec1f61c926ba8cf4500a15752e",
+            "airline": "XY",
+            "flightNum": "306",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": null,
+            "arrivalTerminal": "1",
+            "departureDate": 1790076000000,
+            "arrivalDate": 1790089200000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "NLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "19:20",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "23:00"
+          },
+          {
+            "segmentId": "36134d387b981a47f8553bda00b10222",
+            "airline": "XY",
+            "flightNum": "416",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790123700000,
+            "arrivalDate": 1790131200000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "08:35",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "10:40"
+          },
+          {
+            "segmentId": "35ed12f0aa7b17d3e6ccced3d4b2c374",
+            "airline": "XY",
+            "flightNum": "360",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "N",
+            "availabilityCount": 4,
+            "departure": "TZX",
+            "arrival": "RUH",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790056500000,
+            "arrivalDate": 1790069700000,
+            "flightTime": 220,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "NLIGOWW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "13:55",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "17:35"
+          },
+          {
+            "segmentId": "34c0dcc7288d6c791f932ac19ca2f1dc",
+            "airline": "PC",
+            "flightNum": "2817",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "E",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790066700000,
+            "arrivalDate": 1790073600000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "16:45",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "18:40"
+          },
+          {
+            "segmentId": "078f36f4a19b20d8953e008b75d94089",
+            "airline": "TK",
+            "flightNum": "2829",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790064900000,
+            "arrivalDate": 1790072100000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTGNO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "16:15",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "18:15"
+          },
+          {
+            "segmentId": "215e3d5e630f73d0215922bda8ae9e5d",
+            "airline": "PC",
+            "flightNum": "2813",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "W",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790050500000,
+            "arrivalDate": 1790057400000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "WAOW/2",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "12:15",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "14:10"
+          },
+          {
+            "segmentId": "6ded72abbba5e9aebe1268c81e3b1fba",
+            "airline": "XY",
+            "flightNum": "70",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "A",
+            "availabilityCount": 2,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "3",
+            "arrivalTerminal": "",
+            "departureDate": 1790131800000,
+            "arrivalDate": 1790136000000,
+            "flightTime": 70,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "YOW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "10:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "12:00"
+          },
+          {
+            "segmentId": "055e4079a991e51604f982fc3698b02b",
+            "airline": "TK",
+            "flightNum": "150",
+            "equipment": "32Q",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "T",
+            "availabilityCount": 9,
+            "departure": "IST",
+            "arrival": "DMM",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790079300000,
+            "arrivalDate": 1790093700000,
+            "flightTime": 240,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "20:15",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "00:15"
+          },
+          {
+            "segmentId": "2977503dd0ccd6c45e53f7629da4440b",
+            "airline": "TK",
+            "flightNum": "2835",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790080200000,
+            "arrivalDate": 1790087400000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "20:30",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "22:30"
+          },
+          {
+            "segmentId": "06c62c55f04c408c4e6010c3144ca8f7",
+            "airline": "PC",
+            "flightNum": "2815",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "E",
+            "availabilityCount": 3,
+            "departure": "TZX",
+            "arrival": "SAW",
+            "departureTerminal": "",
+            "arrivalTerminal": "",
+            "departureDate": 1790043900000,
+            "arrivalDate": 1790050800000,
+            "flightTime": 115,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": null,
+            "stopover": null,
+            "fareBasis": "EAOW",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "10:25",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "12:20"
+          },
+          {
+            "segmentId": "aa94d4b5ce71993c919670dd16c1f26f",
+            "airline": "TK",
+            "flightNum": "2833",
+            "equipment": "73H",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "Y",
+            "availabilityCount": 9,
+            "departure": "TZX",
+            "arrival": "IST",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790074200000,
+            "arrivalDate": 1790081400000,
+            "flightTime": 120,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-22",
+            "strDepartureTime": "18:50",
+            "strArrivalDate": "2026-09-22",
+            "strArrivalTime": "20:50"
+          },
+          {
+            "segmentId": "cd2917dbac91f945c7575c5d6efd4208",
+            "airline": "XY",
+            "flightNum": "420",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790149200000,
+            "arrivalDate": 1790156700000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "15:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "17:45"
+          },
+          {
+            "segmentId": "3c0b46bbc8635a187084c91a8efe9e35",
+            "airline": "XY",
+            "flightNum": "250",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 9,
+            "departure": "RUH",
+            "arrival": "DMM",
+            "departureTerminal": "2",
+            "arrivalTerminal": null,
+            "departureDate": 1790119800000,
+            "arrivalDate": 1790123700000,
+            "flightTime": 65,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "07:30",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "08:35"
+          },
+          {
+            "segmentId": "902b94d0a0ede69642b68de0fad064be",
+            "airline": "XY",
+            "flightNum": "408",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790171400000,
+            "arrivalDate": 1790178900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "21:50",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "23:55"
+          },
+          {
+            "segmentId": "f58c064bcdc082d6baa1d79827bdefff",
+            "airline": "XY",
+            "flightNum": "406",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790138400000,
+            "arrivalDate": 1790145900000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "12:40",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "14:45"
+          },
+          {
+            "segmentId": "e4eb94f4af199389b358a2d244f8f718",
+            "airline": "XY",
+            "flightNum": "421",
+            "equipment": "320",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "H",
+            "availabilityCount": 4,
+            "departure": "JED",
+            "arrival": "DMM",
+            "departureTerminal": "1",
+            "arrivalTerminal": null,
+            "departureDate": 1790164500000,
+            "arrivalDate": 1790172000000,
+            "flightTime": 125,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "HLIGOWW",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "19:55",
+            "strArrivalDate": "2026-09-23",
+            "strArrivalTime": "22:00"
+          },
+          {
+            "segmentId": "55a40d436de80c11f97294817be40426",
+            "airline": "TK",
+            "flightNum": "150",
+            "equipment": "32Q",
+            "cabinClass": "ECONOMY",
+            "bookingCode": "T",
+            "availabilityCount": 9,
+            "departure": "IST",
+            "arrival": "DMM",
+            "departureTerminal": null,
+            "arrivalTerminal": null,
+            "departureDate": 1790165700000,
+            "arrivalDate": 1790180100000,
+            "flightTime": 240,
+            "stayTime": null,
+            "codeShare": "N",
+            "opFltNo": null,
+            "opFltAirline": "",
+            "stopover": null,
+            "fareBasis": "TTLGO",
+            "strDepartureDate": "2026-09-23",
+            "strDepartureTime": "20:15",
+            "strArrivalDate": "2026-09-24",
+            "strArrivalTime": "00:15"
+          }
+        ],
+        "shoppingKey": "8bdec2356a482cfa1fa9fa687cb5164e"
+      },
+      "verifiedPayload": {
+        "solution": {
+          "solutionKey": "31b800ed2a3acc0d69e85b1bd376d7ff",
+          "solutionId": "/77YEwODLj1h/iOt2LtZX/Rm0mFGb/W1+IIlUOZEIY9zFRpuklBcWX05gOJIAKAppLo6ltLcg7xR4G345KFMDmHXj2506EFK45eke2yYqKiRChMmdwdQ3oBprrJZHj6bUpDdlwQOu6FM08sPFY6QpuX5PnfnD4RA6fq8QAtY95LHCXd1UFNZZJLMtpIuN8lo09RhDbNJ4i974mQ6eNni0S6SJsQtHXtZSZU/DV8FQMitQTtKESeinw02yigr7+FTdO9kc0f8Ls9eROHeqygzZmxsqyWZKC9J1G8mU1590HC6pANn8xEVMTjwvR0V55/n",
+          "fareType": "PUBLIC",
+          "currency": "USD",
+          "adtFare": 242.66,
+          "adtTax": 36.96,
+          "chdFare": 0,
+          "chdTax": 0,
+          "tktFee": 0,
+          "platformServiceFee": 0,
+          "journeys": {
+            "journey_0": [
+              "743ec2f25b1a3a1ac1f35c883ab58d03"
+            ]
+          },
+          "platingCarrier": "XY",
+          "merchantFee": 0,
+          "adults": 1,
+          "children": 0,
+          "infants": 0,
+          "baggages": {
+            "1": {
+              "carryOn": "0PC",
+              "baggage": "0PC"
+            }
+          },
+          "baggageMap": {
+            "ADT": [
+              {
+                "segmentIndexList": [
+                  1
+                ],
+                "baggageAmount": "0PC",
+                "carryOnAmount": "0PC"
+              }
+            ]
+          },
+          "miniRuleMap": {
+            "ADT": [
+              {
+                "segmentIndex": [
+                  1
+                ],
+                "miniRules": [
+                  {
+                    "penaltyType": 0,
+                    "isPermitted": 0,
+                    "when": 0,
+                    "remark": "",
+                    "conditions": [
+                      {
+                        "timeFrom": -365,
+                        "timeFromUnit": "D",
+                        "timeTo": 365,
+                        "timeToUnit": "D",
+                        "isPermitted": 0
+                      }
+                    ]
+                  },
+                  {
+                    "penaltyType": 2,
+                    "isPermitted": 0,
+                    "when": 0,
+                    "remark": "",
+                    "conditions": [
+                      {
+                        "timeFrom": -365,
+                        "timeFromUnit": "D",
+                        "timeTo": 365,
+                        "timeToUnit": "D",
+                        "isPermitted": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "bookingWithoutCard": 0
+        }
+      },
+      "quote": {
+        "supplier": "pkfare",
+        "supplierTotal": 279.62,
+        "supplierCurrency": "USD",
+        "sellingTotal": 329.95,
+        "clientTotal": 329.95,
+        "clientCurrency": "USD",
+        "quotedAt": "2026-09-14T00:05:59.790Z",
+        "expiresAt": "2026-09-14T00:20:59.790Z",
+        "fareChanged": false,
+        "previousClientTotal": 329.95
+      },
+      "ticketNumbers": [],
+      "ticketNumber": "",
+      "ticketIssued": false,
+      "fulfilment": {
+        "status": "awaiting_payment"
+      },
+      "pocketbaseId": "ib1r9pno4b8bkp5",
+      "hotelBookingId": "i3k68uga2p2l118"
+    }
+  ]
+}

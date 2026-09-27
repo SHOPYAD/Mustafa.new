@@ -1,0 +1,7 @@
+SHA: 3cbe20b86bf3b2243843d51bb63dcec8773babf7
+DATE: 2026-09-12T15:00:18+07:00
+REMOTE: https://github.com/gitroomhq/postiz-app.git
+TAG_OR_VERSION: v1.47.0 (version.txt)
+CLONE: /www/wwwroot/lonaliza.com/_reference/postiz-app
+METHOD: git clone --depth 1
+SUBMODULES: not initialized (libraries/plugins/src/list/public-api → git@github.com:gitroomhq/public-api.git)

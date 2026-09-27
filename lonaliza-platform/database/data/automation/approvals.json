@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "appr_mtx99jdb_xof95a",
+      "state": "draft",
+      "prompt": "أنشئ مهمة مراقبة أسعار لفندق أنطاليا عبر الرابط المقدم (تسجيل الوصول 17-09-2026 ومغادرة 23-09-2026، شخصين بالغين)، النوع pricing.watch، التوقيت يومياً الساعة 9 صباحاً بتوقيت إسطنبول.",
+      "draft": {
+        "name": "مراقبة أسعار فندق أنطاليا",
+        "type": "pricing.watch",
+        "cron": "0 9 * * *",
+        "timezone": "Europe/Istanbul",
+        "accounts": "placeholder_account",
+        "budget": "placeholder_budget",
+        "locales": [
+          "ar"
+        ],
+        "dryRun": true,
+        "autoPublish": false,
+        "maxPerRun": 1,
+        "maxPerDay": 1,
+        "summaryAr": "مراقبة أسعار الفندق في أنطاليا عبر الرابط المقدم وتنبيه عند أي تغيير في السعر لتسجيل الوصول 2026-09-17 والمغادرة 2026-09-23 لشخصين بالغين"
+      },
+      "jobId": null,
+      "telegramChatId": null,
+      "telegramMessageId": null,
+      "editNotes": "مراقبة أسعار الفندق في أنطاليا عبر الرابط المقدم وتنبيه عند أي تغيير في السعر",
+      "rejectReason": "",
+      "actor": "copilot",
+      "createdAt": "2026-09-11T17:54:03.214Z",
+      "updatedAt": "2026-09-11T17:54:03.214Z",
+      "submittedAt": null,
+      "decidedAt": null
+    }
+  ],
+  "updatedAt": "2026-09-11T17:54:03.231Z"
+}

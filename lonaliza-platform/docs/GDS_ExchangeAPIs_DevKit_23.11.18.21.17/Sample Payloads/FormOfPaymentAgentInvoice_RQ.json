@@ -1,0 +1,11 @@
+{
+"FormOfPaymentInvoice": {
+"@type": "FormOfPaymentInvoice",
+"id": "formOfPayment_5",
+"Identifier": {
+"authority": "Travelport",
+"value": "2e88da9b-f4c2-4044-8607-c7b74ba4c657"
+},
+"InvoiceNumber": "34324343"
+}
+}

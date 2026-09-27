@@ -1,0 +1,269 @@
+{
+  "updatedAt": "2026-09-24T19:56:45.553Z",
+  "providers": {
+    "google_places": {
+      "enabled": true,
+      "mode": "production",
+      "customLogo": null,
+      "fields": {}
+    },
+    "air_scraper": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "pkfare": {
+      "enabled": true,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {
+        "partnerId": "ptMaOsL5orqIFtAzI/KXGiXcHTk=",
+        "partnerKey": "OWMyMjlhYjY3ZDg3ZDk1ZGU4ZGRlM2JjNmRiZmE3ZDY="
+      }
+    },
+    "seeru": {
+      "enabled": true,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {
+        "refreshKey": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJvZmZpY2VfaWQiOiIwNjM2ZjNjZS0zMjVlLTQ5YjYtOThiMy0zYzZjZjc2ZmU3MjYiLCJwYXJlbnRfaWQiOiJlNGM5M2Q3MC1jYzlmLTQzOGMtYjc5YS0wMTcyYzg1NTQ2ZmYiLCJpZCI6IjZhZmNhZGE5LWJmYjQtNGY4Yy1iMTgzLTRiZWFiMThkMDAyNSIsInNlYXJjaF9vbmx5IjpmYWxzZSwib2ZmaWNlIjoiSEFZQVRUVVJJWk0tVEVTVCIsInBhcmVudCI6IkFETUlOLU9GRklDRS1URVNUIiwiaGFzaCI6IjFWSExaREo4Wjk2SzFTIiwiaWF0IjoxNzg4Nzk3NDA5LCJleHAiOjE4MDY5NDE0MDksImF1ZCI6InJlZnJlc2gifQ.G0PbNQCgOpAk6pXZvWmNyIUdTgk4whUhQG63Ly4KHtE-zBvfW7ZA3eKv0iUBPFICj1Ou46kon8P7bOW3cL9cSA",
+        "apiKey": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJvZmZpY2VfaWQiOiIwNjM2ZjNjZS0zMjVlLTQ5YjYtOThiMy0zYzZjZjc2ZmU3MjYiLCJwYXJlbnRfaWQiOiJlNGM5M2Q3MC1jYzlmLTQzOGMtYjc5YS0wMTcyYzg1NTQ2ZmYiLCJpZCI6IjZhZmNhZGE5LWJmYjQtNGY4Yy1iMTgzLTRiZWFiMThkMDAyNSIsInNlYXJjaF9vbmx5IjpmYWxzZSwib2ZmaWNlIjoiSEFZQVRUVVJJWk0tVEVTVCIsInBhcmVudCI6IkFETUlOLU9GRklDRS1URVNUIiwiaGFzaCI6IjFWSExaREo4Wjk2SzFTIiwiaWF0IjoxNzg4Nzk3NDA5LCJleHAiOjE4MDQzNDk0MDksImF1ZCI6ImFwaSJ9.Q-8d7SonBGj0-OYlUMTsWrwDvQxp5422EylHDBQO_IADG_HPGjgF4Z0kag5en-GkkkCr-vHlDNL7MbGBJJrHOg",
+        "jwtToken": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJvZmZpY2VfaWQiOiIwNjM2ZjNjZS0zMjVlLTQ5YjYtOThiMy0zYzZjZjc2ZmU3MjYiLCJwYXJlbnRfaWQiOiJlNGM5M2Q3MC1jYzlmLTQzOGMtYjc5YS0wMTcyYzg1NTQ2ZmYiLCJpZCI6IjZhZmNhZGE5LWJmYjQtNGY4Yy1iMTgzLTRiZWFiMThkMDAyNSIsInNlYXJjaF9vbmx5IjpmYWxzZSwib2ZmaWNlIjoiSEFZQVRUVVJJWk0tVEVTVCIsInBhcmVudCI6IkFETUlOLU9GRklDRS1URVNUIiwiaGFzaCI6IjFWSExaREo4Wjk2SzFTIiwiaWF0IjoxNzg4Nzk3NDA5LCJleHAiOjE4MDQzNDk0MDksImF1ZCI6ImFwaSJ9.Q-8d7SonBGj0-OYlUMTsWrwDvQxp5422EylHDBQO_IADG_HPGjgF4Z0kag5en-GkkkCr-vHlDNL7MbGBJJrHOg"
+      }
+    },
+    "amadeus_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "biletbank": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "iati": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "biletdukkani": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "turna_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotel_engine": {
+      "enabled": false,
+      "mode": "production",
+      "customLogo": null,
+      "fields": {}
+    },
+    "booking_com15": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travel_advisor": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotels_internal": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_hotels": {
+      "enabled": true,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {
+        "username": "TP55037298",
+        "password": "9Q8OG[<#c–RSm",
+        "targetBranch": "7K7L",
+        "clientId": "2C9uuTkO7EC96maT3ewQLANt6tag6knC",
+        "clientSecret": "WfZbPITTd66c4EgtmHiRmCk1EuTzZQmaROQv0fG-twd0PTcZ_4v86AHN6yuIzDtx",
+        "accessGroup": "50C1BCC1-615D-4F7F-AD66-919730C8FD0C"
+      }
+    },
+    "ratehawk": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotelbeds": {
+      "enabled": true,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {
+        "apiKey": "e8df01a66e4b489a14220dc3ba3d22e2",
+        "apiSecret": "08d45b012e",
+        "jwtToken": "e8df01a66e4b489a14220dc3ba3d22e2"
+      }
+    },
+    "seeru_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "cars_internal": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "cartrawler": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "rentalcars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "sunnycars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "transfers_internal": {
+      "enabled": false,
+      "mode": "production",
+      "customLogo": null,
+      "fields": {}
+    },
+    "seeru_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "mozio": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "kiwitaxi": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "jayride": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "gettransfer": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "iway": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,2001 @@
+{
+    "CatalogOfferingsAirChangeResponse": {
+        "transactionId": "testshop",
+        "traceId": "fb9063b7-ac76-4586-809e-6fbeb2287f54",
+        "CatalogOfferings": {
+            "@type": "CatalogOfferings",
+            "Identifier": {
+                "value": "c9254852-49a4-48ea-bc10-43f00f2b07a9"
+            },
+            "CatalogOffering": [{
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o0.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s1"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o1.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s2"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o2.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s3"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o3.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s4"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o4.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s5"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o5.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s6"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o6.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s7"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }, {
+                    "@type": "CatalogOfferingModifyTvp",
+                    "id": "o7.0",
+                    "ProductOptions": [{
+                            "@type": "ProductOptions",
+                            "sequence": 1,
+                            "Product": [{
+                                    "@type": "ProductAir",
+                                    "id": "p1",
+                                    "FlightSegment": [{
+                                            "sequence": 1,
+                                            "Flight": {
+                                                "@type": "Flight",
+                                                "FlightRef": "s8"
+                                            }
+                                        }
+                                    ],
+                                    "PassengerFlight": [{
+                                            "passengerQuantity": 1,
+                                            "passengerTypeCode": "ADT",
+                                            "FlightProduct": [{
+                                                    "segmentSequence": [1],
+                                                    "classOfService": "I",
+                                                    "fareBasisCode": "IV2ROW/ASPL",
+                                                    "fareType": "AirlinePrivateFare",
+                                                    "Brand": {
+                                                        "@type": "Brand",
+                                                        "id": "b1",
+                                                        "BrandRef": "b1"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Price": {
+                        "@type": "PriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 120.0,
+                        "TotalTaxes": 40.72,
+                        "TotalFees": 0,
+                        "TotalPrice": 160.72,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 120.0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 40.72,
+                                        "Tax": [{
+                                                "taxCode": "GB",
+                                                "value": 26.0
+                                            }, {
+                                                "taxCode": "UB",
+                                                "value": 14.72
+                                            }
+                                        ]
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 160.72
+                                },
+                                "Commission": {
+                                    "@type": "CommissionPercent",
+                                    "Percent": 0
+                                },
+                                "FiledAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 120.0
+                                }
+                            }
+                        ]
+                    },
+                    "TermsAndConditions": {
+                        "@type": "TermsAndConditionsAirChange",
+                        "BaggageAllowance": [{
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "FirstCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/BA",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "SecondCheckedBag",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO70LB/32KG AND UPTO81LI/208LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["2P|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"]
+                            }, {
+                                "@type": "BaggageAllowanceDetail",
+                                "passengerTypeCodes": ["ADT"],
+                                "baggageType": "CarryOn",
+                                "ProductRef": ["p1"],
+                                "BaggageItem": [{
+                                        "quantity": 1,
+                                        "BaggageFee": {
+                                            "code": "GBP",
+                                            "value": 0
+                                        },
+                                        "Text": "UPTO50LB/23KG AND UPTO50LB/127LCM"
+                                    }
+                                ],
+                                "SegmentSequenceList": [1],
+                                "Text": ["1P"]
+                            }
+                        ],
+                        "Restriction": [{
+                                "value": "* NONREF 47.33 GBP"
+                            }
+                        ],
+                        "ValidatingAirline": [{
+                                "ValidatingAirline": "BA"
+                            }
+                        ],
+                        "FareGuaranteePolicy": [{
+                                "EligibleforADMReview": "Yes",
+                                "Code": {
+                                    "codeContext": "Travelport",
+                                    "value": "A"
+                                }
+                            }
+                        ]
+                    },
+                    "ModifyPrice": {
+                        "@type": "ModifyPriceDetail",
+                        "CurrencyCode": {
+                            "decimalPlace": 2,
+                            "value": "GBP"
+                        },
+                        "Base": 0,
+                        "TotalTaxes": 0,
+                        "TotalFees": 0,
+                        "TotalPrice": 0,
+                        "PriceBreakdown": [{
+                                "@type": "PriceBreakdownAir",
+                                "quantity": 1,
+                                "requestedPassengerType": "ADT",
+                                "Amount": {
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "GBP"
+                                    },
+                                    "Base": 0,
+                                    "Taxes": {
+                                        "@type": "TaxesDetail",
+                                        "TotalTaxes": 0
+                                    },
+                                    "Fees": {
+                                        "@type": "FeesDetail",
+                                        "TotalFees": 0,
+                                        "Fee": [{
+                                                "description": "Change Fee",
+                                                "FeeAmountOrPercent": {
+                                                    "@type": "FeeAmountOrPercentAmount",
+                                                    "Amount": {
+                                                        "code": "GBP",
+                                                        "minorUnit": 2,
+                                                        "value": 0
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Total": 0
+                                },
+                                "NetBaseAmount": {
+                                    "currencyCode": "GBP",
+                                    "decimalPlace": 2,
+                                    "value": 0.0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "ReferenceList": [{
+                "@type": "ReferenceListFlight",
+                "Flight": [{
+                        "@type": "Flight",
+                        "duration": "PT1H25M",
+                        "carrier": "BA",
+                        "number": "1474",
+                        "equipment": "320",
+                        "id": "s1",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "07:35:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "09:00:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H25M",
+                        "carrier": "BA",
+                        "number": "1484",
+                        "equipment": "320",
+                        "id": "s2",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "13:10:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "14:35:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H25M",
+                        "carrier": "BA",
+                        "number": "1480",
+                        "equipment": "319",
+                        "id": "s3",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "14:20:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "15:45:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H30M",
+                        "carrier": "BA",
+                        "number": "1472",
+                        "equipment": "319",
+                        "id": "s4",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "06:20:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "07:50:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H30M",
+                        "carrier": "BA",
+                        "number": "1486",
+                        "equipment": "320",
+                        "id": "s5",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "15:05:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "16:35:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H30M",
+                        "carrier": "BA",
+                        "number": "1488",
+                        "equipment": "32N",
+                        "id": "s6",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "16:50:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "18:20:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H30M",
+                        "carrier": "BA",
+                        "number": "1494",
+                        "equipment": "320",
+                        "id": "s7",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "20:20:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "21:50:00"
+                        }
+                    }, {
+                        "@type": "Flight",
+                        "duration": "PT1H30M",
+                        "carrier": "BA",
+                        "number": "1478",
+                        "equipment": "32N",
+                        "id": "s8",
+                        "Departure": {
+                            "@type": "Departure",
+                            "location": "LHR",
+                            "date": "2022-01-20",
+                            "time": "20:50:00"
+                        },
+                        "Arrival": {
+                            "@type": "ArrivalDetail",
+                            "terminal": "1",
+                            "location": "GLA",
+                            "date": "2022-01-20",
+                            "time": "22:20:00"
+                        }
+                    }
+                ]
+            }, {
+                "@type": "ReferenceListBrand",
+                "Brand": [{
+                        "@type": "Brand",
+                        "name": "CLUB PLUS",
+                        "tier": 6,
+                        "id": "b1",
+                        "BrandRef": "b1",
+                        "Identifier": {
+                            "value": "0000000000001012819"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

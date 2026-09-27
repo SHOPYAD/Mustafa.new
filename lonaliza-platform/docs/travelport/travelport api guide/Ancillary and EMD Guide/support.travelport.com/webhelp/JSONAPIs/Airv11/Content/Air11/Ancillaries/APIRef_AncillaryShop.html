@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_top_Air" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-has-content-body="True" data-mc-toc-path="API&#160;References|Ancillaries and EMDs" data-mc-conditions="JSONAPIs.Air11" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryShop.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:44:24 GMT -->
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/browserconfig.xml" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" /><title>Ancillary Shop API&#160;Reference</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../../Resources/TableStyles/TP_singleHead-sandAltRows.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link rel="icon" sizes="32x32" href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Skins/Favicons/favicon.ico" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/Scroll-Button.js">
+        </script>
+        <script type="text/javascript" src="../../Resources/Scripts/prism.js">
+        </script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LQEQ4TMVCD">
+        </script>
+        <script>/* <![CDATA[ */
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-LQEQ4TMVCD');
+		/* ]]> */</script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="small" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.travelport.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expanded-event="down.zf.accordionMenu up.zf.accordionMenu" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <form class="search" action="#">
+                                        <div class="search-bar search-bar-container needs-pie _Skins_SearchTopic mc-component">
+                                            <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search content" />
+                                            <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                </div>
+                                                <div class="search-filter-content" id="sf-content">
+                                                    <ul>
+                                                        <li>
+                                                            <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="search-submit-wrapper" dir="ltr">
+                                                <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div role="main" id="mc-main-content">
+                                        <h1>Ancillary Shop API&#160;Reference</h1>
+                                        <div>
+                                            <nav class="inTopic"><a class="inTopic" href="#req">Request</a><a class="inTopic" href="#rsp">Response</a><a class="inTopic" href="#exreq">Example request</a><a class="inTopic" href="#exrsp">Example response</a>
+                                            </nav>
+                                        </div>
+                                        <table style="width: 100%;" class="APIRef">
+                                            <col style="width: 80px;" />
+                                            <col style="width: auto;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top">
+                                                        <p><span class="APIPost">POST</span>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p>ancillaryshop/catalogofferingsancillaries</p>
+                                                        <p><b>Base path:</b>
+                                                        </p>
+                                                        <p><i>Pre-production</i> https://api.pp.travelport.net/11/air/ </p>
+                                                        <p><i>Production</i> https://api.travelport.net/11/air/</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><span style="font-size: 12pt;font-weight: bold;">Related Content:</span> <a href="AncillaryGuide.html"> Ancillary and EMD&#160;Guide</a>, <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Workflows/Ancillary_workflow.htm">Ancillary Workflow Diagram</a></p>
+                                        <p>The Ancillary&#160;Shop request searches for available ancillaries. It can be sent after pricing, in the initial booking workbench, or for an existing reservation. The request uses the same endpoint but a different payload for each option, per below. </p>
+                                        <div class="noteNote">
+                                            <p>See the <a href="AncillaryGuide.html">Ancillary and EMD&#160;Guide</a> for workflow details and specific ancillaries supported. </p>
+                                            <p>For paid seats use the seat requests in the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Seats/SeatsGuide.htm">Seats Guide</a>. </p>
+                                        </div>
+                                        <h2><a name="req"></a>Request</h2>
+                                        <div class="noteNote">
+                                            <div class="noteAlt">
+                                                <p>As part of the request requirements, also see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Oauth.htm">Authentication</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/General/CommonAirHeaders.htm">Common <span class="mc-variable General.AirAPI variable">Air</span> API Headers</a>.</p>
+                                            </div>
+                                        </div>
+                                        <h4>Query Parameters</h4>
+                                        <p>None.</p>
+                                        <h4>Request Body</h4>
+                                        <div class="noteWarning">Be sure to see the <a href="AncillaryGuide.html">Ancillary and EMD&#160;Guide</a> for currently supported ancillaries in each flow.</div>
+                                        <h5>Ancillary shop request after AirPrice (no workbench; GDS only)</h5>
+                                        <div class="noteNote">Ancillaries 24.11.34 and later. GDS only; not supported for NDC. To shop NDC ancillaries after pricing, use the ancillary shop request payload sent in the initial workbench, next.</div>
+                                        <p>This request supports ancillary shop for an entire offer. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Ancillary Shop Request Body Table - after AirPrice</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">CatalogOfferingsQueryAncillaries</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">AncillaryOfferings</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">BuildFromOfferList</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">OfferListIdentifier</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>OfferIdentifier</b> </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p>Sends offer identifier.</p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>id</b>: Sends offer identifier for the offer for which to shop for associated ancillaries.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5>Ancillary shop request in the initial booking workflow (pre-commit)</h5>
+                                        <p>In the initial booking workflow, for either GDS or NDC, use the following payload. </p>
+                                        <p>For NDC only, you can send this same payload to shop ancillaries after AirPrice without a workbench. For GDS, see the section above for the payload to send after AirPrice.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Ancillary Shop Request Body Table - new reservation</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">CatalogOfferingsQueryAncillaries</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">AncillaryOfferings</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">BuildFromOffer</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">OfferIdentifier</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Identifier</b> (for the offer)</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Sends offer identifier.</p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>value</b>: Sends offer identifier for the offer for which to shop for associated ancillaries.</p>
+                                                                        <div class="noteNote"> For GDS, send the value from CatalogProductOffering/Identifier/value in the Search response. </div>
+                                                                        <div class="noteNote">For NDC, if you priced the offer, send the value from OfferListResponse/Identifier/value in the AirPrice response.</div>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>ProductIdentifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Sends product identifier.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>Identifier</b> (for the product)</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p>Sends product identifier. Repeat for each product as needed.</p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>value</b>: Sends product identifier from the offer for which to shop for associated ancillaries (from the Search response in CatalogProductOffering/ProductBrandOptions/ProductBrandOffering/Product/productRef).</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5>Ancillary shop request for existing reservation (post-commit)</h5>
+                                        <p>For an existing reservation, for either GDS or NDC, use the following payload.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Ancillary Shop Request Body Table - existing reservation</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Required/Optional</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">CatalogOfferingsQueryAncillaries</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">AncillaryOfferings</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">BuildFromReservationWorkbench</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2" style="font-weight: bold;">
+                                                                    <p style="font-weight: bold;">ReservationIdentifier</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p>Top level object.</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>Identifier</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p>Sends workbench identifier.</p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>value</b>: Send the reservation workbench identifier returned in Offer/Identifier/value in the workbench create response. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p><span style="color: #ff4500;">Required</span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="rsp"></a>Response</h2>
+                                        <p>The Ancillary Shop response is the same following a request sent in either the initial booking flow or for an existing reservation. Most objects returned are standard model objects; see the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_ReservationRetrieve.htm#rsp">Reservation Retrieve response</a> for additional details on any of the objects below.</p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Ancillary Shop Response Table</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1">
+                                                        </col>
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">
+                                                                    <p>Object</p>
+                                                                </th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">
+                                                                    <p>Description</p>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogOfferingsAncillaryListResponse</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Top level object.</p>
+                                                                    <p>Includes CatalogOfferingsID, Identifier, and ReferenceList.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>CatalogOfferingsID</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Top level object for offers. Includes CatalogOffering and TravelerIdentiferRef. </p>
+                                                                    <p>Returns an instance of CatalogOfferingsID @type CatalogOfferingsTraveler; the value returned in <b>id</b> in this instance must be passed in any subsequent <a href="APIRef_AncillaryPrice.html">Ancillary Price</a> request.</p>
+                                                                    <p>Key value pairs: </p>
+                                                                    <blockquote>
+                                                                        <p><b>id</b>:&#160;Internal id for the group of offers.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>CatalogOffering</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Array of individual ancillary offers.</p>
+                                                                    <p>Key value pair:</p>
+                                                                    <blockquote>
+                                                                        <p><b>id</b>: Internal offer id.</p>
+                                                                    </blockquote>
+                                                                    <p>Each instance includes Identifier, ProductOptions, Price, and TermsAndConditions objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">CatalogOffering/<b>Identifier</b></td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Identifier for the offer.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                    <div class="noteNote">CatalogOffering/Identifier/value and /authority must be sent in subsequent ancillary price and/or book requests.</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ContentSource</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>String.&#160;Identifies the source of the ancillary offer, either <i>GDS</i> or <i>NDC</i>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>ProductOptions</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Top level object for products in the offer.</p>
+                                                                    <p>Includes Product object.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Product</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Array. Returns one or more instances with @type ProductAncillary to detail the ancillary product. </p>
+                                                                    <p>Key value pair: </p>
+                                                                    <blockquote>
+                                                                        <p><b>id</b>:&#160;Internal product id.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Quantity and Ancillary.</p>
+                                                                    <div class="noteNote">CatalogOffering/ProductOptions/Product/id must be sent as the product identifier in any subsequent ancillary price and/or book requests.</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Quantity</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>The available number of this ancillary product.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Ancillary</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Details of this ancillary. In each instance of Ancillary, the @type designator may be either of the following:</p>
+                                                                    <ul>
+                                                                        <li>AncillaryAirBaggage: Returned for paid baggage.</li>
+                                                                        <li>AncillaryAir:&#160;Returned for all other types of ancillaries, both paid (e.g., lounge access, priority boarding, paid seat assignments) and free ancillaries (e.g., wheelchair, free seat assignments).</li>
+                                                                    </ul>
+                                                                    <p>Key value pairs for ancillary baggage only are:</p>
+                                                                    <blockquote>
+                                                                        <p><b>soldByPieceInd</b>: Boolean. Returned only if true. Indicates baggage allowance is by piece, such as one, two, or three pieces.</p>
+                                                                        <p><b>soldByWeightInd</b>: Boolean. Returned only if true. Indicates the baggage is allowed by weight, either kilograms or pounds, such as 50 pounds or 35 kilograms.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Description and FlightRef. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Description</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p> Supplier-provided description of this ancillary product. Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>code</b>:&#160;Supplier code for ancillary.</p>
+                                                                        <p><b>value</b>:&#160;Supplier description of ancillary.</p>
+                                                                        <p><b>subgroup</b>:&#160;Ancillary subgroup; returned if available.  NDC&#160;only; not supported for GDS. </p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>FlightRef</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Internal reference number for the flight on which this ancillary is available. Matches to FlightRef in ReferenceList/ReferenceListFlight.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>BaggageType </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <div class="noteNote">Ancillaries 25.11.47. GDS only; not supported for NDC</div>
+                                                                    <p>Returned only for carry-on baggage with the value <i>CarryOn</i>; for example, <i>"BaggageType": "CarryOn"</i>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Price</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Price details for this ancillary product in this offer.</p>
+                                                                    <p>Includes CurrencyCode, Base, TotalTaxes, TotalPrice, PriceBreakdown objects.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>CurrencyCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>The currency in which the price is returned. Unless changed in the request, the currency is the default associated with your provisioned PCC from Travelport. </p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>decimalPlace:</b>&#160;Number of decimal places in the currency.</p>
+                                                                        <p><b>value:</b>&#160;Currency code value.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Base</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Base price before taxes.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>TotalTaxes</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Sum of all taxes for the product.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>TotalPrice</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">Total price including base and taxes.</td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">&#160;</td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>&#160;</p>
+                                                                    <p>&#160;</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>PriceBreakdown/inclusiveOfTaxInd</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>PriceBreakdown/Commission/application (possible values Non-paying and Commissionable)</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>PriceBreakdown/Description:</p>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>issuanceReasonCode</p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>value</p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1" data-mc-conditions="">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p style="font-weight: bold;">PriceBreakdown</p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Array. Price breakdown for ancillary cost. </p>
+                                                                    <p>In PriceBreakdown, the following are returned only for GDS, not NDC:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>inclusiveOfTaxInd: Ancillary price includes taxes if <i>true</i>. </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Commission/application (possible values <i>Non-paying</i> and <i>Commissionable</i>)</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Description:</p>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>issuanceReasonCode</p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>value</p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>TermsAndConditions </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returned with @typeTermsAndConditionsAncillary. Terms and conditions for this ancillary product in this offer. Includes TravelerProduct and ApplicationLimit.</p>
+                                                                    <p>In TermsAndConditions, the following are returned only for GDS, not NDC:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>fulfillmentType</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>associatedItem</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>Refundability</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>validatingAirline</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>TravelerProduct</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Includes TravelerIdentifierRef.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>TravelerIdentiferRef</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Returns details of the traveler the ancillary is requested for.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <p style="text-indent: 0.5in;"><b>id</b>:&#160;Internal system-generated traveler id.</p>
+                                                                    <p style="text-indent: 0.5in;"><b>value</b>:&#160;Internal system-generated traveler id.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><a name="applicationlimit"></a><b>ApplicationLimit</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Any restrictions on the number of this ancillary product that can be purchased.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>start</b>:&#160;Minimum quantity that can be purchased.</p>
+                                                                        <p><b>end</b>: Maximum quantity that can be purchased.</p>
+                                                                        <p><b>value</b>: The unit represented by this quantity. Possible values are: </p>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>PassengerSegment: Ancillary limit applies to each passenger at the segment level. E.g, Itinerary is LON-SIN-LON and the ancillary limit is “n” per segment per passenger.</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>Segment: Ancillary limit applies to all passengers at the segment level (one flight, or flights under the same number). </p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p> Itinerary: Ancillary limit applies to all passengers for the full itinerary. </p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>Passenger: Ancillary limit applies per passenger for the full itinerary. </p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>PassengerOD: Ancillary limit applies per passenger for the origin destination. E.g., Itinerary is LON X/SIN SYD X/SIN LON and the ancillary limit is “n” per origin destination (LON XSIN SYD)</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>Other</p>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <p>For example, a start quantity of <i>1</i> and end quantity of <i>2</i> with a value of <i>Itinerary</i> means that at least 1 but no more than 2 of this ancillary product can be purchased for the full itinerary.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">CatalogOfferingsAncillaryListResponse/<b>Identifier</b></td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Identifier for ancillary shop response as a whole.</p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>authority</b>: Source of information.</p>
+                                                                        <p><b>value</b>: Unique system-generated identifier. </p>
+                                                                    </blockquote>
+                                                                    <div class="noteNote">CatalogOfferingsAncillaryListResponse/Identifier/value must be sent as the response identifier in subsequent ancillary price and/or book requests. </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body1">
+                                                                    <p><b>ReferenceList</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body1">
+                                                                    <p>Consolidates flight details in ReferenceList/ReferenceListFlight.</p>
+                                                                    <p>Includes ReferenceListFlight. See table below. </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>The ancillary response returns ReferenceList/ReferenceListFlight for flight details. Does not return the AvailabilitySourceCode or IntermediateStop objects below. </p>
+                                                    <table style="mc-table-style: url('../../Resources/TableStyles/TP_singleHead-sandAltRows.css');width: 100%;margin-left: 0;margin-right: auto;" class="TableStyle-TP_singleHead-sandAltRows" cellspacing="0">
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <col class="TableStyle-TP_singleHead-sandAltRows-Column-Column1" />
+                                                        <thead>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Head-Header1">
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadE-Column1-Header1">Object</th>
+                                                                <th class="TableStyle-TP_singleHead-sandAltRows-HeadD-Column1-Header1">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>ReferenceListFlight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returns an array of Flight objects that match to the flights that make up a product. </p>
+                                                                    <div class="noteWarning">
+                                                                        <p style="font-weight: bold;"><span style="font-weight: normal;">ReferenceListFlight is a common object in the model. Not all objects in this table may be returned in this specific API.</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Flight</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>One instance for one flight. </p>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>distance</b>: Distance covered by the flight.</p>
+                                                                        <p><b>duration</b>: Time of the flight in hours (H) and minutes (M).</p>
+                                                                        <p><b>carrier</b>: Airline carrier.</p>
+                                                                        <p><b>number</b>: Flight number.</p>
+                                                                        <p><b>operatingCarrier</b>: When the carrier has filed a codeshare operating carrier for the flight, the IATA code for that codeshare carrier. </p>
+                                                                        <p><b>operatingCarrierName</b>: Name of the marketing operating carrier.</p>
+                                                                        <p><b>operatingCarrierNumber</b>:&#160;Number of the operating carrier flight. If there is no operating carrier number, then CO2 emission estimates for operating carriers is not supported. GDS only; not returned for NDC. Returned only in Search response.</p>
+                                                                        <p><b>equipment</b>: Equipment model. Note that TRN, TRS, and BUS equipment codes indicate ground transportation. </p>
+                                                                        <p><b>id</b>: id for internal flight reference number, also used in products and offers. For GDS, formatted as the letter ‘s’+ unique numeric value, as in <i>s1</i>. NDC flight ids include the NDC carrier code, as in <i>QFs1</i>. </p>
+                                                                        <p><b>subjectToGovernmentApproval</b>: Returned with value of <i>true</i> when an airline has filed in its schedule that availability for a specific flight is subject to
+government approval. GDS only, not supported for NDC. Returned only in the Search API&#160;response.</p>
+                                                                    </blockquote>
+                                                                    <p>Includes Departure, Arrival, AvailabilitySourceCode, and IntermediateStop objects. </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><b>Departure</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Departure details. Key value pairs are the <b>location</b>, <b>date</b>, <b>time</b>, and <b>terminal</b> of departure.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body2">
+                                                                    <p><b>Arrival</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body2">
+                                                                    <p>Arrival details. Key value pairs  are the <b>location</b>, <b>date</b>, <b>time</b>, and  <b>terminal</b> of arrival.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body1">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyE-Column1-Body1">
+                                                                    <p><a name="avail"></a><b>AvailabilitySourceCode</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyD-Column1-Body1">
+                                                                    <p>Returned to assist in troubleshooting. Returned in the Search, Air Availability, Exchange Search, AirPrice, and Workbench Commit responses. Recommended to send in the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Price/APIRef_AirPriceFullPayload.htm">AirPrice Full Payload</a> and <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Book/APIRef_AddOfferFullPayload.htm">Add Offer Full Payload</a> requests. Not returned for  Ancillary Shop or Fare Rules.</p>
+                                                                    <div class="noteNote">GDS&#160;only; not supported for NDC.</div>
+                                                                    <p>Supported values and definitions for AvailabilitySourceCode:</p>
+                                                                    <ul>
+                                                                        <li>A:&#160;AVS (availability and schedules)</li>
+                                                                        <li>B:&#160;Travelport cache</li>
+                                                                        <li>C:&#160;AVS</li>
+                                                                        <li>D:&#160;Direct Access</li>
+                                                                        <li>E:&#160;Travelport cache</li>
+                                                                        <li>F: Travelport cache</li>
+                                                                        <li>G: Travelport cache</li>
+                                                                        <li>H: Travelport cache</li>
+                                                                        <li>I: Travelport cache</li>
+                                                                        <li>K: Travelport cache</li>
+                                                                        <li>L:&#160;Last seat availability</li>
+                                                                        <li>M:&#160;Unknown source</li>
+                                                                        <li>O: Travelport cache</li>
+                                                                        <li>P: Travelport cache</li>
+                                                                        <li>Q:&#160;Travelport cache</li>
+                                                                        <li>S:&#160;Seamless</li>
+                                                                        <li>T:&#160;Travelport cache</li>
+                                                                        <li>U:&#160;Unknown source</li>
+                                                                        <li>X:&#160;Customer reusing availability data from customer cache (data originally obtained from Travelport)</li>
+                                                                        <li>Y:&#160;Customer reusing data obtained from another system (e.g., another GDS) (data may be fresh or stored in customer cache)</li>
+                                                                        <li>Z:&#160;Customer sold from e-streamed data stored in customer cache</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="TableStyle-TP_singleHead-sandAltRows-Body-Body2">
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyB-Column1-Body2">
+                                                                    <p><b>IntermediateStop</b>
+                                                                    </p>
+                                                                </td>
+                                                                <td class="TableStyle-TP_singleHead-sandAltRows-BodyA-Column1-Body2">
+                                                                    <p>Returned if the flight has a technical stop but does not incur a change in flight number. </p>
+                                                                    <div class="noteNote">
+                                                                        <p>Returned in the Search, AirPrice, Exchange Search responses. In ReservationRetrieve, IntermediateStop is returned in Offer/Product/Flight instead of ReferenceListFlight. Not returned for  Ancillary Shop or Fare Rules.</p>
+                                                                    </div>
+                                                                    <p>Key value pairs:</p>
+                                                                    <blockquote>
+                                                                        <p><b>arrivalFlightDuration:</b>  Length in hours and minutes of the flight arriving at the intermediate stop.</p>
+                                                                        <p><b>departureFlightDuration:</b> Length in hours and minutes of the flight departing the intermediate stop.</p>
+                                                                        <p><b>duration:</b> Length in hours and minutes between the arrival and departure at the intermediate stop.</p>
+                                                                        <p><b>equipment</b>: Equipment model, if there is a change of equipment during the stop.</p>
+                                                                        <p><![CDATA[  ]]><b>arrivalDate:</b> Arrival date for stop.</p>
+                                                                        <p><b>departureDate:</b> Departure date of stop.</p>
+                                                                        <p><b>arrivalTime:</b> Arrival time for stop.</p>
+                                                                        <p><b>departurelTime:</b>&#160;<i>sic; note spelling of departurelTime with the letter l between departure and time</i> Departure time for stop. </p>
+                                                                        <p><b>arrivalTerminal:</b> Arrival terminal for stop.</p>
+                                                                        <p><b>departureTerminal:</b> Departure terminal for stop. </p>
+                                                                        <p><b>value:</b> The code for the airport where the intermediate stop occurs.</p>
+                                                                    </blockquote>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exreq"></a>Example Request</h2>
+                                        <div class="noteNote">For additional examples, download the <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/Downloads.htm">developer toolkits</a> and see <a href="https://support.travelport.com/webhelp/JSONAPIs/Airv11/Content/GeneralProject/UsingPostman.htm">Using Postman and Developer Toolkits</a>.</div>
+                                        <div class="noteWarning">Be sure to see the <a href="AncillaryGuide.html">Ancillary and EMD&#160;Guide</a> for currently supported ancillaries in each flow.</div>
+                                        <h5>Ancillary shop request after AirPrice (no workbench; GDS only)</h5>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Ancillary&#160;Shop request after AirPrice (no workbench, GDS&#160;only)</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogOfferingsQueryAncillaries": {
+  "AncillaryOfferings": {
+   "@type": "AncillaryOfferingsBuildFromOfferList",
+   "BuildFromOfferList": {
+    "OfferListIdentifier": "238ef294-4d0f-4d6f-838e-154ddaf2c7be_PC",
+    "OfferIdentifier": [
+     {
+      "id": "o0"
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5>Ancillary shop request in the initial booking workflow (pre-commit)</h5>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Ancillary Shop Request - new reservation</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following example payload, sent for a new reservation, sends offer and product identifiers from the Search response. </p><pre class="line-numbers"><code class="language-json">{
+ "CatalogOfferingsQueryAncillaries": {
+  "AncillaryOfferings": {
+   "@type": "AncillaryOfferingsBuildFromOffer",
+   "BuildFromOffer": {
+    "@type": "BuildFromOfferAir",
+    "OfferIdentifier": {
+     "Identifier": {
+      "value": "653f9c6f-4618-44e5-8f2d-2a23dd6fcc40_PC"
+     }
+    },
+    "ProductIdentifier": [
+     {
+      "Identifier": {
+       "value": "p0"
+      }
+     }
+    ]
+   }
+  }
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5>Ancillary shop request for existing reservation (post-commit)</h5>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Ancillary Shop Request - existing reservation</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <p>The following example payload, sent for an existing reservation, sends the workbench identifier. </p><pre class="line-numbers"><code class="language-json">{
+ "CatalogOfferingsQueryAncillaries": {
+  "AncillaryOfferings": {
+   "@type": "AncillaryOfferingsBuildFromReservationWorkbench",
+   "BuildFromReservationWorkbench": {
+    "ReservationIdentifier": {
+     "Identifier": {
+      "value": "85d34008-c5ad-42f6-99ee-a7c0e6d5a2a3"
+     }
+    }
+   }
+  }
+ }
+}</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2><a name="exrsp"></a>Example Response</h2>
+                                        <p>The Ancillary Shop response is the same regardless of where in the workflow the shop request is sent. </p>
+                                        <div class="APIRefDropDown">
+                                            <div class="MCDropDown MCDropDown_Closed dropDown dropDownAPIRef"><span class="MCDropDownHead dropDownHead"><a class="MCDropDownHotSpot dropDownHotspot dropDownHotspotAPIRef MCDropDownHotSpot_ MCDropDownHotSpot_APIRef MCHotSpotImage" href="#" aria-expanded="false"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Show Example Ancillary&#160;Shop response</a></span>
+                                                <div class="MCDropDownBody dropDownBody dropDownBodyAPIRef">
+                                                    <div><pre class="line-numbers"><code class="language-json">{
+ "CatalogOfferingsAncillaryListResponse": {
+  "@type": "CatalogOfferingsAncillaryListResponse",
+  "transactionId": "3c68a982-41e8-4846-90b1-5a79a58f268e:ppnd1001",
+  "CatalogOfferingsID": [
+   {
+    "@type": "CatalogOfferingsTraveler",
+    "id": "CT1",
+    "CatalogOffering": [
+     {
+      "@type": "CatalogOffering",
+      "id": "anc_off1",
+      "ProductOptions": [
+       {
+        "@type": "ProductOptions",
+        "Product": [
+         {
+          "@type": "ProductAncillary",
+          "id": "an1",
+          "Quantity": 1,
+          "Ancillary": {
+           "@type": "AncillaryAirBaggage",
+           "Description": [
+            {
+             "code": "BG",
+             "subCode": "021",
+             "ssrCode": "PETC",
+             "value": "PET IN CABIN UP TO 8 KG"
+            },
+            {
+             "value": "C-RepriceRequired"
+            }
+           ],
+           "FlightRef": [
+            "s1",
+            "s2"
+           ],
+           "BaggageType": "CarryOn"
+          }
+         }
+        ]
+       }
+      ],
+      "Price": {
+       "@type": "PriceDetail",
+       "CurrencyCode": {
+        "value": "EUR"
+       },
+       "Base": 80,
+       "TotalTaxes": 0,
+       "TotalPrice": 80,
+       "PriceBreakdown": [
+        {
+         "@type": "PriceBreakdownAncillaryAir",
+         "inclusiveOfTaxInd": true,
+         "Amount": {
+          "@type": "Amount",
+          "Taxes": {
+           "@type": "TaxesDetail",
+           "Tax": [
+            {
+             "value": 0
+            }
+           ]
+          }
+         },
+         "Commission": {
+          "@type": "Commission",
+          "application": "Non-paying"
+         },
+         "Description": {
+          "issuanceReasonCode": "C",
+          "value": "Associated to a flight coupon of a ticket"
+         }
+        }
+       ]
+      },
+      "TermsAndConditions": {
+       "@type": "TermsAndConditionsAncillary",
+       "validatingAirline": "FB",
+       "fulfillmentType": "EMD-A Associated",
+       "associatedItem": "Flight",
+       "ExpiryDate": "2049-12-12T00:00:00Z",
+       "ApplicationLimit": {
+        "value": "PassengerSegment"
+       }
+      }
+     },
+     {
+      "@type": "CatalogOffering",
+      "id": "anc_off2",
+      "ProductOptions": [
+       {
+        "@type": "ProductOptions",
+        "Product": [
+         {
+          "@type": "ProductAncillary",
+          "id": "an2",
+          "Quantity": 1,
+          "Ancillary": {
+           "@type": "AncillaryAirBaggage",
+           "Description": [
+            {
+             "code": "BG",
+             "subCode": "026",
+             "ssrCode": "AVIH",
+             "value": "PET IN HOLD UP TO 23KG"
+            },
+            {
+             "value": "C-RepriceRequired"
+            }
+           ],
+           "FlightRef": [
+            "s1",
+            "s2"
+           ]
+          }
+         }
+        ]
+       }
+      ],
+      "Price": {
+       "@type": "PriceDetail",
+       "CurrencyCode": {
+        "value": "EUR"
+       },
+       "Base": 110,
+       "TotalTaxes": 0,
+       "TotalPrice": 110,
+       "PriceBreakdown": [
+        {
+         "@type": "PriceBreakdownAncillaryAir",
+         "inclusiveOfTaxInd": true,
+         "Amount": {
+          "@type": "Amount",
+          "Taxes": {
+           "@type": "TaxesDetail",
+           "Tax": [
+            {
+             "value": 0
+            }
+           ]
+          }
+         },
+         "Commission": {
+          "@type": "Commission",
+          "application": "Non-paying"
+         },
+         "Description": {
+          "issuanceReasonCode": "C",
+          "value": "Associated to a flight coupon of a ticket"
+         }
+        }
+       ]
+      },
+      "TermsAndConditions": {
+       "@type": "TermsAndConditionsAncillary",
+       "validatingAirline": "FB",
+       "fulfillmentType": "EMD-A Associated",
+       "associatedItem": "Flight",
+       "ExpiryDate": "2049-12-12T00:00:00Z",
+       "ApplicationLimit": {
+        "value": "PassengerSegment"
+       }
+      }
+     },
+     {
+      "@type": "CatalogOffering",
+      "id": "anc_off3",
+      "ProductOptions": [
+       {
+        "@type": "ProductOptions",
+        "Product": [
+         {
+          "@type": "ProductAncillary",
+          "id": "an3",
+          "Quantity": 1,
+          "Ancillary": {
+           "@type": "AncillaryAirBaggage",
+           "Description": [
+            {
+             "code": "BG",
+             "subCode": "05X",
+             "ssrCode": "AVIH",
+             "value": "PET IN HOLD UP TO 45 KG"
+            },
+            {
+             "value": "C-RepriceRequired"
+            }
+           ],
+           "FlightRef": [
+            "s1",
+            "s2"
+           ]
+          }
+         }
+        ]
+       }
+      ],
+      "Price": {
+       "@type": "PriceDetail",
+       "CurrencyCode": {
+        "value": "EUR"
+       },
+       "Base": 150,
+       "TotalTaxes": 0,
+       "TotalPrice": 150,
+       "PriceBreakdown": [
+        {
+         "@type": "PriceBreakdownAncillaryAir",
+         "inclusiveOfTaxInd": true,
+         "Amount": {
+          "@type": "Amount",
+          "Taxes": {
+           "@type": "TaxesDetail",
+           "Tax": [
+            {
+             "value": 0
+            }
+           ]
+          }
+         },
+         "Commission": {
+          "@type": "Commission",
+          "application": "Non-paying"
+         },
+         "Description": {
+          "issuanceReasonCode": "C",
+          "value": "Associated to a flight coupon of a ticket"
+         }
+        }
+       ]
+      },
+      "TermsAndConditions": {
+       "@type": "TermsAndConditionsAncillary",
+       "validatingAirline": "FB",
+       "fulfillmentType": "EMD-A Associated",
+       "associatedItem": "Flight",
+       "ExpiryDate": "2049-12-12T00:00:00Z",
+       "ApplicationLimit": {
+        "value": "PassengerSegment"
+       }
+      }
+     },
+     {
+      "@type": "CatalogOffering",
+      "id": "anc_off4",
+      "ProductOptions": [
+       {
+        "@type": "ProductOptions",
+        "Product": [
+         {
+          "@type": "ProductAncillary",
+          "id": "an5",
+          "Quantity": 1,
+          "Ancillary": {
+           "@type": "AncillaryAirBaggage",
+           "soldByPieceInd": true,
+           "Description": [
+            {
+             "code": "BG",
+             "subCode": "0CE",
+             "ssrCode": "CBAG",
+             "value": "3RD BAG UPTO50LB23KG 62LI158CM"
+            },
+            {
+             "value": "C-RepriceRequired"
+            }
+           ],
+           "FlightRef": [
+            "s1",
+            "s2"
+           ],
+           "Measurement": [
+            {
+             "measurementType": "Weight",
+             "unit": "Kilograms",
+             "value": 23
+            }
+           ]
+          }
+         }
+        ]
+       }
+      ],
+      "Price": {
+       "@type": "PriceDetail",
+       "CurrencyCode": {
+        "value": "EUR"
+       },
+       "Base": 120,
+       "TotalTaxes": 0,
+       "TotalPrice": 120,
+       "PriceBreakdown": [
+        {
+         "@type": "PriceBreakdownAncillaryAir",
+         "inclusiveOfTaxInd": true,
+         "Amount": {
+          "@type": "Amount",
+          "Taxes": {
+           "@type": "TaxesDetail",
+           "Tax": [
+            {
+             "value": 0
+            }
+           ]
+          }
+         },
+         "Commission": {
+          "@type": "Commission",
+          "application": "Non-paying"
+         },
+         "Description": {
+          "issuanceReasonCode": "C",
+          "value": "Associated to a flight coupon of a ticket"
+         }
+        }
+       ]
+      },
+      "TermsAndConditions": {
+       "@type": "TermsAndConditionsAncillary",
+       "validatingAirline": "FB",
+       "fulfillmentType": "EMD-A Associated",
+       "associatedItem": "Flight",
+       "ExpiryDate": "2049-12-12T00:00:00Z",
+       "ApplicationLimit": {
+        "start": "3",
+        "end": "3",
+        "value": "PassengerSegment"
+       }
+      }
+     }
+    ],
+    "TravelerIdentifierRef": [
+     {
+      "passengerTypeCode": "ADT",
+      "id": "travelerRefId_1"
+     }
+    ]
+   }
+  ],
+  "Result": {
+   "@type": "Result",
+   "Warning": [
+    {
+     "@type": "Warning",
+     "Message": "SERVICES RELATED TO THE FARE MAY EXIST - MUST PRICE THE PNR"
+    }
+   ]
+  },
+  "Identifier": {
+   "authority": "Travelport",
+   "value": "7cea1dc4-92e5-4097-bfe6-2dc821f876c4_PC"
+  },
+  "ReferenceList": [
+   {
+    "@type": "ReferenceListFlight",
+    "Flight": [
+     {
+      "@type": "Flight",
+      "carrier": "FB",
+      "number": "1771",
+      "operatingCarrier": "FB",
+      "operatingCarrierName": "Bulgaria Air",
+      "id": "s1",
+      "Departure": {
+       "@type": "Departure",
+       "location": "SOF",
+       "date": "2025-09-01",
+       "time": "12:55:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "FCO",
+       "date": "2025-09-01",
+       "time": "13:50:00"
+      }
+     },
+     {
+      "@type": "Flight",
+      "carrier": "FB",
+      "number": "1709",
+      "operatingCarrier": "FB",
+      "operatingCarrierName": "Bulgaria Air",
+      "id": "s2",
+      "Departure": {
+       "@type": "Departure",
+       "location": "FCO",
+       "date": "2025-09-01",
+       "time": "14:40:00"
+      },
+      "Arrival": {
+       "@type": "Arrival",
+       "location": "LCY",
+       "date": "2025-09-01",
+       "time": "16:15:00"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+<!-- Mirrored from support.travelport.com/webhelp/JSONAPIs/Airv11/Content/Air11/Ancillaries/APIRef_AncillaryShop.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2026 11:44:24 GMT -->
+</html>

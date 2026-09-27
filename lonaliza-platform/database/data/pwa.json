@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-17T10:05:18.090Z",
+  "enabledPublic": false,
+  "enabledAdmin": false,
+  "showBanner": true,
+  "nameAr": "Lonaliza",
+  "nameEn": "Lonaliza",
+  "nameTr": "Lonaliza",
+  "shortName": "Lonaliza",
+  "themeColor": "#051741",
+  "backgroundColor": "#051741",
+  "icon192": "/uploads/pwa/mtiyyzjt-pwa-192.png",
+  "icon512": "/uploads/pwa/mtiyyzqd-pwa-512.png",
+  "appleTouchIcon": "/uploads/pwa/mtiyyzvi-apple-touch-icon.png"
+}

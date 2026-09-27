@@ -1,0 +1,49 @@
+{
+  "places": [
+    {
+      "skyId": "CDG",
+      "entityId": "95565050",
+      "kind": "airport"
+    },
+    {
+      "skyId": "CMN",
+      "entityId": "95673387",
+      "kind": "airport"
+    },
+    {
+      "skyId": "IST",
+      "entityId": "95673323",
+      "kind": "airport"
+    },
+    {
+      "skyId": "ISTA",
+      "entityId": "27542903",
+      "kind": "city"
+    },
+    {
+      "skyId": "ISTA",
+      "entityId": "27542903",
+      "kind": "airport"
+    },
+    {
+      "skyId": "LOND",
+      "entityId": "27544008",
+      "kind": "city"
+    },
+    {
+      "skyId": "PAR",
+      "entityId": "27539733",
+      "kind": "city"
+    },
+    {
+      "skyId": "PARI",
+      "entityId": "27539733",
+      "kind": "city"
+    },
+    {
+      "skyId": "SAW",
+      "entityId": "95673324",
+      "kind": "airport"
+    }
+  ]
+}

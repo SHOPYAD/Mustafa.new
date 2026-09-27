@@ -1,0 +1,18 @@
+[
+  {
+    "company": "4jkmyj4z5398ye4",
+    "companyName": "ferdos elhayat",
+    "type": "deposit_card",
+    "amount": 2000,
+    "fee": 58,
+    "netAmount": 1942,
+    "status": "pending",
+    "serviceType": "general",
+    "referenceId": "DEP-1788901786788",
+    "clearanceDate": "2026-09-15T21:09:46.788Z",
+    "notes": "إيداع بطاقة مع فترة حظر 7 أيام",
+    "id": "tx_1788901786790_0clpb",
+    "created": "2026-09-08T21:09:46.790Z",
+    "updated": "2026-09-08T21:09:46.790Z"
+  }
+]

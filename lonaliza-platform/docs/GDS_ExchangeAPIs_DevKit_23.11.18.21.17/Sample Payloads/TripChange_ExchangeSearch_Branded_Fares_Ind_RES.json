@@ -1,0 +1,4821 @@
+{
+	"CatalogOfferingsAirChangeResponse": {
+		"@type": "CatalogOfferingsAirChangeResponse",
+		"transactionId": "4604e44e-e49b-49a5-80c2-21068c080707",
+		"traceId": "test",
+		"CatalogOfferings": {
+			"@type": "CatalogOfferings",
+			"Identifier": {
+				"value": "28d962fb-7d96-423c-b410-50081075b243"
+			},
+			"CatalogOffering": [
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o0.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT14H20M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT1H20M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s1"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s2"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o1.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT15H20M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT2H20M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s5"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s2"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o2.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT17H30M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT4H30M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s5"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s6"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o3.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT16H30M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT3H30M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s7"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s8"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o4.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT16H30M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT3H30M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s1"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s6"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o5.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT18H10M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT5H10M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s9"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s10"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o6.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT18H15M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT5H10M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s9"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s11"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				},
+				{
+					"@type": "CatalogOfferingModify",
+					"id": "o7.0",
+					"ProductOptions": [
+						{
+							"@type": "ProductOptions",
+							"sequence": 1,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT15H25M",
+									"id": "p1",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 1,
+											"connectionDuration": "PT2H20M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s7"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 2,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s12"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														1,
+														2
+													],
+													"classOfService": "B",
+													"cabin": "Economy",
+													"fareBasisCode": "BJR4R1FE",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"@type": "ProductOptions",
+							"sequence": 2,
+							"Product": [
+								{
+									"@type": "ProductAir",
+									"totalDuration": "PT12H15M",
+									"id": "p2",
+									"FlightSegment": [
+										{
+											"@type": "FlightSegment",
+											"sequence": 3,
+											"connectionDuration": "PT50M",
+											"boundFlightsInd": true,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s3"
+											}
+										},
+										{
+											"@type": "FlightSegment",
+											"sequence": 4,
+											"Flight": {
+												"@type": "FlightID",
+												"FlightRef": "s4"
+											}
+										}
+									],
+									"PassengerFlight": [
+										{
+											"@type": "PassengerFlight",
+											"passengerQuantity": 1,
+											"passengerTypeCode": "ADT",
+											"FlightProduct": [
+												{
+													"@type": "FlightProduct",
+													"segmentSequence": [
+														3,
+														4
+													],
+													"classOfService": "J",
+													"cabin": "Business",
+													"fareBasisCode": "JJR4R1FX",
+													"fareType": "PublicFare",
+													"Brand": {
+														"@type": "BrandID",
+														"BrandRef": "b1"
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"Price": {
+						"@type": "PriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 2470.0,
+						"TotalTaxes": 969.16,
+						"TotalFees": 0,
+						"TotalPrice": 3439.16,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 2470.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 969.16,
+										"Tax": [
+											{
+												"taxCode": "G4",
+												"value": 28.4
+											},
+											{
+												"taxCode": "GB",
+												"value": 191.0
+											},
+											{
+												"taxCode": "NP",
+												"value": 19.8
+											},
+											{
+												"taxCode": "NQ",
+												"value": 7.5
+											},
+											{
+												"taxCode": "PZ",
+												"value": 0.8
+											},
+											{
+												"taxCode": "QA",
+												"value": 28.4
+											},
+											{
+												"taxCode": "R9",
+												"value": 4.8
+											},
+											{
+												"taxCode": "UB",
+												"value": 56.06
+											},
+											{
+												"taxCode": "YQ",
+												"value": 585.8
+											},
+											{
+												"taxCode": "YR",
+												"value": 46.6
+											}
+										]
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 3439.16
+								},
+								"FiledAmount": {
+									"currencyCode": "NPR",
+									"decimalPlace": 0,
+									"value": 373672
+								}
+							}
+						]
+					},
+					"TermsAndConditions": {
+						"@type": "TermsAndConditionsAirChange",
+						"BaggageAllowance": [
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									1,
+									2
+								],
+								"Text": [
+									"35K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "FirstCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QR",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "SecondCheckedBag",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+									}
+								],
+								"SegmentSequenceList": [
+									3,
+									4
+								],
+								"Text": [
+									"40K|BAGGAGE DISCOUNTS MAY APPLY BASED ON FREQUENT FLYER STATUS/ONLINE CHECKIN/FORM OF PAYMENT/MILITARY/ETC"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									1
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p1"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									2
+								],
+								"Text": [
+									"1P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									3
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							},
+							{
+								"@type": "BaggageAllowanceDetail",
+								"passengerTypeCodes": [
+									"ADT"
+								],
+								"baggageType": "CarryOn",
+								"ProductRef": [
+									"p2"
+								],
+								"BaggageItem": [
+									{
+										"@type": "BaggageItem",
+										"quantity": 1,
+										"BaggageFee": {
+											"code": "GBP",
+											"value": 0
+										},
+										"Text": "UPTO15LB/7KG AND UPTO45LI/115LCM"
+									}
+								],
+								"SegmentSequenceList": [
+									4
+								],
+								"Text": [
+									"2P"
+								]
+							}
+						],
+						"Restriction": [
+							{
+								"value": "* AS PER RULE/NON END/CHNG PENALTIES"
+							}
+						],
+						"ValidatingAirline": [
+							{
+								"@type": "ValidatingAirline",
+								"ValidatingAirline": "QR"
+							}
+						],
+						"PaymentTimeLimit": "2023-01-18T23:59:00Z",
+						"FareGuaranteePolicy": [
+							{
+								"@type": "FareGuaranteePolicy",
+								"EligibleforADMReview": "Yes",
+								"Code": {
+									"codeContext": "Travelport",
+									"value": "G"
+								}
+							}
+						]
+					},
+					"ModifyPrice": {
+						"@type": "ModifyPriceDetail",
+						"CurrencyCode": {
+							"decimalPlace": 2,
+							"value": "GBP"
+						},
+						"Base": 87.0,
+						"TotalTaxes": 0,
+						"TotalFees": 0,
+						"TotalPrice": 87.0,
+						"PriceBreakdown": [
+							{
+								"@type": "PriceBreakdownAir",
+								"quantity": 1,
+								"requestedPassengerType": "ADT",
+								"Amount": {
+									"@type": "Amount",
+									"CurrencyCode": {
+										"decimalPlace": 2,
+										"value": "GBP"
+									},
+									"Base": 87.0,
+									"Taxes": {
+										"@type": "TaxesDetail",
+										"TotalTaxes": 0
+									},
+									"Fees": {
+										"@type": "FeesDetail",
+										"TotalFees": 0,
+										"Fee": [
+											{
+												"@type": "Fee",
+												"description": "Change Fee",
+												"FeeAmountOrPercent": {
+													"@type": "FeeAmountOrPercentAmount",
+													"Amount": {
+														"code": "GBP",
+														"minorUnit": 2,
+														"value": 0
+													}
+												}
+											}
+										]
+									},
+									"Total": 87.0
+								},
+								"FareCalculation": "KTM QR X/DOH QR LON Q KTMLON100.00Q KTMLON5.00 873.38QR X/DOH QR KTM Q LONKTM5.00 1866.87NUC2850.25END ROE131.101508 QR"
+							}
+						]
+					}
+				}
+			]
+		},
+		"ReferenceList": [
+			{
+				"@type": "ReferenceListFlight",
+				"Flight": [
+					{
+						"@type": "Flight",
+						"duration": "PT5H30M",
+						"carrier": "QR",
+						"number": "649",
+						"equipment": "320",
+						"id": "s1",
+						"Departure": {
+							"@type": "Departure",
+							"location": "KTM",
+							"date": "2023-01-18",
+							"time": "11:15:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "14:00:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H30M",
+						"carrier": "QR",
+						"number": "15",
+						"equipment": "77W",
+						"id": "s2",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "15:20:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-18",
+							"time": "19:50:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT6H40M",
+						"carrier": "QR",
+						"number": "4",
+						"equipment": "388",
+						"id": "s3",
+						"Departure": {
+							"@type": "Departure",
+							"location": "LHR",
+							"date": "2023-04-20",
+							"time": "15:05:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "DOH",
+							"date": "2023-04-20",
+							"time": "23:45:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT4H45M",
+						"carrier": "QR",
+						"number": "652",
+						"equipment": "333",
+						"id": "s4",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-04-21",
+							"time": "00:35:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "KTM",
+							"date": "2023-04-21",
+							"time": "08:05:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT5H30M",
+						"carrier": "QR",
+						"number": "653",
+						"equipment": "789",
+						"id": "s5",
+						"Departure": {
+							"@type": "Departure",
+							"location": "KTM",
+							"date": "2023-01-18",
+							"time": "10:15:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "13:00:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H30M",
+						"carrier": "QR",
+						"number": "5",
+						"equipment": "77W",
+						"id": "s6",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "17:30:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-18",
+							"time": "22:00:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT5H30M",
+						"carrier": "QR",
+						"number": "645",
+						"equipment": "332",
+						"id": "s7",
+						"Departure": {
+							"@type": "Departure",
+							"location": "KTM",
+							"date": "2023-01-18",
+							"time": "02:35:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "05:20:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H30M",
+						"carrier": "QR",
+						"number": "7",
+						"equipment": "77W",
+						"id": "s8",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "08:50:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-18",
+							"time": "13:20:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT5H30M",
+						"carrier": "QR",
+						"number": "647",
+						"equipment": "333",
+						"id": "s9",
+						"Departure": {
+							"@type": "Departure",
+							"location": "KTM",
+							"date": "2023-01-18",
+							"time": "17:55:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "20:40:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H30M",
+						"carrier": "QR",
+						"number": "9",
+						"equipment": "77W",
+						"id": "s10",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-19",
+							"time": "01:50:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-19",
+							"time": "06:20:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H35M",
+						"carrier": "QR",
+						"number": "11",
+						"equipment": "388",
+						"id": "s11",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-19",
+							"time": "01:50:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-19",
+							"time": "06:25:00"
+						}
+					},
+					{
+						"@type": "Flight",
+						"duration": "PT7H35M",
+						"carrier": "QR",
+						"number": "3",
+						"equipment": "388",
+						"id": "s12",
+						"Departure": {
+							"@type": "Departure",
+							"location": "DOH",
+							"date": "2023-01-18",
+							"time": "07:40:00"
+						},
+						"Arrival": {
+							"@type": "ArrivalDetail",
+							"terminal": "1",
+							"location": "LHR",
+							"date": "2023-01-18",
+							"time": "12:15:00"
+						}
+					}
+				]
+			},
+			{
+				"@type": "ReferenceListBrand",
+				"Brand": [
+					{
+						"@type": "Brand",
+						"name": "ECONOMY COMFORT",
+						"tier": 4,
+						"id": "b1"
+					}
+				]
+			}
+		]
+	}
+}

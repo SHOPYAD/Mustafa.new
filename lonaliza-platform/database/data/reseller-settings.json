@@ -1,0 +1,20 @@
+{
+  "id": "xnmwmze8xwwctkl",
+  "lifetimePrice": 3990,
+  "updatePrice": 90,
+  "currency": "USD",
+  "contaboSpecs": "Cloud VPS 6 — 6 vCPU Cores, 12 GB RAM, 200 GB NVMe SSD, Unlimited Traffic, DDoS Protection",
+  "deliveryHours": "12–24",
+  "supportWhatsapp": "+905015709201",
+  "features": [
+    "نظام حجوزات طيران وفنادق وباقات وجولات وسيارات وترانسفير وتأشيرات موحد",
+    "تكاملات RapidAPI و Travelpayouts و iyzico مفعلة",
+    "لوحة تحكم إدارية شاملة مع إدارة العملاء والمدونة والترجمة الفورية",
+    "محرر بصري متطور للصفحة الرئيسية والصفحات المخصصة",
+    "ذكاء اصطناعي مدمج لتوليد البرامج السياحية والشات والتسعير الذكي",
+    "استضافة سحابية سنة كاملة على سيرفر Contabo VPS مع لوحة aaPanel وشهادة SSL",
+    "ربط الدومين الخاص بشركتك مع حساب كلاودفلير والبريد الرسمي"
+  ],
+  "whatsappBankEnabled": true,
+  "active": true
+}

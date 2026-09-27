@@ -1,0 +1,5923 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Exchange Search",
+    "version": "11.11.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.pp.travelport.com/11/air/exchangesearch"
+    },
+    {
+      "url": "https://api.travelport.com/11/air/exchangesearch"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "paths": {
+    "/catalogofferingsairchange": {
+      "post": {
+        "tags": [
+          "Search Exchanges"
+        ],
+        "summary": "Search for flights to exchange (GDS)",
+        "description": "The Exchange Search API is the second step in the GDS exchange workflow, after Eligibility. It supports searching for an alternate itinerary for a possible exchange on a currently ticketed GDS itinerary. The response details any differences in base fare, taxes, fees, and total price between the currently ticketed itinerary and the possible new itinerary.",
+        "operationId": "CreateExchangeSearch",
+        "parameters": [
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 0,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 89,
+              "minLength": 10,
+              "pattern": "(^[a-zA-Z-0-9_]*[-]?[+]?$)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 36,
+              "minLength": 36,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogOfferingsQueryAirChange"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created - 201",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogOfferingsAirChangeResponseWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalogofferingsairchange/productspecificsearch": {
+      "post": {
+        "tags": [
+          "Search Exchanges"
+        ],
+        "summary": "Search for flights to exchange using specific flight criteria (GDS)",
+        "description": "The Product Specific Search function of the Exchange Search API is the second step in the GDS exchange workflow, after Eligibility. It supports searching for a specified itinerary and in addition can provide alternate options. The response details any differences in base fare, taxes, fees, and total price between the currently ticketed itinerary and the possible new itinerary.",
+        "operationId": "ProductSpecificSearch",
+        "parameters": [
+          {
+            "name": "TravelportPlusSessionID",
+            "in": "header",
+            "description": "Travelport Plus Session ID used to maintain an established agency session",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 0,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "TraceId",
+            "in": "header",
+            "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 89,
+              "minLength": 10,
+              "pattern": "(^[a-zA-Z-0-9_]*[-]?[+]?$)",
+              "type": "string"
+            }
+          },
+          {
+            "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+            "in": "header",
+            "description": "Identifies the Travelport access group with which the caller is associated",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maxLength": 36,
+              "minLength": 36,
+              "pattern": "([a-zA-Z-0-9-_]*)",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogOfferingsQueryProductSpecificSearch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created - 201",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogOfferingsAirChangeResponseWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request- 400",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - 401",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PaymentRequired - 402",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - 403",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - 404",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - 500",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CatalogOfferingsQueryAirChange": {
+        "required": [
+          "@type",
+          "CatalogOfferingsAirChangeRequest"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CatalogOfferingsQueryAirChange"
+          },
+          "CatalogOfferingsAirChangeRequest": {
+            "$ref": "#/components/schemas/CatalogOfferingsAirChangeRequestReservation"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CatalogOfferingsAirChangeRequestReservation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CatalogOfferingsAirChangeRequest"
+          },
+          {
+            "required": [
+              "BuildFromReservationWorkbench"
+            ],
+            "properties": {
+              "BuildFromReservationWorkbench": {
+                "$ref": "#/components/schemas/BuildFromReservationWorkbench"
+              }
+            }
+          }
+        ]
+      },
+      "CatalogOfferingsAirChangeRequest": {
+        "required": [
+          "@type",
+          "PassengerCriteria",
+          "SearchCriteriaFlight"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "CatalogOfferingsAirChangeRequestReservation"
+          },
+          "catalogOfferingsPerPage": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "integer",
+            "description": "Catalog Offerings per page value",
+            "format": "int32",
+            "example": 5
+          },
+          "SearchCriteriaFlight": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchCriteriaFlight"
+            }
+          },
+          "PassengerCriteria": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PassengerCriteria"
+            }
+          },
+          "SearchModifiersAir": {
+            "$ref": "#/components/schemas/SearchModifiersAir"
+          },
+          "PricingModifiersAirChange": {
+            "$ref": "#/components/schemas/PricingModifiersAirChange"
+          },
+          "SearchControlConsoleChannelID": {
+            "$ref": "#/components/schemas/SearchControlConsoleChannelID"
+          },
+          "returnBrandedFaresInd": {
+            "type": "boolean",
+            "example": true
+          },
+          "upsellInd": {
+            "type": "boolean",
+            "example": true
+          },
+          "detailViewInd": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "SearchCriteriaFlight": {
+        "required": [
+          "@type",
+          "From",
+          "To",
+          "departureDate"
+        ],
+        "properties": {
+          "departureDate": {
+            "type": "string",
+            "description": "Preferred local departure date. Cannot be used in conjunction with arrival date",
+            "format": "date"
+          },
+          "departureTime": {
+            "type": "string",
+            "description": "Preferred local departure time. Cannot be used in conjunction with arrival time",
+            "example": "07:00:00"
+          },
+          "arrivalDate": {
+            "type": "string",
+            "description": "Preferred local arrival date. Cannot be used in conjunction with departure date.",
+            "format": "date"
+          },
+          "arrivalTime": {
+            "type": "string",
+            "description": "Preferred local arrival time. Cannot be used in conjunction with departure time.",
+            "format": "time",
+            "example": "09:15:00"
+          },
+          "legSequence": {
+            "type": "integer",
+            "description": "Leg sequence",
+            "format": "int32",
+            "example": 1
+          },
+          "From": {
+            "$ref": "#/components/schemas/FromTo"
+          },
+          "To": {
+            "$ref": "#/components/schemas/FromTo"
+          },
+          "DepartureTimeRange": {
+            "$ref": "#/components/schemas/TimeRange"
+          },
+          "ArrivalTimeRange": {
+            "$ref": "#/components/schemas/TimeRange"
+          }
+        }
+      },
+      "FromTo": {
+        "properties": {
+          "value": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "example": "MEX"
+          },
+          "cityOrAirport": {
+            "$ref": "#/components/schemas/CityOrAirportEnum"
+          }
+        },
+        "description": "Location code"
+      },
+      "CityOrAirportEnum": {
+        "type": "string",
+        "description": "Clarification of how the airport or city code is used",
+        "enum": [
+          "Airport Only",
+          "City or Airport",
+          "City Only",
+          "Use Default"
+        ]
+      },
+      "TimeRange": {
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "start time",
+            "example": "06:15:00"
+          },
+          "end": {
+            "type": "string",
+            "description": "endTime",
+            "example": "09:15:00"
+          }
+        },
+        "description": "Specify time."
+      },
+      "PassengerCriteria": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PassengerCriteria"
+          },
+          "number": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "integer",
+            "description": "Number",
+            "format": "int32",
+            "example": 1
+          },
+          "age": {
+            "type": "integer",
+            "description": "Age",
+            "format": "int32",
+            "example": 26
+          },
+          "passengerTypeCode": {
+            "maxLength": 5,
+            "minLength": 3,
+            "pattern": "([a-zA-Z0-9]{3,5})",
+            "type": "string",
+            "description": "Passenger Type Code",
+            "example": "ADT"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "The date of birth of the passenger. May be used in age validation for fares with age restrictions",
+            "format": "Date"
+          },
+          "CustomerLoyalty": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerLoyalty"
+            }
+          },
+          "TravelerGeographicLocation": {
+            "$ref": "#/components/schemas/TravelerGeographicLocation"
+          },
+          "specifiedPassengerTypeCodeOnlyInd": {
+            "type": "boolean",
+            "description": "If true then the Offering\\/Offer will only be returned for the specific passengerTypeCode",
+            "example": true
+          }
+        }
+      },
+      "CustomerLoyalty": {
+        "properties": {
+          "value": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string",
+            "example": "132456"
+          },
+          "id": {
+            "type": "string",
+            "description": "Customer Loyality Id",
+            "example": "Loyalty_1"
+          },
+          "priority": {
+            "maximum": 300,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "integer",
+            "description": "Numeric Priority Code",
+            "format": "int32",
+            "example": 2
+          },
+          "programId": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Specifies an identifier to indicate the company owner of the loyalty program",
+            "example": "United"
+          },
+          "programName": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Supplier's loyalty program name such as Frontier-EarlyReturns",
+            "example": "Mileage Plus"
+          },
+          "supplierType": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The kind of supplier of a loyalty program",
+            "example": "Airline"
+          },
+          "supplier": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Supplier of a loyalty program",
+            "example": "UA"
+          },
+          "tier": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Customer Loyalty tier level",
+            "example": "Silver"
+          },
+          "shareWithSupplier": {
+            "type": "array",
+            "description": "The list of suppliers that the CustomerLoyalty number is shared.",
+            "items": {
+              "maxLength": 32,
+              "type": "string",
+              "example": "LH NH SQ"
+            }
+          },
+          "cardHolderName": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "The card holder name",
+            "example": "John Smith"
+          },
+          "validatedInd": {
+            "type": "boolean",
+            "description": "Customer loyalty number has been validated by the supplier",
+            "example": true
+          }
+        },
+        "description": "Specifies the ID for the membership program."
+      },
+      "TravelerGeographicLocation": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "PMI"
+          },
+          "travelerGeographicLocationType": {
+            "$ref": "#/components/schemas/TravelerGeographicTypeEnum"
+          },
+          "residentGeographicCode": {
+            "type": "string",
+            "description": "Resident code, currently used to handle Spanish residency fares for NDC channel where this code is required in addition to the city of residence"
+          },
+          "generalLargeFamilyResidentDiscountInd": {
+            "type": "boolean",
+            "description": "if true, this request qualifies for general large family resident discount. General large families (up to 3 children) from Spain, from the EU/EEA or of any other nationality, whose residency in Spain is recognised and who are in possession of a large-family certificate issued by the autonomous community in which they live.",
+            "example": true
+          },
+          "specialLargeFamilyResidentDiscountInd": {
+            "type": "boolean",
+            "description": "if true, this request qualifies for special large family resident discount. Special large families (4 or more children) from Spain, from the EU/EEA or of any other nationality, whose residency in Spain is recognised and who are in possession of a large-family certificate issued by the autonomous community in which they live.",
+            "example": true
+          }
+        },
+        "description": "Specifies which location the Traveler resides in. Used for resident fares"
+      },
+      "TravelerGeographicTypeEnum": {
+        "type": "string",
+        "example": "City",
+        "enum": [
+          "Country",
+          "StateProvince",
+          "City"
+        ]
+      },
+      "SearchModifiersAir": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "SearchModifiersAir"
+          },
+          "excludeGround": {
+            "$ref": "#/components/schemas/ExcludeGroundTypeEnum"
+          },
+          "CarrierPreference": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarrierPreference"
+            }
+          },
+          "CabinPreference": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CabinPreference"
+            }
+          },
+          "ClassOfServicePreference": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassOfServicePreference"
+            }
+          },
+          "ProductInclusionPreference": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductInclusionPreference"
+            }
+          },
+          "ConnectionPreferences": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectionPreferencesAir"
+            }
+          },
+          "prohibitChangeOfAirportInd": {
+            "type": "boolean",
+            "description": "If present and true, connections that require a change of airports are not returned",
+            "example": true
+          }
+        }
+      },
+      "ExcludeGroundTypeEnum": {
+        "type": "string",
+        "example": "Train",
+        "enum": [
+          "Train",
+          "All"
+        ]
+      },
+      "CarrierPreference": {
+        "required": [
+          "carriers",
+          "preferenceType"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CarrierPreference"
+          },
+          "preferenceType": {
+            "$ref": "#/components/schemas/CarrierPreferenceTypeEnum"
+          },
+          "carriers": {
+            "type": "array",
+            "description": "Carrier airline codes",
+            "example": "BA",
+            "items": {
+              "pattern": "([a-zA-Z0-9]{2,3})",
+              "type": "string"
+            }
+          },
+          "legSequence": {
+            "type": "array",
+            "description": "Leg sequence",
+            "example": [
+              1,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      },
+      "CarrierPreferenceTypeEnum": {
+        "type": "string",
+        "example": "Preferred",
+        "enum": [
+          "Preferred",
+          "Permitted",
+          "Prohibited"
+        ]
+      },
+      "CabinPreference": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CabinPreference"
+          },
+          "preferenceType": {
+            "$ref": "#/components/schemas/CabinPreferenceTypeEnum"
+          },
+          "cabins": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CabinAirEnum"
+            }
+          },
+          "legSequence": {
+            "type": "array",
+            "description": "Leg sequence",
+            "example": [
+              1,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      },
+      "CabinPreferenceTypeEnum": {
+        "type": "string",
+        "example": "Preferred",
+        "enum": [
+          "Preferred",
+          "Permitted",
+          "PreferredWithUpgrade",
+          "Prohibited"
+        ]
+      },
+      "CabinAirEnum": {
+        "type": "string",
+        "description": "Specifies the cabin type (e.g. first, business, economy).",
+        "example": "Economy",
+        "enum": [
+          "PremiumFirst",
+          "First",
+          "Business",
+          "PremiumEconomy",
+          "Economy"
+        ]
+      },
+      "ClassOfServicePreference": {
+        "required": [
+          "ClassesOfService"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ClassOfServicePreference"
+          },
+          "legSequence": {
+            "type": "array",
+            "description": "The legSequence value",
+            "example": [
+              1,
+              3,
+              4
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "ClassesOfService": {
+            "type": "array",
+            "description": "Allows user to specify which class(s) of service they want returned in CatalogOfferings",
+            "items": {
+              "maxLength": 2,
+              "minLength": 1,
+              "pattern": "([a-zA-Z0-9]{1,2})",
+              "type": "string",
+              "example": "F"
+            }
+          },
+          "PreferenceType": {
+            "$ref": "#/components/schemas/ClassOfServicePreferenceTypeEnum"
+          }
+        }
+      },
+      "ClassOfServicePreferenceTypeEnum": {
+        "type": "string",
+        "example": "Preferred",
+        "enum": [
+          "Preferred",
+          "Permitted",
+          "Prohibited"
+        ]
+      },
+      "ProductInclusionPreference": {
+        "required": [
+          "Classification"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ProductInclusionPreference"
+          },
+          "legSequence": {
+            "type": "array",
+            "description": "The legSequence value",
+            "example": [
+              1,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "Classification": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "example": [
+              "Meals",
+              "WiFi",
+              "Other"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/BrandClassificationEnum"
+            }
+          },
+          "AdditionalClassification": {
+            "maxItems": 10,
+            "type": "array",
+            "example": [
+              45,
+              67,
+              6
+            ],
+            "items": {
+              "maxLength": 512,
+              "type": "string"
+            }
+          },
+          "exactMatchInd": {
+            "type": "boolean",
+            "description": "This indicator is deprecated. The default behavior will be to provide an exact match to the product inclusion preferences",
+            "example": true
+          },
+          "bestMatchInd": {
+            "type": "boolean",
+            "description": "If true, the bestMatch will be returned according to the select product inclusions",
+            "example": true
+          }
+        }
+      },
+      "BrandClassificationEnum": {
+        "type": "string",
+        "description": "The Travelport classification used for a category of ancillaries such as Seat, Bags, etc. This is an initial list that will be added to.",
+        "enum": [
+          "CheckedBag",
+          "CarryOn",
+          "PersonalItem",
+          "Rebooking",
+          "Refund",
+          "SeatAssignment",
+          "PremiumSeat",
+          "LieFlatSeat",
+          "Meals",
+          "WiFi",
+          "Other"
+        ]
+      },
+      "ConnectionPreferencesAir": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ConnectionPreferences"
+          },
+          {
+            "properties": {
+              "FlightType": {
+                "$ref": "#/components/schemas/FlightType"
+              }
+            }
+          }
+        ]
+      },
+      "ConnectionPreferences": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "ConnectionPreferences"
+          },
+          "legSequence": {
+            "type": "array",
+            "description": "Leg sequence",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "maxConnectionDuration": {
+            "type": "string",
+            "description": "The maximum acceptable duration of the connection ISO8601",
+            "example": "PT3H30M"
+          },
+          "maxOvernightDuration": {
+            "type": "string",
+            "description": "The maximum acceptable overnight duration of the connection ISO8601",
+            "example": "PT6H30M"
+          },
+          "preferenceType": {
+            "$ref": "#/components/schemas/ConnectionPointPreferenceTypeENUM"
+          },
+          "ConnectionPoint": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "maxLength": 3,
+              "minLength": 3,
+              "pattern": "([a-zA-Z]{3})",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ConnectionPointPreferenceTypeENUM": {
+        "type": "string",
+        "description": "Preference type - preferred, permitted or prohibited. Preferred is not permitted as a preference type and will be ignored",
+        "example": "Permitted",
+        "enum": [
+          "Preferred",
+          "Permitted",
+          "Prohibited"
+        ]
+      },
+      "FlightType": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FlightType"
+          },
+          "connectionType": {
+            "$ref": "#/components/schemas/ConnectionTypeEnum"
+          },
+          "excludeInterlineConnectionsInd": {
+            "type": "boolean",
+            "description": "If present and true, exclude interline connections",
+            "example": true
+          }
+        }
+      },
+      "ConnectionTypeEnum": {
+        "type": "string",
+        "example": "StopDirect",
+        "enum": [
+          "NonStopDirect",
+          "StopDirect",
+          "SingleConnection",
+          "DoubleConnection",
+          "TripleConnection"
+        ]
+      },
+      "PricingModifiersAirChange": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PricingModifiersAirChange"
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "ISO 4217 currency code",
+            "example": "USD"
+          },
+          "FareSelection": {
+            "$ref": "#/components/schemas/FareSelection"
+          },
+          "OrganizationInformation": {
+            "$ref": "#/components/schemas/OrganizationInformation"
+          },
+          "WaiverCode": {
+            "$ref": "#/components/schemas/WaiverCode"
+          },
+          "TaxExemption": {
+            "$ref": "#/components/schemas/TaxExemption"
+          },
+          "PromotionalCode": {
+            "$ref": "#/components/schemas/PromotionalCode"
+          },
+          "SellCity": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "Overrides the sell city of the requestor.",
+            "example": "MEX"
+          },
+          "TicketCity": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "Overrides the ticket city of the requestor.",
+            "example": "MEX"
+          },
+          "PricingPCC": {
+            "maxLength": 10,
+            "minLength": 2,
+            "pattern": "([a-zA-Z0-9]{2,10})",
+            "type": "string"
+          },
+          "TicketingPCC": {
+            "maxLength": 10,
+            "minLength": 2,
+            "pattern": "([a-zA-Z0-9]{2,10})",
+            "type": "string"
+          },
+          "CalculatedFareAdjustment": {
+            "$ref": "#/components/schemas/CalculatedFareAdjustment"
+          },
+          "keepToBrandInd": {
+            "type": "boolean",
+            "description": "If true, the offerings returned will be of the same brand as the original Offer",
+            "example": true
+          },
+          "returnMostRestrictiveBrandInd": {
+            "type": "boolean",
+            "description": "if true, the most restrictive brand will be returned in the response when there are different brands present in the Offering",
+            "example": true
+          }
+        }
+      },
+      "FareSelection": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FareSelection"
+          },
+          "fareType": {
+            "$ref": "#/components/schemas/FaresFilterEnum"
+          },
+          "RefundOptions": {
+            "$ref": "#/components/schemas/RefundOptions"
+          },
+          "ChangeOptions": {
+            "$ref": "#/components/schemas/ChangeOptions"
+          },
+          "FareQualifier": {
+            "$ref": "#/components/schemas/FareQualifierENUM"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "FaresFilterEnum": {
+        "type": "string",
+        "description": "Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only",
+        "enum": [
+          "PublicFaresOnly",
+          "PrivateFaresOnly",
+          "AgencyPrivateFaresOnly",
+          "AirlinePrivateFaresOnly",
+          "PublicAndPrivateFares",
+          "NetFaresOnly",
+          "AllFares"
+        ]
+      },
+      "RefundOptions": {
+        "required": [
+          "refundTypes"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "RefundOptions"
+          },
+          "refundTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RefundTypeEnum"
+            }
+          },
+          "RefundPenaltyRange": {
+            "$ref": "#/components/schemas/RefundPenaltyRange"
+          }
+        }
+      },
+      "RefundTypeEnum": {
+        "type": "string",
+        "example": "Refundable",
+        "enum": [
+          "Refundable",
+          "NonRefundable",
+          "PartialRefund"
+        ]
+      },
+      "RefundPenaltyRange": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "RefundPenaltyRange"
+          },
+          "Minimum": {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          "Maximum": {
+            "$ref": "#/components/schemas/AmountPercent"
+          }
+        }
+      },
+      "AmountPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "AmountPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CommissionEnum": {
+        "type": "string",
+        "description": "Type of commission",
+        "enum": [
+          "Full",
+          "Partial",
+          "Non-paying",
+          "No-show",
+          "Adjustment",
+          "Commissionable"
+        ]
+      },
+      "ChangeOptions": {
+        "required": [
+          "changeTypes"
+        ],
+        "properties": {
+          "changeTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChangeTypeENUM"
+            }
+          },
+          "ChangePenaltyRange": {
+            "$ref": "#/components/schemas/ChangePenaltyRange"
+          }
+        }
+      },
+      "ChangeTypeENUM": {
+        "type": "string",
+        "enum": [
+          "Changeable",
+          "NonChangeable",
+          "PenaltyToChange"
+        ]
+      },
+      "ChangePenaltyRange": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ChangePenaltyRange"
+          },
+          "Minimum": {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          "Maximum": {
+            "$ref": "#/components/schemas/AmountPercent"
+          }
+        }
+      },
+      "FareQualifierENUM": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/FareQualifierENUM_Base"
+          }
+        }
+      },
+      "FareQualifierENUM_Base": {
+        "maxItems": 5,
+        "type": "string",
+        "enum": [
+          "Consolidator",
+          "Government",
+          "Marine",
+          "Military",
+          "Reward",
+          "StandBy",
+          "Staff",
+          "Student",
+          "Tour",
+          "Youth",
+          "VistFriendsAndRelatives"
+        ]
+      },
+      "OrganizationInformation": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "OrganizationInformation"
+          },
+          "OrganizationIdentifier": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationIdentifier"
+            }
+          },
+          "GSTRegistrationNumber": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GSTRegistrationNumber"
+            }
+          }
+        }
+      },
+      "OrganizationIdentifier": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "JBD123456"
+          },
+          "supplier": {
+            "pattern": "([a-zA-Z0-9]{2,3})",
+            "type": "string",
+            "description": "Supplier code",
+            "example": "AA"
+          },
+          "organizationCodeType": {
+            "$ref": "#/components/schemas/OrganizationCodeTypeEnum"
+          },
+          "segmentSequenceList": {
+            "type": "array",
+            "description": "SegmentSequenceList",
+            "example": [
+              1,
+              2,
+              3
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "productRef": {
+            "type": "array",
+            "description": "The productRef which the OrganizationIdentifier applies to",
+            "example": [
+              "product_1",
+              "product_2"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "accountCodeFaresOnlyInd": {
+            "type": "boolean",
+            "description": "If true, account code only fares will be returned"
+          }
+        },
+        "description": "The organization identifier"
+      },
+      "OrganizationCodeTypeEnum": {
+        "type": "string",
+        "description": "Defines the type of code given to the Organization to obtain discounts or additional benefits",
+        "example": "Account",
+        "enum": [
+          "Account",
+          "OrganizationLoyaltyProgram",
+          "Tour",
+          "TicketDesignator"
+        ]
+      },
+      "GSTRegistrationNumber": {
+        "required": [
+          "country"
+        ],
+        "properties": {
+          "value": {
+            "maxLength": 512,
+            "type": "string",
+            "example": "07AAGFF2194N1Z1"
+          },
+          "telephone": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Telephone Number",
+            "example": "222-222-222"
+          },
+          "address": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Address of the GST customer",
+            "example": "1122 sample trail, CO, USA, 21232"
+          },
+          "country": {
+            "pattern": "[a-zA-Z]{2}",
+            "type": "string",
+            "description": "Country",
+            "example": "India"
+          },
+          "companyName": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Name of the Company",
+            "example": "American Airlines"
+          },
+          "email": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "E-Mail",
+            "example": "sample@aa.com"
+          }
+        },
+        "description": "The GST Registration Number for this Organization"
+      },
+      "WaiverCode": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string"
+          },
+          "reasonCode": {
+            "type": "integer",
+            "description": "A code assigned to identify the reason for disruption",
+            "format": "int32",
+            "example": 3312
+          }
+        }
+      },
+      "TaxExemption": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TaxExemption"
+          },
+          "countries": {
+            "type": "array",
+            "description": "ISO country code",
+            "example": "CA",
+            "items": {
+              "pattern": "[a-zA-Z]{2}",
+              "type": "string"
+            }
+          },
+          "taxCodes": {
+            "type": "array",
+            "description": "Tax codes",
+            "example": [
+              "YQ",
+              "US"
+            ],
+            "items": {
+              "maxLength": 32,
+              "type": "string"
+            }
+          },
+          "allTaxesExemptInd": {
+            "type": "boolean",
+            "description": "If true, the Offer/Offering is exempt from all taxes",
+            "example": true
+          }
+        }
+      },
+      "PromotionalCode": {
+        "required": [
+          "supplierCode"
+        ],
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "CDFRT"
+          },
+          "supplierCode": {
+            "maxLength": 5,
+            "minLength": 2,
+            "pattern": "([a-zA-Z0-9]{2,5})",
+            "type": "string",
+            "description": "Promotional code supplier code",
+            "example": "AA"
+          }
+        }
+      },
+      "CalculatedFareAdjustment": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CalculatedFareAdjustmentDiscount"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "SearchControlConsoleChannelID": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "2"
+          },
+          "sccType": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Assigned Type: c-1100:StringTiny"
+          }
+        }
+      },
+      "BuildFromReservationWorkbench": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "BuildFromReservationWorkbench"
+          },
+          "OfferIdentifier": {
+            "$ref": "#/components/schemas/OfferIdentifier"
+          },
+          "ProductIdentifier": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductIdentifier"
+            }
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "description": "The segmentSequence within the product the action is being requested for. Used when multiple flights exist within a product. Only one product may be selected with this option.",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "ReservationIdentifier": {
+            "$ref": "#/components/schemas/ReservationIdentifier"
+          }
+        }
+      },
+      "OfferIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "offer_1"
+          },
+          "offerRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "offer_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "Identifier": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string",
+            "example": "A0656EFF-FAF4-456F-B061-0161008D7C4E"
+          },
+          "authority": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Name of the authoritative system that created this Guid",
+            "example": "TVPT"
+          }
+        },
+        "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database."
+      },
+      "ProductIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "product_1"
+          },
+          "productRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "product_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "ReservationIdentifier": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Reservation"
+          },
+          "id": {
+            "type": "string",
+            "description": "Internal ID"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          },
+          "IdentifierType": {
+            "$ref": "#/components/schemas/IdentifierTypeENUM"
+          }
+        }
+      },
+      "IdentifierTypeENUM": {
+        "type": "string",
+        "example": "Locator",
+        "enum": [
+          "Reservation",
+          "Locator",
+          "SupplierLocator",
+          "DocumentNumber"
+        ]
+      },
+      "CatalogOfferingsAirChangeResponseWrapper": {
+        "properties": {
+          "CatalogOfferingsAirChangeResponse": {
+            "$ref": "#/components/schemas/CatalogOfferingsAirChangeResponse"
+          }
+        }
+      },
+      "CatalogOfferingsAirChangeResponse": {
+        "properties": {
+          "CatalogOfferings": {
+            "$ref": "#/components/schemas/CatalogOfferings"
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          }
+        ]
+      },
+      "BaseResponse": {
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId."
+          },
+          "traceId": {
+            "type": "string",
+            "description": "Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId."
+          },
+          "Result": {
+            "$ref": "#/components/schemas/Result"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          },
+          "NextSteps": {
+            "$ref": "#/components/schemas/NextSteps"
+          },
+          "ReferenceList": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReferenceList"
+            }
+          },
+          "CurrencyRateConversion": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyRateConversion"
+            }
+          }
+        }
+      },
+      "Result": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "Result"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResultStatusEnum"
+          },
+          "Error": {
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          },
+          "Warning": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          }
+        }
+      },
+      "ResultStatusEnum": {
+        "type": "string",
+        "description": "The status of an error or warning",
+        "enum": [
+          "Not processed",
+          "Incomplete",
+          "Complete",
+          "Unknown"
+        ]
+      },
+      "Error": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NameValuePair": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "value": {
+            "maxLength": 512,
+            "type": "string",
+            "example": "Sunday"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "6"
+          },
+          "name": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Key",
+            "example": "Day1"
+          }
+        },
+        "description": "Used for data stored in Name Value pairs"
+      },
+      "Warning": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "NextSteps": {
+        "required": [
+          "NextStep",
+          "baseURI"
+        ],
+        "properties": {
+          "baseURI": {
+            "type": "string",
+            "description": "The base portion of the uri in order to shorten the uri's in the individual steps"
+          },
+          "id": {
+            "type": "string",
+            "description": "Optional internally referenced id",
+            "example": "5"
+          },
+          "NextStep": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NextStep"
+            }
+          }
+        }
+      },
+      "NextStep": {
+        "required": [
+          "action",
+          "method"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "www.resourcelocation.com"
+          },
+          "id": {
+            "type": "string",
+            "description": "Identifier for the Next Step",
+            "example": "2"
+          },
+          "action": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The action this next step is intended to achieve",
+            "example": "cancel"
+          },
+          "method": {
+            "$ref": "#/components/schemas/NextStepMethodEnum"
+          },
+          "description": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Additional clarification for the next step",
+            "example": "remove offer from the order"
+          }
+        },
+        "description": "A URL that describes a step that can be applied to the resource containing the next step structure."
+      },
+      "NextStepMethodEnum": {
+        "type": "string",
+        "description": "Describes the set of potential methods that can be taken after an operation.",
+        "enum": [
+          "GET",
+          "DELETE",
+          "PUT",
+          "POST"
+        ]
+      },
+      "ReferenceList": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ReferenceListFlight"
+          },
+          "id": {
+            "type": "string",
+            "description": "Uniquely identifies for the Reference List"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CurrencyRateConversion": {
+        "required": [
+          "ConversionRate",
+          "SourceCurrency",
+          "TargetCurrency"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "CurrencyRateConversion"
+          },
+          "SourceCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "TargetCurrency": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "ConversionRate": {
+            "$ref": "#/components/schemas/ConversionRate"
+          }
+        }
+      },
+      "CurrencyCode": {
+        "properties": {
+          "value": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code authority",
+            "example": "ISO 4217"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Currency code decimal place",
+            "format": "int32",
+            "example": 4
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "Currency codes are the three-letter alphabetic codes that represent the various currencies used throughout the world."
+      },
+      "ConversionRate": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float"
+          },
+          "rateAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Rate authority",
+            "example": "ISO 4217"
+          },
+          "rateAsOf": {
+            "type": "string",
+            "description": "Rate as of",
+            "format": "date-time"
+          }
+        },
+        "description": "A conversion metric from standard to another with the contextual authority such as IATA, OAG, ISO, etc."
+      },
+      "CatalogOfferings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CatalogOfferingsID"
+          },
+          {
+            "required": [
+              "CatalogOffering"
+            ],
+            "properties": {
+              "CatalogOffering": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CatalogOffering"
+                }
+              },
+              "AncillaryOffering": {
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AncillaryOfferingID"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CatalogOfferingsID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CatalogOfferings"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "CatalogOfferings_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CatalogOffering": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CatalogOfferingID"
+          },
+          {
+            "required": [
+              "Price",
+              "ProductOptions"
+            ],
+            "properties": {
+              "ProductOptions": {
+                "maxItems": 10,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductOptions"
+                }
+              },
+              "Price": {
+                "$ref": "#/components/schemas/PriceDetail"
+              },
+              "TermsAndConditions": {
+                "$ref": "#/components/schemas/TermsAndConditions"
+              }
+            }
+          }
+        ]
+      },
+      "CatalogOfferingID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CatalogOffering"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "co1"
+          },
+          "CatalogOfferingRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "co1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "ProductOptions": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProductOptionsID"
+          },
+          {
+            "required": [
+              "Product"
+            ],
+            "properties": {
+              "sequence": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "integer",
+                "description": "NonnegativeInteger",
+                "format": "int32",
+                "example": 1
+              },
+              "Product": {
+                "maxItems": 1000,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductID"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ProductOptionsID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "ProductOptions"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "ProductOptions_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          },
+          "ProductOptionsRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "ProductOptions_1"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "ProductID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ProductAir"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "product_1"
+          },
+          "productRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "product_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "PriceDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Price"
+          },
+          {
+            "properties": {
+              "PriceBreakdown": {
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PriceBreakdown"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Price": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PriceDetail"
+          },
+          "id": {
+            "type": "string",
+            "description": "Internally referenced id",
+            "example": "2"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Base": {
+            "type": "number",
+            "description": "The total amount not including taxes and\\/or fees",
+            "format": "float",
+            "example": 20.2
+          },
+          "TotalTaxes": {
+            "type": "number",
+            "description": "The total of the taxes included in the total price",
+            "format": "float",
+            "example": 34.4
+          },
+          "TotalFees": {
+            "type": "number",
+            "description": "The total of the fees included in the total price",
+            "format": "float",
+            "example": 201
+          },
+          "TotalPrice": {
+            "type": "number",
+            "description": "The total price of the product in the currency indicated",
+            "format": "float",
+            "example": 34
+          },
+          "VendorCurrencyTotal": {
+            "$ref": "#/components/schemas/VendorCurrencyTotal"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "VendorCurrencyTotal": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "VendorCurrencyTotal"
+          },
+          "currencySource": {
+            "$ref": "#/components/schemas/CurrencySourceEnum"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Base": {
+            "type": "number",
+            "description": "The price prior to all applicable taxes of a product such as the rate for a room or fare for a flight.",
+            "format": "float",
+            "example": 120.2
+          },
+          "Taxes": {
+            "$ref": "#/components/schemas/Taxes"
+          },
+          "Fees": {
+            "$ref": "#/components/schemas/Fees"
+          },
+          "Total": {
+            "type": "number",
+            "description": "Specifies the total price including base + taxes + fees",
+            "format": "float",
+            "example": 30.13
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "True if this amount has been converted from the original amount",
+            "example": true
+          }
+        }
+      },
+      "CurrencySourceEnum": {
+        "type": "string",
+        "description": "The system requesting or returning the currency code specified in the attribute",
+        "enum": [
+          "Supplier",
+          "Charged",
+          "Requested"
+        ]
+      },
+      "Taxes": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TaxesDetail"
+          },
+          "TotalTaxes": {
+            "type": "number",
+            "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included.",
+            "format": "float",
+            "example": 330.1
+          },
+          "TaxInfo": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaxInfo"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "TaxInfo": {
+        "required": [
+          "Amount",
+          "TaxBreakdown",
+          "TaxCode"
+        ],
+        "properties": {
+          "TaxCode": {
+            "type": "string",
+            "description": "The tax code",
+            "example": "XF"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Amount": {
+            "type": "number",
+            "description": "The amount of the tax applied",
+            "format": "float"
+          },
+          "TaxBreakdown": {
+            "maxItems": 20,
+            "type": "array",
+            "description": "The breakdown of the tax for this tax code",
+            "items": {
+              "$ref": "#/components/schemas/TaxBreakdown"
+            }
+          }
+        }
+      },
+      "TaxBreakdown": {
+        "required": [
+          "AirportCode"
+        ],
+        "properties": {
+          "AirportCode": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "The airport location the tax applies to",
+            "example": "MIA"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Amount": {
+            "type": "number",
+            "description": "The amount of the tax applied",
+            "format": "float"
+          }
+        }
+      },
+      "Fees": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FeesDetail"
+          },
+          "TotalFees": {
+            "type": "number",
+            "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included.",
+            "format": "float",
+            "example": 111.11
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "PriceBreakdown": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PriceBreakdownAir"
+          },
+          "Amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "Commission": {
+            "$ref": "#/components/schemas/Commission"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Amount": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "Amount"
+          },
+          "currencySource": {
+            "$ref": "#/components/schemas/CurrencySourceEnum"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Base": {
+            "type": "number",
+            "description": "The price prior to all applicable taxes of a product such as the rate for a room or fare for a flight.",
+            "format": "float",
+            "example": 120.2
+          },
+          "Taxes": {
+            "$ref": "#/components/schemas/Taxes"
+          },
+          "Fees": {
+            "$ref": "#/components/schemas/Fees"
+          },
+          "Total": {
+            "type": "number",
+            "description": "Specifies the total price including base + taxes + fees",
+            "format": "float",
+            "example": 30.13
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "True if this amount has been converted from the original amount",
+            "example": true
+          }
+        }
+      },
+      "Commission": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Commission"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "TermsAndConditions": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TermsAndConditionsID"
+          },
+          {
+            "properties": {
+              "ExpiryDate": {
+                "type": "string",
+                "description": "The data and time the offer will expire",
+                "format": "date-time"
+              },
+              "CustomerLoyalty": {
+                "maxItems": 5,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CustomerLoyalty"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "TermsAndConditionsID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TermsAndConditionsAir"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "TC_1"
+          },
+          "termsAndConditionsRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message.",
+            "example": "TC_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "AncillaryOfferingID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "AncillaryOffering"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object."
+          },
+          "CatalogOfferingRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message"
+          },
+          "AncillaryOfferingRef": {
+            "type": "string"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "ErrorResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          }
+        ]
+      },
+      "CatalogOfferingsQueryProductSpecificSearch": {
+        "required": [
+          "@type",
+          "BuildFromProductsRequestAirChange",
+          "PassengerCriteria",
+          "PaymentCriteria"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CatalogOfferingsQueryProductSpecificSearch"
+          },
+          "detailView": {
+            "type": "boolean",
+            "description": "If true, detail view will be returned in response"
+          },
+          "lowFareFinderInd": {
+            "type": "boolean",
+            "description": "If true, the lowest fare will be returned regardless of the booking class sent"
+          },
+          "returnBrandedfaresInd": {
+            "type": "boolean",
+            "description": "If true, branded fares will be returned in the response"
+          },
+          "BuildFromProductsRequestAirChange": {
+            "$ref": "#/components/schemas/BuildFromProductsRequestAirChange"
+          },
+          "PassengerCriteria": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PassengerCriteria"
+            }
+          },
+          "PaymentCriteria": {
+            "$ref": "#/components/schemas/PaymentCriteria"
+          },
+          "CabinPreference": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CabinPreference"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "BuildFromProductsRequestAirChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BuildFromProductsRequest"
+          },
+          {
+            "required": [
+              "ProductCriteriaAir"
+            ],
+            "properties": {
+              "PricingModifiersAirChange": {
+                "$ref": "#/components/schemas/PricingModifiersAirChange"
+              },
+              "ProductCriteriaAir": {
+                "maxItems": 10,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductCriteriaAir"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "BuildFromProductsRequest": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BuildFromProductsRequestAir"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "ProductCriteriaAir": {
+        "required": [
+          "SpecificFlightCriteria",
+          "sequence"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ProductCriteriaAir"
+          },
+          "sequence": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "integer",
+            "description": "Product criteria air sequence",
+            "format": "int32",
+            "example": 1
+          },
+          "SpecificFlightCriteria": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpecificFlightCriteria"
+            }
+          }
+        }
+      },
+      "SpecificFlightCriteria": {
+        "required": [
+          "carrier",
+          "departureDate",
+          "flightNumber",
+          "from",
+          "segmentSequence",
+          "to"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "SpecificFlightCriteria"
+          },
+          "carrier": {
+            "pattern": "([a-zA-Z0-9]{2,3})",
+            "type": "string",
+            "description": "Carrier",
+            "example": "BA"
+          },
+          "flightNumber": {
+            "pattern": "[0-9]{1,4}[A-Z]?|OPEN|ARNK",
+            "type": "string",
+            "description": "Flight Number",
+            "example": "980"
+          },
+          "departureDate": {
+            "type": "string",
+            "description": "date of departure",
+            "format": "date"
+          },
+          "departureTime": {
+            "pattern": "(([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)((:?)[0-5]\\d)?([\\.,]\\d+(?!:))?",
+            "type": "string",
+            "description": "The departure time in local timezone",
+            "example": "1140"
+          },
+          "arrivalDate": {
+            "type": "string",
+            "description": "Arrival date",
+            "format": "date"
+          },
+          "arrivalTime": {
+            "pattern": "(([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)((:?)[0-5]\\d)?([\\.,]\\d+(?!:))?",
+            "type": "string",
+            "description": "The arrival time in local timezone",
+            "example": "1335"
+          },
+          "from": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "From Airport Code IATA",
+            "example": "LHR"
+          },
+          "to": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "to Airpor Code IATA",
+            "example": "PAR"
+          },
+          "cabin": {
+            "$ref": "#/components/schemas/CabinAirEnum"
+          },
+          "classOfService": {
+            "maxLength": 2,
+            "minLength": 1,
+            "pattern": "([a-zA-Z0-9]{1,2})",
+            "type": "string",
+            "description": "The class of service",
+            "example": "F"
+          },
+          "brandTier": {
+            "type": "integer",
+            "description": "Brand tier",
+            "format": "int32",
+            "example": 2
+          },
+          "segmentSequence": {
+            "type": "integer",
+            "description": "Segment sequence",
+            "format": "int32",
+            "example": 1
+          },
+          "AvailabilitySourceCode": {
+            "$ref": "#/components/schemas/AvailabilitySourceCodeENUM"
+          },
+          "ContentSource": {
+            "$ref": "#/components/schemas/ContentSourceEnum"
+          },
+          "boundFlightsInd": {
+            "type": "boolean",
+            "description": "if true indicates that the flight availability was polled (availability check) using connecting segments. If false, flights were polled as point to point segments.",
+            "example": true
+          }
+        }
+      },
+      "AvailabilitySourceCodeENUM": {
+        "type": "string",
+        "description": "A code representing the source of the flight availability",
+        "example": "Z",
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "S",
+          "T",
+          "U",
+          "X",
+          "Y",
+          "Z"
+        ]
+      },
+      "ContentSourceEnum": {
+        "type": "string",
+        "description": "The source of the content to be returned in CatalogOfferings",
+        "example": "GDS",
+        "enum": [
+          "GDS",
+          "NDC"
+        ]
+      },
+      "PaymentCriteria": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PaymentCriteria"
+          },
+          "IssuerIdentificationNumber": {
+            "maxLength": 32,
+            "pattern": "[0-9]{6,11}",
+            "type": "string",
+            "description": "This the BIN/IIN",
+            "example": "78"
+          },
+          "PaymentCardCode": {
+            "maxLength": 2,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "description": "A two character code for a credit card, like MC, AX",
+            "example": "AD"
+          },
+          "DocumentNumber": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentNumber"
+            }
+          },
+          "agencyAccountInd": {
+            "type": "boolean",
+            "description": "If true, payment will be made by agency account",
+            "example": true
+          },
+          "bspInd": {
+            "type": "boolean",
+            "description": "If true, payment will be made by BSP",
+            "example": true
+          },
+          "cashInd": {
+            "type": "boolean",
+            "description": "If true, payment will be made by cash",
+            "example": true
+          },
+          "invoiceInd": {
+            "type": "boolean",
+            "description": "If true, payment will be made by invoice",
+            "example": true
+          }
+        }
+      },
+      "DocumentNumber": {
+        "properties": {
+          "value": {
+            "maxLength": 4096,
+            "pattern": "([0-9]+)?",
+            "type": "string",
+            "example": "1259900123456"
+          },
+          "documentIssuer": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Document issuer",
+            "example": "BA"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentTypeEnum"
+          }
+        }
+      },
+      "DocumentTypeEnum": {
+        "type": "string",
+        "description": "Document type like EMD, MCO",
+        "example": "Ticket",
+        "enum": [
+          "EMD",
+          "MCO",
+          "Ticket"
+        ]
+      },
+      "FlightDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Flight"
+          },
+          {
+            "properties": {
+              "AvailabilitySourceCode": {
+                "$ref": "#/components/schemas/AvailabilitySourceCodeENUM"
+              }
+            }
+          }
+        ]
+      },
+      "Flight": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FlightID"
+          },
+          {
+            "required": [
+              "Arrival",
+              "Departure",
+              "carrier",
+              "number"
+            ],
+            "properties": {
+              "distance": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "integer",
+                "description": "The flight travelled distance",
+                "format": "int32",
+                "example": 6574
+              },
+              "stops": {
+                "type": "integer",
+                "description": "Number of stops",
+                "format": "int32",
+                "example": 2
+              },
+              "duration": {
+                "type": "string",
+                "description": "Elapsed flight time represented in ISO 8601 format",
+                "example": "T1430.5"
+              },
+              "carrier": {
+                "pattern": "([a-zA-Z0-9]{2,3})",
+                "type": "string",
+                "description": "The airline code",
+                "example": "BA"
+              },
+              "number": {
+                "pattern": "[0-9]{1,4}[A-Z]?|OPEN|ARNK",
+                "type": "string",
+                "description": "Flight number",
+                "example": "98"
+              },
+              "operatingCarrier": {
+                "pattern": "([a-zA-Z0-9]{2,3})",
+                "type": "string",
+                "description": "The airline code",
+                "example": "JFK"
+              },
+              "operatingCarrierName": {
+                "maxLength": 128,
+                "type": "string",
+                "description": "The operating carrier name",
+                "example": "Liberty Aerospace"
+              },
+              "operatingCarrierNumber": {
+                "pattern": "[0-9]{1,4}[A-Z]?|OPEN|ARNK",
+                "type": "string",
+                "description": "The operating carrier flight number"
+              },
+              "equipment": {
+                "pattern": "([A-Z0-9]{3})?",
+                "type": "string",
+                "description": "Air Equip Code IATA",
+                "example": "100"
+              },
+              "Departure": {
+                "$ref": "#/components/schemas/Departure"
+              },
+              "Arrival": {
+                "$ref": "#/components/schemas/Arrival"
+              },
+              "IntermediateStop": {
+                "maxItems": 9,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IntermediateStop"
+                }
+              },
+              "subjectToGovernmentApprovalInd": {
+                "type": "boolean",
+                "description": "If true, this flight schedule is yet to receive government approval",
+                "example": true
+              }
+            }
+          }
+        ]
+      },
+      "FlightID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FlightDetail"
+          },
+          "id": {
+            "type": "string",
+            "description": "Internal ID",
+            "example": "126"
+          },
+          "FlightRef": {
+            "type": "string",
+            "description": "Reference to a Flight object eslewhere in the message",
+            "example": "pln0845"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Departure": {
+        "required": [
+          "@type",
+          "date",
+          "location",
+          "time"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "DepartureDetail"
+          },
+          "location": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "Location of departure or arrival",
+            "example": "AMS"
+          },
+          "date": {
+            "type": "string",
+            "description": "Local date of for arrival or departure",
+            "format": "date",
+            "example": "0011-10-13"
+          },
+          "time": {
+            "type": "string",
+            "description": "Local time Date of for arrival or departure",
+            "example": "04:45 PM"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Arrival": {
+        "required": [
+          "@type",
+          "date",
+          "location",
+          "time"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ArrivalDetail"
+          },
+          "location": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "Location of departure or arrival",
+            "example": "MAD"
+          },
+          "date": {
+            "type": "string",
+            "description": "Local date of for arrival or departure",
+            "format": "date",
+            "example": "0011-10-13"
+          },
+          "time": {
+            "type": "string",
+            "description": "Local time Date of for arrival or departure",
+            "example": "04:45 PM"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "IntermediateStop": {
+        "properties": {
+          "value": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string"
+          },
+          "arrivalFlightDuration": {
+            "type": "string",
+            "description": "ArrivalFlight Duration stopped at this location",
+            "example": "PT2H35M"
+          },
+          "departureFlightDuration": {
+            "type": "string",
+            "description": "DepartureFlight Duration stopped at this location",
+            "example": "PT1H35M"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration stopped at this location",
+            "example": "PT1H35M"
+          },
+          "equipment": {
+            "pattern": "([A-Z0-9]{3})?",
+            "type": "string",
+            "description": "Aircraft equipment.",
+            "example": "DME"
+          },
+          "arrivalDate": {
+            "pattern": "(\\d{4}-\\d{2}-\\d{2})",
+            "type": "string",
+            "description": "The local date the aircraft arrives at the intermediate stop",
+            "example": "2022-04-30"
+          },
+          "departureDate": {
+            "pattern": "(\\d{4}-\\d{2}-\\d{2})",
+            "type": "string",
+            "description": "The local date the aircraft departs from the intermediate stop",
+            "example": "2022-04-30"
+          },
+          "arrivalTime": {
+            "pattern": "(([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)((:?)[0-5]\\d)?([\\.,]\\d+(?!:))?",
+            "type": "string",
+            "description": "The local time the aircraft arrives at the intermediate stop",
+            "example": "68775"
+          },
+          "departurelTime": {
+            "pattern": "(([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)((:?)[0-5]\\d)?([\\.,]\\d+(?!:))?",
+            "type": "string",
+            "description": "The local time the aircraft departs from the intermediate stop",
+            "example": "72000"
+          },
+          "arrivalTerminal": {
+            "maxLength": 4096,
+            "pattern": "([0-9a-zA-Z]+)?",
+            "type": "string",
+            "description": "Arrival Terminal of the Airport",
+            "example": "Terminal2"
+          },
+          "departureTerminal": {
+            "maxLength": 4096,
+            "pattern": "([0-9a-zA-Z]+)?",
+            "type": "string",
+            "description": "Departure Terminal of the Airport",
+            "example": "Terminal4"
+          }
+        },
+        "description": "An intermediate stop location and duration"
+      },
+      "TermsAndConditionsAirChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TermsAndConditionsAir"
+          },
+          {
+            "properties": {
+              "FulfillmentMethod": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FulfillmentMethod"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "TermsAndConditionsAir": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TermsAndConditions"
+          },
+          {
+            "properties": {
+              "BaggageAllowance": {
+                "maxItems": 99,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BaggageAllowance"
+                }
+              },
+              "FareRuleIdentifierRef": {
+                "$ref": "#/components/schemas/IdentifierRef"
+              },
+              "Restriction": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Restriction"
+                }
+              },
+              "OrganizationInformation": {
+                "$ref": "#/components/schemas/OrganizationInformation"
+              },
+              "ValidatingAirline": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidatingAirline"
+                }
+              },
+              "BaggageRecheck": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BaggageRecheck"
+                }
+              },
+              "TicketingAgency": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TicketingAgency"
+                }
+              },
+              "PaymentTimeLimit": {
+                "type": "string",
+                "description": "The date and time by which the Offer must be paid for once the Reservation is completed",
+                "format": "date-time"
+              },
+              "PromotionalCode": {
+                "$ref": "#/components/schemas/PromotionalCode"
+              },
+              "Penalties": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Penalties"
+                }
+              },
+              "FareGuaranteePolicy": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FareGuaranteePolicy"
+                }
+              },
+              "PricingAgency": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PricingAgency"
+                }
+              },
+              "instantPurchaseInd": {
+                "type": "boolean",
+                "description": "If true the Offer\\/Offering must be paid for at the same time as creating the Reservation",
+                "example": true
+              },
+              "secureFlightPassengerDataRequiredInd": {
+                "type": "boolean",
+                "description": "If true, Secure Flight Passenger Data must be input for all Travelers to complete the Reservation",
+                "example": true
+              },
+              "TourCodes": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TourCodes"
+                }
+              },
+              "DocumentValidDateRange": {
+                "$ref": "#/components/schemas/DocumentValidDateRange"
+              }
+            }
+          }
+        ]
+      },
+      "BaggageAllowance": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BaggageAllowance"
+          },
+          "passengerTypeCodes": {
+            "type": "array",
+            "description": "List of passenger type codes",
+            "items": {
+              "maxLength": 5,
+              "minLength": 3,
+              "pattern": "([a-zA-Z0-9]{3,5})",
+              "type": "string",
+              "example": "[\"CHD\",\"ADT\",\"INF\"]"
+            }
+          },
+          "baggageType": {
+            "$ref": "#/components/schemas/BaggageTypeEnum"
+          },
+          "ProductRef": {
+            "type": "array",
+            "description": "A product is any product, service or package of products and services  that can be priced and purchased by a specific supplier.",
+            "example": [
+              "baloon",
+              "vase",
+              "pillow"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "BaggageItem": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaggageItem"
+            }
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "description": "Segment sequence is only to be used when the baggage allowance differs between segments within a product. If so, then the ProducRef must be specified.",
+            "example": [
+              12,
+              45,
+              3,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "Text": {
+            "maxItems": 35,
+            "type": "array",
+            "example": "Blue baggage and purple allowed",
+            "items": {
+              "maxLength": 128,
+              "type": "string"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "BaggageTypeEnum": {
+        "type": "string",
+        "example": "CarryOn",
+        "enum": [
+          "CarryOn",
+          "FirstCheckedBag",
+          "SecondCheckedBag",
+          "AdditionalBags",
+          "BaggageEmbargo"
+        ]
+      },
+      "BaggageItem": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BaggageItem"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Baggage item quantity",
+            "format": "int32",
+            "example": 2
+          },
+          "Measurement": {
+            "maxItems": 6,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Measurement"
+            }
+          },
+          "BaggageFee": {
+            "$ref": "#/components/schemas/CurrencyAmount"
+          },
+          "Text": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Text returned from the shop response",
+            "example": "The payment was correct"
+          }
+        }
+      },
+      "Measurement": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 2.22
+          },
+          "measurementType": {
+            "$ref": "#/components/schemas/MeasurementTypeEnum"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitOfMeasureEnum"
+          }
+        },
+        "description": "Used for dimensional units (width, height, depth) or weight"
+      },
+      "MeasurementTypeEnum": {
+        "type": "string",
+        "description": "The type of measurement such as width, height, weight",
+        "enum": [
+          "Width",
+          "Height",
+          "Depth",
+          "Weight",
+          "OverallDimension"
+        ]
+      },
+      "UnitOfMeasureEnum": {
+        "type": "string",
+        "description": "The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).",
+        "enum": [
+          "Miles",
+          "Kilometers",
+          "Meters",
+          "Millimeters",
+          "Centimeters",
+          "Yards",
+          "Feet",
+          "Inches",
+          "Pixels",
+          "Block",
+          "Megabytes",
+          "Gigabytes",
+          "Square feet",
+          "Square meters",
+          "Pounds",
+          "Kilograms",
+          "Square inch",
+          "Square yard",
+          "Acre",
+          "Square millimeter",
+          "Square centimeter",
+          "Hectare",
+          "Ounce",
+          "Gram",
+          "Gallons",
+          "Liters",
+          "Kilowatts",
+          "Cubic meters"
+        ]
+      },
+      "CurrencyAmount": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 124.56
+          },
+          "code": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "An ISO 4217 alpha character code that specifies a money unit",
+            "example": "USD"
+          },
+          "minorUnit": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Minor units are a mechanism for expressing the relationship between a major currency unit and its corresponding minor currency unit.",
+            "format": "int32",
+            "example": 2
+          },
+          "currencySource": {
+            "$ref": "#/components/schemas/CurrencySourceEnum"
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "True if the currency amount has been converted from the original amount",
+            "example": true
+          }
+        },
+        "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included."
+      },
+      "IdentifierRef": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "A locally referenced ID"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text used to identify the contents of a target object"
+          },
+          "uris": {
+            "type": "array",
+            "description": "Uniform Resource Identifier",
+            "items": {
+              "type": "string",
+              "example": "google.com"
+            }
+          }
+        }
+      },
+      "Restriction": {
+        "properties": {
+          "value": {
+            "maxLength": 128,
+            "type": "string",
+            "example": "No late arrivals"
+          },
+          "segmentSequenceList": {
+            "type": "array",
+            "description": "Segment sequence list",
+            "example": [
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "productRef": {
+            "type": "array",
+            "description": "The productRef which the restriction applies to",
+            "example": [
+              "p1",
+              "p2",
+              "p3",
+              "p4"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Restriction"
+      },
+      "ValidatingAirline": {
+        "required": [
+          "ValidatingAirline"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ValidatingAirline"
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "description": "The segmentSequenceList the validatingCarrier applies to",
+            "example": [
+              "segment1",
+              "segment2",
+              "segment3"
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "ValidatingAirline": {
+            "pattern": "([a-zA-Z0-9]{2,3})",
+            "type": "string",
+            "description": "Represents the airline responsible for ticketing\\/fulfillment of this Offer",
+            "example": "QA"
+          },
+          "ProductRef": {
+            "type": "array",
+            "description": "The productRef the validatingCarrier applies to",
+            "example": [
+              "product1",
+              "product2",
+              "product3"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "BaggageRecheck": {
+        "required": [
+          "ArrivalFlight",
+          "At",
+          "DepartureFlight"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BaggageRecheck"
+          },
+          "At": {
+            "maxLength": 3,
+            "minLength": 3,
+            "pattern": "([a-zA-Z]{3})",
+            "type": "string",
+            "description": "The city where the baggage recheck is required",
+            "example": "MEX"
+          },
+          "ArrivalFlight": {
+            "$ref": "#/components/schemas/FlightID"
+          },
+          "DepartureFlight": {
+            "$ref": "#/components/schemas/FlightID"
+          }
+        }
+      },
+      "TicketingAgency": {
+        "required": [
+          "Code"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TicketingAgency"
+          },
+          "Code": {
+            "maxLength": 10,
+            "minLength": 2,
+            "pattern": "([a-zA-Z0-9]{2,10})",
+            "type": "string",
+            "description": "The code of the ticketing agency",
+            "example": "A561510"
+          },
+          "ProductRef": {
+            "type": "array",
+            "description": "The Product Ref the TicketingAgency applies to",
+            "example": [
+              "p1",
+              "p2",
+              "p3"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "description": "The segmentSequenceList the TicketingAgency applies to",
+            "example": [
+              31,
+              28,
+              43,
+              42,
+              51,
+              26
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      },
+      "Penalties": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Penalties"
+          },
+          "Change": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Change"
+            }
+          },
+          "Cancel": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Cancel"
+            }
+          },
+          "Waiver": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaiverEnum"
+            }
+          },
+          "PenaltySourceCode": {
+            "$ref": "#/components/schemas/PenaltySourceCode"
+          },
+          "PassengerTypeCodes": {
+            "type": "array",
+            "description": "The passenger type codes that this penalty applies to",
+            "example": [
+              "CHD",
+              "UMNR",
+              "CNN"
+            ],
+            "items": {
+              "maxLength": 5,
+              "minLength": 3,
+              "pattern": "([a-zA-Z0-9]{3,5})",
+              "type": "string"
+            }
+          },
+          "involuntaryInd": {
+            "type": "boolean",
+            "description": "Penalties apply for involuntary changes initiated by the airline",
+            "example": true
+          }
+        }
+      },
+      "Change": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ChangePermitted"
+          },
+          "ProductRefs": {
+            "type": "array",
+            "description": "The productRefs this change or cancel applies to",
+            "example": [
+              "baloon",
+              "food",
+              "accesories"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "SegmentSequence": {
+            "type": "array",
+            "description": "The SegmentSequence of the product this change or cancel applies to",
+            "example": [
+              34,
+              56,
+              678,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Cancel": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CancelPermitted"
+          },
+          "ProductRefs": {
+            "type": "array",
+            "description": "The productRefs this change or cancel applies to",
+            "example": [
+              "baloon",
+              "food",
+              "accesories"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "SegmentSequence": {
+            "type": "array",
+            "description": "The SegmentSequence of the product this change or cancel applies to",
+            "example": [
+              34,
+              56,
+              678,
+              2
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "WaiverEnum": {
+        "type": "string",
+        "description": "Type of Waiver like Death of Pessanger,illness Of Passenger, Death of Immediate Family Member  etc",
+        "example": "TicketUpgrade",
+        "enum": [
+          "DeathOfPassenger",
+          "IllnessOfPassenger",
+          "DeathOfImmediateFamilyMember",
+          "IllnessOfImmediateFamilyMember",
+          "TicketUpgrade",
+          "ScheduleChange"
+        ]
+      },
+      "PenaltySourceCode": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "Properties of the penalty"
+          },
+          "codeContext": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Penalty source code context",
+            "example": "The context of the penalty source"
+          }
+        }
+      },
+      "FareGuaranteePolicy": {
+        "required": [
+          "EligibleforADMReview"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FareGuaranteePolicy"
+          },
+          "passengerTypeCodes": {
+            "type": "array",
+            "description": "The list of passenger type codes",
+            "items": {
+              "maxLength": 5,
+              "minLength": 3,
+              "pattern": "([a-zA-Z0-9]{3,5})",
+              "type": "string",
+              "example": "[\"CHD\",\"UMNR\",\"CNN\"]"
+            }
+          },
+          "EligibleforADMReview": {
+            "$ref": "#/components/schemas/YesNoUnknownEnum"
+          },
+          "Code": {
+            "$ref": "#/components/schemas/Code"
+          }
+        }
+      },
+      "YesNoUnknownEnum": {
+        "type": "string",
+        "description": "Yes , No , Unknown",
+        "enum": [
+          "Yes",
+          "No",
+          "Unknown"
+        ]
+      },
+      "Code": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string",
+            "example": "INS"
+          },
+          "codeContext": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Code Context",
+            "example": "ACRISS"
+          }
+        },
+        "description": "Any code used to specify an item, for example a type of traveler, service code, room amenity, etc."
+      },
+      "PricingAgency": {
+        "required": [
+          "Code"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string"
+          },
+          "ProductRef": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Code": {
+            "maxLength": 10,
+            "minLength": 2,
+            "pattern": "([a-zA-Z0-9]{2,10})",
+            "type": "string",
+            "description": "The Pricing Agency PCC"
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      },
+      "TourCodes": {
+        "required": [
+          "TourCode"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "TourCodes"
+          },
+          "TravelerIdentifierRef": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelerIdentifierRef"
+            }
+          },
+          "TourCode": {
+            "$ref": "#/components/schemas/TourCode"
+          }
+        }
+      },
+      "TravelerIdentifierRef": {
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Traveler identifier"
+          },
+          "passengerTypeCode": {
+            "maxLength": 5,
+            "minLength": 3,
+            "pattern": "([a-zA-Z0-9]{3,5})",
+            "type": "string",
+            "description": "Passenger Type code",
+            "example": "ADT"
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/IdentifierRef"
+          }
+        ]
+      },
+      "TourCode": {
+        "properties": {
+          "value": {
+            "maxLength": 32,
+            "type": "string"
+          },
+          "tourCodeType": {
+            "$ref": "#/components/schemas/TourCodeTypeEnum"
+          }
+        },
+        "description": "Tour code"
+      },
+      "TourCodeTypeEnum": {
+        "type": "string",
+        "enum": [
+          "Bulk Tour",
+          "Inclusive Tour"
+        ]
+      },
+      "DocumentValidDateRange": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "DocumentValidDateRange"
+          },
+          "ProductRef": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductIdentifier"
+            }
+          },
+          "SegmentSequenceList": {
+            "type": "array",
+            "description": "The segmentSequence within the product the action is being requested for. Used when multiple flights exist within a product. Only one product may be selected with this option.",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "ValidDateRange": {
+            "$ref": "#/components/schemas/DateRange"
+          }
+        }
+      },
+      "DateRange": {
+        "required": [
+          "end",
+          "start"
+        ],
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Specifies the start date for an event, such as a booking",
+            "format": "date",
+            "example": "2023-03-03"
+          },
+          "end": {
+            "type": "string",
+            "description": "Specifies the end date an event, such as a booking",
+            "format": "date",
+            "example": "2023-03-03"
+          }
+        },
+        "description": "Specifies the begin and end date of an event"
+      },
+      "FulfillmentMethod": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FulfillmentMethod"
+          },
+          "productRefs": {
+            "type": "array",
+            "description": "The product(s) the Fulfillment Method applies to. If blank applies to all products in the Offer",
+            "example": [],
+            "items": {
+              "type": "string"
+            }
+          },
+          "segmentSequenceList": {
+            "type": "array",
+            "description": "List of segment sequence",
+            "example": [
+              234,
+              518,
+              9023
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "RefundMethod": {
+            "$ref": "#/components/schemas/RefundMethodEnum"
+          },
+          "ChangeFeeCollectionMethod": {
+            "$ref": "#/components/schemas/ChangeFeeCollectionMethod"
+          }
+        }
+      },
+      "RefundMethodEnum": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RefundMethodEnum_Base"
+          }
+        },
+        "example": "MCO"
+      },
+      "RefundMethodEnum_Base": {
+        "type": "string",
+        "example": "MCO",
+        "enum": [
+          "RefundToOriginalFOP",
+          "EMD",
+          "MCO",
+          "Unknown"
+        ]
+      },
+      "ChangeFeeCollectionMethod": {
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ChangeFeeMethodEnum"
+          },
+          "code": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The code value",
+            "example": "f2142"
+          },
+          "subCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The subcode value",
+            "example": "631b"
+          },
+          "description": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "The description value",
+            "example": "Change fee collection method"
+          },
+          "changeFeeIssuedSeparatelyInd": {
+            "type": "boolean",
+            "description": "if true, the change fee will be issued as a separate transaction to the residual amount",
+            "example": true
+          },
+          "taxIncludedInBaseAmountInd": {
+            "type": "boolean",
+            "description": "If true, the tax  on the fee will be included in the base fee amount and sent as a single value to the supplier for fulfilment",
+            "example": true
+          }
+        }
+      },
+      "ChangeFeeMethodEnum": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ChangeFeeMethodEnum_Base"
+          }
+        }
+      },
+      "ChangeFeeMethodEnum_Base": {
+        "type": "string",
+        "example": "EMD",
+        "enum": [
+          "EMD",
+          "MCO",
+          "Tax",
+          "Unknown"
+        ]
+      },
+      "ProductAir": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Product"
+          },
+          {
+            "required": [
+              "FlightSegment",
+              "PassengerFlight"
+            ],
+            "properties": {
+              "totalDuration": {
+                "type": "string",
+                "description": "Total duration of all Segments that are part of this ProductAir",
+                "example": "3245"
+              },
+              "FlightSegment": {
+                "maxItems": 99,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FlightSegment"
+                }
+              },
+              "PassengerFlight": {
+                "maxItems": 10,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PassengerFlight"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Product": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProductID"
+          },
+          {
+            "properties": {
+              "Quantity": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "integer",
+                "description": "The quantity of the product",
+                "format": "int32",
+                "example": 2
+              }
+            }
+          }
+        ]
+      },
+      "FlightSegment": {
+        "required": [
+          "Flight",
+          "sequence"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FlightSegment"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "2304"
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "Segment sequence",
+            "format": "int32",
+            "example": 65
+          },
+          "connectionDuration": {
+            "type": "string",
+            "description": "The actual duration (in minutes) between",
+            "example": "60"
+          },
+          "Flight": {
+            "$ref": "#/components/schemas/FlightID"
+          },
+          "OperationalStatus": {
+            "$ref": "#/components/schemas/OperationalStatusENUM"
+          },
+          "boundFlightsInd": {
+            "type": "boolean",
+            "description": "If present and true, the Segments in this Connection must be sold and cancelled together.",
+            "example": true
+          },
+          "CO2Actual": {
+            "$ref": "#/components/schemas/Measurement"
+          }
+        }
+      },
+      "OperationalStatusENUM": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/OperationalStatusENUM_Base"
+          }
+        }
+      },
+      "OperationalStatusENUM_Base": {
+        "type": "string",
+        "example": "FlightBoarding",
+        "enum": [
+          "FlightBoarding",
+          "FlightCancelled",
+          "FlightDeparted",
+          "FlightPastScheduledDeparture",
+          "NotAvailableUseSearch"
+        ]
+      },
+      "PassengerFlight": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PassengerFlight"
+          },
+          "passengerQuantity": {
+            "type": "integer",
+            "description": "Number of passengers of the specified passenger type code",
+            "format": "int32",
+            "example": 416
+          },
+          "passengerTypeCode": {
+            "maxLength": 5,
+            "minLength": 3,
+            "pattern": "([a-zA-Z0-9]{3,5})",
+            "type": "string",
+            "description": "Passenger type code",
+            "example": "ADT"
+          },
+          "FlightProduct": {
+            "maxItems": 99,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FlightProduct"
+            }
+          }
+        }
+      },
+      "FlightProduct": {
+        "required": [
+          "segmentSequence"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FlightProduct"
+          },
+          "segmentSequence": {
+            "type": "array",
+            "description": "The Segment sequence",
+            "example": [
+              23,
+              45,
+              67,
+              89
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "classOfService": {
+            "maxLength": 2,
+            "minLength": 1,
+            "pattern": "([a-zA-Z0-9]{1,2})",
+            "type": "string",
+            "description": "The class of service",
+            "example": "F"
+          },
+          "cabin": {
+            "$ref": "#/components/schemas/CabinAirEnum"
+          },
+          "fareBasisCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Fare basis code",
+            "example": "HKG  SU  X/MOW  SU  KGD  598.78"
+          },
+          "fareType": {
+            "$ref": "#/components/schemas/FareTypeEnum"
+          },
+          "carCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The car code",
+            "example": "P1234"
+          },
+          "valueCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The value code",
+            "example": "365"
+          },
+          "Brand": {
+            "$ref": "#/components/schemas/BrandID"
+          },
+          "CustomerLoyaltyCredit": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerLoyaltyCredit"
+            }
+          },
+          "ClassOfServiceAvailability": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassOfServiceAvailability"
+            }
+          },
+          "FareQualifier": {
+            "$ref": "#/components/schemas/FareQualifierENUM"
+          },
+          "stopoverPriced": {
+            "$ref": "#/components/schemas/YesNoUnknownEnum"
+          },
+          "ticketDesignator": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The ticket designator",
+            "example": "BB5662Y"
+          },
+          "fareTypeCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "The ATPCO fare type code",
+            "example": "ERU"
+          }
+        }
+      },
+      "FareTypeEnum": {
+        "type": "string",
+        "description": "Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only",
+        "enum": [
+          "PublicFare",
+          "AgencyPrivateFare",
+          "AirlinePrivateFare",
+          "NetFare"
+        ]
+      },
+      "BrandID": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BrandID"
+          },
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object."
+          },
+          "BrandRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CustomerLoyaltyCredit": {
+        "required": [
+          "CustomerLoyalty",
+          "Earned",
+          "Status"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "CustomerLoyaltyCredit"
+          },
+          "CustomerLoyalty": {
+            "$ref": "#/components/schemas/CustomerLoyalty"
+          },
+          "Earned": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Represents the amount of award credit awarded for this offer\\/offering. Award credit can be used for purchasing goods and services through a customer loyalty program",
+            "example": "500"
+          },
+          "Status": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Represents the amount of status credit awarded for this offer\\/offering. Status credit allow a customer to move up the ladder of a customer loyalty program",
+            "example": "gold"
+          }
+        }
+      },
+      "ClassOfServiceAvailability": {
+        "properties": {
+          "value": {
+            "maxLength": 2,
+            "minLength": 1,
+            "pattern": "([a-zA-Z0-9]{1,2})",
+            "type": "string",
+            "example": "F"
+          },
+          "number": {
+            "type": "integer",
+            "description": "The class of service number value",
+            "format": "int32",
+            "example": 2
+          },
+          "status": {
+            "$ref": "#/components/schemas/AvailabilityStatusENUM"
+          }
+        },
+        "description": "The class of service"
+      },
+      "AvailabilityStatusENUM": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/AvailabilityStatusENUM_Base"
+          }
+        }
+      },
+      "AvailabilityStatusENUM_Base": {
+        "type": "string",
+        "example": "Available",
+        "enum": [
+          "Available",
+          "NotAvailable",
+          "Request",
+          "Waitlist",
+          "WaitlistClosed"
+        ]
+      },
+      "PriceBreakdownAir": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PriceBreakdown"
+          },
+          {
+            "properties": {
+              "quantity": {
+                "type": "integer",
+                "description": "The quantity value",
+                "format": "int32",
+                "example": 23
+              },
+              "requestedPassengerType": {
+                "maxLength": 5,
+                "minLength": 3,
+                "pattern": "([a-zA-Z0-9]{3,5})",
+                "type": "string",
+                "description": "The requested passenger type code",
+                "example": "CHD"
+              },
+              "FiledAmount": {
+                "$ref": "#/components/schemas/FiledAmount"
+              },
+              "Discount": {
+                "$ref": "#/components/schemas/Discount"
+              },
+              "NetFareInfo": {
+                "$ref": "#/components/schemas/NetFareInfo"
+              },
+              "TravelerIdentifierRef": {
+                "$ref": "#/components/schemas/TravelerIdentifierRef"
+              },
+              "NetBaseAmount": {
+                "$ref": "#/components/schemas/FiledAmount"
+              },
+              "FareCalculation": {
+                "maxLength": 512,
+                "type": "string",
+                "example": "LON BA SYD R564.00YEE1Y BA LON R564.00YEE1Y NUC1128.00END ROE0.787855"
+              },
+              "Surcharges": {
+                "$ref": "#/components/schemas/Surcharges"
+              }
+            }
+          }
+        ]
+      },
+      "FiledAmount": {
+        "required": [
+          "codeAuthority",
+          "decimalPlace"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Filed amount value",
+            "format": "float",
+            "example": 43.3422
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Filed amount currency code",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Filed amount currency code authority",
+            "example": "Australian Dollar"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "ISO 4217 standard has a different number of decimals",
+            "format": "int32",
+            "example": 3
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "ISO 4217 standard decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "The base amount of a ticket price or net price that is filed in local currency"
+      },
+      "Discount": {
+        "required": [
+          "codeAuthority",
+          "currencyCode",
+          "decimalPlace"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 20.22
+          },
+          "description": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "The marketing description for the discount",
+            "example": "Spring discount on group bookings"
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Currency code of the city.",
+            "example": "USD"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Code Authority",
+            "example": "ISO"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Number of decimal places",
+            "format": "int32",
+            "example": 2
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Decimal Authority",
+            "example": "ISO"
+          }
+        },
+        "description": "Corporate or Other discount"
+      },
+      "NetFareInfo": {
+        "properties": {
+          "passengerTypeCode": {
+            "maxLength": 5,
+            "minLength": 3,
+            "pattern": "([a-zA-Z0-9]{3,5})",
+            "type": "string",
+            "description": "PassengerTypeCode"
+          },
+          "NetFareBreakdownConstruction": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NetFareBreakdownConstruction"
+            }
+          },
+          "TicketBaseAudit": {
+            "$ref": "#/components/schemas/FiledAmount"
+          },
+          "TicketBasePassenger": {
+            "$ref": "#/components/schemas/TicketBasePassenger"
+          }
+        }
+      },
+      "NetFareBreakdownConstruction": {
+        "properties": {
+          "value": {
+            "maxLength": 512,
+            "type": "string"
+          },
+          "fareType": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Assigned Type: c-1100:StringTiny"
+          },
+          "rateOfExchange": {
+            "type": "number",
+            "description": "The rate of exchange applied to the fare breakdown",
+            "format": "float"
+          }
+        }
+      },
+      "TicketBasePassenger": {
+        "required": [
+          "codeAuthority",
+          "decimalPlace"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float"
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Assigned Type: c-1100:CurrencyCode"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Assigned Type: c-1100:CodeContext"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Assigned Type: c-1100:CurrencyMinorUnit",
+            "format": "int32"
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Assigned Type: c-1100:CodeContext"
+          },
+          "bTInd": {
+            "type": "boolean",
+            "description": "If true, this is a bulk ticket fare"
+          },
+          "iTInd": {
+            "type": "boolean",
+            "description": "If true, this is an inclusive tour fare"
+          }
+        },
+        "description": "The monetary value"
+      },
+      "Surcharges": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "SurchargesDetail"
+          },
+          "TotalSurcharges": {
+            "type": "number",
+            "description": "A monetary amount, up to 4 decimal places. Decimal place needs to be included.",
+            "format": "float",
+            "example": 211.11
+          },
+          "approximateInd": {
+            "type": "boolean",
+            "description": "if true, the surcharge amounts are approximate",
+            "example": false
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "FareSelectionDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FareSelection"
+          },
+          {
+            "properties": {
+              "validatingCarrier": {
+                "pattern": "([a-zA-Z0-9]{2,3})",
+                "type": "string",
+                "description": "Airline code",
+                "example": "KA"
+              },
+              "prohibitMinStayFaresInd": {
+                "type": "boolean",
+                "description": "If present and true, fares with minimum stays will not be returned",
+                "example": true
+              },
+              "prohibitMaxStayFaresInd": {
+                "type": "boolean",
+                "description": "If present and true, fares with maximum stays will not be returned",
+                "example": true
+              },
+              "refundableOnlyInd": {
+                "type": "boolean",
+                "description": "This field is deprecated. Use RefundOptions for refunadability options",
+                "example": true
+              },
+              "prohibitAdvancePurchaseFaresInd": {
+                "type": "boolean",
+                "description": "If present and true, fares with advance purchase requirements will not be returned",
+                "example": true
+              },
+              "prohibitUnbundledFaresInd": {
+                "type": "boolean",
+                "example": true
+              },
+              "prohibitRefundableFaresInd": {
+                "type": "boolean",
+                "description": "This field is deprecated. Use RefundOptions for refunadability options",
+                "example": true
+              }
+            }
+          }
+        ]
+      },
+      "BaggageAllowanceDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaggageAllowance"
+          },
+          {
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Url for the airline's baggage information web site",
+                "example": "https://airline/baggage"
+              }
+            }
+          }
+        ]
+      },
+      "ReferenceListFlight": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ReferenceList"
+          },
+          {
+            "required": [
+              "Flight"
+            ],
+            "properties": {
+              "Flight": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Flight"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CalculatedFareAdjustmentDiscount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CalculatedFareAdjustment"
+          },
+          {
+            "properties": {
+              "AmountPercent": {
+                "$ref": "#/components/schemas/AmountPercent"
+              }
+            }
+          }
+        ]
+      },
+      "CalculatedFareAdjustmentIncrease": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CalculatedFareAdjustment"
+          },
+          {
+            "required": [
+              "AmountPercent"
+            ],
+            "properties": {
+              "AmountPercent": {
+                "$ref": "#/components/schemas/AmountPercent"
+              }
+            }
+          }
+        ]
+      },
+      "PassengerCriteriaAirChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PassengerCriteria"
+          },
+          {
+            "required": [
+              "TravelerIdentifierRef"
+            ],
+            "properties": {
+              "TravelerIdentifierRef": {
+                "$ref": "#/components/schemas/TravelerIdentifierRef"
+              }
+            }
+          }
+        ]
+      },
+      "CatalogOfferingModify": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CatalogOffering"
+          },
+          {
+            "required": [
+              "ModifyPrice"
+            ],
+            "properties": {
+              "ModifyPrice": {
+                "$ref": "#/components/schemas/ModifyPrice"
+              }
+            }
+          }
+        ]
+      },
+      "ModifyPrice": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "ModifyPriceDetail"
+          },
+          "id": {
+            "type": "string",
+            "description": "Internally referenced id",
+            "example": "2"
+          },
+          "CurrencyCode": {
+            "$ref": "#/components/schemas/CurrencyCode"
+          },
+          "Base": {
+            "type": "number",
+            "description": "The total amount not including taxes and\\/or fees",
+            "format": "float",
+            "example": 20.2
+          },
+          "TotalTaxes": {
+            "type": "number",
+            "description": "The total of the taxes included in the total price",
+            "format": "float",
+            "example": 34.4
+          },
+          "TotalFees": {
+            "type": "number",
+            "description": "The total of the fees included in the total price",
+            "format": "float",
+            "example": 201
+          },
+          "TotalPrice": {
+            "type": "number",
+            "description": "The total price of the product in the currency indicated",
+            "format": "float",
+            "example": 34
+          },
+          "VendorCurrencyTotal": {
+            "$ref": "#/components/schemas/VendorCurrencyTotal"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "BuildFromCatalogOfferingsRequestAirChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BuildFromCatalogOfferingsRequest"
+          },
+          {
+            "required": [
+              "PricingModifiersAirChange"
+            ],
+            "properties": {
+              "PricingModifiersAirChange": {
+                "$ref": "#/components/schemas/PricingModifiersAirChange"
+              }
+            }
+          }
+        ]
+      },
+      "BuildFromCatalogOfferingsRequest": {
+        "required": [
+          "@type",
+          "CatalogOfferingIdentifier",
+          "CatalogOfferingsIdentifier",
+          "ProductIdentifier"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BuildFromCatalogOfferingsRequestAir"
+          },
+          "CatalogOfferingsIdentifier": {
+            "$ref": "#/components/schemas/CatalogOfferingsIdentifier"
+          },
+          "CatalogOfferingIdentifier": {
+            "$ref": "#/components/schemas/CatalogOfferingIdentifier"
+          },
+          "ProductIdentifier": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "example": "p1",
+            "items": {
+              "$ref": "#/components/schemas/ProductIdentifier"
+            }
+          },
+          "AncillaryOfferingIdentifier": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AncillaryOfferingIdentifier"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "CatalogOfferingsIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "CatalogOfferings_1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "CatalogOfferingIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "co1"
+          },
+          "CatalogOfferingRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "co1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "AncillaryOfferingIdentifier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local indentifier within a given message for this object.",
+            "example": "AN1"
+          },
+          "CatalogOfferingRef": {
+            "type": "string",
+            "description": "Used to reference another instance of this object in the same message",
+            "example": "CO1"
+          },
+          "AncillaryOfferingRef": {
+            "type": "string",
+            "example": "AN1"
+          },
+          "Identifier": {
+            "$ref": "#/components/schemas/Identifier"
+          }
+        }
+      },
+      "SurchargesDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Surcharges"
+          },
+          {
+            "required": [
+              "Surcharge"
+            ],
+            "properties": {
+              "Surcharge": {
+                "maxItems": 100,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Surcharge"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Surcharge": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 12
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Sur charge currency code",
+            "example": "USD"
+          },
+          "surchargeCode": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Sur charge code",
+            "example": "ADDITIONAL COSTS"
+          },
+          "reportingAuthority": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Sur charge reporting authority",
+            "example": "Federal register"
+          },
+          "purpose": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Sur charge purpose",
+            "example": "tax for extra service"
+          },
+          "description": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Description",
+            "example": "Additional data"
+          },
+          "surchargeApplication": {
+            "$ref": "#/components/schemas/ApplicationEnum"
+          },
+          "surchargeFrequency": {
+            "$ref": "#/components/schemas/FrequencyEnum"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Surcharge code authority",
+            "example": "ISO 4217"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Decimal place for the currency unit",
+            "format": "int32",
+            "example": 4
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Currency code decimal authority",
+            "example": "ISO 4217"
+          }
+        },
+        "description": "The fee amount with feecode and reporting informtion"
+      },
+      "ApplicationEnum": {
+        "type": "string",
+        "description": "Application values like perperson , peroom",
+        "enum": [
+          "PerPerson",
+          "PerRoom",
+          "PerAccommodation",
+          "PerHouse",
+          "PerApartment",
+          "PerAdult",
+          "PerChild"
+        ]
+      },
+      "FrequencyEnum": {
+        "type": "string",
+        "description": "Stay frequency like PerNight, PerDay",
+        "enum": [
+          "PerNight",
+          "PerDay",
+          "PerStay",
+          "PerWeek",
+          "RoundTrip",
+          "OneWay"
+        ]
+      },
+      "FeesDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Fees"
+          },
+          {
+            "properties": {
+              "Fee": {
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Fee"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Fee": {
+        "required": [
+          "FeeAmountOrPercent"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "default": "Fee"
+          },
+          "feeCode": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Fee code",
+            "example": "1011"
+          },
+          "reportingAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Identifies the reporting authority.",
+            "example": "OPRA"
+          },
+          "purpose": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Fee purpose",
+            "example": "Service charge"
+          },
+          "description": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Fee description"
+          },
+          "feeApplication": {
+            "$ref": "#/components/schemas/ApplicationEnum"
+          },
+          "feeFrequency": {
+            "$ref": "#/components/schemas/FrequencyEnum"
+          },
+          "FeeAmountOrPercent": {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          "Tax": {
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tax"
+            }
+          },
+          "includedinBaseInd": {
+            "type": "boolean",
+            "description": "If the fee is included in the Base Price"
+          }
+        }
+      },
+      "FeeAmountOrPercent": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FeeAmountOrPercentAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "Tax": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "example": 12.2
+          },
+          "currencyCode": {
+            "pattern": "[a-zA-Z]{3}",
+            "type": "string",
+            "description": "Currency code of the city.",
+            "example": "USD"
+          },
+          "taxCode": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Tax code of the city",
+            "example": "7702"
+          },
+          "reportingAuthority": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Identifies the reporting authority such as airport code for XF taxes.",
+            "example": "JFK1"
+          },
+          "purpose": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "purpose",
+            "example": "Fuel"
+          },
+          "description": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "additional information",
+            "example": "Additional details."
+          },
+          "includedInBase": {
+            "$ref": "#/components/schemas/YesNoUnknownEnum"
+          },
+          "codeAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Code Authority",
+            "example": "ISO"
+          },
+          "decimalPlace": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "pattern": "([0-4])",
+            "type": "integer",
+            "description": "Allowed number of decimals.",
+            "format": "int32",
+            "example": 2
+          },
+          "decimalAuthority": {
+            "maxLength": 32,
+            "type": "string",
+            "description": "Decimal Authority",
+            "example": "ISO"
+          },
+          "exemptInd": {
+            "type": "boolean",
+            "description": "If true, this tax is exempt",
+            "example": true
+          }
+        }
+      },
+      "TaxesDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Taxes"
+          },
+          {
+            "properties": {
+              "Tax": {
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tax"
+                }
+              },
+              "TaxPercent": {
+                "$ref": "#/components/schemas/TaxPercent"
+              }
+            }
+          }
+        ]
+      },
+      "TaxPercent": {
+        "properties": {
+          "value": {
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "number",
+            "format": "float",
+            "example": 45.54
+          },
+          "taxCode": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Tax code",
+            "example": "971 - IRS Notice"
+          },
+          "reportingAuthority": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Tax reporting authority",
+            "example": "Geogia department of revenue"
+          },
+          "purpose": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "Purpose of tax",
+            "example": "statutory tax"
+          },
+          "description": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Description",
+            "example": "1.5% of SGST"
+          },
+          "includedInBase": {
+            "$ref": "#/components/schemas/YesNoUnknownEnum"
+          }
+        }
+      },
+      "ErrorWarningDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ErrorWarning"
+          },
+          {
+            "required": [
+              "SourceID"
+            ],
+            "properties": {
+              "SourceID": {
+                "maxLength": 128,
+                "type": "string",
+                "description": "The identifier of the source system sending the error or warning"
+              },
+              "SourceCode": {
+                "maxLength": 32,
+                "type": "string",
+                "description": "The error or warning code returned by the source airline or host system"
+              },
+              "SourceDescription": {
+                "maxLength": 4096,
+                "type": "string",
+                "description": "The error or warning message as it is returned by the source airline or host system"
+              }
+            }
+          }
+        ]
+      },
+      "ErrorWarning": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "Http standard response code",
+            "format": "int32"
+          },
+          "Message": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "The Travelport standardized error or warning message"
+          },
+          "NameValuePair": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValuePair"
+            }
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "ErrorDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Error"
+          },
+          {
+            "properties": {
+              "SourceID": {
+                "maxLength": 128,
+                "type": "string",
+                "description": "The identifier of the source system sending the error or warning"
+              },
+              "SourceCode": {
+                "maxLength": 32,
+                "type": "string",
+                "description": "The error or warning code returned by the source airline or host system"
+              },
+              "SourceDescription": {
+                "maxLength": 4096,
+                "type": "string",
+                "description": "The error or warning message as it is returned by the source airline or host system"
+              }
+            }
+          }
+        ]
+      },
+      "WarningDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Warning"
+          },
+          {
+            "properties": {
+              "SourceID": {
+                "maxLength": 128,
+                "type": "string",
+                "description": "The identifier of the source system sending the error or warning"
+              },
+              "SourceCode": {
+                "maxLength": 32,
+                "type": "string",
+                "description": "The error or warning code returned by the source airline or host system"
+              },
+              "SourceDescription": {
+                "maxLength": 4096,
+                "type": "string",
+                "description": "The error or warning message as it is returned by the source airline or host system"
+              }
+            }
+          }
+        ]
+      },
+      "ModifyPriceDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ModifyPrice"
+          },
+          {
+            "properties": {
+              "PriceBreakdown": {
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PriceBreakdown"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DepartureDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Departure"
+          },
+          {
+            "properties": {
+              "terminal": {
+                "maxLength": 4096,
+                "pattern": "([0-9a-zA-Z]+)?",
+                "type": "string",
+                "description": "Departure/Arrival terminal",
+                "example": "Terminal 1"
+              },
+              "country": {
+                "pattern": "[a-zA-Z]{2}",
+                "type": "string",
+                "description": "Country of to departure or arrival",
+                "example": "US"
+              }
+            }
+          }
+        ]
+      },
+      "ArrivalDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Arrival"
+          },
+          {
+            "properties": {
+              "terminal": {
+                "maxLength": 4096,
+                "pattern": "([0-9a-zA-Z]+)?",
+                "type": "string",
+                "description": "Departure/Arrival terminal",
+                "example": "Terminal 1"
+              },
+              "country": {
+                "pattern": "[a-zA-Z]{2}",
+                "type": "string",
+                "description": "Country of to departure or arrival",
+                "example": "US"
+              }
+            }
+          }
+        ]
+      },
+      "ReferenceListExchangedPrice": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ReferenceList"
+          },
+          {
+            "required": [
+              "Price"
+            ],
+            "properties": {
+              "Price": {
+                "maxItems": 10,
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Price"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "AmountPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "AmountPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AmountPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercentAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "FeeAmountOrPercentPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FeeAmountOrPercent"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "CommissionAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "CommissionPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Commission"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "PenaltyAmount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Amount": {
+                "$ref": "#/components/schemas/CurrencyAmount"
+              }
+            }
+          }
+        ]
+      },
+      "Penalty": {
+        "required": [
+          "@type"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PenaltyAmount"
+          },
+          "application": {
+            "$ref": "#/components/schemas/CommissionEnum"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "PenaltyPercent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Penalty"
+          },
+          {
+            "properties": {
+              "Percent": {
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "type": "number",
+                "description": "Percent amount of commission",
+                "format": "float",
+                "example": 20
+              }
+            }
+          }
+        ]
+      },
+      "ReferenceListBrand": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ReferenceList"
+          },
+          {
+            "properties": {
+              "Brand": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Brand"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Brand": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BrandID"
+          },
+          {
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "maxLength": 128,
+                "type": "string",
+                "description": "The name of the brand",
+                "example": "Main Cabin Extra"
+              },
+              "tier": {
+                "type": "integer",
+                "description": "The brand tier",
+                "format": "int32",
+                "example": 2
+              },
+              "shelfNumbers": {
+                "type": "array",
+                "description": "ATPCO shelf number",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "code": {
+                "maxLength": 32,
+                "type": "string",
+                "description": "The ATPCO Brand Code",
+                "example": "REFMAIN"
+              },
+              "BrandAttribute": {
+                "maxItems": 100,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BrandAttribute"
+                }
+              },
+              "AdditionalBrandAttribute": {
+                "maxItems": 15,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AdditionalBrandAttribute"
+                }
+              },
+              "ImageURL": {
+                "maxItems": 10,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "BrandAttribute": {
+        "required": [
+          "@type",
+          "classification",
+          "inclusion"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "BrandAttribute"
+          },
+          "classification": {
+            "$ref": "#/components/schemas/BrandClassificationEnum"
+          },
+          "inclusion": {
+            "$ref": "#/components/schemas/BrandInclusionEnum"
+          },
+          "ImageURL": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchedAttributeInd": {
+            "type": "boolean",
+            "description": "if true, this is a matched attribute."
+          },
+          "groupCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "BG"
+          },
+          "subGroupCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "CY"
+          },
+          "subCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "08A"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      },
+      "BrandInclusionEnum": {
+        "type": "string",
+        "description": "The indicator as to how the brand and the product are associated.",
+        "enum": [
+          "Included",
+          "Chargeable",
+          "Not Offered"
+        ]
+      },
+      "AdditionalBrandAttribute": {
+        "required": [
+          "@type",
+          "Classification",
+          "Inclusion"
+        ],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "AdditionalBrandAttribute"
+          },
+          "Classification": {
+            "maxLength": 512,
+            "type": "string",
+            "description": "The Travelport classification used for categories of ancillaries"
+          },
+          "Inclusion": {
+            "$ref": "#/components/schemas/BrandInclusionEnum"
+          },
+          "ImageURL": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchedAttributeInd": {
+            "type": "boolean",
+            "description": "If true, this is a matched attribute"
+          },
+          "groupCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "BG"
+          },
+          "subGroupCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "CY"
+          },
+          "subCode": {
+            "maxLength": 10,
+            "pattern": "([A-Z0-9]+)?",
+            "type": "string",
+            "example": "08A"
+          }
+        },
+        "discriminator": {
+          "propertyName": "@type"
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad Request- 400",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized - 401",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "PaymentRequired": {
+        "description": "PaymentRequired - 402",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden - 403",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not Found - 404",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error - 500",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "TravelportPlusSessionID": {
+        "name": "TravelportPlusSessionID",
+        "in": "header",
+        "description": "Travelport Plus Session ID used to maintain an established agency session",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 100,
+          "minLength": 0,
+          "pattern": "([a-zA-Z-0-9-_]*)",
+          "type": "string"
+        }
+      },
+      "TraceId": {
+        "name": "TraceId",
+        "in": "header",
+        "description": "Identifier used to correlate API invocations across long-running or multi-call business flows.",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 89,
+          "minLength": 10,
+          "pattern": "(^[a-zA-Z-0-9_]*[-]?[+]?$)",
+          "type": "string"
+        }
+      },
+      "XAUTH_TRAVELPORT_ACCESSGROUP": {
+        "name": "XAUTH_TRAVELPORT_ACCESSGROUP",
+        "in": "header",
+        "description": "Identifies the Travelport access group with which the caller is associated",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "maxLength": 36,
+          "minLength": 36,
+          "pattern": "([a-zA-Z-0-9-_]*)",
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://oauth.travelport.com/oauth/oauth20/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

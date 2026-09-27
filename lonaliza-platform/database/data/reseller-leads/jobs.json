@@ -1,0 +1,48 @@
+[
+  {
+    "id": "live_job_1790341470699",
+    "name": "مسح شركات سياحية: إسطنبول",
+    "keywords": [
+      "وكالات سياحة وسفر"
+    ],
+    "city": "إسطنبول",
+    "country": "تركيا",
+    "depth": 2,
+    "status": "working",
+    "progressPercent": 84,
+    "totalFound": 17,
+    "createdAt": "2026-09-25T13:04:30.700Z",
+    "updatedAt": "2026-09-25T13:05:45.912Z"
+  },
+  {
+    "id": "live_job_1790341427993",
+    "name": "مسح شركات سياحية: إسطنبول",
+    "keywords": [
+      "وكالات سياحة وسفر"
+    ],
+    "city": "إسطنبول",
+    "country": "تركيا",
+    "depth": 2,
+    "status": "failed",
+    "progressPercent": 5,
+    "totalFound": 0,
+    "createdAt": "2026-09-25T13:03:47.993Z",
+    "updatedAt": "2026-09-25T13:03:57.136Z",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed"
+  },
+  {
+    "id": "live_job_1790340687687",
+    "name": "مسح شركات سياحية: إسطنبول",
+    "keywords": [
+      "وكالات سياحة وسفر"
+    ],
+    "city": "إسطنبول",
+    "country": "تركيا",
+    "depth": 1,
+    "status": "ok",
+    "progressPercent": 100,
+    "totalFound": 0,
+    "createdAt": "2026-09-25T12:51:27.688Z",
+    "updatedAt": "2026-09-25T12:53:45.701Z"
+  }
+]

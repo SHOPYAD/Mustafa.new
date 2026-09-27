@@ -1,0 +1,30 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "commentSource": "Agency",
+                "shareWith": "Traveler",
+                "Comment": [
+                    {
+                        "name": "ITIN COMMENTS",
+                        "value": "This remarks has single offer with all segments"
+                    }
+                ],
+                "AppliesTo": [
+                    {
+                        "@type": "AppliesToOffer",
+                        "OfferIdentifier": [
+                            {
+                                "Identifier": {
+                                    "authority": "Travelport",
+                                    "value": "1bee7d2e-5f77-4665-b258-1c64bfd777bf"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

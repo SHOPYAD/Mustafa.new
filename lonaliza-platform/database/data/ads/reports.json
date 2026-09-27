@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rpt_mth625aw_55477c",
+    "generatedAt": "2026-08-31T11:40:00.729Z",
+    "date": "2026-08-31",
+    "mode": "dryRun",
+    "metrics": [
+      {
+        "platform": "google",
+        "spend": 0,
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "conversions": 0,
+        "invalidClicks": 0,
+        "currency": "USD"
+      },
+      {
+        "platform": "meta",
+        "spend": 0,
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "conversions": 0,
+        "currency": "USD"
+      }
+    ],
+    "alerts": [],
+    "telegramSent": false,
+    "telegramError": "telegram_chat_missing"
+  }
+]

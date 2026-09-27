@@ -1,0 +1,81 @@
+﻿/* Standard Tables */
+
+/** For top nav, you must put the table in a div for sticky head to work. Otherwise, when Flare builds, the parent in foundation.css overrides sticky */
+div.tableSticky {
+    max-height: 75vh;
+    overflow: auto;
+}
+
+table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  border: 1px solid #d3d3d3;
+  background-color: #ffffff; /* Essential: sticky elements need background color to avoid text overlap */
+}
+
+th,
+td {
+  padding: 1px;
+  margin: 0px;
+  text-align: left;
+  border: 1px solid #d3d3d3;
+  font-size: 10pt;
+}
+
+th {
+  vertical-align: top;
+  background-color: #f4e1c9;
+  color: #000000;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+p.tableSticky {
+	font-size: 10pt;
+	padding: 0px;
+  margin: 0px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Styles all even-numbered rows in the tbody (optional, for explicit different colors) */
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Optional: Add a hover effect for better user experience */
+tbody tr:hover {
+  background-color: #d1e4fd;
+}
+
+/* Fixed Headers */
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+th[scope=row] {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+/* Strictly for making the scrolling happen. */
+
+th[scope=row] + td {
+  min-width: 24em;
+}
+
+th[scope=row] {
+  min-width: 20em;
+}
+
+body {
+  padding-bottom: 90vh;
+}

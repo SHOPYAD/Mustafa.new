@@ -1,0 +1,18 @@
+{
+    "ReservationCommentListRequest": {
+        "ReservationCommentID": [
+            {
+                "@type": "ReservationComment",
+                "id": "reservationComment_1",
+                "Comment": [
+                    {
+                        "name": "RE",
+                        "value": "DETAILS FOR THE REMARK",
+                        "id": "comment_1",
+                        "language": "EN"
+                    }
+                ]
+            }
+        ]
+    }
+}

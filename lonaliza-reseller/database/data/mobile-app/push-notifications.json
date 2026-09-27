@@ -1,0 +1,86 @@
+{
+  "templates": [
+    {
+      "id": "tmpl_flash_istanbul",
+      "titleAr": "🔥 عرض فلاش حصري: خصم 25% على رحلات إسطنبول!",
+      "titleEn": "🔥 Exclusive Flash Deal: 25% OFF Istanbul Flights!",
+      "bodyAr": "سافر بأفضل الأسعار على الخطوط المعتمدة اليوم فقط. المقاعد محدودة!",
+      "bodyEn": "Book verified airlines today only. Limited seats available!",
+      "category": "flash_deal",
+      "targetRoute": "/flights",
+      "badge": "عرض فلاش 25%",
+      "clicksCount": 412,
+      "sentCount": 4750,
+      "active": true,
+      "createdAt": "2026-09-12T22:28:51.993Z"
+    },
+    {
+      "id": "tmpl_price_drop",
+      "titleAr": "✈️ هبوط أسعار الطيران لوجهتك المفضلة",
+      "titleEn": "✈️ Flight Price Drop for Your Favorite Destination",
+      "bodyAr": "انخفض سعر التذكرة بمقدار 40$ — افتح التطبيق واحجز قبل اكتمال السعة.",
+      "bodyEn": "Fares dropped by $40 — Open the app now and lock your seat.",
+      "category": "price_drop",
+      "targetRoute": "/flights",
+      "badge": "توفير فوري",
+      "clicksCount": 318,
+      "sentCount": 1850,
+      "active": true,
+      "createdAt": "2026-09-12T22:28:51.993Z"
+    },
+    {
+      "id": "tmpl_weekend_escape",
+      "titleAr": "🌴 عطلة الويكند في أنطاليا وبودروم",
+      "titleEn": "🌴 Weekend Escape to Antalya & Bodrum",
+      "bodyAr": "أفضل منتجعات 5 نجوم شاملة الإفطار مع إلغاء مجاني حتى يوم الوصول.",
+      "bodyEn": "Top 5-star luxury resorts with free breakfast & flexible cancellation.",
+      "category": "weekend_escape",
+      "targetRoute": "/hotels",
+      "badge": "إلغاء مجاني",
+      "clicksCount": 289,
+      "sentCount": 1600,
+      "active": true,
+      "createdAt": "2026-09-12T22:28:51.993Z"
+    },
+    {
+      "id": "tmpl_wallet_bonus",
+      "titleAr": "💰 أضيفت نقاط مكافآت جديدة إلى محفظتك!",
+      "titleEn": "💰 New Loyalty Points Added to Your Wallet!",
+      "bodyAr": "لديك رصيد كاش باك جاهز للاستخدام كخصم نقدي على حجزك القادم.",
+      "bodyEn": "You have ready cashback balance to use on your next flight or hotel booking.",
+      "category": "wallet_bonus",
+      "targetRoute": "/account?tab=wallet",
+      "badge": "كاش باك نقدي",
+      "clicksCount": 520,
+      "sentCount": 2100,
+      "active": true,
+      "createdAt": "2026-09-12T22:28:51.993Z"
+    },
+    {
+      "id": "tmpl_cart_recovery",
+      "titleAr": "🏨 هل ما زلت تبحث عن إقامة مميزة في طرابزون؟",
+      "titleEn": "🏨 Still looking for a luxury stay in Trabzon?",
+      "bodyAr": "الغرف تنفد بسرعة لهاتين الوجهتين. أكمل حجزك واستفد من ضمان أفضل سعر.",
+      "bodyEn": "Rooms are selling out fast. Complete your reservation with Best Price Guarantee.",
+      "category": "cart_recovery",
+      "targetRoute": "/hotels",
+      "badge": "ضمان السعر",
+      "clicksCount": 195,
+      "sentCount": 940,
+      "active": true,
+      "createdAt": "2026-09-12T22:28:51.993Z"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "camp_mtz0qz5f",
+      "templateId": "tmpl_flash_istanbul",
+      "title": "🔥 عرض فلاش حصري: خصم 25% على رحلات إسطنبول!",
+      "body": "سافر بأفضل الأسعار على الخطوط المعتمدة اليوم فقط. المقاعد محدودة!",
+      "targetRoute": "/",
+      "sentAt": "2026-09-12T23:31:12.627Z",
+      "recipientsCount": 2450,
+      "status": "sent"
+    }
+  ]
+}

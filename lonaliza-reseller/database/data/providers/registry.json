@@ -1,0 +1,245 @@
+{
+  "updatedAt": "2026-09-15T22:28:22.390Z",
+  "providers": {
+    "air_scraper": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "pkfare": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "seeru": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "biletbank": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "iati": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "biletdukkani": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "turna_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_flights": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotel_engine": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "booking_com15": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travel_advisor": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotels_internal": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "ratehawk": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "hotelbeds": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "seeru_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_hotels": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "cars_internal": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_cars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "cartrawler": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "rentalcars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "sunnycars": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "transfers_internal": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "seeru_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelpayouts_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "amadeus_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "travelport_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "tbo_transfers": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "mozio": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "kiwitaxi": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "jayride": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "gettransfer": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    },
+    "iway": {
+      "enabled": false,
+      "mode": "sandbox",
+      "customLogo": null,
+      "fields": {}
+    }
+  }
+}

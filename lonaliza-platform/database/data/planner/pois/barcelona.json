@@ -1,0 +1,193 @@
+{
+  "cityKey": "barcelona",
+  "city": "Barcelona",
+  "lat": 41.3879,
+  "lng": 2.1699,
+  "fetchedAt": "2026-09-22T14:47:17.603Z",
+  "sources": [
+    "curated",
+    "lonaliza-vip"
+  ],
+  "pois": [
+    {
+      "titleEn": "Basílica de la Sagrada Família",
+      "titleAr": "كنيسة ساغرادا فاميليا",
+      "lat": 41.40369,
+      "lng": 2.17433,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1583779457305-645091e60f70?w=800",
+      "popularity": 100,
+      "source": "catalog",
+      "detailEn": "Antoni Gaudí iconic monumental basilica and UNESCO World Heritage masterpiece, the most celebrated landmark in Barcelona.",
+      "detailAr": "أعظم تحف أنطوني غاودي المعمارية وأيقونة برشلونة الخالدة المصنفة ضمن التراث العالمي لليونسكو."
+    },
+    {
+      "titleEn": "Park Güell",
+      "titleAr": "منتزه غويل",
+      "lat": 41.41449,
+      "lng": 2.15269,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800",
+      "popularity": 98,
+      "source": "catalog",
+      "detailEn": "Vibrant hillside public park designed by Antoni Gaudí with famous mosaic benches and sweeping panoramic views.",
+      "detailAr": "منتزه خيالي خلاب من إبداع غاودي يطل على كامل مدينة برشلونة والبحر الأبيض المتوسط مع مقاعد الفسيفساء الأفعوانية."
+    },
+    {
+      "titleEn": "Casa Batlló",
+      "titleAr": "كاسا باتيو",
+      "lat": 41.39165,
+      "lng": 2.16499,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800",
+      "popularity": 96,
+      "source": "catalog",
+      "detailEn": "Gaudí surreal architectural masterpiece on Passeig de Gràcia with dragon-scale roof and flowing organic curves.",
+      "detailAr": "تحفة معمارية سريالية لغاودي في جادة باسيج دي غراسيا تشبه الأمواج والزواحف الأسطورية."
+    },
+    {
+      "titleEn": "Casa Milà (La Pedrera)",
+      "titleAr": "كاسا ميلا (لا بيدريرا)",
+      "lat": 41.39528,
+      "lng": 2.16167,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=800",
+      "popularity": 95,
+      "source": "catalog",
+      "detailEn": "Gaudí iconic stone quarry building with famous warrior-chimney sculpted rooftop overlooking Eixample.",
+      "detailAr": "مبنى حجري متموج شهير بسطحه المنحوت بمداخن تشبه فرسان القرون الوسطى مع إطلالة رائعة على قلب برشلونة."
+    },
+    {
+      "titleEn": "Gothic Quarter & Barcelona Cathedral",
+      "titleAr": "الحي القوطي وكاتدرائية برشلونة",
+      "lat": 41.38389,
+      "lng": 2.17639,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=800",
+      "popularity": 94,
+      "source": "catalog",
+      "detailEn": "Historic medieval labyrinth of narrow stone alleys, ancient Roman walls, and the grand Gothic Cathedral.",
+      "detailAr": "أقدم أحياء برشلونة بأزقته الحجرية الرومانية والوسيطة وكاتدرائيته القوطية الشامخة."
+    },
+    {
+      "titleEn": "La Rambla & Mercat de la Boqueria",
+      "titleAr": "شارع لا رامبلا وسوق لا بوكيريا",
+      "lat": 41.38194,
+      "lng": 2.17194,
+      "kind": "shopping",
+      "image": "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=800",
+      "popularity": 93,
+      "source": "catalog",
+      "detailEn": "Barcelona legendary boulevard and the world-famous Boqueria market bursting with tapas, fresh fruits, and seafood.",
+      "detailAr": "أشهر ممر مشاة وسياحة في إسبانيا يمتد حتى الميناء، يضم سوق بوكيريا الشهير بألوان الفواكه والمأكولات الطازجة."
+    },
+    {
+      "titleEn": "Montjuïc Castle & Cable Car",
+      "titleAr": "قلعة وتلفريك مونتجويك",
+      "lat": 41.36333,
+      "lng": 2.16611,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800",
+      "popularity": 91,
+      "source": "catalog",
+      "detailEn": "Historic mountaintop fortress with aerial cable car offering 360-degree panoramic views over the harbor and city.",
+      "detailAr": "قلعة عسكرية تاريخية على قمة جبل مونتجويك توفر إطلالة بانورامية 360 درجة على الميناء ومدينة برشلونة."
+    },
+    {
+      "titleEn": "Barceloneta Beach & Boardwalk",
+      "titleAr": "شاطئ بارسيلونيتا والممشى البحري",
+      "lat": 41.37833,
+      "lng": 2.1925,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+      "popularity": 90,
+      "source": "catalog",
+      "detailEn": "Vibrant golden sand Mediterranean beach and promenade famous for seafood paella chiringuitos and sea breeze.",
+      "detailAr": "شاطئ رملي متوسطي شهير وممشى بحري راقٍ بمطاعم البايلا الإسبانية والمقاهي الشاطئية."
+    },
+    {
+      "titleEn": "Passeig de Gràcia & Plaça de Catalunya",
+      "titleAr": "جادة باسيج دي غراسيا وساحة كتالونيا",
+      "lat": 41.38917,
+      "lng": 2.16722,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800",
+      "popularity": 89,
+      "source": "catalog",
+      "detailEn": "Grand luxury boulevard connecting Plaça de Catalunya with high-end designer boutiques and modernist palaces.",
+      "detailAr": "أفخم جادة تسوق ومعمار في برشلونة تجمع أرقى بيوت الأزياء العالمية مع إبداعات العمارة الحداثية."
+    },
+    {
+      "titleEn": "Picasso Museum & El Born",
+      "titleAr": "متحف بيكاسو في حي إل بورن",
+      "lat": 41.38522,
+      "lng": 2.18089,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800",
+      "popularity": 88,
+      "source": "catalog",
+      "detailEn": "World-class museum housing over 4,000 works of Pablo Picasso within magnificent Gothic palaces in El Born.",
+      "detailAr": "متحف عالمي يضم أكبر مجموعة من أعمال الفنان بابلو بيكاسو في قصور حجرية فخمة في حي إل بورن الفني."
+    },
+    {
+      "titleEn": "Palau de la Música Catalana",
+      "titleAr": "قصر الموسيقى الكتالونية",
+      "lat": 41.3875,
+      "lng": 2.17556,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
+      "popularity": 87,
+      "source": "catalog",
+      "detailEn": "UNESCO jewel of Catalan modernisme with its breathtaking stained-glass skylight and ornate ceramic columns.",
+      "detailAr": "تحفة الزجاج الملون والأعمدة المزخرفة على طراز الحداثة الكتالونية المصنف لدى اليونسكو."
+    },
+    {
+      "titleEn": "Parc de la Ciutadella & Arc de Triomf",
+      "titleAr": "حديقة القلعة وقوس النصر",
+      "lat": 41.38806,
+      "lng": 2.18722,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800",
+      "popularity": 86,
+      "source": "catalog",
+      "detailEn": "Lush city park featuring the monumental Cascada fountain, boating lake, and connected to the brick Arc de Triomf.",
+      "detailAr": "واحة خضراء ملكية في قلب برشلونة تضم نافورة كاسكادا وبحيرة قوارب وتتصل بقوس النصر."
+    },
+    {
+      "titleEn": "Tibidabo Mountain & Sacred Heart Church",
+      "titleAr": "تلة وكنيسة تيبيدابو البانورامية",
+      "lat": 41.42194,
+      "lng": 2.11861,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800",
+      "popularity": 85,
+      "source": "catalog",
+      "detailEn": "The highest mountain ridge above Barcelona with the breathtaking Sagrat Cor church and panoramic horizon.",
+      "detailAr": "أعلى قمم برشلونة المطلة على البحر والمدينة مع كنيسة قلب يسوع الأقدس المهيبة ومدن الملاهي التاريخية."
+    },
+    {
+      "titleEn": "Spotify Camp Nou & Barca Museum",
+      "titleAr": "ملعب كامب نو ومتحف نادي برشلونة",
+      "lat": 41.3808,
+      "lng": 2.1228,
+      "kind": "attraction",
+      "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800",
+      "popularity": 84,
+      "source": "catalog",
+      "detailEn": "The legendary home of FC Barcelona and interactive museum showcasing Champions League trophies.",
+      "detailAr": "معقل كرة القدم العالمي الأسطوري ومتحف نادي برشلونة التفاعلي الذي يعرض كؤوس دوري الأبطال والكرات الذهبية."
+    },
+    {
+      "titleEn": "Port Vell Sunset Seafood & Tapas",
+      "titleAr": "عشاء تاباس وبايلا بحرية فاخرة في بورت فيل",
+      "lat": 41.37667,
+      "lng": 2.18417,
+      "kind": "food",
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+      "popularity": 83,
+      "source": "catalog",
+      "detailEn": "Authentic Catalan seafood paella with saffron and fresh prawns overlooking luxury yachts in Port Vell harbor.",
+      "detailAr": "تجربة طهي كتالونية أصيلة مع أطباق البايلا بالزعفران وثمار البحر والتاباس التقليدي بإطلالة اليخوت البحرية الفاخرة."
+    }
+  ]
+}

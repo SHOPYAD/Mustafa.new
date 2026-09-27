@@ -1,0 +1,3304 @@
+{
+  "packages": [
+    {
+      "id": "aip_mu1xqcgo_g7wbin",
+      "slug": "trabzon-northern-turkey-luxury-itinerary-10-days",
+      "title": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+      "titleAr": "برنامج طرابزون والشمال التركي الفاخر - 10 أيام",
+      "titleEn": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+      "titleTr": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+      "destination": "Trabzon",
+      "destinationAr": "Trabzon",
+      "destinationEn": "Trabzon",
+      "destinationTr": "Trabzon",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Trabzon"
+      ],
+      "destinationsEn": [
+        "Trabzon"
+      ],
+      "destinationsAr": [
+        "Trabzon"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 386,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "4-5 star hotel accommodation with breakfast",
+        "Luxury wooden cabin stay in Ayder",
+        "Private Mercedes-Benz Vito with driver for all days",
+        "Airport transfers",
+        "Daily sightseeing tours"
+      ],
+      "amenitiesAr": [
+        "الإقامة في فنادق 4 و 5 نجوم مع الإفطار",
+        "الإقامة في كوخ ريفي فاخر في آيدر",
+        "سيارة مرسيدس فيتو خاصة مع سائق طوال أيام الرحلة",
+        "استقبال وتوديع المطار",
+        "الجولات السياحية اليومية"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-15T00:30:02.904Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج طرابزون والشمال التركي الفاخر - 10 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Trabzon & Northern Turkey Luxury Itinerary - 10 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "4-5 star hotel accommodation with breakfast",
+        "Luxury wooden cabin stay in Ayder",
+        "Private Mercedes-Benz Vito with driver for all days",
+        "Airport transfers",
+        "Daily sightseeing tours"
+      ],
+      "inclusionsAr": [
+        "الإقامة في فنادق 4 و 5 نجوم مع الإفطار",
+        "الإقامة في كوخ ريفي فاخر في آيدر",
+        "سيارة مرسيدس فيتو خاصة مع سائق طوال أيام الرحلة",
+        "استقبال وتوديع المطار",
+        "الجولات السياحية اليومية"
+      ],
+      "inclusionsEn": [
+        "4-5 star hotel accommodation with breakfast",
+        "Luxury wooden cabin stay in Ayder",
+        "Private Mercedes-Benz Vito with driver for all days",
+        "Airport transfers",
+        "Daily sightseeing tours"
+      ],
+      "inclusionsTr": [
+        "4-5 star hotel accommodation with breakfast",
+        "Luxury wooden cabin stay in Ayder",
+        "Private Mercedes-Benz Vito with driver for all days",
+        "Airport transfers",
+        "Daily sightseeing tours"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول إلى طرابزون واستلام السيارة والتوجه للفندق",
+          "description": "الاستقبال في مطار طرابزون عبر السائق الخاص بسيارة الفيتو، التوجه إلى الفندق لتسجيل الغرف والراحة من سفر السفر، ثم جولة مسائية قصيرة في ميدان طرابزون الحيوي."
+        },
+        {
+          "day": 2,
+          "title": "جولة دير سوميلا ومرتفعات زيجانا وهامشيكوي",
+          "description": "صباحاً الانطلاق لزيارة دير سوميلا التاريخي المنحوت في الصخر، ثم زيارة قرية هامشيكوي لتذوق المهلبية الشهيرة، والتوجه لمرتفعات زيجانا للاستتمتاع بالطبيعة الساحرة."
+        },
+        {
+          "day": 3,
+          "title": "جولة بحيرة أوزونجول الخلابة",
+          "description": "الانطلاق صباحاً نحو بحيرة أوزونجول الشهيرة بين الجبال الشاهقة، زيارة شلالات أوزونجول، والصعود إلى شرفات المراقبة المطلة على البحيرة كاملة."
+        },
+        {
+          "day": 4,
+          "title": "التوجه إلى آيدر والإقامة في الكوخ الريفي الساحر",
+          "description": "مغادرة فندق طرابزون والتوجه شرقاً نحو ريزه ومرتفعات آيدر، تسجيل الوصول في كوخ خشبي فاخر بين الطبيعة، والاسترخاء بجانب الأنهار والشلالات."
+        },
+        {
+          "day": 5,
+          "title": "جولة وديان ريزه ومرتفعات هاثيرلا",
+          "description": "استكشاف وادي فرتينا مع إمكانية تجربة التجديف (الرافتينغ) والزيبلاين، ثم الصعود بسيارة الفيتو إلى مرتفعات هاثيرلا لمشاهدة بحر السحب وقت الغروب."
+        },
+        {
+          "day": 6,
+          "title": "العودة إلى طرابزون وزيارة قصر أتاتورك ومجمع فوروم",
+          "description": "مغادرة الكوخ والعودة نحو مدينة طرابزون، زيارة قصر أتاتورك التاريخي وسط الحدائق، ثم وقت للتبضع في مجمع فوروم طرابزون."
+        },
+        {
+          "day": 7,
+          "title": "جولة مدينة أوردو وتلفريك بوستبي",
+          "description": "يوم كامل في مدينة أوردو الساحرة، ركوب التلفريك الشهير صعوداً إلى قمة بوستبي للاستمتاع بإطلالة بانورامية على البحر الأسود والمدينة."
+        },
+        {
+          "day": 8,
+          "title": "جولة مغارة تشال ومحيط طرابزون الطبيعي",
+          "description": "زيارة مغارة تشال (ثاني أطول مغارة في العالم) بممراتها المائية والكهفية الساحرة، ثم زيارة بحيرة سيرا جول وجلسات هادئة حول الطبيعة."
+        },
+        {
+          "day": 9,
+          "title": "يوم حر للتسوق واقتناء الهدايا التذكارية في طرابزون",
+          "description": "يوم حر للاسترخاء وتسوق الهدايا الشعبية والشاي التركي الفاخر والبهارات من السوق الطويل وسوق البازار التاريخي في طرابزون."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والعودة إلى أرض الوطن",
+          "description": "تناول الإفطار بالفندق، إتمام إجراءات الخروج، ثم الانتقال بسيارة الفيتو الخاصة إلى مطار طرابزون للعودة بالسلامة."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول إلى طرابزون واستلام السيارة والتوجه للفندق",
+          "description": "الاستقبال في مطار طرابزون عبر السائق الخاص بسيارة الفيتو، التوجه إلى الفندق لتسجيل الغرف والراحة من سفر السفر، ثم جولة مسائية قصيرة في ميدان طرابزون الحيوي."
+        },
+        {
+          "day": 2,
+          "title": "جولة دير سوميلا ومرتفعات زيجانا وهامشيكوي",
+          "description": "صباحاً الانطلاق لزيارة دير سوميلا التاريخي المنحوت في الصخر، ثم زيارة قرية هامشيكوي لتذوق المهلبية الشهيرة، والتوجه لمرتفعات زيجانا للاستتمتاع بالطبيعة الساحرة."
+        },
+        {
+          "day": 3,
+          "title": "جولة بحيرة أوزونجول الخلابة",
+          "description": "الانطلاق صباحاً نحو بحيرة أوزونجول الشهيرة بين الجبال الشاهقة، زيارة شلالات أوزونجول، والصعود إلى شرفات المراقبة المطلة على البحيرة كاملة."
+        },
+        {
+          "day": 4,
+          "title": "التوجه إلى آيدر والإقامة في الكوخ الريفي الساحر",
+          "description": "مغادرة فندق طرابزون والتوجه شرقاً نحو ريزه ومرتفعات آيدر، تسجيل الوصول في كوخ خشبي فاخر بين الطبيعة، والاسترخاء بجانب الأنهار والشلالات."
+        },
+        {
+          "day": 5,
+          "title": "جولة وديان ريزه ومرتفعات هاثيرلا",
+          "description": "استكشاف وادي فرتينا مع إمكانية تجربة التجديف (الرافتينغ) والزيبلاين، ثم الصعود بسيارة الفيتو إلى مرتفعات هاثيرلا لمشاهدة بحر السحب وقت الغروب."
+        },
+        {
+          "day": 6,
+          "title": "العودة إلى طرابزون وزيارة قصر أتاتورك ومجمع فوروم",
+          "description": "مغادرة الكوخ والعودة نحو مدينة طرابزون، زيارة قصر أتاتورك التاريخي وسط الحدائق، ثم وقت للتبضع في مجمع فوروم طرابزون."
+        },
+        {
+          "day": 7,
+          "title": "جولة مدينة أوردو وتلفريك بوستبي",
+          "description": "يوم كامل في مدينة أوردو الساحرة، ركوب التلفريك الشهير صعوداً إلى قمة بوستبي للاستمتاع بإطلالة بانورامية على البحر الأسود والمدينة."
+        },
+        {
+          "day": 8,
+          "title": "جولة مغارة تشال ومحيط طرابزون الطبيعي",
+          "description": "زيارة مغارة تشال (ثاني أطول مغارة في العالم) بممراتها المائية والكهفية الساحرة، ثم زيارة بحيرة سيرا جول وجلسات هادئة حول الطبيعة."
+        },
+        {
+          "day": 9,
+          "title": "يوم حر للتسوق واقتناء الهدايا التذكارية في طرابزون",
+          "description": "يوم حر للاسترخاء وتسوق الهدايا الشعبية والشاي التركي الفاخر والبهارات من السوق الطويل وسوق البازار التاريخي في طرابزون."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والعودة إلى أرض الوطن",
+          "description": "تناول الإفطار بالفندق، إتمام إجراءات الخروج، ثم الانتقال بسيارة الفيتو الخاصة إلى مطار طرابزون للعودة بالسلامة."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival in Trabzon & Hotel Check-in",
+          "description": "Arrival at Trabzon airport, private VIP transfer to the hotel, check-in, and a relaxing evening stroll around Trabzon Square."
+        },
+        {
+          "day": 2,
+          "title": "Sumela Monastery & Zigana Tour",
+          "description": "Morning tour to the historic Sumela Monastery, followed by Hamsiköy village and Zigana heights."
+        },
+        {
+          "day": 3,
+          "title": "Uzungöl Lake Excursion",
+          "description": "Trip to the famous Uzungöl Lake, visiting waterfalls and viewpoints."
+        },
+        {
+          "day": 4,
+          "title": "Transfer to Ayder & Mountain Cabin Stay",
+          "description": "Departing Trabzon to Ayder highlands, checking into a luxury wooden cabin."
+        },
+        {
+          "day": 5,
+          "title": "Rize Valleys & Huser Highlands Tour",
+          "description": "Exploring Fırtına Valley, rafting, and heading up to Huser Highlands for the sea of clouds."
+        },
+        {
+          "day": 6,
+          "title": "Return to Trabzon & City Sightseeing",
+          "description": "Returning to Trabzon, visiting Atatürk Pavilion and Forum Trabzon mall."
+        },
+        {
+          "day": 7,
+          "title": "Ordu City & Boztepe Cable Car Tour",
+          "description": "Full day trip to Ordu, riding Boztepe cable car for panoramic Black Sea views."
+        },
+        {
+          "day": 8,
+          "title": "Çal Cave & Natural Surroundings Tour",
+          "description": "Visiting Çal Cave (one of the world's longest caves) and Sera Göl lake."
+        },
+        {
+          "day": 9,
+          "title": "Free Day for Shopping & Souvenirs",
+          "description": "Free day for leisure, shopping for Turkish tea, spices, and local souvenirs."
+        },
+        {
+          "day": 10,
+          "title": "Departure Day",
+          "description": "Breakfast, hotel check-out, and private transfer to Trabzon airport for departure."
+        }
+      ],
+      "updatedAt": "2026-09-15T00:30:02.939Z"
+    },
+    {
+      "id": "aip_mu1xj1mj_8u057v",
+      "slug": "istanbul-heritage-leisure-itinerary-5-days",
+      "title": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+      "titleAr": "برنامج إسطنبول التراثي والترفيهي لمدة 5 أيام",
+      "titleEn": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+      "titleTr": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+      "destination": "Istanbul",
+      "destinationAr": "Istanbul",
+      "destinationEn": "Istanbul",
+      "destinationTr": "Istanbul",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul"
+      ],
+      "destinationsEn": [
+        "Istanbul"
+      ],
+      "destinationsAr": [
+        "Istanbul"
+      ],
+      "durationDays": 5,
+      "durationNights": 4,
+      "price": 435,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1600&q=80",
+          "alt": "Istanbul Heritage & Leisure Itinerary - 5 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "Hotel accommodation with breakfast",
+        "Private airport transfers",
+        "Custom guided tours"
+      ],
+      "amenitiesAr": [
+        "الإقامة في فندق مميز مع الإفطار",
+        "الاستقبال والمغادرة بترانسفير خاص",
+        "جولات سياحية مخصصة"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-15T00:24:22.267Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Istanbul Heritage & Leisure Itinerary - 5 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج إسطنبول التراثي والترفيهي لمدة 5 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Istanbul Heritage & Leisure Itinerary - 5 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Istanbul Heritage & Leisure Itinerary - 5 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "Hotel accommodation with breakfast",
+        "Private airport transfers",
+        "Custom guided tours"
+      ],
+      "inclusionsAr": [
+        "الإقامة في فندق مميز مع الإفطار",
+        "الاستقبال والمغادرة بترانسفير خاص",
+        "جولات سياحية مخصصة"
+      ],
+      "inclusionsEn": [
+        "Hotel accommodation with breakfast",
+        "Private airport transfers",
+        "Custom guided tours"
+      ],
+      "inclusionsTr": [
+        "Hotel accommodation with breakfast",
+        "Private airport transfers",
+        "Custom guided tours"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "اليوم الأول: الوصول والاستقبال الفاخر والاستقرار في الفندق",
+          "description": "الوصول إلى مطار إسطنبول الدولي حيث سيكون مندوب لوناليزا للسياحة والسفر في انتظاركم مع لوحة تحمل اسمكم. الانتقال بسيارة مرسيدس خاصة إلى الفندق لتسجيل الغرف وأخذ قسط من الراحة، يليه جولة مسائية قصيرة لاستكشاف محيط الفندق وتناول العشاء."
+        },
+        {
+          "day": 2,
+          "title": "اليوم الثاني: عبق التاريخ في السلطان أحمد",
+          "description": "صباحاً، زيارة جامع السلطان أحمد (الجامع الأزرق) وآيا صوفيا وميدان الهيبودروم العريق. بعد الغداء في مطعم تقليدي مطل على المآذن، نتجه لزيارة قصر طوب قابي ومتحف الآثار الإسلامية."
+        },
+        {
+          "day": 3,
+          "title": "اليوم الثالث: سحر مضيق البوسفور وجولة اليخوت الخاصة",
+          "description": "جولة صباحية بحرية في مضيق البوسفور على متن يخت خاص لمشاهدة القصور التاريخية والجسور المعلقة. ثم التوجه إلى الجانب الآسيوي لزيارة تل العرضيات (تشامليجا) وبرج القز قولي (برج الفتاة) وتناول القهوة في منطقة أسكودار."
+        },
+        {
+          "day": 4,
+          "title": "اليوم الرابع: التسوق التراثي والحديث في إسطنبول",
+          "description": "زيارة السوق المغلق (البازار الكبير) لشراء الهدايا التذكارية والمجوهرات والتوابل في السوق المصري التاريخي. بعد الظهر، الانتقال إلى شارع الاستقلال وميدان تقسيم للاستمتاع بالأجواء الحية وزيارة مراكز التسوق الحديثة."
+        },
+        {
+          "day": 5,
+          "title": "اليوم الخامس: الوداع والعودة الموفقة",
+          "description": "تناول الإفطار في الفندق وتسجيل الغرف، ثم الاستعداد للانتقال بسيارة خاصة إلى مطار إسطنبول الدولي للعودة إلى أرض الوطن بسلامة الله ذكريات لا تُنسى."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "اليوم الأول: الوصول والاستقبال الفاخر والاستقرار في الفندق",
+          "description": "الوصول إلى مطار إسطنبول الدولي حيث سيكون مندوب لوناليزا للسياحة والسفر في انتظاركم مع لوحة تحمل اسمكم. الانتقال بسيارة مرسيدس خاصة إلى الفندق لتسجيل الغرف وأخذ قسط من الراحة، يليه جولة مسائية قصيرة لاستكشاف محيط الفندق وتناول العشاء."
+        },
+        {
+          "day": 2,
+          "title": "اليوم الثاني: عبق التاريخ في السلطان أحمد",
+          "description": "صباحاً، زيارة جامع السلطان أحمد (الجامع الأزرق) وآيا صوفيا وميدان الهيبودروم العريق. بعد الغداء في مطعم تقليدي مطل على المآذن، نتجه لزيارة قصر طوب قابي ومتحف الآثار الإسلامية."
+        },
+        {
+          "day": 3,
+          "title": "اليوم الثالث: سحر مضيق البوسفور وجولة اليخوت الخاصة",
+          "description": "جولة صباحية بحرية في مضيق البوسفور على متن يخت خاص لمشاهدة القصور التاريخية والجسور المعلقة. ثم التوجه إلى الجانب الآسيوي لزيارة تل العرضيات (تشامليجا) وبرج القز قولي (برج الفتاة) وتناول القهوة في منطقة أسكودار."
+        },
+        {
+          "day": 4,
+          "title": "اليوم الرابع: التسوق التراثي والحديث في إسطنبول",
+          "description": "زيارة السوق المغلق (البازار الكبير) لشراء الهدايا التذكارية والمجوهرات والتوابل في السوق المصري التاريخي. بعد الظهر، الانتقال إلى شارع الاستقلال وميدان تقسيم للاستمتاع بالأجواء الحية وزيارة مراكز التسوق الحديثة."
+        },
+        {
+          "day": 5,
+          "title": "اليوم الخامس: الوداع والعودة الموفقة",
+          "description": "تناول الإفطار في الفندق وتسجيل الغرف، ثم الاستعداد للانتقال بسيارة خاصة إلى مطار إسطنبول الدولي للعودة إلى أرض الوطن بسلامة الله ذكريات لا تُنسى."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Day 1: Arrival, VIP Transfer and Hotel Check-in",
+          "description": "Arrival at Istanbul Airport, private transfer to the hotel, check-in, and a relaxing evening stroll around the neighborhood."
+        },
+        {
+          "day": 2,
+          "title": "Day 2: Historic Old City & Sultanahmet Tour",
+          "description": "Morning visit to Blue Mosque, Hagia Sophia, and Hippodrome. Afternoon at Topkapi Palace."
+        },
+        {
+          "day": 3,
+          "title": "Day 3: Bosphorus Cruise & Asian Side",
+          "description": "Morning private Bosphorus yacht cruise. Afternoon visit to Asian side, Çamlıca Hill, and Maiden's Tower view."
+        },
+        {
+          "day": 4,
+          "title": "Day 4: Grand Bazaar, Spice Market & Modern Shopping",
+          "description": "Visit Grand Bazaar and Spice Bazaar. Afternoon at Istiklal Street and Taksim Square."
+        },
+        {
+          "day": 5,
+          "title": "Day 5: Departure and Transfer to Airport",
+          "description": "Breakfast at hotel, check-out, and private transfer to Istanbul Airport for departure."
+        }
+      ],
+      "updatedAt": "2026-09-15T00:24:22.278Z"
+    },
+    {
+      "id": "aip_mu1se468_dnq1r8",
+      "slug": "luxury-istanbul-itinerary",
+      "title": "Luxury Istanbul Itinerary",
+      "titleAr": "خطة رحلة إسطنبول الفاخرة",
+      "titleEn": "Luxury Istanbul Itinerary",
+      "titleTr": "Luxury Istanbul Itinerary",
+      "destination": "Istanbul",
+      "destinationAr": "Istanbul",
+      "destinationEn": "Istanbul",
+      "destinationTr": "Istanbul",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul"
+      ],
+      "destinationsEn": [
+        "Istanbul"
+      ],
+      "destinationsAr": [
+        "Istanbul"
+      ],
+      "durationDays": 4,
+      "durationNights": 4,
+      "price": 435,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Luxury Istanbul Itinerary",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "Luxury hotel stay",
+        "Daily breakfast",
+        "Private transfers",
+        "Guided tours"
+      ],
+      "amenitiesAr": [
+        "إقامة فندقية فاخرة",
+        "إفطار يومي",
+        "ترانسفير خاص",
+        "جولات سياحية"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-14T22:00:34.209Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Luxury Istanbul Itinerary\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "خطة رحلة إسطنبول الفاخرة\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Luxury Istanbul Itinerary\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Luxury Istanbul Itinerary\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "Luxury hotel stay",
+        "Daily breakfast",
+        "Private transfers",
+        "Guided tours"
+      ],
+      "inclusionsAr": [
+        "إقامة فندقية فاخرة",
+        "إفطار يومي",
+        "ترانسفير خاص",
+        "جولات سياحية"
+      ],
+      "inclusionsEn": [
+        "Luxury hotel stay",
+        "Daily breakfast",
+        "Private transfers",
+        "Guided tours"
+      ],
+      "inclusionsTr": [
+        "Luxury hotel stay",
+        "Daily breakfast",
+        "Private transfers",
+        "Guided tours"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال الفاخر",
+          "description": "الوصول إلى مطار إسطنبول، الاستقبال من قبل مندوب لوناليزا والتوجه بسيارة مرسيدس الخاصة إلى الفندق لتسجيل الغرف واستراحة قصيرة."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية",
+          "description": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر طوب قابي، وتناول الغداء في مطعم عريق مطل على مضيق البوسفور."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور والجانب الآسيوي",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة برج العذراء، والتجول في حي كاديكوي وشارع بغداد الشهير."
+        },
+        {
+          "day": 4,
+          "title": "يولة التسوق الحديث والترفيه",
+          "description": "زيارة مركز زورلو سنتر للتسوق الفاخر، صعود برج غلطة للاستمتاع بإطلالة بانورامية على المدينة، وقضاء أمسية في تقاطع تقسيم."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال الفاخر",
+          "description": "الوصول إلى مطار إسطنبول، الاستقبال من قبل مندوب لوناليزا والتوجه بسيارة مرسيدس الخاصة إلى الفندق لتسجيل الغرف واستراحة قصيرة."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية",
+          "description": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر طوب قابي، وتناول الغداء في مطعم عريق مطل على مضيق البوسفور."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور والجانب الآسيوي",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة برج العذراء، والتجول في حي كاديكوي وشارع بغداد الشهير."
+        },
+        {
+          "day": 4,
+          "title": "يولة التسوق الحديث والترفيه",
+          "description": "زيارة مركز زورلو سنتر للتسوق الفاخر، صعود برج غلطة للاستمتاع بإطلالة بانورامية على المدينة، وقضاء أمسية في تقاطع تقسيم."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & VIP Transfer",
+          "description": "Arrive at Istanbul Airport, VIP welcome by Lonaliza representative, and private transfer to the hotel."
+        },
+        {
+          "day": 2,
+          "title": "Old City Heritage Tour",
+          "description": "Visit Sultanahmet district, Hagia Sophia, Topkapi Palace, and lunch overlooking the Bosphorus."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus Cruise & Asian Side",
+          "description": "Private Bosphorus cruise, Maiden's Tower view, and exploring Kadikoy and Baghdad Avenue."
+        },
+        {
+          "day": 4,
+          "title": "Shopping & Modern Districts",
+          "description": "Visit Zorlu Center, Galata Tower panoramic views, and Taksim evening stroll."
+        }
+      ],
+      "updatedAt": "2026-09-14T22:00:34.226Z"
+    },
+    {
+      "id": "aip_mu0aqt37_65cim5",
+      "slug": "antalya-luxury-family-escape-10-days",
+      "title": "Antalya Luxury Family Escape — 10 Days",
+      "titleAr": "رحلة الفخامة والاستجمام العائلية في أنطاليا — 10 أيام",
+      "titleEn": "Antalya Luxury Family Escape — 10 Days",
+      "titleTr": "Antalya Luxury Family Escape — 10 Days",
+      "destination": "Antalya",
+      "destinationAr": "Antalya",
+      "destinationEn": "Antalya",
+      "destinationTr": "Antalya",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Antalya"
+      ],
+      "destinationsEn": [
+        "Antalya"
+      ],
+      "destinationsAr": [
+        "Antalya"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 1557,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Antalya Luxury Family Escape — 10 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "5-star luxury hotel stay",
+        "Daily breakfast and all-inclusive features",
+        "Private airport transfers",
+        "Land of Legends access"
+      ],
+      "amenitiesAr": [
+        "الإقامة في فندق 5 نجوم فاخر",
+        "الإفطار اليومي والمرافق الشاملة",
+        "الترانسفير الخاص من وإلى المطار",
+        "دخول لاند أوف ليجندز"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-13T20:58:47.108Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Antalya Luxury Family Escape — 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "رحلة الفخامة والاستجمام العائلية في أنطاليا — 10 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Antalya Luxury Family Escape — 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Antalya Luxury Family Escape — 10 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "5-star luxury hotel stay",
+        "Daily breakfast and all-inclusive features",
+        "Private airport transfers",
+        "Land of Legends access"
+      ],
+      "inclusionsAr": [
+        "الإقامة في فندق 5 نجوم فاخر",
+        "الإفطار اليومي والمرافق الشاملة",
+        "الترانسفير الخاص من وإلى المطار",
+        "دخول لاند أوف ليجندز"
+      ],
+      "inclusionsEn": [
+        "5-star luxury hotel stay",
+        "Daily breakfast and all-inclusive features",
+        "Private airport transfers",
+        "Land of Legends access"
+      ],
+      "inclusionsTr": [
+        "5-star luxury hotel stay",
+        "Daily breakfast and all-inclusive features",
+        "Private airport transfers",
+        "Land of Legends access"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال والاستقرار في الفندق",
+          "description": "الوصول إلى مطار أنطاليا والاستقبال بالسيارة الخاصة والتوجه إلى فندق ريكسوس بريميوم بيليك."
+        },
+        {
+          "day": 2,
+          "title": "مغامرات لاند أوف ليجندز الترفيهية",
+          "description": "قضاء اليوم كاملاً في المدينة الترفيهية المائية والاستمتاع بالعروض المسائية."
+        },
+        {
+          "day": 3,
+          "title": "شلالات دودان وبلدة كاليجي التاريخية",
+          "description": "زيارة الشلالات صباحاً وجولة مسائية في البلدة التاريخية والميناء."
+        },
+        {
+          "day": 4,
+          "title": "رحلة بحرية في خليج كيمر",
+          "description": "رحلة بحرية خاصة في مياه كيمر الصافية والسباحة في الخلجان الخلابة."
+        },
+        {
+          "day": 5,
+          "title": "يوم استجمام وسبا شاطئي",
+          "description": "الاستمتاع بالشاطئ الخاص وخدمات السبا الفاخرة في المنتجع."
+        },
+        {
+          "day": 6,
+          "title": "رحلة جبلية وإطلالات بانورامية",
+          "description": "الاستمتاع بالمناظر الطبيعية والجلوس في المقاهي الجبلية الهادئة."
+        },
+        {
+          "day": 7,
+          "title": "سحر الوادي الأخضر",
+          "description": "رحلة نهارية إلى الوادي الأخضر والقيام بجولة بالقارب وسط الغابات."
+        },
+        {
+          "day": 8,
+          "title": "التسوق واستكشاف أسواق المدينة",
+          "description": "زيارة أرقى مراكز التسوق في أنطاليا لشراء الهدايا التذكارية."
+        },
+        {
+          "day": 9,
+          "title": "يوم حر واحتفال ختامي",
+          "description": "وقت حر للتسوق الشخصي أو الراحة مع عشاء ختامي فاخر."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والعودة إلى الوطن",
+          "description": "تسجيل المغادرة والتوجه إلى مطار أنطاليا للعودة."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال والاستقرار في الفندق",
+          "description": "الوصول إلى مطار أنطاليا والاستقبال بالسيارة الخاصة والتوجه إلى فندق ريكسوس بريميوم بيليك."
+        },
+        {
+          "day": 2,
+          "title": "مغامرات لاند أوف ليجندز الترفيهية",
+          "description": "قضاء اليوم كاملاً في المدينة الترفيهية المائية والاستمتاع بالعروض المسائية."
+        },
+        {
+          "day": 3,
+          "title": "شلالات دودان وبلدة كاليجي التاريخية",
+          "description": "زيارة الشلالات صباحاً وجولة مسائية في البلدة التاريخية والميناء."
+        },
+        {
+          "day": 4,
+          "title": "رحلة بحرية في خليج كيمر",
+          "description": "رحلة بحرية خاصة في مياه كيمر الصافية والسباحة في الخلجان الخلابة."
+        },
+        {
+          "day": 5,
+          "title": "يوم استجمام وسبا شاطئي",
+          "description": "الاستمتاع بالشاطئ الخاص وخدمات السبا الفاخرة في المنتجع."
+        },
+        {
+          "day": 6,
+          "title": "رحلة جبلية وإطلالات بانورامية",
+          "description": "الاستمتاع بالمناظر الطبيعية والجلوس في المقاهي الجبلية الهادئة."
+        },
+        {
+          "day": 7,
+          "title": "سحر الوادي الأخضر",
+          "description": "رحلة نهارية إلى الوادي الأخضر والقيام بجولة بالقارب وسط الغابات."
+        },
+        {
+          "day": 8,
+          "title": "التسوق واستكشاف أسواق المدينة",
+          "description": "زيارة أرقى مراكز التسوق في أنطاليا لشراء الهدايا التذكارية."
+        },
+        {
+          "day": 9,
+          "title": "يوم حر واحتفال ختامي",
+          "description": "وقت حر للتسوق الشخصي أو الراحة مع عشاء ختامي فاخر."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والعودة إلى الوطن",
+          "description": "تسجيل المغادرة والتوجه إلى مطار أنطاليا للعودة."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & Hotel Check-in",
+          "description": "Arrival at Antalya airport, private transfer to Rixos Premium Belek hotel."
+        },
+        {
+          "day": 2,
+          "title": "Land of Legends Adventure",
+          "description": "Full day at the theme park and enjoying evening shows."
+        },
+        {
+          "day": 3,
+          "title": "Düden Waterfalls & Old City Kaleiçi",
+          "description": "Morning waterfall visit and evening walk in Kaleiçi old town."
+        },
+        {
+          "day": 4,
+          "title": "Kemer Boat Trip",
+          "description": "Private boat cruise in Kemer crystal clear waters."
+        },
+        {
+          "day": 5,
+          "title": "Beach & Spa Relaxation",
+          "description": "Enjoying the private beach and luxury spa facilities."
+        },
+        {
+          "day": 6,
+          "title": "Mountain View Tour",
+          "description": "Enjoying nature views and quiet mountain cafes."
+        },
+        {
+          "day": 7,
+          "title": "Green Canyon Tour",
+          "description": "Day trip to Green Canyon with boat tour."
+        },
+        {
+          "day": 8,
+          "title": "Shopping & City Exploration",
+          "description": "Visit top shopping malls in Antalya for souvenirs."
+        },
+        {
+          "day": 9,
+          "title": "Free Day & Farewell Dinner",
+          "description": "Free time for personal leisure with a farewell dinner."
+        },
+        {
+          "day": 10,
+          "title": "Departure",
+          "description": "Check-out and transfer to Antalya airport for departure."
+        }
+      ],
+      "updatedAt": "2026-09-14T21:06:54.470Z"
+    },
+    {
+      "id": "aip_mtyjl7z9_g2an3h",
+      "slug": "istanbul-tour-program-5-days",
+      "title": "Istanbul Tour Program - 5 Days",
+      "titleAr": "برنامج إسطنبول السياحي - 5 أيام",
+      "titleEn": "Istanbul Tour Program - 5 Days",
+      "titleTr": "Istanbul Tour Program - 5 Days",
+      "destination": "Istanbul",
+      "destinationAr": "Istanbul",
+      "destinationEn": "Istanbul",
+      "destinationTr": "Istanbul",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul"
+      ],
+      "destinationsEn": [
+        "Istanbul"
+      ],
+      "destinationsAr": [
+        "Istanbul"
+      ],
+      "durationDays": 5,
+      "durationNights": 4,
+      "price": 2188,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Istanbul Tour Program - 5 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "Hotel Accommodation",
+        "Airport Transfers",
+        "Daily Breakfast"
+      ],
+      "amenitiesAr": [
+        "الإقامة الفندقية",
+        "الاستقبال والتوديع في المطار",
+        "الإفطار اليومي"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-12T15:30:50.662Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Istanbul Tour Program - 5 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج إسطنبول السياحي - 5 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Istanbul Tour Program - 5 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Istanbul Tour Program - 5 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "Hotel Accommodation",
+        "Airport Transfers",
+        "Daily Breakfast"
+      ],
+      "inclusionsAr": [
+        "الإقامة الفندقية",
+        "الاستقبال والتوديع في المطار",
+        "الإفطار اليومي"
+      ],
+      "inclusionsEn": [
+        "Hotel Accommodation",
+        "Airport Transfers",
+        "Daily Breakfast"
+      ],
+      "inclusionsTr": [
+        "Hotel Accommodation",
+        "Airport Transfers",
+        "Daily Breakfast"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في المطار",
+          "description": "الوصول إلى مطار إسطنبول، الاستقبال من قبل ممثل لوناليزا والانتقال إلى الفندق بسيارة خاصة."
+        },
+        {
+          "day": 2,
+          "title": "جولة معالم إسطنبول التاريخية",
+          "description": "زيارة آيا صوفيا، المسجد الأزرق، وقصر طوب قابي، ثم البازار الكبير."
+        },
+        {
+          "day": 3,
+          "title": "سحر البوسفور والجانب الآسيوي",
+          "description": "رحلة بحرية في مضيق البوسفور وزيارة تلة العرائس وأوسكودار."
+        },
+        {
+          "day": 4,
+          "title": "جواهر إسطنبول الحديثة والتسوق",
+          "description": "زيارة ميدان تقسيم وشارع الاستقلال وغالاتا بورت."
+        },
+        {
+          "day": 5,
+          "title": "المغادرة والعودة إلى الرياض",
+          "description": "تسجيل الخروج من الفندق والتوجه إلى المطار للعودة."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في المطار",
+          "description": "الوصول إلى مطار إسطنبول، الاستقبال من قبل ممثل لوناليزا والانتقال إلى الفندق بسيارة خاصة."
+        },
+        {
+          "day": 2,
+          "title": "جولة معالم إسطنبول التاريخية",
+          "description": "زيارة آيا صوفيا، المسجد الأزرق، وقصر طوب قابي، ثم البازار الكبير."
+        },
+        {
+          "day": 3,
+          "title": "سحر البوسفور والجانب الآسيوي",
+          "description": "رحلة بحرية في مضيق البوسفور وزيارة تلة العرائس وأوسكودار."
+        },
+        {
+          "day": 4,
+          "title": "جواهر إسطنبول الحديثة والتسوق",
+          "description": "زيارة ميدان تقسيم وشارع الاستقلال وغالاتا بورت."
+        },
+        {
+          "day": 5,
+          "title": "المغادرة والعودة إلى الرياض",
+          "description": "تسجيل الخروج من الفندق والتوجه إلى المطار للعودة."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & Airport Transfer",
+          "description": "Arrive at Istanbul Airport, meet and greet by Lonaliza representative, transfer to hotel."
+        },
+        {
+          "day": 2,
+          "title": "Old City Heritage Tour",
+          "description": "Visit Hagia Sophia, Blue Mosque, Topkapi Palace, and Grand Bazaar."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus & Asian Side",
+          "description": "Bosphorus cruise and visit to Çamlıca Hill and Üsküdar."
+        },
+        {
+          "day": 4,
+          "title": "Modern Istanbul & Shopping",
+          "description": "Visit Taksim Square, Istiklal Street, and Galataport."
+        },
+        {
+          "day": 5,
+          "title": "Departure to Riyadh",
+          "description": "Check out from hotel and transfer to airport for departure."
+        }
+      ],
+      "updatedAt": "2026-09-14T21:06:54.475Z"
+    },
+    {
+      "id": "LON-2027-L1QOI",
+      "slug": "luxury-turkey-tour-6-days-luxury-mtydf63z",
+      "title": "برنامج الكتالوج الآن السياحي الفاخر المتكامل (6 أيام)",
+      "titleAr": "برنامج الكتالوج الآن السياحي الفاخر المتكامل (6 أيام)",
+      "titleEn": "Luxury Integrated Tour: الكتالوج الآن (6 Days)",
+      "titleTr": "Lüks Entegre الكتالوج الآن Tatili (6 Gün)",
+      "destination": "الكتالوج الآن",
+      "destinationAr": "الكتالوج الآن",
+      "destinationEn": "Luxury Turkey Tour",
+      "destinationTr": "Lüks Türkiye Turu",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "الكتالوج الآن",
+        "إسطنبول"
+      ],
+      "destinationsAr": [
+        "الكتالوج الآن",
+        "إسطنبول"
+      ],
+      "destinationsEn": [
+        "الكتالوج الآن",
+        "Istanbul"
+      ],
+      "durationDays": 6,
+      "durationNights": 5,
+      "price": 1750,
+      "currency": "USD",
+      "rating": 4.96,
+      "isFeatured": true,
+      "isPublished": true,
+      "descriptionAr": "عطلة سياحية فاخرة متكاملة مدتها 6 أيام / 5 ليالٍ في الكتالوج الآن، تشمل إقامة في أرقى الفنادق والمنتجعات 5 نجوم، مع سيارة مرسيدس فيتو VIP خاصة وسائق يتحدث العربية طوال الرحلة، واستقبال وتوديع خاص في المطار.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+          "alt": "الكتالوج الآن",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80",
+          "alt": "جولات تركيا الفاخرة",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "amenities": [
+        "سيارة مرسيدس فيتو VIP خاصة",
+        "إقامة فندقية 5 نجوم",
+        "استقبال وتوديع خاص في المطار",
+        "سائق ومرشد ناطق بالعربية",
+        "إنترنت ومشروبات مجانية بالسيارة"
+      ],
+      "amenitiesAr": [
+        "سيارة مرسيدس فيتو VIP خاصة",
+        "إقامة فندقية 5 نجوم",
+        "استقبال وتوديع خاص في المطار",
+        "سائق ومرشد ناطق بالعربية",
+        "إنترنت ومشروبات مجانية بالسيارة"
+      ],
+      "inclusionsAr": [
+        "سيارة مرسيدس فيتو VIP مع سائق شاملة الوقود والمواقف",
+        "إقامة فندقية فاخرة 5 نجوم شاملة الإفطار العثماني",
+        "جولات سياحية يومية متكاملة للمعالم الرئيسية",
+        "خدمة كونسيرج 24/7 طوال الرحلة"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "اليوم 1: الاستقبال والاستقرار",
+          "description": "استقبال VIP في المطار بسيارة مرسيدس فيتو، التوجه إلى الفندق واستلام الغرف والراحة من عناء السفر."
+        },
+        {
+          "day": 2,
+          "title": "اليوم 2: جولة استكشافية في الكتالوج الآن",
+          "description": "انطلاق الجولة الصباحية الخاصة لزيارة أبرز المعالم الطبيعية والتاريخية مع وقت حر للتسوق والغداء."
+        },
+        {
+          "day": 3,
+          "title": "اليوم 3: الطبيعة والأنشطة الترفيهية",
+          "description": "جولة مخصصة للمطلات البانورامية والأنشطة العائلية مع التقاط الصور التذكارية وتناول الغداء الريفي."
+        },
+        {
+          "day": 4,
+          "title": "اليوم 4: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        },
+        {
+          "day": 5,
+          "title": "اليوم 5: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        },
+        {
+          "day": 6,
+          "title": "اليوم 6: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "اليوم 1: الاستقبال والاستقرار",
+          "description": "استقبال VIP في المطار بسيارة مرسيدس فيتو، التوجه إلى الفندق واستلام الغرف والراحة من عناء السفر."
+        },
+        {
+          "day": 2,
+          "title": "اليوم 2: جولة استكشافية في الكتالوج الآن",
+          "description": "انطلاق الجولة الصباحية الخاصة لزيارة أبرز المعالم الطبيعية والتاريخية مع وقت حر للتسوق والغداء."
+        },
+        {
+          "day": 3,
+          "title": "اليوم 3: الطبيعة والأنشطة الترفيهية",
+          "description": "جولة مخصصة للمطلات البانورامية والأنشطة العائلية مع التقاط الصور التذكارية وتناول الغداء الريفي."
+        },
+        {
+          "day": 4,
+          "title": "اليوم 4: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        },
+        {
+          "day": 5,
+          "title": "اليوم 5: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        },
+        {
+          "day": 6,
+          "title": "اليوم 6: التسوق والاستجمام والوداع",
+          "description": "جولة تسوق في أرقى المجمعات والأسواق الشعبية، ثم التوجه للمطار لرحلة العودة بسلامة الله."
+        }
+      ],
+      "createdAt": "2026-09-12T12:38:10.613Z",
+      "updatedAt": "2026-09-15T05:15:19.025Z"
+    },
+    {
+      "id": "aip_mtsvjaoe_1s9qkb",
+      "slug": "quick-riyadh-day-program",
+      "title": "Quick Riyadh Day Program",
+      "titleAr": "برنامج الرياض السريع — يوم واحد",
+      "titleEn": "Quick Riyadh Day Program",
+      "titleTr": "Quick Riyadh Day Program",
+      "destination": "Riyadh",
+      "destinationAr": "Riyadh",
+      "destinationEn": "Riyadh",
+      "destinationTr": "Riyadh",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Riyadh"
+      ],
+      "destinationsEn": [
+        "Riyadh"
+      ],
+      "destinationsAr": [
+        "Riyadh"
+      ],
+      "durationDays": 1,
+      "durationNights": 1,
+      "price": 48,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Quick Riyadh Day Program",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "Hotel Stay",
+        "Private Transfer",
+        "Breakfast"
+      ],
+      "amenitiesAr": [
+        "إقامة فندقية",
+        "ترانسفير خاص",
+        "إفطار"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-08T16:18:39.182Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Quick Riyadh Day Program\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج الرياض السريع — يوم واحد\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Quick Riyadh Day Program\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Quick Riyadh Day Program\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "Hotel Stay",
+        "Private Transfer",
+        "Breakfast"
+      ],
+      "inclusionsAr": [
+        "إقامة فندقية",
+        "ترانسفير خاص",
+        "إفطار"
+      ],
+      "inclusionsEn": [
+        "Hotel Stay",
+        "Private Transfer",
+        "Breakfast"
+      ],
+      "inclusionsTr": [
+        "Hotel Stay",
+        "Private Transfer",
+        "Breakfast"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول وجولة الاستكشاف",
+          "description": "الوصول إلى مطار الملك خالد الدولي (RUH) برحلة طيران VF213، استقبال من قبل السائق الخاص والتوجه للفندق، ثم قضاء فترة ما بعد الظهر في استكشاف المعالم الحضرية الحديثة للرياض."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول وجولة الاستكشاف",
+          "description": "الوصول إلى مطار الملك خالد الدولي (RUH) برحلة طيران VF213، استقبال من قبل السائق الخاص والتوجه للفندق، ثم قضاء فترة ما بعد الظهر في استكشاف المعالم الحضرية الحديثة للرياض."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & City Exploration",
+          "description": "Arrival at RUH via flight VF213, private transfer to the hotel, and afternoon city exploration."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.036Z"
+    },
+    {
+      "id": "aip_mtsviq1f_qe0bxy",
+      "slug": "exclusive-riyadh-day-program",
+      "title": "Exclusive Riyadh Day Program",
+      "titleAr": "برنامج الرياض اليومي الاستثنائي — ليوم واحد",
+      "titleEn": "Exclusive Riyadh Day Program",
+      "titleTr": "Exclusive Riyadh Day Program",
+      "destination": "Riyadh",
+      "destinationAr": "Riyadh",
+      "destinationEn": "Riyadh",
+      "destinationTr": "Riyadh",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Riyadh"
+      ],
+      "destinationsEn": [
+        "Riyadh"
+      ],
+      "destinationsAr": [
+        "Riyadh"
+      ],
+      "durationDays": 1,
+      "durationNights": 1,
+      "price": 48,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+          "alt": "Exclusive Riyadh Day Program",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "Luxury hotel stay",
+        "Private airport transfer",
+        "Private cultural tour"
+      ],
+      "amenitiesAr": [
+        "إقامة فندقية فاخرة",
+        "ترانسفير خاص من وإلى المطار",
+        "جولة ثقافية خاصة"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-08T16:18:12.439Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Exclusive Riyadh Day Program\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج الرياض اليومي الاستثنائي — ليوم واحد\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Exclusive Riyadh Day Program\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Exclusive Riyadh Day Program\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "Luxury hotel stay",
+        "Private airport transfer",
+        "Private cultural tour"
+      ],
+      "inclusionsAr": [
+        "إقامة فندقية فاخرة",
+        "ترانسفير خاص من وإلى المطار",
+        "جولة ثقافية خاصة"
+      ],
+      "inclusionsEn": [
+        "Luxury hotel stay",
+        "Private airport transfer",
+        "Private cultural tour"
+      ],
+      "inclusionsTr": [
+        "Luxury hotel stay",
+        "Private airport transfer",
+        "Private cultural tour"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول، الجولة الثقافية والترفيهية",
+          "description": "الاستقبال الخاص من مطار الملك خالد (RUH) والتجهيز لدخول فندق نارسيس. تبدأ الجولة بزيارة قصر المصمك التاريخي ومنطقة الدرعية التاريخية (اتريا)، تليها استراحة مسائية في أحد أفخم مطاعم بوليفارد الرياض."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول، الجولة الثقافية والترفيهية",
+          "description": "الاستقبال الخاص من مطار الملك خالد (RUH) والتجهيز لدخول فندق نارسيس. تبدأ الجولة بزيارة قصر المصمك التاريخي ومنطقة الدرعية التاريخية (اتريا)، تليها استراحة مسائية في أحد أفخم مطاعم بوليفارد الرياض."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival, Cultural & Leisure Tour",
+          "description": "Private pickup from RUH airport and check-in at Narcissus Hotel. Visit Al-Masmak fortress and historic Diriyah, followed by an evening dinner at Boulevard Riyadh."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.067Z"
+    },
+    {
+      "id": "aip_mtq73igs_x2qykn",
+      "slug": "istanbul-10-day-custom-itinerary-for-5-guests",
+      "title": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+      "titleAr": "برنامج إسطنبول الساحرة — 10 أيام (5 أشخاص)",
+      "titleEn": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+      "titleTr": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+      "destination": "Istanbul",
+      "destinationAr": "Istanbul",
+      "destinationEn": "Istanbul",
+      "destinationTr": "Istanbul",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul"
+      ],
+      "destinationsEn": [
+        "Istanbul"
+      ],
+      "destinationsAr": [
+        "Istanbul"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 4893,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+          "alt": "Istanbul 10-Day Custom Itinerary for 5 Guests",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "9 nights 5-star hotel with breakfast",
+        "Private airport transfers (Mercedes Vito)",
+        "Private daily tours for 5 guests",
+        "Dedicated VIP vehicle for day trips"
+      ],
+      "amenitiesAr": [
+        "الإقامة لمدة 9 ليالٍ في فندق 5 نجوم مع الإفطار",
+        "الترانسفير الخاص من وإلى المطار (مرسيدس فيتو)",
+        "جولات سياحية خاصة لـ 5 أشخاص",
+        "مرسيدس سبرينتر / فيتو للجولات اليومية"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-06T19:18:59.644Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Istanbul 10-Day Custom Itinerary for 5 Guests\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج إسطنبول الساحرة — 10 أيام (5 أشخاص)\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Istanbul 10-Day Custom Itinerary for 5 Guests\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Istanbul 10-Day Custom Itinerary for 5 Guests\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "9 nights 5-star hotel with breakfast",
+        "Private airport transfers (Mercedes Vito)",
+        "Private daily tours for 5 guests",
+        "Dedicated VIP vehicle for day trips"
+      ],
+      "inclusionsAr": [
+        "الإقامة لمدة 9 ليالٍ في فندق 5 نجوم مع الإفطار",
+        "الترانسفير الخاص من وإلى المطار (مرسيدس فيتو)",
+        "جولات سياحية خاصة لـ 5 أشخاص",
+        "مرسيدس سبرينتر / فيتو للجولات اليومية"
+      ],
+      "inclusionsEn": [
+        "9 nights 5-star hotel with breakfast",
+        "Private airport transfers (Mercedes Vito)",
+        "Private daily tours for 5 guests",
+        "Dedicated VIP vehicle for day trips"
+      ],
+      "inclusionsTr": [
+        "9 nights 5-star hotel with breakfast",
+        "Private airport transfers (Mercedes Vito)",
+        "Private daily tours for 5 guests",
+        "Dedicated VIP vehicle for day trips"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في المطار والتسكين بالفندق",
+          "description": "استقبالكم من مطار إسطنبول عبر سيارة مرسيدس فيتو الخاصة بنا، التوجه إلى الفندق وتسجيل الغرف، ثم أخذ جولة خفيفة بالقرب من ميدان تقسيم أو أورتاكöy."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية (السلطان أحمد)",
+          "description": "زيارة جامع آيا صوفيا، المسجد الأزرق، قصر توبكابي، وميدان الهيبودروم مع مرشد سياحي خاص."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور وجولة التلفريك وأورتاكوي",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس (تشامليجا)، وجلسة مسائية في أورتاكوي للاستمتاع بالبطاطس المشوية والإطلالة."
+        },
+        {
+          "day": 4,
+          "title": "رحلة يوم كامل إلى مدينة بورصة الخضراء",
+          "description": "التوجه مبكراً لركوب العبارة أو القيادة نحو بورصة، صعود جبل أولوداغ بالتلفريك، زيارة الشجرة التاريخية والجامع الكبير والسوق التاريخي."
+        },
+        {
+          "day": 5,
+          "title": "يوم التسوق والترفيه في زورلو سنتر ووادي إسطنبول",
+          "description": "زيارة أحدث المراكز التجارية في إسطنبول (زورلو سنتر أو وادي إسطنبول)، مع وقت للاستمتاع بالمطاعم الفاخرة والمقاهي."
+        },
+        {
+          "day": 6,
+          "title": "رحلة سبانجا والمعشوقية الطبيعية",
+          "description": "الاستمتاع ببحيرة سبانجا الساحرة، زيارة شلالات المعشوقية، ركوب الدراجات الرباعية أو زيارة حديقة الحيوانات، والغداء على ضفاف النهر."
+        },
+        {
+          "day": 7,
+          "title": "جزر الأميرات الهادئة (بيوك أدا)",
+          "description": "ركوب العبارة إلى جزر الأميرات، استئجار الدراجات الكهربائية أو العربات الكهربائية لجولة في الطبيعة الخلابة بعيداً عن صخب المدينة."
+        },
+        {
+          "day": 8,
+          "title": "قصر دولما باهçe وتلة أولوس بارك",
+          "description": "زيارة قصر سلاطين العثمانيين الفاخر (دولما باهçe) على ضفاف البوسفور، ثم الاسترخاء في أولوس بارك مع إطلالة بانورامية خلابة."
+        },
+        {
+          "day": 9,
+          "title": "السوق المصري (البازار الكبير) ووقت حُر للترفيه",
+          "description": "جولة في البازار الكبير والسوق المصري لشراء التوابل والهدايا التذكارية، تليها سهرة عشاء في مطعم مطل على البوسفور."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والتوجه إلى المطار",
+          "description": "تسجيل خروج من الفندق والتوجه بسيارة الترانسفير الخاصة إلى مطار إسطنبول للعودة إلى الوطن بسلامة الله."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في المطار والتسكين بالفندق",
+          "description": "استقبالكم من مطار إسطنبول عبر سيارة مرسيدس فيتو الخاصة بنا، التوجه إلى الفندق وتسجيل الغرف، ثم أخذ جولة خفيفة بالقرب من ميدان تقسيم أو أورتاكöy."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية (السلطان أحمد)",
+          "description": "زيارة جامع آيا صوفيا، المسجد الأزرق، قصر توبكابي، وميدان الهيبودروم مع مرشد سياحي خاص."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور وجولة التلفريك وأورتاكوي",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس (تشامليجا)، وجلسة مسائية في أورتاكوي للاستمتاع بالبطاطس المشوية والإطلالة."
+        },
+        {
+          "day": 4,
+          "title": "رحلة يوم كامل إلى مدينة بورصة الخضراء",
+          "description": "التوجه مبكراً لركوب العبارة أو القيادة نحو بورصة، صعود جبل أولوداغ بالتلفريك، زيارة الشجرة التاريخية والجامع الكبير والسوق التاريخي."
+        },
+        {
+          "day": 5,
+          "title": "يوم التسوق والترفيه في زورلو سنتر ووادي إسطنبول",
+          "description": "زيارة أحدث المراكز التجارية في إسطنبول (زورلو سنتر أو وادي إسطنبول)، مع وقت للاستمتاع بالمطاعم الفاخرة والمقاهي."
+        },
+        {
+          "day": 6,
+          "title": "رحلة سبانجا والمعشوقية الطبيعية",
+          "description": "الاستمتاع ببحيرة سبانجا الساحرة، زيارة شلالات المعشوقية، ركوب الدراجات الرباعية أو زيارة حديقة الحيوانات، والغداء على ضفاف النهر."
+        },
+        {
+          "day": 7,
+          "title": "جزر الأميرات الهادئة (بيوك أدا)",
+          "description": "ركوب العبارة إلى جزر الأميرات، استئجار الدراجات الكهربائية أو العربات الكهربائية لجولة في الطبيعة الخلابة بعيداً عن صخب المدينة."
+        },
+        {
+          "day": 8,
+          "title": "قصر دولما باهçe وتلة أولوس بارك",
+          "description": "زيارة قصر سلاطين العثمانيين الفاخر (دولما باهçe) على ضفاف البوسفور، ثم الاسترخاء في أولوس بارك مع إطلالة بانورامية خلابة."
+        },
+        {
+          "day": 9,
+          "title": "السوق المصري (البازار الكبير) ووقت حُر للترفيه",
+          "description": "جولة في البازار الكبير والسوق المصري لشراء التوابل والهدايا التذكارية، تليها سهرة عشاء في مطعم مطل على البوسفور."
+        },
+        {
+          "day": 10,
+          "title": "المغادرة والتوجه إلى المطار",
+          "description": "تسجيل خروج من الفندق والتوجه بسيارة الترانسفير الخاصة إلى مطار إسطنبول للعودة إلى الوطن بسلامة الله."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & Hotel Check-in",
+          "description": "Airport pick-up with private Mercedes Vito, hotel check-in, and relaxing evening around Taksim or Ortaköy."
+        },
+        {
+          "day": 2,
+          "title": "Old City Istanbul Tour",
+          "description": "Visit Hagia Sophia, Blue Mosque, Topkapi Palace, and Hippodrome with a private guide."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus Cruise & Ortaköy",
+          "description": "Private Bosphorus boat cruise, Camlica Hill panoramic view, and evening in Ortaköy."
+        },
+        {
+          "day": 4,
+          "title": "Bursa Full Day Trip",
+          "description": "Day trip to Bursa, Uludağ mountain cable car, Historic Tree, and Silk Bazaar."
+        },
+        {
+          "day": 5,
+          "title": "Shopping & Leisure Day",
+          "description": "Shopping at upscale malls like Zorlu Center and Vadistanbul with fine dining options."
+        },
+        {
+          "day": 6,
+          "title": "Sapanca & Masukiye Nature Tour",
+          "description": "Visit Lake Sapanca, Masukiye waterfalls, optional ATV safari, and riverside lunch."
+        },
+        {
+          "day": 7,
+          "title": "Princes' Islands (Büyükada)",
+          "description": "Ferry ride to Büyükada, island tour by electric vehicles, and peaceful nature views."
+        },
+        {
+          "day": 8,
+          "title": "Dolmabahçe Palace & Ulus Park",
+          "description": "Visit opulent Dolmabahçe Palace and enjoy panoramic views at Ulus Park."
+        },
+        {
+          "day": 9,
+          "title": "Grand Bazaar & Free Time",
+          "description": "Explore Grand Bazaar and Spice Market for souvenirs, followed by a Bosphorus dinner."
+        },
+        {
+          "day": 10,
+          "title": "Departure Day",
+          "description": "Hotel check-out and private transfer to Istanbul airport for flight back home."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.079Z"
+    },
+    {
+      "id": "aip_mtnj73po_beox6w",
+      "slug": "comprehensive-turkey-experience-istanbul-sapanca-bursa-yalov",
+      "title": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+      "titleAr": "البرنامج الشامل: إسطنبول، صبنجة، بورصة ويالوفا — 10 أيام",
+      "titleEn": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+      "titleTr": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+      "destination": "Istanbul, Sapanca & Bursa",
+      "destinationAr": "Istanbul, Sapanca & Bursa",
+      "destinationEn": "Istanbul, Sapanca & Bursa",
+      "destinationTr": "Istanbul, Sapanca & Bursa",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul, Sapanca & Bursa"
+      ],
+      "destinationsEn": [
+        "Istanbul, Sapanca & Bursa"
+      ],
+      "destinationsAr": [
+        "Istanbul, Sapanca & Bursa"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 4893,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80",
+          "alt": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "5-star hotel in Istanbul + luxury wooden chalets in Sapanca & Bursa",
+        "Daily breakfast",
+        "Private airport transfers by Mercedes",
+        "VIP private daily tours (Sapanca, Masukiye, Bursa & Yalova)",
+        "Full itinerary coordination and support"
+      ],
+      "amenitiesAr": [
+        "الإقامة في فندق 5 نجوم بإسطنبول + أكواخ ريفية فاخرة في صبنجة وبورصة",
+        "الإفطار اليومي لجميع الأيام",
+        "الاستقبال والتوديع في المطار بسيارة خاصة مرسيدس",
+        "جولات VIP خاصة (صبنجة، معشوقية، بورصة ويالوفا)",
+        "المرافقة والتنسيق الكامل طوال فترة الرحلة"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-04T22:34:24.012Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "البرنامج الشامل: إسطنبول، صبنجة، بورصة ويالوفا — 10 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Comprehensive Turkey Experience: Istanbul, Sapanca, Bursa & Yalova — 10 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "5-star hotel in Istanbul + luxury wooden chalets in Sapanca & Bursa",
+        "Daily breakfast",
+        "Private airport transfers by Mercedes",
+        "VIP private daily tours (Sapanca, Masukiye, Bursa & Yalova)",
+        "Full itinerary coordination and support"
+      ],
+      "inclusionsAr": [
+        "الإقامة في فندق 5 نجوم بإسطنبول + أكواخ ريفية فاخرة في صبنجة وبورصة",
+        "الإفطار اليومي لجميع الأيام",
+        "الاستقبال والتوديع في المطار بسيارة خاصة مرسيدس",
+        "جولات VIP خاصة (صبنجة، معشوقية، بورصة ويالوفا)",
+        "المرافقة والتنسيق الكامل طوال فترة الرحلة"
+      ],
+      "inclusionsEn": [
+        "5-star hotel in Istanbul + luxury wooden chalets in Sapanca & Bursa",
+        "Daily breakfast",
+        "Private airport transfers by Mercedes",
+        "VIP private daily tours (Sapanca, Masukiye, Bursa & Yalova)",
+        "Full itinerary coordination and support"
+      ],
+      "inclusionsTr": [
+        "5-star hotel in Istanbul + luxury wooden chalets in Sapanca & Bursa",
+        "Daily breakfast",
+        "Private airport transfers by Mercedes",
+        "VIP private daily tours (Sapanca, Masukiye, Bursa & Yalova)",
+        "Full itinerary coordination and support"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في إسطنبول",
+          "description": "الاستقبال من مطار إسطنبول بسيارة خاصة، التوجه إلى الفندق للاستراحة، وجولة مسائية خفيفة في ميدان تقسيم وسكك استقلال الحيوية."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية (الجانب الأوروبي)",
+          "description": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر توبكابي، ومسجد السلطان أحمد الأزرق، مع تناول الغداء بالقرب من مضيق البوسفور."
+        },
+        {
+          "day": 3,
+          "title": "سحر البوسفور والجانب الآسيوي",
+          "description": "رحلة بحرية في مضيق البوسفور، زيارة برج العذراء من الخارج، تلة تشامليجا في الجانب الآسيوي، وسوق كاديكوي العريق."
+        },
+        {
+          "day": 4,
+          "title": "الانتقال إلى صبنجة والمعشوقية وأزميت",
+          "description": "التوجه صباحاً نحو صبنجة، زيارة بحيرة صبنجة الساحرة، صعود شلالات المعشوقية وتجربة السفاري، ثم جولة سريعة في أزميت والمبيت في كوخ ريفي فاخر."
+        },
+        {
+          "day": 5,
+          "title": "طبيعة صبنجة والاسترخاء الريفي",
+          "description": "يوم حر للاستمتاع بإفطار ريفي تقليدي بجانب البحيرة، ركوب الدراجات، وجلسات هادئة وسط الطبيعة الخضراء والغابات المحيطة بالكوخ."
+        },
+        {
+          "day": 6,
+          "title": "الرحلة إلى بورصة الخضراء",
+          "description": "المغادرة صباحاً باتجاه بورصة، زيارة الشجرة التاريخية المعمرة، السوق التاريخي المسقوف، وصعود جبل أولوداغ بواسطة التلفريك أو السيارة."
+        },
+        {
+          "day": 7,
+          "title": "معالم بورصة التاريخية والحرير",
+          "description": "زيارة الجامع الكبير (ولو جامع)، سوق الحرير التاريخي (كوزا خان)، وتذوق كباب بورصة الشهير، مع وقت للتسوق الحر."
+        },
+        {
+          "day": 8,
+          "title": "يالوفا والينابيع الحارة (تيرمال)",
+          "description": "الانتقال من بورصة إلى يالوفا، زيارة قرية تيرمال والاسترخاء في المنتجعات العلاجية ذات المياه الكبريتية الحارة، ثم العودة لإسطنبول."
+        },
+        {
+          "day": 9,
+          "title": "جزر الأميرات أو التسوق الفاخر في إسطنبول",
+          "description": "رحلة بحرية إلى جزر الأميرات الهادئة (بدون سيارات) واستئجار الدراجات، أو تخصيص اليوم للتسوق في أضخم مولات إسطنبول (زورلو وادي إسطنبول)."
+        },
+        {
+          "day": 10,
+          "title": "الوداع والعودة إلى أرض الوطن",
+          "description": "تفريغ الحقائب، جولة أخيرة لشراء الهدايا التذكارية التركية، ثم الانتقال الخاص إلى مطار إسطنبول الدولي للعودة الموفقة بحفظ الله."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال في إسطنبول",
+          "description": "الاستقبال من مطار إسطنبول بسيارة خاصة، التوجه إلى الفندق للاستراحة، وجولة مسائية خفيفة في ميدان تقسيم وسكك استقلال الحيوية."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية (الجانب الأوروبي)",
+          "description": "زيارة منطقة السلطان أحمد، جامع آيا صوفيا، قصر توبكابي، ومسجد السلطان أحمد الأزرق، مع تناول الغداء بالقرب من مضيق البوسفور."
+        },
+        {
+          "day": 3,
+          "title": "سحر البوسفور والجانب الآسيوي",
+          "description": "رحلة بحرية في مضيق البوسفور، زيارة برج العذراء من الخارج، تلة تشامليجا في الجانب الآسيوي، وسوق كاديكوي العريق."
+        },
+        {
+          "day": 4,
+          "title": "الانتقال إلى صبنجة والمعشوقية وأزميت",
+          "description": "التوجه صباحاً نحو صبنجة، زيارة بحيرة صبنجة الساحرة، صعود شلالات المعشوقية وتجربة السفاري، ثم جولة سريعة في أزميت والمبيت في كوخ ريفي فاخر."
+        },
+        {
+          "day": 5,
+          "title": "طبيعة صبنجة والاسترخاء الريفي",
+          "description": "يوم حر للاستمتاع بإفطار ريفي تقليدي بجانب البحيرة، ركوب الدراجات، وجلسات هادئة وسط الطبيعة الخضراء والغابات المحيطة بالكوخ."
+        },
+        {
+          "day": 6,
+          "title": "الرحلة إلى بورصة الخضراء",
+          "description": "المغادرة صباحاً باتجاه بورصة، زيارة الشجرة التاريخية المعمرة، السوق التاريخي المسقوف، وصعود جبل أولوداغ بواسطة التلفريك أو السيارة."
+        },
+        {
+          "day": 7,
+          "title": "معالم بورصة التاريخية والحرير",
+          "description": "زيارة الجامع الكبير (ولو جامع)، سوق الحرير التاريخي (كوزا خان)، وتذوق كباب بورصة الشهير، مع وقت للتسوق الحر."
+        },
+        {
+          "day": 8,
+          "title": "يالوفا والينابيع الحارة (تيرمال)",
+          "description": "الانتقال من بورصة إلى يالوفا، زيارة قرية تيرمال والاسترخاء في المنتجعات العلاجية ذات المياه الكبريتية الحارة، ثم العودة لإسطنبول."
+        },
+        {
+          "day": 9,
+          "title": "جزر الأميرات أو التسوق الفاخر في إسطنبول",
+          "description": "رحلة بحرية إلى جزر الأميرات الهادئة (بدون سيارات) واستئجار الدراجات، أو تخصيص اليوم للتسوق في أضخم مولات إسطنبول (زورلو وادي إسطنبول)."
+        },
+        {
+          "day": 10,
+          "title": "الوداع والعودة إلى أرض الوطن",
+          "description": "تفريغ الحقائب، جولة أخيرة لشراء الهدايا التذكارية التركية، ثم الانتقال الخاص إلى مطار إسطنبول الدولي للعودة الموفقة بحفظ الله."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & Transfer in Istanbul",
+          "description": "Arrival at Istanbul airport, private transfer to hotel, evening walk around Taksim Square and Istiklal Street."
+        },
+        {
+          "day": 2,
+          "title": "Old City Istanbul Tour (European Side)",
+          "description": "Visit Sultanahmet square, Hagia Sophia, Topkapi Palace, and Blue Mosque, with lunch by the Bosphorus."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus & Asian Side Discovery",
+          "description": "Bosphorus cruise, Maiden's Tower viewpoint, Camlica Hill on the Asian side, and Kadikoy historic market."
+        },
+        {
+          "day": 4,
+          "title": "الانتقال إلى صبنجة والمعشوقية وأزميت",
+          "description": "Morning departure to Sapanca, visiting Sapanca Lake, Masukiye waterfalls, safari experience, and overnight in a luxury wooden chalet."
+        },
+        {
+          "day": 5,
+          "title": "Sapanca Nature & Relaxation",
+          "description": "Free day to enjoy traditional breakfast by the lake, cycling, and peaceful moments in the green forests around the chalet."
+        },
+        {
+          "day": 6,
+          "title": "Journey to Green Bursa",
+          "description": "Morning departure to Bursa, visiting the Historic Tree, Covered Bazaar, and ascending Mount Uludag."
+        },
+        {
+          "day": 7,
+          "title": "Bursa Historical Sites & Silk Market",
+          "description": "Visit the Grand Mosque (Ulu Cami), Koza Han silk market, tasting traditional Iskender kebab, and free shopping time."
+        },
+        {
+          "day": 8,
+          "title": "Yalova & Thermal Springs",
+          "description": "Move from Bursa to Yalova, visit Termal village for relaxing sulfur hot springs, then return to Istanbul."
+        },
+        {
+          "day": 9,
+          "title": "Princes' Islands or Luxury Shopping in Istanbul",
+          "description": "Boat trip to Princes' Islands (car-free) with bicycle rentals, or shopping at Istanbul's premier malls (Zorlu Center / Vadistanbul)."
+        },
+        {
+          "day": 10,
+          "title": "Departure & Farewell",
+          "description": "Last-minute souvenir shopping, and private transfer to Istanbul International Airport for your departure flight."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.089Z"
+    },
+    {
+      "id": "LON-2027-2BK5P",
+      "slug": "bursa-mount-uludag-5-days-luxury-mtn6hrl3",
+      "title": "سحر بورصة الخضراء وجبل أولوداغ الفاخر (5 أيام)",
+      "titleAr": "سحر بورصة الخضراء وجبل أولوداغ الفاخر (5 أيام)",
+      "titleEn": "Enchanting Green Bursa & Mount Uludag Luxury (5 Days)",
+      "titleTr": "Yeşil Bursa ve Uludağ Lüks Tatili (5 Gün)",
+      "destination": "بورصة وجبل أولوداغ",
+      "destinationAr": "بورصة وجبل أولوداغ",
+      "destinationEn": "Bursa & Mount Uludag",
+      "destinationTr": "Bursa ve Uludağ",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "بورصة",
+        "جبل أولوداغ",
+        "الشجرة التاريخية",
+        "مجمع كوروبارك"
+      ],
+      "destinationsAr": [
+        "بورصة",
+        "جبل أولوداغ",
+        "الشجرة التاريخية",
+        "مجمع كوروبارك"
+      ],
+      "destinationsEn": [
+        "Bursa",
+        "Mount Uludag",
+        "Historical Inkaya Tree",
+        "Korupark"
+      ],
+      "durationDays": 5,
+      "durationNights": 4,
+      "price": 1250,
+      "currency": "USD",
+      "rating": 4.96,
+      "isFeatured": true,
+      "isPublished": true,
+      "descriptionAr": "برنامج سياحي فاخر مدته 5 أيام / 4 ليالٍ في عاصمة الطبيعة والتاريخ بورصة الخضراء. يشمل صعود تلفريك جبل أولوداغ البانورامي، زيارة الشجرة التاريخية المعمرة، أسواق الحلقوم والحرير، والإقامة في أرقى المنتجعات الحرارية 5 نجوم مع سيارة مرسيدس فيتو VIP وسائق خاص يتحدث العربية.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80",
+          "alt": "بورصة الخضراء وجبل أولوداغ",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+          "alt": "تلفريك أولوداغ والمنتجعات",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "amenities": [
+        "سيارة مرسيدس فيتو VIP خاصة",
+        "فندق ومنتجع حراري 5 نجوم",
+        "تذاكر تلفريك أولوداغ VIP",
+        "سائق ومرشد ناطق بالعربية",
+        "استقبال وتوديع خاص في المطار"
+      ],
+      "amenitiesAr": [
+        "سيارة مرسيدس فيتو VIP خاصة",
+        "فندق ومنتجع حراري 5 نجوم",
+        "تذاكر تلفريك أولوداغ VIP",
+        "سائق ومرشد ناطق بالعربية",
+        "استقبال وتوديع خاص في المطار"
+      ],
+      "inclusionsAr": [
+        "سيارة مرسيدس فيتو VIP مع سائق شاملة الوقود والمواقف ورسوم العبارة",
+        "إقامة فندقية 5 نجوم شاملة الإفطار العثماني",
+        "جولة جبل أولوداغ والشجرة المعمرة والشلال الصغير",
+        "استقبال وتوديع خاص من مطار إسطنبول"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "اليوم 1: الاستقبال والانتقال لبورصة الخضراء",
+          "description": "استقبال VIP بمطار إسطنبول، التوجه عبر الجسر المعلق أو العبارة البحرية السريعة إلى بورصة، واستلام الغرف في الفندق الحراري 5 نجوم."
+        },
+        {
+          "day": 2,
+          "title": "اليوم 2: جبل أولوداغ والتلفريك والشجرة المعمرة",
+          "description": "صعود تلفريك أولوداغ البانورامي، الاستمتاع بإطلالات القمة والأنشطة الترفيهية، ثم زيارة الشجرة التاريخية المعمرة وتناول الشاي والمشويات."
+        },
+        {
+          "day": 3,
+          "title": "اليوم 3: الأسواق التاريخية والشلال الصغير",
+          "description": "زيارة الجامع الأخضر وسوق الحرير التاريخي (كوزا خان)، ثم التوجه إلى الشلال الصغير وسط الغابات لتناول الغداء بجوار مجرى المياه."
+        },
+        {
+          "day": 4,
+          "title": "اليوم 4: القرية العثمانية التراثية جومالي كيزيك والتسوق",
+          "description": "جولة في قرية جومالي كيزيك المدرجة في اليونسكو، زيارة مصانع الحلقوم والعسل الطبيعي، والتسوق في مجمع كوروبارك الفاخر."
+        },
+        {
+          "day": 5,
+          "title": "اليوم 5: الاستجمام الحراري والتوديع إلى المطار",
+          "description": "صباح استجمامي في المسابح الكبريتية والسبا، تسجيل الخروج، والانتقال بسيارة الفيتو VIP إلى مطار إسطنبول لرحلة العودة بسلامة الله."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "اليوم 1: الاستقبال والانتقال لبورصة الخضراء",
+          "description": "استقبال VIP بمطار إسطنبول، التوجه عبر الجسر المعلق أو العبارة البحرية السريعة إلى بورصة، واستلام الغرف في الفندق الحراري 5 نجوم."
+        },
+        {
+          "day": 2,
+          "title": "اليوم 2: جبل أولوداغ والتلفريك والشجرة المعمرة",
+          "description": "صعود تلفريك أولوداغ البانورامي، الاستمتاع بإطلالات القمة والأنشطة الترفيهية، ثم زيارة الشجرة التاريخية المعمرة وتناول الشاي والمشويات."
+        },
+        {
+          "day": 3,
+          "title": "اليوم 3: الأسواق التاريخية والشلال الصغير",
+          "description": "زيارة الجامع الأخضر وسوق الحرير التاريخي (كوزا خان)، ثم التوجه إلى الشلال الصغير وسط الغابات لتناول الغداء بجوار مجرى المياه."
+        },
+        {
+          "day": 4,
+          "title": "اليوم 4: القرية العثمانية التراثية جومالي كيزيك والتسوق",
+          "description": "جولة في قرية جومالي كيزيك المدرجة في اليونسكو، زيارة مصانع الحلقوم والعسل الطبيعي، والتسوق في مجمع كوروبارك الفاخر."
+        },
+        {
+          "day": 5,
+          "title": "اليوم 5: الاستجمام الحراري والتوديع إلى المطار",
+          "description": "صباح استجمامي في المسابح الكبريتية والسبا، تسجيل الخروج، والانتقال بسيارة الفيتو VIP إلى مطار إسطنبول لرحلة العودة بسلامة الله."
+        }
+      ],
+      "createdAt": "2026-09-04T16:36:52.477Z",
+      "updatedAt": "2026-09-15T05:15:19.099Z"
+    },
+    {
+      "id": "LON-2027-03",
+      "slug": "royal-antalya-turkish-riviera-all-inclusive",
+      "title": "الاستجمام الملكي في أنطاليا والريفيرا التركية",
+      "titleAr": "الاستجمام الملكي في أنطاليا والريفيرا التركية",
+      "titleEn": "Royal Relaxation in Antalya & Turkish Riviera",
+      "titleTr": "Antalya ve Türk Rivierasında Krallara Layık Tatil",
+      "destination": "أنطاليا والريفيرا التركية",
+      "destinationAr": "أنطاليا والريفيرا التركية",
+      "destinationEn": "Antalya & Riviera",
+      "destinationTr": "Antalya ve Türk Rivierası",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "أنطاليا",
+        "بيليك",
+        "كيمير",
+        "كالتشي"
+      ],
+      "destinationsAr": [
+        "أنطاليا",
+        "بيليك",
+        "كيمير",
+        "كالتشي"
+      ],
+      "destinationsEn": [
+        "Antalya",
+        "Belek",
+        "Kemer",
+        "Kaleiçi"
+      ],
+      "durationDays": 7,
+      "durationNights": 6,
+      "price": 2450,
+      "currency": "USD",
+      "rating": 4.96,
+      "isFeatured": true,
+      "isPublished": true,
+      "descriptionAr": "عطلة ملكية راقية في عاصمة السياحة الشاطئية الفاخرة أنطاليا. إقامة 6 ليالٍ في أفخم منتجعات بيليك أو كيمير الشاملة كلياً (Ultra All-Inclusive)، مع استقبال ليموزين VIP، رحلة يخت خاص في خلجان البحر الأبيض المتوسط، وجولات شلالات دودان وأرض الأساطير.",
+      "descriptionEn": "An elite Mediterranean holiday at Antalya’s most prestigious 5-star ultra all-inclusive beachfront resorts, complete with VIP limousine transfers, private coastal yacht cruise, and The Land of Legends experience.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
+          "alt": "منتجع أنطاليا الفاخر",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80",
+          "alt": "شواطئ الريفيرا التركية",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "amenities": [
+        "Ultra All-Inclusive 5-Star",
+        "VIP Limousine Transfer",
+        "Private Yacht Cruise",
+        "The Land of Legends Pass",
+        "Private Spa Treatment"
+      ],
+      "amenitiesAr": [
+        "منتجع 5 نجوم شامل كلياً (Ultra All-Inclusive)",
+        "استقبال وتوديع بسيارة ليموزين VIP",
+        "جولة يخت بحري خاص في خلجان كيمير",
+        "تذاكر VIP لأرض الأساطير",
+        "جلسة سبا ومساج ملكي تركي"
+      ],
+      "inclusions": [
+        "6 Nights in 5-star Ultra All-Inclusive Resort",
+        "VIP transfers by luxury limousine/van",
+        "Private Yacht cruise with lunch",
+        "The Land of Legends tickets",
+        "All meals, drinks, and snacks included"
+      ],
+      "inclusionsAr": [
+        "إقامة 6 ليالٍ في منتجع شاطئي 5 نجوم شامل كلياً",
+        "استقبال وتوديع خاص بسيارة VIP ليموزين",
+        "جولة يخت بحري خاص مع غداء طازج",
+        "تذاكر دخول VIP لمدينة الألعاب (The Land of Legends)"
+      ],
+      "exclusions": [
+        "International Flights",
+        "Personal Watersports",
+        "Specialty Vintage Wines"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولي",
+        "الرياضات المائية الإضافية كالمظلات المائية",
+        "المشتريات الشخصية في المراكز التجارية"
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول إلى أنطاليا واستقبال ليموزين VIP الملكي",
+          "description": "استقبال فندقي مميز من باب المطار والانتقال بسيارة ليموزين VIP إلى المنتجع الشامل الفاخر في بيليك، واستلام الجناح المطل على البحر."
+        },
+        {
+          "day": 2,
+          "title": "الاسترخاء الشاطئي وجلسة السبا والحمام التركي الملكي",
+          "description": "يوم مفتوح للاسترخاء على الشاطئ الخاص والمسابح الفاخرة، والاستمتاع بجلسة تدليك ومساج تركي تقليدي في سبا المنتجع."
+        },
+        {
+          "day": 3,
+          "title": "شلالات دودان والمدينة القديمة (كالتشي) والمارينا",
+          "description": "جولة صباحية بسيارة VIP لزيارة شلالات دودان المتساقطة في البحر، والتجول في أزقة كالتشي العثمانية الأثرية وميناء اليخوت القديم."
+        },
+        {
+          "day": 4,
+          "title": "رحلة يخت خاص في خلجان كيمير وفاسيليس التاريخية",
+          "description": "الإبحار على متن يخت خاص VIP في مياه البحر المتوسط الفيروزية، السباحة في الخلجان المعزولة، وتناول وجبة غداء بحرية فاخرة أعدها الشيف."
+        },
+        {
+          "day": 5,
+          "title": "تلفريك أوليمبوس البانورامي ووادي كوبرولو كانيون",
+          "description": "الصعود بتلفريك أوليمبوس إلى قمة جبل تهتالي على ارتفاع 2365 متراً لمشاهدة إطلالات تخطف الأنفاس، وزيارة الطبيعة الساحرة."
+        },
+        {
+          "day": 6,
+          "title": "يوم المغامرات والتسوق في أرض الأساطير (The Land of Legends)",
+          "description": "قضاء يوم كامل وممتع في أكبر منتزه ترفيهي وسياحي في تركيا، مع الاستمتاع بالتسوق في شارع الماركات العالمية وحضور العروض المسائية."
+        },
+        {
+          "day": 7,
+          "title": "توديع أنطاليا والتوصيل إلى المطار الدولي",
+          "description": "الاستمتاع بآخر ساعات الإفطار والاستجمام، وتسجيل الخروج والتوصيل بسيارة VIP إلى مطار أنطاليا الدولي للعودة إلى الوطن."
+        }
+      ],
+      "createdAt": "2026-09-04T14:37:45.391Z",
+      "updatedAt": "2026-09-15T05:15:19.105Z"
+    },
+    {
+      "id": "LON-2027-02",
+      "slug": "asateer-cappadocia-bosphorus-istanbul-luxury",
+      "title": "أساطير كابادوكيا وبسفور إسطنبول الساحر",
+      "titleAr": "أساطير كابادوكيا وبسفور إسطنبول الساحر",
+      "titleEn": "Legends of Cappadocia & Enchanting Istanbul Bosphorus",
+      "titleTr": "Kapadokya Efsaneleri ve Büyüleyici İstanbul Boğazı",
+      "destination": "إسطنبول وكابادوكيا",
+      "destinationAr": "إسطنبول وكابادوكيا",
+      "destinationEn": "Istanbul & Cappadocia",
+      "destinationTr": "İstanbul ve Kapadokya",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "إسطنبول",
+        "كابادوكيا",
+        "البوسفور"
+      ],
+      "destinationsAr": [
+        "إسطنبول",
+        "كابادوكيا",
+        "البوسفور"
+      ],
+      "destinationsEn": [
+        "Istanbul",
+        "Cappadocia",
+        "Bosphorus"
+      ],
+      "durationDays": 6,
+      "durationNights": 5,
+      "price": 2100,
+      "currency": "USD",
+      "rating": 4.98,
+      "isFeatured": true,
+      "isPublished": true,
+      "descriptionAr": "تجربة رومانسية ساحرة تجمع بين فخامة إسطنبول وأجواء كابادوكيا الأسطورية. يتضمن البرنامج رحلة منطاد الهواء الساخن الملكية الخاصة، إقامة في أفخم الأجنحة الكهفية 5 نجوم، وجولة يخت خاص VIP في مضيق البوسفور وقت الغروب.",
+      "descriptionEn": "A magical romantic and honeymoon getaway combining the luxury of Istanbul with legendary Cappadocia. Includes sunrise hot air balloon flight, 5-star cave resort stay, and private VIP sunset Bosphorus yacht charter.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1609137144822-2977717d3d19?auto=format&fit=crop&w=1200&q=80",
+          "alt": "مناطيد كابادوكيا",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+          "alt": "مضيق البوسفور وإسطنبول",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "amenities": [
+        "Hot Air Balloon VIP",
+        "Private Yacht Bosphorus",
+        "Luxury Cave Hotel",
+        "Domestic Flights",
+        "Private VIP Car"
+      ],
+      "amenitiesAr": [
+        "رحلة منطاد هوائي ملكية VIP",
+        "جولة يخت خاص في البوسفور",
+        "إقامة في أرقى الفنادق الكهفية 5 نجوم",
+        "تذاكر الطيران الداخلي شاملة الأمتعة",
+        "سيارة VIP خاصة مع سائق"
+      ],
+      "inclusions": [
+        "Domestic round-trip flights",
+        "Private Hot Air Balloon experience",
+        "2-hour private luxury Bosphorus yacht",
+        "5 Nights 5-star luxury stay",
+        "Private VIP transfers in both cities"
+      ],
+      "inclusionsAr": [
+        "تذاكر الطيران الداخلي (إسطنبول - كابادوكيا - إسطنبول)",
+        "رحلة المنطاد الهوائي الفاخرة فجراً",
+        "جولة يخت خاص VIP في البوسفور لمدة ساعتين وقت الغروب",
+        "إقامة 3 ليالٍ بإسطنبول وليلتان في كابادوكيا بفندق كهفي فاخر"
+      ],
+      "exclusions": [
+        "International Flights",
+        "Tips & Gratuities",
+        "Personal Expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولي",
+        "المصاريف الشخصية والمشتريات",
+        "الإكراميات الاختيارية"
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول إلى إسطنبول واستقبال VIP فاخر",
+          "description": "استقبال خاص من بوابة الطائرة والانتقال بسيارة VIP مرسيدس إلى الفندق الفاخر المطل على البوسفور، وقضاء أمسية حالمة."
+        },
+        {
+          "day": 2,
+          "title": "سحر البوسفور: جولة يخت خاص وقصر دولمة بهجة",
+          "description": "زيارة قصر دولمة بهجة والحي التاريخي، ثم الانطلاق عصراً في جولة يخت خاص VIP في البوسفور للاستمتاع بغروب الشمس مع المشروبات والضيافة."
+        },
+        {
+          "day": 3,
+          "title": "الطيران إلى كابادوكيا واستلام جناح الكهف الملكي",
+          "description": "التوجه للمطار والطيران إلى كابادوكيا، استقبال خاص والانتقال إلى فندق الكهوف التاريخي المصنف 5 نجوم، وجولة غروب في وادي الورود."
+        },
+        {
+          "day": 4,
+          "title": "شروق الشمس الأسطوري: رحلة المنطاد ووادي ديفرينت",
+          "description": "التحليق فجراً في سماء كابادوكيا بالمنطاد الهوائي ومشاهدة التكوينات الصخرية الخلابة، يعقبه فطور فاخر وجولة بوادي الخيال ومتحف غوريميه."
+        },
+        {
+          "day": 5,
+          "title": "المدينة تحت الأرض ووادي إهلارا وجلسة تصوير خاصة",
+          "description": "استكشاف مدينة ديرينكويو تحت الأرض مع مرشد متخصص، والمشي في وادي إهلارا الطبيعي الأخضر، وجلسة تصوير احترافية خاصة للذكرى."
+        },
+        {
+          "day": 6,
+          "title": "العودة لإسطنبول والتسوق والتوديع",
+          "description": "الطيران صباحاً إلى إسطنبول، جولة تسوق أخيرة في مول زورلو سنتر أو استينيا بارك، ثم التوصيل إلى مطار إسطنبول الدولي لرحلة العودة."
+        }
+      ],
+      "createdAt": "2026-09-04T14:37:45.383Z",
+      "updatedAt": "2026-09-15T05:15:19.112Z"
+    },
+    {
+      "id": "LON-2027-01",
+      "slug": "jawharat-al-shamal-trabzon-uzungol-ayder-luxury",
+      "title": "جوهرة الشمال الفاخر: طرابزون وأوزنجول وأكواخ آيدر",
+      "titleAr": "جوهرة الشمال الفاخر: طرابزون وأوزنجول وأكواخ آيدر",
+      "titleEn": "Luxury Jewel of the North: Trabzon, Uzungöl & Ayder Chalets",
+      "titleTr": "Kuzeyin Lüks Mücevheri: Trabzon, Uzungöl ve Ayder Yaylası",
+      "destination": "طرابزون والشمال التركي",
+      "destinationAr": "طرابزون والشمال التركي",
+      "destinationEn": "Trabzon & Black Sea",
+      "destinationTr": "Trabzon & Karadeniz",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "طرابزون",
+        "أوزنجول",
+        "آيدر",
+        "ريزا"
+      ],
+      "destinationsAr": [
+        "طرابزون",
+        "أوزنجول",
+        "آيدر",
+        "ريزا"
+      ],
+      "destinationsEn": [
+        "Trabzon",
+        "Uzungol",
+        "Ayder",
+        "Rize"
+      ],
+      "durationDays": 8,
+      "durationNights": 7,
+      "price": 1850,
+      "currency": "USD",
+      "rating": 4.95,
+      "isFeatured": true,
+      "isPublished": true,
+      "descriptionAr": "برنامج سياحي فاخر مخصص للعائلات الخليجية وعشاق الطبيعة الخضراء، يشمل إقامة 7 ليالٍ في أرقى المنتجعات والأكواخ الريفية الفاخرة مع جاكوزي وإطلالة جبلية بانورامية، وسيارة مرسيدس فيتو VIP خاصة مع سائق يتحدث العربية طوال الرحلة.",
+      "descriptionEn": "An ultra-luxury private holiday program in northern Turkey, featuring premium chalets with jacuzzis, private VIP Mercedes Vito transport, and unforgettable Black Sea highland tours.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80",
+          "alt": "طرابزون وأوزنجول",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+          "alt": "أكواخ آيدر الفاخرة",
+          "width": 1200,
+          "height": 800
+        }
+      ],
+      "amenities": [
+        "Private VIP Vito",
+        "5-Star Chalets",
+        "Airport Fast Track",
+        "Arabic Guide",
+        "All Breakfasts Included"
+      ],
+      "amenitiesAr": [
+        "سيارة مرسيدس فيتو VIP خاصة",
+        "أكواخ ريفية فاخرة مع جاكوزي",
+        "استقبال وتوديع خاص في المطار",
+        "سائق ومرشد ناطق بالعربية",
+        "وجبات الإفطار الريفية اليومية"
+      ],
+      "inclusions": [
+        "Private Mercedes Vito with fuel and parking",
+        "7 Nights in 5-star hotel & luxury chalet",
+        "Daily highland private excursions",
+        "VIP Airport transfers"
+      ],
+      "inclusionsAr": [
+        "سيارة مرسيدس فيتو VIP خاصة مع سائق شاملة الوقود والمواقف",
+        "إقامة 7 ليالٍ في فنادق 5 نجوم وأكواخ آيدر الفاخرة",
+        "استقبال وتوديع خاص من مطار طرابزون الدولي",
+        "جولات يومية خاصة لأوزنجول وآيدر وزيل كالي وحيدر نبي"
+      ],
+      "exclusions": [
+        "International Flights",
+        "Personal Expenses",
+        "Optional Adventure Activities"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولي",
+        "المصاريف والمشتريات الشخصية",
+        "الأنشطة الترفيهية الاختيارية مثل التجديف والقفز بالحبل"
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول واستقبال VIP في مطار طرابزون",
+          "description": "استقبال خاص من قبل فريق لوناليزا والانتقال بسيارة مرسيدس فيتو VIP للفندق المطل على البحر الأسود، وجولة مسائية خفيفة في ميدان طرابزون ومطل بوزتبه."
+        },
+        {
+          "day": 2,
+          "title": "أيقونة الشمال: بحيرة أوزنجول الساحرة",
+          "description": "الانطلاق صباحاً إلى بحيرة أوزنجول الخلابة، زيارة مصنع الشاي ومزرعة الخيول، وصعود مطل البحيرة البانورامي مع وجبة غداء ريفية فاخرة."
+        },
+        {
+          "day": 3,
+          "title": "مرتفعات آيدر والأكواخ الريفية الفاخرة",
+          "description": "التوجه إلى وادي الرياح وهضبة آيدر، استلام الكوخ الخشبي الفاخر المجهز بجاكوزي وإطلالة على الشلالات والغابات الخضراء."
+        },
+        {
+          "day": 4,
+          "title": "قلعة زيل كالي، شلال بالوفيت وجسور العثمانيين",
+          "description": "جولة استكشافية تاريخية في أعماق الغابات وزيارة قلعة زيل كالي المعلقة، ثم شلال بالوفيت الهادر وتناول الغداء بجوار النهر."
+        },
+        {
+          "day": 5,
+          "title": "مرتفعات حيدر نبي ومغارة تشال المعجزة",
+          "description": "الصعود فوق السحاب إلى هضبة حيدر نبي الرائعة ثم زيارة مغارة تشال التي تعد ثاني أطول مغارة في العالم والاستمتاع ببحيراتها الداخلية."
+        },
+        {
+          "day": 6,
+          "title": "دير سوميلا التاريخي وقرية هامسي كوي",
+          "description": "زيارة دير سوميلا المنحوت في الصخر بجبال ماتشكا، ثم التوجه إلى قرية هامسي كوي لتذوق المهلبية التركية الشهيرة والاستمتاع بالطبيعة البكر."
+        },
+        {
+          "day": 7,
+          "title": "يوم التسوق الفاخر وإطلالات البحر الأسود",
+          "description": "جولة تسوق في فوروم طرابزون ومول وورلد، وزيارة قصر أتاتورك وبحيرة سيراجول مع قضاء أمسية راقية."
+        },
+        {
+          "day": 8,
+          "title": "التوديع والانتقال إلى مطار طرابزون",
+          "description": "تسجيل الخروج من الفندق والتوصيل بسيارة VIP إلى مطار طرابزون الدولي لرحلة العودة مصحوبين بأجمل الذكريات."
+        }
+      ],
+      "createdAt": "2026-09-04T14:37:45.371Z",
+      "updatedAt": "2026-09-15T05:15:19.148Z"
+    },
+    {
+      "id": "aip_mtlzxk5c_zkpogo",
+      "slug": "istanbul-trabzon-rize-luxury-itinerary-10-days",
+      "title": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+      "titleAr": "برنامج إسطنبول وطرابزون وأكواخ ريزا الفاخرة (10 أيام / 5 أشخاص)",
+      "titleEn": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+      "titleTr": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+      "destination": "Istanbul & Trabzon",
+      "destinationAr": "Istanbul & Trabzon",
+      "destinationEn": "Istanbul & Trabzon",
+      "destinationTr": "Istanbul & Trabzon",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Istanbul & Trabzon"
+      ],
+      "destinationsEn": [
+        "Istanbul & Trabzon"
+      ],
+      "destinationsAr": [
+        "Istanbul & Trabzon"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 4845,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80",
+          "alt": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "5-star hotel stays in Istanbul & Trabzon",
+        "2 nights in a luxury mountain lodge in Rize",
+        "Private airport transfers & Mercedes Vito transport",
+        "Daily private guided tours with driver",
+        "Daily breakfast"
+      ],
+      "amenitiesAr": [
+        "الإقامة في فنادق 5 نجوم في إسطنبول وطرابزون",
+        "إقامة ليلتين في كوخ ريفي فاخر في ريزا",
+        "الاستقبال والتوديع وكافة التنقلات بسيارة مرسيدس فيتو خاصة",
+        "الجولات السياحية اليومية مع سائق خاص",
+        "وجبات الإفطار اليومية"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-03T20:47:19.873Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج إسطنبول وطرابزون وأكواخ ريزا الفاخرة (10 أيام / 5 أشخاص)\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Istanbul, Trabzon & Rize Luxury Itinerary (10 Days)\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "5-star hotel stays in Istanbul & Trabzon",
+        "2 nights in a luxury mountain lodge in Rize",
+        "Private airport transfers & Mercedes Vito transport",
+        "Daily private guided tours with driver",
+        "Daily breakfast"
+      ],
+      "inclusionsAr": [
+        "الإقامة في فنادق 5 نجوم في إسطنبول وطرابزون",
+        "إقامة ليلتين في كوخ ريفي فاخر في ريزا",
+        "الاستقبال والتوديع وكافة التنقلات بسيارة مرسيدس فيتو خاصة",
+        "الجولات السياحية اليومية مع سائق خاص",
+        "وجبات الإفطار اليومية"
+      ],
+      "inclusionsEn": [
+        "5-star hotel stays in Istanbul & Trabzon",
+        "2 nights in a luxury mountain lodge in Rize",
+        "Private airport transfers & Mercedes Vito transport",
+        "Daily private guided tours with driver",
+        "Daily breakfast"
+      ],
+      "inclusionsTr": [
+        "5-star hotel stays in Istanbul & Trabzon",
+        "2 nights in a luxury mountain lodge in Rize",
+        "Private airport transfers & Mercedes Vito transport",
+        "Daily private guided tours with driver",
+        "Daily breakfast"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول إلى إسطنبول والاستقبال",
+          "description": "الوصول إلى مطار إسطنبول، استقبال من قبل ممثل الوكالة بالسيارة الخاصة (مرسيدس فيتو) والتجهيز للتوجه إلى الفندق 5 نجوم واستلام الغرف والراحة."
+        },
+        {
+          "day": 2,
+          "title": "جولة معالم إسطنبول التاريخية",
+          "description": "جولة خاصة مغطاة بأهم معالم السلطان أحمد، أيا صوفيا، قصر توبكابي، وجولة في البازار الكبير."
+        },
+        {
+          "day": 3,
+          "title": "رحلة البوسفور والتسوق",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس في الجانب الآسيوي، ووقت حُر للتسوق في أسواق إسطنبول الحديثة."
+        },
+        {
+          "day": 4,
+          "title": "الطيران الداخلي إلى طرابزون والتوجه لريزا",
+          "description": "الانتقال إلى مطار إسطنبول للرحلة الداخلية إلى طرابزون، الاستقبال والاستلام بالسائق الخاص والانطلاق مباشرة إلى المرتفعات للجلوس في كوخ ريفي فاخر في ريزا."
+        },
+        {
+          "day": 5,
+          "title": "استكشاف مرتفعات ريزا وآيدر",
+          "description": "يوم كامل لاستكشاف شلالات آيدر، الحمامات الكبريتية، جسور العصر العثماني التاريخية، والاستمتاع بإفطار ريفي جبلي فاخر."
+        },
+        {
+          "day": 6,
+          "title": "العودة إلى طرابزون والإقامة بالفندق",
+          "description": "مغادرة الكوخ والتوجه نحو مدينة طرابزون، زيارة قصر آتاتورك وبحيرة سيراجول وتسجيل الدخول في فندق 5 نجوم."
+        },
+        {
+          "day": 7,
+          "title": "جولة بحيرة أوزنجول الساحرة",
+          "description": "جولة خاصة ليوم كامل إلى بحيرة أوزنجول الشهيرة، الاستمتاع بالإطلالات البانورامية من مزارع الشاي وجبال الشاكر سو."
+        },
+        {
+          "day": 8,
+          "title": "جولة دير سوميلا ومغارة كاراكا",
+          "description": "زيارة دير سوميلا التاريخي المنحوت في الصخر داخل حديقة آلتينديري الوطنية، ثم زيارة مغارة كاراكا الشهيرة."
+        },
+        {
+          "day": 9,
+          "title": "العودة إلى إسطنبول والتسوق الأخير",
+          "description": "الوصول لمطار طرابزون للعودة إلى إسطنبول، وقت حر للتسوق وشراء الهدايا التذكارية وتجهيز الحقائب."
+        },
+        {
+          "day": 10,
+          "title": "التوديع والمغادرة إلى الرياض",
+          "description": "تسجيل الخروج من الفندق في إسطنبول، والتوجه بمركبة خاصة إلى المطار للرحلة الدولية المتجهة إلى الرياض مع ختام متميز للرحلة."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول إلى إسطنبول والاستقبال",
+          "description": "الوصول إلى مطار إسطنبول، استقبال من قبل ممثل الوكالة بالسيارة الخاصة (مرسيدس فيتو) والتجهيز للتوجه إلى الفندق 5 نجوم واستلام الغرف والراحة."
+        },
+        {
+          "day": 2,
+          "title": "جولة معالم إسطنبول التاريخية",
+          "description": "جولة خاصة مغطاة بأهم معالم السلطان أحمد، أيا صوفيا، قصر توبكابي، وجولة في البازار الكبير."
+        },
+        {
+          "day": 3,
+          "title": "رحلة البوسفور والتسوق",
+          "description": "جولة بحرية خاصة في مضيق البوسفور، زيارة تل العرائس في الجانب الآسيوي، ووقت حُر للتسوق في أسواق إسطنبول الحديثة."
+        },
+        {
+          "day": 4,
+          "title": "الطيران الداخلي إلى طرابزون والتوجه لريزا",
+          "description": "الانتقال إلى مطار إسطنبول للرحلة الداخلية إلى طرابزون، الاستقبال والاستلام بالسائق الخاص والانطلاق مباشرة إلى المرتفعات للجلوس في كوخ ريفي فاخر في ريزا."
+        },
+        {
+          "day": 5,
+          "title": "استكشاف مرتفعات ريزا وآيدر",
+          "description": "يوم كامل لاستكشاف شلالات آيدر، الحمامات الكبريتية، جسور العصر العثماني التاريخية، والاستمتاع بإفطار ريفي جبلي فاخر."
+        },
+        {
+          "day": 6,
+          "title": "العودة إلى طرابزون والإقامة بالفندق",
+          "description": "مغادرة الكوخ والتوجه نحو مدينة طرابزون، زيارة قصر آتاتورك وبحيرة سيراجول وتسجيل الدخول في فندق 5 نجوم."
+        },
+        {
+          "day": 7,
+          "title": "جولة بحيرة أوزنجول الساحرة",
+          "description": "جولة خاصة ليوم كامل إلى بحيرة أوزنجول الشهيرة، الاستمتاع بالإطلالات البانورامية من مزارع الشاي وجبال الشاكر سو."
+        },
+        {
+          "day": 8,
+          "title": "جولة دير سوميلا ومغارة كاراكا",
+          "description": "زيارة دير سوميلا التاريخي المنحوت في الصخر داخل حديقة آلتينديري الوطنية، ثم زيارة مغارة كاراكا الشهيرة."
+        },
+        {
+          "day": 9,
+          "title": "العودة إلى إسطنبول والتسوق الأخير",
+          "description": "الوصول لمطار طرابزون للعودة إلى إسطنبول، وقت حر للتسوق وشراء الهدايا التذكارية وتجهيز الحقائب."
+        },
+        {
+          "day": 10,
+          "title": "التوديع والمغادرة إلى الرياض",
+          "description": "تسجيل الخروج من الفندق في إسطنبول، والتوجه بمركبة خاصة إلى المطار للرحلة الدولية المتجهة إلى الرياض مع ختام متميز للرحلة."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival in Istanbul & Transfer",
+          "description": "Arrive at Istanbul Airport, private Mercedes Vito transfer to 5-star hotel and check-in."
+        },
+        {
+          "day": 2,
+          "title": "Istanbul Old City Tour",
+          "description": "Private guided tour of Sultanahmet, Hagia Sophia, Topkapi Palace, and Grand Bazaar."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus Cruise & Shopping",
+          "description": "Private Bosphorus cruise, Çamlıca Hill on Asian side, and leisure shopping time."
+        },
+        {
+          "day": 4,
+          "title": "Flight to Trabzon & Transfer to Rize",
+          "description": "Domestic flight to Trabzon, private transfer to scenic Rize wooden mountain lodge."
+        },
+        {
+          "day": 5,
+          "title": "Rize & Ayder Highlands Exploration",
+          "description": "Full day exploring Ayder waterfalls, thermal springs, historical bridges, and mountain breakfast."
+        },
+        {
+          "day": 6,
+          "title": "Return to Trabzon & Hotel Check-in",
+          "description": "Depart the lodge to Trabzon city, visit Atatürk Pavilion, Sera Lake, and check-in to 5-star hotel."
+        },
+        {
+          "day": 7,
+          "title": "Uzungöl Lake Tour",
+          "description": "Full day private tour to Uzungöl Lake, panoramic viewpoints, and tea plantations."
+        },
+        {
+          "day": 8,
+          "title": "Sumela Monastery & Karaca Cave",
+          "description": "Visit the historic cliffside Sumela Monastery and Karaca Cave."
+        },
+        {
+          "day": 9,
+          "title": "Return to Istanbul & Final Shopping",
+          "description": "Fly back to Istanbul, free afternoon for souvenir shopping and final preparations."
+        },
+        {
+          "day": 10,
+          "title": "Departure to Riyadh",
+          "description": "Hotel check-out and private transfer to Istanbul Airport for international flight back to Riyadh."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.164Z"
+    },
+    {
+      "id": "1788015920554",
+      "slug": "13days-istanbul-trabzon-uzungol",
+      "title": "برنامج سياحي اسطنبول طرابزون اوزنجول 13 يوم",
+      "titleAr": "برنامج سياحي اسطنبول طرابزون اوزنجول 13 يوم",
+      "titleEn": "Istanbul, Trabzon & Uzungol 13-Day Tour",
+      "titleTr": "İstanbul, Trabzon ve Uzungöl 13 Günlük Tur",
+      "destination": "اسطنبول، طرابزون وأوزنجول",
+      "destinationAr": "اسطنبول، طرابزون وأوزنجول، تركيا",
+      "destinationEn": "Istanbul, Trabzon & Uzungol, Turkey",
+      "destinationTr": "İstanbul, Trabzon ve Uzungöl, Türkiye",
+      "country": "تركيا",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Trabzon",
+        "Uzungol",
+        "Istanbul"
+      ],
+      "destinationsAr": [
+        "طرابزون",
+        "أوزنجول",
+        "اسطنبول"
+      ],
+      "destinationsEn": [
+        "Trabzon",
+        "Uzungol",
+        "Istanbul"
+      ],
+      "durationDays": 13,
+      "durationNights": 12,
+      "price": 1575,
+      "currency": "USD",
+      "rating": 4.8,
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-08-29T15:10:00.000Z",
+      "theme": "nature",
+      "tripMode": "private_vip",
+      "images": [
+        {
+          "url": "https://rozanatours.com.tr/wp-content/uploads/2024/03/Istanbul.jpg",
+          "alt": "اسطنبول طرابزون اوزنجول",
+          "width": 800,
+          "height": 600
+        }
+      ],
+      "amenities": [
+        "إقامة في فنادق 4 نجوم",
+        "فندق بوتيكي في أوزنجول",
+        "رحلات الطيران الداخلي",
+        "سيارة خاصة مع سائق",
+        "وجبة إفطار يومية"
+      ],
+      "amenitiesAr": [
+        "فنادق 4 نجوم وإقامة بوتيك في أوزنجول",
+        "إفطار يومي",
+        "تنقلات بسيارة خاصة",
+        "طيران داخلي إسطنبول–طرابزون",
+        "سهرة البوسفور مع عشاء"
+      ],
+      "description": "استمتع بإجازة مميزة مع برنامج سياحي اسطنبول طرابزون اوزنجول 13 يوم، المصمم ليجمع لك أهم معالم تركيا. بين سحر إسطنبول التاريخي، وروعة طبيعة طرابزون، وهدوء بحيرة أوزنجول، تقدم لك الرحلة مزيجاً متكاملاً بين الاسترخاء والمغامرة.",
+      "descriptionAr": "استمتع بإجازة مع برنامج سياحي اسطنبول طرابزون اوزنجول 13 يوم، يجمع سحر إسطنبول التاريخي، وطبيعة طرابزون، وهدوء بحيرة أوزنجول.\n\nإقامة 12 ليلة / 13 يوم: 4 ليالي في طرابزون (4 نجوم)، 3 ليالي في أوزنجول (فندق بوتيكي)، 5 ليالي في إسطنبول (4 نجوم). السعر للشخص في الغرفة المزدوجة.",
+      "descriptionEn": "A 13-day holiday combining historic Istanbul, the Black Sea nature of Trabzon, and the calm of Uzungol lake.\n\n12 nights / 13 days: 4 nights in Trabzon (4-star), 3 nights in Uzungol (boutique hotel), 5 nights in Istanbul (4-star). Price is per person in a double room.",
+      "inclusions": [
+        "إقامة 12 ليلة / 13 يوم في فاندق 4 نجوم وفندق بوتيكي",
+        "وجبة إفطار يومية في الفنادق",
+        "تذاكر الطيران الداخلي بين إسطنبول وطرابزون",
+        "التنقلات والاستقبال والتوديع من والمطارات بسيارة خاصة",
+        "جولات سياحية يومية متنوعة بسيارة خاصة مع سائق"
+      ],
+      "inclusionsAr": [
+        "4 ليالي في فندق 4 نجوم في طرابزون",
+        "3 ليالي في فندق بوتيكي في أوزنجول",
+        "5 ليالي في فندق 4 نجوم في إسطنبول",
+        "وجبة إفطار يومية في الفنادق",
+        "التنقلات بين المطارات والفنادق بسيارة خاصة",
+        "رحلات الطيران الداخلي بين إسطنبول وطرابزون",
+        "جولات يومية بسيارة خاصة",
+        "سهرة الباخرة في البوسفور مع عشاء",
+        "خدمة دعم العملاء 24/7"
+      ],
+      "inclusionsEn": [
+        "4 nights Trabzon 4-star hotel",
+        "3 nights Uzungol boutique hotel",
+        "5 nights Istanbul 4-star hotel",
+        "Daily hotel breakfast",
+        "Private airport and hotel transfers",
+        "Domestic flights between Istanbul and Trabzon",
+        "Daily tours by private car",
+        "Bosphorus evening cruise with dinner",
+        "24/7 customer support"
+      ],
+      "exclusions": [
+        "تذاكر الطيران الدولي",
+        "تذاكر دخول المتاحف والأماكن السياحية",
+        "وجبات الغداء والعشاء (باستثناء عشاء البوسفور)",
+        "المصاريف الشخصية ونشاط التجديف الاختياري"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "نشاط التجديف النهري",
+        "المشروبات الغازية والماء",
+        "مرشد سياحي إلا إذا ذُكر",
+        "وجبات الغداء والعشاء الإضافية",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "River rafting activity",
+        "Soft drinks and water",
+        "Tour guide unless stated",
+        "Lunch and extra dinners",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الاستقبال والتوصيل إلى الفندق في طرابزون",
+          "description": "الاستقبال في مطار طرابزون والتوصيل بسيارة خاصة إلى الفندق."
+        },
+        {
+          "day": 2,
+          "title": "رحلة سوميلا، زيغانا وقرية هامسي",
+          "description": "زيارة منتزه ألتيندير الوطني، دير سوميلا، هضاب زيغانا وقرية هامسي."
+        },
+        {
+          "day": 3,
+          "title": "جولة هضاب خضرنبي ومغارة تشال",
+          "description": "زيارة هضبة خضرنبي، مغارة تشال، مرتفعات كاياباشي وبحيرة سيرا."
+        },
+        {
+          "day": 4,
+          "title": "جولة مدينة طرابزون",
+          "description": "زيارة جامع آيا صوفيا، قصر أتاتورك، حديقة النباتات، بوزتبة وميدان طرابزون."
+        },
+        {
+          "day": 5,
+          "title": "التوصيل إلى أوزنجول وجولة تعريفية",
+          "description": "زيارة مراكز الحلويات والحلقوم، ثم التوجه إلى بحيرة وشلالات أوزنجول والإقامة في الفندق."
+        },
+        {
+          "day": 6,
+          "title": "رحلة مدينة ريزا وهضاب آيدر",
+          "description": "زيارة مزارع الشاي في ريزا، التوجه إلى هضبة آيدر ووادي الرياح لتجربة التجديف (رافتينغ) والتلفريك اليدوي."
+        },
+        {
+          "day": 7,
+          "title": "جولة مرتفعات السلطان مراد",
+          "description": "استكشاف مرتفعات السلطان مراد والشلالات، وفي طريق العودة زيارة مزرعة الخيول."
+        },
+        {
+          "day": 8,
+          "title": "المغادرة إلى إسطنبول",
+          "description": "التوصيل إلى مطار طرابزون للإقلاع إلى إسطنبول، والاستقبال والتوصيل للفندق في إسطنبول."
+        },
+        {
+          "day": 9,
+          "title": "جولة الإطلالات الجميلة في إسطنبول",
+          "description": "زيارة منتزه أولوس بارك، برج ومول سفير، حي أورتاكوي، وشارع الاستقلال أو تقسيم."
+        },
+        {
+          "day": 10,
+          "title": "جولة القرن الذهبي",
+          "description": "زيارة تل بييرلوتي، مسجد السلطان أيوب، متحف مينياتورك، وملاهي إسفنبول."
+        },
+        {
+          "day": 11,
+          "title": "جولة القسم الآسيوي لإسطنبول",
+          "description": "زيارة قمة وتل العرائس (تشاملجا)، ساحل أوسكودار، برج الفتاة، وجادة بغداد."
+        },
+        {
+          "day": 12,
+          "title": "سهرة الباخرة في البوسفور مع العشاء",
+          "description": "جولة ليلية بحرية على متن قارب في البوسفور بين قارتي أوروبا وآسيا تشمل العشاء الساهر."
+        },
+        {
+          "day": 13,
+          "title": "التوصيل إلى المطار والمغادرة",
+          "description": "تسجيل الخروج من الفندق والتوصيل إلى المطار للعودة بسلامة الله."
+        }
+      ],
+      "updatedAt": "2026-09-15T05:15:19.192Z"
+    },
+    {
+      "id": "aip_mt97b0ux_pw8ecr",
+      "slug": "trabzon-ayder-honeymoon-program-10-days",
+      "title": "Trabzon & Ayder Honeymoon Program - 10 Days",
+      "titleAr": "برنامج شهر العسل طرابزون وآيدر - 10 أيام",
+      "titleEn": "Trabzon & Ayder Honeymoon Program - 10 Days",
+      "titleTr": "Trabzon & Ayder Honeymoon Program - 10 Days",
+      "destination": "Trabzon",
+      "destinationAr": "Trabzon",
+      "destinationEn": "Trabzon",
+      "destinationTr": "Trabzon",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Trabzon"
+      ],
+      "destinationsEn": [
+        "Trabzon"
+      ],
+      "destinationsAr": [
+        "Trabzon"
+      ],
+      "durationDays": 10,
+      "durationNights": 9,
+      "price": 3680,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600&q=80",
+          "alt": "Trabzon & Ayder Honeymoon Program - 10 Days",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "9 nights accommodation (5-star hotels + VIP Jacuzzi bungalows)",
+        "Private Mercedes Vito car with driver for 10 days",
+        "Daily breakfast for 2 persons",
+        "Special honeymoon room setup",
+        "Fuel, road fees & airport transfers included"
+      ],
+      "amenitiesAr": [
+        "إقامة 9 ليالٍ (فنادق 5 نجوم + أكواخ VIP بجاكوزي)",
+        "سيارة خاصة مرسيدس فيتو مع سائق طوال الـ 10 أيام",
+        "الإفطار اليومي لشخصين",
+        "تزيين وترتيبات خاصة بشهر العسل",
+        "رسوم الوقود والطرق والانتقالات من وإلى مطار طرابزون"
+      ],
+      "isFeatured": true,
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Trabzon & Ayder Honeymoon Program - 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج شهر العسل طرابزون وآيدر - 10 أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Trabzon & Ayder Honeymoon Program - 10 Days\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Trabzon & Ayder Honeymoon Program - 10 Days\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusions": [
+        "9 nights accommodation (5-star hotels + VIP Jacuzzi bungalows)",
+        "Private Mercedes Vito car with driver for 10 days",
+        "Daily breakfast for 2 persons",
+        "Special honeymoon room setup",
+        "Fuel, road fees & airport transfers included"
+      ],
+      "inclusionsAr": [
+        "إقامة 9 ليالٍ (فنادق 5 نجوم + أكواخ VIP بجاكوزي)",
+        "سيارة خاصة مرسيدس فيتو مع سائق طوال الـ 10 أيام",
+        "الإفطار اليومي لشخصين",
+        "تزيين وترتيبات خاصة بشهر العسل",
+        "رسوم الوقود والطرق والانتقالات من وإلى مطار طرابزون"
+      ],
+      "inclusionsEn": [
+        "9 nights accommodation (5-star hotels + VIP Jacuzzi bungalows)",
+        "Private Mercedes Vito car with driver for 10 days",
+        "Daily breakfast for 2 persons",
+        "Special honeymoon room setup",
+        "Fuel, road fees & airport transfers included"
+      ],
+      "inclusionsTr": [
+        "9 nights accommodation (5-star hotels + VIP Jacuzzi bungalows)",
+        "Private Mercedes Vito car with driver for 10 days",
+        "Daily breakfast for 2 persons",
+        "Special honeymoon room setup",
+        "Fuel, road fees & airport transfers included"
+      ],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال VIP",
+          "description": "استقبال في مطار طرابزون بنقل خاص VIP والتوجه للفندق للاستراحة ثم جولة خفيفة على الكورنيش."
+        },
+        {
+          "day": 2,
+          "title": "معالم طرابزون ومطل بوزتبه",
+          "description": "زيارة متحف آيا صوفيا، قصر أتاتورك، واستراحة شاي رومانسية في قمة بوزتبه عند الغروب."
+        },
+        {
+          "day": 3,
+          "title": "دير سوميلا وهامسي كوي",
+          "description": "رحلة بين الجبال إلى دير سوميلا الشاهق ثم قرية هامسي كوي لتذوق المهلبية التركية الشهيرة."
+        },
+        {
+          "day": 4,
+          "title": "الانتقال إلى أوزنجول",
+          "description": "جولة في الطريق إلى أوزنجول، استكشاف البحيرة، والتسكين في كوخ فاخر بخدمات شهر العسل."
+        },
+        {
+          "day": 5,
+          "title": "مرتفعات أوزنجول وكارستر",
+          "description": "الصعود بالسيارة الخاصة إلى مرتفعات كارستر ولوسترا لمشاهدة أوزنجول من الأعلى بين السحاب."
+        },
+        {
+          "day": 6,
+          "title": "وادي فرتنا وهضبة آيدر",
+          "description": "زيارة الجسور العثمانية، قلعة زيلكالي، وشلال بالوفيت ثم التسكين في كوخ آيدر مع جاكوزي خاص."
+        },
+        {
+          "day": 7,
+          "title": "مرتفعات آيدر وقمة هوسر",
+          "description": "استكشاف شلالات آيدر ثم الانطلاق لقمة هوسر لمشاهدة ظاهرة بحر السحاب والغيمة الأرجوانية."
+        },
+        {
+          "day": 8,
+          "title": "بحيرة سيرا جول والعودة لطرابزون",
+          "description": "العودة باتجاه طرابزون، جولة قارب رومانسية في بحيرة سيرا جول ثم الإقامة في فندق 5 نجوم."
+        },
+        {
+          "day": 9,
+          "title": "التسوق ومزارع الشاي",
+          "description": "زيارة مزارع ومصنع الشاي في أوف، ثم جولة تسوق في فوروم طرابزون وجواهر مول."
+        },
+        {
+          "day": 10,
+          "title": "التوديع والمغادرة",
+          "description": "تسليم الغرف والتوصيل بسيارة VIP إلى مطار طرابزون للعودة بالسلامة."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول والاستقبال VIP",
+          "description": "استقبال في مطار طرابزون بنقل خاص VIP والتوجه للفندق للاستراحة ثم جولة خفيفة على الكورنيش."
+        },
+        {
+          "day": 2,
+          "title": "معالم طرابزون ومطل بوزتبه",
+          "description": "زيارة متحف آيا صوفيا، قصر أتاتورك، واستراحة شاي رومانسية في قمة بوزتبه عند الغروب."
+        },
+        {
+          "day": 3,
+          "title": "دير سوميلا وهامسي كوي",
+          "description": "رحلة بين الجبال إلى دير سوميلا الشاهق ثم قرية هامسي كوي لتذوق المهلبية التركية الشهيرة."
+        },
+        {
+          "day": 4,
+          "title": "الانتقال إلى أوزنجول",
+          "description": "جولة في الطريق إلى أوزنجول، استكشاف البحيرة، والتسكين في كوخ فاخر بخدمات شهر العسل."
+        },
+        {
+          "day": 5,
+          "title": "مرتفعات أوزنجول وكارستر",
+          "description": "الصعود بالسيارة الخاصة إلى مرتفعات كارستر ولوسترا لمشاهدة أوزنجول من الأعلى بين السحاب."
+        },
+        {
+          "day": 6,
+          "title": "وادي فرتنا وهضبة آيدر",
+          "description": "زيارة الجسور العثمانية، قلعة زيلكالي، وشلال بالوفيت ثم التسكين في كوخ آيدر مع جاكوزي خاص."
+        },
+        {
+          "day": 7,
+          "title": "مرتفعات آيدر وقمة هوسر",
+          "description": "استكشاف شلالات آيدر ثم الانطلاق لقمة هوسر لمشاهدة ظاهرة بحر السحاب والغيمة الأرجوانية."
+        },
+        {
+          "day": 8,
+          "title": "بحيرة سيرا جول والعودة لطرابزون",
+          "description": "العودة باتجاه طرابزون، جولة قارب رومانسية في بحيرة سيرا جول ثم الإقامة في فندق 5 نجوم."
+        },
+        {
+          "day": 9,
+          "title": "التسوق ومزارع الشاي",
+          "description": "زيارة مزارع ومصنع الشاي في أوف، ثم جولة تسوق في فوروم طرابزون وجواهر مول."
+        },
+        {
+          "day": 10,
+          "title": "التوديع والمغادرة",
+          "description": "تسليم الغرف والتوصيل بسيارة VIP إلى مطار طرابزون للعودة بالسلامة."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival & VIP Welcome",
+          "description": "VIP private pickup at Trabzon airport, hotel check-in, and evening seafront walk."
+        },
+        {
+          "day": 2,
+          "title": "Trabzon City & Boztepe Sunset",
+          "description": "Hagia Sophia Trabzon, Atatürk Pavilion, and sunset tea at Boztepe Hill."
+        },
+        {
+          "day": 3,
+          "title": "Sümela Monastery & Hamsiköy",
+          "description": "Historic Sümela Monastery visit and tasting famous rice pudding in Hamsiköy village."
+        },
+        {
+          "day": 4,
+          "title": "Transfer to Uzungöl",
+          "description": "Scenic drive to Uzungöl, lake promenade, and check-in to a luxury honeymoon bungalow."
+        },
+        {
+          "day": 5,
+          "title": "Uzungöl Heights & Karester",
+          "description": "VIP drive to Karester plateau overlooking Uzungöl lake from high above."
+        },
+        {
+          "day": 6,
+          "title": "Fırtına Valley & Ayder Plateau",
+          "description": "Fırtına river, Zilkale castle, Palovit waterfall, and check-in to Ayder Jacuzzi bungalow."
+        },
+        {
+          "day": 7,
+          "title": "Ayder & Huser Cloud Sea Sunset",
+          "description": "Ayder waterfalls and sunset above the clouds at Huser plateau."
+        },
+        {
+          "day": 8,
+          "title": "Sera Lake & Return to Trabzon",
+          "description": "Drive back towards Trabzon, boat ride at Sera Lake, and 5-star hotel check-in."
+        },
+        {
+          "day": 9,
+          "title": "Tea Gardens & Shopping Day",
+          "description": "Tea gardens experience in Of, followed by shopping at Forum Trabzon & Cevahir Mall."
+        },
+        {
+          "day": 10,
+          "title": "Departure",
+          "description": "Hotel check-out and VIP transfer to Trabzon airport for final departure."
+        }
+      ],
+      "isPublished": true,
+      "createdAt": "2026-08-31T14:28:39.395Z",
+      "updatedAt": "2026-09-15T05:15:19.181Z"
+    },
+    {
+      "id": "cappadocia_magical_2day",
+      "slug": "2-day-magical-cappadocia-tour-from-istanbul",
+      "title": "رحلة كبادوكيا الساحرة - يومان من إسطنبول",
+      "titleAr": "رحلة كبادوكيا الساحرة - يومان من إسطنبول",
+      "titleEn": "2-Day Magical Cappadocia Tour from Istanbul",
+      "titleTr": "İstanbul'dan 2 Günlük Büyüleyici Kapadokya Turu",
+      "destination": "كبادوكيا",
+      "destinationAr": "كبادوكيا، تركيا",
+      "destinationEn": "Cappadocia, Turkey",
+      "destinationTr": "Kapadokya, Türkiye",
+      "country": "تركيا",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Türkiye",
+      "destinations": [
+        "Cappadocia",
+        "Göreme",
+        "Ürgüp"
+      ],
+      "destinationsAr": [
+        "كبادوكيا",
+        "جوريم",
+        "أورجوب"
+      ],
+      "destinationsEn": [
+        "Cappadocia",
+        "Goreme",
+        "Urgup"
+      ],
+      "durationDays": 2,
+      "durationNights": 1,
+      "price": 399,
+      "currency": "USD",
+      "rating": 4.9,
+      "isFeatured": true,
+      "isPublished": true,
+      "theme": "adventure",
+      "tripMode": "private_vip",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1569530593523-083e18aecc75?w=1600&q=80",
+          "alt": "مناطيد كبادوكيا فجراً",
+          "width": 1600,
+          "height": 900
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=1600&q=80",
+          "alt": "فنادق الكهوف في كبادوكيا",
+          "width": 1600,
+          "height": 900
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1600&q=80",
+          "alt": "وادي الحمام ومداخن الجنيات",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [
+        "تذاكر الطيران الداخلي ذهاب وإياب",
+        "إقامة ليلة في فندق كهف بوتيكي فاخر مع الإفطار",
+        "جولتان سياحيتان كاملتان (الجولة الحمراء والخضراء)",
+        "مرشد سياحي مرخص يتحدث العربية والإنجليزية",
+        "جميع المواصلات والتنقلات بسيارة VIP مكيفة"
+      ],
+      "amenitiesAr": [
+        "تذاكر الطيران الداخلي ذهاب وإياب",
+        "إقامة ليلة في فندق كهف بوتيكي فاخر مع الإفطار",
+        "جولتان سياحيتان كاملتان (الجولة الحمراء والخضراء)",
+        "مرشد سياحي مرخص يتحدث العربية والإنجليزية",
+        "جميع المواصلات والتنقلات بسيارة VIP مكيفة"
+      ],
+      "description": "استكشف سحر كبادوكيا الفريد في رحلة متكاملة ليومين تنطلق من إسطنبول بالطيران الداخلي. تشمل الإقامة في فندق كهف تقليدي مميز، وجولات مرشدة في متحف جوريم المفتوح، وادي الخيال، مدينة كايماكلي تحت الأرض، ومشاهدة مناطيد الهواء الساخن عند شروق الشمس.",
+      "descriptionAr": "استكشف سحر كبادوكيا الفريد في رحلة متكاملة ليومين تنطلق من إسطنبول بالطيران الداخلي. تشمل الإقامة في فندق كهف تقليدي مميز، وجولات مرشدة في متحف جوريم المفتوح، وادي الخيال، مدينة كايماكلي تحت الأرض، ومشاهدة مناطيد الهواء الساخن عند شروق الشمس.",
+      "descriptionEn": "Experience the fairy-tale landscapes of Cappadocia on a comprehensive 2-day tour from Istanbul with round-trip domestic flights, authentic boutique cave hotel stay, licensed guided Red and Green tours, and sunrise hot air balloon panoramas.",
+      "descriptionTr": "İstanbul'dan gidiş-dönüş iç hat uçuşları, butik mağara otel konaklaması, lisanslı rehber eşliğinde Kırmızı ve Yeşil turlar ile Kapadokya'nın büyüleyici peri bacalarını ve vadilerini keşfedin.",
+      "inclusions": [
+        "تذاكر الطيران الداخلي (إسطنبول - كبادوكيا - إسطنبول)",
+        "إقامة ليلة واحدة في فندق كهف بوتيكي فاخر مع الإفطار",
+        "جولة اليوم الأول (الجولة الحمراء) مع وجبة الغداء ورسوم الدخول",
+        "جولة اليوم الثاني (الجولة الخضراء) مع وجبة الغداء ورسوم الدخول",
+        "مرشد سياحي عربي / إنجليزي محترف",
+        "كافة التنقلات والاستقبال والتوديع من مطار كبادوكيا"
+      ],
+      "inclusionsAr": [
+        "تذاكر الطيران الداخلي (إسطنبول - كبادوكيا - إسطنبول)",
+        "إقامة ليلة واحدة في فندق كهف بوتيكي فاخر مع الإفطار",
+        "جولة اليوم الأول (الجولة الحمراء) مع وجبة الغداء ورسوم الدخول",
+        "جولة اليوم الثاني (الجولة الخضراء) مع وجبة الغداء ورسوم الدخول",
+        "مرشد سياحي عربي / إنجليزي محترف",
+        "كافة التنقلات والاستقبال والتوديع من مطار كبادوكيا"
+      ],
+      "inclusionsEn": [
+        "Round-trip domestic flights (Istanbul - Cappadocia - Istanbul)",
+        "1 night luxury boutique cave hotel accommodation with breakfast",
+        "Day 1 Red Tour with lunch and museum entrance tickets",
+        "Day 2 Green Tour with lunch and entrance tickets",
+        "Professional licensed tour guide",
+        "All airport and excursion transfers in VIP Mercedes vehicles"
+      ],
+      "exclusions": [
+        "تذاكر الطيران الدولي إلى تركيا",
+        "رحلة المنطاد الهوائي (نشاط اختياري عند الشروق)",
+        "المشروبات والمصاريف الشخصية"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولي إلى تركيا",
+        "رحلة المنطاد الهوائي (نشاط اختياري عند الشروق)",
+        "المشروبات والمصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights to Turkey",
+        "Hot air balloon flight (optional sunrise activity)",
+        "Drinks and personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الانطلاق إلى كبادوكيا والجولة الحمراء التاريخية",
+          "description": "النقل فجراً من فندق إسطنبول إلى المطار، والوصول إلى كبادوكيا لبدء الجولة الحمراء: وادي ديفرينت (وادي الخيال)، مداخن الجنيات في باشاباج، متحف جوريم المفتوح، واستكشاف صناعة الخزف في أفانوس ثم التوجه لفندق الكهف."
+        },
+        {
+          "day": 2,
+          "title": "شروق المناطيد، الجولة الخضراء والعودة إلى إسطنبول",
+          "description": "مشاهدة إقلاع المناطيد عند الفجر، ثم الانطلاق في الجولة الخضراء لاستكشاف مدينة كايماكلي تحت الأرض، المشي في وادي إهلارا، وزيارة دير سيليم ووادي الحمام، ثم التوصيل إلى المطار والعودة إلى إسطنبول."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الانطلاق إلى كبادوكيا والجولة الحمراء التاريخية",
+          "description": "النقل فجراً من فندق إسطنبول إلى المطار، والوصول إلى كبادوكيا لبدء الجولة الحمراء: وادي ديفرينت (وادي الخيال)، مداخن الجنيات في باشاباج، متحف جوريم المفتوح، واستكشاف صناعة الخزف في أفانوس ثم التوجه لفندق الكهف."
+        },
+        {
+          "day": 2,
+          "title": "شروق المناطيد، الجولة الخضراء والعودة إلى إسطنبول",
+          "description": "مشاهدة إقلاع المناطيد عند الفجر، ثم الانطلاق في الجولة الخضراء لاستكشاف مدينة كايماكلي تحت الأرض، المشي في وادي إهلارا، وزيارة دير سيليم ووادي الحمام، ثم التوصيل إلى المطار والعودة إلى إسطنبول."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Flight to Cappadocia & Historic Red Tour",
+          "description": "Early morning flight from Istanbul, transfer to begin Red Tour: Devrent Valley (Imagination Valley), Pasabag fairy chimneys, Goreme Open Air Museum, Avanos pottery workshop, and cave hotel check-in."
+        },
+        {
+          "day": 2,
+          "title": "Sunrise Balloons, Underground City & Flight to Istanbul",
+          "description": "Watch hot air balloons at sunrise, then proceed with the Green Tour: Kaymakli Underground City, Ihlara Valley scenic hike, Selime Monastery, and Pigeon Valley before evening airport transfer back to Istanbul."
+        }
+      ],
+      "createdAt": "2026-09-02T12:00:00.000Z",
+      "updatedAt": "2026-09-15T05:15:19.173Z"
+    }
+  ],
+  "updatedAt": "2026-09-15T05:15:19.193Z",
+  "deletedIds": []
+}

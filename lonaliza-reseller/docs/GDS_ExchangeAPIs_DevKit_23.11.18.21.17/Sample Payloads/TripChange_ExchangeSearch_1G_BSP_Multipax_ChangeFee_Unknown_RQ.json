@@ -1,0 +1,47 @@
+{
+    "CatalogOfferingsQueryAirChange": {
+        "CatalogOfferingsAirChangeRequest": {
+            "@type": "CatalogOfferingsAirChangeRequestReservation",
+            "returnBrandedFaresInd": true,
+            "detailViewInd": true,
+            "SearchCriteriaFlight": [{
+                    "departureDate": "2021-06-21",
+                    "departureTime": "07:55:00",
+                    "From": {
+                        "value": "SYD"
+                    },
+                    "To": {
+                        "value": "BNE"
+                    }
+                }, {
+                    "departureDate": "2021-08-29",
+                    "departureTime": "07:55:00",
+                    "From": {
+                        "value": "BNE"
+                    },
+                    "To": {
+                        "value": "SYD"
+                    }
+                }
+            ],
+            "PricingModifiersAirChange": {},
+            "BuildFromReservationWorkbench": {
+                "ReservationIdentifier": {
+                    "Identifier": {
+                        "authority": "Travelport",
+                        "value": "7cb6f6a2-a153-4546-a6b3-fb61059e43d3"
+                    }
+                },
+                "OfferIdentifier": {
+                    "id": "offer_1"
+                },
+                "ProductIdentifier": [{
+                        "id": "product_1"
+                    }, {
+                        "id": "product_2"
+                    }
+                ]
+            }
+        }
+    }
+}

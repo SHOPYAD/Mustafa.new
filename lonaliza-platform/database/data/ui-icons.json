@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "nav": {
+    "home": { "source": "lucide", "name": "house" },
+    "holidays": { "source": "lucide", "name": "palmtree" },
+    "flights": { "source": "lucide", "name": "plane" },
+    "hotels": { "source": "lucide", "name": "hotel" },
+    "vipDailyTours": { "source": "lucide", "name": "tickets" },
+    "transfers": { "source": "lucide", "name": "car-front" },
+    "cars": { "source": "lucide", "name": "car" },
+    "visa": { "source": "lucide", "name": "stamp" },
+    "uaeTours": { "source": "lucide", "name": "landmark" },
+    "blog": { "source": "lucide", "name": "newspaper" },
+    "aiChat": { "source": "lucide", "name": "sparkles" },
+    "contact": { "source": "lucide", "name": "phone" }
+  },
+  "searchTab": {
+    "flights": { "source": "lucide", "name": "plane" },
+    "hotels": { "source": "lucide", "name": "hotel" },
+    "tours": { "source": "lucide", "name": "palmtree" },
+    "transfers": { "source": "lucide", "name": "car-front" },
+    "cars": { "source": "lucide", "name": "car" }
+  },
+  "customSvgs": []
+}
