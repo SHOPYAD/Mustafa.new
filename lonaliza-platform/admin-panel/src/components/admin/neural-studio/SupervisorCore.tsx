@@ -1,20 +1,26 @@
 "use client";
 export default function SupervisorCore({ level = 0, listening = false }: { level?: number; listening?: boolean }) {
-  const amplitude = Math.max(0, Math.min(1, level));
-  return <g aria-label={listening ? "المشرف: قياس صوت الميكروفون" : "نواة المشرف — غير متصل بالمحادثة"}>
-    <circle r="106" className="ns-core-halo" />
-    <circle r="99" className="ns-ring ns-ion" strokeWidth="1" />
-    <circle r="91" className="ns-ring ns-amber ns-orbit" strokeWidth="3" strokeDasharray="110 16 24 9" />
-    <circle r="82" className="ns-ring ns-ion" strokeWidth="5" strokeDasharray="260 12 60 18" />
-    <circle r="72" className="ns-ring ns-amber" strokeWidth="2" />
-    <circle r="62" className="ns-ring ns-ion" strokeWidth="1" />
-    <circle r="52" className="ns-core-face" />
-    {Array.from({ length: 29 }, (_, i) => {
-      const envelope = Math.sin(i / 28 * Math.PI);
-      const height = 2 + amplitude * envelope * (8 + (i * 17 % 29));
-      return <line key={i} x1={-42+i*3} x2={-42+i*3} y1={-height} y2={height} className="ns-amber ns-wave" strokeWidth="1.8" />;
-    })}
-    <text y="128" textAnchor="middle" className="ns-core-label">الوكيل المشرف</text>
-    <text y="150" textAnchor="middle" className="ns-source-label">{listening ? "إشارة ميكروفون فعلية" : "المحادثة: لم تُربط بعد"}</text>
-  </g>;
+ const amplitude = Math.max(0, Math.min(1, level));
+ return <g aria-label={listening ? "المشرف: قياس صوت الميكروفون" : "نواة المشرف — غير متصل بالمحادثة"}>
+  <circle r="163" fill="url(#ns-corona)" />
+  {[146,137,126,118,112,103,94,86,78,69,58,50,43].map((r,i)=><circle key={r} r={r}
+   className={"ns-ring "+(i%3===0?"ns-amber":"ns-ion")} strokeWidth={i===3?4:i===5?3.5:i===7?2.5:.65}
+   opacity={i<2?.4:1} strokeDasharray={i===3?"220 12 76 18":i===5?"190 8 84 22":undefined}/>)}
+  {[121,109,98,89].map((r,i)=><circle key={r} r={r} className={i%2?"ns-ring ns-ion":"ns-ring ns-amber"}
+   strokeWidth={i%2?1.4:2} strokeDasharray="2 7 1 14 3 28" opacity=".8" />)}
+  {Array.from({length:72},(_,i)=>{const a=i*Math.PI/36;const r=i%6===0?136:131;return <line key={i}
+   x1={Math.cos(a)*r} y1={Math.sin(a)*r} x2={Math.cos(a)*(r+5)} y2={Math.sin(a)*(r+5)}
+   className={i%6===0?"ns-amber":"ns-ion"} opacity={i%6===0?.9:.35} strokeWidth=".8"/>;})}
+  <circle r="47" className="ns-core-face"/>
+  <circle r="47" fill="url(#ns-amber-volume)" />
+  <circle r="44" className="ns-ring ns-amber" strokeWidth="1.2"/>
+  <path d="M -70 0 H 70 M 0 -63 V 55" className="ns-amber" strokeWidth=".5" opacity=".65"/>
+  {Array.from({length:39},(_,i)=>{
+   const envelope=Math.sin(i/38*Math.PI);
+   const h=1.5+amplitude*envelope*(6+i*17%27);
+   return <line key={i} x1={-57+i*3} x2={-57+i*3} y1={-h} y2={h} className="ns-amber ns-wave" strokeWidth="1.3"/>;
+  })}
+  <rect x="-68" y="50" width="136" height="28" rx="10" className="ns-core-caption"/>
+  <text y="70" textAnchor="middle" direction="rtl" className="ns-core-label">الوكيل المشرف</text>
+ </g>;
 }

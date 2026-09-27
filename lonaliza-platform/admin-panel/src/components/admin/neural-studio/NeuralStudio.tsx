@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { STUDIO_DOMAINS, STUDIO_PAGES, STUDIO_SCREENS, SOURCE_COMMIT, type DomainId } from "@/lib/neural-studio/catalog";
 import { clampZoom } from "@/lib/neural-studio/workspace";
+import { ATLAS_CLUSTERS } from "@/lib/neural-studio/atlas-composition";
 import NeuralField from "./NeuralField";
 import NeuralAtlas from "./NeuralAtlas";
 import FloatingWindow from "./FloatingWindow";
@@ -11,6 +12,7 @@ type Snapshot = { status: string; observedAt?: string; observations: Observation
 export default function NeuralStudio() {
   const [selected, setSelected] = useState<DomainId>("overview");
   const [expanded, setExpanded] = useState<string[]>([]);
+  const [families, setFamilies] = useState<string[]>([]);
   const [sidebar, setSidebar] = useState(true), [query, setQuery] = useState("");
   const [inspector, setInspector] = useState(true), [references, setReferences] = useState(false);
   const [pageHref, setPageHref] = useState<string | null>(null);
@@ -76,7 +78,7 @@ export default function NeuralStudio() {
     <NeuralField />
     <header className="ns-topbar">
       <div><h1>الأطلس العصبي الشامل</h1><p>منصة عمليات المعرفة المؤسسية</p></div>
-      <div className="ns-depth" aria-label="مستوى التوسع">L{expanded.length ? 1 : 0}<span /> {expanded.length} فروع مفتوحة</div>
+      <div className="ns-depth" aria-label="مستوى التوسع"><b>L{expanded.length ? 1 : 0}</b><span><i /><i /><i /><i /></span> مستوى العمق</div>
       <nav aria-label="مسار الاستوديو"><a href="/admin">لوحة الإدارة</a><span>‹</span><button onClick={() => { setExpanded([]); select("overview"); setZoom(1); }}>الأطلس الشامل</button></nav>
     </header>
     <NeuralAtlas selected={selected} expanded={expanded} onSelect={select} onToggle={toggle}
@@ -85,26 +87,43 @@ export default function NeuralStudio() {
       <header><strong>المستكشف</strong><button aria-label="إغلاق المستكشف" onClick={() => setSidebar(false)}>×</button></header>
       <input aria-label="البحث في أقسام المنصة" placeholder="البحث في المجالات…" value={query} onChange={e => setQuery(e.target.value)} />
       <div className="ns-explorer-scroll">
-        {STUDIO_DOMAINS.filter(d => !query || d.label.includes(query) || STUDIO_PAGES.some(p => p.domain === d.id && p.label.includes(query))).map(d =>
-          <section key={d.id}>
-            <div className={"ns-tree-domain " + (selected === d.id ? "is-selected" : "")}>
-              <button aria-label={"توسيع " + d.label} aria-expanded={expanded.includes(d.id)} onClick={() => toggle(d.id)}>{expanded.includes(d.id) ? "▾" : "◂"}</button>
-              <button onClick={() => select(d.id)}><span className="ns-tree-orb" />{d.label}</button>
-            </div>
-            {(expanded.includes(d.id) || query) && <ul>{STUDIO_PAGES.filter(p => p.domain === d.id && (!query || d.label.includes(query) || p.label.includes(query))).map(p =>
-              <li key={p.href}><button onClick={() => inspectPage(p.href)}>{p.label}</button></li>)}</ul>}
-          </section>)}
+        <div className="ns-tree-root">الأطلس العصبي الشامل</div>
+        {ATLAS_CLUSTERS.filter(group => !query || group.label.includes(query) || STUDIO_PAGES.some(p => group.domains.includes(p.domain as DomainId) && p.label.includes(query))).map(group => {
+          const grouped = group.domains.length > 1, show = families.includes(group.id) || !!query;
+          return <section key={group.id} className={"ns-family ns-family-" + group.tone}>
+            {grouped && <div className="ns-tree-domain"><button aria-label={"فتح مجموعة " + group.label} aria-expanded={show}
+              onClick={() => setFamilies(f => f.includes(group.id) ? f.filter(id => id !== group.id) : [...f,group.id])}> {show ? "▾" : "◂"} </button>
+              <button onClick={() => { select(group.domains[0]); setFamilies(f => f.includes(group.id) ? f : [...f,group.id]); }}><span className="ns-tree-orb"/>{group.label}</button></div>}
+            {(!grouped || show) && group.domains.map(id => {
+              const d = STUDIO_DOMAINS.find(d => d.id === id)!;
+              return <div key={id} className={grouped ? "ns-family-child" : ""}>
+                <div className={"ns-tree-domain " + (selected === d.id ? "is-selected" : "")}>
+                  <button aria-label={"توسيع " + d.label} aria-expanded={expanded.includes(d.id)} onClick={() => toggle(d.id)}>{expanded.includes(d.id) ? "▾" : "◂"}</button>
+                  <button onClick={() => select(d.id)}><span className="ns-tree-orb"/>{grouped ? d.label : group.label}</button>
+                </div>
+                {(expanded.includes(d.id) || query) && <ul>{STUDIO_PAGES.filter(p => p.domain === d.id && (!query || group.label.includes(query) || p.label.includes(query))).map(p =>
+                  <li key={p.href}><button onClick={() => inspectPage(p.href)}>{p.label}</button></li>)}</ul>}
+              </div>;
+            })}
+          </section>;
+        })}
       </div>
       <footer>{STUDIO_PAGES.filter(p => p.domain).length} ملف صفحة مصنف · فهرس المصدر، لا حالة تشغيل</footer>
     </aside> : <button className="ns-explorer-reopen" aria-label="فتح المستكشف" onClick={() => setSidebar(true)}>المستكشف ‹</button>}
-    {inspector && <FloatingWindow id="inspector" title="معلومات السياق" initial={{ x: 14, y: 86, width: 300, height: 365 }} onClose={() => setInspector(false)}>
-      <p className="ns-eyeline">التحديد</p><h2>{selectedPage?.label || domain.label}</h2>
-      <dl><dt>المصدر</dt><dd>فهرس المستودع · {SOURCE_COMMIT.slice(0, 7)}</dd><dt>القراءة التشغيلية</dt><dd data-testid="source-status">{status}</dd></dl>
+    {inspector && <FloatingWindow id="inspector" title="معلومات السياق" initial={{ x: 14, y: 80, width: 306, height: 258 }} onClose={() => setInspector(false)}>
+      <div className="ns-context-row"><span aria-hidden="true">◎</span><div><p>التحديد</p><h2>{selectedPage?.label || domain.label}</h2></div></div>
+      <div className="ns-context-row"><span aria-hidden="true">⌘</span><div><p>العلاقات</p><p>{ATLAS_CLUSTERS.length} مجموعة رئيسية · {STUDIO_DOMAINS.length} مجال موثق</p></div></div>
+      <div className="ns-context-row"><span aria-hidden="true">◇</span><div><p>الطبقة</p><p>L{expanded.length ? 1 : 0} — {expanded.length ? "فروع متراكمة" : "المستوى العام"}</p></div></div>
+      <p className="ns-source-status" data-testid="source-status">{status}</p>
+      <details className="ns-source-details" open={!!selectedPage}><summary>مصدر البيانات والتفاصيل</summary>
+      <small>فهرس المستودع · {SOURCE_COMMIT.slice(0, 7)}</small>
       {selectedPage && <><code className="ns-route" dir="ltr">{selectedPage.href}</code>
         {!selectedPage.dynamic && <a className="ns-action" href={selectedPage.href} target="_blank" rel="noreferrer">فتح واجهة القسم الحالية</a>}
         <p className="ns-note">هذه علاقة احتواء موثقة بالملف، وليست مسار تنفيذ حي أو اتصال مزود.</p></>}
       {loading && <p role="status">قراءة الأدوات المسجلة لهذا المجال…</p>}
+      </details>
       {error && <p role="alert">{error}</p>}
+      <details className="ns-source-details"><summary>القراءة التشغيلية</summary>
       {snapshot?.observations.map(o => <section className="ns-observation" key={o.tool}>
         <code dir="ltr">{o.tool}</code>
         {o.status !== "ready" ? <p>المصدر غير متاح</p> : o.facts.map(f =>
@@ -112,6 +131,7 @@ export default function NeuralStudio() {
         {o.observedAt && <small>وقت القراءة: {new Date(o.observedAt).toLocaleTimeString("ar")}</small>}
       </section>)}
       {!loading && !error && snapshot?.status === "not_connected" && <p className="ns-note">لا يوجد محول قراءة معتمد لهذا المجال بعد. الإجراءات الحية غير مفعلة في هذا الاستوديو التجريبي.</p>}
+      </details>
     </FloatingWindow>}
     {references && <FloatingWindow id="references" title="عقد الواجهات العشرين" initial={{ x: 330, y: 100, width: 440, height: 560 }} onClose={() => setReferences(false)}>
       <p>كل مرجع محفوظ في المستودع. هذه قائمة نطاق التنفيذ وليست إعلان اكتماله.</p>

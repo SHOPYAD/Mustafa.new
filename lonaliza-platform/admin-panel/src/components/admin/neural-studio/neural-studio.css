@@ -1,8 +1,8 @@
 .ns-studio {
   --ns-space:#020d17; --ns-panel:rgba(3,21,34,.96); --ns-ion:#16e7f1; --ns-amber:#f4c56a;
-  --ns-text:#daedf8; --ns-muted:#86afc2; --ns-line:#17647b; --ns-danger:#ff7882;
+  --ns-mint:#36ffbb; --ns-violet:#d887f4; --ns-text:#daedf8; --ns-muted:#86afc2; --ns-line:#17647b; --ns-danger:#ff7882;
   position:relative; width:100%; height:100dvh; min-height:540px; overflow:hidden; isolation:isolate;
-  background:var(--ns-space); color:var(--ns-text); font-family:inherit; font-size:14px;
+  background:var(--ns-space); color:var(--ns-text); font-family:inherit; font-size:16px;
 }
 .ns-studio * { box-sizing:border-box; }
 .ns-studio button,.ns-studio input { font:inherit; color:inherit; }
@@ -10,15 +10,15 @@
 .ns-studio a { color:var(--ns-ion); text-decoration:none; }
 .ns-studio button:focus-visible,.ns-studio a:focus-visible,.ns-studio [role=button]:focus-visible,.ns-studio input:focus-visible { outline:2px solid var(--ns-amber); outline-offset:4px; }
 .ns-field,.ns-atlas { position:absolute; inset:0; width:100%; height:100%; }
-.ns-field { pointer-events:none; opacity:.62; }
+.ns-field { pointer-events:none; opacity:1; }
 .ns-atlas { touch-action:none; }
-.ns-topbar { position:absolute; inset:0 0 auto; height:72px; padding:10px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--ns-line); z-index:15; background:linear-gradient(180deg,var(--ns-space),rgba(2,13,23,.88)); }
+.ns-topbar { position:absolute; inset:0 0 auto; height:80px; padding:10px 26px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--ns-line); z-index:15; background:linear-gradient(180deg,var(--ns-space),rgba(2,13,23,.88)); }
 .ns-topbar h1 { font-size:24px; font-weight:600; margin:0 0 2px; letter-spacing:-.6px; }
-.ns-topbar p { font-size:12px; margin:0; color:var(--ns-muted); }
+.ns-topbar p { font-size:14px; margin:0; color:var(--ns-muted); }
 .ns-topbar nav { display:flex; align-items:center; gap:18px; }
 .ns-depth { display:flex; align-items:center; gap:16px; border:1px solid var(--ns-line); padding:8px 20px; border-radius:7px; color:var(--ns-muted); font-size:12px; }
 .ns-depth span { display:block; width:90px; height:1px; background:var(--ns-ion); box-shadow:0 0 8px var(--ns-ion); }
-.ns-orbital-track { fill:none; stroke:var(--ns-line); stroke-width:.7; opacity:.58; }
+.ns-orbital-track { fill:none; stroke:var(--ns-line); stroke-width:.75; opacity:.76; }
 .ns-domain { --ns-domain-color:var(--ns-ion); }
 .ns-gold { --ns-domain-color:var(--ns-amber); }
 .ns-filament { fill:none; stroke:var(--ns-domain-color); stroke-width:.8; pointer-events:none; }
@@ -26,9 +26,9 @@
 .ns-domain-hub:active,.ns-leaf:active { cursor:grabbing; }
 .ns-node-ring { fill:var(--ns-space); stroke:var(--ns-domain-color); stroke-width:1.5; filter:url(#ns-light); }
 .ns-node-dot { fill:var(--ns-domain-color); filter:url(#ns-light); }
-.ns-node-aura { fill:none; stroke:var(--ns-domain-color); opacity:.2; stroke-width:5; }
-.ns-domain-label { fill:var(--ns-domain-color); font-size:18px; font-weight:600; paint-order:stroke; stroke:var(--ns-space); stroke-width:4px; stroke-linejoin:round; }
-.ns-leaf-label { fill:var(--ns-text); font-size:12px; paint-order:stroke; stroke:var(--ns-space); stroke-width:3px; }
+.ns-node-aura { fill:none; stroke:var(--ns-domain-color); opacity:.35; stroke-width:7; filter:url(#ns-bloom); }
+.ns-domain-label { fill:var(--ns-domain-color); font-size:22px; font-weight:600; paint-order:stroke; stroke:var(--ns-space); stroke-width:4px; stroke-linejoin:round; }
+.ns-leaf-label { fill:var(--ns-text); font-size:15px; paint-order:stroke; stroke:var(--ns-space); stroke-width:3px; }
 .ns-ring { fill:none; filter:url(#ns-light); }
 .ns-ion { stroke:var(--ns-ion); }
 .ns-amber { stroke:var(--ns-amber); }
@@ -39,7 +39,7 @@
 .ns-wave { filter:url(#ns-light); }
 .ns-orbit { transform-origin:0 0; animation:ns-orbit 75s linear infinite; }
 @keyframes ns-orbit { to { transform:rotate(360deg); } }
-.ns-explorer { position:absolute; right:14px; top:92px; bottom:92px; width:310px; display:flex; flex-direction:column; z-index:20; border:1px solid var(--ns-ion); border-radius:10px; background:var(--ns-panel); box-shadow:inset 0 0 22px rgba(22,231,241,.045); }
+.ns-explorer { position:absolute; right:14px; top:96px; bottom:91px; width:322px; display:flex; flex-direction:column; z-index:20; border:1px solid var(--ns-ion); border-radius:10px; background:var(--ns-panel); box-shadow:inset 0 0 22px rgba(22,231,241,.045); }
 .ns-explorer header,.ns-window-bar { height:44px; flex-shrink:0; display:flex; align-items:center; gap:8px; padding:0 12px; border-bottom:1px solid var(--ns-line); background:linear-gradient(90deg,transparent,rgba(22,231,241,.06)); }
 .ns-explorer header strong { flex:1; font-size:16px; }
 .ns-explorer button { min-height:32px; }
@@ -59,7 +59,7 @@
 .ns-window-bar { direction:ltr; user-select:none; cursor:grab; touch-action:none; }
 .ns-window-bar strong { flex:1; text-align:center; font-size:14px; }
 .ns-window-bar button { color:var(--ns-muted); font-size:20px; padding:0 4px; }
-.ns-window-body { padding:17px; height:calc(100% - 44px); overflow:auto; }
+.ns-window-body { padding:8px 16px; height:calc(100% - 44px); overflow:auto; }
 .ns-window-body h2 { margin:3px 0 20px; font-size:19px; }
 .ns-window-body p { line-height:1.8; }
 .ns-eyeline,.ns-note { color:var(--ns-muted); font-size:12px; }
@@ -74,7 +74,7 @@
 .ns-reference-list { padding-right:20px; }
 .ns-reference-list li { padding:12px 0; border-bottom:1px solid var(--ns-line); }
 .ns-reference-list p,.ns-reference-list small { font-size:11px; color:var(--ns-muted); }
-.ns-dock { position:absolute; inset:auto 0 0; height:68px; z-index:40; display:flex; direction:ltr; align-items:center; gap:12px; padding:10px 22px; border-top:1px solid var(--ns-ion); background:var(--ns-panel); }
+.ns-dock { position:absolute; inset:auto 0 0; height:72px; z-index:40; display:flex; direction:ltr; align-items:center; gap:12px; padding:10px 22px; border-top:1px solid var(--ns-ion); background:var(--ns-panel); }
 .ns-dock button { border:1px solid var(--ns-line); border-radius:6px; padding:8px 12px; min-height:38px; }
 .ns-dock button.is-listening { color:var(--ns-amber); border-color:var(--ns-amber); }
 .ns-dock small { margin-left:auto; color:var(--ns-muted); font-size:10px; direction:rtl; }
@@ -84,3 +84,38 @@
 @media(max-width:900px) { .ns-depth { display:none; } .ns-topbar h1 { font-size:18px; } .ns-explorer { width:270px; } .ns-dock { gap:6px; padding:8px; overflow-x:auto; } .ns-dock button { white-space:nowrap; font-size:12px; } .ns-dock small { display:none; } }
 @media(max-width:600px) { .ns-topbar nav { display:none; } .ns-explorer { width:min(290px,calc(100% - 28px)); top:82px; z-index:45; } .ns-dock span.ns-meter { display:none; } .ns-topbar { padding:12px; } .ns-dock { height:68px; } }
 @media(prefers-reduced-motion:reduce) { .ns-orbit { animation:none; } .ns-explorer-scroll,.ns-window-body { scroll-behavior:auto; } }
+
+/* Reference 01: measured geometry. Decorative orbital paths are not live telemetry. */
+.ns-core-caption { fill:var(--ns-space); stroke:var(--ns-line); stroke-width:.6; }
+.ns-core-label { font-size:19px; }
+.ns-track-gold { stroke:var(--ns-amber); opacity:.35; }
+.ns-radial-guide { stroke:var(--ns-ion); stroke-width:.45; opacity:.22; }
+.ns-landmark { fill:var(--ns-text); stroke:var(--ns-ion); stroke-width:1.5; filter:url(#ns-bloom); }
+.ns-landmark-gold { stroke:var(--ns-amber); }
+.ns-depth { direction:ltr; min-width:340px; justify-content:space-between; font-size:16px; }
+.ns-depth b { border:1px solid var(--ns-line); border-radius:5px; padding:1px 6px; color:var(--ns-text); font-weight:400; }
+.ns-depth span { width:144px; display:flex; align-items:center; justify-content:space-between; }
+.ns-depth i { width:9px; height:9px; border:1px solid var(--ns-muted); border-radius:50%; background:var(--ns-space); }
+.ns-depth i:first-child { width:17px; height:17px; border:2px solid var(--ns-ion); box-shadow:inset 0 0 0 3px var(--ns-space),inset 0 0 0 8px var(--ns-ion); }
+.ns-explorer header { direction:ltr; }
+.ns-explorer header strong { text-align:left; padding-left:16px; }
+.ns-tree-root { padding:12px; margin-bottom:5px; border:1px solid var(--ns-line); border-radius:9px; color:var(--ns-ion); text-align:center; font-size:19px; background:linear-gradient(90deg,transparent,rgba(22,231,241,.09),transparent); }
+.ns-family { --ns-family-color:var(--ns-ion); }
+.ns-family-amber { --ns-family-color:var(--ns-amber); }
+.ns-family-mint { --ns-family-color:var(--ns-mint); }
+.ns-family-violet { --ns-family-color:var(--ns-violet); }
+.ns-tree-domain { direction:ltr; min-height:41px; }
+.ns-tree-domain>button:last-child { font-size:18px; }
+.ns-tree-orb { width:21px; height:21px; border:2px solid var(--ns-family-color); box-shadow:0 0 6px var(--ns-family-color),inset 0 0 0 3px var(--ns-space); }
+.ns-family-child { margin-left:20px; border-left:1px solid var(--ns-line); }
+.ns-family-child .ns-tree-domain>button:last-child { font-size:14px; }
+.ns-context-row { direction:ltr; display:flex; gap:20px; align-items:center; border-bottom:1px solid var(--ns-line); padding:7px 4px; }
+.ns-context-row>span { font-size:36px; color:var(--ns-ion); width:44px; text-align:center; }
+.ns-context-row>div { direction:rtl; text-align:right; }
+.ns-context-row p { margin:0; font-size:15px; line-height:1.55; }
+.ns-context-row h2 { margin:0; font-size:17px; line-height:1.55; }
+.ns-source-status { margin:5px 0; color:var(--ns-muted); font-size:11px; }
+.ns-source-details { font-size:12px; padding:5px 0; }
+.ns-source-details summary { cursor:pointer; color:var(--ns-muted); }
+@media(max-width:900px) { .ns-depth { display:none; } }
+@media(prefers-reduced-motion:reduce) { .ns-studio * { scroll-behavior:auto; } }

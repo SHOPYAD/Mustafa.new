@@ -17,6 +17,7 @@ test("RTL explorer closes and reopens without losing navigation", async ({ page 
 });
 test("expansion retains earlier branches and source-linked leaf inspection", async ({ page }) => {
   await page.getByRole("button", { name: "توسيع الحجوزات والإلغاءات", exact: true }).click();
+  await page.getByRole("button", { name: "فتح مجموعة الخدمات", exact: true }).click();
   await page.getByRole("button", { name: "توسيع الطيران والتوزيع", exact: true }).click();
   await expect(page.getByRole("button", { name: "توسيع الحجوزات والإلغاءات", exact: true })).toHaveAttribute("aria-expanded", "true");
   await page.getByRole("complementary").getByRole("button", { name: "إدارة الحجوزات", exact: true }).click();
