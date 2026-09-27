@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "viewport": {
+    "width": 1672,
+    "height": 941,
+    "dpr": 1
+  },
+  "acceptancePolicy": "Original references must never be overwritten with implementation screenshots. Exact equality is a blocking audit, not a claimed result.",
+  "references": [
+    {
+      "name": "01-platform-neural-atlas.png",
+      "blob": "47914f3d1847014696d135fac4cb8b7d0c2c8a71",
+      "sha256": "879302FD732E6F48101DCE74E16411568ACC893AF486C0B2AFB7B922C7EF4599",
+      "bytes": 2446116,
+      "reviewStatus": "pending",
+      "file": "references/01-platform-neural-atlas.png"
+    },
+    {
+      "name": "02-fullscreen-cumulative-expansion.png",
+      "blob": "c0136f8e9b24b8bc41d50dd2233101976011cd92",
+      "sha256": "E2ACD6798741982C856C8C4CEA94A53D97E1EB43F1CD53A4BFCFE50DFA26507E",
+      "bytes": 2304347,
+      "reviewStatus": "pending",
+      "file": "references/02-fullscreen-cumulative-expansion.png"
+    },
+    {
+      "name": "03-bookings-cancellations.png",
+      "blob": "a85024a0868686d35fbb179aaf93edb7b7aa66d5",
+      "sha256": "276245DAA2736A8781AC9EC59A192BFB6DAFD645ADA9B4459E81FB1A348E4537",
+      "bytes": 2203393,
+      "reviewStatus": "pending",
+      "file": "references/03-bookings-cancellations.png"
+    },
+    {
+      "name": "04-flights-gds-engineering.png",
+      "blob": "f75a0f7cc7c35a8012b2203f62c233159fdfcb46",
+      "sha256": "57D3FA6270477084B303D89C72E01BE8E376BC440FF78A560862884C8F5502B3",
+      "bytes": 2039089,
+      "reviewStatus": "pending",
+      "file": "references/04-flights-gds-engineering.png"
+    },
+    {
+      "name": "05-hotels-bedbanks.png",
+      "blob": "7b72f4eaba1d10738250f976fa8a4556f5d83e80",
+      "sha256": "2ABF533A55B4616F28CC52C649C83D9DBB6D0DBD72F309A60B0A4AA2B7D4819E",
+      "bytes": 2150545,
+      "reviewStatus": "pending",
+      "file": "references/05-hotels-bedbanks.png"
+    },
+    {
+      "name": "06-mobility-tours-packages-visas.png",
+      "blob": "d6c492e83fe205629a417441d26fa968417151ab",
+      "sha256": "BFF77A59561CD2B6C1656CB90AF00093DD29B56FEEFA60E839655A7A62CDEC11",
+      "bytes": 2407304,
+      "reviewStatus": "pending",
+      "file": "references/06-mobility-tours-packages-visas.png"
+    },
+    {
+      "name": "07-cms-web-mobile.png",
+      "blob": "53ec80968e3822912f3219f12ee6386b19a38c65",
+      "sha256": "16CD857D9F6A46DFDDDE422969895F4B6DCCFD84EE6A2BCD6532B3814C63A4FB",
+      "bytes": 2303186,
+      "reviewStatus": "pending",
+      "file": "references/07-cms-web-mobile.png"
+    },
+    {
+      "name": "08-customers-conversations.png",
+      "blob": "4672eb13dd41080b9f2489a0a34bbc729d3347ea",
+      "sha256": "0672AC20FF23A5878D407E2643187854DB17F65B42234CDA87BB2D9E5E3F662B",
+      "bytes": 2340910,
+      "reviewStatus": "pending",
+      "file": "references/08-customers-conversations.png"
+    },
+    {
+      "name": "09-social-publishing-media.png",
+      "blob": "da7ad7d8d819127cb44698ef2360bcdcf1d00791",
+      "sha256": "8958E1E6FD1F0312140CFBA82A73B0DE9FACC8319986378DD2FE3C239F4B19A1",
+      "bytes": 2478321,
+      "reviewStatus": "pending",
+      "file": "references/09-social-publishing-media.png"
+    },
+    {
+      "name": "10-ads-affiliates-growth.png",
+      "blob": "a3885d9446588c4b68ada4d5a0b8df0dbacaf5f0",
+      "sha256": "9AC06AA864519A74952655EC4AEA4F166BF62B301BF94F07DD288FB15DE227D9",
+      "bytes": 2337425,
+      "reviewStatus": "pending",
+      "file": "references/10-ads-affiliates-growth.png"
+    },
+    {
+      "name": "11-agents-knowledge.png",
+      "blob": "39c203b4c5fce4b5ad6973a8b2ca67620c726773",
+      "sha256": "C0231175E1FC73A7CC33E0DDFE4E0A0A21A39F4EDD0EF1182D347C88216C8ED9",
+      "bytes": 2507446,
+      "reviewStatus": "pending",
+      "file": "references/11-agents-knowledge.png"
+    },
+    {
+      "name": "12-automation-workflows.png",
+      "blob": "7c590a593b45b5574e6491a88a3049b11c3416db",
+      "sha256": "448907D2C939B56117619869A2A1FBA3CA27CAADAAC30B29DBFCCF7EE47542DB",
+      "bytes": 2240930,
+      "reviewStatus": "pending",
+      "file": "references/12-automation-workflows.png"
+    },
+    {
+      "name": "13-finance-settlement.png",
+      "blob": "ec29e1d23c50d5b05cd6ddd8de1d7e2b5b4721cb",
+      "sha256": "0F17ED86941DCF5E57C70DE0C288C49B8086F8076DD5EB36B22AA6502E81DA5C",
+      "bytes": 2464990,
+      "reviewStatus": "pending",
+      "file": "references/13-finance-settlement.png"
+    },
+    {
+      "name": "14-b2b-reselling-whitelabel.png",
+      "blob": "0fc621577302571508a34fa6b3305a2d8e8fa3f8",
+      "sha256": "E5EDAA14CAD9564FA6388D1E3B10358C3D569918F8A022732F6B9CE5922C66FD",
+      "bytes": 2484587,
+      "reviewStatus": "pending",
+      "file": "references/14-b2b-reselling-whitelabel.png"
+    },
+    {
+      "name": "15-legal-privacy-security.png",
+      "blob": "65418985921d573e0a64bbff7cb1dedad5e026f2",
+      "sha256": "777B42A974E857992564614AAAA93CB5D0473F33D0673772D069084C6A5F2959",
+      "bytes": 2566515,
+      "reviewStatus": "pending",
+      "file": "references/15-legal-privacy-security.png"
+    },
+    {
+      "name": "16-settings-integrations.png",
+      "blob": "75c13ecba61004fe6a7322d32c2decd012935a6c",
+      "sha256": "E3B26316BE02C7A45698B391CF02BA464FD6BA1E5F8C07D5DEA0E00EC37F9426",
+      "bytes": 2160610,
+      "reviewStatus": "pending",
+      "file": "references/16-settings-integrations.png"
+    },
+    {
+      "name": "17-supervisor-voice-states.png",
+      "blob": "343b09db5cae80e25773e4025d3208fc99a6ac18",
+      "sha256": "82C574A6652FF7FD0D82D4957469B03D4A8141EDFFA737D55120C5A784D6D50D",
+      "bytes": 2033682,
+      "reviewStatus": "pending",
+      "file": "references/17-supervisor-voice-states.png"
+    },
+    {
+      "name": "18-workspace-interaction-states.png",
+      "blob": "0c59709d402ae8ddf428380c22662fd9706eaeff",
+      "sha256": "B4D6426FBF72D813CCCDDC5CE729D6642C5FC6E27B3513C73F0F8D9317525E41",
+      "bytes": 2575561,
+      "reviewStatus": "pending",
+      "file": "references/18-workspace-interaction-states.png"
+    },
+    {
+      "name": "19-executive-command-hexagonal.png",
+      "blob": "f88229c1ab8a27ea7d2350ea81d044eef43fa026",
+      "sha256": "B0F6B828E41662E49CC00EDA9F52D08C0CB4DCA5A3CD3FF809723220A1BAE174",
+      "bytes": 2428457,
+      "reviewStatus": "pending",
+      "file": "references/19-executive-command-hexagonal.png"
+    },
+    {
+      "name": "20-jarvis-humanoid-presence.png",
+      "blob": "765ae9eb0b6543b71daf784281f1254f5cdec9da",
+      "sha256": "F0BB61E8367611527F999E5EF93A9A6DB48043F8B3DB60AA2EAFBEF0358EC240",
+      "bytes": 2223410,
+      "reviewStatus": "pending",
+      "file": "references/20-jarvis-humanoid-presence.png"
+    }
+  ]
+}

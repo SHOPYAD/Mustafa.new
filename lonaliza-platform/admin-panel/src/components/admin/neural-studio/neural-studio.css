@@ -1,0 +1,86 @@
+.ns-studio {
+  --ns-space:#020d17; --ns-panel:rgba(3,21,34,.96); --ns-ion:#16e7f1; --ns-amber:#f4c56a;
+  --ns-text:#daedf8; --ns-muted:#86afc2; --ns-line:#17647b; --ns-danger:#ff7882;
+  position:relative; width:100%; height:100dvh; min-height:540px; overflow:hidden; isolation:isolate;
+  background:var(--ns-space); color:var(--ns-text); font-family:inherit; font-size:14px;
+}
+.ns-studio * { box-sizing:border-box; }
+.ns-studio button,.ns-studio input { font:inherit; color:inherit; }
+.ns-studio button { cursor:pointer; background:none; border:0; }
+.ns-studio a { color:var(--ns-ion); text-decoration:none; }
+.ns-studio button:focus-visible,.ns-studio a:focus-visible,.ns-studio [role=button]:focus-visible,.ns-studio input:focus-visible { outline:2px solid var(--ns-amber); outline-offset:4px; }
+.ns-field,.ns-atlas { position:absolute; inset:0; width:100%; height:100%; }
+.ns-field { pointer-events:none; opacity:.62; }
+.ns-atlas { touch-action:none; }
+.ns-topbar { position:absolute; inset:0 0 auto; height:72px; padding:10px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--ns-line); z-index:15; background:linear-gradient(180deg,var(--ns-space),rgba(2,13,23,.88)); }
+.ns-topbar h1 { font-size:24px; font-weight:600; margin:0 0 2px; letter-spacing:-.6px; }
+.ns-topbar p { font-size:12px; margin:0; color:var(--ns-muted); }
+.ns-topbar nav { display:flex; align-items:center; gap:18px; }
+.ns-depth { display:flex; align-items:center; gap:16px; border:1px solid var(--ns-line); padding:8px 20px; border-radius:7px; color:var(--ns-muted); font-size:12px; }
+.ns-depth span { display:block; width:90px; height:1px; background:var(--ns-ion); box-shadow:0 0 8px var(--ns-ion); }
+.ns-orbital-track { fill:none; stroke:var(--ns-line); stroke-width:.7; opacity:.58; }
+.ns-domain { --ns-domain-color:var(--ns-ion); }
+.ns-gold { --ns-domain-color:var(--ns-amber); }
+.ns-filament { fill:none; stroke:var(--ns-domain-color); stroke-width:.8; pointer-events:none; }
+.ns-domain-hub,.ns-leaf { cursor:grab; }
+.ns-domain-hub:active,.ns-leaf:active { cursor:grabbing; }
+.ns-node-ring { fill:var(--ns-space); stroke:var(--ns-domain-color); stroke-width:1.5; filter:url(#ns-light); }
+.ns-node-dot { fill:var(--ns-domain-color); filter:url(#ns-light); }
+.ns-node-aura { fill:none; stroke:var(--ns-domain-color); opacity:.2; stroke-width:5; }
+.ns-domain-label { fill:var(--ns-domain-color); font-size:18px; font-weight:600; paint-order:stroke; stroke:var(--ns-space); stroke-width:4px; stroke-linejoin:round; }
+.ns-leaf-label { fill:var(--ns-text); font-size:12px; paint-order:stroke; stroke:var(--ns-space); stroke-width:3px; }
+.ns-ring { fill:none; filter:url(#ns-light); }
+.ns-ion { stroke:var(--ns-ion); }
+.ns-amber { stroke:var(--ns-amber); }
+.ns-core-halo { fill:url(#ns-core-radial); }
+.ns-core-face { fill:var(--ns-space); stroke:var(--ns-line); }
+.ns-core-label { fill:var(--ns-text); font-size:20px; font-weight:600; }
+.ns-source-label { fill:var(--ns-muted); font-size:10px; }
+.ns-wave { filter:url(#ns-light); }
+.ns-orbit { transform-origin:0 0; animation:ns-orbit 75s linear infinite; }
+@keyframes ns-orbit { to { transform:rotate(360deg); } }
+.ns-explorer { position:absolute; right:14px; top:92px; bottom:92px; width:310px; display:flex; flex-direction:column; z-index:20; border:1px solid var(--ns-ion); border-radius:10px; background:var(--ns-panel); box-shadow:inset 0 0 22px rgba(22,231,241,.045); }
+.ns-explorer header,.ns-window-bar { height:44px; flex-shrink:0; display:flex; align-items:center; gap:8px; padding:0 12px; border-bottom:1px solid var(--ns-line); background:linear-gradient(90deg,transparent,rgba(22,231,241,.06)); }
+.ns-explorer header strong { flex:1; font-size:16px; }
+.ns-explorer button { min-height:32px; }
+.ns-explorer input { background:var(--ns-space); border:1px solid var(--ns-line); border-radius:5px; margin:14px; padding:10px; width:calc(100% - 28px); outline-color:var(--ns-ion); }
+.ns-explorer-scroll { flex:1; overflow:auto; padding:0 12px 16px; }
+.ns-explorer-scroll,.ns-window-body { scrollbar-width:thin; scrollbar-color:var(--ns-line) transparent; scroll-behavior:smooth; }
+.ns-tree-domain { display:flex; align-items:center; border-radius:5px; gap:4px; margin:3px 0; }
+.ns-tree-domain>button:last-child { flex:1; display:flex; align-items:center; gap:9px; text-align:right; padding:7px; }
+.ns-tree-domain.is-selected { background:rgba(22,231,241,.12); outline:1px solid var(--ns-line); color:var(--ns-ion); }
+.ns-tree-orb { border:1px solid var(--ns-ion); width:13px; height:13px; border-radius:50%; box-shadow:0 0 7px rgba(22,231,241,.35); flex-shrink:0; }
+.ns-explorer ul { margin:4px 19px 12px 0; padding:0 15px 0 0; list-style:none; border-right:1px solid var(--ns-line); }
+.ns-explorer li button { color:var(--ns-muted); text-align:right; }
+.ns-explorer li button:hover { color:var(--ns-text); }
+.ns-explorer footer { padding:12px; font-size:10px; color:var(--ns-muted); border-top:1px solid var(--ns-line); }
+.ns-explorer-reopen { position:absolute; right:0; top:112px; z-index:20; border:1px solid var(--ns-line)!important; padding:14px; writing-mode:vertical-rl; background:var(--ns-panel)!important; border-radius:7px 0 0 7px; }
+.ns-window { position:absolute; border:1px solid var(--ns-ion); border-radius:8px; overflow:hidden; background:var(--ns-panel); }
+.ns-window-bar { direction:ltr; user-select:none; cursor:grab; touch-action:none; }
+.ns-window-bar strong { flex:1; text-align:center; font-size:14px; }
+.ns-window-bar button { color:var(--ns-muted); font-size:20px; padding:0 4px; }
+.ns-window-body { padding:17px; height:calc(100% - 44px); overflow:auto; }
+.ns-window-body h2 { margin:3px 0 20px; font-size:19px; }
+.ns-window-body p { line-height:1.8; }
+.ns-eyeline,.ns-note { color:var(--ns-muted); font-size:12px; }
+.ns-window-body dl { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; padding:8px 0; margin:0; border-bottom:1px solid var(--ns-line); font-size:12px; }
+.ns-window-body dt { color:var(--ns-muted); }
+.ns-window-body dd { margin:0; }
+.ns-route { display:block; padding:12px 0; overflow-wrap:anywhere; color:var(--ns-ion); font-size:11px; }
+.ns-action { display:block; padding:9px; border:1px solid var(--ns-line); border-radius:4px; text-align:center; }
+.ns-observation { margin-top:18px; }
+.ns-observation code,.ns-observation small { font-size:10px; color:var(--ns-muted); }
+.ns-resize { position:absolute; right:0; bottom:0; width:24px; height:24px; color:var(--ns-ion)!important; cursor:nwse-resize!important; touch-action:none; }
+.ns-reference-list { padding-right:20px; }
+.ns-reference-list li { padding:12px 0; border-bottom:1px solid var(--ns-line); }
+.ns-reference-list p,.ns-reference-list small { font-size:11px; color:var(--ns-muted); }
+.ns-dock { position:absolute; inset:auto 0 0; height:68px; z-index:40; display:flex; direction:ltr; align-items:center; gap:12px; padding:10px 22px; border-top:1px solid var(--ns-ion); background:var(--ns-panel); }
+.ns-dock button { border:1px solid var(--ns-line); border-radius:6px; padding:8px 12px; min-height:38px; }
+.ns-dock button.is-listening { color:var(--ns-amber); border-color:var(--ns-amber); }
+.ns-dock small { margin-left:auto; color:var(--ns-muted); font-size:10px; direction:rtl; }
+.ns-meter { display:flex; width:88px; justify-content:space-between; align-items:center; height:36px; }
+.ns-meter i { display:block; width:2px; background:var(--ns-ion); }
+.ns-audio-error { position:absolute; bottom:85px; left:18px; z-index:50; background:var(--ns-panel); border:1px solid var(--ns-danger); padding:12px; }
+@media(max-width:900px) { .ns-depth { display:none; } .ns-topbar h1 { font-size:18px; } .ns-explorer { width:270px; } .ns-dock { gap:6px; padding:8px; overflow-x:auto; } .ns-dock button { white-space:nowrap; font-size:12px; } .ns-dock small { display:none; } }
+@media(max-width:600px) { .ns-topbar nav { display:none; } .ns-explorer { width:min(290px,calc(100% - 28px)); top:82px; } .ns-dock span.ns-meter { display:none; } .ns-topbar { padding:12px; } .ns-dock { height:68px; } }
+@media(prefers-reduced-motion:reduce) { .ns-orbit { animation:none; } .ns-explorer-scroll,.ns-window-body { scroll-behavior:auto; } }

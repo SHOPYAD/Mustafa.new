@@ -1,0 +1,153 @@
+{
+  "sourceCommit": "71e8c70340ce88ab4948899979a916d1ae586b26",
+  "branch": "codex/neural-studio-20260928",
+  "milestones": {
+    "trustBoundary": "focused-tests-passed",
+    "referenceRegistration": "20-originals-hashed",
+    "sourceInventory": "admin-panel-only",
+    "workspaceShell": "pending-cloud-verification"
+  },
+  "screens": [
+    {
+      "screenId": "10",
+      "phase": "P07",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "11",
+      "phase": "P08",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "12",
+      "phase": "P08",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "13",
+      "phase": "P09",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "14",
+      "phase": "P09",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "15",
+      "phase": "P10",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "16",
+      "phase": "P10",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "17",
+      "phase": "P11",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "18",
+      "phase": "P02",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "19",
+      "phase": "P04",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "20",
+      "phase": "P12",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "01",
+      "phase": "P04",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "02",
+      "phase": "P04",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "03",
+      "phase": "P05",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "04",
+      "phase": "P05",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "05",
+      "phase": "P05",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "06",
+      "phase": "P05",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "07",
+      "phase": "P06",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "08",
+      "phase": "P06",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    },
+    {
+      "screenId": "09",
+      "phase": "P07",
+      "status": "pending",
+      "visualAccepted": false,
+      "liveActionsAccepted": false
+    }
+  ],
+  "productionChanged": false
+}

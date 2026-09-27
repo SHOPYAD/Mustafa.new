@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "../../lonaliza-platform/admin-panel/src/*"
+      ]
+    }
+  },
+  "include": [
+    "main.tsx",
+    "../../lonaliza-platform/admin-panel/src/components/admin/neural-studio/**/*.tsx",
+    "../../lonaliza-platform/admin-panel/src/lib/neural-studio/catalog.ts",
+    "../../lonaliza-platform/admin-panel/src/lib/neural-studio/workspace.ts"
+  ]
+}

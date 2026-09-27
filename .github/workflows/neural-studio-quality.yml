@@ -28,3 +28,21 @@ jobs:
         run: ln -s "$GITHUB_WORKSPACE/quality/neural-studio/node_modules" lonaliza-platform/admin-panel/node_modules
       - name: Test real route handlers against mocked boundaries
         run: pnpm --dir quality/neural-studio test
+      - name: Strict typecheck of the new production studio
+        run: pnpm --dir quality/neural-studio typecheck
+      - name: Install Chromium
+        run: pnpm --dir quality/neural-studio exec playwright install --with-deps chromium
+      - name: Browser interactions and actual rendered screenshots
+        run: pnpm --dir quality/neural-studio browser
+      - name: Exact reference audit (blocking until actually matched)
+        run: pnpm --dir quality/neural-studio visual
+      - name: Preserve screenshots, visual difference and browser traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neural-studio-evidence
+          path: |
+            quality/neural-studio/evidence/
+            quality/neural-studio/playwright-report/
+            quality/neural-studio/test-results/
+          retention-days: 14

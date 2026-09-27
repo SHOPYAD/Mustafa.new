@@ -162,7 +162,8 @@ export default function AdminLayout({
     pathname === "/admin/editor" ||
     pathname === "/admin/visual-editor" ||
     pathname === "/admin/mobile-app-editor" ||
-    pathname === "/admin/agent-studio";
+    pathname === "/admin/agent-studio" ||
+    pathname === "/admin/neural-studio";
 
   if (isFullscreenEditor) {
     return (
