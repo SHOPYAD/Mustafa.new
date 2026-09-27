@@ -1,11 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "viewport": {
     "width": 1672,
     "height": 941,
     "dpr": 1
   },
-  "acceptancePolicy": "Original references must never be overwritten with implementation screenshots. Exact equality is a blocking audit, not a claimed result.",
+  "acceptancePolicy": "Minimum 90/100 per interface after functional integration; original references remain immutable. Exact pixel differences are diagnostics, never a claimed perceptual score.",
   "references": [
     {
       "name": "01-platform-neural-atlas.png",

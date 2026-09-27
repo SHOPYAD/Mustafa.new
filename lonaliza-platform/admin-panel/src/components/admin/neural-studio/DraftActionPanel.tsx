@@ -1,8 +1,9 @@
 "use client";
 import {useState} from "react";
+import type {DraftActionInput} from "@/lib/neural-studio/action-contract";
 type Preview={token:string;expiresAt:number;preview:{title:string;summary:string;effects:string[]}};
-export default function DraftActionPanel({kind,onSaved}:{kind:"article"|"automation";onSaved:()=>void}){
- const [title,setTitle]=useState(""),[content,setContent]=useState(""),[hour,setHour]=useState(9);
+export default function DraftActionPanel({kind,onSaved,initial}:{kind:"article"|"automation";onSaved:()=>void;initial?:DraftActionInput}){
+ const [title,setTitle]=useState(initial?.kind==="article.draft.create"?initial.title:initial?.name||""),[content,setContent]=useState(initial?.kind==="article.draft.create"?initial.content:""),[hour,setHour]=useState(initial?.kind==="automation.draft.create"?initial.hour:9);
  const [preview,setPreview]=useState<Preview|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState("");
  const change=()=>{setPreview(null);setMessage("");};
  const send=async(confirm:boolean)=>{

@@ -5,11 +5,11 @@ import {DraftAction,type DraftActionInput} from "./action-contract";
 export function signPreview(action:DraftActionInput,subject:string,secret:string,now=Date.now()){
  const payload={action,subject,nonce:randomUUID(),expiresAt:now+300000};
  const body=Buffer.from(JSON.stringify(payload)).toString("base64url");
- return {token:body+"."+createHmac("sha256",secret).update(body).digest("base64url"),expiresAt:payload.expiresAt};
+ return {token:body+"."+createHmac("sha256",createHmac("sha256",secret).update("neural-studio-action-v1").digest()).update(body).digest("base64url"),expiresAt:payload.expiresAt};
 }
 export function verifyPreview(token:string,subject:string,secret:string,now=Date.now()){
  const [body,mac,...extra]=token.split(".");if(!body||!mac||extra.length)throw new Error("INVALID_PREVIEW");
- const expected=createHmac("sha256",secret).update(body).digest(),given=Buffer.from(mac,"base64url");
+ const expected=createHmac("sha256",createHmac("sha256",secret).update("neural-studio-action-v1").digest()).update(body).digest(),given=Buffer.from(mac,"base64url");
  if(given.length!==expected.length||!timingSafeEqual(given,expected))throw new Error("INVALID_PREVIEW");
  const payload=JSON.parse(Buffer.from(body,"base64url").toString()) as {action:unknown;subject:string;nonce:string;expiresAt:number};
  if(payload.subject!==subject||!Number.isFinite(payload.expiresAt)||payload.expiresAt<now||!/^[a-f0-9-]{36}$/.test(payload.nonce))throw new Error("EXPIRED_PREVIEW");

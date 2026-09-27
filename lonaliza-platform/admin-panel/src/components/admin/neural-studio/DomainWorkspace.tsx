@@ -7,7 +7,7 @@ import DraftActionPanel from "./DraftActionPanel";
 interface Props{id:ScreenId;onOpen:(href:string)=>void;onNavigate:(id:ScreenId)=>void}
 export default function DomainWorkspace({id,onOpen,onNavigate}:Props){
  const surface=getSurface(id)!;const domain=(surface.domains[0]||"overview") as DomainId;
- const {data,error,loading,refresh}=useStudioSnapshot(domain);
+ const {data,error,loading,refresh,live,connection,toggleLive}=useStudioSnapshot(domain);
  const pages=useMemo(()=>getSurfacePages(id),[id]);
  const [selected,setSelected]=useState<string|null>(null),[filter,setFilter]=useState(""),[record,setRecord]=useState<StudioRecord|null>(null);
  const [pins,setPins]=useState<Record<string,{x:number;y:number}>>({});
@@ -30,7 +30,7 @@ export default function DomainWorkspace({id,onOpen,onNavigate}:Props){
  const height=Math.max(610,surface.layout==="dag"?Math.ceil(visible.length/3)*116+120:610);
  return <section className="ns-domain-workspace" data-testid={"surface-"+id} dir="rtl">
   <header className="ns-surface-heading"><div><p>{STUDIO_DOMAINS.find(d=>d.id===domain)?.label}</p><h2>مسارات القسم ومصادره</h2></div>
-   <div><button onClick={refresh} disabled={loading}>{loading?"جارٍ القراءة…":"تحديث من المصدر"}</button>
+   <div><button aria-pressed={live} onClick={toggleLive}>{live?"إيقاف التحديث الحي":"تفعيل التحديث الحي"}</button><small>{connection}</small><button onClick={refresh} disabled={loading}>{loading?"جارٍ القراءة…":"تحديث من المصدر"}</button>
     <input aria-label="تصفية مسارات وسجلات القسم" placeholder="تصفية…" value={filter} onChange={e=>setFilter(e.target.value)}/></div></header>
   <div className="ns-domain-columns">
    <div className="ns-domain-main">

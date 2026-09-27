@@ -82,6 +82,7 @@ test("all twenty surfaces are reachable and render their actual components", asy
   await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption(id);
   await expect(page.getByTestId("neural-studio")).toHaveAttribute("data-screen-id",id);
   if(id!=="01")await expect(page.getByTestId("surface-"+id)).toBeVisible();
+  if(id!=="17" && await page.getByRole("button",{name:"إغلاق المشرف العام",exact:true}).isVisible()) await page.getByRole("button",{name:"إغلاق المشرف العام",exact:true}).click();
   await page.screenshot({path:"evidence/surface-"+id+".png",animations:"disabled"});
  }
  expect(errors).toEqual([]);
@@ -119,4 +120,13 @@ test("supervisor requests are contextual and do not execute actions", async ({pa
  await page.getByLabel("رسالة المشرف").fill("ما حالة الحجوزات؟");
  await page.getByRole("button",{name:"إرسال للمشرف"}).click();
  await expect(page.getByRole("log",{name:"محادثة المشرف"})).toContainText("لا توجد بيانات من المصدر.");
+});
+
+test("live source events update the selected domain without writing",async({page})=>{
+ await page.route("**/api/admin/automation/studio-events?domain=bookings",r=>r.fulfill({contentType:"text/event-stream",body:
+  "event: snapshot\ndata: "+JSON.stringify({ok:true,domainId:"bookings",status:"ready",observations:[{tool:"fixture",status:"ready",facts:[{key:"count",labelAr:"حجوزات الاختبار",value:7,available:true,source:"test-fixture"}]}],records:[],warnings:[],observedAt:"2026-09-28T00:00:00Z"})+"\n\n"}));
+ await page.getByRole("combobox",{name:"واجهة الاستوديو"}).selectOption("03");
+ await page.getByRole("button",{name:"تفعيل التحديث الحي"}).click();
+ await expect(page.getByTestId("surface-03")).toContainText("حجوزات الاختبار");
+ await page.getByRole("button",{name:"إيقاف التحديث الحي"}).click();
 });

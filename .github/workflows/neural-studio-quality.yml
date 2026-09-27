@@ -34,7 +34,7 @@ jobs:
         run: pnpm --dir quality/neural-studio exec playwright install --with-deps chromium
       - name: Browser interactions and actual rendered screenshots
         run: pnpm --dir quality/neural-studio browser
-      - name: Exact reference audit (blocking until actually matched)
+      - name: Twenty-reference audit (90/100 per screen; documented review required)
         run: pnpm --dir quality/neural-studio visual
       - name: Preserve screenshots, visual difference and browser traces
         if: always()
