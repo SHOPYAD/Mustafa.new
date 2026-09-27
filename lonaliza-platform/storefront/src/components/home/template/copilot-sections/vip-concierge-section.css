@@ -1,0 +1,108 @@
+.lonaliza-vip-concierge {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.lonaliza-vip-concierge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lonaliza-vip-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.lonaliza-vip-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px auto;
+}
+.lonaliza-vip-eyebrow {
+  display: inline-block;
+  background: rgba(124,58,237,0.3);
+  color: #d8b4fe;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border: 1px solid rgba(124,58,237,0.4);
+}
+.lonaliza-vip-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+.lonaliza-vip-subtitle {
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+.lonaliza-vip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+.lonaliza-vip-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 35px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.lonaliza-vip-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124,58,237,0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+.lonaliza-vip-card-icon {
+  width: 50px;
+  height: 50px;
+  background: #7c3aed;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+.lonaliza-vip-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+.lonaliza-vip-card p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.lonaliza-vip-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #7c3aed;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.4);
+}
+.lonaliza-vip-cta:hover {
+  background: #6d28d9;
+}

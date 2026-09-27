@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "463962875808",
+    "project_id": "liotrip",
+    "storage_bucket": "liotrip.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463962875808:android:d07d37ff7492e610bb66c5",
+        "android_client_info": {
+          "package_name": "com.lonaliza.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqZD0xZJ7Xzs_E_9oeuCKlsSw5AiQlEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463962875808:android:d07d37ff7492e610bb66c5",
+        "android_client_info": {
+          "package_name": "com.liotrip.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqZD0xZJ7Xzs_E_9oeuCKlsSw5AiQlEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463962875808:android:b8448b191338a2d1bb66c5",
+        "android_client_info": {
+          "package_name": "com.liotrip.sms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqZD0xZJ7Xzs_E_9oeuCKlsSw5AiQlEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463962875808:android:bcbffbaf8c7ed2debb66c5",
+        "android_client_info": {
+          "package_name": "com.liotrip.sms.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqZD0xZJ7Xzs_E_9oeuCKlsSw5AiQlEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

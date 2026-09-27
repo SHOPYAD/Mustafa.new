@@ -1,0 +1,33 @@
+name: admin_mobile_shell
+description: "Lonaliza Admin WebView shell — wraps https://lonaliza.com/admin only."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  webview_flutter: ^4.13.0
+  webview_flutter_android: ^4.10.0
+  local_auth: ^2.3.0
+  connectivity_plus: ^6.1.4
+  url_launcher: ^6.3.2
+  share_plus: ^10.1.4
+  path_provider: ^2.1.5
+  http: ^1.2.2
+  file_picker: ^8.3.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/brand/

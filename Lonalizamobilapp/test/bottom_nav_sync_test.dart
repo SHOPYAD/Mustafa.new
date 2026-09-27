@@ -59,6 +59,64 @@ void main() {
     });
   });
 
+  group('locale titles from web bridge', () {
+    test('maps short dictionary titles onto tab roles', () {
+      const titles = {
+        'home': 'Home',
+        'wallet': 'Wallet',
+        'reels': 'Reels',
+        'me': 'Me',
+        'more': 'More',
+      };
+      expect(titleForNavRole(BottomNavRole.home, titles), 'Home');
+      expect(titleForNavRole(BottomNavRole.wallet, titles), 'Wallet');
+      expect(titleForNavRole(BottomNavRole.community, titles), 'Reels');
+      expect(titleForNavRole(BottomNavRole.account, titles), 'Me');
+      expect(titleForNavRole(BottomNavRole.more, titles), 'More');
+      expect(
+        interpolateChrome('Message from {0}', 'Sara'),
+        'Message from Sara',
+      );
+    });
+  });
+
+  group('optimistic tab lock', () {
+    test('rejects stale previous-path sync while lock is live', () {
+      final now = DateTime.utc(2026, 9, 19, 4, 30);
+      expect(
+        shouldAcceptUrlTabSync(
+          now: now,
+          lockUntil: now.add(const Duration(milliseconds: 800)),
+          lockedTab: 2,
+          urlTab: 0,
+        ),
+        isFalse,
+      );
+    });
+
+    test('accepts matching url or expired lock', () {
+      final now = DateTime.utc(2026, 9, 19, 4, 30);
+      expect(
+        shouldAcceptUrlTabSync(
+          now: now,
+          lockUntil: now.add(const Duration(milliseconds: 800)),
+          lockedTab: 2,
+          urlTab: 2,
+        ),
+        isTrue,
+      );
+      expect(
+        shouldAcceptUrlTabSync(
+          now: now.add(const Duration(seconds: 3)),
+          lockUntil: now.add(const Duration(milliseconds: 800)),
+          lockedTab: 2,
+          urlTab: 0,
+        ),
+        isTrue,
+      );
+    });
+  });
+
   group('home tap JS', () {
     test('prefers goHome then client replace, not a full reload first', () {
       final js = WebViewIntercept.goHomeScript();

@@ -115,3 +115,60 @@ bool tabPathLooksLikeMore(String path) {
       iconHint.contains('tab_more') ||
       iconHint.contains('/menu');
 }
+
+Map<String, String> parseBridgeStringMap(dynamic raw) {
+  if (raw is! Map) return {};
+  final out = <String, String>{};
+  raw.forEach((key, value) {
+    if (value == null) return;
+    final text = value.toString().trim();
+    if (text.isEmpty) return;
+    out[key.toString()] = text;
+  });
+  return out;
+}
+
+String? titleForNavRole(BottomNavRole role, Map<String, String> titles) {
+  switch (role) {
+    case BottomNavRole.home:
+      return _firstTitle(titles, const ['home']);
+    case BottomNavRole.wallet:
+      return _firstTitle(titles, const ['wallet']);
+    case BottomNavRole.community:
+      return _firstTitle(titles, const ['reels', 'community']);
+    case BottomNavRole.account:
+      return _firstTitle(titles, const ['me', 'account']);
+    case BottomNavRole.more:
+      return _firstTitle(titles, const ['more']);
+    case BottomNavRole.none:
+      return null;
+  }
+}
+
+String interpolateChrome(String template, String value) {
+  return template.replaceAll('{0}', value);
+}
+
+/// After a native tab press, ignore stale WebView URL events that still
+/// report the previous path — that is what "highlight then snap back" looks like.
+bool shouldAcceptUrlTabSync({
+  required DateTime now,
+  required DateTime? lockUntil,
+  required int? lockedTab,
+  required int urlTab,
+}) {
+  if (lockUntil == null || !now.isBefore(lockUntil)) return true;
+  if (lockedTab == null) return true;
+  if (urlTab == lockedTab) return true;
+  // Unknown / unmatched path: keep the committed tab.
+  if (urlTab < 0) return false;
+  return false;
+}
+
+String? _firstTitle(Map<String, String> titles, List<String> keys) {
+  for (final key in keys) {
+    final value = titles[key];
+    if (value != null && value.trim().isNotEmpty) return value;
+  }
+  return null;
+}

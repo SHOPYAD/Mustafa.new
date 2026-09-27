@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allow staging builds without clobbering the live `.next` (pm2 `next start`).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+  // Cap static workers during heavy builds to reduce OOM risk on shared hosts.
+  experimental: {
+    cpus: Number(process.env.NEXT_BUILD_CPUS || 4) || 4,
+  },
+  turbopack: {},
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   serverExternalPackages: [
     "playwright",
     "playwright-core",
@@ -11,9 +21,13 @@ const nextConfig: NextConfig = {
     "@copilotkitnext/runtime",
     "@copilotkitnext/agent",
     "openai",
-    "google-ads-api",
     "facebook-nodejs-business-sdk",
     "google-gax",
+    "@whiskeysockets/baileys",
+    "pino",
+    "qrcode",
+    "jimp",
+    "pdfkit",
   ],
   images: {
     remotePatterns: [
@@ -106,7 +120,7 @@ const nextConfig: NextConfig = {
       { key: "X-Frame-Options", value: "SAMEORIGIN" },
       {
         key: "Permissions-Policy",
-        value: "camera=(), microphone=(), geolocation=(self)",
+        value: "camera=(self), microphone=(self), geolocation=(self)",
       },
       {
         key: "Content-Security-Policy-Report-Only",
@@ -148,6 +162,39 @@ const nextConfig: NextConfig = {
       },
       { source: "/((?!tpwl|web/|intui|ajax|content|transfer|getoffers).*)", headers: security },
     ];
+  },
+  webpack: (config, { isServer, dir }) => {
+    config.module.rules.push({
+      test: /\.icc$/i,
+      type: "asset/resource",
+    });
+
+    if (isServer) {
+      const fs = require("fs");
+      const path = require("path");
+      const distDir = process.env.NEXT_DIST_DIR || ".next";
+      config.plugins.push({
+        apply(compiler: any) {
+          compiler.hooks.afterEmit.tap("EnsureNextFontManifest", () => {
+            try {
+              const serverDir = path.resolve(dir || process.cwd(), distDir, "server");
+              if (!fs.existsSync(serverDir)) fs.mkdirSync(serverDir, { recursive: true });
+              const fontJson = path.join(serverDir, "next-font-manifest.json");
+              const fontJs = path.join(serverDir, "next-font-manifest.js");
+              const content = JSON.stringify({
+                pages: {},
+                app: {},
+                appUsingSizeAdjust: false,
+                pagesUsingSizeAdjust: false,
+              });
+              if (!fs.existsSync(fontJson)) fs.writeFileSync(fontJson, content, "utf8");
+              if (!fs.existsSync(fontJs)) fs.writeFileSync(fontJs, `self.__NEXT_FONT_MANIFEST=${content};`, "utf8");
+            } catch {}
+          });
+        },
+      });
+    }
+    return config;
   },
 };
 

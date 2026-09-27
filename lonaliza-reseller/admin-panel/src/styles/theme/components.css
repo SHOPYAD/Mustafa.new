@@ -1,0 +1,342 @@
+/**
+ * Enterprise Component Tokens — Universal Theme Application
+ * Eliminates all dark-on-dark, white-on-white, and hardcoded black button regressions across all admin pages.
+ */
+
+/* =========================================================================
+   1. BUTTONS (PRIMARY, SECONDARY, OUTLINE, GHOST)
+   ========================================================================= */
+
+/* Primary Action Buttons */
+#admin-root :is(
+  .admin-btn-primary,
+  button.admin-btn-primary,
+  [data-slot="button"][data-variant="default"],
+  .royal-btn,
+  button.bg-primary,
+  button.btn-primary
+) {
+  background: var(--theme-accent) !important;
+  color: var(--theme-accent-contrast, #ffffff) !important;
+  border: 1px solid var(--theme-accent) !important;
+  border-radius: var(--radius, 0.75rem);
+  font-weight: 600;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.15) !important;
+  transition: all var(--transition-fast);
+}
+
+#admin-root :is(
+  .admin-btn-primary,
+  button.admin-btn-primary,
+  [data-slot="button"][data-variant="default"],
+  .royal-btn,
+  button.bg-primary,
+  button.btn-primary
+) :is(*, svg, span) {
+  color: var(--theme-accent-contrast, #ffffff) !important;
+  stroke: var(--theme-accent-contrast, #ffffff) !important;
+}
+
+#admin-root :is(
+  .admin-btn-primary:hover,
+  button.admin-btn-primary:hover,
+  [data-slot="button"][data-variant="default"]:hover,
+  .royal-btn:hover,
+  button.bg-primary:hover,
+  button.btn-primary:hover
+) {
+  background: var(--theme-accent-hover) !important;
+  border-color: var(--theme-accent-hover) !important;
+  color: var(--theme-accent-contrast, #ffffff) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Disabled Primary Buttons — Never washed-out white text on light pastel! */
+#admin-root :is(
+  .admin-btn-primary:disabled,
+  button.admin-btn-primary:disabled,
+  [data-slot="button"][data-variant="default"]:disabled,
+  .royal-btn:disabled,
+  button.bg-primary:disabled,
+  button.btn-primary:disabled
+) {
+  background: var(--theme-surface-subtle) !important;
+  border: 1px solid var(--theme-border-subtle) !important;
+  color: var(--theme-text-muted) !important;
+  opacity: 0.75 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+#admin-root :is(
+  .admin-btn-primary:disabled,
+  button.admin-btn-primary:disabled,
+  [data-slot="button"][data-variant="default"]:disabled,
+  .royal-btn:disabled,
+  button.bg-primary:disabled,
+  button.btn-primary:disabled
+) :is(*, svg, span) {
+  color: var(--theme-text-muted) !important;
+  stroke: var(--theme-text-muted) !important;
+}
+
+/* Secondary & Auxiliary Buttons (Settings, Test, Cancel, etc.) */
+#admin-root :is(
+  .admin-btn-secondary,
+  button.admin-btn-secondary,
+  [data-slot="button"][data-variant="secondary"],
+  .royal-btn-ghost,
+  button.btn-secondary
+) {
+  background: var(--theme-surface-subtle) !important;
+  color: var(--theme-text-primary) !important;
+  border: 1px solid var(--theme-border-subtle) !important;
+  border-radius: var(--radius, 0.75rem);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+#admin-root :is(
+  .admin-btn-secondary,
+  button.admin-btn-secondary,
+  [data-slot="button"][data-variant="secondary"],
+  .royal-btn-ghost,
+  button.btn-secondary
+) :is(*, svg, span) {
+  color: var(--theme-text-primary) !important;
+  stroke: var(--theme-text-primary) !important;
+}
+
+#admin-root :is(
+  .admin-btn-secondary:hover,
+  button.admin-btn-secondary:hover,
+  [data-slot="button"][data-variant="secondary"]:hover,
+  .royal-btn-ghost:hover,
+  button.btn-secondary:hover
+) {
+  background: var(--theme-surface-hover) !important;
+  border-color: var(--theme-border-strong) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+#admin-root :is(
+  .admin-btn-secondary:hover,
+  button.admin-btn-secondary:hover,
+  [data-slot="button"][data-variant="secondary"]:hover,
+  .royal-btn-ghost:hover,
+  button.btn-secondary:hover
+) :is(*, svg, span) {
+  color: var(--theme-text-primary) !important;
+  stroke: var(--theme-text-primary) !important;
+}
+
+/* Outline & Ghost Buttons */
+#admin-root :is(
+  [data-slot="button"][data-variant="outline"],
+  [data-slot="button"][data-variant="ghost"],
+  .btn-outline,
+  .btn-ghost
+) {
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border-subtle) !important;
+  border-radius: var(--radius, 0.75rem);
+}
+
+#admin-root :is(
+  [data-slot="button"][data-variant="outline"],
+  [data-slot="button"][data-variant="ghost"],
+  .btn-outline,
+  .btn-ghost
+) :is(*, svg, span) {
+  color: var(--theme-text-primary) !important;
+  stroke: var(--theme-text-primary) !important;
+}
+
+#admin-root :is(
+  [data-slot="button"][data-variant="outline"]:hover,
+  [data-slot="button"][data-variant="ghost"]:hover,
+  .btn-outline:hover,
+  .btn-ghost:hover
+) {
+  background: var(--theme-surface-subtle) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border-strong) !important;
+}
+
+/* =========================================================================
+   2. TABS & SEGMENTS
+   ========================================================================= */
+#admin-root :is(
+  [data-slot="tabs-trigger"][data-state="active"],
+  .admin-segment__item[data-active="true"]
+) {
+  background: var(--theme-accent) !important;
+  color: var(--theme-accent-contrast, #ffffff) !important;
+  border-color: var(--theme-accent) !important;
+  font-weight: 700;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.18) !important;
+}
+
+#admin-root :is(
+  [data-slot="tabs-trigger"][data-state="active"],
+  .admin-segment__item[data-active="true"]
+) :is(*, svg, span) {
+  color: var(--theme-accent-contrast, #ffffff) !important;
+  stroke: var(--theme-accent-contrast, #ffffff) !important;
+}
+
+#admin-root :is(
+  [data-slot="tabs-trigger"]:not([data-state="active"]),
+  .admin-segment__item:not([data-active="true"])
+) {
+  color: var(--theme-text-muted) !important;
+}
+
+#admin-root :is(
+  [data-slot="tabs-trigger"]:not([data-state="active"]):hover,
+  .admin-segment__item:not([data-active="true"]):hover
+) {
+  color: var(--theme-text-primary) !important;
+  background: var(--theme-surface-subtle) !important;
+}
+
+/* =========================================================================
+   3. TABLES, CARDS & SURFACES
+   ========================================================================= */
+#admin-root :is([data-slot="card"], .admin-card, .card) {
+  background: var(--theme-surface) !important;
+  border: 1px solid var(--theme-border-subtle) !important;
+  color: var(--theme-text-primary) !important;
+  border-radius: var(--radius, 0.75rem);
+}
+
+#admin-root table th {
+  background: var(--theme-surface-subtle) !important;
+  color: var(--theme-text-muted) !important;
+  border-color: var(--theme-border-subtle) !important;
+  font-weight: 700;
+}
+
+#admin-root table td {
+  border-color: var(--theme-border-subtle) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+#admin-root table tr:hover td {
+  background: var(--theme-surface-hover) !important;
+}
+
+/* =========================================================================
+   4. FORM CONTROLS & SWITCHES
+   ========================================================================= */
+#admin-root :is(
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select,
+  .admin-field
+) {
+  background: var(--theme-surface) !important;
+  border: 1px solid var(--theme-border-subtle) !important;
+  color: var(--theme-text-primary) !important;
+  border-radius: var(--radius, 0.625rem);
+}
+
+#admin-root :is(
+  input:focus,
+  textarea:focus,
+  select:focus,
+  .admin-field:focus
+) {
+  border-color: var(--theme-accent) !important;
+  outline: 2px solid var(--theme-accent-subtle) !important;
+}
+
+#admin-root :is(
+  [data-slot="switch"][data-state="checked"],
+  .admin-switch[data-checked="true"]
+) {
+  background-color: var(--theme-accent) !important;
+  border-color: var(--theme-accent) !important;
+}
+
+/* =========================================================================
+   5. DIALOG / MODAL ENTERPRISE FIX
+   ========================================================================= */
+[data-slot="dialog-content"] {
+  background: var(--theme-surface) !important;
+  color: var(--theme-text-primary) !important;
+  border: 1px solid var(--theme-border-subtle) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Allow dialog to expand to max-w-4xl / max-w-5xl without being clamped by sm:max-w-sm */
+@media (min-width: 640px) {
+  [data-slot="dialog-content"].max-w-4xl,
+  [data-slot="dialog-content"][class*="max-w-4xl"] {
+    max-width: 56rem !important;
+  }
+  [data-slot="dialog-content"].max-w-5xl,
+  [data-slot="dialog-content"][class*="max-w-5xl"] {
+    max-width: 64rem !important;
+  }
+  [data-slot="dialog-content"].max-w-3xl,
+  [data-slot="dialog-content"][class*="max-w-3xl"] {
+    max-width: 48rem !important;
+  }
+  [data-slot="dialog-content"].max-w-2xl,
+  [data-slot="dialog-content"][class*="max-w-2xl"] {
+    max-width: 42rem !important;
+  }
+}
+
+/* Hide ugly purple vertical scrollbar in dialogs */
+[data-slot="dialog-content"] .scrollbar-none {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+[data-slot="dialog-content"] .scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+[data-slot="dialog-content"] ::-webkit-scrollbar {
+  width: 5px;
+}
+[data-slot="dialog-content"] ::-webkit-scrollbar-thumb {
+  background: var(--theme-border-strong);
+  border-radius: 9999px;
+}
+[data-slot="dialog-content"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================================================================
+   6. SIDEBAR ENTERPRISE NATURAL FLOW
+   ========================================================================= */
+aside.admin-sidebar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  background-color: var(--theme-sidebar-bg) !important;
+  color: var(--theme-sidebar-fg) !important;
+  border-color: var(--theme-sidebar-border) !important;
+}
+
+aside.admin-sidebar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+aside.admin-sidebar nav {
+  scrollbar-width: none !important;
+}
+
+aside.admin-sidebar nav::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}

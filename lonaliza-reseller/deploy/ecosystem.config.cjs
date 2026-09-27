@@ -1,28 +1,62 @@
 module.exports = {
   apps: [
     {
-      name: "lonaliza-web",
-      script: "node_modules/next/dist/bin/next",
-      args: "start -p 3000",
-      cwd: __dirname + "/..",
+      name: "client-pocketbase",
+      cwd: __dirname + "/../database/pocketbase",
+      script: "./pocketbase",
+      args: "serve --http=127.0.0.1:8090",
+      interpreter: "none",
       instances: 1,
       autorestart: true,
-      watch: false,
+      max_memory_restart: "500M",
+      error_file: "/www/wwwlogs/client-pocketbase-error.log",
+      out_file: "/www/wwwlogs/client-pocketbase-out.log",
+    },
+    {
+      name: "client-storefront",
+      cwd: __dirname + "/../storefront",
+      script: "node_modules/next/dist/bin/next",
+      args: "start -p 3000",
+      interpreter: "node",
+      instances: 1,
+      autorestart: true,
       max_memory_restart: "1G",
       env: {
         NODE_ENV: "production",
-        PORT: 3000
-      }
+        PORT: "3000",
+        HOSTNAME: "127.0.0.1",
+      },
+      error_file: "/www/wwwlogs/client-storefront-error.log",
+      out_file: "/www/wwwlogs/client-storefront-out.log",
     },
     {
-      name: "lonaliza-pocketbase",
-      script: "./pocketbase/pocketbase",
-      args: "serve --http=127.0.0.1:8090",
-      cwd: __dirname + "/..",
+      name: "client-admin",
+      cwd: __dirname + "/../admin-panel",
+      script: "node_modules/next/dist/bin/next",
+      args: "start -p 3001",
+      interpreter: "node",
       instances: 1,
       autorestart: true,
-      watch: false,
-      max_memory_restart: "500M"
+      max_memory_restart: "1G",
+      env: {
+        NODE_ENV: "production",
+        PORT: "3001",
+        HOSTNAME: "127.0.0.1",
+      },
+      error_file: "/www/wwwlogs/client-admin-error.log",
+      out_file: "/www/wwwlogs/client-admin-out.log",
+    },
+    {
+      name: "client-automation",
+      cwd: __dirname + "/..",
+      script: "scripts/automation-worker.mjs",
+      interpreter: "node",
+      env: {
+        NODE_ENV: "production",
+        AUTOMATION_TICK_HOST: "127.0.0.1",
+        AUTOMATION_TICK_PORT: "3001",
+      },
+      autorestart: true,
     }
-  ]
+  ],
 };

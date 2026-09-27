@@ -1,0 +1,124 @@
+{
+  "finishedAt": "2026-08-22T14:14:48.235Z",
+  "counts": {
+    "blogUrlsFound": 30,
+    "blogsImported": 24,
+    "tourUrlsFound": 134,
+    "packagesImported": 134,
+    "imagesDownloaded": 349,
+    "failures": 13,
+    "toursDerived": 40
+  },
+  "sampleBlogTitles": [
+    "أقوى برنامج سياحي في اسطنبول لمدة 10 ايام (رحلات + التكاليف)",
+    "دليل الاماكن السياحية في اسطنبول واهم النصائح",
+    "سيارة مع سائق في اسطنبول",
+    "دليلك الشامل حول السياحة في تركيا ",
+    "افضل فنادق بورصة",
+    "اجمل الاماكن السياحية في بورصا",
+    "افضل الفنادق في اسطنبول ",
+    "عائدات السياحة في تركيا"
+  ],
+  "samplePackageTitles": [
+    "ريكسوس ترسان إسطنبول",
+    "بحيرة سبنجا و شلالات المعشوقية",
+    "السياحة في طرابزون",
+    "أجمل الاماكن السياحية في بورصة تركيا",
+    "السياحة في اسطنبول",
+    "افضل الاماكن السياحية في اسطنبول",
+    "اجمل الاماكن السياحية في اسطنبول",
+    "افضل الفنادق في سابنجا"
+  ],
+  "failed": [
+    {
+      "type": "listing",
+      "url": "https://alrayyantourism.com/ar/tourist.php?id=5&city=2",
+      "status": 200
+    },
+    {
+      "type": "listing",
+      "url": "https://alrayyantourism.com/ar/tourist.php?id=5&city=4",
+      "status": 200
+    },
+    {
+      "type": "listing",
+      "url": "https://alrayyantourism.com/ar/tourist.php?id=5&city=8",
+      "status": 200
+    },
+    {
+      "type": "listing",
+      "url": "https://alrayyantourism.com/ar/tourist.php?id=5&city=10",
+      "status": 200
+    },
+    {
+      "type": "listing",
+      "url": "https://alrayyantourism.com/ar/tourist.php?id=5&city=11",
+      "status": 200
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1762246190",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1670856960",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1613065208",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1613064962",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1613064849",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "blog",
+      "url": "https://alrayyantourism.com/ar/blog_detail.php?id=1688392174",
+      "status": 200,
+      "note": "empty/redirect"
+    },
+    {
+      "type": "image",
+      "url": "https://alrayyantourism.com/photos/upload/images/pexels-furkan-t%C3%BCrkmeno%C4%9Flu-7540734.jpg",
+      "status": 404
+    },
+    {
+      "type": "image",
+      "url": "http://www.tours-time.com/photos/upload/images/00013.png",
+      "status": 404
+    }
+  ],
+  "paths": {
+    "images": "public/migrated/",
+    "blogJson": "src/data/migrated/blog-posts.json",
+    "packagesJson": "src/data/migrated/packages.json",
+    "blogTs": "src/data/blog.ts",
+    "packagesTs": "src/data/packages.ts",
+    "toursJson": "src/data/migrated/tours.json",
+    "toursTs": "src/data/tours.ts"
+  },
+  "notes": [
+    "Old site is Arabic-only (/en/ is 404). EN fields mirror AR until translated.",
+    "Prices often missing on old pages → many packages have price: 0.",
+    "Pretty URLs (/ar/ar/*.html) 404; PHP routes work.",
+    "CSS broken on live site; HTML/content still fetchable.",
+    "Derived 40 day/activity tours into tours.ts from package pages.",
+    "Hotels not present as separate hotel_detail pages on old site; existing hotel seed left unchanged.",
+    "service_detail.php IDs redirect to index (empty stub) — not imported.",
+    "/en/ locale 404 — Arabic mirrored into EN fields."
+  ]
+}

@@ -6,6 +6,7 @@ import 'package:lonaliza/shell/external_url_handoff.dart';
 import 'package:lonaliza/shell/shell_failure.dart';
 import 'package:lonaliza/shell/shell_loader_gate.dart';
 import 'package:lonaliza/shell/spa_navigation.dart';
+import 'package:lonaliza/shell/webview_cache.dart';
 import 'package:lonaliza/shell/webview_intercept.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -255,6 +256,23 @@ void main() {
         isFalse,
       );
       expect(WebViewIntercept.goHomeScript(), contains('__lonalizaGoHome'));
+    });
+
+    test('keeps WhatsApp scheme clicks on the native handoff path', () {
+      expect(WebViewIntercept.clientRouterInstall, contains("href.indexOf('whatsapp:')"));
+      expect(WebViewIntercept.externalSchemeHandoff, contains('whatsapp:'));
+      expect(WebViewIntercept.externalSchemeHandoff, contains("type: 'openExternal'"));
+    });
+
+    test('prefetches menu and ai-chat without cache-busting HTML', () {
+      expect(WebViewCachePolicy.androidDocumentMode, 'LOAD_DEFAULT');
+      expect(WebViewCachePolicy.passHeadersOnLoadRequest, isFalse);
+      expect(WebViewCachePolicy.spaPrefetchPaths, contains('/ai-chat?app=1'));
+      expect(WebViewCachePolicy.spaPrefetchPaths, contains('/menu?app=1'));
+      expect(WebViewCachePolicy.prefetchScript(), contains('router.prefetch'));
+      expect(WebViewCachePolicy.prefetchScript().contains('Date.now'), isFalse);
+      expect(WebViewCachePolicy.prefetchScript().contains('cache-bust'), isFalse);
+      expect(WebViewCachePolicy.prefetchScript().contains('as = \'document\''), isFalse);
     });
 
     test('keeps branded canvas on SPA so the WebView never flashes white', () {

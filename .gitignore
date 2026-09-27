@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+node_modules
+**/node_modules/
+**/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -10,19 +13,39 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# testing & coverage
 /coverage
+**/coverage/
 
-# next.js
-/.next/
+# Next.js & build output
+.next/
+**/.next/
+**/.next
+**/.next*/
+**/.next*
 /out/
-
-# production
+**/out/
 /build
+**/build/
+**/build
 
 # misc
 .DS_Store
+**/.DS_Store
 *.pem
+**/*.pem
+*.key
+**/*.key
+*.bak*
+**/*.bak*
+*.pyc
+**/*.pyc
+__pycache__/
+**/__pycache__/
+.user.ini
+credentials.json
+**/credentials.json
+**/mcp-secrets*
 
 # debug
 npm-debug.log*
@@ -32,16 +55,36 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+**/.env*
 !.env.example
+!**/.env.example
 
-# PocketBase runtime data and binary (keep migrations)
-pocketbase/pb_data/
+# PocketBase runtime data and binaries (keep migrations and hooks)
+pb_data/
+**/pb_data/
 pocketbase/pocketbase
-pocketbase/*.zip
+**/pocketbase/pocketbase
+**/pocketbase/pocketbase.exe
+*.zip
+**/*.zip
 
-# server-side secrets & runtime config (Gemini API key, server-env, etc.)
+# server-side secrets, runtime databases & caches
 .data/
-data/server-env.json
+**/.data/
+**/.data
+server-env.json
+**/server-env.json
+gemini-secrets.json
+**/gemini-secrets.json
+email-cron-secret*
+**/email-cron-secret*
+**/database/data/
+**/database/data
+**/flights-cache/
+**/booking-cache/
+**/places_cache/
+**/whatsapp-qr-auth/
+**/data/bin/
 
 # Lonaliza hotel-engine (secrets, build, crawlee storage)
 hotel-engine/node_modules/
@@ -51,42 +94,57 @@ hotel-engine/storage/
 hotel-engine/redis-data/
 hotel-engine/redis.conf
 hotel-engine/wg/*.key
-hotel-engine/wg/*.key
 hotel-engine/wg/wg-lonaliza.conf
 hotel-engine/wg/phone.conf
 
 # vercel
 .vercel
+**/.vercel
 
 # typescript
 *.tsbuildinfo
+**/*.tsbuildinfo
 next-env.d.ts
-
-.vercel
+**/next-env.d.ts
 
 # IDE / local agent (MCP tokens, workspace state)
 .cursor/
+**/.cursor/
 .claude/
-
-# extra credential / key material
-*.key
-credentials.json
-**/mcp-secrets*
+**/.claude/
+.idea/
+**/.idea/
+*.iml
+**/*.iml
 
 # Let's Encrypt challenge leftovers
 .well-known/acme-challenge/
 
-# Nested dependencies and packaged builds
-**/node_modules/
+# Mobile packages and builds
 *.apk
+**/*.apk
+*.aab
+**/*.aab
 *.ipa
+**/*.ipa
 
 # Flutter generated local machine paths
-Lonalizamobilapp/ios/Flutter/ephemeral/
-Lonalizamobilapp/ios/Flutter/Generated.xcconfig
-Lonalizamobilapp/ios/Flutter/flutter_export_environment.sh
-Lonalizamobilapp/macos/Flutter/ephemeral/
+**/.dart_tool/
+**/.flutter-plugins*
+**/.pub-cache/
+**/.pub/
+**/ephemeral/
+**/Generated.xcconfig
+**/flutter_export_environment.sh
 
-# Vendor API dumps too large for git
+# Vendor API dumps too large for git (>30MB dumps)
 docs/travelport/
+**/docs/travelport/
 docs/GDS_ExchangeAPIs_DevKit_23.11.18.21.17/
+**/docs/GDS_ExchangeAPIs_DevKit_*/
+**/docs/_reference/
+**/docs/travel-providers-spec-mcp/
+
+# Postiz reference clone
+_reference/postiz-app/
+**/_reference/postiz-app/

@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 /**
- * Provisioning & Cloning Script for LONALIZA Client Instances.
+ * Provisioning & Packaging Script for LONALIZA Client Reseller Instance.
+ *
+ * Copies the latest decoupled web platform from lonaliza-platform/ into
+ * lonaliza-reseller/, strictly excluding super-admin resale systems and data.
  *
  * Usage:
- *   node scripts/provision-client-instance.mjs --domain=YOUR_DOMAIN.com --license=LONALIZA-XXXX-XXXX-XXXX-XXXX --ip=SERVER_IP --target=/www/wwwroot/lonaliza.com/lonaliza-reseller
+ *   node scripts/provision-client-instance.mjs --domain=client-travel.com --target=/www/wwwroot/lonaliza.com/lonaliza-reseller
  */
 
 import { promises as fs } from "fs";
@@ -20,23 +23,24 @@ const args = process.argv.slice(2).reduce((acc, arg) => {
 const domain = args.domain || "client-travel.com";
 const licenseKey = args.license || "LONALIZA-DEMO-XXXX-XXXX-XXXX";
 const serverIp = args.ip || "SERVER_IP";
-const targetDir = args.target || path.join(process.cwd(), "lonaliza-reseller");
-const sourceDir = process.cwd();
+const targetDir = args.target || path.resolve("/www/wwwroot/lonaliza.com/lonaliza-reseller");
+const sourceDir = path.resolve("/www/wwwroot/lonaliza.com/lonaliza-platform");
 
-console.log(`\n🚀 Starting LONALIZA Client Provisioning:`);
+console.log(`\n🚀 Starting LONALIZA Client Reseller Provisioning:`);
+console.log(`   Source Dir: ${sourceDir}`);
+console.log(`   Target Dir: ${targetDir}`);
 console.log(`   Domain:     ${domain}`);
-console.log(`   License:    ${licenseKey}`);
-console.log(`   Server IP:  ${serverIp}`);
-console.log(`   Target Dir: ${targetDir}\n`);
+console.log(`   License:    ${licenseKey}\n`);
 
 async function run() {
-  // 1. Clean & create target directory
+  // 1. Clean & recreate target directory
+  console.log(`🧹 Preparing clean target directory...`);
   try {
     await fs.rm(targetDir, { recursive: true, force: true });
   } catch {}
   await fs.mkdir(targetDir, { recursive: true });
 
-  // 2. Excluded paths list (strictly super admin only)
+  // 2. Excluded paths (strictly super-admin and build artifacts)
   const EXCLUDES = [
     "node_modules",
     ".next",
@@ -47,35 +51,34 @@ async function run() {
     "*-reseller",
     "hotel-engine",
     "scripts/hotel-scraper",
-    "src/lib/scraping",
-    "src/app/admin/resale",
-    "src/app/api/admin/resale",
-    "src/app/partners",
-    "src/app/api/partners",
-    "src/app/demo",
-    "src/app/api/admin/owned-hotels-test",
-    "src/lib/server/partner-session.ts",
-    "pocketbase/pb_data",
+    "admin-panel/src/app/admin/resale",
+    "admin-panel/src/app/api/admin/resale",
+    "admin-panel/src/app/partners",
+    "admin-panel/src/app/api/partners",
+    "admin-panel/src/app/api/admin/b2b-wallet",
+    "admin-panel/src/app/api/admin/owned-hotels-test",
+    "admin-panel/src/lib/server/owned-hotels",
+    "admin-panel/src/lib/server/reseller-whitelabel-store.ts",
+    "database/pocketbase/pb_data",
   ];
 
-  console.log(`📦 Copying clean codebase (excluding scraper & super admin resale)...`);
+  console.log(`📦 Copying clean decoupled platform (excluding super-admin resale & scraper)...`);
   const excludeFlags = EXCLUDES.map((e) => `--exclude='${e}'`).join(" ");
   try {
     execSync(`rsync -a ${excludeFlags} "${sourceDir}/" "${targetDir}/"`, { stdio: "inherit" });
   } catch (err) {
-    // Exit code 24 in rsync is non-fatal "vanished files"
     if (err.status !== 24) {
       throw err;
     }
   }
 
-  // 3. Remove reseller-specific PB migrations from client copy
-  console.log(`🧹 Cleaning super-admin resale migrations from client copy...`);
-  const migrationsDir = path.join(targetDir, "pocketbase", "pb_migrations");
+  // 3. Remove super-admin resale migrations from client copy
+  console.log(`🧹 Removing super-admin resale migrations from client database...`);
+  const migrationsDir = path.join(targetDir, "database", "pocketbase", "pb_migrations");
   try {
     const files = await fs.readdir(migrationsDir);
     for (const f of files) {
-      if (f.includes("reseller") || f.startsWith("17881001")) {
+      if (f.includes("reseller") || f.startsWith("17881001") || f.startsWith("1788500100")) {
         await fs.unlink(path.join(migrationsDir, f));
       }
     }
@@ -83,7 +86,59 @@ async function run() {
     console.warn("Could not clean migrations:", err.message);
   }
 
-  // 4. Generate Client .env.local & .env.example
+  // 4. Clean super-admin and sensitive files from database/data
+  console.log(`🛡️ Sanitizing database/data (removing super-admin secrets & audit logs)...`);
+  const sensitiveFiles = [
+    "server-env.json",
+    "gemini-secrets.json",
+    "reseller-settings.json",
+    "whitelabel-settings.json",
+    "seeru_private.pem",
+    "seeru_public.pem",
+    "admin-audit.jsonl",
+    "admin-push-subs.json",
+    "whatsapp-qr-auth",
+    "iyzico-fx-cache.json",
+  ];
+  for (const f of sensitiveFiles) {
+    try {
+      await fs.rm(path.join(targetDir, "database", "data", f), { recursive: true, force: true });
+    } catch {}
+  }
+
+  // 5. Provide client stubs for resale-store and partner-session
+  console.log(`🧩 Providing safe client stubs for resale & partner services...`);
+  const resaleStoreStub = `/**
+ * Client Stub - Super-admin resale system disabled on client distribution instance.
+ */
+export async function upsertResellerCompanyFromGoogle() { return null; }
+export async function getResellerCompanies() { return []; }
+export async function getResellerCompany() { return null; }
+export async function getCompanyLicense() { return null; }
+export async function getResellerSettings() { return null; }
+export async function saveResellerSettings() { return null; }
+export async function getResellerLicenses() { return []; }
+export async function getCompanyServer() { return null; }
+export async function updateResellerCompany() { return null; }
+export type ResellerCompany = any;
+export type ResellerCompanyProgress = any;
+export type ResellerStageTemplate = any;
+export type ResellerSettings = any;
+`;
+  await fs.writeFile(path.join(targetDir, "admin-panel", "src", "lib", "server", "resale-store.ts"), resaleStoreStub, "utf8");
+
+  const partnerSessionStub = `/**
+ * Client Stub - Super-admin partner session disabled on client distribution instance.
+ */
+export const PARTNER_AUTH_COOKIE = "partner_auth";
+export const PARTNER_SESSION_MAX_AGE = 0;
+export async function createPartnerSessionToken() { return ""; }
+export async function getPartnerSession() { return null; }
+export async function verifyPartnerSession() { return null; }
+`;
+  await fs.writeFile(path.join(targetDir, "admin-panel", "src", "lib", "server", "partner-session.ts"), partnerSessionStub, "utf8");
+
+  // 6. Generate client .env.local and .env.example
   console.log(`⚙️ Generating client .env.local with DEPLOYMENT_ROLE=client...`);
   const clientEnv = `# ==============================================================================
 # LONALIZA Travel Platform — Client Production Environment
@@ -92,6 +147,7 @@ async function run() {
 
 NEXT_PUBLIC_SITE_URL=https://${domain}
 DEPLOYMENT_ROLE=client
+NEXT_PUBLIC_DEPLOYMENT_ROLE=client
 LICENSE_KEY=${licenseKey}
 LICENSE_ORIGIN=https://lonaliza.com
 LICENSE_SIGNING_KEY=8f1b4a6c9d2e3f5a7b0c8d1e4f6a9b2c3d5e7f0a1b3c5d7e9f1a3b5c7d9e1f3a
@@ -132,13 +188,26 @@ ADMIN_SESSION_SECRET=${Math.random().toString(36).slice(2)}${Math.random().toStr
   await fs.writeFile(path.join(targetDir, ".env.local"), clientEnv, "utf8");
   await fs.writeFile(path.join(targetDir, ".env.example"), clientEnv, "utf8");
 
-  // 5. Generate Deployment Scripts and Nginx Configs
-  console.log(`🌐 Generating deployment scripts, PM2 ecosystem, and Nginx templates...`);
+  // Copy .env.local to storefront and admin-panel
+  await fs.writeFile(path.join(targetDir, "storefront", ".env.local"), clientEnv, "utf8");
+  await fs.writeFile(path.join(targetDir, "admin-panel", ".env.local"), clientEnv, "utf8");
+
+  // 7. Setup Relative Symlinks inside client copy for local testing / packaging
+  console.log(`🔗 Setting up relative portable symlinks...`);
+  try {
+    execSync(`ln -sfn ../node_modules "${path.join(targetDir, "storefront", "node_modules")}"`);
+    execSync(`ln -sfn ../database/data "${path.join(targetDir, "storefront", ".data")}"`);
+    execSync(`ln -sfn ../node_modules "${path.join(targetDir, "admin-panel", "node_modules")}"`);
+    execSync(`ln -sfn ../database/data "${path.join(targetDir, "admin-panel", ".data")}"`);
+  } catch {}
+
+  // 8. Generate Client Deployment Scripts and Nginx Configs
+  console.log(`🌐 Generating client deployment scripts, PM2 ecosystem, and Nginx templates...`);
   const deployDir = path.join(targetDir, "deploy");
   const nginxDir = path.join(deployDir, "nginx");
   await fs.mkdir(nginxDir, { recursive: true });
 
-  // Main site Nginx reverse proxy
+  // Main site Nginx reverse proxy template
   const mainNginx = `server {
     listen 80;
     server_name ${domain} www.${domain};
@@ -160,16 +229,73 @@ server {
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
 
-    location / {
-        proxy_pass http://127.0.0.1:3000;
+    # Decoupled Backend API & Admin Panel
+    location ^~ /api/ {
+        proxy_pass http://127.0.0.1:3001;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 120s;
+    }
+
+    location ^~ /admin {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 120s;
+    }
+
+    location ^~ /preview {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 120s;
+    }
+
+    # Next.js Static Assets & Chunks with fallback
+    location ^~ /_next/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_intercept_errors on;
+        error_page 404 = @admin_next;
+    }
+
+    location @admin_next {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Storefront (Public Website)
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_read_timeout 120s;
     }
 }
 `;
@@ -185,7 +311,6 @@ server {
     listen 443 ssl http2;
     server_name pocketbase.${domain};
 
-    # SSL Certificates (Auto-generated by aaPanel or Let's Encrypt)
     ssl_certificate /www/server/panel/vhost/cert/pocketbase.${domain}/fullchain.pem;
     ssl_certificate_key /www/server/panel/vhost/cert/pocketbase.${domain}/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
@@ -208,42 +333,77 @@ server {
   await fs.writeFile(path.join(nginxDir, "site.conf"), mainNginx, "utf8");
   await fs.writeFile(path.join(nginxDir, "pocketbase.conf"), pbNginx, "utf8");
 
-  // PM2 Ecosystem Config
-  const ecosystemConfig = `module.exports = {
+  // PM2 Ecosystem Config for client
+  const clientEcosystem = `module.exports = {
   apps: [
     {
-      name: "lonaliza-web",
-      script: "node_modules/next/dist/bin/next",
-      args: "start -p 3000",
-      cwd: __dirname + "/..",
+      name: "client-pocketbase",
+      cwd: __dirname + "/../database/pocketbase",
+      script: "./pocketbase",
+      args: "serve --http=127.0.0.1:8090",
+      interpreter: "none",
       instances: 1,
       autorestart: true,
-      watch: false,
+      max_memory_restart: "500M",
+      error_file: "/www/wwwlogs/client-pocketbase-error.log",
+      out_file: "/www/wwwlogs/client-pocketbase-out.log",
+    },
+    {
+      name: "client-storefront",
+      cwd: __dirname + "/../storefront",
+      script: "node_modules/next/dist/bin/next",
+      args: "start -p 3000",
+      interpreter: "node",
+      instances: 1,
+      autorestart: true,
       max_memory_restart: "1G",
       env: {
         NODE_ENV: "production",
-        PORT: 3000
-      }
+        PORT: "3000",
+        HOSTNAME: "127.0.0.1",
+      },
+      error_file: "/www/wwwlogs/client-storefront-error.log",
+      out_file: "/www/wwwlogs/client-storefront-out.log",
     },
     {
-      name: "lonaliza-pocketbase",
-      script: "./pocketbase/pocketbase",
-      args: "serve --http=127.0.0.1:8090",
-      cwd: __dirname + "/..",
+      name: "client-admin",
+      cwd: __dirname + "/../admin-panel",
+      script: "node_modules/next/dist/bin/next",
+      args: "start -p 3001",
+      interpreter: "node",
       instances: 1,
       autorestart: true,
-      watch: false,
-      max_memory_restart: "500M"
+      max_memory_restart: "1G",
+      env: {
+        NODE_ENV: "production",
+        PORT: "3001",
+        HOSTNAME: "127.0.0.1",
+      },
+      error_file: "/www/wwwlogs/client-admin-error.log",
+      out_file: "/www/wwwlogs/client-admin-out.log",
+    },
+    {
+      name: "client-automation",
+      cwd: __dirname + "/..",
+      script: "scripts/automation-worker.mjs",
+      interpreter: "node",
+      env: {
+        NODE_ENV: "production",
+        AUTOMATION_TICK_HOST: "127.0.0.1",
+        AUTOMATION_TICK_PORT: "3001",
+      },
+      autorestart: true,
     }
-  ]
+  ],
 };
 `;
-  await fs.writeFile(path.join(deployDir, "ecosystem.config.cjs"), ecosystemConfig, "utf8");
+  await fs.writeFile(path.join(deployDir, "ecosystem.config.cjs"), clientEcosystem, "utf8");
+  await fs.writeFile(path.join(targetDir, "ecosystem.config.cjs"), clientEcosystem, "utf8");
 
   // setup-server.sh script
   const setupScript = `#!/usr/bin/env bash
 # ==============================================================================
-# LONALIZA Automated Server Setup Script (Ubuntu / Debian / aaPanel)
+# LONALIZA Automated Client Server Setup Script (Ubuntu / Debian / aaPanel)
 # ==============================================================================
 set -e
 
@@ -259,15 +419,16 @@ if ! command -v pm2 &> /dev/null; then
     npm install -g pm2
 fi
 
-echo "📦 [2/5] Installing project dependencies..."
+echo "📦 [2/5] Installing dependencies..."
 cd "$(dirname "$0")/.."
 npm install --production=false
 
-echo "🔨 [3/5] Building Next.js production bundle..."
-npm run build
+echo "🔨 [3/5] Building Storefront and Admin Panel..."
+npm run build:storefront
+npm run build:admin
 
-echo "🗄️ [4/5] Initializing PocketBase executable permissions..."
-chmod +x pocketbase/pocketbase
+echo "🗄️ [4/5] Initializing PocketBase executable..."
+chmod +x database/pocketbase/pocketbase
 
 echo "🚀 [5/5] Launching PM2 ecosystem services..."
 pm2 start deploy/ecosystem.config.cjs
@@ -276,16 +437,17 @@ pm2 startup || true
 
 echo ""
 echo "=============================================================================="
-echo "✅ LONALIZA Server Setup Completed Successfully!"
-echo "   - Next.js Web App: running on http://127.0.0.1:3000"
-echo "   - PocketBase DB:   running on http://127.0.0.1:8090"
-echo "   - PM2 Status:      Run 'pm2 status' or 'pm2 logs'"
+echo "✅ LONALIZA Client Platform Setup Completed Successfully!"
+echo "   - Storefront Website: http://127.0.0.1:3000"
+echo "   - Admin Dashboard:    http://127.0.0.1:3001/admin"
+echo "   - PocketBase DB:       http://127.0.0.1:8090"
+echo "   - PM2 Status:          Run 'pm2 status' or 'pm2 logs'"
 echo "=============================================================================="
 `;
   await fs.writeFile(path.join(deployDir, "setup-server.sh"), setupScript, "utf8");
   await fs.chmod(path.join(deployDir, "setup-server.sh"), 0o755);
 
-  // start.sh, stop.sh, restart.sh
+  // Helper scripts
   await fs.writeFile(path.join(deployDir, "start.sh"), `#!/usr/bin/env bash\npm2 start $(dirname "$0")/ecosystem.config.cjs\n`, "utf8");
   await fs.writeFile(path.join(deployDir, "stop.sh"), `#!/usr/bin/env bash\npm2 stop $(dirname "$0")/ecosystem.config.cjs\n`, "utf8");
   await fs.writeFile(path.join(deployDir, "restart.sh"), `#!/usr/bin/env bash\npm2 restart $(dirname "$0")/ecosystem.config.cjs\n`, "utf8");
@@ -293,7 +455,7 @@ echo "==========================================================================
   await fs.chmod(path.join(deployDir, "stop.sh"), 0o755);
   await fs.chmod(path.join(deployDir, "restart.sh"), 0o755);
 
-  // README.md in deploy directory
+  // README.md
   const readmeContent = `# دليل تشغيل ورفع نسخة عميل LONALIZA على سيرفر Contabo / aaPanel
 
 مرحباً بك! هذه النسخة المستقلة الكاملة لمنظومة **LONALIZA Tourism Platform** جاهزة للرفع والتشغيل على سيرفر شركتك في دقائق معدودة.
@@ -319,7 +481,7 @@ echo "==========================================================================
 cd /www/wwwroot/yourdomain.com
 bash deploy/setup-server.sh
 \`\`\`
-يقوم هذا السكربت تلقائياً بتثبيت التبعيات، بناء المشروع (\`npm run build\`)، وتشغيل الموقع وقاعدة البيانات عبر **PM2**.
+يقوم هذا السكربت تلقائياً بتثبيت التبعيات، بناء واجهة الموقع ولوحة التحكم (\`npm run build\`)، وتشغيل كافة الخدمات عبر **PM2**.
 
 ### الخطوة 3: تطبيق إعدادات Nginx وشهادة SSL
 1. من لوحة **aaPanel**: أضف موقعين:
@@ -348,7 +510,7 @@ bash deploy/setup-server.sh
   await fs.writeFile(path.join(deployDir, "README.md"), readmeContent, "utf8");
   await fs.writeFile(path.join(targetDir, "README.md"), readmeContent, "utf8");
 
-  console.log(`\n✅ Client Provisioning Package Created Successfully at:`);
+  console.log(`\n✅ Client Reseller Package Provisioned Successfully at:`);
   console.log(`   ${targetDir}\n`);
 }
 

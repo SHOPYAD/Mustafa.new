@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# LONALIZA Automated Server Setup Script (Ubuntu / Debian / aaPanel)
+# LONALIZA Automated Client Server Setup Script (Ubuntu / Debian / aaPanel)
 # ==============================================================================
 set -e
 
@@ -16,15 +16,16 @@ if ! command -v pm2 &> /dev/null; then
     npm install -g pm2
 fi
 
-echo "📦 [2/5] Installing project dependencies..."
+echo "📦 [2/5] Installing dependencies..."
 cd "$(dirname "$0")/.."
 npm install --production=false
 
-echo "🔨 [3/5] Building Next.js production bundle..."
-npm run build
+echo "🔨 [3/5] Building Storefront and Admin Panel..."
+npm run build:storefront
+npm run build:admin
 
-echo "🗄️ [4/5] Initializing PocketBase executable permissions..."
-chmod +x pocketbase/pocketbase
+echo "🗄️ [4/5] Initializing PocketBase executable..."
+chmod +x database/pocketbase/pocketbase
 
 echo "🚀 [5/5] Launching PM2 ecosystem services..."
 pm2 start deploy/ecosystem.config.cjs
@@ -33,8 +34,9 @@ pm2 startup || true
 
 echo ""
 echo "=============================================================================="
-echo "✅ LONALIZA Server Setup Completed Successfully!"
-echo "   - Next.js Web App: running on http://127.0.0.1:3000"
-echo "   - PocketBase DB:   running on http://127.0.0.1:8090"
-echo "   - PM2 Status:      Run 'pm2 status' or 'pm2 logs'"
+echo "✅ LONALIZA Client Platform Setup Completed Successfully!"
+echo "   - Storefront Website: http://127.0.0.1:3000"
+echo "   - Admin Dashboard:    http://127.0.0.1:3001/admin"
+echo "   - PocketBase DB:       http://127.0.0.1:8090"
+echo "   - PM2 Status:          Run 'pm2 status' or 'pm2 logs'"
 echo "=============================================================================="

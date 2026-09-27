@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+    },
+    "ui-ux-pro-max": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "skillPath": "cli-tool/components/skills/creative-design/ui-ux-pro-max/SKILL.md",
+      "computedHash": "c9564c4ff18ad8e61adf874b48556c7007428654785e4f6cbb0f0a071ac1c7d5"
+    }
+  }
+}

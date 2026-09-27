@@ -1,0 +1,2700 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./admin/admin.css";
+@import "../styles/presets/brutalist.css";
+@import "../styles/presets/soft-pop.css";
+@import "../styles/presets/tangerine.css";
+@import "../styles/theme/index.css";
+
+/* Class strategy only — do not follow OS prefers-color-scheme.
+   Admin toggles `.dark` + data-admin-theme together so tokens never mix. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f7f4fc;
+  --foreground: #3b2466;
+  /* Brand: Royal Purple #7c3aed + Luxury Violet #2e1065 */
+  --heading: #2e1065;
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --primary-dark: #6d28d9;
+  --accent: #2e1065;
+  --accent-light: #4c1d95;
+  --navy: #2e1065;
+  --navy-mid: #4c1d95;
+  --emerald: #7c3aed;
+  --secondary: #ece4f7;
+  --brand-primary: #7c3aed;
+  --brand-secondary: #ece4f7;
+  --brand-accent: #2e1065;
+  --brand-header: #ffffff;
+  --brand-footer: #2e1065;
+  --brand-button: #7c3aed;
+  --brand-whatsapp: #22c55e;
+  --brand-success: #059669;
+  --radius-button: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-input: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.25rem;
+  --theme-border-width: 1px;
+  --theme-border-color: #ddd6fe;
+  --theme-page-bg: #f7f4fc;
+  --theme-section-bg: #ece4f7;
+  --theme-card-bg: #fdfbff;
+  --theme-overlay: rgba(46, 16, 101, 0.55);
+  --theme-text-heading: #2e1065;
+  --theme-text-body: #3b2466;
+  --theme-text-muted: #6b5280;
+  --theme-text-inverse: #f5f3ff;
+  --theme-text-link: #6d28d9;
+  --theme-btn-text: #ffffff;
+  --theme-btn-border: transparent;
+  --theme-btn-hover-bg: #6d28d9;
+  --theme-btn-hover-text: #ffffff;
+  --theme-btn-active-bg: #6d28d9;
+  --theme-btn-disabled-bg: #94a3b8;
+  --theme-btn-disabled-text: #f8fafc;
+  --theme-btn-shadow: 0 14px 28px -10px rgba(46, 16, 101, 0.35);
+  --theme-card-hover-bg: #fdfbff;
+  --theme-card-hover-shadow: 0 24px 48px -16px rgba(46, 16, 101, 0.36);
+  --theme-nav-hover: rgba(196, 181, 253, 0.16);
+  --theme-chip-hover: rgba(15, 23, 42, 0.06);
+  --theme-header-glass: rgba(255, 255, 255, 0.96);
+  --theme-card-glass: rgba(253, 251, 255, 0.92);
+  --theme-search-glass: rgba(253, 251, 255, 0.95);
+  --theme-focus-ring: #7c3aed;
+  --theme-shadow-sm: 0 8px 18px -10px rgba(46, 16, 101, 0.28);
+  --theme-shadow-md: 0 16px 36px rgba(46, 16, 101, 0.28);
+  --theme-shadow-lg: 0 28px 56px -16px rgba(46, 16, 101, 0.42);
+  --theme-input-bg: #fdfbff;
+  --theme-input-text: #2e1065;
+  --theme-input-border: #ddd6fe;
+  --theme-input-placeholder: #a78bb8;
+  --theme-tab-active-bg: #2e1065;
+  --theme-tab-active-text: #ffffff;
+  --theme-tab-idle-bg: transparent;
+  --theme-tab-idle-text: #1e1b4b;
+  --theme-badge-bg: #ede9fe;
+  --theme-badge-text: #5b21b6;
+  --theme-icon-chrome: #1e1b4b;
+  --image-radius: 0.75rem;
+  --image-shadow: none;
+  --image-filter: none;
+  --card: #fdfbff;
+  --card-foreground: #3b2466;
+  --muted: #ece4f7;
+  --muted-foreground: #6b5280;
+  --border: #ddd6fe;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary-foreground: #2e1065;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --input: #ddd6fe;
+  --ring: #7c3aed;
+  --chart-1: #7c3aed;
+  --chart-2: #2e1065;
+  --chart-3: #0ea5e9;
+  --chart-4: #f59e0b;
+  --chart-5: #f43f5e;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-border: #c5d0de;
+  --sidebar-accent: #ece4f7;
+  --sidebar-accent-foreground: #5b21b6;
+  --sidebar-muted: #64748b;
+  --admin-bg: #e8eef5;
+  --admin-surface: #ffffff;
+  --admin-surface-2: #f4f7fb;
+  --admin-border: #c5d0de;
+  --admin-text: #0f172a;
+  --admin-text-muted: #475569;
+  --admin-text-faint: #64748b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-heading: var(--heading);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-admin-bg-canvas: var(--admin-bg-canvas);
+  --color-admin-bg-surface: var(--admin-bg-surface);
+  --color-admin-bg-subtle: var(--admin-bg-subtle);
+  --color-admin-text-primary: var(--admin-text-primary);
+  --color-admin-text-muted: var(--admin-text-muted);
+  --color-admin-text-faint: var(--admin-text-faint);
+  --color-admin-border-subtle: var(--admin-border-subtle);
+  --color-admin-accent: var(--admin-accent);
+  --color-admin-accent-foreground: var(--admin-accent-foreground);
+  --color-admin-accent-soft: var(--admin-accent-soft);
+
+  --font-sans: var(--font-ui, var(--font-latin)), system-ui, sans-serif;
+  --radius-lg: var(--radius-button);
+  --radius-xl: var(--radius-card);
+  --radius-2xl: var(--radius-card);
+}
+
+html:not([data-admin-route]) .locale-boot {
+  opacity: 0;
+}
+
+/* Public site is light-designed. Do not let OS dark mode paint html/body black
+   (empty iframe / translated overflow then reads as a giant black void).
+   Admin dark tokens live on html[data-admin-route] / #admin-root and never paint the public site. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.dark):not([data-admin-route]) {
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --heading: #051741;
+  }
+}
+
+/* Site-wide theme tokens (ThemeProvider + .data/brand-theme.json).
+   Admin chrome is excluded via data-admin-theme. */
+html:not([data-admin-route]) {
+  --border: var(--theme-border-color);
+  --background: var(--theme-page-bg);
+  --foreground: var(--theme-text-body);
+  --heading: var(--theme-text-heading);
+  --card: var(--theme-card-bg);
+  --muted: var(--theme-section-bg);
+  --muted-foreground: var(--theme-text-muted);
+  --ring: var(--theme-focus-ring);
+  --navy: var(--theme-text-heading);
+  --primary: var(--brand-primary);
+}
+
+html:not([data-admin-route]) body {
+  background-color: var(--theme-page-bg);
+  color: var(--theme-text-body);
+}
+
+/* ── Luxury Public Light Theme ── */
+html:not(.dark):not([data-site-theme="dark"]):not([data-admin-route]),
+html[data-site-theme="light"]:not([data-admin-route]) {
+  --theme-page-bg: #f8fafc;
+  --theme-section-bg: #f1f5f9;
+  --theme-card-bg: #ffffff;
+  --theme-text-heading: #0f172a;
+  --theme-text-body: #334155;
+  --theme-text-muted: #64748b;
+  --theme-border-color: #e2e8f0;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  color-scheme: light;
+}
+
+/* ── Luxury Public Dark Theme Override ── */
+html.dark:not([data-admin-route]),
+html[data-site-theme="dark"]:not([data-admin-route]) {
+  --theme-page-bg: #07090e !important;
+  --theme-section-bg: #0d121e !important;
+  --theme-card-bg: #111827 !important;
+  --theme-text-heading: #f8fafc !important;
+  --theme-text-body: #cbd5e1 !important;
+  --theme-text-muted: #94a3b8 !important;
+  --theme-border-color: rgba(255, 255, 255, 0.12) !important;
+  --theme-header-glass: rgba(7, 9, 14, 0.94) !important;
+  --theme-card-glass: rgba(17, 24, 39, 0.9) !important;
+  --theme-search-glass: rgba(17, 24, 39, 0.95) !important;
+  --theme-input-bg: #0d121e !important;
+  --theme-input-text: #f8fafc !important;
+  --theme-input-border: rgba(255, 255, 255, 0.16) !important;
+  --theme-input-placeholder: #64748b !important;
+  --brand-header: #07090e !important;
+  --brand-footer: #07090e !important;
+  --background: #07090e !important;
+  --foreground: #cbd5e1 !important;
+  --card: #111827 !important;
+  --card-foreground: #f8fafc !important;
+  --muted: #0d121e !important;
+  --muted-foreground: #94a3b8 !important;
+  --border: rgba(255, 255, 255, 0.12) !important;
+  color-scheme: dark !important;
+}
+
+html.dark:not([data-admin-route]) body,
+html[data-site-theme="dark"]:not([data-admin-route]) body {
+  background-color: #07090e !important;
+  color: #cbd5e1 !important;
+}
+
+/* Intelligent container color mapping in Public Dark Mode */
+html.dark:not([data-admin-route]) .bg-white:not([data-keep-color="true"]),
+html[data-site-theme="dark"]:not([data-admin-route]) .bg-white:not([data-keep-color="true"]) {
+  background-color: #111827 !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark:not([data-admin-route]) :is(.bg-slate-50, .bg-slate-100, .bg-gray-50, .bg-gray-100):not([data-keep-color="true"]),
+html[data-site-theme="dark"]:not([data-admin-route]) :is(.bg-slate-50, .bg-slate-100, .bg-gray-50, .bg-gray-100):not([data-keep-color="true"]) {
+  background-color: #0d121e !important;
+}
+
+html.dark:not([data-admin-route]) :is(.text-slate-900, .text-slate-800, .text-gray-900, .text-gray-800):not([data-keep-color="true"]),
+html[data-site-theme="dark"]:not([data-admin-route]) :is(.text-slate-900, .text-slate-800, .text-gray-900, .text-gray-800):not([data-keep-color="true"]) {
+  color: #f8fafc !important;
+}
+
+html.dark:not([data-admin-route]) :is(.border-slate-100, .border-slate-200, .border-gray-100, .border-gray-200):not([data-keep-color="true"]),
+html[data-site-theme="dark"]:not([data-admin-route]) :is(.border-slate-100, .border-slate-200, .border-gray-100, .border-gray-200):not([data-keep-color="true"]) {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ── Deep Intelligent Contrast & Button Typography Rules ── */
+/* 1. Any button containing text must render with crisp white text */
+html:not([data-admin-route]) button:not([class*="text-slate-"]):not([class*="text-gray-"]):not([class*="text-zinc-"]):not([class*="text-black"]):not([class*="text-dark"]):not([class*="text-rose-"]):not([class*="text-blue-"]):not([class*="text-emerald-"]):not([class*="text-amber-"]):not([class*="text-purple-"]):not([class*="text-indigo-"]):not([class*="text-red-"]):not([class*="bg-transparent"]):not([class*="bg-white"]):not([data-keep-color="true"]):not(.btn-outline),
+html:not([data-admin-route]) a.theme-brand-btn,
+html:not([data-admin-route]) .theme-brand-btn,
+html:not([data-admin-route]) [data-builder-btn="true"],
+html:not([data-admin-route]) .alrayyan-home button[type="submit"],
+html:not([data-admin-route]) .alrayyan-home button.bg-brand-primary,
+html:not([data-admin-route]) .alrayyan-home a[class*="bg-[var(--brand-button)"],
+html:not([data-admin-route]) .alrayyan-home button[class*="bg-[var(--brand-button)"] {
+  color: var(--theme-btn-text, #ffffff) !important;
+}
+
+/* 2. Overlays and dark containers enforce white/bright text (never dark purple/navy) */
+html:not([data-admin-route]) [class*="bg-[var(--brand-header)"],
+html:not([data-admin-route]) [class*="bg-[var(--brand-accent)"],
+html:not([data-admin-route]) [style*="var(--brand-header)"],
+html:not([data-admin-route]) [style*="var(--brand-accent)"],
+html:not([data-admin-route]) .alrayyan-site-header,
+html:not([data-admin-route]) [data-surface-theme="dark"] {
+  --theme-text-heading: var(--theme-text-inverse, #ffffff);
+}
+
+/* 3. Hero eyebrow text on dark background must be prominent white / brand accent */
+html:not([data-admin-route]) .hero-eyebrow,
+html:not([data-admin-route]) [data-hero-eyebrow="true"] {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+html:not([data-admin-route]) [class*="bg-[var(--brand-button)]"] {
+  border-radius: var(--radius-button);
+}
+
+html:not([data-admin-route]) main img:not([class*="rounded-full"]):not(.no-theme-image):not([src*="logo"]):not([alt*="logo" i]):not([alt*="lonaliza" i]) {
+  border-radius: var(--image-radius);
+  box-shadow: var(--image-shadow);
+  filter: var(--image-filter);
+}
+
+html:not([data-admin-route]) .theme-brand-btn {
+  background-color: var(--brand-button);
+  color: var(--theme-btn-text);
+  border: var(--theme-border-width) solid var(--theme-btn-border);
+  border-radius: var(--radius-button);
+  box-shadow: var(--theme-btn-shadow);
+}
+html:not([data-admin-route]) .theme-brand-btn:hover {
+  background-color: var(--theme-btn-hover-bg);
+  color: var(--theme-btn-hover-text);
+}
+html:not([data-admin-route]) .theme-brand-btn:active {
+  background-color: var(--theme-btn-active-bg);
+}
+html:not([data-admin-route]) .theme-brand-btn:disabled {
+  background-color: var(--theme-btn-disabled-bg);
+  color: var(--theme-btn-disabled-text);
+}
+
+html:not([data-admin-route]) .sc-card {
+  background-color: var(--theme-card-bg);
+  border-radius: var(--radius-card);
+}
+html:not([data-admin-route]) .sc-card:hover {
+  background-color: var(--theme-card-hover-bg);
+  box-shadow: var(--theme-card-hover-shadow);
+}
+
+html:not([data-admin-route]) :focus-visible {
+  outline-color: var(--theme-focus-ring);
+}
+
+html:not([data-admin-route]) .alrayyan-site-header {
+  background-color: var(--theme-header-glass);
+  border-color: var(--theme-border-color);
+  box-shadow: var(--theme-shadow-md);
+}
+html:not([data-admin-route]) .alrayyan-header-nav-link:hover {
+  background: var(--theme-nav-hover);
+}
+html:not([data-admin-route]) .alrayyan-chrome-icon {
+  color: var(--theme-icon-chrome);
+  stroke: var(--theme-icon-chrome);
+}
+
+html:not([data-admin-route]) .alrayyan-site-footer {
+  background: linear-gradient(to bottom, #fbf8fe, #f6effc, #eee4f9);
+}
+html:not([data-admin-route]) .alrayyan-footer-heading {
+  color: #2e1065 !important;
+  font-weight: 800;
+}
+html:not([data-admin-route]) .alrayyan-footer-icon {
+  color: #4c1d95;
+}
+html:not([data-admin-route]) .alrayyan-site-footer a:hover {
+  color: #2e1065;
+}
+
+html:not([data-admin-route]) .alrayyan-search-widget {
+  background-color: var(--theme-search-glass);
+  border-radius: var(--radius-card);
+  box-shadow: var(--theme-shadow-lg);
+}
+
+/* ── Lonaliza Intelligent Public Contrast & Concierge Engine ── */
+.smart-concierge-container,
+[data-surface="dark-royal"],
+[class*="bg-[#180333]"],
+[class*="bg-[#1b053a]"],
+[class*="bg-[#14032a]"],
+[class*="bg-[#1e073c]"],
+[class*="bg-[#120224]"] {
+  color: #f1f5f9;
+}
+.smart-concierge-container :is(h1, h2, h3, h4, h5, h6),
+[data-surface="dark-royal"] :is(h1, h2, h3, h4, h5, h6),
+[class*="bg-[#180333]"] :is(h1, h2, h3, h4, h5, h6),
+[class*="bg-[#1b053a]"] :is(h1, h2, h3, h4, h5, h6),
+[class*="bg-[#14032a]"] :is(h1, h2, h3, h4, h5, h6),
+[class*="bg-[#1e073c]"] :is(h1, h2, h3, h4, h5, h6),
+[class*="bg-[#120224]"] :is(h1, h2, h3, h4, h5, h6) {
+  color: #ffffff;
+}
+
+/* Date input formatting: Prevent Chromium RTL inverted transliteration glitch ("قنس-رهش-موي") */
+input[type="date"],
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  text-align: left !important;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Site faces: one --font-ar and one --font-latin (latin-ext). Catalog
+   picks override via theme vars. Icon fonts keep vendor !important.
+   Wordmark uses --font-sora only, not the site body face. */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  --font-ui: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: var(--font-ui);
+}
+
+html[lang="ar"],
+html[dir="rtl"] {
+  --font-ui: var(--font-ar), "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  font-family: var(--font-ui);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Custom Scrollbar - Imperial Purple and Lustrous Gold (Storefront only, never in admin or dialogs) */
+html:not([data-admin-route]) body:not(#admin-root) ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html:not([data-admin-route]) body:not(#admin-root) ::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+
+html:not([data-admin-route]) body:not(#admin-root) ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2e1065, #b18a52) !important;
+  border-radius: 5px;
+}
+
+html:not([data-admin-route]) body:not(#admin-root) ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1e0a3c, #92400e) !important;
+}
+
+/* Hide horizontal scrollbars on intentional arrow-nav sliders */
+.scrollbar-hide,
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.scrollbar-hide::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Inner cards: cap height and keep a thin royal purple and gold scrollbar */
+.lonaliza-scroll,
+.alrayyan-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3b0764 #fdf4ff !important;
+}
+.lonaliza-scroll::-webkit-scrollbar,
+.alrayyan-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.lonaliza-scroll::-webkit-scrollbar-track,
+.alrayyan-scroll::-webkit-scrollbar-track {
+  background: #fdf4ff;
+  border-radius: 999px;
+}
+.lonaliza-scroll::-webkit-scrollbar-thumb,
+.alrayyan-scroll::-webkit-scrollbar-thumb {
+  background: #3b0764;
+  border-radius: 999px;
+}
+.lonaliza-scroll::-webkit-scrollbar-thumb:hover,
+.alrayyan-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2e1065;
+}
+
+/* Selection - Dark Purple and Gold */
+::selection {
+  background: #2e1065 !important;
+  color: #fef08a !important;
+}
+
+/* Header and Logo Image Isolation - Strictly Zero Container, Zero Shadow, Zero Border, Zero Radius */
+header img,
+.no-theme-image,
+img[src*="logo-transparent"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  filter: none !important;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Delayed animations */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Gradient Text */
+.text-gradient {
+  background: linear-gradient(135deg, #2e1065 0%, #7c3aed 50%, #b18a52 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Blog article image frames */
+.prose-blog-framed img {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 18px 40px -18px rgba(0, 0, 0, 0.55),
+    0 0 0 6px rgba(124, 58, 237, 0.08);
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hero Background Pattern */
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(177, 138, 82, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(46, 16, 101, 0.12) 0%, transparent 50%);
+}
+
+/* Card hover glow effect */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #2e1065, #7c3aed, #b18a52);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  opacity: 0.5;
+}
+
+/* Image loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 0%, #f1f5f9 50%, #e2e8f0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Dark admin color tokens live in src/app/admin/admin.css (#admin-root). */
+html[data-admin-route].dark,
+#admin-root.dark,
+#admin-root[data-admin-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ── Admin light theme ─────────────────────────────────────────────────────
+   Comprehensive, pixel-perfect light mode for the entire Admin Control Panel.
+   Scopes:
+     1) #admin-root[data-admin-theme="light"]
+     2) .admin-shell[data-admin-theme="light"]
+     3) .admin-main--light
+──────────────────────────────────────────────────────────────────────────── */
+#admin-root[data-admin-theme="light"],
+.admin-shell[data-admin-theme="light"] {
+  color-scheme: light;
+}
+
+/* ── Admin Light: Base text color ── */
+#admin-root[data-admin-theme="light"] .admin-main,
+.admin-main--light,
+.admin-shell[data-admin-theme="light"] .admin-main {
+  color: var(--admin-text, #0f172a);
+}
+
+/* ── Admin Light: Headings ── */
+#admin-root[data-admin-theme="light"] .admin-main :is(h1, h2, h3, h4, h5, h6),
+.admin-main--light :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--admin-text-primary, #0f172a) !important;
+}
+
+#admin-root.dark .admin-main :is(h1, h2, h3, h4, h5, h6),
+#admin-root[data-admin-theme="dark"] .admin-main :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--heading, #ffffff) !important;
+}
+
+/* ── Admin Light: Dark panels → pure white cards with crisp borders ── */
+#admin-root[data-admin-theme="light"] .admin-main :is(div, section, article, aside, li, tr, td, th, main, details, summary, figure, figcaption, fieldset, form):is(
+  [class*="bg-slate-9"],
+  [class*="bg-slate-8"],
+  [class*="bg-zinc-9"],
+  [class*="bg-zinc-8"],
+  [class*="bg-neutral-9"],
+  [class*="bg-neutral-8"],
+  [class*="bg-gray-9"],
+  [class*="bg-gray-8"],
+  [class*="bg-stone-9"],
+  [class*="bg-stone-8"]
+):not([class*="bg-gradient"]):not([class*="from-"]):not([class*="bg-emerald"]):not([class*="bg-green"]):not([class*="bg-blue"]):not([class*="bg-sky"]):not([class*="bg-amber"]):not([class*="bg-red"]),
+.admin-main--light :is(div, section, article, aside, li, tr, td, th, main, details, summary, figure, figcaption, fieldset, form):is(
+  [class*="bg-slate-9"],
+  [class*="bg-slate-8"],
+  [class*="bg-zinc-9"],
+  [class*="bg-zinc-8"],
+  [class*="bg-neutral-9"],
+  [class*="bg-neutral-8"],
+  [class*="bg-gray-9"],
+  [class*="bg-gray-8"],
+  [class*="bg-stone-9"],
+  [class*="bg-stone-8"]
+):not([class*="bg-gradient"]):not([class*="from-"]):not([class*="bg-emerald"]):not([class*="bg-green"]):not([class*="bg-blue"]):not([class*="bg-sky"]):not([class*="bg-amber"]):not([class*="bg-red"]) {
+  background-color: var(--admin-surface, #ffffff) !important;
+  background-image: none !important;
+  border-color: var(--admin-border, #cbd5e1) !important;
+}
+
+/* ── Admin Light: Insets, subpanels, and black/X overlays inside main content → clean light gray ── */
+#admin-root[data-admin-theme="light"] .admin-main :is(div, section, form, fieldset, tr, td, thead):is(
+  [class*="bg-slate-950"],
+  [class*="bg-zinc-950"],
+  [class*="bg-neutral-950"],
+  [class*="bg-gray-950"],
+  [class*="bg-black/5"],
+  [class*="bg-black/10"],
+  [class*="bg-black/15"],
+  [class*="bg-black/20"],
+  [class*="bg-black/25"],
+  [class*="bg-black/30"],
+  [class*="bg-black/40"],
+  [class*="bg-black/50"],
+  [class*="bg-black/60"]
+):not([class*="bg-gradient"]):not([class*="from-"]),
+.admin-main--light :is(div, section, form, fieldset, tr, td, thead):is(
+  [class*="bg-slate-950"],
+  [class*="bg-zinc-950"],
+  [class*="bg-neutral-950"],
+  [class*="bg-gray-950"],
+  [class*="bg-black/5"],
+  [class*="bg-black/10"],
+  [class*="bg-black/15"],
+  [class*="bg-black/20"],
+  [class*="bg-black/25"],
+  [class*="bg-black/30"],
+  [class*="bg-black/40"],
+  [class*="bg-black/50"],
+  [class*="bg-black/60"]
+):not([class*="bg-gradient"]):not([class*="from-"]) {
+  background-color: var(--admin-surface-2, #f8fafc) !important;
+  background-image: none !important;
+  border-color: var(--admin-border, #e2e8f0) !important;
+}
+
+/* Keep brand navy headers */
+#admin-root[data-admin-theme="light"] .admin-main [class*="bg-[#051741"],
+.admin-main--light [class*="bg-[#051741"] {
+  background-color: #051741 !important;
+}
+
+/* ── Admin Light: Glass chips (bg-white/5 etc → subtle high-contrast chip) ── */
+#admin-root[data-admin-theme="light"] .admin-main :is(div, span, li, a, button)[class*="bg-white/"]:not([class*="bg-white/9"]):not([class*="bg-white/8"]):not([class*="bg-white/7"]):not([class*="bg-gradient"]):not([class*="from-"]):not(:is([class*="from-"], [class*="bg-gradient-"], button[class*="bg-purple-"], [class*="bg-[#18082e]"]) *):not([data-keep-color="true"]),
+.admin-main--light :is(div, span, li, a, button)[class*="bg-white/"]:not([class*="bg-white/9"]):not([class*="bg-white/8"]):not([class*="bg-white/7"]):not([class*="bg-gradient"]):not([class*="from-"]):not(:is([class*="from-"], [class*="bg-gradient-"], button[class*="bg-purple-"], [class*="bg-[#18082e]"]) *):not([data-keep-color="true"]) {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main [class*="hover:bg-white/"]:hover,
+.admin-main--light [class*="hover:bg-white/"]:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* ── Admin Light: Borders across all containers ── */
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="border-white"], [class*="border-slate-7"], [class*="border-slate-8"], [class*="border-slate-9"]),
+.admin-main--light :is([class*="border-white"], [class*="border-slate-7"], [class*="border-slate-8"], [class*="border-slate-9"]) {
+  border-color: var(--admin-border, #cbd5e1) !important;
+}
+
+/* ── Admin Cards: Shadow & Elevation ── */
+.admin-main [data-slot="card-title"] {
+  color: var(--heading);
+}
+
+.admin-main [data-slot="card"] {
+  box-shadow: 0 1px 3px rgba(5, 23, 65, 0.06), 0 10px 24px -16px rgba(5, 23, 65, 0.12);
+}
+
+#admin-root.dark .admin-main [data-slot="card"],
+#admin-root[data-admin-theme="dark"] .admin-main [data-slot="card"] {
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 12px 28px -16px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Admin Light: COMPREHENSIVE TEXT VISIBILITY OVERHAUL ──
+   Neutral text elements must be crystal clear dark text with opacity forced to 1.
+   No faded or invisible text! */
+/* Neutral standalone text with text-white in light mode gets darkened,
+   BUT buttons, links, tabs, badges, icons, gradients, and dark/colored containers are STRICTLY EXCLUDED! */
+#admin-root[data-admin-theme="light"] .admin-main p.text-white:not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"], [class*="bg-purple-8"]) *),
+#admin-root[data-admin-theme="light"] .admin-main h1.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+#admin-root[data-admin-theme="light"] .admin-main h2.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+#admin-root[data-admin-theme="light"] .admin-main h3.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+#admin-root[data-admin-theme="light"] .admin-main h4.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+#admin-root[data-admin-theme="light"] .admin-main span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"], header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
+.admin-main--light p.text-white:not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"], [class*="bg-purple-8"]) *),
+.admin-main--light h1.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h2.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h3.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light h4.text-white:not([class*="bg-"]):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-slate-8"], [class*="bg-purple-9"]) *),
+.admin-main--light span.text-white:not([class*="bg-"]):not([class*="from-"]):not(:is(button, a, [role="button"], [class*="bg-"], [class*="from-"], header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is(
+  [class*="text-white/9"],
+  [class*="text-white/8"],
+  [class*="text-white/7"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
+.admin-main--light :is(
+  [class*="text-white/9"],
+  [class*="text-white/8"],
+  [class*="text-white/7"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
+  color: #1e293b !important;
+  --tw-text-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is(
+  [class*="text-white/6"],
+  [class*="text-white/5"],
+  [class*="text-white/4"],
+  [class*="text-white/3"],
+  [class*="text-white/2"],
+  [class*="text-white/1"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
+.admin-main--light :is(
+  [class*="text-white/6"],
+  [class*="text-white/5"],
+  [class*="text-white/4"],
+  [class*="text-white/3"],
+  [class*="text-white/2"],
+  [class*="text-white/1"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
+  color: #334155 !important;
+  --tw-text-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+/* Light slate/zinc/gray text → crisp dark slate */
+#admin-root[data-admin-theme="light"] .admin-main :is(
+  [class*="text-slate-1"],
+  [class*="text-slate-2"],
+  [class*="text-slate-3"],
+  [class*="text-zinc-1"],
+  [class*="text-zinc-2"],
+  [class*="text-zinc-3"],
+  [class*="text-gray-1"],
+  [class*="text-gray-2"],
+  [class*="text-gray-3"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *),
+.admin-main--light :is(
+  [class*="text-slate-1"],
+  [class*="text-slate-2"],
+  [class*="text-slate-3"],
+  [class*="text-zinc-1"],
+  [class*="text-zinc-2"],
+  [class*="text-zinc-3"],
+  [class*="text-gray-1"],
+  [class*="text-gray-2"],
+  [class*="text-gray-3"]
+):not(:is(header, .admin-dark-banner, .admin-isolated-dark, [data-admin-isolated-dark="true"], [data-dark-banner="true"], [class*="from-[#"], [class*="bg-[#1"], [class*="bg-[#2"], [class*="bg-[#0"], [class*="bg-slate-9"], [class*="bg-purple-9"]) *) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is(
+  [class*="text-slate-4"],
+  [class*="text-slate-5"],
+  [class*="text-zinc-4"],
+  [class*="text-zinc-5"],
+  [class*="text-gray-4"],
+  [class*="text-gray-5"]
+),
+.admin-main--light :is(
+  [class*="text-slate-4"],
+  [class*="text-slate-5"],
+  [class*="text-zinc-4"],
+  [class*="text-zinc-5"],
+  [class*="text-gray-4"],
+  [class*="text-gray-5"]
+) {
+  color: #334155 !important;
+  --tw-text-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════════
+   LONALIZA ENTERPRISE CONTRAST & VISUAL IDENTITY ENGINE (V2027)
+   Universal Core Laws:
+   Law 1: Pure White Text (#ffffff) & Pure White Icons ONLY on Dark/Saturated Surfaces.
+   Law 2: Crisp Charcoal Text (#0f172a) & Dark Slate Icons (#334155) on White, Slate & Light Surfaces.
+   Law 3: Light Tint Badges & Pills use deep, vibrant contrasting text with matching tinted borders.
+   ═════════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. SOLID DARK / DEEP SATURATED CTAs, TABS, BADGES & BUBBLES ──
+   Enforces 100% Pure White Text and Pure White Icons. Uses exact word token matching (~=)
+   so hover:, dark:, and light tints (-50, -100, etc.) NEVER match! */
+:is(#admin-root, .admin-shell, #admin-root) :is(button, a, [role="button"], input[type="submit"]):is(
+  /* Solid Purples, Violets & Indigos */
+  [class~="bg-purple-600"], [class*="bg-purple-600/"],
+  [class~="bg-purple-700"], [class*="bg-purple-700/"],
+  [class~="bg-purple-800"], [class*="bg-purple-800/"],
+  [class~="bg-purple-900"], [class*="bg-purple-900/"],
+  [class~="bg-purple-950"], [class*="bg-purple-950/"],
+  [class~="bg-violet-600"], [class*="bg-violet-600/"],
+  [class~="bg-violet-700"], [class*="bg-violet-700/"],
+  [class~="bg-violet-800"], [class*="bg-violet-800/"],
+  [class~="bg-violet-900"], [class*="bg-violet-900/"],
+  [class~="bg-violet-950"], [class*="bg-violet-950/"],
+  [class~="bg-indigo-600"], [class*="bg-indigo-600/"],
+  [class~="bg-indigo-700"], [class*="bg-indigo-700/"],
+  [class~="bg-indigo-800"], [class*="bg-indigo-800/"],
+  [class~="bg-indigo-900"], [class*="bg-indigo-900/"],
+  [class~="bg-indigo-950"], [class*="bg-indigo-950/"],
+
+  /* Solid Saturated Blues */
+  [class~="bg-blue-600"], [class*="bg-blue-600/"],
+  [class~="bg-blue-700"], [class*="bg-blue-700/"],
+  [class~="bg-blue-800"], [class*="bg-blue-800/"],
+  [class~="bg-blue-900"], [class*="bg-blue-900/"],
+
+  /* Solid Saturated Greens & Emeralds */
+  [class~="bg-emerald-600"], [class*="bg-emerald-600/"],
+  [class~="bg-emerald-700"], [class*="bg-emerald-700/"],
+  [class~="bg-emerald-800"], [class*="bg-emerald-800/"],
+  [class~="bg-green-600"], [class*="bg-green-600/"],
+  [class~="bg-green-700"], [class*="bg-green-700/"],
+  [class~="bg-green-800"], [class*="bg-green-800/"],
+
+  /* Solid Saturated Ambers & Oranges */
+  [class~="bg-amber-600"], [class*="bg-amber-600/"],
+  [class~="bg-amber-700"], [class*="bg-amber-700/"],
+  [class~="bg-orange-600"], [class*="bg-orange-600/"],
+  [class~="bg-orange-700"], [class*="bg-orange-700/"],
+
+  /* Solid Saturated Roses & Reds */
+  [class~="bg-rose-600"], [class*="bg-rose-600/"],
+  [class~="bg-rose-700"], [class*="bg-rose-700/"],
+  [class~="bg-rose-800"], [class*="bg-rose-800/"],
+  [class~="bg-red-600"], [class*="bg-red-600/"],
+  [class~="bg-red-700"], [class*="bg-red-700/"],
+  [class~="bg-red-800"], [class*="bg-red-800/"],
+
+  /* Solid Dark Neutrals & Theme Hexes */
+  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-slate-950"],
+  [class~="bg-gray-800"], [class~="bg-gray-900"], [class~="bg-gray-950"],
+  [class~="bg-zinc-800"], [class~="bg-zinc-900"], [class~="bg-zinc-950"],
+  [class~="bg-black"],
+  [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
+  [class~="bg-[#051741]"], [class~="bg-[#0b0314]"], [class~="bg-[#0f172a]"],
+
+  /* Dark Gradient Starts */
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"], [class~="from-purple-950"],
+  [class~="from-violet-600"], [class~="from-violet-700"], [class~="from-violet-800"], [class~="from-violet-900"], [class~="from-violet-950"],
+  [class~="from-indigo-600"], [class~="from-indigo-700"], [class~="from-indigo-800"], [class~="from-indigo-900"], [class~="from-indigo-950"],
+  [class~="from-blue-600"], [class~="from-blue-700"], [class~="from-blue-800"], [class~="from-blue-900"],
+  [class~="from-emerald-600"], [class~="from-emerald-700"],
+  [class~="from-rose-600"], [class~="from-rose-700"],
+  [class~="from-amber-600"], [class~="from-amber-700"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"], [class~="from-[#051741]"],
+  [class~="from-slate-800"], [class~="from-slate-900"],
+
+  /* Explicit Helper Classes */
+  [class~="admin-btn-dark"], [class~="admin-force-white"]
+),
+:is(#admin-root, .admin-shell, #admin-root) :is(button, a, [role="button"], input[type="submit"]):is(
+  [class~="bg-purple-600"], [class*="bg-purple-600/"],
+  [class~="bg-purple-700"], [class*="bg-purple-700/"],
+  [class~="bg-purple-800"], [class*="bg-purple-800/"],
+  [class~="bg-purple-900"], [class*="bg-purple-900/"],
+  [class~="bg-purple-950"], [class*="bg-purple-950/"],
+  [class~="bg-violet-600"], [class*="bg-violet-600/"],
+  [class~="bg-violet-700"], [class*="bg-violet-700/"],
+  [class~="bg-violet-800"], [class*="bg-violet-800/"],
+  [class~="bg-violet-900"], [class*="bg-violet-900/"],
+  [class~="bg-violet-950"], [class*="bg-violet-950/"],
+  [class~="bg-indigo-600"], [class*="bg-indigo-600/"],
+  [class~="bg-indigo-700"], [class*="bg-indigo-700/"],
+  [class~="bg-indigo-800"], [class*="bg-indigo-800/"],
+  [class~="bg-indigo-900"], [class*="bg-indigo-900/"],
+  [class~="bg-indigo-950"], [class*="bg-indigo-950/"],
+  [class~="bg-blue-600"], [class*="bg-blue-600/"],
+  [class~="bg-blue-700"], [class*="bg-blue-700/"],
+  [class~="bg-blue-800"], [class*="bg-blue-800/"],
+  [class~="bg-blue-900"], [class*="bg-blue-900/"],
+  [class~="bg-emerald-600"], [class*="bg-emerald-600/"],
+  [class~="bg-emerald-700"], [class*="bg-emerald-700/"],
+  [class~="bg-emerald-800"], [class*="bg-emerald-800/"],
+  [class~="bg-green-600"], [class*="bg-green-600/"],
+  [class~="bg-green-700"], [class*="bg-green-700/"],
+  [class~="bg-green-800"], [class*="bg-green-800/"],
+  [class~="bg-amber-600"], [class*="bg-amber-600/"],
+  [class~="bg-amber-700"], [class*="bg-amber-700/"],
+  [class~="bg-orange-600"], [class*="bg-orange-600/"],
+  [class~="bg-orange-700"], [class*="bg-orange-700/"],
+  [class~="bg-rose-600"], [class*="bg-rose-600/"],
+  [class~="bg-rose-700"], [class*="bg-rose-700/"],
+  [class~="bg-rose-800"], [class*="bg-rose-800/"],
+  [class~="bg-red-600"], [class*="bg-red-600/"],
+  [class~="bg-red-700"], [class*="bg-red-700/"],
+  [class~="bg-red-800"], [class*="bg-red-800/"],
+  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-slate-950"],
+  [class~="bg-gray-800"], [class~="bg-gray-900"], [class~="bg-gray-950"],
+  [class~="bg-zinc-800"], [class~="bg-zinc-900"], [class~="bg-zinc-950"],
+  [class~="bg-black"],
+  [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
+  [class~="bg-[#051741]"], [class~="bg-[#0b0314]"], [class~="bg-[#0f172a]"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"], [class~="from-purple-950"],
+  [class~="from-violet-600"], [class~="from-violet-700"], [class~="from-violet-800"], [class~="from-violet-900"], [class~="from-violet-950"],
+  [class~="from-indigo-600"], [class~="from-indigo-700"], [class~="from-indigo-800"], [class~="from-indigo-900"], [class~="from-indigo-950"],
+  [class~="from-blue-600"], [class~="from-blue-700"], [class~="from-blue-800"], [class~="from-blue-900"],
+  [class~="from-emerald-600"], [class~="from-emerald-700"],
+  [class~="from-rose-600"], [class~="from-rose-700"],
+  [class~="from-amber-600"], [class~="from-amber-700"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"], [class~="from-[#051741]"],
+  [class~="from-slate-800"], [class~="from-slate-900"],
+  [class~="admin-btn-dark"], [class~="admin-force-white"],
+  [class~="admin-btn-primary"], [class~="admin-btn-secondary"], [class~="admin-btn-danger"],
+  [class~="royal-btn"], [class~="royal-btn-ghost"], [class~="royal-btn-danger"]
+) :is(span, p, div, b, strong):not([class*="text-amber"]):not([class*="text-yellow"]):not([class*="text-emerald-3"]):not([class*="text-purple-2"]) {
+  color: #ffffff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* SVG icons inside solid dark buttons MUST be pure white (except explicit gold/amber accent stars) */
+:is(#admin-root, .admin-shell, #admin-root) :is(button, a, [role="button"]):is(
+  [class~="bg-purple-600"], [class*="bg-purple-600/"],
+  [class~="bg-purple-700"], [class*="bg-purple-700/"],
+  [class~="bg-purple-800"], [class*="bg-purple-800/"],
+  [class~="bg-purple-900"], [class*="bg-purple-900/"],
+  [class~="bg-purple-950"], [class*="bg-purple-950/"],
+  [class~="bg-violet-700"], [class~="bg-indigo-700"], [class~="bg-indigo-800"],
+  [class~="bg-blue-600"], [class~="bg-blue-700"],
+  [class~="bg-emerald-600"], [class~="bg-amber-600"],
+  [class~="bg-rose-600"], [class~="bg-red-600"],
+  [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"], [class~="bg-[#051741]"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
+  [class~="from-amber-600"],
+  [class~="admin-btn-dark"], [class~="admin-force-white"],
+  [class~="admin-btn-primary"], [class~="admin-btn-secondary"], [class~="admin-btn-danger"],
+  [class~="royal-btn"], [class~="royal-btn-ghost"], [class~="royal-btn-danger"]
+) svg:not([class*="text-amber"]):not([class*="fill-amber"]):not([class*="text-yellow"]):not([class*="fill-yellow"]) {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* ── Mobile App Studio Tab & Dark Buttons Explicit High-Specificity Overrides ── */
+.admin-mobile-tab--active,
+.admin-mobile-tab--active *,
+[data-mobile-tab-active="true"],
+[data-mobile-tab-active="true"] * {
+  color: #ffffff !important;
+  fill: transparent;
+}
+.admin-mobile-tab--active svg,
+[data-mobile-tab-active="true"] svg {
+  color: #fbbf24 !important;
+  stroke: #fbbf24 !important;
+}
+.admin-mobile-tab--idle,
+.admin-mobile-tab--idle * {
+  color: #1e293b !important;
+}
+.admin-mobile-tab--idle svg {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+.admin-mobile-tab--idle:hover,
+.admin-mobile-tab--idle:hover * {
+  color: #0f172a !important;
+}
+
+.admin-btn-dark,
+.admin-btn-dark *,
+.admin-force-white,
+.admin-force-white *,
+.admin-btn-primary:hover,
+.admin-btn-primary:hover *,
+.admin-btn-primary:hover svg,
+.admin-btn-secondary:hover,
+.admin-btn-secondary:hover *,
+.admin-btn-secondary:hover svg,
+.royal-btn:hover,
+.royal-btn:hover *,
+.royal-btn:hover svg,
+.royal-btn-ghost:hover,
+.royal-btn-ghost:hover *,
+.royal-btn-ghost:hover svg {
+  color: #ffffff !important;
+}
+
+.admin-btn-primary,
+.admin-btn-primary *,
+.admin-btn-secondary,
+.admin-btn-secondary *,
+.admin-btn-danger,
+.admin-btn-danger *,
+.royal-btn,
+.royal-btn *,
+.royal-btn-ghost,
+.royal-btn-ghost *,
+.royal-btn-danger,
+.royal-btn-danger *,
+#admin-root [data-slot="button"][data-variant="default"],
+#admin-root [data-slot="button"][data-variant="default"] *,
+#admin-root [data-slot="button"][data-variant="secondary"],
+#admin-root [data-slot="button"][data-variant="secondary"] *,
+#admin-root [data-slot="tabs-trigger"][data-state="active"],
+#admin-root [data-slot="tabs-trigger"][data-state="active"] *,
+:is(button, a)[class*="from-purple-"],
+:is(button, a)[class*="from-purple-"] *,
+:is(button, a)[class*="from-indigo-"],
+:is(button, a)[class*="from-indigo-"] *,
+:is(button, a)[class*="bg-purple-9"],
+:is(button, a)[class*="bg-purple-9"] *,
+:is(button, a)[class*="bg-slate-9"],
+:is(button, a)[class*="bg-slate-9"] * {
+  color: #ffffff !important;
+}
+
+/* White text ONLY on explicit dark banners — never on light theme headers */
+#admin-root[data-admin-theme="dark"] :is(
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [data-admin-isolated-dark="true"]
+) :is(h1, h2, h3, h4, strong, b) {
+  color: #f8f1e3 !important;
+}
+
+#admin-root[data-admin-theme="dark"] :is(
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [data-admin-isolated-dark="true"]
+) p:not([class*="text-amber"]) {
+  color: #d4c4a8 !important;
+}
+
+#admin-root[data-admin-theme="dark"] :is(
+  .admin-dark-banner,
+  [data-dark-banner="true"],
+  [data-admin-isolated-dark="true"]
+) span:not([class*="text-amber"]):not(button *):not(a *) {
+  color: #f8f1e3 !important;
+}
+
+/* ── 2. LIGHT SURFACES IN LIGHT THEME (Strict Anti-White Contrast Rule) ──
+   Any button, link, filter pill, table action, or suggestion chip that is NOT
+   one of the solid dark buttons MUST have crisp, high-contrast dark text and dark icons!
+   White text on light background is STRICTLY FORBIDDEN. */
+
+/* Default text color on all light/outline/secondary buttons in Light Theme */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a, [role="button"]):not(:is(
+  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"],
+  [class~="bg-violet-600"], [class~="bg-violet-700"], [class~="bg-violet-800"], [class~="bg-violet-900"],
+  [class~="bg-indigo-600"], [class~="bg-indigo-700"], [class~="bg-indigo-800"], [class~="bg-indigo-900"],
+  [class~="bg-blue-600"], [class~="bg-blue-700"], [class~="bg-blue-800"],
+  [class~="bg-emerald-600"], [class~="bg-green-600"],
+  [class~="bg-amber-600"], [class~="bg-orange-600"],
+  [class~="bg-rose-600"], [class~="bg-red-600"],
+  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-slate-950"],
+  [class~="bg-black"], [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"], [class~="bg-[#051741]"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
+  [class~="from-violet-700"], [class~="from-indigo-700"], [class~="from-indigo-800"],
+  [class~="from-blue-600"], [class~="from-blue-700"],
+  [class~="from-emerald-600"], [class~="from-rose-600"], [class~="from-amber-600"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"],
+  [class~="admin-btn-primary"], [class~="admin-btn-secondary"], [class~="admin-btn-danger"],
+  [class~="royal-btn"], [class~="royal-btn-ghost"], [class~="royal-btn-danger"],
+  [data-slot="tabs-trigger"][data-state="active"],
+  [class~="admin-segment__item"][data-active="true"]
+)) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a, [role="button"]):not(:is(
+  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"],
+  [class~="bg-violet-600"], [class~="bg-violet-700"], [class~="bg-violet-800"],
+  [class~="bg-indigo-600"], [class~="bg-indigo-700"], [class~="bg-indigo-800"],
+  [class~="bg-blue-600"], [class~="bg-blue-700"],
+  [class~="bg-emerald-600"], [class~="bg-green-600"],
+  [class~="bg-amber-600"], [class~="bg-orange-600"],
+  [class~="bg-rose-600"], [class~="bg-red-600"],
+  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-slate-950"],
+  [class~="bg-black"], [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"],
+  [class~="admin-btn-primary"], [class~="admin-btn-secondary"], [class~="admin-btn-danger"],
+  [class~="royal-btn"], [class~="royal-btn-ghost"], [class~="royal-btn-danger"],
+  [data-slot="tabs-trigger"][data-state="active"],
+  [class~="admin-segment__item"][data-active="true"]
+)) :is(span, p, div):not([class*="text-amber"]):not([class*="text-purple"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-yellow"]):not([style*="color: rgb(255, 255, 255)"]):not([style*="color: #ffffff"]) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* Icons inside light buttons, chips, and table action circles must be dark slate (or retain their specific accent color) */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a, [role="button"]):not(:is(
+  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"],
+  [class~="bg-violet-700"], [class~="bg-indigo-700"], [class~="bg-indigo-800"],
+  [class~="bg-blue-600"], [class~="bg-blue-700"],
+  [class~="bg-emerald-600"], [class~="bg-amber-600"],
+  [class~="bg-rose-600"], [class~="bg-red-600"],
+  [class~="bg-slate-800"], [class~="bg-slate-900"], [class~="bg-slate-950"],
+  [class~="bg-black"], [class~="bg-[#18082e]"], [class~="bg-[#2e1065]"], [class~="bg-[#3b0764]"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-purple-900"],
+  [class~="from-[#18082e]"], [class~="from-[#2e1065]"], [class~="from-[#3b0764]"],
+  [class~="admin-btn-dark"], [class~="admin-force-white"], [class~="admin-mobile-tab--active"],
+  [class~="admin-btn-primary"], [class~="admin-btn-secondary"], [class~="admin-btn-danger"],
+  [class~="royal-btn"], [class~="royal-btn-ghost"], [class~="royal-btn-danger"],
+  [data-slot="tabs-trigger"][data-state="active"],
+  [class~="admin-segment__item"][data-active="true"]
+)) svg:not([class*="text-amber"]):not([class*="fill-amber"]):not([class*="text-yellow"]):not([class*="fill-yellow"]):not([class*="text-purple"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([style*="stroke: #ffffff"]):not([stroke="#ffffff"]) {
+  stroke: #334155 !important;
+  color: #334155 !important;
+}
+
+/* Only darken accidental .text-white on explicit pure-white or very light slate surfaces */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-gray-50, .bg-zinc-50) > :is(p, span, h1, h2, h3, h4, h5, h6, label):is(.text-white, .text-white\/90, .text-white\/80) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+}
+
+
+/* ── 3. TINTED PASTEL BADGES, TAGS & COUNTER PILLS (Light Theme) ──
+   Enforces deep saturated text so numbers and category tags POP with rich contrast! */
+
+/* Purple Tint Badges (e.g. Legal tags "السعودية PDPL", Counter pills "15", "11", Room counts) */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-purple-50"], [class*="bg-purple-50/"],
+  [class~="bg-purple-100"], [class*="bg-purple-100/"],
+  [class~="bg-purple-200"]
+):not(:is(
+  [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"], [class~="from-"]
+)),
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-purple-50"], [class*="bg-purple-50/"],
+  [class~="bg-purple-100"], [class*="bg-purple-100/"],
+  [class~="bg-purple-200"]
+):not(:is(
+  [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"], [class~="bg-purple-950"], [class~="from-"]
+)) :is(span, p, div, b, strong) {
+  color: #3b0764 !important;
+  font-weight: 700 !important;
+  border-color: #d8b4fe !important;
+}
+
+/* Rose / Red Tint Badges (e.g. Pause buttons, account deletion badge "1") */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-rose-50"], [class*="bg-rose-50/"],
+  [class~="bg-rose-100"], [class*="bg-rose-100/"],
+  [class~="bg-red-50"], [class*="bg-red-50/"],
+  [class~="bg-red-100"], [class*="bg-red-100/"]
+):not(:is(
+  [class~="bg-rose-600"], [class~="bg-rose-700"], [class~="bg-red-600"], [class~="bg-red-700"]
+)),
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-rose-50"], [class*="bg-rose-50/"],
+  [class~="bg-rose-100"], [class*="bg-rose-100/"],
+  [class~="bg-red-50"], [class*="bg-red-50/"],
+  [class~="bg-red-100"], [class*="bg-red-100/"]
+):not(:is(
+  [class~="bg-rose-600"], [class~="bg-rose-700"], [class~="bg-red-600"], [class~="bg-red-700"]
+)) :is(span, p, div, b, strong) {
+  color: #9f1239 !important;
+  font-weight: 700 !important;
+}
+
+/* Emerald / Green Tint Badges (e.g. GDPR badge "8", Active status "نشط") */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-emerald-50"], [class*="bg-emerald-50/"],
+  [class~="bg-emerald-100"], [class*="bg-emerald-100/"],
+  [class~="bg-green-50"], [class*="bg-green-50/"],
+  [class~="bg-green-100"], [class*="bg-green-100/"]
+):not(:is(
+  [class~="bg-emerald-600"], [class~="bg-emerald-700"], [class~="bg-green-600"], [class~="bg-green-700"]
+)),
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-emerald-50"], [class*="bg-emerald-50/"],
+  [class~="bg-emerald-100"], [class*="bg-emerald-100/"],
+  [class~="bg-green-50"], [class*="bg-green-50/"],
+  [class~="bg-green-100"], [class*="bg-green-100/"]
+):not(:is(
+  [class~="bg-emerald-600"], [class~="bg-emerald-700"], [class~="bg-green-600"], [class~="bg-green-700"]
+)) :is(span, p, div, b, strong) {
+  color: #065f46 !important;
+  font-weight: 700 !important;
+}
+
+/* Amber / Orange Tint Badges */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-amber-50"], [class*="bg-amber-50/"],
+  [class~="bg-amber-100"], [class*="bg-amber-100/"],
+  [class~="bg-orange-50"], [class*="bg-orange-50/"],
+  [class~="bg-orange-100"], [class*="bg-orange-100/"]
+):not(:is(
+  [class~="bg-amber-600"], [class~="bg-amber-700"], [class~="bg-orange-600"], [class~="bg-orange-700"]
+)),
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-amber-50"], [class*="bg-amber-50/"],
+  [class~="bg-amber-100"], [class*="bg-amber-100/"],
+  [class~="bg-orange-50"], [class*="bg-orange-50/"],
+  [class~="bg-orange-100"], [class*="bg-orange-100/"]
+):not(:is(
+  [class~="bg-amber-600"], [class~="bg-amber-700"], [class~="bg-orange-600"], [class~="bg-orange-700"]
+)) :is(span, p, div, b, strong) {
+  color: #92400e !important;
+  font-weight: 700 !important;
+}
+
+/* Blue / Sky Tint Badges */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-blue-50"], [class*="bg-blue-50/"],
+  [class~="bg-blue-100"], [class*="bg-blue-100/"],
+  [class~="bg-sky-50"], [class*="bg-sky-50/"],
+  [class~="bg-sky-100"], [class*="bg-sky-100/"]
+):not(:is(
+  [class~="bg-blue-600"], [class~="bg-blue-700"], [class~="bg-blue-800"]
+)),
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(span, div, button):is(
+  [class~="bg-blue-50"], [class*="bg-blue-50/"],
+  [class~="bg-blue-100"], [class*="bg-blue-100/"],
+  [class~="bg-sky-50"], [class*="bg-sky-50/"],
+  [class~="bg-sky-100"], [class*="bg-sky-100/"]
+):not(:is(
+  [class~="bg-blue-600"], [class~="bg-blue-700"], [class~="bg-blue-800"]
+)) :is(span, p, div, b, strong) {
+  color: #1e40af !important;
+  font-weight: 700 !important;
+}
+
+/* ── 4. ADMIN LIGHT: ACTION BUTTONS IN TABLES & TOOLBARS ── */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-blue-500/"],
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-sky-500/"] {
+  background-color: #eff6ff !important;
+  border: 1px solid #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-red-500/"],
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-rose-500/"] {
+  background-color: #fef2f2 !important;
+  border: 1px solid #fecaca !important;
+  color: #b91c1c !important;
+}
+
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-emerald-500/"],
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-green-500/"] {
+  background-color: #f5f0ff !important;
+  border: 1px solid #d8b4fe !important;
+  color: #3b0764 !important;
+}
+
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-amber-500/"],
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a)[class*="bg-orange-500/"] {
+  background-color: #fffbeb !important;
+  border: 1px solid #fde68a !important;
+  color: #92400e !important;
+}
+
+/* ── 5. ADMIN LIGHT: SECONDARY & GHOST BUTTONS (WHITE / SLATE SURFACES) ── */
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a, [role="button"]):is(
+  [class~="bg-white"],
+  [class~="bg-slate-50"],
+  [class~="bg-slate-100"],
+  [class~="bg-slate-200"]
+):not(:is(
+  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"],
+  [class~="bg-emerald-600"], [class~="bg-blue-600"], [class~="bg-rose-600"], [class~="bg-amber-600"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-[#18082e]"]
+)) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(#admin-root[data-admin-theme="light"], .admin-shell[data-admin-theme="light"], .admin-main--light) :is(button, a, [role="button"]):is(
+  [class~="bg-white"],
+  [class~="bg-slate-50"],
+  [class~="bg-slate-100"],
+  [class~="bg-slate-200"]
+):not(:is(
+  [class~="bg-purple-600"], [class~="bg-purple-700"], [class~="bg-purple-800"], [class~="bg-purple-900"],
+  [class~="bg-emerald-600"], [class~="bg-blue-600"], [class~="bg-rose-600"], [class~="bg-amber-600"],
+  [class~="from-purple-600"], [class~="from-purple-700"], [class~="from-purple-800"], [class~="from-[#18082e]"]
+)) :is(span, p, div, b, strong):not([class*="text-amber"]):not([class*="text-purple"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-yellow"]):not([style*="color: rgb(255, 255, 255)"]):not([style*="color: #ffffff"]) {
+  color: #0f172a !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* ── Admin Light: Colored Text Utilities (Overriding emerald to royal purple, amber to dark gold) ── */
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-emerald-1"], [class*="text-emerald-2"], [class*="text-emerald-3"], [class*="text-emerald-4"], [class*="text-emerald-5"], [class*="text-emerald-6"], [class*="text-emerald-7"]),
+.admin-main--light :is([class*="text-emerald-1"], [class*="text-emerald-2"], [class*="text-emerald-3"], [class*="text-emerald-4"], [class*="text-emerald-5"], [class*="text-emerald-6"], [class*="text-emerald-7"]) {
+  color: #3b0764 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="dark"] .admin-main :is([class*="text-emerald-1"], [class*="text-emerald-2"], [class*="text-emerald-3"], [class*="text-emerald-4"], [class*="text-emerald-5"], [class*="text-emerald-6"], [class*="text-emerald-7"]),
+#admin-root.dark .admin-main :is([class*="text-emerald-1"], [class*="text-emerald-2"], [class*="text-emerald-3"], [class*="text-emerald-4"], [class*="text-emerald-5"], [class*="text-emerald-6"], [class*="text-emerald-7"]) {
+  color: #fef08a !important;
+}
+
+#admin-root[data-admin-theme="dark"] .admin-main span:is([class*="bg-emerald-500/"], [class*="bg-green-500/"], [class*="bg-emerald-950"]),
+#admin-root.dark .admin-main span:is([class*="bg-emerald-500/"], [class*="bg-green-500/"], [class*="bg-emerald-950"]) {
+  background-color: rgba(124, 58, 237, 0.25) !important;
+  color: #fef08a !important;
+  border: 1px solid rgba(124, 58, 237, 0.5) !important;
+}
+
+#admin-root[data-admin-theme="dark"] .admin-main :is(button, a)[class*="bg-emerald-500/"],
+#admin-root[data-admin-theme="dark"] .admin-main :is(button, a)[class*="bg-green-500/"],
+#admin-root.dark .admin-main :is(button, a)[class*="bg-emerald-500/"],
+#admin-root.dark .admin-main :is(button, a)[class*="bg-green-500/"] {
+  background-color: rgba(124, 58, 237, 0.2) !important;
+  border: 1px solid rgba(124, 58, 237, 0.45) !important;
+  color: #fef08a !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-amber-1"], [class*="text-amber-2"], [class*="text-amber-3"], [class*="text-amber-4"]),
+.admin-main--light :is([class*="text-amber-1"], [class*="text-amber-2"], [class*="text-amber-3"], [class*="text-amber-4"]) {
+  color: #b45309 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-sky-1"], [class*="text-sky-2"], [class*="text-sky-3"], [class*="text-sky-4"]),
+.admin-main--light :is([class*="text-sky-1"], [class*="text-sky-2"], [class*="text-sky-3"], [class*="text-sky-4"]) {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-blue-1"], [class*="text-blue-2"], [class*="text-blue-3"], [class*="text-blue-4"]),
+.admin-main--light :is([class*="text-blue-1"], [class*="text-blue-2"], [class*="text-blue-3"], [class*="text-blue-4"]) {
+  color: #1d4ed8 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-red-1"], [class*="text-red-2"], [class*="text-red-3"], [class*="text-red-4"]),
+.admin-main--light :is([class*="text-red-1"], [class*="text-red-2"], [class*="text-red-3"], [class*="text-red-4"]) {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="text-violet-1"], [class*="text-violet-2"], [class*="text-violet-3"], [class*="text-violet-4"]),
+.admin-main--light :is([class*="text-violet-1"], [class*="text-violet-2"], [class*="text-violet-3"], [class*="text-violet-4"]) {
+  color: #6d28d9 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+/* ── Admin Light: Focus Ring colors ── */
+#admin-root[data-admin-theme="light"] .admin-main :is([class*="ring-white"], [class*="focus:ring-white"]),
+.admin-main--light :is([class*="ring-white"], [class*="focus:ring-white"]) {
+  --tw-ring-color: rgb(15 23 42 / 0.15) !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main [class*="ring-amber-500"],
+.admin-main--light [class*="ring-amber-500"] {
+  --tw-ring-color: rgb(245 158 11 / 0.4) !important;
+}
+
+/* ── Admin Light: Form Inputs, Textareas, Selects ── */
+#admin-root[data-admin-theme="light"] .admin-main :is(input, textarea, select),
+.admin-main--light :is(input, textarea, select) {
+  color: var(--admin-text, #0f172a) !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is(input, textarea, select):focus,
+.admin-main--light :is(input, textarea, select):focus {
+  border-color: #3b0764 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2) !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main :is(input, textarea)::placeholder,
+.admin-main--light :is(input, textarea)::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main option,
+.admin-main--light option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* ── Admin Light: Tables ── */
+#admin-root[data-admin-theme="light"] .admin-main table,
+.admin-main--light table {
+  color: var(--admin-text, #0f172a);
+}
+
+#admin-root[data-admin-theme="light"] .admin-main thead,
+.admin-main--light thead {
+  background-color: #f1f5f9 !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main thead th,
+.admin-main--light thead th {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main tbody tr,
+.admin-main--light tbody tr {
+  border-color: #e2e8f0 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main tbody td,
+.admin-main--light tbody td {
+  color: #1e293b !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main code,
+#admin-root[data-admin-theme="light"] .admin-main pre,
+.admin-main--light code,
+.admin-main--light pre {
+  color: #0f766e !important;
+  background-color: #f1f5f9 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main [class*="divide-white"] > :not([hidden]) ~ :not([hidden]),
+.admin-main--light [class*="divide-white"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--admin-border, #e2e8f0) !important;
+}
+
+/* ── Admin Light: Status Badges & Pills ── */
+#admin-root[data-admin-theme="light"] .admin-main span:is([class*="bg-emerald-500/"], [class*="bg-green-500/"]),
+.admin-main--light span:is([class*="bg-emerald-500/"], [class*="bg-green-500/"]) {
+  background-color: #f5f0ff !important;
+  color: #3b0764 !important;
+  border: 1px solid #d8b4fe !important;
+  font-weight: 700 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main span:is([class*="bg-amber-500/"], [class*="bg-orange-500/"]),
+.admin-main--light span:is([class*="bg-amber-500/"], [class*="bg-orange-500/"]) {
+  background-color: #fffbeb !important;
+  color: #b45309 !important;
+  border: 1px solid #fde68a !important;
+  font-weight: 700 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main span:is([class*="bg-sky-500/"], [class*="bg-blue-500/"]),
+.admin-main--light span:is([class*="bg-sky-500/"], [class*="bg-blue-500/"]) {
+  background-color: #f0f9ff !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+  font-weight: 700 !important;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main span:is([class*="bg-red-500/"], [class*="bg-rose-500/"]),
+.admin-main--light span:is([class*="bg-red-500/"], [class*="bg-rose-500/"]) {
+  background-color: #fef2f2 !important;
+  color: #b91c1c !important;
+  border: 1px solid #fecaca !important;
+  font-weight: 700 !important;
+}
+
+/* ── Admin Light: Checkbox styling ── */
+#admin-root[data-admin-theme="light"] .admin-main input[type="checkbox"],
+.admin-main--light input[type="checkbox"] {
+  accent-color: #3b0764;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* ── Admin Light: Text Links ── */
+#admin-root[data-admin-theme="light"] .admin-main a:not([class*="bg-"]):not(button):not([role="button"]):not(header *):not(aside *) {
+  color: #6d28d9 !important;
+  font-weight: 600;
+}
+
+#admin-root[data-admin-theme="light"] .admin-main a:not([class*="bg-"]):not(button):not([role="button"]):not(header *):not(aside *):hover {
+  color: #3b0764 !important;
+}
+
+.tp-transfers-widget,
+.tp-cars-widget {
+  isolation: isolate;
+  background: #ffffff;
+  max-width: 100%;
+}
+
+/* Visible on both axes — mixed overflow-x:hidden + y:visible computes to
+   overflow-y:auto and clips the TP car-details modal (position:fixed host). */
+.tp-cars-widget {
+  overflow: visible;
+}
+
+.tp-transfers-widget {
+  overflow: visible;
+}
+
+.tp-transfers-widget iframe,
+.tp-cars-widget iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  background: #ffffff !important;
+  max-height: none !important;
+}
+
+.tp-transfers-widget iframe {
+  overflow: visible !important;
+}
+
+.tp-transfers-widget {
+  min-height: 28rem;
+  scrollbar-width: none;
+}
+
+.tp-transfers-widget::-webkit-scrollbar,
+.tp-transfers-widget iframe::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Travelpayouts powered_by chip / leftover dock sliver at the widget corner.
+   Do not hide the official teal search button (inside the iframe). */
+.tp-transfers-widget a[href*="travelpayouts.com"],
+.tp-transfers-widget a[href*="tp.media"],
+.tp-transfers-widget img[alt*="Travelpayouts" i],
+.tp-transfers-widget [class*="powered_by"],
+.tp-transfers-widget [class*="powered-by"],
+.tp-transfers-widget [class*="PoweredBy"],
+.tp-transfers-widget [class*="b_poweredby"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+body:has(#tp-transfers-widget) [class*="social-sidebar"],
+body:has(#tp-transfers-widget) [class*="SocialSidebar"],
+body:has(#tp-transfers-widget) [class*="social-dock"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+.tp-transfers-widget[data-alrayyan-widget-mode="picker"] {
+  z-index: 80 !important;
+  min-height: 40rem;
+}
+
+.tp-transfers-widget[data-alrayyan-widget-mode="results"] {
+  z-index: 40 !important;
+  min-height: 48rem;
+}
+
+@keyframes hotel-ribbon-shimmer {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+.hotel-ribbon {
+  background-size: 220% 100%;
+  animation: hotel-ribbon-shimmer 7s ease-in-out infinite;
+}
+
+.hotel-ribbon-pulse {
+  animation: hotel-ribbon-shimmer 7s ease-in-out infinite, hotel-ribbon-glow 3.6s ease-in-out infinite;
+}
+
+@keyframes hotel-ribbon-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes flight-skel-shine {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes flight-wait-line {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  12%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes flight-wait-plane {
+  0% {
+    inset-inline-start: 4%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    inset-inline-start: 88%;
+    opacity: 0;
+  }
+}
+
+@keyframes flight-wait-bar {
+  0% {
+    transform: translateX(80%);
+  }
+  100% {
+    transform: translateX(-180%);
+  }
+}
+
+@keyframes flight-wait-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+.flight-skel {
+  background: linear-gradient(110deg, #e8eef5 0%, #f7fafc 45%, #e2eaf3 100%);
+  background-size: 220% 100%;
+  animation: flight-skel-shine 1.4s ease-in-out infinite;
+}
+
+.flight-wait-line-in {
+  animation: flight-wait-line 2.8s ease-in-out;
+}
+
+.flight-wait-plane {
+  animation: flight-wait-plane 2.8s ease-in-out infinite;
+  transform: translateY(-50%);
+}
+
+[dir="rtl"] .flight-wait-plane svg {
+  transform: scaleX(-1);
+}
+
+.flight-wait-bar {
+  animation: flight-wait-bar 1.8s linear infinite;
+}
+
+.flight-wait-glow {
+  animation: flight-wait-glow 3.2s ease-in-out infinite;
+}
+
+.flight-wait-glow-delayed {
+  animation: flight-wait-glow 3.8s ease-in-out 0.6s infinite;
+}
+
+.flight-wait-dot {
+  inset-inline-start: 18%;
+  animation: flight-wait-glow 1.6s ease-in-out infinite;
+}
+
+.flight-wait-dot-2 {
+  inset-inline-start: 62%;
+  animation: flight-wait-glow 1.8s ease-in-out 0.4s infinite;
+}
+
+/* Agent B: public homepage content — matches destinations / packages / why-us */
+.home-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .home-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-container {
+    padding-inline: 2rem;
+  }
+}
+
+/* Agent D: mobile + search tabs */
+html:not([data-admin-route]) [data-search-tab][hidden],
+html:not([data-admin-route]) [data-search-tab-hidden="true"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+html:not([data-admin-route]) main {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+html:not([data-admin-route]) main img {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  html:not([data-admin-route]) {
+    overflow-x: hidden;
+  }
+
+  html:not([data-admin-route]) main {
+    overflow-x: hidden;
+  }
+
+  html:not([data-admin-route]) header {
+    scroll-margin-top: 4.5rem;
+  }
+
+  html:not([data-admin-route]) main h1 {
+    overflow-wrap: anywhere;
+  }
+
+  html:not([data-admin-route]) main .lonaliza-legal-title,
+  html:not([data-admin-route]) main .lonaliza-legal-hero h1 {
+    overflow: visible;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  html:not([data-admin-route]) main .prose,
+  html:not([data-admin-route]) main .prose p {
+    line-height: 1.75;
+  }
+}
+
+@keyframes partner-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.partner-marquee-track {
+  min-width: 100%;
+  width: max-content;
+  animation-name: partner-marquee;
+  animation-duration: var(--partner-marquee-duration, 40s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.partner-marquee:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Compact Alrayyan footer — no empty dark slab */
+.alrayyan-site-footer {
+  background-color: #051741;
+}
+
+.alrayyan-site-footer .alrayyan-footer-grid {
+  row-gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .alrayyan-site-footer .alrayyan-footer-grid {
+    gap: 1.25rem 1.5rem;
+  }
+}
+
+/* Admin control-panel page body — always fill the main column */
+.admin-main {
+  min-width: 0;
+  width: 100%;
+}
+
+.admin-page {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.admin-page :is(input, textarea, select) {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* iOS / Android standalone PWA — keep chrome out of the notch / home indicator */
+@media (display-mode: standalone) {
+  .admin-shell {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    min-height: 100dvh;
+  }
+  .admin-shell header {
+    padding-top: max(0.25rem, env(safe-area-inset-top, 0px));
+    min-height: calc(4rem + env(safe-area-inset-top, 0px));
+  }
+  .alrayyan-site-header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+html.pwa-standalone .admin-shell {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  min-height: 100dvh;
+}
+html.pwa-standalone .admin-shell header {
+  padding-top: max(0.25rem, env(safe-area-inset-top, 0px));
+  min-height: calc(4rem + env(safe-area-inset-top, 0px));
+}
+html.pwa-standalone .alrayyan-site-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Shared WebView / mobile chrome — notch, home indicator, horizontal tabs.
+   Flutter already wraps the WebView in SafeArea, so env(safe-area-inset-top)
+   is usually 0 inside the document. Do NOT force a 2.75rem fallback here:
+   that stacked a second status-bar gap on top of the native inset. */
+.lonaliza-app-bar {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+  padding-bottom: 0.5rem;
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px)) max(0.75rem, env(safe-area-inset-right, 0px));
+}
+
+/* Menu is edge-to-edge in the Flutter WebView. Keep one header below the clock. */
+html.lonaliza-app-shell .lonaliza-menu-screen .lonaliza-app-bar {
+  padding-top: max(2.5rem, env(safe-area-inset-top, 0px));
+}
+
+html:not(.lonaliza-app-shell) .lonaliza-app-bar {
+  position: relative;
+  top: auto;
+}
+
+html.lonaliza-app-shell .lonaliza-app-bar {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+.lonaliza-safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Shared carousel utilities — NEVER pan-x alone (that freezes vertical page scroll).
+   Track may pan on both axes; the wrapper must not set pan-x. */
+.lonaliza-carousel-wrap {
+  touch-action: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.lonaliza-carousel-track {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lonaliza-carousel-track::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Header-row arrows — never position:absolute over card art. */
+.lonaliza-carousel-arrow {
+  position: static;
+  z-index: 1;
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  transform: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  opacity: 1;
+}
+
+.lonaliza-carousel-arrow:active {
+  transform: scale(0.96);
+}
+
+.lonaliza-carousel-item {
+  min-width: 0;
+}
+
+.lonaliza-h-scroll,
+.lonaliza-suggest-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lonaliza-h-scroll::-webkit-scrollbar,
+.lonaliza-suggest-carousel::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.lonaliza-h-scroll > *,
+.lonaliza-suggest-carousel > * {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+
+/* Legal docs: never 100vw, never mixed overflow-x:clip + y:visible (that
+   computes to overflow-y:auto and plants a physical-right scrollbar that
+   slices RTL IBM Plex Arabic — especially font-black, which is faux-bold
+   because the face only ships 300–700). */
+.lonaliza-legal-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.lonaliza-legal-hero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  color: #fff;
+  background: linear-gradient(to bottom right, #18082e, #240c46, #120524);
+  border-bottom: 1px solid rgb(88 28 135 / 0.6);
+  box-shadow: 0 20px 50px -24px rgb(24 8 46 / 0.55);
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  padding-inline: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .lonaliza-legal-hero {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+    padding-inline: max(1.5rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 768px) {
+  .lonaliza-legal-hero {
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lonaliza-legal-hero {
+    padding-inline: max(2rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  }
+}
+
+.lonaliza-legal-title,
+.lonaliza-legal-hero h1 {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+  color: #fff;
+  text-align: start;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: none;
+  text-wrap: pretty;
+  padding-inline: 0.15em;
+}
+
+@media (min-width: 640px) {
+  .lonaliza-legal-title,
+  .lonaliza-legal-hero h1 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lonaliza-legal-title,
+  .lonaliza-legal-hero h1 {
+    font-size: 2.25rem;
+  }
+}
+
+.lonaliza-legal-lead,
+.lonaliza-legal-hero p,
+.lonaliza-legal-hero a,
+.lonaliza-legal-hero nav {
+  overflow: visible;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+html.lonaliza-app-shell .lonaliza-web-header-offset {
+  padding-top: 0 !important;
+}
+
+/* Booking kept pt-24 for the public site header. In the app shell that header
+   is gone and Flutter already inset the WebView — collapse the leftover void. */
+html.lonaliza-app-shell .lonaliza-booking-chrome {
+  padding-top: 0.5rem !important;
+}
+
+html.lonaliza-app-shell .lonaliza-booking-chrome .lonaliza-booking-inner {
+  padding-top: 0.75rem;
+  padding-bottom: 1.25rem;
+}
+
+html.lonaliza-app-shell .lonaliza-legal-hero {
+  padding-top: 0.75rem !important;
+  overflow: visible !important;
+}
+
+html.lonaliza-app-shell .lonaliza-legal-hero h1,
+html.lonaliza-app-shell .lonaliza-legal-title {
+  overflow: visible !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.5 !important;
+  text-wrap: pretty;
+}
+
+/* Homepage package cards stay ink-on-paper even if the WebView is in dark class. */
+html.lonaliza-app-shell .lonaliza-package-card,
+html.dark:not([data-admin-route]) .lonaliza-package-card,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card {
+  background-color: #ffffff !important;
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-title,
+html.lonaliza-app-shell .lonaliza-package-card .sc-card-title,
+html.dark:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-title,
+html.dark:not([data-admin-route]) .lonaliza-package-card .sc-card-title,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-title,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card .sc-card-title {
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-meta,
+html.dark:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-meta,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-meta {
+  color: #475569 !important;
+}
+
+html.lonaliza-app-shell .lonaliza-package-card .lonaliza-package-price,
+html.lonaliza-app-shell .lonaliza-package-card .sc-card-price,
+html.dark:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-price,
+html.dark:not([data-admin-route]) .lonaliza-package-card .sc-card-price,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card .lonaliza-package-price,
+html[data-site-theme="dark"]:not([data-admin-route]) .lonaliza-package-card .sc-card-price {
+  color: #2e1065 !important;
+}
+
+html.lonaliza-app-shell [data-surface-kind] h1,
+html.lonaliza-app-shell [data-surface-kind] h2,
+html.lonaliza-app-shell .lonaliza-hero-title {
+  overflow: visible !important;
+  max-width: 100%;
+  padding-block: 0.2em 0.15em;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+html.lonaliza-app-shell [data-surface-kind="tours"] h2,
+html.lonaliza-app-shell [data-surface-kind="transfers"] h2 {
+  overflow: visible;
+  padding-block: 0.45rem 0.25rem;
+  color: #1e1b4b !important;
+}
+
+html.lonaliza-app-shell .lonaliza-hero-safe {
+  padding-top: max(5.25rem, calc(env(safe-area-inset-top, 0px) + 3.25rem)) !important;
+}
+
+html.lonaliza-app-shell .lonaliza-h-scroll,
+html.lonaliza-app-shell .lonaliza-suggest-carousel,
+html.lonaliza-app-shell .lonaliza-advisor-suggest,
+html.lonaliza-app-shell .lonaliza-carousel-track {
+  touch-action: pan-x pan-y !important;
+}
+
+/* Search banners sit under the status bar in the app WebView (site header is gone). */
+.lonaliza-search-chrome {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+}
+
+html.lonaliza-app-shell .lonaliza-search-chrome {
+  padding-top: max(1.75rem, env(safe-area-inset-top, 0px)) !important;
+}
+
+/* ==========================================================================
+   Lonaliza Enterprise Native App Shell Mode Styles
+   ========================================================================== */
+html.lonaliza-app-shell,
+html.lonaliza-app-shell body,
+body.lonaliza-app-shell,
+.lonaliza-app-shell,
+.lonaliza-app-shell * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Never mix overflow-x:clip with overflow-y:visible — that computes to a
+   physical-right scrollbar in WebKit RTL and slices Arabic titles.
+   Never use 100vw here: it includes the scrollbar and shifts RTL layouts. */
+html.lonaliza-app-shell {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  width: 100%;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  background-color: #140522;
+}
+
+body.lonaliza-app-shell {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100% !important;
+  height: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Isolated shell loading canvas — prevents white flash before paint */
+html.lonaliza-app-shell.lonaliza-shell-loading,
+html.lonaliza-app-shell.lonaliza-shell-loading body {
+  background-color: #140522 !important;
+}
+
+/* Allow sub-containers to flow naturally with zero scrollbar interference and no gesture trapping */
+main.lonaliza-app-shell,
+.lonaliza-app-shell:not(html) {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
+}
+
+/* Smart Travel Advisor — day chat.
+   Root cause of the frozen WebView: 100dvh−6rem on the shell PLUS main.pb-24
+   PLUS visualViewport paddingBottom PLUS overflow:hidden clipped the composer
+   (and collapsed the thread). Flutter SafeArea already sits above the native
+   tab bar — do not subtract another 6rem, and never position:fixed the input. */
+html:has([data-ai-chat-shell]),
+html:has([data-ai-chat-shell]) body {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+html.lonaliza-app-shell:has([data-ai-chat-shell]),
+html.lonaliza-app-shell:has([data-ai-chat-shell]) body {
+  background-color: #f8f7fc !important;
+  overflow: hidden !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
+html.lonaliza-app-shell main.lonaliza-app-shell:has([data-ai-chat-shell]) {
+  padding-bottom: 0 !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background-color: #f8f7fc !important;
+}
+
+
+[data-ai-chat-shell] {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 0;
+  overflow: hidden;
+  background-color: #f8f7fc !important;
+  color: #1e1b4b;
+  height: var(--advisor-vvh, 100dvh);
+  max-height: var(--advisor-vvh, 100dvh);
+}
+
+main.lonaliza-app-shell [data-ai-chat-shell] {
+  height: var(--advisor-vvh, 100%) !important;
+  max-height: var(--advisor-vvh, 100%) !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: #f8f7fc !important;
+}
+
+html.dark [data-ai-chat-shell],
+html[data-site-theme="dark"] [data-ai-chat-shell],
+html.lonaliza-app-shell [data-ai-chat-shell] {
+  background-color: #f8f7fc !important;
+  color: #1e1b4b !important;
+}
+
+html.dark :is([data-ai-chat-shell], [data-advisor-panel]) :is(.bg-white, .bg-slate-50, .bg-slate-100),
+html[data-site-theme="dark"] :is([data-ai-chat-shell], [data-advisor-panel]) :is(.bg-white, .bg-slate-50, .bg-slate-100) {
+  background-color: #ffffff !important;
+  color: inherit !important;
+}
+
+html.dark :is([data-ai-chat-shell], [data-advisor-panel]) :is(.text-slate-900, .text-slate-800, .text-gray-900),
+html[data-site-theme="dark"] :is([data-ai-chat-shell], [data-advisor-panel]) :is(.text-slate-900, .text-slate-800, .text-gray-900) {
+  color: #1e1b4b !important;
+}
+
+html.dark :is([data-ai-chat-shell], [data-advisor-panel]) :is(.border-slate-100, .border-slate-200),
+html[data-site-theme="dark"] :is([data-ai-chat-shell], [data-advisor-panel]) :is(.border-slate-100, .border-slate-200) {
+  border-color: #ede9fe !important;
+}
+
+[data-advisor-panel] {
+  background-color: #f8f7fc !important;
+  color: #1e1b4b;
+}
+
+[data-ai-chat-shell] .lonaliza-advisor-suggest {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-ai-chat-shell] .lonaliza-advisor-suggest::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+[data-ai-chat-shell] .lonaliza-advisor-suggest > * {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+
+/* Saved programs chip row sits under the status bar in the in-app WebView.
+   Flutter SafeArea is often 0 here, so keep a 48px floor. */
+html.lonaliza-app-shell .lonaliza-saved-programs-bar {
+  padding-top: max(48px, env(safe-area-inset-top, 0px)) !important;
+}
+
+[data-ai-chat-shell] .lonaliza-advisor-pill,
+[data-advisor-panel] .lonaliza-advisor-pill {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.dark [data-ai-chat-shell] .lonaliza-advisor-pill,
+html[data-site-theme="dark"] [data-ai-chat-shell] .lonaliza-advisor-pill,
+html.dark [data-advisor-panel] .lonaliza-advisor-pill,
+html[data-site-theme="dark"] [data-advisor-panel] .lonaliza-advisor-pill {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+/* ==========================================================================
+   FINAL HIGH-SPECIFICITY OVERRIDES: SCOPED SOLELY TO ADMIN PANEL
+   Strictly prevents any admin rules from leaking into the public website!
+   ========================================================================== */
+
+/* 1. Dark-only chrome. Never force white onto light royal surfaces or the readiness banner. */
+#admin-root[data-admin-theme="dark"] :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"]
+) :is(h1, h2, h3, h4, strong, b, [class*="text-white"], [class*="font-black"]) {
+  color: #f8f1e3 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="dark"] :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"]
+) p:not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]) {
+  color: #d4c4a8 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+#admin-root[data-admin-theme="dark"] :is(
+  header.admin-dark-banner,
+  .admin-dark-banner,
+  .admin-isolated-dark,
+  [data-admin-isolated-dark="true"]
+) :is(span, div, label):is([class*="text-purple-200"], [class*="text-purple-100"], [class*="text-purple-300"], [class*="text-slate-300"], [class*="text-slate-200"]) {
+  color: #d4c4a8 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* 2. Active Tab Styling in Mobile App Studio */
+:is(#admin-root, .admin-shell) .admin-mobile-tab--active,
+:is(#admin-root, .admin-shell) .admin-mobile-tab--active span,
+:is(#admin-root, .admin-shell) .admin-mobile-tab--active div,
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="true"],
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="true"] span,
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="true"] div {
+  color: #ffffff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(#admin-root, .admin-shell) .admin-mobile-tab--active svg,
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="true"] svg {
+  color: #fbbf24 !important;
+  stroke: #fbbf24 !important;
+}
+
+/* Inactive Tab in Mobile App Studio — light uses slate ink; dark uses royal cream. */
+:is(#admin-root, .admin-shell) .admin-mobile-tab--idle,
+:is(#admin-root, .admin-shell) .admin-mobile-tab--idle span,
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="false"],
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="false"] span {
+  color: #1e293b !important;
+  --tw-text-opacity: 1 !important;
+}
+
+:is(#admin-root, .admin-shell) .admin-mobile-tab--idle svg,
+:is(#admin-root, .admin-shell) [data-mobile-tab-active="false"] svg {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+
+#admin-root[data-admin-theme="dark"] .admin-mobile-tab--idle,
+#admin-root[data-admin-theme="dark"] .admin-mobile-tab--idle span,
+#admin-root[data-admin-theme="dark"] [data-mobile-tab-active="false"],
+#admin-root[data-admin-theme="dark"] [data-mobile-tab-active="false"] span {
+  color: #f8f1e3 !important;
+}
+
+#admin-root[data-admin-theme="dark"] .admin-mobile-tab--idle svg,
+#admin-root[data-admin-theme="dark"] [data-mobile-tab-active="false"] svg {
+  color: #fbbf24 !important;
+  stroke: #fbbf24 !important;
+}
+
+/* 3. Readiness banner uses royal tokens in both modes. Do not force white/slate onto it. */
+
+/* ── ADMIN FINAL CONTRAST LOCK (must stay after contrast engine §1–§2) ── */
+#admin-root :is(
+  .admin-btn-primary,
+  .admin-btn-primary *,
+  .admin-btn-secondary,
+  .admin-btn-secondary *,
+  .royal-btn,
+  .royal-btn *,
+  .royal-btn-ghost,
+  .royal-btn-ghost *,
+  .admin-segment__item[data-active="true"],
+  .admin-segment__item[data-active="true"] *,
+  [data-slot="button"][data-variant="default"],
+  [data-slot="button"][data-variant="default"] *,
+  [data-slot="button"][data-variant="secondary"],
+  [data-slot="button"][data-variant="secondary"] *,
+  [data-slot="tabs-trigger"][data-state="active"],
+  [data-slot="tabs-trigger"][data-state="active"] *
+) {
+  color: #ffffff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+#admin-root :is(
+  .admin-btn-primary svg,
+  .admin-btn-secondary svg,
+  .royal-btn svg,
+  .royal-btn-ghost svg,
+  .admin-segment__item[data-active="true"] svg,
+  [data-slot="button"][data-variant="default"] svg,
+  [data-slot="button"][data-variant="secondary"] svg,
+  [data-slot="tabs-trigger"][data-state="active"] svg
+) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+#admin-root :is(
+  .admin-btn-primary:hover,
+  .admin-btn-primary:hover *,
+  .admin-btn-secondary:hover,
+  .admin-btn-secondary:hover *,
+  .royal-btn:hover,
+  .royal-btn:hover *,
+  .royal-btn-ghost:hover,
+  .royal-btn-ghost:hover *,
+  .admin-segment__item[data-active="true"]:hover,
+  .admin-segment__item[data-active="true"]:hover *,
+  [data-slot="button"][data-variant="default"]:hover,
+  [data-slot="button"][data-variant="default"]:hover *,
+  [data-slot="button"][data-variant="secondary"]:hover,
+  [data-slot="button"][data-variant="secondary"]:hover *,
+  [data-slot="tabs-trigger"][data-state="active"]:hover,
+  [data-slot="tabs-trigger"][data-state="active"]:hover *
+) {
+  color: #ffffff !important;
+}
+
+/* Dynamic Font Selection for Body, HTML, and Admin Shell */
+html[data-font="cairo"], html[data-font="cairo"] body, #admin-root[data-font="cairo"], .admin-shell[data-font="cairo"], [data-font="cairo"] * {
+  font-family: 'Cairo', system-ui, sans-serif !important;
+  --font-sans: 'Cairo', system-ui, sans-serif !important;
+}
+html[data-font="tajawal"], html[data-font="tajawal"] body, #admin-root[data-font="tajawal"], .admin-shell[data-font="tajawal"], [data-font="tajawal"] * {
+  font-family: 'Tajawal', system-ui, sans-serif !important;
+  --font-sans: 'Tajawal', system-ui, sans-serif !important;
+}
+html[data-font="ibmPlexSansArabic"], html[data-font="ibmPlexSansArabic"] body, #admin-root[data-font="ibmPlexSansArabic"], .admin-shell[data-font="ibmPlexSansArabic"], [data-font="ibmPlexSansArabic"] * {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif !important;
+  --font-sans: 'IBM Plex Sans Arabic', system-ui, sans-serif !important;
+}
+html[data-font="alexandria"], html[data-font="alexandria"] body, #admin-root[data-font="alexandria"], .admin-shell[data-font="alexandria"], [data-font="alexandria"] * {
+  font-family: 'Alexandria', system-ui, sans-serif !important;
+  --font-sans: 'Alexandria', system-ui, sans-serif !important;
+}
+html[data-font="almarai"], html[data-font="almarai"] body, #admin-root[data-font="almarai"], .admin-shell[data-font="almarai"], [data-font="almarai"] * {
+  font-family: 'Almarai', system-ui, sans-serif !important;
+  --font-sans: 'Almarai', system-ui, sans-serif !important;
+}
+html[data-font="figtree"], html[data-font="figtree"] body, #admin-root[data-font="figtree"], .admin-shell[data-font="figtree"] {
+  font-family: var(--font-figtree), system-ui, sans-serif !important;
+  --font-sans: var(--font-figtree), system-ui, sans-serif !important;
+}
+html[data-font="inter"], html[data-font="inter"] body, #admin-root[data-font="inter"], .admin-shell[data-font="inter"] {
+  font-family: var(--font-inter), system-ui, sans-serif !important;
+  --font-sans: var(--font-inter), system-ui, sans-serif !important;
+}
+html[data-font="outfit"], html[data-font="outfit"] body, #admin-root[data-font="outfit"], .admin-shell[data-font="outfit"] {
+  font-family: var(--font-outfit), system-ui, sans-serif !important;
+  --font-sans: var(--font-outfit), system-ui, sans-serif !important;
+}
+html[data-font="dmSans"], html[data-font="dmSans"] body, #admin-root[data-font="dmSans"], .admin-shell[data-font="dmSans"] {
+  font-family: var(--font-dm-sans), system-ui, sans-serif !important;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif !important;
+}
+html[data-font="geist"], html[data-font="geist"] body, #admin-root[data-font="geist"], .admin-shell[data-font="geist"] {
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  --font-sans: var(--font-geist), system-ui, sans-serif !important;
+}
+html[data-font="roboto"], html[data-font="roboto"] body, #admin-root[data-font="roboto"], .admin-shell[data-font="roboto"] {
+  font-family: var(--font-roboto), system-ui, sans-serif !important;
+  --font-sans: var(--font-roboto), system-ui, sans-serif !important;
+}
+html[data-font="playfairDisplay"], html[data-font="playfairDisplay"] body, #admin-root[data-font="playfairDisplay"], .admin-shell[data-font="playfairDisplay"] {
+  font-family: var(--font-playfair-display), Georgia, serif !important;
+  --font-sans: var(--font-playfair-display), Georgia, serif !important;
+}
+html[data-font="notoSans"] body { --font-sans: var(--font-noto-sans); }
+html[data-font="nunitoSans"] body { --font-sans: var(--font-nunito-sans); }
+html[data-font="raleway"] body { --font-sans: var(--font-raleway); }
+html[data-font="publicSans"] body { --font-sans: var(--font-public-sans); }
+html[data-font="geistMono"] body { --font-sans: var(--font-geist-mono); }
+html[data-font="geistPixelSquare"] body { --font-sans: var(--font-geist-pixel-square); }
+html[data-font="jetBrainsMono"] body { --font-sans: var(--font-jetbrains-mono); }

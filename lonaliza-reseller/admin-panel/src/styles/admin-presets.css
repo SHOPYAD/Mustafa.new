@@ -1,0 +1,1336 @@
+/**
+ * Lonaliza Admin Panel — 12 Sophisticated Theme Presets Engine
+ * High-specificity tokens covering Light and Dark modes for every preset.
+ */
+
+/* =========================================================================
+   1. LONALIZA ROYAL (الأرجواني الملكي والذهبي)
+   ========================================================================= */
+:root[data-theme-preset="lonaliza-royal"],
+html[data-theme-preset="lonaliza-royal"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="lonaliza-royal"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="lonaliza-royal"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="lonaliza-royal"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="lonaliza-royal"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="lonaliza-royal"][data-admin-theme="light"] {
+  --radius: 0.75rem;
+  --background: #ffffff;
+  --admin-bg-canvas: #ffffff;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #f8fafc;
+  --admin-bg-subtle: #f8fafc;
+  --sidebar: #ffffff;
+  --admin-bg-sidebar: #ffffff;
+
+  --foreground: #0f172a;
+  --admin-text-primary: #0f172a;
+  --card-foreground: #0f172a;
+  --popover-foreground: #0f172a;
+  --muted-foreground: #64748b;
+  --admin-text-muted: #64748b;
+  --admin-text-faint: #94a3b8;
+
+  --border: #e2e8f0;
+  --admin-border-subtle: #e2e8f0;
+  --admin-border-strong: #cbd5e1;
+  --input: #e2e8f0;
+
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --admin-accent: #7c3aed;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(124, 58, 237, 0.08);
+  --ring: #7c3aed;
+  --admin-accent-ring: #7c3aed;
+
+  --secondary: #f8fafc;
+  --secondary-foreground: #0f172a;
+  --accent: #f5f3ff;
+  --accent-foreground: #7c3aed;
+
+  --admin-gold: #f59e0b;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-accent: #f5f3ff;
+  --sidebar-accent-foreground: #7c3aed;
+  --sidebar-muted: #64748b;
+}
+
+:root[data-theme-preset="lonaliza-royal"].dark,
+html[data-theme-preset="lonaliza-royal"].dark #admin-root,
+html[data-theme-preset="lonaliza-royal"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="lonaliza-royal"].dark,
+#admin-root[data-theme-preset="lonaliza-royal"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="lonaliza-royal"].dark,
+.admin-shell[data-theme-preset="lonaliza-royal"][data-admin-theme="dark"] {
+  --radius: 0.75rem;
+  --background: #0d0a18;
+  --admin-bg-canvas: #0d0a18;
+  --card: #151125;
+  --admin-bg-surface: #151125;
+  --popover: #151125;
+  --muted: #1e1834;
+  --admin-bg-subtle: #1e1834;
+  --sidebar: #090712;
+  --admin-bg-sidebar: #090712;
+
+  --foreground: #f8f6fc;
+  --admin-text-primary: #f8f6fc;
+  --card-foreground: #f8f6fc;
+  --popover-foreground: #f8f6fc;
+  --muted-foreground: #a497c2;
+  --admin-text-muted: #a497c2;
+  --admin-text-faint: #726490;
+
+  --border: rgba(167, 139, 250, 0.16);
+  --admin-border-subtle: rgba(167, 139, 250, 0.16);
+  --admin-border-strong: rgba(167, 139, 250, 0.32);
+  --input: rgba(167, 139, 250, 0.2);
+
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --admin-accent: #8b5cf6;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(139, 92, 246, 0.22);
+  --ring: #8b5cf6;
+  --admin-accent-ring: #8b5cf6;
+
+  --secondary: #221c3b;
+  --secondary-foreground: #e4ddf7;
+  --accent: rgba(139, 92, 246, 0.15);
+  --accent-foreground: #c4b5fd;
+
+  --admin-gold: #fbbf24;
+  --admin-gold-foreground: #090712;
+
+  --sidebar-foreground: #f4f0fd;
+  --sidebar-border: rgba(167, 139, 250, 0.14);
+  --sidebar-accent: #231b3e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #9f91be;
+}
+
+/* =========================================================================
+   2. EMERALD LUXURY (الزمردي الإمبراطوري)
+   ========================================================================= */
+:root[data-theme-preset="emerald-luxury"],
+html[data-theme-preset="emerald-luxury"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="emerald-luxury"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="emerald-luxury"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="emerald-luxury"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="emerald-luxury"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="emerald-luxury"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #f0fdf4;
+  --admin-bg-canvas: #f0fdf4;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #dcfce7;
+  --admin-bg-subtle: #dcfce7;
+  --sidebar: #f7fee7;
+  --admin-bg-sidebar: #f7fee7;
+
+  --foreground: #064e3b;
+  --admin-text-primary: #064e3b;
+  --card-foreground: #064e3b;
+  --popover-foreground: #064e3b;
+  --muted-foreground: #047857;
+  --admin-text-muted: #047857;
+  --admin-text-faint: #6ee7b7;
+
+  --border: #bbf7d0;
+  --admin-border-subtle: #bbf7d0;
+  --admin-border-strong: #86efac;
+  --input: #bbf7d0;
+
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --admin-accent: #059669;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(5, 150, 105, 0.12);
+  --ring: #059669;
+  --admin-accent-ring: #059669;
+
+  --secondary: #ecfdf5;
+  --secondary-foreground: #065f46;
+  --accent: #d1fae5;
+  --accent-foreground: #047857;
+
+  --admin-gold: #10b981;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #064e3b;
+  --sidebar-border: #bbf7d0;
+  --sidebar-accent: #dcfce7;
+  --sidebar-accent-foreground: #047857;
+  --sidebar-muted: #059669;
+}
+
+:root[data-theme-preset="emerald-luxury"].dark,
+html[data-theme-preset="emerald-luxury"].dark #admin-root,
+html[data-theme-preset="emerald-luxury"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="emerald-luxury"].dark,
+#admin-root[data-theme-preset="emerald-luxury"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="emerald-luxury"].dark,
+.admin-shell[data-theme-preset="emerald-luxury"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #04140e;
+  --admin-bg-canvas: #04140e;
+  --card: #09241b;
+  --admin-bg-surface: #09241b;
+  --popover: #09241b;
+  --muted: #0f3327;
+  --admin-bg-subtle: #0f3327;
+  --sidebar: #030d09;
+  --admin-bg-sidebar: #030d09;
+
+  --foreground: #ecfdf5;
+  --admin-text-primary: #ecfdf5;
+  --card-foreground: #ecfdf5;
+  --popover-foreground: #ecfdf5;
+  --muted-foreground: #6ee7b7;
+  --admin-text-muted: #6ee7b7;
+  --admin-text-faint: #34d399;
+
+  --border: rgba(16, 185, 129, 0.2);
+  --admin-border-subtle: rgba(16, 185, 129, 0.2);
+  --admin-border-strong: rgba(16, 185, 129, 0.38);
+  --input: rgba(16, 185, 129, 0.25);
+
+  --primary: #10b981;
+  --primary-foreground: #021a11;
+  --admin-accent: #10b981;
+  --admin-accent-foreground: #021a11;
+  --admin-accent-soft: rgba(16, 185, 129, 0.22);
+  --ring: #10b981;
+  --admin-accent-ring: #10b981;
+
+  --secondary: #133a2d;
+  --secondary-foreground: #d1fae5;
+  --accent: rgba(16, 185, 129, 0.16);
+  --accent-foreground: #6ee7b7;
+
+  --admin-gold: #34d399;
+  --admin-gold-foreground: #021a11;
+
+  --sidebar-foreground: #ecfdf5;
+  --sidebar-border: rgba(16, 185, 129, 0.18);
+  --sidebar-accent: #10382b;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #6ee7b7;
+}
+
+/* =========================================================================
+   3. MIDNIGHT NAVY (أزرق المحيط الليلي)
+   ========================================================================= */
+:root[data-theme-preset="midnight-navy"],
+html[data-theme-preset="midnight-navy"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="midnight-navy"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="midnight-navy"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="midnight-navy"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="midnight-navy"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="midnight-navy"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #f0f7ff;
+  --admin-bg-canvas: #f0f7ff;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #e0f2fe;
+  --admin-bg-subtle: #e0f2fe;
+  --sidebar: #f8fbff;
+  --admin-bg-sidebar: #f8fbff;
+
+  --foreground: #0c4a6e;
+  --admin-text-primary: #0c4a6e;
+  --card-foreground: #0c4a6e;
+  --popover-foreground: #0c4a6e;
+  --muted-foreground: #0284c7;
+  --admin-text-muted: #0284c7;
+  --admin-text-faint: #7dd3fc;
+
+  --border: #bae6fd;
+  --admin-border-subtle: #bae6fd;
+  --admin-border-strong: #7dd3fc;
+  --input: #bae6fd;
+
+  --primary: #0284c7;
+  --primary-foreground: #ffffff;
+  --admin-accent: #0284c7;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(2, 132, 199, 0.12);
+  --ring: #0284c7;
+  --admin-accent-ring: #0284c7;
+
+  --secondary: #e0f2fe;
+  --secondary-foreground: #0369a1;
+  --accent: #bae6fd;
+  --accent-foreground: #0284c7;
+
+  --admin-gold: #38bdf8;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #0c4a6e;
+  --sidebar-border: #bae6fd;
+  --sidebar-accent: #e0f2fe;
+  --sidebar-accent-foreground: #0284c7;
+  --sidebar-muted: #0369a1;
+}
+
+:root[data-theme-preset="midnight-navy"].dark,
+html[data-theme-preset="midnight-navy"].dark #admin-root,
+html[data-theme-preset="midnight-navy"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="midnight-navy"].dark,
+#admin-root[data-theme-preset="midnight-navy"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="midnight-navy"].dark,
+.admin-shell[data-theme-preset="midnight-navy"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #060e1d;
+  --admin-bg-canvas: #060e1d;
+  --card: #0b1a33;
+  --admin-bg-surface: #0b1a33;
+  --popover: #0b1a33;
+  --muted: #122547;
+  --admin-bg-subtle: #122547;
+  --sidebar: #040913;
+  --admin-bg-sidebar: #040913;
+
+  --foreground: #f0f9ff;
+  --admin-text-primary: #f0f9ff;
+  --card-foreground: #f0f9ff;
+  --popover-foreground: #f0f9ff;
+  --muted-foreground: #7dd3fc;
+  --admin-text-muted: #7dd3fc;
+  --admin-text-faint: #38bdf8;
+
+  --border: rgba(56, 189, 248, 0.2);
+  --admin-border-subtle: rgba(56, 189, 248, 0.2);
+  --admin-border-strong: rgba(56, 189, 248, 0.4);
+  --input: rgba(56, 189, 248, 0.22);
+
+  --primary: #38bdf8;
+  --primary-foreground: #041527;
+  --admin-accent: #38bdf8;
+  --admin-accent-foreground: #041527;
+  --admin-accent-soft: rgba(56, 189, 248, 0.22);
+  --ring: #38bdf8;
+  --admin-accent-ring: #38bdf8;
+
+  --secondary: #142a50;
+  --secondary-foreground: #e0f2fe;
+  --accent: rgba(56, 189, 248, 0.16);
+  --accent-foreground: #7dd3fc;
+
+  --admin-gold: #0ea5e9;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #f0f9ff;
+  --sidebar-border: rgba(56, 189, 248, 0.18);
+  --sidebar-accent: #112649;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #7dd3fc;
+}
+
+/* =========================================================================
+   4. TANGERINE SUNSET (البرتقالي الغروبي)
+   ========================================================================= */
+:root[data-theme-preset="tangerine"],
+html[data-theme-preset="tangerine"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="tangerine"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="tangerine"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="tangerine"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="tangerine"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="tangerine"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #fff7ed;
+  --admin-bg-canvas: #fff7ed;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #ffedd5;
+  --admin-bg-subtle: #ffedd5;
+  --sidebar: #fffbf5;
+  --admin-bg-sidebar: #fffbf5;
+
+  --foreground: #431407;
+  --admin-text-primary: #431407;
+  --card-foreground: #431407;
+  --popover-foreground: #431407;
+  --muted-foreground: #c2410c;
+  --admin-text-muted: #c2410c;
+  --admin-text-faint: #fdba74;
+
+  --border: #fed7aa;
+  --admin-border-subtle: #fed7aa;
+  --admin-border-strong: #fdba74;
+  --input: #fed7aa;
+
+  --primary: #ea580c;
+  --primary-foreground: #ffffff;
+  --admin-accent: #ea580c;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(234, 88, 12, 0.12);
+  --ring: #ea580c;
+  --admin-accent-ring: #ea580c;
+
+  --secondary: #ffedd5;
+  --secondary-foreground: #9a3412;
+  --accent: #fed7aa;
+  --accent-foreground: #ea580c;
+
+  --admin-gold: #f97316;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #431407;
+  --sidebar-border: #fed7aa;
+  --sidebar-accent: #ffedd5;
+  --sidebar-accent-foreground: #ea580c;
+  --sidebar-muted: #c2410c;
+}
+
+:root[data-theme-preset="tangerine"].dark,
+html[data-theme-preset="tangerine"].dark #admin-root,
+html[data-theme-preset="tangerine"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="tangerine"].dark,
+#admin-root[data-theme-preset="tangerine"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="tangerine"].dark,
+.admin-shell[data-theme-preset="tangerine"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #140b05;
+  --admin-bg-canvas: #140b05;
+  --card: #221309;
+  --admin-bg-surface: #221309;
+  --popover: #221309;
+  --muted: #331c0e;
+  --admin-bg-subtle: #331c0e;
+  --sidebar: #0c0603;
+  --admin-bg-sidebar: #0c0603;
+
+  --foreground: #fff7ed;
+  --admin-text-primary: #fff7ed;
+  --card-foreground: #fff7ed;
+  --popover-foreground: #fff7ed;
+  --muted-foreground: #fdba74;
+  --admin-text-muted: #fdba74;
+  --admin-text-faint: #fb923c;
+
+  --border: rgba(249, 115, 22, 0.22);
+  --admin-border-subtle: rgba(249, 115, 22, 0.22);
+  --admin-border-strong: rgba(249, 115, 22, 0.42);
+  --input: rgba(249, 115, 22, 0.25);
+
+  --primary: #f97316;
+  --primary-foreground: #1c0a02;
+  --admin-accent: #f97316;
+  --admin-accent-foreground: #1c0a02;
+  --admin-accent-soft: rgba(249, 115, 22, 0.24);
+  --ring: #f97316;
+  --admin-accent-ring: #f97316;
+
+  --secondary: #351c0d;
+  --secondary-foreground: #fed7aa;
+  --accent: rgba(249, 115, 22, 0.18);
+  --accent-foreground: #fdba74;
+
+  --admin-gold: #fb923c;
+  --admin-gold-foreground: #1c0a02;
+
+  --sidebar-foreground: #fff7ed;
+  --sidebar-border: rgba(249, 115, 22, 0.2);
+  --sidebar-accent: #30180b;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #fdba74;
+}
+
+/* =========================================================================
+   5. CRIMSON VELVET (المخملي القرمزي)
+   ========================================================================= */
+:root[data-theme-preset="crimson-velvet"],
+html[data-theme-preset="crimson-velvet"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="crimson-velvet"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="crimson-velvet"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="crimson-velvet"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="crimson-velvet"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="crimson-velvet"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #fff1f2;
+  --admin-bg-canvas: #fff1f2;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #ffe4e6;
+  --admin-bg-subtle: #ffe4e6;
+  --sidebar: #fff8f8;
+  --admin-bg-sidebar: #fff8f8;
+
+  --foreground: #4c0519;
+  --admin-text-primary: #4c0519;
+  --card-foreground: #4c0519;
+  --popover-foreground: #4c0519;
+  --muted-foreground: #be123c;
+  --admin-text-muted: #be123c;
+  --admin-text-faint: #fda4af;
+
+  --border: #fecdd3;
+  --admin-border-subtle: #fecdd3;
+  --admin-border-strong: #fda4af;
+  --input: #fecdd3;
+
+  --primary: #e11d48;
+  --primary-foreground: #ffffff;
+  --admin-accent: #e11d48;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(225, 29, 72, 0.12);
+  --ring: #e11d48;
+  --admin-accent-ring: #e11d48;
+
+  --secondary: #ffe4e6;
+  --secondary-foreground: #9f1239;
+  --accent: #fecdd3;
+  --accent-foreground: #e11d48;
+
+  --admin-gold: #f43f5e;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #4c0519;
+  --sidebar-border: #fecdd3;
+  --sidebar-accent: #ffe4e6;
+  --sidebar-accent-foreground: #e11d48;
+  --sidebar-muted: #be123c;
+}
+
+:root[data-theme-preset="crimson-velvet"].dark,
+html[data-theme-preset="crimson-velvet"].dark #admin-root,
+html[data-theme-preset="crimson-velvet"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="crimson-velvet"].dark,
+#admin-root[data-theme-preset="crimson-velvet"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="crimson-velvet"].dark,
+.admin-shell[data-theme-preset="crimson-velvet"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #18080c;
+  --admin-bg-canvas: #18080c;
+  --card: #280e15;
+  --admin-bg-surface: #280e15;
+  --popover: #280e15;
+  --muted: #3a1520;
+  --admin-bg-subtle: #3a1520;
+  --sidebar: #100407;
+  --admin-bg-sidebar: #100407;
+
+  --foreground: #fff1f2;
+  --admin-text-primary: #fff1f2;
+  --card-foreground: #fff1f2;
+  --popover-foreground: #fff1f2;
+  --muted-foreground: #fda4af;
+  --admin-text-muted: #fda4af;
+  --admin-text-faint: #fb7185;
+
+  --border: rgba(244, 63, 94, 0.22);
+  --admin-border-subtle: rgba(244, 63, 94, 0.22);
+  --admin-border-strong: rgba(244, 63, 94, 0.42);
+  --input: rgba(244, 63, 94, 0.25);
+
+  --primary: #f43f5e;
+  --primary-foreground: #1e050b;
+  --admin-accent: #f43f5e;
+  --admin-accent-foreground: #1e050b;
+  --admin-accent-soft: rgba(244, 63, 94, 0.24);
+  --ring: #f43f5e;
+  --admin-accent-ring: #f43f5e;
+
+  --secondary: #3d1622;
+  --secondary-foreground: #fecdd3;
+  --accent: rgba(244, 63, 94, 0.18);
+  --accent-foreground: #fda4af;
+
+  --admin-gold: #fb7185;
+  --admin-gold-foreground: #1e050b;
+
+  --sidebar-foreground: #fff1f2;
+  --sidebar-border: rgba(244, 63, 94, 0.2);
+  --sidebar-accent: #37141f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #fda4af;
+}
+
+/* =========================================================================
+   6. VIOLET ELEGANCE (الأرجواني المخملي العميق)
+   ========================================================================= */
+:root[data-theme-preset="violet-elegance"],
+html[data-theme-preset="violet-elegance"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="violet-elegance"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="violet-elegance"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="violet-elegance"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="violet-elegance"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="violet-elegance"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #faf5ff;
+  --admin-bg-canvas: #faf5ff;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #f3e8ff;
+  --admin-bg-subtle: #f3e8ff;
+  --sidebar: #fcf9ff;
+  --admin-bg-sidebar: #fcf9ff;
+
+  --foreground: #3b0764;
+  --admin-text-primary: #3b0764;
+  --card-foreground: #3b0764;
+  --popover-foreground: #3b0764;
+  --muted-foreground: #7e22ce;
+  --admin-text-muted: #7e22ce;
+  --admin-text-faint: #d8b4fe;
+
+  --border: #e9d5ff;
+  --admin-border-subtle: #e9d5ff;
+  --admin-border-strong: #d8b4fe;
+  --input: #e9d5ff;
+
+  --primary: #9333ea;
+  --primary-foreground: #ffffff;
+  --admin-accent: #9333ea;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(147, 51, 234, 0.12);
+  --ring: #9333ea;
+  --admin-accent-ring: #9333ea;
+
+  --secondary: #f3e8ff;
+  --secondary-foreground: #6b21a8;
+  --accent: #e9d5ff;
+  --accent-foreground: #9333ea;
+
+  --admin-gold: #c084fc;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #3b0764;
+  --sidebar-border: #e9d5ff;
+  --sidebar-accent: #f3e8ff;
+  --sidebar-accent-foreground: #9333ea;
+  --sidebar-muted: #7e22ce;
+}
+
+:root[data-theme-preset="violet-elegance"].dark,
+html[data-theme-preset="violet-elegance"].dark #admin-root,
+html[data-theme-preset="violet-elegance"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="violet-elegance"].dark,
+#admin-root[data-theme-preset="violet-elegance"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="violet-elegance"].dark,
+.admin-shell[data-theme-preset="violet-elegance"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #11071f;
+  --admin-bg-canvas: #11071f;
+  --card: #1c0d33;
+  --admin-bg-surface: #1c0d33;
+  --popover: #1c0d33;
+  --muted: #29144a;
+  --admin-bg-subtle: #29144a;
+  --sidebar: #0b0415;
+  --admin-bg-sidebar: #0b0415;
+
+  --foreground: #faf5ff;
+  --admin-text-primary: #faf5ff;
+  --card-foreground: #faf5ff;
+  --popover-foreground: #faf5ff;
+  --muted-foreground: #d8b4fe;
+  --admin-text-muted: #d8b4fe;
+  --admin-text-faint: #c084fc;
+
+  --border: rgba(192, 132, 252, 0.22);
+  --admin-border-subtle: rgba(192, 132, 252, 0.22);
+  --admin-border-strong: rgba(192, 132, 252, 0.42);
+  --input: rgba(192, 132, 252, 0.25);
+
+  --primary: #c084fc;
+  --primary-foreground: #17042a;
+  --admin-accent: #c084fc;
+  --admin-accent-foreground: #17042a;
+  --admin-accent-soft: rgba(192, 132, 252, 0.24);
+  --ring: #c084fc;
+  --admin-accent-ring: #c084fc;
+
+  --secondary: #2f1754;
+  --secondary-foreground: #f3e8ff;
+  --accent: rgba(192, 132, 252, 0.18);
+  --accent-foreground: #d8b4fe;
+
+  --admin-gold: #a855f7;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #faf5ff;
+  --sidebar-border: rgba(192, 132, 252, 0.2);
+  --sidebar-accent: #261245;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #d8b4fe;
+}
+
+/* =========================================================================
+   7. BRUTALIST SHARP (البروتالي عالي التباين)
+   ========================================================================= */
+:root[data-theme-preset="brutalist"],
+html[data-theme-preset="brutalist"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="brutalist"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="brutalist"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="brutalist"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="brutalist"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="brutalist"][data-admin-theme="light"] {
+  --radius: 0px !important;
+  --background: #f4f4f5;
+  --admin-bg-canvas: #f4f4f5;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #e4e4e7;
+  --admin-bg-subtle: #e4e4e7;
+  --sidebar: #ffffff;
+  --admin-bg-sidebar: #ffffff;
+
+  --foreground: #000000;
+  --admin-text-primary: #000000;
+  --card-foreground: #000000;
+  --popover-foreground: #000000;
+  --muted-foreground: #3f3f46;
+  --admin-text-muted: #3f3f46;
+  --admin-text-faint: #71717a;
+
+  --border: #000000;
+  --admin-border-subtle: #000000;
+  --admin-border-strong: #000000;
+  --input: #000000;
+
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --admin-accent: #000000;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(0, 0, 0, 0.1);
+  --ring: #000000;
+  --admin-accent-ring: #000000;
+
+  --secondary: #e4e4e7;
+  --secondary-foreground: #000000;
+  --accent: #ff3366;
+  --accent-foreground: #ffffff;
+
+  --admin-gold: #ff3366;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #000000;
+  --sidebar-border: #000000;
+  --sidebar-accent: #e4e4e7;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-muted: #3f3f46;
+}
+
+:root[data-theme-preset="brutalist"].dark,
+html[data-theme-preset="brutalist"].dark #admin-root,
+html[data-theme-preset="brutalist"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="brutalist"].dark,
+#admin-root[data-theme-preset="brutalist"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="brutalist"].dark,
+.admin-shell[data-theme-preset="brutalist"][data-admin-theme="dark"] {
+  --radius: 0px !important;
+  --background: #000000;
+  --admin-bg-canvas: #000000;
+  --card: #121212;
+  --admin-bg-surface: #121212;
+  --popover: #121212;
+  --muted: #27272a;
+  --admin-bg-subtle: #27272a;
+  --sidebar: #09090b;
+  --admin-bg-sidebar: #09090b;
+
+  --foreground: #ffffff;
+  --admin-text-primary: #ffffff;
+  --card-foreground: #ffffff;
+  --popover-foreground: #ffffff;
+  --muted-foreground: #d4d4d8;
+  --admin-text-muted: #d4d4d8;
+  --admin-text-faint: #a1a1aa;
+
+  --border: #ffffff;
+  --admin-border-subtle: rgba(255, 255, 255, 0.4);
+  --admin-border-strong: #ffffff;
+  --input: #ffffff;
+
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --admin-accent: #ffffff;
+  --admin-accent-foreground: #000000;
+  --admin-accent-soft: rgba(255, 255, 255, 0.16);
+  --ring: #ffffff;
+  --admin-accent-ring: #ffffff;
+
+  --secondary: #27272a;
+  --secondary-foreground: #ffffff;
+  --accent: #ff3366;
+  --accent-foreground: #ffffff;
+
+  --admin-gold: #ff3366;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.3);
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #d4d4d8;
+}
+
+/* =========================================================================
+   8. SOFT POP (الباستيل العصري المبهج)
+   ========================================================================= */
+:root[data-theme-preset="soft-pop"],
+html[data-theme-preset="soft-pop"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="soft-pop"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="soft-pop"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="soft-pop"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="soft-pop"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="soft-pop"][data-admin-theme="light"] {
+  --radius: 1rem;
+  --background: #fdf4ff;
+  --admin-bg-canvas: #fdf4ff;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #fae8ff;
+  --admin-bg-subtle: #fae8ff;
+  --sidebar: #fdf8ff;
+  --admin-bg-sidebar: #fdf8ff;
+
+  --foreground: #4a044e;
+  --admin-text-primary: #4a044e;
+  --card-foreground: #4a044e;
+  --popover-foreground: #4a044e;
+  --muted-foreground: #a21caf;
+  --admin-text-muted: #a21caf;
+  --admin-text-faint: #f0abfc;
+
+  --border: #f5d0fe;
+  --admin-border-subtle: #f5d0fe;
+  --admin-border-strong: #f0abfc;
+  --input: #f5d0fe;
+
+  --primary: #d946ef;
+  --primary-foreground: #ffffff;
+  --admin-accent: #d946ef;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(217, 70, 239, 0.12);
+  --ring: #d946ef;
+  --admin-accent-ring: #d946ef;
+
+  --secondary: #fae8ff;
+  --secondary-foreground: #86198f;
+  --accent: #f5d0fe;
+  --accent-foreground: #d946ef;
+
+  --admin-gold: #c026d3;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #4a044e;
+  --sidebar-border: #f5d0fe;
+  --sidebar-accent: #fae8ff;
+  --sidebar-accent-foreground: #d946ef;
+  --sidebar-muted: #a21caf;
+}
+
+:root[data-theme-preset="soft-pop"].dark,
+html[data-theme-preset="soft-pop"].dark #admin-root,
+html[data-theme-preset="soft-pop"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="soft-pop"].dark,
+#admin-root[data-theme-preset="soft-pop"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="soft-pop"].dark,
+.admin-shell[data-theme-preset="soft-pop"][data-admin-theme="dark"] {
+  --radius: 1rem;
+  --background: #17071c;
+  --admin-bg-canvas: #17071c;
+  --card: #270c2f;
+  --admin-bg-surface: #270c2f;
+  --popover: #270c2f;
+  --muted: #3b1447;
+  --admin-bg-subtle: #3b1447;
+  --sidebar: #0f0312;
+  --admin-bg-sidebar: #0f0312;
+
+  --foreground: #fdf4ff;
+  --admin-text-primary: #fdf4ff;
+  --card-foreground: #fdf4ff;
+  --popover-foreground: #fdf4ff;
+  --muted-foreground: #f0abfc;
+  --admin-text-muted: #f0abfc;
+  --admin-text-faint: #e879f9;
+
+  --border: rgba(232, 121, 249, 0.22);
+  --admin-border-subtle: rgba(232, 121, 249, 0.22);
+  --admin-border-strong: rgba(232, 121, 249, 0.42);
+  --input: rgba(232, 121, 249, 0.25);
+
+  --primary: #e879f9;
+  --primary-foreground: #22032a;
+  --admin-accent: #e879f9;
+  --admin-accent-foreground: #22032a;
+  --admin-accent-soft: rgba(232, 121, 249, 0.24);
+  --ring: #e879f9;
+  --admin-accent-ring: #e879f9;
+
+  --secondary: #421650;
+  --secondary-foreground: #fae8ff;
+  --accent: rgba(232, 121, 249, 0.18);
+  --accent-foreground: #f0abfc;
+
+  --admin-gold: #d946ef;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #fdf4ff;
+  --sidebar-border: rgba(232, 121, 249, 0.2);
+  --sidebar-accent: #371143;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #f0abfc;
+}
+
+/* =========================================================================
+   9. AMBER GOLD (الذهبي الملكي الخالص)
+   ========================================================================= */
+:root[data-theme-preset="amber-gold"],
+html[data-theme-preset="amber-gold"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="amber-gold"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="amber-gold"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="amber-gold"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="amber-gold"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="amber-gold"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #fefce8;
+  --admin-bg-canvas: #fefce8;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #fef9c3;
+  --admin-bg-subtle: #fef9c3;
+  --sidebar: #fefef5;
+  --admin-bg-sidebar: #fefef5;
+
+  --foreground: #451a03;
+  --admin-text-primary: #451a03;
+  --card-foreground: #451a03;
+  --popover-foreground: #451a03;
+  --muted-foreground: #b45309;
+  --admin-text-muted: #b45309;
+  --admin-text-faint: #fde047;
+
+  --border: #fef08a;
+  --admin-border-subtle: #fef08a;
+  --admin-border-strong: #fde047;
+  --input: #fef08a;
+
+  --primary: #d97706;
+  --primary-foreground: #ffffff;
+  --admin-accent: #d97706;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(217, 119, 6, 0.12);
+  --ring: #d97706;
+  --admin-accent-ring: #d97706;
+
+  --secondary: #fef9c3;
+  --secondary-foreground: #92400e;
+  --accent: #fef08a;
+  --accent-foreground: #d97706;
+
+  --admin-gold: #d97706;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #451a03;
+  --sidebar-border: #fef08a;
+  --sidebar-accent: #fef9c3;
+  --sidebar-accent-foreground: #d97706;
+  --sidebar-muted: #b45309;
+}
+
+:root[data-theme-preset="amber-gold"].dark,
+html[data-theme-preset="amber-gold"].dark #admin-root,
+html[data-theme-preset="amber-gold"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="amber-gold"].dark,
+#admin-root[data-theme-preset="amber-gold"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="amber-gold"].dark,
+.admin-shell[data-theme-preset="amber-gold"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #151003;
+  --admin-bg-canvas: #151003;
+  --card: #241c05;
+  --admin-bg-surface: #241c05;
+  --popover: #241c05;
+  --muted: #372b08;
+  --admin-bg-subtle: #372b08;
+  --sidebar: #0c0901;
+  --admin-bg-sidebar: #0c0901;
+
+  --foreground: #fefce8;
+  --admin-text-primary: #fefce8;
+  --card-foreground: #fefce8;
+  --popover-foreground: #fefce8;
+  --muted-foreground: #fde047;
+  --admin-text-muted: #fde047;
+  --admin-text-faint: #fbbf24;
+
+  --border: rgba(245, 158, 11, 0.22);
+  --admin-border-subtle: rgba(245, 158, 11, 0.22);
+  --admin-border-strong: rgba(245, 158, 11, 0.42);
+  --input: rgba(245, 158, 11, 0.25);
+
+  --primary: #f59e0b;
+  --primary-foreground: #1c1102;
+  --admin-accent: #f59e0b;
+  --admin-accent-foreground: #1c1102;
+  --admin-accent-soft: rgba(245, 158, 11, 0.24);
+  --ring: #f59e0b;
+  --admin-accent-ring: #f59e0b;
+
+  --secondary: #3d2f09;
+  --secondary-foreground: #fef08a;
+  --accent: rgba(245, 158, 11, 0.18);
+  --accent-foreground: #fde047;
+
+  --admin-gold: #fbbf24;
+  --admin-gold-foreground: #1c1102;
+
+  --sidebar-foreground: #fefce8;
+  --sidebar-border: rgba(245, 158, 11, 0.2);
+  --sidebar-accent: #332607;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #fde047;
+}
+
+/* =========================================================================
+   10. SLATE EXECUTIVE (الرمادي التقني التنفيذي)
+   ========================================================================= */
+:root[data-theme-preset="slate-executive"],
+html[data-theme-preset="slate-executive"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="slate-executive"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="slate-executive"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="slate-executive"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="slate-executive"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="slate-executive"][data-admin-theme="light"] {
+  --radius: 0.5rem;
+  --background: #f8fafc;
+  --admin-bg-canvas: #f8fafc;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #f1f5f9;
+  --admin-bg-subtle: #f1f5f9;
+  --sidebar: #ffffff;
+  --admin-bg-sidebar: #ffffff;
+
+  --foreground: #0f172a;
+  --admin-text-primary: #0f172a;
+  --card-foreground: #0f172a;
+  --popover-foreground: #0f172a;
+  --muted-foreground: #475569;
+  --admin-text-muted: #475569;
+  --admin-text-faint: #94a3b8;
+
+  --border: #e2e8f0;
+  --admin-border-subtle: #e2e8f0;
+  --admin-border-strong: #cbd5e1;
+  --input: #e2e8f0;
+
+  --primary: #334155;
+  --primary-foreground: #ffffff;
+  --admin-accent: #334155;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(51, 65, 85, 0.12);
+  --ring: #334155;
+  --admin-accent-ring: #334155;
+
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --accent: #e2e8f0;
+  --accent-foreground: #334155;
+
+  --admin-gold: #0284c7;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #334155;
+  --sidebar-muted: #64748b;
+}
+
+:root[data-theme-preset="slate-executive"].dark,
+html[data-theme-preset="slate-executive"].dark #admin-root,
+html[data-theme-preset="slate-executive"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="slate-executive"].dark,
+#admin-root[data-theme-preset="slate-executive"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="slate-executive"].dark,
+.admin-shell[data-theme-preset="slate-executive"][data-admin-theme="dark"] {
+  --radius: 0.5rem;
+  --background: #090d16;
+  --admin-bg-canvas: #090d16;
+  --card: #111827;
+  --admin-bg-surface: #111827;
+  --popover: #111827;
+  --muted: #1f293d;
+  --admin-bg-subtle: #1f293d;
+  --sidebar: #060910;
+  --admin-bg-sidebar: #060910;
+
+  --foreground: #f8fafc;
+  --admin-text-primary: #f8fafc;
+  --card-foreground: #f8fafc;
+  --popover-foreground: #f8fafc;
+  --muted-foreground: #94a3b8;
+  --admin-text-muted: #94a3b8;
+  --admin-text-faint: #64748b;
+
+  --border: rgba(148, 163, 184, 0.2);
+  --admin-border-subtle: rgba(148, 163, 184, 0.2);
+  --admin-border-strong: rgba(148, 163, 184, 0.38);
+  --input: rgba(148, 163, 184, 0.24);
+
+  --primary: #94a3b8;
+  --primary-foreground: #090d16;
+  --admin-accent: #94a3b8;
+  --admin-accent-foreground: #090d16;
+  --admin-accent-soft: rgba(148, 163, 184, 0.22);
+  --ring: #94a3b8;
+  --admin-accent-ring: #94a3b8;
+
+  --secondary: #1f293d;
+  --secondary-foreground: #e2e8f0;
+  --accent: rgba(148, 163, 184, 0.16);
+  --accent-foreground: #cbd5e1;
+
+  --admin-gold: #38bdf8;
+  --admin-gold-foreground: #090d16;
+
+  --sidebar-foreground: #f8fafc;
+  --sidebar-border: rgba(148, 163, 184, 0.18);
+  --sidebar-accent: #192233;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #94a3b8;
+}
+
+/* =========================================================================
+   11. CYBERPUNK NEON (السايبربانك النيون)
+   ========================================================================= */
+:root[data-theme-preset="cyberpunk-neon"],
+html[data-theme-preset="cyberpunk-neon"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="cyberpunk-neon"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="cyberpunk-neon"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="cyberpunk-neon"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="cyberpunk-neon"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="cyberpunk-neon"][data-admin-theme="light"] {
+  --radius: 0.625rem;
+  --background: #f0fdfa;
+  --admin-bg-canvas: #f0fdfa;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #ccfbf1;
+  --admin-bg-subtle: #ccfbf1;
+  --sidebar: #f5fefc;
+  --admin-bg-sidebar: #f5fefc;
+
+  --foreground: #134e4a;
+  --admin-text-primary: #134e4a;
+  --card-foreground: #134e4a;
+  --popover-foreground: #134e4a;
+  --muted-foreground: #0f766e;
+  --admin-text-muted: #0f766e;
+  --admin-text-faint: #5eead4;
+
+  --border: #99f6e4;
+  --admin-border-subtle: #99f6e4;
+  --admin-border-strong: #5eead4;
+  --input: #99f6e4;
+
+  --primary: #0d9488;
+  --primary-foreground: #ffffff;
+  --admin-accent: #0d9488;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(13, 148, 136, 0.12);
+  --ring: #0d9488;
+  --admin-accent-ring: #0d9488;
+
+  --secondary: #ccfbf1;
+  --secondary-foreground: #115e59;
+  --accent: #99f6e4;
+  --accent-foreground: #0d9488;
+
+  --admin-gold: #06b6d4;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #134e4a;
+  --sidebar-border: #99f6e4;
+  --sidebar-accent: #ccfbf1;
+  --sidebar-accent-foreground: #0d9488;
+  --sidebar-muted: #0f766e;
+}
+
+:root[data-theme-preset="cyberpunk-neon"].dark,
+html[data-theme-preset="cyberpunk-neon"].dark #admin-root,
+html[data-theme-preset="cyberpunk-neon"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="cyberpunk-neon"].dark,
+#admin-root[data-theme-preset="cyberpunk-neon"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="cyberpunk-neon"].dark,
+.admin-shell[data-theme-preset="cyberpunk-neon"][data-admin-theme="dark"] {
+  --radius: 0.625rem;
+  --background: #031316;
+  --admin-bg-canvas: #031316;
+  --card: #082329;
+  --admin-bg-surface: #082329;
+  --popover: #082329;
+  --muted: #0e343c;
+  --admin-bg-subtle: #0e343c;
+  --sidebar: #020c0e;
+  --admin-bg-sidebar: #020c0e;
+
+  --foreground: #f0fdfa;
+  --admin-text-primary: #f0fdfa;
+  --card-foreground: #f0fdfa;
+  --popover-foreground: #f0fdfa;
+  --muted-foreground: #5eead4;
+  --admin-text-muted: #5eead4;
+  --admin-text-faint: #2dd4bf;
+
+  --border: rgba(45, 212, 191, 0.22);
+  --admin-border-subtle: rgba(45, 212, 191, 0.22);
+  --admin-border-strong: rgba(45, 212, 191, 0.44);
+  --input: rgba(45, 212, 191, 0.26);
+
+  --primary: #14b8a6;
+  --primary-foreground: #011b1f;
+  --admin-accent: #14b8a6;
+  --admin-accent-foreground: #011b1f;
+  --admin-accent-soft: rgba(20, 184, 166, 0.24);
+  --ring: #14b8a6;
+  --admin-accent-ring: #14b8a6;
+
+  --secondary: #103c46;
+  --secondary-foreground: #ccfbf1;
+  --accent: rgba(20, 184, 166, 0.18);
+  --accent-foreground: #5eead4;
+
+  --admin-gold: #22d3ee;
+  --admin-gold-foreground: #011b1f;
+
+  --sidebar-foreground: #f0fdfa;
+  --sidebar-border: rgba(45, 212, 191, 0.2);
+  --sidebar-accent: #0c333a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #5eead4;
+}
+
+/* =========================================================================
+   12. ROSE GOLD & NOIR (روز جولد ونوار)
+   ========================================================================= */
+:root[data-theme-preset="rose-gold"],
+html[data-theme-preset="rose-gold"]:not(.dark):not([data-admin-color-scheme="dark"]) #admin-root,
+html[data-theme-preset="rose-gold"][data-admin-color-scheme="light"] #admin-root,
+#admin-root[data-theme-preset="rose-gold"]:not(.dark):not([data-admin-theme="dark"]),
+#admin-root[data-theme-preset="rose-gold"][data-admin-theme="light"],
+.admin-shell[data-theme-preset="rose-gold"]:not(.dark):not([data-admin-theme="dark"]),
+.admin-shell[data-theme-preset="rose-gold"][data-admin-theme="light"] {
+  --radius: 0.75rem;
+  --background: #fff5f7;
+  --admin-bg-canvas: #fff5f7;
+  --card: #ffffff;
+  --admin-bg-surface: #ffffff;
+  --popover: #ffffff;
+  --muted: #fce7eb;
+  --admin-bg-subtle: #fce7eb;
+  --sidebar: #fdf8f9;
+  --admin-bg-sidebar: #fdf8f9;
+
+  --foreground: #4a041c;
+  --admin-text-primary: #4a041c;
+  --card-foreground: #4a041c;
+  --popover-foreground: #4a041c;
+  --muted-foreground: #9d174d;
+  --admin-text-muted: #9d174d;
+  --admin-text-faint: #f472b6;
+
+  --border: #fbcfe8;
+  --admin-border-subtle: #fbcfe8;
+  --admin-border-strong: #f472b6;
+  --input: #fbcfe8;
+
+  --primary: #be185d;
+  --primary-foreground: #ffffff;
+  --admin-accent: #be185d;
+  --admin-accent-foreground: #ffffff;
+  --admin-accent-soft: rgba(190, 24, 93, 0.12);
+  --ring: #be185d;
+  --admin-accent-ring: #be185d;
+
+  --secondary: #fce7eb;
+  --secondary-foreground: #831843;
+  --accent: #fbcfe8;
+  --accent-foreground: #be185d;
+
+  --admin-gold: #db2777;
+  --admin-gold-foreground: #ffffff;
+
+  --sidebar-foreground: #4a041c;
+  --sidebar-border: #fbcfe8;
+  --sidebar-accent: #fce7eb;
+  --sidebar-accent-foreground: #be185d;
+  --sidebar-muted: #9d174d;
+}
+
+:root[data-theme-preset="rose-gold"].dark,
+html[data-theme-preset="rose-gold"].dark #admin-root,
+html[data-theme-preset="rose-gold"][data-admin-color-scheme="dark"] #admin-root,
+#admin-root[data-theme-preset="rose-gold"].dark,
+#admin-root[data-theme-preset="rose-gold"][data-admin-theme="dark"],
+.admin-shell[data-theme-preset="rose-gold"].dark,
+.admin-shell[data-theme-preset="rose-gold"][data-admin-theme="dark"] {
+  --radius: 0.75rem;
+  --background: #15060d;
+  --admin-bg-canvas: #15060d;
+  --card: #230b17;
+  --admin-bg-surface: #230b17;
+  --popover: #230b17;
+  --muted: #361224;
+  --admin-bg-subtle: #361224;
+  --sidebar: #0e0308;
+  --admin-bg-sidebar: #0e0308;
+
+  --foreground: #fff5f7;
+  --admin-text-primary: #fff5f7;
+  --card-foreground: #fff5f7;
+  --popover-foreground: #fff5f7;
+  --muted-foreground: #f472b6;
+  --admin-text-muted: #f472b6;
+  --admin-text-faint: #fb7185;
+
+  --border: rgba(251, 113, 133, 0.22);
+  --admin-border-subtle: rgba(251, 113, 133, 0.22);
+  --admin-border-strong: rgba(251, 113, 133, 0.42);
+  --input: rgba(251, 113, 133, 0.25);
+
+  --primary: #fb7185;
+  --primary-foreground: #1c040d;
+  --admin-accent: #fb7185;
+  --admin-accent-foreground: #1c040d;
+  --admin-accent-soft: rgba(251, 113, 133, 0.24);
+  --ring: #fb7185;
+  --admin-accent-ring: #fb7185;
+
+  --secondary: #3b1427;
+  --secondary-foreground: #fce7eb;
+  --accent: rgba(251, 113, 133, 0.18);
+  --accent-foreground: #f472b6;
+
+  --admin-gold: #f43f5e;
+  --admin-gold-foreground: #1c040d;
+
+  --sidebar-foreground: #fff5f7;
+  --sidebar-border: rgba(251, 113, 133, 0.2);
+  --sidebar-accent: #320f21;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-muted: #f472b6;
+}

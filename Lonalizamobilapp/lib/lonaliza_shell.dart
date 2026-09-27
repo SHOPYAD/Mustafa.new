@@ -18,6 +18,7 @@ import 'shell/shell_brand.dart';
 import 'shell/shell_failure.dart';
 import 'shell/shell_loader_gate.dart';
 import 'shell/spa_navigation.dart';
+import 'shell/webview_cache.dart';
 import 'shell/webview_file_selector.dart';
 import 'shell/webview_intercept.dart';
 
@@ -42,6 +43,10 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
   bool _showSplash = true;
   int _activeTab = 0;
   int _activeSlideIndex = 0;
+  int? _lockedTab;
+  DateTime? _tabLockUntil;
+  DateTime? _lastTabPointerAt;
+  int? _lastTabPointerIndex;
   String _currentUrl = '';
   String _restoreUrl = '';
   Timer? _loadingSafetyTimer;
@@ -50,6 +55,18 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
   Timer? _nativeNoticeTimer;
   String? _lastExternalUrl;
   DateTime? _lastExternalAt;
+  String _shellLocale = 'ar';
+  Map<String, String> _bridgeTitles = const {
+    'home': 'الرئيسية',
+    'wallet': 'المحفظة',
+    'reels': 'الريلز',
+    'me': 'حسابي',
+    'more': 'المزيد',
+  };
+  Map<String, String> _bridgeChrome = const {
+    'messageFrom': 'رسالة من {0}',
+    'newMessage': 'رسالة جديدة',
+  };
 
   static const String _apiBase = String.fromEnvironment(
     'MOBILE_API_BASE',
@@ -87,7 +104,7 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
     },
     {
       'id': 'tab_reels',
-      'title': 'السوشيال والريلز',
+      'title': 'الريلز',
       'path': '/community',
       'icon': Icons.play_circle_outline_rounded,
       'activeIcon': Icons.play_circle_fill_rounded,
@@ -211,6 +228,7 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
             _controller.runJavaScript(WebViewIntercept.externalSchemeHandoff);
             _controller.runJavaScript(WebViewIntercept.clientRouterInstall);
             _controller.runJavaScript(WebViewIntercept.nginxAndReadyProbe);
+            _controller.runJavaScript(WebViewCachePolicy.prefetchScript());
             // First of the dismissal contract: main-frame finish.
             _markInteractive(ShellLoaderDismissReason.pageFinished);
           },
@@ -250,9 +268,10 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
       androidController.setGeolocationEnabled(true);
       androidController.setUseWideViewPort(true);
       androidController.setOnPlatformPermissionRequest((req) => req.grant());
-      // Cache + DOM storage stay at WebView defaults (LOAD_DEFAULT, DOM
-      // storage on). Do not pass extra headers on loadRequest — that bypasses
-      // HTTP cache. AppCache APIs are removed in modern Chromium WebView.
+      // Cache stays LOAD_DEFAULT (plugin has no setCacheMode). Hashed
+      // /_next/static assets cache via HTTP; SPA HTML is not cache-busted
+      // and must not use LOAD_CACHE_ELSE_NETWORK. Do not pass extra headers
+      // on loadRequest — that bypasses HTTP cache. DOM storage stays on.
       // Without this, <input type="file"> taps are silently dropped in Android WebView.
       attachAndroidWebViewFileSelector(
         androidController,
@@ -310,6 +329,8 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
     _armLoadingSafety();
     // No extra headers: Android WebView skips HTTP cache when loadUrl
     // is given a header map. App mode is already in the UA + cookie.
+    // LOAD_DEFAULT + hashed static assets; never cache-bust HTML here.
+    assert(!WebViewCachePolicy.passHeadersOnLoadRequest);
     await _controller.loadRequest(Uri.parse(url));
   }
 
@@ -476,9 +497,66 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
     if (url.isEmpty) return;
     final paths = _tabs.map((tab) => tab['path'] as String).toList();
     final next = activeTabIndex(url, paths);
+    if (!shouldAcceptUrlTabSync(
+      now: DateTime.now(),
+      lockUntil: _tabLockUntil,
+      lockedTab: _lockedTab,
+      urlTab: next,
+    )) {
+      return;
+    }
     if (next != _activeTab && mounted) {
       setState(() => _activeTab = next);
     }
+  }
+
+  void _commitTab(int index, String targetUrl) {
+    _lockedTab = index;
+    _tabLockUntil = DateTime.now().add(const Duration(milliseconds: 1800));
+    _currentUrl = targetUrl;
+    _restoreUrl = targetUrl;
+    if (mounted) setState(() => _activeTab = index);
+  }
+
+  String _studioTabTitle(dynamic tab) {
+    final ar = tab is Map ? tab['titleAr']?.toString() : null;
+    final en = tab is Map ? tab['titleEn']?.toString() : null;
+    if (_shellLocale == 'ar') return (ar?.isNotEmpty == true ? ar : en) ?? 'تبويب';
+    return (en?.isNotEmpty == true ? en : ar) ?? 'Tab';
+  }
+
+  Map<String, dynamic> _localizeTab(Map<String, dynamic> tab) {
+    final role = roleForTabPath((tab['path'] ?? '').toString());
+    final title = titleForNavRole(role, _bridgeTitles);
+    if (title == null || title.isEmpty) return tab;
+    return {...tab, 'title': title};
+  }
+
+  String _localizedNotice(String sender) {
+    if (sender.isNotEmpty) {
+      final template = _bridgeChrome['messageFrom'] ?? 'رسالة من {0}';
+      return interpolateChrome(template, sender);
+    }
+    return _bridgeChrome['newMessage'] ?? 'رسالة جديدة';
+  }
+
+  void _applyWebLocale(Map data) {
+    final next = data['locale']?.toString() ?? '';
+    if (next == 'ar' || next == 'en' || next == 'tr' || next == 'fr') {
+      _shellLocale = next;
+    }
+    final titles = parseBridgeStringMap(data['titles']);
+    if (titles.isNotEmpty) {
+      _bridgeTitles = {..._bridgeTitles, ...titles};
+    }
+    final chrome = parseBridgeStringMap(data['chrome']);
+    if (chrome.isNotEmpty) {
+      _bridgeChrome = {..._bridgeChrome, ...chrome};
+    }
+    if (!mounted) return;
+    setState(() {
+      _tabs = _tabs.map(_localizeTab).toList();
+    });
   }
 
   Future<void> _fetchLiveStudioConfig() async {
@@ -507,13 +585,14 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
           if (dynamicTabs != null && dynamicTabs.isNotEmpty) {
             nextTabs = dynamicTabs.where((t) => t['enabled'] != false).map((t) {
               final iconStr = (t['icon'] ?? 'compass').toString().toLowerCase();
-              return {
+              final path = (t['path'] ?? '/').toString();
+              return _localizeTab({
                 'id': (t['id'] ?? '').toString(),
-                'title': t['titleAr'] ?? 'تبويب',
-                'path': t['path'] ?? '/',
+                'title': _studioTabTitle(t),
+                'path': path,
                 'icon': _mapIconOutlined(iconStr),
                 'activeIcon': _mapIconFilled(iconStr),
-              };
+              });
             }).toList();
             final hasMore = nextTabs.any(
               (tab) => tabPathLooksLikeMore((tab['path'] ?? '').toString()),
@@ -521,13 +600,13 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
             if (!hasMore) {
               nextTabs = [
                 ...nextTabs,
-                {
+                _localizeTab({
                   'id': 'tab_more',
-                  'title': 'المزيد',
+                  'title': _bridgeTitles['more'] ?? 'المزيد',
                   'path': '/menu',
                   'icon': Icons.grid_view_outlined,
                   'activeIcon': Icons.grid_view_rounded,
-                },
+                }),
               ];
             }
           }
@@ -689,8 +768,19 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
         _loader.onSpaNavStart();
         final href = data['href']?.toString();
         if (href != null && href.isNotEmpty) {
-          _currentUrl = href;
-          _syncTabFromUrl(href);
+          // Never let a stale "still on previous page" ping revert the tab.
+          if (shouldAcceptUrlTabSync(
+            now: DateTime.now(),
+            lockUntil: _tabLockUntil,
+            lockedTab: _lockedTab,
+            urlTab: activeTabIndex(
+              href,
+              _tabs.map((tab) => tab['path'] as String).toList(),
+            ),
+          )) {
+            _currentUrl = href;
+            _syncTabFromUrl(href);
+          }
         }
       } else if (type == 'notification') {
         final title = data['title']?.toString() ?? '';
@@ -699,7 +789,7 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
         _showNativeNotice(
           title.isNotEmpty
               ? title
-              : (sender.isNotEmpty ? 'رسالة من $sender' : 'رسالة جديدة'),
+              : _localizedNotice(sender),
         );
         if (body.isNotEmpty || title.isNotEmpty) {
           HapticFeedback.mediumImpact();
@@ -716,6 +806,8 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
         if (path.isNotEmpty) {
           _spaNavigate(path, replace: data['replace'] == true);
         }
+      } else if (type == 'locale') {
+        _applyWebLocale(data);
       } else if (type == 'fullReload') {
         final href = data['href']?.toString() ?? '';
         if (href.isEmpty || !_pageInteractive) return;
@@ -745,8 +837,9 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
 
   bool get _canSpaNavigate {
     if (_failure != null) return false;
-    if (!_pageInteractive) return false;
-    final current = Uri.tryParse(_currentUrl);
+    final current = Uri.tryParse(
+      _currentUrl.isNotEmpty ? _currentUrl : _restoreUrl,
+    );
     if (current == null || current.host.isEmpty) return false;
     final origin = Uri.tryParse(_apiBase);
     if (origin == null) return false;
@@ -761,6 +854,7 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
     }
     normalized = SpaNavigation.withAppParam(normalized);
     final targetUrl = '$_apiBase$normalized';
+    _currentUrl = targetUrl;
     _restoreUrl = targetUrl;
     _syncTabFromUrl(targetUrl);
 
@@ -784,40 +878,60 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
   }
 
   void _onTabSelected(int index) {
-    HapticFeedback.lightImpact();
     if (index < 0 || index >= _tabs.length) return;
+    final now = DateTime.now();
+    if (_lastTabPointerIndex == index &&
+        _lastTabPointerAt != null &&
+        now.difference(_lastTabPointerAt!) < const Duration(milliseconds: 220)) {
+      return;
+    }
+    _lastTabPointerIndex = index;
+    _lastTabPointerAt = now;
+    HapticFeedback.selectionClick();
+
     final path = (_tabs[index]['path'] as String?) ?? '/';
     final role = roleForTabPath(path);
-    final currentRole = roleForUrl(_currentUrl);
+    final previousUrl = _currentUrl;
+    final currentRole = roleForUrl(previousUrl);
+    final alreadyHome = isHomeRoot(previousUrl);
+    final alreadyMenu = isMenuPath(previousUrl);
+    final targetPath = role == BottomNavRole.home
+        ? '/'
+        : role == BottomNavRole.more
+        ? '/menu'
+        : path;
+    final normalized = SpaNavigation.withAppParam(
+      targetPath.startsWith('http')
+          ? (Uri.tryParse(targetPath) != null
+                ? SpaNavigation.pathWithQuery(Uri.parse(targetPath))
+                : targetPath)
+          : targetPath,
+    );
+    _commitTab(index, '$_apiBase$normalized');
 
     if (role == BottomNavRole.home) {
-      if (isHomeRoot(_currentUrl)) {
+      if (alreadyHome) {
         _controller.runJavaScript('window.scrollTo({top: 0, behavior: "smooth"});');
-        if (_activeTab != index && mounted) setState(() => _activeTab = index);
         return;
       }
-      if (mounted) setState(() => _activeTab = index);
       _spaNavigate('/', replace: true);
       return;
     }
 
     if (role == BottomNavRole.more) {
-      if (isMenuPath(_currentUrl)) {
+      if (alreadyMenu) {
         _controller.runJavaScript('window.scrollTo({top: 0, behavior: "smooth"});');
-        if (_activeTab != index && mounted) setState(() => _activeTab = index);
         return;
       }
-      if (mounted) setState(() => _activeTab = index);
       _spaNavigate('/menu', replace: true);
       return;
     }
 
-    if (_activeTab == index && currentRole == role) {
+    if (currentRole == role) {
       _controller.runJavaScript('window.scrollTo({top: 0, behavior: "smooth"});');
       return;
     }
 
-    if (mounted) setState(() => _activeTab = index);
     _spaNavigate(path, replace: true);
   }
 
@@ -1076,12 +1190,12 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
                 final tab = _tabs[i];
                 final active = _activeTab == i;
                 return Expanded(
-                  child: InkWell(
-                    onTap: () => _onTabSelected(i),
-                    borderRadius: BorderRadius.circular(16),
-                    splashColor: _bottomNavActiveColor.withValues(alpha: 0.15),
-                    highlightColor: Colors.transparent,
-                    child: Padding(
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Listener(
+                      behavior: HitTestBehavior.opaque,
+                      onPointerDown: (_) => _onTabSelected(i),
+                      child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 2),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -1119,6 +1233,7 @@ class _LonalizaShellPageState extends State<LonalizaShellPage>
                           ),
                         ],
                       ),
+                    ),
                     ),
                   ),
                 );

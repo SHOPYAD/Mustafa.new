@@ -1,0 +1,23 @@
+# Lonaliza Tourism & Travel Platform (وكالة لوناليزا للسياحة والسفر)
+> Lonaliza (https://lonaliza.com) is a premier international travel agency and cloud booking platform providing luxury tour packages, VIP daily tours, 5-star hotel bookings, airport transfers, domestic flights, and visa facilitation across Turkey (Istanbul, Cappadocia, Trabzon, Antalya, Rize, Bursa, Sapanca) and global destinations.
+
+## Core Travel Services & Booking Pages
+- **Holiday Packages (البرامج السياحية المتكاملة)**: https://lonaliza.com/holidays - Curated multi-day itineraries including domestic flights, 4-5 star hotels, cave hotels, private chauffeurs, and licensed guides.
+- **Cappadocia 2-Day Tour Package**: https://lonaliza.com/package/2-day-magical-cappadocia-tour-from-istanbul - Flights, boutique cave hotel, Red & Green guided tours, and sunrise hot air balloons.
+- **Trabzon & Rize Honeymoon Package (9 Days)**: https://lonaliza.com/package/trabzon-rize-honeymoon-dream-9-days - Luxury lake view bungalows in Uzungol, Ayder plateau, Sumela Monastery, and private Mercedes Vito transfers.
+- **Istanbul, Trabzon & Uzungol (13 Days)**: https://lonaliza.com/package/13days-istanbul-trabzon-uzungol - Complete Turkey circuit covering Bosphorus cruise, Black Sea highlands, and cultural monuments.
+- **VIP Daily Tours (الجولات اليومية الخاصة)**: https://lonaliza.com/vip-tours - Private chauffeur-driven tours in Istanbul (Hagia Sophia, Topkapi, Bosphorus), Bursa & Uludağ Teleferik, Sapanca & Masukiye, and Antalya Waterfalls.
+- **Hotel Reservations (حجوزات الفنادق)**: https://lonaliza.com/hotels - Luxury 4-star & 5-star hotels across Istanbul Bosphorus, Antalya all-inclusive resorts, and Cappadocia cave suites.
+- **Airport Transfers (خدمات التوصيل والمطارات)**: https://lonaliza.com/transfers - Private meet & greet airport transfers from Istanbul Airport (IST), Sabiha Gökçen (SAW), Antalya (AYT), and Trabzon (TZX).
+- **Flights Booking (حجز تذاكر الطيران)**: https://lonaliza.com/flights - Domestic & international flight search with real-time seat availability and baggage options.
+- **Tourist Visas (خدمات التأشيرات السياحية)**: https://lonaliza.com/visa - Fast-track tourist e-visas with 24/7 client support.
+- **Travel Blog & Guides (دليل السفر والسياحة)**: https://lonaliza.com/blog - In-depth travel tips, weather guides, best places to visit in Turkey, and visa requirements.
+
+## Contact & Direct WhatsApp Booking
+- **Official WhatsApp**: +90 532 179 6763 (https://wa.me/905321796763)
+- **Email**: info@lonaliza.com
+- **Headquarters**: Istanbul, Turkey
+- **Languages Supported**: Arabic (العربية), English, Turkish (Türkçe)
+
+## Optional LLM Context File
+For full structured product specifications and package breakdowns, see: https://lonaliza.com/llms-full.txt

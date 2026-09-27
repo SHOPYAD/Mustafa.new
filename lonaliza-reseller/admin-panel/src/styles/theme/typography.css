@@ -1,0 +1,46 @@
+/**
+ * Enterprise Typography System — Arabic & Latin
+ * Ensures legible, crisp type hierarchy across luxury themes and resolutions.
+ */
+
+:root {
+  --font-arabic-primary: var(--font-cairo, "Cairo", system-ui, -apple-system, sans-serif);
+  --font-latin-primary: var(--font-inter, "Inter", system-ui, -apple-system, sans-serif);
+
+  --type-h1: 1.875rem;
+  --type-h2: 1.5rem;
+  --type-h3: 1.25rem;
+  --type-body: 0.875rem;
+  --type-caption: 0.75rem;
+  --type-micro: 0.6875rem;
+
+  --tracking-arabic: 0;
+  --tracking-latin: -0.015em;
+}
+
+/* RTL Typography Optimizations */
+[dir="rtl"] {
+  letter-spacing: var(--tracking-arabic);
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] .admin-heading {
+  letter-spacing: 0;
+  font-feature-settings: "cv01", "cv02";
+}
+
+/* High-readability labels for admin metrics */
+.theme-kpi-value {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.theme-badge-text {
+  font-weight: 700;
+  font-size: var(--type-micro);
+  line-height: 1;
+}

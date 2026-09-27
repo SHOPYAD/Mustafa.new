@@ -1,0 +1,74 @@
+/**
+ * Enterprise Elevation, Depth & Glassmorphism System
+ * Adds rich, luxury visual cues, ambient glows, and modern backdrop filters.
+ */
+
+:root {
+  --elevation-0: 0 0 0 0 transparent;
+  --elevation-1: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --elevation-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --elevation-float: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-blur: blur(16px);
+  --accent-glow: 0 0 24px -4px color-mix(in srgb, var(--theme-accent) 35%, transparent);
+}
+
+.dark {
+  --elevation-0: 0 0 0 0 transparent;
+  --elevation-1: 0 1px 3px 0 rgba(0, 0, 0, 0.35), 0 1px 2px -1px rgba(0, 0, 0, 0.25);
+  --elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.55), 0 4px 6px -4px rgba(0, 0, 0, 0.35);
+  --elevation-4: 0 20px 25px -5px rgba(0, 0, 0, 0.65), 0 8px 10px -6px rgba(0, 0, 0, 0.45);
+  --elevation-float: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+
+  --glass-bg: rgba(18, 18, 22, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(20px);
+  --accent-glow: 0 0 32px -4px color-mix(in srgb, var(--theme-accent) 45%, transparent);
+}
+
+/* Glassmorphism utilities */
+.theme-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+.theme-glass-card {
+  background: color-mix(in srgb, var(--theme-surface) 85%, transparent);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--theme-border-subtle);
+  border-radius: var(--radius, 0.875rem);
+  box-shadow: var(--elevation-2);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.theme-glass-card:hover {
+  border-color: var(--theme-border-strong);
+  box-shadow: var(--elevation-3), var(--accent-glow);
+}
+
+/* Ambient Accent Glow Utility */
+.theme-glow {
+  box-shadow: var(--accent-glow) !important;
+}
+
+/* Card Surface Depth */
+.theme-card-depth {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border-subtle);
+  box-shadow: var(--elevation-1);
+  border-radius: var(--radius, 0.875rem);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.theme-card-depth:hover {
+  box-shadow: var(--elevation-2);
+  border-color: var(--theme-border-strong);
+}

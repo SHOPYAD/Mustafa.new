@@ -20,6 +20,8 @@ const TICK_MS = Number(process.env.AUTOMATION_TICK_MS || 60_000);
 
 function readSecret() {
   const files = [
+    resolve(ROOT, "database/data/automation/cron-secret"),
+    resolve(ROOT, "database/data/email-cron-secret"),
     resolve(ROOT, ".data/automation/cron-secret"),
     resolve(ROOT, ".data/email-cron-secret"),
   ];

@@ -43,6 +43,7 @@ class LonalizaApp extends StatelessWidget {
         Locale('ar'),
         Locale('en'),
         Locale('tr'),
+        Locale('fr'),
       ],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

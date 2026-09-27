@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -uo pipefail
-DIR="/www/wwwroot/lonaliza.com/public/partners"
+DIR="/www/wwwroot/lonaliza.com/storefront/public/partners"
 mkdir -p "$DIR"
 UA="Mozilla/5.0 (compatible; AlrayyanLogoFetch/1.0)"
 

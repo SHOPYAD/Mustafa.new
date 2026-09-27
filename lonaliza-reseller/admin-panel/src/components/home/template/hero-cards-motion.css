@@ -1,0 +1,128 @@
+/* Hero package cards: rise from the search bar toward the header, then dissolve smoothly (evaporate). */
+
+.alrayyan-hero-cards-rail {
+  --hero-card-h: 5.4rem;
+  --hero-card-gap: 0.65rem;
+  --hero-card-duration: 22s;
+  position: relative;
+  width: 100%;
+}
+
+.alrayyan-hero-cards-corridor {
+  position: relative;
+  height: 18.5rem;
+  overflow: hidden;
+}
+
+.alrayyan-hero-cards-motion {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.alrayyan-hero-cards-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.alrayyan-hero-cards-stage.is-static {
+  height: auto;
+}
+
+.alrayyan-hero-cards-stage.is-live {
+  height: 100%;
+  /* Pure Alpha Mask for seamless evaporation at top and emergence at bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 1.5%,
+    rgba(0, 0, 0, 0.35) 6%,
+    rgba(0, 0, 0, 0.85) 15%,
+    #000 24%,
+    #000 78%,
+    rgba(0, 0, 0, 0.85) 88%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 1.5%,
+    rgba(0, 0, 0, 0.35) 6%,
+    rgba(0, 0, 0, 0.85) 15%,
+    #000 24%,
+    #000 78%,
+    rgba(0, 0, 0, 0.85) 88%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+}
+
+.alrayyan-hero-cards-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.alrayyan-hero-cards-slot {
+  flex: 0 0 auto;
+  height: calc(var(--hero-card-h) + var(--hero-card-gap));
+  padding-bottom: var(--hero-card-gap);
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  @media (prefers-reduced-motion: no-preference) {
+    .alrayyan-hero-cards-stage.is-live .alrayyan-hero-cards-track {
+      animation: alrayyan-hero-card-rise var(--hero-card-duration, 22s) linear infinite;
+    }
+
+    .alrayyan-hero-cards-motion:hover .alrayyan-hero-cards-track,
+    .alrayyan-hero-cards-motion.is-paused .alrayyan-hero-cards-track {
+      animation-play-state: paused;
+    }
+  }
+}
+
+/* 100% seamless infinite vertical marquee translation (-50% of the 2x duplicate set) */
+@keyframes alrayyan-hero-card-rise {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .alrayyan-hero-cards-motion,
+  .alrayyan-hero-cards-stage.is-live {
+    height: auto;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .alrayyan-hero-cards-track {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alrayyan-hero-cards-stage.is-live {
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .alrayyan-hero-cards-stage.is-live .alrayyan-hero-cards-track {
+    animation: none !important;
+    will-change: auto;
+    transform: none;
+  }
+}

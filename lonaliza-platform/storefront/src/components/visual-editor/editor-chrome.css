@@ -1,0 +1,130 @@
+/* Agent A: editor chrome only */
+/* Editor-only identity. Do not import this into the public storefront theme. */
+#builder-root {
+  --editor-navy: #2e1065;
+  --editor-navy-950: #14072b;
+  --editor-navy-800: #1e0b3e;
+  --editor-purple: #3b0764;
+  --editor-purple-400: #a855f7;
+  --editor-purple-600: #7c3aed;
+  --editor-gold: #f59e0b;
+  --builder-primary: 275 80% 30%;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --ring: #f59e0b;
+}
+
+#builder-root .builder-chip {
+  background: hsl(var(--builder-primary) / 0.12);
+  color: var(--editor-gold);
+  border-color: hsl(var(--builder-primary) / 0.22);
+}
+
+#builder-root .builder-gradient-brand {
+  background: linear-gradient(135deg, #18052e 0%, #2e1065 48%, #f59e0b 100%);
+  color: #fef08a;
+}
+
+#builder-root .builder-gradient-text {
+  background: linear-gradient(90deg, #2e1065 0%, #7c3aed 55%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#builder-root .builder-status-dot.is-applying {
+  background: #f59e0b;
+}
+
+#builder-root .builder-msg-user {
+  background: linear-gradient(135deg, #18052e, #4c1d95);
+  color: #fef08a;
+}
+
+#builder-root .builder-tool.is-running {
+  border-color: #f59e0b;
+}
+
+#builder-root {
+  --preview-navy-50: #f5f3ff;
+  --preview-navy-100: #ede9fe;
+  --preview-navy-200: #ddd6fe;
+  --preview-navy-300: #c4b5fd;
+  --preview-navy-400: #7c3aed;
+  --preview-navy-500: #2e1065;
+  --preview-navy-600: #1e0b3e;
+  --preview-navy-700: #14072b;
+  --preview-navy-800: #0a0316;
+}
+
+@keyframes editor-page-preview-scroll {
+  0% {
+    transform: translateY(0) scale(var(--preview-scale, 1));
+  }
+  100% {
+    transform: translateY(var(--preview-travel, -70%)) scale(var(--preview-scale, 1));
+  }
+}
+
+#builder-root .editor-page-preview-iframe.is-css-scroll {
+  animation: editor-page-preview-scroll 8s linear infinite alternate;
+}
+
+#builder-root [data-editor-popover] {
+  z-index: 80;
+}
+
+#builder-root [data-editor-language-bar] {
+  z-index: 20;
+}
+
+/* Portaled selects/popovers render on document.body — inherit html.dark unless scoped. */
+html[data-builder-chrome-theme="light"] [data-editor-popover] {
+  --background: #ffffff;
+  --foreground: #161b22;
+  --card: #ffffff;
+  --card-foreground: #161b22;
+  --muted: #eef2f6;
+  --muted-foreground: #4b5565;
+  --border: #d8dee6;
+  --popover: #ffffff;
+  --popover-foreground: #161b22;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  background: #ffffff;
+  color: #161b22;
+  border-color: #d8dee6;
+  color-scheme: light;
+}
+
+html[data-builder-chrome-theme="dark"] [data-editor-popover] {
+  --background: #161c27;
+  --foreground: #eef2f6;
+  --card: #161c27;
+  --card-foreground: #eef2f6;
+  --muted: #1a2230;
+  --muted-foreground: #9aa8c0;
+  --border: #2a3344;
+  --popover: #161c27;
+  --popover-foreground: #eef2f6;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  background: #161c27;
+  color: #eef2f6;
+  border-color: #2a3344;
+  color-scheme: dark;
+}

@@ -1,0 +1,6 @@
+packages:
+  - 'storefront'
+  - 'admin-panel'
+  - 'admin-panel/frontend'
+  - 'backend'
+  - 'shared'

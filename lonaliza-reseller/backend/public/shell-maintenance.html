@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#140522" />
+  <title>لوناليزا | تحديث مجدول</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #140522;
+      color: #fff;
+      font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 22px;
+      background: linear-gradient(180deg, #2e1065 0%, #1a0a36 52%, #140522 100%);
+    }
+    .card { width: min(440px, 100%); text-align: center; }
+    .logo {
+      width: 96px; height: 96px; margin: 0 auto 22px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(245, 158, 11, 0.5);
+      background: rgba(255,255,255,0.08);
+      display: grid; place-items: center;
+      box-shadow: 0 20px 50px rgba(46,16,101,0.45);
+    }
+    .mark { font-size: 34px; color: #f59e0b; font-weight: 800; }
+    .brand {
+      display: inline-block; margin-bottom: 14px; padding: 5px 12px;
+      border-radius: 999px; font-size: 11px; letter-spacing: 1.6px; font-weight: 800;
+      color: #fbbf24; border: 1px solid rgba(245,158,11,0.45);
+      background: rgba(245,158,11,0.16);
+    }
+    h1 { margin: 0 0 12px; font-size: 26px; line-height: 1.35; }
+    p { margin: 0 0 22px; color: rgba(255,255,255,0.74); line-height: 1.6; font-size: 15px; }
+    button {
+      width: 100%; border: 0; border-radius: 16px; padding: 14px 18px;
+      background: #f59e0b; color: #140522; font-weight: 800; font-size: 15px;
+      cursor: pointer;
+    }
+    button[disabled] { opacity: 0.55; cursor: wait; }
+    .hint { margin-top: 12px; color: rgba(255,255,255,0.48); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" aria-hidden="true"><span class="mark">L</span></div>
+    <div class="brand">LONALIZA</div>
+    <h1>تحديث مجدول قيد التنفيذ</h1>
+    <p>نُجري تحديثاً قصيراً ومجدولاً لتجربة لوناليزا. عُد خلال لحظات ولن تحتاج لإعادة فتح التطبيق.</p>
+    <button id="retry" type="button">إعادة التحميل</button>
+    <p class="hint">لن يتم إغلاق التطبيق. نتحقق من جاهزية الخادم ثم نعيد جلستك.</p>
+  </main>
+  <script>
+    (function () {
+      var btn = document.getElementById("retry");
+      var health = "/api/mobile/v1/shell-health";
+      function ready(ok) { return ok && ok >= 200 && ok < 500 && ok !== 408; }
+      async function probe() {
+        try {
+          var res = await fetch(health, { cache: "no-store", headers: { "x-lonaliza-app": "1" } });
+          return ready(res.status);
+        } catch (e) { return false; }
+      }
+      btn.addEventListener("click", async function () {
+        btn.disabled = true;
+        var ok = await probe();
+        if (ok) {
+          var next = new URLSearchParams(location.search).get("next") || "/?app=1";
+          location.replace(next);
+          return;
+        }
+        btn.disabled = false;
+      });
+    })();
+  </script>
+</body>
+</html>

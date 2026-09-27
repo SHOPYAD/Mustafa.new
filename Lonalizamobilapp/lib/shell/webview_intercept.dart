@@ -304,9 +304,6 @@ class WebViewIntercept {
           var path = $pathJson;
           var replace = $replaceJs;
           var fallback = $fallbackJson;
-          if (window.LonalizaNativeBridge) {
-            window.LonalizaNativeBridge.postMessage(JSON.stringify({type:'navStart', href: location.href}));
-          }
           if (window.__lonalizaGoHome && (path === '/' || path.indexOf('/?') === 0)) {
             window.__lonalizaGoHome();
             return;

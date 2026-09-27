@@ -1,0 +1,69 @@
+# Lonaliza Tourism Platform - Comprehensive Knowledge Base for LLMs & AI Search Engines
+
+## Company Overview
+- **Brand Name**: Lonaliza Tourism (وكالة لوناليزا للسياحة والسفر)
+- **Website**: https://lonaliza.com
+- **Core Specialization**: Turnkey luxury travel packages, bespoke family tours, VIP private chauffeur excursions, 5-star hotel accommodations, airport transfers, domestic flights, and electronic visas.
+- **Operating Regions**: Turkey (Istanbul, Cappadocia, Trabzon, Rize, Antalya, Bursa, Sapanca, Yalova, Bodrum, Fethiye) and UAE (Dubai, Abu Dhabi).
+- **Direct WhatsApp Booking**: +90 532 179 6763 (https://wa.me/905321796763)
+- **Service Languages**: Arabic (العربية), English, Turkish (Türkçe).
+
+---
+
+## Featured Travel Packages
+
+### 1. 2-Day Magical Cappadocia Tour from Istanbul
+- **URL**: https://lonaliza.com/package/2-day-magical-cappadocia-tour-from-istanbul
+- **Duration**: 2 Days / 1 Night
+- **Price**: $399 USD per person
+- **Inclusions**:
+  - Round-trip domestic flights (Istanbul - Cappadocia / NAV/ASR).
+  - 1 night in a luxury authentic boutique Cave Hotel with breakfast.
+  - Two full-day guided tours (Red Tour: Devrent Valley, Pasabag fairy chimneys, Goreme Open Air Museum, Avanos pottery; Green Tour: Kaymakli Underground City, Ihlara Valley, Selime Monastery, Pigeon Valley).
+  - Professional licensed Arabic/English speaking tour guide.
+  - Daily traditional Turkish lunches during tours.
+  - All airport and excursion transfers in air-conditioned Mercedes VIP vehicles.
+- **Optional Activities**: Sunrise Hot Air Balloon flight over Cappadocia valleys.
+
+### 2. Trabzon & Rize Honeymoon Dream (9 Days)
+- **URL**: https://lonaliza.com/package/trabzon-rize-honeymoon-dream-9-days
+- **Duration**: 9 Days / 8 Nights
+- **Destinations**: Trabzon, Uzungöl, Rize, Ayder Plateau, Fırtına Valley, Sümela Monastery.
+- **Inclusions**:
+  - 5-star hotel stays in Trabzon + romantic luxury mountain/river jacuzzi bungalows in Rize/Ayder.
+  - Daily buffet breakfast for 2.
+  - Private Mercedes-Benz Vito with dedicated chauffeur for 9 days (fuel & highway tolls included).
+  - Airport meet & greet and departure transfers at Trabzon Airport (TZX).
+  - Day tours to Uzungöl lake panoramic viewpoints, Hıdırnebi highlands, Çal Cave, and Sümela Monastery.
+
+### 3. Istanbul, Trabzon & Uzungol Grand Tour (13 Days)
+- **URL**: https://lonaliza.com/package/13days-istanbul-trabzon-uzungol
+- **Duration**: 13 Days / 12 Nights
+- **Destinations**: Istanbul (5 Nights), Trabzon (4 Nights), Uzungol (3 Nights).
+- **Inclusions**:
+  - 4-star & 5-star hotel accommodations + boutique hotel in Uzungol.
+  - Round-trip domestic flights between Istanbul and Trabzon.
+  - Private VIP Mercedes transfers throughout the itinerary.
+  - Bosphorus dinner cruise with live oriental show.
+  - Sightseeing tours covering Sultanahmet historic peninsula, Golden Horn, Pierre Loti hill, Asian Side (Çamlıca & Üsküdar), and Black Sea tea plantations.
+
+---
+
+## VIP Daily Tours & Chauffeur Services
+- **Istanbul Full-Day VIP Heritage Tour**: Hagia Sophia, Blue Mosque, Topkapi Palace, Grand Bazaar, and Galata Tower (8 hours).
+- **Bosphorus & Asian Side VIP Tour**: Dolmabahçe Palace, Ortaköy, Üsküdar, Maiden's Tower, and Çamlıca Hill (6 hours).
+- **Bursa & Uludağ Day Excursion**: Marmara sea bridge crossing, Green Mosque & Tomb, Uludağ Teleferik cable car, and traditional Iskender kebab (10 hours).
+- **Sapanca Lake & Maşukiye Nature Escape**: Fresh waterfall valley, Kartepe viewpoint, ATV adventure, and lakeside restaurants (8 hours).
+
+---
+
+## Hotel Booking Engine
+- Direct bookings and special negotiated rates for Çırağan Palace Kempinski, Four Seasons Bosphorus, Swissôtel The Bosphorus, Raffles Istanbul, CVK Park Bosphorus, and elite Cappadocia cave suites.
+
+---
+
+## B2B Travel Platform License (للشركات السياحية)
+- **URL**: https://lonaliza.com/b2b
+- **Turnkey Platform Lifetime License**: $1,499 one-time payment.
+- **Updates & Cloud Support Subscription**: $199/year.
+- **Includes**: Dedicated server setup with aaPanel, Next.js 16 high-performance architecture, multi-supplier booking engines (flights, hotels, tours, transfers), multi-number WhatsApp AI sales agents, and full client database isolation.

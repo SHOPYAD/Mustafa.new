@@ -28,6 +28,10 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        ndk {
+            // Ship the phone ABI only. x86_64 is emulators and doubled the APK.
+            abiFilters += listOf("arm64-v8a")
+        }
     }
 
     flavorDimensions += "brand"

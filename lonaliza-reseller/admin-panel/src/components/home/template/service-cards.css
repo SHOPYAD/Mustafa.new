@@ -1,0 +1,83 @@
+/* Agent E: settings panel + card design */
+[data-service-cards] {
+  --sc-card-width: 100%;
+  --sc-card-min-height: 0px;
+  --sc-card-border-width: 1px;
+  --sc-card-border-color: color-mix(in srgb, var(--brand-accent, #051741) 10%, transparent);
+  --sc-card-border-style: solid;
+  --sc-card-radius: var(--radius-card, 1rem);
+  --sc-card-padding: 0px;
+  --sc-card-shadow: 0 16px 40px -28px rgba(5, 23, 65, 0.35);
+  --sc-card-bg: #ffffff;
+  --sc-card-image-height: 11rem;
+  --sc-card-title-size: 1rem;
+  --sc-card-desc-size: 0.875rem;
+  --sc-card-price-size: 0.875rem;
+  --sc-card-columns: 1;
+  --sc-btn-radius: var(--radius-button, 0.75rem);
+  --sc-btn-padding: 0.625rem 1.25rem;
+  --sc-btn-bg: var(--brand-button, #2e1065);
+  --sc-btn-color: #ffffff;
+  --sc-btn-border: none;
+  --sc-btn-hover-bg: var(--sc-btn-bg);
+}
+
+@media (min-width: 1024px) {
+  [data-service-cards] {
+    --sc-card-columns: 4;
+  }
+  [data-service-cards] .sc-grid {
+    grid-template-columns: repeat(var(--sc-card-columns, 4), minmax(0, 1fr)) !important;
+  }
+}
+
+[data-service-cards] .sc-card {
+  width: var(--sc-card-width, 100%);
+  min-height: var(--sc-card-min-height, 0px);
+  border-width: var(--sc-card-border-width, 1px);
+  border-style: var(--sc-card-border-style, solid);
+  border-color: var(--sc-card-border-color);
+  border-radius: var(--sc-card-radius, 1rem);
+  padding: var(--sc-card-padding, 0px);
+  box-shadow: var(--sc-card-shadow);
+  background: var(--sc-card-bg, #fff);
+  overflow: hidden;
+}
+
+[data-service-cards] .sc-card-image {
+  height: var(--sc-card-image-height, 11rem) !important;
+}
+
+[data-service-cards] .sc-card-title,
+.sc-card-title,
+.lonaliza-package-title {
+  font-size: var(--sc-card-title-size, 1rem);
+  color: #1e1b4b !important;
+  font-weight: 800;
+}
+
+[data-service-cards] .sc-card-desc,
+.sc-card-desc {
+  font-size: var(--sc-card-desc-size, 0.875rem);
+  color: #475569 !important;
+}
+
+[data-service-cards] .sc-card-price,
+.sc-card-price {
+  font-size: var(--sc-card-price-size, 0.875rem);
+  color: #2e1065 !important;
+  font-weight: 900;
+}
+
+[data-service-cards] .sc-btn {
+  border-radius: var(--sc-btn-radius, 0.75rem);
+  padding: var(--sc-btn-padding, 0.625rem 1.25rem);
+  background: var(--sc-btn-bg, var(--brand-button, #2e1065));
+  color: var(--sc-btn-color, #fff);
+  border: var(--sc-btn-border, none);
+}
+
+[data-service-cards] .sc-btn:hover {
+  background: var(--sc-btn-hover-bg, var(--sc-btn-bg, var(--brand-button, #3b0764)));
+  filter: brightness(1.08);
+}

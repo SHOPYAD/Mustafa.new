@@ -1,0 +1,15 @@
+services:
+  google-maps-scraper:
+    image: gosom/google-maps-scraper:latest
+    container_name: gmaps-scraper
+    restart: unless-stopped
+    command: ["-web", "-data-folder", "/gmapsdata"]
+    ports:
+      - "127.0.0.1:8085:8080"   # Bound to 127.0.0.1 on port 8085 to avoid conflict with port 8080
+    volumes:
+      - gmaps_scraper_data:/gmapsdata
+      - gmaps_scraper_cache:/opt
+
+volumes:
+  gmaps_scraper_data:
+  gmaps_scraper_cache:
