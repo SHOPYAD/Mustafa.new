@@ -25,8 +25,10 @@ export async function readStudioSnapshot(domainId:DomainId):Promise<StudioSnapsh
   if(!isReadCapability(tool))return;
   try{
    const result=await executeSwarmTool(tool,{});
-   observations.push({tool,status:result.ok?"ready":"unavailable",observedAt:new Date().toISOString(),readDurationMs:Math.round(performance.now()-started),
-    facts:result.ok?result.facts.map(f=>({...f,value:f.value===undefined?null:f.value})):[]});
+   const unavailableDashboard=tool==="dashboard_bookings"&&result.ok&&result.facts.some(f=>f.key==="pocketbase"&&f.value===false);
+   if(unavailableDashboard)warnings.push("مصدر الحجوزات غير متصل؛ الأصفار الاحتياطية ليست أعدادًا موثقة.");
+   observations.push({tool,status:result.ok&&!unavailableDashboard?"ready":"unavailable",observedAt:new Date().toISOString(),readDurationMs:Math.round(performance.now()-started),
+    facts:result.ok&&!unavailableDashboard?result.facts.map(f=>({...f,value:f.value===undefined?null:f.value})):[]});
   }catch{observations.push({tool,status:"unavailable",facts:[]});}
  }));
  const extra=async(source:string,fn:()=>Promise<void>)=>{

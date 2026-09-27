@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "minimumScore": 90,
   "aggregation": "every-screen-must-pass",
   "reviews": [
@@ -10,7 +10,8 @@
       "commit": null,
       "referenceSha256": "879302FD732E6F48101DCE74E16411568ACC893AF486C0B2AFB7B922C7EF4599",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "02",
@@ -19,7 +20,8 @@
       "commit": null,
       "referenceSha256": "E2ACD6798741982C856C8C4CEA94A53D97E1EB43F1CD53A4BFCFE50DFA26507E",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "03",
@@ -28,7 +30,8 @@
       "commit": null,
       "referenceSha256": "276245DAA2736A8781AC9EC59A192BFB6DAFD645ADA9B4459E81FB1A348E4537",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "04",
@@ -37,7 +40,8 @@
       "commit": null,
       "referenceSha256": "57D3FA6270477084B303D89C72E01BE8E376BC440FF78A560862884C8F5502B3",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "05",
@@ -46,7 +50,8 @@
       "commit": null,
       "referenceSha256": "2ABF533A55B4616F28CC52C649C83D9DBB6D0DBD72F309A60B0A4AA2B7D4819E",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "06",
@@ -55,7 +60,8 @@
       "commit": null,
       "referenceSha256": "BFF77A59561CD2B6C1656CB90AF00093DD29B56FEEFA60E839655A7A62CDEC11",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "07",
@@ -64,7 +70,8 @@
       "commit": null,
       "referenceSha256": "16CD857D9F6A46DFDDDE422969895F4B6DCCFD84EE6A2BCD6532B3814C63A4FB",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "08",
@@ -73,7 +80,8 @@
       "commit": null,
       "referenceSha256": "0672AC20FF23A5878D407E2643187854DB17F65B42234CDA87BB2D9E5E3F662B",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "09",
@@ -82,7 +90,8 @@
       "commit": null,
       "referenceSha256": "8958E1E6FD1F0312140CFBA82A73B0DE9FACC8319986378DD2FE3C239F4B19A1",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "10",
@@ -91,7 +100,8 @@
       "commit": null,
       "referenceSha256": "9AC06AA864519A74952655EC4AEA4F166BF62B301BF94F07DD288FB15DE227D9",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "11",
@@ -100,7 +110,8 @@
       "commit": null,
       "referenceSha256": "C0231175E1FC73A7CC33E0DDFE4E0A0A21A39F4EDD0EF1182D347C88216C8ED9",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "12",
@@ -109,7 +120,8 @@
       "commit": null,
       "referenceSha256": "448907D2C939B56117619869A2A1FBA3CA27CAADAAC30B29DBFCCF7EE47542DB",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "13",
@@ -118,7 +130,8 @@
       "commit": null,
       "referenceSha256": "0F17ED86941DCF5E57C70DE0C288C49B8086F8076DD5EB36B22AA6502E81DA5C",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "14",
@@ -127,7 +140,8 @@
       "commit": null,
       "referenceSha256": "E5EDAA14CAD9564FA6388D1E3B10358C3D569918F8A022732F6B9CE5922C66FD",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "15",
@@ -136,7 +150,8 @@
       "commit": null,
       "referenceSha256": "777B42A974E857992564614AAAA93CB5D0473F33D0673772D069084C6A5F2959",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "16",
@@ -145,7 +160,8 @@
       "commit": null,
       "referenceSha256": "E3B26316BE02C7A45698B391CF02BA464FD6BA1E5F8C07D5DEA0E00EC37F9426",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "17",
@@ -154,7 +170,8 @@
       "commit": null,
       "referenceSha256": "82C574A6652FF7FD0D82D4957469B03D4A8141EDFFA737D55120C5A784D6D50D",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "18",
@@ -163,7 +180,8 @@
       "commit": null,
       "referenceSha256": "B4D6426FBF72D813CCCDDC5CE729D6642C5FC6E27B3513C73F0F8D9317525E41",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "19",
@@ -172,7 +190,8 @@
       "commit": null,
       "referenceSha256": "B0F6B828E41662E49CC00EDA9F52D08C0CB4DCA5A3CD3FF809723220A1BAE174",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     },
     {
       "id": "20",
@@ -181,7 +200,8 @@
       "commit": null,
       "referenceSha256": "F0BB61E8367611527F999E5EF93A9A6DB48043F8B3DB60AA2EAFBEF0358EC240",
       "reviewer": null,
-      "rationale": null
+      "rationale": null,
+      "sourceDigest": null
     }
   ]
 }

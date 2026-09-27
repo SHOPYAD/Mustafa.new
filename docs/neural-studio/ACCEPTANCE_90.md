@@ -30,3 +30,6 @@ Each score requires reference, rendered screenshot, commit SHA and written justi
 - Production integration verification with configured providers and approved sandbox credentials.
 
 The action receipt backend deliberately refuses serverless environments without durable storage. Local receipt creation is exclusive; uncertain results require reconciliation and never retry automatically. This is not a multi-region exactly-once guarantee.
+
+## Review identity
+The visual audit emits a SHA-256 digest of the tracked source tree, excluding only `visual-reviews.json`. A reviewer records that digest, reference hash, source commit and rationale in the ledger. Excluding the ledger avoids a circular commit-hash dependency; any other tracked change invalidates acceptance. Screenshot comparison alone never assigns a perceptual score.

@@ -2,9 +2,9 @@ name: Neural studio quality
 on:
   push:
     branches: ["codex/neural-studio-20260928"]
-    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
+    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", "docs/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
   pull_request:
-    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
+    paths: ["lonaliza-platform/admin-panel/src/**", "quality/neural-studio/**", "docs/neural-studio/**", ".github/workflows/neural-studio-quality.yml"]
 permissions:
   contents: read
 concurrency:

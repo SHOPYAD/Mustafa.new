@@ -22,3 +22,10 @@ it("legal reader never fabricates missing policies or uses seeded deletion rows"
  const s=await readStudioSnapshot("security");expect(s.status).toBe("partial");expect(s.records.map(r=>r.id)).toEqual(["real"]);
  expect(JSON.stringify(s)).not.toContain("private");expect(s.observations.find(o=>o.tool==="legal-policies")?.status).toBe("unavailable");
 });
+
+it("does not expose fallback zero counts when the bookings source is offline",async()=>{
+ m.tool.mockResolvedValue({ok:true,facts:[{key:"pocketbase",value:false,available:true},{key:"bookings",value:0,available:true}]});
+ const s=await readStudioSnapshot("bookings");
+ expect(s.status).toBe("unavailable");expect(s.observations[0].facts).toEqual([]);
+ expect(s.warnings.join(" ")).toContain("الأصفار");
+});

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import {execFileSync} from "node:child_process";
 import {createHash} from "node:crypto";
 import {PNG} from "pngjs";
 import pixelmatch from "pixelmatch";
@@ -6,6 +7,10 @@ const root="../../docs/neural-studio/";
 const manifest=JSON.parse(fs.readFileSync(root+"reference-manifest.json","utf8"));
 const reviews=JSON.parse(fs.readFileSync(root+"visual-reviews.json","utf8"));
 fs.mkdirSync("evidence",{recursive:true});
+// Bind reviews to content, excluding the review ledger itself to avoid an impossible self-referential commit hash.
+const sourceTree=execFileSync("git",["ls-tree","-r","--full-tree","HEAD"],{cwd:"../..",encoding:"utf8"})
+ .split("\n").filter(line=>line&&!line.endsWith("\tdocs/neural-studio/visual-reviews.json")).join("\n");
+const sourceDigest=createHash("sha256").update(sourceTree).digest("hex");
 const reports=[];
 for(const item of manifest.references){
  const id=item.name.slice(0,2),capture="evidence/surface-"+id+".png";
@@ -19,11 +24,11 @@ for(const item of manifest.references){
  fs.writeFileSync("evidence/"+id+"-pixel-diff.png",PNG.sync.write(diff));
  const review=reviews.reviews.find(r=>r.id===id);
  const accepted=!!(review&&review.approved===true&&typeof review.score==="number"&&review.score>=90&&review.score<=100&&
-  review.commit===process.env.GITHUB_SHA&&review.referenceSha256===hash&&review.reviewer&&review.rationale);
+  review.sourceDigest===sourceDigest&&review.referenceSha256===hash&&review.reviewer&&review.rationale);
  reports.push({id,reference:item.name,capture,differentPixels,totalPixels:actual.width*actual.height,
-  score:review?.score??null,accepted,interpretation:"Raw differing pixels are diagnostic, not a perceptual score. Final score requires documented review of this exact commit."});
+  score:review?.score??null,accepted,interpretation:"Raw differing pixels are diagnostic, not a perceptual score. Final score requires documented review of this exact source-content digest."});
 }
 const passed=reports.length===20&&reports.every(r=>r.accepted);
-fs.writeFileSync("evidence/visual-audit.json",JSON.stringify({minimumPerScreen:90,passed,reports},null,2));
+fs.writeFileSync("evidence/visual-audit.json",JSON.stringify({commit:process.env.GITHUB_SHA,sourceDigest,minimumPerScreen:90,passed,reports},null,2));
 console.log(JSON.stringify({rendered:reports.filter(r=>r.differentPixels!==undefined).length,accepted:reports.filter(r=>r.accepted).length,required:20,minimumPerScreen:90,passed}));
 if(!passed)process.exitCode=1;
