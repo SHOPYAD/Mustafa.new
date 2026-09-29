@@ -1,6 +1,6 @@
 import { listMergedPackages, upsertPublishedPackage } from "@/lib/server/packages-store";
 import { saveSwarmDiscussionMessage } from "@/lib/automation/agent-collab-store";
-import { listBlogPosts, upsertBlogPost } from "@/lib/server/blog-store";
+import { listBlogPosts } from "@/lib/server/blog-store";
 import { listInternalCars } from "@/lib/server/cars-store";
 import { listMergedTours, upsertTour } from "@/lib/server/tours-store";
 import { collectDashboardStats } from "@/lib/server/dashboard-stats";
@@ -103,6 +103,15 @@ export async function executeSwarmTool(
           fact("flights", "الطيران", provider, "flights-runtime"),
         ], { mode: runtime.mode, providers: runtime.providers });
       }
+      case "control_panel_tools": {
+        const { inspectControlPanelTools } = await import("@/lib/swarm/control-panel-tool-registry");
+        const rows = await inspectControlPanelTools();
+        const connected = rows.filter((row) => row.connected).length;
+        return ok(tool, `${connected}/${rows.length} موصلات لوحة التحكم جاهزة`, [
+          fact("control_panel_connected", "موصلات", connected, "control-panel-tool-registry"),
+          fact("control_panel_total", "إجمالي", rows.length, "control-panel-tool-registry"),
+        ], { tools: rows });
+      }
       case "cars_list": {
         const cars = await listInternalCars();
         const active = cars.filter((c) => c.isActive).length;
@@ -138,25 +147,14 @@ export async function executeSwarmTool(
         ], { count: tours.length, titles: tours.slice(0, 8).map((t) => t.title) });
       }
       case "create_blog": {
-        const titleAr = String(args.articleTitleAr || args.titleAr || "").trim();
-        if (!titleAr) return fail(tool, "عنوان المقال مطلوب للتنفيذ");
-        const slug = `guide-${Date.now().toString(36)}`;
-        const article = await upsertBlogPost({
-          titleAr,
-          titleEn: String(args.articleTitleEn || titleAr),
-          slug,
-          excerptAr: String(args.articleExcerptAr || titleAr),
-          contentAr: String(args.articleContentAr || `<h2>${titleAr}</h2><p>محتوى أولي من خلية الوكلاء — راجعوه قبل الاعتماد النهائي إن لزم.</p>`),
-          category: String(args.articleCategory || "وجهات سياحية"),
-          status: "published",
-          coverImage: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=80",
-          author: "خلية وكلاء لوناليزا",
-          tags: ["سياحة", "تركيا"],
-          publishedAt: new Date().toISOString(),
-        });
-        return ok(tool, `تم نشر المقال: ${article.titleAr}`, [
-          fact("created_slug", "المقال", article.slug, "blog-store"),
-        ], { slug: article.slug, url: `https://lonaliza.com/blog/${article.slug}` });
+        const { isOfficialContentOnly, isSynthesizerPublishDisabled } = await import("@/lib/swarm/content-flags");
+        if (isSynthesizerPublishDisabled() || isOfficialContentOnly()) {
+          return fail(
+            tool,
+            "النشر المباشر من الخلية متوقف. مقالات المحتوى تمر عبر official-article-pipeline فقط، ولا يُعلَّم المقال منشوراً من هذه الأداة."
+          );
+        }
+        return fail(tool, "مسار نشر markdown غير مفعّل");
       }
       case "create_tour": {
         const title = String(args.tourTitle || args.title || "").trim();

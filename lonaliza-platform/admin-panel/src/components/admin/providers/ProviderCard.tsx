@@ -22,7 +22,7 @@ const inputClass =
 function categoryBadge(category: CatalogProvider["category"]): { label: string; className: string } {
   switch (category) {
     case "gds":
-      return { label: "حي / GDS", className: "border-sky-500/30 bg-sky-500/10 text-sky-800 dark:text-sky-100" };
+      return { label: "GDS", className: "border-sky-500/30 bg-sky-500/10 text-sky-800 dark:text-sky-100" };
     case "scraper":
       return { label: "سكرابر", className: "border-[var(--admin-accent)]/30 bg-primary/10 text-[var(--admin-btn-primary-hover)] dark:text-admin-bg-subtle" };
     case "affiliate":

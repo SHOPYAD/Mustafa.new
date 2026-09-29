@@ -226,6 +226,8 @@ export type PublicHotelSearchResult = {
   destId: string;
   geoId: string;
   source: "booking" | "travel_advisor" | "owned" | "internal" | "multi" | "supplier";
+  /** False when the cards come from a display catalog rather than a live bookable supplier. */
+  liveSupplier?: boolean;
   cached: boolean;
   quotaLimited: boolean;
   error: string | null;
@@ -374,6 +376,7 @@ async function pageSession(session: SearchSession, input: PublicHotelSearchInput
     destId: input.destId || "",
     geoId: input.geoId || session.destination?.geoPlaceId || "",
     source: "supplier",
+    liveSupplier: true,
     cached: false,
     quotaLimited: false,
     error: progress.complete && session.hotels.length === 0 ? (allFailed ? progress.stats.find((s) => s.error)?.error || "search_failed" : null) : null,
@@ -492,6 +495,7 @@ async function runLegacyListProviders(runtime: HotelsRuntimeSettings, input: Pub
         destId: booking.destId,
         geoId: "",
         source: "booking",
+        liveSupplier: false,
         cached: booking.cached,
         quotaLimited: hotels.length > 0 ? false : Boolean(booking.quotaLimited) || booking.errorCode === "quota",
         error: hotels.length > 0 ? null : booking.error,
@@ -516,6 +520,7 @@ async function runLegacyListProviders(runtime: HotelsRuntimeSettings, input: Pub
         destId: input.destId || "",
         geoId: input.geoId || "",
         source: "travel_advisor",
+        liveSupplier: false,
         cached: false,
         quotaLimited: false,
         error: null,
@@ -532,6 +537,7 @@ async function runLegacyListProviders(runtime: HotelsRuntimeSettings, input: Pub
       destId: "",
       geoId: "",
       source: runtime.providers[0] === "owned" ? "owned" : "internal",
+      liveSupplier: false,
       cached: false,
       quotaLimited: false,
       error: "no list provider",
@@ -560,6 +566,7 @@ async function runLegacyListProviders(runtime: HotelsRuntimeSettings, input: Pub
       destId: booking?.destId || "",
       geoId: input.geoId || "",
       source: "multi",
+      liveSupplier: false,
       cached: Boolean(booking?.cached),
       quotaLimited,
       error: booking?.error || "search_failed",
@@ -576,6 +583,7 @@ async function runLegacyListProviders(runtime: HotelsRuntimeSettings, input: Pub
     destId: booking?.destId || "",
     geoId: "",
     source: "multi",
+    liveSupplier: false,
     cached: Boolean(booking?.cached),
     quotaLimited,
     error: null,
