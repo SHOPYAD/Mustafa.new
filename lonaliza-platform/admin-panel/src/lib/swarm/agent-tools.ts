@@ -275,7 +275,8 @@ export async function executeSwarmTool(
       }
       case "launch_maps_scrape": {
         const { launchScrapeJob } = await import("@/lib/server/gmaps-scraper/gmaps-scraper-service");
-        const city = String(args.city || args.location || "إسطنبول").trim();
+        const city = String(args.city || args.location || "").trim();
+        if (!city) return fail(tool, "المدينة مطلوبة. لا تُفترض إسطنبول.");
         const keywords = Array.isArray(args.keywords)
           ? (args.keywords as string[])
           : [String(args.keyword || "وكالات سياحة وسفر")];

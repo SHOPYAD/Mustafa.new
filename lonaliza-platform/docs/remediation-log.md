@@ -16,7 +16,17 @@
 - Changes: synthesizer markdown publish blocked; timeline timer removed; Flow/Istanbul defaults cleared; catalog search no longer reported as live; read hooks for visa, coupons, affiliate, reviews, cancellations, gift cards; SMTP/WhatsApp disconnected responses; blog dedup gate; blog index layout; health script and `/api/health`; provider GDS label.
 - iyzico production: not enabled.
 - Customer bookings, users, and existing blog posts: not deleted.
-- Smoke: pending in this file until the build-and-probe step is recorded below.
+- Commit: `c4085652`
+- Smoke after `safe-deploy.sh both` (builds succeeded, `nginx -t` ok, nginx was not reloaded):
+  - `https://lonaliza.com/` 200, `/flights` 200, `/hotels` 200, `/blog` 200, `/admin/login` 200
+  - bookings API without a session: 401
+  - storefront `/api/health` 200
+  - PocketBase `/api/health` 200
+  - flight search `RUH`→`CDG` on 2026-11-15: HTTP 200, `ok: true`, 121 itineraries, no card capture
+  - hotel search Paris 2026-11-15/18: HTTP 200, `source: supplier`, 20 hotels
+  - blog HTML: hero present, 41 card titles, 0 empty titles, article JSON-LD `BlogPosting` present
+- `IYZICO_MODE` remained `sandbox`
+- Rollback pointer: `git revert c4085652` then `safe-deploy.sh both`
 
 ## Typecheck
 
