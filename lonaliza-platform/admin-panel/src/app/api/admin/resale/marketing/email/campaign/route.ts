@@ -1,5 +1,6 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
-import { sendMarketingEmail } from "@/lib/server/email/marketing-smtp";
+import { isMarketingSmtpConnected, sendMarketingEmail } from "@/lib/server/email/marketing-smtp";
 import fs from "fs";
 import path from "path";
 
@@ -18,6 +19,8 @@ function interpolate(template: string, vars: Record<string, string>): string {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const { title, templateBody, templateSubject, targetLeads, delaySeconds = 2 } = body;
@@ -34,6 +37,10 @@ export async function POST(req: Request) {
         ok: false,
         error: "الشركات المحددة لا تحتوي على عناوين بريد إلكتروني صالحة",
       }, { status: 400 });
+    }
+
+    if (!(await isMarketingSmtpConnected())) {
+      return NextResponse.json({ ok: false, error: "SMTP disconnected" }, { status: 503 });
     }
 
     // Record initial campaign

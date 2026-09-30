@@ -55,6 +55,19 @@ export function saveMarketingEmailSettings(settings: Partial<MarketingSmtpSettin
   return updated;
 }
 
+export async function isMarketingSmtpConnected(): Promise<boolean> {
+  const custom = getMarketingEmailSettings();
+  const host = (custom.host || "").trim().toLowerCase();
+  const customReady = Boolean(
+    custom.enabled && host && host !== "localhost" && host !== "127.0.0.1" && custom.username
+  );
+  if (customReady) return true;
+  const sys = await resolveMailTransportConfig();
+  if (!sys.ok) return false;
+  const sysHost = String(sys.host || "").trim().toLowerCase();
+  return Boolean(sysHost && sysHost !== "localhost" && sysHost !== "127.0.0.1");
+}
+
 export async function createMarketingTransporter() {
   const custom = getMarketingEmailSettings();
 
@@ -135,6 +148,9 @@ export async function sendMarketingEmail(params: {
   companyId?: string;
   campaignId?: string;
 }): Promise<{ ok: boolean; messageId?: string; error?: string }> {
+  if (!(await isMarketingSmtpConnected())) {
+    return { ok: false, error: "SMTP disconnected" };
+  }
   try {
     const { transporter, senderName, senderAddress, replyTo } = await createMarketingTransporter();
 

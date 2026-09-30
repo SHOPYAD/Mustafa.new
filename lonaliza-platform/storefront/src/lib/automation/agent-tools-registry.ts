@@ -1,5 +1,3 @@
-import { defaultHotels } from "@/data/hotels";
-import { defaultFlights } from "@/data/flights";
 import { defaultPackages } from "@/data/packages";
 import { defaultTransfers, getFeaturedVipDailyTours } from "@/data/transfers";
 import { listBlogPosts } from "@/lib/server/blog-store";
@@ -77,7 +75,8 @@ export async function searchHotelsTool(params: {
   maxBudgetUSD?: number;
   query?: string;
 }): Promise<HotelSearchResult[]> {
-  const q = (params.query || params.city || "Istanbul").toLowerCase().trim();
+  const q = (params.query || params.city || "").toLowerCase().trim();
+  if (!q) return [];
   const maxBudget = params.maxBudgetUSD ? Number(params.maxBudgetUSD) : Infinity;
   const starsMin = params.stars ? Number(params.stars) : 0;
 
@@ -94,70 +93,36 @@ export async function searchHotelsTool(params: {
       rooms: 1,
       page: 1,
     });
-    if (res.ok && res.hotels?.length) {
+    if (res.ok && res.source === "supplier" && res.hotels?.length) {
       const liveResults = res.hotels
         .filter((h: any) => (starsMin > 0 ? (h.stars || 4) >= starsMin : true))
         .map((h: any) => {
-          const price = Number(h.priceFrom || h.nightly || 100);
+          const price = Number(h.priceFrom || h.nightly || 0);
           return {
             id: h.id,
             slug: h.id,
             nameAr: h.name,
             nameEn: h.name,
             city: h.city || q,
-            stars: h.stars || 4,
-            rating: h.rating || 8.5,
+            stars: h.stars || 0,
+            rating: h.rating || 0,
             fromPriceUSD: price,
             currency: h.currency || "USD",
             image: h.image || "/images/hotel-placeholder.jpg",
-            highlights: h.amenities?.slice(0, 3) || ["واي فاي مجاني", "مكيف", "خدمة غرف"],
+            highlights: h.amenities?.slice(0, 3) || [],
             bookingUrl: `/hotels/${h.id}?checkIn=${checkIn}&checkOut=${checkOut}&q=${encodeURIComponent(q)}`,
           };
         })
-        .filter((h: any) => h.fromPriceUSD <= maxBudget)
+        .filter((h: any) => h.fromPriceUSD > 0 && h.fromPriceUSD <= maxBudget)
         .slice(0, 6);
 
       if (liveResults.length > 0) return liveResults;
     }
   } catch {
-    /* fallback to local catalogue */
+    return [];
   }
 
-  // 2. Fallback to Local Hotels
-  const results = defaultHotels
-    .filter((h) => {
-      if (h.isActive === false) return false;
-      if (starsMin > 0 && h.stars < starsMin) return false;
-      if (q) {
-        const matchCity = (h.city || "").toLowerCase().includes(q);
-        const matchNameAr = (h.nameAr || "").toLowerCase().includes(q);
-        const matchNameEn = (h.nameEn || "").toLowerCase().includes(q);
-        if (!matchCity && !matchNameAr && !matchNameEn) return false;
-      }
-      return true;
-    })
-    .map((h) => {
-      const prices = (h.rooms || []).map((r) => r.price).filter((p) => p > 0);
-      const fromPrice = prices.length ? Math.min(...prices) : 80;
-      return {
-        id: h.id,
-        slug: h.slug,
-        nameAr: h.nameAr,
-        nameEn: h.nameEn,
-        city: h.city,
-        stars: h.stars,
-        rating: h.rating || 4.8,
-        fromPriceUSD: fromPrice,
-        currency: "USD",
-        image: h.images?.[0] || "",
-        highlights: (h.highlightsAr || []).slice(0, 3),
-        bookingUrl: `/hotels/${h.slug}`,
-      };
-    })
-    .filter((h) => h.fromPriceUSD <= maxBudget)
-    .slice(0, 6);
-
-  return results;
+  return [];
 }
 
 /**
@@ -168,8 +133,9 @@ export async function searchFlightsTool(params: {
   to?: string;
   maxPriceUSD?: number;
 }): Promise<FlightSearchResult[]> {
-  const fromQ = (params.from || "IST").toLowerCase().trim();
-  const toQ = (params.to || "AYT").toLowerCase().trim();
+  const fromQ = (params.from || "").toLowerCase().trim();
+  const toQ = (params.to || "").toLowerCase().trim();
+  if (!fromQ || !toQ) return [];
   const maxPrice = params.maxPriceUSD ? Number(params.maxPriceUSD) : Infinity;
 
   // 1. Try Live Multi-Provider Flight Search (PKFARE, Seeru, Travelport, BiletBank)
@@ -190,66 +156,34 @@ export async function searchFlightsTool(params: {
       const liveResults = res.session.itineraries
         .map((it) => {
           const seg = it.legs?.[0]?.segments?.[0];
-          const price = Number(it.price?.client || 120);
+          const price = Number(it.price?.client || 0);
           return {
             id: it.id,
-            airline: seg?.airline || "Turkish Airlines",
-            flightNumber: seg?.flightNumber || "TK2410",
+            airline: seg?.airline || "",
+            flightNumber: seg?.flightNumber || "",
             fromCity: seg?.origin?.city || orig,
             fromAirport: seg?.origin?.displayCode || orig,
             toCity: seg?.destination?.city || dest,
             toAirport: seg?.destination?.displayCode || dest,
-            departureTime: seg?.departure ? seg.departure.slice(11, 16) : "08:30",
+            departureTime: seg?.departure ? seg.departure.slice(11, 16) : "",
             priceUSD: price,
-            duration: `${Math.round((it.durationMinutes || 75) / 60)}h ${Math.round((it.durationMinutes || 75) % 60)}m`,
+            duration: it.durationMinutes
+              ? `${Math.round(it.durationMinutes / 60)}h ${it.durationMinutes % 60}m`
+              : "",
             stops: it.stops || 0,
             bookingUrl: `/flights/search?from=${encodeURIComponent(orig)}&to=${encodeURIComponent(dest)}&date=${depDate}`,
           };
         })
-        .filter((f) => f.priceUSD <= maxPrice)
+        .filter((f) => f.priceUSD > 0 && f.priceUSD <= maxPrice)
         .slice(0, 6);
 
       if (liveResults.length > 0) return liveResults;
     }
   } catch {
-    /* fallback to local catalogue */
+    return [];
   }
 
-  // 2. Fallback to Local Flights
-  let matches = defaultFlights.filter((f) => {
-    if (f.isActive === false) return false;
-    if (fromQ && !f.departure.city.toLowerCase().includes(fromQ) && !f.departure.airport.toLowerCase().includes(fromQ)) {
-      return false;
-    }
-    if (toQ && !f.arrival.city.toLowerCase().includes(toQ) && !f.arrival.airport.toLowerCase().includes(toQ)) {
-      return false;
-    }
-    return true;
-  });
-
-  if (matches.length === 0) {
-    matches = defaultFlights.filter((f) => f.isActive !== false);
-  }
-
-  const results = matches
-    .map((f) => ({
-      id: f.id,
-      airline: f.airline,
-      flightNumber: f.flightNumber,
-      fromCity: f.departure.city,
-      fromAirport: f.departure.airport,
-      toCity: f.arrival.city,
-      toAirport: f.arrival.airport,
-      departureTime: f.departure.time,
-      priceUSD: f.price,
-      duration: f.duration,
-      stops: f.stops,
-      bookingUrl: `/flights/search?from=${encodeURIComponent(f.departure.airport)}&to=${encodeURIComponent(f.arrival.airport)}`,
-    }))
-    .filter((f) => f.priceUSD <= maxPrice)
-    .slice(0, 6);
-
-  return results;
+  return [];
 }
 
 /**

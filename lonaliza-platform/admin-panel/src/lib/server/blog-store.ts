@@ -93,6 +93,28 @@ function newId(): string {
   return `blog_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
+function titleKey(post: { titleAr?: string; titleEn?: string }): string {
+  return `${post.titleAr || ""} ${post.titleEn || ""}`.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function sameUtcDay(a?: string, b?: string): boolean {
+  if (!a || !b) return false;
+  return a.slice(0, 10) === b.slice(0, 10);
+}
+
+async function holdSameDayDuplicate(post: BlogPost, siblings: BlogPost[]): Promise<BlogPost> {
+  if (post.status !== "published") return post;
+  const key = titleKey(post);
+  if (key.length < 12) return post;
+  const duplicate = siblings.find(
+    (other) => other.status === "published" && titleKey(other) === key && sameUtcDay(other.createdAt, post.createdAt)
+  );
+  if (!duplicate) return post;
+  const line = `${new Date().toISOString()}\tdraft\t${post.id}\t${post.slug}\tduplicate_of\t${duplicate.id}\t${duplicate.slug}\n`;
+  await fs.appendFile(path.join(DATA_DIR, "blog-dedup.log"), line).catch(() => undefined);
+  return { ...post, status: "draft" };
+}
+
 export function sanitizeBlogPost(
   raw: Partial<BlogPost> & Record<string, unknown>,
   existing: BlogPost | undefined,
@@ -323,13 +345,22 @@ export async function getBlogPostById(id: string): Promise<BlogPost | null> {
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!slug) return null;
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {
+    /* ignore decode error */
+  }
+
   const store = await loadStore();
-  const id = store.bySlug[slug];
+  const id = store.bySlug[slug] || store.bySlug[decoded];
   if (id) {
     const byId = store.posts.find((p) => p.id === id);
     if (byId) return byId;
   }
-  return store.posts.find((p) => p.slug === slug) || null;
+  return (
+    store.posts.find((p) => p.slug === slug || p.slug === decoded) || null
+  );
 }
 
 export async function upsertBlogPost(
@@ -345,7 +376,7 @@ export async function upsertBlogPost(
     const siblings = idx >= 0
       ? store.posts.filter((_, i) => i !== idx)
       : store.posts;
-    const post = sanitizeBlogPost(incoming, existing, siblings);
+    const post = await holdSameDayDuplicate(sanitizeBlogPost(incoming, existing, siblings), siblings);
     if (idx >= 0) store.posts[idx] = post;
     else store.posts.unshift(post);
     await writeStoreAtomic(store);
@@ -372,7 +403,7 @@ export async function updateBlogPost(
     if (idx < 0) return null;
     const existing = store.posts[idx];
     const siblings = store.posts.filter((_, i) => i !== idx);
-    const post = sanitizeBlogPost({ ...incoming, id }, existing, siblings);
+    const post = await holdSameDayDuplicate(sanitizeBlogPost({ ...incoming, id }, existing, siblings), siblings);
     store.posts[idx] = post;
     await writeStoreAtomic(store);
     void syncPostToPocketBase(post);

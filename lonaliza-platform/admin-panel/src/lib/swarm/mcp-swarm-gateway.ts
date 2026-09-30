@@ -205,6 +205,10 @@ export function listAvailableMcpSwarmTools(): McpSwarmToolDefinition[] {
 }
 
 // Execute any unified tool call dynamically during the agent's Multi-Hop ReAct cycle
+function unwired(toolName: string, reason: string, timestamp: string): McpSwarmToolResult {
+  return { ok: false, toolName, summaryAr: `الأداة غير مربوطة بنظام حقيقي: ${reason}.`, data: {}, error: "unwired", timestamp };
+}
+
 export async function executeMcpSwarmCall(
   toolName: string,
   args: Record<string, unknown> = {}
@@ -217,63 +221,22 @@ export async function executeMcpSwarmCall(
       // DOMAIN 1: ADMIN CORE & FINANCIALS
       // ==========================================
       case "mcp_admin_get_financial_ledger": {
-        const stats = await executeSwarmTool("dashboard_bookings", args);
-        const payload = stats.payload || {};
-        const economics = (payload.economics as Record<string, unknown>) || {};
-        const totalProfit = economics.profitUsd || 14250;
-        const totalBookings = (payload.stats as Record<string, unknown>)?.totalBookings || 48;
-
+        const pb = await createAdminPocketBase();
+        const list = await pb.collection("financial_transactions").getList(1, 20, { sort: "-created" });
         return {
           ok: true,
           toolName,
-          summaryAr: `السجل المالي: إجمالي الأرباح المحققة $${totalProfit} عبر ${totalBookings} حجز مؤكد، بوابات الدفع Iyzico و Stripe نشطة`,
-          data: {
-            totalRevenueUsd: Number(totalProfit) * 4.2,
-            netProfitUsd: totalProfit,
-            currencyLedger: { USD: totalProfit, TRY: Number(totalProfit) * 38.5, SAR: Number(totalProfit) * 3.75 },
-            paymentGateways: {
-              iyzico: { status: "connected", balanceTry: 245000, currency: "TRY" },
-              stripe: { status: "active", balanceUsd: 8400, currency: "USD" },
-              bankWire: { status: "manual_verification", pendingCount: 3 },
-            },
-            recentSettlements: [
-              { id: "tx_99182", method: "iyzico_3d", amountTry: 18500, status: "settled", date: "2026-09-25" },
-              { id: "tx_99183", method: "stripe_card", amountUsd: 1200, status: "settled", date: "2026-09-24" },
-            ],
-          },
+          summaryAr: `السجل المالي: ${list.totalItems} معاملة في financial_transactions؛ آخر ${list.items.length} مرفقة.`,
+          data: { source: "pocketbase:financial_transactions", totalItems: list.totalItems, items: list.items },
           timestamp,
         };
       }
 
-      case "mcp_admin_update_currency_rates": {
-        const baseCurrency = String(args.baseCurrency || "USD");
-        const rates = {
-          USD: 1.0,
-          TRY: 38.65,
-          SAR: 3.75,
-          AED: 3.67,
-          EUR: 0.92,
-          KWD: 0.31,
-        };
-        const markupPercent = Number(args.markupPercent || 1.8);
-
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `أسعار الصرف: تم تدقيق وتحديث العملات (USD: 1.0, TRY: ${rates.TRY}, SAR: ${rates.SAR}) مع هامش تحويل أمان ${markupPercent}%`,
-          data: {
-            baseCurrency,
-            rates,
-            marginAppliedPercent: markupPercent,
-            autoSyncIntervalMinutes: 60,
-            lastSyncedAt: timestamp,
-          },
-          timestamp,
-        };
-      }
+      case "mcp_admin_update_currency_rates":
+        return unwired(toolName, "أسعار الصرف تُدار عبر /api/admin/currencies؛ استخدم قدرة العملات في الاستوديو", timestamp);
 
       case "mcp_admin_query_database": {
-        const collection = String(args.collection || "bookings");
+        const collection = String(args.collection || "hotel_bookings");
         const limit = Number(args.limit || 10);
         const filter = String(args.filter || "");
 
@@ -302,35 +265,17 @@ export async function executeMcpSwarmCall(
           }
         }
 
-        // Fallback grounded mock from database tools
-        const bookingsRes = await executeSwarmTool("dashboard_bookings", args);
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `استعلام قاعدة البيانات (${collection}): تم استرجاع السجلات المؤرضة للجدول`,
-          data: {
-            collection,
-            totalItems: 12,
-            items: bookingsRes.payload?.recentBookings || [],
-            source: "grounded_runtime",
-          },
-          timestamp,
-        };
+        return unwired(toolName, isConfigured ? `تعذر الاستعلام من ${collection}` : "PocketBase غير مهيأ", timestamp);
       }
 
       case "mcp_admin_manage_staff_permissions": {
+        const pb = await createAdminPocketBase();
+        const admins = await pb.collection("_superusers").getList(1, 50, { fields: "id,email,created,updated" });
         return {
           ok: true,
           toolName,
-          summaryAr: "تدقيق الصلاحيات: 4 حسابات إدارية نشطة، نظام المصادقة الثنائية 2FA مفعل لحسابات Super Admin",
-          data: {
-            activeAdmins: [
-              { email: "admin@lonaliza.com", role: "super_admin", lastLogin: timestamp, status: "active" },
-              { email: "operations@lonaliza.com", role: "operations_director", lastLogin: "2026-09-25T11:20:00Z", status: "active" },
-            ],
-            securityStatus: "healthy",
-            unauthorizedAttemptsLast24h: 0,
-          },
+          summaryAr: `حسابات المشرفين: ${admins.totalItems} حساب superuser في PocketBase.`,
+          data: { source: "pocketbase:_superusers", totalItems: admins.totalItems, admins: admins.items },
           timestamp,
         };
       }
@@ -338,17 +283,17 @@ export async function executeMcpSwarmCall(
       case "mcp_financial_margin_audit": {
         const stats = await executeSwarmTool("dashboard_bookings", args);
         const economics = (stats.payload?.economics as Record<string, unknown>) || {};
-        const profit = Number(economics.profitUsd) || 2200;
-        const marginScore = profit > 2000 ? 22 : 18;
+        const revenue = Number(economics.paidUsd);
+        const profit = Number(economics.profitUsd);
+        if (!stats.ok || !Number.isFinite(revenue) || !Number.isFinite(profit) || revenue <= 0) {
+          return unwired(toolName, "لا توجد إيرادات وأرباح حقيقية كافية لحساب الهامش", timestamp);
+        }
+        const marginScore = Math.round((profit / revenue) * 1000) / 10;
         return {
           ok: true,
           toolName,
-          summaryAr: `تدقيق مالي سيادي: هامش الربح المحسوب ${marginScore}% يتجاوز الحد الأدنى للأمان (15%)، لا توجد مخاطر مالية`,
-          data: {
-            estimatedMargin: marginScore,
-            thresholdApproved: marginScore >= 15,
-            economics,
-          },
+          summaryAr: `تدقيق الهامش: ${marginScore}% من مدفوعات ${revenue}$ وربح ${profit}$ (بيانات لوحة الحجوزات).`,
+          data: { estimatedMargin: marginScore, thresholdApproved: marginScore >= 15, economics },
           timestamp,
         };
       }
@@ -383,158 +328,38 @@ export async function executeMcpSwarmCall(
         };
       }
 
-      case "mcp_storefront_update_seo_metadata": {
-        const pageSlug = String(args.pageSlug || "home");
-        const titleAr = String(args.titleAr || "لوناليزا للسياحة والسفر | رحلات تركيا وطرابزون الفاخرة VIP");
-        const descriptionAr = String(args.descriptionAr || "احجز أفضل الرحلات السياحية في تركيا والشمال التركي مع سيارات فيتو VIP وسائق خاص وأفضل الفنادق 5 نجوم بأفضل الأسعار.");
-        const keywords = (args.keywords as string[]) || ["سياحة تركيا", "رحلات طرابزون", "سيارة VIP اسطنبول", "لوناليزا"];
+      case "mcp_storefront_update_seo_metadata":
+        return unwired(toolName, "لا يوجد مخزن سيو تكتب فيه هذه الأداة", timestamp);
 
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `تحديث السيو: تم إعداد وتوثيق وسوم السيو للصفحة (${pageSlug}) بعنوان "${titleAr.slice(0, 45)}..."`,
-          data: {
-            pageSlug,
-            meta: {
-              title: titleAr,
-              description: descriptionAr,
-              keywords,
-              canonicalUrl: `https://lonaliza.com/${pageSlug === "home" ? "" : pageSlug}`,
-              openGraph: {
-                title: titleAr,
-                description: descriptionAr,
-                type: "website",
-                locale: "ar_SA",
-              },
-            },
-          },
-          timestamp,
-        };
-      }
+      case "mcp_storefront_manage_translations":
+        return unwired(toolName, "الترجمات تُدار عبر /api/admin/translations", timestamp);
 
-      case "mcp_storefront_manage_translations": {
-        const locale = String(args.locale || "ar");
-        const section = String(args.section || "common");
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `إدارة الترجمة: قواميس الترجمة الفورية محملة لـ 4 لغات (العربية، الإنجليزية، التركية، الروسية)`,
-          data: {
-            supportedLocales: ["ar", "en", "tr", "ru"],
-            activeLocale: locale,
-            section,
-            sampleKeys: {
-              book_now: { ar: "احجز الآن", en: "Book Now", tr: "Hemen Rezervasyon Yap", ru: "Забронировать" },
-              explore_tours: { ar: "استكشف رحلاتنا", en: "Explore Tours", tr: "Turları Keşfet", ru: "Исследуйте туры" },
-            },
-          },
-          timestamp,
-        };
-      }
-
-      case "mcp_storefront_publish_blog_article": {
-        const title = String(args.title || "دليل السفر الشامل إلى طرابزون وأوزنجول 2026");
-        const destination = String(args.destination || "trabzon");
-        const slug = String(args.slug || `guide-${destination}-${Date.now().toString(36)}`);
-
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `نشر مقال: تم اعتماد وتنسيق المقال السياحي "${title}" للوجهة ${destination} ومسار الرابط /blog/${slug}`,
-          data: {
-            title,
-            slug,
-            destination,
-            status: "published",
-            publishedAt: timestamp,
-            author: "لوناليزا تيم AI",
-            featuredImage: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b",
-          },
-          timestamp,
-        };
-      }
+      case "mcp_storefront_publish_blog_article":
+        return unwired(toolName, "النشر الفعلي يتم عبر مسار المقالات (create_blog) مع الاعتماد", timestamp);
 
       // ==========================================
       // DOMAIN 3: RESELLER & PARTNER B2B NETWORK
       // ==========================================
       case "mcp_reseller_list_agencies": {
-        const leads = await executeSwarmTool("leads_database", args);
-        const b2b = await executeSwarmTool("b2b_sessions", args);
+        const pb = await createAdminPocketBase();
+        const companies = await pb.collection("reseller_companies").getList(1, 50, { sort: "-created" });
         return {
           ok: true,
           toolName,
-          summaryAr: `شبكة الموزعين B2B: تم جرد 24 مكتباً وشركة سياحية شريكة، إجمالي الرصيد الائتماني للموزعين $42,500`,
-          data: {
-            activeAgenciesCount: 24,
-            totalCreditUsd: 42500,
-            leadsData: leads.payload,
-            sessionsData: b2b.payload,
-            topAgencies: [
-              { name: "وكالة أفق الخليج للسفر", tier: "Platinum", margin: "6%", creditLimitUsd: 15000 },
-              { name: "السماح للسياحة والرحلات", tier: "Gold", margin: "8%", creditLimitUsd: 10000 },
-            ],
-          },
+          summaryAr: `شبكة الموزعين: ${companies.totalItems} شركة في reseller_companies.`,
+          data: { source: "pocketbase:reseller_companies", totalItems: companies.totalItems, companies: companies.items },
           timestamp,
         };
       }
 
-      case "mcp_reseller_set_pricing_margin": {
-        const flightMargin = Number(args.flightMargin || 3.5);
-        const hotelMargin = Number(args.hotelMargin || 7.0);
-        const transferMargin = Number(args.transferMargin || 15.0);
+      case "mcp_reseller_set_pricing_margin":
+        return unwired(toolName, "هوامش الموزعين تُحفظ عبر /api/admin/resale/settings", timestamp);
 
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `هوامش B2B: تم ضبط هوامش الجملة للموزعين (الطيران: ${flightMargin}%، الفنادق: ${hotelMargin}%، التوصيلات: ${transferMargin}%)`,
-          data: {
-            margins: {
-              flightsPercent: flightMargin,
-              hotelsPercent: hotelMargin,
-              transfersPercent: transferMargin,
-            },
-            effectiveFrom: timestamp,
-            status: "active",
-          },
-          timestamp,
-        };
-      }
+      case "mcp_reseller_inspect_api_health":
+        return unwired(toolName, "لا يوجد فحص صحة حقيقي لمسارات B2B في هذه الأداة", timestamp);
 
-      case "mcp_reseller_inspect_api_health": {
-        return {
-          ok: true,
-          toolName,
-          summaryAr: "فحص B2B API: جميع نهايات الواجهة البرمجية تعمل بكفاءة (زمن الاستجابة 18ms، نجاح 100%)",
-          data: {
-            endpoints: [
-              { path: "/api/v1/b2b/flights/search", status: "200_OK", latencyMs: 24 },
-              { path: "/api/v1/b2b/hotels/search", status: "200_OK", latencyMs: 31 },
-              { path: "/api/v1/b2b/transfers/search", status: "200_OK", latencyMs: 12 },
-              { path: "/api/v1/b2b/test-connection", status: "200_OK", latencyMs: 8 },
-            ],
-            globalRateLimitRps: 150,
-            activeApiTokens: 18,
-          },
-          timestamp,
-        };
-      }
-
-      case "mcp_reseller_provision_whitelabel": {
-        const domain = String(args.domain || "travel.partner-agency.com");
-        return {
-          ok: true,
-          toolName,
-          summaryAr: `النطاق الأبيض: تم تجهيز إعدادات الـ Whitelabel للنطاق ${domain} وتوليد سجلات DNS والشهادة الأمنية`,
-          data: {
-            domain,
-            cnameTarget: "whitelabel.lonaliza.com",
-            sslStatus: "issued_auto_letsencrypt",
-            brandingTheme: "partner_custom",
-            provisionedAt: timestamp,
-          },
-          timestamp,
-        };
-      }
+      case "mcp_reseller_provision_whitelabel":
+        return unwired(toolName, "الوايت ليبل يُجهَّز عبر /api/admin/resale/whitelabel مع الاعتماد", timestamp);
 
       // ==========================================
       // DOMAIN 4: VISUAL EDITOR & LIVE HOMEPAGE SCHEMAS
@@ -678,7 +503,7 @@ export async function executeMcpSwarmCall(
 
         const draft = await getHomepageTemplateDraft();
         const newInstanceId = generateInstanceId(type);
-        const newSection = defaultSectionForType(type, newInstanceId);
+        const newSection = { ...defaultSectionForType(type), instanceId: newInstanceId };
 
         if (args.titleAr) {
           newSection.texts.title = { ar: String(args.titleAr), en: "", tr: "" };
@@ -735,7 +560,7 @@ export async function executeMcpSwarmCall(
         const tourRes = await executeSwarmTool("tours_list", args);
         const carRes = await executeSwarmTool("cars_list", args);
         return {
-          ok: true,
+          ok: Boolean(pkgRes.ok || tourRes.ok || carRes.ok),
           toolName,
           summaryAr: `المخزون السياحي: ${pkgRes.summaryAr} | ${tourRes.summaryAr} | ${carRes.summaryAr}`,
           data: {
@@ -751,7 +576,7 @@ export async function executeMcpSwarmCall(
         const wa = await executeSwarmTool("whatsapp_slots", args);
         const comms = await executeSwarmTool("comms_conversations", args);
         return {
-          ok: true,
+          ok: wa.ok,
           toolName,
           summaryAr: `${wa.summaryAr} | ${comms.summaryAr}`,
           data: { wa: wa.payload, comms: comms.payload },
@@ -778,6 +603,57 @@ export async function executeMcpSwarmCall(
           toolName,
           summaryAr: `${b2b.summaryAr} | ${leads.summaryAr}`,
           data: { b2b: b2b.payload, leads: leads.payload },
+          timestamp,
+        };
+      }
+
+      case "mcp_platform_system_execute": {
+        const { executeControlPanelTool } = await import("@/lib/swarm/control-panel-tool-registry");
+        const systemId = String(args.systemId || args.id || "swarm");
+        const result = await executeControlPanelTool(systemId);
+        return {
+          ok: result.ok,
+          toolName,
+          summaryAr: result.ok ? result.summary : result.error || result.summary,
+          data: { systemId, ...result.data, tool: result.tool },
+          error: result.error,
+          timestamp,
+        };
+      }
+
+      case "mcp_connector_probe": {
+        const { inspectControlPanelTools } = await import("@/lib/swarm/control-panel-tool-registry");
+        const rows = await inspectControlPanelTools();
+        const missing = rows.filter((row) => !row.connected);
+        return {
+          ok: missing.length === 0,
+          toolName,
+          summaryAr: missing.length
+            ? `غير متصل: ${missing.map((row) => `${row.tool}: ${row.error}`).join(" | ")}`
+            : "موصلات لوحة التحكم المضبوطة متاحة",
+          data: { tools: rows },
+          error: missing.length ? missing.map((row) => row.error).filter(Boolean).join("; ") : undefined,
+          timestamp,
+        };
+      }
+
+      case "mcp_studio_creative_plan": {
+        const ffmpeg = await callBuiltinTool("liotrip-studio", "studio.ffmpeg_status", { dryRun: true });
+        const weekly = await callBuiltinTool("liotrip-studio", "studio.weekly_plan", {
+          dryRun: true,
+          topic: String(args.directive || args.topic || ""),
+        });
+        const summaryAr = `استوديو الفيديو: ffmpeg ${ffmpeg.ok ? "جاهز" : "غير متاح"} — ${weekly.content || ffmpeg.content || "تم استدعاء خطة الاستوديو"}`;
+        return {
+          ok: ffmpeg.ok || weekly.ok,
+          toolName,
+          summaryAr: summaryAr.slice(0, 500),
+          data: {
+            ffmpeg: ffmpeg.content,
+            weeklyPlan: weekly.content,
+            invoked: ["liotrip-studio/studio.ffmpeg_status", "liotrip-studio/studio.weekly_plan"],
+          },
+          error: ffmpeg.ok || weekly.ok ? undefined : weekly.error || ffmpeg.error,
           timestamp,
         };
       }

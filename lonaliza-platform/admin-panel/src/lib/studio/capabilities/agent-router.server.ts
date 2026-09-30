@@ -1,0 +1,95 @@
+import { swarmEventBus } from "@/lib/swarm/swarm-events";
+import { CAPABILITY_BY_ID, effectiveRisk, needsApproval } from "./registry";
+import { executeCapability } from "./executor.server";
+import { generateUnifiedAiContent } from "@/lib/server/unified-ai-client";
+import { CAPABILITIES } from "./registry";
+import { collectionAliases, looksOperational, nodeAliases, planStudioCapability, type StudioPlan } from "./agent-plan";
+import { plansFromIntent, resolveIntent } from "@/lib/studio/index/intent-router";
+import { isArticleDirective } from "@/lib/swarm/article-pipeline-types";
+import { normalizeStudioPlan } from "./normalize-plan";
+
+export { planStudioCapability } from "./agent-plan";
+
+/**
+ * مخطط لغوي احتياطي: يختار قدرة واحدة من السجل فقط، والمدخلات تمر على zod.
+ * لا يخترع قدرات ولا مجموعات؛ أي مخرج غير صالح يعني ترك المهمة للخلية.
+ */
+async function planWithModel(directive: string): Promise<StudioPlan | null> {
+  if (!looksOperational(directive)) return null;
+  const caps = CAPABILITIES.map((c) => `- ${c.id} (${c.kind}/${c.risk}): ${c.titleAr}; input keys: ${Object.keys((c.input as unknown as { shape: Record<string, unknown> }).shape ?? {}).join(",")}`).join("\n");
+  const colls = [...new Map(collectionAliases().map((a) => [a.collection, a.alias])).entries()].map(([c, a]) => `${c}=${a}`).join("; ");
+  const maps = nodeAliases().slice(0, 120).map((n) => `${n.mapId}=${n.label}`).join("; ");
+  const res = await generateUnifiedAiContent<{ capabilityId: string | null; input?: Record<string, unknown>; why?: string }>({
+    systemInstruction:
+      "أنت موجّه قدرات لوحة إدارة. اختر قدرة واحدة من القائمة فقط تطابق طلب المدير حرفيًا، أو null إن لم تطابق. لا تخترع معرّفات سجلات: استخدم فقط المعرّفات المذكورة في الطلب. أعد JSON: {\"capabilityId\": string|null, \"input\": object, \"why\": string}.",
+    prompt: `القدرات:\n${caps}\n\nالمجموعات: ${colls}\n\nالخرائط: ${maps}\n\nالطلب: ${directive}`,
+    responseMimeType: "application/json",
+    temperature: 0,
+    maxTokens: 300,
+    timeoutMs: 12000,
+    agentRole: "studio_router",
+  }).catch(() => null);
+  const out = res?.ok ? res.data : null;
+  if (!out?.capabilityId) return null;
+  const cap = CAPABILITY_BY_ID[out.capabilityId];
+  if (!cap) return null;
+  const parsed = cap.input.safeParse(out.input ?? {});
+  if (!parsed.success) return null;
+  const input = parsed.data as Record<string, unknown>;
+  for (const v of Object.values(input)) if (typeof v === "string" && /^[a-z0-9]{15}$/.test(v) && !directive.includes(v)) return null;
+  return { capabilityId: cap.id, input, why: `مخطط لغوي: ${String(out.why ?? "").slice(0, 80)}` };
+}
+
+export async function planDirective(directive: string, ctx: { screenId?: string } = {}): Promise<StudioPlan | null> {
+  const screenId = ctx.screenId || "20";
+  const local = planStudioCapability(directive);
+  if (local) return normalizeStudioPlan(local);
+
+  const intentPlans = plansFromIntent(directive, { screenId, last: null });
+  if (intentPlans[0]) return normalizeStudioPlan(intentPlans[0]);
+
+  const intent = resolveIntent(directive, { screenId, last: null });
+  if (intent.kind === "readiness") {
+    return { capabilityId: "briefing.readiness", input: {}, why: "تقرير جاهزية المنصة" };
+  }
+
+  const route = intent;
+  if (route.kind !== "none" && route.kind !== "article" && route.kind !== "discuss") return null;
+  if (route.kind === "article" && isArticleDirective(directive)) return planWithModel(directive);
+  if (route.kind === "article") return null;
+  return null;
+}
+
+function emit(sessionId: string, type: "stage" | "decision", data: Record<string, unknown>) {
+  swarmEventBus.emitSwarmEvent({ sessionId, type, data: { source: "capability", ...data }, timestamp: new Date().toISOString() });
+}
+
+/** ينفذ خطة الوكيل عبر نفس المنفذ. الأوامر عالية الخطورة لا تُنفذ أبدًا من الوكيل؛ تُرسل للمدير للاعتماد. */
+export async function runStudioPlan(plan: StudioPlan, sessionId: string, autoExecute: boolean): Promise<string> {
+  plan = normalizeStudioPlan(plan);
+  const cap = CAPABILITY_BY_ID[plan.capabilityId];
+  if (!cap) return `قدرة غير معروفة: ${plan.capabilityId}.`;
+  emit(sessionId, "stage", { stage: "plan", capabilityId: cap.id, nodeId: cap.nodeId, summaryAr: `${cap.titleAr} (${plan.why})` });
+  if (cap.id.startsWith("studio.")) {
+    emit(sessionId, "stage", { stage: "ui", capabilityId: cap.id, nodeId: cap.nodeId, input: plan.input, summaryAr: cap.titleAr });
+    return `${cap.titleAr}: ${String(plan.input.collection ?? plan.input.mapId ?? "")}${plan.input.q ? ` (بحث: ${plan.input.q})` : ""}.`;
+  }
+  if (cap.kind === "query") {
+    const r = await executeCapability({ capabilityId: cap.id, input: plan.input, dryRun: true, actor: "agent", sessionId });
+    emit(sessionId, "decision", { stage: "done", capabilityId: cap.id, nodeId: cap.nodeId, ok: r.ok, summaryAr: r.ok ? r.preview?.summaryAr : r.error });
+    if (cap.id === "bookings.cancellation.list") emit(sessionId, "stage", { stage: "ui", capabilityId: "studio.open_route", nodeId: cap.nodeId, input: { route: "/api/admin/cancellations" } });
+    return r.ok ? `${r.preview?.summaryAr}.` : `تعذرت القراءة: ${r.error}.`;
+  }
+  const risk = effectiveRisk(cap, plan.input);
+  if (!needsApproval(risk, cap.kind, autoExecute)) {
+    const r = await executeCapability({ capabilityId: cap.id, input: plan.input, dryRun: false, idempotencyKey: `agent_${sessionId}_${Date.now().toString(36)}`, autoExecute, actor: "agent", sessionId });
+    return r.ok ? `نفذت: ${cap.titleAr}.` : `لم أنفذ ${cap.titleAr}: ${r.error}.`;
+  }
+  const preview = await executeCapability({ capabilityId: cap.id, input: plan.input, dryRun: true, actor: "agent", sessionId });
+  if (!preview.ok) {
+    emit(sessionId, "decision", { stage: "failed", capabilityId: cap.id, nodeId: cap.nodeId, ok: false, summaryAr: preview.error });
+    return `لا يمكن تجهيز ${cap.titleAr}: ${preview.error}.`;
+  }
+  emit(sessionId, "stage", { stage: "proposal", capabilityId: cap.id, nodeId: cap.nodeId, input: plan.input, risk, summaryAr: preview.preview?.summaryAr });
+  return `جهزت ${cap.titleAr}. ${preview.preview?.summaryAr}. بانتظار اعتمادك في نافذة المعاينة.`;
+}

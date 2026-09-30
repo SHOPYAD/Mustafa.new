@@ -444,6 +444,14 @@ export default function TravelAdvisorHotels() {
         <CouponSlider service="hotels" />
       </div>
 
+      {hotels.length > 0 && listSource !== "supplier" ? (
+        <div className="max-w-7xl mx-auto px-4 mt-4">
+          <p className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950">
+            هذه النتائج من كتالوج العرض وليست تأكيداً من مورد حجز حي.
+          </p>
+        </div>
+      ) : null}
+
       <div className="max-w-7xl mx-auto px-4 mt-6">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-6">
           <div>

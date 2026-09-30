@@ -7,35 +7,55 @@ import type { BlogPost } from "@/types/blog";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 import { tContent } from "@/lib/utils";
 
+function visibleText(post: BlogPost, base: "title" | "excerpt", locale: "ar" | "en" | "tr" | "fr"): string {
+  const resolved = tContent(post as unknown as Record<string, unknown>, base, locale).trim();
+  if (resolved) return resolved;
+  if (base === "title") return (post.titleAr || post.titleEn || post.slug || "مقال").trim();
+  return (post.excerptAr || post.excerptEn || "").trim();
+}
+
+function readingMinutes(post: BlogPost): number {
+  const words = `${post.contentAr || ""} ${post.contentEn || ""}`
+    .replace(/<[^>]+>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+function formatDate(value: string | undefined, locale: string): string {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString(locale === "ar" ? "ar-AE" : locale === "tr" ? "tr-TR" : "en-GB");
+}
+
 export function BlogIndex({ posts }: { posts: BlogPost[] }) {
   const { t, locale } = useLocale();
   const [category, setCategory] = useState("all");
-
-  const categories = useMemo(() => {
-    const set = new Set(posts.map((p) => p.category));
-    return ["all", ...Array.from(set)];
-  }, [posts]);
-
-  const filtered =
-    category === "all" ? posts : posts.filter((p) => p.category === category);
+  const featured = posts[0];
+  const categories = useMemo(() => ["all", ...Array.from(new Set(posts.map((p) => p.category).filter(Boolean)))], [posts]);
+  const filtered = category === "all" ? posts : posts.filter((p) => p.category === category);
+  const grid = filtered.filter((post) => post.id !== featured?.id || category !== "all");
 
   return (
-    <div className="min-h-screen bg-slate-50/70 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 pt-28 pb-20 transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="mb-3 text-3xl font-black sm:text-4xl md:text-5xl text-slate-900 dark:text-white tracking-tight">{t.blog.title}</h1>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">{t.blog.subtitle}</p>
+    <div className="min-h-screen bg-[#f6f3ee] text-slate-950 pt-24 pb-20">
+      <section className="bg-[#051741] text-white">
+        <div className="max-w-6xl mx-auto px-4 py-14 md:py-20">
+          <p className="text-amber-300 text-xs font-bold tracking-[0.22em] uppercase mb-3">Lonaliza Journal</p>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">{t.blog.title}</h1>
+          <p className="mt-4 max-w-2xl text-base sm:text-lg text-white/80">{t.blog.subtitle}</p>
         </div>
+      </section>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+      <div className="max-w-6xl mx-auto px-4 -mt-8">
+        <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setCategory(cat)}
-              className={`min-h-11 px-5 py-2 rounded-full text-sm font-bold transition-all ${
-                category === cat
-                  ? "bg-emerald-600 dark:bg-emerald-500 text-white shadow-md shadow-emerald-600/20"
-                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/90 dark:border-slate-700 shadow-2xs"
+              className={`min-h-11 px-5 py-2 rounded-full text-sm font-bold ${
+                category === cat ? "bg-emerald-700 text-white" : "bg-white text-slate-900 border border-slate-200"
               }`}
             >
               {cat === "all" ? t.blog.all : cat}
@@ -44,54 +64,55 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="text-center text-slate-500 dark:text-slate-400 py-20">{t.blog.noPosts}</p>
+          <p className="text-center text-slate-700 py-20">{t.blog.noPosts}</p>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((post) => {
-              const title = tContent(post as unknown as Record<string, unknown>, "title", locale);
-              const excerpt = tContent(post as unknown as Record<string, unknown>, "excerpt", locale);
-              return (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.slug}`}
-                  className="group rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 shadow-sm hover:shadow-xl dark:shadow-slate-950/50 transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                >
-                  <div className="relative h-48">
-                    {post.coverImage ? (
-                      <Image
-                        src={post.coverImage}
-                        alt={post.coverAlt || title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-slate-100 dark:bg-slate-800" />
-                    )}
-                    <span className="absolute top-3 start-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-bold shadow-md">
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-slate-500 dark:text-slate-400 text-xs mb-2 font-medium">
-                      {post.author} ·{" "}
-                      {post.publishedAt
-                        ? new Date(post.publishedAt).toLocaleDateString(
-                            locale === "ar" ? "ar-AE" : locale === "tr" ? "tr-TR" : "en-GB"
-                          )
-                        : ""}
-                    </p>
-                    <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
-                      {title}
-                    </h2>
-                    <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3 leading-relaxed flex-1">{excerpt}</p>
-                    <span className="inline-block mt-4 text-emerald-600 dark:text-emerald-400 text-sm font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
-                      {t.common.readMore} →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+          <>
+            {category === "all" && featured ? (
+              <Link href={`/blog/${featured.slug}`} className="mb-10 grid overflow-hidden rounded-3xl bg-white shadow-sm md:grid-cols-2">
+                <div className="relative min-h-64 bg-slate-200">
+                  {featured.coverImage ? (
+                    <Image src={featured.coverImage} alt={featured.coverAlt || visibleText(featured, "title", locale)} fill className="object-cover" />
+                  ) : null}
+                </div>
+                <div className="flex flex-col justify-center p-6 md:p-10">
+                  <p className="text-xs font-bold uppercase tracking-wide text-emerald-800">{featured.category}</p>
+                  <h2 className="mt-3 text-2xl md:text-4xl font-black leading-tight text-slate-950">
+                    {visibleText(featured, "title", locale)}
+                  </h2>
+                  <p className="mt-4 text-slate-700 leading-relaxed">{visibleText(featured, "excerpt", locale)}</p>
+                  <p className="mt-6 text-sm text-slate-600">
+                    {formatDate(featured.publishedAt, locale)} · {readingMinutes(featured)} {locale === "ar" ? "دقيقة قراءة" : "min read"}
+                  </p>
+                  <span className="mt-5 inline-flex text-sm font-bold text-emerald-800">{t.common.readMore}</span>
+                </div>
+              </Link>
+            ) : null}
+
+            <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {(category === "all" ? grid : filtered).map((post) => {
+                const title = visibleText(post, "title", locale);
+                const excerpt = visibleText(post, "excerpt", locale);
+                return (
+                  <Link key={post.id} href={`/blog/${post.slug}`} className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm">
+                    <div className="relative h-48 bg-slate-200">
+                      {post.coverImage ? (
+                        <Image src={post.coverImage} alt={post.coverAlt || title} fill className="object-cover" />
+                      ) : null}
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      <p className="text-xs font-bold text-emerald-800">{post.category}</p>
+                      <h2 className="mt-2 line-clamp-3 text-lg font-black leading-snug text-slate-950">{title}</h2>
+                      <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-slate-700">{excerpt}</p>
+                      <p className="mt-4 text-xs text-slate-600">
+                        {formatDate(post.publishedAt, locale)} · {readingMinutes(post)} {locale === "ar" ? "دقيقة" : "min"}
+                      </p>
+                      <span className="mt-3 text-sm font-bold text-emerald-800">{t.common.readMore}</span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </div>

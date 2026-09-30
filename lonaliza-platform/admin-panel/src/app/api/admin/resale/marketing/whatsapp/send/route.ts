@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -12,6 +13,8 @@ const LEADS_FILE = "/www/wwwroot/lonaliza.com/lonaliza-platform/database/data/re
 const ALT_LEADS_FILE = path.join(process.cwd(), ".data/reseller-leads/leads.json");
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const { companyId, phone, message, slotId } = body;
@@ -54,7 +57,14 @@ export async function POST(req: Request) {
       errorMsg = sendErr instanceof Error ? sendErr.message : "خطأ أثناء الإرسال من البوابة الداخلية";
     }
 
-    // Update lead outreach status in both files
+    if (!sendOk) {
+      return NextResponse.json({
+        ok: false,
+        sentViaGateway: false,
+        error: errorMsg || "WhatsApp disconnected",
+      }, { status: 503 });
+    }
+
     for (const filePath of [LEADS_FILE, ALT_LEADS_FILE]) {
       if (companyId && fs.existsSync(filePath)) {
         try {
@@ -74,11 +84,8 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       ok: true,
-      sentViaGateway: sendOk,
-      warning: !sendOk ? (errorMsg || "تم حفظ الرسالة في سجل المحادثات الداخلية، يرجى التأكد من ربط رقم واتساب في قسم الأتمتة") : undefined,
-      message: sendOk
-        ? "تم إرسال الرسالة بنجاح عبر بوابة واتساب الداخلية!"
-        : "تم تسجيل وتجهيز الرسالة في صندوق المحادثات الداخلية بنجاح",
+      sentViaGateway: true,
+      message: "تم إرسال الرسالة عبر بوابة واتساب",
     });
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : "Error sending whatsapp";
