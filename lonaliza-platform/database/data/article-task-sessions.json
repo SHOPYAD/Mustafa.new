@@ -1,0 +1,184 @@
+{
+  "sessions": {
+    "rebuild_france_20260929": {
+      "threadId": "rebuild_france_20260929",
+      "articleId": "article_france_mumoqbdt",
+      "slug": "france-gulf-us-mumoqbdt",
+      "destinationKey": "france",
+      "updatedAt": "2026-09-29T17:15:52.227Z",
+      "taskType": "article",
+      "plan": "research, enabled inventory, images, writing, template assembly, quality gate",
+      "recordId": "article_france_mumoqbdt",
+      "toolResults": [
+        {
+          "tool": "playwright.chromium",
+          "ok": true,
+          "summary": "playwright.chromium read 12 rows and none named a city or region inside France; the engine used the editorial France list without printing the source | redis 127.0.0.1:6380 24h playwright.chromium sequential 6 queries rows=12 | geo=US q=Paris travel: related and rising lists were empty | geo=SA q=Paris travel: related and rising lists were empty | geo=SA q=سفر فرنسا: related and rising lists were empty | geo=SA q=سياحة باريس: related and rising lists were empty",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "runFlightSearch",
+          "ok": true,
+          "summary": "27 itineraries via runFlightSearch",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "runPublicHotelSearch",
+          "ok": true,
+          "summary": "18 hotels via runPublicHotelSearch",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "searchUnsplash/searchPexels",
+          "ok": true,
+          "summary": "3 photos via searchUnsplash/searchPexels",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "SeeruRideAdapter.searchLocations",
+          "ok": false,
+          "summary": "name search returned no place for Paris | name search returned no place for Nice | name search returned no place for Lyon",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "gemini.generateContent",
+          "ok": true,
+          "summary": "دليل السفر الشامل إلى فرنسا: استكشاف باريس ونيس وليون للمسافرين من الخليج وأمريكا",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "renderOfficialArticle",
+          "ok": true,
+          "summary": "official template rendered",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "assertDestinationQuality",
+          "ok": true,
+          "summary": "destination check passed",
+          "at": "2026-09-29T17:15:52.228Z"
+        },
+        {
+          "tool": "upsertBlogPost",
+          "ok": true,
+          "summary": "upsertBlogPost article_france_mumoqbdt france-gulf-us-mumoqbdt",
+          "at": "2026-09-29T17:15:52.228Z"
+        }
+      ]
+    },
+    "probe_email_disconnect_20260929": {
+      "threadId": "probe_email_disconnect_20260929",
+      "articleId": "",
+      "slug": "",
+      "destinationKey": "email",
+      "updatedAt": "2026-09-29T15:40:34.454Z",
+      "taskType": "email",
+      "plan": "call marketing-smtp",
+      "recordId": "email",
+      "toolResults": [
+        {
+          "tool": "marketing-smtp",
+          "ok": false,
+          "summary": "SMTP host/credentials are not configured (localhost default is not a campaign sender)",
+          "at": "2026-09-29T15:40:34.454Z"
+        }
+      ]
+    },
+    "studio_sess_1790603472220": {
+      "threadId": "studio_sess_1790603472220",
+      "articleId": "",
+      "slug": "",
+      "destinationKey": "general",
+      "updatedAt": "2026-09-30T15:35:47.903Z",
+      "taskType": "general",
+      "plan": "specialist_swarm general",
+      "recordId": "general",
+      "toolResults": [
+        {
+          "tool": "mcp_dashboard_bookings",
+          "ok": true,
+          "summary": "25 حجزاً · PocketBase متصل",
+          "at": "2026-09-30T15:35:34.527Z"
+        },
+        {
+          "tool": "mcp_financial_margin_audit",
+          "ok": true,
+          "summary": "تدقيق الهامش: 13% من مدفوعات 1399.52$ وربح 182.54$ (بيانات لوحة الحجوزات).",
+          "at": "2026-09-30T15:35:35.485Z"
+        },
+        {
+          "tool": "mcp_connector_probe",
+          "ok": false,
+          "summary": "غير متصل: marketing-smtp: SMTP host/credentials are not configured | callWhatsAppCloudTool: WhatsApp Cloud token or phone number id is not connected | executeGoogleFlowPipeline: Google Flow is not connected | resolveGeminiApiKey: GEMINI_API_KEY is not configured",
+          "at": "2026-09-30T15:35:34.530Z"
+        },
+        {
+          "tool": "mcp_tourism_inventory",
+          "ok": true,
+          "summary": "المخزون السياحي: 111 برنامج سياحي معتمد | 42 جولة | 8 سيارة (8 نشطة)",
+          "at": "2026-09-30T15:35:34.609Z"
+        },
+        {
+          "tool": "mcp_meta_ads_intelligence",
+          "ok": true,
+          "summary": "Meta: غير مربوط · Google: غير مربوط",
+          "at": "2026-09-30T15:35:34.533Z"
+        },
+        {
+          "tool": "mcp_dashboard_bookings",
+          "ok": true,
+          "summary": "25 حجزاً · PocketBase متصل",
+          "at": "2026-09-30T15:35:34.962Z"
+        }
+      ]
+    },
+    "verify_delegate": {
+      "threadId": "verify_delegate",
+      "articleId": "",
+      "slug": "",
+      "destinationKey": "general",
+      "updatedAt": "2026-09-29T22:42:20.533Z",
+      "taskType": "general",
+      "plan": "specialist_swarm general",
+      "recordId": "general",
+      "toolResults": [
+        {
+          "tool": "mcp_dashboard_bookings",
+          "ok": true,
+          "summary": "25 حجزاً · PocketBase متصل",
+          "at": "2026-09-29T22:42:17.391Z"
+        },
+        {
+          "tool": "mcp_financial_margin_audit",
+          "ok": true,
+          "summary": "تدقيق الهامش: 13% من مدفوعات 1400.03$ وربح 182.61$ (بيانات لوحة الحجوزات).",
+          "at": "2026-09-29T22:42:17.972Z"
+        },
+        {
+          "tool": "mcp_connector_probe",
+          "ok": false,
+          "summary": "غير متصل: marketing-smtp: SMTP host/credentials are not configured | callWhatsAppCloudTool: WhatsApp Cloud token or phone number id is not connected | executeGoogleFlowPipeline: Google Flow is not connected | resolveGeminiApiKey: GEMINI_API_KEY is not configured",
+          "at": "2026-09-29T22:42:17.397Z"
+        },
+        {
+          "tool": "mcp_tourism_inventory",
+          "ok": true,
+          "summary": "المخزون السياحي: 110 برنامج سياحي معتمد | 42 جولة | 8 سيارة (8 نشطة)",
+          "at": "2026-09-29T22:42:17.499Z"
+        },
+        {
+          "tool": "mcp_meta_ads_intelligence",
+          "ok": true,
+          "summary": "Meta: غير مربوط · Google: غير مربوط",
+          "at": "2026-09-29T22:42:17.400Z"
+        },
+        {
+          "tool": "mcp_dashboard_bookings",
+          "ok": true,
+          "summary": "25 حجزاً · PocketBase متصل",
+          "at": "2026-09-29T22:42:17.786Z"
+        }
+      ]
+    }
+  }
+}

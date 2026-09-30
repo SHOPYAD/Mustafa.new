@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { neutralBlogLabel } from "@/lib/blog/neutral-chrome";
 import { useState, useEffect, useMemo, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
@@ -279,10 +280,10 @@ export default function Header() {
       },
       { key: "aiChat", label: t.nav.aiChat, href: "/ai-chat" },
       { key: "contact", label: t.nav.contact, href: "/contact" },
-      { key: "uaeTours", label: t.nav.uaeTours, href: "/vip-tours" },
+      { key: "uaeTours", label: neutralBlogLabel(t.nav.uaeTours, pathname), href: "/vip-tours" },
       { key: "blog", label: t.nav.blog, href: "/blog" },
     ],
-    [t, holidayChildren, homeHref]
+    [t, holidayChildren, homeHref, pathname]
   );
 
   const navLinks = useMemo(() => {

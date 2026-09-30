@@ -158,7 +158,8 @@ export async function POST(request: Request) {
       ? String(body.customer_phone).slice(0, 50)
       : null,
     message: body.message ? String(body.message).slice(0, 4000) : null,
-    user_id: user?.id || (body.user_id ? String(body.user_id) : null),
+    // الحساب من الجلسة فقط؛ لا يُقبل user_id من جسم الطلب.
+    user_id: user?.id || null,
     metadata:
       body.metadata && typeof body.metadata === "object"
         ? (body.metadata as Record<string, unknown>)

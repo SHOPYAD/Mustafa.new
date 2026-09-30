@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getQdrantClient, SWARM_COLLECTIONS } from "@/lib/swarm/qdrant-vector-store";
 
@@ -29,7 +30,9 @@ export interface BrainLink {
   strength: number;
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const qdrant = getQdrantClient();
 

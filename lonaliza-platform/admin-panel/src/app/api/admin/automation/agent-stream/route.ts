@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { swarmEventBus, type SwarmStreamEvent } from "@/lib/swarm/swarm-events";
+import { assertAdminApi } from "@/lib/server/admin-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  const denied = await assertAdminApi(request);
+  if (denied) return denied;
   const searchParams = request.nextUrl.searchParams;
   const sessionId = searchParams.get("sessionId") || "live_global";
 

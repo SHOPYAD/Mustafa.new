@@ -1,0 +1,12 @@
+---
+description: Real data, agent tools and external effects
+alwaysApply: true
+---
+- Demo, stale, unknown and live states must be distinct.
+- Enforce tenant boundaries and capability authorization on the server.
+- Keep secrets out of client bundles, screenshots and traces.
+- Preview and approve consequential actions; require idempotency and audit.
+- Read-only diagnostics are not permission to book, charge, publish or deploy.
+- Display observable tool activity, not purported access to hidden model reasoning.
+- Voice input is opt-in; stop microphone tracks and audio on cancellation or exit.
+

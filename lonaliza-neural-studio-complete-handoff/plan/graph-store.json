@@ -1,0 +1,27 @@
+{
+  "domains": 11,
+  "screens": 20,
+  "rootCore": {
+    "id": "core",
+    "label": "الوكيل المشرف",
+    "role": "General Supervisor",
+    "x": 836,
+    "y": 468,
+    "status": "active",
+    "pulseHz": 1.2
+  },
+  "relationTypes": [
+    "contains",
+    "depends_on",
+    "calls",
+    "produces",
+    "observed_flow",
+    "governs"
+  ],
+  "hierarchyLevels": {
+    "L0": "المستوى العام والمجالات الرئيسية",
+    "L1": "الخدمات والمكونات الأساسية",
+    "L2": "الإجراءات والكيانات التشغيلية",
+    "L3": "العقود والبيانات الفردية الدقيقة"
+  }
+}

@@ -86,6 +86,8 @@ const IATA_BY_CITY: Record<string, string> = {
   cairo: "CAI",
   london: "LON",
   paris: "PAR",
+  nice: "NCE",
+  lyon: "LYS",
   doha: "DOH",
   kuwait: "KWI",
   manama: "BAH",
@@ -309,6 +311,37 @@ export async function resolveRateHawkRegionId(cityNameEn: string, countryCode: s
 
 /* ------------------------------ Unified ------------------------------ */
 
+/** Hotelbeds destination codes already stored for France: PAR, NCE, LYS. */
+export function franceHotelSupplierKey(rawQuery: string): { nameEn: string; iata: "PAR" | "NCE" | "LYS" } | null {
+  const text = ` ${slug(rawQuery)} `;
+  if (/\b(texas|usa|united states)\b/.test(text)) return null;
+  if (/\bparis\b/.test(text) || /\bpar\b/.test(text)) return { nameEn: "Paris", iata: "PAR" };
+  if (/\bnice\b/.test(text) || /\bnce\b/.test(text)) return { nameEn: "Nice", iata: "NCE" };
+  if (/\blyon\b/.test(text) || /\blys\b/.test(text)) return { nameEn: "Lyon", iata: "LYS" };
+  return null;
+}
+
+let airportCoordCache: Map<string, { lat: number; lng: number }> | null = null;
+
+function airportCoords(iata: string): { lat: number; lng: number } | null {
+  if (!airportCoordCache) {
+    airportCoordCache = new Map();
+    try {
+      const filePath = path.join(process.cwd(), ".data/airports/cities.json");
+      const raw = JSON.parse(fs.readFileSync(filePath, "utf8")) as Array<{ cityCode?: string; countryCode?: string; lat?: number; lon?: number }>;
+      for (const row of raw) {
+        const code = String(row.cityCode || "").toUpperCase();
+        if (row.countryCode === "FR" && code && typeof row.lat === "number" && typeof row.lon === "number") {
+          airportCoordCache.set(code, { lat: row.lat, lng: row.lon });
+        }
+      }
+    } catch {
+      /* airports file is optional */
+    }
+  }
+  return airportCoordCache.get(iata) || null;
+}
+
 function placeToBase(place: GeoPlaceRecord | null, fallbackName: string): Omit<ResolvedDestination, "hotelbedsCode" | "ratehawkRegionId"> {
   const nameEn = place?.city_name_en || fallbackName;
   const iata = IATA_BY_CITY[slug(nameEn)] || null;
@@ -336,18 +369,36 @@ export async function resolveDestination(
   opts: { needHotelbeds?: boolean; needRateHawk?: boolean } = {}
 ): Promise<ResolvedDestination> {
   const query = normalizeQuery(rawQuery) || "Istanbul";
-  const cacheKey = `dest:${slug(query)}:${opts.needHotelbeds ? 1 : 0}${opts.needRateHawk ? 1 : 0}`;
+  const cacheKey = `dest:v2:${slug(query)}:${opts.needHotelbeds ? 1 : 0}${opts.needRateHawk ? 1 : 0}`;
   const cached = await cacheGet<ResolvedDestination>(cacheKey);
   if (cached) return cached;
 
-  const place = await findPlaceByQuery(query).catch(() => null);
-  const base = placeToBase(place, query);
+  const cityToken = query.split(",")[0]?.trim() || query;
+  const place = await findPlaceByQuery(cityToken).catch(() => null);
+  const base = placeToBase(place, cityToken);
+  const france = franceHotelSupplierKey(query);
+  if (france && (base.countryCode === "FR" || base.countryCode === "" || /france/i.test(query))) {
+    base.nameEn = france.nameEn;
+    base.countryCode = "FR";
+    base.iata = france.iata;
+    if (base.lat == null || base.lng == null) {
+      const coords = airportCoords(france.iata);
+      if (coords) {
+        base.lat = coords.lat;
+        base.lng = coords.lng;
+      }
+    }
+  }
   const cc = base.countryCode;
 
-  const [hotelbedsCode, ratehawkRegionId] = await Promise.all([
+  let [hotelbedsCode, ratehawkRegionId] = await Promise.all([
     opts.needHotelbeds && cc ? resolveHotelbedsDestinationCode(base.nameEn, cc) : Promise.resolve(null),
     opts.needRateHawk ? resolveRateHawkRegionId(base.nameEn, cc || "") : Promise.resolve(null),
   ]);
+  if (!hotelbedsCode && france && cc === "FR") {
+    const listed = await ensureHotelbedsDestinations("FR");
+    hotelbedsCode = listed.find((row) => row.code === france.iata)?.code || null;
+  }
 
   const out: ResolvedDestination = { ...base, hotelbedsCode, ratehawkRegionId };
   // Missing supplier keys are cached for a short time only so a transient failure self-heals.

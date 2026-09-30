@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { executeSwarmTool } from "@/lib/swarm/agent-tools";
 import { saveSwarmDiscussionMessage } from "@/lib/automation/agent-collab-store";
@@ -6,6 +7,8 @@ import type { SwarmToolKey } from "@/lib/swarm/types";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const { directiveId, subModuleId, toolKey, actionType, assignedAgentId, payload } = body;

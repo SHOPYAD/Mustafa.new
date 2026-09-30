@@ -1,0 +1,56 @@
+{
+  "screenId": "07",
+  "title": "محتوى الموقع والتطبيقات",
+  "layout": "dag",
+  "viewport": {
+    "width": 1672,
+    "height": 941
+  },
+  "header": {
+    "x": 0,
+    "y": 0,
+    "width": 1672,
+    "height": 58
+  },
+  "bottomDock": {
+    "x": 0,
+    "y": 877,
+    "width": 1672,
+    "height": 64
+  },
+  "sidebar": {
+    "x": 1372,
+    "y": 58,
+    "width": 300,
+    "height": 819
+  },
+  "canvas": {
+    "x": 0,
+    "y": 58,
+    "width": 1372,
+    "height": 819
+  },
+  "core": {
+    "x": 836,
+    "y": 468,
+    "radius": 60
+  },
+  "panels": [
+    {
+      "id": "context",
+      "title": "معلومات السياق",
+      "x": 24,
+      "y": 80,
+      "width": 300,
+      "height": 260
+    },
+    {
+      "id": "inspector",
+      "title": "فاحص العقدة",
+      "x": 1040,
+      "y": 80,
+      "width": 310,
+      "height": 380
+    }
+  ]
+}

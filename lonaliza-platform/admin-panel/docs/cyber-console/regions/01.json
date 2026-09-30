@@ -1,0 +1,108 @@
+{
+  "screen": "01",
+  "reference": "lonaliza-neural-studio-complete-handoff/images/01-platform-neural-atlas.png",
+  "designSize": {
+    "w": 1672,
+    "h": 941
+  },
+  "measuredBy": "pixel scan of cyan window borders and warm core (2026-09-29)",
+  "regions": {
+    "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1672,
+      "h": 79
+    },
+    "contextWindow": {
+      "x": 14,
+      "y": 82,
+      "w": 296,
+      "h": 172,
+      "anchor": "top-left"
+    },
+    "explorer": {
+      "x": 1335,
+      "y": 102,
+      "w": 318,
+      "h": 745,
+      "anchor": "top-right"
+    },
+    "dock": {
+      "x": 0,
+      "y": 859,
+      "w": 1672,
+      "h": 82,
+      "anchor": "bottom"
+    },
+    "graphArea": {
+      "x": 318,
+      "y": 79,
+      "w": 1010,
+      "h": 780
+    },
+    "agentCore": {
+      "cx": 740,
+      "cy": 457,
+      "rVisible": 127
+    }
+  },
+  "domainsOrder": [
+    "overview",
+    "bookings",
+    "inventory",
+    "storefront",
+    "customers",
+    "marketing",
+    "ai_center",
+    "finance",
+    "legal",
+    "system",
+    "resale"
+  ],
+  "titleCenters": {
+    "overview": [
+      747,
+      92
+    ],
+    "bookings": [
+      955,
+      126
+    ],
+    "inventory": [
+      1055,
+      259
+    ],
+    "storefront": [
+      1118,
+      447
+    ],
+    "customers": [
+      939,
+      649
+    ],
+    "marketing": [
+      779,
+      712
+    ],
+    "ai_center": [
+      494,
+      694
+    ],
+    "finance": [
+      400,
+      547
+    ],
+    "legal": [
+      330,
+      418
+    ],
+    "system": [
+      418,
+      259
+    ],
+    "resale": [
+      547,
+      126
+    ]
+  }
+}

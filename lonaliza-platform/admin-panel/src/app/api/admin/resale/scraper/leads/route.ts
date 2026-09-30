@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -14,6 +15,8 @@ import type { LeadsFilterOptions, OutreachStatus } from "@/lib/server/gmaps-scra
 export const runtime = "nodejs";
 
 export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Leads API");
     const { searchParams } = new URL(req.url);
@@ -48,6 +51,8 @@ export async function GET(req: Request) {
 }
 
 export async function PATCH(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Leads Update API");
     const body = (await req.json()) as {
@@ -79,6 +84,8 @@ export async function PATCH(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Leads Delete API");
     const { searchParams } = new URL(req.url);

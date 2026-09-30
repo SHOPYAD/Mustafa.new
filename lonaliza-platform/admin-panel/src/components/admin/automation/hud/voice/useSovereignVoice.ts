@@ -65,7 +65,7 @@ const BARGE_IN_STOP_WORDS = [
 export function useSovereignVoice({
   onDirectiveSubmit,
   selectedVoice = "ar-SA-HamedNeural",
-  silenceThresholdMs = 1250,
+  silenceThresholdMs = 2400,
   locale = "ar",
   soundFxEnabled = true,
 }: UseSovereignVoiceOptions = {}) {
@@ -88,6 +88,10 @@ export function useSovereignVoice({
   // Duplex Mute Lock & Echo Suppression Refs
   const isMutedByPlaybackRef = useRef<boolean>(false);
   const isAgentSpeakingRef = useRef<boolean>(false);
+  const pendingDirectiveRef = useRef<string | null>(null);
+  const flushVoiceRef = useRef<(text: string) => void>(() => {});
+  const speechQueueRef = useRef(Promise.resolve());
+  const speechDepthRef = useRef(0);
   const isUserSpeakingRef = useRef<boolean>(false);
   const playbackCooldownTimerRef = useRef<NodeJS.Timeout | null>(null);
   const spokenHistoryFingerprintRef = useRef<string[]>([]);
@@ -173,6 +177,7 @@ export function useSovereignVoice({
 
   // Safe resume of speech recognition after playback completes with acoustic dissipation cooldown
   const schedulePlaybackRelease = useCallback(() => {
+    if (speechDepthRef.current > 0) return;
     if (playbackCooldownTimerRef.current) {
       clearTimeout(playbackCooldownTimerRef.current);
     }
@@ -182,7 +187,6 @@ export function useSovereignVoice({
       isAgentSpeakingRef.current = false;
       isMutedByPlaybackRef.current = false;
 
-      // Physically re-enable microphone capture tracks
       if (micStreamRef.current) {
         micStreamRef.current.getAudioTracks().forEach((track) => {
           track.enabled = true;
@@ -196,22 +200,23 @@ export function useSovereignVoice({
           // already running or harmless transition
         }
       }
+      const waiting = pendingDirectiveRef.current;
+      if (waiting) {
+        pendingDirectiveRef.current = null;
+        flushVoiceRef.current(waiting);
+      }
     }, 850);
   }, []);
-  // Speak Agent Response via Neural TTS or Fallback with Ironclad Duplex Mute Lock
-    const speakAgentResponse = useCallback(
-    async (text: string) => {
+  const speakOneTurn = useCallback(
+    async (text: string, voice: string) => {
       if (!text || !text.trim()) return;
-
+      speechDepthRef.current += 1;
+      isAgentSpeakingRef.current = true;
       setIsAgentSpeaking(true);
       setAgentResponseText(text);
-
+      try {
       if (!soundFxEnabled) {
-        // Silent mode: simulate speaking delay then release
-        setTimeout(() => {
-          setIsAgentSpeaking(false);
-          isAgentSpeakingRef.current = false;
-        }, Math.min(3000, text.length * 50));
+        await new Promise((resolve) => setTimeout(resolve, Math.min(3000, text.length * 50)));
         return;
       }
 
@@ -252,14 +257,14 @@ export function useSovereignVoice({
       try {
         const { ctx, playbackAnalyser } = await setupAudioContext();
 
-        // Split text into chunked sentences for fast progressive synthesis
-        const cleanChunk = text.slice(0, 500);
+        // Send full vocal text (up to 4000 chars) for server-side seamless synthesis
+        const cleanTextForTts = text.slice(0, 4000);
 
         // 1. Try server-side Microsoft Edge Neural TTS
         const response = await fetch("/api/admin/automation/voice-tts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text: cleanChunk, voice: selectedVoice }),
+          body: JSON.stringify({ text: cleanTextForTts, voice }),
         });
 
         if (!response.ok) {
@@ -285,38 +290,43 @@ export function useSovereignVoice({
 
         currentAudioSourceRef.current = source;
 
-        source.onended = () => {
-          currentAudioSourceRef.current = null;
-          schedulePlaybackRelease();
-        };
-
-        source.start(0);
+        await new Promise<void>((resolve) => {
+          source.onended = () => {
+            currentAudioSourceRef.current = null;
+            resolve();
+          };
+          source.start(0);
+        });
       } catch (err) {
         console.warn("[VoiceHook] Falling back to Web Speech Synthesis:", err);
-        // Fallback to client-side browser synthesis
         if ("speechSynthesis" in window) {
           window.speechSynthesis.cancel();
           const utterance = new SpeechSynthesisUtterance(text);
           utterance.lang = "ar-SA";
           utterance.rate = 1.05;
-          // Store globally so Chromium V8 engine does not garbage collect it mid-sentence
-          (window as any).__jarvis_current_utterance = utterance;
-
-          utterance.onend = () => {
-            (window as any).__jarvis_current_utterance = null;
-            schedulePlaybackRelease();
-          };
-          utterance.onerror = () => {
-            (window as any).__jarvis_current_utterance = null;
-            schedulePlaybackRelease();
-          };
-          window.speechSynthesis.speak(utterance);
-        } else {
-          schedulePlaybackRelease();
+          (window as unknown as { __jarvis_current_utterance?: SpeechSynthesisUtterance }).__jarvis_current_utterance = utterance;
+          await new Promise<void>((resolve) => {
+            utterance.onend = () => resolve();
+            utterance.onerror = () => resolve();
+            window.speechSynthesis.speak(utterance);
+          });
         }
       }
+      } finally {
+        speechDepthRef.current = Math.max(0, speechDepthRef.current - 1);
+        if (speechDepthRef.current === 0) schedulePlaybackRelease();
+      }
     },
-    [setupAudioContext, selectedVoice, schedulePlaybackRelease, soundFxEnabled]
+    [setupAudioContext, schedulePlaybackRelease, soundFxEnabled]
+  );
+
+  const speakAgentResponse = useCallback(
+    (text: string, voiceOverride?: string) => {
+      const turn = speechQueueRef.current.then(() => speakOneTurn(text, voiceOverride || selectedVoice));
+      speechQueueRef.current = turn.then(() => undefined, () => undefined);
+      return turn;
+    },
+    [selectedVoice, speakOneTurn]
   );
 
   // Dispatch directive on silence detection
@@ -324,6 +334,10 @@ export function useSovereignVoice({
     async (directive: string) => {
       const cleanDirective = directive.trim();
       if (!cleanDirective) return;
+      if (isMutedByPlaybackRef.current || speechDepthRef.current > 0) {
+        pendingDirectiveRef.current = cleanDirective;
+        return;
+      }
 
       // Ambient noise & short filler rejection
       const words = cleanDirective.split(/\s+/).filter(Boolean);
@@ -378,6 +392,9 @@ export function useSovereignVoice({
     },
     [onDirectiveSubmit, speakAgentResponse, locale]
   );
+  flushVoiceRef.current = (text: string) => {
+    void handleFinalDirective(text);
+  };
 
   // Start continuous listening with Duplex Mute Guard & Echo Cancellation
   const startListening = useCallback(async () => {
@@ -430,19 +447,13 @@ export function useSovereignVoice({
             return;
           }
 
-          let interimTranscript = "";
-          let finalTranscript = "";
-
-          for (let i = event.resultIndex; i < event.results.length; ++i) {
-            const result = event.results[i];
-            if (result.isFinal) {
-              finalTranscript += result[0].transcript + " ";
-            } else {
-              interimTranscript += result[0].transcript;
-            }
+          // Aggregate full continuous transcript across all speech results in this utterance
+          let fullTranscript = "";
+          for (let i = 0; i < event.results.length; ++i) {
+            fullTranscript += event.results[i][0].transcript + " ";
           }
 
-          const currentText = (finalTranscript || interimTranscript).trim();
+          const currentText = fullTranscript.trim();
           if (currentText) {
             // Echo Fingerprint Rejection: Ignore any words resembling what the agent recently uttered
             const normalizedInput = currentText.toLowerCase().replace(/[^\w\s\u0600-\u06FF]/gi, "").trim();
@@ -480,7 +491,7 @@ export function useSovereignVoice({
             setLastSpokenText(currentText);
             accumulatedTranscriptRef.current = currentText;
 
-            // Reset silence VAD timer
+            // Reset silence VAD timer (give 3200ms of quiet before submitting full utterance)
             if (silenceTimerRef.current) {
               clearTimeout(silenceTimerRef.current);
             }
@@ -488,9 +499,17 @@ export function useSovereignVoice({
             silenceTimerRef.current = setTimeout(() => {
               const textToSend = accumulatedTranscriptRef.current;
               if (textToSend) {
+                // Abort and restart recognition to reset event.results buffer for the next utterance
+                if (recognitionRef.current) {
+                  try {
+                    recognitionRef.current.abort();
+                  } catch {
+                    // ignore
+                  }
+                }
                 void handleFinalDirective(textToSend);
               }
-            }, silenceThresholdMs);
+            }, Math.max(3200, silenceThresholdMs));
           }
         };
 
@@ -531,8 +550,15 @@ export function useSovereignVoice({
     }
   }, [setupAudioContext, updateFrequencies, handleFinalDirective, silenceThresholdMs, locale]);
 
-  // Stop listening
+  // Stop listening with HARD HARDWARE KILL
   const stopListening = useCallback(() => {
+    isActiveRef.current = false;
+    setIsActive(false);
+    setIsUserSpeaking(false);
+    setIsAgentSpeaking(false);
+    setIsProcessing(false);
+    isMutedByPlaybackRef.current = false;
+
     if (silenceTimerRef.current) {
       clearTimeout(silenceTimerRef.current);
       silenceTimerRef.current = null;
@@ -542,17 +568,28 @@ export function useSovereignVoice({
       playbackCooldownTimerRef.current = null;
     }
 
+    const pendingText = accumulatedTranscriptRef.current;
+    accumulatedTranscriptRef.current = "";
+
     if (recognitionRef.current) {
       try {
-        recognitionRef.current.stop();
+        recognitionRef.current.abort();
       } catch {
         // ignore
       }
       recognitionRef.current = null;
     }
 
+    if (pendingText && pendingText.trim().length > 3) {
+      void handleFinalDirective(pendingText);
+    }
+
+    // Physically kill and disconnect all hardware audio input tracks
     if (micStreamRef.current) {
-      micStreamRef.current.getTracks().forEach((track) => track.stop());
+      micStreamRef.current.getTracks().forEach((track) => {
+        track.enabled = false;
+        track.stop();
+      });
       micStreamRef.current = null;
     }
 
@@ -570,10 +607,10 @@ export function useSovereignVoice({
       currentAudioSourceRef.current = null;
     }
 
-    setIsActive(false);
-    setIsUserSpeaking(false);
-    setIsAgentSpeaking(false);
-    isMutedByPlaybackRef.current = false;
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+
     setAudioFrequencies(new Array(32).fill(0));
   }, []);
 

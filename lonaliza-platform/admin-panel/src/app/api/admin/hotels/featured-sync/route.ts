@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
@@ -227,6 +228,8 @@ async function writeCatalog(catalog: Record<string, any>): Promise<void> {
 
 // GET: Return current settings, catalog summary, and hotels
 export async function GET(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const settings = await readSettings();
     const catalog = await readCatalog();
@@ -257,6 +260,8 @@ export async function GET(req: NextRequest) {
 
 // POST: Execute sync agent, update schedule, or update markup
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const action = body.action || "trigger_sync";

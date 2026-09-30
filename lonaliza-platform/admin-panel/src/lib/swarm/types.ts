@@ -39,6 +39,7 @@ export type SwarmToolKey =
   | "dashboard_bookings"
   | "hotels_runtime"
   | "flights_runtime"
+  | "control_panel_tools"
   | "cars_list"
   | "ads_status"
   | "nostr_social"

@@ -16,6 +16,7 @@ export const SWARM_TOOL_CATALOG: SwarmToolCatalogEntry[] = [
   { key: "dashboard_bookings", nameAr: "الحجوزات والإيراد", descriptionAr: "إحصاءات لوحة التحكم من PocketBase", kind: "read" },
   { key: "hotels_runtime", nameAr: "محرك الفنادق", descriptionAr: "حالة مزودي الفنادق الفعلية", kind: "read" },
   { key: "flights_runtime", nameAr: "محرك الطيران", descriptionAr: "حالة مزود الطيران", kind: "read" },
+  { key: "control_panel_tools", nameAr: "موصلات لوحة التحكم", descriptionAr: "قراءة حالة الإعدادات والبريد والواتساب والإعلانات والموزعين", kind: "read" },
   { key: "cars_list", nameAr: "أسطول السيارات", descriptionAr: "السيارات الداخلية النشطة", kind: "read" },
   { key: "ads_status", nameAr: "ربط الإعلانات", descriptionAr: "هل توكنات Meta/Google مربوطة", kind: "read" },
   { key: "nostr_social", nameAr: "السوشيال ونوستر", descriptionAr: "إعدادات المجتمع والريلايز النشطة", kind: "read" },

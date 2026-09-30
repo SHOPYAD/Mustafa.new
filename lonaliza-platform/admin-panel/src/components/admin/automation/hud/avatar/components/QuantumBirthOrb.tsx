@@ -38,9 +38,9 @@ const ORB_FRAGMENT_SHADER = `
     vec3 col = mix(colEdge, colMid, smoothstep(0.0, 0.45, glow));
     col = mix(col, colCore, smoothstep(0.45, 1.0, glow));
 
-    // Assembly visibility: bright and active during birth vortex, settles down when assembled
+    // Assembly visibility: intense during birth vortex, dissolves completely once assembled so point-cloud heart shines
     float activeFactor = 1.0 - smoothstep(0.85, 1.0, uAssemblyProgress);
-    float alpha = glow * pulse * (0.30 + 0.70 * activeFactor);
+    float alpha = glow * pulse * activeFactor;
 
     gl_FragColor = vec4(col, alpha);
   }

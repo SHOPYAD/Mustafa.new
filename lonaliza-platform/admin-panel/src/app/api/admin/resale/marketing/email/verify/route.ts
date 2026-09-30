@@ -1,10 +1,13 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { verifyMarketingSmtp } from "@/lib/server/email/marketing-smtp";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function POST() {
+export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const result = await verifyMarketingSmtp();
     return NextResponse.json(result);

@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import {
   getOpenRouterConfig,
@@ -35,6 +36,8 @@ function inferTier(promptPricePerM: number, isFree: boolean): ModelTier {
 }
 
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = (await req.json().catch(() => ({}))) as {
       apiKey?: string;
@@ -164,7 +167,9 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   const config = getOpenRouterConfig();
   const models = config.cachedDynamicModels || CURATED_OPENROUTER_MODELS;
   return NextResponse.json({

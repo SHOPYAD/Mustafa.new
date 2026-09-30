@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import {
   getOpenRouterConfig,
@@ -8,12 +9,16 @@ import {
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   const config = getOpenRouterConfig();
   return NextResponse.json({ ok: true, config });
 }
 
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = (await req.json().catch(() => ({}))) as Partial<OpenRouterConfigData> & {
       openRouterApiKey?: string;

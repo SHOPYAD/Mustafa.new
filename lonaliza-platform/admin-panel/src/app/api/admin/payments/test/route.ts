@@ -66,6 +66,9 @@ export async function POST(req: NextRequest) {
 
     // Instantiate gateway probe
     const gateway = GatewayRegistry.resolve(kind, effectiveCredentials, { testMode });
+    if (typeof gateway.testConnection !== "function") {
+      return NextResponse.json({ ok: false, error: `اختبار الاتصال غير مدعوم لبوابة ${kind}` }, { status: 400 });
+    }
     const result = await gateway.testConnection();
 
     const latencyMs = Date.now() - started;

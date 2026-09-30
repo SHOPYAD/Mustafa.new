@@ -71,8 +71,8 @@ export const useAvatarStore = create<AvatarStoreState>((set, get) => ({
   statusText: "STATUS: IDLE",
   viewMode: "FRONT_HERO",
   profileTransitionProgress: 0.0,
-  assemblyProgress: 0.0,
-  isAssembled: false,
+  assemblyProgress: 1.0,
+  isAssembled: true,
 
   voiceLevel: 0,
   userAudioLevel: 0,

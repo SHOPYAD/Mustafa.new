@@ -116,7 +116,7 @@ export function timelineFromGeminiStages(
     let status: ProcessingStage["status"] = "pending";
     let progress = 0;
     let duration: number | undefined;
-    if (ctx.hasFinished && index === cleaned.length - 1) {
+    if (ctx.hasFinished || (ctx.isProcessing && step > stageNum)) {
       status = "completed";
       progress = 100;
       duration = 900;
@@ -142,7 +142,7 @@ export function timelineFromGeminiStages(
     built[0];
 
   return {
-    title: `خطة Gemini: ${directive.slice(0, 45)}`,
+    title: `خطة التنفيذ: ${directive.slice(0, 45)}`,
     subtitle: "خطوات مولّدة من النموذج لأن المهمة خارج فئات المدونة والفيديو والتسويق والسياحة والإدارة",
     category: "dynamic",
     stages: built,

@@ -125,6 +125,7 @@ export default function AmberVolumetricCore() {
       // Positioned strictly inside the lower face (mouth, jaw, nose)
       position={[-0.58, 2.1, 4.0]}
       material={material}
+      renderOrder={12}
     >
       <planeGeometry args={[15.6, 11.8, 1, 1]} />
     </mesh>

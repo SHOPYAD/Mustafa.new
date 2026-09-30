@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
@@ -8,7 +9,9 @@ const execAsync = promisify(exec);
 const ROOT = process.cwd();
 const STORE_DIR = path.join(ROOT, "public/app/store-assets");
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     await fs.mkdir(STORE_DIR, { recursive: true });
     const playIconPath = path.join(STORE_DIR, "google-play-icon-512.png");
@@ -32,6 +35,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     await fs.mkdir(STORE_DIR, { recursive: true });
 

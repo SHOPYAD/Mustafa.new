@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { resolveGeminiApiKey } from "@/lib/server/gemini";
 
@@ -78,6 +79,8 @@ const LUXURY_TEMPLATES: ShowcaseSlideTemplate[] = [
 ];
 
 export async function POST(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json().catch(() => ({}));
     const prompt = typeof body?.prompt === "string" ? body.prompt.trim() : "";

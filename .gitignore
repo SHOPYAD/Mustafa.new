@@ -59,3 +59,14 @@ next-env.d.ts
 **/*.iml
 **/postiz-app/
 **/redis-data/
+
+# Live vector / runtime secrets (never commit)
+**/.env.local
+**/gemini-secrets.json
+**/openrouter-secrets.json
+**/publish/cron-secret
+lonaliza-platform/.data/
+lonaliza-platform/database/data/gemini-secrets.json
+lonaliza-platform/database/data/openrouter-secrets.json
+lonaliza-platform/database/data/publish/cron-secret
+.data/qdrant_storage/

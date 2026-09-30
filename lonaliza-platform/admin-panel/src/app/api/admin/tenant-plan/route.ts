@@ -1,10 +1,13 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { isOrigin } from "@/lib/server/deployment-role";
 import { verifyLicense } from "@/lib/license/client";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     if (isOrigin()) {
       return NextResponse.json({

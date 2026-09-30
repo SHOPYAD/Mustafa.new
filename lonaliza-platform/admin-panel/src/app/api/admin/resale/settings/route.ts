@@ -1,10 +1,13 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getResellerSettings, saveResellerSettings, type ResellerSettings } from "@/lib/server/resale-store";
 import { assertOriginOnly } from "@/lib/server/deployment-role";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Settings API");
     const settings = await getResellerSettings();
@@ -16,6 +19,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Settings API");
     const body = (await req.json()) as Partial<ResellerSettings>;

@@ -31,6 +31,8 @@ export interface SupplySearchInput {
   currency?: string;
   lang?: string;
   residency?: string;
+  /** When set, fan-out calls only these suppliers, and only if the registry has them enabled. */
+  onlySuppliers?: HotelSupplierId[];
 }
 
 export type SupplierRunState = {
@@ -90,6 +92,7 @@ export function computeSessionId(input: SupplySearchInput): string {
     (input.childrenAges || []).join(","),
     (input.currency || "USD").toUpperCase(),
     (input.residency || "SA").toUpperCase(),
+    (input.onlySuppliers || []).slice().sort().join(","),
     "v3-rooms",
     // Date bucket: a new session every 10 minutes at most.
     Math.floor(Date.now() / (SEARCH_SESSION_TTL_SEC * 1000)),
@@ -117,12 +120,27 @@ async function mutateSession(sid: string, fn: (s: SearchSession) => void): Promi
   return result;
 }
 
-async function enabledSuppliers(): Promise<Record<HotelSupplierId, boolean>> {
+function gateSuppliers(
+  enabled: Record<HotelSupplierId, boolean>,
+  only?: HotelSupplierId[]
+): Record<HotelSupplierId, boolean> {
+  if (!only?.length) return enabled;
+  const allow = new Set(only);
+  return {
+    hotelbeds: Boolean(enabled.hotelbeds && allow.has("hotelbeds")),
+    travelport: Boolean(enabled.travelport && allow.has("travelport")),
+    ratehawk: Boolean(enabled.ratehawk && allow.has("ratehawk")),
+    seeru: Boolean(enabled.seeru && allow.has("seeru")),
+  };
+}
+
+async function enabledSuppliers(only?: HotelSupplierId[]): Promise<Record<HotelSupplierId, boolean>> {
   const registry = await getProvidersRegistry();
   const p = registry.providers;
   // Auto-enable RateHawk when credentials exist (plan A0).
   const rh = p.ratehawk;
-  if (rh && !rh.enabled && providerHasRequiredFields("ratehawk", rh.fields || {})) {
+  const mayTouchRatehawk = !only?.length || only.includes("ratehawk");
+  if (mayTouchRatehawk && rh && !rh.enabled && providerHasRequiredFields("ratehawk", rh.fields || {})) {
     try {
       await saveProviderRuntime("ratehawk", { enabled: true });
       supplyLogger.info({ supplier: "ratehawk" }, "RateHawk auto-enabled (credentials present)");
@@ -131,12 +149,15 @@ async function enabledSuppliers(): Promise<Record<HotelSupplierId, boolean>> {
       supplyLogger.warn({ err: String(err) }, "failed to auto-enable RateHawk");
     }
   }
-  return {
-    hotelbeds: Boolean(p.hotelbeds?.enabled),
-    travelport: Boolean(p.travelport_hotels?.enabled),
-    ratehawk: Boolean(p.ratehawk?.enabled),
-    seeru: Boolean(p.seeru_hotels?.enabled),
-  };
+  return gateSuppliers(
+    {
+      hotelbeds: Boolean(p.hotelbeds?.enabled),
+      travelport: Boolean(p.travelport_hotels?.enabled),
+      ratehawk: Boolean(p.ratehawk?.enabled),
+      seeru: Boolean(p.seeru_hotels?.enabled),
+    },
+    only
+  );
 }
 
 function withBudget<T>(budgetMs: number, fn: (signal: AbortSignal) => Promise<T>): Promise<T> {
@@ -301,7 +322,7 @@ async function fanOut(sid: string, input: SupplySearchInput, dest: ResolvedDesti
  */
 export async function ensureFanOut(session: SearchSession): Promise<SearchSession> {
   if (!session.destination) return session;
-  const enabled = await enabledSuppliers();
+  const enabled = await enabledSuppliers(session.input.onlySuppliers);
   const anyEnabled = ALL_SUPPLIERS.some((s) => enabled[s]);
   if (!anyEnabled) return session;
 
@@ -343,7 +364,7 @@ export async function startOrJoinSearchSession(input: SupplySearchInput, opts: {
   const sid = computeSessionId(input);
   let session = await getSearchSession(sid);
   if (!session) {
-    const enabled = await enabledSuppliers();
+    const enabled = await enabledSuppliers(input.onlySuppliers);
     let destination: ResolvedDestination | null = null;
     try {
       destination = await resolveDestination(input.query, { needHotelbeds: enabled.hotelbeds, needRateHawk: enabled.ratehawk });

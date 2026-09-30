@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getServerEnv } from "@/lib/server/env-store";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -8,7 +9,7 @@ export async function GET(req: NextRequest) {
     const internalUrl = new URL("/api/admin/hotels/featured-sync", req.url);
     const res = await fetch(internalUrl.toString(), {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-admin-setup-secret": (await getServerEnv("ADMIN_SETUP_SECRET")).trim() },
       body: JSON.stringify({ action: "trigger_sync" }),
     });
     const data = await res.json();

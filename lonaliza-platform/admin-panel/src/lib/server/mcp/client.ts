@@ -1,5 +1,6 @@
 import path from "path";
 import { callBuiltinTool, verifyBuiltinCatalog } from "./builtin";
+import { getMcpCatalogEntry } from "./catalog";
 import { getMcpSecret, getMcpServer, recordMcpTest } from "./store";
 import type { McpServerRecord, McpToolInfo } from "./types";
 
@@ -109,7 +110,13 @@ export async function testMcpConnection(id: string): Promise<{
   error?: string;
 }> {
   const server = await getMcpServer(id);
-  if (!server) return { ok: false, tools: [], error: "MCP server not found" };
+  if (!server) {
+    const entry = getMcpCatalogEntry(id);
+    if (entry && entry.source === "builtin") {
+      return verifyBuiltinCatalog(entry.id, id);
+    }
+    return { ok: false, tools: [], error: "MCP server not found" };
+  }
   if (server.source === "builtin" && server.catalogId) {
     const result = await verifyBuiltinCatalog(server.catalogId, server.id);
     await recordMcpTest(id, {
@@ -136,7 +143,14 @@ export async function callMcpTool(
   args: Record<string, unknown> = {}
 ): Promise<{ ok: boolean; result?: unknown; error?: string }> {
   const server = await getMcpServer(id);
-  if (!server) return { ok: false, error: "MCP server not found" };
+  if (!server) {
+    const entry = getMcpCatalogEntry(id);
+    if (entry && entry.source === "builtin") {
+      const result = await callBuiltinTool(entry.id, toolName, args, id);
+      return { ok: result.ok, result: result.content, error: result.error };
+    }
+    return { ok: false, error: "MCP server not found" };
+  }
   if (!server.enabled) return { ok: false, error: "الخادم متوقف" };
   if (server.source === "builtin" && server.catalogId) {
     const result = await callBuiltinTool(server.catalogId, toolName, args, server.id);

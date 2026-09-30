@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useAgentStore } from "@/lib/studio/agent/agent-store";
 import {
   Minus,
   Square,
@@ -31,6 +32,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import ProcessingTimeline, { type ProcessingStage } from "@/components/ui/processing-timeline";
+import { StudioBriefingWindow } from "./StudioBriefingWindow";
 import {
   buildDynamicExecutionStages,
   matchKnownTimelineCategory,
@@ -41,7 +43,6 @@ import {
 import ArticleReviewModal from "./ArticleReviewModal";
 import {
   ARTICLE_PIPELINE_STAGE_DEFS,
-  isArticleDirective,
   type ArticlePipelineClient,
   type ArticlePipelineStageReport,
 } from "@/lib/swarm/article-pipeline-types";
@@ -689,7 +690,10 @@ export default function StudioFloatingWindows({
   const [timelineStep, setTimelineStep] = useState(1);
   const [liveStages, setLiveStages] = useState<ArticlePipelineStageReport[]>([]);
   const directiveText = submittedUserDirective?.text || lastSpokenText || "";
-  const articleTask = isArticleDirective(directiveText) || liveStages.length > 0 || Boolean(articlePipeline);
+  const articleTask = /مقال|مدونه|انشر مقال/.test(directiveText);
+  useEffect(() => {
+    if (!articleTask) setLiveStages([]);
+  }, [articleTask, directiveText]);
   useEffect(() => {
     if (articleTask) {
       setTimelineStep(1);
@@ -813,7 +817,7 @@ export default function StudioFloatingWindows({
 
   // Automatically pop up ProcessingTimeline whenever supervisor begins execution
   useEffect(() => {
-    if (isProcessing || (submittedUserDirective && submittedUserDirective.text)) {
+    if (articleTask && (isProcessing || submittedUserDirective?.text)) {
       setClosed((c) => ({ ...c, timeline: false }));
       setMinimized((m) => ({ ...m, timeline: false }));
     }
@@ -1047,24 +1051,24 @@ export default function StudioFloatingWindows({
   };
 
   // Conversation history
-  const [messages, setMessages] = useState<
-    Array<{ id: string; sender: "user" | "assistant"; text: string; time: string }>
-  >([
-    {
-      id: "1",
-      sender: "user",
-      text: "ما هي حالة المشروع حالياً؟",
-      time: "10:24",
-    },
-    {
-      id: "2",
-      sender: "assistant",
-      text: "المشروع يستمر وفق الخطة وجميع الأنظمة تعمل بشكل طبيعي...",
-      time: "10:24",
-    },
-  ]);
+  const messages = useAgentStore((s) => s.chatLog);
+  const talkTarget = useAgentStore((s) => s.talkTarget);
 
   const [inputVal, setInputVal] = useState("");
+  useEffect(() => {
+    const onLine = (event: Event) => {
+      const detail = (event as CustomEvent<{ speaker?: string; text?: string }>).detail;
+      if (!detail?.text) return;
+      useAgentStore.getState().appendChat({ id: `${Date.now()}-${detail.text.slice(0, 12)}`, sender: "assistant", speakerName: detail.speaker || "الوكيل المشرف", text: detail.text, time: new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }) });
+    };
+    const onOpen = () => setClosed((c) => ({ ...c, chat: false }));
+    window.addEventListener("studio:chat-line", onLine);
+    window.addEventListener("studio:open-chat", onOpen);
+    return () => {
+      window.removeEventListener("studio:chat-line", onLine);
+      window.removeEventListener("studio:open-chat", onOpen);
+    };
+  }, []);
   const [activeSpeechSeconds, setActiveSpeechSeconds] = useState(84); // Starts at 00:01:24
   const [systemOk, setSystemOk] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -1095,17 +1099,11 @@ export default function StudioFloatingWindows({
   // Sync finalized voice directive to chat as a single, clean user message
   useEffect(() => {
     if (submittedUserDirective && submittedUserDirective.text.trim()) {
-      setMessages((prev) => {
-        if (prev.some((m) => m.id === submittedUserDirective.id)) return prev;
-        return [
-          ...prev,
-          {
-            id: submittedUserDirective.id,
-            sender: "user",
-            text: submittedUserDirective.text,
-            time: submittedUserDirective.time,
-          },
-        ];
+      useAgentStore.getState().appendChat({
+        id: submittedUserDirective.id,
+        sender: "user",
+        text: submittedUserDirective.text,
+        time: submittedUserDirective.time,
       });
       setInputVal("");
     }
@@ -1114,20 +1112,12 @@ export default function StudioFloatingWindows({
   // Sync incoming agent speech response to chat
   useEffect(() => {
     if (agentResponseText && agentResponseText.trim()) {
-      setMessages((prev) => {
-        const lastMsg = prev[prev.length - 1];
-        if (lastMsg && lastMsg.sender === "assistant" && lastMsg.text === agentResponseText) {
-          return prev;
-        }
-        return [
-          ...prev,
-          {
-            id: String(Date.now() + 1),
-            sender: "assistant",
-            text: agentResponseText,
-            time: new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }),
-          },
-        ];
+      useAgentStore.getState().appendChat({
+        id: `agent-${agentResponseText.slice(0, 24)}-${agentResponseText.length}`,
+        sender: "assistant",
+        speakerName: useAgentStore.getState().lastSpeaker,
+        text: agentResponseText,
+        time: new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }),
       });
     }
   }, [agentResponseText]);
@@ -1189,7 +1179,7 @@ export default function StudioFloatingWindows({
       text: userText,
       time: new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }),
     };
-    setMessages((prev) => [...prev, newMsg]);
+    useAgentStore.getState().appendChat(newMsg);
     setInputVal("");
     onSendMessage?.(userText);
 
@@ -1211,15 +1201,12 @@ export default function StudioFloatingWindows({
         if (res.ok) {
           const json = await res.json();
           const reply = json?.data?.tacticalIntentAr || json?.data?.finalDecision?.rationaleAr || "تم استلام توجيهكم السيبراني وجاري تنفيذه.";
-          setMessages((prev) => [
-            ...prev,
-            {
+          useAgentStore.getState().appendChat({
               id: String(Date.now() + 1),
               sender: "assistant",
               text: reply,
               time: new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }),
-            },
-          ]);
+            });
         }
       } catch (err) {
         console.warn("Direct send error:", err);
@@ -1468,7 +1455,7 @@ export default function StudioFloatingWindows({
 
             <div className="flex items-center gap-2" style={{ direction: "rtl" }}>
               <span className="text-xs font-bold text-white font-sans">
-                مجرى الحوار
+                {talkTarget ? talkTarget.nameAr : "الوكيل المشرف"}
               </span>
               <GripHorizontal size={14} className="text-cyan-400/60" />
             </div>
@@ -1494,7 +1481,7 @@ export default function StudioFloatingWindows({
                     >
                       <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
                         <div className="flex items-center gap-1.5">
-                          <span>{isUser ? "المستخدم" : "المساعد"}</span>
+                          <span>{isUser ? "المدير العام" : m.speakerName || "الوكيل المشرف"}</span>
                           <button
                             onClick={() => handleCopySingleMsg(m.id, m.text)}
                             className="opacity-0 group-hover:opacity-100 p-0.5 hover:text-cyan-300 text-slate-400 transition-opacity cursor-pointer"
@@ -1621,7 +1608,8 @@ export default function StudioFloatingWindows({
           {/* Rotating Circular Gyro Reactor Dial: الوكيل المشرف */}
           <div
             className="flex flex-col items-center gap-1.5 cursor-pointer group"
-            title="الوكيل المشرف العام"
+            title={talkTarget ? `إلغاء التحديد: ${talkTarget.nameAr}` : "الوكيل المشرف العام"}
+            onClick={() => useAgentStore.getState().setTalkTarget(null)}
           >
             <div className="relative w-24 h-24 rounded-full border-2 border-cyan-500/50 flex items-center justify-center shadow-[0_0_25px_rgba(0,229,255,0.3)] bg-[#020b18]/90 backdrop-blur-xl group-hover:scale-105 transition-transform">
               <div className="absolute inset-1.5 rounded-full border border-dashed border-cyan-400/60 animate-[spin_12s_linear_infinite]" />
@@ -1631,8 +1619,8 @@ export default function StudioFloatingWindows({
                 <Radio size={20} className="text-black animate-pulse" />
               </div>
             </div>
-            <span className="text-xs font-bold text-white font-sans tracking-wide">
-              الوكيل المشرف
+            <span className="text-xs font-bold font-sans tracking-wide" style={{ color: talkTarget?.color || "#ffffff" }}>
+              {talkTarget ? talkTarget.nameAr : "الوكيل المشرف"}
             </span>
           </div>
 
@@ -2212,6 +2200,9 @@ export default function StudioFloatingWindows({
           )}
         </div>
       )}
+
+      {/* 5. تقرير المشرف من السجلات */}
+      <StudioBriefingWindow />
 
       {/* ========================================================================= */}
       {/* 5. TIMELINE WINDOW (Sovereign Swarm Processing Timeline)                  */}

@@ -9,6 +9,7 @@ export type MediaAsset = {
   fullUrl: string;
   authorName: string;
   authorUrl?: string;
+  caption?: string;
 };
 
 export type MediaSearchResult = {

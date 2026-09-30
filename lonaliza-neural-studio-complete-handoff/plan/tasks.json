@@ -1,0 +1,1687 @@
+[
+  {
+    "id": "P00",
+    "title": "جرد المشروع وتثبيت الحقيقة",
+    "type": "phase",
+    "dependsOn": [],
+    "status": "accepted",
+    "evidence": [
+      "plan/inventory.json",
+      "plan/route-map.json",
+      "plan/capability-map.json",
+      "plan/gaps.md"
+    ]
+  },
+  {
+    "id": "P01",
+    "title": "العقد البصري وأصول الفن",
+    "type": "phase",
+    "dependsOn": [
+      "P00"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/tokens.json",
+      "plan/assets-register.json",
+      "plan/regions/01.json",
+      "plan/visual-decisions.md"
+    ]
+  },
+  {
+    "id": "P02",
+    "title": "غلاف الاستوديو ومحرك المساحة",
+    "type": "phase",
+    "dependsOn": [
+      "P01"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/workspace-store.json",
+      "plan/window-manager.js",
+      "tests/prototype.spec.cjs"
+    ]
+  },
+  {
+    "id": "P03",
+    "title": "محرك الشبكة والحالة",
+    "type": "phase",
+    "dependsOn": [
+      "P02"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/graph-store.json",
+      "plan/layout-engine.js",
+      "plan/node-kit.json",
+      "plan/graph-events.json"
+    ]
+  },
+  {
+    "id": "P04",
+    "title": "الأطلس والتوسع والقيادة",
+    "type": "phase",
+    "dependsOn": [
+      "P03"
+    ],
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "P05",
+    "title": "التجارة والسفر",
+    "type": "phase",
+    "dependsOn": [
+      "P04"
+    ],
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "P06",
+    "title": "العملاء والمحتوى والنمو",
+    "type": "phase",
+    "dependsOn": [
+      "P05"
+    ],
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "P07",
+    "title": "الوكلاء والأتمتة",
+    "type": "phase",
+    "dependsOn": [
+      "P06"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-11",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-12"
+    ]
+  },
+  {
+    "id": "P08",
+    "title": "المالية والشركاء والامتثال والتكامل",
+    "type": "phase",
+    "dependsOn": [
+      "P07"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-13",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-14",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-15",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-16"
+    ]
+  },
+  {
+    "id": "P09",
+    "title": "الصوت والحضور",
+    "type": "phase",
+    "dependsOn": [
+      "P03",
+      "P07"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-17",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-18",
+      "src/components/admin/automation/hud/avatar/HumanoidMasterAvatar.tsx",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx#screen-20"
+    ]
+  },
+  {
+    "id": "P10",
+    "title": "الربط الكامل والسيناريوهات العابرة",
+    "type": "phase",
+    "dependsOn": [
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/mcp/McpActionDispatcherModal.tsx",
+      "src/app/api/admin/mcp/call/route.ts",
+      "src/lib/server/mcp/builtin.ts",
+      "src/lib/server/mcp/client.ts",
+      "plan/inventory.json#mcp-ecosystem"
+    ]
+  },
+  {
+    "id": "P11",
+    "title": "الرندرة والمطابقة والأداء",
+    "type": "phase",
+    "dependsOn": [
+      "P10"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "public/images/neural-studio/",
+      "src/components/admin/automation/hud/screens/ReferenceImageModal.tsx",
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx"
+    ]
+  },
+  {
+    "id": "P12",
+    "title": "التسليم والاستئناف والتشغيل",
+    "type": "phase",
+    "dependsOn": [
+      "P11"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/OPERATOR_GUIDE.md",
+      "plan/progress.json",
+      "src/app/admin/neural-studio/page.tsx"
+    ]
+  },
+  {
+    "id": "S01-design",
+    "title": "الأطلس العصبي الشامل — قياس المرجع",
+    "phase": "P04",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S01-ui",
+    "title": "الأطلس العصبي الشامل — تنفيذ الواجهة وحالاتها",
+    "phase": "P04",
+    "dependsOn": [
+      "S01-design"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S01-data",
+    "title": "الأطلس العصبي الشامل — العقود والمحولات",
+    "phase": "P04",
+    "dependsOn": [
+      "S01-ui"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S01-interaction",
+    "title": "الأطلس العصبي الشامل — السيناريوهات والصلاحيات",
+    "phase": "P04",
+    "dependsOn": [
+      "S01-data"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S01-test",
+    "title": "الأطلس العصبي الشامل — الاختبارات والرندرة",
+    "phase": "P04",
+    "dependsOn": [
+      "S01-interaction"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S01-accept",
+    "title": "الأطلس العصبي الشامل — المراجعة والاعتماد",
+    "phase": "P04",
+    "dependsOn": [
+      "S01-test"
+    ],
+    "screen": "01",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-design",
+    "title": "التوسع التراكمي والشاشة الكاملة — قياس المرجع",
+    "phase": "P04",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-ui",
+    "title": "التوسع التراكمي والشاشة الكاملة — تنفيذ الواجهة وحالاتها",
+    "phase": "P04",
+    "dependsOn": [
+      "S02-design"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-data",
+    "title": "التوسع التراكمي والشاشة الكاملة — العقود والمحولات",
+    "phase": "P04",
+    "dependsOn": [
+      "S02-ui"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-interaction",
+    "title": "التوسع التراكمي والشاشة الكاملة — السيناريوهات والصلاحيات",
+    "phase": "P04",
+    "dependsOn": [
+      "S02-data"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-test",
+    "title": "التوسع التراكمي والشاشة الكاملة — الاختبارات والرندرة",
+    "phase": "P04",
+    "dependsOn": [
+      "S02-interaction"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S02-accept",
+    "title": "التوسع التراكمي والشاشة الكاملة — المراجعة والاعتماد",
+    "phase": "P04",
+    "dependsOn": [
+      "S02-test"
+    ],
+    "screen": "02",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-design",
+    "title": "الحجوزات والإلغاء والتقييمات — قياس المرجع",
+    "phase": "P05",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-ui",
+    "title": "الحجوزات والإلغاء والتقييمات — تنفيذ الواجهة وحالاتها",
+    "phase": "P05",
+    "dependsOn": [
+      "S03-design"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-data",
+    "title": "الحجوزات والإلغاء والتقييمات — العقود والمحولات",
+    "phase": "P05",
+    "dependsOn": [
+      "S03-ui"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-interaction",
+    "title": "الحجوزات والإلغاء والتقييمات — السيناريوهات والصلاحيات",
+    "phase": "P05",
+    "dependsOn": [
+      "S03-data"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-test",
+    "title": "الحجوزات والإلغاء والتقييمات — الاختبارات والرندرة",
+    "phase": "P05",
+    "dependsOn": [
+      "S03-interaction"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S03-accept",
+    "title": "الحجوزات والإلغاء والتقييمات — المراجعة والاعتماد",
+    "phase": "P05",
+    "dependsOn": [
+      "S03-test"
+    ],
+    "screen": "03",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-design",
+    "title": "الرحلات وموزعو GDS — قياس المرجع",
+    "phase": "P05",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-ui",
+    "title": "الرحلات وموزعو GDS — تنفيذ الواجهة وحالاتها",
+    "phase": "P05",
+    "dependsOn": [
+      "S04-design"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-data",
+    "title": "الرحلات وموزعو GDS — العقود والمحولات",
+    "phase": "P05",
+    "dependsOn": [
+      "S04-ui"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-interaction",
+    "title": "الرحلات وموزعو GDS — السيناريوهات والصلاحيات",
+    "phase": "P05",
+    "dependsOn": [
+      "S04-data"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-test",
+    "title": "الرحلات وموزعو GDS — الاختبارات والرندرة",
+    "phase": "P05",
+    "dependsOn": [
+      "S04-interaction"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S04-accept",
+    "title": "الرحلات وموزعو GDS — المراجعة والاعتماد",
+    "phase": "P05",
+    "dependsOn": [
+      "S04-test"
+    ],
+    "screen": "04",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-design",
+    "title": "الفنادق وبنوك الأسرّة — قياس المرجع",
+    "phase": "P05",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-ui",
+    "title": "الفنادق وبنوك الأسرّة — تنفيذ الواجهة وحالاتها",
+    "phase": "P05",
+    "dependsOn": [
+      "S05-design"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-data",
+    "title": "الفنادق وبنوك الأسرّة — العقود والمحولات",
+    "phase": "P05",
+    "dependsOn": [
+      "S05-ui"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-interaction",
+    "title": "الفنادق وبنوك الأسرّة — السيناريوهات والصلاحيات",
+    "phase": "P05",
+    "dependsOn": [
+      "S05-data"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-test",
+    "title": "الفنادق وبنوك الأسرّة — الاختبارات والرندرة",
+    "phase": "P05",
+    "dependsOn": [
+      "S05-interaction"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S05-accept",
+    "title": "الفنادق وبنوك الأسرّة — المراجعة والاعتماد",
+    "phase": "P05",
+    "dependsOn": [
+      "S05-test"
+    ],
+    "screen": "05",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-design",
+    "title": "النقل والجولات والباقات والتأشيرات — قياس المرجع",
+    "phase": "P05",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-ui",
+    "title": "النقل والجولات والباقات والتأشيرات — تنفيذ الواجهة وحالاتها",
+    "phase": "P05",
+    "dependsOn": [
+      "S06-design"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-data",
+    "title": "النقل والجولات والباقات والتأشيرات — العقود والمحولات",
+    "phase": "P05",
+    "dependsOn": [
+      "S06-ui"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-interaction",
+    "title": "النقل والجولات والباقات والتأشيرات — السيناريوهات والصلاحيات",
+    "phase": "P05",
+    "dependsOn": [
+      "S06-data"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-test",
+    "title": "النقل والجولات والباقات والتأشيرات — الاختبارات والرندرة",
+    "phase": "P05",
+    "dependsOn": [
+      "S06-interaction"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S06-accept",
+    "title": "النقل والجولات والباقات والتأشيرات — المراجعة والاعتماد",
+    "phase": "P05",
+    "dependsOn": [
+      "S06-test"
+    ],
+    "screen": "06",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-design",
+    "title": "محتوى الموقع والتطبيقات — قياس المرجع",
+    "phase": "P06",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-ui",
+    "title": "محتوى الموقع والتطبيقات — تنفيذ الواجهة وحالاتها",
+    "phase": "P06",
+    "dependsOn": [
+      "S07-design"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-data",
+    "title": "محتوى الموقع والتطبيقات — العقود والمحولات",
+    "phase": "P06",
+    "dependsOn": [
+      "S07-ui"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-interaction",
+    "title": "محتوى الموقع والتطبيقات — السيناريوهات والصلاحيات",
+    "phase": "P06",
+    "dependsOn": [
+      "S07-data"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-test",
+    "title": "محتوى الموقع والتطبيقات — الاختبارات والرندرة",
+    "phase": "P06",
+    "dependsOn": [
+      "S07-interaction"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S07-accept",
+    "title": "محتوى الموقع والتطبيقات — المراجعة والاعتماد",
+    "phase": "P06",
+    "dependsOn": [
+      "S07-test"
+    ],
+    "screen": "07",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-design",
+    "title": "العملاء وخدمة العملاء — قياس المرجع",
+    "phase": "P06",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-ui",
+    "title": "العملاء وخدمة العملاء — تنفيذ الواجهة وحالاتها",
+    "phase": "P06",
+    "dependsOn": [
+      "S08-design"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-data",
+    "title": "العملاء وخدمة العملاء — العقود والمحولات",
+    "phase": "P06",
+    "dependsOn": [
+      "S08-ui"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-interaction",
+    "title": "العملاء وخدمة العملاء — السيناريوهات والصلاحيات",
+    "phase": "P06",
+    "dependsOn": [
+      "S08-data"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-test",
+    "title": "العملاء وخدمة العملاء — الاختبارات والرندرة",
+    "phase": "P06",
+    "dependsOn": [
+      "S08-interaction"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S08-accept",
+    "title": "العملاء وخدمة العملاء — المراجعة والاعتماد",
+    "phase": "P06",
+    "dependsOn": [
+      "S08-test"
+    ],
+    "screen": "08",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-design",
+    "title": "النشر متعدد القنوات والمحتوى — قياس المرجع",
+    "phase": "P06",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-ui",
+    "title": "النشر متعدد القنوات والمحتوى — تنفيذ الواجهة وحالاتها",
+    "phase": "P06",
+    "dependsOn": [
+      "S09-design"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-data",
+    "title": "النشر متعدد القنوات والمحتوى — العقود والمحولات",
+    "phase": "P06",
+    "dependsOn": [
+      "S09-ui"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-interaction",
+    "title": "النشر متعدد القنوات والمحتوى — السيناريوهات والصلاحيات",
+    "phase": "P06",
+    "dependsOn": [
+      "S09-data"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-test",
+    "title": "النشر متعدد القنوات والمحتوى — الاختبارات والرندرة",
+    "phase": "P06",
+    "dependsOn": [
+      "S09-interaction"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S09-accept",
+    "title": "النشر متعدد القنوات والمحتوى — المراجعة والاعتماد",
+    "phase": "P06",
+    "dependsOn": [
+      "S09-test"
+    ],
+    "screen": "09",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-design",
+    "title": "الحملات والتسويق والعمولات — قياس المرجع",
+    "phase": "P06",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-ui",
+    "title": "الحملات والتسويق والعمولات — تنفيذ الواجهة وحالاتها",
+    "phase": "P06",
+    "dependsOn": [
+      "S10-design"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-data",
+    "title": "الحملات والتسويق والعمولات — العقود والمحولات",
+    "phase": "P06",
+    "dependsOn": [
+      "S10-ui"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-interaction",
+    "title": "الحملات والتسويق والعمولات — السيناريوهات والصلاحيات",
+    "phase": "P06",
+    "dependsOn": [
+      "S10-data"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-test",
+    "title": "الحملات والتسويق والعمولات — الاختبارات والرندرة",
+    "phase": "P06",
+    "dependsOn": [
+      "S10-interaction"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S10-accept",
+    "title": "الحملات والتسويق والعمولات — المراجعة والاعتماد",
+    "phase": "P06",
+    "dependsOn": [
+      "S10-test"
+    ],
+    "screen": "10",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-design",
+    "title": "غرفة الوكلاء والمعرفة — قياس المرجع",
+    "phase": "P07",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-ui",
+    "title": "غرفة الوكلاء والمعرفة — تنفيذ الواجهة وحالاتها",
+    "phase": "P07",
+    "dependsOn": [
+      "S11-design"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-data",
+    "title": "غرفة الوكلاء والمعرفة — العقود والمحولات",
+    "phase": "P07",
+    "dependsOn": [
+      "S11-ui"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-interaction",
+    "title": "غرفة الوكلاء والمعرفة — السيناريوهات والصلاحيات",
+    "phase": "P07",
+    "dependsOn": [
+      "S11-data"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-test",
+    "title": "غرفة الوكلاء والمعرفة — الاختبارات والرندرة",
+    "phase": "P07",
+    "dependsOn": [
+      "S11-interaction"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S11-accept",
+    "title": "غرفة الوكلاء والمعرفة — المراجعة والاعتماد",
+    "phase": "P07",
+    "dependsOn": [
+      "S11-test"
+    ],
+    "screen": "11",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-design",
+    "title": "استوديو الأتمتة والتنفيذ — قياس المرجع",
+    "phase": "P07",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-ui",
+    "title": "استوديو الأتمتة والتنفيذ — تنفيذ الواجهة وحالاتها",
+    "phase": "P07",
+    "dependsOn": [
+      "S12-design"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-data",
+    "title": "استوديو الأتمتة والتنفيذ — العقود والمحولات",
+    "phase": "P07",
+    "dependsOn": [
+      "S12-ui"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-interaction",
+    "title": "استوديو الأتمتة والتنفيذ — السيناريوهات والصلاحيات",
+    "phase": "P07",
+    "dependsOn": [
+      "S12-data"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-test",
+    "title": "استوديو الأتمتة والتنفيذ — الاختبارات والرندرة",
+    "phase": "P07",
+    "dependsOn": [
+      "S12-interaction"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S12-accept",
+    "title": "استوديو الأتمتة والتنفيذ — المراجعة والاعتماد",
+    "phase": "P07",
+    "dependsOn": [
+      "S12-test"
+    ],
+    "screen": "12",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-design",
+    "title": "المالية والفوترة والولاء — قياس المرجع",
+    "phase": "P08",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-ui",
+    "title": "المالية والفوترة والولاء — تنفيذ الواجهة وحالاتها",
+    "phase": "P08",
+    "dependsOn": [
+      "S13-design"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-data",
+    "title": "المالية والفوترة والولاء — العقود والمحولات",
+    "phase": "P08",
+    "dependsOn": [
+      "S13-ui"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-interaction",
+    "title": "المالية والفوترة والولاء — السيناريوهات والصلاحيات",
+    "phase": "P08",
+    "dependsOn": [
+      "S13-data"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-test",
+    "title": "المالية والفوترة والولاء — الاختبارات والرندرة",
+    "phase": "P08",
+    "dependsOn": [
+      "S13-interaction"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S13-accept",
+    "title": "المالية والفوترة والولاء — المراجعة والاعتماد",
+    "phase": "P08",
+    "dependsOn": [
+      "S13-test"
+    ],
+    "screen": "13",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-design",
+    "title": "إعادة البيع وشبكة B2B — قياس المرجع",
+    "phase": "P08",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-ui",
+    "title": "إعادة البيع وشبكة B2B — تنفيذ الواجهة وحالاتها",
+    "phase": "P08",
+    "dependsOn": [
+      "S14-design"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-data",
+    "title": "إعادة البيع وشبكة B2B — العقود والمحولات",
+    "phase": "P08",
+    "dependsOn": [
+      "S14-ui"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-interaction",
+    "title": "إعادة البيع وشبكة B2B — السيناريوهات والصلاحيات",
+    "phase": "P08",
+    "dependsOn": [
+      "S14-data"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-test",
+    "title": "إعادة البيع وشبكة B2B — الاختبارات والرندرة",
+    "phase": "P08",
+    "dependsOn": [
+      "S14-interaction"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S14-accept",
+    "title": "إعادة البيع وشبكة B2B — المراجعة والاعتماد",
+    "phase": "P08",
+    "dependsOn": [
+      "S14-test"
+    ],
+    "screen": "14",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-design",
+    "title": "الامتثال والخصوصية والصلاحيات — قياس المرجع",
+    "phase": "P08",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-ui",
+    "title": "الامتثال والخصوصية والصلاحيات — تنفيذ الواجهة وحالاتها",
+    "phase": "P08",
+    "dependsOn": [
+      "S15-design"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-data",
+    "title": "الامتثال والخصوصية والصلاحيات — العقود والمحولات",
+    "phase": "P08",
+    "dependsOn": [
+      "S15-ui"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-interaction",
+    "title": "الامتثال والخصوصية والصلاحيات — السيناريوهات والصلاحيات",
+    "phase": "P08",
+    "dependsOn": [
+      "S15-data"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-test",
+    "title": "الامتثال والخصوصية والصلاحيات — الاختبارات والرندرة",
+    "phase": "P08",
+    "dependsOn": [
+      "S15-interaction"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S15-accept",
+    "title": "الامتثال والخصوصية والصلاحيات — المراجعة والاعتماد",
+    "phase": "P08",
+    "dependsOn": [
+      "S15-test"
+    ],
+    "screen": "15",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-design",
+    "title": "الإعدادات والتكاملات — قياس المرجع",
+    "phase": "P08",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-ui",
+    "title": "الإعدادات والتكاملات — تنفيذ الواجهة وحالاتها",
+    "phase": "P08",
+    "dependsOn": [
+      "S16-design"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-data",
+    "title": "الإعدادات والتكاملات — العقود والمحولات",
+    "phase": "P08",
+    "dependsOn": [
+      "S16-ui"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-interaction",
+    "title": "الإعدادات والتكاملات — السيناريوهات والصلاحيات",
+    "phase": "P08",
+    "dependsOn": [
+      "S16-data"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-test",
+    "title": "الإعدادات والتكاملات — الاختبارات والرندرة",
+    "phase": "P08",
+    "dependsOn": [
+      "S16-interaction"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S16-accept",
+    "title": "الإعدادات والتكاملات — المراجعة والاعتماد",
+    "phase": "P08",
+    "dependsOn": [
+      "S16-test"
+    ],
+    "screen": "16",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-design",
+    "title": "القرص الصوتي وحالات الوكيل — قياس المرجع",
+    "phase": "P09",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-ui",
+    "title": "القرص الصوتي وحالات الوكيل — تنفيذ الواجهة وحالاتها",
+    "phase": "P09",
+    "dependsOn": [
+      "S17-design"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-data",
+    "title": "القرص الصوتي وحالات الوكيل — العقود والمحولات",
+    "phase": "P09",
+    "dependsOn": [
+      "S17-ui"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-interaction",
+    "title": "القرص الصوتي وحالات الوكيل — السيناريوهات والصلاحيات",
+    "phase": "P09",
+    "dependsOn": [
+      "S17-data"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-test",
+    "title": "القرص الصوتي وحالات الوكيل — الاختبارات والرندرة",
+    "phase": "P09",
+    "dependsOn": [
+      "S17-interaction"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S17-accept",
+    "title": "القرص الصوتي وحالات الوكيل — المراجعة والاعتماد",
+    "phase": "P09",
+    "dependsOn": [
+      "S17-test"
+    ],
+    "screen": "17",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-design",
+    "title": "حالات النوافذ والسيدبار والتنقل — قياس المرجع",
+    "phase": "P02",
+    "dependsOn": [
+      "P01",
+      "P01"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-ui",
+    "title": "حالات النوافذ والسيدبار والتنقل — تنفيذ الواجهة وحالاتها",
+    "phase": "P02",
+    "dependsOn": [
+      "S18-design"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-data",
+    "title": "حالات النوافذ والسيدبار والتنقل — العقود والمحولات",
+    "phase": "P02",
+    "dependsOn": [
+      "S18-ui"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-interaction",
+    "title": "حالات النوافذ والسيدبار والتنقل — السيناريوهات والصلاحيات",
+    "phase": "P02",
+    "dependsOn": [
+      "S18-data"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-test",
+    "title": "حالات النوافذ والسيدبار والتنقل — الاختبارات والرندرة",
+    "phase": "P02",
+    "dependsOn": [
+      "S18-interaction"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S18-accept",
+    "title": "حالات النوافذ والسيدبار والتنقل — المراجعة والاعتماد",
+    "phase": "P02",
+    "dependsOn": [
+      "S18-test"
+    ],
+    "screen": "18",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-design",
+    "title": "القيادة التنفيذية والعناقيد السداسية — قياس المرجع",
+    "phase": "P04",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-ui",
+    "title": "القيادة التنفيذية والعناقيد السداسية — تنفيذ الواجهة وحالاتها",
+    "phase": "P04",
+    "dependsOn": [
+      "S19-design"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-data",
+    "title": "القيادة التنفيذية والعناقيد السداسية — العقود والمحولات",
+    "phase": "P04",
+    "dependsOn": [
+      "S19-ui"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-interaction",
+    "title": "القيادة التنفيذية والعناقيد السداسية — السيناريوهات والصلاحيات",
+    "phase": "P04",
+    "dependsOn": [
+      "S19-data"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-test",
+    "title": "القيادة التنفيذية والعناقيد السداسية — الاختبارات والرندرة",
+    "phase": "P04",
+    "dependsOn": [
+      "S19-interaction"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S19-accept",
+    "title": "القيادة التنفيذية والعناقيد السداسية — المراجعة والاعتماد",
+    "phase": "P04",
+    "dependsOn": [
+      "S19-test"
+    ],
+    "screen": "19",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-design",
+    "title": "الحضور البشري والصوت الحي — قياس المرجع",
+    "phase": "P09",
+    "dependsOn": [
+      "P01",
+      "P03"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-ui",
+    "title": "الحضور البشري والصوت الحي — تنفيذ الواجهة وحالاتها",
+    "phase": "P09",
+    "dependsOn": [
+      "S20-design"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-data",
+    "title": "الحضور البشري والصوت الحي — العقود والمحولات",
+    "phase": "P09",
+    "dependsOn": [
+      "S20-ui"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-interaction",
+    "title": "الحضور البشري والصوت الحي — السيناريوهات والصلاحيات",
+    "phase": "P09",
+    "dependsOn": [
+      "S20-data"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-test",
+    "title": "الحضور البشري والصوت الحي — الاختبارات والرندرة",
+    "phase": "P09",
+    "dependsOn": [
+      "S20-interaction"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "S20-accept",
+    "title": "الحضور البشري والصوت الحي — المراجعة والاعتماد",
+    "phase": "P09",
+    "dependsOn": [
+      "S20-test"
+    ],
+    "screen": "20",
+    "status": "accepted",
+    "evidence": []
+  },
+  {
+    "id": "P10-mcp-engine",
+    "title": "منظومة خوادم MCP الـ 21 وأدواتها الـ 88 — الجسر والتنفيذ الفعلي",
+    "phase": "P10",
+    "dependsOn": [
+      "P07",
+      "P08"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/mcp/McpActionDispatcherModal.tsx"
+    ]
+  },
+  {
+    "id": "P10-video-gen",
+    "title": "توليد الفيديو والأفاتار الذكي (Higgsfield & HeyGen & Google Flow)",
+    "phase": "P10",
+    "dependsOn": [
+      "P10-mcp-engine"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/lib/server/mcp/builtin.ts#runStudioGenerateVideo"
+    ]
+  },
+  {
+    "id": "P10-cms-publishing",
+    "title": "توليد ونشر مقالات المدونة والصفحات وأصول Canva",
+    "phase": "P10",
+    "dependsOn": [
+      "P10-mcp-engine"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/lib/server/mcp/builtin.ts#runArticlesResearchAndPublish"
+    ]
+  },
+  {
+    "id": "P10-omnichannel",
+    "title": "النشر عبر القنوات الاجتماعية ورسائل واتساب وإدارة الإعلانات",
+    "phase": "P10",
+    "dependsOn": [
+      "P10-mcp-engine"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/lib/automation/handlers/ads-audience.ts",
+      "src/lib/publish.ts"
+    ]
+  },
+  {
+    "id": "P10-cross-domain",
+    "title": "السيناريوهات العابرة للنطاقات (الحجوزات، الطيران، الفنادق، المالية)",
+    "phase": "P10",
+    "dependsOn": [
+      "P10-mcp-engine"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx"
+    ]
+  },
+  {
+    "id": "P10-accept",
+    "title": "اعتماد واكتمال المرحلة P10 — الربط الشامل والتنفيذ",
+    "phase": "P10",
+    "dependsOn": [
+      "P10-cross-domain",
+      "P10-video-gen",
+      "P10-cms-publishing",
+      "P10-omnichannel"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/inventory.json#mcp-ecosystem"
+    ]
+  },
+  {
+    "id": "P11-visual-audit-20",
+    "title": "التدقيق البصري الكامل ومطابقة المراجع العشرين 1:1",
+    "phase": "P11",
+    "dependsOn": [
+      "P10-accept"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "public/images/neural-studio/",
+      "src/components/admin/automation/hud/screens/ReferenceImageModal.tsx"
+    ]
+  },
+  {
+    "id": "P11-perf-fps",
+    "title": "فحص أداء الرندرة والـ 60 FPS واستجابة العرض على 1672x941",
+    "phase": "P11",
+    "dependsOn": [
+      "P11-visual-audit-20"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/components/admin/automation/hud/screens/NeuralStudioMasterStage.tsx"
+    ]
+  },
+  {
+    "id": "P11-cyber-theme",
+    "title": "توحيد الهوية البصرية السيبرانية والتوهج والزجاج المعتم لكامل الشاشات",
+    "phase": "P11",
+    "dependsOn": [
+      "P11-visual-audit-20"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/visual-decisions.md",
+      "plan/tokens.json"
+    ]
+  },
+  {
+    "id": "P11-accept",
+    "title": "اعتماد واكتمال المرحلة P11 — المطابقة البصرية والأداء",
+    "phase": "P11",
+    "dependsOn": [
+      "P11-cyber-theme",
+      "P11-perf-fps"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/progress.json"
+    ]
+  },
+  {
+    "id": "P12-docs",
+    "title": "دليل المشغل السيبراني وخريطة المفاتيح والتشغيل المستمر",
+    "phase": "P12",
+    "dependsOn": [
+      "P11-accept"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/OPERATOR_GUIDE.md"
+    ]
+  },
+  {
+    "id": "P12-verification",
+    "title": "التحقق الميداني النهائي من ثبات الخدمات ولوحة التحكم في الإنتاج",
+    "phase": "P12",
+    "dependsOn": [
+      "P12-docs"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "src/app/admin/neural-studio/page.tsx",
+      "src/app/admin/layout.tsx"
+    ]
+  },
+  {
+    "id": "P12-accept",
+    "title": "اعتماد واكتمال المرحلة P12 — التسليم النهائي الشامل",
+    "phase": "P12",
+    "dependsOn": [
+      "P12-verification"
+    ],
+    "status": "accepted",
+    "evidence": [
+      "plan/progress.json",
+      "plan/tasks.json"
+    ]
+  }
+]

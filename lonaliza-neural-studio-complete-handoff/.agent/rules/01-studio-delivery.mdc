@@ -1,0 +1,13 @@
+---
+description: Execution and evidence gates for Lonaliza studio implementation
+alwaysApply: true
+---
+- Read AGENTS.md and MASTER_PLAN.md; implement the whole staged scope.
+- Reuse existing repository architecture and preserve user changes.
+- Discover real routes and schemas; keep proposed capabilities explicitly proposed.
+- Track 20 screens and 78 screenshot-derived menu leaves.
+- Never equate passing interaction tests with visual reference acceptance.
+- Never replace references or auto-update goldens to hide regressions.
+- Save evidence and a next action after each phase; continue authorized ready tasks.
+- Report blocked permissions, unavailable services and unfinished gates truthfully.
+

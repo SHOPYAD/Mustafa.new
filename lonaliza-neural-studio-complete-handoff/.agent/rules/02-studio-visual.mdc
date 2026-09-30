@@ -1,0 +1,14 @@
+---
+description: RTL studio visual and interaction contract
+globs: "**/*.{tsx,ts,js,css,html,svg}"
+alwaysApply: false
+---
+- Arabic navigation stays right; support expanded, compact and closed states.
+- Use a draggable/resizable window manager with minimize, maximize, restore and keyboard access.
+- Keep graph world coordinates separate from floating window screen coordinates.
+- Preserve ancestors, stable node IDs and pinned positions across expansion.
+- Abstract luminous supervisor core, not a corporate logo circle.
+- DOM text remains readable; decorative light must not create fake business edges.
+- Capture the correct reference composition and state at a fixed viewport.
+- Generated storyboard references require storyboard renders, not a single state screenshot.
+

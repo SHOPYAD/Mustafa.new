@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getResellerLicenses } from "@/lib/server/resale-store";
 import { createAdminPocketBase } from "@/lib/pocketbase/admin";
@@ -5,7 +6,9 @@ import { assertOriginOnly } from "@/lib/server/deployment-role";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Licenses API");
     const licenses = await getResellerLicenses();
@@ -17,6 +20,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Licenses API");
     const body = (await req.json()) as {

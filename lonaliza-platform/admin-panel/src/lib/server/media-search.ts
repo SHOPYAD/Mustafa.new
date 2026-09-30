@@ -30,6 +30,7 @@ export function parseMediaQuery(search: URLSearchParams): {
 
 type PexelsPhoto = {
   id: number;
+  alt?: string;
   photographer?: string;
   photographer_url?: string;
   src?: {
@@ -43,6 +44,8 @@ type PexelsPhoto = {
 
 type UnsplashPhoto = {
   id: string;
+  alt_description?: string | null;
+  description?: string | null;
   urls?: {
     thumb?: string;
     small?: string;
@@ -93,6 +96,7 @@ export async function searchPexels(opts: {
       fullUrl: full,
       authorName: photo.photographer || "",
       authorUrl: photo.photographer_url,
+      caption: photo.alt || "",
     };
   });
   return {
@@ -141,6 +145,7 @@ export async function searchUnsplash(opts: {
       fullUrl: full,
       authorName: photo.user?.name || "",
       authorUrl: photo.user?.links?.html,
+      caption: photo.alt_description || photo.description || "",
     };
   });
   return {

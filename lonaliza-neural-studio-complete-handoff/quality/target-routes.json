@@ -1,0 +1,142 @@
+[
+  {
+    "id": "01",
+    "path": "/admin/neural-studio?screen=01",
+    "readySelector": "[data-screen=\"01\"]",
+    "reference": "images/01-platform-neural-atlas.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الأطلس العصبي الشامل"
+  },
+  {
+    "id": "02",
+    "path": "/admin/neural-studio?screen=02",
+    "readySelector": "[data-screen=\"02\"]",
+    "reference": "images/02-fullscreen-cumulative-expansion.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — التوسع التراكمي الشامل"
+  },
+  {
+    "id": "03",
+    "path": "/admin/neural-studio?screen=03",
+    "readySelector": "[data-screen=\"03\"]",
+    "reference": "images/03-bookings-cancellations.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الحجوزات والإلغاء والتقييمات"
+  },
+  {
+    "id": "04",
+    "path": "/admin/neural-studio?screen=04",
+    "readySelector": "[data-screen=\"04\"]",
+    "reference": "images/04-flights-gds-engineering.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الرحلات الجوية وموزعو GDS"
+  },
+  {
+    "id": "05",
+    "path": "/admin/neural-studio?screen=05",
+    "readySelector": "[data-screen=\"05\"]",
+    "reference": "images/05-hotels-bedbanks.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الفنادق وبنوك الأسرّة"
+  },
+  {
+    "id": "06",
+    "path": "/admin/neural-studio?screen=06",
+    "readySelector": "[data-screen=\"06\"]",
+    "reference": "images/06-mobility-tours-packages-visas.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — النقل والأسطول والجولات"
+  },
+  {
+    "id": "07",
+    "path": "/admin/neural-studio?screen=07",
+    "readySelector": "[data-screen=\"07\"]",
+    "reference": "images/07-cms-web-mobile.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — محتوى الموقع والتطبيقات"
+  },
+  {
+    "id": "08",
+    "path": "/admin/neural-studio?screen=08",
+    "readySelector": "[data-screen=\"08\"]",
+    "reference": "images/08-customers-conversations.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — العملاء وخدمة العملاء 360"
+  },
+  {
+    "id": "09",
+    "path": "/admin/neural-studio?screen=09",
+    "readySelector": "[data-screen=\"09\"]",
+    "reference": "images/09-social-publishing-media.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — النشر متعدد القنوات والفيديو"
+  },
+  {
+    "id": "10",
+    "path": "/admin/neural-studio?screen=10",
+    "readySelector": "[data-screen=\"10\"]",
+    "reference": "images/10-ads-affiliates-growth.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الحملات والتسويق والإعلانات"
+  },
+  {
+    "id": "11",
+    "path": "/admin/neural-studio?screen=11",
+    "readySelector": "[data-screen=\"11\"]",
+    "reference": "images/11-agents-knowledge.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — حجرة الوكلاء ومصفوفة MCP"
+  },
+  {
+    "id": "12",
+    "path": "/admin/neural-studio?screen=12",
+    "readySelector": "[data-screen=\"12\"]",
+    "reference": "images/12-automation-workflows.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — استوديو الأتمتة ومحرك التدفقات"
+  },
+  {
+    "id": "13",
+    "path": "/admin/neural-studio?screen=13",
+    "readySelector": "[data-screen=\"13\"]",
+    "reference": "images/13-finance-invoices-loyalty.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — المالية والفوترة والولاء"
+  },
+  {
+    "id": "14",
+    "path": "/admin/neural-studio?screen=14",
+    "readySelector": "[data-screen=\"14\"]",
+    "reference": "images/14-b2b-reselling-whitelabel.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — إعادة البيع وشبكة الشركاء B2B"
+  },
+  {
+    "id": "15",
+    "path": "/admin/neural-studio?screen=15",
+    "readySelector": "[data-screen=\"15\"]",
+    "reference": "images/15-legal-privacy-security.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الامتثال والخصوصية والأمان"
+  },
+  {
+    "id": "16",
+    "path": "/admin/neural-studio?screen=16",
+    "readySelector": "[data-screen=\"16\"]",
+    "reference": "images/16-settings-integrations.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الإعدادات والتكاملات التقنية"
+  },
+  {
+    "id": "17",
+    "path": "/admin/neural-studio?screen=17",
+    "readySelector": "[data-screen=\"17\"]",
+    "reference": "images/17-supervisor-voice-states.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — القرص الصوتي وحالات الوكيل"
+  },
+  {
+    "id": "18",
+    "path": "/admin/neural-studio?screen=18",
+    "readySelector": "[data-screen=\"18\"]",
+    "reference": "images/18-workspace-interaction-states.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — معمل إدارة النوافذ والمساحات"
+  },
+  {
+    "id": "19",
+    "path": "/admin/neural-studio?screen=19",
+    "readySelector": "[data-screen=\"19\"]",
+    "reference": "images/19-executive-command-hexagonal.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — القيادة التنفيذية والعناقيد السداسية"
+  },
+  {
+    "id": "20",
+    "path": "/admin/neural-studio?screen=20",
+    "readySelector": "[data-screen=\"20\"]",
+    "reference": "images/20-jarvis-humanoid-presence.png",
+    "notes": "مسار الإنتاج الرسمي في لوحة التحكم — الحضور البشري والرفيق JARVIS"
+  }
+]

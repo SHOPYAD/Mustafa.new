@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { assertOriginOnly } from "@/lib/server/deployment-role";
 import {
@@ -12,6 +13,8 @@ import type { LeadsFilterOptions, ScrapedBusinessLead } from "@/lib/server/gmaps
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Leads Export API");
     const body = (await req.json()) as {

@@ -44,7 +44,9 @@
     ".next-staging/types/**/*.ts",
     ".next-staging/dev/types/**/*.ts",
     ".next-build/types/**/*.ts",
-    ".next-build/dev/types/**/*.ts"
+    ".next-build/dev/types/**/*.ts",
+    ".next-studio-staging/types/**/*.ts",
+    ".next-studio-staging/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

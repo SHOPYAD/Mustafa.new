@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { sendMarketingEmail } from "@/lib/server/email/marketing-smtp";
 import fs from "fs";
@@ -9,6 +10,8 @@ export const dynamic = "force-dynamic";
 const LEADS_FILE = "/www/wwwroot/lonaliza.com/lonaliza-platform/database/data/reseller-leads/leads.json";
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const { to, toName, subject, html, text, companyId } = body;

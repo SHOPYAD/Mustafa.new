@@ -1,9 +1,12 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getRegisteredAgent, upsertRegisteredAgent } from "@/lib/swarm/agent-registry";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const concierge = getRegisteredAgent("app_concierge");
     const notifications = getRegisteredAgent("app_notifications");
@@ -24,6 +27,8 @@ export async function GET() {
 }
 
 export async function PUT(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const { agentId, systemPrompt, missionAr, enabled } = body;

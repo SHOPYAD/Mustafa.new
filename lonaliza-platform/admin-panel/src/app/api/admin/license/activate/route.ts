@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { saveServerEnv, getServerEnv } from "@/lib/server/env-store";
 import { verifyLicense } from "@/lib/license/client";
@@ -6,6 +7,8 @@ import { signLicensePayload } from "@/lib/license/crypto";
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = (await req.json()) as { licenseKey: string };
     const licenseKey = (body.licenseKey || "").trim();

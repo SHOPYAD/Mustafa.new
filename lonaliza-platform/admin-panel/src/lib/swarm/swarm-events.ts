@@ -8,7 +8,7 @@ import { EventEmitter } from "events";
 
 export interface SwarmStreamEvent {
   sessionId: string;
-  type: "log" | "pulse" | "consensus" | "proposal" | "critique" | "decision" | "connected" | "heartbeat";
+  type: "log" | "pulse" | "consensus" | "proposal" | "critique" | "decision" | "connected" | "heartbeat" | "stage";
   data: Record<string, unknown>;
   timestamp: string;
 }
@@ -62,6 +62,19 @@ export function broadcastSwarmLog(
     sessionId,
     type: "log",
     data: log,
+    timestamp: new Date().toISOString(),
+  });
+}
+
+export function broadcastArticleStage(
+  sessionId: string,
+  stage: Record<string, unknown>,
+  article: Record<string, unknown>
+): void {
+  swarmEventBus.emitSwarmEvent({
+    sessionId,
+    type: "stage",
+    data: { stage, article },
     timestamp: new Date().toISOString(),
   });
 }

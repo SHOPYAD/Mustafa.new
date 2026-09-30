@@ -111,6 +111,26 @@
   --admin-text: #0f172a;
   --admin-text-muted: #475569;
   --admin-text-faint: #64748b;
+
+  /* Processing Timeline Design System Tokens (Light Mode) */
+  --color-accent: #315fea;
+  --color-accent-fg: #ffffff;
+  --color-accent-hover: #244fd1;
+  --color-accent-text: #244fd1;
+  --color-bg: #f7f9fc;
+  --color-bg-secondary: #f0f4f9;
+  --color-border: #dce4ef;
+  --color-code-bg: #f0f4f9;
+  --color-code-fg: #2a3444;
+  --color-error: #d92d4a;
+  --color-fg: #101828;
+  --color-focus: #315fea;
+  --color-muted: #667085;
+  --color-neutral: #475467;
+  --color-success: #128a55;
+  --color-surface: #ffffff;
+  --color-warning: #b86e00;
+  --shadow-md: 0 4px 12px -2px rgb(16 24 40 / 0.08), 0 2px 4px -2px rgb(16 24 40 / 0.04);
 }
 
 @theme inline {
@@ -774,6 +794,26 @@ html[data-admin-theme="dark"] {
   --admin-text-muted: #cbd5e1;
   --admin-text-faint: #a39bb8;
   color-scheme: dark;
+
+  /* Processing Timeline Design System Tokens (Dark Mode) */
+  --color-accent: #4f7cff;
+  --color-accent-fg: #080c14;
+  --color-accent-hover: #6f91ff;
+  --color-accent-text: #7f9fff;
+  --color-bg: #080c14;
+  --color-bg-secondary: #0d1420;
+  --color-border: #263449;
+  --color-code-bg: #0d1420;
+  --color-code-fg: #cbd5e1;
+  --color-error: #ff5c70;
+  --color-fg: #f8fafc;
+  --color-focus: #4f7cff;
+  --color-muted: #9caabd;
+  --color-neutral: #b2bccd;
+  --color-success: #32d583;
+  --color-surface: #111827;
+  --color-warning: #f6b94a;
+  --shadow-md: 0 4px 14px -2px rgb(0 0 0 / 0.4), 0 2px 6px -2px rgb(0 0 0 / 0.3);
 }
 
 /* ── Admin light theme ─────────────────────────────────────────────────────

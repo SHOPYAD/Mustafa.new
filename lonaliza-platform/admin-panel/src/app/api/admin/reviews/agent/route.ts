@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getTripAdvisorAgentStatus, runTripAdvisorReviewsAgent } from "@/lib/automation/tripadvisor-reviews-agent";
 import { tryCreateAdminPocketBase } from "@/lib/pocketbase/admin";
@@ -7,7 +8,9 @@ export const dynamic = "force-dynamic";
 /**
  * GET: Returns status of TripAdvisor Reviews Autonomous Agent and DB review stats
  */
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const status = getTripAdvisorAgentStatus();
     let totalTripAdvisorReviews = 0;
@@ -53,6 +56,8 @@ export async function GET() {
  * POST: Triggers the TripAdvisor Reviews Agent to crawl, translate, and inject reviews
  */
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json().catch(() => ({}));
     const { batchSize, specificHotelName, specificHotelId, city, targetLang } = body;

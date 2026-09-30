@@ -1,0 +1,169 @@
+{
+  "mode": "exact raster comparison, no resizing, no approved baseline substitution",
+  "warning": "Difference percent is not a perceptual similarity or implementation completion score. Prototype is not the finished reference implementation.",
+  "actual": "evidence/renders",
+  "passed": 0,
+  "total": 20,
+  "results": [
+    {
+      "id": "01",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1567945,
+      "totalPixels": 1573352,
+      "differencePercent": 99.656
+    },
+    {
+      "id": "02",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572924,
+      "totalPixels": 1573352,
+      "differencePercent": 99.973
+    },
+    {
+      "id": "03",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572618,
+      "totalPixels": 1573352,
+      "differencePercent": 99.953
+    },
+    {
+      "id": "04",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573233,
+      "totalPixels": 1573352,
+      "differencePercent": 99.992
+    },
+    {
+      "id": "05",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573190,
+      "totalPixels": 1573352,
+      "differencePercent": 99.99
+    },
+    {
+      "id": "06",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1571826,
+      "totalPixels": 1573352,
+      "differencePercent": 99.903
+    },
+    {
+      "id": "07",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573070,
+      "totalPixels": 1573352,
+      "differencePercent": 99.982
+    },
+    {
+      "id": "08",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573067,
+      "totalPixels": 1573352,
+      "differencePercent": 99.982
+    },
+    {
+      "id": "09",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572825,
+      "totalPixels": 1573352,
+      "differencePercent": 99.967
+    },
+    {
+      "id": "10",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573225,
+      "totalPixels": 1573352,
+      "differencePercent": 99.992
+    },
+    {
+      "id": "11",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573149,
+      "totalPixels": 1573352,
+      "differencePercent": 99.987
+    },
+    {
+      "id": "12",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573147,
+      "totalPixels": 1573352,
+      "differencePercent": 99.987
+    },
+    {
+      "id": "13",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573203,
+      "totalPixels": 1573352,
+      "differencePercent": 99.991
+    },
+    {
+      "id": "14",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572807,
+      "totalPixels": 1573352,
+      "differencePercent": 99.965
+    },
+    {
+      "id": "15",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572575,
+      "totalPixels": 1573352,
+      "differencePercent": 99.951
+    },
+    {
+      "id": "16",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573265,
+      "totalPixels": 1573352,
+      "differencePercent": 99.994
+    },
+    {
+      "id": "17",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573025,
+      "totalPixels": 1573352,
+      "differencePercent": 99.979
+    },
+    {
+      "id": "18",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1572678,
+      "totalPixels": 1573352,
+      "differencePercent": 99.957
+    },
+    {
+      "id": "19",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573176,
+      "totalPixels": 1573352,
+      "differencePercent": 99.989
+    },
+    {
+      "id": "20",
+      "status": "NOT_EXACT",
+      "pass": false,
+      "changedPixels": 1573269,
+      "totalPixels": 1573352,
+      "differencePercent": 99.995
+    }
+  ]
+}

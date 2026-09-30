@@ -1,0 +1,50 @@
+[
+  {
+    "id": "intelligence",
+    "name": "مخابرات الشركات",
+    "color": "#BCAFFF",
+    "file": "intelligence.svg"
+  },
+  {
+    "id": "operations",
+    "name": "تشغيل اللوحة",
+    "color": "#82EFFF",
+    "file": "operations.svg"
+  },
+  {
+    "id": "campaigns",
+    "name": "البريد والحملات",
+    "color": "#89BDFF",
+    "file": "campaigns.svg"
+  },
+  {
+    "id": "sales",
+    "name": "المبيعات والأتمتة",
+    "color": "#78F6C8",
+    "file": "sales.svg"
+  },
+  {
+    "id": "social",
+    "name": "المحتوى الاجتماعي",
+    "color": "#F0B0FF",
+    "file": "social.svg"
+  },
+  {
+    "id": "business",
+    "name": "ربط B2B لوناليزا",
+    "color": "#73F3E4",
+    "file": "business.svg"
+  },
+  {
+    "id": "analytics",
+    "name": "التحليلات والأداء",
+    "color": "#FFDA8B",
+    "file": "analytics.svg"
+  },
+  {
+    "id": "travel",
+    "name": "السفر الذكي بالموقع",
+    "color": "#92DEFF",
+    "file": "travel.svg"
+  }
+]

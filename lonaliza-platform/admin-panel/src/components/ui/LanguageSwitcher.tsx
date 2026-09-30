@@ -122,11 +122,12 @@ export default function LanguageSwitcher({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${btnClass}`}
+        style={variant === "admin" ? { color: "#1e293b", background: "#ffffff" } : undefined}
         aria-label={t.common.language}
       >
-        <Languages size={15} />
-        <span className="text-sm font-semibold">
-          {current?.flag} {(current?.code || locale).toUpperCase()}
+        <Languages size={15} color={variant === "admin" ? "#1e293b" : "currentColor"} />
+        <span className="text-sm font-semibold" style={variant === "admin" ? { color: "#1e293b" } : undefined}>
+          {current?.flag} {current?.label || (current?.code || locale).toUpperCase()}
         </span>
         <ChevronDown
           size={14}

@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "type": "NODE_SELECT",
+      "payload": { "nodeId": "string", "domainId": "string", "level": "number" }
+    },
+    {
+      "type": "BRANCH_EXPAND",
+      "payload": { "parentNodeId": "string", "targetDepth": "number" }
+    },
+    {
+      "type": "BRANCH_COLLAPSE",
+      "payload": { "parentNodeId": "string" }
+    },
+    {
+      "type": "ACTION_PREVIEW",
+      "payload": { "actionId": "string", "impact": "object", "requiresApproval": "boolean" }
+    },
+    {
+      "type": "ACTION_EXECUTE",
+      "payload": { "actionId": "string", "idempotencyKey": "string", "dryRun": "boolean" }
+    },
+    {
+      "type": "MCP_TOOL_DISPATCH",
+      "payload": { "mcpServerId": "string", "toolName": "string", "arguments": "object" }
+    },
+    {
+      "type": "VOICE_STATE_CHANGE",
+      "payload": { "state": "idle|listening|thinking|speaking|executing|interrupted" }
+    }
+  ]
+}
