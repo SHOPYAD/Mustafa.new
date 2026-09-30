@@ -14,7 +14,6 @@ import { resolveGeminiApiKey, resolveGeminiFreeApiKey } from "@/lib/server/gemin
 import { listRegisteredAgents, getRegisteredAgent } from "./agent-registry";
 import { collectPlatformGroundedSnapshot } from "./live-agent-metrics";
 import { executeMcpSwarmCall } from "./mcp-swarm-gateway";
-import { planDirective, runStudioPlan } from "@/lib/studio/capabilities/agent-router.server";
 import { classifyTaskDomain, mcpToolsForDomain } from "./task-domain";
 import { queryEpisodicMemorySemantic, saveEpisodicMemory, type SwarmEpisodicMemoryEntry } from "./agent-episodic-memory";
 import {
@@ -33,8 +32,7 @@ import { savePendingDecision, saveSwarmDiscussionMessage, type AgentRole, type S
 import type { GroundedFact, SwarmActionType } from "./types";
 import { broadcastArticleStage, broadcastSwarmLog, broadcastSwarmPulse } from "./swarm-events";
 import { runOfficialArticlePipeline } from "@/lib/swarm/official-article-pipeline";
-import { loadThreadCheckpoint, saveThreadCheckpoint } from "@/lib/swarm/article-thread-checkpoint";
-import { wantsSeparateArticle } from "@/lib/swarm/article-pipeline-types";
+import { saveThreadCheckpoint } from "@/lib/swarm/article-thread-checkpoint";
 import {
   executeControlPanelTool,
   inspectControlPanelTools,
@@ -42,6 +40,8 @@ import {
   shouldProbeExecuteDirective,
   taskTypeForSystemId,
 } from "@/lib/swarm/control-panel-tool-registry";
+import { dispatchInternalDirective } from "@/lib/studio/graph/internal-engine";
+import { isArticleDirective } from "@/lib/swarm/article-pipeline-types";
 
 // 1. Define State Channels using LangGraph Annotation
 export const SwarmDeliberationState = Annotation.Root({
@@ -900,13 +900,10 @@ async function synthesizerDecisionNode(state: SwarmStateType): Promise<Partial<S
 تتضمن المبادرة: ${proposalsList.map((p) => `${p.agentNameAr}: ${p.detailsAr.slice(0, 100)}...`).join(" | ")}.
 لا يُذكر هامش ربح أو مخزون حي إلا إذا أعادته أداة موصل في هذه الدورة.`;
 
-  const taskDomain = classifyTaskDomain(directive);
-  const isContentTask = taskDomain === "content";
+  const isContentTask = isArticleDirective(directive);
 
-  const existingThread = await loadThreadCheckpoint(state.sessionId);
-  const reviseArticle = Boolean(existingThread) && !wantsSeparateArticle(directive) && taskDomain === "general";
   let articlePipeline: Awaited<ReturnType<typeof runOfficialArticlePipeline>> | null = null;
-  if (isContentTask || reviseArticle) {
+  if (isContentTask) {
     articlePipeline = await runOfficialArticlePipeline({ directive, sessionId: state.sessionId });
   }
 
@@ -1146,11 +1143,22 @@ export async function executeLangGraphDeliberation(
     terminalLogs: [initLog],
   };
 
-  const studioPlan = await planDirective(directive);
-  if (studioPlan) {
-    const reply = await runStudioPlan(studioPlan, sessionId, Boolean(autoExecute));
-    recordDeliberationTurn(sessionId, directive, reply);
-    return { ...initialState, supervisorPlan: { tacticalIntentAr: reply } as unknown as SwarmStateType["supervisorPlan"] };
+  const internal = await dispatchInternalDirective(directive, sessionId, {
+    source,
+    autoExecute: Boolean(autoExecute),
+    screenId: "20",
+  });
+  if (internal.handled) {
+    recordDeliberationTurn(sessionId, directive, internal.reply);
+    return { ...initialState, supervisorPlan: { tacticalIntentAr: internal.reply } as unknown as SwarmStateType["supervisorPlan"] };
+  }
+  if (!internal.allowFullSwarm) {
+    const msg =
+      internal.reason === "unresolved"
+        ? "لم أجد إجراءً محدداً في الفهرس الداخلي. صِغْ طلبك باسم القسم أو افتحه من الاستوديو."
+        : "هذا الطلب يحتاج واجهة الاستوديو أو صياغة أوضح.";
+    recordDeliberationTurn(sessionId, directive, msg);
+    return { ...initialState, supervisorPlan: { tacticalIntentAr: msg } as unknown as SwarmStateType["supervisorPlan"] };
   }
 
   const finalState = await app.invoke(initialState);
