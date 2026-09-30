@@ -1,0 +1,3 @@
+const {defineConfig}=require("playwright/test");
+if(!process.env.TARGET_BASE_URL)throw Error("Set TARGET_BASE_URL to an authorized local/staging application. Production writes are forbidden.");
+module.exports=defineConfig({testDir:"./tests",testMatch:"target.spec.cjs",workers:1,retries:0,use:{baseURL:process.env.TARGET_BASE_URL,viewport:{width:1672,height:941},deviceScaleFactor:1,locale:"ar",timezoneId:"UTC",reducedMotion:"reduce",launchOptions:{...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{}),args:["--no-sandbox","--disable-setuid-sandbox"]}}});

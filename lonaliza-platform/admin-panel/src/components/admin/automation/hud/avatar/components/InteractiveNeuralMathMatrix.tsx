@@ -113,6 +113,22 @@ function drawOrganicHoloFormula(
   ctx.fillText(subText, pad + 24, pad + 126);
 }
 
+/** موضع بعيد عن مركز المجسم، غير منتظم، وفي عمق الخلفية. */
+function backgroundSlot(index: number) {
+  const unit = (salt: number) => {
+    const raw = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
+    return raw - Math.floor(raw);
+  };
+  const angle = unit(1) * Math.PI * 2;
+  const radius = 42 + unit(2) * 18;
+  return {
+    x: Math.cos(angle) * radius,
+    y: (unit(3) - 0.5) * 34,
+    z: -52 - unit(4) * 22,
+    scale: 0.78 + unit(5) * 0.22,
+  };
+}
+
 export default function InteractiveNeuralMathMatrix() {
   const groupRef = useRef<THREE.Group>(null);
   const mouseSmooth = useRef({ x: 0, y: 0 });
@@ -120,7 +136,7 @@ export default function InteractiveNeuralMathMatrix() {
 
   // Calculation Definitions spanning all Supervisor Domains
   const nodesConfig = useMemo<CalculationNode[]>(() => {
-    return [
+    const specs: Omit<CalculationNode, "x" | "y" | "z" | "scale">[] = [
       // Left Cluster (Upper to Lower across 3D space)
       {
         category: "math",
@@ -128,10 +144,6 @@ export default function InteractiveNeuralMathMatrix() {
         compute: () => `α_ij = exp(e_ij) / ∑ exp(e_ik)  →  [0.892, 0.081, 0.027]`,
         subText: "HEADS: 16  ·  DIM: 1536d  ·  PRECISION: FP16",
         accent: "cyan",
-        x: -24.0,
-        y: 13.5,
-        z: -16.0,
-        scale: 1.15,
         phaseOffset: 0.0,
       },
       {
@@ -140,10 +152,6 @@ export default function InteractiveNeuralMathMatrix() {
         compute: () => `∇_θ 𝔼[R(τ)] = 0.00342  (Entropy: 1.482)`,
         subText: "DISCOUNT_γ: 0.99  ·  ACTOR_CRITIC: CONVERGED",
         accent: "gold",
-        x: -26.5,
-        y: 5.5,
-        z: -12.0,
-        scale: 1.1,
         phaseOffset: 1.2,
       },
       {
@@ -155,10 +163,6 @@ export default function InteractiveNeuralMathMatrix() {
         },
         subText: "MARGIN SHOWS ONLY AFTER A CONNECTOR RESULT",
         accent: "emerald",
-        x: -23.5,
-        y: -2.0,
-        z: -14.0,
-        scale: 1.1,
         phaseOffset: 2.4,
       },
       {
@@ -167,10 +171,6 @@ export default function InteractiveNeuralMathMatrix() {
         compute: () => `Saudia 84ms · Flynas NDC 112ms · Amadeus 96ms`,
         subText: "SLOTS: AVAILABLE  ·  INSTANT_BOOKING: ACTIVE",
         accent: "cyan",
-        x: -25.0,
-        y: -9.5,
-        z: -18.0,
-        scale: 1.05,
         phaseOffset: 3.6,
       },
 
@@ -181,10 +181,6 @@ export default function InteractiveNeuralMathMatrix() {
         compute: () => `S_c(u, v) = (u · v) / (||u|| ||v||)  →  0.964`,
         subText: "VECTOR_INDEX: HNSW  ·  DISTANCE: COSINE",
         accent: "cyan",
-        x: 24.5,
-        y: 13.0,
-        z: -16.0,
-        scale: 1.15,
         phaseOffset: 0.8,
       },
       {
@@ -196,10 +192,6 @@ export default function InteractiveNeuralMathMatrix() {
         },
         subText: "CONSENSUS IS NOT ASSUMED",
         accent: "gold",
-        x: 26.5,
-        y: 5.0,
-        z: -12.0,
-        scale: 1.1,
         phaseOffset: 2.0,
       },
       {
@@ -211,10 +203,6 @@ export default function InteractiveNeuralMathMatrix() {
         },
         subText: "NO FIXED SEO SCORE",
         accent: "emerald",
-        x: 24.0,
-        y: -2.5,
-        z: -14.0,
-        scale: 1.1,
         phaseOffset: 3.2,
       },
       {
@@ -226,13 +214,10 @@ export default function InteractiveNeuralMathMatrix() {
         },
         subText: "NO INVENTORY COUNT UNTIL A TOOL RETURNS",
         accent: "cyan",
-        x: 25.5,
-        y: -10.0,
-        z: -18.0,
-        scale: 1.05,
         phaseOffset: 4.4,
       },
     ];
+    return specs.map((spec, index) => ({ ...spec, ...backgroundSlot(index) }));
   }, []);
 
   // Prepare Canvases and CanvasTextures for each node
@@ -339,8 +324,8 @@ export default function InteractiveNeuralMathMatrix() {
 
     if (groupRef.current) {
       // 3D Parallax Tilt responding to mouse coordinates
-      groupRef.current.position.x = mouseSmooth.current.x * 5.2;
-      groupRef.current.position.y = mouseSmooth.current.y * 3.6;
+      groupRef.current.position.x = mouseSmooth.current.x * 1.1;
+      groupRef.current.position.y = mouseSmooth.current.y * 0.7;
       groupRef.current.rotation.y = mouseSmooth.current.x * 0.06;
       groupRef.current.rotation.x = -mouseSmooth.current.y * 0.04;
 
@@ -357,7 +342,7 @@ export default function InteractiveNeuralMathMatrix() {
         const cycle = time * 0.7 + item.phaseOffset;
         // Smooth sine wave between 0.25 (faded) and 0.95 (bright)
         const wave = 0.5 + 0.5 * Math.sin(cycle);
-        const dynamicOpacity = 0.28 + 0.67 * wave + voice * 0.15;
+        const dynamicOpacity = 0.22 + 0.16 * wave + voice * 0.05;
         (sprite.material as THREE.SpriteMaterial).opacity = Math.min(1, dynamicOpacity);
 
         // Gentle organic floating micro-motion
@@ -381,12 +366,12 @@ export default function InteractiveNeuralMathMatrix() {
             spriteRefs.current[idx] = el;
           }}
           position={item.pos}
-          scale={[15.2 * item.baseScale, 4.15 * item.baseScale, 1]}
+          scale={[11.4 * item.baseScale, 3.1 * item.baseScale, 1]}
         >
           <spriteMaterial
             map={item.texture}
             transparent={true}
-            opacity={0.85}
+            opacity={0.34}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />

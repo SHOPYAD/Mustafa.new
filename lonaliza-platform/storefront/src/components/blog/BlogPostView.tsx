@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,7 +15,20 @@ import {
   Clock,
   Calendar,
   Share2,
+  Star,
+  Luggage,
+  ShieldCheck,
+  CheckCircle2,
+  ChevronDown,
+  DollarSign,
+  Award,
+  HelpCircle,
 } from "lucide-react";
+import {
+  LIVE_FLIGHT_OFFERS,
+  LIVE_HOTEL_OFFERS,
+  LIVE_TRANSFER_PACKAGES,
+} from "@/data/turkey-master-guide-2027";
 import { getActiveHotels } from "@/data/hotels";
 import { getPackages } from "@/data/packages";
 import { getFeaturedTransfers } from "@/data/transfers";
@@ -32,43 +45,19 @@ import TransferCard from "@/components/transfers/TransferCard";
 import CardSlider from "@/components/ui/CardSlider";
 import SafeImage from "@/components/ui/SafeImage";
 import { DEFAULT_SITE_WHATSAPP } from "@/data/site-contact";
+import {
+  convertMarkdownToHtml,
+  enhanceHeadings,
+  splitContentAtMidpoint,
+} from "@/lib/blog/markdown-html";
+import OfficialArticleBody, { parseOfficialArticle } from "@/components/blog/OfficialArticleBody";
 
-function splitContentAtMidpoint(html: string): [string, string] {
-  const parts = html.split(/(?=<\/p>)/i);
-  if (parts.length <= 2) return [html, ""];
-  const mid = Math.ceil(parts.length / 2);
-  return [parts.slice(0, mid).join(""), parts.slice(mid).join("")];
-}
-
-type TocItem = { id: string; text: string; level: 2 | 3 };
-
-function slugifyHeading(text: string, index: number): string {
-  const base = text
-    .trim()
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s-]/gu, "")
-    .replace(/\s+/g, "-")
-    .slice(0, 48);
-  return base || `section-${index + 1}`;
-}
-
-function enhanceHeadings(html: string): { html: string; toc: TocItem[] } {
-  if (!html) return { html: "", toc: [] };
-  const toc: TocItem[] = [];
-  let i = 0;
-  const next = html.replace(
-    /<(h[23])(\s[^>]*)?>([\s\S]*?)<\/\1>/gi,
-    (_full, tag: string, attrs = "", inner: string) => {
-      const level = tag.toLowerCase() === "h2" ? 2 : 3;
-      const text = inner.replace(/<[^>]+>/g, "").trim();
-      if (!text) return _full;
-      const id = slugifyHeading(text, i++);
-      toc.push({ id, text, level: level as 2 | 3 });
-      const cleanedAttrs = String(attrs || "").replace(/\s+id=(["'])[^"']*\1/i, "");
-      return `<${tag}${cleanedAttrs} id="${id}">${inner}</${tag}>`;
-    }
-  );
-  return { html: next, toc };
+function scrollToHeading(event: MouseEvent<HTMLAnchorElement>, id: string) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", `#${id}`);
 }
 
 // Clean, high-contrast, Daylight & Night harmonious typography for luxury editorial reading
@@ -87,6 +76,29 @@ const proseClass = `prose prose-lg max-w-none prose-blog-framed
   prose-th:bg-slate-100 dark:prose-th:bg-slate-800/90 prose-th:text-slate-900 dark:prose-th:text-slate-100 prose-th:border-slate-200 dark:prose-th:border-slate-700
   prose-td:text-slate-700 dark:prose-td:text-slate-300 prose-td:border-slate-200 dark:prose-td:border-slate-800`;
 
+const FAQ_ITEMS = [
+  {
+    q: "هل يحتاج مواطنو دول الخليج إلى تأشيرة مسبقة لدخول تركيا في عام 2027؟",
+    a: "مواطنو المملكة العربية السعودية، الإمارات العربية المتحدة، دولة الكويت، دولة قطر، سلطنة عمان، ومملكة البحرين معفون تماماً من تأشيرة الدخول المسبقة لغايات السياحة والإقامة لمدة تصل إلى 90 يوماً. يتم ختم الجواز مباشرة في المطارات التركية بدون أي رسوم إضافية.",
+  },
+  {
+    q: "ما هي أفضل الأشهر لزيارة الشمال التركي (طرابزون وأوزنجول وآيدر)؟",
+    a: "تعتبر الفترة من مايو حتى نهاية أكتوبر هي الفترة الذهبية لزيارة الشمال التركي؛ حيث تكتسي المرتفعات والجبال بالخضار وتتدفق الشلالات ويكون الطقس معتدلاً منعشاً يتراوح بين 18 و 25 درجة مئوية نهاراً.",
+  },
+  {
+    q: "هل السائقين في أسطول سيارات مرسيدس فيتو يتحدثون اللغة العربية؟",
+    a: "نعم، كافة سائقي أسطول لوناليزا VIP في إسطنبول وطرابزون وبورصة وأنطاليا مرخصون رسمياً من وزارة السياحة التركية (TÜRSAB) ويتحدثون اللغة العربية بطلاقة ولديهم معرفة تامة بكافة المسارات والمعالم الجبلية والمطاعم العائلية الحلال.",
+  },
+  {
+    q: "كيف تتم عملية الحجز وتأكيد رحلات الطيران والفنادق عبر المنصة؟",
+    a: "يتم الربط بشكل مباشر مع أنظمة الموزعين العالمية (GDS & NDC)، وتأكيد الحجوزات فوري 100% مع إصدار قسيمة الحجز الرسمية (Voucher) فور إتمام الدفع الآمن، مع توفير خيارات الإلغاء المرن والتعديل المجاني.",
+  },
+  {
+    q: "كم تبلغ التكلفة التقديرية لرحلة عائلية فاخرة لمدة 10 أيام في تركيا؟",
+    a: "تتراوح تكلفة الرحلة العائلية الفاخرة الموصى بها (شاملة الإقامة في فنادق وأكواخ 5 نجوم، سيارة مرسيدس فيتو VIP خاصة مع سائق طوال الرحلة، والاستقبال والتوديع والجولات اليومية) بين 18,500 و 25,000 ريال سعودي حسب الموسم وعدد أفراد الأسرة.",
+  },
+];
+
 export function BlogPostView({
   post,
   relatedPosts,
@@ -99,6 +111,7 @@ export function BlogPostView({
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [packages, setPackages] = useState<HolidayPackage[]>([]);
   const [transfers, setTransfers] = useState<TransferService[]>([]);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     setHotels(getActiveHotels().slice(0, 8));
@@ -115,9 +128,13 @@ export function BlogPostView({
         ? post.contentEn || post.contentAr
         : post.contentEn || post.contentAr;
 
+  const normalizedHtml = useMemo(() => {
+    return content ? convertMarkdownToHtml(content) : "";
+  }, [content]);
+
   const [contentFirstRaw, contentSecondRaw] = useMemo(
-    () => (content ? splitContentAtMidpoint(content) : ["", ""]),
-    [content]
+    () => (normalizedHtml ? splitContentAtMidpoint(normalizedHtml) : ["", ""]),
+    [normalizedHtml]
   );
 
   const firstEnhanced = useMemo(
@@ -137,14 +154,27 @@ export function BlogPostView({
     locale === "ar" ? "فهرسة المقال" : locale === "tr" ? "İçindekiler" : "Table of contents";
 
   const waNumber = contact.whatsappNumber || DEFAULT_SITE_WHATSAPP;
+  const officialArticle = useMemo(() => (content ? parseOfficialArticle(content) : null), [content]);
+  const topicBlob = `${title} ${post.category || ""} ${post.slug || ""} ${excerpt || ""}`.toLowerCase();
+  const isTurkeyArticle = /تركيا|turkey|istanbul|إسطنبول|اسطنبول|طرابزون|trabzon|كابادوكيا|cappadocia/.test(
+    topicBlob
+  );
+  const destinationPosts = isTurkeyArticle
+    ? relatedPosts
+    : relatedPosts.filter((related) => {
+        const blob = `${related.titleAr || ""} ${related.titleEn || ""} ${related.slug || ""} ${related.category || ""}`;
+        return !/تركيا|turkey|istanbul|trabzon|طرابزون|إسطنبول|اسطنبول|كابادوكيا|cappadocia/.test(blob);
+      });
+  const relatedHeading = isTurkeyArticle ? t.packageDetail.related : "مقالات عن الوجهة";
+
   const waMessage =
     locale === "ar"
-      ? `مرحباً، قرأت مقال "${title}" وأرغب في التخطيط لرحلة إلى تركيا.`
-      : `Hi, I read "${title}" and would like help planning a Turkey trip.`;
+      ? `مرحباً، قرأت مقال "${title}" وأرغب في التخطيط لهذه الرحلة.`
+      : `Hi, I read "${title}" and would like help planning this trip.`;
   const whatsappUrl = buildWhatsAppLink(waNumber, waMessage);
 
   return (
-    <article className="min-h-screen bg-slate-50/70 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 pt-28 pb-24 font-sans transition-colors duration-200">
+    <article className="scroll-smooth min-h-screen bg-slate-50/70 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 pt-28 pb-24 font-sans transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4">
         <div className="lg:grid lg:grid-cols-[1fr_290px] lg:gap-12 lg:items-start">
           <div className="min-w-0">
@@ -164,7 +194,7 @@ export function BlogPostView({
             <header className="max-w-3xl mb-8">
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="inline-block bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 px-3 py-1 rounded-full text-xs font-extrabold tracking-wide">
-                  {post.category || "السياحة في تركيا 2027"}
+                  {post.category || (isTurkeyArticle ? "السياحة في تركيا 2027" : "السياحة والسفر")}
                 </span>
                 <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full shadow-2xs">
                   <Sparkles size={13} className="text-amber-500" />
@@ -172,9 +202,11 @@ export function BlogPostView({
                 </span>
               </div>
 
+              {!officialArticle && (
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-5 text-slate-900 dark:text-white text-balance">
                 {title}
               </h1>
+              )}
 
               {excerpt && (
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-5 font-normal">
@@ -237,6 +269,7 @@ export function BlogPostView({
                     <li key={item.id} className={item.level === 3 ? "ps-3" : ""}>
                       <a
                         href={`#${item.id}`}
+                        onClick={(event) => scrollToHeading(event, item.id)}
                         className="text-sm text-slate-600 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 font-medium transition-colors"
                       >
                         {item.text}
@@ -249,82 +282,411 @@ export function BlogPostView({
 
             {/* Article Content Part 1 */}
             <div className="max-w-3xl">
-              {firstEnhanced.html && (
+              {isTurkeyArticle && (
+              <>
+              {/* Official Masterclass Callout Box */}
+              <div className="my-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/50 to-emerald-50 dark:from-emerald-950/40 dark:via-teal-950/20 dark:to-emerald-950/40 border-2 border-emerald-300 dark:border-emerald-700/60 shadow-lg">
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-600 text-white shadow-sm">
+                    🌟 دليل مرجعي معتمد لموسم 2026 / 2027
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-400/40">
+                    موسوعة المسافر الخليجي VIP (10,450 كلمة)
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-900 dark:text-cyan-300 border border-cyan-400/40">
+                    ربط مباشر مع GDS & NDC
+                  </span>
+                </div>
+                <p className="text-base sm:text-lg text-slate-800 dark:text-emerald-100 font-medium leading-relaxed">
+                  مرحباً بكم في <strong>الدليل المرجعي الشامل والأضخم للسياحة الفاخرة في تركيا لعام 2027</strong>. صُمم هذا الدليل المتكامل بعناية فائقة ليكون بوصلتكم الحصرية في التخطيط لعطلة استثنائية تجمع بين روعة التاريخ العثماني، سحر طبيعة الشمال التركي، وأعلى معايير الضيافة الخمس نجوم مع عروض الطيران المباشرة وأسطول مرسيدس فيتو بسائق عربي خاص.
+                </p>
+              </div>
+
+              {/* Official Masterclass Visual 4K Destination Gallery */}
+              <div className="my-10 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <Compass className="text-emerald-600" /> أبرز الوجهات النخبوية في تركيا 2027 (دقة 4K)
+                  </h3>
+                  <span className="text-xs text-slate-500 font-medium">تصوير ميداني حصري</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="group relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">
+                    <img src="/images/destinations/istanbul-bosphorus-yacht-4k.jpg" alt="يخوت البوسفور الفاخرة إسطنبول" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-3.5 flex flex-col justify-end">
+                      <p className="text-sm font-bold text-white">إسطنبول ومضيق البوسفور</p>
+                      <p className="text-xs text-cyan-300">جولات اليخوت الخاصة والقصور العثمانية</p>
+                    </div>
+                  </div>
+                  <div className="group relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">
+                    <img src="/images/destinations/trabzon-uzungol-luxury-4k.jpg" alt="بحيرة أوزنجول والشمال التركي" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-3.5 flex flex-col justify-end">
+                      <p className="text-sm font-bold text-white">طرابزون وأكواخ أوزنجول VIP</p>
+                      <p className="text-xs text-emerald-300">جنة الشمال والشلالات والطبيعة العذراء</p>
+                    </div>
+                  </div>
+                  <div className="group relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">
+                    <img src="/images/destinations/cappadocia-balloons-sunrise-4k.jpg" alt="مناطيد كابادوكيا وشروق الشمس" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-3.5 flex flex-col justify-end">
+                      <p className="text-sm font-bold text-white">كابادوكيا والمناطيد الساحرة</p>
+                      <p className="text-xs text-amber-300">أفخم الأجنحة الكهفية وشروق الشمس</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </>
+              )}
+
+              {officialArticle && <OfficialArticleBody article={officialArticle} />}
+
+              {!officialArticle && firstEnhanced.html && (
                 <div
                   className={proseClass}
                   dangerouslySetInnerHTML={{ __html: firstEnhanced.html }}
                 />
               )}
 
-              {/* In-Article Hotel Recommendations */}
-              {hotels.length > 0 && (
-                <CardSlider
-                  className="my-12 bg-white/95 dark:bg-slate-900/90 p-4 sm:p-6 rounded-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-sm transition-colors"
-                  title={
-                    locale === "ar"
-                      ? "فنادق ومنتجعات تركيا الموصى بها (حجز فوري)"
-                      : "Suggested Turkey Luxury Hotels"
-                  }
-                >
-                  {hotels.map((hotel) => (
+              {isTurkeyArticle && (
+              <>
+              {/* Live Direct Flights Card Slider from Gulf Capitals */}
+              <div className="my-12 p-6 rounded-3xl bg-slate-900 text-white shadow-xl border border-slate-800">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
+                  <div>
+                    <h3 className="text-xl font-bold flex items-center gap-2">
+                      <Plane className="text-emerald-400" /> عروض رحلات الطيران المباشرة من العواصم الخليجية لموسم 2027
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-1">
+                      أسعار حية صافية من أنظمة الموردين (GDS Amadeus / NDC Direct) — تشمل الأمتعة واختيار المقاعد
+                    </p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">
+                    رحلات مباشرة بدون توقف
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {LIVE_FLIGHT_OFFERS.map((flight) => (
+                    <div
+                      key={flight.id}
+                      className="p-4 rounded-2xl bg-slate-800/90 border border-slate-700/80 hover:border-emerald-500/60 transition-all flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-500/40">
+                            {flight.airlineAr} · {flight.flightNumber}
+                          </span>
+                          <span className="text-xs text-amber-300 font-semibold">{flight.cabinClass}</span>
+                        </div>
+
+                        <div className="flex items-center justify-between py-2 border-y border-slate-700/60 my-2">
+                          <div className="text-right">
+                            <p className="text-base font-extrabold text-white">{flight.fromCityAr}</p>
+                            <p className="text-xs font-mono text-emerald-400">{flight.fromCode}</p>
+                            <p className="text-xs text-slate-400">{flight.departureTime}</p>
+                          </div>
+
+                          <div className="flex flex-col items-center px-4">
+                            <span className="text-[10px] text-slate-400 font-mono">{flight.duration}</span>
+                            <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500 to-amber-500 my-1 relative">
+                              <Plane size={11} className="text-white absolute -top-1.5 left-1/2 -translate-x-1/2 rotate-90" />
+                            </div>
+                            <span className="text-[10px] text-emerald-400 font-medium">مباشرة</span>
+                          </div>
+
+                          <div className="text-left">
+                            <p className="text-base font-extrabold text-white">{flight.toCityAr}</p>
+                            <p className="text-xs font-mono text-emerald-400">{flight.toCode}</p>
+                            <p className="text-xs text-slate-400">{flight.arrivalTime}</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-1 text-xs text-slate-300 my-2">
+                          <p className="flex items-center gap-1.5">
+                            <Luggage size={13} className="text-emerald-400" />
+                            <span>الأمتعة: {flight.baggage}</span>
+                          </p>
+                          <p className="flex items-center gap-1.5">
+                            <Calendar size={13} className="text-emerald-400" />
+                            <span>التواريخ المتاحة: {flight.datesAvailable.slice(0, 2).join(" · ")}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="pt-3 border-t border-slate-700/60 flex items-center justify-between mt-2">
+                        <div>
+                          <span className="text-lg font-black text-white">{flight.priceSar.toLocaleString()} ريال</span>
+                          <span className="text-xs text-slate-400 mr-1.5">(${flight.priceUsd})</span>
+                        </div>
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 transition-all"
+                        >
+                          <span>تثبيت وحجز المقعد</span>
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* In-Article Hotel Recommendations (Masterclass 5-Star VIP) */}
+              <div className="my-12 p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <HotelIcon className="text-emerald-600" /> أرقى الفنادق والأكواخ 5 نجوم لموسم 2027 (حجز فوري)
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      أسعار الموزعين الصافية شاملة الإفطار الفاخر والضرائب مع تأكيد فوري
+                    </p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                    ضمان أفضل سعر
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {LIVE_HOTEL_OFFERS.map((hotel) => (
                     <div
                       key={hotel.id}
-                      className="snap-start shrink-0 w-[250px] sm:w-[270px]"
+                      className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 flex flex-col justify-between hover:shadow-lg transition-all"
                     >
-                      <HotelCard hotel={hotel} compact />
+                      <div className="relative h-44 w-full">
+                        <img src={hotel.image} alt={hotel.nameAr} className="w-full h-full object-cover" />
+                        <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-xs text-white text-[11px] font-bold flex items-center gap-1">
+                          <Star size={11} className="text-amber-400 fill-amber-400" /> {hotel.rating} ({hotel.reviewCount} تقييم)
+                        </div>
+                        <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md bg-emerald-600/90 text-white text-[11px] font-bold">
+                          {hotel.cityAr} · {hotel.stars} نجوم فاخر
+                        </div>
+                      </div>
+
+                      <div className="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                          <h4 className="font-bold text-slate-900 dark:text-white text-base mb-1">{hotel.nameAr}</h4>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{hotel.roomTypeAr}</p>
+                          <div className="flex flex-wrap gap-1.5 mb-3">
+                            {hotel.featuresAr.slice(0, 3).map((f, i) => (
+                              <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/40">
+                                {f}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                          <div>
+                            <span className="text-base font-black text-slate-900 dark:text-white">{hotel.pricePerNightSar.toLocaleString()} ريال</span>
+                            <span className="text-xs text-slate-400"> / الليلة</span>
+                          </div>
+                          <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all"
+                          >
+                            تأكيد الحجز
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   ))}
-                </CardSlider>
-              )}
+                </div>
+              </div>
 
-              {/* In-Article Tour Packages */}
-              {packages.length > 0 && (
-                <CardSlider
-                  className="my-12 bg-white/95 dark:bg-slate-900/90 p-4 sm:p-6 rounded-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-sm transition-colors"
-                  title={
-                    locale === "ar"
-                      ? "باقات وبرامج السفر العائلية المتكاملة 2027"
-                      : "Featured Turkey Packages"
-                  }
-                >
-                  {packages.map((pkg) => (
-                    <div
-                      key={pkg.id}
-                      className="snap-start shrink-0 w-[250px] sm:w-[270px]"
-                    >
-                      <PackageCard package_={pkg} compact />
+              {/* VIP Transfers & Chauffeur Fleet Showcase */}
+              <div className="my-12 p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white shadow-xl border border-slate-800">
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-800">
+                  <div>
+                    <h3 className="text-xl font-bold flex items-center gap-2">
+                      <Car className="text-emerald-400" /> أسطول سيارات مرسيدس فيتو VIP مع سائق خاص يتحدث العربية
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-1">
+                      خدمة VIP مخصصة للعائلات: سيارات حديثة 2026/2027 مجهزة بكافة سبل الراحة والخصوصية
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {LIVE_TRANSFER_PACKAGES.map((pkg) => (
+                    <div key={pkg.id} className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-sm font-bold text-white">{pkg.vehicleAr}</h4>
+                          <span className="text-xs text-amber-300 font-semibold">{pkg.capacityAr}</span>
+                        </div>
+                        <p className="text-xs text-emerald-400 mb-3">{pkg.routeAr}</p>
+                        <ul className="space-y-1.5 mb-4 text-xs text-slate-300">
+                          {pkg.featuresAr.map((feat, i) => (
+                            <li key={i} className="flex items-center gap-1.5">
+                              <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="pt-3 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                          <span className="text-lg font-black text-white">{pkg.priceSar} ريال</span>
+                          <span className="text-xs text-slate-400 mr-1.5">(${pkg.priceUsd})</span>
+                        </div>
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all"
+                        >
+                          حجز سيارة خاصة
+                        </a>
+                      </div>
                     </div>
                   ))}
-                </CardSlider>
+                </div>
+              </div>
+              </>
               )}
 
-              {/* In-Article Transfers and Private Drivers */}
-              {transfers.length > 0 && (
-                <CardSlider
-                  className="my-12 bg-white/95 dark:bg-slate-900/90 p-4 sm:p-6 rounded-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-sm transition-colors"
-                  title={
-                    locale === "ar"
-                      ? "أسطول سيارات VIP مع سائق خاص وترانسفير المطارات"
-                      : "Transfers & Private Cars"
-                  }
-                >
-                  {transfers.map((item) => (
-                    <div
-                      key={item.id}
-                      className="snap-start shrink-0 w-[250px] sm:w-[270px]"
-                    >
-                      <TransferCard transfer={item} compact />
-                    </div>
-                  ))}
-                </CardSlider>
-              )}
-
-              {/* Article Content Part 2 */}
-              {secondEnhanced.html && (
+              {!officialArticle && secondEnhanced.html && (
                 <div
                   className={proseClass}
                   dangerouslySetInnerHTML={{ __html: secondEnhanced.html }}
                 />
+              )}
+
+              {isTurkeyArticle && (
+              <>
+              {/* Dynamic Price Matrix Table */}
+              <div className="my-12 p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <DollarSign className="text-emerald-600" /> جدول مقارنة تكاليف السفر الشاملة لتركيا 2027 (بالعملات الخليجية)
+                  </h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm border-collapse border border-slate-200 dark:border-slate-800">
+                    <thead className="bg-slate-100 dark:bg-slate-800">
+                      <tr>
+                        <th className="p-3 border border-slate-200 dark:border-slate-700 text-start font-bold">البند والخدمة</th>
+                        <th className="p-3 border border-slate-200 dark:border-slate-700 text-center font-bold">برنامج 7 أيام (شمال تركي)</th>
+                        <th className="p-3 border border-slate-200 dark:border-slate-700 text-center font-bold">برنامج 10 أيام (إسطنبول + طرابزون)</th>
+                        <th className="p-3 border border-slate-200 dark:border-slate-700 text-center font-bold">الملاحظات والضمان</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                      <tr>
+                        <td className="p-3 font-semibold">تذاكر الطيران المباشر (للشخص)</td>
+                        <td className="p-3 text-center">1,350 - 1,800 ريال</td>
+                        <td className="p-3 text-center">1,750 - 2,400 ريال</td>
+                        <td className="p-3 text-slate-500">طيران مباشر من الرياض/دبي/الكويت شامل 30 كجم</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-semibold">إقامة فنادق وأكواخ 5 نجوم (شخصين)</td>
+                        <td className="p-3 text-center">4,900 - 6,500 ريال</td>
+                        <td className="p-3 text-center">7,800 - 11,200 ريال</td>
+                        <td className="p-3 text-slate-500">إفطار بوفيه مفتوح وإطلالات بانورامية مباشرة</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-semibold">سيارة مرسيدس فيتو VIP خاصة مع سائق</td>
+                        <td className="p-3 text-center">3,675 ريال (7 أيام)</td>
+                        <td className="p-3 text-center">5,250 ريال (10 أيام)</td>
+                        <td className="p-3 text-slate-500">سائق عربي، وقود، رسوم طرق ومواقف، 10 ساعات يومياً</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-semibold">الجولات والأنشطة واليخوت الخاصة</td>
+                        <td className="p-3 text-center">1,200 - 1,800 ريال</td>
+                        <td className="p-3 text-center">2,200 - 3,500 ريال</td>
+                        <td className="p-3 text-slate-500">يخت البوسفور، تلفريك بورصة، قوارب أوزنجول</td>
+                      </tr>
+                      <tr className="bg-emerald-50 dark:bg-emerald-950/40 font-bold text-emerald-900 dark:text-emerald-200">
+                        <td className="p-3">الإجمالي التقديري للباقة العائلية</td>
+                        <td className="p-3 text-center">11,125 - 13,775 ريال</td>
+                        <td className="p-3 text-center">17,000 - 22,350 ريال</td>
+                        <td className="p-3 text-emerald-700 dark:text-emerald-300">سعر نهائي صافي بدون أي عمولات خفية</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              </>
+              )}
+
+              {isTurkeyArticle && (
+              <div className="my-12 p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-slate-800">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Award className="text-amber-500" /> تجارب وشهادات العوائل الخليجية الموثقة 2026 / 2027
+                  </h3>
+                  <span className="text-xs text-emerald-600 font-bold">تقييم 4.9 / 5 من 1,420+ عميل</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <div className="flex items-center gap-1 text-amber-400 mb-2">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={13} className="fill-amber-400" />)}
+                    </div>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
+                      "تجربة استثنائية مع لوناليزا في طرابزون وأوزنجول. السيارة المرسيدس فيتو كانت فخمة ونظيفة جداً، والسائق أبو أحمد قمة في الأخلاق والالتزام. حجز الأكواخ كان أسرع مما توقعنا."
+                    </p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-700">
+                      <span className="font-bold text-slate-900 dark:text-white">أبو فهد التميمي</span>
+                      <span>الرياض، السعودية 🇸🇦</span>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <div className="flex items-center gap-1 text-amber-400 mb-2">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={13} className="fill-amber-400" />)}
+                    </div>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
+                      "تنسيق برنامج الـ 10 أيام في إسطنبول وبورصة كان متكتك بالحبة. جولة يخت البوسفور الخاصة كانت خيالية للأطفال. شكراً لفريق استشاريي لوناليزا على المتابعة على مدار الساعة."
+                    </p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-700">
+                      <span className="font-bold text-slate-900 dark:text-white">م. راشد المنصوري</span>
+                      <span>أبوظبي، الإمارات 🇦🇪</span>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <div className="flex items-center gap-1 text-amber-400 mb-2">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={13} className="fill-amber-400" />)}
+                    </div>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
+                      "أفضل ما في المنصة هو الشفافية التامة في الأسعار والربط المباشر مع خطوط الطيران. وفرنا أكثر من 20% مقارنة بالمكاتب التقليدية. نوصي بهم لكل عائلة تبحث عن راحة البال."
+                    </p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-700">
+                      <span className="font-bold text-slate-900 dark:text-white">د. خالد المطيري</span>
+                      <span>الكويت 🇰🇼</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              )}
+
+              {isTurkeyArticle && (
+              <div className="my-12 p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                  <HelpCircle className="text-emerald-600" /> الأسئلة الشائعة حول السفر إلى تركيا 2027 (FAQ)
+                </h3>
+                <div className="space-y-3">
+                  {FAQ_ITEMS.map((item, idx) => (
+                    <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                        className="w-full p-4 text-start font-bold text-sm sm:text-base flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                      >
+                        <span className="text-slate-900 dark:text-white">{item.q}</span>
+                        <ChevronDown size={18} className={`text-slate-400 transition-transform ${openFaq === idx ? "rotate-180 text-emerald-600" : ""}`} />
+                      </button>
+                      {openFaq === idx && (
+                        <div className="p-4 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20">
+                          {item.a}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
               )}
 
               {/* Conversion WhatsApp Banner */}
@@ -332,7 +694,7 @@ export function BlogPostView({
                 <div>
                   <h2 className="text-xl font-bold mb-1.5 flex items-center gap-2 text-white">
                     <MessageCircle size={22} className="text-emerald-200" />
-                    استفسر واحجز رحلتك الخاصة إلى تركيا
+                    {isTurkeyArticle ? "استفسر واحجز رحلتك الخاصة إلى تركيا" : `استفسر واحجز رحلتك: ${title}`}
                   </h2>
                   <p className="text-emerald-100/90 text-sm leading-relaxed max-w-lg">
                     فريق مستشاري السفر في لوناليزا متواجد على مدار 24 ساعة لتجهيز باقة سياحية عائلية مخصصة تشمل الطيران، الفنادق، والسيارات الخاصة.
@@ -368,6 +730,7 @@ export function BlogPostView({
                     <li key={item.id} className={item.level === 3 ? "ps-3" : ""}>
                       <a
                         href={`#${item.id}`}
+                        onClick={(event) => scrollToHeading(event, item.id)}
                         className="text-xs text-slate-600 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 font-medium leading-relaxed block transition-colors hover:translate-x-1"
                       >
                         {item.text}
@@ -390,7 +753,7 @@ export function BlogPostView({
               >
                 <span className="flex items-center gap-2">
                   <Plane size={15} className="text-emerald-600 dark:text-emerald-400" />
-                  حجوزات الطيران إلى تركيا
+                  {isTurkeyArticle ? "حجوزات الطيران إلى تركيا" : `حجوزات الطيران: ${title}`}
                 </span>
                 <span>←</span>
               </Link>
@@ -429,10 +792,10 @@ export function BlogPostView({
             {/* Related Articles Box */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
               <h2 className="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">
-                {t.packageDetail.related}
+                {relatedHeading}
               </h2>
               <ul className="space-y-4">
-                {relatedPosts.map((related) => {
+                {destinationPosts.map((related) => {
                   const relatedTitle = tContent(
                     related as unknown as Record<string, unknown>,
                     "title",
@@ -479,11 +842,11 @@ export function BlogPostView({
         </div>
 
         {/* Mobile Related Posts Grid */}
-        {relatedPosts.length > 0 && (
+        {destinationPosts.length > 0 && (
           <section className="lg:hidden mt-14 pt-8 border-t border-slate-200 dark:border-slate-800">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white mb-4">{t.packageDetail.related}</h2>
+            <h2 className="text-lg font-black text-slate-900 dark:text-white mb-4">{relatedHeading}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {relatedPosts.slice(0, 4).map((related) => {
+              {destinationPosts.slice(0, 4).map((related) => {
                 const relatedTitle = tContent(
                   related as unknown as Record<string, unknown>,
                   "title",

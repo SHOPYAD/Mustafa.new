@@ -28,6 +28,7 @@ import DemoSeedBanner from "@/components/admin/DemoSeedBanner";
 import PlatformReadinessHeaderBanner from "@/components/admin/PlatformReadinessHeaderBanner";
 
 import { AdminThemeEngine } from "@/components/admin/theme/AdminThemeEngine";
+import { StudioEmbedStyle } from "@/components/admin/automation/hud/studio/shell/CyberScrollStyle";
 
 export default function AdminLayout({
   children,
@@ -42,6 +43,28 @@ export default function AdminLayout({
   const [newBookings, setNewBookings] = useState(0);
   const [theme, setTheme] = useState<"dark" | "light">("light");
   const [themeReady, setThemeReady] = useState(false);
+  /** الصفحة معروضة داخل نافذة في الاستوديو السيبراني (?studio=1). */
+  const [studioEmbed, setStudioEmbed] = useState(false);
+  useEffect(() => {
+    const embed = new URLSearchParams(window.location.search).get("studio") === "1";
+    setStudioEmbed(embed);
+    if (!embed) return;
+    // داخل نافذة الاستوديو: ثيم سيبراني داكن لهذه الوثيقة فقط، دون حفظ تفضيل المستخدم.
+    const root = document.documentElement;
+    const force = () => {
+      root.dataset.studioEmbed = "1";
+      root.dataset.adminTheme = "dark";
+      root.dataset.adminThemeMode = "dark";
+      root.classList.add("dark");
+      root.style.colorScheme = "dark";
+    };
+    force();
+    const obs = new MutationObserver(() => {
+      if (root.dataset.adminTheme !== "dark" || !root.classList.contains("dark")) force();
+    });
+    obs.observe(root, { attributes: true, attributeFilter: ["class", "data-admin-theme", "data-admin-theme-mode"] });
+    return () => obs.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     const stored = readStoredAdminTheme();
@@ -156,13 +179,25 @@ export default function AdminLayout({
 
   if (pathname === "/admin/login") return <>{children}</>;
 
+  if (studioEmbed) {
+    return (
+      <div className="studio-embed cyber-console admin-main min-h-screen w-full p-4 sm:p-5" dir={dir} data-admin-theme="dark">
+        <AdminThemeEngine currentMode="dark" />
+        <StudioEmbedStyle />
+        {children}
+      </div>
+    );
+  }
+
   const isFullscreenEditor =
     pathname === "/admin/homepage-editor" ||
     pathname === "/admin/homepage" ||
     pathname === "/admin/editor" ||
     pathname === "/admin/visual-editor" ||
     pathname === "/admin/mobile-app-editor" ||
-    pathname === "/admin/agent-studio";
+    pathname === "/admin/agent-studio" ||
+    pathname === "/admin/neural-studio" ||
+    pathname?.startsWith("/admin/neural-studio");
 
   if (isFullscreenEditor) {
     return (
@@ -226,6 +261,14 @@ export default function AdminLayout({
               </>
             )}
           </div>
+          <Link
+            href="/admin/agent-war-room?screen=20"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-cyan-400/50 bg-cyan-500/10 text-cyan-800 dark:text-cyan-100 hover:bg-cyan-500/20 text-xs font-bold transition-colors"
+            title="التحويل إلى لوحة الاستوديو السيبراني"
+          >
+            <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" />
+            <span className="hidden sm:inline">الوضع السيبراني</span>
+          </Link>
           <button
             type="button"
             onClick={() => window.dispatchEvent(new Event("liotrip:start-tour"))}

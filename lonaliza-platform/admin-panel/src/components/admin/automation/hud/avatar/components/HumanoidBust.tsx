@@ -142,7 +142,11 @@ const BUST_FRAGMENT_SHADER = `
       col += vec3(1.35, 1.15, 0.45) * pulse * 1.25;
     }
 
-    gl_FragColor = vec4(col, pointAlpha * 0.98);
+    // 5. Complete Humanoid Bust Torso & Ribs down to bottom dock (100% full opacity to y = -21.15)
+    float bottomFade = smoothstep(-23.0, -21.2, vWorldPos.y);
+    float finalAlpha = pointAlpha * bottomFade;
+
+    gl_FragColor = vec4(col, finalAlpha * 0.98);
   }
 `;
 
@@ -200,8 +204,7 @@ export default function HumanoidBust() {
         geo.setAttribute("aHeart", new THREE.BufferAttribute(hearts, 1));
 
         setGeometry(geo);
-        // Start majestic assembly vortex as soon as point geometry is ready in memory
-        useAvatarStore.getState().startAssemblyAnimation();
+        useAvatarStore.getState().setAssemblyProgress(1.0);
       } catch (err) {
         console.error("Error loading avatar geometry:", err);
       }
@@ -265,6 +268,7 @@ export default function HumanoidBust() {
       geometry={geometry}
       material={material}
       position={[0, 0, 0]}
+      renderOrder={15}
     />
   );
 }

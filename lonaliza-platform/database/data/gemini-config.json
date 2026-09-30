@@ -11,7 +11,7 @@
   "salesTone": "نبرة مستشار سفر نخبي وواضح من لوناليزا للسياحة والسفر: راقٍ، مباشر، عربي أنيق، دون إيموجي وبدون مبالغات رخيصة.",
   "salesUpsellNotes": "اقترح خدمات إضافية مناسبة لوجهة العميل وتواريخه دون إلحاح.",
   "salesSaveProgramRules": "احفظ البرنامج عندما يكتمل تفصيله.",
-  "salesPreferLiteModel": false,
+  "salesPreferLiteModel": true,
   "salesUseGoogleSearch": true,
   "dailyFreeChatLimit": 1500,
   "dailyPaidChatLimit": 100,

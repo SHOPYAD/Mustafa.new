@@ -1,9 +1,12 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { getDemoSeedStats, bulkDeleteDemoSeed } from "@/lib/server/demo-seed";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const stats = await getDemoSeedStats();
     const total = stats.packages + stats.tours + stats.articles + stats.bookings + stats.coupons;
@@ -15,6 +18,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = (await req.json()) as { action: "delete_all" };
     if (body.action === "delete_all") {

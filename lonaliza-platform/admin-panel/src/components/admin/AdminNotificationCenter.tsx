@@ -32,6 +32,20 @@ function typeIcon(type: AdminNotificationType) {
   }
 }
 
+function visitFacts(item: AdminNotificationRecord): { title: string; chips: string[] } {
+  if (item.type !== "visit") return { title: "", chips: [] };
+  const meta = item.meta || {};
+  const ua = String(meta.ua || "");
+  const audience = String(meta.audience || "");
+  const device = String(meta.device || (/iPad|Tablet/i.test(ua) ? "tablet" : /Mobile|iPhone|Android/i.test(ua) ? "phone" : ua ? "computer" : ""));
+  const country = String(meta.country || "");
+  const deviceAr = device === "phone" ? "هاتف" : device === "tablet" ? "جهاز لوحي" : device === "computer" ? "كمبيوتر" : "";
+  const who = audience === "staff" ? "زيارة داخلية" : audience === "agent" ? "زيارة وكيل أو أداة" : audience === "customer" ? "عميل خارجي" : "";
+  const chips = [who, deviceAr, country].filter(Boolean);
+  const title = audience === "staff" ? "زيارة داخلية من لوحة الإدارة" : audience === "agent" ? "زيارة آلية من وكيل أو أداة" : audience === "customer" ? "عميل خارجي زار الموقع" : "";
+  return { title, chips };
+}
+
 function formatWhen(iso: string, locale: string): string {
   const ts = Date.parse(iso);
   if (!Number.isFinite(ts)) return "";
@@ -144,13 +158,7 @@ export default function AdminNotificationCenter({
     }
   };
 
-  const toggleOpen = () => {
-    const next = !open;
-    setOpen(next);
-    if (next && unread > 0) {
-      void markRead({ all: true });
-    }
-  };
+  const toggleOpen = () => setOpen((value) => !value);
 
   const enableBrowserAlerts = async () => {
     const next = await enableAdminBrowserAlerts();
@@ -186,7 +194,8 @@ export default function AdminNotificationCenter({
 
       {open ? (
         <div
-          className={`absolute top-full mt-2 end-0 w-[min(22rem,calc(100vw-1.5rem))] rounded-2xl border shadow-2xl overflow-hidden z-50 ${panelClass}`}
+          className="absolute top-full mt-2 end-0 w-[min(26rem,calc(100vw-1.5rem))] rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden z-50"
+          style={{ color: "#0f172a" }}
         >
           <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-border">
             <p className='text-sm font-semibold text-foreground'>{t.admin.notificationsTitle}</p>
@@ -238,42 +247,48 @@ export default function AdminNotificationCenter({
             ) : (
               items.map((item) => {
                 const Icon = typeIcon(item.type);
+                const facts = visitFacts(item);
                 const inner = (
                   <>
-                    <span
-                      className="mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-secondary text-foreground"
-                    >
-                      <Icon size={14} />
+                    <span className="mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: item.read ? "#e2e8f0" : "#cffafe", color: "#0f172a" }}>
+                      <Icon size={14} color="#0f172a" />
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="flex items-start justify-between gap-2">
-                        <span className="text-[13px] font-semibold leading-5">
-                          {item.title_ar}
+                        <span className="text-[13px] font-semibold leading-5" style={{ color: "#0f172a" }}>
+                          {facts.title || item.title_ar}
                         </span>
-                        <span className={`text-[10px] shrink-0 ${muted}`}>
+                        <span className="text-[10px] shrink-0" style={{ color: "#64748b" }}>
                           {formatWhen(item.created, locale)}
                         </span>
                       </span>
+                      {facts.chips.length ? (
+                        <span className="mt-1 flex flex-wrap gap-1">
+                          {facts.chips.map((chip) => (
+                            <span key={chip} className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: chip.startsWith("عميل") ? "#d1fae5" : chip.startsWith("زيارة") ? "#fef3c7" : "#e0f2fe", color: "#0f172a" }}>
+                              {chip}
+                            </span>
+                          ))}
+                        </span>
+                      ) : null}
                       {item.body_ar ? (
-                        <span className={`mt-0.5 block text-xs leading-5 ${muted}`}>
+                        <span className="mt-1 block text-xs leading-5" style={{ color: "#334155" }}>
                           {item.body_ar}
                         </span>
                       ) : null}
                     </span>
-                    {!item.read ? (
-                      <span className='mt-2 w-1.5 h-1.5 rounded-full bg-secondary shrink-0' />
-                    ) : null}
+                    {!item.read ? <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#0891b2" }} /> : null}
                   </>
                 );
-                const rowClass = `w-full flex items-start gap-3 px-4 py-3 text-start transition-colors ${
-                  item.read ? rowIdle : rowUnread
-                }`;
+                const rowClass = "w-full flex items-start gap-3 px-4 py-3 text-start border-b border-slate-100";
+                const rowStyle = { background: item.read ? "#ffffff" : "#f0fdfa", color: "#0f172a" };
                 if (item.href) {
                   return (
                     <Link
                       key={item.id}
                       href={item.href}
                       className={rowClass}
+                      style={rowStyle}
                       onClick={() => {
                         if (!item.read) void markRead({ ids: [item.id] });
                         setOpen(false);
@@ -288,6 +303,7 @@ export default function AdminNotificationCenter({
                     key={item.id}
                     type="button"
                     className={rowClass}
+                    style={rowStyle}
                     onClick={() => {
                       if (!item.read) void markRead({ ids: [item.id] });
                     }}

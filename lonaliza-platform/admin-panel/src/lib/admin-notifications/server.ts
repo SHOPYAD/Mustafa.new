@@ -30,6 +30,7 @@ function asRecord(row: Record<string, unknown>): AdminNotificationRecord | null 
 export async function createAdminNotification(opts: {
   type: AdminNotificationType;
   body_ar: string;
+  title_ar?: string;
   href?: string;
   meta?: Record<string, unknown>;
 }): Promise<AdminNotificationRecord | null> {
@@ -38,7 +39,7 @@ export async function createAdminNotification(opts: {
   try {
     const created = await pb.collection("admin_notifications").create({
       type: opts.type,
-      title_ar: titleArForType(opts.type),
+      title_ar: opts.title_ar || titleArForType(opts.type),
       body_ar: String(opts.body_ar || "").slice(0, 400),
       href: opts.href ?? hrefForType(opts.type),
       meta: opts.meta || {},

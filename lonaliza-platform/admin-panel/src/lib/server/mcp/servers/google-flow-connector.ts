@@ -6,10 +6,6 @@
 
 import path from "path";
 import fs from "fs/promises";
-import { writeStudioLastOutput } from "@/lib/studio/last-output";
-import { resolveFfmpeg } from "@/lib/studio/video/ffmpeg";
-import { sendTelegramMessage } from "@/lib/automation/channels/telegram";
-import { getCommsSettings } from "@/lib/automation/comms-settings";
 
 const FLOW_DATA_DIR = path.join(process.cwd(), ".data", "google-flow");
 const SESSION_FILE = path.join(FLOW_DATA_DIR, "session.json");
@@ -60,71 +56,20 @@ export async function getGoogleFlowSession(): Promise<GoogleFlowSession | null> 
 }
 
 export async function executeGoogleFlowPipeline(input: GenerateFlowVideoInput): Promise<FlowVideoOutput> {
-  const destination = input.destination || "الشمال التركي وطرابزون";
-  const duration = input.durationSeconds || 15;
-  const ratio = input.aspectRatio || "9:16";
-
-  const cinematicPrompt =
-    input.prompt ||
-    `Ultra-realistic 4K drone cinematography of ${destination}, morning misty mountains, luxury wooden chalets near green lake, Mercedes Maybach VIP tourism van cruising scenic road, cinematic lighting, 9:16 vertical video.`;
-
-  const captionAr =
-    `✨ سحر الطبيعة وعطلات الـ VIP الفاخرة في ${destination} مع لوناليزا للسياحة!\n\n` +
-    `🚗 برامج سياحية متكاملة بسيارات مرسيدس VIP وسائق خاص يتحدث العربية.\n` +
-    `🏡 أفخم الأكواخ الجبلية والفنادق المطلة مباشرة.\n` +
-    `📲 تواصل معنا فوراً لحجز عطلتك الاستثنائية.\n\n` +
-    `#سياحة_تركيا #طرابزون #اسطنبول #لوناليزا #سفر #عطلات`;
-
-  // Output storage paths
-  const outputDir = path.join(process.cwd(), ".data", "studio", "videos");
-  await fs.mkdir(outputDir, { recursive: true });
-  const filename = `flow_${Date.now()}.mp4`;
-  const filePath = path.join(outputDir, filename);
-
-  // Check if session or API is available
   const session = await getGoogleFlowSession();
-  const ffmpeg = await resolveFfmpeg();
-
-  // Create a high-quality video draft file or use ffmpeg generator if ready
-  const publicVideoUrl = `/api/studio/video/files/${filename}`;
-
-  // Record into last output for one-click Telegram publish
-  await writeStudioLastOutput({
-    caption: captionAr,
-    videoUrls: [publicVideoUrl],
-    pendingPublish: true,
-  });
-
-  // Dispatch interactive notification to Telegram
-  let telegramStatus = "تم التجهيز بدون تيليجرام";
-  try {
-    const settings = await getCommsSettings();
-    if (settings.telegramBotToken && settings.telegramDefaultChatId) {
-      const message =
-        `🎬 *فيديو ريلز جديد جاهز للمعاينة والاعتماد (Google Flow Ultra)*\n\n` +
-        `📍 *الوجهة:* ${destination}\n` +
-        `⏱ *المدة المقترحة:* ${duration} ثانية (${ratio})\n\n` +
-        `📝 *النص الترويجي:*\n${captionAr}\n\n` +
-        `👇 *للتحكم الفوري أرسل كلمة:*\n` +
-        `• اكتب «*انشر*» للنشر التلقائي على جميع الحسابات (إنستغرام، فيسبوك، تيك توك، يوتيوب، إكس).\n` +
-        `• اكتب «*اطلق*» للنشر المتزامن مع إطلاق حملة إعلانات ممولة مستهدفة على ميتا.\n` +
-        `• اكتب «*تعديل <ملاحظاتك>*» لإعادة صياغة المحتوى.`;
-
-      await sendTelegramMessage({
-        chatId: settings.telegramDefaultChatId,
-        text: message,
-      });
-      telegramStatus = "تم إرسال بطاقة المراجعة إلى حسابك في تيليجرام بنجاح";
-    }
-  } catch (err) {
-    telegramStatus = `تعذر إرسال إشعار تيليجرام: ${err instanceof Error ? err.message : String(err)}`;
+  if (!session?.bearerToken && !session?.cookies) {
+    return {
+      ok: false,
+      captionAr: "",
+      error: "Google Flow is not connected (no bearer token or cookies in .data/google-flow/session.json)",
+    };
   }
-
+  if (!input.destination) {
+    return { ok: false, captionAr: "", error: "Google Flow destination is required" };
+  }
   return {
-    ok: true,
-    videoUrl: publicVideoUrl,
-    filePath,
-    captionAr,
-    telegramStatus,
+    ok: false,
+    captionAr: "",
+    error: `Google Flow session is stored for ${input.destination}, but this server does not call the Flow video API, so no video was generated`,
   };
 }

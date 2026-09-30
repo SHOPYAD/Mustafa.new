@@ -336,6 +336,9 @@ export function buildAdminNav(admin: AdminCopy): NavGroup[] {
             leaf("agent-studio", "استوديو خلية الوكلاء (Sci-Fi HUD)", "/admin/agent-studio", Orbit, {
               description: "استوديو العمليات المستقبلي الشامل بكامل الشاشة ومصفوفة الوكلاء العصبية",
             }),
+            leaf("neural-studio", "استوديو أطلس السيبراني الشامل (Neural Studio)", "/admin/neural-studio", Sparkles, {
+              description: "الأطلس العصبي الشامل بـ 20 واجهة سيبرانية متطابقة وربط حي بكافة أدوات MCP والأنظمة",
+            }),
             leaf("b2b-landing-agent", "وكيل B2B لصفحة الهبوط", "/admin/b2b-landing-agent", Building2, {
               description: "إدارة الشات العائم ومحرك الجدوى الاقتصادية للشركات",
             }),

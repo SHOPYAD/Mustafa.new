@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import {
   getExcludedContacts,
@@ -7,7 +8,9 @@ import {
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const contacts = getExcludedContacts();
     return NextResponse.json({ ok: true, contacts });
@@ -20,6 +23,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = (await req.json()) as { phone?: string; name?: string; reason?: string };
     if (!body.phone) {
@@ -40,6 +45,8 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const url = new URL(req.url);
     const id = url.searchParams.get("id");

@@ -1,6 +1,1063 @@
 {
   "programs": [
     {
+      "id": "aip_muo48p8v_1578of",
+      "titleAr": "Istanbul — رحلة الأحلام الفاخرة 7 أيام",
+      "titleEn": "Istanbul — 7 Days VIP Journey",
+      "destination": "Istanbul",
+      "nights": 6,
+      "arrivalDate": "2026-10-14",
+      "departureDate": "2026-10-17",
+      "priceFromUsd": 0,
+      "thumbnail": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+      "includesAr": [
+        "البرنامج منسق بسيارة خاصة وسائق VIP مع جدول مريح يربط المعالم والمطاعم دون إرهاق.",
+        "يُنصح بالحجز المسبق للتذاكر الرئيسية وتفادي أوقات الذروة.",
+        "الأمسيات مخصصة للراحة وتذوق الأطباق المحلية في أشهر الأحياء التراثية."
+      ],
+      "includesEn": [
+        "Curated VIP itinerary with private vehicle and chauffeur connecting landmarks, dining, and scenic views.",
+        "Advance ticket booking for top attractions is highly recommended.",
+        "Evenings are curated for local gastronomy and relaxed strolls before returning to your hotel."
+      ],
+      "itinerary": {
+        "titleAr": "Istanbul — رحلة الأحلام الفاخرة 7 أيام",
+        "titleEn": "Istanbul — 7 Days VIP Journey",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "قلب القسطنطينية التاريخي",
+            "titleEn": "The Historic Heart of Constantinople",
+            "detailAr": "• استهل رحلتك بزيارة آيا صوفيا المهيبة، حيث تروي الجدران قروناً من التاريخ، متبوعة بقهوة تركية أصيلة في ساحة السلطان أحمد.\n\n• استكشف تفاصيل المسجد الأزرق المعمارية، ثم توجه لتناول الغداء في مطعم فاخر يطل على ساحة الهيبودروم القديمة.\n\n• اختتم يومك بجولة هادئة في ساحة السلطان أحمد والعودة بسيارتك الخاصة إلى فندقك الفاخر.",
+            "detailEn": "• استهل رحلتك بزيارة آيا صوفيا المهيبة، حيث تروي الجدران قروناً من التاريخ، متبوعة بقهوة تركية أصيلة في ساحة السلطان أحمد.\n\n• استكشف تفاصيل المسجد الأزرق المعمارية، ثم توجه لتناول الغداء في مطعم فاخر يطل على ساحة الهيبودروم القديمة.\n\n• اختتم يومك بجولة هادئة في ساحة السلطان أحمد والعودة بسيارتك الخاصة إلى فندقك الفاخر.",
+            "lat": 41.0086,
+            "lng": 28.9802,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "جامع آيا صوفيا التاريخي الكبير",
+                "labelEn": "Hagia Sophia Grand Mosque",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "الصباح (09:30)"
+              },
+              {
+                "kind": "activity",
+                "labelAr": "جامع السلطان أحمد (المسجد الأزرق)",
+                "labelEn": "Blue Mosque",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "الظهيرة (13:00)"
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "titleAr": "عظمة السلاطين والأسواق القديمة",
+            "titleEn": "Majesty of the Sultans and Ancient Bazaars",
+            "detailAr": "• انطلق في رحلة عبر الزمن داخل قصر توبكابي، حيث عاش سلاطين الدولة العثمانية وسط كنوز لا تقدر بثمن.\n\n• انغمس في ألوان وروائح البازار الكبير، حيث تجد الحرف اليدوية والسجاد التركي الفاخر.\n\n• استمتع بتجربة تسوق فريدة في سوق التوابل المصري قبل العودة المريحة بسيارتك VIP.",
+            "detailEn": "• انطلق في رحلة عبر الزمن داخل قصر توبكابي، حيث عاش سلاطين الدولة العثمانية وسط كنوز لا تقدر بثمن.\n\n• انغمس في ألوان وروائح البازار الكبير، حيث تجد الحرف اليدوية والسجاد التركي الفاخر.\n\n• استمتع بتجربة تسوق فريدة في سوق التوابل المصري قبل العودة المريحة بسيارتك VIP.",
+            "lat": 41.0115,
+            "lng": 28.9833,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "قصر توبكابي وسراي السلاطين",
+                "labelEn": "Topkapi Palace Museum",
+                "image": "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1200&q=80",
+                "time": "الصباح (10:00)"
+              },
+              {
+                "kind": "activity",
+                "labelAr": "البازار الكبير",
+                "labelEn": "Grand Bazaar",
+                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+                "time": "الظهيرة (15:00)"
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "titleAr": "سحر البوسفور والجانب الأوروبي",
+            "titleEn": "Bosphorus Charm and the European Side",
+            "detailAr": "• ابدأ يومك بنزهة فاخرة على ساحل البوسفور في منطقة أورتاكوي الشهيرة.\n\n• استمتع بوجبة غداء راقية في أحد المطاعم المطلة على الماء في حي بيبك.\n\n• استمتع بغروب الشمس من فوق برج غلاطة مع إطلالة بانورامية لا تنسى.",
+            "detailEn": "• ابدأ يومك بنزهة فاخرة على ساحل البوسفور في منطقة أورتاكوي الشهيرة.\n\n• استمتع بوجبة غداء راقية في أحد المطاعم المطلة على الماء في حي بيبك.\n\n• استمتع بغروب الشمس من فوق برج غلاطة مع إطلالة بانورامية لا تنسى.",
+            "lat": 41.0471,
+            "lng": 29.0254,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "حي أورتاكوي وبوسفور",
+                "labelEn": "Ortakoy & Bosphorus",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "الصباح (10:00)"
+              },
+              {
+                "kind": "activity",
+                "labelAr": "برج غلاطة",
+                "labelEn": "Galata Tower",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "المساء (18:00)"
+              }
+            ]
+          },
+          {
+            "day": 4,
+            "titleAr": "عبق آسيا وتجربة كاديكوي",
+            "titleEn": "The Asian Soul and Kadikoy Experience",
+            "detailAr": "• انتقل بالسيارة إلى الجانب الآسيوي لاستكشاف حيوية حي كاديكوي وسوقه الملون.\n\n• استمتع بوجبة غداء من المطبخ المحلي الأصيل في شوارع كاديكوي الودودة.\n\n• جولة في شارع بغداد الراقي، حيث تتألق المتاجر العالمية والمقاهي العصرية.",
+            "detailEn": "• انتقل بالسيارة إلى الجانب الآسيوي لاستكشاف حيوية حي كاديكوي وسوقه الملون.\n\n• استمتع بوجبة غداء من المطبخ المحلي الأصيل في شوارع كاديكوي الودودة.\n\n• جولة في شارع بغداد الراقي، حيث تتألق المتاجر العالمية والمقاهي العصرية.",
+            "lat": 40.9906,
+            "lng": 29.0284,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "سوق كاديكوي",
+                "labelEn": "Kadikoy Market",
+                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+                "time": "الصباح (10:00)"
+              },
+              {
+                "kind": "activity",
+                "labelAr": "شارع بغداد",
+                "labelEn": "Bagdat Avenue",
+                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+                "time": "المساء (17:00)"
+              }
+            ]
+          },
+          {
+            "day": 5,
+            "titleAr": "قصور البوسفور والرفاهية",
+            "titleEn": "Bosphorus Palaces and Luxury",
+            "detailAr": "• زيارة قصر دولما باهتشة، رمز الفخامة العثمانية المتأخرة على ضفاف البوسفور.\n\n• استراحة غداء في منطقة بشكتاش النابضة بالحياة.\n\n• جولة مسائية بسيارتك الفارهة على طول الكورنيش والاستمتاع بإضاءة الجسور.",
+            "detailEn": "• زيارة قصر دولما باهتشة، رمز الفخامة العثمانية المتأخرة على ضفاف البوسفور.\n\n• استراحة غداء في منطقة بشكتاش النابضة بالحياة.\n\n• جولة مسائية بسيارتك الفارهة على طول الكورنيش والاستمتاع بإضاءة الجسور.",
+            "lat": 41.0372,
+            "lng": 28.9984,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "قصر دولما باهتشة",
+                "labelEn": "Dolmabahce Palace",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "الصباح (10:00)"
+              }
+            ]
+          },
+          {
+            "day": 6,
+            "titleAr": "الفنون والثقافة في بيوغلو",
+            "titleEn": "Arts and Culture in Beyoglu",
+            "detailAr": "• جولة في متحف بيرا للفنون، حيث تلتقي اللوحات الكلاسيكية بالمعارض المعاصرة.\n\n• المشي في شارع الاستقلال التاريخي وتجربة الأجواء الثقافية الفريدة.\n\n• عشاء في أحد المطاعم المخفية في أزقة كاراكوي الساحرة.",
+            "detailEn": "• جولة في متحف بيرا للفنون، حيث تلتقي اللوحات الكلاسيكية بالمعارض المعاصرة.\n\n• المشي في شارع الاستقلال التاريخي وتجربة الأجواء الثقافية الفريدة.\n\n• عشاء في أحد المطاعم المخفية في أزقة كاراكوي الساحرة.",
+            "lat": 41.0325,
+            "lng": 28.9754,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "متحف بيرا",
+                "labelEn": "Pera Museum",
+                "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800",
+                "time": "الصباح (10:30)"
+              }
+            ]
+          },
+          {
+            "day": 7,
+            "titleAr": "وداع إسطنبول والراحة الفاخرة",
+            "titleEn": "Istanbul Farewell and Luxury Rest",
+            "detailAr": "• استمتع بصباح هادئ في فندقك مع إطلالة أخيرة على البوسفور.\n\n• جولة تسوق أخيرة لاقتناء الهدايا التذكارية الفاخرة من منطقة نيشانتاشي.\n\n• انتقال خاص ومريح إلى المطار مع ذكريات لا تُنسى.",
+            "detailEn": "• استمتع بصباح هادئ في فندقك مع إطلالة أخيرة على البوسفور.\n\n• جولة تسوق أخيرة لاقتناء الهدايا التذكارية الفاخرة من منطقة نيشانتاشي.\n\n• انتقال خاص ومريح إلى المطار مع ذكريات لا تُنسى.",
+            "lat": 41.0485,
+            "lng": 28.9912,
+            "items": [
+              {
+                "kind": "activity",
+                "labelAr": "حي نيشانتاشي",
+                "labelEn": "Nisantasi District",
+                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+                "time": "الظهيرة (13:00)"
+              }
+            ]
+          }
+        ],
+        "totalBasePrice": 0,
+        "totalClientPrice": 1223,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "pk_1g1i6lb",
+          "titleAr": "VF RUH → SAW",
+          "titleEn": "VF RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 86.88,
+          "clientPrice": 102.52,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "VF",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "VF",
+          "airlineCode": "VF",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T02:50:00",
+          "arriveAt": "2026-10-14T07:15:00",
+          "durationMinutes": 265,
+          "stopCount": 0,
+          "flightNumber": "VF214",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_1s576ie",
+          "titleAr": "PC RUH → SAW",
+          "titleEn": "PC RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 89.1,
+          "clientPrice": 105.14,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "PC",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "PC",
+          "airlineCode": "PC",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T05:10:00",
+          "arriveAt": "2026-10-14T09:00:00",
+          "durationMinutes": 230,
+          "stopCount": 0,
+          "flightNumber": "PC691",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_1juqa95",
+          "titleAr": "XY RUH → IST",
+          "titleEn": "XY RUH → IST",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 137.15,
+          "clientPrice": 161.84,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "XY",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "XY",
+          "airlineCode": "XY",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T16:05:00",
+          "arriveAt": "2026-10-14T19:55:00",
+          "durationMinutes": 230,
+          "stopCount": 0,
+          "flightNumber": "XY299",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_umov08",
+          "titleAr": "G9 RUH → SAW",
+          "titleEn": "G9 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 176.27,
+          "clientPrice": 208,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T09:10:00",
+          "arriveAt": "2026-10-14T23:30:00",
+          "durationMinutes": 395,
+          "stopCount": 1,
+          "flightNumber": "G9152",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|17:00|19:55|2026-10-14|SHJ|0 kg_SHJ|2026-10-15|G9|09:25|13:20|2026-10-15|IST|0 kg",
+          "titleAr": "G9 RUH → IST",
+          "titleEn": "G9 RUH → IST",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 193.26,
+          "clientPrice": 228.05,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T17:00:00",
+          "arriveAt": "2026-10-15T13:20:00",
+          "durationMinutes": 1220,
+          "stopCount": 1,
+          "flightNumber": "G9155",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|09:10|12:05|2026-10-14|SHJ|0 kg_SHJ|2026-10-14|G9|13:20|17:15|2026-10-14|IST|0 kg",
+          "titleAr": "G9 RUH → IST",
+          "titleEn": "G9 RUH → IST",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 197.61,
+          "clientPrice": 233.18,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T09:10:00",
+          "arriveAt": "2026-10-14T17:15:00",
+          "durationMinutes": 485,
+          "stopCount": 1,
+          "flightNumber": "G9152",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_18ax762",
+          "titleAr": "F3 RUH → SAW",
+          "titleEn": "F3 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 224.45,
+          "clientPrice": 264.85,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "F3",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "F3",
+          "airlineCode": "F3",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T18:45:00",
+          "arriveAt": "2026-10-15T03:55:00",
+          "durationMinutes": 320,
+          "stopCount": 1,
+          "flightNumber": "F3139",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_a2fkb7",
+          "titleAr": "F3 RUH → SAW",
+          "titleEn": "F3 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 224.45,
+          "clientPrice": 264.85,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "F3",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "F3",
+          "airlineCode": "F3",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T17:55:00",
+          "arriveAt": "2026-10-15T03:55:00",
+          "durationMinutes": 320,
+          "stopCount": 1,
+          "flightNumber": "F3137",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_71t6eb",
+          "titleAr": "F3 RUH → SAW",
+          "titleEn": "F3 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 224.45,
+          "clientPrice": 264.85,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "F3",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "F3",
+          "airlineCode": "F3",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T16:25:00",
+          "arriveAt": "2026-10-15T03:55:00",
+          "durationMinutes": 320,
+          "stopCount": 1,
+          "flightNumber": "F3131",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_18wad6s",
+          "titleAr": "F3 RUH → SAW",
+          "titleEn": "F3 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 224.45,
+          "clientPrice": 264.85,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "F3",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "F3",
+          "airlineCode": "F3",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T19:45:00",
+          "arriveAt": "2026-10-15T03:55:00",
+          "durationMinutes": 320,
+          "stopCount": 1,
+          "flightNumber": "F3143",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_1pmif9w",
+          "titleAr": "F3 RUH → SAW",
+          "titleEn": "F3 RUH → SAW",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 224.45,
+          "clientPrice": 264.85,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "F3",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "F3",
+          "airlineCode": "F3",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T20:25:00",
+          "arriveAt": "2026-10-15T03:55:00",
+          "durationMinutes": 320,
+          "stopCount": 1,
+          "flightNumber": "F3147",
+          "tripType": "one-way"
+        },
+        {
+          "type": "flight",
+          "id": "pk_1gin6g3",
+          "titleAr": "RJ RUH → IST",
+          "titleEn": "RJ RUH → IST",
+          "subtitleAr": "اتجاه واحد",
+          "subtitleEn": "One-way",
+          "basePrice": 234.53,
+          "clientPrice": 276.75,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&guests=1&flightType=one-way&class=economy&flightSearch=RUH1410IST1",
+          "badges": [
+            "RJ",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "RJ",
+          "airlineCode": "RJ",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T06:10:00",
+          "arriveAt": "2026-10-14T20:30:00",
+          "durationMinutes": 295,
+          "stopCount": 1,
+          "flightNumber": "RJ735",
+          "tripType": "one-way"
+        }
+      ],
+      "hidden": false,
+      "createdAt": "2026-09-30T13:03:12.847Z"
+    },
+    {
+      "id": "aip_muo44hv6_yr0gt8",
+      "titleAr": "برنامج إسطنبول الفاخر لخمسة أيام",
+      "titleEn": "Luxury Istanbul 5-Day Itinerary",
+      "destination": "Istanbul",
+      "nights": 4,
+      "people": 2,
+      "arrivalDate": "2026-06-01",
+      "departureDate": "2026-06-05",
+      "priceFromUsd": 1026,
+      "thumbnail": "https://photos.hotelbeds.com/giata/bigger/75/750213/750213a_hb_a_001_20260801_093515.jpg",
+      "includesAr": [],
+      "includesEn": [],
+      "itinerary": {
+        "titleAr": "برنامج إسطنبول الفاخر لخمسة أيام",
+        "titleEn": "Luxury Istanbul 5-Day Itinerary",
+        "days": [
+          {
+            "day": 1,
+            "titleAr": "الوصول إلى إسطنبول والاستقبال الملكي",
+            "titleEn": "Arrival in Istanbul & VIP Transfer",
+            "detailAr": "استقبال في المطار بسيارة مرسيدس الخاصة، التوجه إلى الفندق لتسجيل الغرف، وجولة مسائية خفيفة في محيط ميدان تقسيم وتناول العشاء.",
+            "detailEn": "Airport reception with private Mercedes, hotel check-in, and a relaxing evening stroll around Taksim Square.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "transfer",
+                "labelAr": "استقبال المطار والتوجه للفندق",
+                "labelEn": "Airport Reception & Hotel Transfer"
+              },
+              {
+                "time": "14:00",
+                "kind": "hotel",
+                "labelAr": "تسجيل الوصول في الفندق الفاخر",
+                "labelEn": "Luxury Hotel Check-in"
+              },
+              {
+                "time": "19:00",
+                "kind": "activity",
+                "labelAr": "عشاء ترحيبي في قلب المدينة",
+                "labelEn": "Welcome Dinner in the City Center"
+              }
+            ]
+          },
+          {
+            "day": 2,
+            "titleAr": "جولة إسطنبول التاريخية والسلطان أحمد",
+            "titleEn": "Historic Istanbul & Sultanahmet Tour",
+            "detailAr": "زيارة جامع السلطان أحمد (المسجد الأزرق)، آيا صوفيا، قصر توبكابي، وجولة استكشافية في السوق المغلق العريق.",
+            "detailEn": "Visit Blue Mosque, Hagia Sophia, Topkapi Palace, and explore the historic Grand Bazaar.",
+            "items": [
+              {
+                "time": "09:30",
+                "kind": "activity",
+                "labelAr": "جامع السلطان أحمد وآيا صوفيا",
+                "labelEn": "Blue Mosque & Hagia Sophia"
+              },
+              {
+                "time": "13:00",
+                "kind": "activity",
+                "labelAr": "غداء تقليدي في منطقة السلطان أحمد",
+                "labelEn": "Traditional Lunch in Sultanahmet"
+              },
+              {
+                "time": "15:00",
+                "kind": "activity",
+                "labelAr": "قصر توبكابي والسوق المغلق",
+                "labelEn": "Topkapi Palace & Grand Bazaar"
+              }
+            ]
+          },
+          {
+            "day": 3,
+            "titleAr": "رحلة مضيق البوسفور وجولة الجانب الآسيوي",
+            "titleEn": "Bosphorus Cruise & Asian Side",
+            "detailAr": "رحلة بحرية خاصة في مضيق البوسفور، زيارة قصر دولمة بهتشة، والعبور إلى الجانب الآسيوي لاستكشاف تلة تشامليجا.",
+            "detailEn": "Private Bosphorus cruise, visit Dolmabahce Palace, and cross to the Asian side to explore Çamlıca Hill.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "activity",
+                "labelAr": "قصر دولمة بهتشة",
+                "labelEn": "Dolmabahce Palace"
+              },
+              {
+                "time": "13:30",
+                "kind": "activity",
+                "labelAr": "جولة بحرية خاصة في البوسفور",
+                "labelEn": "Private Bosphorus Cruise"
+              },
+              {
+                "time": "17:00",
+                "kind": "activity",
+                "labelAr": "تلة العرائس (تشامليجا) في الجانب الآسيوي",
+                "labelEn": "Camlica Hill on the Asian Side"
+              }
+            ]
+          },
+          {
+            "day": 4,
+            "titleAr": "جولة أمجان وشارع الاستقلال ومنطقة أورتاكوي",
+            "titleEn": "Emirgan, Istiklal Street & Ortakoy",
+            "detailAr": "زيارة حدائق أمجان الخلابة، الاستمتاع بقهوة صباحية في أورتاكوي تحت جسر البوسفور، والتسوق في شارع الاستقلال وبرج غلطة.",
+            "detailEn": "Visit Emirgan Groves, morning coffee in Ortakoy, and shopping along Istiklal Street and Galata Tower.",
+            "items": [
+              {
+                "time": "10:00",
+                "kind": "activity",
+                "labelAr": "حدائق أمجان وساحل أورتاكوي",
+                "labelEn": "Emirgan Groves & Ortakoy Coast"
+              },
+              {
+                "time": "14:00",
+                "kind": "activity",
+                "labelAr": "برج غلطة وشارع الاستقلال",
+                "labelEn": "Galata Tower & Istiklal Street"
+              },
+              {
+                "time": "19:30",
+                "kind": "activity",
+                "labelAr": "عشاء فاخر بإطلالة على البوسفور",
+                "labelEn": "Fine Dining with Bosphorus View"
+              }
+            ]
+          },
+          {
+            "day": 5,
+            "titleAr": "التسوق الختامي والعودة الموفقة",
+            "titleEn": "Final Shopping & Departure",
+            "detailAr": "وقت حر للتسوق وشراء الهدايا التذكارية من مراكز التسوق الحديثة، ثم الاستعداد والتوجه إلى المطار برعاية الله.",
+            "detailEn": "Free time for shopping and souvenirs at modern malls, followed by VIP transfer to the airport.",
+            "items": [
+              {
+                "time": "10:30",
+                "kind": "activity",
+                "labelAr": "زيارة مراكز التسوق الحديثة",
+                "labelEn": "Modern Shopping Malls Visit"
+              },
+              {
+                "time": "15:00",
+                "kind": "transfer",
+                "labelAr": "التوجه إلى مطار إسطنبول الدولي",
+                "labelEn": "Transfer to Istanbul Airport"
+              }
+            ]
+          }
+        ],
+        "totalBasePrice": 850,
+        "totalClientPrice": 1026.01,
+        "currency": "USD"
+      },
+      "cards": [
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|PC|05:10|09:00|2026-10-14|SAW|0 kg_SAW|2026-10-17|PC|00:25|04:05|2026-10-17|RUH|0 kg",
+          "titleAr": "PC RUH → SAW",
+          "titleEn": "PC RUH → SAW",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 623.56,
+          "clientPrice": 735.8,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "PC",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "PC",
+          "airlineCode": "PC",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T05:10:00",
+          "arriveAt": "2026-10-14T09:00:00",
+          "returnDepartAt": "2026-10-17T00:25:00",
+          "returnArriveAt": "2026-10-17T04:05:00",
+          "durationMinutes": 230,
+          "stopCount": 0,
+          "flightNumber": "PC691",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|VF|02:50|07:15|2026-10-14|SAW|0 kg_SAW|2026-10-17|VF|21:15|01:40|2026-10-18|RUH|0 kg",
+          "titleAr": "VF RUH → SAW",
+          "titleEn": "VF RUH → SAW",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 659.68,
+          "clientPrice": 778.42,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "VF",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "VF",
+          "airlineCode": "VF",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T02:50:00",
+          "arriveAt": "2026-10-14T07:15:00",
+          "returnDepartAt": "2026-10-17T21:15:00",
+          "returnArriveAt": "2026-10-18T01:40:00",
+          "durationMinutes": 265,
+          "stopCount": 0,
+          "flightNumber": "VF214",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|XY|16:05|19:55|2026-10-14|IST|0 kg_IST|2026-10-17|XY|20:45|00:30|2026-10-18|RUH|0 kg",
+          "titleAr": "XY RUH → IST",
+          "titleEn": "XY RUH → IST",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 866.14,
+          "clientPrice": 1022.05,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "XY",
+            "مباشر"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "XY",
+          "airlineCode": "XY",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T16:05:00",
+          "arriveAt": "2026-10-14T19:55:00",
+          "returnDepartAt": "2026-10-17T20:45:00",
+          "returnArriveAt": "2026-10-18T00:30:00",
+          "durationMinutes": 230,
+          "stopCount": 0,
+          "flightNumber": "XY299",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|09:10|12:05|2026-10-14|SHJ|0 kg_SHJ|2026-10-14|G9|19:50|23:30|2026-10-14|SAW|0 kg_SAW|2026-10-17|G9|01:25|06:40|2026-10-17|SHJ|0 kg_SHJ|2026-10-17|G9|15:10|16:00|2026-10-17|RUH|0 kg",
+          "titleAr": "G9 RUH → SAW",
+          "titleEn": "G9 RUH → SAW",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 1167.14,
+          "clientPrice": 1377.23,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T09:10:00",
+          "arriveAt": "2026-10-14T23:30:00",
+          "returnDepartAt": "2026-10-17T01:25:00",
+          "returnArriveAt": "2026-10-17T16:00:00",
+          "durationMinutes": 860,
+          "stopCount": 1,
+          "flightNumber": "G9152",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|09:10|12:05|2026-10-14|SHJ|0 kg_SHJ|2026-10-14|G9|19:50|23:30|2026-10-14|SAW|0 kg_SAW|2026-10-17|G9|01:25|06:40|2026-10-17|SHJ|0 kg_SHJ|2026-10-17|G9|07:30|08:20|2026-10-17|RUH|0 kg",
+          "titleAr": "G9 RUH → SAW",
+          "titleEn": "G9 RUH → SAW",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 1167.14,
+          "clientPrice": 1377.23,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T09:10:00",
+          "arriveAt": "2026-10-14T23:30:00",
+          "returnDepartAt": "2026-10-17T01:25:00",
+          "returnArriveAt": "2026-10-17T08:20:00",
+          "durationMinutes": 860,
+          "stopCount": 1,
+          "flightNumber": "G9152",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|XY|06:35|08:25|2026-10-14|JED|0 kg_JED|2026-10-14|XY|10:40|14:15|2026-10-14|SAW|0 kg_SAW|2026-10-17|XY|15:15|18:55|2026-10-17|JED|0 kg_JED|2026-10-17|XY|21:50|23:35|2026-10-17|RUH|0 kg",
+          "titleAr": "XY RUH → SAW",
+          "titleEn": "XY RUH → SAW",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 1531.64,
+          "clientPrice": 1807.34,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "XY",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "XY",
+          "airlineCode": "XY",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "SAW",
+          "departAt": "2026-10-14T06:35:00",
+          "arriveAt": "2026-10-14T14:15:00",
+          "returnDepartAt": "2026-10-17T15:15:00",
+          "returnArriveAt": "2026-10-17T23:35:00",
+          "durationMinutes": 460,
+          "stopCount": 1,
+          "flightNumber": "XY5",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|17:00|19:55|2026-10-14|SHJ|0 kg_SHJ|2026-10-15|G9|09:25|13:20|2026-10-15|IST|0 kg_IST|2026-10-17|G9|14:10|19:35|2026-10-17|SHJ|0 kg_SHJ|2026-10-18|G9|15:10|16:00|2026-10-18|RUH|0 kg",
+          "titleAr": "G9 RUH → IST",
+          "titleEn": "G9 RUH → IST",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 1569.76,
+          "clientPrice": 1852.32,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T17:00:00",
+          "arriveAt": "2026-10-15T13:20:00",
+          "returnDepartAt": "2026-10-17T14:10:00",
+          "returnArriveAt": "2026-10-18T16:00:00",
+          "durationMinutes": 1220,
+          "stopCount": 1,
+          "flightNumber": "G9155",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "flight",
+          "id": "seeru_RUH|2026-10-14|G9|17:00|19:55|2026-10-14|SHJ|0 kg_SHJ|2026-10-15|G9|09:25|13:20|2026-10-15|IST|0 kg_IST|2026-10-17|G9|14:10|19:35|2026-10-17|SHJ|0 kg_SHJ|2026-10-18|G9|07:30|08:20|2026-10-18|RUH|0 kg",
+          "titleAr": "G9 RUH → IST",
+          "titleEn": "G9 RUH → IST",
+          "subtitleAr": "ذهاب وعودة",
+          "subtitleEn": "Round-trip",
+          "basePrice": 1569.76,
+          "clientPrice": 1852.32,
+          "currency": "USD",
+          "href": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+          "badges": [
+            "G9",
+            "1 توقف"
+          ],
+          "highlights": [],
+          "source": "live",
+          "airline": "G9",
+          "airlineCode": "G9",
+          "airlineLogo": "",
+          "fromIata": "RUH",
+          "toIata": "IST",
+          "departAt": "2026-10-14T17:00:00",
+          "arriveAt": "2026-10-15T13:20:00",
+          "returnDepartAt": "2026-10-17T14:10:00",
+          "returnArriveAt": "2026-10-18T08:20:00",
+          "durationMinutes": 1220,
+          "stopCount": 1,
+          "flightNumber": "G9155",
+          "tripType": "round-trip"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_750213",
+          "titleAr": "Melas Hotel Istanbul",
+          "titleEn": "Melas Hotel Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/75/750213/750213a_hb_a_001_20260801_093515.jpg",
+          "basePrice": 372.25,
+          "clientPrice": 372.25,
+          "currency": "USD",
+          "href": "/hotels/hb_750213?checkIn=2026-10-14&checkOut=2026-10-17&adults=2&sid=414df75a650fd59ee8d4&master=m_8b2ea65ed0763e0a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe French Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 124.09,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe French Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_517421",
+          "titleAr": "AJWA Sultanahmet",
+          "titleEn": "AJWA Sultanahmet",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/51/517421/517421a_hb_a_017.jpg?20241017080138?20250626162108",
+          "basePrice": 960.36,
+          "clientPrice": 960.36,
+          "currency": "USD",
+          "href": "/hotels/hb_517421?checkIn=2026-10-14&checkOut=2026-10-17&adults=2&sid=414df75a650fd59ee8d4&master=m_45827d3b7b41b480",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Deluxe French Street View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 320.13,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Deluxe French Street View"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_474021",
+          "titleAr": "Wish More Hotel",
+          "titleEn": "Wish More Hotel",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/47/474021/474021a_hb_a_002.jpg",
+          "basePrice": 370964.04,
+          "clientPrice": 370964.04,
+          "currency": "USD",
+          "href": "/hotels/hb_474021?checkIn=2026-10-14&checkOut=2026-10-17&adults=2&sid=414df75a650fd59ee8d4&master=m_62874ccdedf04f5a",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Triple Standard Room",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123654.68,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Triple Standard Room"
+        },
+        {
+          "type": "hotel",
+          "id": "hb_615722",
+          "titleAr": "Somerset Maslak Istanbul",
+          "titleEn": "Somerset Maslak Istanbul",
+          "subtitleAr": "اسطنبول",
+          "subtitleEn": "اسطنبول",
+          "image": "https://photos.hotelbeds.com/giata/bigger/61/615722/615722a_hb_a_009_20250814_133237.jpg",
+          "basePrice": 371.84,
+          "clientPrice": 371.84,
+          "currency": "USD",
+          "href": "/hotels/hb_615722?checkIn=2026-10-14&checkOut=2026-10-17&adults=2&sid=414df75a650fd59ee8d4&master=m_8914b263ce36137b",
+          "badges": [
+            "5★"
+          ],
+          "highlights": [
+            "Studio Deluxe with View",
+            "إلغاء مجاني",
+            "إفطار مشمول",
+            "إفطار مشمول"
+          ],
+          "unitPrice": 123.95,
+          "unitLabelAr": "لليلة",
+          "unitLabelEn": "per night",
+          "nights": 4,
+          "source": "live",
+          "stars": 5,
+          "roomName": "Studio Deluxe with View"
+        }
+      ],
+      "flightHref": "/flights?from=RUH&to=IST&date=2026-10-14&returnDate=2026-10-17&guests=2&flightType=round-trip&class=economy&flightSearch=RUH1410IST17102",
+      "hidden": false,
+      "createdAt": "2026-09-30T12:59:56.658Z"
+    },
+    {
       "id": "aip_mug5tmk7_l5tsui",
       "titleAr": "برنامج لندن الثقافي والتاريخي الفاخر لمدة 7 أيام",
       "titleEn": "7-Day Luxury Cultural and Historical London Itinerary",
@@ -25834,5 +26891,5 @@
       "createdAt": "2026-08-25T21:52:45.081Z"
     }
   ],
-  "updatedAt": "2026-09-24T23:25:19.353Z"
+  "updatedAt": "2026-09-30T13:03:12.849Z"
 }

@@ -6,9 +6,9 @@ import * as THREE from "three";
 import { useAvatarStore } from "./store/useAvatarStore";
 import HumanoidBust from "./components/HumanoidBust";
 import AmberVolumetricCore from "./components/AmberVolumetricCore";
-import DataMountainBackground from "./components/DataMountainBackground";
-import CrownParticleField from "./components/CrownParticleField";
+import RisingSynapticSparks from "./components/RisingSynapticSparks";
 import QuantumBirthOrb from "./components/QuantumBirthOrb";
+import InteractiveNeuralMathMatrix from "./components/InteractiveNeuralMathMatrix";
 import AvatarPostProcessing from "./components/AvatarPostProcessing";
 import AvatarHudOverlay from "./components/AvatarHudOverlay";
 
@@ -24,6 +24,7 @@ interface HumanoidMasterAvatarProps {
   onEnterSwarmWorkspace?: () => void;
   slowCamera?: boolean;
   className?: string;
+  hideDebugOverlay?: boolean;
 }
 
 // Global Camera Controller: Perfect 16:9 framing matching reference image
@@ -125,8 +126,8 @@ function SentientBustRig() {
           {/* Layers 1, 2, 3: Master Humanoid Bust (Concentric curves, golden veins, heart node) */}
           <HumanoidBust />
 
-          {/* Layer 5: Crown Particle Stardust Field */}
-          <CrownParticleField />
+          {/* Layer 5: Ethereal Rising Synaptic Motes from Head, Temples & Shoulders */}
+          <RisingSynapticSparks />
         </group>
       </group>
     </group>
@@ -145,6 +146,7 @@ export default function HumanoidMasterAvatar({
   onEnterSwarmWorkspace,
   slowCamera = false,
   className = "",
+  hideDebugOverlay = false,
 }: HumanoidMasterAvatarProps) {
   const [mounted, setMounted] = useState(false);
   const setState = useAvatarStore((s) => s.setState);
@@ -193,7 +195,7 @@ export default function HumanoidMasterAvatar({
 
   return (
     <div
-      className={`relative w-full h-full bg-[#020611] overflow-hidden select-none ${className}`}
+      className={`relative w-full h-full bg-transparent overflow-hidden select-none ${className}`}
       style={{ width, height }}
       onClick={onAvatarClick}
     >
@@ -201,22 +203,21 @@ export default function HumanoidMasterAvatar({
         camera={{ position: [0, 0, 54], fov: 42, near: 0.5, far: 500 }}
         gl={{
           antialias: true,
-          alpha: false,
+          alpha: true,
           powerPreference: "high-performance",
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.0,
         }}
         dpr={[1, 2]}
+        eventSource={typeof document !== "undefined" ? document.body : undefined}
         className="w-full h-full"
       >
-        <color attach="background" args={["#000407"]} />
-
         <Suspense fallback={null}>
           <FrameTicker />
           <CameraRig slowCamera={slowCamera} />
 
-          {/* Layer 4: Distant Luminous Data Mountains (Audio-Reactive Waves & Golden Lightning) */}
-          <DataMountainBackground />
+          {/* Layer 0: Interactive Algorithmic Neural Matrix Backdrop (Mouse Parallax & Formulas) */}
+          <InteractiveNeuralMathMatrix />
 
           {/* Layer 0: Quantum Birth Orb (Bottom center assembly vortex source & ambient anchor) */}
           <QuantumBirthOrb />
@@ -230,10 +231,12 @@ export default function HumanoidMasterAvatar({
       </Canvas>
 
       {/* Interactive HUD Overlay */}
-      <AvatarHudOverlay
-        slowCamera={slowCamera}
-        onEnterSwarmWorkspace={onEnterSwarmWorkspace}
-      />
+      {!hideDebugOverlay && (
+        <AvatarHudOverlay
+          slowCamera={slowCamera}
+          onEnterSwarmWorkspace={onEnterSwarmWorkspace}
+        />
+      )}
     </div>
   );
 }

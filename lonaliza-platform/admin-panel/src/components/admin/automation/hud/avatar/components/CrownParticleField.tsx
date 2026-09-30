@@ -50,8 +50,9 @@ const CROWN_VERTEX_SHADER = `
     gl_Position = projectionMatrix * mvPos;
 
     vAlpha = smoothstep(0.4, 0.9, uAssemblyProgress);
-    // Delicate, airy stardust motes matching reference
-    gl_PointSize = (1.75 + uThinkingIntensity * 0.75 + uVoiceLevel * 0.35) * (78.0 / -mvPos.z);
+    // Delicate, radiant stardust motes with dynamic breathing and speech pulsation
+    float ptSize = (2.2 + uThinkingIntensity * 1.2 + uVoiceLevel * 0.85);
+    gl_PointSize = ptSize * (84.0 / -mvPos.z);
   }
 `;
 
@@ -65,12 +66,13 @@ const CROWN_FRAGMENT_SHADER = `
     float d = length(c);
     if (d > 0.5) discard;
 
-    vec3 col = vColor * 2.2 + vec3(0.08, 0.50, 0.95);
+    vec3 col = vColor * 2.4 + vec3(0.12, 0.65, 1.25);
     // Thinking neural spark illumination
     if (uThinkingIntensity > 0.05) {
-      col = mix(col, vec3(1.35, 1.10, 0.35), uThinkingIntensity * 0.65);
+      col = mix(col, vec3(1.45, 1.20, 0.40), uThinkingIntensity * 0.70);
     }
-    gl_FragColor = vec4(col, smoothstep(0.5, 0.10, d) * vAlpha * 0.92);
+    float alpha = smoothstep(0.5, 0.06, d) * vAlpha * 0.95;
+    gl_FragColor = vec4(col, alpha);
   }
 `;
 

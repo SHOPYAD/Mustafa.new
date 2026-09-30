@@ -1,0 +1,36 @@
+{
+  "nodeTypes": {
+    "supervisor": {
+      "shape": "concentric-orb",
+      "primaryColor": "#ffb54c",
+      "outerRing": "#27dff4",
+      "filter": "glow"
+    },
+    "domain": {
+      "shape": "pill-card",
+      "colors": {
+        "cyan": "#27dff4",
+        "gold": "#eec66d",
+        "emerald": "#10b981",
+        "purple": "#c084fc",
+        "amber": "#ffb54c"
+      },
+      "cornerRadius": 14
+    },
+    "pod": {
+      "shape": "hexagon",
+      "strokeWidth": 2.5,
+      "width": 180,
+      "height": 140
+    },
+    "circuitNode": {
+      "shape": "rect-circuit",
+      "stroke": "#22c5db",
+      "glow": "0 0 12px #22c5db"
+    },
+    "avatarNode": {
+      "shape": "callout-branch",
+      "connector": "synapse-curved"
+    }
+  }
+}

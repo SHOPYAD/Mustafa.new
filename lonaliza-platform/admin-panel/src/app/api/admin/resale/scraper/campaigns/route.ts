@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { assertOriginOnly } from "@/lib/server/deployment-role";
 import {
@@ -9,7 +10,9 @@ import type { B2BCampaign } from "@/lib/server/gmaps-scraper/types";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Campaigns API");
     const campaigns = getAllCampaigns();
@@ -23,6 +26,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Launch Campaign API");
     const body = (await req.json()) as {

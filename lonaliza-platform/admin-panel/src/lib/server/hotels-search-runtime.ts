@@ -213,6 +213,8 @@ export type PublicHotelSearchInput = {
   stayRooms?: TravelAdvisorSearchInput["rooms"];
   hotelName?: string;
   hotelKey?: string;
+  /** Limit the supplier fan-out. The hotels page omits this and uses every enabled provider. */
+  onlySuppliers?: Array<"hotelbeds" | "travelport" | "ratehawk" | "seeru">;
 };
 
 export type PublicHotelSearchResult = {
@@ -608,6 +610,7 @@ export async function runPublicHotelSearch(input: PublicHotelSearchInput): Promi
     childrenAges: parseChildrenAges(input.childrenAges),
     currency: input.currency || "USD",
     lang: input.lang || "ar",
+    onlySuppliers: input.onlySuppliers,
   };
   const session = await startOrJoinSearchSession(supplyInput, { waitMs: input.page > 0 ? 2_000 : undefined });
   return pageSession(session, input, runtime);

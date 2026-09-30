@@ -1,0 +1,2 @@
+const {test,expect}=require("playwright/test"),routes=require("../quality/target-routes.json");
+for(const r of routes)test("target implementation "+r.id,async({page})=>{expect(r.path,"Discover and map actual route; do not skip missing implementations").toBeTruthy();expect(r.readySelector,"Set explicit ready selector").toBeTruthy();await page.goto(r.path);await expect(page.locator(r.readySelector)).toBeVisible();await page.screenshot({path:"evidence/target/"+r.id+".png",animations:"disabled"});});

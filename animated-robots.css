@@ -1,0 +1,33 @@
+.robot{--eye-x:0px;--eye-y:0px;--mouth-open:.15;cursor:pointer;outline:none}
+.robot .pupils{transform:translate(var(--eye-x),var(--eye-y));transition:transform .45s ease}
+.robot .eyelids{transform-box:fill-box;transform-origin:center;animation:robot-blink 5.3s infinite;animation-delay:var(--blink-delay,0s)}
+.robot .mouth-open{transform-box:fill-box;transform-origin:center;transform:scaleY(var(--mouth-open));opacity:0}
+.robot .smile{opacity:1;transition:opacity .12s}
+.robot[data-state="speaking"] .mouth-open{opacity:1}
+.robot[data-state="speaking"] .smile{opacity:0}
+.robot .talk-bars{opacity:0}
+.robot[data-state="speaking"] .talk-bars{opacity:.95}
+.robot .talk-bars path{transform-box:fill-box;transform-origin:center;animation:robot-meter .38s infinite alternate}
+.robot .talk-bars path:nth-child(2){animation-delay:-.11s}
+.robot .talk-bars path:nth-child(3){animation-delay:-.26s}
+.robot .listen-halo{opacity:0;transform-origin:120px 108px}
+.robot[data-state="listening"] .listen-halo{opacity:.75;animation:robot-listen 2s infinite ease-out}
+.robot[data-state="speaking"] .active-ring{stroke-width:3.7;filter:drop-shadow(0 0 3px currentColor);animation:robot-ring 1.1s infinite alternate}
+.robot[data-state="listening"] .ear-light{animation:robot-ring 1.4s infinite alternate}
+.robot .head-motion{transform-origin:120px 145px;animation:robot-breathe 4.5s infinite ease-in-out;animation-delay:var(--blink-delay,0s)}
+.robot[data-state="speaking"] .head-motion{animation:robot-talk .75s infinite ease-in-out}
+.robot:hover .active-ring,.robot:focus-visible .active-ring{stroke:#fff;stroke-width:3}
+.robot .state-label{font-size:11px;fill:#d7f1ff;font-family:Tahoma,Arial;opacity:.85}
+.robot .eye-light{filter:drop-shadow(0 0 2px currentColor)}
+.nerve-flow{fill:none;stroke:currentColor;stroke-width:2;stroke-dasharray:3 36;opacity:.35;animation:nerve-travel 2.8s linear infinite}
+[data-link][data-state="speaking"] .nerve-flow{opacity:1;animation-direction:reverse;animation-duration:1.25s}
+[data-link][data-state="listening"] .nerve-flow{opacity:.75}
+.agents-hidden [data-agent-id],.agents-hidden [data-link]{visibility:hidden}
+@keyframes robot-blink{0%,42%,45%,100%{transform:scaleY(1)}43.5%{transform:scaleY(.08)}}
+@keyframes robot-listen{0%{transform:scale(.98);opacity:.7}100%{transform:scale(1.07);opacity:0}}
+@keyframes robot-ring{from{opacity:.65}to{opacity:1}}
+@keyframes robot-meter{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+@keyframes robot-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.4px)}}
+@keyframes robot-talk{0%,100%{transform:rotate(-.6deg)}50%{transform:rotate(.6deg)}}
+@keyframes nerve-travel{to{stroke-dashoffset:156}}
+@media(prefers-reduced-motion:reduce){.robot *,.nerve-flow{animation:none!important;transition:none!important}.robot .listen-halo{opacity:.35!important}}

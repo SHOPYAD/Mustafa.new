@@ -272,141 +272,60 @@ export default function HolographicCylinderStage({
     return geo;
   };
 
-  // Helper to generate dynamic high-tech canvas textures for each 3D card
+  // Borderless floating equation plates. No filled square cards.
   const createCardTexture = (card: HolographicCardSector, index: number, isHighlighted: boolean) => {
     const canvas = document.createElement("canvas");
-    canvas.width = 440;
-    canvas.height = 620;
+    canvas.width = 860;
+    canvas.height = 220;
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
 
-    // Dark Glassmorphism Background
-    const bgGrad = ctx.createLinearGradient(0, 0, 440, 620);
-    bgGrad.addColorStop(0, "rgba(4, 18, 42, 0.96)");
-    bgGrad.addColorStop(0.5, "rgba(2, 10, 26, 0.98)");
-    bgGrad.addColorStop(1, "rgba(1, 6, 18, 1.0)");
-    ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, 440, 620);
-
-    // Cyber Scanlines
-    ctx.fillStyle = "rgba(0, 229, 255, 0.04)";
-    for (let y = 0; y < 620; y += 7) {
-      ctx.fillRect(0, y, 440, 2.5);
-    }
-
-    // Glowing Neon Border
-    ctx.strokeStyle = isHighlighted ? "#00e5ff" : card.color;
-    ctx.lineWidth = isHighlighted ? 8 : 4;
-    ctx.strokeRect(8, 8, 424, 604);
-
-    // Inner Corner Brackets
-    ctx.strokeStyle = isHighlighted ? "#f59e0b" : "rgba(255, 255, 255, 0.4)";
+    ctx.clearRect(0, 0, 860, 220);
+    const accent = isHighlighted ? "#00e5ff" : card.color;
+    ctx.strokeStyle = accent;
     ctx.lineWidth = 3;
-    // Top-left
+    ctx.shadowColor = accent;
+    ctx.shadowBlur = 16;
+    const bracket = 28;
+    const pad = 16;
     ctx.beginPath();
-    ctx.moveTo(20, 60);
-    ctx.lineTo(20, 20);
-    ctx.lineTo(60, 20);
+    ctx.moveTo(pad, pad + bracket);
+    ctx.lineTo(pad, pad);
+    ctx.lineTo(pad + bracket, pad);
     ctx.stroke();
-    // Top-right
     ctx.beginPath();
-    ctx.moveTo(420 - 40, 20);
-    ctx.lineTo(420, 20);
-    ctx.lineTo(420, 60);
+    ctx.moveTo(860 - pad - bracket, pad);
+    ctx.lineTo(860 - pad, pad);
+    ctx.lineTo(860 - pad, pad + bracket);
     ctx.stroke();
-    // Bottom-left
     ctx.beginPath();
-    ctx.moveTo(20, 600 - 40);
-    ctx.lineTo(20, 600);
-    ctx.lineTo(60, 600);
+    ctx.moveTo(pad, 220 - pad - bracket);
+    ctx.lineTo(pad, 220 - pad);
+    ctx.lineTo(pad + bracket, 220 - pad);
     ctx.stroke();
-    // Bottom-right
     ctx.beginPath();
-    ctx.moveTo(420 - 40, 600);
-    ctx.lineTo(420, 600);
-    ctx.lineTo(420, 600 - 40);
+    ctx.moveTo(860 - pad - bracket, 220 - pad);
+    ctx.lineTo(860 - pad, 220 - pad);
+    ctx.lineTo(860 - pad, 220 - pad - bracket);
     ctx.stroke();
+    ctx.shadowBlur = 0;
 
-    // Sector Number Badge
-    ctx.fillStyle = isHighlighted ? "#00e5ff" : "rgba(255, 255, 255, 0.85)";
-    ctx.font = "bold 20px monospace";
+    ctx.fillStyle = accent;
+    ctx.font = "bold 22px monospace";
     ctx.textAlign = "left";
-    ctx.fillText(`[SECTOR 0${index + 1}]`, 32, 60);
+    ctx.fillText(`⟨ ${card.category} · 0${index + 1} ⟩`, 52, 58);
 
-    // Status Badge
-    ctx.fillStyle = "#10b981";
-    ctx.font = "bold 16px monospace";
-    ctx.textAlign = "right";
-    ctx.fillText(`• ${card.status}`, 408, 60);
-
-    // Category Label
-    ctx.fillStyle = "rgba(148, 163, 184, 0.95)";
-    ctx.font = "16px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText(card.category, 220, 110);
-
-    // Card Title (Arabic)
+    const equation = `Ψ${index + 1}(t) = ${card.metricValue1} · e^{iωt} + ${card.metricValue2}`;
     ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 22px sans-serif";
-    ctx.fillText(card.titleAr, 220, 155);
+    ctx.font = "bold 34px monospace";
+    ctx.shadowColor = accent;
+    ctx.shadowBlur = 12;
+    ctx.fillText(equation.slice(0, 42), 52, 118);
+    ctx.shadowBlur = 0;
 
-    // English Subtitle
-    ctx.fillStyle = card.color;
-    ctx.font = "bold 15px monospace";
-    ctx.fillText(card.titleEn, 220, 190);
-
-    // Horizontal Divider
-    ctx.strokeStyle = "rgba(0, 229, 255, 0.3)";
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(32, 215);
-    ctx.lineTo(408, 215);
-    ctx.stroke();
-
-    // Metric 1 Box
-    ctx.fillStyle = "rgba(4, 26, 56, 0.85)";
-    ctx.fillRect(32, 235, 376, 75);
-    ctx.strokeStyle = "rgba(0, 229, 255, 0.25)";
-    ctx.strokeRect(32, 235, 376, 75);
-
-    ctx.fillStyle = "rgba(148, 163, 184, 0.95)";
-    ctx.font = "14px sans-serif";
-    ctx.textAlign = "right";
-    ctx.fillText(card.metricLabel1, 392, 262);
-    ctx.fillStyle = "#00e5ff";
-    ctx.font = "bold 26px monospace";
-    ctx.fillText(card.metricValue1, 392, 298);
-
-    // Metric 2 Box
-    ctx.fillStyle = "rgba(4, 26, 56, 0.85)";
-    ctx.fillRect(32, 325, 376, 75);
-    ctx.strokeStyle = "rgba(0, 229, 255, 0.25)";
-    ctx.strokeRect(32, 325, 376, 75);
-
-    ctx.fillStyle = "rgba(148, 163, 184, 0.95)";
-    ctx.font = "14px sans-serif";
-    ctx.textAlign = "right";
-    ctx.fillText(card.metricLabel2, 392, 352);
-    ctx.fillStyle = "#f59e0b";
-    ctx.font = "bold 24px monospace";
-    ctx.fillText(card.metricValue2, 392, 388);
-
-    // Description text
-    ctx.fillStyle = "rgba(226, 232, 240, 0.9)";
-    ctx.font = "14px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText(card.description.slice(0, 36), 220, 445);
-    ctx.fillText(card.description.slice(36, 75), 220, 472);
-
-    // Bottom Action Prompt
-    ctx.fillStyle = isHighlighted ? "rgba(0, 229, 255, 0.25)" : "rgba(255, 255, 255, 0.08)";
-    ctx.fillRect(32, 520, 376, 55);
-    ctx.strokeStyle = isHighlighted ? "#00e5ff" : "rgba(255, 255, 255, 0.25)";
-    ctx.strokeRect(32, 520, 376, 55);
-
-    ctx.fillStyle = isHighlighted ? "#00e5ff" : "#ffffff";
-    ctx.font = "bold 16px monospace";
-    ctx.fillText("[ انقر أو ابسط كفك للفتح الكامل ]", 220, 554);
+    ctx.fillStyle = accent;
+    ctx.font = "20px monospace";
+    ctx.fillText(`${card.titleEn}  ·  ${card.status}`, 52, 168);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.needsUpdate = true;
@@ -626,8 +545,8 @@ export default function HolographicCylinderStage({
       const texture = createCardTexture(card, idx, isHighlighted)!;
       cardTextures.push(texture);
 
-      // Curved geometry with proper UVs and proportional sizing (120w x 148h) Phase 4
-      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 120, 148, 24);
+      // Wide floating equation ribbon, not a square card.
+      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 176, 46, 24);
 
       const cardMat = new THREE.MeshBasicMaterial({
         map: texture,
@@ -891,7 +810,7 @@ export default function HolographicCylinderStage({
           <div className="flex flex-col text-right">
             <div className="flex items-center gap-2">
               <span className="text-sm font-black font-mono text-white tracking-wide">
-                مسرح البطاقات الهولوغرافية ثلاثية الأبعاد (NEXUS 3D Cylinder Stage)
+                معادلات هولوغرافية عائمة ثلاثية الأبعاد (NEXUS Organic Equations)
               </span>
               <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
                 NEXUS ORBITAL DECK v6.5
@@ -991,7 +910,7 @@ export default function HolographicCylinderStage({
           type="button"
           onClick={() => rotateTo(activeCardIndex - 1)}
           className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400 transition-colors"
-          title="البطاقة السابقة"
+          title="المعادلة السابقة"
         >
           <ChevronRight size={18} />
         </button>
@@ -1004,7 +923,7 @@ export default function HolographicCylinderStage({
           type="button"
           onClick={() => rotateTo(activeCardIndex + 1)}
           className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400 transition-colors"
-          title="البطاقة التالية"
+          title="المعادلة التالية"
         >
           <ChevronLeft size={18} />
         </button>

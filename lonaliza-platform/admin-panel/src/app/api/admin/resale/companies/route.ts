@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import {
   getResellerCompanies,
@@ -14,6 +15,8 @@ import { assertOriginOnly } from "@/lib/server/deployment-role";
 export const runtime = "nodejs";
 
 export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Companies API");
     const { searchParams } = new URL(req.url);
@@ -37,6 +40,8 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Companies API");
     const body = (await req.json()) as {

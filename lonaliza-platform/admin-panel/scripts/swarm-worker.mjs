@@ -60,7 +60,7 @@ const worker = new Worker(
       // Trigger deliberation via admin-panel internal API endpoint
       const response = await fetch(`${adminUrl}/api/admin/automation/swarm-deliberate`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-admin-setup-secret": process.env.ADMIN_SETUP_SECRET || "" },
         body: JSON.stringify({
           directive,
           source: source || "bullmq_worker",

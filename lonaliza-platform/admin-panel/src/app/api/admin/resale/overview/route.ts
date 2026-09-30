@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import {
   getResellerOverviewStats,
@@ -8,7 +9,9 @@ import { assertOriginOnly } from "@/lib/server/deployment-role";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Overview API");
     const [stats, companies, licenses] = await Promise.all([

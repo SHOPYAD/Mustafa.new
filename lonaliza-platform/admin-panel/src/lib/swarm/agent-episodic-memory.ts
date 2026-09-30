@@ -85,81 +85,17 @@ export async function generateTextEmbedding(text: string): Promise<number[]> {
   return computeDeterministicEmbedding(text);
 }
 
-// Seed default institutional memory if not present
+/** معرّفات ذكريات مختلقة زُرعت سابقًا؛ تُستبعد عند القراءة. الذاكرة تُبنى فقط من نتائج حقيقية. */
+const FABRICATED_SEED_IDS = new Set([
+  "mem_trabzon_family_weekend",
+  "mem_b2b_cloud_pro_discount",
+  "mem_site_advisor_itinerary_formula",
+  "mem_ads_meta_vs_google",
+  "mem_financial_audit_safeguard",
+]);
+
 function defaultEpisodicMemories(): SwarmEpisodicMemoryEntry[] {
-  const now = new Date().toISOString();
-  return [
-    {
-      id: "mem_trabzon_family_weekend",
-      timestamp: now,
-      category: "campaign_outcome",
-      agentId: "sales",
-      summaryAr: "حملات باقات طرابزون العائلية عبر واتساب تحقق أعلى نسبة إغلاق (38%) عند استهداف رحلات الجمعة والسبت مع سيارة VIP خاصة.",
-      keyInsightsAr: [
-        "العملاء الخليجيون يفضلون سيارة مرسيدس فيتو VIP خاصة مع سائق يتحدث العربية.",
-        "تقديم باقة بـ 3 مستويات ميزانية يرفع سرعة اتخاذ القرار خلال 4 ساعات.",
-      ],
-      metrics: { roiGain: "+42%", successRate: 0.38, marginPercent: 24 },
-      tags: ["trabzon", "sales", "whatsapp", "family_tours", "vip"],
-      embedding: computeDeterministicEmbedding("حملات باقات طرابزون العائلية عبر واتساب سيارة فيتو VIP"),
-    },
-    {
-      id: "mem_b2b_cloud_pro_discount",
-      timestamp: now,
-      category: "pricing_strategy",
-      agentId: "b2b_landing",
-      summaryAr: "منح المكاتب السياحية خصم ترحيبي 10% على باقة Pro السحابية يرفع نسبة التحويل التجاري بنسبة 3.2 أضعاف.",
-      keyInsightsAr: [
-        "التركيز على ميزة تذاكر الطيران المباشرة بدون وسيط في العرض هو العامل الحاسم في الإغلاق.",
-        "التواصل المباشر عبر واتساب المخصص للشركات أسرع 5 مرات من البريد الإلكتروني.",
-      ],
-      metrics: { roiGain: "3.2x", successRate: 0.45, marginPercent: 40 },
-      tags: ["b2b", "pro_cloud", "pricing", "travel_agencies"],
-      embedding: computeDeterministicEmbedding("منح المكاتب السياحية خصم ترحيبي باقة Pro السحابية شركات"),
-    },
-    {
-      id: "mem_site_advisor_itinerary_formula",
-      timestamp: now,
-      category: "tour_itinerary",
-      agentId: "site_advisor",
-      summaryAr: "صيغة الجداول الأيقونية بـ 3-4 محطات يومية في محيط جغرافي متقارب تمنع إجهاد العميل وتحقق تقييم 5 نجوم.",
-      keyInsightsAr: [
-        "دمج مقهى تاريخي صباحاً، معلم أيقوني ظهراً، وتجربة طعام محلية أصيلة مساءً يخلق تجربة متكاملة.",
-        "حصر الجولات في نطاق 25 كم يمنع شكاوى الاختناقات المرورية في إسطنبول.",
-      ],
-      metrics: { successRate: 0.96, marginPercent: 18 },
-      tags: ["itinerary", "site_advisor", "istanbul", "pacing"],
-      embedding: computeDeterministicEmbedding("صيغة الجداول الأيقونية 3-4 محطات جولات سياحية إسطنبول"),
-    },
-    {
-      id: "mem_ads_meta_vs_google",
-      timestamp: now,
-      category: "campaign_outcome",
-      agentId: "ads",
-      summaryAr: "إعلانات Meta Reels تحقق أعلى ROAS لحجوزات الشمال التركي مقارنة بـ Google Search بنسبة 3.8x مقابل 2.4x.",
-      keyInsightsAr: [
-        "مقاطع الفيديو القصيرة للطبيعة والبحيرات تحقق تفاعلاً مضاعفاً.",
-        "إعادة استهداف زوار الموقع خلال 48 ساعة يقلل تكلفة الاستحواذ (CAC) بنسبة 35%.",
-      ],
-      metrics: { roiGain: "3.8x", successRate: 0.28, marginPercent: 32 },
-      tags: ["meta_ads", "reels", "google_ads", "roas"],
-      embedding: computeDeterministicEmbedding("إعلانات Meta Reels الشمال التركي ريلز فيديو بحيرات حملات ممولة"),
-    },
-    {
-      id: "mem_financial_audit_safeguard",
-      timestamp: now,
-      category: "adversarial_audit",
-      agentId: "lead_scout",
-      summaryAr: "تدقيق هوامش الربح: أي عرض ترويجي يقل هامش ربحه الصافي عن 14% يتم رفضه آلياً وإعادته لإعادة تسعير الفنادق والسيارات.",
-      keyInsightsAr: [
-        "حساب تكلفة الدفع الإلكتروني (2.5%) ضمن التسعير الإجمالي يمنع التآكل المالي.",
-        "مراجعة أسعار غرف الفنادق في مواسم الذروة قبل اعتماد أي حملة مبيعات.",
-      ],
-      metrics: { successRate: 1.0, marginPercent: 15 },
-      tags: ["audit", "financial", "margin", "risk_control"],
-      embedding: computeDeterministicEmbedding("تدقيق هوامش الربح المالي أي عرض يقل عن 14 بالمئة رفض وإعادة تسعير"),
-    },
-  ];
+  return [];
 }
 
 export function loadEpisodicMemories(): SwarmEpisodicMemoryEntry[] {
@@ -172,7 +108,7 @@ export function loadEpisodicMemories(): SwarmEpisodicMemoryEntry[] {
     }
     const raw = fs.readFileSync(MEMORY_FILE, "utf-8");
     const data = JSON.parse(raw) as SwarmEpisodicMemoryEntry[];
-    return Array.isArray(data) ? data : defaultEpisodicMemories();
+    return Array.isArray(data) ? data.filter((m) => !FABRICATED_SEED_IDS.has(m.id)) : defaultEpisodicMemories();
   } catch (err) {
     console.error("Failed to load episodic memories", err);
     return defaultEpisodicMemories();

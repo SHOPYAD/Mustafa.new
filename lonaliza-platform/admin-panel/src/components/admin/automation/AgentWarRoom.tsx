@@ -84,11 +84,8 @@ export default function AgentWarRoom({
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("classic") === "true" || params.get("studio") === "false") {
-        setHudStudioOpen(false);
-      } else {
-        setHudStudioOpen(true);
-      }
+      const embed = params.get("studio") === "1" || params.get("classic") === "true";
+      setHudStudioOpen(Boolean(params.get("screen")) && !embed);
     }
   }, []);
 

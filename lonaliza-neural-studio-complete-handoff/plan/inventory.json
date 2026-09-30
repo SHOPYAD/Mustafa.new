@@ -1,0 +1,412 @@
+{
+  "scannedAt": "2026-09-27T23:59:00Z",
+  "workspaceRoot": "/www/wwwroot/lonaliza.com",
+  "platformRoot": "/www/wwwroot/lonaliza.com/lonaliza-platform",
+  "totalCoverageItems": 21,
+  "verifiedPhysicalItems": 21,
+  "domains": [
+    {
+      "id": "overview",
+      "nameAr": "نظرة عامة",
+      "screen": "19",
+      "routes": [
+        "/admin/dashboard",
+        "/admin/agent-war-room"
+      ],
+      "backendApis": [
+        "/api/admin/analytics",
+        "/api/admin/automation/agent-war-room"
+      ],
+      "components": [
+        "src/components/admin/dashboard/AdminDashboardView.tsx",
+        "src/components/admin/automation/hud/SciFiAgentHudStudio.tsx"
+      ]
+    },
+    {
+      "id": "bookings",
+      "nameAr": "الحجوزات والعمليات",
+      "screen": "03",
+      "routes": [
+        "/admin/bookings",
+        "/admin/cancellations",
+        "/admin/reviews"
+      ],
+      "backendApis": [
+        "/api/admin/bookings",
+        "/api/bookings",
+        "/api/reviews"
+      ],
+      "components": [
+        "src/components/admin/bookings/BookingsTable.tsx",
+        "src/components/admin/reviews/ReviewsManager.tsx"
+      ]
+    },
+    {
+      "id": "hotels",
+      "nameAr": "الفنادق وبنوك الأسرة",
+      "screen": "05",
+      "routes": [
+        "/admin/hotels",
+        "/admin/providers"
+      ],
+      "backendApis": [
+        "/api/admin/hotels",
+        "/api/hotels",
+        "/api/admin/hotels-config"
+      ],
+      "components": [
+        "src/components/admin/HotelsProviderPanel.tsx",
+        "src/components/admin/HotelFormModal.tsx",
+        "src/components/admin/BulkHotelImporterModal.tsx"
+      ]
+    },
+    {
+      "id": "flights",
+      "nameAr": "الرحلات وموزعو GDS",
+      "screen": "04",
+      "routes": [
+        "/admin/flights",
+        "/admin/providers"
+      ],
+      "backendApis": [
+        "/api/admin/flights",
+        "/api/flights",
+        "/api/admin/flights-config"
+      ],
+      "components": [
+        "src/components/admin/FlightsProviderPanel.tsx",
+        "src/components/admin/FlightFormModal.tsx",
+        "src/components/admin/FlightExtrasPanel.tsx"
+      ]
+    },
+    {
+      "id": "mobility",
+      "nameAr": "النقل والجولات والباقات والتأشيرات",
+      "screen": "06",
+      "routes": [
+        "/admin/packages",
+        "/admin/transfers",
+        "/admin/cars",
+        "/admin/tours",
+        "/admin/visa"
+      ],
+      "backendApis": [
+        "/api/admin/packages",
+        "/api/admin/transfers",
+        "/api/admin/cars",
+        "/api/admin/tours",
+        "/api/admin/visa"
+      ],
+      "components": [
+        "src/components/admin/PackageFormModal.tsx",
+        "src/components/admin/TransferFormModal.tsx",
+        "src/components/admin/CarFormModal.tsx",
+        "src/components/admin/TourFormModal.tsx",
+        "src/components/admin/VisaFormModal.tsx"
+      ]
+    },
+    {
+      "id": "cms",
+      "nameAr": "محتوى الموقع والتطبيقات",
+      "screen": "07",
+      "routes": [
+        "/admin/visual-editor",
+        "/admin/pages",
+        "/admin/blog",
+        "/admin/search-tabs",
+        "/admin/pwa",
+        "/admin/mobile-app"
+      ],
+      "backendApis": [
+        "/api/admin/pages",
+        "/api/admin/blog",
+        "/api/admin/search-tabs",
+        "/api/admin/pwa",
+        "/api/admin/mobile"
+      ],
+      "components": [
+        "src/components/admin/mobile-app/MobileAppDashboard.tsx",
+        "src/components/admin/publish/PublishWorkflow.tsx"
+      ]
+    },
+    {
+      "id": "customers",
+      "nameAr": "العملاء والمحادثات",
+      "screen": "08",
+      "routes": [
+        "/admin/customers",
+        "/admin/social-community"
+      ],
+      "backendApis": [
+        "/api/admin/customers",
+        "/api/customers",
+        "/api/community"
+      ],
+      "components": [
+        "src/components/admin/customers/CustomersTable.tsx"
+      ]
+    },
+    {
+      "id": "publishing",
+      "nameAr": "النشر متعدد القنوات والمحتوى",
+      "screen": "09",
+      "routes": [
+        "/admin/social-accounts",
+        "/admin/publish",
+        "/admin/content",
+        "/admin/media"
+      ],
+      "backendApis": [
+        "/api/admin/social",
+        "/api/admin/publish",
+        "/api/admin/media"
+      ],
+      "components": [
+        "src/components/admin/publish/PublishWorkflow.tsx",
+        "src/components/admin/social/SocialFeed.tsx"
+      ]
+    },
+    {
+      "id": "growth",
+      "nameAr": "الحملات والتسويق والعمولات",
+      "screen": "10",
+      "routes": [
+        "/admin/marketing",
+        "/admin/ads",
+        "/admin/gift-cards",
+        "/admin/email",
+        "/admin/affiliate"
+      ],
+      "backendApis": [
+        "/api/admin/ads",
+        "/api/admin/gift-cards",
+        "/api/admin/email",
+        "/api/admin/affiliate"
+      ],
+      "components": [
+        "src/components/admin/EmailAudienceUpload.tsx"
+      ]
+    },
+    {
+      "id": "agents",
+      "nameAr": "غرفة الوكلاء والمعرفة",
+      "screen": "11",
+      "routes": [
+        "/admin/agent-war-room",
+        "/admin/agent-studio",
+        "/admin/ai-feedback",
+        "/admin/ai-settings"
+      ],
+      "backendApis": [
+        "/api/admin/automation/agent-war-room",
+        "/api/admin/automation/second-brain-data",
+        "/api/admin/ai"
+      ],
+      "components": [
+        "src/components/admin/automation/AgentWarRoom.tsx",
+        "src/components/admin/automation/McpCatalogPanel.tsx",
+        "src/components/admin/automation/AgentSettingsModal.tsx"
+      ]
+    },
+    {
+      "id": "automation",
+      "nameAr": "استوديو الأتمتة والتنفيذ",
+      "screen": "12",
+      "routes": [
+        "/admin/automation",
+        "/admin/automation-studio"
+      ],
+      "backendApis": [
+        "/api/admin/automation",
+        "/api/admin/automation/jobs"
+      ],
+      "components": [
+        "src/components/admin/automation/AutomationAdmin.tsx",
+        "src/components/admin/automation/AutomationChatPanel.tsx"
+      ]
+    },
+    {
+      "id": "finance",
+      "nameAr": "المالية والفوترة والولاء",
+      "screen": "13",
+      "routes": [
+        "/admin/payments",
+        "/admin/currencies",
+        "/admin/invoices",
+        "/admin/b2b-wallet"
+      ],
+      "backendApis": [
+        "/api/admin/payments",
+        "/api/admin/currencies",
+        "/api/admin/invoices",
+        "/api/admin/loyalty"
+      ],
+      "components": [
+        "src/components/admin/invoices/InvoiceTemplatesPanel.tsx",
+        "src/components/admin/AdminCurrencySelect.tsx"
+      ]
+    },
+    {
+      "id": "b2b",
+      "nameAr": "إعادة البيع وشبكة B2B",
+      "screen": "14",
+      "routes": [
+        "/admin/resale",
+        "/admin/b2b-landing-agent"
+      ],
+      "backendApis": [
+        "/api/admin/partners",
+        "/api/admin/b2b-landing-agent"
+      ],
+      "components": [
+        "src/components/admin/resale/ResaleDashboard.tsx",
+        "src/components/admin/automation/B2bLandingAgentSettings.tsx",
+        "src/components/admin/WhiteLabelUpgradeOverlay.tsx"
+      ]
+    },
+    {
+      "id": "compliance",
+      "nameAr": "الامتثال والخصوصية والصلاحيات",
+      "screen": "15",
+      "routes": [
+        "/admin/legal"
+      ],
+      "backendApis": [
+        "/api/admin/public-legal",
+        "/api/admin/legal"
+      ],
+      "components": [
+        "src/components/admin/legal/LegalDocumentsManager.tsx"
+      ]
+    },
+    {
+      "id": "settings",
+      "nameAr": "الإعدادات والتكاملات",
+      "screen": "16",
+      "routes": [
+        "/admin/settings",
+        "/admin/integrations",
+        "/admin/pocketbase",
+        "/admin/translations",
+        "/admin/icons",
+        "/admin/updates"
+      ],
+      "backendApis": [
+        "/api/admin/settings",
+        "/api/admin/translations",
+        "/api/admin/providers",
+        "/api/admin/updates"
+      ],
+      "components": [
+        "src/components/admin/OpenRouterSettingsSection.tsx",
+        "src/components/admin/automation/CommsSettings.tsx",
+        "src/components/admin/automation/ConnectionsHub.tsx"
+      ]
+    },
+    {
+      "id": "supervisor_voice",
+      "nameAr": "القرص الصوتي وحالات الوكيل",
+      "screen": "17",
+      "routes": [
+        "/admin/agent-war-room?mode=voice",
+        "/admin/agent-studio"
+      ],
+      "backendApis": [
+        "/api/admin/automation/voice-session",
+        "/api/admin/copilotkit"
+      ],
+      "components": [
+        "src/components/admin/automation/hud/voice/useSovereignVoice.ts",
+        "src/components/admin/automation/hud/AudioVisualizer.tsx"
+      ]
+    },
+    {
+      "id": "workspace_states",
+      "nameAr": "حالات النوافذ والسيدبار والتنقل",
+      "screen": "18",
+      "routes": [
+        "/admin/agent-war-room"
+      ],
+      "backendApis": [
+        "/api/admin/automation/agent-war-room"
+      ],
+      "components": [
+        "src/components/admin/automation/hud/sidebar/FloatingCyberSidebar.tsx",
+        "src/components/admin/automation/hud/dock/MicroFloatingHudDock.tsx"
+      ]
+    },
+    {
+      "id": "humanoid_presence",
+      "nameAr": "الحضور البشري والصوت الحي",
+      "screen": "20",
+      "routes": [
+        "/admin/agent-war-room?mode=presence"
+      ],
+      "backendApis": [
+        "/api/admin/automation/jarvis-daemon",
+        "/api/admin/copilotkit"
+      ],
+      "components": [
+        "src/components/admin/automation/hud/avatar/HumanoidMasterAvatar.tsx",
+        "src/components/admin/automation/hud/avatar/shaders/cyberShaders.ts"
+      ]
+    },
+    {
+      "id": "neural_atlas",
+      "nameAr": "الأطلس العصبي الشامل",
+      "screen": "01",
+      "routes": [
+        "/admin/agent-war-room?mode=brain"
+      ],
+      "backendApis": [
+        "/api/admin/automation/second-brain-data"
+      ],
+      "components": [
+        "src/components/admin/automation/hud/NeuralGraph.tsx",
+        "src/components/admin/automation/hud/brain/SovereignSecondBrainHub.tsx"
+      ]
+    },
+    {
+      "id": "cumulative_expansion",
+      "nameAr": "التوسع التراكمي والشاشة الكاملة",
+      "screen": "02",
+      "routes": [
+        "/admin/agent-war-room?mode=expansion"
+      ],
+      "backendApis": [
+        "/api/admin/automation/second-brain-data"
+      ],
+      "components": [
+        "src/components/admin/automation/hud/NeuralGraph.tsx"
+      ]
+    },
+    {
+      "id": "mcp-ecosystem",
+      "nameAr": "منظومة أدوات وخوادم MCP (21 خادماً - 88 أداة)",
+      "screen": "11",
+      "routes": [
+        "/admin/automation/mcp",
+        "/admin/agent-war-room",
+        "/admin/neural-studio"
+      ],
+      "backendApis": [
+        "/api/admin/mcp/[serverId]",
+        "/api/admin/mcp/liotrip-blog",
+        "/api/admin/mcp/liotrip-studio",
+        "/api/admin/mcp/liotrip-google-flow",
+        "/api/admin/mcp/liotrip-higgsfield",
+        "/api/admin/mcp/liotrip-canva",
+        "/api/admin/mcp/liotrip-ads",
+        "/api/admin/mcp/liotrip-whatsapp",
+        "/api/admin/mcp/lonaliza-platform-admin"
+      ],
+      "components": [
+        "src/components/admin/automation/McpCatalogPanel.tsx",
+        "src/components/admin/automation/hud/SciFiAgentHudStudio.tsx",
+        "src/components/admin/automation/hud/ops/SkillsDeckWidget.tsx"
+      ],
+      "totalMcpServers": 21,
+      "totalMcpTools": 88
+    }
+  ]
+}

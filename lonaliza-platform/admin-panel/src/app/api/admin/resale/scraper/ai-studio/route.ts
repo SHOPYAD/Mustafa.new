@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { assertOriginOnly } from "@/lib/server/deployment-role";
 import { generateGeminiContent } from "@/lib/server/gemini-swarm-client";
@@ -16,6 +17,8 @@ const PLATFORM_FACTS = `
 `;
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Scraper AI Studio API");
     const body = (await req.json()) as {

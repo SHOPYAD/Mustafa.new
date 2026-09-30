@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import { assertOriginOnly } from "@/lib/server/deployment-role";
 import {
@@ -10,6 +11,8 @@ import type { B2BMarketingTemplate } from "@/lib/server/gmaps-scraper/types";
 export const runtime = "nodejs";
 
 export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Templates API");
     const { searchParams } = new URL(req.url);
@@ -30,6 +33,8 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Save Template API");
     const body = (await req.json()) as Partial<B2BMarketingTemplate>;
@@ -66,6 +71,8 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     assertOriginOnly("Reseller Delete Template API");
     const { searchParams } = new URL(req.url);

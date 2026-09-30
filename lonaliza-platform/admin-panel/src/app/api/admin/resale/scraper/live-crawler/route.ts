@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -13,7 +14,9 @@ const STATUS_PATH = path.join(
   "live-crawler-status.json"
 );
 
-export async function GET() {
+export async function GET(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     if (fs.existsSync(STATUS_PATH)) {
       const data = JSON.parse(fs.readFileSync(STATUS_PATH, "utf-8"));
@@ -33,6 +36,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const body = await req.json();
     const city = (body.city || "إسطنبول").trim();
@@ -73,7 +78,9 @@ export async function POST(req: Request) {
   }
 }
 
-export async function DELETE() {
+export async function DELETE(req: Request) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     exec("pkill -9 -f live-gmaps-worker.mjs", () => {});
 

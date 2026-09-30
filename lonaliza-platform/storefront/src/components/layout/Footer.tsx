@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { neutralBlogLabel } from "@/lib/blog/neutral-chrome";
 import { useMemo } from "react";
 import BrandImage from "@/components/branding/BrandImage";
 import { useBrandName, useBranding } from "@/components/branding/BrandingProvider";
@@ -114,7 +115,7 @@ export default function Footer() {
       ? [primaryPhone]
       : ["+90 531 359 13 94"];
   const email = contact.email || "info@lonaliza.com";
-  const address = contact.address || t.footer.address;
+  const address = neutralBlogLabel(contact.address || t.footer.address, pathname) || "Lonaliza";
 
   const isOrigin = (process.env.NEXT_PUBLIC_DEPLOYMENT_ROLE || "origin") !== "client";
   if (isOrigin && pathname === "/") return null;

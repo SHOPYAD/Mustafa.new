@@ -1,6 +1,152 @@
 {
   "packages": [
     {
+      "id": "aip_muo44hv6_yr0gt8",
+      "slug": "luxury-istanbul-5-day-itinerary",
+      "title": "Luxury Istanbul 5-Day Itinerary",
+      "titleAr": "برنامج إسطنبول الفاخر لخمسة أيام",
+      "titleEn": "Luxury Istanbul 5-Day Itinerary",
+      "titleTr": "Luxury Istanbul 5-Day Itinerary",
+      "destination": "Istanbul",
+      "destinationAr": "إسطنبول، تركيا",
+      "destinationEn": "Istanbul, Turkey",
+      "destinationTr": "Istanbul, Turkey",
+      "country": "Turkey",
+      "countryAr": "تركيا",
+      "countryEn": "Turkey",
+      "countryTr": "Turkey",
+      "destinations": [
+        "Istanbul"
+      ],
+      "destinationsEn": [
+        "Istanbul, Turkey"
+      ],
+      "destinationsAr": [
+        "إسطنبول، تركيا"
+      ],
+      "durationDays": 5,
+      "durationNights": 4,
+      "price": 1026,
+      "currency": "USD",
+      "rating": 4.8,
+      "images": [
+        {
+          "url": "https://photos.hotelbeds.com/giata/bigger/75/750213/750213a_hb_a_001_20260801_093515.jpg",
+          "alt": "Luxury Istanbul 5-Day Itinerary",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "amenities": [],
+      "isFeatured": true,
+      "isPublished": true,
+      "createdAt": "2026-09-30T12:59:56.658Z",
+      "theme": "luxury",
+      "tripMode": "private_vip",
+      "description": "Luxury Istanbul 5-Day Itinerary\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionAr": "برنامج إسطنبول الفاخر لخمسة أيام\n\nالسعر المعروض تقديري حسب أسعار السوق الحالية. للتأكيد النهائي تواصل مع خدمة العملاء عبر واتساب.",
+      "descriptionEn": "Luxury Istanbul 5-Day Itinerary\n\nThe displayed price is an estimate based on current market rates. For a confirmed final price, contact customer service on WhatsApp.",
+      "descriptionTr": "Luxury Istanbul 5-Day Itinerary\n\nGörünen fiyat güncel piyasa oranlarına dayalı bir tahmindir. Kesin fiyat için müşteri hizmetlerine WhatsApp üzerinden ulaşın.",
+      "inclusionsTr": [],
+      "exclusions": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "exclusionsAr": [
+        "تذاكر الطيران الدولية",
+        "رسوم التأشيرة",
+        "المصاريف الشخصية"
+      ],
+      "exclusionsEn": [
+        "International flights",
+        "Visa fees",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "الوصول إلى إسطنبول والاستقبال الملكي",
+          "description": "استقبال في المطار بسيارة مرسيدس الخاصة، التوجه إلى الفندق لتسجيل الغرف، وجولة مسائية خفيفة في محيط ميدان تقسيم وتناول العشاء."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية والسلطان أحمد",
+          "description": "زيارة جامع السلطان أحمد (المسجد الأزرق)، آيا صوفيا، قصر توبكابي، وجولة استكشافية في السوق المغلق العريق."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور وجولة الجانب الآسيوي",
+          "description": "رحلة بحرية خاصة في مضيق البوسفور، زيارة قصر دولمة بهتشة، والعبور إلى الجانب الآسيوي لاستكشاف تلة تشامليجا."
+        },
+        {
+          "day": 4,
+          "title": "جولة أمجان وشارع الاستقلال ومنطقة أورتاكوي",
+          "description": "زيارة حدائق أمجان الخلابة، الاستمتاع بقهوة صباحية في أورتاكوي تحت جسر البوسفور، والتسوق في شارع الاستقلال وبرج غلطة."
+        },
+        {
+          "day": 5,
+          "title": "التسوق الختامي والعودة الموفقة",
+          "description": "وقت حر للتسوق وشراء الهدايا التذكارية من مراكز التسوق الحديثة، ثم الاستعداد والتوجه إلى المطار برعاية الله."
+        }
+      ],
+      "itineraryAr": [
+        {
+          "day": 1,
+          "title": "الوصول إلى إسطنبول والاستقبال الملكي",
+          "description": "استقبال في المطار بسيارة مرسيدس الخاصة، التوجه إلى الفندق لتسجيل الغرف، وجولة مسائية خفيفة في محيط ميدان تقسيم وتناول العشاء."
+        },
+        {
+          "day": 2,
+          "title": "جولة إسطنبول التاريخية والسلطان أحمد",
+          "description": "زيارة جامع السلطان أحمد (المسجد الأزرق)، آيا صوفيا، قصر توبكابي، وجولة استكشافية في السوق المغلق العريق."
+        },
+        {
+          "day": 3,
+          "title": "رحلة مضيق البوسفور وجولة الجانب الآسيوي",
+          "description": "رحلة بحرية خاصة في مضيق البوسفور، زيارة قصر دولمة بهتشة، والعبور إلى الجانب الآسيوي لاستكشاف تلة تشامليجا."
+        },
+        {
+          "day": 4,
+          "title": "جولة أمجان وشارع الاستقلال ومنطقة أورتاكوي",
+          "description": "زيارة حدائق أمجان الخلابة، الاستمتاع بقهوة صباحية في أورتاكوي تحت جسر البوسفور، والتسوق في شارع الاستقلال وبرج غلطة."
+        },
+        {
+          "day": 5,
+          "title": "التسوق الختامي والعودة الموفقة",
+          "description": "وقت حر للتسوق وشراء الهدايا التذكارية من مراكز التسوق الحديثة، ثم الاستعداد والتوجه إلى المطار برعاية الله."
+        }
+      ],
+      "itineraryEn": [
+        {
+          "day": 1,
+          "title": "Arrival in Istanbul & VIP Transfer",
+          "description": "Airport reception with private Mercedes, hotel check-in, and a relaxing evening stroll around Taksim Square."
+        },
+        {
+          "day": 2,
+          "title": "Historic Istanbul & Sultanahmet Tour",
+          "description": "Visit Blue Mosque, Hagia Sophia, Topkapi Palace, and explore the historic Grand Bazaar."
+        },
+        {
+          "day": 3,
+          "title": "Bosphorus Cruise & Asian Side",
+          "description": "Private Bosphorus cruise, visit Dolmabahce Palace, and cross to the Asian side to explore Çamlıca Hill."
+        },
+        {
+          "day": 4,
+          "title": "Emirgan, Istiklal Street & Ortakoy",
+          "description": "Visit Emirgan Groves, morning coffee in Ortakoy, and shopping along Istiklal Street and Galata Tower."
+        },
+        {
+          "day": 5,
+          "title": "Final Shopping & Departure",
+          "description": "Free time for shopping and souvenirs at modern malls, followed by VIP transfer to the airport."
+        }
+      ],
+      "updatedAt": "2026-09-30T12:59:56.703Z"
+    },
+    {
       "id": "aip_mug5tmk7_l5tsui",
       "slug": "7-day-luxury-cultural-and-historical-london-itinerary",
       "title": "7-Day Luxury Cultural and Historical London Itinerary",
@@ -953,7 +1099,7 @@
           "description": "Hotel check-out, souvenir pickup, and private VIP transfer to Trabzon Airport for departure flight."
         }
       ],
-      "updatedAt": "2026-09-23T20:43:06.471Z"
+      "updatedAt": "2026-09-29T22:21:17.172Z"
     },
     {
       "id": "aip_mueeq3kf_043pli",
@@ -1189,7 +1335,7 @@
           "description": "Final breakfast, souvenir shopping, VIP Mercedes airport transfer."
         }
       ],
-      "updatedAt": "2026-09-23T17:58:58.988Z"
+      "updatedAt": "2026-09-29T22:21:17.190Z"
     },
     {
       "id": "aip_mueav43g_q0mkg7",
@@ -1485,7 +1631,7 @@
           "description": "Hotel breakfast, last-minute souvenirs, private transfer to Cairo Airport for flight to London."
         }
       ],
-      "updatedAt": "2026-09-23T16:10:54.510Z"
+      "updatedAt": "2026-09-29T22:21:17.207Z"
     },
     {
       "id": "aip_mue7898q_eirf3i",
@@ -1736,7 +1882,7 @@
           "description": "Final souvenir shopping for papyrus and perfumes, private transfer to Cairo Airport for flight to Madrid."
         }
       ],
-      "updatedAt": "2026-09-23T14:29:09.244Z"
+      "updatedAt": "2026-09-29T22:21:17.226Z"
     },
     {
       "id": "aip_mue0ztxe_t50wcp",
@@ -1912,7 +2058,7 @@
           "description": "Al-Azhar Park visit with panoramic city views, farewell lunch, and transfer to Cairo Airport."
         }
       ],
-      "updatedAt": "2026-09-23T11:34:38.438Z"
+      "updatedAt": "2026-09-29T22:21:17.247Z"
     },
     {
       "id": "aip_mue0omd7_qxo1pf",
@@ -2088,7 +2234,7 @@
           "description": "Morning stroll at Al-Azhar Park, souvenirs shopping, private transfer to Cairo airport for flight back to Dubai."
         }
       ],
-      "updatedAt": "2026-09-23T11:25:55.481Z"
+      "updatedAt": "2026-09-29T22:21:17.269Z"
     },
     {
       "id": "aip_mudc713o_jfi4r2",
@@ -2234,7 +2380,7 @@
           "description": "Final shopping in luxury malls and private VIP transfer to IST airport."
         }
       ],
-      "updatedAt": "2026-09-23T00:00:24.016Z"
+      "updatedAt": "2026-09-29T22:21:17.310Z"
     },
     {
       "id": "LON-IT-2027-BFV7Y",
@@ -2264,7 +2410,7 @@
       ],
       "durationDays": 10,
       "durationNights": 9,
-      "price": 2890,
+      "price": 1999,
       "currency": "USD",
       "rating": 4.98,
       "isFeatured": true,
@@ -2564,7 +2710,7 @@
       "countryTr": "Türkiye",
       "amenities": [],
       "createdAt": "2026-09-22T22:24:45.319Z",
-      "updatedAt": "2026-09-22T22:24:45.319Z"
+      "updatedAt": "2026-09-29T23:13:04.560Z"
     },
     {
       "id": "aip_mucmtxg7_re1i7r",
@@ -2785,7 +2931,7 @@
           "description": "Final shopping and VIP transfer to Rome Airport for return flight."
         }
       ],
-      "updatedAt": "2026-09-22T12:10:22.268Z"
+      "updatedAt": "2026-09-29T22:21:17.359Z"
     },
     {
       "id": "aip_mucmk6dx_ct83me",
@@ -2901,7 +3047,7 @@
           "description": "Explore Le Marais, Latin Quarter & Notre-Dame, followed by airport transfer for departure."
         }
       ],
-      "updatedAt": "2026-09-22T12:02:47.282Z"
+      "updatedAt": "2026-09-29T22:21:17.382Z"
     },
     {
       "id": "aip_muclz6fx_en96zh",
@@ -3017,7 +3163,7 @@
           "description": "Explore Montmartre and Sacré-Cœur, then private transfer to airport for departure."
         }
       ],
-      "updatedAt": "2026-09-22T11:46:27.582Z"
+      "updatedAt": "2026-09-29T22:21:17.402Z"
     },
     {
       "id": "aip_mucjl7fu_jxr08a",
@@ -3193,7 +3339,7 @@
           "description": "Morning stroll in Luxembourg Gardens for photos and souvenir buying, followed by private transfer to CDG for return flight to Jeddah."
         }
       ],
-      "updatedAt": "2026-09-22T10:39:36.443Z"
+      "updatedAt": "2026-09-29T22:21:17.420Z"
     },
     {
       "id": "aip_mucje5al_nlilwp",
@@ -3339,7 +3485,7 @@
           "description": "Hotel check-out and private transfer to Istanbul Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-22T10:34:07.082Z"
+      "updatedAt": "2026-09-29T22:21:17.446Z"
     },
     {
       "id": "aip_mucgot5v_35470m",
@@ -3515,7 +3661,7 @@
           "description": "Shopping at Uzun Sokak for traditional silver Kazaziye, Forum Trabzon Mall, followed by VIP airport transfer for flight home."
         }
       ],
-      "updatedAt": "2026-09-22T09:18:25.744Z"
+      "updatedAt": "2026-09-29T22:21:17.485Z"
     },
     {
       "id": "aip_mucgfiaq_ch266z",
@@ -3661,7 +3807,7 @@
           "description": "Morning shopping trip to Zorlu Center or Mall of Istanbul, followed by private transfer to the airport."
         }
       ],
-      "updatedAt": "2026-09-22T09:11:11.753Z"
+      "updatedAt": "2026-09-29T22:21:17.505Z"
     },
     {
       "id": "aip_muboy9wx_9gn012",
@@ -3837,7 +3983,7 @@
           "description": "Free morning for last-minute souvenir shopping, followed by private airport transfer for return flight to Casablanca."
         }
       ],
-      "updatedAt": "2026-09-21T20:21:58.082Z"
+      "updatedAt": "2026-09-29T22:21:17.525Z"
     },
     {
       "id": "aip_mublsdt1_jp4zi0",
@@ -3983,7 +4129,7 @@
           "description": "Hotel check-out, final shopping tour, and private transfer to the airport."
         }
       ],
-      "updatedAt": "2026-09-21T18:53:24.359Z"
+      "updatedAt": "2026-09-29T22:21:17.547Z"
     },
     {
       "id": "aip_mubkhmbc_ohq2o7",
@@ -4219,7 +4365,7 @@
           "description": "Hotel check-out, private transfer to Istanbul Airport for departure flight home."
         }
       ],
-      "updatedAt": "2026-09-21T18:17:02.613Z"
+      "updatedAt": "2026-09-29T22:21:17.571Z"
     },
     {
       "id": "aip_mubdy6j4_dd3jkj",
@@ -4395,7 +4541,7 @@
           "description": "Free time for shopping at local bazaars, then transfer to Trabzon International Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-21T15:13:57.931Z"
+      "updatedAt": "2026-09-29T22:21:17.681Z"
     },
     {
       "id": "aip_mub6jzzr_04tiul",
@@ -4571,7 +4717,7 @@
           "description": "Hotel check-out and private transfer to Trabzon International Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-21T11:46:58.970Z"
+      "updatedAt": "2026-09-29T22:21:17.701Z"
     },
     {
       "id": "aip_mua7xl8f_6tf04s",
@@ -4687,7 +4833,7 @@
           "description": "Visit panoramic Uchisar Castle for scenic views, shopping for local crafts, and transfer to airport for departure."
         }
       ],
-      "updatedAt": "2026-09-20T19:37:46.454Z"
+      "updatedAt": "2026-09-29T22:21:17.730Z"
     },
     {
       "id": "aip_mua4ytdf_z5t2p2",
@@ -4863,7 +5009,7 @@
           "description": "Hotel check-out and private transfer to Antalya Airport for your flight back to London."
         }
       ],
-      "updatedAt": "2026-09-20T18:14:44.807Z"
+      "updatedAt": "2026-09-29T22:21:17.758Z"
     },
     {
       "id": "aip_mua27gzi_8ca2qj",
@@ -5039,7 +5185,7 @@
           "description": "Free shopping tour in Trabzon square for local products and gifts, then transfer to Trabzon Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-20T16:57:29.810Z"
+      "updatedAt": "2026-09-29T22:21:17.781Z"
     },
     {
       "id": "aip_mua1kocg_0lputr",
@@ -5215,7 +5361,7 @@
           "description": "Morning: Hotel check-out and private transfer to Istanbul Airport for return flight."
         }
       ],
-      "updatedAt": "2026-09-20T16:39:46.260Z"
+      "updatedAt": "2026-09-29T22:21:17.811Z"
     },
     {
       "id": "aip_mu9vq9ml_fmlehs",
@@ -5361,7 +5507,7 @@
           "description": "Breakfast and check-out, a light shopping tour for souvenirs, then heading to the airport for safe departure."
         }
       ],
-      "updatedAt": "2026-09-20T13:56:09.441Z"
+      "updatedAt": "2026-09-29T22:21:17.834Z"
     },
     {
       "id": "aip_mubgy2gy_zux9sj",
@@ -5507,7 +5653,7 @@
           "description": "Morning shopping at Zorlu Center, afternoon transfer to airport."
         }
       ],
-      "updatedAt": "2026-09-21T16:37:51.609Z"
+      "updatedAt": "2026-09-29T22:21:17.595Z"
     },
     {
       "id": "aip_mu9qrq8j_da2osu",
@@ -5683,7 +5829,7 @@
           "description": "Hotel check-out, free time for souvenir shopping at Plaza Catalunya, and private transfer to the airport for return flight to Istanbul."
         }
       ],
-      "updatedAt": "2026-09-20T11:37:19.543Z"
+      "updatedAt": "2026-09-29T22:21:17.853Z"
     },
     {
       "id": "aip_mu8om93z_y78crn",
@@ -5859,7 +6005,7 @@
           "description": "Free time for last-minute souvenir shopping in London, then transfer to the airport for the return flight to Istanbul."
         }
       ],
-      "updatedAt": "2026-09-19T17:49:18.640Z"
+      "updatedAt": "2026-09-29T22:21:17.871Z"
     },
     {
       "id": "aip_mu8okv0w_y1m1xu",
@@ -6035,7 +6181,7 @@
           "description": "Morning time for final souvenir shopping in local markets, followed by an organized transfer to Marrakech Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-19T17:48:13.745Z"
+      "updatedAt": "2026-09-29T22:21:17.890Z"
     },
     {
       "id": "aip_mu8nfuqq_3vrhnj",
@@ -6211,7 +6357,7 @@
           "description": "Morning souvenir shopping at Covent Garden, followed by private transfer to the airport for return flight to Casablanca."
         }
       ],
-      "updatedAt": "2026-09-19T17:16:20.465Z"
+      "updatedAt": "2026-09-29T22:21:17.909Z"
     },
     {
       "id": "aip_mu8n470l_mdfsgm",
@@ -6357,7 +6503,7 @@
           "description": "Breakfast at the hotel, check-out, and private transfer by Lonaliza Travel to the airport for your departure flight."
         }
       ],
-      "updatedAt": "2026-09-19T17:07:16.502Z"
+      "updatedAt": "2026-09-29T22:21:17.925Z"
     },
     {
       "id": "aip_mu8n3c23_gxwopi",
@@ -6563,7 +6709,7 @@
           "description": "Morning hotel check-out, preparation for private transfer to the airport, and taking the return flight safely back to Tangier."
         }
       ],
-      "updatedAt": "2026-09-19T17:06:36.372Z"
+      "updatedAt": "2026-09-29T22:21:17.956Z"
     },
     {
       "id": "aip_mu8mrp35_aj2ymz",
@@ -6739,7 +6885,7 @@
           "description": "Free time for purchasing authentic Trabzon souvenirs, followed by transfer to Trabzon Airport for the return flight to Istanbul."
         }
       ],
-      "updatedAt": "2026-09-19T17:09:41.104Z"
+      "updatedAt": "2026-09-29T22:21:17.973Z"
     },
     {
       "id": "aip_mu8k1bt2_ryxn37",
@@ -6915,7 +7061,7 @@
           "description": "Hotel check-out and private transfer to airport for departure."
         }
       ],
-      "updatedAt": "2026-09-19T15:41:03.889Z"
+      "updatedAt": "2026-09-29T22:21:17.987Z"
     },
     {
       "id": "aip_mu86elt5_36ygw0",
@@ -7061,7 +7207,7 @@
           "description": "Morning: Free time for shopping around Taksim and Istiklal Street. Afternoon: Hotel check-out and private transfer to Istanbul Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-19T09:19:28.763Z"
+      "updatedAt": "2026-09-29T22:21:18.001Z"
     },
     {
       "id": "aip_mubgwg45_bxvlcc",
@@ -7207,7 +7353,7 @@
           "description": "Breakfast at hotel, check-out, and private transfer to the airport."
         }
       ],
-      "updatedAt": "2026-09-21T16:36:35.887Z"
+      "updatedAt": "2026-09-29T22:21:17.639Z"
     },
     {
       "id": "aip_mu1xqcgo_g7wbin",
@@ -7468,7 +7614,7 @@
           "description": "Breakfast, hotel check-out, and private transfer to Trabzon airport for departure."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.239Z"
+      "updatedAt": "2026-09-29T22:21:18.023Z"
     },
     {
       "id": "aip_mu1xj1mj_8u057v",
@@ -7642,7 +7788,7 @@
           "description": "Breakfast at hotel, check-out, and private transfer to Istanbul Airport for departure."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.289Z"
+      "updatedAt": "2026-09-29T22:21:18.045Z"
     },
     {
       "id": "aip_mu1se468_dnq1r8",
@@ -7807,7 +7953,7 @@
           "description": "Visit Zorlu Center, Galata Tower panoramic views, and Taksim evening stroll."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.317Z"
+      "updatedAt": "2026-09-29T22:21:18.079Z"
     },
     {
       "id": "aip_mu0aqt37_65cim5",
@@ -8062,7 +8208,7 @@
           "description": "Check-out and transfer to Antalya airport for departure."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.343Z"
+      "updatedAt": "2026-09-29T22:21:18.098Z"
     },
     {
       "id": "aip_mtyjl7z9_g2an3h",
@@ -8236,7 +8382,7 @@
           "description": "Check out from hotel and transfer to airport for departure."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.405Z"
+      "updatedAt": "2026-09-29T22:21:18.118Z"
     },
     {
       "id": "LON-2027-L1QOI",
@@ -8372,7 +8518,7 @@
         }
       ],
       "createdAt": "2026-09-12T12:38:10.613Z",
-      "updatedAt": "2026-09-24T10:34:42.451Z"
+      "updatedAt": "2026-09-29T22:21:18.136Z"
     },
     {
       "id": "aip_mtsvjaoe_1s9qkb",
@@ -8486,7 +8632,7 @@
           "description": "Arrival at RUH via flight VF213, private transfer to the hotel, and afternoon city exploration."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.480Z"
+      "updatedAt": "2026-09-29T22:21:18.159Z"
     },
     {
       "id": "aip_mtsviq1f_qe0bxy",
@@ -8600,7 +8746,7 @@
           "description": "Private pickup from RUH airport and check-in at Narcissus Hotel. Visit Al-Masmak fortress and historic Diriyah, followed by an evening dinner at Boulevard Riyadh."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.507Z"
+      "updatedAt": "2026-09-29T22:21:18.183Z"
     },
     {
       "id": "aip_mtq73igs_x2qykn",
@@ -8855,7 +9001,7 @@
           "description": "Hotel check-out and private transfer to Istanbul airport for flight back home."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.537Z"
+      "updatedAt": "2026-09-29T22:21:18.209Z"
     },
     {
       "id": "aip_mtnj73po_beox6w",
@@ -9116,7 +9262,7 @@
           "description": "Last-minute souvenir shopping, and private transfer to Istanbul International Airport for your departure flight."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.559Z"
+      "updatedAt": "2026-09-29T22:21:18.225Z"
     },
     {
       "id": "LON-2027-2BK5P",
@@ -9248,7 +9394,7 @@
         }
       ],
       "createdAt": "2026-09-04T16:36:52.477Z",
-      "updatedAt": "2026-09-24T10:34:42.582Z"
+      "updatedAt": "2026-09-29T22:21:18.244Z"
     },
     {
       "id": "LON-2027-03",
@@ -9381,7 +9527,7 @@
         }
       ],
       "createdAt": "2026-09-04T14:37:45.391Z",
-      "updatedAt": "2026-09-24T10:34:42.611Z"
+      "updatedAt": "2026-09-29T22:21:18.263Z"
     },
     {
       "id": "LON-2027-02",
@@ -9506,7 +9652,7 @@
         }
       ],
       "createdAt": "2026-09-04T14:37:45.383Z",
-      "updatedAt": "2026-09-24T10:34:42.631Z"
+      "updatedAt": "2026-09-29T22:21:18.281Z"
     },
     {
       "id": "LON-2027-01",
@@ -9643,7 +9789,7 @@
         }
       ],
       "createdAt": "2026-09-04T14:37:45.371Z",
-      "updatedAt": "2026-09-24T10:34:42.655Z"
+      "updatedAt": "2026-09-29T22:21:18.299Z"
     },
     {
       "id": "aip_mtlzxk5c_zkpogo",
@@ -9904,7 +10050,7 @@
           "description": "Hotel check-out and private transfer to Istanbul Airport for international flight back to Riyadh."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.680Z"
+      "updatedAt": "2026-09-29T22:21:18.317Z"
     },
     {
       "id": "1788015920554",
@@ -10089,7 +10235,7 @@
           "description": "تسجيل الخروج من الفندق والتوصيل إلى المطار للعودة بسلامة الله."
         }
       ],
-      "updatedAt": "2026-09-24T10:34:42.755Z"
+      "updatedAt": "2026-09-29T22:21:18.383Z"
     },
     {
       "id": "aip_mt97b0ux_pw8ecr",
@@ -10350,7 +10496,7 @@
       ],
       "isPublished": true,
       "createdAt": "2026-08-31T14:28:39.395Z",
-      "updatedAt": "2026-09-24T10:34:42.728Z"
+      "updatedAt": "2026-09-29T22:21:18.366Z"
     },
     {
       "id": "cappadocia_magical_2day",
@@ -10505,9 +10651,9 @@
         }
       ],
       "createdAt": "2026-09-02T12:00:00.000Z",
-      "updatedAt": "2026-09-24T10:34:42.709Z"
+      "updatedAt": "2026-09-29T22:21:18.346Z"
     }
   ],
-  "updatedAt": "2026-09-24T23:25:19.421Z",
+  "updatedAt": "2026-09-30T12:59:56.704Z",
   "deletedIds": []
 }

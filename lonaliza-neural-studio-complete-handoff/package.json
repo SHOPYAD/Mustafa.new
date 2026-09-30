@@ -1,0 +1,20 @@
+{
+  "name": "lonaliza-neural-studio-handoff",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline interactive prototype, twenty references and gated production implementation plan",
+  "scripts": {
+    "start": "node tools/server.cjs",
+    "test": "playwright test",
+    "test:target": "playwright test -c playwright.target.config.cjs",
+    "visual:compare": "node tools/compare.mjs",
+    "verify:references": "node tools/verify.cjs",
+    "gate:completion": "node tools/completion.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.62.1",
+    "pngjs": "^7.0.0"
+  }
+}

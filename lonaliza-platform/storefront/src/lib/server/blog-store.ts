@@ -323,13 +323,22 @@ export async function getBlogPostById(id: string): Promise<BlogPost | null> {
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!slug) return null;
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {
+    /* ignore decode error */
+  }
+
   const store = await loadStore();
-  const id = store.bySlug[slug];
+  const id = store.bySlug[slug] || store.bySlug[decoded];
   if (id) {
     const byId = store.posts.find((p) => p.id === id);
     if (byId) return byId;
   }
-  return store.posts.find((p) => p.slug === slug) || null;
+  return (
+    store.posts.find((p) => p.slug === slug || p.slug === decoded) || null
+  );
 }
 
 export async function upsertBlogPost(

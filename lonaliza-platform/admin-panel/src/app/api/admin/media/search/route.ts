@@ -1,3 +1,4 @@
+import { assertAdminApi } from "@/lib/server/admin-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { searchPexels, searchUnsplash } from "@/lib/server/media-search";
 
@@ -157,6 +158,8 @@ const CATEGORY_SEARCH_TERMS: Record<string, string> = {
 };
 
 export async function GET(req: NextRequest) {
+  const denied = await assertAdminApi(req);
+  if (denied) return denied;
   try {
     const { searchParams } = new URL(req.url);
     const query = (searchParams.get("q") || "").trim();

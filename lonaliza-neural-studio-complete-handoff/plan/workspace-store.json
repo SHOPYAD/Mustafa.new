@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "defaultViewport": { "width": 1672, "height": 941, "dpr": 1 },
+  "sidebar": {
+    "open": true,
+    "compact": false,
+    "width": 264,
+    "compactWidth": 64,
+    "direction": "rtl"
+  },
+  "windows": {
+    "context": {
+      "id": "context",
+      "title": "معلومات السياق",
+      "visible": true,
+      "minimized": false,
+      "maximized": false,
+      "pinned": false,
+      "x": 24,
+      "y": 74,
+      "width": 310,
+      "height": 260,
+      "zIndex": 10
+    },
+    "inspector": {
+      "id": "inspector",
+      "title": "فاحص العقدة",
+      "visible": true,
+      "minimized": false,
+      "maximized": false,
+      "pinned": false,
+      "x": 1040,
+      "y": 74,
+      "width": 320,
+      "height": 420,
+      "zIndex": 11
+    },
+    "scenario": {
+      "id": "scenario",
+      "title": "مسار التشغيل",
+      "visible": true,
+      "minimized": false,
+      "maximized": false,
+      "pinned": false,
+      "x": 24,
+      "y": 590,
+      "width": 420,
+      "height": 240,
+      "zIndex": 10
+    },
+    "minimap": {
+      "id": "minimap",
+      "title": "خريطة العرض المصغرة",
+      "visible": false,
+      "minimized": false,
+      "maximized": false,
+      "pinned": false,
+      "x": 24,
+      "y": 620,
+      "width": 280,
+      "height": 180,
+      "zIndex": 10
+    }
+  },
+  "dock": {
+    "position": "bottom",
+    "voiceState": "idle",
+    "cameraPanEnabled": true,
+    "zoomLevel": 1.0,
+    "minZoom": 0.4,
+    "maxZoom": 2.5
+  },
+  "storageKey": "lonaliza.workspace.v1"
+}
