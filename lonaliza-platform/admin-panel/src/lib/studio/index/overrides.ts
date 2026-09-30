@@ -10,4 +10,13 @@ export const KEYWORD_OVERRIDES: Record<string, string[]> = {
   المشرف: ["screen.20", "screen.11"],
   الاطلس: ["screen.01"],
   atlas: ["screen.01"],
+  نكسus: ["screen.21"],
+  nexus: ["screen.21"],
+  orbital: ["screen.21"],
+  هولوغر: ["screen.21"],
+  deck: ["screen.21"],
+  "visual loops": ["screen.22"],
+  blueprint: ["screen.22"],
+  "العقد والأتمتة": ["screen.22"],
+  "العقد والاتمتة": ["screen.22"],
 };

@@ -23,6 +23,10 @@ export function setStudioContext(sessionId: string | undefined, autoExecute: boo
   studioAutoExecute = autoExecute;
 }
 
+export function getStudioSessionId() {
+  return studioSession ?? "studio";
+}
+
 export function newIdempotencyKey() {
   return `idem_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
 }

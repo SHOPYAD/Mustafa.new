@@ -90,6 +90,25 @@ export function planStudioCapability(directive: string): StudioPlan | null {
     if (node) return { capabilityId: "studio.navigate", input: { mapId: node.mapId, nodeId: node.nodeId }, why: `عرض ${node.label}` };
     if (coll) return { capabilityId: "studio.open_table", input: { collection: coll.collection }, why: "فتح جدول" };
   }
+  if (/(نكسus|nexus|orbital|هولوغر|هولوجر|سلايد البطاق|الاسطوان|orbital deck|مسرح nexus)/.test(d)) {
+    return { capabilityId: "studio.open_screen", input: { screenId: "21" }, why: "فتح مسرح Nexus" };
+  }
+  if (/(استوديو العقد|visual loops|blueprint|العقد والاتمت|العقد والأتمت|visual loop)/.test(d)) {
+    return { capabilityId: "studio.open_screen", input: { screenId: "22" }, why: "فتح استوديو الأتمتة البصرية" };
+  }
+  if (/(البطاقه التاليه|البطاقة التالية|يمين|next card)/.test(d)) {
+    return { capabilityId: "nexus.rotate", input: { delta: 1 }, why: "البطاقة التالية في Nexus" };
+  }
+  if (/(البطاقه السابق|البطاقة السابقة|يسار|prev card)/.test(d)) {
+    return { capabilityId: "nexus.rotate", input: { delta: -1 }, why: "البطاقة السابقة في Nexus" };
+  }
+  if (/(شغّل التدflow|شغل التدflow|run loop|نفّذ الblueprint|نفذ الblueprint)/.test(d)) {
+    return { capabilityId: "loops.run", input: { dryRun: true }, why: "تشغيل تدflow الأتمتة" };
+  }
+  if (/(اختبر العقد|شغّل العقد|شغل العقد|run node)/.test(d) && !/(شغّل التدflow|شغل التدflow)/.test(d)) {
+    const nodeId = directive.match(/\b(node[_-][a-z0-9_-]+|[a-z]+_\d+)\b/i)?.[1];
+    return { capabilityId: "loops.run_node", input: { nodeId: nodeId || "selected", dryRun: true }, why: "اختبار عقدة" };
+  }
   return null;
 }
 

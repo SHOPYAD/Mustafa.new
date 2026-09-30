@@ -1345,6 +1345,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "3d",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "4.",
     "nodeIds": [
       "screen.17"
@@ -1396,6 +1402,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "abandoned-recovery",
     "nodeIds": [
       "api.automation_abandoned-recovery"
+    ]
+  },
+  {
+    "term": "action",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -1606,6 +1618,10 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.studio_capabilities",
       "api.studio_capabilities_execute",
       "api.studio_live",
+      "api.studio_loops_execute",
+      "api.studio_loops_preflight",
+      "api.studio_loops_state",
+      "api.studio_nexus_metrics",
       "api.studio_records",
       "api.studio_schema",
       "api.tenant-plan",
@@ -1638,6 +1654,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.ads_meta_oauth",
       "api.ads_posts",
       "api.ads_report",
+      "nexus.sector.nexus-ads",
       "page.admin.ads",
       "screen.10"
     ]
@@ -2042,6 +2059,10 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.studio_capabilities",
       "api.studio_capabilities_execute",
       "api.studio_live",
+      "api.studio_loops_execute",
+      "api.studio_loops_preflight",
+      "api.studio_loops_state",
+      "api.studio_nexus_metrics",
       "api.studio_records",
       "api.studio_schema",
       "api.tenant-plan",
@@ -2051,7 +2072,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.translations",
       "api.translations_languages",
       "api.translations_translate-batch",
-      "api.ui-icons"
+      "api.ui-icons",
+      "screen.22"
     ]
   },
   {
@@ -2130,6 +2152,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.fin__wallet.api_admin_b2b_wallet",
       "nav.leaf.b2b-landing-agent",
       "nav.leaf.b2b-wallet",
+      "nexus.sector.nexus-b2b",
       "screen.01",
       "screen.13",
       "screen.14",
@@ -2555,6 +2578,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "deck",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "delegate",
     "nodeIds": [
       "api.studio_agents_delegate"
@@ -2746,7 +2775,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "execute",
     "nodeIds": [
-      "api.studio_capabilities_execute"
+      "api.studio_capabilities_execute",
+      "api.studio_loops_execute"
     ]
   },
   {
@@ -2829,6 +2859,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "nodeIds": [
       "api.flights_post-ops",
       "nav.leaf.flights",
+      "nexus.sector.nexus-flights",
       "page.admin.flights"
     ]
   },
@@ -2891,6 +2922,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.flights__settings.api_admin_flights_connect_test",
       "item.flights__settings.api_admin_flights_settings",
       "item.flights__settings.api_admin_providers",
+      "nexus.sector.nexus-hotels",
       "screen.04"
     ]
   },
@@ -3129,6 +3161,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.hotels_featured-sync",
       "collection.owned_hotels",
       "nav.leaf.hotels",
+      "nexus.sector.nexus-hotels",
       "page.admin.hotels",
       "page.admin.hotels_catalog",
       "page.admin.hotels_featured",
@@ -3194,6 +3227,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "nodeIds": [
       "api.integrations",
       "page.admin.integrations"
+    ]
+  },
+  {
+    "term": "interactive",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -3418,6 +3457,15 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "loops",
+    "nodeIds": [
+      "api.studio_loops_execute",
+      "api.studio_loops_preflight",
+      "api.studio_loops_state",
+      "screen.22"
+    ]
+  },
+  {
     "term": "loyalty",
     "nodeIds": [
       "api.loyalty",
@@ -3524,6 +3572,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "metrics",
+    "nodeIds": [
+      "api.studio_nexus_metrics"
+    ]
+  },
+  {
     "term": "microservices",
     "nodeIds": [
       "screen.16"
@@ -3564,6 +3618,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "model",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "mute",
     "nodeIds": [
       "ui.voice.mute"
@@ -3591,6 +3651,19 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "new-bookings-count",
     "nodeIds": [
       "api.new-bookings-count"
+    ]
+  },
+  {
+    "term": "nexus",
+    "nodeIds": [
+      "api.studio_nexus_metrics",
+      "screen.21"
+    ]
+  },
+  {
+    "term": "nexus-orbital-deck",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -3629,6 +3702,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.openrouter_sync",
       "hub.agents.models",
       "item.agents__models.api_admin_openrouter_config"
+    ]
+  },
+  {
+    "term": "orbital",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -3852,6 +3931,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.publish_posts__id_publish-now",
       "api.publish_posts__id_status",
       "collection.publish_posts"
+    ]
+  },
+  {
+    "term": "preflight",
+    "nodeIds": [
+      "api.studio_loops_preflight"
     ]
   },
   {
@@ -4105,6 +4190,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "rag",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "rate",
     "nodeIds": [
       "collection.owned_rate_snapshots"
@@ -4354,7 +4445,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "review",
     "nodeIds": [
-      "collection.hotel_review_scores"
+      "collection.hotel_review_scores",
+      "screen.22"
     ]
   },
   {
@@ -4395,6 +4487,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.publish__rss.api_admin_publish_rss",
       "item.publish__rss.publish_rss_feeds",
       "nav.leaf.publish-automations"
+    ]
+  },
+  {
+    "term": "rule",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -4551,6 +4649,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "skill",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "smtp",
     "nodeIds": [
       "hub.sys.smtp",
@@ -4571,6 +4675,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "snapshots",
     "nodeIds": [
       "collection.owned_rate_snapshots"
+    ]
+  },
+  {
+    "term": "social",
+    "nodeIds": [
+      "nexus.sector.nexus-social"
     ]
   },
   {
@@ -4607,6 +4717,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "state",
+    "nodeIds": [
+      "api.studio_loops_state"
+    ]
+  },
+  {
     "term": "status",
     "nodeIds": [
       "api.license_status",
@@ -4629,6 +4745,10 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "api.studio_capabilities",
       "api.studio_capabilities_execute",
       "api.studio_live",
+      "api.studio_loops_execute",
+      "api.studio_loops_preflight",
+      "api.studio_loops_state",
+      "api.studio_nexus_metrics",
       "api.studio_records",
       "api.studio_schema"
     ]
@@ -4782,6 +4902,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "transfers",
     "nodeIds": [
       "nav.leaf.transfers",
+      "nexus.sector.nexus-transfers",
       "page.admin.transfers"
     ]
   },
@@ -4811,6 +4932,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "travelport",
     "nodeIds": [
       "screen.04"
+    ]
+  },
+  {
+    "term": "trigger",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -4900,9 +5027,21 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "visual",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "visual-editor",
     "nodeIds": [
       "page.admin.visual-editor"
+    ]
+  },
+  {
+    "term": "visual-loops-automation-studio",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -5020,6 +5159,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "احداث",
     "nodeIds": [
       "item.b2b__domains.reseller_domain_events"
+    ]
+  },
+  {
+    "term": "احصائيات",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -5143,13 +5288,20 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "nodeIds": [
       "domain.screen.12",
       "nav.leaf.agent-studio",
-      "screen.12"
+      "screen.12",
+      "screen.22"
     ]
   },
   {
     "term": "اسره",
     "nodeIds": [
       "hub.hotels.suppliers"
+    ]
+  },
+  {
+    "term": "اسطوانه",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -5263,7 +5415,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.publish__settings.publish_notifications",
       "item.publish__settings.publish_webhooks",
       "item.sys__smtp.api_admin_email_settings",
-      "screen.16"
+      "screen.16",
+      "screen.21"
     ]
   },
   {
@@ -5283,6 +5436,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "افلييت",
     "nodeIds": [
       "hub.growth.affiliate"
+    ]
+  },
+  {
+    "term": "اقسام",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -5525,7 +5684,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "nav.leaf.search-providers",
       "nav.leaf.smtp",
       "nav.leaf.translations",
-      "screen.16"
+      "screen.16",
+      "screen.21"
     ]
   },
   {
@@ -5535,6 +5695,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.growth__ads.api_admin_ads_campaigns",
       "item.growth__ads.api_admin_ads_launch",
       "item.growth__ads.api_admin_ads_report",
+      "nexus.sector.nexus-ads",
       "screen.11",
       "screen.19"
     ]
@@ -5563,7 +5724,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "nodeIds": [
       "hub.cms.visibility",
       "item.cms__visibility.site_settings",
-      "item.cms__visibility.site_traffic_logs"
+      "item.cms__visibility.site_traffic_logs",
+      "screen.21"
     ]
   },
   {
@@ -5729,6 +5891,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.cms__editor.api_admin_branding",
       "item.legal__identity.api_admin_branding",
       "item.sys__icons.api_admin_branding"
+    ]
+  },
+  {
+    "term": "البطاقات",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -6716,7 +6884,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "السيبرانيه",
     "nodeIds": [
-      "screen.20"
+      "screen.20",
+      "screen.22"
     ]
   },
   {
@@ -6871,6 +7040,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "hub.flights.settings",
       "item.flights__airlines.api_admin_airlines",
       "item.flights__settings.api_admin_flights_settings",
+      "nexus.sector.nexus-flights",
       "screen.11"
     ]
   },
@@ -6914,6 +7084,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "العصبيه",
     "nodeIds": [
       "screen.20"
+    ]
+  },
+  {
+    "term": "العقد",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -7059,6 +7235,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.hotels__suppliers.api_admin_hotels_settings",
       "item.hotels__suppliers.hotel_supplier_refs",
       "nav.leaf.hotels",
+      "nexus.sector.nexus-hotels",
       "screen.01",
       "screen.05",
       "screen.07",
@@ -7724,7 +7901,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.legal__access.api_admin_platform_readiness",
       "item.legal__identity.api_admin_branding",
       "item.legal__identity.api_admin_site_contact",
-      "screen.02"
+      "screen.02",
+      "screen.21"
     ]
   },
   {
@@ -7872,6 +8050,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.publish__media.publish_media",
       "item.publish__settings.publish_errors",
       "item.publish__settings.publish_notifications",
+      "nexus.sector.nexus-social",
       "screen.07",
       "screen.09"
     ]
@@ -7903,6 +8082,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "النقل",
     "nodeIds": [
       "domain.screen.06",
+      "nexus.sector.nexus-transfers",
       "screen.06"
     ]
   },
@@ -7950,6 +8130,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "الهوامش",
     "nodeIds": [
       "screen.04"
+    ]
+  },
+  {
+    "term": "الهولوغرافيه",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -8088,6 +8274,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "اليد",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "اليومي",
     "nodeIds": [
       "screen.13"
@@ -8220,7 +8412,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "hub.fin.gifts",
       "hub.growth.gifts",
       "item.fin__gifts.api_admin_gift_cards",
-      "item.growth__gifts.api_admin_gift_cards"
+      "item.growth__gifts.api_admin_gift_cards",
+      "screen.21"
     ]
   },
   {
@@ -8283,7 +8476,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "بوابه",
     "nodeIds": [
       "hub.fin.payments",
-      "screen.14"
+      "screen.14",
+      "screen.22"
     ]
   },
   {
@@ -8396,6 +8590,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "تذاكر",
     "nodeIds": [
       "domain.screen.04",
+      "nexus.sector.nexus-flights",
       "screen.04"
     ]
   },
@@ -8478,7 +8673,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "تشغيل",
     "nodeIds": [
-      "item.auto__jobs.api_admin_automation_jobs_id_run"
+      "item.auto__jobs.api_admin_automation_jobs_id_run",
+      "screen.22"
     ]
   },
   {
@@ -8512,6 +8708,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "تعديل",
     "nodeIds": [
       "hub.flights.postops"
+    ]
+  },
+  {
+    "term": "تعقب",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -8597,6 +8799,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "تنفيذ،",
     "nodeIds": [
       "screen.17"
+    ]
+  },
+  {
+    "term": "تنفيذي",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -8785,6 +8993,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "حقيقي",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "حمايه",
     "nodeIds": [
       "screen.15"
@@ -8794,6 +9008,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "حملات",
     "nodeIds": [
       "item.b2b__scraper.api_admin_resale_scraper_campaigns",
+      "nexus.sector.nexus-ads",
       "screen.10"
     ]
   },
@@ -8806,7 +9021,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "حيه",
     "nodeIds": [
-      "screen.11"
+      "screen.11",
+      "screen.21"
     ]
   },
   {
@@ -8968,7 +9184,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "hub.b2b.scraper",
       "item.b2b__scraper.api_admin_resale_scraper_campaigns",
       "item.b2b__scraper.api_admin_resale_scraper_jobs",
-      "item.b2b__scraper.api_admin_resale_scraper_leads"
+      "item.b2b__scraper.api_admin_resale_scraper_leads",
+      "nexus.sector.nexus-flights"
     ]
   },
   {
@@ -9036,6 +9253,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "سحب",
+    "nodeIds": [
+      "screen.22"
+    ]
+  },
+  {
     "term": "سعر",
     "nodeIds": [
       "hub.hotels.bookings"
@@ -9051,6 +9274,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "سلات",
     "nodeIds": [
       "hub.growth.recovery"
+    ]
+  },
+  {
+    "term": "سلايد",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -9084,6 +9313,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "سيبرانيه",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "سيرو",
     "nodeIds": [
       "screen.04",
@@ -9105,6 +9340,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
   {
     "term": "شبكه",
     "nodeIds": [
+      "nexus.sector.nexus-b2b",
       "screen.10"
     ]
   },
@@ -9292,6 +9528,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.bookings__hotel.hotel_quotes",
       "item.hotels__bookings.hotel_quotes",
       "screen.07"
+    ]
+  },
+  {
+    "term": "علي",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -9493,6 +9735,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "كاميرا/يد",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "كتالوج",
     "nodeIds": [
       "hub.hotels.catalog",
@@ -9503,6 +9751,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "كتم",
     "nodeIds": [
       "ui.voice.mute"
+    ]
+  },
+  {
+    "term": "كل",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -9545,6 +9799,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "للوكيل",
     "nodeIds": [
       "screen.08"
+    ]
+  },
+  {
+    "term": "لمس",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -9607,6 +9867,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "مالي",
     "nodeIds": [
       "hub.fin.transactions"
+    ]
+  },
+  {
+    "term": "ماوس",
+    "nodeIds": [
+      "screen.21"
     ]
   },
   {
@@ -9702,6 +9968,7 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "محرك",
     "nodeIds": [
       "hub.cms.search",
+      "nexus.sector.nexus-hotels",
       "screen.04",
       "screen.07",
       "screen.09"
@@ -9839,6 +10106,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "مسرح",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "مسوق",
     "nodeIds": [
       "hub.growth.affiliate"
@@ -9922,7 +10195,8 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
       "item.sys__media.api_admin_media_keys",
       "item.sys__media.api_admin_media_pexels",
       "item.sys__media.api_admin_media_unsplash",
-      "screen.16"
+      "screen.16",
+      "screen.22"
     ]
   },
   {
@@ -10199,6 +10473,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "نوافذ",
+    "nodeIds": [
+      "screen.21"
+    ]
+  },
+  {
     "term": "هدايا",
     "nodeIds": [
       "hub.growth.gifts"
@@ -10308,7 +10588,14 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "والـ",
     "nodeIds": [
       "domain.screen.15",
+      "nexus.sector.nexus-hotels",
       "screen.11"
+    ]
+  },
+  {
+    "term": "والاتمته",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {
@@ -10580,6 +10867,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "والسوشيال",
+    "nodeIds": [
+      "nexus.sector.nexus-social"
+    ]
+  },
+  {
     "term": "والسياسات",
     "nodeIds": [
       "screen.03",
@@ -10760,6 +11053,18 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     ]
   },
   {
+    "term": "والمواصلات",
+    "nodeIds": [
+      "nexus.sector.nexus-transfers"
+    ]
+  },
+  {
+    "term": "والموزعين",
+    "nodeIds": [
+      "nexus.sector.nexus-b2b"
+    ]
+  },
+  {
     "term": "والنشر",
     "nodeIds": [
       "nav.group.marketing",
@@ -10929,6 +11234,12 @@ export const INTENT_LEXICON: IntentLexiconEntry[] = [
     "term": "وذاكره",
     "nodeIds": [
       "screen.18"
+    ]
+  },
+  {
+    "term": "وربط",
+    "nodeIds": [
+      "screen.22"
     ]
   },
   {

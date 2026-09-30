@@ -5053,6 +5053,111 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/studio/live/route.ts"
   },
   {
+    "id": "api.studio_loops_execute",
+    "kind": "api_route",
+    "labels": {
+      "ar": "/api/admin/studio/loops/execute",
+      "en": "/api/admin/studio/loops/execute"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "loops",
+      "execute"
+    ],
+    "route": "/api/admin/studio/loops/execute",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "admin.route.call"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/loops/execute/route.ts"
+  },
+  {
+    "id": "api.studio_loops_preflight",
+    "kind": "api_route",
+    "labels": {
+      "ar": "/api/admin/studio/loops/preflight",
+      "en": "/api/admin/studio/loops/preflight"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "loops",
+      "preflight"
+    ],
+    "route": "/api/admin/studio/loops/preflight",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "probe.studio_loops_preflight",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/loops/preflight/route.ts"
+  },
+  {
+    "id": "api.studio_loops_state",
+    "kind": "api_route",
+    "labels": {
+      "ar": "/api/admin/studio/loops/state",
+      "en": "/api/admin/studio/loops/state"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "loops",
+      "state"
+    ],
+    "route": "/api/admin/studio/loops/state",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "probe.studio_loops_state",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/loops/state/route.ts"
+  },
+  {
+    "id": "api.studio_nexus_metrics",
+    "kind": "api_route",
+    "labels": {
+      "ar": "/api/admin/studio/nexus/metrics",
+      "en": "/api/admin/studio/nexus/metrics"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "nexus",
+      "metrics"
+    ],
+    "route": "/api/admin/studio/nexus/metrics",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "probe.studio_nexus_metrics",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/admin/studio/nexus/metrics/route.ts"
+  },
+  {
     "id": "api.studio_records",
     "kind": "api_route",
     "labels": {
@@ -15990,6 +16095,141 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "parentId": "nav.group.inventory"
   },
   {
+    "id": "nexus.sector.nexus-ads",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "ads",
+    "labels": {
+      "ar": "حملات الإعلانات"
+    },
+    "keywords": [
+      "حملات",
+      "الاعلانات",
+      "ads"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
+    "id": "nexus.sector.nexus-b2b",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "b2b",
+    "labels": {
+      "ar": "شبكة B2B والموزعين"
+    },
+    "keywords": [
+      "شبكه",
+      "b2b",
+      "والموزعين"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
+    "id": "nexus.sector.nexus-flights",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "flights",
+    "labels": {
+      "ar": "رادار تذاكر الطيران"
+    },
+    "keywords": [
+      "رادار",
+      "تذاكر",
+      "الطيران",
+      "flights"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
+    "id": "nexus.sector.nexus-hotels",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "hotels",
+    "labels": {
+      "ar": "محرك الفنادق والـ GDS"
+    },
+    "keywords": [
+      "محرك",
+      "الفنادق",
+      "والـ",
+      "gds",
+      "hotels"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
+    "id": "nexus.sector.nexus-social",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "social",
+    "labels": {
+      "ar": "النشر والسوشيال"
+    },
+    "keywords": [
+      "النشر",
+      "والسوشيال",
+      "social"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
+    "id": "nexus.sector.nexus-transfers",
+    "kind": "domain_hub",
+    "screenId": "21",
+    "hubId": "transfers",
+    "labels": {
+      "ar": "النقل والمواصلات"
+    },
+    "keywords": [
+      "النقل",
+      "والمواصلات",
+      "transfers"
+    ],
+    "capabilityRefs": [
+      "nexus.rotate",
+      "nexus.run_sector_command",
+      "studio.open_screen"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "HolographicCylinderStage:NEXUS_SECTOR_CARDS"
+  },
+  {
     "id": "page.admin.ads",
     "kind": "admin_page",
     "labels": {
@@ -18611,6 +18851,98 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "screensData.ts"
   },
   {
+    "id": "screen.21",
+    "kind": "screen",
+    "screenId": "21",
+    "mapId": "screen.21",
+    "labels": {
+      "ar": "مسرح Nexus — سلايد البطاقات الهولوغرافية",
+      "en": "nexus-orbital-deck"
+    },
+    "keywords": [
+      "مسرح",
+      "nexus",
+      "سلايد",
+      "البطاقات",
+      "الهولوغرافيه",
+      "nexus-orbital-deck",
+      "كل",
+      "اقسام",
+      "المنصه",
+      "علي",
+      "اسطوانه",
+      "3d",
+      "ماوس",
+      "لمس",
+      "كاميرا/يد",
+      "اعدادات",
+      "سيبرانيه",
+      "orbital",
+      "deck",
+      "بطاقات",
+      "الاقسام",
+      "تعقب",
+      "اليد",
+      "احصائيات",
+      "حيه",
+      "نوافذ",
+      "الاعدادات"
+    ],
+    "capabilityRefs": [
+      "studio.navigate",
+      "nexus.rotate",
+      "nexus.select_sector",
+      "nexus.run_sector_command"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "screensData.ts"
+  },
+  {
+    "id": "screen.22",
+    "kind": "screen",
+    "screenId": "22",
+    "mapId": "screen.22",
+    "labels": {
+      "ar": "استوديو العقد والأتمتة السيبرانية",
+      "en": "visual-loops-automation-studio"
+    },
+    "keywords": [
+      "استوديو",
+      "العقد",
+      "والاتمته",
+      "السيبرانيه",
+      "visual-loops-automation-studio",
+      "interactive",
+      "visual",
+      "loops",
+      "سحب",
+      "وربط",
+      "تشغيل",
+      "تنفيذي",
+      "حقيقي",
+      "بوابه",
+      "مفاتيح",
+      "api",
+      "trigger",
+      "rag",
+      "model",
+      "skill",
+      "rule",
+      "action",
+      "review"
+    ],
+    "capabilityRefs": [
+      "loops.run",
+      "loops.run_node",
+      "loops.select_sector",
+      "mcp.executor"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "screensData.ts"
+  },
+  {
     "id": "ui.agents.hide",
     "kind": "ui_action",
     "screenId": "18",
@@ -18688,4 +19020,4 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
 
 export const PLATFORM_INDEX_BY_ID: Record<string, PlatformIndexNode> = Object.fromEntries(PLATFORM_INDEX_NODES.map((n) => [n.id, n]));
 
-export const PLATFORM_INDEX_GENERATED_AT = "2026-09-30T16:37:03.349Z";
+export const PLATFORM_INDEX_GENERATED_AT = "2026-09-30T19:26:04.606Z";

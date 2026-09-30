@@ -1,192 +1,196 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import * as THREE from "three";
 import {
-  TrendingUp,
-  Share2,
-  Video,
-  FileText,
-  Package,
+  BarChart3,
+  Bell,
+  Brain,
   Building2,
-  Plane,
+  CalendarDays,
+  Car,
   ChevronLeft,
   ChevronRight,
-  Hand,
+  Coins,
+  CreditCard,
+  Database,
+  FileText,
+  Gift,
+  Globe,
+  Hotel,
+  Image,
+  KeyRound,
+  Languages,
+  LayoutGrid,
+  Link2,
+  Lock,
+  Mail,
+  MapPin,
+  Megaphone,
+  MessageCircle,
+  Orbit,
+  Package,
+  PenTool,
+  Percent,
+  Plane,
+  Plug,
+  Receipt,
+  RefreshCw,
+  Rss,
+  Scale,
+  Search,
+  Settings,
+  Share2,
+  ShieldCheck,
+  Smartphone,
   Sparkles,
+  Star,
+  Store,
+  Ticket,
+  Timer,
+  Trash2,
+  Truck,
+  Users,
+  Wallet,
+  Workflow,
   Zap,
-  Play,
-  ExternalLink,
-  Volume2,
   CheckCircle2,
-  Sliders,
-  RotateCcw,
   Camera,
   CameraOff,
   Maximize2,
   X,
-  Activity,
-  Layers,
-  ShieldCheck,
+  type LucideIcon,
 } from "lucide-react";
+import {
+  NEXUS_HUB_CARDS,
+  NEXUS_CARD_COUNT,
+  type NexusHubCard,
+  type NexusCardHealth,
+} from "@/lib/studio/nexus/nexus-cards.generated";
+import { TONES, MONO } from "@/lib/studio/tokens";
+import type { DomainIcon } from "@/lib/neural-studio/domain-systems";
+import {
+  evaluateNexusGesture,
+  snapIndexFromRotation,
+  useNexusDeckController,
+  NEXUS_CENTROID_SMOOTH,
+  NEXUS_HAND_ROI_MIN_ROW,
+  NEXUS_MOTION_DIFF_THRESHOLD,
+} from "./useNexusDeckController";
+
+const DOMAIN_ICONS: Record<DomainIcon, LucideIcon> = {
+  plane: Plane,
+  hotel: Hotel,
+  building: Building2,
+  car: Car,
+  map: MapPin,
+  package: Package,
+  file: FileText,
+  star: Star,
+  users: Users,
+  message: MessageCircle,
+  shield: ShieldCheck,
+  trash: Trash2,
+  share: Share2,
+  calendar: CalendarDays,
+  pen: PenTool,
+  image: Image,
+  chart: BarChart3,
+  rss: Rss,
+  sparkles: Sparkles,
+  settings: Settings,
+  megaphone: Megaphone,
+  mail: Mail,
+  ticket: Ticket,
+  percent: Percent,
+  gift: Gift,
+  brain: Brain,
+  orbit: Orbit,
+  timer: Timer,
+  plug: Plug,
+  link: Link2,
+  database: Database,
+  languages: Languages,
+  credit: CreditCard,
+  coins: Coins,
+  receipt: Receipt,
+  wallet: Wallet,
+  store: Store,
+  globe: Globe,
+  key: KeyRound,
+  refresh: RefreshCw,
+  truck: Truck,
+  scale: Scale,
+  lock: Lock,
+  smartphone: Smartphone,
+  layout: LayoutGrid,
+  search: Search,
+  bell: Bell,
+  workflow: Workflow,
+};
 
 export interface HolographicCardSector {
   id: string;
+  hubId: string;
+  screenId: string;
   stationId: string;
   titleAr: string;
   titleEn: string;
   category: string;
   color: string;
-  icon: any;
+  icon: LucideIcon;
   metricLabel1: string;
   metricValue1: string;
   metricLabel2: string;
   metricValue2: string;
-  status: "OPTIMAL" | "NOMINAL" | "ACTIVE";
+  metricLabel3: string;
+  metricValue3: string;
+  status: NexusCardHealth;
   description: string;
   quickActionCommand: string;
   features: string[];
 }
 
-export const NEXUS_SECTOR_CARDS: HolographicCardSector[] = [
-  {
-    id: "nexus-hotels",
-    stationId: "hotels",
-    titleAr: "محرك الفنادق والـ GDS العالمي (On-Demand)",
-    titleEn: "GLOBAL HOTELS & BEDBANKS ENGINE",
-    category: "الفنادق وشبكة الموردين العالمية",
-    color: "#00e5ff",
-    icon: Building2,
-    metricLabel1: "عروض المتجر الرئيسية",
-    metricValue1: "140 فندق مختار",
-    metricLabel2: "تغطية الموردين (Travelport / Seeru / PKFare)",
-    metricValue2: "تغطية عالمية On-Demand",
-    status: "OPTIMAL",
-    description: "محرك بحث حي متصل بموردي العالم حسب الطلب لكافة المدن مع تثبيت الصرف، وإدارة تسويق الـ 140 فندق المعروضة بالسلايدر الرئيسي.",
-    quickActionCommand: "مزامنة أسعار فنادق السلايدر الرئيسي وتحديث هوامش الربح مع الموردين",
-    features: [
-      "بحث مباشر On-Demand عبر ترافلبورت وسيرو وبكفير",
-      "إدارة أسعار وتوافر الـ 140 فندق المختارة للمتجر",
-      "حماية تسعير الصرف اللحظي ضد تقلبات العملة",
-      "قفل هوامش ربح الموردين تلقائياً بنسب +15% و +18%",
-    ],
-  },
-  {
-    id: "nexus-flights",
-    stationId: "flights",
-    titleAr: "رادار تذاكر الطيران وموزعو GDS",
-    titleEn: "FLIGHTS RADAR & TICKETING GDS",
-    category: "حجوزات الطيران والـ GDS",
-    color: "#38bdf8",
-    icon: Plane,
-    metricLabel1: "الربط الآلي للتذاكر",
-    metricValue1: "Travelport & Seeru GDS",
-    metricLabel2: "هوامش أرباح التذاكر",
-    metricValue2: "+8% إلى +14%",
-    status: "OPTIMAL",
-    description: "رادار الرحلات الجوية العالمي مع إصدار التذاكر الفوري وإعادة التوجيه الذكي ومراقبة تحديثات المقاعد والأسعار.",
-    quickActionCommand: "فحص رادار رحلات اليوم وضبط هوامش ربح تذاكر طيران الخليج وإسطنبول",
-    features: [
-      "مزامنة جداول رحلات الخطوط التركية وطيران الخليج",
-      "إصدار التذاكر الفوري الآلي عبر بوابات GDS",
-      "تنبيهات فورية لتغير أوقات الإقلاع والبوابات",
-      "قفل العمولات الذاتية لحجوزات الأفراد والشركات",
-    ],
-  },
-  {
-    id: "nexus-transfers",
-    stationId: "transfers",
-    titleAr: "أسطول النقل البري وتتبع السائقين VIP",
-    titleEn: "VIP FLEET & GROUND DISPATCH",
-    category: "المواصلات وتأجير السيارات",
-    color: "#10b981",
-    icon: Package,
-    metricLabel1: "أسطول مرسيدس فيتو",
-    metricValue1: "18 سيارة VIP نشطة",
-    metricLabel2: "تغطية المسارات والمطارات",
-    metricValue2: "طرابزون، إسطنبول، بورصة",
-    status: "OPTIMAL",
-    description: "إدارة وتوزيع سيارات مرسيدس فيتو العائلية مع نظام التتبع اللحظي للسائقين واستقبال المطارات والجولات اليومية.",
-    quickActionCommand: "مراجعة جداول حركة الأسطول وتعيين سائقي استقبال مطار طرابزون وإسطنبول",
-    features: [
-      "تتبع حي لمواقع المركبات عبر GPS والخرائط",
-      "سائقين محترفين يتحدثون العربية والتركية بطلاقة",
-      "تسعير ديناميكي حسب المسارات والكيلومترات",
-      "ربط مباشر مع رحلات الطيران لمنع التأخير",
-    ],
-  },
-  {
-    id: "nexus-b2b",
-    stationId: "resale",
-    titleAr: "شبكة وكالات السفر ومحافظ B2B",
-    titleEn: "B2B RESELLERS & DEPOSIT WALLET",
-    category: "توزيع B2B والشركات",
-    color: "#a855f7",
-    icon: TrendingUp,
-    metricLabel1: "محفظة التوريد المركزية",
-    metricValue1: "$307,400 رصيد ديبوزيت",
-    metricLabel2: "الوكالات المعتمدة",
-    metricValue2: "42 وكالة شريكة",
-    status: "ACTIVE",
-    description: "إدارة خطوط الائتمان ومحافظ الشحن المركزية للشركات والوكالات السياحية وإصدار التذاكر على مدار الساعة.",
-    quickActionCommand: "مراجعة إيداعات وكالات B2B وتأكيد خطوط الائتمان للحجوزات المعلقة",
-    features: [
-      "محفظة ديبوزيت موحدة بخصم فوري للعمليات",
-      "بوابة وكيل خاصة بأسعار الجملة للشركات",
-      "تسويات يومية آلية مع إصدار كشوف الحساب",
-      "تحكم بصلاحيات حجز الطيران والفنادق للشركاء",
-    ],
-  },
-  {
-    id: "nexus-ads",
-    stationId: "ads",
-    titleAr: "حملات Meta Ads و Google PMax",
-    titleEn: "ADS & ROAS MASTER DECK",
-    category: "الحملات والتسويق الرقمي",
-    color: "#f59e0b",
-    icon: TrendingUp,
-    metricLabel1: "متوسط ROAS المحقق",
-    metricValue1: "4.8x عائـد",
-    metricLabel2: "الميزانية النشطة",
-    metricValue2: "$1,450 / يوم",
-    status: "OPTIMAL",
-    description: "إدارة وضبط ميزانيات إعلانات الخليج، مراقبة كلفة النقرة اللحظية وتوليد الكريتيف الذاتي بالذكاء الاصطناعي.",
-    quickActionCommand: "تشغيل أتمتة الحملات الإعلانية ومضاعفة ميزانية الباقات الأكثر تحويلاً",
-    features: [
-      "مراقبة CBO و Target ROAS اللحظي",
-      "توليد 6 نسخ إعلانية بلهجة خليجية بيضاء",
-      "إيقاف تلقائي للحملات المنهكة",
-      "ربط مباشر مع بيكسل Meta و Google CAPI",
-    ],
-  },
-  {
-    id: "nexus-social",
-    stationId: "publish",
-    titleAr: "مصنع المحتوى والريلز ومقالات SEO",
-    titleEn: "AI CONTENT & MEDIA STUDIO",
-    category: "النشر والإنتاج البصري",
-    color: "#ec4899",
-    icon: Share2,
-    metricLabel1: "أدلة السفر المفهرسة",
-    metricValue1: "48 مقالاً E-E-A-T",
-    metricLabel2: "ريلز درون البسفور 4K",
-    metricValue2: "6 ريلز جاهزة للبث",
-    status: "ACTIVE",
-    description: "نشر متزامن رسمي عبر الـ API لـ Instagram و TikTok و X وقناة التليجرام مع أدلة السفر المفهرسة في Google.",
-    quickActionCommand: "إطلاق جدولة محتوى الذروة لرحلات طرابزون وأوزنجول على كافة القنوات",
-    features: [
-      "جدولة متوافقة مع قمم توقيت الرياض والخليج",
-      "ريلز 4K لطرابزون والبسفور بتعليق صوتي خليجي",
-      "مقالات 2500+ كلمة بمعايير Google E-E-A-T",
-      "بث فوري عبر الـ API بدون تدخل يدوي",
-    ],
-  },
-];
+export type NexusHubMetrics = {
+  readinessPct: number | null;
+  recordsPct: number | null;
+  integrationPct: number | null;
+  status: NexusCardHealth;
+  labelAr: string;
+};
+
+export const NEXUS_SECTOR_CARDS: HolographicCardSector[] = NEXUS_HUB_CARDS.map((c) => ({
+  ...c,
+  icon: DOMAIN_ICONS[c.domainIcon] ?? Sparkles,
+  metricValue1: "—",
+  metricValue2: "—",
+  metricValue3: "—",
+  status: "DEGRADED" as NexusCardHealth,
+}));
+
+function metricsForCard(card: NexusHubCard, map: Record<string, NexusHubMetrics>): NexusHubMetrics | undefined {
+  return map[card.hubId];
+}
+
+function cardWithMetrics(card: NexusHubCard, map: Record<string, NexusHubMetrics>): HolographicCardSector {
+  const m = metricsForCard(card, map);
+  const pct = (n: number | null | undefined) => (typeof n === "number" ? `${n}%` : "—");
+  return {
+    ...card,
+    icon: DOMAIN_ICONS[card.domainIcon] ?? Sparkles,
+    metricValue1: pct(m?.readinessPct),
+    metricValue2: pct(m?.recordsPct),
+    metricValue3: pct(m?.integrationPct),
+    status: m?.status ?? "DEGRADED",
+  };
+}
 
 interface HolographicCylinderStageProps {
   frequencies?: number[];
   onSelectSector?: (stationId: string) => void;
   onSendDirective?: (directive: string) => void;
+  onOpenHub?: (card: NexusHubCard) => void;
+  onCloseHub?: (hubId: string) => void;
   className?: string;
 }
 
@@ -194,35 +198,162 @@ export default function HolographicCylinderStage({
   frequencies = [],
   onSelectSector,
   onSendDirective,
+  onOpenHub,
+  onCloseHub,
   className = "",
 }: HolographicCylinderStageProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
-  const activeCardIndexRef = useRef<number>(0);
+  const CARD_COUNT = NEXUS_CARD_COUNT;
+  const deck = useNexusDeckController(CARD_COUNT);
+  const {
+    activeCardIndex,
+    activeCardIndexRef,
+    rotateTo,
+    rotateByDelta,
+    cylinderVelocityRef,
+    palmStableFramesRef,
+    gestureCooldownRef,
+    beginPointerDrag,
+    recordPointerDelta,
+    endPointerDrag,
+    shouldSuppressClick,
+  } = deck;
+
+  const [metricsByHub, setMetricsByHub] = useState<Record<string, NexusHubMetrics>>({});
+  const metricsByHubRef = useRef(metricsByHub);
+  metricsByHubRef.current = metricsByHub;
+  const metricsPaintVersionRef = useRef(0);
+
+  const displayCards = useMemo(
+    () => NEXUS_HUB_CARDS.map((c) => cardWithMetrics(c, metricsByHub)),
+    [metricsByHub]
+  );
+
   const [isHandTrackingActive, setIsHandTrackingActive] = useState<boolean>(false);
+  const isHandTrackingActiveRef = useRef(isHandTrackingActive);
+  isHandTrackingActiveRef.current = isHandTrackingActive;
+  const pointerDragActiveRef = useRef(false);
+
   const [gestureFeedback, setGestureFeedback] = useState<string>("تحكم الماوس واللمس: نشط");
   const [activeGestureType, setActiveGestureType] = useState<string | null>(null);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [inspectModalOpen, setInspectModalOpen] = useState<boolean>(false);
+  const inspectModalOpenRef = useRef(inspectModalOpen);
+  inspectModalOpenRef.current = inspectModalOpen;
 
-  // Video and offscreen canvas for real motion detection
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const webcamStreamRef = useRef<MediaStream | null>(null);
   const motionCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const prevFrameDataRef = useRef<Uint8ClampedArray | null>(null);
-  const gestureCooldownRef = useRef<number>(0);
-  
-  // Phase 4: Advanced Gesture State Machine Refs
-  const palmStableFramesRef = useRef<number>(0);
-  const cylinderVelocityRef = useRef<number>(0);
+  const openHubRef = useRef(onOpenHub);
+  openHubRef.current = onOpenHub;
+  const closeHubRef = useRef(onCloseHub);
+  closeHubRef.current = onCloseHub;
 
-  // Cylinder parameters (Enhanced radius and elegant proportional scale)
-  const CARD_COUNT = NEXUS_SECTOR_CARDS.length;
   const ANGLE_STEP = (2 * Math.PI) / CARD_COUNT;
-  const CYLINDER_RADIUS = 340; // Increased radius for spacious depth
+  const CYLINDER_RADIUS = 340 + Math.max(0, CARD_COUNT - 6) * 6;
 
-  // Active Card Data
-  const activeCard = NEXUS_SECTOR_CARDS[activeCardIndex];
+  const activeCard = displayCards[activeCardIndex] ?? displayCards[0];
+
+  const refreshMetrics = useCallback(async () => {
+    try {
+      const results = await Promise.all(
+        NEXUS_HUB_CARDS.map(async (card) => {
+          const res = await fetch(`/api/admin/studio/nexus/metrics?hubId=${encodeURIComponent(card.hubId)}`, {
+            credentials: "include",
+          });
+          if (!res.ok) return null;
+          const json = (await res.json()) as {
+            ok?: boolean;
+            readinessPct?: number;
+            recordsPct?: number | null;
+            integrationPct?: number;
+            status?: NexusCardHealth;
+            labelAr?: string;
+          };
+          if (!json.ok) return null;
+          return [
+            card.hubId,
+            {
+              readinessPct: json.readinessPct ?? null,
+              recordsPct: json.recordsPct ?? null,
+              integrationPct: json.integrationPct ?? null,
+              status: json.status ?? "DEGRADED",
+              labelAr: json.labelAr ?? card.titleAr,
+            },
+          ] as const;
+        })
+      );
+      const next: Record<string, NexusHubMetrics> = {};
+      for (const row of results) if (row) next[row[0]] = row[1];
+      setMetricsByHub(next);
+      metricsPaintVersionRef.current += 1;
+    } catch {
+      /* keep prior metrics */
+    }
+  }, []);
+
+  useEffect(() => {
+    void refreshMetrics();
+    const timer = window.setInterval(() => void refreshMetrics(), 60_000);
+    const onRefresh = () => void refreshMetrics();
+    window.addEventListener("studio:refresh", onRefresh);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("studio:refresh", onRefresh);
+    };
+  }, [refreshMetrics]);
+
+  const openActiveHub = useCallback(() => {
+    const card = NEXUS_HUB_CARDS[activeCardIndexRef.current];
+    if (!card) return;
+    setInspectModalOpen(true);
+    openHubRef.current?.(card);
+    onSelectSector?.(card.stationId);
+  }, [onSelectSector]);
+
+  const toggleCameraRef = useRef<() => Promise<void>>(async () => {});
+
+  useEffect(() => {
+    const onRotate = (ev: Event) => {
+      const delta = (ev as CustomEvent<{ delta?: number }>).detail?.delta ?? 0;
+      if (delta) rotateByDelta(delta);
+    };
+    const onOpenSector = () => openActiveHub();
+    const onToggleCam = () => {
+      void toggleCameraRef.current();
+    };
+    const onSelectSectorEv = (ev: Event) => {
+      const d = (ev as CustomEvent<{ stationId?: string; sectorId?: string; hubId?: string }>).detail;
+      const key = d?.hubId || d?.stationId || d?.sectorId;
+      if (!key) return;
+      const idx = NEXUS_HUB_CARDS.findIndex((c) => c.hubId === key || c.stationId === key || c.id === key);
+      if (idx >= 0) rotateTo(idx);
+    };
+    const onRunSectorCommand = (ev: Event) => {
+      const d = (ev as CustomEvent<{ command?: string; sectorId?: string; stationId?: string; hubId?: string }>).detail;
+      if (d?.command && onSendDirective) {
+        onSendDirective(d.command);
+        return;
+      }
+      const key = d?.hubId || d?.stationId || d?.sectorId;
+      if (!key || !onSendDirective) return;
+      const card = NEXUS_HUB_CARDS.find((c) => c.hubId === key || c.stationId === key || c.id === key);
+      if (card?.quickActionCommand) onSendDirective(card.quickActionCommand);
+    };
+    window.addEventListener("studio:nexus-rotate", onRotate);
+    window.addEventListener("studio:nexus-open-sector", onOpenSector);
+    window.addEventListener("studio:nexus-toggle-camera", onToggleCam);
+    window.addEventListener("studio:nexus-select-sector", onSelectSectorEv);
+    window.addEventListener("studio:nexus-run-sector-command", onRunSectorCommand);
+    return () => {
+      window.removeEventListener("studio:nexus-rotate", onRotate);
+      window.removeEventListener("studio:nexus-open-sector", onOpenSector);
+      window.removeEventListener("studio:nexus-toggle-camera", onToggleCam);
+      window.removeEventListener("studio:nexus-select-sector", onSelectSectorEv);
+      window.removeEventListener("studio:nexus-run-sector-command", onRunSectorCommand);
+    };
+  }, [openActiveHub, onSendDirective, rotateByDelta, rotateTo]);
 
   // Helper to create curved card geometry with EXPLICIT [0, 1] UV mapping
   const createCurvedCardGeometry = (radius: number, width: number, height: number, segments: number) => {
@@ -272,74 +403,66 @@ export default function HolographicCylinderStage({
     return geo;
   };
 
-  // Borderless floating equation plates. No filled square cards.
   const createCardTexture = (card: HolographicCardSector, index: number, isHighlighted: boolean) => {
     const canvas = document.createElement("canvas");
     canvas.width = 860;
-    canvas.height = 220;
+    canvas.height = 240;
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
 
-    ctx.clearRect(0, 0, 860, 220);
-    const accent = isHighlighted ? "#00e5ff" : card.color;
+    ctx.clearRect(0, 0, 860, 240);
+    const toneKey = (["gold", "cyan", "magenta", "green"] as const).find((t) => TONES[t].line.toLowerCase() === card.color.toLowerCase());
+    const accent = isHighlighted ? TONES.cyan.line : toneKey ? TONES[toneKey].line : card.color;
+    const alt = toneKey === "magenta" ? TONES.cyan.line : TONES.magenta.line;
+
+    const glass = ctx.createLinearGradient(0, 0, 860, 240);
+    glass.addColorStop(0, "rgba(4,18,32,0.55)");
+    glass.addColorStop(0.5, "rgba(8,28,48,0.42)");
+    glass.addColorStop(1, "rgba(2,12,24,0.62)");
+    ctx.fillStyle = glass;
+    ctx.fillRect(12, 12, 836, 216);
+
+    for (let n = 0; n < 900; n++) {
+      const nx = 12 + Math.random() * 836;
+      const ny = 12 + Math.random() * 216;
+      ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.04})`;
+      ctx.fillRect(nx, ny, 1, 1);
+    }
+
     ctx.strokeStyle = accent;
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2.5;
     ctx.shadowColor = accent;
-    ctx.shadowBlur = 16;
-    const bracket = 28;
-    const pad = 16;
-    ctx.beginPath();
-    ctx.moveTo(pad, pad + bracket);
-    ctx.lineTo(pad, pad);
-    ctx.lineTo(pad + bracket, pad);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(860 - pad - bracket, pad);
-    ctx.lineTo(860 - pad, pad);
-    ctx.lineTo(860 - pad, pad + bracket);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(pad, 220 - pad - bracket);
-    ctx.lineTo(pad, 220 - pad);
-    ctx.lineTo(pad + bracket, 220 - pad);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(860 - pad - bracket, 220 - pad);
-    ctx.lineTo(860 - pad, 220 - pad);
-    ctx.lineTo(860 - pad, 220 - pad - bracket);
-    ctx.stroke();
+    ctx.shadowBlur = 18;
+    ctx.strokeRect(12, 12, 836, 216);
+    ctx.strokeStyle = alt;
+    ctx.globalAlpha = 0.45;
+    ctx.strokeRect(18, 18, 824, 204);
+    ctx.globalAlpha = 1;
     ctx.shadowBlur = 0;
 
     ctx.fillStyle = accent;
-    ctx.font = "bold 22px monospace";
+    ctx.font = `600 20px ${MONO}`;
     ctx.textAlign = "left";
-    ctx.fillText(`⟨ ${card.category} · 0${index + 1} ⟩`, 52, 58);
+    ctx.fillText(`${card.titleAr.slice(0, 36)} · ${card.screenId}`, 36, 52);
 
-    const equation = `Ψ${index + 1}(t) = ${card.metricValue1} · e^{iωt} + ${card.metricValue2}`;
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 34px monospace";
-    ctx.shadowColor = accent;
-    ctx.shadowBlur = 12;
-    ctx.fillText(equation.slice(0, 42), 52, 118);
-    ctx.shadowBlur = 0;
+    ctx.fillStyle = "#e8f2f6";
+    ctx.font = `700 28px ${MONO}`;
+    ctx.fillText(`${card.metricLabel1}: ${card.metricValue1}`, 36, 98);
+    ctx.fillStyle = alt;
+    ctx.font = `600 22px ${MONO}`;
+    ctx.fillText(`${card.metricLabel2}: ${card.metricValue2}  ·  ${card.metricLabel3}: ${card.metricValue3}`, 36, 136);
 
-    ctx.fillStyle = accent;
-    ctx.font = "20px monospace";
-    ctx.fillText(`${card.titleEn}  ·  ${card.status}`, 52, 168);
+    ctx.fillStyle = card.status === "OPTIMAL" ? TONES.green.line : card.status === "OFFLINE" ? TONES.magenta.line : TONES.gold.line;
+    ctx.font = `600 18px ${MONO}`;
+    ctx.fillText(`[${card.status}] ${card.category}`, 36, 178);
+    ctx.fillStyle = "rgba(147,168,179,0.95)";
+    ctx.font = `500 16px ${MONO}`;
+    ctx.fillText(`#${index + 1}/${CARD_COUNT} · ${card.titleEn}`, 36, 208);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.needsUpdate = true;
     return texture;
   };
-
-  const rotateTo = useCallback(
-    (index: number) => {
-      const nextIdx = (index + CARD_COUNT) % CARD_COUNT;
-      setActiveCardIndex(nextIdx);
-      activeCardIndexRef.current = nextIdx;
-    },
-    [CARD_COUNT]
-  );
 
   // Toggle Webcam Hand Tracking
   const toggleCamera = async () => {
@@ -375,6 +498,7 @@ export default function HolographicCylinderStage({
       }
     }
   };
+  toggleCameraRef.current = toggleCamera;
 
   // Real-time Computer Vision Optical Flow / Hand Gesture Detection Loop
   useEffect(() => {
@@ -406,7 +530,6 @@ export default function HolographicCylinderStage({
 
       let motionPixels = 0;
       let sumX = 0;
-      let sumY = 0;
       const prevData = prevFrameDataRef.current;
 
       for (let i = 0; i < data.length; i += 4) {
@@ -415,82 +538,68 @@ export default function HolographicCylinderStage({
         const diffB = Math.abs(data[i + 2] - prevData[i + 2]);
         const totalDiff = (diffR + diffG + diffB) / 3;
 
-        if (totalDiff > 28) {
+        if (totalDiff > NEXUS_MOTION_DIFF_THRESHOLD) {
           const pixelIndex = i / 4;
           const py = Math.floor(pixelIndex / 64);
-          // Phase 4 ROI (Region of Interest): Ignore top 22 pixels (head motion)
-          if (py > 22) {
+          if (py > NEXUS_HAND_ROI_MIN_ROW) {
             motionPixels++;
-            const px = pixelIndex % 64;
-            sumX += px;
-            sumY += py;
+            sumX += pixelIndex % 64;
           }
         }
       }
 
       prevFrameDataRef.current.set(data);
 
-      if (now < gestureCooldownRef.current) return;
+      const rawCentroid = motionPixels > 0 ? sumX / motionPixels : prevCentroidX;
+      const centroidX =
+        motionPixels > 0 ? prevCentroidX * (1 - NEXUS_CENTROID_SMOOTH) + rawCentroid * NEXUS_CENTROID_SMOOTH : prevCentroidX;
+      const deltaX = motionPixels > 0 ? centroidX - prevCentroidX : 0;
+      if (motionPixels > 0) prevCentroidX = centroidX;
 
-      // Inspect Modal is Open -> Listen for Closed Fist (sudden sharp contraction)
-      // A fist creates a very small, concentrated motion block compared to a palm.
-      setInspectModalOpen((isModalOpen) => {
-        if (isModalOpen) {
-          if (motionPixels > 50 && motionPixels < 200) {
-            // Closed fist detected
-            gestureCooldownRef.current = now + 1200;
-            setActiveGestureType("FIST_CLOSED");
-            setGestureFeedback("✊ قبضة مغلقة: إغلاق النافذة");
-            setInspectModalOpen(false);
-            setTimeout(() => setActiveGestureType(null), 1000);
-          }
-          return isModalOpen;
-        }
+      if (pointerDragActiveRef.current) return;
 
-        // Modal is Closed -> Listen for Swipes and Open Palm
-        
-        // 1. Open Palm (Stable large motion for ~300ms, which is ~3 frames at 90ms)
-        if (motionPixels > 250 && motionPixels < 600) {
-          palmStableFramesRef.current++;
-          if (palmStableFramesRef.current >= 3) { // ~300ms stability
-            gestureCooldownRef.current = now + 1400;
-            setActiveGestureType("PALM_OPEN");
-            setGestureFeedback("✋ كف مستقر: فتح القسم");
-            setInspectModalOpen(true);
-            palmStableFramesRef.current = 0;
-            setTimeout(() => setActiveGestureType(null), 1000);
-            return true;
-          }
-        } else {
-          palmStableFramesRef.current = 0;
-        }
-
-        // 2. Continuous Velocity Stream Swipe (Hand wave)
-        if (motionPixels > 80 && motionPixels < 350 && palmStableFramesRef.current === 0) {
-          const centroidX = sumX / motionPixels;
-          const deltaX = centroidX - prevCentroidX;
-          prevCentroidX = centroidX;
-
-          if (Math.abs(deltaX) > 2) {
-            // Apply continuous torque
-            cylinderVelocityRef.current += deltaX * 0.0035;
-            setActiveGestureType(deltaX > 0 ? "SWIPE_RIGHT" : "SWIPE_LEFT");
-            setGestureFeedback(deltaX > 0 ? "👉 تمرير لليمين" : "👈 تمرير لليسار");
-            setTimeout(() => {
-              setActiveGestureType((prev) => (prev?.startsWith("SWIPE") ? null : prev));
-            }, 300);
-          }
-        }
-        
-        return isModalOpen;
+      const fsm = evaluateNexusGesture({
+        modalOpen: inspectModalOpenRef.current,
+        motionPixels,
+        centroidDeltaX: deltaX,
+        palmStableFrames: palmStableFramesRef.current,
+        handVelocity: cylinderVelocityRef.current,
+        now,
+        cooldownUntil: gestureCooldownRef.current,
       });
 
-    }, 90);
+      palmStableFramesRef.current = fsm.nextPalmStableFrames;
+      gestureCooldownRef.current = fsm.nextCooldownUntil;
+
+      if (fsm.swipeTorque) {
+        cylinderVelocityRef.current += fsm.swipeTorque;
+        setActiveGestureType(fsm.gesture);
+        setGestureFeedback(fsm.gesture === "SWIPE_RIGHT" ? "👉 تمرير لليمين" : "👈 تمرير لليسار");
+        setTimeout(() => setActiveGestureType((prev) => (prev?.startsWith("SWIPE") ? null : prev)), 300);
+      }
+
+      if (fsm.closeModal) {
+        setActiveGestureType("FIST_CLOSED");
+        setGestureFeedback("✊ قبضة مغلقة: إغلاق النافذة");
+        setInspectModalOpen(false);
+        const hub = NEXUS_HUB_CARDS[activeCardIndexRef.current];
+        if (hub) closeHubRef.current?.(hub.hubId);
+        setTimeout(() => setActiveGestureType(null), 1000);
+      }
+
+      if (fsm.openModal) {
+        setActiveGestureType("PALM_OPEN");
+        setGestureFeedback("✋ كف مستقر: فتح القسم");
+        openHubRef.current?.(NEXUS_HUB_CARDS[activeCardIndexRef.current]!);
+        setInspectModalOpen(true);
+        setTimeout(() => setActiveGestureType(null), 1000);
+      }
+    }, 80);
 
     return () => {
       clearInterval(motionInterval);
     };
-  }, [isHandTrackingActive, rotateTo]);
+  }, [isHandTrackingActive, cylinderVelocityRef, gestureCooldownRef, palmStableFramesRef]);
 
   // Main Three.js Scene Setup & Animation
   useEffect(() => {
@@ -536,23 +645,47 @@ export default function HolographicCylinderStage({
     const ambientLight = new THREE.AmbientLight(0x041832, 2.4);
     scene.add(ambientLight);
 
-    // 2. Build 6 Curved Holographic Cards on Cylindrical Orbit
     const cardMeshes: THREE.Mesh[] = [];
     const cardTextures: THREE.CanvasTexture[] = [];
+    let lastPaintVersion = metricsPaintVersionRef.current;
 
-    NEXUS_SECTOR_CARDS.forEach((card, idx) => {
+    const cardsSnapshot = () =>
+      NEXUS_HUB_CARDS.map((c) => cardWithMetrics(c, metricsByHubRef.current));
+
+    const rebuildTextures = () => {
+      const cards = cardsSnapshot();
+      cards.forEach((card, idx) => {
+        const isHighlighted = idx === activeCardIndexRef.current;
+        const next = createCardTexture(card, idx, isHighlighted);
+        if (!next) return;
+        const mat = cardMeshes[idx]?.material as THREE.MeshPhysicalMaterial | undefined;
+        if (mat?.map) mat.map.dispose();
+        if (mat) mat.map = next;
+        if (cardTextures[idx]) cardTextures[idx].dispose();
+        cardTextures[idx] = next;
+        if (mat) mat.needsUpdate = true;
+      });
+      lastPaintVersion = metricsPaintVersionRef.current;
+    };
+
+    cardsSnapshot().forEach((card, idx) => {
       const isHighlighted = idx === activeCardIndexRef.current;
       const texture = createCardTexture(card, idx, isHighlighted)!;
       cardTextures.push(texture);
 
-      // Wide floating equation ribbon, not a square card.
-      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 176, 46, 24);
+      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 176, 52, 24);
 
-      const cardMat = new THREE.MeshBasicMaterial({
+      const cardMat = new THREE.MeshPhysicalMaterial({
         map: texture,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.96,
+        opacity: 0.94,
+        transmission: 0.35,
+        thickness: 0.4,
+        roughness: 0.22,
+        metalness: 0.08,
+        clearcoat: 0.6,
+        clearcoatRoughness: 0.2,
       });
 
       const mesh = new THREE.Mesh(cardGeo, cardMat);
@@ -608,74 +741,96 @@ export default function HolographicCylinderStage({
     gridHelper.position.y = -142;
     scene.add(gridHelper);
 
-    // Target Rotation & Drag State
     let targetRotationY = -activeCardIndexRef.current * ANGLE_STEP;
     let isDragging = false;
-    let previousMouseX = 0;
+    let isTouchDragging = false;
+    let previousPointerX = 0;
 
     const domEl = renderer.domElement;
+    domEl.style.touchAction = "none";
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const snapFromRotation = () => {
+      const actualIndex = snapIndexFromRotation(cylinderGroup.rotation.y, CARD_COUNT);
+      targetRotationY = -actualIndex * ANGLE_STEP;
+      activeCardIndexRef.current = actualIndex;
+      rotateTo(actualIndex);
+    };
+
+    const handlePointerDown = (e: PointerEvent) => {
+      if (isHandTrackingActiveRef.current) return;
       isDragging = true;
-      previousMouseX = e.clientX;
+      pointerDragActiveRef.current = true;
+      beginPointerDrag();
+      previousPointerX = e.clientX;
+      domEl.setPointerCapture(e.pointerId);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isDragging) {
-        const deltaX = e.clientX - previousMouseX;
-        previousMouseX = e.clientX;
-        cylinderGroup.rotation.y += deltaX * 0.005;
-        targetRotationY = cylinderGroup.rotation.y;
-      }
+    const handlePointerMove = (e: PointerEvent) => {
+      if (!isDragging || isHandTrackingActiveRef.current) return;
+      const deltaX = e.clientX - previousPointerX;
+      previousPointerX = e.clientX;
+      recordPointerDelta(deltaX);
+      cylinderGroup.rotation.y += deltaX * 0.005;
+      targetRotationY = cylinderGroup.rotation.y;
     };
 
-    const handleMouseUp = () => {
-      if (isDragging) {
-        isDragging = false;
-        const normalizedRot = -cylinderGroup.rotation.y;
-        const nearestIndex = Math.round(normalizedRot / ANGLE_STEP);
-        targetRotationY = -nearestIndex * ANGLE_STEP;
-        const actualIndex = ((nearestIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT;
-        activeCardIndexRef.current = actualIndex;
-        setActiveCardIndex(actualIndex);
-      }
+    const handlePointerUp = (e: PointerEvent) => {
+      if (domEl.hasPointerCapture(e.pointerId)) domEl.releasePointerCapture(e.pointerId);
+      if (!isDragging) return;
+      isDragging = false;
+      pointerDragActiveRef.current = false;
+      endPointerDrag();
+      snapFromRotation();
     };
 
-    domEl.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    domEl.addEventListener("pointerdown", handlePointerDown);
+    domEl.addEventListener("pointermove", handlePointerMove);
+    domEl.addEventListener("pointerup", handlePointerUp);
+    domEl.addEventListener("pointercancel", handlePointerUp);
 
-    // Touch Support
     let touchStartX = 0;
     const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) touchStartX = e.touches[0].clientX;
-    };
-    const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        const deltaX = e.touches[0].clientX - touchStartX;
+        isTouchDragging = true;
+        pointerDragActiveRef.current = true;
+        beginPointerDrag();
         touchStartX = e.touches[0].clientX;
-        cylinderGroup.rotation.y += deltaX * 0.005;
-        targetRotationY = cylinderGroup.rotation.y;
       }
     };
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isTouchDragging || e.touches.length === 0) return;
+      e.preventDefault();
+      const deltaX = e.touches[0].clientX - touchStartX;
+      touchStartX = e.touches[0].clientX;
+      recordPointerDelta(deltaX);
+      cylinderGroup.rotation.y += deltaX * 0.005;
+      targetRotationY = cylinderGroup.rotation.y;
+    };
     const handleTouchEnd = () => {
-      const normalizedRot = -cylinderGroup.rotation.y;
-      const nearestIndex = Math.round(normalizedRot / ANGLE_STEP);
-      targetRotationY = -nearestIndex * ANGLE_STEP;
-      const actualIndex = ((nearestIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT;
-      activeCardIndexRef.current = actualIndex;
-      setActiveCardIndex(actualIndex);
+      if (!isTouchDragging) return;
+      isTouchDragging = false;
+      pointerDragActiveRef.current = false;
+      endPointerDrag();
+      snapFromRotation();
     };
 
-    domEl.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchmove", handleTouchMove);
-    window.addEventListener("touchend", handleTouchEnd);
+    domEl.addEventListener("touchstart", handleTouchStart, { passive: true });
+    domEl.addEventListener("touchmove", handleTouchMove, { passive: false });
+    domEl.addEventListener("touchend", handleTouchEnd);
 
-    // Click Raycaster to open card
+    const handleWheel = (e: WheelEvent) => {
+      if (isHandTrackingActiveRef.current || pointerDragActiveRef.current) return;
+      e.preventDefault();
+      rotateByDelta(e.deltaY > 0 ? 1 : -1);
+      targetRotationY = -activeCardIndexRef.current * ANGLE_STEP;
+    };
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
     const handleClick = (e: MouseEvent) => {
+      if (shouldSuppressClick()) return;
       const rect = domEl.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
@@ -688,9 +843,8 @@ export default function HolographicCylinderStage({
         const idx = hit.object.userData.index;
         if (typeof idx === "number") {
           targetRotationY = -idx * ANGLE_STEP;
-          activeCardIndexRef.current = idx;
-          setActiveCardIndex(idx);
-          setInspectModalOpen(true);
+          rotateTo(idx);
+          openActiveHub();
         }
       }
     };
@@ -703,27 +857,21 @@ export default function HolographicCylinderStage({
       animId = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
-      // Smooth interpolation to target rotation for mouse, plus momentum for hand gestures
-      if (isHandTrackingActive && cylinderVelocityRef.current !== 0) {
-        cylinderGroup.rotation.y += cylinderVelocityRef.current;
-        cylinderVelocityRef.current *= 0.92; // Friction damping
-        
-        // Update target rotation and nearest index dynamically
-        const normalizedRot = -cylinderGroup.rotation.y;
-        const nearestIndex = Math.round(normalizedRot / ANGLE_STEP);
-        targetRotationY = -nearestIndex * ANGLE_STEP;
-        const actualIndex = ((nearestIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT;
-        
-        if (actualIndex !== activeCardIndexRef.current) {
-          activeCardIndexRef.current = actualIndex;
-          setActiveCardIndex(actualIndex);
-        }
+      if (metricsPaintVersionRef.current !== lastPaintVersion) rebuildTextures();
 
-        // Snap to nearest when velocity is very low
-        if (Math.abs(cylinderVelocityRef.current) < 0.001) {
-          cylinderVelocityRef.current = 0;
+      if (isHandTrackingActiveRef.current) {
+        if (cylinderVelocityRef.current !== 0) {
+          cylinderGroup.rotation.y += cylinderVelocityRef.current;
+          cylinderVelocityRef.current *= 0.92;
+          const actualIndex = snapIndexFromRotation(cylinderGroup.rotation.y, CARD_COUNT);
+          if (actualIndex !== activeCardIndexRef.current) rotateTo(actualIndex);
+          targetRotationY = cylinderGroup.rotation.y;
+          if (Math.abs(cylinderVelocityRef.current) < 0.001) cylinderVelocityRef.current = 0;
+        } else if (!isDragging && !isTouchDragging) {
+          targetRotationY = -activeCardIndexRef.current * ANGLE_STEP;
+          cylinderGroup.rotation.y += (targetRotationY - cylinderGroup.rotation.y) * 0.08;
         }
-      } else if (!isDragging) {
+      } else if (!isDragging && !isTouchDragging) {
         targetRotationY = -activeCardIndexRef.current * ANGLE_STEP;
         cylinderGroup.rotation.y += (targetRotationY - cylinderGroup.rotation.y) * 0.08;
       }
@@ -769,13 +917,15 @@ export default function HolographicCylinderStage({
 
     return () => {
       cancelAnimationFrame(animId);
-      domEl.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      domEl.removeEventListener("pointerdown", handlePointerDown);
+      domEl.removeEventListener("pointermove", handlePointerMove);
+      domEl.removeEventListener("pointerup", handlePointerUp);
+      domEl.removeEventListener("pointercancel", handlePointerUp);
       domEl.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
+      domEl.removeEventListener("touchmove", handleTouchMove);
+      domEl.removeEventListener("touchend", handleTouchEnd);
       domEl.removeEventListener("click", handleClick);
+      container.removeEventListener("wheel", handleWheel);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
       cardMeshes.forEach((m) => m.geometry.dispose());
@@ -787,7 +937,19 @@ export default function HolographicCylinderStage({
         container.removeChild(renderer.domElement);
       }
     };
-  }, [ANGLE_STEP, CARD_COUNT]);
+  }, [
+    ANGLE_STEP,
+    CARD_COUNT,
+    CYLINDER_RADIUS,
+    activeCardIndexRef,
+    beginPointerDrag,
+    endPointerDrag,
+    recordPointerDelta,
+    rotateByDelta,
+    rotateTo,
+    shouldSuppressClick,
+    openActiveHub,
+  ]);
 
   // Quick Directive Sender
   const handleQuickDirective = () => {
@@ -878,6 +1040,7 @@ export default function HolographicCylinderStage({
               <div className="absolute inset-3 border-2 border-dashed border-emerald-400 rounded-lg animate-pulse flex items-center justify-center bg-emerald-500/10">
                 <span className="px-2 py-1 rounded bg-black/80 text-[10px] font-mono font-bold text-emerald-300">
                   {activeGestureType === "PALM_OPEN" && "✋ بسط الكف"}
+                  {activeGestureType === "FIST_CLOSED" && "✊ قبضة"}
                   {activeGestureType === "SWIPE_RIGHT" && "👉 تلويح يمين"}
                   {activeGestureType === "SWIPE_LEFT" && "👈 تلويح يسار"}
                 </span>
@@ -949,7 +1112,7 @@ export default function HolographicCylinderStage({
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setInspectModalOpen(true)}
+            onClick={openActiveHub}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold transition-all active:scale-95"
           >
             <Maximize2 size={13} />
@@ -1007,18 +1170,18 @@ export default function HolographicCylinderStage({
               {activeCard.description}
             </p>
 
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="p-4 rounded-2xl bg-[#03142e] border border-cyan-500/30 flex flex-col gap-1">
                 <span className="text-xs text-slate-400 font-sans">{activeCard.metricLabel1}</span>
                 <span className="text-2xl font-black font-mono text-cyan-400">{activeCard.metricValue1}</span>
-                <span className="text-[10px] text-emerald-400 font-mono mt-1">✔ تم التحقق والمطابقة اللحظية مع المحرك</span>
               </div>
-
               <div className="p-4 rounded-2xl bg-[#03142e] border border-amber-500/30 flex flex-col gap-1">
                 <span className="text-xs text-slate-400 font-sans">{activeCard.metricLabel2}</span>
                 <span className="text-2xl font-black font-mono text-amber-400">{activeCard.metricValue2}</span>
-                <span className="text-[10px] text-amber-300 font-mono mt-1">⚡ نشاط مستمر عبر محركات السرب</span>
+              </div>
+              <div className="p-4 rounded-2xl bg-[#03142e] border border-fuchsia-500/30 flex flex-col gap-1">
+                <span className="text-xs text-slate-400 font-sans">{activeCard.metricLabel3}</span>
+                <span className="text-2xl font-black font-mono text-fuchsia-400">{activeCard.metricValue3}</span>
               </div>
             </div>
 

@@ -65,4 +65,22 @@ describe("intent-router fixtures", () => {
     const plans = plansFromIntent("اعرض طلبات الإلغاء المعلقة", { screenId: "03", last: null });
     expect(plans[0]?.capabilityId).toBe("bookings.cancellation.list");
   });
+
+  it("nexus cockpit phrases navigate to screen 21", () => {
+    for (const utterance of ["افتح nexus", "افتح مسرح nexus", "nexus orbital deck", "افتح orbital deck"]) {
+      const route = routeUtterance(utterance, { screenId: "20", last: null });
+      expect(route.kind).toBe("navigate");
+      expect(route.target?.screenId).toBe("21");
+    }
+    expect(resolveIntent("افتح nexus", { screenId: "20", last: null }).nodeId).toBe("screen.21");
+  });
+
+  it("visual loops cockpit phrases navigate to screen 22", () => {
+    for (const utterance of ["افتح loops", "اعرض loops", "افتح استوديو العقد والأتمتة", "افتح trigger rag model"]) {
+      const route = routeUtterance(utterance, { screenId: "20", last: null });
+      expect(route.kind).toBe("navigate");
+      expect(route.target?.screenId).toBe("22");
+    }
+    expect(resolveIntent("افتح loops", { screenId: "20", last: null }).nodeId).toBe("screen.22");
+  });
 });

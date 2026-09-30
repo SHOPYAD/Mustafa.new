@@ -1,6 +1,6 @@
 # Platform Index
 
-مولَّد: `node scripts/gen-platform-index.cjs` — 748 عقدة، 1515 مصطلح.
+مولَّد: `node scripts/gen-platform-index.cjs` — 760 عقدة، 1559 مصطلح.
 
 | id | kind | screen | label | intent | risk | target |
 |---|---|---|---|---|---|---|
@@ -203,6 +203,10 @@
 | `api.studio_capabilities` | api_route |  | /api/admin/studio/capabilities | command | low | /api/admin/studio/capabilities |
 | `api.studio_capabilities_execute` | api_route |  | /api/admin/studio/capabilities/execute | command | medium | /api/admin/studio/capabilities/execute |
 | `api.studio_live` | api_route |  | /api/admin/studio/live | probe | low | /api/admin/studio/live |
+| `api.studio_loops_execute` | api_route |  | /api/admin/studio/loops/execute | command | medium | /api/admin/studio/loops/execute |
+| `api.studio_loops_preflight` | api_route |  | /api/admin/studio/loops/preflight | probe | medium | /api/admin/studio/loops/preflight |
+| `api.studio_loops_state` | api_route |  | /api/admin/studio/loops/state | probe | medium | /api/admin/studio/loops/state |
+| `api.studio_nexus_metrics` | api_route |  | /api/admin/studio/nexus/metrics | probe | low | /api/admin/studio/nexus/metrics |
 | `api.studio_records` | api_route |  | /api/admin/studio/records | probe | low | /api/admin/studio/records |
 | `api.studio_schema` | api_route |  | /api/admin/studio/schema | probe | low | /api/admin/studio/schema |
 | `api.tenant-plan` | api_route |  | /api/admin/tenant-plan | probe | low | /api/admin/tenant-plan |
@@ -647,6 +651,12 @@
 | `nav.leaf.transfers` | nav_leaf | 05 | الترانسفير VIP | navigate | low |  |
 | `nav.leaf.translations` | nav_leaf | 16 | الترجمات | navigate | low |  |
 | `nav.leaf.visa` | nav_leaf | 05 | التأشيرات | navigate | low |  |
+| `nexus.sector.nexus-ads` | domain_hub | 21 | حملات الإعلانات | navigate | low |  |
+| `nexus.sector.nexus-b2b` | domain_hub | 21 | شبكة B2B والموزعين | navigate | low |  |
+| `nexus.sector.nexus-flights` | domain_hub | 21 | رادار تذاكر الطيران | navigate | low |  |
+| `nexus.sector.nexus-hotels` | domain_hub | 21 | محرك الفنادق والـ GDS | navigate | low |  |
+| `nexus.sector.nexus-social` | domain_hub | 21 | النشر والسوشيال | navigate | low |  |
+| `nexus.sector.nexus-transfers` | domain_hub | 21 | النقل والمواصلات | navigate | low |  |
 | `page.admin.ads` | admin_page |  | ads | navigate | low | /admin/ads |
 | `page.admin.affiliate` | admin_page |  | affiliate | navigate | low | /admin/affiliate |
 | `page.admin.agent-studio` | admin_page |  | agent-studio | navigate | low | /admin/agent-studio |
@@ -748,6 +758,8 @@
 | `screen.18` | screen | 18 | حالات النوافذ والسيدبار والتنقل ومختبر المساحات | navigate | low |  |
 | `screen.19` | screen | 19 | القيادة التنفيذية والعناقيد السداسية | briefing | low |  |
 | `screen.20` | screen | 20 | الحضور البشري والصوت الحي | navigate | low |  |
+| `screen.21` | screen | 21 | مسرح Nexus — سلايد البطاقات الهولوغرافية | navigate | low |  |
+| `screen.22` | screen | 22 | استوديو العقد والأتمتة السيبرانية | navigate | low |  |
 | `ui.agents.hide` | ui_action | 18 | إخفاء الوكلاء | navigate | low |  |
 | `ui.briefing.open` | ui_action | 19 | تقرير جاهزية | briefing | low |  |
 | `ui.swarm.layout` | ui_action | 18 | تنسيق جماعي | navigate | low |  |

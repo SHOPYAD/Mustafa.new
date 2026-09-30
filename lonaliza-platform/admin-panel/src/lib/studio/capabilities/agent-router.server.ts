@@ -7,8 +7,10 @@ import { collectionAliases, looksOperational, nodeAliases, planStudioCapability,
 import { plansFromIntent, resolveIntent } from "@/lib/studio/index/intent-router";
 import { isArticleDirective } from "@/lib/swarm/article-pipeline-types";
 import { normalizeStudioPlan } from "./normalize-plan";
+import { matchWorkflow, type WorkflowDef, type WorkflowStep } from "@/lib/studio/graph/workflows";
 
 export { planStudioCapability } from "./agent-plan";
+export { matchWorkflow } from "@/lib/studio/graph/workflows";
 
 /**
  * مخطط لغوي احتياطي: يختار قدرة واحدة من السجل فقط، والمدخلات تمر على zod.
@@ -41,6 +43,7 @@ async function planWithModel(directive: string): Promise<StudioPlan | null> {
 }
 
 export async function planDirective(directive: string, ctx: { screenId?: string } = {}): Promise<StudioPlan | null> {
+  if (matchWorkflow(directive)) return null;
   const screenId = ctx.screenId || "20";
   const local = planStudioCapability(directive);
   if (local) return normalizeStudioPlan(local);
@@ -64,15 +67,58 @@ function emit(sessionId: string, type: "stage" | "decision", data: Record<string
   swarmEventBus.emitSwarmEvent({ sessionId, type, data: { source: "capability", ...data }, timestamp: new Date().toISOString() });
 }
 
+function clientUiCapability(id: string) {
+  return id.startsWith("studio.") || id.startsWith("nexus.") || id.startsWith("loops.");
+}
+
+function clientUiSummary(capId: string, input: Record<string, unknown>) {
+  if (capId === "studio.open_screen") return `الشاشة ${input.screenId}${input.hubId ? ` · ${input.hubId}` : ""}`;
+  if (capId === "nexus.rotate") return `delta ${input.delta ?? 0}`;
+  if (capId === "nexus.run_sector_command") return String(input.command ?? input.sectorId ?? input.stationId ?? "");
+  if (capId === "loops.run") return String(input.loopId ?? input.blueprintId ?? "التدflow النشط");
+  if (capId === "loops.run_node") return String(input.nodeId ?? "");
+  return "";
+}
+
 /** ينفذ خطة الوكيل عبر نفس المنفذ. الأوامر عالية الخطورة لا تُنفذ أبدًا من الوكيل؛ تُرسل للمدير للاعتماد. */
 export async function runStudioPlan(plan: StudioPlan, sessionId: string, autoExecute: boolean): Promise<string> {
   plan = normalizeStudioPlan(plan);
   const cap = CAPABILITY_BY_ID[plan.capabilityId];
   if (!cap) return `قدرة غير معروفة: ${plan.capabilityId}.`;
   emit(sessionId, "stage", { stage: "plan", capabilityId: cap.id, nodeId: cap.nodeId, summaryAr: `${cap.titleAr} (${plan.why})` });
+  if (clientUiCapability(cap.id) && cap.kind === "query") {
+    emit(sessionId, "stage", { stage: "ui", capabilityId: cap.id, nodeId: cap.nodeId, input: plan.input, summaryAr: cap.titleAr });
+    const extra = clientUiSummary(cap.id, plan.input);
+    return `${cap.titleAr}${extra ? `: ${extra}` : ""}.`;
+  }
+  if (cap.id.startsWith("loops.")) {
+    const { getSessionLoopSnapshot } = await import("@/lib/studio/automation/loops-store.server");
+    const snap = getSessionLoopSnapshot(sessionId);
+    const loopInput =
+      plan.input.loop || !snap
+        ? plan.input
+        : { ...plan.input, loop: snap, loopId: plan.input.loopId ?? snap.id };
+    emit(sessionId, "stage", { stage: "ui", capabilityId: cap.id, nodeId: cap.nodeId, input: loopInput, summaryAr: cap.titleAr });
+    const dryRun = loopInput.dryRun !== false && !autoExecute;
+    const r = await executeCapability({ capabilityId: cap.id, input: { ...loopInput, dryRun }, dryRun: true, actor: "agent", sessionId, autoExecute });
+    if (!r.ok) return `تعذر ${cap.titleAr}: ${r.error}.`;
+    if (cap.kind === "command" && autoExecute && loopInput.dryRun === false) {
+      const live = await executeCapability({
+        capabilityId: cap.id,
+        input: loopInput,
+        dryRun: false,
+        idempotencyKey: `agent_${sessionId}_${Date.now().toString(36)}`,
+        actor: "agent",
+        sessionId,
+        autoExecute,
+      });
+      return live.ok ? `نفذت ${cap.titleAr}.` : `لم أنفذ ${cap.titleAr}: ${live.error}.`;
+    }
+    return r.preview?.summaryAr ? `${r.preview.summaryAr}.` : `${cap.titleAr}: جاهز للتشغيل على الواجهة.`;
+  }
   if (cap.id.startsWith("studio.")) {
     emit(sessionId, "stage", { stage: "ui", capabilityId: cap.id, nodeId: cap.nodeId, input: plan.input, summaryAr: cap.titleAr });
-    return `${cap.titleAr}: ${String(plan.input.collection ?? plan.input.mapId ?? "")}${plan.input.q ? ` (بحث: ${plan.input.q})` : ""}.`;
+    return `${cap.titleAr}: ${String(plan.input.collection ?? plan.input.mapId ?? plan.input.screenId ?? "")}${plan.input.q ? ` (بحث: ${plan.input.q})` : ""}.`;
   }
   if (cap.kind === "query") {
     const r = await executeCapability({ capabilityId: cap.id, input: plan.input, dryRun: true, actor: "agent", sessionId });
@@ -92,4 +138,40 @@ export async function runStudioPlan(plan: StudioPlan, sessionId: string, autoExe
   }
   emit(sessionId, "stage", { stage: "proposal", capabilityId: cap.id, nodeId: cap.nodeId, input: plan.input, risk, summaryAr: preview.preview?.summaryAr });
   return `جهزت ${cap.titleAr}. ${preview.preview?.summaryAr}. بانتظار اعتمادك في نافذة المعاينة.`;
+}
+
+function mergeStepInput(step: WorkflowStep, previous: unknown): Record<string, unknown> {
+  const base = { ...(step.input ?? {}) };
+  if (step.inputFromPrevious && previous && typeof previous === "object") {
+    const row = previous as Record<string, unknown>;
+    if (step.inputFromPrevious in row) base[step.inputFromPrevious] = row[step.inputFromPrevious];
+  }
+  return base;
+}
+
+/** سير عمل حتمي متعدد الخطوات — يبث SSE لكل خطوة. */
+export async function runWorkflow(workflow: WorkflowDef, sessionId: string, autoExecute: boolean): Promise<string> {
+  emit(sessionId, "stage", { stage: "workflow", workflowId: workflow.id, summaryAr: workflow.labelAr });
+  const lines: string[] = [];
+  let previous: unknown;
+  for (const step of workflow.steps) {
+    const input = mergeStepInput(step, previous);
+    const plan: StudioPlan = { capabilityId: step.capabilityId, input, why: workflow.labelAr };
+    const line = await runStudioPlan(plan, sessionId, step.dryRun ? false : autoExecute);
+    lines.push(line);
+    if (step.capabilityId === "mcp.tool.invoke" || step.capabilityId.startsWith("records.") || step.capabilityId.endsWith(".read")) {
+      const r = await executeCapability({ capabilityId: step.capabilityId, input, dryRun: true, actor: "agent", sessionId });
+      previous = r.data ?? (r.preview as { data?: unknown } | undefined)?.data;
+    }
+  }
+  return lines.join(" ");
+}
+
+/** مسار واحد: workflow ثم خطة حتمية/فهرس. */
+export async function executeStudioDirective(directive: string, ctx: { screenId?: string }, sessionId: string, autoExecute: boolean): Promise<string | null> {
+  const wf = matchWorkflow(directive);
+  if (wf) return runWorkflow(wf, sessionId, autoExecute);
+  const plan = await planDirective(directive, ctx);
+  if (!plan) return null;
+  return runStudioPlan(plan, sessionId, autoExecute);
 }

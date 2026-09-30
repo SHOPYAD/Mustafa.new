@@ -52,6 +52,20 @@ export function resolveStudioVoiceIntent(raw: string): StudioVoiceIntent | null 
     };
   }
 
+  if (/(نكسس|nexus|مسرح nexus|سلايد البطاقات|الاسطوانه|orbital deck|البطاقات الهولوغراف)/i.test(text)) {
+    return {
+      screenId: "21",
+      reply: "فتحت مسرح Nexus — سلايد البطاقات. تمرير باليد أو الصوت، كف مبسوط لفتح القسم.",
+    };
+  }
+
+  if (/(استوديو العقد|الأتمتة والعقد|visual loops|blueprint|لووب|العقد والأتمت)/i.test(text)) {
+    return {
+      screenId: "22",
+      reply: "فتحت استوديو العقد والأتمتة البصرية. التشغيل يمر عبر pre-flight للمفاتيح ثم التنفيذ الحقيقي.",
+    };
+  }
+
   for (const screen of STUDIO_SCREENS) {
     const title = norm(screen.title);
     if (title.length >= 6 && text.includes(title)) {

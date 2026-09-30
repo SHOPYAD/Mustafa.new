@@ -321,5 +321,35 @@ export const STUDIO_SCREENS: StudioScreenDef[] = [
     fields: ["avatarState", "coreGlowIntensity", "headTiltYaw", "eyeVisorPulse", "audioLevel"],
     links: ["01", "11", "17", "18", "19"],
     risk: "انقطاع البث الصوتي أو ثبات وضعية الأفاتار دون إيماءات تفاعلية"
+  },
+  {
+    id: "21",
+    slug: "nexus-orbital-deck",
+    title: "مسرح Nexus — سلايد البطاقات الهولوغرافية",
+    scope: "كل أقسام المنصة على أسطوانة 3D · ماوس · لمس · كاميرا/يد · إعدادات سيبرانية",
+    file: "21-nexus-orbital-deck.png",
+    image: "/images/neural-studio/21-nexus-orbital-deck.png",
+    layout: "workspace",
+    nodes: ["NEXUS ORBITAL DECK", "بطاقات الأقسام", "تعقب اليد", "إحصائيات حية", "نوافذ الإعدادات"],
+    scenario: "تمرير البطاقات باليد أو الصوت، فتح القسم بكف مبسوط، إغلاق بقبضة، وتنفيذ أوامر القطاع",
+    capabilities: ["studio.navigate", "nexus.rotate", "nexus.select_sector", "nexus.run_sector_command"],
+    fields: ["hubId", "screenId", "readinessPct", "gestureState"],
+    links: ["20", "01", "22"],
+    risk: "فتح قسم دون اعتماد على إجراء كتابي عالي الخطورة"
+  },
+  {
+    id: "22",
+    slug: "visual-loops-automation-studio",
+    title: "استوديو العقد والأتمتة السيبرانية",
+    scope: "Interactive Visual Loops · سحب وربط العقد · تشغيل تنفيذي حقيقي · بوابة مفاتيح API",
+    file: "22-visual-loops-automation.png",
+    image: "/images/neural-studio/22-visual-loops-automation.png",
+    layout: "workspace",
+    nodes: ["Trigger", "RAG", "Model", "Skill", "Rule", "Action", "Review"],
+    scenario: "بناء blueprint، pre-flight للمفاتيح، تشغيل عقد MCP/jobs/capabilities مع سجل SSE حي",
+    capabilities: ["loops.run", "loops.run_node", "loops.select_sector", "mcp.executor"],
+    fields: ["blueprintId", "nodeId", "credentialProvider", "executionStatus"],
+    links: ["20", "21", "11", "12"],
+    risk: "تشغيل live بدون pre-flight أو اعتماد Review"
   }
 ];

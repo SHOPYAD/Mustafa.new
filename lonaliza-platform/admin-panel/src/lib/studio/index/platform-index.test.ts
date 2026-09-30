@@ -14,10 +14,27 @@ describe("platform index drift", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it("covers all studio screens 01..20", () => {
+  it("covers all studio screens 01..22", () => {
     for (const s of STUDIO_SCREENS) {
       expect(PLATFORM_INDEX_BY_ID[`screen.${s.id}`], s.id).toBeDefined();
     }
+    expect(STUDIO_SCREENS.some((s) => s.id === "21")).toBe(true);
+    expect(STUDIO_SCREENS.some((s) => s.id === "22")).toBe(true);
+  });
+
+  it("indexes nexus (21) and visual loops (22) with cockpit capabilities", () => {
+    const nexus = PLATFORM_INDEX_BY_ID["screen.21"];
+    expect(nexus?.screenId).toBe("21");
+    expect(nexus?.mapId).toBe("screen.21");
+    expect(nexus?.capabilityRefs).toEqual(
+      expect.arrayContaining(["nexus.rotate", "nexus.select_sector", "nexus.run_sector_command"])
+    );
+    const loops = PLATFORM_INDEX_BY_ID["screen.22"];
+    expect(loops?.screenId).toBe("22");
+    expect(loops?.mapId).toBe("screen.22");
+    expect(loops?.capabilityRefs).toEqual(
+      expect.arrayContaining(["loops.run", "loops.run_node", "loops.select_sector"])
+    );
   });
 
   it("covers every domain hub and collection item", () => {

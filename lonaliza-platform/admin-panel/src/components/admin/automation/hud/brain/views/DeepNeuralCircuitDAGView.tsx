@@ -149,8 +149,22 @@ export default function DeepNeuralCircuitDAGView() {
 
     let animId: number;
 
+    type BusTrace = {
+      x1: number;
+      y1: number;
+      x2: number;
+      y2: number;
+      color: string;
+      width: number;
+      opacity: number;
+      speed: number;
+      pulse: number;
+      x3?: number;
+      y3?: number;
+    };
+
     // Multi-bus parallel copper tracks with strict orthogonal and 45° angles
-    const busGroups = [
+    const busGroups: BusTrace[] = [
       // Bus Group 1: Horizontal Main Line across canvas
       ...Array.from({ length: 8 }).map((_, i) => ({
         x1: 0,
@@ -213,7 +227,7 @@ export default function DeepNeuralCircuitDAGView() {
         ctx.beginPath();
         ctx.moveTo(tr.x1, tr.y1);
         ctx.lineTo(tr.x2, tr.y2);
-        if ("x3" in tr && typeof tr.x3 === "number") {
+        if (typeof tr.x3 === "number" && typeof tr.y3 === "number") {
           ctx.lineTo(tr.x3, tr.y3);
         }
         ctx.strokeStyle = tr.color;

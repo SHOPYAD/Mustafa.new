@@ -2,15 +2,15 @@
   "day": "2026-09-30",
   "hotelbedsRequestsToday": 0,
   "hotelbedsCursor": null,
-  "lastTickAt": "2026-09-30T17:23:10.497Z",
+  "lastTickAt": "2026-09-30T19:49:31.989Z",
   "lastSyncAt": "2026-09-18T22:25:06.471Z",
   "lastRateHawkDumpAt": null,
   "lastRateHawkIncrementalAt": null,
   "seededGlobalAt": "2026-09-15T22:28:10.717Z",
-  "ticks": 6649,
+  "ticks": 6696,
   "lastResult": {
-    "at": "2026-09-30T17:23:16.375Z",
-    "durationMs": 5881,
+    "at": "2026-09-30T19:49:39.150Z",
+    "durationMs": 7164,
     "steps": [
       {
         "step": "seedDestinations",
@@ -21,7 +21,7 @@
         "step": "syncDiskCache",
         "status": "done",
         "count": 300,
-        "detail": "16658 pending"
+        "detail": "16661 pending"
       },
       {
         "step": "hotelbeds",

@@ -6,8 +6,13 @@ import { approveCancel, listPendingCancellations, rejectCancel, resolveChangeReq
 import { moderateReviewAdmin } from "@/lib/server/customer-reviews-store";
 import { swarmEventBus } from "@/lib/swarm/swarm-events";
 import { getCollectionMeta, redactRecord, SECRET_FIELD, searchFilter } from "@/lib/studio/server/pb-meta";
+import { executeMcpSwarmCall } from "@/lib/swarm/mcp-swarm-gateway";
+import { MCP_TOOL_ALLOWLIST } from "./mcp-capabilities.generated";
 import { CAPABILITY_BY_ID, effectiveRisk, isBlockedRoute, needsApproval, type Capability, type CapabilityRisk } from "./registry";
 import { getServerEnv } from "@/lib/server/env-store";
+import { executeBlueprint } from "@/lib/studio/automation/blueprint-runner.server";
+import { resolveBlueprintLoop } from "@/lib/studio/automation/loops-store.server";
+import type { BlueprintLoop } from "@/lib/studio/automation/blueprint-types";
 
 /** يستدعي مسار إدارة حقيقيًا من داخل الخادم (نفس المنطق والتحقق الذي تستخدمه اللوحة العادية). */
 async function callAdminRoute(route: string, method: string, body?: Record<string, unknown>) {
@@ -127,10 +132,42 @@ function emit(sessionId: string | undefined, type: "stage" | "log" | "decision",
   swarmEventBus.emitSwarmEvent({ sessionId: sessionId || "studio", type, data: { source: "capability", ...data }, timestamp: new Date().toISOString() });
 }
 
+function emitUi(sessionId: string | undefined, cap: Capability, input: Record<string, unknown>, summaryAr?: string) {
+  emit(sessionId, "stage", { stage: "ui", capabilityId: cap.id, nodeId: cap.nodeId, input, summaryAr: summaryAr ?? cap.titleAr });
+}
+
+function uiPreview(cap: Capability, input: Record<string, unknown>, sessionId?: string) {
+  emitUi(sessionId, cap, input);
+  return { summaryAr: cap.titleAr, effects: ["ui"], data: input };
+}
+
 class CapError extends Error {
   constructor(public status: number, message: string) {
     super(message);
   }
+}
+
+async function runLoopsBlueprint(
+  cap: Capability,
+  input: Record<string, unknown>,
+  sessionId: string | undefined,
+  dryRun: boolean,
+  nodeId?: string
+) {
+  const loop = resolveBlueprintLoop(input, sessionId) as BlueprintLoop | null;
+  if (!loop) throw new CapError(400, "loop_required");
+  const result = await executeBlueprint({ loop, dryRun, nodeId, source: "agent" });
+  if (result.blockedCredentials) {
+    emit(sessionId, "log", {
+      stage: "blocked_credentials",
+      capabilityId: cap.id,
+      nodeId: cap.nodeId,
+      credentialGaps: result.credentialGaps,
+      summaryAr: result.message,
+    });
+    throw new CapError(428, result.message || "blocked_credentials");
+  }
+  return result;
 }
 
 async function guardedRecord(pb: PocketBase, collection: string, id: string, expectedUpdated?: string) {
@@ -154,7 +191,7 @@ function cleanPatch(metaFields: { name: string; type: string; values: string[] |
 }
 
 /** قراءة/محاكاة بلا أثر جانبي. */
-async function preview(cap: Capability, input: Record<string, unknown>, pb: PocketBase): Promise<{ summaryAr: string; before?: unknown; after?: unknown; effects: string[]; data?: unknown }> {
+async function preview(cap: Capability, input: Record<string, unknown>, pb: PocketBase, sessionId?: string): Promise<{ summaryAr: string; before?: unknown; after?: unknown; effects: string[]; data?: unknown }> {
   switch (cap.id) {
     case "records.list": {
       const meta = await getCollectionMeta(String(input.collection));
@@ -230,6 +267,36 @@ async function preview(cap: Capability, input: Record<string, unknown>, pb: Pock
     case "studio.open_table":
     case "studio.open_record":
       return { summaryAr: cap.titleAr, effects: [], data: input };
+    case "studio.open_screen":
+    case "nexus.rotate":
+    case "nexus.run_sector_command":
+      return uiPreview(cap, input, sessionId);
+    case "loops.run": {
+      const dryRun = input.dryRun !== false;
+      const result = await runLoopsBlueprint(cap, input, sessionId, dryRun);
+      if (sessionId) emitUi(sessionId, cap, input, result.message);
+      return {
+        summaryAr: result.message,
+        effects: dryRun ? ["loops.execute.dry"] : ["loops.execute.live"],
+        data: result,
+      };
+    }
+    case "loops.run_node": {
+      const dryRun = input.dryRun !== false;
+      const nodeId = String(input.nodeId || "");
+      const result = await runLoopsBlueprint(cap, input, sessionId, dryRun, nodeId);
+      if (sessionId) emitUi(sessionId, cap, input, result.message);
+      return {
+        summaryAr: result.message,
+        effects: ["loops.executeNode"],
+        data: result,
+      };
+    }
+    case "mcp.tool.invoke": {
+      const toolName = String(input.toolName);
+      if (!MCP_TOOL_ALLOWLIST.has(toolName)) throw new CapError(403, "mcp_tool_not_allowed");
+      return { summaryAr: `معاينة ${toolName}`, effects: [`MCP ${toolName}`], data: { toolName, args: input.args } };
+    }
     case "briefing.readiness":
     case "finance.overview.read":
     case "publish.posts.list":
@@ -247,7 +314,7 @@ async function preview(cap: Capability, input: Record<string, unknown>, pb: Pock
   }
 }
 
-async function apply(cap: Capability, input: Record<string, unknown>, pb: PocketBase): Promise<unknown> {
+async function apply(cap: Capability, input: Record<string, unknown>, pb: PocketBase, sessionId?: string): Promise<unknown> {
   switch (cap.id) {
     case "records.update": {
       const { meta } = await guardedRecord(pb, String(input.collection), String(input.id), input.expectedUpdated as string | undefined);
@@ -294,6 +361,25 @@ async function apply(cap: Capability, input: Record<string, unknown>, pb: Pocket
       if (!r.ok) throw new CapError(400, r.error || "moderation_failed");
       return r;
     }
+    case "studio.open_screen":
+    case "nexus.rotate":
+    case "nexus.run_sector_command":
+      throw new CapError(501, "client_ui_only");
+    case "loops.run": {
+      const dryRun = input.dryRun !== false;
+      return runLoopsBlueprint(cap, input, sessionId, dryRun);
+    }
+    case "loops.run_node": {
+      const dryRun = input.dryRun !== false;
+      return runLoopsBlueprint(cap, input, sessionId, dryRun, String(input.nodeId || ""));
+    }
+    case "mcp.tool.invoke": {
+      const toolName = String(input.toolName);
+      if (!MCP_TOOL_ALLOWLIST.has(toolName)) throw new CapError(403, "mcp_tool_not_allowed");
+      const r = await executeMcpSwarmCall(toolName, (input.args as Record<string, unknown>) ?? {});
+      if (!r.ok) throw new CapError(400, r.error || "mcp_failed");
+      return r;
+    }
     default:
       throw new CapError(501, "capability_not_implemented");
   }
@@ -336,7 +422,7 @@ export async function executeCapability(req: ExecuteRequest): Promise<ExecuteRes
 
   try {
     if (req.dryRun || cap.kind === "query" || (cap.id === "admin.route.call" && String(input.method || "GET") === "GET")) {
-      const p = await preview(cap, input, pb);
+      const p = await preview(cap, input, pb, req.sessionId);
       const approvalRef = cap.kind === "command" ? await signApproval(cap.id, input) : undefined;
       if (cap.kind === "command") emit(req.sessionId, "stage", { stage: "preview", capabilityId: cap.id, nodeId: cap.nodeId, risk, summaryAr: p.summaryAr });
       return { ...base, ok: true, status: 200, risk, requiresApproval: approvalNeeded, approvalRef, preview: { summaryAr: p.summaryAr, before: p.before, after: p.after, effects: p.effects }, data: p.data };
@@ -355,7 +441,7 @@ export async function executeCapability(req: ExecuteRequest): Promise<ExecuteRes
     }
 
     emit(req.sessionId, "stage", { stage: "executing", capabilityId: cap.id, nodeId: cap.nodeId, risk });
-    const data = await apply(cap, input, pb);
+    const data = await apply(cap, input, pb, req.sessionId);
     const auditId = await audit(true, data);
     emit(req.sessionId, "decision", { stage: "done", capabilityId: cap.id, nodeId: cap.nodeId, ok: true, summaryAr: `${cap.titleAr}: تم` });
     return { ...base, ok: true, status: 200, risk, requiresApproval: false, data, auditId };

@@ -11,6 +11,7 @@
 | F6 القدرات | منجز | `capabilities/registry.ts` (13 قدرة)، `executor.server.ts` (zod، preview، approvalRef موقّع HMAC، idempotency، 409، `studio_audit_log`، SSE)، `agent-plan.ts` + `agent-router.server.ts` داخل `executeLangGraphDeliberation` |
 | F7 الحجوزات | منجز | الواجهة 03 على الغلاف: 6 أنظمة حقيقية؛ TableWindow/RecordWindow على `hotel_bookings` و`enquiry_bookings` و`customer_reviews`؛ اعتماد/رفض الإلغاء وحسم التعديل وحالة الطلب والإشراف على التقييمات عبر المعاينة |
 | F8 التعميم | منجز | 03..16 و01 و17 و18 و19 على نفس الغلاف؛ flow للمرجعين 04 و12، وtree للمرجعين 05 و06؛ 02 و20 تبقيان على مشهديهما الحاليين |
+| F9 Nexus + Visual Loops (21/22) | منجز (اختبارات) | `screensData` 21–22، `platform-index.generated` (`screen.21`/`screen.22`)، أوامر `agent-plan` (nexus/loops/open_screen)، `intent-router.fixture.test.ts`، `platform-index.test.ts`، `langgraph-routing.test.ts` |
 
 ## جولة الإكمال (2026-09-29)
 - الواجهة 02: سلسلة تراكمية حية (أطلس مصغر → مجال → نظام → كيان → حقول من مخطط PocketBase)، `buildExpansionMap` + `layoutCumulative`.
@@ -23,4 +24,11 @@
 - الواجهة 01: فرق البكسلات الخام 27.2/255، وفرق التكوين (بعد تنعيم 10px) 12.8. للمقارنة: إزاحة المرجع عن نفسه 3 بكسل تعطي 16.6، أي أن الخام يقيس مسار الشعيرات المرسومة يدويًا لا التكوين.
 - المجسم في الواجهة 20 يعتمد ملفات النموذج المخدومة من Next؛ لا يظهر في سكربت الرندرة (يعرض بديلًا ضوئيًا).
 
-NEXT_ACTION: مراجعة المدير للواجهات 02 و20 على الموقع الحي.
+## التحقق (2026-09-30 — production gaps 1–6)
+- **vitest:** `npm run test:studio` — studio/nexus/automation + `executor-loops.test.ts`.
+- **tsc:** `npx tsc --noEmit -p .` — أخطاء cyber-console: `DeepNeuralCircuitDAGView` (BusTrace). الباقي legacy (~220)؛ `next.config.ts` يتجاهل أخطاء البناء.
+- **توليد:** `npm run gen:studio` (= mcp-capabilities + platform-index + nexus-cards).
+- **loops.run:** تنفيذ خادمي عبر `executeBlueprint` + لقطة `/api/admin/studio/loops/state` من شاشة 22.
+- **نشر:** `./scripts/deploy-admin.sh` (بناء `.next-studio-staging` ثم swap `.next-live`).
+
+NEXT_ACTION: مراجعة بصرية 21/22؛ اعتماد `loops.run` حي (high risk) من المدير عند autoExecute.

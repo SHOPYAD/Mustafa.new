@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
+import { getStudioSessionId } from "@/lib/studio/capabilities/client";
 import * as THREE from "three";
 import {
   Play,
@@ -1185,89 +1186,238 @@ export default function VisualLoopsEngine() {
     }
   };
 
-  // Test single node execution
-  const handleTestSingleNode = (node: BlueprintLoopNode) => {
-    const timestamp = new Date().toLocaleTimeString("ar-SA", { hour12: false });
-    setExecutionLogs((prev) => [
-      `[${timestamp}] ⚡ بدء اختبار تشغيل العقدة المنفردة: ${node.title}`,
-      `[${timestamp}] ◈ التحقق من المعايير: ${JSON.stringify(node.parameters)}`,
-      `[${timestamp}] ✔ نجاح التنفيذ الفوري للعقدة (${node.id}) في زمن 42ms`,
-      ...prev,
-    ]);
+  const loopPayload = useCallback((loop: PlatformLoop) => {
+    return {
+      id: loop.id,
+      name: loop.name,
+      sector: loop.sector,
+      description: loop.description,
+      schedule: loop.schedule,
+      nodes: loop.nodes.map((n) => ({
+        id: n.id,
+        type: n.type,
+        title: n.title,
+        subtitle: n.subtitle,
+        details: n.details,
+        status: n.status,
+        model: n.model,
+        skills: n.skills,
+        rules: n.rules,
+        memoryContext: n.memoryContext,
+        parameters: n.parameters,
+        position: n.position,
+      })),
+      connections: loop.connections,
+    };
+  }, []);
+
+  useEffect(() => {
+    const loop = loopPayload(activeLoop);
+    const sessionId = getStudioSessionId();
+    void fetch("/api/admin/studio/loops/state", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ sessionId, loop }),
+    }).catch(() => undefined);
+  }, [activeLoop, loopPayload]);
+
+  type ExecuteApiBody = {
+    ok: boolean;
+    blockedCredentials?: boolean;
+    credentialGaps?: Array<{ labelAr: string; settingsUrl?: string }>;
+    graphErrors?: string[];
+    message?: string;
+    completedPct?: number;
+    steps?: Array<{ nodeId: string; ok: boolean; message: string; durationMs: number }>;
+    error?: string;
   };
 
-  // Run the full flow sequentially with live animated pulses & pre-flight checks
+  const applyStepStatuses = useCallback(
+    (loopId: string, steps: NonNullable<ExecuteApiBody["steps"]>) => {
+      const stepMap = new Map(steps.map((s) => [s.nodeId, s]));
+      setLoops((prev) =>
+        prev.map((l) => {
+          if (l.id !== loopId) return l;
+          return {
+            ...l,
+            nodes: l.nodes.map((n) => {
+              const step = stepMap.get(n.id);
+              if (!step) return n;
+              return {
+                ...n,
+                status: step.ok ? ("completed" as const) : ("error" as const),
+              };
+            }),
+          };
+        })
+      );
+    },
+    []
+  );
+
+  const runLoopOnServer = useCallback(
+    async (opts: { nodeId?: string; dryRun: boolean; source?: "manual" | "voice" | "agent" }) => {
+      const timestamp = new Date().toLocaleTimeString("ar-SA", { hour12: false });
+      const loop = loopPayload(activeLoop);
+
+      const preflightRes = await fetch("/api/admin/studio/loops/preflight", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ loop }),
+      });
+      const preflight = (await preflightRes.json()) as {
+        ok?: boolean;
+        status?: string;
+        saySupervisorAr?: string;
+        credentials?: { gaps?: Array<{ labelAr: string }> };
+      };
+
+      if (!preflightRes.ok || preflight.status === "blocked_credentials") {
+        const msg =
+          preflight.saySupervisorAr ||
+          preflight.credentials?.gaps?.map((g) => g.labelAr).join(" · ") ||
+          "فشل فحص الجاهزية — ينقص ربط API.";
+        setExecutionLogs((prev) => [`[${timestamp}] ⚠️ ${msg}`, ...prev]);
+        setIsCredsVaultOpen(true);
+        window.dispatchEvent(
+          new CustomEvent("studio:chat-line", { detail: { speaker: "الوكيل المشرف", text: msg } })
+        );
+        return null;
+      }
+
+      const execRes = await fetch("/api/admin/studio/loops/execute", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          loop,
+          dryRun: opts.dryRun,
+          nodeId: opts.nodeId,
+          source: opts.source ?? "manual",
+        }),
+      });
+      const data = (await execRes.json()) as ExecuteApiBody;
+
+      if (data.blockedCredentials) {
+        setExecutionLogs((prev) => [
+          `[${timestamp}] ⚠️ ${data.message || "blocked_credentials"}`,
+          ...prev,
+        ]);
+        setIsCredsVaultOpen(true);
+        return data;
+      }
+
+      if (data.steps?.length) {
+        applyStepStatuses(activeLoop.id, data.steps);
+      }
+
+      const lines = (data.steps || []).map((step) => {
+        const mark = step.ok ? "✔" : "✖";
+        return `[${timestamp}] ${mark} ${step.message} (${step.durationMs}ms)`;
+      });
+
+      if (data.graphErrors?.length) {
+        lines.unshift(`[${timestamp}] ✖ ${data.graphErrors.join(" · ")}`);
+      }
+
+      if (data.ok && (data.completedPct === 100 || data.steps?.every((s) => s.ok))) {
+        lines.unshift(`[${timestamp}] ✔ ${data.message || "اكتمل التدflow."}`);
+      } else if (!data.ok) {
+        lines.unshift(`[${timestamp}] ✖ ${data.message || data.error || "توقف التدflow."}`);
+      }
+
+      setExecutionLogs((prev) => [...lines, ...prev]);
+      return data;
+    },
+    [activeLoop, applyStepStatuses, loopPayload]
+  );
+
+  const handleTestSingleNode = async (node: BlueprintLoopNode) => {
+    if (isRunning) return;
+    setIsRunning(true);
+    const timestamp = new Date().toLocaleTimeString("ar-SA", { hour12: false });
+    setExecutionLogs((prev) => [
+      `[${timestamp}] ⚡ اختبار عقدة: ${node.title} (dry-run)`,
+      ...prev,
+    ]);
+    try {
+      await runLoopOnServer({ nodeId: node.id, dryRun: true });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "execute_failed";
+      setExecutionLogs((prev) => [`[${timestamp}] ✖ ${msg}`, ...prev]);
+    } finally {
+      setIsRunning(false);
+      setActiveStepIndex(-1);
+    }
+  };
+
   const handleRunLoop = async () => {
     if (isRunning) return;
-
-    // 1. Pre-Flight Validation Check for Ads / External API credentials
-    if (activeLoop.sector === "ads") {
-      try {
-        const connRes = await fetch("/api/admin/automation/connections");
-        const connData = (await connRes.json()) as {
-          ok: boolean;
-          ads?: { dryRun?: boolean; missingMeta?: string[] };
-        };
-        if (
-          connData.ok &&
-          (connData.ads?.dryRun || (connData.ads?.missingMeta && connData.ads.missingMeta.length > 0))
-        ) {
-          // Mark ads-node-4 as alert
-          setLoops((prev) =>
-            prev.map((l) =>
-              l.id === activeLoop.id
-                ? {
-                    ...l,
-                    nodes: l.nodes.map((n) =>
-                      n.id === "ads-node-4" ? { ...n, status: "error" as const } : n
-                    ),
-                  }
-                : l
-            )
-          );
-          const alertTime = new Date().toLocaleTimeString("ar-SA", { hour12: false });
-          setExecutionLogs((prev) => [
-            `[${alertTime}] ⚠️ فحص الجاهزية Pre-Flight: ينقص مفتاح ربط Meta Graph API ومعرف الحساب!`,
-            `[${alertTime}] ◈ تم فتح درج إدخال المفاتيح السحابي لربط البيانات واختبارها فورياً.`,
-            ...prev,
-          ]);
-          setIsCredsVaultOpen(true);
-          return;
-        }
-      } catch (err) {
-        console.warn("Pre-flight check warning:", err);
-      }
-    }
-
     setIsRunning(true);
     setActiveStepIndex(0);
     const timestamp = new Date().toLocaleTimeString("ar-SA", { hour12: false });
     setExecutionLogs([
       `[${timestamp}] ◈ إطلاق تدفق الأتمتة: ${activeLoop.name}`,
-      `[${timestamp}] ◈ عدد العقد المسجلة: ${activeLoop.nodes.length} عقدة تفاعلية`,
+      `[${timestamp}] ◈ عدد العقد: ${activeLoop.nodes.length}`,
     ]);
 
-    for (let i = 0; i < activeLoop.nodes.length; i++) {
-      setActiveStepIndex(i);
-      const node = activeLoop.nodes[i];
-      const time = new Date().toLocaleTimeString("ar-SA", { hour12: false });
-      setExecutionLogs((prev) => [
-        `[${time}] ⬡ جاري معالجة العقدة 0${i + 1}: ${node.title}...`,
-        ...prev,
-      ]);
-      // Artificial delay to visualize the particle flow
-      await new Promise((resolve) => setTimeout(resolve, 850));
+    try {
+      const data = await runLoopOnServer({ dryRun: false });
+      if (data?.steps) {
+        const failIdx = data.steps.findIndex((s) => !s.ok);
+        setActiveStepIndex(failIdx >= 0 ? failIdx : data.steps.length - 1);
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "execute_failed";
+      setExecutionLogs((prev) => [`[${timestamp}] ✖ ${msg}`, ...prev]);
+    } finally {
+      setActiveStepIndex(-1);
+      setIsRunning(false);
     }
-
-    const finishTime = new Date().toLocaleTimeString("ar-SA", { hour12: false });
-    setExecutionLogs((prev) => [
-      `[${finishTime}] ✔ اكتمل تنفيذ كافة العقد بنجاح بنسبة دقة 100%!`,
-      `[${finishTime}] ◈ تم إشعار منظومة الحوكمة والتحقق من سلامة العمليات.`,
-      ...prev,
-    ]);
-    setActiveStepIndex(-1);
-    setIsRunning(false);
   };
+
+  const runLoopRef = useRef(handleRunLoop);
+  const testNodeRef = useRef(handleTestSingleNode);
+  const selectedNodeRef = useRef(selectedNode);
+  runLoopRef.current = handleRunLoop;
+  testNodeRef.current = handleTestSingleNode;
+  selectedNodeRef.current = selectedNode;
+
+  useEffect(() => {
+    const mapVoiceSector = (raw: string): LoopSector | null => {
+      const aliases: Record<string, LoopSector> = {
+        meta: "ads",
+        ads: "ads",
+        flights: "tours",
+        hotels: "distribution",
+        transfers: "tours",
+      };
+      if (aliases[raw]) return aliases[raw];
+      const allowed: LoopSector[] = ["all", "ads", "social", "video", "articles", "tours", "distribution"];
+      return allowed.includes(raw as LoopSector) ? (raw as LoopSector) : null;
+    };
+
+    const onRun = () => {
+      void runLoopRef.current();
+    };
+    const onRunNode = () => {
+      const node = selectedNodeRef.current;
+      if (node) void testNodeRef.current(node);
+    };
+    const onSector = (ev: Event) => {
+      const sector = (ev as CustomEvent<{ sector?: string }>).detail?.sector;
+      if (!sector) return;
+      const mapped = mapVoiceSector(sector);
+      if (mapped) setSelectedSector(mapped);
+    };
+    window.addEventListener("studio:loops-run", onRun);
+    window.addEventListener("studio:loops-run-node", onRunNode);
+    window.addEventListener("studio:loops-select-sector", onSector);
+    return () => {
+      window.removeEventListener("studio:loops-run", onRun);
+      window.removeEventListener("studio:loops-run-node", onRunNode);
+      window.removeEventListener("studio:loops-select-sector", onSector);
+    };
+  }, []);
 
   // Reset Canvas View
   const handleResetCanvas = () => {

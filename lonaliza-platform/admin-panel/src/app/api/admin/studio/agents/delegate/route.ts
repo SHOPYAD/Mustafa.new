@@ -13,7 +13,8 @@ export async function POST(req: NextRequest) {
   const directive = String(body?.directive ?? "").trim().slice(0, 2000);
   if (!directive) return NextResponse.json({ ok: false, error: "directive_required" }, { status: 400 });
   const sessionId = String(body?.sessionId ?? "studio").slice(0, 80);
-  const tasks = await delegate(directive, sessionId, body?.autoExecute === true);
+  const screenId = String(body?.screenId ?? "20").replace(/[^\d]/g, "").slice(0, 2) || "20";
+  const tasks = await delegate(directive, sessionId, body?.autoExecute === true, 120_000, screenId);
   const done = tasks.filter((t) => t.status === "done" || t.status === "failed");
   const summary =
     tasks.length === 1

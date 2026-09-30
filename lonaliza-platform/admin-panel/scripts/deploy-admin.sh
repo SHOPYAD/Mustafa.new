@@ -7,7 +7,7 @@ cd "$(dirname "$0")/.."
 
 echo "[deploy] building into .next-studio-staging"
 rm -rf .next-studio-staging
-NEXT_DIST_DIR=.next-studio-staging NODE_OPTIONS=--max-old-space-size=8192 npx next build
+NEXT_DIST_DIR=.next-studio-staging NODE_OPTIONS=--max-old-space-size=8192 pnpm exec next build
 
 test -f .next-studio-staging/BUILD_ID || { echo "[deploy] build incomplete"; exit 1; }
 

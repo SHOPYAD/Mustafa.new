@@ -350,6 +350,29 @@ function main() {
     });
   }
 
+  const nexusSectors = [
+    { id: "nexus-hotels", stationId: "hotels", label: "محرك الفنادق والـ GDS" },
+    { id: "nexus-flights", stationId: "flights", label: "رادار تذاكر الطيران" },
+    { id: "nexus-transfers", stationId: "transfers", label: "النقل والمواصلات" },
+    { id: "nexus-b2b", stationId: "b2b", label: "شبكة B2B والموزعين" },
+    { id: "nexus-ads", stationId: "ads", label: "حملات الإعلانات" },
+    { id: "nexus-social", stationId: "social", label: "النشر والسوشيال" },
+  ];
+  for (const sec of nexusSectors) {
+    addNode({
+      id: `nexus.sector.${sec.id}`,
+      kind: "domain_hub",
+      screenId: "21",
+      hubId: sec.stationId,
+      labels: { ar: sec.label },
+      keywords: kws(sec.label, sec.stationId, sec.id.replace("nexus-", "")),
+      capabilityRefs: ["nexus.rotate", "nexus.run_sector_command", "studio.open_screen"],
+      defaultIntent: "navigate",
+      risk: "low",
+      evidence: "HolographicCylinderStage:NEXUS_SECTOR_CARDS",
+    });
+  }
+
   nodes.sort((a, b) => a.id.localeCompare(b.id));
 
   const lexEntries = [...lexicon.entries()]

@@ -21,6 +21,13 @@ import { setHudArticleSnapshot } from "@/lib/swarm/article-hud-snapshot";
 import { isArticleDirective, peekDestination, type ArticlePipelineClient } from "@/lib/swarm/article-pipeline-types";
 import { routeUtterance, type NavTarget } from "@/lib/studio/commands/catalog";
 import { plansFromIntent, resolveIntent } from "@/lib/studio/index/intent-router";
+import { norm } from "@/lib/studio/capabilities/agent-plan";
+import { setStudioContext } from "@/lib/studio/capabilities/client";
+import { useAgentBridge } from "./shell/useAgentBridge";
+import { NEXUS_SECTOR_CARDS } from "../nexus/HolographicCylinderStage";
+import { NEXUS_HUB_CARDS } from "@/lib/studio/nexus/nexus-cards.generated";
+import NexusOrbitalStage from "./NexusOrbitalStage";
+import VisualLoopsStage from "./VisualLoopsStage";
 
 interface UnifiedCyberneticStudioProps {
   initialScreenId?: string;
@@ -73,6 +80,10 @@ export default function UnifiedCyberneticStudio({
     return false;
   });
 
+  useEffect(() => {
+    setStudioContext(studioSessionId, isAutoExecution);
+  }, [studioSessionId, isAutoExecution]);
+
   const handleToggleAutoExecution = useCallback(() => {
     setIsAutoExecution((prev) => {
       const next = !prev;
@@ -105,6 +116,7 @@ export default function UnifiedCyberneticStudio({
             source: "director_voice",
             mode: "sync",
             sessionId: studioSessionId,
+            screenId: currentScreenId,
             autoExecute: isAutoExecution,
           }),
         });
@@ -131,7 +143,7 @@ export default function UnifiedCyberneticStudio({
         return "تعذر الاتصال بمسار المقال. لم يُنشر شيء.";
       }
     },
-    [studioSessionId, isAutoExecution]
+    [studioSessionId, isAutoExecution, currentScreenId]
   );
 
   const [submittedUserDirective, setSubmittedUserDirective] = useState<{ id: string; text: string; time: string } | null>(null);
@@ -213,6 +225,52 @@ export default function UnifiedCyberneticStudio({
       useAvatarStore.getState().setState("idle");
     }
   }, [isAgentSpeaking, isUserSpeaking, isProcessing, audioFrequencies]);
+
+  const isShellScreenForBridge = ["01", "02", "03", "17", "18", "19"].includes(currentScreenId) || !!domainScreen(currentScreenId);
+
+  const applyCapabilityUiFromBridge = useCallback(
+    (capabilityId: string, input: Record<string, unknown>) => {
+      if (capabilityId === "studio.open_screen" && typeof input.screenId === "string") {
+        openScreen(input.screenId, typeof input.hubId === "string" ? input.hubId : null);
+        return;
+      }
+      if (capabilityId.startsWith("nexus.") || capabilityId.startsWith("loops.")) {
+        const eventName = `studio:${capabilityId.replace(/\./g, "-").replace(/_/g, "-")}`;
+        window.dispatchEvent(new CustomEvent(eventName, { detail: input }));
+        return;
+      }
+      if (capabilityId === "studio.open_table" && typeof input.collection === "string") {
+        if (!isShellScreenForBridge) openScreen("01");
+        window.dispatchEvent(new CustomEvent("studio:capability-ui", { detail: { capabilityId, input } }));
+      }
+      if (capabilityId === "studio.navigate" && typeof input.mapId === "string") {
+        if (!isShellScreenForBridge) openScreen("01");
+        window.dispatchEvent(new CustomEvent("studio:capability-ui", { detail: { capabilityId, input } }));
+      }
+      if (capabilityId === "studio.open_record" && typeof input.collection === "string") {
+        if (!isShellScreenForBridge) openScreen("01");
+        window.dispatchEvent(new CustomEvent("studio:capability-ui", { detail: { capabilityId, input } }));
+      }
+    },
+    [currentScreenId, isShellScreenForBridge]
+  );
+
+  useAgentBridge(
+    studioSessionId,
+    {
+      isListening,
+      isUserSpeaking,
+      isAgentSpeaking,
+      isProcessing,
+      audioFrequencies,
+    },
+    {
+      onUi: applyCapabilityUiFromBridge,
+      onProposal: (capabilityId, input) => {
+        window.dispatchEvent(new CustomEvent("studio:capability-proposal", { detail: { capabilityId, input } }));
+      },
+    }
+  );
 
   function openScreen(id: string, focus: string | null = null) {
     if (id === "01" && currentScreenId !== "01") setDepthLevel(0);
@@ -296,6 +354,67 @@ export default function UnifiedCyberneticStudio({
 
   async function runLocalCommand(text: string): Promise<string | false | null> {
     const ctx = { screenId: currentScreenId, last: lastNav };
+    const d = norm(text);
+    if (currentScreenId === "21") {
+      if (/(البطاقه التاليه|البطاقة التالية|يمين|next)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:nexus-rotate", { detail: { delta: 1 } }));
+        await saySupervisor("البطاقة التالية.");
+        return false;
+      }
+      if (/(البطاقه السابق|البطاقة السابقة|يسار|prev)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:nexus-rotate", { detail: { delta: -1 } }));
+        await saySupervisor("البطاقة السابقة.");
+        return false;
+      }
+      if (/(افتح البطاق|افتح القسم|open sector)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:nexus-open-sector", { detail: {} }));
+        await saySupervisor("فتح القسم النشط.");
+        return false;
+      }
+      if (/(شغّل الكام|شغل الكام|تتبع اليد|hand track|camera)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:nexus-toggle-camera", { detail: {} }));
+        await saySupervisor("تبديل تتبع الكامera/اليد.");
+        return false;
+      }
+      const sector =
+        NEXUS_HUB_CARDS.find(
+          (c) => d.includes(norm(c.titleAr)) || d.includes(norm(c.category)) || d.includes(c.hubId) || d.includes(c.stationId)
+        ) ||
+        NEXUS_SECTOR_CARDS.find(
+          (c) => d.includes(norm(c.titleAr)) || d.includes(norm(c.category)) || d.includes(c.stationId)
+        );
+      if (sector) {
+        window.dispatchEvent(
+          new CustomEvent("studio:nexus-select-sector", {
+            detail: {
+              stationId: sector.stationId,
+              hubId: "hubId" in sector ? sector.hubId : undefined,
+              sectorId: sector.id,
+            },
+          })
+        );
+        await saySupervisor(`انتقلت إلى ${sector.category}.`);
+        return false;
+      }
+    }
+    if (currentScreenId === "22") {
+      if (/(شغّل التدflow|شغل التدflow|run loop|نفّذ الblueprint|نفذ الblueprint)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:loops-run", { detail: {} }));
+        await saySupervisor("تشغيل التدflow.");
+        return false;
+      }
+      if (/(اختبر العقد|شغّل العقد|شغل العقد|run node)/.test(d)) {
+        window.dispatchEvent(new CustomEvent("studio:loops-run-node", { detail: {} }));
+        await saySupervisor("اختبار العقدة النشطة.");
+        return false;
+      }
+      if (/(meta|فنادق|ads|اعلان|طيران|flights|transfer|نقل)/.test(d)) {
+        const sector = /meta|ads|اعلان/.test(d) ? "meta" : /flights|طيران/.test(d) ? "flights" : /transfer|نقل/.test(d) ? "transfers" : "hotels";
+        window.dispatchEvent(new CustomEvent("studio:loops-select-sector", { detail: { sector } }));
+        await saySupervisor(`قطاع ${sector}.`);
+        return false;
+      }
+    }
     const resolved = resolveIntent(text, ctx);
     if (resolved.nodeId) {
       window.dispatchEvent(new CustomEvent("studio:index-node", { detail: { nodeId: resolved.nodeId } }));
@@ -410,7 +529,7 @@ export default function UnifiedCyberneticStudio({
         onZoomOut={() => setAtlasZoom((value) => Math.max(0.7, Number((value - 0.1).toFixed(2))))}
         dockNote={currentScreenId === "01" ? dockNote : undefined}
         onOpenHelp={() => setIsReferenceModalOpen(true)}
-        showAgentControls={currentScreenId === "20"}
+        showAgentControls={currentScreenId === "20" || currentScreenId === "21" || currentScreenId === "22"}
       />
       )}
 
@@ -423,6 +542,14 @@ export default function UnifiedCyberneticStudio({
             isListening={isUserSpeaking || isListening}
             frequencies={audioFrequencies}
           />
+        ) : currentScreenId === "21" ? (
+          <NexusOrbitalStage
+            audioFrequencies={audioFrequencies}
+            onOpenScreen={(id) => openScreen(id)}
+            onAskAgent={askAgentFromStage}
+          />
+        ) : currentScreenId === "22" ? (
+          <VisualLoopsStage />
         ) : isShellScreen ? (
           <StudioShell
             screenId={currentScreenId}
@@ -532,7 +659,14 @@ export default function UnifiedCyberneticStudio({
         resetKey={resetWindowsKey}
         onSelectScreen={(id) => openScreen(id)}
         articlePipeline={articlePipeline}
-        showWindowRestore={currentScreenId !== "01" && currentScreenId !== "02" && currentScreenId !== "03" && !domainScreen(currentScreenId)}
+        showWindowRestore={
+          currentScreenId !== "01" &&
+          currentScreenId !== "02" &&
+          currentScreenId !== "03" &&
+          currentScreenId !== "21" &&
+          currentScreenId !== "22" &&
+          !domainScreen(currentScreenId)
+        }
         onSendDirective={async (text) => {
           const aimed = await replyAsSelectedAgent(text);
           if (aimed === false) return "";

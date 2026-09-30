@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { ChevronDown, ChevronLeft, Layers, Network, Search, UserRound, X } from "lucide-react";
+import { ChevronDown, ChevronLeft, GitBranch, Layers, Network, Orbit, Search, UserRound, X } from "lucide-react";
 import { buildAdminNav, type NavGroup, type NavLeaf } from "@/components/admin/admin-nav";
 import type { Dictionary } from "@/lib/i18n/types";
 import { screenForGroup, studioTargetForHref } from "@/lib/studio/graph/maps";
@@ -10,6 +10,8 @@ import { FONT, UI } from "@/lib/studio/tokens";
 
 const PINNED = [
   { screenId: "20", label: "الحضور البشري والصوت الحي", hint: "الواجهة الرئيسية", icon: UserRound },
+  { screenId: "21", label: "مسرح Nexus — سلايد البطاقات", hint: "ماوس · لمس · كاميرا/يد", icon: Orbit },
+  { screenId: "22", label: "استوديو العقد والأتمتة البصرية", hint: "سحب · ربط · تشغيل تنفيذي", icon: GitBranch },
   { screenId: "01", label: "الأطلس العصبي الشامل", hint: "كل المجالات حول الوكيل", icon: Network },
   { screenId: "02", label: "التوسع التراكمي الشامل", hint: "مجال ← نظام ← كيان", icon: Layers },
 ];

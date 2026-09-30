@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "test:studio": "vitest run src/lib/studio src/lib/neural-studio src/components/admin/automation/hud/nexus src/lib/studio/automation",
+    "gen:studio": "node scripts/gen-mcp-capabilities.cjs && node scripts/gen-platform-index.cjs && node scripts/gen-nexus-cards.cjs",
     "import-geo-places": "node scripts/import-geo-places.mjs",
     "import-airports": "node scripts/import-airports.mjs",
     "automation-worker": "node scripts/automation-worker.mjs"

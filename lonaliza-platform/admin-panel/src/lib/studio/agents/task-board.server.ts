@@ -6,7 +6,6 @@ import { swarmEventBus } from "@/lib/swarm/swarm-events";
 import { DOMAIN_SCREENS } from "@/lib/neural-studio/domain-systems";
 import { CAPABILITY_BY_ID } from "@/lib/studio/capabilities/registry";
 import { planStudioCapability, splitOperationalParts, type StudioPlan } from "@/lib/studio/capabilities/agent-plan";
-import { planDirective, runStudioPlan } from "@/lib/studio/capabilities/agent-router.server";
 
 export type AgentTaskStatus = "queued" | "running" | "done" | "failed";
 
@@ -151,20 +150,43 @@ async function splitDirective(directive: string): Promise<{ agentId: string; dir
   return tasks?.length ? tasks : [{ agentId: "panel_operator", directive }];
 }
 
-async function runTask(task: AgentTask, autoExecute: boolean) {
+async function runTask(task: AgentTask, autoExecute: boolean, screenId = "20") {
   task.status = "running";
   step(task, "بدأ العمل");
   try {
-    const plan = await planDirective(task.directive);
-    if (plan) {
-      task.capabilityId = plan.capabilityId;
-      task.nodeId = nodeOf(plan);
-      step(task, `قدرة: ${plan.capabilityId}`);
-      task.result = await runStudioPlan(plan, task.sessionId, autoExecute);
-    } else {
+    const { dispatchInternalDirective } = await import("@/lib/studio/graph/internal-engine");
+    const internal = await dispatchInternalDirective(task.directive, task.sessionId, { autoExecute, screenId });
+    if (internal.handled) {
+      task.result = internal.reply;
+      task.status = "done";
+      task.endedAt = new Date().toISOString();
+      step(task, "اكتمل (محرك داخلي)");
+      void persist(task);
+      return;
+    }
+    if (!internal.allowFullSwarm) {
       const { routeUtterance } = await import("@/lib/studio/commands/catalog");
       const { looksOperational } = await import("@/lib/studio/capabilities/agent-plan");
-      const route = routeUtterance(task.directive, { screenId: "20", last: null });
+      const route = routeUtterance(task.directive, { screenId, last: null });
+      if (route.kind !== "article" && route.kind !== "discuss" && (route.kind !== "none" || looksOperational(task.directive))) {
+        task.result = route.kind === "none" ? "لم أجد هذا القسم في فهرس اللوحة، ولم أستدعِ نموذجاً مدفوعاً." : "هذا الطلب إداري ويُنفَّذ من فهرس الشاشة لا من النموذج.";
+        task.status = "done";
+        task.endedAt = new Date().toISOString();
+        step(task, "اكتمل");
+        void persist(task);
+        return;
+      }
+      task.result = "لم أستطع حسم الطلب محلياً دون سرب الوكلاء.";
+      task.status = "failed";
+      task.endedAt = new Date().toISOString();
+      step(task, task.result);
+      void persist(task);
+      return;
+    }
+    {
+      const { routeUtterance } = await import("@/lib/studio/commands/catalog");
+      const { looksOperational } = await import("@/lib/studio/capabilities/agent-plan");
+      const route = routeUtterance(task.directive, { screenId, last: null });
       if (route.kind !== "article" && route.kind !== "discuss" && (route.kind !== "none" || looksOperational(task.directive))) {
         task.result = route.kind === "none" ? "لم أجد هذا القسم في فهرس اللوحة، ولم أستدعِ نموذجاً مدفوعاً." : "هذا الطلب إداري ويُنفَّذ من فهرس الشاشة لا من النموذج.";
         task.status = "done";
@@ -191,7 +213,7 @@ async function runTask(task: AgentTask, autoExecute: boolean) {
 }
 
 /** تفويض متوازٍ: يعيد المهام فورًا، وينتظر اكتمالها حتى timeoutMs لإرجاع ملخص. */
-export async function delegate(directive: string, sessionId: string, autoExecute: boolean, timeoutMs = 120_000) {
+export async function delegate(directive: string, sessionId: string, autoExecute: boolean, timeoutMs = 120_000, screenId = "20") {
   const parts = await splitDirective(directive);
   const agents = new Map(boardAgents().map((a) => [a.id, a]));
   const tasks: AgentTask[] = parts.map((p, i) => ({
@@ -209,7 +231,7 @@ export async function delegate(directive: string, sessionId: string, autoExecute
     emit(t, "أُسندت");
   }
   if (board.size > 200) for (const k of [...board.keys()].slice(0, board.size - 200)) board.delete(k);
-  const all = Promise.allSettled(tasks.map((t) => runTask(t, autoExecute)));
+  const all = Promise.allSettled(tasks.map((t) => runTask(t, autoExecute, screenId)));
   await Promise.race([all, new Promise((r) => setTimeout(r, timeoutMs))]);
   return tasks;
 }
