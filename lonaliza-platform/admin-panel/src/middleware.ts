@@ -8,6 +8,7 @@ import {
   verifyAdminSessionToken,
 } from "@/lib/admin-session-token";
 import { APP_SHELL_COOKIE, APP_SHELL_HEADER } from "@/lib/mobile/app-mode";
+import { REQUEST_ID_HEADER, resolveRequestId } from "@/lib/request-id";
 
 const COOKIE_DAYS = 30;
 
@@ -41,6 +42,7 @@ async function adminSessionOk(req: NextRequest): Promise<boolean> {
 }
 
 export async function middleware(req: NextRequest) {
+  const requestId = resolveRequestId(req.headers.get(REQUEST_ID_HEADER));
   const path = req.nextUrl.pathname;
   const isAdmin = path.startsWith("/admin");
   const isAdminLogin = path === "/admin/login";
@@ -72,6 +74,7 @@ export async function middleware(req: NextRequest) {
       req.nextUrl.searchParams.get("shell") === "1");
 
   const requestHeaders = new Headers(req.headers);
+  requestHeaders.set(REQUEST_ID_HEADER, requestId);
   if (isAppReq) {
     requestHeaders.set(APP_SHELL_HEADER, "1");
   }
@@ -81,6 +84,7 @@ export async function middleware(req: NextRequest) {
       headers: requestHeaders,
     },
   });
+  res.headers.set(REQUEST_ID_HEADER, requestId);
 
   if (isAppReq && req.cookies.get(APP_SHELL_COOKIE)?.value !== "1") {
     res.cookies.set(APP_SHELL_COOKIE, "1", {
@@ -108,6 +112,7 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|tpwl|web/|content/|transfer/).*)",
+    "/api/:path*",
+    "/((?!_next/static|_next/image|favicon.ico|tpwl|web/|content/|transfer/).*)",
   ],
 };

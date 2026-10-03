@@ -85,16 +85,19 @@ export function planStudioCapability(directive: string): StudioPlan | null {
   if (search && coll) return { capabilityId: "studio.open_table", input: { collection: coll.collection, q: search[1].trim().slice(0, 80) }, why: "بحث في جدول" };
   if (coll && /كم عدد/.test(d)) return { capabilityId: "records.list", input: { collection: coll.collection }, why: "عدّ سجلات" };
   if (coll && /(جدول|سجلات)/.test(d)) return { capabilityId: "studio.open_table", input: { collection: coll.collection }, why: "فتح جدول" };
-  if (OPEN.test(d)) {
-    const node = nodeAliases().find((a) => d.includes(a.alias));
-    if (node) return { capabilityId: "studio.navigate", input: { mapId: node.mapId, nodeId: node.nodeId }, why: `عرض ${node.label}` };
-    if (coll) return { capabilityId: "studio.open_table", input: { collection: coll.collection }, why: "فتح جدول" };
-  }
   if (/(نكسus|nexus|orbital|هولوغر|هولوجر|سلايد البطاق|الاسطوان|orbital deck|مسرح nexus)/.test(d)) {
     return { capabilityId: "studio.open_screen", input: { screenId: "21" }, why: "فتح مسرح Nexus" };
   }
   if (/(استوديو العقد|visual loops|blueprint|العقد والاتمت|العقد والأتمت|visual loop)/.test(d)) {
     return { capabilityId: "studio.open_screen", input: { screenId: "22" }, why: "فتح استوديو الأتمتة البصرية" };
+  }
+  if (/(العقل المدبر|mind graph|الفهرس السيادي|عقد المنظومة|خارطة العقل|screen\.23)/.test(d)) {
+    return { capabilityId: "studio.open_screen", input: { screenId: "23" }, why: "فتح كوكبيت العقل المدبر السيادي" };
+  }
+  if (OPEN.test(d)) {
+    const node = nodeAliases().find((a) => d.includes(a.alias));
+    if (node) return { capabilityId: "studio.navigate", input: { mapId: node.mapId, nodeId: node.nodeId }, why: `عرض ${node.label}` };
+    if (coll) return { capabilityId: "studio.open_table", input: { collection: coll.collection }, why: "فتح جدول" };
   }
   if (/(البطاقه التاليه|البطاقة التالية|يمين|next card)/.test(d)) {
     return { capabilityId: "nexus.rotate", input: { delta: 1 }, why: "البطاقة التالية في Nexus" };

@@ -11,7 +11,7 @@ import { sendOtpIfEnabled } from "@/lib/automation/handlers/comms";
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
-  const limited = rateLimit(`auth-register:${clientIp(req)}`, 10, 15 * 60 * 1000);
+  const limited = await rateLimit(`auth-register:${clientIp(req)}`, 10, 15 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown>;

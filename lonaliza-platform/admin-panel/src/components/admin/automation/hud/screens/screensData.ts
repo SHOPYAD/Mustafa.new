@@ -332,7 +332,7 @@ export const STUDIO_SCREENS: StudioScreenDef[] = [
     layout: "workspace",
     nodes: ["NEXUS ORBITAL DECK", "بطاقات الأقسام", "تعقب اليد", "إحصائيات حية", "نوافذ الإعدادات"],
     scenario: "تمرير البطاقات باليد أو الصوت، فتح القسم بكف مبسوط، إغلاق بقبضة، وتنفيذ أوامر القطاع",
-    capabilities: ["studio.navigate", "nexus.rotate", "nexus.select_sector", "nexus.run_sector_command"],
+    capabilities: ["studio.navigate", "nexus.rotate", "nexus.focus_card", "nexus.toggle_panel", "nexus.run_sector_command"],
     fields: ["hubId", "screenId", "readinessPct", "gestureState"],
     links: ["20", "01", "22"],
     risk: "فتح قسم دون اعتماد على إجراء كتابي عالي الخطورة"
@@ -347,9 +347,24 @@ export const STUDIO_SCREENS: StudioScreenDef[] = [
     layout: "workspace",
     nodes: ["Trigger", "RAG", "Model", "Skill", "Rule", "Action", "Review"],
     scenario: "بناء blueprint، pre-flight للمفاتيح، تشغيل عقد MCP/jobs/capabilities مع سجل SSE حي",
-    capabilities: ["loops.run", "loops.run_node", "loops.select_sector", "mcp.executor"],
+    capabilities: ["loops.run", "loops.run_node", "automation.loops.toggle_panel", "automation.loops.restore_panels"],
     fields: ["blueprintId", "nodeId", "credentialProvider", "executionStatus"],
     links: ["20", "21", "11", "12"],
     risk: "تشغيل live بدون pre-flight أو اعتماد Review"
+  },
+  {
+    id: "23",
+    slug: "mind-graph-cockpit",
+    title: "العقل المدبر السيادي وخريطة العقد العصبية",
+    scope: "خريطة الـ 1,208 عقدة · 26 عنقوداً معرفياً · محاكاة عصبية تفاعلية ثلاثية الأبعاد وصعقات كهربائية حية",
+    file: "23-mind-graph-cockpit.png",
+    image: "/images/neural-studio/23-mind-graph-cockpit.png",
+    layout: "workspace",
+    nodes: ["العقد العصبية 1208", "العناقيد المعرفية 26", "قرص الوكيل المشرف", "محاكي النوايا الحية", "صعقات الاتصال الكهربائي", "بوابات التوريد والـ GDS", "مسارات الـ API", "صفحات المتجر العام"],
+    scenario: "استعراض الهيكل العصبي الكامل للمنصة، محاكاة صعقات التدفق اللحظي للطلبات، والتفاعل مع قرص الوكيل المشرف لتحسين الفهرس",
+    capabilities: ["mind_graph.inspect", "mind_graph.simulate_query", "mind_graph.expand_thesaurus", "supervisor.audit_clusters"],
+    fields: ["nodeCount", "clusterCount", "activeSynapses", "queryMatchScore", "pulseIntensity", "supervisorState"],
+    links: ["01", "11", "20", "21", "22"],
+    risk: "إجراء تعديل مباشر على أوزان المطابقة دون تدقيق المعجم السيادي"
   }
 ];

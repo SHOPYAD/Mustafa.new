@@ -5,7 +5,7 @@ import { clientIp, rateLimit, rateLimitResponse } from "@/lib/server/rate-limit"
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
-  const limited = rateLimit(`newsletter:${clientIp(req)}`, 8, 60 * 60 * 1000);
+  const limited = await rateLimit(`newsletter:${clientIp(req)}`, 8, 60 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown>;

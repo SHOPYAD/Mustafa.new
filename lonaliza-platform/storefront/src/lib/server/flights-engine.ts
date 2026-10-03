@@ -28,6 +28,7 @@ import {
 } from "@/lib/server/flights-sky-scrapper";
 import { convertAmountSafe } from "@/lib/server/fx-service";
 import { getUsdRateTable } from "@/lib/server/iyzico-fx";
+import { flightSearchFlight } from "@/lib/server/single-flight";
 import {
   ensureSkyEntityMap,
   lookupSkyEntity,
@@ -1906,17 +1907,21 @@ export async function runFlightSearch(input: {
 
   if (tpActive) {
     for (const pair of activePairs) {
+      const flightKey = `tp:${pair.origin}:${pair.destination}:${singleIataParams.departureDate}:${singleIataParams.adults}:${singleIataParams.cabinClass}`;
       supplierPromises.push(
-        new TravelportAirAdapter()
-          .searchFlights({
-            ...singleIataParams,
-            origin: pair.origin,
-            destination: pair.destination,
-          })
-          .catch((err) => {
-            logFlights("tp-search-err", { pair, err: String(err) });
-            return [];
-          })
+        flightSearchFlight.do(
+          flightKey,
+          () =>
+            new TravelportAirAdapter().searchFlights({
+              ...singleIataParams,
+              origin: pair.origin,
+              destination: pair.destination,
+            }),
+          { ttlMs: 15_000 }
+        ).catch((err) => {
+          logFlights("tp-search-err", { pair, err: String(err) });
+          return [];
+        })
       );
     }
   }
@@ -1934,51 +1939,63 @@ export async function runFlightSearch(input: {
     const cityDest = toPkfareCityIata(rawDestCode) || toPkfareCityIata(destination.skyId);
     logFlights("pkfare-pairs", { pairs, originIatas, destIatas, cityOrigin, cityDest });
     for (const pair of pairs) {
+      const flightKey = `pk:${pair.origin}:${pair.destination}:${singleIataParams.departureDate}:${singleIataParams.adults}:${singleIataParams.cabinClass}`;
       supplierPromises.push(
-        new PkfareAirAdapter()
-          .searchFlights({
-            ...singleIataParams,
-            origin: pair.origin,
-            destination: pair.destination,
-          })
-          .catch((err) => {
-            logFlights("pkfare-search-err", { pair, err: String(err) });
-            return [];
-          })
+        flightSearchFlight.do(
+          flightKey,
+          () =>
+            new PkfareAirAdapter().searchFlights({
+              ...singleIataParams,
+              origin: pair.origin,
+              destination: pair.destination,
+            }),
+          { ttlMs: 15_000 }
+        ).catch((err) => {
+          logFlights("pkfare-search-err", { pair, err: String(err) });
+          return [];
+        })
       );
     }
     if (cityOrigin && cityDest) {
+      const flightKey = `pk-city:${cityOrigin}:${cityDest}:${singleIataParams.departureDate}:${singleIataParams.adults}:${singleIataParams.cabinClass}`;
       supplierPromises.push(
-        new PkfareAirAdapter()
-          .searchFlights({
-            ...singleIataParams,
-            origin: cityOrigin,
-            destination: cityDest,
-            useCityCode: true,
-            allowedOrigins: originsForPk,
-            allowedDestinations: destsForPk,
-          })
-          .catch((err) => {
-            logFlights("pkfare-city-search-err", { cityOrigin, cityDest, err: String(err) });
-            return [];
-          })
+        flightSearchFlight.do(
+          flightKey,
+          () =>
+            new PkfareAirAdapter().searchFlights({
+              ...singleIataParams,
+              origin: cityOrigin,
+              destination: cityDest,
+              useCityCode: true,
+              allowedOrigins: originsForPk,
+              allowedDestinations: destsForPk,
+            }),
+          { ttlMs: 15_000 }
+        ).catch((err) => {
+          logFlights("pkfare-city-search-err", { cityOrigin, cityDest, err: String(err) });
+          return [];
+        })
       );
     }
   }
   if (bbActive) {
     const bbPairs = activePairs.slice(0, 2);
     for (const pair of bbPairs) {
+      const flightKey = `bb:${pair.origin}:${pair.destination}:${singleIataParams.departureDate}:${singleIataParams.adults}:${singleIataParams.cabinClass}`;
       supplierPromises.push(
-        new BiletbankAirAdapter()
-          .searchFlights({
-            ...singleIataParams,
-            origin: pair.origin,
-            destination: pair.destination,
-          })
-          .catch((err) => {
-            logFlights("biletbank-search-err", { pair, err: String(err) });
-            return [];
-          })
+        flightSearchFlight.do(
+          flightKey,
+          () =>
+            new BiletbankAirAdapter().searchFlights({
+              ...singleIataParams,
+              origin: pair.origin,
+              destination: pair.destination,
+            }),
+          { ttlMs: 15_000 }
+        ).catch((err) => {
+          logFlights("biletbank-search-err", { pair, err: String(err) });
+          return [];
+        })
       );
     }
   }

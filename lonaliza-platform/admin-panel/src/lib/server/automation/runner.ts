@@ -29,7 +29,33 @@ export async function runAutomationJobById(
   return executeAutomationJob(job, options);
 }
 
+// Concurrency Mutex Lock to prevent duplicate simultaneous executions
+const ACTIVE_JOB_LOCKS = new Set<string>();
+
 export async function executeAutomationJob(
+  job: AutomationJob,
+  options?: { dryRun?: boolean; source?: "cron" | "worker" | "manual" }
+): Promise<{ job: AutomationJob; result: AutomationJobResult }> {
+  if (ACTIVE_JOB_LOCKS.has(job.id)) {
+    const result: AutomationJobResult = {
+      ok: true,
+      processed: 0,
+      skipped: 1,
+      message: `المهمة [${job.id}] قيد التنفيذ حالياً، تم منع التشغيل المزدوج المتزامن (Concurrency Mutex Lock).`,
+      dryRun: Boolean(options?.dryRun ?? job.dryRun),
+    };
+    return { job, result };
+  }
+
+  ACTIVE_JOB_LOCKS.add(job.id);
+  try {
+    return await executeAutomationJobInternal(job, options);
+  } finally {
+    ACTIVE_JOB_LOCKS.delete(job.id);
+  }
+}
+
+async function executeAutomationJobInternal(
   job: AutomationJob,
   options?: { dryRun?: boolean; source?: "cron" | "worker" | "manual" }
 ): Promise<{ job: AutomationJob; result: AutomationJobResult }> {

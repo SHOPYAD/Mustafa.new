@@ -3,6 +3,8 @@ import type { Dictionary } from "@/lib/i18n/types";
 import { DOMAIN_SCREENS, type DomainHub, type DomainItem, type DomainScreen } from "@/lib/neural-studio/domain-systems";
 import type { Tone } from "../tokens";
 import type { GraphEdge, GraphMap, GraphNode } from "./types";
+import { buildNexusStudioMap } from "./nexus-studio-map";
+import { buildLoopsStudioMap } from "./loops-studio-map";
 
 /**
  * خرائط الاستوديو:
@@ -184,6 +186,8 @@ export function getMap(mapId: string): GraphMap | null {
   let map: GraphMap | null = null;
   if (mapId === "atlas") map = buildAtlasMap();
   else if (mapId.startsWith("group.")) map = GROUPS[mapId.slice(6) as NavGroupId] ? groupMap(mapId.slice(6) as NavGroupId) : null;
+  else if (mapId === "screen.21") map = buildNexusStudioMap();
+  else if (mapId === "screen.22") map = buildLoopsStudioMap();
   else if (mapId.startsWith("screen.")) {
     const s = DOMAIN_SCREENS.find((x) => x.screenId === mapId.slice(7));
     map = s ? screenMap(s, parentOfScreen(s.screenId)) : null;
@@ -200,11 +204,12 @@ export function getMap(mapId: string): GraphMap | null {
 /** الخريطة الابتدائية لكل واجهة. */
 export function mapForScreen(screenId: string): string {
   if (screenId === "01" || screenId === "19") return "atlas";
+  if (screenId === "21" || screenId === "22") return `screen.${screenId}`;
   return DOMAIN_SCREENS.some((s) => s.screenId === screenId) ? `screen.${screenId}` : "atlas";
 }
 
 export function allMapIds(): string[] {
-  const ids = ["atlas", ...Object.entries(GROUPS).filter(([, d]) => d.screens.length > 1).map(([g]) => `group.${g}`)];
+  const ids = ["atlas", "screen.21", "screen.22", ...Object.entries(GROUPS).filter(([, d]) => d.screens.length > 1).map(([g]) => `group.${g}`)];
   for (const s of DOMAIN_SCREENS) {
     ids.push(`screen.${s.screenId}`);
     for (const h of s.hubs) ids.push(`hub.${h.id}`);

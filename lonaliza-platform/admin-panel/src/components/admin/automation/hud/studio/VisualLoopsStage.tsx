@@ -19,7 +19,7 @@ function StageLoader({ label }: { label: string }) {
 /** شاشة 22 — استوديو العقد والأتمتة البصرية بكامل الشاشة. */
 export default function VisualLoopsStage() {
   return (
-    <div className="absolute inset-0 h-full w-full">
+    <div className="relative h-full w-full flex flex-col min-h-0">
       <VisualLoopsEngine />
     </div>
   );

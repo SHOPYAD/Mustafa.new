@@ -97,6 +97,8 @@ export interface BlueprintExecuteResult {
   steps: BlueprintNodeStepResult[];
   message: string;
   completedPct: number;
+  haltedNodeId?: string;
+  resumeToken?: string;
 }
 
 export interface BlueprintExecuteOptions {
@@ -104,6 +106,7 @@ export interface BlueprintExecuteOptions {
   dryRun?: boolean;
   nodeId?: string;
   source?: "manual" | "voice" | "agent";
+  resumeFromNodeId?: string;
 }
 
 export const SECTOR_DEFAULT_JOB_TYPE: Record<BlueprintSector, AutomationJobType> = {

@@ -1,10 +1,11 @@
 /** AUTO-GENERATED — node scripts/gen-platform-index.cjs */
 import type { PlatformIndexNode } from "./types";
 
-export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
+const CHUNK_0: PlatformIndexNode[] = [
   {
     "id": "api.ads",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads",
       "en": "/api/admin/ads"
@@ -30,6 +31,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_campaigns",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/campaigns",
       "en": "/api/admin/ads/campaigns"
@@ -56,6 +58,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_google_callback",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/google/callback",
       "en": "/api/admin/ads/google/callback"
@@ -82,6 +85,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_google_oauth",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/google/oauth",
       "en": "/api/admin/ads/google/oauth"
@@ -108,6 +112,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_launch",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/launch",
       "en": "/api/admin/ads/launch"
@@ -132,6 +137,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_meta_callback",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/meta/callback",
       "en": "/api/admin/ads/meta/callback"
@@ -158,6 +164,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_meta_oauth",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/meta/oauth",
       "en": "/api/admin/ads/meta/oauth"
@@ -184,6 +191,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_posts",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/posts",
       "en": "/api/admin/ads/posts"
@@ -209,6 +217,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ads_report",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ads/report",
       "en": "/api/admin/ads/report"
@@ -235,6 +244,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.affiliate",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/affiliate",
       "en": "/api/admin/affiliate"
@@ -259,8 +269,35 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/affiliate/route.ts"
   },
   {
+    "id": "api.ai_analytics",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/ai/analytics",
+      "en": "/api/admin/ai/analytics"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "ai",
+      "analytics"
+    ],
+    "route": "/api/admin/ai/analytics",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "probe.ai_analytics",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/admin/ai/analytics/route.ts"
+  },
+  {
     "id": "api.ai-programs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ai-programs",
       "en": "/api/admin/ai-programs"
@@ -287,6 +324,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.airlines",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/airlines",
       "en": "/api/admin/airlines"
@@ -312,6 +350,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.airports",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/airports",
       "en": "/api/admin/airports"
@@ -337,6 +376,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.analytics_realtime",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/analytics/realtime",
       "en": "/api/admin/analytics/realtime"
@@ -362,6 +402,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_abandoned-recovery",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/abandoned-recovery",
       "en": "/api/admin/automation/abandoned-recovery"
@@ -388,6 +429,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_agent-stream",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/agent-stream",
       "en": "/api/admin/automation/agent-stream"
@@ -413,6 +455,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_agent-training",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/agent-training",
       "en": "/api/admin/automation/agent-training"
@@ -439,6 +482,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_agent-war-room",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/agent-war-room",
       "en": "/api/admin/automation/agent-war-room"
@@ -465,6 +509,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_bookings-studio",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/bookings-studio",
       "en": "/api/admin/automation/bookings-studio"
@@ -491,6 +536,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_comms",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/comms",
       "en": "/api/admin/automation/comms"
@@ -518,6 +564,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_comms_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/comms/test",
       "en": "/api/admin/automation/comms/test"
@@ -543,6 +590,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_connections",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/connections",
       "en": "/api/admin/automation/connections"
@@ -568,6 +616,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_control-panel-tools",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/control-panel-tools",
       "en": "/api/admin/automation/control-panel-tools"
@@ -594,6 +643,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_domain-studio",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/domain-studio",
       "en": "/api/admin/automation/domain-studio"
@@ -619,6 +669,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_excluded-contacts",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/excluded-contacts",
       "en": "/api/admin/automation/excluded-contacts"
@@ -646,6 +697,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_jobs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/jobs",
       "en": "/api/admin/automation/jobs"
@@ -672,6 +724,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_jobs__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/jobs/:id",
       "en": "/api/admin/automation/jobs/:id"
@@ -700,6 +753,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_jobs__id_run",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/jobs/:id/run",
       "en": "/api/admin/automation/jobs/:id/run"
@@ -726,6 +780,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_logs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/logs",
       "en": "/api/admin/automation/logs"
@@ -752,6 +807,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_messages",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/messages",
       "en": "/api/admin/automation/messages"
@@ -778,6 +834,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_neural-atlas",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/neural-atlas",
       "en": "/api/admin/automation/neural-atlas"
@@ -803,6 +860,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_neural-expansion",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/neural-expansion",
       "en": "/api/admin/automation/neural-expansion"
@@ -828,6 +886,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_second-brain-data",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/second-brain-data",
       "en": "/api/admin/automation/second-brain-data"
@@ -853,6 +912,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_second-brain-directive",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/second-brain-directive",
       "en": "/api/admin/automation/second-brain-directive"
@@ -877,6 +937,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/settings",
       "en": "/api/admin/automation/settings"
@@ -903,6 +964,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_swarm-deliberate",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/swarm-deliberate",
       "en": "/api/admin/automation/swarm-deliberate"
@@ -927,6 +989,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_timeline-fallback",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/timeline-fallback",
       "en": "/api/admin/automation/timeline-fallback"
@@ -951,6 +1014,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_voice-tts",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/voice-tts",
       "en": "/api/admin/automation/voice-tts"
@@ -975,6 +1039,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.automation_whatsapp-qr",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/automation/whatsapp-qr",
       "en": "/api/admin/automation/whatsapp-qr"
@@ -1001,6 +1066,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.b2b-landing-agent",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/b2b-landing-agent",
       "en": "/api/admin/b2b-landing-agent"
@@ -1026,6 +1092,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.b2b-wallet",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/b2b-wallet",
       "en": "/api/admin/b2b-wallet"
@@ -1049,8 +1116,143 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/b2b-wallet/route.ts"
   },
   {
+    "id": "api.b2b.book",
+    "kind": "b2b_api",
+    "scope": "b2b",
+    "labels": {
+      "ar": "/api/v1/b2b/book",
+      "en": "/api/v1/b2b/book"
+    },
+    "keywords": [
+      "api",
+      "v1",
+      "b2b",
+      "book",
+      "b2b_api"
+    ],
+    "route": "/api/v1/b2b/book",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.b2b.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/v1/b2b/book/route.ts"
+  },
+  {
+    "id": "api.b2b.flights_search",
+    "kind": "b2b_api",
+    "scope": "b2b",
+    "labels": {
+      "ar": "/api/v1/b2b/flights/search",
+      "en": "/api/v1/b2b/flights/search"
+    },
+    "keywords": [
+      "api",
+      "v1",
+      "b2b",
+      "flights",
+      "search",
+      "b2b_api"
+    ],
+    "route": "/api/v1/b2b/flights/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.b2b.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/v1/b2b/flights/search/route.ts"
+  },
+  {
+    "id": "api.b2b.hotels_search",
+    "kind": "b2b_api",
+    "scope": "b2b",
+    "labels": {
+      "ar": "/api/v1/b2b/hotels/search",
+      "en": "/api/v1/b2b/hotels/search"
+    },
+    "keywords": [
+      "api",
+      "v1",
+      "b2b",
+      "hotels",
+      "search",
+      "b2b_api"
+    ],
+    "route": "/api/v1/b2b/hotels/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.b2b.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/v1/b2b/hotels/search/route.ts"
+  },
+  {
+    "id": "api.b2b.test-connection",
+    "kind": "b2b_api",
+    "scope": "b2b",
+    "labels": {
+      "ar": "/api/v1/b2b/test-connection",
+      "en": "/api/v1/b2b/test-connection"
+    },
+    "keywords": [
+      "api",
+      "v1",
+      "b2b",
+      "test-connection",
+      "b2b_api"
+    ],
+    "route": "/api/v1/b2b/test-connection",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.b2b.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/v1/b2b/test-connection/route.ts"
+  },
+  {
+    "id": "api.b2b.transfers_search",
+    "kind": "b2b_api",
+    "scope": "b2b",
+    "labels": {
+      "ar": "/api/v1/b2b/transfers/search",
+      "en": "/api/v1/b2b/transfers/search"
+    },
+    "keywords": [
+      "api",
+      "v1",
+      "b2b",
+      "transfers",
+      "search",
+      "b2b_api"
+    ],
+    "route": "/api/v1/b2b/transfers/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.b2b.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/v1/b2b/transfers/search/route.ts"
+  },
+  {
     "id": "api.blog",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/blog",
       "en": "/api/admin/blog"
@@ -1079,6 +1281,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.blog__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/blog/:id",
       "en": "/api/admin/blog/:id"
@@ -1106,6 +1309,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.booking-connect-test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/booking-connect-test",
       "en": "/api/admin/booking-connect-test"
@@ -1129,6 +1333,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.branding",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/branding",
       "en": "/api/admin/branding"
@@ -1155,6 +1360,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.branding_upload",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/branding/upload",
       "en": "/api/admin/branding/upload"
@@ -1179,6 +1385,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.builder-agent",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/builder-agent",
       "en": "/api/admin/builder-agent"
@@ -1204,6 +1411,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.builder-pages",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/builder-pages",
       "en": "/api/admin/builder-pages"
@@ -1229,6 +1437,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.cancellations",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/cancellations",
       "en": "/api/admin/cancellations"
@@ -1254,6 +1463,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.cars",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/cars",
       "en": "/api/admin/cars"
@@ -1282,6 +1492,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.cars-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/cars-settings",
       "en": "/api/admin/cars-settings"
@@ -1307,6 +1518,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.copilot-fs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/copilot-fs",
       "en": "/api/admin/copilot-fs"
@@ -1332,6 +1544,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.crm_leads",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/crm/leads",
       "en": "/api/admin/crm/leads"
@@ -1356,8 +1569,139 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/crm/leads/route.ts"
   },
   {
+    "id": "api.cron.automation",
+    "kind": "cron_job",
+    "scope": "cron",
+    "labels": {
+      "ar": "/api/cron/automation",
+      "en": "/api/cron/automation"
+    },
+    "keywords": [
+      "api",
+      "cron",
+      "automation",
+      "cron_job"
+    ],
+    "route": "/api/cron/automation",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.cron.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/cron/automation/route.ts"
+  },
+  {
+    "id": "api.cron.email-dispatch",
+    "kind": "cron_job",
+    "scope": "cron",
+    "labels": {
+      "ar": "/api/cron/email-dispatch",
+      "en": "/api/cron/email-dispatch"
+    },
+    "keywords": [
+      "api",
+      "cron",
+      "email-dispatch",
+      "cron_job"
+    ],
+    "route": "/api/cron/email-dispatch",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.cron.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/cron/email-dispatch/route.ts"
+  },
+  {
+    "id": "api.cron.featured-hotels-sync",
+    "kind": "cron_job",
+    "scope": "cron",
+    "labels": {
+      "ar": "/api/cron/featured-hotels-sync",
+      "en": "/api/cron/featured-hotels-sync"
+    },
+    "keywords": [
+      "api",
+      "cron",
+      "featured-hotels-sync",
+      "cron_job"
+    ],
+    "route": "/api/cron/featured-hotels-sync",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.cron.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/cron/featured-hotels-sync/route.ts"
+  },
+  {
+    "id": "api.cron.flight-deals",
+    "kind": "cron_job",
+    "scope": "cron",
+    "labels": {
+      "ar": "/api/cron/flight-deals",
+      "en": "/api/cron/flight-deals"
+    },
+    "keywords": [
+      "api",
+      "cron",
+      "flight-deals",
+      "cron_job"
+    ],
+    "route": "/api/cron/flight-deals",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.cron.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/cron/flight-deals/route.ts"
+  },
+  {
+    "id": "api.cron.hotel-content",
+    "kind": "cron_job",
+    "scope": "cron",
+    "labels": {
+      "ar": "/api/cron/hotel-content",
+      "en": "/api/cron/hotel-content"
+    },
+    "keywords": [
+      "api",
+      "cron",
+      "hotel-content",
+      "cron_job"
+    ],
+    "route": "/api/cron/hotel-content",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.cron.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/cron/hotel-content/route.ts"
+  },
+  {
     "id": "api.currencies",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/currencies",
       "en": "/api/admin/currencies"
@@ -1383,6 +1727,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.dashboard-stats",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/dashboard-stats",
       "en": "/api/admin/dashboard-stats"
@@ -1405,8 +1750,60 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/dashboard-stats/route.ts"
   },
   {
+    "id": "api.databases",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/databases",
+      "en": "/api/admin/databases"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "databases"
+    ],
+    "route": "/api/admin/databases",
+    "methods": [
+      "GET",
+      "PATCH"
+    ],
+    "capabilityRefs": [
+      "probe.databases",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/databases/route.ts"
+  },
+  {
+    "id": "api.databases_sync",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/databases/sync",
+      "en": "/api/admin/databases/sync"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "databases",
+      "sync"
+    ],
+    "route": "/api/admin/databases/sync",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "admin.route.call"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/databases/sync/route.ts"
+  },
+  {
     "id": "api.demo-seed",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/demo-seed",
       "en": "/api/admin/demo-seed"
@@ -1432,6 +1829,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-campaigns",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-campaigns",
       "en": "/api/admin/email-campaigns"
@@ -1457,6 +1855,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-campaigns__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-campaigns/:id",
       "en": "/api/admin/email-campaigns/:id"
@@ -1483,6 +1882,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-campaigns__id_send",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-campaigns/:id/send",
       "en": "/api/admin/email-campaigns/:id/send"
@@ -1508,6 +1908,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-campaigns__id_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-campaigns/:id/test",
       "en": "/api/admin/email-campaigns/:id/test"
@@ -1533,6 +1934,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-campaigns_parse-file",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-campaigns/parse-file",
       "en": "/api/admin/email-campaigns/parse-file"
@@ -1557,6 +1959,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-settings",
       "en": "/api/admin/email-settings"
@@ -1582,6 +1985,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-settings_dns",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-settings/dns",
       "en": "/api/admin/email-settings/dns"
@@ -1608,6 +2012,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-settings_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-settings/test",
       "en": "/api/admin/email-settings/test"
@@ -1632,6 +2037,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates",
       "en": "/api/admin/email-templates"
@@ -1657,6 +2063,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates/:id",
       "en": "/api/admin/email-templates/:id"
@@ -1684,6 +2091,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates_generate",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates/generate",
       "en": "/api/admin/email-templates/generate"
@@ -1708,6 +2116,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates_preview",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates/preview",
       "en": "/api/admin/email-templates/preview"
@@ -1732,6 +2141,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates/test",
       "en": "/api/admin/email-templates/test"
@@ -1756,6 +2166,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.email-templates_upload",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/email-templates/upload",
       "en": "/api/admin/email-templates/upload"
@@ -1780,6 +2191,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.env",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/env",
       "en": "/api/admin/env"
@@ -1804,6 +2216,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.finance_overview",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/finance/overview",
       "en": "/api/admin/finance/overview"
@@ -1829,6 +2242,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.flight-extras",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/flight-extras",
       "en": "/api/admin/flight-extras"
@@ -1857,6 +2271,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.flights_post-ops",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/flights/post-ops",
       "en": "/api/admin/flights/post-ops"
@@ -1883,6 +2298,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.flights-connect-test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/flights-connect-test",
       "en": "/api/admin/flights-connect-test"
@@ -1906,6 +2322,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.flights-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/flights-settings",
       "en": "/api/admin/flights-settings"
@@ -1931,6 +2348,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.gift-cards",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/gift-cards",
       "en": "/api/admin/gift-cards"
@@ -1956,6 +2374,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.homepage-template",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/homepage-template",
       "en": "/api/admin/homepage-template"
@@ -1981,6 +2400,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.hotel-supply",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/hotel-supply",
       "en": "/api/admin/hotel-supply"
@@ -2006,6 +2426,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.hotels_featured-sync",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/hotels/featured-sync",
       "en": "/api/admin/hotels/featured-sync"
@@ -2032,6 +2453,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.hotels-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/hotels-settings",
       "en": "/api/admin/hotels-settings"
@@ -2057,6 +2479,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.integrations",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/integrations",
       "en": "/api/admin/integrations"
@@ -2082,6 +2505,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.invoice-templates",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/invoice-templates",
       "en": "/api/admin/invoice-templates"
@@ -2107,6 +2531,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.invoice-templates_preview",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/invoice-templates/preview",
       "en": "/api/admin/invoice-templates/preview"
@@ -2131,6 +2556,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.iyzico-bookings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/iyzico-bookings",
       "en": "/api/admin/iyzico-bookings"
@@ -2156,6 +2582,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.iyzico-test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/iyzico-test",
       "en": "/api/admin/iyzico-test"
@@ -2179,6 +2606,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.legal",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/legal",
       "en": "/api/admin/legal"
@@ -2204,6 +2632,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.legal_ai-advisor",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/legal/ai-advisor",
       "en": "/api/admin/legal/ai-advisor"
@@ -2228,6 +2657,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.legal_clauses",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/legal/clauses",
       "en": "/api/admin/legal/clauses"
@@ -2252,6 +2682,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.legal_clauses__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/legal/clauses/:id",
       "en": "/api/admin/legal/clauses/:id"
@@ -2277,6 +2708,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.legal_deletions",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/legal/deletions",
       "en": "/api/admin/legal/deletions"
@@ -2303,6 +2735,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.license_activate",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/license/activate",
       "en": "/api/admin/license/activate"
@@ -2327,6 +2760,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.license_status",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/license/status",
       "en": "/api/admin/license/status"
@@ -2352,6 +2786,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.loyalty",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/loyalty",
       "en": "/api/admin/loyalty"
@@ -2378,6 +2813,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mcp",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mcp",
       "en": "/api/admin/mcp"
@@ -2403,6 +2839,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mcp__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mcp/:id",
       "en": "/api/admin/mcp/:id"
@@ -2430,6 +2867,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mcp__id_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mcp/:id/test",
       "en": "/api/admin/mcp/:id/test"
@@ -2455,6 +2893,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mcp_call",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mcp/call",
       "en": "/api/admin/mcp/call"
@@ -2479,6 +2918,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mcp_connect",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mcp/connect",
       "en": "/api/admin/mcp/connect"
@@ -2503,6 +2943,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.media_keys",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/media/keys",
       "en": "/api/admin/media/keys"
@@ -2529,6 +2970,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.media_pexels",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/media/pexels",
       "en": "/api/admin/media/pexels"
@@ -2554,6 +2996,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.media_search",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/media/search",
       "en": "/api/admin/media/search"
@@ -2579,6 +3022,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.media_unsplash",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/media/unsplash",
       "en": "/api/admin/media/unsplash"
@@ -2604,6 +3048,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app",
       "en": "/api/admin/mobile-app"
@@ -2629,6 +3074,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_agents",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/agents",
       "en": "/api/admin/mobile-app/agents"
@@ -2655,6 +3101,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_ai-showcase",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/ai-showcase",
       "en": "/api/admin/mobile-app/ai-showcase"
@@ -2679,6 +3126,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_ai-slides",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/ai-slides",
       "en": "/api/admin/mobile-app/ai-slides"
@@ -2703,6 +3151,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_build",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/build",
       "en": "/api/admin/mobile-app/build"
@@ -2727,6 +3176,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_download",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/download",
       "en": "/api/admin/mobile-app/download"
@@ -2752,6 +3202,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_github-dispatch",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/github-dispatch",
       "en": "/api/admin/mobile-app/github-dispatch"
@@ -2776,6 +3227,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_icon-generator",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/icon-generator",
       "en": "/api/admin/mobile-app/icon-generator"
@@ -2802,6 +3254,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.mobile-app_notifications",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/mobile-app/notifications",
       "en": "/api/admin/mobile-app/notifications"
@@ -2826,8 +3279,1869 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/mobile-app/notifications/route.ts"
   },
   {
+    "id": "api.mobile.account_affiliate",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/affiliate",
+      "en": "/api/mobile/v1/account/affiliate"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "affiliate",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/affiliate",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/affiliate/route.ts"
+  },
+  {
+    "id": "api.mobile.account_affiliate_withdraw",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/affiliate/withdraw",
+      "en": "/api/mobile/v1/account/affiliate/withdraw"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "affiliate",
+      "withdraw",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/affiliate/withdraw",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/affiliate/withdraw/route.ts"
+  },
+  {
+    "id": "api.mobile.account_avatar",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/avatar",
+      "en": "/api/mobile/v1/account/avatar"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "avatar",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/avatar",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/avatar/route.ts"
+  },
+  {
+    "id": "api.mobile.account_bookings",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/bookings",
+      "en": "/api/mobile/v1/account/bookings"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "bookings",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/bookings",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/bookings/route.ts"
+  },
+  {
+    "id": "api.mobile.account_cards",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/cards",
+      "en": "/api/mobile/v1/account/cards"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "cards",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/cards",
+    "methods": [
+      "GET",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/cards/route.ts"
+  },
+  {
+    "id": "api.mobile.account_conversations",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/conversations",
+      "en": "/api/mobile/v1/account/conversations"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "conversations",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/conversations",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/conversations/route.ts"
+  },
+  {
+    "id": "api.mobile.account_inbox",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/inbox",
+      "en": "/api/mobile/v1/account/inbox"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "inbox",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/inbox",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/inbox/route.ts"
+  },
+  {
+    "id": "api.mobile.account_inbox__id",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/inbox/:id",
+      "en": "/api/mobile/v1/account/inbox/:id"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "inbox",
+      ":id",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/inbox/:id",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/inbox/[id]/route.ts"
+  },
+  {
+    "id": "api.mobile.account_loyalty_apply",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/loyalty/apply",
+      "en": "/api/mobile/v1/account/loyalty/apply"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "loyalty",
+      "apply",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/loyalty/apply",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/loyalty/apply/route.ts"
+  },
+  {
+    "id": "api.mobile.account_loyalty_convert",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/loyalty/convert",
+      "en": "/api/mobile/v1/account/loyalty/convert"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "loyalty",
+      "convert",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/loyalty/convert",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/loyalty/convert/route.ts"
+  },
+  {
+    "id": "api.mobile.account_nostr-pubkey",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/nostr-pubkey",
+      "en": "/api/mobile/v1/account/nostr-pubkey"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "nostr-pubkey",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/nostr-pubkey",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/nostr-pubkey/route.ts"
+  },
+  {
+    "id": "api.mobile.account_password",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/password",
+      "en": "/api/mobile/v1/account/password"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "password",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/password",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/password/route.ts"
+  },
+  {
+    "id": "api.mobile.account_payments",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/payments",
+      "en": "/api/mobile/v1/account/payments"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "payments",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/payments",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/payments/route.ts"
+  },
+  {
+    "id": "api.mobile.account_profile",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/profile",
+      "en": "/api/mobile/v1/account/profile"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "profile",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/profile",
+    "methods": [
+      "GET",
+      "PATCH"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/profile/route.ts"
+  },
+  {
+    "id": "api.mobile.account_programs",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/programs",
+      "en": "/api/mobile/v1/account/programs"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "programs",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/programs",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/programs/route.ts"
+  },
+  {
+    "id": "api.mobile.account_recently-viewed",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/recently-viewed",
+      "en": "/api/mobile/v1/account/recently-viewed"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "recently-viewed",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/recently-viewed",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/account/recently-viewed/route.ts"
+  },
+  {
+    "id": "api.mobile.account_unread",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/unread",
+      "en": "/api/mobile/v1/account/unread"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "unread",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/unread",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/unread/route.ts"
+  },
+  {
+    "id": "api.mobile.account_wallet",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/account/wallet",
+      "en": "/api/mobile/v1/account/wallet"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "account",
+      "wallet",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/account/wallet",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/account/wallet/route.ts"
+  },
+  {
+    "id": "api.mobile.ai_sales-chat",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/ai/sales-chat",
+      "en": "/api/mobile/v1/ai/sales-chat"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "ai",
+      "sales-chat",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/ai/sales-chat",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/ai/sales-chat/route.ts"
+  },
+  {
+    "id": "api.mobile.ai_search-agent",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/ai/search-agent",
+      "en": "/api/mobile/v1/ai/search-agent"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "ai",
+      "search-agent",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/ai/search-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/ai/search-agent/route.ts"
+  },
+  {
+    "id": "api.mobile.app-config",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/app-config",
+      "en": "/api/mobile/v1/app-config"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "app-config",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/app-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/app-config/route.ts"
+  },
+  {
+    "id": "api.mobile.auth_google",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/auth/google",
+      "en": "/api/mobile/v1/auth/google"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "auth",
+      "google",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/auth/google",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/auth/google/route.ts"
+  },
+  {
+    "id": "api.mobile.auth_google_callback",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/auth/google/callback",
+      "en": "/api/mobile/v1/auth/google/callback"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "auth",
+      "google",
+      "callback",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/auth/google/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/auth/google/callback/route.ts"
+  },
+  {
+    "id": "api.mobile.auth_login",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/auth/login",
+      "en": "/api/mobile/v1/auth/login"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "auth",
+      "login",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/auth/login",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/auth/login/route.ts"
+  },
+  {
+    "id": "api.mobile.auth_logout",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/auth/logout",
+      "en": "/api/mobile/v1/auth/logout"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "auth",
+      "logout",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/auth/logout",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/auth/logout/route.ts"
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_1: PlatformIndexNode[] = [
+  {
+    "id": "api.mobile.auth_register",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/auth/register",
+      "en": "/api/mobile/v1/auth/register"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "auth",
+      "register",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/auth/register",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/auth/register/route.ts"
+  },
+  {
+    "id": "api.mobile.bootstrap",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/bootstrap",
+      "en": "/api/mobile/v1/bootstrap"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "bootstrap",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/bootstrap",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/bootstrap/route.ts"
+  },
+  {
+    "id": "api.mobile.catalog_cars",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/catalog/cars",
+      "en": "/api/mobile/v1/catalog/cars"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "catalog",
+      "cars",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/catalog/cars",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/catalog/cars/route.ts"
+  },
+  {
+    "id": "api.mobile.catalog_enquire",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/catalog/enquire",
+      "en": "/api/mobile/v1/catalog/enquire"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "catalog",
+      "enquire",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/catalog/enquire",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/catalog/enquire/route.ts"
+  },
+  {
+    "id": "api.mobile.catalog_packages",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/catalog/packages",
+      "en": "/api/mobile/v1/catalog/packages"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "catalog",
+      "packages",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/catalog/packages",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/catalog/packages/route.ts"
+  },
+  {
+    "id": "api.mobile.catalog_tours",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/catalog/tours",
+      "en": "/api/mobile/v1/catalog/tours"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "catalog",
+      "tours",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/catalog/tours",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/catalog/tours/route.ts"
+  },
+  {
+    "id": "api.mobile.catalog_transfers",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/catalog/transfers",
+      "en": "/api/mobile/v1/catalog/transfers"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "catalog",
+      "transfers",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/catalog/transfers",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/catalog/transfers/route.ts"
+  },
+  {
+    "id": "api.mobile.community_ai-assist",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/ai-assist",
+      "en": "/api/mobile/v1/community/ai-assist"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "ai-assist",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/ai-assist",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/ai-assist/route.ts"
+  },
+  {
+    "id": "api.mobile.community_buddies",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/buddies",
+      "en": "/api/mobile/v1/community/buddies"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "buddies",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/buddies",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/buddies/route.ts"
+  },
+  {
+    "id": "api.mobile.community_buddies__userId",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/buddies/:userId",
+      "en": "/api/mobile/v1/community/buddies/:userId"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "buddies",
+      ":userid",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/buddies/:userId",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/community/buddies/[userId]/route.ts"
+  },
+  {
+    "id": "api.mobile.community_buddies_requests",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/buddies/requests",
+      "en": "/api/mobile/v1/community/buddies/requests"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "buddies",
+      "requests",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/buddies/requests",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/buddies/requests/route.ts"
+  },
+  {
+    "id": "api.mobile.community_comments",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/comments",
+      "en": "/api/mobile/v1/community/comments"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "comments",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/comments",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/comments/route.ts"
+  },
+  {
+    "id": "api.mobile.community_comments_like",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/comments/like",
+      "en": "/api/mobile/v1/community/comments/like"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "comments",
+      "like",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/comments/like",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/comments/like/route.ts"
+  },
+  {
+    "id": "api.mobile.community_config",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/config",
+      "en": "/api/mobile/v1/community/config"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "config",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/community/config/route.ts"
+  },
+  {
+    "id": "api.mobile.community_creator_stats",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/creator/stats",
+      "en": "/api/mobile/v1/community/creator/stats"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "creator",
+      "stats",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/creator/stats",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/community/creator/stats/route.ts"
+  },
+  {
+    "id": "api.mobile.community_feed",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/feed",
+      "en": "/api/mobile/v1/community/feed"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "feed",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/feed",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/community/feed/route.ts"
+  },
+  {
+    "id": "api.mobile.community_media",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/media",
+      "en": "/api/mobile/v1/community/media"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "media",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/media",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/media/route.ts"
+  },
+  {
+    "id": "api.mobile.community_publish",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/publish",
+      "en": "/api/mobile/v1/community/publish"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "publish",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/publish",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/publish/route.ts"
+  },
+  {
+    "id": "api.mobile.community_reels__id_view",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/reels/:id/view",
+      "en": "/api/mobile/v1/community/reels/:id/view"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "reels",
+      ":id",
+      "view",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/reels/:id/view",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/reels/[id]/view/route.ts"
+  },
+  {
+    "id": "api.mobile.community_reward",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/reward",
+      "en": "/api/mobile/v1/community/reward"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "reward",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/reward",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/community/reward/route.ts"
+  },
+  {
+    "id": "api.mobile.community_translate",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/community/translate",
+      "en": "/api/mobile/v1/community/translate"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "community",
+      "translate",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/community/translate",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/community/translate/route.ts"
+  },
+  {
+    "id": "api.mobile.flights_ancillary",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/flights/ancillary",
+      "en": "/api/mobile/v1/flights/ancillary"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "flights",
+      "ancillary",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/flights/ancillary",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/flights/ancillary/route.ts"
+  },
+  {
+    "id": "api.mobile.flights_book",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/flights/book",
+      "en": "/api/mobile/v1/flights/book"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "flights",
+      "book",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/flights/book",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/flights/book/route.ts"
+  },
+  {
+    "id": "api.mobile.flights_extras",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/flights/extras",
+      "en": "/api/mobile/v1/flights/extras"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "flights",
+      "extras",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/flights/extras",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/flights/extras/route.ts"
+  },
+  {
+    "id": "api.mobile.flights_quote",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/flights/quote",
+      "en": "/api/mobile/v1/flights/quote"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "flights",
+      "quote",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/flights/quote",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/flights/quote/route.ts"
+  },
+  {
+    "id": "api.mobile.flights_search",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/flights/search",
+      "en": "/api/mobile/v1/flights/search"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "flights",
+      "search",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/flights/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/flights/search/route.ts"
+  },
+  {
+    "id": "api.mobile.gift-cards",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/gift-cards",
+      "en": "/api/mobile/v1/gift-cards"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "gift-cards",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/gift-cards",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/gift-cards/route.ts"
+  },
+  {
+    "id": "api.mobile.gift-cards_redeem",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/gift-cards/redeem",
+      "en": "/api/mobile/v1/gift-cards/redeem"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "gift-cards",
+      "redeem",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/gift-cards/redeem",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/gift-cards/redeem/route.ts"
+  },
+  {
+    "id": "api.mobile.home_featured",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/home/featured",
+      "en": "/api/mobile/v1/home/featured"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "home",
+      "featured",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/home/featured",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/home/featured/route.ts"
+  },
+  {
+    "id": "api.mobile.home_layout",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/home/layout",
+      "en": "/api/mobile/v1/home/layout"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "home",
+      "layout",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/home/layout",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/home/layout/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_book",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/book",
+      "en": "/api/mobile/v1/hotels/book"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "book",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/book",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/hotels/book/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_details",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/details",
+      "en": "/api/mobile/v1/hotels/details"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "details",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/details",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/details/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_filters",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/filters",
+      "en": "/api/mobile/v1/hotels/filters"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "filters",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/filters",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/filters/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_offers",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/offers",
+      "en": "/api/mobile/v1/hotels/offers"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "offers",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/offers",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/offers/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_photos",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/photos",
+      "en": "/api/mobile/v1/hotels/photos"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "photos",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/photos",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/photos/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_quote",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/quote",
+      "en": "/api/mobile/v1/hotels/quote"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "quote",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/quote",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/hotels/quote/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_reviews",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/reviews",
+      "en": "/api/mobile/v1/hotels/reviews"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "reviews",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/reviews",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/reviews/route.ts"
+  },
+  {
+    "id": "api.mobile.hotels_search",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/hotels/search",
+      "en": "/api/mobile/v1/hotels/search"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "hotels",
+      "search",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/hotels/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/hotels/search/route.ts"
+  },
+  {
+    "id": "api.mobile.payments_iyzico_init",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/payments/iyzico/init",
+      "en": "/api/mobile/v1/payments/iyzico/init"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "payments",
+      "iyzico",
+      "init",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/payments/iyzico/init",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/payments/iyzico/init/route.ts"
+  },
+  {
+    "id": "api.mobile.payments_iyzico_status",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/payments/iyzico/status",
+      "en": "/api/mobile/v1/payments/iyzico/status"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "payments",
+      "iyzico",
+      "status",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/payments/iyzico/status",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/payments/iyzico/status/route.ts"
+  },
+  {
+    "id": "api.mobile.places",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/places",
+      "en": "/api/mobile/v1/places"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "places",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/places",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/places/route.ts"
+  },
+  {
+    "id": "api.mobile.session_handoff",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/session/handoff",
+      "en": "/api/mobile/v1/session/handoff"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "session",
+      "handoff",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/session/handoff",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/mobile/v1/session/handoff/route.ts"
+  },
+  {
+    "id": "api.mobile.shell-health",
+    "kind": "mobile_api",
+    "scope": "mobile",
+    "labels": {
+      "ar": "/api/mobile/v1/shell-health",
+      "en": "/api/mobile/v1/shell-health"
+    },
+    "keywords": [
+      "api",
+      "mobile",
+      "v1",
+      "shell-health",
+      "mobile_api"
+    ],
+    "route": "/api/mobile/v1/shell-health",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.mobile.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/mobile/v1/shell-health/route.ts"
+  },
+  {
     "id": "api.new-bookings-count",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/new-bookings-count",
       "en": "/api/admin/new-bookings-count"
@@ -2852,6 +5166,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.notifications",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/notifications",
       "en": "/api/admin/notifications"
@@ -2877,6 +5192,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.openrouter_config",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/openrouter/config",
       "en": "/api/admin/openrouter/config"
@@ -2903,6 +5219,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.openrouter_sync",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/openrouter/sync",
       "en": "/api/admin/openrouter/sync"
@@ -2929,6 +5246,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.owned-hotels-test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/owned-hotels-test",
       "en": "/api/admin/owned-hotels-test"
@@ -2952,6 +5270,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.packages",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/packages",
       "en": "/api/admin/packages"
@@ -2980,6 +5299,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pages",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pages",
       "en": "/api/admin/pages"
@@ -3007,6 +5327,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.parasut_invoices",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/parasut/invoices",
       "en": "/api/admin/parasut/invoices"
@@ -3032,6 +5353,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.parasut_issue",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/parasut/issue",
       "en": "/api/admin/parasut/issue"
@@ -3056,6 +5378,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.parasut_settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/parasut/settings",
       "en": "/api/admin/parasut/settings"
@@ -3082,6 +5405,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.parasut_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/parasut/test",
       "en": "/api/admin/parasut/test"
@@ -3106,6 +5430,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.payments_catalog",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/payments/catalog",
       "en": "/api/admin/payments/catalog"
@@ -3131,6 +5456,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.payments_configs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/payments/configs",
       "en": "/api/admin/payments/configs"
@@ -3157,6 +5483,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.payments_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/payments/test",
       "en": "/api/admin/payments/test"
@@ -3181,6 +5508,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.payments_toggle",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/payments/toggle",
       "en": "/api/admin/payments/toggle"
@@ -3205,6 +5533,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.payments-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/payments-settings",
       "en": "/api/admin/payments-settings"
@@ -3230,6 +5559,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.platform-admin_chat",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/platform-admin/chat",
       "en": "/api/admin/platform-admin/chat"
@@ -3254,6 +5584,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.platform-readiness",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/platform-readiness",
       "en": "/api/admin/platform-readiness"
@@ -3279,6 +5610,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pocketbase",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pocketbase",
       "en": "/api/admin/pocketbase"
@@ -3304,6 +5636,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pocketbase_handoff",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pocketbase/handoff",
       "en": "/api/admin/pocketbase/handoff"
@@ -3329,6 +5662,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pocketbase_open",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pocketbase/open",
       "en": "/api/admin/pocketbase/open"
@@ -3354,6 +5688,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pocketbase_superuser",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pocketbase/superuser",
       "en": "/api/admin/pocketbase/superuser"
@@ -3378,6 +5713,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.providers",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/providers",
       "en": "/api/admin/providers"
@@ -3403,6 +5739,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.providers_logo",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/providers/logo",
       "en": "/api/admin/providers/logo"
@@ -3427,6 +5764,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.providers_test",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/providers/test",
       "en": "/api/admin/providers/test"
@@ -3449,8 +5787,7223 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/providers/test/route.ts"
   },
   {
+    "id": "api.public.account_affiliate",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/affiliate",
+      "en": "/api/account/affiliate"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "affiliate",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/affiliate",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/affiliate/route.ts"
+  },
+  {
+    "id": "api.public.account_avatar",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/avatar",
+      "en": "/api/account/avatar"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "avatar",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/avatar",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/avatar/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings",
+      "en": "/api/account/bookings"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/bookings/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings__id_cancel",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings/:id/cancel",
+      "en": "/api/account/bookings/:id/cancel"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      ":id",
+      "cancel",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings/:id/cancel",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/bookings/[id]/cancel/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings__id_change",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings/:id/change",
+      "en": "/api/account/bookings/:id/change"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      ":id",
+      "change",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings/:id/change",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/bookings/[id]/change/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings__id_post-booking",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings/:id/post-booking",
+      "en": "/api/account/bookings/:id/post-booking"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      ":id",
+      "post-booking",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings/:id/post-booking",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/bookings/[id]/post-booking/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings__id_ticket_pdf",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings/:id/ticket/pdf",
+      "en": "/api/account/bookings/:id/ticket/pdf"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      ":id",
+      "ticket",
+      "pdf",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings/:id/ticket/pdf",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/bookings/[id]/ticket/pdf/route.ts"
+  },
+  {
+    "id": "api.public.account_bookings__id_voucher_pdf",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/bookings/:id/voucher/pdf",
+      "en": "/api/account/bookings/:id/voucher/pdf"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "bookings",
+      ":id",
+      "voucher",
+      "pdf",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/bookings/:id/voucher/pdf",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/bookings/[id]/voucher/pdf/route.ts"
+  },
+  {
+    "id": "api.public.account_cards",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/cards",
+      "en": "/api/account/cards"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "cards",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/cards",
+    "methods": [
+      "GET",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/cards/route.ts"
+  },
+  {
+    "id": "api.public.account_conversations",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/conversations",
+      "en": "/api/account/conversations"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "conversations",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/conversations",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/conversations/route.ts"
+  },
+  {
+    "id": "api.public.account_conversations__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/conversations/:id",
+      "en": "/api/account/conversations/:id"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "conversations",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/conversations/:id",
+    "methods": [
+      "GET",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/conversations/[id]/route.ts"
+  },
+  {
+    "id": "api.public.account_delete",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/delete",
+      "en": "/api/account/delete"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "delete",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/delete",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/delete/route.ts"
+  },
+  {
+    "id": "api.public.account_export",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/export",
+      "en": "/api/account/export"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "export",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/export",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/export/route.ts"
+  },
+  {
+    "id": "api.public.account_inbox",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/inbox",
+      "en": "/api/account/inbox"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "inbox",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/inbox",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/inbox/route.ts"
+  },
+  {
+    "id": "api.public.account_inbox__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/inbox/:id",
+      "en": "/api/account/inbox/:id"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "inbox",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/inbox/:id",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/inbox/[id]/route.ts"
+  },
+  {
+    "id": "api.public.account_invoices__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/invoices/:id",
+      "en": "/api/account/invoices/:id"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "invoices",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/invoices/:id",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/invoices/[id]/route.ts"
+  },
+  {
+    "id": "api.public.account_invoices__id_earchive",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/invoices/:id/earchive",
+      "en": "/api/account/invoices/:id/earchive"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "invoices",
+      ":id",
+      "earchive",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/invoices/:id/earchive",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/invoices/[id]/earchive/route.ts"
+  },
+  {
+    "id": "api.public.account_invoices__id_pdf",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/invoices/:id/pdf",
+      "en": "/api/account/invoices/:id/pdf"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "invoices",
+      ":id",
+      "pdf",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/invoices/:id/pdf",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/invoices/[id]/pdf/route.ts"
+  },
+  {
+    "id": "api.public.account_invoices_send",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/invoices/send",
+      "en": "/api/account/invoices/send"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "invoices",
+      "send",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/invoices/send",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/invoices/send/route.ts"
+  },
+  {
+    "id": "api.public.account_loyalty",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/loyalty",
+      "en": "/api/account/loyalty"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "loyalty",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/loyalty",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/loyalty/route.ts"
+  },
+  {
+    "id": "api.public.account_nostr-pubkey",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/nostr-pubkey",
+      "en": "/api/account/nostr-pubkey"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "nostr-pubkey",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/nostr-pubkey",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/nostr-pubkey/route.ts"
+  },
+  {
+    "id": "api.public.account_password",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/password",
+      "en": "/api/account/password"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "password",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/password",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/password/route.ts"
+  },
+  {
+    "id": "api.public.account_payments",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/payments",
+      "en": "/api/account/payments"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "payments",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/payments",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/payments/route.ts"
+  },
+  {
+    "id": "api.public.account_profile",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/profile",
+      "en": "/api/account/profile"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "profile",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/profile",
+    "methods": [
+      "GET",
+      "PATCH"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/profile/route.ts"
+  },
+  {
+    "id": "api.public.account_programs",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/programs",
+      "en": "/api/account/programs"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "programs",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/programs",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/programs/route.ts"
+  },
+  {
+    "id": "api.public.account_programs__id_pdf",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/programs/:id/pdf",
+      "en": "/api/account/programs/:id/pdf"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "programs",
+      ":id",
+      "pdf",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/programs/:id/pdf",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/programs/[id]/pdf/route.ts"
+  },
+  {
+    "id": "api.public.account_recently-viewed",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/recently-viewed",
+      "en": "/api/account/recently-viewed"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "recently-viewed",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/recently-viewed",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/account/recently-viewed/route.ts"
+  },
+  {
+    "id": "api.public.account_unread",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/unread",
+      "en": "/api/account/unread"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "unread",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/unread",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/account/unread/route.ts"
+  },
+  {
+    "id": "api.public.account_withdraw",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/account/withdraw",
+      "en": "/api/account/withdraw"
+    },
+    "keywords": [
+      "api",
+      "account",
+      "withdraw",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/account/withdraw",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/account/withdraw/route.ts"
+  },
+  {
+    "id": "api.public.advisor_chat",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/advisor/chat",
+      "en": "/api/advisor/chat"
+    },
+    "keywords": [
+      "api",
+      "advisor",
+      "chat",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/advisor/chat",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/advisor/chat/route.ts"
+  },
+  {
+    "id": "api.public.advisor_feedback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/advisor/feedback",
+      "en": "/api/advisor/feedback"
+    },
+    "keywords": [
+      "api",
+      "advisor",
+      "feedback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/advisor/feedback",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/advisor/feedback/route.ts"
+  },
+  {
+    "id": "api.public.affiliate_visit",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/affiliate/visit",
+      "en": "/api/affiliate/visit"
+    },
+    "keywords": [
+      "api",
+      "affiliate",
+      "visit",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/affiliate/visit",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/affiliate/visit/route.ts"
+  },
+  {
+    "id": "api.public.ai_passport-ocr",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/ai/passport-ocr",
+      "en": "/api/ai/passport-ocr"
+    },
+    "keywords": [
+      "api",
+      "ai",
+      "passport-ocr",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/ai/passport-ocr",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/ai/passport-ocr/route.ts"
+  },
+  {
+    "id": "api.public.ai_quote",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/ai/quote",
+      "en": "/api/ai/quote"
+    },
+    "keywords": [
+      "api",
+      "ai",
+      "quote",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/ai/quote",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/ai/quote/route.ts"
+  },
+  {
+    "id": "api.public.ai-programs",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/ai-programs",
+      "en": "/api/ai-programs"
+    },
+    "keywords": [
+      "api",
+      "ai-programs",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/ai-programs",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/ai-programs/route.ts"
+  },
+  {
+    "id": "api.public.app-links",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/app-links",
+      "en": "/api/app-links"
+    },
+    "keywords": [
+      "api",
+      "app-links",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/app-links",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/app-links/route.ts"
+  },
+  {
+    "id": "api.public.auth_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/callback",
+      "en": "/api/auth/callback"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/auth/callback/route.ts"
+  },
+  {
+    "id": "api.public.auth_google",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/google",
+      "en": "/api/auth/google"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "google",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/google",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/auth/google/route.ts"
+  },
+  {
+    "id": "api.public.auth_login",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/login",
+      "en": "/api/auth/login"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "login",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/login",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/auth/login/route.ts"
+  },
+  {
+    "id": "api.public.auth_logout",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/logout",
+      "en": "/api/auth/logout"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "logout",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/logout",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/auth/logout/route.ts"
+  },
+  {
+    "id": "api.public.auth_me",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/me",
+      "en": "/api/auth/me"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "me",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/me",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/auth/me/route.ts"
+  },
+  {
+    "id": "api.public.auth_otp_send",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/otp/send",
+      "en": "/api/auth/otp/send"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "otp",
+      "send",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/otp/send",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/auth/otp/send/route.ts"
+  },
+  {
+    "id": "api.public.auth_otp_verify",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/otp/verify",
+      "en": "/api/auth/otp/verify"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "otp",
+      "verify",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/otp/verify",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/auth/otp/verify/route.ts"
+  },
+  {
+    "id": "api.public.auth_register",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/auth/register",
+      "en": "/api/auth/register"
+    },
+    "keywords": [
+      "api",
+      "auth",
+      "register",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/auth/register",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/auth/register/route.ts"
+  },
+  {
+    "id": "api.public.avatar_geometry",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/avatar/geometry",
+      "en": "/api/avatar/geometry"
+    },
+    "keywords": [
+      "api",
+      "avatar",
+      "geometry",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/avatar/geometry",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/avatar/geometry/route.ts"
+  },
+  {
+    "id": "api.public.b2b-landing-agent_chat",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/b2b-landing-agent/chat",
+      "en": "/api/b2b-landing-agent/chat"
+    },
+    "keywords": [
+      "api",
+      "b2b-landing-agent",
+      "chat",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/b2b-landing-agent/chat",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/b2b-landing-agent/chat/route.ts"
+  },
+  {
+    "id": "api.public.blog",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/blog",
+      "en": "/api/blog"
+    },
+    "keywords": [
+      "api",
+      "blog",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/blog",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/blog/route.ts"
+  },
+  {
+    "id": "api.public.blog__slug",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/blog/:slug",
+      "en": "/api/blog/:slug"
+    },
+    "keywords": [
+      "api",
+      "blog",
+      ":slug",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/blog/:slug",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/blog/[slug]/route.ts"
+  },
+  {
+    "id": "api.public.bookings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/bookings",
+      "en": "/api/bookings"
+    },
+    "keywords": [
+      "api",
+      "bookings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/bookings",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/bookings/route.ts"
+  },
+  {
+    "id": "api.public.bookings__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/bookings/:id",
+      "en": "/api/bookings/:id"
+    },
+    "keywords": [
+      "api",
+      "bookings",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/bookings/:id",
+    "methods": [
+      "PATCH",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/bookings/[id]/route.ts"
+  },
+  {
+    "id": "api.public.branding_file",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/branding/file",
+      "en": "/api/branding/file"
+    },
+    "keywords": [
+      "api",
+      "branding",
+      "file",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/branding/file",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/branding/file/route.ts"
+  },
+  {
+    "id": "api.public.branding_file__path",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/branding/file/*path",
+      "en": "/api/branding/file/*path"
+    },
+    "keywords": [
+      "api",
+      "branding",
+      "file",
+      "*path",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/branding/file/*path",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/branding/file/[...path]/route.ts"
+  },
+  {
+    "id": "api.public.cars",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/cars",
+      "en": "/api/cars"
+    },
+    "keywords": [
+      "api",
+      "cars",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/cars",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/cars/route.ts"
+  },
+  {
+    "id": "api.public.cars-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/cars-config",
+      "en": "/api/cars-config"
+    },
+    "keywords": [
+      "api",
+      "cars-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/cars-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/cars-config/route.ts"
+  },
+  {
+    "id": "api.public.community_ai-assist",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/ai-assist",
+      "en": "/api/community/ai-assist"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "ai-assist",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/ai-assist",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/ai-assist/route.ts"
+  },
+  {
+    "id": "api.public.community_buddies",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/buddies",
+      "en": "/api/community/buddies"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "buddies",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/buddies",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/community/buddies/route.ts"
+  },
+  {
+    "id": "api.public.community_buddies__userId",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/buddies/:userId",
+      "en": "/api/community/buddies/:userId"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "buddies",
+      ":userid",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/buddies/:userId",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/buddies/[userId]/route.ts"
+  },
+  {
+    "id": "api.public.community_buddies_requests",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/buddies/requests",
+      "en": "/api/community/buddies/requests"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "buddies",
+      "requests",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/buddies/requests",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/buddies/requests/route.ts"
+  },
+  {
+    "id": "api.public.community_comments",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/comments",
+      "en": "/api/community/comments"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "comments",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/comments",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/community/comments/route.ts"
+  },
+  {
+    "id": "api.public.community_comments_like",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/comments/like",
+      "en": "/api/community/comments/like"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "comments",
+      "like",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/comments/like",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/comments/like/route.ts"
+  },
+  {
+    "id": "api.public.community_config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/config",
+      "en": "/api/community/config"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/config/route.ts"
+  },
+  {
+    "id": "api.public.community_creator_stats",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/creator/stats",
+      "en": "/api/community/creator/stats"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "creator",
+      "stats",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/creator/stats",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/creator/stats/route.ts"
+  },
+  {
+    "id": "api.public.community_feed",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/feed",
+      "en": "/api/community/feed"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "feed",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/feed",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/feed/route.ts"
+  },
+  {
+    "id": "api.public.community_publish",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/publish",
+      "en": "/api/community/publish"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "publish",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/publish",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/publish/route.ts"
+  },
+  {
+    "id": "api.public.community_reel-media",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/reel-media",
+      "en": "/api/community/reel-media"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "reel-media",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/reel-media",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/reel-media/route.ts"
+  },
+  {
+    "id": "api.public.community_reel-poster",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/reel-poster",
+      "en": "/api/community/reel-poster"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "reel-poster",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/reel-poster",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/community/reel-poster/route.ts"
+  },
+  {
+    "id": "api.public.community_reels__id_view",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/reels/:id/view",
+      "en": "/api/community/reels/:id/view"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "reels",
+      ":id",
+      "view",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/reels/:id/view",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/reels/[id]/view/route.ts"
+  },
+  {
+    "id": "api.public.community_reward",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/reward",
+      "en": "/api/community/reward"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "reward",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/reward",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/reward/route.ts"
+  },
+  {
+    "id": "api.public.community_translate",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/community/translate",
+      "en": "/api/community/translate"
+    },
+    "keywords": [
+      "api",
+      "community",
+      "translate",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/community/translate",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/community/translate/route.ts"
+  },
+  {
+    "id": "api.public.copilotkit__[...path]",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/copilotkit/:[...path]",
+      "en": "/api/copilotkit/:[...path]"
+    },
+    "keywords": [
+      "api",
+      "copilotkit",
+      ":[...path]",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/copilotkit/:[...path]",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/copilotkit/[[...path]]/route.ts"
+  },
+  {
+    "id": "api.public.customers",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/customers",
+      "en": "/api/customers"
+    },
+    "keywords": [
+      "api",
+      "customers",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/customers",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/customers/route.ts"
+  },
+  {
+    "id": "api.public.destination-image",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/destination-image",
+      "en": "/api/destination-image"
+    },
+    "keywords": [
+      "api",
+      "destination-image",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/destination-image",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/destination-image/route.ts"
+  },
+  {
+    "id": "api.public.email_unsubscribe",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/email/unsubscribe",
+      "en": "/api/email/unsubscribe"
+    },
+    "keywords": [
+      "api",
+      "email",
+      "unsubscribe",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/email/unsubscribe",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/email/unsubscribe/route.ts"
+  },
+  {
+    "id": "api.public.flights_airlines_lookup",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/airlines/lookup",
+      "en": "/api/flights/airlines/lookup"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "airlines",
+      "lookup",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/airlines/lookup",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/airlines/lookup/route.ts"
+  },
+  {
+    "id": "api.public.flights_airports",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/airports",
+      "en": "/api/flights/airports"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "airports",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/airports",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/airports/route.ts"
+  },
+  {
+    "id": "api.public.flights_airports_nearby",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/airports/nearby",
+      "en": "/api/flights/airports/nearby"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "airports",
+      "nearby",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/airports/nearby",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/airports/nearby/route.ts"
+  },
+  {
+    "id": "api.public.flights_ancillary",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/ancillary",
+      "en": "/api/flights/ancillary"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "ancillary",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/ancillary",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/flights/ancillary/route.ts"
+  },
+  {
+    "id": "api.public.flights_book_init",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/book/init",
+      "en": "/api/flights/book/init"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "book",
+      "init",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/book/init",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/flights/book/init/route.ts"
+  },
+  {
+    "id": "api.public.flights_config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/config",
+      "en": "/api/flights/config"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/config/route.ts"
+  },
+  {
+    "id": "api.public.flights_deals",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/deals",
+      "en": "/api/flights/deals"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "deals",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/deals",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/deals/route.ts"
+  },
+  {
+    "id": "api.public.flights_details",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/details",
+      "en": "/api/flights/details"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "details",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/details",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/details/route.ts"
+  },
+  {
+    "id": "api.public.flights_extras",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/extras",
+      "en": "/api/flights/extras"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "extras",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/extras",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/extras/route.ts"
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_2: PlatformIndexNode[] = [
+  {
+    "id": "api.public.flights_invoice__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/invoice/:id",
+      "en": "/api/flights/invoice/:id"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "invoice",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/invoice/:id",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/invoice/[id]/route.ts"
+  },
+  {
+    "id": "api.public.flights_price-calendar",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/price-calendar",
+      "en": "/api/flights/price-calendar"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "price-calendar",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/price-calendar",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/price-calendar/route.ts"
+  },
+  {
+    "id": "api.public.flights_search",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/search",
+      "en": "/api/flights/search"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "search",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/search/route.ts"
+  },
+  {
+    "id": "api.public.flights_search_everywhere",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/search/everywhere",
+      "en": "/api/flights/search/everywhere"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "search",
+      "everywhere",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/search/everywhere",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/search/everywhere/route.ts"
+  },
+  {
+    "id": "api.public.flights_search_incomplete",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/search/incomplete",
+      "en": "/api/flights/search/incomplete"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "search",
+      "incomplete",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/search/incomplete",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/search/incomplete/route.ts"
+  },
+  {
+    "id": "api.public.flights_search_multi-stops",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/search/multi-stops",
+      "en": "/api/flights/search/multi-stops"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "search",
+      "multi-stops",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/search/multi-stops",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/search/multi-stops/route.ts"
+  },
+  {
+    "id": "api.public.flights_search_status",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/search/status",
+      "en": "/api/flights/search/status"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "search",
+      "status",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/search/status",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/search/status/route.ts"
+  },
+  {
+    "id": "api.public.flights_seats",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights/seats",
+      "en": "/api/flights/seats"
+    },
+    "keywords": [
+      "api",
+      "flights",
+      "seats",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights/seats",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights/seats/route.ts"
+  },
+  {
+    "id": "api.public.flights-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/flights-config",
+      "en": "/api/flights-config"
+    },
+    "keywords": [
+      "api",
+      "flights-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/flights-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/flights-config/route.ts"
+  },
+  {
+    "id": "api.public.fx",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/fx",
+      "en": "/api/fx"
+    },
+    "keywords": [
+      "api",
+      "fx",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/fx",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/fx/route.ts"
+  },
+  {
+    "id": "api.public.gemini_branding",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/branding",
+      "en": "/api/gemini/branding"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "branding",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/branding",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/branding/route.ts"
+  },
+  {
+    "id": "api.public.gemini_builder",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/builder",
+      "en": "/api/gemini/builder"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "builder",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/builder",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/builder/route.ts"
+  },
+  {
+    "id": "api.public.gemini_chat",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/chat",
+      "en": "/api/gemini/chat"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "chat",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/chat",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/chat/route.ts"
+  },
+  {
+    "id": "api.public.gemini_homepage",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/homepage",
+      "en": "/api/gemini/homepage"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "homepage",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/homepage",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/homepage/route.ts"
+  },
+  {
+    "id": "api.public.gemini_import-service",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/import-service",
+      "en": "/api/gemini/import-service"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "import-service",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/import-service",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/import-service/route.ts"
+  },
+  {
+    "id": "api.public.gemini_invoices",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/invoices",
+      "en": "/api/gemini/invoices"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "invoices",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/invoices",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/invoices/route.ts"
+  },
+  {
+    "id": "api.public.gemini_pages",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/pages",
+      "en": "/api/gemini/pages"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "pages",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/pages",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/pages/route.ts"
+  },
+  {
+    "id": "api.public.gemini_sales-chat",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/sales-chat",
+      "en": "/api/gemini/sales-chat"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "sales-chat",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/sales-chat",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/sales-chat/route.ts"
+  },
+  {
+    "id": "api.public.gemini_search-agent",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/search-agent",
+      "en": "/api/gemini/search-agent"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "search-agent",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/search-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/search-agent/route.ts"
+  },
+  {
+    "id": "api.public.gemini_settings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/settings",
+      "en": "/api/gemini/settings"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "settings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/settings",
+    "methods": [
+      "GET",
+      "PUT"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/settings/route.ts"
+  },
+  {
+    "id": "api.public.gemini_test",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gemini/test",
+      "en": "/api/gemini/test"
+    },
+    "keywords": [
+      "api",
+      "gemini",
+      "test",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gemini/test",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gemini/test/route.ts"
+  },
+  {
+    "id": "api.public.geo_search",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/geo/search",
+      "en": "/api/geo/search"
+    },
+    "keywords": [
+      "api",
+      "geo",
+      "search",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/geo/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/geo/search/route.ts"
+  },
+  {
+    "id": "api.public.gift-cards",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gift-cards",
+      "en": "/api/gift-cards"
+    },
+    "keywords": [
+      "api",
+      "gift-cards",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gift-cards",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/gift-cards/route.ts"
+  },
+  {
+    "id": "api.public.gift-cards_redeem",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/gift-cards/redeem",
+      "en": "/api/gift-cards/redeem"
+    },
+    "keywords": [
+      "api",
+      "gift-cards",
+      "redeem",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/gift-cards/redeem",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/gift-cards/redeem/route.ts"
+  },
+  {
+    "id": "api.public.health",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/health",
+      "en": "/api/health"
+    },
+    "keywords": [
+      "api",
+      "health",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/health",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/health/route.ts"
+  },
+  {
+    "id": "api.public.home_partner-logos",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/home/partner-logos",
+      "en": "/api/home/partner-logos"
+    },
+    "keywords": [
+      "api",
+      "home",
+      "partner-logos",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/home/partner-logos",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/home/partner-logos/route.ts"
+  },
+  {
+    "id": "api.public.homepage-template",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/homepage-template",
+      "en": "/api/homepage-template"
+    },
+    "keywords": [
+      "api",
+      "homepage-template",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/homepage-template",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/homepage-template/route.ts"
+  },
+  {
+    "id": "api.public.hotel-bookings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotel-bookings",
+      "en": "/api/hotel-bookings"
+    },
+    "keywords": [
+      "api",
+      "hotel-bookings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotel-bookings",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/hotel-bookings/route.ts"
+  },
+  {
+    "id": "api.public.hotel-bookings__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotel-bookings/:id",
+      "en": "/api/hotel-bookings/:id"
+    },
+    "keywords": [
+      "api",
+      "hotel-bookings",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotel-bookings/:id",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotel-bookings/[id]/route.ts"
+  },
+  {
+    "id": "api.public.hotel-bookings__id_pdf",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotel-bookings/:id/pdf",
+      "en": "/api/hotel-bookings/:id/pdf"
+    },
+    "keywords": [
+      "api",
+      "hotel-bookings",
+      ":id",
+      "pdf",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotel-bookings/:id/pdf",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotel-bookings/[id]/pdf/route.ts"
+  },
+  {
+    "id": "api.public.hotels_details",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/details",
+      "en": "/api/hotels/details"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "details",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/details",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/details/route.ts"
+  },
+  {
+    "id": "api.public.hotels_featured-destinations",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/featured-destinations",
+      "en": "/api/hotels/featured-destinations"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "featured-destinations",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/featured-destinations",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/featured-destinations/route.ts"
+  },
+  {
+    "id": "api.public.hotels_filters",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/filters",
+      "en": "/api/hotels/filters"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "filters",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/filters",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/filters/route.ts"
+  },
+  {
+    "id": "api.public.hotels_offers",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/offers",
+      "en": "/api/hotels/offers"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "offers",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/offers",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/offers/route.ts"
+  },
+  {
+    "id": "api.public.hotels_photos",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/photos",
+      "en": "/api/hotels/photos"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "photos",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/photos",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/photos/route.ts"
+  },
+  {
+    "id": "api.public.hotels_quote",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/quote",
+      "en": "/api/hotels/quote"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "quote",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/quote",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/hotels/quote/route.ts"
+  },
+  {
+    "id": "api.public.hotels_reviews",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/reviews",
+      "en": "/api/hotels/reviews"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "reviews",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/reviews",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/reviews/route.ts"
+  },
+  {
+    "id": "api.public.hotels_search",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/search",
+      "en": "/api/hotels/search"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "search",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/search",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/search/route.ts"
+  },
+  {
+    "id": "api.public.hotels_suggest",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels/suggest",
+      "en": "/api/hotels/suggest"
+    },
+    "keywords": [
+      "api",
+      "hotels",
+      "suggest",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels/suggest",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels/suggest/route.ts"
+  },
+  {
+    "id": "api.public.hotels-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/hotels-config",
+      "en": "/api/hotels-config"
+    },
+    "keywords": [
+      "api",
+      "hotels-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/hotels-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/hotels-config/route.ts"
+  },
+  {
+    "id": "api.public.license_activate",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/license/activate",
+      "en": "/api/license/activate"
+    },
+    "keywords": [
+      "api",
+      "license",
+      "activate",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/license/activate",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/license/activate/route.ts"
+  },
+  {
+    "id": "api.public.license_heartbeat",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/license/heartbeat",
+      "en": "/api/license/heartbeat"
+    },
+    "keywords": [
+      "api",
+      "license",
+      "heartbeat",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/license/heartbeat",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/license/heartbeat/route.ts"
+  },
+  {
+    "id": "api.public.loyalty_apply",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/loyalty/apply",
+      "en": "/api/loyalty/apply"
+    },
+    "keywords": [
+      "api",
+      "loyalty",
+      "apply",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/loyalty/apply",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/loyalty/apply/route.ts"
+  },
+  {
+    "id": "api.public.loyalty_convert",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/loyalty/convert",
+      "en": "/api/loyalty/convert"
+    },
+    "keywords": [
+      "api",
+      "loyalty",
+      "convert",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/loyalty/convert",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/loyalty/convert/route.ts"
+  },
+  {
+    "id": "api.public.loyalty_public",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/loyalty/public",
+      "en": "/api/loyalty/public"
+    },
+    "keywords": [
+      "api",
+      "loyalty",
+      "public",
+      "public_api"
+    ],
+    "route": "/api/loyalty/public",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/loyalty/public/route.ts"
+  },
+  {
+    "id": "api.public.loyalty_quote",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/loyalty/quote",
+      "en": "/api/loyalty/quote"
+    },
+    "keywords": [
+      "api",
+      "loyalty",
+      "quote",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/loyalty/quote",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/loyalty/quote/route.ts"
+  },
+  {
+    "id": "api.public.loyalty_wallet",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/loyalty/wallet",
+      "en": "/api/loyalty/wallet"
+    },
+    "keywords": [
+      "api",
+      "loyalty",
+      "wallet",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/loyalty/wallet",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/loyalty/wallet/route.ts"
+  },
+  {
+    "id": "api.public.newsletter_subscribe",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/newsletter/subscribe",
+      "en": "/api/newsletter/subscribe"
+    },
+    "keywords": [
+      "api",
+      "newsletter",
+      "subscribe",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/newsletter/subscribe",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/newsletter/subscribe/route.ts"
+  },
+  {
+    "id": "api.public.oauth_credentials",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/credentials",
+      "en": "/api/oauth/credentials"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "credentials",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/credentials",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/oauth/credentials/route.ts"
+  },
+  {
+    "id": "api.public.oauth_gmb",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/gmb",
+      "en": "/api/oauth/gmb"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "gmb",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/gmb",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/gmb/route.ts"
+  },
+  {
+    "id": "api.public.oauth_gmb_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/gmb/callback",
+      "en": "/api/oauth/gmb/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "gmb",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/gmb/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/gmb/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_gmb_select",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/gmb/select",
+      "en": "/api/oauth/gmb/select"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "gmb",
+      "select",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/gmb/select",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/oauth/gmb/select/route.ts"
+  },
+  {
+    "id": "api.public.oauth_linkedin",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/linkedin",
+      "en": "/api/oauth/linkedin"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "linkedin",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/linkedin",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/linkedin/route.ts"
+  },
+  {
+    "id": "api.public.oauth_linkedin_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/linkedin/callback",
+      "en": "/api/oauth/linkedin/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "linkedin",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/linkedin/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/linkedin/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_linkedin-page",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/linkedin-page",
+      "en": "/api/oauth/linkedin-page"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "linkedin-page",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/linkedin-page",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/linkedin-page/route.ts"
+  },
+  {
+    "id": "api.public.oauth_linkedin-page_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/linkedin-page/callback",
+      "en": "/api/oauth/linkedin-page/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "linkedin-page",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/linkedin-page/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/linkedin-page/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_linkedin-page_select",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/linkedin-page/select",
+      "en": "/api/oauth/linkedin-page/select"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "linkedin-page",
+      "select",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/linkedin-page/select",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/oauth/linkedin-page/select/route.ts"
+  },
+  {
+    "id": "api.public.oauth_meta",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/meta",
+      "en": "/api/oauth/meta"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "meta",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/meta",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/meta/route.ts"
+  },
+  {
+    "id": "api.public.oauth_meta_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/meta/callback",
+      "en": "/api/oauth/meta/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "meta",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/meta/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/meta/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_pinterest",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/pinterest",
+      "en": "/api/oauth/pinterest"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "pinterest",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/pinterest",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/pinterest/route.ts"
+  },
+  {
+    "id": "api.public.oauth_pinterest_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/pinterest/callback",
+      "en": "/api/oauth/pinterest/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "pinterest",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/pinterest/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/pinterest/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_telegram",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/telegram",
+      "en": "/api/oauth/telegram"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "telegram",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/telegram",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/oauth/telegram/route.ts"
+  },
+  {
+    "id": "api.public.oauth_threads",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/threads",
+      "en": "/api/oauth/threads"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "threads",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/threads",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/threads/route.ts"
+  },
+  {
+    "id": "api.public.oauth_threads_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/threads/callback",
+      "en": "/api/oauth/threads/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "threads",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/threads/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/threads/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_tiktok",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/tiktok",
+      "en": "/api/oauth/tiktok"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "tiktok",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/tiktok",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/tiktok/route.ts"
+  },
+  {
+    "id": "api.public.oauth_tiktok_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/tiktok/callback",
+      "en": "/api/oauth/tiktok/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "tiktok",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/tiktok/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/tiktok/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_x",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/x",
+      "en": "/api/oauth/x"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/x",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/x/route.ts"
+  },
+  {
+    "id": "api.public.oauth_x_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/x/callback",
+      "en": "/api/oauth/x/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/x/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/x/callback/route.ts"
+  },
+  {
+    "id": "api.public.oauth_youtube",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/youtube",
+      "en": "/api/oauth/youtube"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "youtube",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/youtube",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/youtube/route.ts"
+  },
+  {
+    "id": "api.public.oauth_youtube_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/oauth/youtube/callback",
+      "en": "/api/oauth/youtube/callback"
+    },
+    "keywords": [
+      "api",
+      "oauth",
+      "youtube",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/oauth/youtube/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/oauth/youtube/callback/route.ts"
+  },
+  {
+    "id": "api.public.packages",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/packages",
+      "en": "/api/packages"
+    },
+    "keywords": [
+      "api",
+      "packages",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/packages",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/packages/route.ts"
+  },
+  {
+    "id": "api.public.packages_addons",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/packages/addons",
+      "en": "/api/packages/addons"
+    },
+    "keywords": [
+      "api",
+      "packages",
+      "addons",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/packages/addons",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/packages/addons/route.ts"
+  },
+  {
+    "id": "api.public.page-theme",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/page-theme",
+      "en": "/api/page-theme"
+    },
+    "keywords": [
+      "api",
+      "page-theme",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/page-theme",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/page-theme/route.ts"
+  },
+  {
+    "id": "api.public.pages__slug",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/pages/:slug",
+      "en": "/api/pages/:slug"
+    },
+    "keywords": [
+      "api",
+      "pages",
+      ":slug",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/pages/:slug",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/pages/[slug]/route.ts"
+  },
+  {
+    "id": "api.public.partners_ai-domain-assistant",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/ai-domain-assistant",
+      "en": "/api/partners/ai-domain-assistant"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "ai-domain-assistant",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/ai-domain-assistant",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/ai-domain-assistant/route.ts"
+  },
+  {
+    "id": "api.public.partners_auth_google",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/auth/google",
+      "en": "/api/partners/auth/google"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "auth",
+      "google",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/auth/google",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/partners/auth/google/route.ts"
+  },
+  {
+    "id": "api.public.partners_auth_google_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/auth/google/callback",
+      "en": "/api/partners/auth/google/callback"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "auth",
+      "google",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/auth/google/callback",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/partners/auth/google/callback/route.ts"
+  },
+  {
+    "id": "api.public.partners_checkout",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/checkout",
+      "en": "/api/partners/checkout"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "checkout",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/checkout",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/checkout/route.ts"
+  },
+  {
+    "id": "api.public.partners_checkout_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/checkout/callback",
+      "en": "/api/partners/checkout/callback"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "checkout",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/checkout/callback",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/checkout/callback/route.ts"
+  },
+  {
+    "id": "api.public.partners_domain",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/domain",
+      "en": "/api/partners/domain"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "domain",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/domain",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/domain/route.ts"
+  },
+  {
+    "id": "api.public.partners_invoice",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/invoice",
+      "en": "/api/partners/invoice"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "invoice",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/invoice",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/partners/invoice/route.ts"
+  },
+  {
+    "id": "api.public.partners_logout",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/logout",
+      "en": "/api/partners/logout"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "logout",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/logout",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/logout/route.ts"
+  },
+  {
+    "id": "api.public.partners_me",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/me",
+      "en": "/api/partners/me"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "me",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/me",
+    "methods": [
+      "GET",
+      "PATCH"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/me/route.ts"
+  },
+  {
+    "id": "api.public.partners_provision",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/provision",
+      "en": "/api/partners/provision"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "provision",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/provision",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/provision/route.ts"
+  },
+  {
+    "id": "api.public.partners_subscription",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/subscription",
+      "en": "/api/partners/subscription"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "subscription",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/subscription",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/subscription/route.ts"
+  },
+  {
+    "id": "api.public.partners_test-connection",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/test-connection",
+      "en": "/api/partners/test-connection"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "test-connection",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/test-connection",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/test-connection/route.ts"
+  },
+  {
+    "id": "api.public.partners_wallet",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/partners/wallet",
+      "en": "/api/partners/wallet"
+    },
+    "keywords": [
+      "api",
+      "partners",
+      "wallet",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/partners/wallet",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/partners/wallet/route.ts"
+  },
+  {
+    "id": "api.public.payments__gateway_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/:gateway/callback",
+      "en": "/api/payments/:gateway/callback"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      ":gateway",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/:gateway/callback",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/[gateway]/callback/route.ts"
+  },
+  {
+    "id": "api.public.payments__gateway_webhook",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/:gateway/webhook",
+      "en": "/api/payments/:gateway/webhook"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      ":gateway",
+      "webhook",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/:gateway/webhook",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/[gateway]/webhook/route.ts"
+  },
+  {
+    "id": "api.public.payments_config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/config",
+      "en": "/api/payments/config"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/payments/config/route.ts"
+  },
+  {
+    "id": "api.public.payments_init",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/init",
+      "en": "/api/payments/init"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "init",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/init",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/init/route.ts"
+  },
+  {
+    "id": "api.public.payments_iyzico_callback",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/iyzico/callback",
+      "en": "/api/payments/iyzico/callback"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "iyzico",
+      "callback",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/iyzico/callback",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/iyzico/callback/route.ts"
+  },
+  {
+    "id": "api.public.payments_iyzico_charge",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/iyzico/charge",
+      "en": "/api/payments/iyzico/charge"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "iyzico",
+      "charge",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/iyzico/charge",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/iyzico/charge/route.ts"
+  },
+  {
+    "id": "api.public.payments_iyzico_init",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/iyzico/init",
+      "en": "/api/payments/iyzico/init"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "iyzico",
+      "init",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/iyzico/init",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/iyzico/init/route.ts"
+  },
+  {
+    "id": "api.public.payments_iyzico_status",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/iyzico/status",
+      "en": "/api/payments/iyzico/status"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "iyzico",
+      "status",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/iyzico/status",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/payments/iyzico/status/route.ts"
+  },
+  {
+    "id": "api.public.payments_iyzico_webhook",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/payments/iyzico/webhook",
+      "en": "/api/payments/iyzico/webhook"
+    },
+    "keywords": [
+      "api",
+      "payments",
+      "iyzico",
+      "webhook",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/payments/iyzico/webhook",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/payments/iyzico/webhook/route.ts"
+  },
+  {
+    "id": "api.public.planner_share-community",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/planner/share-community",
+      "en": "/api/planner/share-community"
+    },
+    "keywords": [
+      "api",
+      "planner",
+      "share-community",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/planner/share-community",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/planner/share-community/route.ts"
+  },
+  {
+    "id": "api.public.preview_stats",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/preview/stats",
+      "en": "/api/preview/stats"
+    },
+    "keywords": [
+      "api",
+      "preview",
+      "stats",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/preview/stats",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/preview/stats/route.ts"
+  },
+  {
+    "id": "api.public.preview_war-room",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/preview/war-room",
+      "en": "/api/preview/war-room"
+    },
+    "keywords": [
+      "api",
+      "preview",
+      "war-room",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/preview/war-room",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/preview/war-room/route.ts"
+  },
+  {
+    "id": "api.public.public-branding",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-branding",
+      "en": "/api/public-branding"
+    },
+    "keywords": [
+      "api",
+      "public-branding",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-branding",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-branding/route.ts"
+  },
+  {
+    "id": "api.public.public-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-config",
+      "en": "/api/public-config"
+    },
+    "keywords": [
+      "api",
+      "public-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-config/route.ts"
+  },
+  {
+    "id": "api.public.public-contact",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-contact",
+      "en": "/api/public-contact"
+    },
+    "keywords": [
+      "api",
+      "public-contact",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-contact",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-contact/route.ts"
+  },
+  {
+    "id": "api.public.public-legal",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-legal",
+      "en": "/api/public-legal"
+    },
+    "keywords": [
+      "api",
+      "public-legal",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-legal",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-legal/route.ts"
+  },
+  {
+    "id": "api.public.public-pages",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-pages",
+      "en": "/api/public-pages"
+    },
+    "keywords": [
+      "api",
+      "public-pages",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-pages",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-pages/route.ts"
+  },
+  {
+    "id": "api.public.public-theme",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-theme",
+      "en": "/api/public-theme"
+    },
+    "keywords": [
+      "api",
+      "public-theme",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-theme",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-theme/route.ts"
+  },
+  {
+    "id": "api.public.public-ui-icons",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/public-ui-icons",
+      "en": "/api/public-ui-icons"
+    },
+    "keywords": [
+      "api",
+      "public-ui-icons",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/public-ui-icons",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/public-ui-icons/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_analytics",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/analytics",
+      "en": "/api/publish/v1/analytics"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "analytics",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/analytics",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/publish/v1/analytics/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_analytics__integration",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/analytics/:integration",
+      "en": "/api/publish/v1/analytics/:integration"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "analytics",
+      ":integration",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/analytics/:integration",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/publish/v1/analytics/[integration]/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_analytics_post__postId",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/analytics/post/:postId",
+      "en": "/api/publish/v1/analytics/post/:postId"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "analytics",
+      "post",
+      ":postid",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/analytics/post/:postId",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/publish/v1/analytics/post/[postId]/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_integrations",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/integrations",
+      "en": "/api/publish/v1/integrations"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "integrations",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/integrations",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/publish/v1/integrations/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_posts",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/posts",
+      "en": "/api/publish/v1/posts"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "posts",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/posts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/publish/v1/posts/route.ts"
+  },
+  {
+    "id": "api.public.publish_v1_upload-from-url",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/publish/v1/upload-from-url",
+      "en": "/api/publish/v1/upload-from-url"
+    },
+    "keywords": [
+      "api",
+      "publish",
+      "v1",
+      "upload-from-url",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/publish/v1/upload-from-url",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/publish/v1/upload-from-url/route.ts"
+  },
+  {
+    "id": "api.public.pwa",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/pwa",
+      "en": "/api/pwa"
+    },
+    "keywords": [
+      "api",
+      "pwa",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/pwa",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/pwa/route.ts"
+  },
+  {
+    "id": "api.public.reviews",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/reviews",
+      "en": "/api/reviews"
+    },
+    "keywords": [
+      "api",
+      "reviews",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/reviews",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/reviews/route.ts"
+  },
+  {
+    "id": "api.public.reviews_eligibility",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/reviews/eligibility",
+      "en": "/api/reviews/eligibility"
+    },
+    "keywords": [
+      "api",
+      "reviews",
+      "eligibility",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/reviews/eligibility",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/reviews/eligibility/route.ts"
+  },
+  {
+    "id": "api.public.reviews_my",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/reviews/my",
+      "en": "/api/reviews/my"
+    },
+    "keywords": [
+      "api",
+      "reviews",
+      "my",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/reviews/my",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/reviews/my/route.ts"
+  },
+  {
+    "id": "api.public.reviews_my__id",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/reviews/my/:id",
+      "en": "/api/reviews/my/:id"
+    },
+    "keywords": [
+      "api",
+      "reviews",
+      "my",
+      ":id",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/reviews/my/:id",
+    "methods": [
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/reviews/my/[id]/route.ts"
+  },
+  {
+    "id": "api.public.reviews_submit",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/reviews/submit",
+      "en": "/api/reviews/submit"
+    },
+    "keywords": [
+      "api",
+      "reviews",
+      "submit",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/reviews/submit",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/reviews/submit/route.ts"
+  },
+  {
+    "id": "api.public.search-tabs",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/search-tabs",
+      "en": "/api/search-tabs"
+    },
+    "keywords": [
+      "api",
+      "search-tabs",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/search-tabs",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/search-tabs/route.ts"
+  },
+  {
+    "id": "api.public.social_accounts",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/social/accounts",
+      "en": "/api/social/accounts"
+    },
+    "keywords": [
+      "api",
+      "social",
+      "accounts",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/social/accounts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/social/accounts/route.ts"
+  },
+  {
+    "id": "api.public.social_accounts_disconnect",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/social/accounts/disconnect",
+      "en": "/api/social/accounts/disconnect"
+    },
+    "keywords": [
+      "api",
+      "social",
+      "accounts",
+      "disconnect",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/social/accounts/disconnect",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/social/accounts/disconnect/route.ts"
+  },
+  {
+    "id": "api.public.social_accounts_refresh",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/social/accounts/refresh",
+      "en": "/api/social/accounts/refresh"
+    },
+    "keywords": [
+      "api",
+      "social",
+      "accounts",
+      "refresh",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/social/accounts/refresh",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/social/accounts/refresh/route.ts"
+  },
+  {
+    "id": "api.public.social_credentials",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/social/credentials",
+      "en": "/api/social/credentials"
+    },
+    "keywords": [
+      "api",
+      "social",
+      "credentials",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/social/credentials",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/social/credentials/route.ts"
+  },
+  {
+    "id": "api.public.social_publish",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/social/publish",
+      "en": "/api/social/publish"
+    },
+    "keywords": [
+      "api",
+      "social",
+      "publish",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/social/publish",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/social/publish/route.ts"
+  },
+  {
+    "id": "api.public.studio_creative_files",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/creative/files",
+      "en": "/api/studio/creative/files"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "creative",
+      "files",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/creative/files",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/studio/creative/files/route.ts"
+  },
+  {
+    "id": "api.public.studio_creative_images",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/creative/images",
+      "en": "/api/studio/creative/images"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "creative",
+      "images",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/creative/images",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/studio/creative/images/route.ts"
+  },
+  {
+    "id": "api.public.studio_creative_plan",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/creative/plan",
+      "en": "/api/studio/creative/plan"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "creative",
+      "plan",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/creative/plan",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/studio/creative/plan/route.ts"
+  },
+  {
+    "id": "api.public.studio_video_edit",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/video/edit",
+      "en": "/api/studio/video/edit"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "video",
+      "edit",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/video/edit",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/studio/video/edit/route.ts"
+  },
+  {
+    "id": "api.public.studio_video_files",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/video/files",
+      "en": "/api/studio/video/files"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "video",
+      "files",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/video/files",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/studio/video/files/route.ts"
+  },
+  {
+    "id": "api.public.studio_video_generate",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/studio/video/generate",
+      "en": "/api/studio/video/generate"
+    },
+    "keywords": [
+      "api",
+      "studio",
+      "video",
+      "generate",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/studio/video/generate",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/studio/video/generate/route.ts"
+  },
+  {
+    "id": "api.public.tours",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/tours",
+      "en": "/api/tours"
+    },
+    "keywords": [
+      "api",
+      "tours",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/tours",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/tours/route.ts"
+  },
+  {
+    "id": "api.public.track_visit",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/track/visit",
+      "en": "/api/track/visit"
+    },
+    "keywords": [
+      "api",
+      "track",
+      "visit",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/track/visit",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/track/visit/route.ts"
+  },
+  {
+    "id": "api.public.tracking-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/tracking-config",
+      "en": "/api/tracking-config"
+    },
+    "keywords": [
+      "api",
+      "tracking-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/tracking-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/tracking-config/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_ai-fleet-agent",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/ai-fleet-agent",
+      "en": "/api/transfers/admin/ai-fleet-agent"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "ai-fleet-agent",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/ai-fleet-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/ai-fleet-agent/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_daily-tours",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/daily-tours",
+      "en": "/api/transfers/admin/daily-tours"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "daily-tours",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/daily-tours",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/daily-tours/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_dispatch",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/dispatch",
+      "en": "/api/transfers/admin/dispatch"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "dispatch",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/dispatch",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/dispatch/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_flight-radar",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/flight-radar",
+      "en": "/api/transfers/admin/flight-radar"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "flight-radar",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/flight-radar",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/flight-radar/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_live-map",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/live-map",
+      "en": "/api/transfers/admin/live-map"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "live-map",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/live-map",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/admin/live-map/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_moderation",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/moderation",
+      "en": "/api/transfers/admin/moderation"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "moderation",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/moderation",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/moderation/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_overview",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/overview",
+      "en": "/api/transfers/admin/overview"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "overview",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/overview",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/admin/overview/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_quote-requests",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/quote-requests",
+      "en": "/api/transfers/admin/quote-requests"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "quote-requests",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/quote-requests",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/quote-requests/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_reviews",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/reviews",
+      "en": "/api/transfers/admin/reviews"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "reviews",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/reviews",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/reviews/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_routes",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/routes",
+      "en": "/api/transfers/admin/routes"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "routes",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/routes",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/routes/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_settings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/settings",
+      "en": "/api/transfers/admin/settings"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "settings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/settings",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/settings/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_suppliers",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/suppliers",
+      "en": "/api/transfers/admin/suppliers"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "suppliers",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/suppliers",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/suppliers/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_upload",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/upload",
+      "en": "/api/transfers/admin/upload"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "upload",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/upload",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/upload/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_vehicle-classes",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/vehicle-classes",
+      "en": "/api/transfers/admin/vehicle-classes"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "vehicle-classes",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/vehicle-classes",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/vehicle-classes/route.ts"
+  },
+  {
+    "id": "api.public.transfers_admin_zones",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/admin/zones",
+      "en": "/api/transfers/admin/zones"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "admin",
+      "zones",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/admin/zones",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/admin/zones/route.ts"
+  },
+  {
+    "id": "api.public.transfers_ai-planner",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/ai-planner",
+      "en": "/api/transfers/ai-planner"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "ai-planner",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/ai-planner",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/ai-planner/route.ts"
+  },
+  {
+    "id": "api.public.transfers_book",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/book",
+      "en": "/api/transfers/book"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "book",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/book",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/book/route.ts"
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_3: PlatformIndexNode[] = [
+  {
+    "id": "api.public.transfers_driver_ai-fleet-agent",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/ai-fleet-agent",
+      "en": "/api/transfers/driver/ai-fleet-agent"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "ai-fleet-agent",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/ai-fleet-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/ai-fleet-agent/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_ai-route-agent",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/ai-route-agent",
+      "en": "/api/transfers/driver/ai-route-agent"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "ai-route-agent",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/ai-route-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/ai-route-agent/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_ai-tour-agent",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/ai-tour-agent",
+      "en": "/api/transfers/driver/ai-tour-agent"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "ai-tour-agent",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/ai-tour-agent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/ai-tour-agent/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_analytics",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/analytics",
+      "en": "/api/transfers/driver/analytics"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "analytics",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/analytics",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/analytics/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_auth_login",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/auth/login",
+      "en": "/api/transfers/driver/auth/login"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "auth",
+      "login",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/auth/login",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/auth/login/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_auth_register",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/auth/register",
+      "en": "/api/transfers/driver/auth/register"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "auth",
+      "register",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/auth/register",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/auth/register/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_bookings__id_assign",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/bookings/:id/assign",
+      "en": "/api/transfers/driver/bookings/:id/assign"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "bookings",
+      ":id",
+      "assign",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/bookings/:id/assign",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/bookings/[id]/assign/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_bookings__id_status",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/bookings/:id/status",
+      "en": "/api/transfers/driver/bookings/:id/status"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "bookings",
+      ":id",
+      "status",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/bookings/:id/status",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/bookings/[id]/status/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_bookings_active",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/bookings/active",
+      "en": "/api/transfers/driver/bookings/active"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "bookings",
+      "active",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/bookings/active",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/bookings/active/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_catalog",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/catalog",
+      "en": "/api/transfers/driver/catalog"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "catalog",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/catalog",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/catalog/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_catalog_enriched",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/catalog/enriched",
+      "en": "/api/transfers/driver/catalog/enriched"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "catalog",
+      "enriched",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/catalog/enriched",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/catalog/enriched/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_commission",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/commission",
+      "en": "/api/transfers/driver/commission"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "commission",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/commission",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/commission/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_documents",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/documents",
+      "en": "/api/transfers/driver/documents"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "documents",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/documents",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/documents/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_drivers",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/drivers",
+      "en": "/api/transfers/driver/drivers"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "drivers",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/drivers",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/drivers/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_earnings",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/earnings",
+      "en": "/api/transfers/driver/earnings"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "earnings",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/earnings",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/earnings/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_fleet",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/fleet",
+      "en": "/api/transfers/driver/fleet"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "fleet",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/fleet",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/fleet/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_fleet_new-class",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/fleet/new-class",
+      "en": "/api/transfers/driver/fleet/new-class"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "fleet",
+      "new-class",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/fleet/new-class",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/fleet/new-class/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_live-map",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/live-map",
+      "en": "/api/transfers/driver/live-map"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "live-map",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/live-map",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/live-map/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_profile",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/profile",
+      "en": "/api/transfers/driver/profile"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "profile",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/profile",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/profile/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_quote-requests",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/quote-requests",
+      "en": "/api/transfers/driver/quote-requests"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "quote-requests",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/quote-requests",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/quote-requests/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_register",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/register",
+      "en": "/api/transfers/driver/register"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "register",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/register",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/register/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_reviews",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/reviews",
+      "en": "/api/transfers/driver/reviews"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "reviews",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/reviews",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/driver/reviews/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_route-pricing",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/route-pricing",
+      "en": "/api/transfers/driver/route-pricing"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "route-pricing",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/route-pricing",
+    "methods": [
+      "GET",
+      "PUT"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/route-pricing/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_routes",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/routes",
+      "en": "/api/transfers/driver/routes"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "routes",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/routes",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/routes/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_telemetry",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/telemetry",
+      "en": "/api/transfers/driver/telemetry"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "telemetry",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/telemetry",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/telemetry/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_tour-offers",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/tour-offers",
+      "en": "/api/transfers/driver/tour-offers"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "tour-offers",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/tour-offers",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/tour-offers/route.ts"
+  },
+  {
+    "id": "api.public.transfers_driver_upload",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/driver/upload",
+      "en": "/api/transfers/driver/upload"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "driver",
+      "upload",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/driver/upload",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/driver/upload/route.ts"
+  },
+  {
+    "id": "api.public.transfers_flight-tracker",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/flight-tracker",
+      "en": "/api/transfers/flight-tracker"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "flight-tracker",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/flight-tracker",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/flight-tracker/route.ts"
+  },
+  {
+    "id": "api.public.transfers_locations",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/locations",
+      "en": "/api/transfers/locations"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "locations",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/locations",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers/locations/route.ts"
+  },
+  {
+    "id": "api.public.transfers_search",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers/search",
+      "en": "/api/transfers/search"
+    },
+    "keywords": [
+      "api",
+      "transfers",
+      "search",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers/search",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/transfers/search/route.ts"
+  },
+  {
+    "id": "api.public.transfers-config",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/transfers-config",
+      "en": "/api/transfers-config"
+    },
+    "keywords": [
+      "api",
+      "transfers-config",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/transfers-config",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/transfers-config/route.ts"
+  },
+  {
+    "id": "api.public.translations",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/translations",
+      "en": "/api/translations"
+    },
+    "keywords": [
+      "api",
+      "translations",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/translations",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/translations/route.ts"
+  },
+  {
+    "id": "api.public.updates_check",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/updates/check",
+      "en": "/api/updates/check"
+    },
+    "keywords": [
+      "api",
+      "updates",
+      "check",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/updates/check",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/updates/check/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_pkfare",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/pkfare",
+      "en": "/api/webhooks/pkfare"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "pkfare",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/pkfare",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/pkfare/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_seeru",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/seeru",
+      "en": "/api/webhooks/seeru"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "seeru",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/seeru",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/seeru/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_seeru_flights",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/seeru/flights",
+      "en": "/api/webhooks/seeru/flights"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "seeru",
+      "flights",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/seeru/flights",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/seeru/flights/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_seeru_hotels",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/seeru/hotels",
+      "en": "/api/webhooks/seeru/hotels"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "seeru",
+      "hotels",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/seeru/hotels",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/seeru/hotels/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_telegram",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/telegram",
+      "en": "/api/webhooks/telegram"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "telegram",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/telegram",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.mutate"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/telegram/route.ts"
+  },
+  {
+    "id": "api.public.webhooks_whatsapp",
+    "kind": "public_api",
+    "scope": "public",
+    "labels": {
+      "ar": "/api/webhooks/whatsapp",
+      "en": "/api/webhooks/whatsapp"
+    },
+    "keywords": [
+      "api",
+      "webhooks",
+      "whatsapp",
+      "public_api",
+      "public"
+    ],
+    "route": "/api/webhooks/whatsapp",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "api.public.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/webhooks/whatsapp/route.ts"
+  },
+  {
     "id": "api.publish_agent",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/agent",
       "en": "/api/admin/publish/agent"
@@ -3477,6 +13030,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_analytics",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/analytics",
       "en": "/api/admin/publish/analytics"
@@ -3502,6 +13056,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_analytics__channelId",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/analytics/:channelId",
       "en": "/api/admin/publish/analytics/:channelId"
@@ -3528,6 +13083,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_analytics_post__postId",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/analytics/post/:postId",
       "en": "/api/admin/publish/analytics/post/:postId"
@@ -3555,6 +13111,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_channels",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/channels",
       "en": "/api/admin/publish/channels"
@@ -3581,6 +13138,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_channels__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/channels/:id",
       "en": "/api/admin/publish/channels/:id"
@@ -3609,6 +13167,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_image",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/image",
       "en": "/api/admin/publish/image"
@@ -3633,6 +13192,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_media",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/media",
       "en": "/api/admin/publish/media"
@@ -3659,6 +13219,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_missing-release",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/missing-release",
       "en": "/api/admin/publish/missing-release"
@@ -3686,6 +13247,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_plugs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/plugs",
       "en": "/api/admin/publish/plugs"
@@ -3713,6 +13275,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_posts",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/posts",
       "en": "/api/admin/publish/posts"
@@ -3739,6 +13302,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_posts__id",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/posts/:id",
       "en": "/api/admin/publish/posts/:id"
@@ -3767,6 +13331,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_posts__id_publish-now",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/posts/:id/publish-now",
       "en": "/api/admin/publish/posts/:id/publish-now"
@@ -3793,6 +13358,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_posts__id_status",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/posts/:id/status",
       "en": "/api/admin/publish/posts/:id/status"
@@ -3819,6 +13385,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_request-approval",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/request-approval",
       "en": "/api/admin/publish/request-approval"
@@ -3843,6 +13410,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_rss",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/rss",
       "en": "/api/admin/publish/rss"
@@ -3870,6 +13438,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_sets",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/sets",
       "en": "/api/admin/publish/sets"
@@ -3897,6 +13466,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/settings",
       "en": "/api/admin/publish/settings"
@@ -3923,6 +13493,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_signatures",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/signatures",
       "en": "/api/admin/publish/signatures"
@@ -3950,6 +13521,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_tick",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/tick",
       "en": "/api/admin/publish/tick"
@@ -3976,6 +13548,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_upload-from-url",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/upload-from-url",
       "en": "/api/admin/publish/upload-from-url"
@@ -4000,6 +13573,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_video",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/video",
       "en": "/api/admin/publish/video"
@@ -4026,6 +13600,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.publish_webhooks",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/publish/webhooks",
       "en": "/api/admin/publish/webhooks"
@@ -4053,6 +13628,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.push_public-key",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/push/public-key",
       "en": "/api/admin/push/public-key"
@@ -4078,6 +13654,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.push_subscribe",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/push/subscribe",
       "en": "/api/admin/push/subscribe"
@@ -4103,6 +13680,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pwa",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pwa",
       "en": "/api/admin/pwa"
@@ -4128,6 +13706,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.pwa_icon",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/pwa/icon",
       "en": "/api/admin/pwa/icon"
@@ -4152,6 +13731,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_b2b-bookings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/b2b-bookings",
       "en": "/api/admin/resale/b2b-bookings"
@@ -4177,6 +13757,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_companies",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/companies",
       "en": "/api/admin/resale/companies"
@@ -4203,6 +13784,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_domains",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/domains",
       "en": "/api/admin/resale/domains"
@@ -4229,6 +13811,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_licenses",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/licenses",
       "en": "/api/admin/resale/licenses"
@@ -4255,6 +13838,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_marketing_email_campaign",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/marketing/email/campaign",
       "en": "/api/admin/resale/marketing/email/campaign"
@@ -4281,6 +13865,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_marketing_email_send",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/marketing/email/send",
       "en": "/api/admin/resale/marketing/email/send"
@@ -4307,6 +13892,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_marketing_email_settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/marketing/email/settings",
       "en": "/api/admin/resale/marketing/email/settings"
@@ -4335,6 +13921,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_marketing_email_verify",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/marketing/email/verify",
       "en": "/api/admin/resale/marketing/email/verify"
@@ -4361,6 +13948,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_marketing_whatsapp_send",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/marketing/whatsapp/send",
       "en": "/api/admin/resale/marketing/whatsapp/send"
@@ -4387,6 +13975,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_overview",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/overview",
       "en": "/api/admin/resale/overview"
@@ -4412,6 +14001,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_ai-studio",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/ai-studio",
       "en": "/api/admin/resale/scraper/ai-studio"
@@ -4437,6 +14027,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_campaigns",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/campaigns",
       "en": "/api/admin/resale/scraper/campaigns"
@@ -4464,6 +14055,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_export",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/export",
       "en": "/api/admin/resale/scraper/export"
@@ -4489,6 +14081,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_jobs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/jobs",
       "en": "/api/admin/resale/scraper/jobs"
@@ -4517,6 +14110,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_leads",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/leads",
       "en": "/api/admin/resale/scraper/leads"
@@ -4545,6 +14139,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_live-crawler",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/live-crawler",
       "en": "/api/admin/resale/scraper/live-crawler"
@@ -4573,6 +14168,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_scraper_templates",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/scraper/templates",
       "en": "/api/admin/resale/scraper/templates"
@@ -4601,6 +14197,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/settings",
       "en": "/api/admin/resale/settings"
@@ -4627,6 +14224,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_subscriptions",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/subscriptions",
       "en": "/api/admin/resale/subscriptions"
@@ -4653,6 +14251,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_wallets",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/wallets",
       "en": "/api/admin/resale/wallets"
@@ -4679,6 +14278,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.resale_whitelabel",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/resale/whitelabel",
       "en": "/api/admin/resale/whitelabel"
@@ -4706,6 +14306,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.reviews",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/reviews",
       "en": "/api/admin/reviews"
@@ -4731,6 +14332,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.reviews_agent",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/reviews/agent",
       "en": "/api/admin/reviews/agent"
@@ -4757,6 +14359,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.search-tabs",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/search-tabs",
       "en": "/api/admin/search-tabs"
@@ -4782,6 +14385,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.session",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/session",
       "en": "/api/admin/session"
@@ -4807,6 +14411,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.site-contact",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/site-contact",
       "en": "/api/admin/site-contact"
@@ -4832,6 +14437,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.social-community",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/social-community",
       "en": "/api/admin/social-community"
@@ -4857,6 +14463,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.social-community_test-relays",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/social-community/test-relays",
       "en": "/api/admin/social-community/test-relays"
@@ -4881,6 +14488,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_agents",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/agents",
       "en": "/api/admin/studio/agents"
@@ -4906,6 +14514,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_agents_delegate",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/agents/delegate",
       "en": "/api/admin/studio/agents/delegate"
@@ -4931,6 +14540,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_agents_speak",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/agents/speak",
       "en": "/api/admin/studio/agents/speak"
@@ -4956,6 +14566,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_briefing",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/briefing",
       "en": "/api/admin/studio/briefing"
@@ -4981,6 +14592,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_capabilities",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/capabilities",
       "en": "/api/admin/studio/capabilities"
@@ -5005,6 +14617,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_capabilities_execute",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/capabilities/execute",
       "en": "/api/admin/studio/capabilities/execute"
@@ -5028,8 +14641,36 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/studio/capabilities/execute/route.ts"
   },
   {
+    "id": "api.studio_deliberate",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/studio/deliberate",
+      "en": "/api/admin/studio/deliberate"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "deliberate"
+    ],
+    "route": "/api/admin/studio/deliberate",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "probe.studio_deliberate",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/deliberate/route.ts"
+  },
+  {
     "id": "api.studio_live",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/live",
       "en": "/api/admin/studio/live"
@@ -5055,6 +14696,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_loops_execute",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/loops/execute",
       "en": "/api/admin/studio/loops/execute"
@@ -5080,6 +14722,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_loops_preflight",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/loops/preflight",
       "en": "/api/admin/studio/loops/preflight"
@@ -5107,6 +14750,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_loops_state",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/loops/state",
       "en": "/api/admin/studio/loops/state"
@@ -5134,6 +14778,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_nexus_metrics",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/nexus/metrics",
       "en": "/api/admin/studio/nexus/metrics"
@@ -5158,8 +14803,64 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/studio/nexus/metrics/route.ts"
   },
   {
+    "id": "api.studio_nexus_metrics_batch",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/studio/nexus/metrics/batch",
+      "en": "/api/admin/studio/nexus/metrics/batch"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "nexus",
+      "metrics",
+      "batch"
+    ],
+    "route": "/api/admin/studio/nexus/metrics/batch",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "admin.route.call"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/nexus/metrics/batch/route.ts"
+  },
+  {
+    "id": "api.studio_nexus_metrics_summary",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/studio/nexus/metrics/summary",
+      "en": "/api/admin/studio/nexus/metrics/summary"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "nexus",
+      "metrics",
+      "summary"
+    ],
+    "route": "/api/admin/studio/nexus/metrics/summary",
+    "methods": [
+      "GET"
+    ],
+    "capabilityRefs": [
+      "probe.studio_nexus_metrics_summary",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "src/app/api/admin/studio/nexus/metrics/summary/route.ts"
+  },
+  {
     "id": "api.studio_records",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/records",
       "en": "/api/admin/studio/records"
@@ -5185,6 +14886,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.studio_schema",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/studio/schema",
       "en": "/api/admin/studio/schema"
@@ -5208,8 +14910,62 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/api/admin/studio/schema/route.ts"
   },
   {
+    "id": "api.studio_supervisor_intent",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/studio/supervisor/intent",
+      "en": "/api/admin/studio/supervisor/intent"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "supervisor",
+      "intent"
+    ],
+    "route": "/api/admin/studio/supervisor/intent",
+    "methods": [
+      "POST"
+    ],
+    "capabilityRefs": [
+      "admin.route.call"
+    ],
+    "defaultIntent": "command",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/supervisor/intent/route.ts"
+  },
+  {
+    "id": "api.studio_thesaurus",
+    "kind": "api_route",
+    "scope": "admin",
+    "labels": {
+      "ar": "/api/admin/studio/thesaurus",
+      "en": "/api/admin/studio/thesaurus"
+    },
+    "keywords": [
+      "api",
+      "admin",
+      "studio",
+      "thesaurus"
+    ],
+    "route": "/api/admin/studio/thesaurus",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "capabilityRefs": [
+      "probe.studio_thesaurus",
+      "admin.route.call"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "src/app/api/admin/studio/thesaurus/route.ts"
+  },
+  {
     "id": "api.tenant-plan",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/tenant-plan",
       "en": "/api/admin/tenant-plan"
@@ -5234,6 +14990,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.theme",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/theme",
       "en": "/api/admin/theme"
@@ -5259,6 +15016,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.tours",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/tours",
       "en": "/api/admin/tours"
@@ -5285,6 +15043,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.transfers-settings",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/transfers-settings",
       "en": "/api/admin/transfers-settings"
@@ -5310,6 +15069,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.translations",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/translations",
       "en": "/api/admin/translations"
@@ -5335,6 +15095,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.translations_languages",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/translations/languages",
       "en": "/api/admin/translations/languages"
@@ -5359,6 +15120,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.translations_translate-batch",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/translations/translate-batch",
       "en": "/api/admin/translations/translate-batch"
@@ -5383,6 +15145,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "api.ui-icons",
     "kind": "api_route",
+    "scope": "admin",
     "labels": {
       "ar": "/api/admin/ui-icons",
       "en": "/api/admin/ui-icons"
@@ -5408,6 +15171,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.admin_notifications",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "admin_notifications",
       "en": "admin_notifications"
@@ -5415,7 +15179,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "admin_notifications",
       "admin",
-      "notifications"
+      "notifications",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "admin_notifications",
     "capabilityRefs": [
@@ -5432,6 +15200,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.affiliate_conversions",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "affiliate_conversions",
       "en": "affiliate_conversions"
@@ -5439,7 +15208,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "affiliate_conversions",
       "affiliate",
-      "conversions"
+      "conversions",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "affiliate_conversions",
     "capabilityRefs": [
@@ -5456,6 +15229,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.affiliate_profiles",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "affiliate_profiles",
       "en": "affiliate_profiles"
@@ -5463,7 +15237,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "affiliate_profiles",
       "affiliate",
-      "profiles"
+      "profiles",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "affiliate_profiles",
     "capabilityRefs": [
@@ -5480,6 +15258,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.affiliate_settings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "affiliate_settings",
       "en": "affiliate_settings"
@@ -5487,7 +15266,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "affiliate_settings",
       "affiliate",
-      "settings"
+      "settings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "affiliate_settings",
     "capabilityRefs": [
@@ -5504,6 +15287,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.affiliate_visits",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "affiliate_visits",
       "en": "affiliate_visits"
@@ -5511,7 +15295,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "affiliate_visits",
       "affiliate",
-      "visits"
+      "visits",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "affiliate_visits",
     "capabilityRefs": [
@@ -5528,6 +15316,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.affiliate_withdrawals",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "affiliate_withdrawals",
       "en": "affiliate_withdrawals"
@@ -5535,7 +15324,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "affiliate_withdrawals",
       "affiliate",
-      "withdrawals"
+      "withdrawals",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "affiliate_withdrawals",
     "capabilityRefs": [
@@ -5552,6 +15345,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.ai_conversations",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "ai_conversations",
       "en": "ai_conversations"
@@ -5559,7 +15353,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "ai_conversations",
       "ai",
-      "conversations"
+      "conversations",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "ai_conversations",
     "capabilityRefs": [
@@ -5576,6 +15374,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.ai_programs",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "ai_programs",
       "en": "ai_programs"
@@ -5583,7 +15382,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "ai_programs",
       "ai",
-      "programs"
+      "programs",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "ai_programs",
     "capabilityRefs": [
@@ -5600,12 +15403,17 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.articles",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "articles",
       "en": "articles"
     },
     "keywords": [
-      "articles"
+      "articles",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "articles",
     "capabilityRefs": [
@@ -5622,6 +15430,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.crm_leads",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "crm_leads",
       "en": "crm_leads"
@@ -5629,7 +15438,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "crm_leads",
       "crm",
-      "leads"
+      "leads",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "crm_leads",
     "capabilityRefs": [
@@ -5646,6 +15459,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.customer_reviews",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "customer_reviews",
       "en": "customer_reviews"
@@ -5653,7 +15467,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "customer_reviews",
       "customer",
-      "reviews"
+      "reviews",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "customer_reviews",
     "capabilityRefs": [
@@ -5670,12 +15488,17 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.customers",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "customers",
       "en": "customers"
     },
     "keywords": [
-      "customers"
+      "customers",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "customers",
     "capabilityRefs": [
@@ -5692,6 +15515,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.email_campaigns",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "email_campaigns",
       "en": "email_campaigns"
@@ -5699,7 +15523,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "email_campaigns",
       "email",
-      "campaigns"
+      "campaigns",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "email_campaigns",
     "capabilityRefs": [
@@ -5716,6 +15544,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.email_recipients",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "email_recipients",
       "en": "email_recipients"
@@ -5723,7 +15552,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "email_recipients",
       "email",
-      "recipients"
+      "recipients",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "email_recipients",
     "capabilityRefs": [
@@ -5740,6 +15573,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.email_templates",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "email_templates",
       "en": "email_templates"
@@ -5747,7 +15581,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "email_templates",
       "email",
-      "templates"
+      "templates",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "email_templates",
     "capabilityRefs": [
@@ -5764,6 +15602,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.enquiry_bookings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "enquiry_bookings",
       "en": "enquiry_bookings"
@@ -5771,7 +15610,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "enquiry_bookings",
       "enquiry",
-      "bookings"
+      "bookings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "enquiry_bookings",
     "capabilityRefs": [
@@ -5788,6 +15631,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.financial_transactions",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "financial_transactions",
       "en": "financial_transactions"
@@ -5795,7 +15639,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "financial_transactions",
       "financial",
-      "transactions"
+      "transactions",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "financial_transactions",
     "capabilityRefs": [
@@ -5812,6 +15660,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.geo_places",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "geo_places",
       "en": "geo_places"
@@ -5819,7 +15668,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "geo_places",
       "geo",
-      "places"
+      "places",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "geo_places",
     "capabilityRefs": [
@@ -5836,6 +15689,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_bookings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_bookings",
       "en": "hotel_bookings"
@@ -5843,7 +15697,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_bookings",
       "hotel",
-      "bookings"
+      "bookings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_bookings",
     "capabilityRefs": [
@@ -5860,6 +15718,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_content_jobs",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_content_jobs",
       "en": "hotel_content_jobs"
@@ -5868,7 +15727,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_content_jobs",
       "hotel",
       "content",
-      "jobs"
+      "jobs",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_content_jobs",
     "capabilityRefs": [
@@ -5885,6 +15748,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_destinations",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_destinations",
       "en": "hotel_destinations"
@@ -5892,7 +15756,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_destinations",
       "hotel",
-      "destinations"
+      "destinations",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_destinations",
     "capabilityRefs": [
@@ -5909,6 +15777,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_facilities",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_facilities",
       "en": "hotel_facilities"
@@ -5916,7 +15785,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_facilities",
       "hotel",
-      "facilities"
+      "facilities",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_facilities",
     "capabilityRefs": [
@@ -5933,6 +15806,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_guest_reviews",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_guest_reviews",
       "en": "hotel_guest_reviews"
@@ -5941,7 +15815,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_guest_reviews",
       "hotel",
       "guest",
-      "reviews"
+      "reviews",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_guest_reviews",
     "capabilityRefs": [
@@ -5958,6 +15836,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_identity_reviews",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_identity_reviews",
       "en": "hotel_identity_reviews"
@@ -5966,7 +15845,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_identity_reviews",
       "hotel",
       "identity",
-      "reviews"
+      "reviews",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_identity_reviews",
     "capabilityRefs": [
@@ -5983,6 +15866,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_images",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_images",
       "en": "hotel_images"
@@ -5990,7 +15874,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_images",
       "hotel",
-      "images"
+      "images",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_images",
     "capabilityRefs": [
@@ -6007,6 +15895,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_masters",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_masters",
       "en": "hotel_masters"
@@ -6014,7 +15903,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_masters",
       "hotel",
-      "masters"
+      "masters",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_masters",
     "capabilityRefs": [
@@ -6031,6 +15924,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_pois",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_pois",
       "en": "hotel_pois"
@@ -6038,7 +15932,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_pois",
       "hotel",
-      "pois"
+      "pois",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_pois",
     "capabilityRefs": [
@@ -6055,6 +15953,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_quotes",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_quotes",
       "en": "hotel_quotes"
@@ -6062,7 +15961,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotel_quotes",
       "hotel",
-      "quotes"
+      "quotes",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_quotes",
     "capabilityRefs": [
@@ -6079,6 +15982,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_review_scores",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_review_scores",
       "en": "hotel_review_scores"
@@ -6087,7 +15991,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_review_scores",
       "hotel",
       "review",
-      "scores"
+      "scores",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_review_scores",
     "capabilityRefs": [
@@ -6104,6 +16012,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_rooms_content",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_rooms_content",
       "en": "hotel_rooms_content"
@@ -6112,7 +16021,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_rooms_content",
       "hotel",
       "rooms",
-      "content"
+      "content",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_rooms_content",
     "capabilityRefs": [
@@ -6125,10 +16038,14 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "defaultIntent": "open_table",
     "risk": "low",
     "evidence": "domain-systems.ts:KNOWN_COLLECTIONS"
-  },
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_4: PlatformIndexNode[] = [
   {
     "id": "collection.hotel_supplier_refs",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "hotel_supplier_refs",
       "en": "hotel_supplier_refs"
@@ -6137,7 +16054,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "hotel_supplier_refs",
       "hotel",
       "supplier",
-      "refs"
+      "refs",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "hotel_supplier_refs",
     "capabilityRefs": [
@@ -6154,6 +16075,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.loyalty_wallets",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "loyalty_wallets",
       "en": "loyalty_wallets"
@@ -6161,7 +16083,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "loyalty_wallets",
       "loyalty",
-      "wallets"
+      "wallets",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "loyalty_wallets",
     "capabilityRefs": [
@@ -6178,6 +16104,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.owned_hotels",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "owned_hotels",
       "en": "owned_hotels"
@@ -6185,7 +16112,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "owned_hotels",
       "owned",
-      "hotels"
+      "hotels",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "owned_hotels",
     "capabilityRefs": [
@@ -6202,6 +16133,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.owned_rate_snapshots",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "owned_rate_snapshots",
       "en": "owned_rate_snapshots"
@@ -6210,7 +16142,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "owned_rate_snapshots",
       "owned",
       "rate",
-      "snapshots"
+      "snapshots",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "owned_rate_snapshots",
     "capabilityRefs": [
@@ -6227,6 +16163,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_channel_groups",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_channel_groups",
       "en": "publish_channel_groups"
@@ -6235,7 +16172,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "publish_channel_groups",
       "publish",
       "channel",
-      "groups"
+      "groups",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_channel_groups",
     "capabilityRefs": [
@@ -6252,6 +16193,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_channels",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_channels",
       "en": "publish_channels"
@@ -6259,7 +16201,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_channels",
       "publish",
-      "channels"
+      "channels",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_channels",
     "capabilityRefs": [
@@ -6276,6 +16222,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_errors",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_errors",
       "en": "publish_errors"
@@ -6283,7 +16230,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_errors",
       "publish",
-      "errors"
+      "errors",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_errors",
     "capabilityRefs": [
@@ -6300,6 +16251,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_media",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_media",
       "en": "publish_media"
@@ -6307,7 +16259,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_media",
       "publish",
-      "media"
+      "media",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_media",
     "capabilityRefs": [
@@ -6324,6 +16280,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_mentions",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_mentions",
       "en": "publish_mentions"
@@ -6331,7 +16288,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_mentions",
       "publish",
-      "mentions"
+      "mentions",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_mentions",
     "capabilityRefs": [
@@ -6348,6 +16309,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_notifications",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_notifications",
       "en": "publish_notifications"
@@ -6355,7 +16317,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_notifications",
       "publish",
-      "notifications"
+      "notifications",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_notifications",
     "capabilityRefs": [
@@ -6372,6 +16338,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_plugs",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_plugs",
       "en": "publish_plugs"
@@ -6379,7 +16346,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_plugs",
       "publish",
-      "plugs"
+      "plugs",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_plugs",
     "capabilityRefs": [
@@ -6396,6 +16367,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_post_comments",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_post_comments",
       "en": "publish_post_comments"
@@ -6404,7 +16376,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "publish_post_comments",
       "publish",
       "post",
-      "comments"
+      "comments",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_post_comments",
     "capabilityRefs": [
@@ -6421,6 +16397,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_posts",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_posts",
       "en": "publish_posts"
@@ -6428,7 +16405,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_posts",
       "publish",
-      "posts"
+      "posts",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_posts",
     "capabilityRefs": [
@@ -6445,6 +16426,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_rss_feeds",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_rss_feeds",
       "en": "publish_rss_feeds"
@@ -6453,7 +16435,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "publish_rss_feeds",
       "publish",
       "rss",
-      "feeds"
+      "feeds",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_rss_feeds",
     "capabilityRefs": [
@@ -6470,6 +16456,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_sets",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_sets",
       "en": "publish_sets"
@@ -6477,7 +16464,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_sets",
       "publish",
-      "sets"
+      "sets",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_sets",
     "capabilityRefs": [
@@ -6494,6 +16485,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_signatures",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_signatures",
       "en": "publish_signatures"
@@ -6501,7 +16493,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_signatures",
       "publish",
-      "signatures"
+      "signatures",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_signatures",
     "capabilityRefs": [
@@ -6518,6 +16514,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_tags",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_tags",
       "en": "publish_tags"
@@ -6525,7 +16522,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_tags",
       "publish",
-      "tags"
+      "tags",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_tags",
     "capabilityRefs": [
@@ -6542,6 +16543,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.publish_webhooks",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "publish_webhooks",
       "en": "publish_webhooks"
@@ -6549,7 +16551,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish_webhooks",
       "publish",
-      "webhooks"
+      "webhooks",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "publish_webhooks",
     "capabilityRefs": [
@@ -6566,6 +16572,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_companies",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_companies",
       "en": "reseller_companies"
@@ -6573,7 +16580,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_companies",
       "reseller",
-      "companies"
+      "companies",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_companies",
     "capabilityRefs": [
@@ -6590,6 +16601,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_domain_events",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_domain_events",
       "en": "reseller_domain_events"
@@ -6598,7 +16610,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "reseller_domain_events",
       "reseller",
       "domain",
-      "events"
+      "events",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_domain_events",
     "capabilityRefs": [
@@ -6615,6 +16631,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_heartbeats",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_heartbeats",
       "en": "reseller_heartbeats"
@@ -6622,7 +16639,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_heartbeats",
       "reseller",
-      "heartbeats"
+      "heartbeats",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_heartbeats",
     "capabilityRefs": [
@@ -6639,6 +16660,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_licenses",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_licenses",
       "en": "reseller_licenses"
@@ -6646,7 +16668,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_licenses",
       "reseller",
-      "licenses"
+      "licenses",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_licenses",
     "capabilityRefs": [
@@ -6663,6 +16689,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_orders",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_orders",
       "en": "reseller_orders"
@@ -6670,7 +16697,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_orders",
       "reseller",
-      "orders"
+      "orders",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_orders",
     "capabilityRefs": [
@@ -6687,6 +16718,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_progress",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_progress",
       "en": "reseller_progress"
@@ -6694,7 +16726,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_progress",
       "reseller",
-      "progress"
+      "progress",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_progress",
     "capabilityRefs": [
@@ -6711,6 +16747,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_servers",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_servers",
       "en": "reseller_servers"
@@ -6718,7 +16755,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_servers",
       "reseller",
-      "servers"
+      "servers",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_servers",
     "capabilityRefs": [
@@ -6735,6 +16776,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_settings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_settings",
       "en": "reseller_settings"
@@ -6742,7 +16784,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_settings",
       "reseller",
-      "settings"
+      "settings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_settings",
     "capabilityRefs": [
@@ -6759,6 +16805,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_stage_templates",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_stage_templates",
       "en": "reseller_stage_templates"
@@ -6767,7 +16814,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "reseller_stage_templates",
       "reseller",
       "stage",
-      "templates"
+      "templates",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_stage_templates",
     "capabilityRefs": [
@@ -6784,6 +16835,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_subscriptions",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_subscriptions",
       "en": "reseller_subscriptions"
@@ -6791,7 +16843,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "reseller_subscriptions",
       "reseller",
-      "subscriptions"
+      "subscriptions",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_subscriptions",
     "capabilityRefs": [
@@ -6808,6 +16864,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.reseller_whitelabel_settings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "reseller_whitelabel_settings",
       "en": "reseller_whitelabel_settings"
@@ -6816,7 +16873,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "reseller_whitelabel_settings",
       "reseller",
       "whitelabel",
-      "settings"
+      "settings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "reseller_whitelabel_settings",
     "capabilityRefs": [
@@ -6833,6 +16894,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.site_settings",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "site_settings",
       "en": "site_settings"
@@ -6840,7 +16902,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "site_settings",
       "site",
-      "settings"
+      "settings",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "site_settings",
     "capabilityRefs": [
@@ -6857,6 +16923,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.site_traffic_logs",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "site_traffic_logs",
       "en": "site_traffic_logs"
@@ -6865,7 +16932,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
       "site_traffic_logs",
       "site",
       "traffic",
-      "logs"
+      "logs",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "site_traffic_logs",
     "capabilityRefs": [
@@ -6882,12 +16953,17 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "collection.users",
     "kind": "collection",
+    "scope": "database",
     "labels": {
       "ar": "users",
       "en": "users"
     },
     "keywords": [
-      "users"
+      "users",
+      "قاعده",
+      "بيانات",
+      "جدول",
+      "collection"
     ],
     "collection": "users",
     "capabilityRefs": [
@@ -6904,6 +16980,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.03",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "screen.03",
     "labels": {
@@ -6926,6 +17003,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.04",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "screen.04",
     "labels": {
@@ -6950,6 +17028,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.05",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "screen.05",
     "labels": {
@@ -6976,6 +17055,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.06",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "screen.06",
     "labels": {
@@ -7001,6 +17081,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.07",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "screen.07",
     "labels": {
@@ -7026,6 +17107,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.08",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "screen.08",
     "labels": {
@@ -7049,6 +17131,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.09",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "screen.09",
     "labels": {
@@ -7075,6 +17158,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.10",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "screen.10",
     "labels": {
@@ -7099,6 +17183,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.11",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "screen.11",
     "labels": {
@@ -7123,6 +17208,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.12",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "screen.12",
     "labels": {
@@ -7147,6 +17233,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.13",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "screen.13",
     "labels": {
@@ -7170,6 +17257,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.14",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "screen.14",
     "labels": {
@@ -7197,6 +17285,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.15",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "screen.15",
     "labels": {
@@ -7222,6 +17311,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "domain.screen.16",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "screen.16",
     "labels": {
@@ -7247,6 +17337,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.b2b",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.b2b",
     "hubId": "agents.b2b",
@@ -7271,6 +17362,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.builder",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.builder",
     "hubId": "agents.builder",
@@ -7295,6 +17387,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.memory",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.memory",
     "hubId": "agents.memory",
@@ -7319,6 +17412,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.models",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.models",
     "hubId": "agents.models",
@@ -7343,6 +17437,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.programs",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.programs",
     "hubId": "agents.programs",
@@ -7366,6 +17461,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.reviews",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.reviews",
     "hubId": "agents.reviews",
@@ -7388,6 +17484,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.agents.warroom",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.warroom",
     "hubId": "agents.warroom",
@@ -7414,6 +17511,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.connections",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.connections",
     "hubId": "auto.connections",
@@ -7437,6 +17535,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.jobs",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.jobs",
     "hubId": "auto.jobs",
@@ -7462,6 +17561,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.logs",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.logs",
     "hubId": "auto.logs",
@@ -7485,6 +17585,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.mcp",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.mcp",
     "hubId": "auto.mcp",
@@ -7508,6 +17609,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.tools",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.tools",
     "hubId": "auto.tools",
@@ -7531,6 +17633,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.auto.voice",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.voice",
     "hubId": "auto.voice",
@@ -7555,6 +17658,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.companies",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.companies",
     "hubId": "b2b.companies",
@@ -7580,6 +17684,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.domains",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.domains",
     "hubId": "b2b.domains",
@@ -7605,6 +17710,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.licenses",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.licenses",
     "hubId": "b2b.licenses",
@@ -7630,6 +17736,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.scraper",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.scraper",
     "hubId": "b2b.scraper",
@@ -7654,6 +17761,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.subscriptions",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.subscriptions",
     "hubId": "b2b.subscriptions",
@@ -7679,6 +17787,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.b2b.whitelabel",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.whitelabel",
     "hubId": "b2b.whitelabel",
@@ -7704,6 +17813,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.b2b",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.b2b",
     "hubId": "bookings.b2b",
@@ -7726,6 +17836,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.cancellations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.cancellations",
     "hubId": "bookings.cancellations",
@@ -7750,6 +17861,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.enquiries",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.enquiries",
     "hubId": "bookings.enquiries",
@@ -7776,6 +17888,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.hotel",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.hotel",
     "hubId": "bookings.hotel",
@@ -7800,6 +17913,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.payments",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.payments",
     "hubId": "bookings.payments",
@@ -7822,6 +17936,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.bookings.reviews",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.reviews",
     "hubId": "bookings.reviews",
@@ -7848,6 +17963,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.blog",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.blog",
     "hubId": "cms.blog",
@@ -7873,6 +17989,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.editor",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.editor",
     "hubId": "cms.editor",
@@ -7897,6 +18014,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.mobile",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.mobile",
     "hubId": "cms.mobile",
@@ -7920,6 +18038,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.pages",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pages",
     "hubId": "cms.pages",
@@ -7943,6 +18062,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.pwa",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pwa",
     "hubId": "cms.pwa",
@@ -7966,6 +18086,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.search",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.search",
     "hubId": "cms.search",
@@ -7989,6 +18110,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.translations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.translations",
     "hubId": "cms.translations",
@@ -8013,6 +18135,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.cms.visibility",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.visibility",
     "hubId": "cms.visibility",
@@ -8037,6 +18160,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.channels",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.channels",
     "hubId": "crm.channels",
@@ -8061,6 +18185,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.conversations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.conversations",
     "hubId": "crm.conversations",
@@ -8086,6 +18211,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.customers",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.customers",
     "hubId": "crm.customers",
@@ -8111,6 +18237,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.deletions",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.deletions",
     "hubId": "crm.deletions",
@@ -8137,6 +18264,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.leads",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.leads",
     "hubId": "crm.leads",
@@ -8162,6 +18290,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.notifications",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.notifications",
     "hubId": "crm.notifications",
@@ -8185,6 +18314,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.crm.reviews",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.reviews",
     "hubId": "crm.reviews",
@@ -8211,6 +18341,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.currencies",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.currencies",
     "hubId": "fin.currencies",
@@ -8236,6 +18367,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.gifts",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.gifts",
     "hubId": "fin.gifts",
@@ -8258,6 +18390,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.invoices",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.invoices",
     "hubId": "fin.invoices",
@@ -8282,6 +18415,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.loyalty",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.loyalty",
     "hubId": "fin.loyalty",
@@ -8305,6 +18439,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.payments",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.payments",
     "hubId": "fin.payments",
@@ -8329,6 +18464,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.transactions",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.transactions",
     "hubId": "fin.transactions",
@@ -8352,6 +18488,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.fin.wallet",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.wallet",
     "hubId": "fin.wallet",
@@ -8376,6 +18513,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.airlines",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.airlines",
     "hubId": "flights.airlines",
@@ -8399,6 +18537,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.airports",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.airports",
     "hubId": "flights.airports",
@@ -8423,6 +18562,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.extras",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.extras",
     "hubId": "flights.extras",
@@ -8449,6 +18589,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.postops",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.postops",
     "hubId": "flights.postops",
@@ -8476,6 +18617,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.requests",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.requests",
     "hubId": "flights.requests",
@@ -8500,6 +18642,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.flights.settings",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.settings",
     "hubId": "flights.settings",
@@ -8525,6 +18668,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.ads",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.ads",
     "hubId": "growth.ads",
@@ -8552,6 +18696,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.affiliate",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.affiliate",
     "hubId": "growth.affiliate",
@@ -8577,6 +18722,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.coupons",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.coupons",
     "hubId": "growth.coupons",
@@ -8602,6 +18748,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.email",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.email",
     "hubId": "growth.email",
@@ -8628,6 +18775,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.gifts",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.gifts",
     "hubId": "growth.gifts",
@@ -8653,6 +18801,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.growth.recovery",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.recovery",
     "hubId": "growth.recovery",
@@ -8677,6 +18826,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.bookings",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.bookings",
     "hubId": "hotels.bookings",
@@ -8703,6 +18853,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.catalog",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.catalog",
     "hubId": "hotels.catalog",
@@ -8728,6 +18879,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.content",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.content",
     "hubId": "hotels.content",
@@ -8754,6 +18906,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.destinations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.destinations",
     "hubId": "hotels.destinations",
@@ -8779,6 +18932,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.owned",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.owned",
     "hubId": "hotels.owned",
@@ -8804,6 +18958,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.reviews",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.reviews",
     "hubId": "hotels.reviews",
@@ -8829,6 +18984,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.hotels.suppliers",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.suppliers",
     "hubId": "hotels.suppliers",
@@ -8858,6 +19014,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.legal.access",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.access",
     "hubId": "legal.access",
@@ -8883,6 +19040,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.legal.clauses",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.clauses",
     "hubId": "legal.clauses",
@@ -8907,6 +19065,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.legal.identity",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.identity",
     "hubId": "legal.identity",
@@ -8931,6 +19090,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.legal.license",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.license",
     "hubId": "legal.license",
@@ -8956,6 +19116,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.legal.privacy",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.privacy",
     "hubId": "legal.privacy",
@@ -8980,6 +19141,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.cars",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.cars",
     "hubId": "mobility.cars",
@@ -9004,6 +19166,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.enquiries",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.enquiries",
     "hubId": "mobility.enquiries",
@@ -9026,6 +19189,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.packages",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.packages",
     "hubId": "mobility.packages",
@@ -9052,6 +19216,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.tours",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.tours",
     "hubId": "mobility.tours",
@@ -9076,6 +19241,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.transfers",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.transfers",
     "hubId": "mobility.transfers",
@@ -9101,6 +19267,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.mobility.visa",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.visa",
     "hubId": "mobility.visa",
@@ -9125,6 +19292,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.accounts",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.accounts",
     "hubId": "publish.accounts",
@@ -9150,6 +19318,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.agent",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.agent",
     "hubId": "publish.agent",
@@ -9172,6 +19341,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.analytics",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.analytics",
     "hubId": "publish.analytics",
@@ -9197,6 +19367,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.calendar",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.calendar",
     "hubId": "publish.calendar",
@@ -9223,6 +19394,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.compose",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.compose",
     "hubId": "publish.compose",
@@ -9246,6 +19418,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.media",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.media",
     "hubId": "publish.media",
@@ -9269,6 +19442,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.rss",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.rss",
     "hubId": "publish.rss",
@@ -9293,6 +19467,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.publish.settings",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.settings",
     "hubId": "publish.settings",
@@ -9317,6 +19492,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.database",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.database",
     "hubId": "sys.database",
@@ -9340,6 +19516,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.icons",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.icons",
     "hubId": "sys.icons",
@@ -9363,6 +19540,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.integrations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.integrations",
     "hubId": "sys.integrations",
@@ -9389,6 +19567,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.media",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.media",
     "hubId": "sys.media",
@@ -9413,6 +19592,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.providers",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.providers",
     "hubId": "sys.providers",
@@ -9435,6 +19615,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.smtp",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.smtp",
     "hubId": "sys.smtp",
@@ -9458,6 +19639,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "hub.sys.translations",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.translations",
     "hubId": "sys.translations",
@@ -9481,6 +19663,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__b2b.api_admin_b2b_landing_agent",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.b2b",
     "hubId": "agents.b2b",
@@ -9507,6 +19690,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__builder.api_admin_builder_agent",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.builder",
     "hubId": "agents.builder",
@@ -9531,6 +19715,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__memory.api_admin_automation_agent_training",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.memory",
     "hubId": "agents.memory",
@@ -9557,6 +19742,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__memory.api_admin_automation_second_brain_data",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.memory",
     "hubId": "agents.memory",
@@ -9583,6 +19769,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__memory.api_admin_automation_second_brain_direct",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.memory",
     "hubId": "agents.memory",
@@ -9609,6 +19796,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__models.api_admin_openrouter_config",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.models",
     "hubId": "agents.models",
@@ -9635,6 +19823,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__models.api_admin_openrouter_sync",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.models",
     "hubId": "agents.models",
@@ -9661,6 +19850,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__programs.ai_conversations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.programs",
     "hubId": "agents.programs",
@@ -9687,6 +19877,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__programs.ai_programs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.programs",
     "hubId": "agents.programs",
@@ -9713,6 +19904,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__reviews.api_admin_reviews_agent",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.reviews",
     "hubId": "agents.reviews",
@@ -9737,6 +19929,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__warroom.api_admin_automation_agent_stream",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.warroom",
     "hubId": "agents.warroom",
@@ -9763,6 +19956,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.agents__warroom.api_admin_automation_agent_war_room",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.warroom",
     "hubId": "agents.warroom",
@@ -9783,10 +19977,14 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "risk": "low",
     "evidence": "domain-systems.ts",
     "parentId": "hub.agents.warroom"
-  },
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_5: PlatformIndexNode[] = [
   {
     "id": "item.agents__warroom.api_admin_automation_swarm_deliberate",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "hub.agents.warroom",
     "hubId": "agents.warroom",
@@ -9813,6 +20011,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__connections.api_admin_automation_comms_test",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.connections",
     "hubId": "auto.connections",
@@ -9838,6 +20037,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__connections.api_admin_automation_connections",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.connections",
     "hubId": "auto.connections",
@@ -9861,6 +20061,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__jobs.api_admin_automation_jobs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.jobs",
     "hubId": "auto.jobs",
@@ -9885,6 +20086,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__jobs.api_admin_automation_jobs_id_run",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.jobs",
     "hubId": "auto.jobs",
@@ -9911,6 +20113,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__logs.api_admin_automation_logs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.logs",
     "hubId": "auto.logs",
@@ -9937,6 +20140,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__logs.api_admin_automation_timeline_fallback",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.logs",
     "hubId": "auto.logs",
@@ -9963,6 +20167,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__mcp.api_admin_mcp",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.mcp",
     "hubId": "auto.mcp",
@@ -9988,6 +20193,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__mcp.api_admin_mcp_call",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.mcp",
     "hubId": "auto.mcp",
@@ -10014,6 +20220,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__mcp.api_admin_mcp_connect",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.mcp",
     "hubId": "auto.mcp",
@@ -10040,6 +20247,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__tools.api_admin_automation_control_panel_tools",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.tools",
     "hubId": "auto.tools",
@@ -10065,6 +20273,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__tools.api_admin_automation_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.tools",
     "hubId": "auto.tools",
@@ -10092,6 +20301,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.auto__voice.api_admin_automation_voice_tts",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "hub.auto.voice",
     "hubId": "auto.voice",
@@ -10117,6 +20327,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__companies.reseller_companies",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.companies",
     "hubId": "b2b.companies",
@@ -10142,6 +20353,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__companies.reseller_orders",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.companies",
     "hubId": "b2b.companies",
@@ -10168,6 +20380,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__companies.reseller_progress",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.companies",
     "hubId": "b2b.companies",
@@ -10195,6 +20408,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__domains.reseller_domain_events",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.domains",
     "hubId": "b2b.domains",
@@ -10221,6 +20435,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__domains.reseller_heartbeats",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.domains",
     "hubId": "b2b.domains",
@@ -10248,6 +20463,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__domains.reseller_servers",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.domains",
     "hubId": "b2b.domains",
@@ -10274,6 +20490,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__licenses.reseller_licenses",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.licenses",
     "hubId": "b2b.licenses",
@@ -10299,6 +20516,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__licenses.reseller_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.licenses",
     "hubId": "b2b.licenses",
@@ -10325,6 +20543,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__licenses.reseller_stage_templates",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.licenses",
     "hubId": "b2b.licenses",
@@ -10352,6 +20571,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__scraper.api_admin_resale_scraper_campaigns",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.scraper",
     "hubId": "b2b.scraper",
@@ -10378,6 +20598,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__scraper.api_admin_resale_scraper_jobs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.scraper",
     "hubId": "b2b.scraper",
@@ -10404,6 +20625,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__scraper.api_admin_resale_scraper_leads",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.scraper",
     "hubId": "b2b.scraper",
@@ -10430,6 +20652,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__subscriptions.api_admin_resale_b2b_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.subscriptions",
     "hubId": "b2b.subscriptions",
@@ -10456,6 +20679,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__subscriptions.api_admin_resale_wallets",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.subscriptions",
     "hubId": "b2b.subscriptions",
@@ -10481,6 +20705,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__subscriptions.reseller_subscriptions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.subscriptions",
     "hubId": "b2b.subscriptions",
@@ -10506,6 +20731,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__whitelabel.api_admin_resale_whitelabel",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.whitelabel",
     "hubId": "b2b.whitelabel",
@@ -10531,6 +20757,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.b2b__whitelabel.reseller_whitelabel_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "hub.b2b.whitelabel",
     "hubId": "b2b.whitelabel",
@@ -10557,6 +20784,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__b2b.api_admin_resale_b2b_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.b2b",
     "hubId": "bookings.b2b",
@@ -10582,6 +20810,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__b2b.reseller_orders",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.b2b",
     "hubId": "bookings.b2b",
@@ -10609,6 +20838,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__cancellations.api_admin_cancellations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.cancellations",
     "hubId": "bookings.cancellations",
@@ -10635,6 +20865,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__cancellations.hotel_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.cancellations",
     "hubId": "bookings.cancellations",
@@ -10661,6 +20892,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__enquiries.api_admin_new_bookings_count",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.enquiries",
     "hubId": "bookings.enquiries",
@@ -10687,6 +20919,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__enquiries.enquiry_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.enquiries",
     "hubId": "bookings.enquiries",
@@ -10713,6 +20946,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__hotel.hotel_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.hotel",
     "hubId": "bookings.hotel",
@@ -10739,6 +20973,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__hotel.hotel_quotes",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.hotel",
     "hubId": "bookings.hotel",
@@ -10766,6 +21001,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__payments.api_admin_iyzico_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.payments",
     "hubId": "bookings.payments",
@@ -10792,6 +21028,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__payments.financial_transactions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.payments",
     "hubId": "bookings.payments",
@@ -10818,6 +21055,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__reviews.customer_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.reviews",
     "hubId": "bookings.reviews",
@@ -10845,6 +21083,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__reviews.hotel_guest_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.reviews",
     "hubId": "bookings.reviews",
@@ -10872,6 +21111,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.bookings__reviews.hotel_review_scores",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "hub.bookings.reviews",
     "hubId": "bookings.reviews",
@@ -10899,6 +21139,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__blog.api_admin_blog",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.blog",
     "hubId": "cms.blog",
@@ -10924,6 +21165,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__blog.articles",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.blog",
     "hubId": "cms.blog",
@@ -10950,6 +21192,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__editor.api_admin_branding",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.editor",
     "hubId": "cms.editor",
@@ -10977,6 +21220,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__editor.api_admin_homepage_template",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.editor",
     "hubId": "cms.editor",
@@ -11003,6 +21247,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__editor.api_admin_theme",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.editor",
     "hubId": "cms.editor",
@@ -11028,6 +21273,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__mobile.api_admin_mobile_app_agents",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.mobile",
     "hubId": "cms.mobile",
@@ -11054,6 +21300,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__mobile.api_admin_mobile_app_build",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.mobile",
     "hubId": "cms.mobile",
@@ -11080,6 +21327,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__mobile.api_admin_mobile_app_notifications",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.mobile",
     "hubId": "cms.mobile",
@@ -11106,6 +21354,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__pages.api_admin_builder_pages",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pages",
     "hubId": "cms.pages",
@@ -11131,6 +21380,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__pages.api_admin_pages",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pages",
     "hubId": "cms.pages",
@@ -11155,6 +21405,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__pwa.api_admin_push_subscribe",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pwa",
     "hubId": "cms.pwa",
@@ -11182,6 +21433,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__pwa.api_admin_pwa",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pwa",
     "hubId": "cms.pwa",
@@ -11208,6 +21460,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__pwa.api_admin_pwa_icon",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.pwa",
     "hubId": "cms.pwa",
@@ -11235,6 +21488,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__search.api_admin_search_tabs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.search",
     "hubId": "cms.search",
@@ -11259,6 +21513,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__translations.api_admin_translations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.translations",
     "hubId": "cms.translations",
@@ -11283,6 +21538,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__translations.api_admin_translations_languages",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.translations",
     "hubId": "cms.translations",
@@ -11308,6 +21564,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__visibility.site_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.visibility",
     "hubId": "cms.visibility",
@@ -11335,6 +21592,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.cms__visibility.site_traffic_logs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "hub.cms.visibility",
     "hubId": "cms.visibility",
@@ -11362,6 +21620,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__channels.api_admin_automation_comms",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.channels",
     "hubId": "crm.channels",
@@ -11387,6 +21646,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__channels.api_admin_automation_whatsapp_qr",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.channels",
     "hubId": "crm.channels",
@@ -11413,6 +21673,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__channels.api_admin_site_contact",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.channels",
     "hubId": "crm.channels",
@@ -11438,6 +21699,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__conversations.ai_conversations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.conversations",
     "hubId": "crm.conversations",
@@ -11466,6 +21728,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__conversations.api_admin_automation_messages",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.conversations",
     "hubId": "crm.conversations",
@@ -11492,6 +21755,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__customers.customers",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.customers",
     "hubId": "crm.customers",
@@ -11517,6 +21781,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__customers.users",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.customers",
     "hubId": "crm.customers",
@@ -11544,6 +21809,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__deletions.api_admin_legal_deletions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.deletions",
     "hubId": "crm.deletions",
@@ -11570,6 +21836,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__leads.api_admin_crm_leads",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.leads",
     "hubId": "crm.leads",
@@ -11596,6 +21863,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__leads.crm_leads",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.leads",
     "hubId": "crm.leads",
@@ -11621,6 +21889,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__notifications.admin_notifications",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.notifications",
     "hubId": "crm.notifications",
@@ -11647,6 +21916,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__notifications.api_admin_notifications",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.notifications",
     "hubId": "crm.notifications",
@@ -11671,6 +21941,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__reviews.customer_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.reviews",
     "hubId": "crm.reviews",
@@ -11698,6 +21969,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.crm__reviews.hotel_guest_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "hub.crm.reviews",
     "hubId": "crm.reviews",
@@ -11725,6 +21997,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__currencies.api_admin_currencies",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.currencies",
     "hubId": "fin.currencies",
@@ -11749,6 +22022,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__gifts.api_admin_gift_cards",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.gifts",
     "hubId": "fin.gifts",
@@ -11773,6 +22047,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__invoices.api_admin_invoice_templates",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.invoices",
     "hubId": "fin.invoices",
@@ -11797,6 +22072,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__invoices.api_admin_parasut_invoices",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.invoices",
     "hubId": "fin.invoices",
@@ -11822,6 +22098,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__invoices.api_admin_parasut_issue",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.invoices",
     "hubId": "fin.invoices",
@@ -11847,6 +22124,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__loyalty.api_admin_loyalty",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.loyalty",
     "hubId": "fin.loyalty",
@@ -11872,6 +22150,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__loyalty.loyalty_wallets",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.loyalty",
     "hubId": "fin.loyalty",
@@ -11898,6 +22177,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__payments.api_admin_iyzico_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.payments",
     "hubId": "fin.payments",
@@ -11924,6 +22204,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__payments.api_admin_payments_catalog",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.payments",
     "hubId": "fin.payments",
@@ -11950,6 +22231,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__payments.api_admin_payments_configs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.payments",
     "hubId": "fin.payments",
@@ -11976,6 +22258,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__transactions.api_admin_finance_overview",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.transactions",
     "hubId": "fin.transactions",
@@ -12001,6 +22284,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__transactions.financial_transactions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.transactions",
     "hubId": "fin.transactions",
@@ -12026,6 +22310,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.fin__wallet.api_admin_b2b_wallet",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "hub.fin.wallet",
     "hubId": "fin.wallet",
@@ -12052,6 +22337,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__airlines.api_admin_airlines",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.airlines",
     "hubId": "flights.airlines",
@@ -12078,6 +22364,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__airports.api_admin_airports",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.airports",
     "hubId": "flights.airports",
@@ -12102,6 +22389,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__airports.geo_places",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.airports",
     "hubId": "flights.airports",
@@ -12129,6 +22417,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__extras.api_admin_flight_extras",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.extras",
     "hubId": "flights.extras",
@@ -12155,6 +22444,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__postops.api_admin_cancellations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.postops",
     "hubId": "flights.postops",
@@ -12184,6 +22474,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__postops.api_admin_flights_post_ops",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.postops",
     "hubId": "flights.postops",
@@ -12211,6 +22502,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__requests.api_admin_new_bookings_count",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.requests",
     "hubId": "flights.requests",
@@ -12239,6 +22531,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__requests.enquiry_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.requests",
     "hubId": "flights.requests",
@@ -12266,6 +22559,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__settings.api_admin_flights_connect_test",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.settings",
     "hubId": "flights.settings",
@@ -12294,6 +22588,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__settings.api_admin_flights_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.settings",
     "hubId": "flights.settings",
@@ -12320,6 +22615,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.flights__settings.api_admin_providers",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "hub.flights.settings",
     "hubId": "flights.settings",
@@ -12348,6 +22644,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__ads.api_admin_ads_campaigns",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.ads",
     "hubId": "growth.ads",
@@ -12373,6 +22670,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__ads.api_admin_ads_launch",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.ads",
     "hubId": "growth.ads",
@@ -12399,6 +22697,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__ads.api_admin_ads_report",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.ads",
     "hubId": "growth.ads",
@@ -12424,6 +22723,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__affiliate.affiliate_conversions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.affiliate",
     "hubId": "growth.affiliate",
@@ -12450,6 +22750,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__affiliate.affiliate_profiles",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.affiliate",
     "hubId": "growth.affiliate",
@@ -12476,6 +22777,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__affiliate.affiliate_visits",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.affiliate",
     "hubId": "growth.affiliate",
@@ -12502,6 +22804,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__affiliate.affiliate_withdrawals",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.affiliate",
     "hubId": "growth.affiliate",
@@ -12528,6 +22831,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__coupons.api_admin_loyalty",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.coupons",
     "hubId": "growth.coupons",
@@ -12554,6 +22858,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__coupons.loyalty_wallets",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.coupons",
     "hubId": "growth.coupons",
@@ -12581,6 +22886,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__email.email_campaigns",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.email",
     "hubId": "growth.email",
@@ -12608,6 +22914,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__email.email_recipients",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.email",
     "hubId": "growth.email",
@@ -12634,6 +22941,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__email.email_templates",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.email",
     "hubId": "growth.email",
@@ -12660,6 +22968,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__gifts.api_admin_gift_cards",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.gifts",
     "hubId": "growth.gifts",
@@ -12684,6 +22993,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__recovery.api_admin_automation_abandoned_recovery",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.recovery",
     "hubId": "growth.recovery",
@@ -12710,6 +23020,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.growth__recovery.api_admin_automation_excluded_contacts",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "hub.growth.recovery",
     "hubId": "growth.recovery",
@@ -12735,6 +23046,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__bookings.hotel_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.bookings",
     "hubId": "hotels.bookings",
@@ -12761,6 +23073,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__bookings.hotel_quotes",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.bookings",
     "hubId": "hotels.bookings",
@@ -12788,6 +23101,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__catalog.hotel_facilities",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.catalog",
     "hubId": "hotels.catalog",
@@ -12814,6 +23128,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__catalog.hotel_images",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.catalog",
     "hubId": "hotels.catalog",
@@ -12840,6 +23155,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__catalog.hotel_masters",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.catalog",
     "hubId": "hotels.catalog",
@@ -12867,6 +23183,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__catalog.hotel_rooms_content",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.catalog",
     "hubId": "hotels.catalog",
@@ -12894,6 +23211,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__content.api_admin_hotels_featured_sync",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.content",
     "hubId": "hotels.content",
@@ -12920,6 +23238,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__content.hotel_content_jobs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.content",
     "hubId": "hotels.content",
@@ -12949,6 +23268,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__destinations.hotel_destinations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.destinations",
     "hubId": "hotels.destinations",
@@ -12974,6 +23294,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__destinations.hotel_pois",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.destinations",
     "hubId": "hotels.destinations",
@@ -13001,6 +23322,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__owned.api_admin_owned_hotels_test",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.owned",
     "hubId": "hotels.owned",
@@ -13027,6 +23349,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__owned.owned_hotels",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.owned",
     "hubId": "hotels.owned",
@@ -13052,6 +23375,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__owned.owned_rate_snapshots",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.owned",
     "hubId": "hotels.owned",
@@ -13079,6 +23403,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__reviews.api_admin_reviews_agent",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.reviews",
     "hubId": "hotels.reviews",
@@ -13105,6 +23430,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__reviews.hotel_guest_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.reviews",
     "hubId": "hotels.reviews",
@@ -13131,6 +23457,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__reviews.hotel_identity_reviews",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.reviews",
     "hubId": "hotels.reviews",
@@ -13157,6 +23484,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__reviews.hotel_review_scores",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.reviews",
     "hubId": "hotels.reviews",
@@ -13184,6 +23512,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__suppliers.api_admin_hotel_supply",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.suppliers",
     "hubId": "hotels.suppliers",
@@ -13212,6 +23541,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__suppliers.api_admin_hotels_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.suppliers",
     "hubId": "hotels.suppliers",
@@ -13239,6 +23569,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.hotels__suppliers.hotel_supplier_refs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "hub.hotels.suppliers",
     "hubId": "hotels.suppliers",
@@ -13268,6 +23599,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__access.api_admin_platform_readiness",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.access",
     "hubId": "legal.access",
@@ -13294,6 +23626,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__access.api_admin_session",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.access",
     "hubId": "legal.access",
@@ -13317,6 +23650,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__access.users",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.access",
     "hubId": "legal.access",
@@ -13343,6 +23677,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__clauses.api_admin_legal",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.clauses",
     "hubId": "legal.clauses",
@@ -13368,6 +23703,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__clauses.api_admin_legal_clauses",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.clauses",
     "hubId": "legal.clauses",
@@ -13394,6 +23730,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__identity.api_admin_branding",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.identity",
     "hubId": "legal.identity",
@@ -13420,6 +23757,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__identity.api_admin_site_contact",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.identity",
     "hubId": "legal.identity",
@@ -13446,6 +23784,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__license.api_admin_license_status",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.license",
     "hubId": "legal.license",
@@ -13471,6 +23810,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__license.api_admin_tenant_plan",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.license",
     "hubId": "legal.license",
@@ -13497,6 +23837,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__privacy.api_admin_legal_ai_advisor",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.privacy",
     "hubId": "legal.privacy",
@@ -13523,6 +23864,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.legal__privacy.api_admin_legal_deletions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "hub.legal.privacy",
     "hubId": "legal.privacy",
@@ -13549,6 +23891,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__cars.api_admin_cars",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.cars",
     "hubId": "mobility.cars",
@@ -13573,6 +23916,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__cars.api_admin_cars_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.cars",
     "hubId": "mobility.cars",
@@ -13598,6 +23942,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__enquiries.enquiry_bookings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.enquiries",
     "hubId": "mobility.enquiries",
@@ -13624,6 +23969,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__packages.api_admin_packages",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.packages",
     "hubId": "mobility.packages",
@@ -13649,6 +23995,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__tours.api_admin_tours",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.tours",
     "hubId": "mobility.tours",
@@ -13669,10 +24016,14 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "risk": "low",
     "evidence": "domain-systems.ts",
     "parentId": "hub.mobility.tours"
-  },
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_6: PlatformIndexNode[] = [
   {
     "id": "item.mobility__transfers.api_admin_transfers_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.transfers",
     "hubId": "mobility.transfers",
@@ -13699,6 +24050,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.mobility__visa.0",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "hub.mobility.visa",
     "hubId": "mobility.visa",
@@ -13720,6 +24072,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__accounts.api_admin_publish_channels",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.accounts",
     "hubId": "publish.accounts",
@@ -13746,6 +24099,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__accounts.publish_channel_groups",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.accounts",
     "hubId": "publish.accounts",
@@ -13773,6 +24127,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__accounts.publish_channels",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.accounts",
     "hubId": "publish.accounts",
@@ -13799,6 +24154,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__agent.api_admin_publish_agent",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.agent",
     "hubId": "publish.agent",
@@ -13825,6 +24181,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__agent.api_admin_publish_request_approval",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.agent",
     "hubId": "publish.agent",
@@ -13851,6 +24208,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__analytics.api_admin_publish_analytics",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.analytics",
     "hubId": "publish.analytics",
@@ -13877,6 +24235,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__analytics.publish_mentions",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.analytics",
     "hubId": "publish.analytics",
@@ -13903,6 +24262,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__analytics.publish_post_comments",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.analytics",
     "hubId": "publish.analytics",
@@ -13929,6 +24289,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__calendar.api_admin_publish_posts",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.calendar",
     "hubId": "publish.calendar",
@@ -13955,6 +24316,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__calendar.api_admin_publish_tick",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.calendar",
     "hubId": "publish.calendar",
@@ -13981,6 +24343,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__calendar.publish_posts",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.calendar",
     "hubId": "publish.calendar",
@@ -14007,6 +24370,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__compose.publish_sets",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.compose",
     "hubId": "publish.compose",
@@ -14034,6 +24398,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__compose.publish_signatures",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.compose",
     "hubId": "publish.compose",
@@ -14060,6 +24425,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__compose.publish_tags",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.compose",
     "hubId": "publish.compose",
@@ -14086,6 +24452,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__media.api_admin_publish_media",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.media",
     "hubId": "publish.media",
@@ -14111,6 +24478,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__media.api_admin_publish_video",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.media",
     "hubId": "publish.media",
@@ -14137,6 +24505,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__media.publish_media",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.media",
     "hubId": "publish.media",
@@ -14164,6 +24533,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__rss.api_admin_publish_rss",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.rss",
     "hubId": "publish.rss",
@@ -14190,6 +24560,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__rss.publish_plugs",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.rss",
     "hubId": "publish.rss",
@@ -14216,6 +24587,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__rss.publish_rss_feeds",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.rss",
     "hubId": "publish.rss",
@@ -14243,6 +24615,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__settings.publish_errors",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.settings",
     "hubId": "publish.settings",
@@ -14270,6 +24643,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__settings.publish_notifications",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.settings",
     "hubId": "publish.settings",
@@ -14297,6 +24671,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.publish__settings.publish_webhooks",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "hub.publish.settings",
     "hubId": "publish.settings",
@@ -14324,6 +24699,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__database.api_admin_pocketbase",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.database",
     "hubId": "sys.database",
@@ -14350,6 +24726,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__database.api_admin_pocketbase_superuser",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.database",
     "hubId": "sys.database",
@@ -14373,6 +24750,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__icons.api_admin_branding",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.icons",
     "hubId": "sys.icons",
@@ -14399,6 +24777,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__icons.api_admin_ui_icons",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.icons",
     "hubId": "sys.icons",
@@ -14425,6 +24804,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__integrations.api_admin_env",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.integrations",
     "hubId": "sys.integrations",
@@ -14448,6 +24828,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__integrations.api_admin_integrations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.integrations",
     "hubId": "sys.integrations",
@@ -14473,6 +24854,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__media.api_admin_media_keys",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.media",
     "hubId": "sys.media",
@@ -14498,6 +24880,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__media.api_admin_media_pexels",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.media",
     "hubId": "sys.media",
@@ -14523,6 +24906,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__media.api_admin_media_unsplash",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.media",
     "hubId": "sys.media",
@@ -14548,6 +24932,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__providers.api_admin_providers",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.providers",
     "hubId": "sys.providers",
@@ -14573,6 +24958,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__providers.api_admin_providers_test",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.providers",
     "hubId": "sys.providers",
@@ -14599,6 +24985,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__smtp.api_admin_email_settings",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.smtp",
     "hubId": "sys.smtp",
@@ -14625,6 +25012,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__smtp.api_admin_email_settings_dns",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.smtp",
     "hubId": "sys.smtp",
@@ -14652,6 +25040,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__smtp.api_admin_email_settings_test",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.smtp",
     "hubId": "sys.smtp",
@@ -14679,6 +25068,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__translations.api_admin_translations",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.translations",
     "hubId": "sys.translations",
@@ -14702,6 +25092,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "item.sys__translations.api_admin_translations_translate_batch",
     "kind": "domain_item",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "hub.sys.translations",
     "hubId": "sys.translations",
@@ -14727,6 +25118,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.ai_center",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -14746,6 +25138,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.bookings",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "group.bookings",
     "labels": {
@@ -14764,6 +25157,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.customers",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "group.customers",
     "labels": {
@@ -14782,6 +25176,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.finance",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -14800,6 +25195,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.inventory",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -14818,6 +25214,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.legal",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "group.legal",
     "labels": {
@@ -14837,6 +25234,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.marketing",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -14856,6 +25254,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.overview",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "01",
     "mapId": "group.overview",
     "labels": {
@@ -14875,6 +25274,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.resale",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -14894,6 +25294,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.storefront",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -14913,6 +25314,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.group.system",
     "kind": "nav_group",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -14931,6 +25333,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.agent-studio",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -14954,6 +25357,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.agent-war-room",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -14977,6 +25381,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.automation-hub",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -14999,6 +25404,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.b2b-landing-agent",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -15022,6 +25428,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.b2b-wallet",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -15044,6 +25451,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.blog",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15066,6 +25474,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.bookings-all",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "group.bookings",
     "labels": {
@@ -15088,6 +25497,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.builder-agent",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "group.ai_center",
     "labels": {
@@ -15111,6 +25521,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.cancellations",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "group.bookings",
     "labels": {
@@ -15133,6 +25544,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.cars",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -15155,6 +25567,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.currencies",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -15176,6 +25589,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.customer-reviews",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "group.bookings",
     "labels": {
@@ -15201,6 +25615,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.customer-reviews-mgmt",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "group.customers",
     "labels": {
@@ -15224,6 +25639,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.customers",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "group.customers",
     "labels": {
@@ -15245,6 +25661,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.dashboard",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "01",
     "mapId": "group.overview",
     "labels": {
@@ -15268,6 +25685,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.deletion-requests",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "group.customers",
     "labels": {
@@ -15290,6 +25708,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.flights",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -15311,6 +25730,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.homepage",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15335,6 +25755,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.hotels",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -15356,6 +25777,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.invoices",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -15377,6 +25799,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.legal-gdpr",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "group.legal",
     "labels": {
@@ -15399,6 +25822,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.legal-identity",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "group.legal",
     "labels": {
@@ -15421,6 +25845,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.legal-privacy",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "group.legal",
     "labels": {
@@ -15443,6 +25868,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.legal-terms",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "group.legal",
     "labels": {
@@ -15465,6 +25891,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.loyalty-points",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -15489,6 +25916,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.media-keys",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -15510,6 +25938,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.mobile-app",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15533,6 +25962,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.packages",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -15554,6 +25984,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.pages",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15576,6 +26007,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.paid-ads",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -15598,6 +26030,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.payments",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "group.finance",
     "labels": {
@@ -15619,6 +26052,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.pocketbase",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -15639,6 +26073,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.publish-automations",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -15663,6 +26098,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.publish-calendar",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -15687,6 +26123,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.publish-compose",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -15711,6 +26148,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.publish-media",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -15735,6 +26173,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.pwa",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15758,6 +26197,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-companies",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15782,6 +26222,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-domains",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15806,6 +26247,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-licenses",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15830,6 +26272,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-subscriptions",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15854,6 +26297,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-updates",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15876,6 +26320,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-wallets",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15898,6 +26343,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.resale-whitelabel",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "group.resale",
     "labels": {
@@ -15923,6 +26369,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.search-providers",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -15945,6 +26392,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.search-tabs",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "group.storefront",
     "labels": {
@@ -15968,6 +26416,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.smtp",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -15988,6 +26437,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.social-accounts",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "group.marketing",
     "labels": {
@@ -16012,6 +26462,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.tours",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -16033,6 +26484,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.transfers",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -16055,6 +26507,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.translations",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "group.system",
     "labels": {
@@ -16076,6 +26529,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nav.leaf.visa",
     "kind": "nav_leaf",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "group.inventory",
     "labels": {
@@ -16097,6 +26551,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-ads",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "ads",
     "labels": {
@@ -16119,6 +26574,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-b2b",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "b2b",
     "labels": {
@@ -16141,6 +26597,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-flights",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "flights",
     "labels": {
@@ -16164,6 +26621,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-hotels",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "hotels",
     "labels": {
@@ -16188,6 +26646,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-social",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "social",
     "labels": {
@@ -16210,6 +26669,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "nexus.sector.nexus-transfers",
     "kind": "domain_hub",
+    "scope": "admin",
     "screenId": "21",
     "hubId": "transfers",
     "labels": {
@@ -16232,13 +26692,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.ads",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "ads",
       "en": "ads"
     },
     "keywords": [
       "ads",
-      "/admin/ads"
+      "/admin/ads",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/ads",
     "capabilityRefs": [
@@ -16251,13 +26716,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.affiliate",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "affiliate",
       "en": "affiliate"
     },
     "keywords": [
       "affiliate",
-      "/admin/affiliate"
+      "/admin/affiliate",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/affiliate",
     "capabilityRefs": [
@@ -16270,13 +26740,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.agent-studio",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "agent-studio",
       "en": "agent-studio"
     },
     "keywords": [
       "agent-studio",
-      "/admin/agent-studio"
+      "/admin/agent-studio",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/agent-studio",
     "capabilityRefs": [
@@ -16289,13 +26764,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.agent-war-room",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "agent-war-room",
       "en": "agent-war-room"
     },
     "keywords": [
       "agent-war-room",
-      "/admin/agent-war-room"
+      "/admin/agent-war-room",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/agent-war-room",
     "capabilityRefs": [
@@ -16308,13 +26788,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.ai-feedback",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "ai-feedback",
       "en": "ai-feedback"
     },
     "keywords": [
       "ai-feedback",
-      "/admin/ai-feedback"
+      "/admin/ai-feedback",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/ai-feedback",
     "capabilityRefs": [
@@ -16327,13 +26812,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.ai-programs",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "ai-programs",
       "en": "ai-programs"
     },
     "keywords": [
       "ai-programs",
-      "/admin/ai-programs"
+      "/admin/ai-programs",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/ai-programs",
     "capabilityRefs": [
@@ -16346,13 +26836,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.ai-settings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "ai-settings",
       "en": "ai-settings"
     },
     "keywords": [
       "ai-settings",
-      "/admin/ai-settings"
+      "/admin/ai-settings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/ai-settings",
     "capabilityRefs": [
@@ -16365,13 +26860,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.automation",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "automation",
       "en": "automation"
     },
     "keywords": [
       "automation",
-      "/admin/automation"
+      "/admin/automation",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/automation",
     "capabilityRefs": [
@@ -16384,13 +26884,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.automation-studio",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "automation-studio",
       "en": "automation-studio"
     },
     "keywords": [
       "automation-studio",
-      "/admin/automation-studio"
+      "/admin/automation-studio",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/automation-studio",
     "capabilityRefs": [
@@ -16403,13 +26908,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.b2b-landing-agent",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "b2b-landing-agent",
       "en": "b2b-landing-agent"
     },
     "keywords": [
       "b2b-landing-agent",
-      "/admin/b2b-landing-agent"
+      "/admin/b2b-landing-agent",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/b2b-landing-agent",
     "capabilityRefs": [
@@ -16422,13 +26932,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.b2b-wallet",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "b2b-wallet",
       "en": "b2b-wallet"
     },
     "keywords": [
       "b2b-wallet",
-      "/admin/b2b-wallet"
+      "/admin/b2b-wallet",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/b2b-wallet",
     "capabilityRefs": [
@@ -16441,13 +26956,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.blog",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "blog",
       "en": "blog"
     },
     "keywords": [
       "blog",
-      "/admin/blog"
+      "/admin/blog",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/blog",
     "capabilityRefs": [
@@ -16460,6 +26980,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.blog__id",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "blog/:id",
       "en": "blog/:id"
@@ -16467,7 +26988,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "blog",
       ":id",
-      "/admin/blog/:id"
+      "/admin/blog/:id",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/blog/:id",
     "capabilityRefs": [
@@ -16480,13 +27005,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.bookings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "bookings",
       "en": "bookings"
     },
     "keywords": [
       "bookings",
-      "/admin/bookings"
+      "/admin/bookings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/bookings",
     "capabilityRefs": [
@@ -16499,13 +27029,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.branding",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "branding",
       "en": "branding"
     },
     "keywords": [
       "branding",
-      "/admin/branding"
+      "/admin/branding",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/branding",
     "capabilityRefs": [
@@ -16518,13 +27053,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.builder-agent",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "builder-agent",
       "en": "builder-agent"
     },
     "keywords": [
       "builder-agent",
-      "/admin/builder-agent"
+      "/admin/builder-agent",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/builder-agent",
     "capabilityRefs": [
@@ -16537,13 +27077,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.cancellations",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "cancellations",
       "en": "cancellations"
     },
     "keywords": [
       "cancellations",
-      "/admin/cancellations"
+      "/admin/cancellations",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/cancellations",
     "capabilityRefs": [
@@ -16556,13 +27101,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.cars",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "cars",
       "en": "cars"
     },
     "keywords": [
       "cars",
-      "/admin/cars"
+      "/admin/cars",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/cars",
     "capabilityRefs": [
@@ -16575,13 +27125,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.contact-settings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "contact-settings",
       "en": "contact-settings"
     },
     "keywords": [
       "contact-settings",
-      "/admin/contact-settings"
+      "/admin/contact-settings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/contact-settings",
     "capabilityRefs": [
@@ -16594,13 +27149,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.content",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "content",
       "en": "content"
     },
     "keywords": [
       "content",
-      "/admin/content"
+      "/admin/content",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/content",
     "capabilityRefs": [
@@ -16613,13 +27173,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.currencies",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "currencies",
       "en": "currencies"
     },
     "keywords": [
       "currencies",
-      "/admin/currencies"
+      "/admin/currencies",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/currencies",
     "capabilityRefs": [
@@ -16632,13 +27197,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.customers",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "customers",
       "en": "customers"
     },
     "keywords": [
       "customers",
-      "/admin/customers"
+      "/admin/customers",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/customers",
     "capabilityRefs": [
@@ -16651,13 +27221,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.dashboard",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "dashboard",
       "en": "dashboard"
     },
     "keywords": [
       "dashboard",
-      "/admin/dashboard"
+      "/admin/dashboard",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/dashboard",
     "capabilityRefs": [
@@ -16668,15 +27243,44 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/admin/dashboard/page.tsx"
   },
   {
+    "id": "page.admin.databases",
+    "kind": "admin_page",
+    "scope": "admin",
+    "labels": {
+      "ar": "databases",
+      "en": "databases"
+    },
+    "keywords": [
+      "databases",
+      "/admin/databases",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
+    ],
+    "href": "/admin/databases",
+    "capabilityRefs": [
+      "studio.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "src/app/admin/databases/page.tsx"
+  },
+  {
     "id": "page.admin.editor",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "editor",
       "en": "editor"
     },
     "keywords": [
       "editor",
-      "/admin/editor"
+      "/admin/editor",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/editor",
     "capabilityRefs": [
@@ -16689,13 +27293,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.email",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "email",
       "en": "email"
     },
     "keywords": [
       "email",
-      "/admin/email"
+      "/admin/email",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/email",
     "capabilityRefs": [
@@ -16708,13 +27317,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.email-marketing",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "email-marketing",
       "en": "email-marketing"
     },
     "keywords": [
       "email-marketing",
-      "/admin/email-marketing"
+      "/admin/email-marketing",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/email-marketing",
     "capabilityRefs": [
@@ -16727,13 +27341,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.flights",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "flights",
       "en": "flights"
     },
     "keywords": [
       "flights",
-      "/admin/flights"
+      "/admin/flights",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/flights",
     "capabilityRefs": [
@@ -16746,13 +27365,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.gift-cards",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "gift-cards",
       "en": "gift-cards"
     },
     "keywords": [
       "gift-cards",
-      "/admin/gift-cards"
+      "/admin/gift-cards",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/gift-cards",
     "capabilityRefs": [
@@ -16765,13 +27389,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.homepage",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "homepage",
       "en": "homepage"
     },
     "keywords": [
       "homepage",
-      "/admin/homepage"
+      "/admin/homepage",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/homepage",
     "capabilityRefs": [
@@ -16784,13 +27413,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.homepage-editor",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "homepage-editor",
       "en": "homepage-editor"
     },
     "keywords": [
       "homepage-editor",
-      "/admin/homepage-editor"
+      "/admin/homepage-editor",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/homepage-editor",
     "capabilityRefs": [
@@ -16803,13 +27437,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.hotels",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "hotels",
       "en": "hotels"
     },
     "keywords": [
       "hotels",
-      "/admin/hotels"
+      "/admin/hotels",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/hotels",
     "capabilityRefs": [
@@ -16822,6 +27461,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.hotels_catalog",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "hotels/catalog",
       "en": "hotels/catalog"
@@ -16829,7 +27469,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotels",
       "catalog",
-      "/admin/hotels/catalog"
+      "/admin/hotels/catalog",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/hotels/catalog",
     "capabilityRefs": [
@@ -16842,6 +27486,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.hotels_featured",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "hotels/featured",
       "en": "hotels/featured"
@@ -16849,7 +27494,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotels",
       "featured",
-      "/admin/hotels/featured"
+      "/admin/hotels/featured",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/hotels/featured",
     "capabilityRefs": [
@@ -16862,6 +27511,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.hotels_supply",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "hotels/supply",
       "en": "hotels/supply"
@@ -16869,7 +27519,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "hotels",
       "supply",
-      "/admin/hotels/supply"
+      "/admin/hotels/supply",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/hotels/supply",
     "capabilityRefs": [
@@ -16882,13 +27536,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.icons",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "icons",
       "en": "icons"
     },
     "keywords": [
       "icons",
-      "/admin/icons"
+      "/admin/icons",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/icons",
     "capabilityRefs": [
@@ -16901,13 +27560,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.integrations",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "integrations",
       "en": "integrations"
     },
     "keywords": [
       "integrations",
-      "/admin/integrations"
+      "/admin/integrations",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/integrations",
     "capabilityRefs": [
@@ -16920,13 +27584,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.invoices",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "invoices",
       "en": "invoices"
     },
     "keywords": [
       "invoices",
-      "/admin/invoices"
+      "/admin/invoices",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/invoices",
     "capabilityRefs": [
@@ -16939,13 +27608,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.legal",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "legal",
       "en": "legal"
     },
     "keywords": [
       "legal",
-      "/admin/legal"
+      "/admin/legal",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/legal",
     "capabilityRefs": [
@@ -16958,13 +27632,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.license",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "license",
       "en": "license"
     },
     "keywords": [
       "license",
-      "/admin/license"
+      "/admin/license",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/license",
     "capabilityRefs": [
@@ -16973,17 +27652,25 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "defaultIntent": "navigate",
     "risk": "low",
     "evidence": "src/app/admin/license/page.tsx"
-  },
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_7: PlatformIndexNode[] = [
   {
     "id": "page.admin.login",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "login",
       "en": "login"
     },
     "keywords": [
       "login",
-      "/admin/login"
+      "/admin/login",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/login",
     "capabilityRefs": [
@@ -16996,6 +27683,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.marketing_coupons",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "marketing/coupons",
       "en": "marketing/coupons"
@@ -17003,7 +27691,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "marketing",
       "coupons",
-      "/admin/marketing/coupons"
+      "/admin/marketing/coupons",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/marketing/coupons",
     "capabilityRefs": [
@@ -17016,13 +27708,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.media",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "media",
       "en": "media"
     },
     "keywords": [
       "media",
-      "/admin/media"
+      "/admin/media",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/media",
     "capabilityRefs": [
@@ -17035,13 +27732,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.mobile-app",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "mobile-app",
       "en": "mobile-app"
     },
     "keywords": [
       "mobile-app",
-      "/admin/mobile-app"
+      "/admin/mobile-app",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/mobile-app",
     "capabilityRefs": [
@@ -17054,13 +27756,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.mobile-app-editor",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "mobile-app-editor",
       "en": "mobile-app-editor"
     },
     "keywords": [
       "mobile-app-editor",
-      "/admin/mobile-app-editor"
+      "/admin/mobile-app-editor",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/mobile-app-editor",
     "capabilityRefs": [
@@ -17073,13 +27780,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.neural-studio",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "neural-studio",
       "en": "neural-studio"
     },
     "keywords": [
       "neural-studio",
-      "/admin/neural-studio"
+      "/admin/neural-studio",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/neural-studio",
     "capabilityRefs": [
@@ -17092,13 +27804,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.packages",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "packages",
       "en": "packages"
     },
     "keywords": [
       "packages",
-      "/admin/packages"
+      "/admin/packages",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/packages",
     "capabilityRefs": [
@@ -17111,13 +27828,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.pages",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "pages",
       "en": "pages"
     },
     "keywords": [
       "pages",
-      "/admin/pages"
+      "/admin/pages",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/pages",
     "capabilityRefs": [
@@ -17130,13 +27852,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.payments",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "payments",
       "en": "payments"
     },
     "keywords": [
       "payments",
-      "/admin/payments"
+      "/admin/payments",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/payments",
     "capabilityRefs": [
@@ -17149,13 +27876,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.pocketbase",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "pocketbase",
       "en": "pocketbase"
     },
     "keywords": [
       "pocketbase",
-      "/admin/pocketbase"
+      "/admin/pocketbase",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/pocketbase",
     "capabilityRefs": [
@@ -17168,13 +27900,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.providers",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "providers",
       "en": "providers"
     },
     "keywords": [
       "providers",
-      "/admin/providers"
+      "/admin/providers",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/providers",
     "capabilityRefs": [
@@ -17187,13 +27924,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish",
       "en": "publish"
     },
     "keywords": [
       "publish",
-      "/admin/publish"
+      "/admin/publish",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish",
     "capabilityRefs": [
@@ -17206,6 +27948,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_agent",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/agent",
       "en": "publish/agent"
@@ -17213,7 +27956,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "agent",
-      "/admin/publish/agent"
+      "/admin/publish/agent",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/agent",
     "capabilityRefs": [
@@ -17226,6 +27973,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_analytics",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/analytics",
       "en": "publish/analytics"
@@ -17233,7 +27981,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "analytics",
-      "/admin/publish/analytics"
+      "/admin/publish/analytics",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/analytics",
     "capabilityRefs": [
@@ -17246,6 +27998,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_automations",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/automations",
       "en": "publish/automations"
@@ -17253,7 +28006,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "automations",
-      "/admin/publish/automations"
+      "/admin/publish/automations",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/automations",
     "capabilityRefs": [
@@ -17266,6 +28023,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_compose",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/compose",
       "en": "publish/compose"
@@ -17273,7 +28031,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "compose",
-      "/admin/publish/compose"
+      "/admin/publish/compose",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/compose",
     "capabilityRefs": [
@@ -17286,6 +28048,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_media",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/media",
       "en": "publish/media"
@@ -17293,7 +28056,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "media",
-      "/admin/publish/media"
+      "/admin/publish/media",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/media",
     "capabilityRefs": [
@@ -17306,6 +28073,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.publish_settings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "publish/settings",
       "en": "publish/settings"
@@ -17313,7 +28081,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "publish",
       "settings",
-      "/admin/publish/settings"
+      "/admin/publish/settings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/publish/settings",
     "capabilityRefs": [
@@ -17326,13 +28098,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.pwa",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "pwa",
       "en": "pwa"
     },
     "keywords": [
       "pwa",
-      "/admin/pwa"
+      "/admin/pwa",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/pwa",
     "capabilityRefs": [
@@ -17345,13 +28122,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale",
       "en": "resale"
     },
     "keywords": [
       "resale",
-      "/admin/resale"
+      "/admin/resale",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale",
     "capabilityRefs": [
@@ -17364,6 +28146,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_bookings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/bookings",
       "en": "resale/bookings"
@@ -17371,7 +28154,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "bookings",
-      "/admin/resale/bookings"
+      "/admin/resale/bookings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/bookings",
     "capabilityRefs": [
@@ -17384,6 +28171,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_companies",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/companies",
       "en": "resale/companies"
@@ -17391,7 +28179,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "companies",
-      "/admin/resale/companies"
+      "/admin/resale/companies",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/companies",
     "capabilityRefs": [
@@ -17404,6 +28196,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_delivery",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/delivery",
       "en": "resale/delivery"
@@ -17411,7 +28204,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "delivery",
-      "/admin/resale/delivery"
+      "/admin/resale/delivery",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/delivery",
     "capabilityRefs": [
@@ -17424,6 +28221,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_domains",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/domains",
       "en": "resale/domains"
@@ -17431,7 +28229,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "domains",
-      "/admin/resale/domains"
+      "/admin/resale/domains",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/domains",
     "capabilityRefs": [
@@ -17444,6 +28246,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_licenses",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/licenses",
       "en": "resale/licenses"
@@ -17451,7 +28254,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "licenses",
-      "/admin/resale/licenses"
+      "/admin/resale/licenses",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/licenses",
     "capabilityRefs": [
@@ -17464,6 +28271,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_scraper",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/scraper",
       "en": "resale/scraper"
@@ -17471,7 +28279,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "scraper",
-      "/admin/resale/scraper"
+      "/admin/resale/scraper",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/scraper",
     "capabilityRefs": [
@@ -17484,6 +28296,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_settings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/settings",
       "en": "resale/settings"
@@ -17491,7 +28304,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "settings",
-      "/admin/resale/settings"
+      "/admin/resale/settings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/settings",
     "capabilityRefs": [
@@ -17504,6 +28321,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_subscriptions",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/subscriptions",
       "en": "resale/subscriptions"
@@ -17511,7 +28329,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "subscriptions",
-      "/admin/resale/subscriptions"
+      "/admin/resale/subscriptions",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/subscriptions",
     "capabilityRefs": [
@@ -17524,6 +28346,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_updates",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/updates",
       "en": "resale/updates"
@@ -17531,7 +28354,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "updates",
-      "/admin/resale/updates"
+      "/admin/resale/updates",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/updates",
     "capabilityRefs": [
@@ -17544,6 +28371,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_wallets",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/wallets",
       "en": "resale/wallets"
@@ -17551,7 +28379,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "wallets",
-      "/admin/resale/wallets"
+      "/admin/resale/wallets",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/wallets",
     "capabilityRefs": [
@@ -17564,6 +28396,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.resale_whitelabel",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "resale/whitelabel",
       "en": "resale/whitelabel"
@@ -17571,7 +28404,11 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "keywords": [
       "resale",
       "whitelabel",
-      "/admin/resale/whitelabel"
+      "/admin/resale/whitelabel",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/resale/whitelabel",
     "capabilityRefs": [
@@ -17584,13 +28421,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.reviews",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "reviews",
       "en": "reviews"
     },
     "keywords": [
       "reviews",
-      "/admin/reviews"
+      "/admin/reviews",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/reviews",
     "capabilityRefs": [
@@ -17603,13 +28445,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.search-tabs",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "search-tabs",
       "en": "search-tabs"
     },
     "keywords": [
       "search-tabs",
-      "/admin/search-tabs"
+      "/admin/search-tabs",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/search-tabs",
     "capabilityRefs": [
@@ -17622,13 +28469,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.settings",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "settings",
       "en": "settings"
     },
     "keywords": [
       "settings",
-      "/admin/settings"
+      "/admin/settings",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/settings",
     "capabilityRefs": [
@@ -17641,13 +28493,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.social-accounts",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "social-accounts",
       "en": "social-accounts"
     },
     "keywords": [
       "social-accounts",
-      "/admin/social-accounts"
+      "/admin/social-accounts",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/social-accounts",
     "capabilityRefs": [
@@ -17660,13 +28517,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.social-community",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "social-community",
       "en": "social-community"
     },
     "keywords": [
       "social-community",
-      "/admin/social-community"
+      "/admin/social-community",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/social-community",
     "capabilityRefs": [
@@ -17679,13 +28541,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.tours",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "tours",
       "en": "tours"
     },
     "keywords": [
       "tours",
-      "/admin/tours"
+      "/admin/tours",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/tours",
     "capabilityRefs": [
@@ -17698,13 +28565,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.transfers",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "transfers",
       "en": "transfers"
     },
     "keywords": [
       "transfers",
-      "/admin/transfers"
+      "/admin/transfers",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/transfers",
     "capabilityRefs": [
@@ -17717,13 +28589,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.translations",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "translations",
       "en": "translations"
     },
     "keywords": [
       "translations",
-      "/admin/translations"
+      "/admin/translations",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/translations",
     "capabilityRefs": [
@@ -17736,13 +28613,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.updates",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "updates",
       "en": "updates"
     },
     "keywords": [
       "updates",
-      "/admin/updates"
+      "/admin/updates",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/updates",
     "capabilityRefs": [
@@ -17755,13 +28637,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.visa",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "visa",
       "en": "visa"
     },
     "keywords": [
       "visa",
-      "/admin/visa"
+      "/admin/visa",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/visa",
     "capabilityRefs": [
@@ -17774,13 +28661,18 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "page.admin.visual-editor",
     "kind": "admin_page",
+    "scope": "admin",
     "labels": {
       "ar": "visual-editor",
       "en": "visual-editor"
     },
     "keywords": [
       "visual-editor",
-      "/admin/visual-editor"
+      "/admin/visual-editor",
+      "لوحه",
+      "التحكم",
+      "اداره",
+      "admin"
     ],
     "href": "/admin/visual-editor",
     "capabilityRefs": [
@@ -17791,8 +28683,1462 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "evidence": "src/app/admin/visual-editor/page.tsx"
   },
   {
+    "id": "page.site.about",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "من نحن ومعلومات المنصة والترخيص السياحي",
+      "en": "About Us"
+    },
+    "keywords": [
+      "من",
+      "نحن",
+      "ومعلومات",
+      "المنصه",
+      "والترخيص",
+      "السياحي",
+      "about",
+      "us",
+      "/about",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/about",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/about/page.tsx"
+  },
+  {
+    "id": "page.site.account",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "لوحة تحكم حساب العميل والملف الشخصي",
+      "en": "Customer Account"
+    },
+    "keywords": [
+      "لوحه",
+      "تحكم",
+      "حساب",
+      "العميل",
+      "والملف",
+      "الشخصي",
+      "customer",
+      "account",
+      "/account",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/account",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/account/page.tsx"
+  },
+  {
+    "id": "page.site.account_bookings_id",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تفاصيل وإدارة حجز العميل",
+      "en": "Booking Details"
+    },
+    "keywords": [
+      "تفاصيل",
+      "واداره",
+      "حجز",
+      "العميل",
+      "booking",
+      "details",
+      "/account/bookings/:id",
+      "account",
+      "bookings",
+      "id",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/account/bookings/:id",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/account/bookings/[id]/page.tsx"
+  },
+  {
+    "id": "page.site.account_chat_id",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "المحادثة المباشرة مع خدمة العملاء للحجز",
+      "en": "Customer Support Chat"
+    },
+    "keywords": [
+      "المحادثه",
+      "المباشره",
+      "مع",
+      "خدمه",
+      "العملاء",
+      "للحجز",
+      "customer",
+      "support",
+      "chat",
+      "/account/chat/:id",
+      "account",
+      "id",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/account/chat/:id",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/account/chat/[id]/page.tsx"
+  },
+  {
+    "id": "page.site.account_companions_userId",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "قائمة المرافقين والمسافرين التابعين للعميل",
+      "en": "Customer Companions"
+    },
+    "keywords": [
+      "قائمه",
+      "المرافقين",
+      "والمسافرين",
+      "التابعين",
+      "للعميل",
+      "customer",
+      "companions",
+      "/account/companions/:userid",
+      "account",
+      "userid",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/account/companions/:userId",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/account/companions/[userId]/page.tsx"
+  },
+  {
+    "id": "page.site.account_messages_id",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الرسائل والإشعارات الخاصة بحساب العميل",
+      "en": "Customer Messages"
+    },
+    "keywords": [
+      "الرسائل",
+      "والاشعارات",
+      "الخاصه",
+      "بحساب",
+      "العميل",
+      "customer",
+      "messages",
+      "/account/messages/:id",
+      "account",
+      "id",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/account/messages/:id",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/account/messages/[id]/page.tsx"
+  },
+  {
+    "id": "page.site.ai-chat",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الشات السياحي الذكي ومساعد الحجز الذاتي",
+      "en": "AI Travel Assistant"
+    },
+    "keywords": [
+      "الشات",
+      "السياحي",
+      "الذكي",
+      "ومساعد",
+      "الحجز",
+      "الذاتي",
+      "ai",
+      "travel",
+      "assistant",
+      "/ai-chat",
+      "ai-chat",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/ai-chat",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/ai-chat/page.tsx"
+  },
+  {
+    "id": "page.site.blog",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "مدونة السفر والمقالات والدلائل السياحية",
+      "en": "Travel Blog & Guides"
+    },
+    "keywords": [
+      "مدونه",
+      "السفر",
+      "والمقالات",
+      "والدلائل",
+      "السياحيه",
+      "travel",
+      "blog",
+      "guides",
+      "/blog",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/blog",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/blog/page.tsx"
+  },
+  {
+    "id": "page.site.blog_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "مقال ودليل سياحي تفصيلي في المدونة",
+      "en": "Blog Article"
+    },
+    "keywords": [
+      "مقال",
+      "ودليل",
+      "سياحي",
+      "تفصيلي",
+      "في",
+      "المدونه",
+      "blog",
+      "article",
+      "/blog/:slug",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/blog/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/blog/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.cars",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تأجير السيارات السياحية بسائق وبدون سائق",
+      "en": "Car Rentals"
+    },
+    "keywords": [
+      "تاجير",
+      "السيارات",
+      "السياحيه",
+      "بسائق",
+      "وبدون",
+      "سائق",
+      "car",
+      "rentals",
+      "/cars",
+      "cars",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/cars",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/cars/page.tsx"
+  },
+  {
+    "id": "page.site.community",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "مجتمع المسافرين والقصص وريلز السفر",
+      "en": "Traveler Community"
+    },
+    "keywords": [
+      "مجتمع",
+      "المسافرين",
+      "والقصص",
+      "وريلز",
+      "السفر",
+      "traveler",
+      "community",
+      "/community",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/community",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/community/page.tsx"
+  },
+  {
+    "id": "page.site.community_buddies",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "البحث عن رفقاء ومشاركي السفر",
+      "en": "Travel Buddies Finder"
+    },
+    "keywords": [
+      "البحث",
+      "عن",
+      "رفقاء",
+      "ومشاركي",
+      "السفر",
+      "travel",
+      "buddies",
+      "finder",
+      "/community/buddies",
+      "community",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/community/buddies",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/community/buddies/page.tsx"
+  },
+  {
+    "id": "page.site.community_leaderboard",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "لوحة شرف مجتمع المسافرين وكبار المكتشفين",
+      "en": "Community Leaderboard"
+    },
+    "keywords": [
+      "لوحه",
+      "شرف",
+      "مجتمع",
+      "المسافرين",
+      "وكبار",
+      "المكتشفين",
+      "community",
+      "leaderboard",
+      "/community/leaderboard",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/community/leaderboard",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/community/leaderboard/page.tsx"
+  },
+  {
+    "id": "page.site.community_reels",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "ريلز وفيديوهات السفر والمغامرات القصيرة",
+      "en": "Travel Reels"
+    },
+    "keywords": [
+      "ريلز",
+      "وفيديوهات",
+      "السفر",
+      "والمغامرات",
+      "القصيره",
+      "travel",
+      "reels",
+      "/community/reels",
+      "community",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/community/reels",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/community/reels/page.tsx"
+  },
+  {
+    "id": "page.site.community_user_id",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الملف الشخصي للمسافر في المجتمع",
+      "en": "Traveler Profile"
+    },
+    "keywords": [
+      "الملف",
+      "الشخصي",
+      "للمسافر",
+      "في",
+      "المجتمع",
+      "traveler",
+      "profile",
+      "/community/user/:id",
+      "community",
+      "user",
+      "id",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/community/user/:id",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/community/user/[id]/page.tsx"
+  },
+  {
+    "id": "page.site.contact",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تواصل معنا وخدمة العملاء والدعم المباشر",
+      "en": "Contact & Support"
+    },
+    "keywords": [
+      "تواصل",
+      "معنا",
+      "وخدمه",
+      "العملاء",
+      "والدعم",
+      "المباشر",
+      "contact",
+      "support",
+      "/contact",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/contact",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/contact/page.tsx"
+  },
+  {
+    "id": "page.site.flight-tracker",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "رادار تتبع الرحلات الجوية ومواعيد الهبوط والإقلاع",
+      "en": "Live Flight Tracker"
+    },
+    "keywords": [
+      "رادار",
+      "تتبع",
+      "الرحلات",
+      "الجويه",
+      "ومواعيد",
+      "الهبوط",
+      "والاقلاع",
+      "live",
+      "flight",
+      "tracker",
+      "/flight-tracker",
+      "flight-tracker",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/flight-tracker",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/flight-tracker/page.tsx"
+  },
+  {
+    "id": "page.site.flights",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "حجز تذاكر الطيران والرحلات الجوية المباشرة",
+      "en": "Flights Booking"
+    },
+    "keywords": [
+      "حجز",
+      "تذاكر",
+      "الطيران",
+      "والرحلات",
+      "الجويه",
+      "المباشره",
+      "flights",
+      "booking",
+      "/flights",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/flights",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/flights/page.tsx"
+  },
+  {
+    "id": "page.site.flights_booking",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "إتمام حجز وإصدار تذاكر الطيران",
+      "en": "Flight Checkout"
+    },
+    "keywords": [
+      "اتمام",
+      "حجز",
+      "واصدار",
+      "تذاكر",
+      "الطيران",
+      "flight",
+      "checkout",
+      "/flights/booking",
+      "flights",
+      "booking",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/flights/booking",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/flights/booking/page.tsx"
+  },
+  {
+    "id": "page.site.flights_redirect",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تحويل حجز الطيران إلى شريك الطيران",
+      "en": "Flight Partner Redirect"
+    },
+    "keywords": [
+      "تحويل",
+      "حجز",
+      "الطيران",
+      "الي",
+      "شريك",
+      "flight",
+      "partner",
+      "redirect",
+      "/flights/redirect",
+      "flights",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/flights/redirect",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/flights/redirect/page.tsx"
+  },
+  {
+    "id": "page.site.flights_search",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "نتائج بحث ومقارنة أسعار الطيران",
+      "en": "Flight Search Results"
+    },
+    "keywords": [
+      "نتائج",
+      "بحث",
+      "ومقارنه",
+      "اسعار",
+      "الطيران",
+      "flight",
+      "search",
+      "results",
+      "/flights/search",
+      "flights",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/flights/search",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/flights/search/page.tsx"
+  },
+  {
+    "id": "page.site.gdpr",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "حقوق الخصوصية والامتثال للائحة الأوروبية GDPR",
+      "en": "GDPR Compliance"
+    },
+    "keywords": [
+      "حقوق",
+      "الخصوصيه",
+      "والامتثال",
+      "للائحه",
+      "الاوروبيه",
+      "gdpr",
+      "compliance",
+      "/gdpr",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/gdpr",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/gdpr/page.tsx"
+  },
+  {
+    "id": "page.site.gift-cards",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "بطاقات الهدايا وقسائم الرصيد السياحي",
+      "en": "Gift Cards & Vouchers"
+    },
+    "keywords": [
+      "بطاقات",
+      "الهدايا",
+      "وقسائم",
+      "الرصيد",
+      "السياحي",
+      "gift",
+      "cards",
+      "vouchers",
+      "/gift-cards",
+      "gift-cards",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/gift-cards",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/gift-cards/page.tsx"
+  },
+  {
+    "id": "page.site.holidays",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "باقات العطلات والرحلات السياحية المتكاملة",
+      "en": "Holiday Packages"
+    },
+    "keywords": [
+      "باقات",
+      "العطلات",
+      "والرحلات",
+      "السياحيه",
+      "المتكامله",
+      "holiday",
+      "packages",
+      "/holidays",
+      "holidays",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/holidays",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/holidays/page.tsx"
+  },
+  {
+    "id": "page.site.holidays_destination",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "عطلات وباقات الوجهة السياحية المختارة",
+      "en": "Destination Holidays"
+    },
+    "keywords": [
+      "عطلات",
+      "وباقات",
+      "الوجهه",
+      "السياحيه",
+      "المختاره",
+      "destination",
+      "holidays",
+      "/holidays/:destination",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/holidays/:destination",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/holidays/[destination]/page.tsx"
+  },
+  {
+    "id": "page.site.home",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الصفحة الرئيسية لموقع لوناليزا العام",
+      "en": "Storefront Home"
+    },
+    "keywords": [
+      "الصفحه",
+      "الرئيسيه",
+      "لموقع",
+      "لوناليزا",
+      "العام",
+      "storefront",
+      "home",
+      "متجر",
+      "موقع",
+      "site"
+    ],
+    "href": "/",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/page.tsx"
+  },
+  {
+    "id": "page.site.hotels",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "كتالوج وحجز الفنادق والإقامة العالمية",
+      "en": "Hotels Catalog"
+    },
+    "keywords": [
+      "كتالوج",
+      "وحجز",
+      "الفنادق",
+      "والاقامه",
+      "العالميه",
+      "hotels",
+      "catalog",
+      "/hotels",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/hotels",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/hotels/page.tsx"
+  },
+  {
+    "id": "page.site.hotels_book",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "إتمام ودفع حجز الفندق",
+      "en": "Hotel Booking Checkout"
+    },
+    "keywords": [
+      "اتمام",
+      "ودفع",
+      "حجز",
+      "الفندق",
+      "hotel",
+      "booking",
+      "checkout",
+      "/hotels/book",
+      "hotels",
+      "book",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/hotels/book",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/hotels/book/page.tsx"
+  },
+  {
+    "id": "page.site.hotels_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تفاصيل وحجز الفندق المختار والغرف",
+      "en": "Hotel Details"
+    },
+    "keywords": [
+      "تفاصيل",
+      "وحجز",
+      "الفندق",
+      "المختار",
+      "والغرف",
+      "hotel",
+      "details",
+      "/hotels/:slug",
+      "hotels",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/hotels/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/hotels/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.invoice_verify",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "التحقق من صحة الفواتير وسندات الحجز الإلكترونية",
+      "en": "Invoice Verification"
+    },
+    "keywords": [
+      "التحقق",
+      "من",
+      "صحه",
+      "الفواتير",
+      "وسندات",
+      "الحجز",
+      "الالكترونيه",
+      "invoice",
+      "verification",
+      "/invoice/verify",
+      "verify",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/invoice/verify",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/invoice/verify/page.tsx"
+  },
+  {
+    "id": "page.site.menu",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "القائمة السريعة للخدمات وكتالوج المنصة",
+      "en": "Quick Services Menu"
+    },
+    "keywords": [
+      "القائمه",
+      "السريعه",
+      "للخدمات",
+      "وكتالوج",
+      "المنصه",
+      "quick",
+      "services",
+      "menu",
+      "/menu",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/menu",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/menu/page.tsx"
+  },
+  {
+    "id": "page.site.p_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "صفحة تسويقية ومحتوى مخصص للوجهات",
+      "en": "Landing Page"
+    },
+    "keywords": [
+      "صفحه",
+      "تسويقيه",
+      "ومحتوي",
+      "مخصص",
+      "للوجهات",
+      "landing",
+      "page",
+      "/p/:slug",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/p/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/p/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.package_book",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "إتمام حجز باقات السفر والعطلات",
+      "en": "Holiday Package Checkout"
+    },
+    "keywords": [
+      "اتمام",
+      "حجز",
+      "باقات",
+      "السفر",
+      "والعطلات",
+      "holiday",
+      "package",
+      "checkout",
+      "/package/book",
+      "book",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/package/book",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/package/book/page.tsx"
+  },
+  {
+    "id": "page.site.package_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تفاصيل باقة العطلة المختارة وبرنامج الرحلة",
+      "en": "Holiday Package Details"
+    },
+    "keywords": [
+      "تفاصيل",
+      "باقه",
+      "العطله",
+      "المختاره",
+      "وبرنامج",
+      "الرحله",
+      "holiday",
+      "package",
+      "details",
+      "/package/:slug",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/package/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/package/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.package_slug_book",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "حجز باقة العطلة السياحية",
+      "en": "Package Booking"
+    },
+    "keywords": [
+      "حجز",
+      "باقه",
+      "العطله",
+      "السياحيه",
+      "package",
+      "booking",
+      "/package/:slug/book",
+      "slug",
+      "book",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/package/:slug/book",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/package/[slug]/book/page.tsx"
+  },
+  {
+    "id": "page.site.privacy",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "سياسة الخصوصية وحماية بيانات العملاء",
+      "en": "Privacy Policy"
+    },
+    "keywords": [
+      "سياسه",
+      "الخصوصيه",
+      "وحمايه",
+      "بيانات",
+      "العملاء",
+      "privacy",
+      "policy",
+      "/privacy",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/privacy",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/privacy/page.tsx"
+  },
+  {
+    "id": "page.site.r_code",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "رابط الإحالة والتسويق بالعمولة للمسوقين",
+      "en": "Affiliate Referral Link"
+    },
+    "keywords": [
+      "رابط",
+      "الاحاله",
+      "والتسويق",
+      "بالعموله",
+      "للمسوقين",
+      "affiliate",
+      "referral",
+      "link",
+      "/r/:code",
+      "code",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/r/:code",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/r/[code]/page.tsx"
+  },
+  {
+    "id": "page.site.search",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "محرك البحث السياحي الموحد للرحلات والفنادق",
+      "en": "Unified Travel Search"
+    },
+    "keywords": [
+      "محرك",
+      "البحث",
+      "السياحي",
+      "الموحد",
+      "للرحلات",
+      "والفنادق",
+      "unified",
+      "travel",
+      "search",
+      "/search",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/search",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/search/page.tsx"
+  },
+  {
+    "id": "page.site.terms",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الشروط والأحكام وسياسة الاستخدام المعتمدة",
+      "en": "Terms of Service"
+    },
+    "keywords": [
+      "الشروط",
+      "والاحكام",
+      "وسياسه",
+      "الاستخدام",
+      "المعتمده",
+      "terms",
+      "of",
+      "service",
+      "/terms",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/terms",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/terms/page.tsx"
+  },
+  {
+    "id": "page.site.tours",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الجولات السياحية اليومية والأنشطة والفعاليات",
+      "en": "Tours & Excursions"
+    },
+    "keywords": [
+      "الجولات",
+      "السياحيه",
+      "اليوميه",
+      "والانشطه",
+      "والفعاليات",
+      "tours",
+      "excursions",
+      "/tours",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/tours",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/tours/page.tsx"
+  },
+  {
+    "id": "page.site.transfers",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "خدمات النقل وتوصيل المطار في عموم تركيا والعالم",
+      "en": "Airport Transfers"
+    },
+    "keywords": [
+      "خدمات",
+      "النقل",
+      "وتوصيل",
+      "المطار",
+      "في",
+      "عموم",
+      "تركيا",
+      "والعالم",
+      "airport",
+      "transfers",
+      "/transfers",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/transfers",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/transfers/page.tsx"
+  },
+  {
+    "id": "page.site.transfers_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تفاصيل مسار خدمة التوصيل والنقل",
+      "en": "Transfer Route Details"
+    },
+    "keywords": [
+      "تفاصيل",
+      "مسار",
+      "خدمه",
+      "التوصيل",
+      "والنقل",
+      "transfer",
+      "route",
+      "details",
+      "/transfers/:slug",
+      "transfers",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/transfers/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/transfers/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.uae-tours",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "جولات ورحلات الإمارات ودبي السياحية",
+      "en": "UAE & Dubai Tours"
+    },
+    "keywords": [
+      "جولات",
+      "ورحلات",
+      "الامارات",
+      "ودبي",
+      "السياحيه",
+      "uae",
+      "dubai",
+      "tours",
+      "/uae-tours",
+      "uae-tours",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/uae-tours",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/uae-tours/page.tsx"
+  },
+  {
+    "id": "page.site.vip-tours",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "الجولات السياحية الخاصة وخدمات VIP الفاخرة",
+      "en": "VIP Luxury Tours"
+    },
+    "keywords": [
+      "الجولات",
+      "السياحيه",
+      "الخاصه",
+      "وخدمات",
+      "vip",
+      "الفاخره",
+      "luxury",
+      "tours",
+      "/vip-tours",
+      "vip-tours",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/vip-tours",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/vip-tours/page.tsx"
+  },
+  {
+    "id": "page.site.vip-tours_slug",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "تفاصيل الجولة السياحية الخاصة VIP",
+      "en": "VIP Tour Details"
+    },
+    "keywords": [
+      "تفاصيل",
+      "الجوله",
+      "السياحيه",
+      "الخاصه",
+      "vip",
+      "tour",
+      "details",
+      "/vip-tours/:slug",
+      "vip-tours",
+      "slug",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/vip-tours/:slug",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/vip-tours/[slug]/page.tsx"
+  },
+  {
+    "id": "page.site.visa",
+    "kind": "storefront_page",
+    "scope": "storefront",
+    "labels": {
+      "ar": "خدمات التأشيرات واستشارات السفر والدعم القنصلي",
+      "en": "Visa Services"
+    },
+    "keywords": [
+      "خدمات",
+      "التاشيرات",
+      "واستشارات",
+      "السفر",
+      "والدعم",
+      "القنصلي",
+      "visa",
+      "services",
+      "/visa",
+      "متجر",
+      "موقع",
+      "storefront",
+      "site"
+    ],
+    "href": "/visa",
+    "capabilityRefs": [
+      "storefront.navigate"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "../storefront/src/app/(site)/visa/page.tsx"
+  },
+  {
     "id": "screen.01",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "01",
     "mapId": "atlas",
     "labels": {
@@ -17835,6 +30181,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.02",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "02",
     "mapId": "screen.02",
     "labels": {
@@ -17878,6 +30225,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.03",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "03",
     "mapId": "screen.03",
     "labels": {
@@ -17925,6 +30273,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.04",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "04",
     "mapId": "screen.04",
     "labels": {
@@ -17973,6 +30322,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.05",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "05",
     "mapId": "screen.05",
     "labels": {
@@ -18021,6 +30371,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.06",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "06",
     "mapId": "screen.06",
     "labels": {
@@ -18070,6 +30421,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.07",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "07",
     "mapId": "screen.07",
     "labels": {
@@ -18124,6 +30476,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.08",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "08",
     "mapId": "screen.08",
     "labels": {
@@ -18181,6 +30534,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.09",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "09",
     "mapId": "screen.09",
     "labels": {
@@ -18239,6 +30593,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.10",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "10",
     "mapId": "screen.10",
     "labels": {
@@ -18290,6 +30645,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.11",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "11",
     "mapId": "screen.11",
     "labels": {
@@ -18343,6 +30699,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.12",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "12",
     "mapId": "screen.12",
     "labels": {
@@ -18398,6 +30755,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.13",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "13",
     "mapId": "screen.13",
     "labels": {
@@ -18454,6 +30812,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.14",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "14",
     "mapId": "screen.14",
     "labels": {
@@ -18513,6 +30872,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.15",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "15",
     "mapId": "screen.15",
     "labels": {
@@ -18571,6 +30931,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.16",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "16",
     "mapId": "screen.16",
     "labels": {
@@ -18631,6 +30992,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.17",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "17",
     "mapId": "screen.17",
     "labels": {
@@ -18688,6 +31050,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.18",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "18",
     "mapId": "screen.18",
     "labels": {
@@ -18746,6 +31109,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.19",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "19",
     "mapId": "screen.19",
     "labels": {
@@ -18800,6 +31164,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.20",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "20",
     "mapId": "screen.20",
     "labels": {
@@ -18853,6 +31218,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.21",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "21",
     "mapId": "screen.21",
     "labels": {
@@ -18891,7 +31257,8 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "capabilityRefs": [
       "studio.navigate",
       "nexus.rotate",
-      "nexus.select_sector",
+      "nexus.focus_card",
+      "nexus.toggle_panel",
       "nexus.run_sector_command"
     ],
     "defaultIntent": "navigate",
@@ -18901,6 +31268,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "screen.22",
     "kind": "screen",
+    "scope": "admin",
     "screenId": "22",
     "mapId": "screen.22",
     "labels": {
@@ -18935,16 +31303,1759 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "capabilityRefs": [
       "loops.run",
       "loops.run_node",
-      "loops.select_sector",
-      "mcp.executor"
+      "automation.loops.toggle_panel",
+      "automation.loops.restore_panels"
     ],
     "defaultIntent": "navigate",
     "risk": "low",
     "evidence": "screensData.ts"
   },
   {
+    "id": "screen.23",
+    "kind": "screen",
+    "scope": "admin",
+    "screenId": "23",
+    "mapId": "screen.23",
+    "labels": {
+      "ar": "العقل المدبر السيادي وخريطة العقد العصبية",
+      "en": "mind-graph-cockpit"
+    },
+    "keywords": [
+      "العقل",
+      "المدبر",
+      "السيادي",
+      "وخريطه",
+      "العقد",
+      "العصبيه",
+      "mind-graph-cockpit",
+      "خريطه",
+      "الـ",
+      "1,208",
+      "عقده",
+      "26",
+      "عنقودا",
+      "معرفيا",
+      "محاكاه",
+      "عصبيه",
+      "تفاعليه",
+      "ثلاثيه",
+      "الابعاد",
+      "وصعقات",
+      "كهربائيه",
+      "حيه",
+      "1208",
+      "العناقيد",
+      "المعرفيه",
+      "قرص",
+      "الوكيل",
+      "المشرف",
+      "محاكي",
+      "النوايا",
+      "الحيه",
+      "صعقات",
+      "الاتصال",
+      "الكهربائي",
+      "بوابات",
+      "التوريد",
+      "والـ",
+      "gds",
+      "مسارات",
+      "api",
+      "صفحات",
+      "المتجر",
+      "العام"
+    ],
+    "capabilityRefs": [
+      "mind_graph.inspect",
+      "mind_graph.simulate_query",
+      "mind_graph.expand_thesaurus",
+      "supervisor.audit_clusters"
+    ],
+    "defaultIntent": "navigate",
+    "risk": "low",
+    "evidence": "screensData.ts"
+  },
+  {
+    "id": "supplier.air_scraper",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "air_scraper",
+    "labels": {
+      "ar": "إير سكرابر (Sky Scrapper)",
+      "en": "Air Scraper"
+    },
+    "keywords": [
+      "اير",
+      "سكرابر",
+      "(sky",
+      "scrapper)",
+      "air",
+      "scraper",
+      "air_scraper",
+      "flights",
+      "نظام",
+      "الطيران",
+      "الحي",
+      "الحالي",
+      "عبر",
+      "rapidapi.",
+      "الاختبار",
+      "يلمس",
+      "checkserver",
+      "فعليا.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.air_scraper.query",
+      "provider.air_scraper.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:air_scraper"
+  },
+  {
+    "id": "supplier.amadeus_cars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "amadeus_cars",
+    "labels": {
+      "ar": "أماديوس — سيارات",
+      "en": "Amadeus"
+    },
+    "keywords": [
+      "اماديوس",
+      "سيارات",
+      "amadeus",
+      "amadeus_cars",
+      "cars",
+      "gds",
+      "تاجير",
+      "السيارات",
+      "متاح",
+      "في",
+      "قنوات",
+      "enterprise.",
+      "self-service",
+      "محدود.",
+      "الحقول:",
+      "client",
+      "id",
+      "secret",
+      "office",
+      "id.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.amadeus_cars.query",
+      "provider.amadeus_cars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:amadeus_cars"
+  },
+  {
+    "id": "supplier.amadeus_flights",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "amadeus_flights",
+    "labels": {
+      "ar": "أماديوس — طيران",
+      "en": "Amadeus"
+    },
+    "keywords": [
+      "اماديوس",
+      "طيران",
+      "amadeus",
+      "amadeus_flights",
+      "flights",
+      "gds",
+      "self-service:",
+      "client",
+      "id",
+      "secret.",
+      "enterprise",
+      "soap",
+      "يحتاج",
+      "office",
+      "ايضا.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.amadeus_flights.query",
+      "provider.amadeus_flights.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:amadeus_flights"
+  },
+  {
+    "id": "supplier.amadeus_hotels",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "amadeus_hotels",
+    "labels": {
+      "ar": "أماديوس — فنادق",
+      "en": "Amadeus"
+    },
+    "keywords": [
+      "اماديوس",
+      "فنادق",
+      "amadeus",
+      "amadeus_hotels",
+      "hotels",
+      "gds",
+      "hotel",
+      "search",
+      "list",
+      "في",
+      "self-service:",
+      "client",
+      "id",
+      "secret.",
+      "enterprise",
+      "يحتاج",
+      "office",
+      "id.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.amadeus_hotels.query",
+      "provider.amadeus_hotels.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:amadeus_hotels"
+  },
+  {
+    "id": "supplier.amadeus_transfers",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "amadeus_transfers",
+    "labels": {
+      "ar": "أماديوس — ترانسفير",
+      "en": "Amadeus"
+    },
+    "keywords": [
+      "اماديوس",
+      "ترانسفير",
+      "amadeus",
+      "amadeus_transfers",
+      "transfers",
+      "gds",
+      "airport",
+      "city",
+      "في",
+      "self-service:",
+      "نفس",
+      "client",
+      "id",
+      "secret.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.amadeus_transfers.query",
+      "provider.amadeus_transfers.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:amadeus_transfers"
+  },
+  {
+    "id": "supplier.biletbank",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "biletbank",
+    "labels": {
+      "ar": "بيلت بانك (BiletBank)",
+      "en": "Biletbank"
+    },
+    "keywords": [
+      "بيلت",
+      "بانك",
+      "(biletbank)",
+      "biletbank",
+      "flights",
+      "gds",
+      "bbost",
+      "api:",
+      "اتصال",
+      "مباشر",
+      "بمفتاح",
+      "client-key",
+      "او",
+      "تسجيل",
+      "دخول",
+      "بـ",
+      "username",
+      "password.",
+      "يدعم",
+      "الخطوط",
+      "التركيه",
+      "وبيغاسوس",
+      "وصن",
+      "اكسبريس",
+      "والخطوط",
+      "الدوليه.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.biletbank.query",
+      "provider.biletbank.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:biletbank"
+  },
+  {
+    "id": "supplier.biletdukkani",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "biletdukkani",
+    "labels": {
+      "ar": "بيلت دكّاني",
+      "en": "Bilet Dükkanı"
+    },
+    "keywords": [
+      "بيلت",
+      "دكاني",
+      "bilet",
+      "dükkanı",
+      "biletdukkani",
+      "flights",
+      "gds",
+      "منصه",
+      "b2b",
+      "تركيه",
+      "(acente.biletdukkani.com)",
+      "مع",
+      "api",
+      "للوكلاء.",
+      "اسماء",
+      "الحقول",
+      "الدقيقه",
+      "تسلم",
+      "بعد",
+      "طلب",
+      "التكامل.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.biletdukkani.query",
+      "provider.biletdukkani.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:biletdukkani"
+  },
+  {
+    "id": "supplier.booking_com15",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "booking_com15",
+    "labels": {
+      "ar": "بوكينج.كوم 15",
+      "en": "Booking.com15"
+    },
+    "keywords": [
+      "بوكينج.كوم",
+      "15",
+      "booking.com15",
+      "booking_com15",
+      "hotels",
+      "scraper",
+      "سكرابر",
+      "rapidapi",
+      "الحالي",
+      "للغرف",
+      "والقوائم.",
+      "الاختبار",
+      "يلمس",
+      "الاستضافه",
+      "دون",
+      "حرق",
+      "حصه",
+      "البحث.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.booking_com15.query",
+      "provider.booking_com15.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:booking_com15"
+  },
+  {
+    "id": "supplier.cars_internal",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "cars_internal",
+    "labels": {
+      "ar": "الأسطول الداخلي",
+      "en": "Internal fleet"
+    },
+    "keywords": [
+      "الاسطول",
+      "الداخلي",
+      "internal",
+      "fleet",
+      "cars_internal",
+      "cars",
+      "gds",
+      "سيارات",
+      "الكتالوج",
+      "المحلي",
+      "ليست",
+      "gds.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.cars_internal.query",
+      "provider.cars_internal.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:cars_internal"
+  },
+  {
+    "id": "supplier.cartrawler",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "cartrawler",
+    "labels": {
+      "ar": "كار تراولر",
+      "en": "CarTrawler"
+    },
+    "keywords": [
+      "كار",
+      "تراولر",
+      "cartrawler",
+      "cars",
+      "gds",
+      "واجهه",
+      "شركاء",
+      "موثقه:",
+      "client",
+      "id",
+      "shared",
+      "secret",
+      "requestor",
+      "id.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.cartrawler.query",
+      "provider.cartrawler.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:cartrawler"
+  },
+  {
+    "id": "supplier.gettransfer",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "gettransfer",
+    "labels": {
+      "ar": "جيت ترانسفير",
+      "en": "GetTransfer"
+    },
+    "keywords": [
+      "جيت",
+      "ترانسفير",
+      "gettransfer",
+      "transfers",
+      "gds",
+      "واجهه",
+      "شركاء:",
+      "مفتاح",
+      "من",
+      "кабинет",
+      "gettransfer.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.gettransfer.query",
+      "provider.gettransfer.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:gettransfer"
+  },
+  {
+    "id": "supplier.google_places",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "google_places",
+    "labels": {
+      "ar": "وكيل استكشاف خرائط جوجل الحي (Google Places)",
+      "en": "Google Places Live Agent"
+    },
+    "keywords": [
+      "وكيل",
+      "استكشاف",
+      "خرائط",
+      "جوجل",
+      "الحي",
+      "(google",
+      "places)",
+      "google",
+      "places",
+      "live",
+      "agent",
+      "google_places",
+      "tourism_guides",
+      "guides",
+      "المزود",
+      "الحصري",
+      "لمعالم",
+      "ومدن",
+      "العالم",
+      "يجلب",
+      "المعالم",
+      "الايقونيه،",
+      "البحيرات،",
+      "الشلالات،",
+      "المطاعم",
+      "العريقه،",
+      "والاسواق",
+      "مع",
+      "الصور",
+      "الحقيقيه",
+      "100%",
+      "والاحداثيات",
+      "والتقييمات",
+      "الحيه.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.google_places.query",
+      "provider.google_places.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:google_places"
+  },
+  {
+    "id": "supplier.hotel_engine",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "hotel_engine",
+    "labels": {
+      "ar": "محرك الفنادق الخاص",
+      "en": "Hotel Engine"
+    },
+    "keywords": [
+      "محرك",
+      "الفنادق",
+      "الخاص",
+      "hotel",
+      "engine",
+      "hotel_engine",
+      "hotels",
+      "gds",
+      "المزود",
+      "(hotel-engine).",
+      "الاختبار",
+      "يلمس",
+      "المحرك",
+      "الحقيقي.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.hotel_engine.query",
+      "provider.hotel_engine.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:hotel_engine"
+  },
+  {
+    "id": "supplier.hotelbeds",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "hotelbeds",
+    "labels": {
+      "ar": "هوتل بيدس",
+      "en": "Hotelbeds"
+    },
+    "keywords": [
+      "هوتل",
+      "بيدس",
+      "hotelbeds",
+      "hotels",
+      "gds",
+      "مجمع",
+      "الفنادق",
+      "العالمي",
+      "hotelbeds:",
+      "توقيع",
+      "تشفيري",
+      "ديناميكي",
+      "sha-256",
+      "بـ",
+      "apikey",
+      "apisecret.",
+      "تدعم",
+      "البحث",
+      "والتسعير",
+      "والتوافر",
+      "والحجز",
+      "المباشر.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.hotelbeds.query",
+      "provider.hotelbeds.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:hotelbeds"
+  },
+  {
+    "id": "supplier.hotels_internal",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "hotels_internal",
+    "labels": {
+      "ar": "الكتالوج الداخلي",
+      "en": "Internal catalog"
+    },
+    "keywords": [
+      "الكتالوج",
+      "الداخلي",
+      "internal",
+      "catalog",
+      "hotels_internal",
+      "hotels",
+      "gds",
+      "فنادق",
+      "المحفوظه",
+      "في",
+      "الموقع",
+      "ليست",
+      "خارجيه.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.hotels_internal.query",
+      "provider.hotels_internal.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:hotels_internal"
+  },
+  {
+    "id": "supplier.iati",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "iati",
+    "labels": {
+      "ar": "إياتي (IATI)",
+      "en": "IATI"
+    },
+    "keywords": [
+      "اياتي",
+      "(iati)",
+      "iati",
+      "flights",
+      "gds",
+      "الاسم",
+      "الرسمي",
+      "(iati.com)",
+      "كتب",
+      "احيانا",
+      "iyati.",
+      "اتصال",
+      "xml",
+      "للوكلاء؛",
+      "الحقول",
+      "الدقيقه",
+      "تسلم",
+      "بعد",
+      "التعاقد.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.iati.query",
+      "provider.iati.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:iati"
+  },
+  {
+    "id": "supplier.iway",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "iway",
+    "labels": {
+      "ar": "آي واي",
+      "en": "iWay"
+    },
+    "keywords": [
+      "اي",
+      "واي",
+      "iway",
+      "transfers",
+      "gds",
+      "واجهه",
+      "شركاء",
+      "iway:",
+      "مفتاح",
+      "معرف",
+      "شريك.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.iway.query",
+      "provider.iway.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:iway"
+  },
+  {
+    "id": "supplier.jayride",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "jayride",
+    "labels": {
+      "ar": "جاي رايد",
+      "en": "Jayride"
+    },
+    "keywords": [
+      "جاي",
+      "رايد",
+      "jayride",
+      "transfers",
+      "gds",
+      "واجهه",
+      "مطورين",
+      "عامه:",
+      "api",
+      "key",
+      "من",
+      "developer.jayride.com.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.jayride.query",
+      "provider.jayride.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:jayride"
+  },
+  {
+    "id": "supplier.kiwitaxi",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "kiwitaxi",
+    "labels": {
+      "ar": "كيوي تاكسي",
+      "en": "Kiwitaxi"
+    },
+    "keywords": [
+      "كيوي",
+      "تاكسي",
+      "kiwitaxi",
+      "transfers",
+      "gds",
+      "واجهه",
+      "شركاء",
+      "xml/json:",
+      "توكن",
+      "الشريك",
+      "من",
+      "кабинет",
+      "الوكيل.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.kiwitaxi.query",
+      "provider.kiwitaxi.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:kiwitaxi"
+  },
+  {
+    "id": "supplier.mozio",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "mozio",
+    "labels": {
+      "ar": "موزيو",
+      "en": "Mozio"
+    },
+    "keywords": [
+      "موزيو",
+      "mozio",
+      "transfers",
+      "gds",
+      "واجهه",
+      "مطورين",
+      "عامه:",
+      "مفتاح",
+      "api",
+      "من",
+      "developer.mozio.com.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.mozio.query",
+      "provider.mozio.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:mozio"
+  },
+  {
+    "id": "supplier.pkfare",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "pkfare",
+    "labels": {
+      "ar": "بكفير",
+      "en": "PKFARE"
+    },
+    "keywords": [
+      "بكفير",
+      "pkfare",
+      "flights",
+      "gds",
+      "واجهه",
+      "الرسميه:",
+      "مصادقه",
+      "md5",
+      "بـ",
+      "partnerid",
+      "partnerkey.",
+      "اختبار",
+      "الاتصال",
+      "يستدعي",
+      "/json/shoppingv10",
+      "(لا",
+      "يوجد",
+      "مسار",
+      "/balance).",
+      "بيئه",
+      "الاختبار",
+      "والانتاج",
+      "تشتركان",
+      "في",
+      "api.pkfare.com",
+      "حتي",
+      "يصدر",
+      "المضيف",
+      "الانتاجي",
+      "بعد",
+      "المشترك.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.pkfare.query",
+      "provider.pkfare.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:pkfare"
+  },
+  {
+    "id": "supplier.ratehawk",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "ratehawk",
+    "labels": {
+      "ar": "ريت هوك",
+      "en": "RateHawk"
+    },
+    "keywords": [
+      "ريت",
+      "هوك",
+      "ratehawk",
+      "hotels",
+      "gds",
+      "بوابه",
+      "emerging",
+      "travel",
+      "group",
+      "b2b:",
+      "مصادقه",
+      "basic",
+      "auth",
+      "بـ",
+      "key_id",
+      "api_key.",
+      "تشمل",
+      "البحث",
+      "التلقائي",
+      "والتسعير",
+      "والحجز",
+      "المباشر.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.ratehawk.query",
+      "provider.ratehawk.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:ratehawk"
+  },
+  {
+    "id": "supplier.rentalcars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "rentalcars",
+    "labels": {
+      "ar": "رينتال كارز (TravelJigsaw)",
+      "en": "Rentalcars"
+    },
+    "keywords": [
+      "رينتال",
+      "كارز",
+      "(traveljigsaw)",
+      "rentalcars",
+      "cars",
+      "gds",
+      "booking",
+      "holdings",
+      "واجهه",
+      "شركاء",
+      "xml",
+      "التاريخيه",
+      "traveljigsaw:",
+      "username",
+      "password.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.rentalcars.query",
+      "provider.rentalcars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:rentalcars"
+  },
+  {
+    "id": "supplier.seeru",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "seeru",
+    "labels": {
+      "ar": "سيرو",
+      "en": "Seeru"
+    },
+    "keywords": [
+      "سيرو",
+      "seeru",
+      "flights",
+      "gds",
+      "الاسم",
+      "التجاري",
+      "الرسمي",
+      "(seeru.travel).",
+      "التوثيق:",
+      "jwt",
+      "bearer.",
+      "تدعم",
+      "البحث",
+      "اللحظي",
+      "وتدقيق",
+      "الاسعار",
+      "والحجز",
+      "واصدار",
+      "التذاكر",
+      "وادارتها.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.seeru.query",
+      "provider.seeru.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:seeru"
+  },
+  {
+    "id": "supplier.seeru_hotels",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "seeru_hotels",
+    "labels": {
+      "ar": "سيرو — فنادق",
+      "en": "Seeru Hotels"
+    },
+    "keywords": [
+      "سيرو",
+      "فنادق",
+      "seeru",
+      "hotels",
+      "seeru_hotels",
+      "gds",
+      "واجهه",
+      "الرسميه",
+      "(seeru",
+      "api",
+      "v1.0.0):",
+      "توثيق",
+      "موحد",
+      "بمفاتيح",
+      "(api",
+      "key",
+      "refresh",
+      "من",
+      "لوحه",
+      "تحكم",
+      "seeru.travel).",
+      "ترث",
+      "المفاتيح",
+      "تلقائيا",
+      "اعدادات",
+      "طيران",
+      "اذا",
+      "تركت",
+      "فارغه.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.seeru_hotels.query",
+      "provider.seeru_hotels.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:seeru_hotels"
+  },
+  {
+    "id": "supplier.seeru_transfers",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "seeru_transfers",
+    "labels": {
+      "ar": "سيرو — ترانسفير ونقل",
+      "en": "Seeru Ride"
+    },
+    "keywords": [
+      "سيرو",
+      "ترانسفير",
+      "ونقل",
+      "seeru",
+      "ride",
+      "seeru_transfers",
+      "transfers",
+      "gds",
+      "واجهه",
+      "نقل",
+      "وترانسفير",
+      "الرسميه",
+      "(seeru",
+      "v1.0.0):",
+      "توثيق",
+      "jwt",
+      "bearer.",
+      "تدعم",
+      "الاكمال",
+      "التلقائي",
+      "للمواقع",
+      "والمطارات،",
+      "البحث",
+      "عن",
+      "عروض",
+      "النقل",
+      "المسعره،",
+      "حجز",
+      "وتجميد",
+      "الرحلات،",
+      "الخصم",
+      "المباشر،",
+      "تعيين",
+      "السائق",
+      "والمركبه،",
+      "وتتبع",
+      "الرحله.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.seeru_transfers.query",
+      "provider.seeru_transfers.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:seeru_transfers"
+  },
+  {
+    "id": "supplier.sunnycars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "sunnycars",
+    "labels": {
+      "ar": "صني كارز",
+      "en": "Sunny Cars"
+    },
+    "keywords": [
+      "صني",
+      "كارز",
+      "sunny",
+      "cars",
+      "sunnycars",
+      "gds",
+      "برنامج",
+      "شركاء",
+      "b2b",
+      "للوكلاء.",
+      "اسماء",
+      "الحقول",
+      "الدقيقه",
+      "تسلم",
+      "بعد",
+      "الاعتماد",
+      "(رقم",
+      "وكاله",
+      "مفتاح).",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.sunnycars.query",
+      "provider.sunnycars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:sunnycars"
+  },
+  {
+    "id": "supplier.tbo_cars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "tbo_cars",
+    "labels": {
+      "ar": "تي بي أو — سيارات",
+      "en": "TBO"
+    },
+    "keywords": [
+      "تي",
+      "بي",
+      "او",
+      "سيارات",
+      "tbo",
+      "tbo_cars",
+      "cars",
+      "gds",
+      "سوق",
+      "يشمل",
+      "تاجير",
+      "السيارات.",
+      "نفس",
+      "اعتماد",
+      "username",
+      "password",
+      "clientid.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.tbo_cars.query",
+      "provider.tbo_cars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:tbo_cars"
+  },
+  {
+    "id": "supplier.tbo_flights",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "tbo_flights",
+    "labels": {
+      "ar": "تي بي أو — طيران",
+      "en": "TBO"
+    },
+    "keywords": [
+      "تي",
+      "بي",
+      "او",
+      "طيران",
+      "tbo",
+      "tbo_flights",
+      "flights",
+      "gds",
+      "authenticate/validateagency:",
+      "username",
+      "password",
+      "(+",
+      "clientid",
+      "ip).",
+      "يرجع",
+      "tokenid.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.tbo_flights.query",
+      "provider.tbo_flights.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:tbo_flights"
+  },
+  {
+    "id": "supplier.tbo_hotels",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "tbo_hotels",
+    "labels": {
+      "ar": "تي بي أو — فنادق",
+      "en": "TBO"
+    },
+    "keywords": [
+      "تي",
+      "بي",
+      "او",
+      "فنادق",
+      "tbo",
+      "tbo_hotels",
+      "hotels",
+      "gds",
+      "hotelbookingapi:",
+      "credentials",
+      "username",
+      "password",
+      "في",
+      "ترويسه",
+      "soap.",
+      "لديهم",
+      "واجهه",
+      "رسميه.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.tbo_hotels.query",
+      "provider.tbo_hotels.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:tbo_hotels"
+  },
+  {
+    "id": "supplier.tbo_transfers",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "tbo_transfers",
+    "labels": {
+      "ar": "تي بي أو — ترانسفير",
+      "en": "TBO"
+    },
+    "keywords": [
+      "تي",
+      "بي",
+      "او",
+      "ترانسفير",
+      "tbo",
+      "tbo_transfers",
+      "transfers",
+      "gds",
+      "holidays",
+      "يوفر",
+      "عبر",
+      "api",
+      "منفصل",
+      "عن",
+      "الطيران",
+      "نفس",
+      "اعتماد",
+      "الوكاله.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.tbo_transfers.query",
+      "provider.tbo_transfers.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:tbo_transfers"
+  },
+  {
+    "id": "supplier.transfers_internal",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "transfers_internal",
+    "labels": {
+      "ar": "الترانسفير الداخلي",
+      "en": "Internal transfers"
+    },
+    "keywords": [
+      "الترانسفير",
+      "الداخلي",
+      "internal",
+      "transfers",
+      "transfers_internal",
+      "gds",
+      "خدمات",
+      "المحفوظه",
+      "في",
+      "الكتالوج.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.transfers_internal.query",
+      "provider.transfers_internal.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:transfers_internal"
+  },
+  {
+    "id": "supplier.travel_advisor",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travel_advisor",
+    "labels": {
+      "ar": "ترافل أدفايزر",
+      "en": "Travel Advisor"
+    },
+    "keywords": [
+      "ترافل",
+      "ادفايزر",
+      "travel",
+      "advisor",
+      "travel_advisor",
+      "hotels",
+      "scraper",
+      "سكرابر",
+      "rapidapi",
+      "للتفاصيل",
+      "والقوائم.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.travel_advisor.query",
+      "provider.travel_advisor.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travel_advisor"
+  },
+  {
+    "id": "supplier.travelpayouts_cars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelpayouts_cars",
+    "labels": {
+      "ar": "ترافل بايوتس — سيارات",
+      "en": "Travelpayouts"
+    },
+    "keywords": [
+      "ترافل",
+      "بايوتس",
+      "سيارات",
+      "travelpayouts",
+      "travelpayouts_cars",
+      "cars",
+      "affiliate",
+      "ويدجت",
+      "عموله",
+      "السيارات",
+      "الحالي.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.travelpayouts_cars.query",
+      "provider.travelpayouts_cars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travelpayouts_cars"
+  },
+  {
+    "id": "supplier.travelpayouts_flights",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelpayouts_flights",
+    "labels": {
+      "ar": "ترافل بايوتس — طيران",
+      "en": "Travelpayouts"
+    },
+    "keywords": [
+      "ترافل",
+      "بايوتس",
+      "طيران",
+      "travelpayouts",
+      "travelpayouts_flights",
+      "flights",
+      "affiliate",
+      "عموله",
+      "وايت",
+      "ليبل",
+      "(marker",
+      "trs).",
+      "ليست",
+      "gds.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.travelpayouts_flights.query",
+      "provider.travelpayouts_flights.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travelpayouts_flights"
+  },
+  {
+    "id": "supplier.travelpayouts_transfers",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelpayouts_transfers",
+    "labels": {
+      "ar": "ترافل بايوتس — ترانسفير",
+      "en": "Travelpayouts"
+    },
+    "keywords": [
+      "ترافل",
+      "بايوتس",
+      "ترانسفير",
+      "travelpayouts",
+      "travelpayouts_transfers",
+      "transfers",
+      "affiliate",
+      "ويدجت",
+      "عموله",
+      "الترانسفير",
+      "الحالي.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway",
+      "gds"
+    ],
+    "capabilityRefs": [
+      "provider.travelpayouts_transfers.query",
+      "provider.travelpayouts_transfers.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travelpayouts_transfers"
+  },
+  {
+    "id": "supplier.travelport_cars",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelport_cars",
+    "labels": {
+      "ar": "ترافلبورت — سيارات",
+      "en": "Travelport"
+    },
+    "keywords": [
+      "ترافلبورت",
+      "سيارات",
+      "travelport",
+      "travelport_cars",
+      "cars",
+      "gds",
+      "vehicle",
+      "في",
+      "universal",
+      "api",
+      "نفس",
+      "target",
+      "branch",
+      "وبيانات",
+      "الدخول.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.travelport_cars.query",
+      "provider.travelport_cars.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:travelport_cars"
+  },
+  {
+    "id": "supplier.travelport_flights",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelport_flights",
+    "labels": {
+      "ar": "ترافلبورت — طيران",
+      "en": "Travelport"
+    },
+    "keywords": [
+      "ترافلبورت",
+      "طيران",
+      "travelport",
+      "travelport_flights",
+      "flights",
+      "gds",
+      "واجهه",
+      "الرسميه",
+      "universal",
+      "api",
+      "json",
+      "rest",
+      "v11.",
+      "تشمل",
+      "دوره",
+      "حياه",
+      "الحجز",
+      "عبر",
+      "reservation",
+      "workbench",
+      "واصدار",
+      "التذاكر",
+      "والامتعه",
+      "والمقاعد.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.travelport_flights.query",
+      "provider.travelport_flights.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travelport_flights"
+  },
+  {
+    "id": "supplier.travelport_hotels",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelport_hotels",
+    "labels": {
+      "ar": "ترافلبورت — فنادق",
+      "en": "Travelport"
+    },
+    "keywords": [
+      "ترافلبورت",
+      "فنادق",
+      "travelport",
+      "travelport_hotels",
+      "hotels",
+      "gds",
+      "واجهه",
+      "الرسميه:",
+      "بحث",
+      "وتوافر",
+      "الغرف",
+      "(searchcomplete",
+      "hospitality)",
+      "والحجز",
+      "والالغاء",
+      "عبر",
+      "universal",
+      "api",
+      "travelport+",
+      "stays.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.travelport_hotels.query",
+      "provider.travelport_hotels.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "catalog.ts:travelport_hotels"
+  }
+] as PlatformIndexNode[];
+
+const CHUNK_8: PlatformIndexNode[] = [
+  {
+    "id": "supplier.travelport_transfers",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "travelport_transfers",
+    "labels": {
+      "ar": "ترافلبورت — ترانسفير",
+      "en": "Travelport"
+    },
+    "keywords": [
+      "ترافلبورت",
+      "ترانسفير",
+      "travelport",
+      "travelport_transfers",
+      "transfers",
+      "gds",
+      "ground",
+      "transportation",
+      "في",
+      "universal",
+      "api.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.travelport_transfers.query",
+      "provider.travelport_transfers.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:travelport_transfers"
+  },
+  {
+    "id": "supplier.turna_flights",
+    "kind": "external_supplier",
+    "scope": "supplier",
+    "supplierId": "turna_flights",
+    "labels": {
+      "ar": "تورنا — طيران",
+      "en": "Turna"
+    },
+    "keywords": [
+      "تورنا",
+      "طيران",
+      "turna",
+      "turna_flights",
+      "flights",
+      "gds",
+      "api",
+      "رسمي",
+      "(طيران/باص/سيارات).",
+      "الاعتماد",
+      "عبر",
+      "نموذج",
+      "الشراكه؛",
+      "اسماء",
+      "الحقول",
+      "الكامله",
+      "في",
+      "pdf",
+      "الشريك.",
+      "مورد",
+      "مزود",
+      "supplier",
+      "gateway"
+    ],
+    "capabilityRefs": [
+      "provider.turna_flights.query",
+      "provider.turna_flights.status"
+    ],
+    "defaultIntent": "probe",
+    "risk": "low",
+    "evidence": "catalog.ts:turna_flights"
+  },
+  {
     "id": "ui.agents.hide",
     "kind": "ui_action",
+    "scope": "admin",
     "screenId": "18",
     "labels": {
       "ar": "إخفاء الوكلاء"
@@ -18963,6 +33074,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "ui.briefing.open",
     "kind": "ui_action",
+    "scope": "admin",
     "screenId": "19",
     "labels": {
       "ar": "تقرير جاهزية"
@@ -18984,6 +33096,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "ui.swarm.layout",
     "kind": "ui_action",
+    "scope": "admin",
     "screenId": "18",
     "labels": {
       "ar": "تنسيق جماعي"
@@ -19002,6 +33115,7 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
   {
     "id": "ui.voice.mute",
     "kind": "ui_action",
+    "scope": "admin",
     "screenId": "17",
     "labels": {
       "ar": "كتم الصوت"
@@ -19015,9 +33129,156 @@ export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = [
     "defaultIntent": "navigate",
     "risk": "low",
     "evidence": "gen-platform-index.cjs"
+  },
+  {
+    "id": "webhook.iyzico_payment_webhook",
+    "kind": "webhook",
+    "scope": "webhook",
+    "labels": {
+      "ar": "ويب هوك بوابة دفع إيزيكو Iyzico",
+      "en": "iyzico_payment_webhook"
+    },
+    "keywords": [
+      "ويب",
+      "هوك",
+      "بوابه",
+      "دفع",
+      "ايزيكو",
+      "iyzico",
+      "iyzico_payment_webhook",
+      "/api/payments/iyzico/callback",
+      "payment"
+    ],
+    "route": "/api/payments/iyzico/callback",
+    "capabilityRefs": [
+      "webhook.receive",
+      "webhook.verify"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "gen-platform-index.cjs:webhooks"
+  },
+  {
+    "id": "webhook.pkfare_flights_webhook",
+    "kind": "webhook",
+    "scope": "webhook",
+    "labels": {
+      "ar": "بوابة إشعارات أسعار وإصدار تذاكر PKFare",
+      "en": "pkfare_flights_webhook"
+    },
+    "keywords": [
+      "بوابه",
+      "اشعارات",
+      "اسعار",
+      "واصدار",
+      "تذاكر",
+      "pkfare",
+      "pkfare_flights_webhook",
+      "/api/flights/pkfare-webhook",
+      "بي",
+      "كي",
+      "فير",
+      "gds"
+    ],
+    "route": "/api/flights/pkfare-webhook",
+    "capabilityRefs": [
+      "webhook.receive",
+      "webhook.verify"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "gen-platform-index.cjs:webhooks"
+  },
+  {
+    "id": "webhook.seeru_flights_webhook",
+    "kind": "webhook",
+    "scope": "webhook",
+    "labels": {
+      "ar": "بوابة إشعارات وتحديثات تذاكر طيران Seeru",
+      "en": "seeru_flights_webhook"
+    },
+    "keywords": [
+      "بوابه",
+      "اشعارات",
+      "وتحديثات",
+      "تذاكر",
+      "طيران",
+      "seeru",
+      "seeru_flights_webhook",
+      "/api/flights/webhook",
+      "سيرو"
+    ],
+    "route": "/api/flights/webhook",
+    "capabilityRefs": [
+      "webhook.receive",
+      "webhook.verify"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "gen-platform-index.cjs:webhooks"
+  },
+  {
+    "id": "webhook.telegram_admin_bot",
+    "kind": "webhook",
+    "scope": "webhook",
+    "labels": {
+      "ar": "بوت تيليجرام لإشعارات الإدارة والقرارات الفورية",
+      "en": "telegram_admin_bot"
+    },
+    "keywords": [
+      "بوت",
+      "تيليجرام",
+      "لاشعارات",
+      "الاداره",
+      "والقرارات",
+      "الفوريه",
+      "telegram_admin_bot",
+      "/api/admin/automation/comms",
+      "telegram",
+      "bot"
+    ],
+    "route": "/api/admin/automation/comms",
+    "capabilityRefs": [
+      "webhook.receive",
+      "webhook.verify"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "gen-platform-index.cjs:webhooks"
+  },
+  {
+    "id": "webhook.whatsapp_business_gateway",
+    "kind": "webhook",
+    "scope": "webhook",
+    "labels": {
+      "ar": "بوابة واتساب للأعمال والرسائل التفاعلية",
+      "en": "whatsapp_business_gateway"
+    },
+    "keywords": [
+      "بوابه",
+      "واتساب",
+      "للاعمال",
+      "والرسائل",
+      "التفاعليه",
+      "whatsapp_business_gateway",
+      "/api/admin/automation/comms",
+      "whatsapp",
+      "شات",
+      "العملاء"
+    ],
+    "route": "/api/admin/automation/comms",
+    "capabilityRefs": [
+      "webhook.receive",
+      "webhook.verify"
+    ],
+    "defaultIntent": "probe",
+    "risk": "medium",
+    "evidence": "gen-platform-index.cjs:webhooks"
   }
 ] as PlatformIndexNode[];
 
+export const PLATFORM_INDEX_NODES: PlatformIndexNode[] = ([] as PlatformIndexNode[]).concat(CHUNK_0, CHUNK_1, CHUNK_2, CHUNK_3, CHUNK_4, CHUNK_5, CHUNK_6, CHUNK_7, CHUNK_8);
+
 export const PLATFORM_INDEX_BY_ID: Record<string, PlatformIndexNode> = Object.fromEntries(PLATFORM_INDEX_NODES.map((n) => [n.id, n]));
 
-export const PLATFORM_INDEX_GENERATED_AT = "2026-09-30T19:26:04.606Z";
+export const PLATFORM_INDEX_GENERATED_AT = "2026-10-02T21:18:45.213Z";

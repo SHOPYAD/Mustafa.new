@@ -1,10 +1,16 @@
-export const dynamic = "force-dynamic";
+import { NextResponse } from "next/server";
+
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return Response.json({
+  const payload = {
     ok: true,
     service: "lonaliza-storefront",
-    time: new Date().toISOString(),
+    ts: new Date().toISOString(),
+    uptimeSec: Math.floor(process.uptime()),
+  };
+  return NextResponse.json(payload, {
+    headers: { "Cache-Control": "no-store" },
   });
 }

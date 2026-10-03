@@ -346,24 +346,40 @@ export async function executeBlueprint(options: BlueprintExecuteOptions): Promis
         completedPct: 0,
       };
     }
+  } else if (options.resumeFromNodeId) {
+    const idx = nodes.findIndex((n) => n.id === options.resumeFromNodeId);
+    if (idx >= 0) {
+      nodes = nodes.slice(idx);
+    }
   }
 
   const steps: BlueprintNodeStepResult[] = [];
+  let haltedNodeId: string | undefined;
   for (const node of nodes) {
     const step = await executeNode(loop, node, { dryRun });
     steps.push(step);
-    if (step.halted || !step.ok) break;
+    if (step.halted) {
+      haltedNodeId = node.id;
+      break;
+    }
+    if (!step.ok) break;
   }
 
   const okCount = steps.filter((s) => s.ok).length;
   const completedPct = nodes.length ? Math.round((okCount / nodes.length) * 100) : 0;
   const allOk = steps.length === nodes.length && steps.every((s) => s.ok);
 
+  const resumeToken = haltedNodeId
+    ? Buffer.from(JSON.stringify({ loopId: loop.id, haltedNodeId, at: Date.now() })).toString("base64")
+    : undefined;
+
   return {
     ok: allOk,
     loopId: loop.id,
     dryRun,
     steps,
+    haltedNodeId,
+    resumeToken,
     message: allOk
       ? dryRun
         ? `اكتمل فحص التدflow (dry-run) — ${completedPct}% من العقد ناجحة.`

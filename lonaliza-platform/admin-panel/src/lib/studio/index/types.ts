@@ -5,7 +5,14 @@ export type PlatformNodeKind =
   | "domain_hub"
   | "domain_item"
   | "admin_page"
+  | "storefront_page"
   | "api_route"
+  | "public_api"
+  | "b2b_api"
+  | "mobile_api"
+  | "cron_job"
+  | "webhook"
+  | "external_supplier"
   | "collection"
   | "capability"
   | "mcp_tool"
@@ -28,6 +35,7 @@ export type PlatformRisk = "low" | "medium" | "high";
 export interface PlatformIndexNode {
   id: string;
   kind: PlatformNodeKind;
+  scope?: "admin" | "storefront" | "public" | "b2b" | "mobile" | "supplier" | "cron" | "webhook" | "database";
   screenId?: string;
   mapId?: string;
   hubId?: string;
@@ -36,6 +44,7 @@ export interface PlatformIndexNode {
   href?: string;
   route?: string;
   collection?: string;
+  supplierId?: string;
   methods?: ("GET" | "POST" | "PUT" | "PATCH" | "DELETE")[];
   capabilityRefs: string[];
   defaultIntent: PlatformDefaultIntent;

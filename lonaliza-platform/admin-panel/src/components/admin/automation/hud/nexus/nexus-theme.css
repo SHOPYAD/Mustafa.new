@@ -1,0 +1,30 @@
+/* هوية Nexus: تدرجات الاستوديو السيبراني — بدون بنفسجي المرجع. */
+.nexus-stage {
+  --nx-bg: #01050b;
+  --nx-bg-2: #010712;
+  --nx-panel: rgba(5, 19, 33, 0.88);
+  --nx-cyan: #35e3ff;
+  --nx-accent: #4fe6ff;
+  --nx-gold: #ffbf4d;
+  --nx-gold-line: #ff9f2a;
+  color: #e8f2f6;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 18%, rgba(53, 227, 255, 0.16), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 159, 42, 0.08), transparent 50%),
+    linear-gradient(180deg, var(--nx-bg) 0%, #021327 55%, #01050b 100%);
+}
+
+.nexus-floor {
+  position: absolute;
+  left: 50%;
+  bottom: 96px;
+  width: min(920px, 88vw);
+  height: 180px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(53, 227, 255, 0.22), transparent 68%),
+    repeating-radial-gradient(circle at center, rgba(79, 230, 255, 0.18) 0 1px, transparent 1px 28px);
+  box-shadow: 0 0 80px rgba(53, 227, 255, 0.18);
+  pointer-events: none;
+}

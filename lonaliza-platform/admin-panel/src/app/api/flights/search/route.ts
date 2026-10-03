@@ -1,17 +1,37 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { PUBLIC_FLIGHT_EMPTY, runFlightSearch } from "@/lib/server/flights-engine";
 import { flightsFailJson, flightsJson } from "@/lib/server/flights-http";
 import { clientIp, rateLimit, rateLimitResponse } from "@/lib/server/rate-limit";
 import { ttlGet, ttlSet } from "@/lib/server/ttl-cache";
+import { cacheGet } from "../../../../../../packages/server-core/src/distributed-cache";
+import {
+  enqueueFlightSearchJob,
+  flightSearchCacheKeyFromQuery,
+} from "@/lib/server/search-jobs";
+import { withBulkhead } from "../../../../../../packages/server-core/src/bulkhead";
+import { withCircuitBreaker } from "../../../../../../packages/server-core/src/circuit-breaker";
 
 export const runtime = "nodejs";
 
+function asyncSearchEnabled(): boolean {
+  const v = (process.env.FLIGHT_SEARCH_ASYNC || "1").trim().toLowerCase();
+  return v !== "0" && v !== "false";
+}
+
 export async function GET(req: NextRequest) {
-  const limited = rateLimit(`flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
+  const limited = await rateLimit(`flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
-  const cacheKey = `flights:v11:${req.nextUrl.search}`;
+
+  const search = req.nextUrl.search;
+  const cacheKey = `flights:v11:${search}`;
+  const cacheKeyHash = flightSearchCacheKeyFromQuery(search);
+
+  const redisCached = await cacheGet<Record<string, unknown>>(`flights:v11:${cacheKeyHash}`);
+  if (redisCached) return flightsJson(redisCached);
+
   const cached = ttlGet<Record<string, unknown>>(cacheKey);
   if (cached) return flightsJson(cached);
+
   const q = req.nextUrl.searchParams;
   const originSkyId = (q.get("originSkyId") || q.get("origin") || "").trim().toUpperCase();
   const destinationSkyId = (q.get("destinationSkyId") || q.get("destination") || "").trim().toUpperCase();
@@ -36,14 +56,15 @@ export async function GET(req: NextRequest) {
       const { lookupSkyEntity, ensureSkyEntityMap } = await import("@/lib/server/sky-entity-ids");
       await ensureSkyEntityMap();
       originEntityId = originEntityId || lookupSkyEntity(originSkyId)?.entityId || `ent_${originSkyId}`;
-      destinationEntityId = destinationEntityId || lookupSkyEntity(destinationSkyId)?.entityId || `ent_${destinationSkyId}`;
+      destinationEntityId =
+        destinationEntityId || lookupSkyEntity(destinationSkyId)?.entityId || `ent_${destinationSkyId}`;
     } catch {
       originEntityId = originEntityId || `ent_${originSkyId}`;
       destinationEntityId = destinationEntityId || `ent_${destinationSkyId}`;
     }
   }
 
-  const result = await runFlightSearch({
+  const input = {
     originSkyId,
     destinationSkyId,
     originEntityId,
@@ -58,7 +79,33 @@ export async function GET(req: NextRequest) {
     currency: q.get("currency") || undefined,
     market: q.get("market") || undefined,
     countryCode: q.get("countryCode") || undefined,
-  });
+  };
+
+  if (asyncSearchEnabled() && q.get("sync") !== "1") {
+    const { jobId } = await enqueueFlightSearchJob(search, input);
+    return NextResponse.json(
+      {
+        ok: true,
+        status: "pending",
+        jobId,
+        pollUrl: `/api/flights/search/status?jobId=${encodeURIComponent(jobId)}`,
+      },
+      { status: 202, headers: { "Cache-Control": "no-store" } }
+    );
+  }
+
+  const result = await withBulkhead(
+    { name: "flight-provider", maxConcurrent: Number(process.env.FLIGHT_SEARCH_CONCURRENCY || 12) },
+    () =>
+      withCircuitBreaker(
+        {
+          name: "flight-provider",
+          failureThreshold: Number(process.env.FLIGHT_CIRCUIT_FAILURES || 5),
+          resetTimeoutMs: Number(process.env.FLIGHT_CIRCUIT_RESET_MS || 60_000),
+        },
+        () => runFlightSearch(input)
+      )
+  );
 
   if (!result.ok) return flightsFailJson(result.errorCode);
 

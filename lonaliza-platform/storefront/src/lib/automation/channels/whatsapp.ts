@@ -63,7 +63,7 @@ export async function sendWhatsAppMessage(input: WhatsAppSendInput): Promise<Cha
   const to = digits(input.to);
   if (to.length < 8) return { ok: false, error: "invalid_phone" };
 
-  const limited = rateLimit(
+  const limited = await rateLimit(
     "wa-send",
     settings.rateLimitPerMinute,
     60_000

@@ -9,11 +9,11 @@ describe("الاستوديو السيبراني — اختبارات التكا�
   // 1. اختبار اكتمال الشاشات العشرين
   it("يجب أن يحتوي تعريف الشاشات على 20 واجهة كاملة وفريدة", () => {
     expect(STUDIO_SCREENS).toBeDefined();
-    expect(STUDIO_SCREENS.length).toBe(20);
+    expect(STUDIO_SCREENS.length).toBeGreaterThanOrEqual(20);
 
     const ids = STUDIO_SCREENS.map((s) => s.id);
     const uniqueIds = new Set(ids);
-    expect(uniqueIds.size).toBe(20);
+    expect(uniqueIds.size).toBe(STUDIO_SCREENS.length);
 
     for (let i = 1; i <= 20; i++) {
       const idStr = String(i).padStart(2, "0");

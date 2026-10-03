@@ -810,7 +810,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(`sales-chat:${clientIp(req)}`, 30, 60 * 60 * 1000);
+  const limited = await rateLimit(`sales-chat:${clientIp(req)}`, 30, 60 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
   try {
     const body = await req.json();

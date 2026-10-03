@@ -30,7 +30,8 @@ import {
 } from "./schemas";
 import { savePendingDecision, saveSwarmDiscussionMessage, type AgentRole, type SwarmDecisionActionType } from "@/lib/automation/agent-collab-store";
 import type { GroundedFact, SwarmActionType } from "./types";
-import { broadcastArticleStage, broadcastSwarmLog, broadcastSwarmPulse } from "./swarm-events";
+import { broadcastArticleStage, broadcastSwarmLog, broadcastSwarmPulse, swarmEventBus } from "./swarm-events";
+import { sendTelegramAdminMessage } from "@/lib/automation/channels/telegram";
 import { runOfficialArticlePipeline } from "@/lib/swarm/official-article-pipeline";
 import { saveThreadCheckpoint } from "@/lib/swarm/article-thread-checkpoint";
 import {
@@ -926,7 +927,7 @@ async function synthesizerDecisionNode(state: SwarmStateType): Promise<Partial<S
   const dynamicTitle = articlePipeline?.titleAr
     ? `نشر مقال: ${articlePipeline.titleAr.slice(0, 60)}`
     : articlePipeline
-      ? `تعذر نشر مقال ${articlePipeline.destinationLabel}`
+      ? `تعذر نشر مقال ${articlePipeline.destinationLabel || directive.slice(0, 40)}`
       : `اعتماد تكتيكي: ${directive.slice(0, 80)}`;
 
   const finalSynthesis: FinalDeliberationSynthesis = {
@@ -976,6 +977,11 @@ async function synthesizerDecisionNode(state: SwarmStateType): Promise<Partial<S
 
   // 2. Save Decision (Approved if auto-executed, or Pending if manual)
   const decisionActionType = finalSynthesis.actionType as unknown as SwarmDecisionActionType;
+  const dynamicBenefit =
+    finalSynthesis.strategicIntentAr ||
+    proposalsList.map((p) => p.observationSummary).filter(Boolean).slice(0, 2).join(" · ") ||
+    `تنفيذ ومتابعة التوجيه: ${directive.slice(0, 80)}`;
+
   savePendingDecision({
     id: decisionId,
     titleAr: finalSynthesis.titleAr,
@@ -983,11 +989,47 @@ async function synthesizerDecisionNode(state: SwarmStateType): Promise<Partial<S
     proposedBy: leadAgent as AgentRole,
     affectedAgent: leadAgent as AgentRole,
     actionType: decisionActionType,
-    expectedBenefitAr: `توافق الخلية ${consensusScore}% بعد ${roundNumber} جولة`,
+    expectedBenefitAr: dynamicBenefit,
     status: isAutoExecuted ? "approved" : "pending",
     createdAt: now,
     decidedAt: isAutoExecuted ? now : undefined,
   });
+
+  // If pending Super Admin approval, send instant Telegram alert with interactive buttons & broadcast event
+  if (!isAutoExecuted) {
+    sendTelegramAdminMessage(
+      `🛡️ *قرار بانتظار الاعتماد السيادي*\n\n` +
+        `📋 *العنوان:* ${finalSynthesis.titleAr}\n` +
+        `🎯 *الهدف الاستراتيجي:* ${finalSynthesis.strategicIntentAr}\n` +
+        `📊 *توافق الخلية:* ${consensusScore}%\n` +
+        `🆔 *المعرف:* \`${decisionId}\`\n\n` +
+        `يرجى التوجيه بالاعتماد والتنفيذ الفعلي أو الرفض:`,
+      {
+        replyMarkup: {
+          inline_keyboard: [
+            [
+              { text: "✅ موافقة وتفويض فوري", callback_data: `dec_app:${decisionId}` },
+              { text: "❌ رفض المقترح", callback_data: `dec_rej:${decisionId}` },
+            ],
+          ],
+        },
+      }
+    ).catch((err) => console.warn("[Telegram] Swarm decision notify error:", err));
+
+    swarmEventBus.emitSwarmEvent({
+      sessionId: state.sessionId,
+      type: "decision",
+      data: {
+        decisionId,
+        titleAr: finalSynthesis.titleAr,
+        intentAr: finalSynthesis.strategicIntentAr,
+        summaryAr: finalSynthesis.executiveSummaryAr,
+        status: "pending",
+        consensusScore,
+      },
+      timestamp: now,
+    });
+  }
 
   // 3. Save discussion log
   saveSwarmDiscussionMessage({

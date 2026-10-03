@@ -42,7 +42,7 @@ function parseTelegramResponse(
 async function telegramRateLimit(): Promise<TelegramApiResult | null> {
   const settings = await getCommsSettings();
   if (!settings.telegramBotToken) return { ok: false, error: "telegram_not_configured" };
-  const limited = rateLimit("tg-bot-send", settings.rateLimitPerMinute, 60_000);
+  const limited = await rateLimit("tg-bot-send", settings.rateLimitPerMinute, 60_000);
   if (!limited.ok) return { ok: false, error: "rate_limited" };
   return null;
 }

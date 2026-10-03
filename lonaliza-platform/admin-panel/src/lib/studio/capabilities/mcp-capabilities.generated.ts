@@ -124,4 +124,4 @@ export const MCP_TOOL_CATALOG: { name: string; description: string; domain: stri
   }
 ];
 
-export const MCP_CAPABILITIES_GENERATED_AT = "2026-09-30T19:26:03.412Z";
+export const MCP_CAPABILITIES_GENERATED_AT = "2026-10-02T14:33:49.240Z";

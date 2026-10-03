@@ -1,0 +1,4 @@
+{
+  "activeBackend": "pocketbase",
+  "standbySyncEnabled": true
+}

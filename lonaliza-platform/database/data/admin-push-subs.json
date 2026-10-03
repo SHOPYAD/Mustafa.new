@@ -3,10 +3,10 @@
     {
       "endpoint": "https://fcm.googleapis.com/fcm/send/exOkXUUC97U:APA91bG300TLjofPntzxsPRaGIkwG1o-BYeqm7bI2K3T_T776Nicm2FgiRVeWjwOst8MKRl2cd2Os3RGWsclNZg6xDDaWnkvpzK5-eqqQcIbnjZe1d1WTMYwE_SyQBQGuKOrb-Mu3vwg",
       "keys": {
-        "p256dh": "BMcS6mlId_RUPL-PL9Dh9EyHY0XXFsPTsnWtTnZt_W2u9BseTSRhPZMOCWJW__6HpUeu0pJznZBjlZhoU2YZ8QQ",
-        "auth": "j_mAODhwDAxZvAMlxLw5Lg"
+        "p256dh": "BDaRp8wTgtiOclKrPNTfQnBZlOppANB7nxSGbQ2h2kSxpCJXDsy9F5KPFhcW_oAJAPVEVsYlL_jmu5ZEiiQd908",
+        "auth": "pETaPc3UmhwJQC8p4qxncw"
       },
-      "updatedAt": "2026-09-30T15:33:29.453Z"
+      "updatedAt": "2026-10-03T11:13:51.036Z"
     }
   ]
 }

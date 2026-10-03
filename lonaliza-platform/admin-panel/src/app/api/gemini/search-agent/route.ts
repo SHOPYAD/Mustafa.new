@@ -340,7 +340,7 @@ Return ONLY JSON:
 }
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(`search-agent:${clientIp(req)}`, 40, 60 * 60 * 1000);
+  const limited = await rateLimit(`search-agent:${clientIp(req)}`, 40, 60 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   try {

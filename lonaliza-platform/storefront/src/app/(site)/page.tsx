@@ -6,7 +6,7 @@ import { isOrigin } from "@/lib/server/deployment-role";
 import { headers, cookies } from "next/headers";
 import { APP_SHELL_COOKIE, APP_SHELL_HEADER } from "@/lib/mobile/app-mode";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function HomePage({
   searchParams,

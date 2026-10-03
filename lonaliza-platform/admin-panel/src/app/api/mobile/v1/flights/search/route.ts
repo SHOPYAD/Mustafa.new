@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ ok: true, offers: [], itineraries: [], empty: true }, { status: 200 });
   }
 
-  const limited = rateLimit(`mobile-flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
+  const limited = await rateLimit(`mobile-flights-search:${clientIp(req)}`, 40, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   const q = req.nextUrl.searchParams;

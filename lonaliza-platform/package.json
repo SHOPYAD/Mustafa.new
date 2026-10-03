@@ -7,7 +7,9 @@
     "storefront",
     "admin-panel",
     "backend",
-    "shared"
+    "shared",
+    "packages/server-core",
+    "packages/data-access"
   ],
   "scripts": {
     "dev": "next dev",

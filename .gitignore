@@ -59,6 +59,8 @@ next-env.d.ts
 **/*.iml
 **/postiz-app/
 **/redis-data/
+founderos-demo/
+**/founderos-demo/
 
 # Live vector / runtime secrets (never commit)
 **/.env.local

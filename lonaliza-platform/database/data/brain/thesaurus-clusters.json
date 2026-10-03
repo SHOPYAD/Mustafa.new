@@ -1,0 +1,663 @@
+[
+  {
+    "id": "flights.search",
+    "domain": "flights",
+    "primaryAr": "بحث وحجز تذاكر الطيران",
+    "primaryEn": "Flight Search & Booking",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.bookings",
+      "page.site.flights",
+      "page.site.flights_search",
+      "api.flights.search"
+    ],
+    "termsCount": 560,
+    "sampleTerms": [
+      "طيران",
+      "الطيران",
+      "حجز طيران",
+      "ارخص طيران",
+      "اسعار طيران",
+      "عروض طيران",
+      "افضل طيران",
+      "بحث طيران",
+      "تكلفه طيران",
+      "شركه طيران"
+    ]
+  },
+  {
+    "id": "flights.management",
+    "domain": "flights",
+    "primaryAr": "إدارة الحجوزات وإصدار تذاكر الطيران PNR",
+    "primaryEn": "Flight Ticket Issuance & PNR Management",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.postops",
+      "hub.flights.pnr",
+      "collection.hotel_bookings"
+    ],
+    "termsCount": 306,
+    "sampleTerms": [
+      "رقم الحجز pnr",
+      "الرقم الحجز pnr",
+      "حجز رقم الحجز pnr",
+      "ارخص رقم الحجز pnr",
+      "اسعار رقم الحجز pnr",
+      "عروض رقم الحجز pnr",
+      "افضل رقم الحجز pnr",
+      "بحث رقم الحجز pnr",
+      "تكلفه رقم الحجز pnr",
+      "شركه رقم الحجز pnr"
+    ]
+  },
+  {
+    "id": "flights.cancellation",
+    "domain": "flights",
+    "primaryAr": "إلغاء واسترداد تذاكر الطيران والتعويضات",
+    "primaryEn": "Flight Cancellations & Refunds",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.postops",
+      "hub.bookings.cancellations"
+    ],
+    "termsCount": 332,
+    "sampleTerms": [
+      "الغاء تذكره الطيران",
+      "غاء تذكره الطيران",
+      "حجز الغاء تذكره الطيران",
+      "ارخص الغاء تذكره الطيران",
+      "اسعار الغاء تذكره الطيران",
+      "عروض الغاء تذكره الطيران",
+      "افضل الغاء تذكره الطيران",
+      "بحث الغاء تذكره الطيران",
+      "تكلفه الغاء تذكره الطيران",
+      "شركه الغاء تذكره الطيران"
+    ]
+  },
+  {
+    "id": "flights.airlines",
+    "domain": "flights",
+    "primaryAr": "شركات وخطوط الطيران العالمية",
+    "primaryEn": "Airlines & Air Carriers",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.settings",
+      "supplier.travelport_flights",
+      "supplier.pkfare",
+      "supplier.seeru"
+    ],
+    "termsCount": 319,
+    "sampleTerms": [
+      "الخطوط السعوديه",
+      "خطوط السعوديه",
+      "حجز الخطوط السعوديه",
+      "ارخص الخطوط السعوديه",
+      "اسعار الخطوط السعوديه",
+      "عروض الخطوط السعوديه",
+      "افضل الخطوط السعوديه",
+      "بحث الخطوط السعوديه",
+      "تكلفه الخطوط السعوديه",
+      "شركه الخطوط السعوديه"
+    ]
+  },
+  {
+    "id": "flights.airports",
+    "domain": "flights",
+    "primaryAr": "المطارات ورموز الإياتا الدولية IATA",
+    "primaryEn": "Airports & International IATA Codes",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.settings",
+      "page.site.flight-tracker",
+      "api.public.flight_tracker"
+    ],
+    "termsCount": 384,
+    "sampleTerms": [
+      "مطار اسطنبول الجديد",
+      "المطار اسطنبول الجديد",
+      "حجز مطار اسطنبول الجديد",
+      "ارخص مطار اسطنبول الجديد",
+      "اسعار مطار اسطنبول الجديد",
+      "عروض مطار اسطنبول الجديد",
+      "افضل مطار اسطنبول الجديد",
+      "بحث مطار اسطنبول الجديد",
+      "تكلفه مطار اسطنبول الجديد",
+      "شركه مطار اسطنبول الجديد"
+    ]
+  },
+  {
+    "id": "flights.cabins_baggage",
+    "domain": "flights",
+    "primaryAr": "درجات السفر والمقاعد والأمتعة والوجبات",
+    "primaryEn": "Flight Cabins, Seats, Baggage & In-flight Services",
+    "targetNodeIds": [
+      "screen.04",
+      "hub.flights.settings",
+      "page.site.flights"
+    ],
+    "termsCount": 354,
+    "sampleTerms": [
+      "درجه رجال الاعمال",
+      "الدرجه رجال الاعمال",
+      "حجز درجه رجال الاعمال",
+      "ارخص درجه رجال الاعمال",
+      "اسعار درجه رجال الاعمال",
+      "عروض درجه رجال الاعمال",
+      "افضل درجه رجال الاعمال",
+      "بحث درجه رجال الاعمال",
+      "تكلفه درجه رجال الاعمال",
+      "شركه درجه رجال الاعمال"
+    ]
+  },
+  {
+    "id": "hotels.search",
+    "domain": "hotels",
+    "primaryAr": "بحث وحجز الفنادق والمنتجعات والشقق",
+    "primaryEn": "Hotel Search, Catalog & Bookings",
+    "targetNodeIds": [
+      "screen.05",
+      "hub.hotels.catalog",
+      "hub.hotels.bookings",
+      "page.site.hotels",
+      "api.hotels.search"
+    ],
+    "termsCount": 560,
+    "sampleTerms": [
+      "فنادق",
+      "الفنادق",
+      "حجز فنادق",
+      "ارخص فنادق",
+      "اسعار فنادق",
+      "عروض فنادق",
+      "افضل فنادق",
+      "بحث فنادق",
+      "تكلفه فنادق",
+      "شركه فنادق"
+    ]
+  },
+  {
+    "id": "hotels.rooms_views",
+    "domain": "hotels",
+    "primaryAr": "أنواع الغرف والأجنحة والإطلالات الفندقية",
+    "primaryEn": "Hotel Room Types, Suites & Views",
+    "targetNodeIds": [
+      "screen.05",
+      "hub.hotels.catalog",
+      "page.site.hotels"
+    ],
+    "termsCount": 329,
+    "sampleTerms": [
+      "غرفه ديلوكس",
+      "الغرفه ديلوكس",
+      "حجز غرفه ديلوكس",
+      "ارخص غرفه ديلوكس",
+      "اسعار غرفه ديلوكس",
+      "عروض غرفه ديلوكس",
+      "افضل غرفه ديلوكس",
+      "بحث غرفه ديلوكس",
+      "تكلفه غرفه ديلوكس",
+      "شركه غرفه ديلوكس"
+    ]
+  },
+  {
+    "id": "hotels.board_basis",
+    "domain": "hotels",
+    "primaryAr": "أنظمة الإقامة والوجبات الفندقية",
+    "primaryEn": "Hotel Board Basis & Meal Plans",
+    "targetNodeIds": [
+      "screen.05",
+      "hub.hotels.catalog",
+      "page.site.hotels"
+    ],
+    "termsCount": 268,
+    "sampleTerms": [
+      "افطار مشمول",
+      "الافطار مشمول",
+      "حجز افطار مشمول",
+      "ارخص افطار مشمول",
+      "اسعار افطار مشمول",
+      "عروض افطار مشمول",
+      "افضل افطار مشمول",
+      "بحث افطار مشمول",
+      "تكلفه افطار مشمول",
+      "شركه افطار مشمول"
+    ]
+  },
+  {
+    "id": "hotels.brands",
+    "domain": "hotels",
+    "primaryAr": "سلاسل الفنادق والعلامات الفندقية العالمية",
+    "primaryEn": "Hotel Chains & International Brands",
+    "targetNodeIds": [
+      "screen.05",
+      "hub.hotels.catalog",
+      "supplier.hotelbeds",
+      "supplier.ratehawk"
+    ],
+    "termsCount": 294,
+    "sampleTerms": [
+      "هيلتون",
+      "الهيلتون",
+      "حجز هيلتون",
+      "ارخص هيلتون",
+      "اسعار هيلتون",
+      "عروض هيلتون",
+      "افضل هيلتون",
+      "بحث هيلتون",
+      "تكلفه هيلتون",
+      "شركه هيلتون"
+    ]
+  },
+  {
+    "id": "hotels.reviews",
+    "domain": "hotels",
+    "primaryAr": "تقييمات النزلاء والريفيوز وآراء العملاء",
+    "primaryEn": "Hotel Reviews, Guest Ratings & Reputation",
+    "targetNodeIds": [
+      "screen.05",
+      "hub.hotels.reviews",
+      "hub.bookings.reviews"
+    ],
+    "termsCount": 269,
+    "sampleTerms": [
+      "تقييمات الفنادق",
+      "التقييمات الفنادق",
+      "حجز تقييمات الفنادق",
+      "ارخص تقييمات الفنادق",
+      "اسعار تقييمات الفنادق",
+      "عروض تقييمات الفنادق",
+      "افضل تقييمات الفنادق",
+      "بحث تقييمات الفنادق",
+      "تكلفه تقييمات الفنادق",
+      "شركه تقييمات الفنادق"
+    ]
+  },
+  {
+    "id": "transfers.airport",
+    "domain": "transfers",
+    "primaryAr": "توصيل واستقبال وتوديع المطار والنقل السياحي",
+    "primaryEn": "Airport Transfers & VIP Chauffeur Services",
+    "targetNodeIds": [
+      "screen.06",
+      "hub.transfers.fleet",
+      "hub.transfers.routes",
+      "page.site.transfers",
+      "api.transfers.catalog"
+    ],
+    "termsCount": 476,
+    "sampleTerms": [
+      "توصيل مطار",
+      "التوصيل مطار",
+      "حجز توصيل مطار",
+      "ارخص توصيل مطار",
+      "اسعار توصيل مطار",
+      "عروض توصيل مطار",
+      "افضل توصيل مطار",
+      "بحث توصيل مطار",
+      "تكلفه توصيل مطار",
+      "شركه توصيل مطار"
+    ]
+  },
+  {
+    "id": "transfers.intercity",
+    "domain": "transfers",
+    "primaryAr": "النقل والتوصيل بين المدن والرحلات الطويلة",
+    "primaryEn": "Intercity Transfers & Long Distance Routes",
+    "targetNodeIds": [
+      "screen.06",
+      "hub.transfers.routes",
+      "page.site.transfers"
+    ],
+    "termsCount": 214,
+    "sampleTerms": [
+      "نقل بين المدن",
+      "النقل بين المدن",
+      "حجز نقل بين المدن",
+      "ارخص نقل بين المدن",
+      "اسعار نقل بين المدن",
+      "عروض نقل بين المدن",
+      "افضل نقل بين المدن",
+      "بحث نقل بين المدن",
+      "تكلفه نقل بين المدن",
+      "شركه نقل بين المدن"
+    ]
+  },
+  {
+    "id": "tours.sightseeing",
+    "domain": "tours",
+    "primaryAr": "الجولات السياحية والأنشطة والرحلات اليومية",
+    "primaryEn": "Tours, Sightseeing & Daily Excursions",
+    "targetNodeIds": [
+      "screen.08",
+      "hub.tours.catalog",
+      "page.site.tours",
+      "page.site.uae-tours",
+      "page.site.vip-tours"
+    ],
+    "termsCount": 493,
+    "sampleTerms": [
+      "جولات سياحيه",
+      "الجولات سياحيه",
+      "حجز جولات سياحيه",
+      "ارخص جولات سياحيه",
+      "اسعار جولات سياحيه",
+      "عروض جولات سياحيه",
+      "افضل جولات سياحيه",
+      "بحث جولات سياحيه",
+      "تكلفه جولات سياحيه",
+      "شركه جولات سياحيه"
+    ]
+  },
+  {
+    "id": "holidays.packages",
+    "domain": "holidays",
+    "primaryAr": "باقات العطلات والرحلات السياحية المتكاملة وشهر العسل",
+    "primaryEn": "Holiday Packages & Honeymoon Vacations",
+    "targetNodeIds": [
+      "screen.08",
+      "hub.tours.packages",
+      "page.site.holidays",
+      "page.site.package_slug"
+    ],
+    "termsCount": 355,
+    "sampleTerms": [
+      "باقات سياحيه",
+      "الباقات سياحيه",
+      "حجز باقات سياحيه",
+      "ارخص باقات سياحيه",
+      "اسعار باقات سياحيه",
+      "عروض باقات سياحيه",
+      "افضل باقات سياحيه",
+      "بحث باقات سياحيه",
+      "تكلفه باقات سياحيه",
+      "شركه باقات سياحيه"
+    ]
+  },
+  {
+    "id": "cars.rental",
+    "domain": "cars",
+    "primaryAr": "تأجير السيارات السياحية بسائق وبدون سائق",
+    "primaryEn": "Car Rentals & Self-Drive Vehicles",
+    "targetNodeIds": [
+      "screen.07",
+      "hub.cars.catalog",
+      "hub.cars.bookings",
+      "page.site.cars"
+    ],
+    "termsCount": 280,
+    "sampleTerms": [
+      "تاجير سيارات",
+      "التاجير سيارات",
+      "حجز تاجير سيارات",
+      "ارخص تاجير سيارات",
+      "اسعار تاجير سيارات",
+      "عروض تاجير سيارات",
+      "افضل تاجير سيارات",
+      "بحث تاجير سيارات",
+      "تكلفه تاجير سيارات",
+      "شركه تاجير سيارات"
+    ]
+  },
+  {
+    "id": "community.social",
+    "domain": "community",
+    "primaryAr": "مجتمع المسافرين والريلز والقصص والرفقاء",
+    "primaryEn": "Traveler Community, Reels, Stories & Buddies",
+    "targetNodeIds": [
+      "screen.10",
+      "hub.community.feed",
+      "hub.community.reels",
+      "page.site.community",
+      "page.site.community_reels",
+      "page.site.community_buddies"
+    ],
+    "termsCount": 267,
+    "sampleTerms": [
+      "مجتمع المسافرين",
+      "المجتمع المسافرين",
+      "حجز مجتمع المسافرين",
+      "ارخص مجتمع المسافرين",
+      "اسعار مجتمع المسافرين",
+      "عروض مجتمع المسافرين",
+      "افضل مجتمع المسافرين",
+      "بحث مجتمع المسافرين",
+      "تكلفه مجتمع المسافرين",
+      "شركه مجتمع المسافرين"
+    ]
+  },
+  {
+    "id": "finance.accounting",
+    "domain": "finance",
+    "primaryAr": "المحاسبة والمالية والفواتير والمدفوعات والضرائب",
+    "primaryEn": "Finance, Invoices, Payments, VAT & Accounting",
+    "targetNodeIds": [
+      "screen.09",
+      "hub.finance.invoices",
+      "hub.finance.transactions",
+      "hub.finance.wallets",
+      "hub.bookings.payments",
+      "collection.financial_transactions"
+    ],
+    "termsCount": 524,
+    "sampleTerms": [
+      "فواتير",
+      "الفواتير",
+      "حجز فواتير",
+      "ارخص فواتير",
+      "اسعار فواتير",
+      "عروض فواتير",
+      "افضل فواتير",
+      "بحث فواتير",
+      "تكلفه فواتير",
+      "شركه فواتير"
+    ]
+  },
+  {
+    "id": "crm.customers",
+    "domain": "crm",
+    "primaryAr": "إدارة العملاء والمسافرين والجوازات والولاء",
+    "primaryEn": "CRM, Travelers Management, Passports & Loyalty",
+    "targetNodeIds": [
+      "screen.10",
+      "hub.crm.leads",
+      "hub.crm.customers",
+      "page.site.account",
+      "collection.customers"
+    ],
+    "termsCount": 384,
+    "sampleTerms": [
+      "عملاء",
+      "العملاء",
+      "حجز عملاء",
+      "ارخص عملاء",
+      "اسعار عملاء",
+      "عروض عملاء",
+      "افضل عملاء",
+      "بحث عملاء",
+      "تكلفه عملاء",
+      "شركه عملاء"
+    ]
+  },
+  {
+    "id": "b2b.reseller",
+    "domain": "b2b",
+    "primaryAr": "قطاع الشركات والموزعين والوايت ليبل وتراخيص B2B",
+    "primaryEn": "B2B Travel Agencies, Resellers & Whitelabel",
+    "targetNodeIds": [
+      "screen.13",
+      "hub.reseller.companies",
+      "hub.reseller.orders",
+      "api.b2b.test_connection",
+      "collection.reseller_companies"
+    ],
+    "termsCount": 307,
+    "sampleTerms": [
+      "موزعين b2b",
+      "الموزعين b2b",
+      "حجز موزعين b2b",
+      "ارخص موزعين b2b",
+      "اسعار موزعين b2b",
+      "عروض موزعين b2b",
+      "افضل موزعين b2b",
+      "بحث موزعين b2b",
+      "تكلفه موزعين b2b",
+      "شركه موزعين b2b"
+    ]
+  },
+  {
+    "id": "ai.swarm",
+    "domain": "automation",
+    "primaryAr": "خلية الوكلاء الذاتية والمشرف وغرفة العمليات والمداولة",
+    "primaryEn": "Autonomous Agent Swarm, Supervisor & War Room",
+    "targetNodeIds": [
+      "screen.11",
+      "screen.20",
+      "hub.agents.warroom",
+      "hub.agents.programs",
+      "hub.agents.models"
+    ],
+    "termsCount": 346,
+    "sampleTerms": [
+      "خليه الوكلاء",
+      "الخليه الوكلاء",
+      "حجز خليه الوكلاء",
+      "ارخص خليه الوكلاء",
+      "اسعار خليه الوكلاء",
+      "عروض خليه الوكلاء",
+      "افضل خليه الوكلاء",
+      "بحث خليه الوكلاء",
+      "تكلفه خليه الوكلاء",
+      "شركه خليه الوكلاء"
+    ]
+  },
+  {
+    "id": "automation.loops",
+    "domain": "automation",
+    "primaryAr": "استوديو الأتمتة والتدفقات المرئية وخوادم MCP والمهام المجدولة",
+    "primaryEn": "Automation Visual Loops, MCP Servers & Scheduled Jobs",
+    "targetNodeIds": [
+      "screen.12",
+      "screen.22",
+      "hub.auto.tools",
+      "hub.auto.jobs",
+      "hub.auto.logs",
+      "hub.auto.mcp"
+    ],
+    "termsCount": 293,
+    "sampleTerms": [
+      "محرك الاتمته",
+      "المحرك الاتمته",
+      "حجز محرك الاتمته",
+      "ارخص محرك الاتمته",
+      "اسعار محرك الاتمته",
+      "عروض محرك الاتمته",
+      "افضل محرك الاتمته",
+      "بحث محرك الاتمته",
+      "تكلفه محرك الاتمته",
+      "شركه محرك الاتمته"
+    ]
+  },
+  {
+    "id": "studio.screens",
+    "domain": "studio",
+    "primaryAr": "شاشات الاستوديو السيبراني والأسطوانة الهولوغرافية نكسس",
+    "primaryEn": "Cyber Studio HUD Screens & Holographic Nexus Stage",
+    "targetNodeIds": [
+      "screen.01",
+      "screen.21",
+      "screen.19",
+      "screen.17",
+      "screen.18"
+    ],
+    "termsCount": 266,
+    "sampleTerms": [
+      "شاشه الاطلس atlas",
+      "الشاشه الاطلس atlas",
+      "حجز شاشه الاطلس atlas",
+      "ارخص شاشه الاطلس atlas",
+      "اسعار شاشه الاطلس atlas",
+      "عروض شاشه الاطلس atlas",
+      "افضل شاشه الاطلس atlas",
+      "بحث شاشه الاطلس atlas",
+      "تكلفه شاشه الاطلس atlas",
+      "شركه شاشه الاطلس atlas"
+    ]
+  },
+  {
+    "id": "storefront.public",
+    "domain": "storefront",
+    "primaryAr": "واجهات وتجربة المتجر والموقع العام للزوار",
+    "primaryEn": "Storefront Pages & Public Customer Experience",
+    "targetNodeIds": [
+      "page.site.home",
+      "page.site.about",
+      "page.site.contact",
+      "page.site.terms",
+      "page.site.privacy",
+      "page.site.blog"
+    ],
+    "termsCount": 318,
+    "sampleTerms": [
+      "موقع المتجر العام",
+      "الموقع المتجر العام",
+      "حجز موقع المتجر العام",
+      "ارخص موقع المتجر العام",
+      "اسعار موقع المتجر العام",
+      "عروض موقع المتجر العام",
+      "افضل موقع المتجر العام",
+      "بحث موقع المتجر العام",
+      "تكلفه موقع المتجر العام",
+      "شركه موقع المتجر العام"
+    ]
+  },
+  {
+    "id": "suppliers.gateways",
+    "domain": "system",
+    "primaryAr": "بوابات التوريد والـ GDS ومزودي الفنادق والطيران العالميين",
+    "primaryEn": "GDS Gateways, Flight & Hotel Wholesalers",
+    "targetNodeIds": [
+      "supplier.pkfare",
+      "supplier.hotelbeds",
+      "supplier.travelport_flights",
+      "supplier.seeru",
+      "supplier.ratehawk",
+      "supplier.amadeus_flights"
+    ],
+    "termsCount": 303,
+    "sampleTerms": [
+      "بي كي فير pkfare",
+      "البي كي فير pkfare",
+      "حجز بي كي فير pkfare",
+      "ارخص بي كي فير pkfare",
+      "اسعار بي كي فير pkfare",
+      "عروض بي كي فير pkfare",
+      "افضل بي كي فير pkfare",
+      "بحث بي كي فير pkfare",
+      "تكلفه بي كي فير pkfare",
+      "شركه بي كي فير pkfare"
+    ]
+  },
+  {
+    "id": "studio.navigation",
+    "domain": "studio",
+    "primaryAr": "أوامر التنقل المباشر وعرض الشاشات والاستوديو",
+    "primaryEn": "Direct Navigation & Studio HUD Commands",
+    "targetNodeIds": [
+      "screen.01",
+      "screen.21"
+    ],
+    "termsCount": 148,
+    "sampleTerms": [
+      "افتح الاطلس",
+      "الافتح الاطلس",
+      "حجز افتح الاطلس",
+      "ارخص افتح الاطلس",
+      "اسعار افتح الاطلس",
+      "عروض افتح الاطلس",
+      "افضل افتح الاطلس",
+      "بحث افتح الاطلس",
+      "تكلفه افتح الاطلس",
+      "شركه افتح الاطلس"
+    ]
+  }
+]

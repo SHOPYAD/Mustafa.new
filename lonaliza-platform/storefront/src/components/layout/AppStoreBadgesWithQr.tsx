@@ -5,6 +5,8 @@ import Image from "next/image";
 import { QrCode, Smartphone, ExternalLink, ArrowRight, Sparkles } from "lucide-react";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
+import { useStorefrontInit } from "@/providers/StorefrontInitProvider";
+
 interface AppLinksData {
   ok: boolean;
   googlePlayUrl: string;
@@ -27,10 +29,32 @@ export default function AppStoreBadgesWithQr({
   variant?: "footer" | "landing" | "standalone" | "integrated-contact";
 }) {
   const { locale } = useLocale();
-  const [data, setData] = useState<AppLinksData>(DEFAULT_LINKS);
+  const init = useStorefrontInit();
+  const [data, setData] = useState<AppLinksData>(() => {
+    if (init.appLinks) {
+      return {
+        ok: true,
+        googlePlayUrl: init.appLinks.googlePlayUrl,
+        appStoreUrl: init.appLinks.appStoreUrl,
+        googlePlayQr: init.appLinks.googlePlayQr || "",
+        appStoreQr: init.appLinks.appStoreQr || "",
+      };
+    }
+    return DEFAULT_LINKS;
+  });
   const [activeQrModal, setActiveQrModal] = useState<"google" | "apple" | null>(null);
 
   useEffect(() => {
+    if (init.appLinks) {
+      setData({
+        ok: true,
+        googlePlayUrl: init.appLinks.googlePlayUrl,
+        appStoreUrl: init.appLinks.appStoreUrl,
+        googlePlayQr: init.appLinks.googlePlayQr || "",
+        appStoreQr: init.appLinks.appStoreQr || "",
+      });
+      return;
+    }
     let isMounted = true;
     fetch("/api/app-links", { cache: "no-store" })
       .then((res) => res.json())
@@ -43,7 +67,8 @@ export default function AppStoreBadgesWithQr({
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [init.appLinks]);
+
 
   const isDark = variant === "landing";
 

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-26T13:12:07.712Z",
-  "count": 11,
+  "generatedAt": "2026-10-02T21:44:18.984Z",
+  "count": 10,
   "topics": [
     {
       "id": "cappadocia-balloons",
@@ -117,42 +117,21 @@
       "publishedAt": "2026-08-31T06:00:00.000Z"
     },
     {
-      "id": "rss-antalya-altın-portakal-film-festivali-ulusal-uzu",
-      "titleAr": "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı",
-      "titleEn": "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı",
-      "titleTr": "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı",
-      "queryAr": "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı",
-      "queryEn": "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı",
+      "id": "rss-antalya-altın-portakal-film-festivali-nde-galası",
+      "titleAr": "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı",
+      "titleEn": "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı",
+      "titleTr": "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı",
+      "queryAr": "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı",
+      "queryEn": "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı",
       "destination": "antalya",
       "angle": "rss",
       "sourceIds": [
         "aa-tr-culture"
       ],
       "sourceTitles": [
-        "Antalya Altın Portakal Film Festivali Ulusal Uzun Metraj Film Yarışması filmleri açıklandı"
+        "Antalya Altın Portakal Film Festivali'nde galası yapılacak filmler açıklandı"
       ],
-      "publishedAt": "2026-09-26T07:50:08.000Z",
-      "trendInterest": 56,
-      "recencyScore": 100,
-      "relevanceScore": 92,
-      "score": 78
-    },
-    {
-      "id": "rss-bakan-ersoy-kapadokya-yı-daha-fazla-japon-misafi",
-      "titleAr": "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz",
-      "titleEn": "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz",
-      "titleTr": "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz",
-      "queryAr": "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz",
-      "queryEn": "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz",
-      "destination": "cappadocia",
-      "angle": "rss",
-      "sourceIds": [
-        "aa-tr-culture"
-      ],
-      "sourceTitles": [
-        "Bakan Ersoy: Kapadokya'yı daha fazla Japon misafirimizin seyahat rotasına taşımak için çalışıyoruz"
-      ],
-      "publishedAt": "2026-09-25T15:50:44.000Z",
+      "publishedAt": "2026-10-02T20:47:23.000Z",
       "trendInterest": 56,
       "recencyScore": 100,
       "relevanceScore": 92,

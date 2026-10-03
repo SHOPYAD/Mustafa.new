@@ -2,15 +2,22 @@
 
 import { useEffect, useState } from "react";
 import type { PublicPageLink } from "@/types/custom-page";
+import { useStorefrontInit } from "@/providers/StorefrontInitProvider";
 
 export function usePublicPages(): {
   pages: PublicPageLink[];
   headerPages: PublicPageLink[];
   footerPages: PublicPageLink[];
 } {
-  const [pages, setPages] = useState<PublicPageLink[]>([]);
+  const init = useStorefrontInit();
+  const [pages, setPages] = useState<PublicPageLink[]>(() => init.pages || []);
 
   useEffect(() => {
+    if (init.pages && init.pages.length > 0) {
+      setPages(init.pages);
+      return;
+    }
+    // Only fetch if init didn't have pages
     let cancelled = false;
     void (async () => {
       try {
@@ -26,7 +33,7 @@ export function usePublicPages(): {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [init.pages]);
 
   return {
     pages,

@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AppWindow, ChevronRight, Hand, HelpCircle, Home, List, Mic, Minus, Plus, Settings } from "lucide-react";
 import { STAGE_H, STAGE_W, paintSupervisorDisc, paintSupervisorWave } from "@/lib/neural-studio/expansion-scene";
+export { STAGE_H, STAGE_W };
 
 export const FONT = "'Noto Sans Arabic', 'IBM Plex Sans Arabic', Tahoma, sans-serif";
 const FONT_HREF = "https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap";
@@ -114,6 +115,7 @@ export function StageHeader({
   onSelectDepthLevel,
   onExitHome,
   onOpenScreenSwitcher,
+  fluid = false,
 }: {
   crumbs: [string, string];
   title: string;
@@ -122,6 +124,7 @@ export function StageHeader({
   onSelectDepthLevel: (level: number) => void;
   onExitHome: () => void;
   onOpenScreenSwitcher: () => void;
+  fluid?: boolean;
 }) {
   const depthDots = [3, 2, 1, 0];
   return (
@@ -130,20 +133,21 @@ export function StageHeader({
         position: "absolute",
         left: 0,
         top: 0,
-        width: STAGE_W,
+        width: fluid ? "100%" : STAGE_W,
         height: 60,
         background: "linear-gradient(180deg, rgba(4,18,32,0.94), rgba(3,13,24,0.86))",
         borderBottom: `1px solid ${LINE}`,
         boxShadow: "0 1px 12px rgba(64,214,245,0.18)",
+        zIndex: 25,
       }}
     >
-      <button type="button" aria-label="الرئيسية" onClick={onExitHome} style={{ position: "absolute", left: 27, top: 11, width: 53, height: 40, borderRadius: 8, border: "1.5px solid rgba(64,214,245,0.85)", background: "rgba(6,42,58,0.6)", display: "grid", placeItems: "center", boxShadow: "0 0 12px rgba(64,214,245,0.3)", cursor: "pointer" }}>
+      <button type="button" aria-label="الرئيسية" onClick={onExitHome} style={{ position: "absolute", left: 20, top: 11, width: 53, height: 40, borderRadius: 8, border: "1.5px solid rgba(64,214,245,0.85)", background: "rgba(6,42,58,0.6)", display: "grid", placeItems: "center", boxShadow: "0 0 12px rgba(64,214,245,0.3)", cursor: "pointer" }}>
         <Home size={26} color="#5fe8ff" strokeWidth={1.8} />
       </button>
-      <button type="button" onClick={() => { window.location.href = "/admin"; }} dir="rtl" style={{ position: "absolute", left: 90, top: 11, height: 40, padding: "0 12px", borderRadius: 8, border: "1.5px solid rgba(255,190,90,0.75)", background: "rgba(40,24,4,0.55)", color: "#ffd27a", fontFamily: FONT, fontSize: 14, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", boxShadow: "0 0 12px rgba(255,190,90,0.25)" }}>
+      <button type="button" onClick={() => { window.location.href = "/admin"; }} dir="rtl" style={{ position: "absolute", left: 82, top: 11, height: 40, padding: "0 12px", borderRadius: 8, border: "1.5px solid rgba(255,190,90,0.75)", background: "rgba(40,24,4,0.55)", color: "#ffd27a", fontFamily: FONT, fontSize: 14, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", boxShadow: "0 0 12px rgba(255,190,90,0.25)" }}>
         الوضع العادي
       </button>
-      <div style={{ position: "absolute", left: 230, top: 13, height: 34, display: "flex", alignItems: "center" }}>
+      <div style={{ position: "absolute", left: 215, top: 13, height: 34, display: "flex", alignItems: "center" }}>
         <ChevronRight size={22} color="#e2eef4" style={{ marginRight: 22 }} />
         <button type="button" onClick={onOpenScreenSwitcher} dir="rtl" style={{ fontSize: 17.5, color: "#d3e0e8", background: "transparent", border: 0, padding: 0, cursor: "pointer", whiteSpace: "nowrap", fontFamily: FONT, marginRight: 20 }}>
           {crumbs[0]}
@@ -154,7 +158,7 @@ export function StageHeader({
         </span>
       </div>
 
-      <div style={{ position: "absolute", left: 845, top: 12, width: 345, height: 38, borderRadius: 19, border: `1px solid ${LINE}`, background: "rgba(3,16,28,0.86)" }}>
+      <div style={{ position: "absolute", left: fluid ? "50%" : 710, transform: fluid ? "translateX(-50%)" : "none", top: 12, width: 345, height: 38, borderRadius: 19, border: `1px solid ${LINE}`, background: "rgba(3,16,28,0.86)" }}>
         <span style={{ position: "absolute", left: 14, top: 6, width: 34, height: 25, borderRadius: 5, border: "1px solid rgba(64,214,245,0.8)", color: "#eaf6fb", fontSize: 15, fontWeight: 700, display: "grid", placeItems: "center", fontFamily: "system-ui, sans-serif" }}>
           L{depthLevel}
         </span>
@@ -188,13 +192,13 @@ export function StageHeader({
         </span>
       </div>
 
-      <span dir="rtl" style={{ position: "absolute", right: 91, top: 13, fontSize: 26, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", lineHeight: "30px" }}>
+      <span dir="rtl" style={{ position: "absolute", right: fluid ? 78 : 91, top: 13, fontSize: 26, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", lineHeight: "30px" }}>
         {title}
       </span>
-      <span dir="rtl" style={{ position: "absolute", right: 92, top: 37, fontSize: 15.5, color: "#b6c7d1", whiteSpace: "nowrap", lineHeight: "20px" }}>
+      <span dir="rtl" style={{ position: "absolute", right: fluid ? 78 : 92, top: 37, fontSize: 15.5, color: "#b6c7d1", whiteSpace: "nowrap", lineHeight: "20px" }}>
         {subtitle}
       </span>
-      <svg width="48" height="48" viewBox="0 0 48 48" style={{ position: "absolute", left: 1608, top: 6 }}>
+      <svg width="48" height="48" viewBox="0 0 48 48" style={{ position: "absolute", right: fluid ? 18 : undefined, left: fluid ? undefined : 1608, top: 6 }}>
         <circle cx="24" cy="24" r="21" fill="rgba(4,30,44,0.8)" stroke="#40d6f5" strokeWidth="1.4" />
         {Array.from({ length: 8 }, (_, i) => {
           const a = (i / 8) * Math.PI * 2;
@@ -226,6 +230,7 @@ export function StageDock({
   onOpenScreenSwitcher,
   onOpenHelp,
   onOpenSettings,
+  fluid = false,
 }: Pick<
   StudioStageProps,
   | "panEnabled"
@@ -240,7 +245,7 @@ export function StageDock({
   | "onOpenScreenSwitcher"
   | "onOpenHelp"
   | "onOpenSettings"
-> & { note: DataNote }) {
+> & { note: DataNote; fluid?: boolean }) {
   const bars = useMemo(() => {
     const base = [6, 12, 20, 30, 18, 36, 26, 40, 22, 34, 14, 28, 38, 24, 32, 16, 26, 36, 20, 30, 12, 22, 16, 10, 8, 6];
     return base.map((h, i) => {
@@ -250,17 +255,17 @@ export function StageDock({
     });
   }, [audioFrequencies, isListening]);
   return (
-    <footer style={{ position: "absolute", left: 0, top: 856, width: STAGE_W, height: 85 }}>
-      <svg width={STAGE_W} height={85} style={{ position: "absolute", left: 0, top: 0 }}>
+    <footer style={{ position: "absolute", left: 0, bottom: fluid ? 0 : undefined, top: fluid ? undefined : 856, width: fluid ? "100%" : STAGE_W, height: 85, zIndex: 25 }}>
+      <svg width="100%" height={85} preserveAspectRatio="none" style={{ position: "absolute", left: 0, top: 0 }}>
         <defs>
           <linearGradient id="dock-fill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="rgba(4,17,30,0.96)" />
             <stop offset="1" stopColor="rgba(2,9,17,0.99)" />
           </linearGradient>
         </defs>
-        <path d={`M0 0 L404 0 L431 6 L${STAGE_W} 6 L${STAGE_W} 85 L0 85 Z`} fill="url(#dock-fill)" />
-        <path d={`M0 0.5 L404 0.5 L431 6.5 L${STAGE_W} 6.5`} fill="none" stroke="rgba(64,214,245,0.8)" strokeWidth="1.5" />
-        <path d={`M0 0.5 L404 0.5 L431 6.5 L${STAGE_W} 6.5`} fill="none" stroke="rgba(64,214,245,0.25)" strokeWidth="6" />
+        <path d={`M0 0 L404 0 L431 6 L${STAGE_W * 2} 6 L${STAGE_W * 2} 85 L0 85 Z`} fill="url(#dock-fill)" />
+        <path d={`M0 0.5 L404 0.5 L431 6.5 L${STAGE_W * 2} 6.5`} fill="none" stroke="rgba(64,214,245,0.8)" strokeWidth="1.5" />
+        <path d={`M0 0.5 L404 0.5 L431 6.5 L${STAGE_W * 2} 6.5`} fill="none" stroke="rgba(64,214,245,0.25)" strokeWidth="6" />
       </svg>
       <div style={{ position: "absolute", left: 22, top: 12, width: 391, height: 60, borderRadius: 30, border: "1px solid rgba(64,214,245,0.35)", background: "rgba(3,14,26,0.9)" }} />
       <button type="button" aria-label="تشغيل الاستماع" onClick={onToggleListening} style={{ position: "absolute", left: 28, top: 16, width: 52, height: 52, borderRadius: 26, border: "2px solid #45e6ff", background: "radial-gradient(circle, #0f4b5e, #041822)", boxShadow: isListening ? "0 0 22px rgba(69,230,255,0.85)" : "0 0 14px rgba(69,230,255,0.5)", display: "grid", placeItems: "center", cursor: "pointer", padding: 0 }}>
@@ -276,29 +281,37 @@ export function StageDock({
         <span style={{ width: 18, height: 18, borderRadius: 3, background: "#ff4d5e" }} />
       </button>
       <span style={dockSep(438)} />
-      <button type="button" aria-label="تحريك" onClick={onTogglePan} style={{ position: "absolute", left: 463, top: 24, width: 42, height: 41, borderRadius: 8, border: `1px solid ${panEnabled ? "#5fe8ff" : "rgba(64,214,245,0.55)"}`, background: panEnabled ? "rgba(20,80,100,0.6)" : "rgba(5,28,42,0.7)", display: "grid", placeItems: "center", cursor: "pointer", padding: 0 }}>
-        <Hand size={22} color="#d8eef6" />
-      </button>
-      <span dir="rtl" style={{ position: "absolute", left: 519, top: 44, transform: "translateY(-50%)", fontSize: 15, color: "#d8e8f0" }}>تحريك</span>
-      <div style={{ position: "absolute", left: 600, top: 19, width: 248, height: 48, borderRadius: 24, border: "1px solid rgba(64,214,245,0.45)", background: "rgba(4,20,34,0.8)" }}>
-        <button type="button" aria-label="تصغير" onClick={onZoomOut} style={roundBtn(11)}><Minus size={18} color="#d8eef6" /></button>
-        <span dir="rtl" style={{ position: "absolute", left: 131, top: 22, transform: "translate(-50%, -50%)", fontSize: 15, color: "#d8e8f0", whiteSpace: "nowrap" }}>تكبير / تصغير</span>
-        <button type="button" aria-label="تكبير" onClick={onZoomIn} style={roundBtn(212)}><Plus size={18} color="#d8eef6" /></button>
+
+      {/* Centered Controls in Fluid Mode or Fixed in Absolute */}
+      <div style={{ position: "absolute", left: fluid ? "50%" : 463, transform: fluid ? "translateX(-50%)" : "none", top: 18, display: "flex", alignItems: "center", gap: 12 }}>
+        <button type="button" aria-label="تحريك" onClick={onTogglePan} style={{ width: 42, height: 41, borderRadius: 8, border: `1px solid ${panEnabled ? "#5fe8ff" : "rgba(64,214,245,0.55)"}`, background: panEnabled ? "rgba(20,80,100,0.6)" : "rgba(5,28,42,0.7)", display: "grid", placeItems: "center", cursor: "pointer", padding: 0 }}>
+          <Hand size={22} color="#d8eef6" />
+        </button>
+        <span dir="rtl" style={{ fontSize: 15, color: "#d8e8f0" }}>تحريك</span>
+
+        <div style={{ width: 248, height: 48, borderRadius: 24, border: "1px solid rgba(64,214,245,0.45)", background: "rgba(4,20,34,0.8)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px" }}>
+          <button type="button" aria-label="تصغير" onClick={onZoomOut} style={{ width: 28, height: 28, borderRadius: 14, border: "1px solid rgba(64,214,245,0.5)", background: "rgba(6,30,46,0.9)", display: "grid", placeItems: "center", cursor: "pointer" }}><Minus size={18} color="#d8eef6" /></button>
+          <span dir="rtl" style={{ fontSize: 15, color: "#d8e8f0", whiteSpace: "nowrap" }}>تكبير / تصغير</span>
+          <button type="button" aria-label="تكبير" onClick={onZoomIn} style={{ width: 28, height: 28, borderRadius: 14, border: "1px solid rgba(64,214,245,0.5)", background: "rgba(6,30,46,0.9)", display: "grid", placeItems: "center", cursor: "pointer" }}><Plus size={18} color="#d8eef6" /></button>
+        </div>
+
+        <button type="button" aria-label="إعادة النوافذ" onClick={onResetWindows} style={{ width: 42, height: 43, borderRadius: 7, border: "1px solid rgba(64,214,245,0.55)", background: "rgba(5,28,42,0.7)", display: "grid", placeItems: "center", cursor: "pointer", padding: 0 }}>
+          <AppWindow size={20} color="#d8eef6" />
+        </button>
+        <span dir="rtl" style={{ fontSize: 15, color: "#d8e8f0", whiteSpace: "nowrap" }}>إعادة النوافذ</span>
       </div>
-      <span style={dockSep(870)} />
-      <button type="button" aria-label="إعادة النوافذ" onClick={onResetWindows} style={{ position: "absolute", left: 896, top: 22, width: 42, height: 43, borderRadius: 7, border: "1px solid rgba(64,214,245,0.55)", background: "rgba(5,28,42,0.7)", display: "grid", placeItems: "center", cursor: "pointer", padding: 0 }}>
-        <AppWindow size={20} color="#d8eef6" />
-      </button>
-      <span dir="rtl" style={{ position: "absolute", left: 953, top: 44, transform: "translateY(-50%)", fontSize: 15, color: "#d8e8f0", whiteSpace: "nowrap" }}>إعادة النوافذ</span>
-      <button type="button" aria-label="الواجهات" onClick={onOpenScreenSwitcher} style={plainBtn(1223)}><List size={26} color="#d8eef6" /></button>
-      <span style={dockSep(1264)} />
-      <button type="button" aria-label="المساعدة" onClick={onOpenHelp} style={plainBtn(1309)}><HelpCircle size={26} color="#d8eef6" /></button>
-      <button type="button" aria-label="الإعدادات" onClick={onOpenSettings} style={plainBtn(1369)}><Settings size={26} color="#d8eef6" /></button>
-      <span style={dockSep(1430)} />
-      <span dir="rtl" title={note.detail ?? note.text} style={{ position: "absolute", right: 30, top: 40, transform: "translateY(-50%)", maxWidth: 200, fontSize: 14.5, color: "#c3d2db", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 8 }}>
-        <span style={{ width: 8, height: 8, borderRadius: 4, background: NOTE_COLOR[note.tone], boxShadow: `0 0 8px ${NOTE_COLOR[note.tone]}` }} />
-        {note.text}
-      </span>
+
+      <div style={{ position: "absolute", right: fluid ? 24 : undefined, left: fluid ? undefined : 1220, top: 20, display: "flex", alignItems: "center", gap: 14 }}>
+        <button type="button" aria-label="الواجهات" onClick={onOpenScreenSwitcher} style={{ background: "transparent", border: 0, padding: 0, cursor: "pointer", display: "grid", placeItems: "center" }}><List size={26} color="#d8eef6" /></button>
+        <span style={{ width: 1, height: 32, background: "rgba(64,214,245,0.4)" }} />
+        <button type="button" aria-label="المساعدة" onClick={onOpenHelp} style={{ background: "transparent", border: 0, padding: 0, cursor: "pointer", display: "grid", placeItems: "center" }}><HelpCircle size={26} color="#d8eef6" /></button>
+        <button type="button" aria-label="الإعدادات" onClick={onOpenSettings} style={{ background: "transparent", border: 0, padding: 0, cursor: "pointer", display: "grid", placeItems: "center" }}><Settings size={26} color="#d8eef6" /></button>
+        <span style={{ width: 1, height: 32, background: "rgba(64,214,245,0.4)" }} />
+        <span dir="rtl" title={note.detail ?? note.text} style={{ maxWidth: 300, fontSize: 14.5, color: "#c3d2db", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ width: 8, height: 8, borderRadius: 4, background: NOTE_COLOR[note.tone], boxShadow: `0 0 8px ${NOTE_COLOR[note.tone]}` }} />
+          {note.text}
+        </span>
+      </div>
     </footer>
   );
 }

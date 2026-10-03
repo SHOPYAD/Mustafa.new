@@ -41,7 +41,7 @@ function failJson(e: unknown, owned: boolean) {
 
 export async function GET(req: NextRequest) {
   // Progressive search polls a few times per query, so the budget is per-IP over 10 minutes.
-  const limited = rateLimit(`hotels-search:${clientIp(req)}`, 160, 10 * 60 * 1000);
+  const limited = await rateLimit(`hotels-search:${clientIp(req)}`, 160, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
   const cacheKey = `hotels:${req.nextUrl.search}`;
   const cached = ttlGet<Record<string, unknown>>(cacheKey);

@@ -6,7 +6,7 @@ import { clientIp, rateLimit, rateLimitResponse } from "@/lib/server/rate-limit"
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(`passport-ocr:${clientIp(req)}`, 20, 60 * 1000);
+  const limited = await rateLimit(`passport-ocr:${clientIp(req)}`, 20, 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   try {

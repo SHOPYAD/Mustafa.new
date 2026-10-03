@@ -6,7 +6,7 @@ import { isOtpChannel, isOtpPurpose } from "@/lib/automation/types";
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
-  const limited = rateLimit(`otp-api:${clientIp(req)}`, 8, 15 * 60 * 1000);
+  const limited = await rateLimit(`otp-api:${clientIp(req)}`, 8, 15 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown>;

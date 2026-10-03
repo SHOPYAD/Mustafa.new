@@ -269,7 +269,11 @@ async function preview(cap: Capability, input: Record<string, unknown>, pb: Pock
       return { summaryAr: cap.titleAr, effects: [], data: input };
     case "studio.open_screen":
     case "nexus.rotate":
+    case "nexus.focus_card":
+    case "nexus.toggle_panel":
     case "nexus.run_sector_command":
+    case "automation.loops.toggle_panel":
+    case "automation.loops.restore_panels":
       return uiPreview(cap, input, sessionId);
     case "loops.run": {
       const dryRun = input.dryRun !== false;
@@ -363,7 +367,11 @@ async function apply(cap: Capability, input: Record<string, unknown>, pb: Pocket
     }
     case "studio.open_screen":
     case "nexus.rotate":
+    case "nexus.focus_card":
+    case "nexus.toggle_panel":
     case "nexus.run_sector_command":
+    case "automation.loops.toggle_panel":
+    case "automation.loops.restore_panels":
       throw new CapError(501, "client_ui_only");
     case "loops.run": {
       const dryRun = input.dryRun !== false;

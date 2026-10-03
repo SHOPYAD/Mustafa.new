@@ -5,6 +5,7 @@ import { DOMAIN_SCREENS, KNOWN_COLLECTIONS } from "@/lib/neural-studio/domain-sy
 import { STUDIO_SCREENS } from "@/components/admin/automation/hud/screens/screensData";
 import { KEYWORD_OVERRIDES } from "./overrides";
 import { PLATFORM_INDEX_BY_ID, PLATFORM_INDEX_NODES } from "./platform-index.generated";
+import { INTENT_LEXICON } from "./intent-lexicon.generated";
 
 const root = path.resolve(__dirname, "../../../app");
 
@@ -27,13 +28,13 @@ describe("platform index drift", () => {
     expect(nexus?.screenId).toBe("21");
     expect(nexus?.mapId).toBe("screen.21");
     expect(nexus?.capabilityRefs).toEqual(
-      expect.arrayContaining(["nexus.rotate", "nexus.select_sector", "nexus.run_sector_command"])
+      expect.arrayContaining(["nexus.rotate", "nexus.focus_card", "nexus.run_sector_command"])
     );
     const loops = PLATFORM_INDEX_BY_ID["screen.22"];
     expect(loops?.screenId).toBe("22");
     expect(loops?.mapId).toBe("screen.22");
     expect(loops?.capabilityRefs).toEqual(
-      expect.arrayContaining(["loops.run", "loops.run_node", "loops.select_sector"])
+      expect.arrayContaining(["loops.run", "loops.run_node", "automation.loops.toggle_panel"])
     );
   });
 
@@ -87,4 +88,61 @@ describe("platform index drift", () => {
     const leaves = PLATFORM_INDEX_NODES.filter((n) => n.kind === "nav_leaf");
     expect(leaves.length).toBeGreaterThanOrEqual(40);
   });
+
+  it("indexes all storefront public pages", () => {
+    const storefrontRoot = path.resolve(__dirname, "../../../../../storefront/src/app/(site)");
+    function walkPages(dir: string): string[] {
+      const out: string[] = [];
+      if (!fs.existsSync(dir)) return out;
+      for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, ent.name);
+        if (ent.isDirectory()) out.push(...walkPages(p));
+        else if (ent.name === "page.tsx") out.push(p);
+      }
+      return out;
+    }
+    const pages = walkPages(storefrontRoot);
+    expect(pages.length).toBeGreaterThanOrEqual(40);
+    const storefrontNodes = PLATFORM_INDEX_NODES.filter((n) => n.kind === "storefront_page");
+    expect(storefrontNodes.length).toBe(pages.length);
+    expect(PLATFORM_INDEX_BY_ID["page.site.home"]).toBeDefined();
+    expect(PLATFORM_INDEX_BY_ID["page.site.hotels"]).toBeDefined();
+    expect(PLATFORM_INDEX_BY_ID["page.site.flights"]).toBeDefined();
+  });
+
+  it("indexes public, mobile, b2b, and cron APIs", () => {
+    const publicApis = PLATFORM_INDEX_NODES.filter((n) => n.kind === "public_api");
+    const mobileApis = PLATFORM_INDEX_NODES.filter((n) => n.kind === "mobile_api");
+    const b2bApis = PLATFORM_INDEX_NODES.filter((n) => n.kind === "b2b_api");
+    const cronApis = PLATFORM_INDEX_NODES.filter((n) => n.kind === "cron_job");
+
+    expect(publicApis.length).toBeGreaterThan(200);
+    expect(mobileApis.length).toBeGreaterThan(50);
+    expect(b2bApis.length).toBeGreaterThanOrEqual(5);
+    expect(cronApis.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it("indexes catalog external suppliers and webhooks", () => {
+    const suppliers = PLATFORM_INDEX_NODES.filter((n) => n.kind === "external_supplier");
+    expect(suppliers.length).toBeGreaterThanOrEqual(40);
+    expect(PLATFORM_INDEX_BY_ID["supplier.google_places"]).toBeDefined();
+    expect(PLATFORM_INDEX_BY_ID["supplier.hotelbeds"]).toBeDefined();
+    expect(PLATFORM_INDEX_BY_ID["supplier.travelport_flights"]).toBeDefined();
+
+    const webhooks = PLATFORM_INDEX_NODES.filter((n) => n.kind === "webhook");
+    expect(webhooks.length).toBeGreaterThanOrEqual(5);
+    expect(PLATFORM_INDEX_BY_ID["webhook.telegram_admin_bot"]).toBeDefined();
+  });
+
+  it("covers at least 5,000 domain thesaurus terms with zero dangling targets", () => {
+    expect(INTENT_LEXICON.length).toBeGreaterThanOrEqual(5000);
+    for (const entry of INTENT_LEXICON.slice(0, 500)) {
+      expect(entry.nodeIds.length).toBeGreaterThan(0);
+      for (const id of entry.nodeIds) {
+        expect(PLATFORM_INDEX_BY_ID[id], `dangling nodeId: ${id} for term: ${entry.term}`).toBeDefined();
+      }
+    }
+  });
 });
+
+

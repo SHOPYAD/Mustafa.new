@@ -28,6 +28,9 @@ import { NEXUS_SECTOR_CARDS } from "../nexus/HolographicCylinderStage";
 import { NEXUS_HUB_CARDS } from "@/lib/studio/nexus/nexus-cards.generated";
 import NexusOrbitalStage from "./NexusOrbitalStage";
 import VisualLoopsStage from "./VisualLoopsStage";
+import MindGraphCockpitStage from "./MindGraphCockpitStage";
+import SovereignStudioChatWindow from "./SovereignStudioChatWindow";
+import { resolveSupervisorIntent } from "@/lib/studio/supervisor-brain/supervisor-lexicon";
 
 interface UnifiedCyberneticStudioProps {
   initialScreenId?: string;
@@ -38,7 +41,13 @@ export default function UnifiedCyberneticStudio({
   initialScreenId = "20",
   onExit,
 }: UnifiedCyberneticStudioProps) {
-  const [currentScreenId, setCurrentScreenId] = useState<string>(initialScreenId || "20");
+  const [currentScreenId, setCurrentScreenId] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const p = new URLSearchParams(window.location.search).get("screen");
+      if (p) return p;
+    }
+    return initialScreenId || "20";
+  });
   const [lastNav, setLastNav] = useState<NavTarget | null>(null);
   const [depthLevel, setDepthLevel] = useState<number>(
     initialScreenId === "01" ? 0 : initialScreenId === "02" ? 3 : 2
@@ -140,7 +149,7 @@ export default function UnifiedCyberneticStudio({
         return json?.data?.tacticalIntentAr || json?.data?.finalDecision?.executiveSummaryAr || "تم استلام التوجيه.";
       } catch (err) {
         console.warn("[Studio] Swarm deliberation error:", err);
-        return "تعذر الاتصال بمسار المقال. لم يُنشر شيء.";
+        return `تعذر استكمال المداولة: ${err instanceof Error ? err.message : "خطأ في الاتصال بمحرك الوكلاء"}`;
       }
     },
     [studioSessionId, isAutoExecution, currentScreenId]
@@ -355,45 +364,155 @@ export default function UnifiedCyberneticStudio({
   async function runLocalCommand(text: string): Promise<string | false | null> {
     const ctx = { screenId: currentScreenId, last: lastNav };
     const d = norm(text);
-    if (currentScreenId === "21") {
-      if (/(البطاقه التاليه|البطاقة التالية|يمين|next)/.test(d)) {
+
+    // Global Slide Cards Command (Callable from ANY screen!)
+    if (/(مرر سلايد|مرر السلايد|سلايد البطاقات|سلايد بطاقات|مسرح نيكسوس|مسرح nexus|بطاقات سلايد|البطاقات الهولوجرافيه|البطاقات الهولوغرافية|بطاقات هولوجرام|بطاقات هولوغرافيه)/.test(d)) {
+      if (currentScreenId !== "21") {
+        openScreen("21");
+        await saySupervisor("فتحت مسرح سلايد البطاقات الهولوجرافية.");
+        return false;
+      } else {
         window.dispatchEvent(new CustomEvent("studio:nexus-rotate", { detail: { delta: 1 } }));
-        await saySupervisor("البطاقة التالية.");
+        await saySupervisor("مررت سلايد البطاقات.");
         return false;
       }
-      if (/(البطاقه السابق|البطاقة السابقة|يسار|prev)/.test(d)) {
+    }
+
+    // 1. Resolve Intent via External AI Engine (Gemini / OpenRouter) OR Massive Sovereign Lexicon
+    let resolvedIntent: ReturnType<typeof resolveSupervisorIntent> | null = null;
+    const useExternalAi = useAgentStore.getState().useExternalAiEngine;
+
+    if (useExternalAi) {
+      try {
+        const resp = await fetch("/api/admin/studio/supervisor/intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            directive: text,
+            useExternalAi: true,
+            activeCardId: currentScreenId === "21" ? "nexus" : undefined,
+          }),
+        });
+        const data = await resp.json();
+        if (data?.ok && data.intent) {
+          resolvedIntent = data.intent;
+        }
+      } catch (err) {
+        console.warn("[Supervisor AI Router] Network/API error, falling back to local lexicon:", err);
+      }
+    }
+
+    // 2. Deterministic Fallback or Direct Sovereign Mastermind Execution
+    if (!resolvedIntent) {
+      resolvedIntent = resolveSupervisorIntent(text, currentScreenId === "21" ? "nexus" : undefined);
+    }
+
+    if (resolvedIntent) {
+      // Intent: Close active window / section
+      if (resolvedIntent.type === "CLOSE_ACTIVE") {
+        window.dispatchEvent(new CustomEvent("studio:nexus-close-sector", { detail: {} }));
+        await saySupervisor(resolvedIntent.speechReplyAr || "تم إغلاق القسم.");
+        return false;
+      }
+
+      // Intent: Next card
+      if (resolvedIntent.type === "CAROUSEL_NEXT") {
+        window.dispatchEvent(new CustomEvent("studio:nexus-rotate", { detail: { delta: 1 } }));
+        await saySupervisor(resolvedIntent.speechReplyAr || "البطاقة التالية.");
+        return false;
+      }
+
+      // Intent: Previous card
+      if (resolvedIntent.type === "CAROUSEL_PREV") {
         window.dispatchEvent(new CustomEvent("studio:nexus-rotate", { detail: { delta: -1 } }));
-        await saySupervisor("البطاقة السابقة.");
+        await saySupervisor(resolvedIntent.speechReplyAr || "البطاقة السابقة.");
         return false;
       }
-      if (/(افتح البطاق|افتح القسم|open sector)/.test(d)) {
-        window.dispatchEvent(new CustomEvent("studio:nexus-open-sector", { detail: {} }));
-        await saySupervisor("فتح القسم النشط.");
-        return false;
-      }
-      if (/(شغّل الكام|شغل الكام|تتبع اليد|hand track|camera)/.test(d)) {
+
+      // Intent: Toggle camera & hand gestures
+      if (resolvedIntent.type === "TOGGLE_CAMERA") {
         window.dispatchEvent(new CustomEvent("studio:nexus-toggle-camera", { detail: {} }));
-        await saySupervisor("تبديل تتبع الكامera/اليد.");
+        await saySupervisor(resolvedIntent.speechReplyAr || "تبديل تتبع الكاميرا واليد.");
         return false;
       }
-      const sector =
-        NEXUS_HUB_CARDS.find(
-          (c) => d.includes(norm(c.titleAr)) || d.includes(norm(c.category)) || d.includes(c.hubId) || d.includes(c.stationId)
-        ) ||
-        NEXUS_SECTOR_CARDS.find(
-          (c) => d.includes(norm(c.titleAr)) || d.includes(norm(c.category)) || d.includes(c.stationId)
-        );
-      if (sector) {
-        window.dispatchEvent(
-          new CustomEvent("studio:nexus-select-sector", {
-            detail: {
-              stationId: sector.stationId,
-              hubId: "hubId" in sector ? sector.hubId : undefined,
-              sectorId: sector.id,
-            },
-          })
-        );
-        await saySupervisor(`انتقلت إلى ${sector.category}.`);
+
+      // Intent: Toggle Swarm Agent Presence
+      if (resolvedIntent.type === "TOGGLE_SWARM") {
+        useAgentStore.getState().setAgentsVisible(!useAgentStore.getState().agentsVisible);
+        await saySupervisor(resolvedIntent.speechReplyAr || "تم تبديل إظهار الوكلاء.");
+        return false;
+      }
+
+      // Intent: Toggle Voice Coordination
+      if (resolvedIntent.type === "TOGGLE_COORDINATE") {
+        useAgentStore.getState().setCoordinate(!useAgentStore.getState().coordinate);
+        await saySupervisor(resolvedIntent.speechReplyAr || "تم تبديل التنسيق الصوتي الجماعي.");
+        return false;
+      }
+
+      // Intent: Toggle Autonomous Execution
+      if (resolvedIntent.type === "TOGGLE_AUTO_EXECUTION") {
+        setIsAutoExecution((v) => !v);
+        await saySupervisor(resolvedIntent.speechReplyAr || "تم تبديل وضع الاعتماد والتنفيذ السيادي.");
+        return false;
+      }
+
+      // Intent: Open MCP Dispatcher Modal
+      if (resolvedIntent.type === "OPEN_MCP_DISPATCHER") {
+        setIsMcpWindowOpen(true);
+        await saySupervisor(resolvedIntent.speechReplyAr || "فتحت موزع أدوات وخوادم MCP.");
+        return false;
+      }
+
+      // Intent: Open Sector (in-place in screen 21 or navigate)
+      if (resolvedIntent.type === "OPEN_SECTOR") {
+        if (currentScreenId === "21") {
+          const matchCard =
+            NEXUS_HUB_CARDS.find((c) =>
+              resolvedIntent?.sectorId
+                ? c.id === resolvedIntent.sectorId || c.stationId === resolvedIntent.sectorId
+                : false
+            ) ||
+            NEXUS_HUB_CARDS.find((c) =>
+              resolvedIntent?.hubId
+                ? c.hubId === resolvedIntent.hubId || c.hubId.endsWith(resolvedIntent.hubId) || resolvedIntent.hubId.endsWith(c.hubId)
+                : false
+            ) ||
+            NEXUS_HUB_CARDS.find((c) =>
+              resolvedIntent?.screenId ? c.screenId === resolvedIntent.screenId : false
+            );
+          if (matchCard) {
+            window.dispatchEvent(
+              new CustomEvent("studio:nexus-select-sector", {
+                detail: {
+                  stationId: matchCard.stationId,
+                  hubId: matchCard.hubId,
+                  sectorId: matchCard.id,
+                },
+              })
+            );
+            await saySupervisor(resolvedIntent.speechReplyAr || `انتقلت إلى قسم ${matchCard.titleAr}.`);
+            return false;
+          }
+        }
+
+        if (resolvedIntent.screenId) {
+          openScreen(resolvedIntent.screenId, resolvedIntent.hubId);
+          await saySupervisor(resolvedIntent.speechReplyAr || "تم فتح القسم المطلوب.");
+          return false;
+        }
+      }
+
+      // Intent: Navigate to specific Screen
+      if (resolvedIntent.type === "OPEN_SCREEN" && resolvedIntent.screenId) {
+        openScreen(resolvedIntent.screenId, resolvedIntent.hubId);
+        await saySupervisor(resolvedIntent.speechReplyAr || "تم الانتقال إلى الشاشة المطلوبة.");
+        return false;
+      }
+
+      // Intent: General informative reply
+      if (resolvedIntent.type === "GENERAL_REPLY" && resolvedIntent.speechReplyAr) {
+        await saySupervisor(resolvedIntent.speechReplyAr);
         return false;
       }
     }
@@ -415,6 +534,36 @@ export default function UnifiedCyberneticStudio({
         return false;
       }
     }
+
+    const isActionsInquiry =
+      /(ما\s*هي|ماهي|ماذا|ما|عرض|قائمة|وش)?\s*(الاجراءات|الإجراءات|العمليات|المهام|القدرات|الصلاحيات|الأدوات|الادوات)\s*(المتاحة|المتوفرة|التي\s*يمكنك|الممكنة|في\s*هذا\s*القسم|هنا|اتخاذها|فعله)/.test(text) ||
+      /(ماذا\s*تستطيع\s*أن\s*تفعل|ماذا\s*يمكنك\s*فعله|ماذا\s*تفعل\s*هنا|ما\s*قدراتك\s*هنا)/.test(text);
+
+    if (isActionsInquiry) {
+      let desc = "";
+      if (currentScreenId === "03") {
+        desc = "في قسم الحجوزات والتقييمات، الإجراءات المتاحة لي: 1. مراجعة واعتماد أو رفض طلبات الإلغاء والاسترداد المالي. 2. فحص واعتماد أو إخفاء تقييمات العملاء والنزلاء الموثقة. 3. تحديث حالات الحجوزات والاستفسارات، ومتابعة مدفوعات البطاقات وبوابة iyzico.";
+      } else if (currentScreenId === "05") {
+        desc = "في قسم الفنادق وبنوك الأسرّة، الإجراءات المتاحة لي: 1. مزامنة ومراقبة صحة موردي الفنادق وبنوك الغرف. 2. إدارة وتحديث أسعار الغرف والتوافر اللحظي. 3. استعراض ومطابقة تقييمات الفنادق والنزلاء من Tripadvisor. 4. إدارة ثيمات وتصنيفات الفنادق.";
+      } else if (currentScreenId === "04") {
+        desc = "في قسم الطيران، الإجراءات المتاحة لي: 1. فحص اتصال وموزعي أنظمة GDS وموزع PKFARE. 2. إدارة طلبات الحجز وإصدار التذاكر. 3. تحديث الخدمات الإضافية وهوامش الربح.";
+      } else if (currentScreenId === "11") {
+        desc = "في غرفة عمليات الذكاء الاصطناعي، الإجراءات المتاحة لي: 1. توزيع المهام بين الوكلاء المتخصصين. 2. إدارة واستدعاء خوادم أدوات MCP. 3. التبديل اللحظي بين نماذج الذكاء الاصطناعي مع حفظ الحصة المجانية وتحديث الذاكرة السيبرانية.";
+      } else if (currentScreenId === "12") {
+        desc = "في استوديو الأتمتة والتنفيذ، الإجراءات المتاحة لي: 1. تشغيل ومراقبة المهام المجدولة Cron Jobs. 2. فحص سجل التنفيذ اللحظي وتصحيح الأخطاء. 3. إدارة خوادم MCP وقنوات الإشعارات والتليجرام والواتساب.";
+      } else if (currentScreenId === "21") {
+        desc = "في استوديو نكسس الهولوجرام، الإجراءات المتاحة: 1. استعراض كافة محاور المنصة بالبطاقات ثلاثية الأبعاد التفاعلية عبر السحب بالماوس أو الكاميرا أو الأسهم مع صوت الدوران الفيزيائي. 2. فتح تفاصيل وإعدادات أي قسم في نافذة استوديو عائمة متكاملة وقابلة للتحريك والتكبير والتصغير والإغلاق. 3. تشغيل الأوامر السريعة ومراقبة مؤشرات الأداء الحية.";
+      } else if (currentScreenId === "22") {
+        desc = "في استوديو العقد والأتمتة Visual Loops، الإجراءات المتاحة: 1. فحص مسارات تدفق البيانات بين العقد. 2. تشغيل واختبار العقدة النشطة وحقن المعاملات. 3. التبديل بين قطاعات المنصة ومراقبة القياسات الحية.";
+      } else if (currentScreenId === "23") {
+        desc = "في شاشة العقل المدبر السيادي وخريطة العقد العصبية، الإجراءات المتاحة: 1. استعراض الهيكل العصبي الكامل للمنصة المكون من 1,208 عقدة و26 عنقوداً في فضاء ثلاثي الأبعاد تفاعلي مع الماوس. 2. إطلاق صعقات الاتصال الكهربائي بين العناقيد ومحاكاة النبض اللحظي. 3. محاكي استعلامات النوايا السياحية بمختلف اللهجات العربية. 4. التفاعل مع قرص الوكيل المشرف المساعد لتدقيق الفهرس وتوسيع المعجم.";
+      } else {
+        desc = `في هذا القسم (${currentScreen.title})، يمكنني قراءة وتحديث السجلات، تنفيذ أدوات خوادم MCP المرتبطة، وتشغيل الإجراءات المعتمدة مباشرة.`;
+      }
+      await saySupervisor(desc);
+      return false;
+    }
+
     const resolved = resolveIntent(text, ctx);
     if (resolved.nodeId) {
       window.dispatchEvent(new CustomEvent("studio:index-node", { detail: { nodeId: resolved.nodeId } }));
@@ -504,8 +653,8 @@ export default function UnifiedCyberneticStudio({
       }}
     >
       <CyberScrollStyle />
-      {/* 1. TOP CHROME HEADER & BOTTOM DOCK BAR (z-50); screen 02 draws its own */}
-      {currentScreenId !== "02" && !isShellScreen && (
+      {/* 1. TOP CHROME HEADER & BOTTOM DOCK BAR (z-50); screens 02 and 23 draw their own */}
+      {currentScreenId !== "02" && currentScreenId !== "23" && !isShellScreen && (
       <StudioChromeHeaderAndDock
         currentScreenTitle={currentScreen.title}
         currentScreenSubtitle={
@@ -534,7 +683,11 @@ export default function UnifiedCyberneticStudio({
       )}
 
       {/* 2. FULLSCREEN 3D CANVAS VIEW (Fixed absolute inset-0, z-0) */}
-      <main className="absolute inset-0 w-full h-full overflow-hidden z-0">
+      <main
+        className={`absolute inset-0 w-full h-full overflow-hidden z-0 ${
+          currentScreenId === "21" || currentScreenId === "22" ? "pt-[58px] pb-[68px]" : ""
+        }`}
+      >
         {/* PRIMARY VIEW: Screen 20 (Humanoid Agent Presence) */}
         {currentScreenId === "20" && !isShellScreen ? (
           <HumanoidPresenceMasterView
@@ -545,11 +698,40 @@ export default function UnifiedCyberneticStudio({
         ) : currentScreenId === "21" ? (
           <NexusOrbitalStage
             audioFrequencies={audioFrequencies}
+            isListening={isListening || isUserSpeaking}
+            isAgentSpeaking={isAgentSpeaking}
             onOpenScreen={(id) => openScreen(id)}
             onAskAgent={askAgentFromStage}
+            onOpenSupervisor={() => openScreen("20")}
+            onToggleVoice={toggleVoice}
           />
         ) : currentScreenId === "22" ? (
           <VisualLoopsStage />
+        ) : currentScreenId === "23" ? (
+          <MindGraphCockpitStage
+            key={resetWindowsKey}
+            depthLevel={depthLevel}
+            onSelectDepthLevel={setDepthLevel}
+            zoom={atlasZoom}
+            onZoomIn={() => setAtlasZoom((value) => Math.min(1.8, Number((value + 0.1).toFixed(2))))}
+            onZoomOut={() => setAtlasZoom((value) => Math.max(0.7, Number((value - 0.1).toFixed(2))))}
+            panEnabled={atlasPan}
+            onTogglePan={() => setAtlasPan((value) => !value)}
+            onResetWindows={handleResetWindows}
+            isListening={isListening}
+            isAgentSpeaking={isAgentSpeaking}
+            audioFrequencies={audioFrequencies}
+            onToggleListening={toggleVoice}
+            onStopListening={stopListening}
+            onOpenScreen={openScreen}
+            onOpenScreenSwitcher={() => setIsScreenSelectorOpen(true)}
+            onExitHome={onExit || (() => { window.location.href = "/admin"; })}
+            onOpenHelp={() => setIsReferenceModalOpen(true)}
+            onOpenSettings={() => setIsMcpWindowOpen((v) => !v)}
+            onFreshness={setDockNote}
+            focusNodeId={focusNodeId}
+            onAskAgent={askAgentFromStage}
+          />
         ) : isShellScreen ? (
           <StudioShell
             screenId={currentScreenId}
@@ -665,6 +847,7 @@ export default function UnifiedCyberneticStudio({
           currentScreenId !== "03" &&
           currentScreenId !== "21" &&
           currentScreenId !== "22" &&
+          currentScreenId !== "23" &&
           !domainScreen(currentScreenId)
         }
         onSendDirective={async (text) => {
@@ -679,6 +862,25 @@ export default function UnifiedCyberneticStudio({
           return reply;
         }}
       />
+      )}
+
+      {/* Universal Sovereign Studio Chat Window for Shell Screens & Screen 21 */}
+      {(isShellScreen || currentScreenId === "21" || currentScreenId === "22" || currentScreenId === "23") && (
+        <SovereignStudioChatWindow
+          isListening={isListening}
+          isAgentSpeaking={isAgentSpeaking}
+          audioFrequencies={audioFrequencies}
+          currentScreenId={currentScreenId}
+          defaultOpen={false}
+          onSendDirective={async (text) => {
+            const aimed = await replyAsSelectedAgent(text);
+            if (aimed === false) return "";
+            showTaskNetwork(text);
+            const reply = await dispatchDirectiveToSwarm(text);
+            await speakAgentResponse(reply);
+            return reply;
+          }}
+        />
       )}
 
       {/* 4. MODALS & TOOLS */}

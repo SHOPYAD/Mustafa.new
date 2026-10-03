@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPublicClientConfig } from "@/lib/server/env-store";
-import { cacheControlPublic, ttlGet, ttlSet } from "@/lib/server/ttl-cache";
+import { cacheControlPublic } from "@/lib/server/ttl-cache";
+import { ttlGetDistributed, ttlSetDistributed } from "@/lib/server/distributed-ttl-cache";
 import { getMobileAppStudioSettings } from "@/lib/server/mobile-app-studio-store";
 
 export const runtime = "nodejs";
@@ -10,7 +11,7 @@ export const runtime = "nodejs";
  * Never includes secrets or PocketBase admin credentials.
  */
 export async function GET() {
-  const cached = ttlGet<Record<string, unknown>>("public-config");
+  const cached = await ttlGetDistributed<Record<string, unknown>>("public-config");
   if (cached) {
     return NextResponse.json(cached, {
       headers: { "Cache-Control": cacheControlPublic(60, 180) },
@@ -22,7 +23,7 @@ export async function GET() {
     getMobileAppStudioSettings().catch(() => null),
   ]);
 
-  const config = ttlSet(
+  const config = await ttlSetDistributed(
     "public-config",
     {
       ok: true,

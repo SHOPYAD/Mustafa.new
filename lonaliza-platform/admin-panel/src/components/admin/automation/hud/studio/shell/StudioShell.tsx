@@ -10,6 +10,7 @@ import { layoutCumulative, layoutFor, layoutPresence, type MapLayout } from "@/l
 import dynamic from "next/dynamic";
 
 const HumanoidMasterAvatar = dynamic(() => import("../../avatar/HumanoidMasterAvatar"), { ssr: false });
+const ThesaurusManager = dynamic(() => import("../thesaurus/ThesaurusManager").then((m) => m.ThesaurusManager), { ssr: false });
 import { NeuralRenderer, satellitePos } from "@/lib/studio/render/neural-renderer";
 import { useAgentStore, phaseLabel, type AgentPhase } from "@/lib/studio/agent/agent-store";
 import { openStudioWindow, useWindowStore, type WindowState } from "@/lib/studio/windows/window-store";
@@ -446,12 +447,6 @@ export default function StudioShell(props: StudioShellProps) {
       onPointerLeave={() => rendererRef.current?.setPointer(null)}
       style={{ ...ADMIN_THEME_OVERRIDES, position: "fixed", inset: 0, overflow: "hidden", background: UI.bg, fontFamily: FONT, color: UI.text, userSelect: "none" }}>
       <canvas ref={canvasRef} aria-hidden style={{ position: "absolute", inset: 0, width: "100%", height: "100%", cursor: "grab", touchAction: "none" }} onWheel={onWheel} onPointerDown={onPointerDown} />
-      <aside dir="rtl" aria-label="محادثة هذه الشاشة" style={{ position: "absolute", left: 16, bottom: 100, width: 320, maxHeight: 220, overflow: "auto", zIndex: 30, background: "rgba(4,16,28,0.94)", border: "1px solid rgba(64,214,245,0.45)", borderRadius: 12, padding: 10, color: "#e7f7ff" }}>
-        <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 6 }}>محادثة هذه الشاشة</div>
-        {shellChat.length === 0 ? <div style={{ fontSize: 12, color: "#93a8b3" }}>لا رسائل بعد على هذه الشاشة.</div> : shellChat.slice(-6).map((row) => (
-          <p key={row.id} style={{ fontSize: 12, margin: "4px 0" }}><b>{row.speakerName || (row.sender === "user" ? "المدير" : "المشرف")}: </b>{row.text}</p>
-        ))}
-      </aside>
 
       {layout.presence ? (
         <div
@@ -816,6 +811,12 @@ function WindowHost({
       return (
         <WindowChrome win={win} scale={scale}>
           <SwarmWindow onDelegate={onAsk} />
+        </WindowChrome>
+      );
+    case "thesaurus":
+      return (
+        <WindowChrome win={win} scale={scale} bodyPadding={0}>
+          <ThesaurusManager />
         </WindowChrome>
       );
     default:

@@ -9,6 +9,8 @@ import {
 } from "@/data/site-contact";
 import type { SiteContact } from "@/types/site-contact";
 
+import { useStorefrontInit } from "@/providers/StorefrontInitProvider";
+
 /**
  * SSR placeholder: empty `social` so public chrome never paints the default
  * “all networks enabled” list before localStorage is read.
@@ -21,18 +23,41 @@ function ssrContactPlaceholder(): SiteContact {
   };
 }
 
-/** Live site contact CMS (localStorage + cross-tab sync). */
+/** Live site contact CMS (localStorage + cross-tab sync + init context). */
 export function useSiteContact(): SiteContact {
-  // Same snapshot on server and the first client paint. Reading localStorage
-  // in useState (via `typeof window`) made Footer/SocialSidebar HTML differ
-  // from SSR and triggered React #418.
-  const [contact, setContact] = useState<SiteContact>(() => ssrContactPlaceholder());
+  const init = useStorefrontInit();
+  const [contact, setContact] = useState<SiteContact>(() => {
+    if (init.contact) return init.contact;
+    return ssrContactPlaceholder();
+  });
 
   useEffect(() => {
+    if (init.contact) {
+      setContact(init.contact);
+    }
+  }, [init.contact]);
+
+  useEffect(() => {
+    if (init.contact) {
+      const onCustom = (e: Event) => {
+        const detail = (e as CustomEvent<SiteContact>).detail;
+        if (detail) setContact(detail);
+      };
+      const onStorage = (e: StorageEvent) => {
+        if (e.key === SITE_CONTACT_STORAGE_KEY) setContact(getSiteContact());
+      };
+      window.addEventListener(SITE_CONTACT_UPDATED_EVENT, onCustom);
+      window.addEventListener("storage", onStorage);
+      return () => {
+        window.removeEventListener(SITE_CONTACT_UPDATED_EVENT, onCustom);
+        window.removeEventListener("storage", onStorage);
+      };
+    }
+
     const refresh = () => setContact(getSiteContact());
     refresh();
 
-    // Fetch live settings from server
+    // Fetch live settings from server only when outside bootstrap
     fetch("/api/public-contact")
       .then((res) => (res.ok ? res.json() : null))
       .then((payload) => {
@@ -55,7 +80,6 @@ export function useSiteContact(): SiteContact {
       if (e.key === SITE_CONTACT_STORAGE_KEY) refresh();
     };
 
-    // Re-sync when returning to the tab (storage events only fire cross-tab)
     const onFocus = () => refresh();
 
     window.addEventListener(SITE_CONTACT_UPDATED_EVENT, onCustom);
@@ -68,7 +92,8 @@ export function useSiteContact(): SiteContact {
       window.removeEventListener("focus", onFocus);
       window.removeEventListener("pageshow", onFocus);
     };
-  }, []);
+  }, [init.contact]);
 
   return contact;
 }
+

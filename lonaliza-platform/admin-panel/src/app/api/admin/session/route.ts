@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     }
 
     const ip = clientIp(req);
-    const limited = rateLimit(`admin-login:${ip}`, 5, 15 * 60 * 1000);
+    const limited = await rateLimit(`admin-login:${ip}`, 5, 15 * 60 * 1000);
     if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
     const username = typeof body.username === "string" ? body.username.trim() : "";

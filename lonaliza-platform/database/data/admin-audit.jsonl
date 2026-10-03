@@ -70,3 +70,5 @@
 {"at":"2026-09-24T12:31:00.621Z","action":"admin.login","ok":true,"ip":"::ffff:127.0.0.1"}
 {"at":"2026-09-29T13:23:11.114Z","action":"admin.login","ok":true,"ip":"::ffff:127.0.0.1"}
 {"at":"2026-09-29T14:43:49.704Z","action":"admin.login","ok":true,"ip":"78.190.153.161"}
+{"at":"2026-09-30T20:43:44.543Z","action":"admin.login","ok":false,"ip":"78.190.153.161","detail":"invalid_credentials"}
+{"at":"2026-09-30T20:44:17.437Z","action":"admin.login","ok":false,"ip":"78.190.153.161","detail":"invalid_credentials"}

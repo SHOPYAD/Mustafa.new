@@ -1,0 +1,61 @@
+[
+  {
+    "id": "fewshot_1",
+    "query": "ابغى حجز فندق فخم في انطاليا",
+    "corrected_cluster": "hotels.search",
+    "target_nodes": [
+      "hub.hotels.bookings",
+      "page.site.hotels",
+      "screen.05",
+      "page.site.account_chat_id",
+      "page.site.community_user_id",
+      "page.site.hotels_book"
+    ],
+    "supervisor_notes": "Always prioritize Maxx Royal or Regnum Carya for VIP guests in Antalya",
+    "approved": true,
+    "created_at": 1790975538.6634324
+  },
+  {
+    "id": "fewshot_2",
+    "query": "ابغى حجز فندق فخم في انطاليا",
+    "corrected_cluster": "hotels.search",
+    "target_nodes": [
+      "hub.hotels.bookings",
+      "page.site.hotels",
+      "screen.05",
+      "page.site.account_chat_id",
+      "page.site.community_user_id",
+      "page.site.hotels_book"
+    ],
+    "supervisor_notes": "Always prioritize Maxx Royal or Regnum Carya for VIP guests in Antalya",
+    "approved": true,
+    "created_at": 1790975562.8830934
+  },
+  {
+    "id": "fewshot_3",
+    "query": "test",
+    "corrected_cluster": null,
+    "target_nodes": [],
+    "supervisor_notes": "rule",
+    "approved": true,
+    "created_at": 1790977471.7855694
+  },
+  {
+    "id": "fewshot_4",
+    "query": "test",
+    "corrected_cluster": null,
+    "target_nodes": [],
+    "supervisor_notes": "rule",
+    "approved": true,
+    "created_at": 1790977499.284339
+  },
+  {
+    "id": "fewshot_5",
+    "query": "test",
+    "corrected_cluster": null,
+    "target_nodes": [],
+    "supervisor_notes": "rule",
+    "approved": true,
+    "created_at": 1790980426.223116
+  }
+]

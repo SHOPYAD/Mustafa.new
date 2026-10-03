@@ -20,6 +20,11 @@ module.exports = {
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3047",
       interpreter: "/root/.nvm/versions/node/v20.20.2/bin/node",
+      instances: 2,
+      exec_mode: "cluster",
+      kill_timeout: 5000,
+      wait_ready: true,
+      listen_timeout: 10000,
       env: {
         NODE_ENV: "production",
         PORT: "3047",
@@ -40,6 +45,11 @@ module.exports = {
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3048",
       interpreter: "/root/.nvm/versions/node/v20.20.2/bin/node",
+      instances: 2,
+      exec_mode: "cluster",
+      kill_timeout: 5000,
+      wait_ready: true,
+      listen_timeout: 10000,
       env: {
         NODE_ENV: "production",
         PORT: "3048",

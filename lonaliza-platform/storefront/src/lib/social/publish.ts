@@ -146,7 +146,7 @@ export async function publishToConnectedAccounts(
     }
 
     try {
-      assertPublishRateLimit(platform);
+      await assertPublishRateLimit(platform);
       results.push(await publishOne(platform, account, normalized));
     } catch (err) {
       const mapped = mapUnknownError(platform, err);

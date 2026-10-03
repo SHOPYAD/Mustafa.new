@@ -14,7 +14,8 @@ import AuthGoogleFeedback from "@/components/auth/AuthGoogleFeedback";
 import AffiliateTracker from "@/components/affiliate/AffiliateTracker";
 import { BuilderModeProvider } from "@/components/builder/BuilderModeProvider";
 import SearchTabsProvider from "@/components/search/SearchTabsProvider";
-import { getSearchTabsConfig } from "@/lib/server/search-tabs-store";
+import { StorefrontInitProvider } from "@/providers/StorefrontInitProvider";
+import { getStorefrontInitData } from "@/lib/server/site-init-loader";
 import { isOrigin } from "@/lib/server/deployment-role";
 import B2BLandingChatWidget from "@/components/chat/B2BLandingChatWidget";
 import { headers, cookies } from "next/headers";
@@ -32,8 +33,8 @@ export default async function SiteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [searchTabs, theme, headerList, cookieStore] = await Promise.all([
-    getSearchTabsConfig(),
+  const [initData, theme, headerList, cookieStore] = await Promise.all([
+    getStorefrontInitData(),
     getBrandTheme(),
     headers(),
     cookies(),
@@ -53,13 +54,15 @@ export default async function SiteLayout({
       <SiteThemeStyle />
       <AppModeClientSync initialIsApp={isApp} />
       <ThemeProvider initialTheme={theme}>
-        <BuilderModeProvider>
-          <BrandingProvider>
-            <CustomerAuthProvider>
-              <SearchTabsProvider
-                initialVisibility={searchTabs.visibility}
-                initialOrder={searchTabs.order}
-              >
+        <StorefrontInitProvider initialData={initData}>
+          <BuilderModeProvider>
+            <BrandingProvider>
+              <CustomerAuthProvider>
+                <SearchTabsProvider
+                  initialVisibility={initData.searchTabs.visibility}
+                  initialOrder={initData.searchTabs.order}
+                >
+
                 <SiteTrackingScripts />
                 <AffiliateTracker />
                 {!hideSiteChrome && (
@@ -86,6 +89,7 @@ export default async function SiteLayout({
             </CustomerAuthProvider>
           </BrandingProvider>
         </BuilderModeProvider>
+        </StorefrontInitProvider>
       </ThemeProvider>
     </>
   );

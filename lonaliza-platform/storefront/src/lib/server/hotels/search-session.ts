@@ -20,6 +20,7 @@ import { resolveDestination, type ResolvedDestination } from "./destinations";
 import { groupHotelCards, type IdentityReviewCandidate, type MergedHotel } from "./identity-resolver";
 import { nightsBetween } from "./normalize";
 import { supplyLogger } from "./telemetry";
+import { hotelSearchFlight } from "@/lib/server/single-flight";
 
 export interface SupplySearchInput {
   query: string;
@@ -265,7 +266,8 @@ async function fanOut(sid: string, input: SupplySearchInput, dest: ResolvedDesti
     });
     const p = (async () => {
       try {
-        const cards = await runSupplier(supplier, input, dest);
+        const flightKey = `${supplier}:${dest.id || dest.nameEn || ""}:${input.checkIn}:${input.checkOut}:${input.adults}:${input.rooms}`;
+        const cards = await hotelSearchFlight.do(flightKey, () => runSupplier(supplier, input, dest), { ttlMs: 15_000 });
         const latencyMs = Date.now() - startedAt;
         supplyLogger.info({ sid, supplier, count: cards.length, latencyMs }, "supplier search done");
         await mutateSession(sid, (s) => {

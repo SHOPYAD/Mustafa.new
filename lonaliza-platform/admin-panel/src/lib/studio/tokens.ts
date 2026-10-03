@@ -37,6 +37,14 @@ export const UI = {
 /** مقاس التصميم المرجعي. وحدات عالم وليست إطارًا. */
 export const DESIGN = { w: 1672, h: 941, headerH: 79, dockH: 82 } as const;
 
+/** طبقات الاستوديو: المسرح → الدock → شريط الاستعادة → اللوحات العائمة. */
+export const STUDIO_Z = {
+  stage: 0,
+  dock: 1_000_002,
+  tray: 1_000_003,
+  floating: 1_000_004,
+} as const;
+
 /** يثبت متغيرات ثيم لوحة الإدارة داخل الاستوديو كي لا تفرض قواعد الوضع الفاتح (!important) خلفيات بيضاء. */
 export const ADMIN_THEME_OVERRIDES = {
   "--admin-bg-surface": "rgba(2,10,18,0.85)",

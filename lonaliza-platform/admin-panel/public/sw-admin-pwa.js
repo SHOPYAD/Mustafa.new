@@ -1,5 +1,5 @@
 /* Alrayyan admin PWA — /admin scope. App shell only; never cache /api. */
-const CACHE = "alrayyan-admin-pwa-v1";
+const CACHE = "alrayyan-admin-pwa-v2";
 const SHELL = ["/admin", "/admin/manifest.webmanifest", "/logo.png", "/favicon.png"];
 
 self.addEventListener("install", (event) => {

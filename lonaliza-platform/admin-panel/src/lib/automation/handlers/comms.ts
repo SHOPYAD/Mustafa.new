@@ -298,7 +298,7 @@ export async function sendOtp(input: SendOtpInput): Promise<SendOtpResult> {
   if (!channelReady(settings, input.channel) && input.channel !== "email") {
     return { ...base, error: `${input.channel}_not_configured` };
   }
-  const limited = rateLimit(`otp-send:${to}:${input.purpose}`, 5, 15 * 60 * 1000);
+  const limited = await rateLimit(`otp-send:${to}:${input.purpose}`, 5, 15 * 60 * 1000);
   if (!limited.ok) return { ...base, error: "rate_limited" };
 
   if (

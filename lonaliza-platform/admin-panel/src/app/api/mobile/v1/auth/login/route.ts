@@ -6,7 +6,7 @@ import { getPocketBaseUrl } from "@/lib/pocketbase/admin";
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
-  const limited = rateLimit(`mobile-login:${clientIp(req)}`, 10, 15 * 60 * 1000);
+  const limited = await rateLimit(`mobile-login:${clientIp(req)}`, 10, 15 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown>;

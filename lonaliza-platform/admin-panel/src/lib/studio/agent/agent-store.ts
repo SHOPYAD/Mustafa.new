@@ -51,9 +51,12 @@ interface AgentStore {
   lastSpeaker: string;
   coordinate: boolean;
   agentsVisible: boolean;
-  speakingId: string | null;
   chatLog: { id: string; sender: "user" | "assistant"; speakerName?: string; text: string; time: string }[];
   appendChat: (message: AgentStore["chatLog"][number]) => void;
+  chatWindowOpen: boolean;
+  setChatWindowOpen: (open: boolean) => void;
+  useExternalAiEngine: boolean;
+  setUseExternalAiEngine: (enabled: boolean) => void;
   setTalkTarget: (target: AgentStore["talkTarget"]) => void;
   setLastSpeaker: (name: string) => void;
   setCoordinate: (on: boolean) => void;
@@ -103,6 +106,10 @@ export const useAgentStore = create<AgentStore>((set, get) => ({
   speakingId: null,
   chatLog: [],
   appendChat: (message) => set((s) => ({ chatLog: s.chatLog.some((row) => row.id === message.id || (row.text === message.text && row.sender === message.sender)) ? s.chatLog : [...s.chatLog, message].slice(-80) })),
+  chatWindowOpen: false,
+  setChatWindowOpen: (chatWindowOpen) => set({ chatWindowOpen }),
+  useExternalAiEngine: true,
+  setUseExternalAiEngine: (useExternalAiEngine) => set({ useExternalAiEngine }),
   setTalkTarget: (talkTarget) => set({ talkTarget, lastSpeaker: talkTarget?.nameAr || "الوكيل المشرف", coordinate: false }),
   setLastSpeaker: (lastSpeaker) => set({ lastSpeaker }),
   setCoordinate: (coordinate) => set({ coordinate, talkTarget: coordinate ? null : get().talkTarget }),

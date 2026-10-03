@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useCallback } from "react";
-import HolographicCylinderStage from "@/components/admin/automation/hud/nexus/HolographicCylinderStage";
+import { NexusMasterStage } from "@/components/admin/automation/hud/nexus/NexusMasterStage";
 import { NEXUS_HUB_CARDS, type NexusHubCard } from "@/lib/studio/nexus/nexus-cards.generated";
 import { openStudioWindow, useWindowStore } from "@/lib/studio/windows/window-store";
+
 export interface NexusOrbitalStageProps {
   audioFrequencies?: number[];
-  onOpenScreen: (screenId: string) => void;
+  isListening?: boolean;
+  isAgentSpeaking?: boolean;
+  onOpenScreen?: (screenId: string) => void;
   onAskAgent?: (directive: string) => Promise<string>;
+  onOpenSupervisor?: () => void;
+  onToggleVoice?: () => void;
 }
 
 function windowIdForHub(hubId: string) {
@@ -15,11 +20,11 @@ function windowIdForHub(hubId: string) {
 }
 
 export default function NexusOrbitalStage(props: NexusOrbitalStageProps) {
-  const { onOpenScreen, onAskAgent, audioFrequencies = [] } = props;
+  const { onOpenScreen, onAskAgent, audioFrequencies = [], isListening, isAgentSpeaking, onOpenSupervisor, onToggleVoice } = props;
 
   const openHubCyberSettings = useCallback(
     (card: NexusHubCard) => {
-      onOpenScreen(card.screenId);
+      // Do not navigate away from Screen 21. Open strictly in-place in studio.
       const href = card.href;
       const embedHref = `${href}${href.includes("?") ? "&" : "?"}studio=1`;
       openStudioWindow(
@@ -37,7 +42,7 @@ export default function NexusOrbitalStage(props: NexusOrbitalStageProps) {
         { w: 1080, h: 660 }
       );
     },
-    [onOpenScreen]
+    []
   );
 
   const closeHubCyberSettings = useCallback((hubId: string) => {
@@ -46,7 +51,7 @@ export default function NexusOrbitalStage(props: NexusOrbitalStageProps) {
 
   const handleSendDirective = useCallback(
     (directive: string) => {
-      onAskAgent?.(directive);
+      return onAskAgent?.(directive);
     },
     [onAskAgent]
   );
@@ -60,13 +65,15 @@ export default function NexusOrbitalStage(props: NexusOrbitalStageProps) {
   );
 
   return (
-    <HolographicCylinderStage
-      frequencies={audioFrequencies}
+    <NexusMasterStage
+      audioFrequencies={audioFrequencies}
+      isListening={isListening}
+      isAgentSpeaking={isAgentSpeaking}
       onSendDirective={handleSendDirective}
-      onSelectSector={handleSelectSector}
-      onOpenHub={openHubCyberSettings}
-      onCloseHub={(hubId) => closeHubCyberSettings(hubId)}
-      className="absolute inset-0"
+      onOpenSupervisor={onOpenSupervisor}
+      onToggleVoice={onToggleVoice}
+      onOpenRealSection={openHubCyberSettings}
     />
   );
 }
+

@@ -1,0 +1,16 @@
+{
+  "public_browse": {
+    "http_req_failed": ["rate<0.005"],
+    "http_req_duration": ["p(95)<800"]
+  },
+  "flight_search": {
+    "http_req_failed": ["rate<0.02"],
+    "checks": ["rate>0.98"]
+  },
+  "hotel_search": {
+    "http_req_failed": ["rate<0.02"]
+  },
+  "auth_rate_limit": {
+    "http_req_failed": ["rate<0.05"]
+  }
+}

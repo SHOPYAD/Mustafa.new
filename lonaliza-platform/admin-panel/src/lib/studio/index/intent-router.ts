@@ -18,6 +18,8 @@ const READINESS = /(جاهزيه|جاهزية|اطلاق|انتاج|نواقص|�
 const RADAR = /(رادار|استخبارات الشركات|مكاتب سياح)/;
 const TRAVEL = /(زيارات|اداء الموقع|مصادر الزيار)/;
 const DISCUSS = /(تناقش|نقاش|ناقشوا|نسق الوكلاء|نسّق الوكلاء)/;
+const ACTIONS_INQUIRY = /(ما\s*هي|ماهي|ماذا|ما|عرض|قائمة|وش)?\s*(الاجراءات|الإجراءات|العمليات|المهام|القدرات|الصلاحيات|الأدوات|الادوات|ما\s*تستطيع)\s*(المتاحة|المتوفرة|التي\s*يمكنك|الممكنة|في\s*هذا\s*القسم|هنا|اتخاذها|فعله)/;
+const WHAT_CAN_YOU_DO = /(ماذا\s*تستطيع\s*أن\s*تفعل|ماذا\s*يمكنك\s*فعله|ماذا\s*تفعل\s*هنا|ما\s*قدراتك\s*هنا)/;
 const CREATIVE_VIDEO = /(فيديو|ريلز|heygen|higgsfield|canva|حمله اعلان|حملة إعلان)/i;
 const ARTICLE_STRICT = /(مقال|مدونه|انشر مقال|اكتب مقال|blog|article)/i;
 
@@ -115,13 +117,18 @@ export function resolveIntent(raw: string, ctx: CommandContext): ResolvedIntent 
 
   const opPlan = planStudioCapability(raw);
   if (opPlan) {
+    if (opPlan.capabilityId === "studio.open_screen" && opPlan.input?.screenId) {
+      const sid = String(opPlan.input.screenId);
+      const target: NavTarget = { screenId: sid, hubId: `screen.${sid}`, label: opPlan.why || `Screen ${sid}` };
+      return { kind: "navigate", target, plans: [opPlan], nodeId: `screen.${sid}` };
+    }
     const match = bestPlatformNode(raw, ctx.screenId);
     const target = match ? navTargetFromNode(match.node) : null;
     if (target) return { kind: "navigate", target, plans: [opPlan], nodeId: match!.node.id };
     return { kind: "none", plans: [opPlan], nodeId: "operational" };
   }
 
-  if (DISCUSS.test(text)) return { kind: "discuss" };
+  if (DISCUSS.test(text) || ACTIONS_INQUIRY.test(text) || WHAT_CAN_YOU_DO.test(text)) return { kind: "discuss" };
 
   if (READINESS.test(text)) return { kind: "readiness", nodeId: "ui.briefing.open" };
   if (RADAR.test(text)) return { kind: "radar" };

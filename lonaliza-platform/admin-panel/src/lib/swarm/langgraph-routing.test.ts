@@ -14,8 +14,13 @@ describe("langgraph internal routing", () => {
     expect(resolveIntent("ما الخوادم المفعلة", { screenId: "20", last: null }).kind).toBe("readiness");
   });
 
-  it("article directive stays creative", () => {
+  it("article directive stays creative and does not trap cities or reports", () => {
     expect(isArticleDirective("اكتب مقال SEO عن ليون")).toBe(true);
+    expect(isArticleDirective("انشر تدوينة سياحية عن كان")).toBe(true);
+    expect(isArticleDirective("فنادق فرنسا")).toBe(false);
+    expect(isArticleDirective("باريس")).toBe(false);
+    expect(isArticleDirective("اكتب تقرير عن حالة الخوادم")).toBe(false);
+    expect(isArticleDirective("تعديل أسعار الفنادق")).toBe(false);
     expect(resolveIntent("اكتب مقال SEO عن ليون", { screenId: "20", last: null }).kind).toBe("article");
   });
 

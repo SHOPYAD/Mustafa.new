@@ -78,14 +78,17 @@ export default function AgentWarRoom({
   const [streamFilter, setStreamFilter] = useState<"all" | "proposal" | "directive" | "discussion">("all");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [hudStudioOpen, setHudStudioOpen] = useState(true);
+  const [screenParam, setScreenParam] = useState<string | null>(null);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const directiveInputRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
+      const scr = params.get("screen");
       const embed = params.get("studio") === "1" || params.get("classic") === "true";
-      setHudStudioOpen(Boolean(params.get("screen")) && !embed);
+      if (scr) setScreenParam(scr);
+      setHudStudioOpen(Boolean(scr) && !embed);
     }
   }, []);
 
@@ -311,6 +314,7 @@ export default function AgentWarRoom({
   if (hudStudioOpen) {
     const studio = (
       <SciFiAgentHudStudio
+        initialScreenId={screenParam || "20"}
         onExit={() => setHudStudioOpen(false)}
         apiEndpoint={apiEndpoint}
         initialAgents={agents}

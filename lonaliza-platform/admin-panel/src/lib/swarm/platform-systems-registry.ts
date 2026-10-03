@@ -73,6 +73,8 @@ const DIRECTIVE_RULES: Array<{ id: string; pattern: RegExp }> = [
   { id: "trends", pattern: /trends|اتجاهات/i },
   { id: "images", pattern: /unsplash|pexels|stock photo/i },
   { id: "swarm", pattern: /swarm|war room|غرفة عمل|مشرف/i },
+  { id: "nexus", pattern: /nexus|سلايد البطاق|هولوغر/i },
+  { id: "loops", pattern: /loops|تدفق الأتمتة|visual loops|العقد والأتمتة/i },
 ];
 
 export function platformToolIdForDirective(directive: string): string | null {

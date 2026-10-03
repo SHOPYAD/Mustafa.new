@@ -97,8 +97,12 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
 
   useEffect(() => {
     if (editorMode) return;
+    // Skip redundant fetch if draft was already provided via SSR
+    if (initialDraft && Array.isArray(initialDraft.layout) && initialDraft.layout.length > 0) {
+      return;
+    }
     let cancelled = false;
-    void fetch("/api/homepage-template", { cache: "no-store" })
+    void fetch("/api/homepage-template")
       .then((res) => res.json())
       .then((data) => {
         if (!cancelled && data?.draft) setDraft(data.draft);
@@ -107,7 +111,7 @@ function HomepageViewInner({ initialDraft }: HomepageViewProps) {
     return () => {
       cancelled = true;
     };
-  }, [editorMode]);
+  }, [editorMode, initialDraft]);
 
   useEffect(() => {
     /* Agent L2: live inspector bind */

@@ -117,7 +117,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const limited = rateLimit(`booking-post:${clientIp(request)}`, 8, 10 * 60 * 1000);
+  const limited = await rateLimit(`booking-post:${clientIp(request)}`, 8, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown>;

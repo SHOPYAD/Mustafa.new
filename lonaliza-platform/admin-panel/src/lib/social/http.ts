@@ -30,8 +30,8 @@ const PUBLISH_LIMIT: Record<SocialPlatform, number> = {
   x: 8,
 };
 
-export function assertPublishRateLimit(platform: SocialPlatform): void {
-  const check = rateLimit(
+export async function assertPublishRateLimit(platform: SocialPlatform): Promise<void> {
+  const check = await rateLimit(
     `social-publish:${platform}`,
     PUBLISH_LIMIT[platform],
     PUBLISH_WINDOW_MS

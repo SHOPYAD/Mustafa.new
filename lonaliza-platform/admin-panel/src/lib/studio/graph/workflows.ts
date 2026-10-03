@@ -29,7 +29,7 @@ export const WORKFLOWS: WorkflowDef[] = [
   {
     id: "cancellation_review",
     labelAr: "مراجعة طلبات الإلغاء",
-    match: /(مراجعه الالغاء|مراجعة الإلغاء|طلبات الالغاء المعلقه|cancellation review)/,
+    match: /(مراجعه الالغاء|مراجعة الإلغاء|مراجعه طلبات الالغاء|مراجعة طلبات الإلغاء|تدفق الالغاء|cancellation review)/,
     steps: [
       { capabilityId: "bookings.cancellation.list", input: {}, dryRun: true },
       { capabilityId: "studio.open_table", input: { collection: "hotel_bookings", q: "cancel" } },

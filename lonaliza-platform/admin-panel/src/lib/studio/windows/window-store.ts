@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type WindowKind = "context" | "explorer" | "inspector" | "table" | "record" | "route" | "preview" | "trace" | "agent" | "agents";
+export type WindowKind = "context" | "explorer" | "inspector" | "table" | "record" | "route" | "preview" | "trace" | "agent" | "agents" | "thesaurus";
 
 export interface WindowState {
   id: string;

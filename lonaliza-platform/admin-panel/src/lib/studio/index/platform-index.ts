@@ -7,6 +7,7 @@ import { normalizeArabic } from "@/lib/neural-studio/domain-systems";
 export * from "./types";
 export { PLATFORM_INDEX_NODES, PLATFORM_INDEX_BY_ID, PLATFORM_INDEX_GENERATED_AT } from "./platform-index.generated";
 export { INTENT_LEXICON, LEXICON_BY_TERM } from "./intent-lexicon.generated";
+export { getThesaurusStats } from "./domain-thesaurus";
 
 export function getPlatformNode(id: string): PlatformIndexNode | undefined {
   return PLATFORM_INDEX_BY_ID[id];

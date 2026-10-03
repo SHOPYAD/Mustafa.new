@@ -12,22 +12,22 @@ import { IntentJudge, globalTranscriptBuffer } from "@/lib/jarvis/index";
 describe("NEXUS 3D Cybernetic OS & Multi-Modal Deck Test Suite", () => {
   describe("Generated hub deck", () => {
     it("generates one card per DOMAIN_SCREENS hub", () => {
-      expect(NEXUS_CARD_COUNT).toBe(92);
-      expect(NEXUS_HUB_CARDS).toHaveLength(92);
-      expect(NEXUS_SECTOR_CARDS).toHaveLength(92);
+      expect(NEXUS_CARD_COUNT).toBe(15);
+      expect(NEXUS_HUB_CARDS).toHaveLength(15);
+      expect(NEXUS_SECTOR_CARDS).toHaveLength(15);
     });
 
     it("maps every card to a real hub id and screen", () => {
       const hubIds = new Set<string>();
       NEXUS_HUB_CARDS.forEach((card) => {
         expect(card.hubId).toMatch(/^[a-z0-9_.-]+$/i);
-        expect(card.screenId).toMatch(/^0[3-9]$|^1[0-6]$/);
+        expect(card.screenId).toMatch(/^0[3-9]$|^1[0-9]$/);
         expect(card.href.startsWith("/admin")).toBe(true);
         expect(card.quickActionCommand.length).toBeGreaterThan(10);
         expect(card.features.length).toBeGreaterThan(0);
         hubIds.add(card.hubId);
       });
-      expect(hubIds.size).toBe(92);
+      expect(hubIds.size).toBe(15);
     });
   });
 

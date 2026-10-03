@@ -6,7 +6,7 @@ import { clientIp, rateLimit, rateLimitResponse } from "@/lib/server/rate-limit"
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(`flights-ancillary:${clientIp(req)}`, 30, 10 * 60 * 1000);
+  const limited = await rateLimit(`flights-ancillary:${clientIp(req)}`, 30, 10 * 60 * 1000);
   if (!limited.ok) return rateLimitResponse(limited.retryAfterSec);
 
   let body: Record<string, unknown> = {};

@@ -97,6 +97,8 @@ export async function collectPlatformGroundedSnapshot(): Promise<PlatformGrounde
     fact("nostr_relays", "ريلايز نوستر النشطة", activeRelays, "nostr-social-store", Boolean(social)),
     fact("mcp_servers", "خوادم MCP المدمجة", BUILTIN_MCP_IDS.length, "mcp/catalog", true),
     fact("pocketbase", "PocketBase متصل", pocketbase, "dashboard-stats", Boolean(stats)),
+    fact("studio_nexus", "مسرح Nexus (92 بطاقة)", "screen.21", "nexus-studio-map", true),
+    fact("studio_loops", "استوديو الأتمتة البصرية", "screen.22", "loops-studio-map", true),
   ];
 
   const byId: Record<string, { task: string; metric: string; status: LiveAgentSnapshot["currentStatus"]; connected: boolean; source: string; facts: GroundedFact[] }> = {

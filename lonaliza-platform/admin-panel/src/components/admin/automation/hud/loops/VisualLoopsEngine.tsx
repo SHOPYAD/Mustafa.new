@@ -2,6 +2,14 @@
 
 import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import { getStudioSessionId } from "@/lib/studio/capabilities/client";
+import { CyberFloatingPanel } from "@/components/admin/automation/hud/studio/shell/CyberFloatingPanel";
+import { LoopsPanelTray } from "./LoopsPanelTray";
+import {
+  EnterpriseNodeLibraryDrawer,
+  EnterpriseNodeDef,
+  ENTERPRISE_NODE_CATALOG,
+} from "./EnterpriseNodeLibraryDrawer";
+import { STUDIO_Z } from "@/lib/studio/tokens";
 import * as THREE from "three";
 import {
   Play,
@@ -865,7 +873,11 @@ export default function VisualLoopsEngine() {
   const [panOffset, setPanOffset] = useState<{ x: number; y: number }>({ x: 40, y: 60 });
   const [zoomScale, setZoomScale] = useState<number>(0.95);
   const [isPanning, setIsPanning] = useState<boolean>(false);
-  const [inspectorOpen, setInspectorOpen] = useState<boolean>(true);
+  const [inspectorOpen, setInspectorOpen] = useState<boolean>(false);
+  const [showNavPanel, setShowNavPanel] = useState(true);
+  const [showSetupPanel, setShowSetupPanel] = useState(true);
+  const [showNodePalette, setShowNodePalette] = useState(false);
+  const [isNodeLibraryOpen, setIsNodeLibraryOpen] = useState<boolean>(false);
 
   // Pre-flight & Credentials Chat Vault State
   const [isCredsVaultOpen, setIsCredsVaultOpen] = useState<boolean>(false);
@@ -1169,6 +1181,47 @@ export default function VisualLoopsEngine() {
     setSelectedNodeId(newNodeId);
   };
 
+  // Add a new enterprise node from the Enterprise Node Catalog
+  const handleAddEnterpriseNode = (nodeDef: EnterpriseNodeDef) => {
+    const newNodeId = `node-${nodeDef.id}-${Date.now().toString().slice(-4)}`;
+    const rightmostX = activeLoop.nodes.reduce(
+      (max, n, i) => Math.max(max, getNodePos(n, i).x),
+      100
+    );
+    const newNode: BlueprintLoopNode = {
+      id: newNodeId,
+      type: nodeDef.type,
+      title: nodeDef.title,
+      subtitle: nodeDef.subtitle,
+      details: nodeDef.description,
+      status: "idle",
+      parameters: { ...nodeDef.defaultParams },
+      position: { x: rightmostX + 320, y: 140 },
+    };
+
+    setLoops((prevLoops) =>
+      prevLoops.map((loop) => {
+        if (loop.id !== activeLoop.id) return loop;
+        const lastNode = loop.nodes[loop.nodes.length - 1];
+        const newConns = [...loop.connections];
+        if (lastNode) {
+          newConns.push({
+            id: `conn-auto-${Date.now()}`,
+            from: lastNode.id,
+            to: newNodeId,
+          });
+        }
+        return {
+          ...loop,
+          nodes: [...loop.nodes, newNode],
+          connections: newConns,
+        };
+      })
+    );
+    setSelectedNodeId(newNodeId);
+    setIsNodeLibraryOpen(false);
+  };
+
   // Delete selected node
   const handleDeleteNode = (nodeId: string) => {
     setLoops((prevLoops) =>
@@ -1424,134 +1477,21 @@ export default function VisualLoopsEngine() {
     centerFlowInView();
   };
 
-  return (
-    <div className="relative w-full h-full flex flex-col min-h-0 overflow-hidden bg-[#010712] text-slate-100 font-sans select-none">
-      {/* ========================================================================= */}
-      {/* 1. Header Toolbar & Controls                                              */}
-      {/* ========================================================================= */}
-      <div className="relative z-20 px-6 py-2.5 border-b border-cyan-500/25 bg-[#031124]/95 backdrop-blur-xl flex flex-wrap items-center justify-between gap-4 shrink-0 shadow-lg">
-        {/* Title & Info */}
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/35 text-cyan-400 shadow-[0_0_15px_rgba(0,229,255,0.25)]">
-            <Zap className="w-5 h-5 animate-pulse text-cyan-400" />
-          </div>
-          <div className="flex flex-col text-right">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-black font-mono text-white tracking-wide">
-                استوديو العقد والأتمتة السيبرانية (Interactive Visual Loops Canvas)
-              </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                DRAG & CONNECT BLUEPRINTS v6.0
-              </span>
-            </div>
-            <span className="text-xs text-slate-400 mt-0.5">
-              كانفاس تفاعلي لا نهائي: سحب العقد بحرية بالماوس · أسلاك بيزيه منحنية ديناميكية · نبضات ضوئية متحركة
-            </span>
-          </div>
-        </div>
+  const sectorNav = [
+    { id: "all", label: "كافة القطاعات", icon: Layers },
+    { id: "ads", label: "الحملات والإعلانات", icon: TrendingUp },
+    { id: "social", label: "النشر وسوشيال", icon: Share2 },
+    { id: "video", label: "الفيديو والريلز", icon: Video },
+    { id: "articles", label: "المقالات وSEO", icon: FileText },
+    { id: "tours", label: "البرامج والرحلات", icon: Package },
+    { id: "distribution", label: "الموزعين والخزينة", icon: Building2 },
+  ] as const;
 
-        {/* Action Trigger & Zoom Controls */}
-        <div className="flex items-center gap-2.5">
-
-          {/* Credentials Vault Button */}
-          <button
-            type="button"
-            onClick={() => setIsCredsVaultOpen((o) => !o)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono transition-colors ${
-              isCredsVaultOpen
-                ? "bg-amber-500/20 text-amber-300 border-amber-400/50 shadow-[0_0_12px_rgba(245,158,11,0.25)]"
-                : "bg-[#041a38] text-slate-300 border-slate-700 hover:text-white"
-            }`}
-            title="خزينة مفاتيح الـ API وربط الحسابات"
-          >
-            <KeyRound size={13} className="text-amber-400" />
-            <span>خزينة المفاتيح</span>
-          </button>
-
-          {/* Toggle Inspector Panel */}
-          <button
-            type="button"
-            onClick={() => setInspectorOpen((o) => !o)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono transition-colors ${
-              inspectorOpen
-                ? "bg-cyan-500/20 text-cyan-300 border-cyan-400/50"
-                : "bg-[#041a38] text-slate-400 border-slate-700 hover:text-white"
-            }`}
-            title="إظهار / إخفاء المفتش الجانبي"
-          >
-            <SlidersHorizontal size={13} />
-            <span>{inspectorOpen ? "إخفاء المفتش" : "إظهار المفتش"}</span>
-          </button>
-
-          {/* Zoom Level Indicator & Controls */}
-          <div className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-[#041a38] border border-cyan-500/30 text-xs font-mono">
-            <button
-              type="button"
-              onClick={() => setZoomScale((z) => Math.max(0.4, Number((z - 0.1).toFixed(2))))}
-              className="p-1 hover:text-cyan-300 text-slate-400 transition-colors"
-              title="تصغير Zoom Out"
-            >
-              <ZoomOut size={13} />
-            </button>
-            <span className="px-1 text-cyan-300 font-bold min-w-[42px] text-center">
-              {Math.round(zoomScale * 100)}%
-            </span>
-            <button
-              type="button"
-              onClick={() => setZoomScale((z) => Math.min(2.0, Number((z + 0.1).toFixed(2))))}
-              className="p-1 hover:text-cyan-300 text-slate-400 transition-colors"
-              title="تكبير Zoom In"
-            >
-              <ZoomIn size={13} />
-            </button>
-            <button
-              type="button"
-              onClick={handleResetCanvas}
-              className="p-1 ml-1 hover:text-amber-300 text-slate-400 transition-colors"
-              title="إعادة التوسيط التلقائي Reset & Center View"
-            >
-              <RotateCcw size={13} />
-            </button>
-          </div>
-
-          {/* Run Full Loop Button */}
-          <button
-            type="button"
-            onClick={handleRunLoop}
-            disabled={isRunning}
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xs font-mono shadow-[0_0_25px_rgba(0,229,255,0.45)] disabled:opacity-50 transition-all active:scale-95 border border-cyan-400/40"
-          >
-            {isRunning ? (
-              <>
-                <RefreshCw className="w-4 h-4 animate-spin text-white" />
-                <span>
-                  معالجة العقد الحية ({activeStepIndex + 1}/{activeLoop.nodes.length})...
-                </span>
-              </>
-            ) : (
-              <>
-                <Play className="w-4 h-4 text-white fill-white" />
-                <span>[ تشغيل كامل التدفق الآن ]</span>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* 2. Sector & Flow Navigation Tabs */}
-      <div className="relative z-10 px-6 py-2 bg-[#020b18]/95 border-b border-cyan-500/25 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none [&::-webkit-scrollbar]:hidden">
-        <span className="text-[11px] font-mono text-cyan-400 font-bold ml-2 shrink-0">
-          [القطاع التشغيلي]:
-        </span>
-        {[
-          { id: "all", label: "كافة القطاعات (All Loops)", icon: Layers },
-          { id: "ads", label: "الحملات والإعلانات (Ads & ROAS)", icon: TrendingUp },
-          { id: "social", label: "النشر وسوشيال ميديا (Social Omni)", icon: Share2 },
-          { id: "video", label: "الفيديو والريلز (Video Studio)", icon: Video },
-          { id: "articles", label: "المقالات ومحركات البحث (SEO)", icon: FileText },
-          { id: "tours", label: "البرامج والرحلات (Tour Packages)", icon: Package },
-          { id: "distribution", label: "الموزعين والخزينة (GDS & Rates)", icon: Building2 },
-        ].map((sec) => {
+  const navSidebarBody = (
+    <div className="p-2 space-y-3 text-right flex-1 min-h-0 overflow-y-auto" dir="rtl">
+      <div className="space-y-1">
+        <div className="text-[10px] font-mono text-cyan-400 px-1">القطاع التشغيلي</div>
+        {sectorNav.map((sec) => {
           const isAct = selectedSector === sec.id;
           const IconC = sec.icon;
           return (
@@ -1566,24 +1506,18 @@ export default function VisualLoopsEngine() {
                   setSelectedNodeId(match.nodes[0]?.id || null);
                 }
               }}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all shrink-0 border ${
-                isAct
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold border-cyan-300 shadow-[0_0_15px_rgba(0,229,255,0.4)]"
-                  : "bg-[#061b36]/90 border-cyan-500/40 text-cyan-100 font-bold hover:bg-cyan-500/25 hover:text-white hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+              className={`w-full flex items-center gap-2 px-2.5 py-2 rounded-xl border text-xs font-mono transition-all ${
+                isAct ? "bg-cyan-500/20 border-cyan-300 text-white" : "border-cyan-500/25 text-cyan-100 hover:bg-cyan-500/10"
               }`}
             >
-              <IconC size={13} className={isAct ? "text-cyan-100" : "text-slate-300"} />
-              <span>{sec.label}</span>
+              <IconC size={14} />
+              <span className="flex-1 text-right">{sec.label}</span>
             </button>
           );
         })}
       </div>
-
-      {/* Available Flows Selector */}
-      <div className="relative z-10 px-6 py-2 bg-[#020813] border-b border-cyan-500/20 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none [&::-webkit-scrollbar]:hidden">
-        <span className="text-[11px] font-mono text-cyan-300 font-bold ml-2 shrink-0">
-          [التدفقات المتاحة]:
-        </span>
+      <div className="space-y-1">
+        <div className="text-[10px] font-mono text-cyan-400 px-1">التدفقات المتاحة</div>
         {filteredLoops.map((loop) => {
           const isSelected = selectedLoopId === loop.id;
           const IconComp = loop.icon;
@@ -1595,33 +1529,103 @@ export default function VisualLoopsEngine() {
                 setSelectedLoopId(loop.id);
                 setSelectedNodeId(loop.nodes[0]?.id || null);
               }}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-mono transition-all shrink-0 ${
-                isSelected
-                  ? "border-cyan-300 bg-cyan-950/80 text-white shadow-[0_0_18px_rgba(0,229,255,0.35)] font-extrabold"
-                  : "bg-[#061b36]/90 border-cyan-500/40 text-cyan-100 font-bold hover:bg-cyan-500/25 hover:text-white hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+              className={`w-full flex items-center gap-2 px-2.5 py-2 rounded-xl border text-xs font-mono ${
+                isSelected ? "border-cyan-300 bg-cyan-950/80 text-white" : "border-cyan-500/30 text-cyan-100 hover:bg-cyan-500/10"
               }`}
             >
               <IconComp size={14} style={{ color: loop.color }} />
-              <span>{loop.name}</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/60 text-cyan-300 border border-cyan-800">
-                {loop.nodes.length} عقد
-              </span>
+              <span className="flex-1 truncate text-right">{loop.name}</span>
+              <span className="text-[9px] text-cyan-400">{loop.nodes.length}</span>
             </button>
           );
         })}
       </div>
+    </div>
+  );
 
-      {/* ========================================================================= */}
-      {/* 3. Main Stage: Interactive Infinite Node Canvas + Inspector               */}
-      {/* ========================================================================= */}
-      <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-stretch min-h-0 overflow-hidden">
-        {/* Left / Main: The Infinite Pan & Zoom Canvas */}
+  return (
+    <div className="relative w-full h-full flex flex-col min-h-0 overflow-hidden bg-[#010712] text-slate-100 font-sans select-none">
+      <header
+        className="shrink-0 z-30 flex flex-wrap items-center gap-2 px-3 py-2 border-b border-cyan-500/25 bg-[#020b18]/90 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
+        dir="rtl"
+      >
+        <div className="flex-1 min-w-[140px] text-right">
+          <div className="text-xs font-bold text-white truncate">{activeLoop.name}</div>
+          <div className="text-[10px] text-slate-400 font-mono truncate">
+            {activeLoop.categoryLabel} · {activeLoop.schedule}
+          </div>
+        </div>
+        {!showNavPanel && (
+          <button
+            type="button"
+            onClick={() => setShowNavPanel(true)}
+            className="px-2.5 py-1.5 rounded-xl border border-cyan-500/35 text-cyan-200 text-[11px] font-mono hover:bg-cyan-500/10"
+          >
+            القطاعات
+          </button>
+        )}
+        {!showSetupPanel && (
+          <button
+            type="button"
+            onClick={() => setShowSetupPanel(true)}
+            className="px-2.5 py-1.5 rounded-xl border border-cyan-500/35 text-cyan-200 text-[11px] font-mono hover:bg-cyan-500/10"
+          >
+            إعداد الأتمتة
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => setIsNodeLibraryOpen(true)}
+          className="px-3 py-1.5 rounded-xl border border-cyan-400 bg-gradient-to-r from-cyan-500/30 to-blue-600/30 text-white text-[11px] font-mono font-bold hover:brightness-125 transition-all shadow-[0_0_16px_rgba(0,240,255,0.35)] flex items-center gap-1.5"
+        >
+          <Plus size={14} className="text-cyan-300" />
+          <span>مكتبة العقد والتكاملات (42 عقدة)</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsCredsVaultOpen((o) => !o)}
+          className="px-2.5 py-1.5 rounded-xl border border-amber-500/40 text-amber-200 text-[11px] font-mono hover:bg-amber-500/10"
+        >
+          <KeyRound size={12} className="inline ml-1" />
+          خزينة المفاتيح
+        </button>
+        <button
+          type="button"
+          onClick={() => setInspectorOpen((o) => !o)}
+          className="px-2.5 py-1.5 rounded-xl border border-cyan-500/40 text-cyan-200 text-[11px] font-mono hover:bg-cyan-500/10"
+        >
+          {inspectorOpen ? "إخفاء المفتش" : "المفتش"}
+        </button>
+        <div className="flex items-center gap-1 px-2 py-1 rounded-xl border border-cyan-500/30 text-xs font-mono">
+          <button type="button" onClick={() => setZoomScale((z) => Math.max(0.4, Number((z - 0.1).toFixed(2))))} aria-label="تصغير">
+            <ZoomOut size={13} />
+          </button>
+          <span className="text-cyan-300 min-w-[42px] text-center">{Math.round(zoomScale * 100)}%</span>
+          <button type="button" onClick={() => setZoomScale((z) => Math.min(2, Number((z + 0.1).toFixed(2))))} aria-label="تكبير">
+            <ZoomIn size={13} />
+          </button>
+          <button type="button" onClick={handleResetCanvas} aria-label="إعادة توسيط">
+            <RotateCcw size={13} />
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={handleRunLoop}
+          disabled={isRunning}
+          className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold disabled:opacity-50 shadow-[0_0_18px_rgba(0,229,255,0.25)]"
+        >
+          {isRunning ? "جاري التشغيل…" : "تشغيل التدفق"}
+        </button>
+      </header>
+
+      <div className="relative z-10 flex-1 flex min-h-0 overflow-hidden">
+        <div className="relative flex-1 flex flex-col min-h-0 min-w-0">
         <div
           ref={canvasRef}
           dir="ltr"
           onMouseDown={handleCanvasMouseDown}
           onWheel={handleWheel}
-          className="canvas-backdrop relative flex-1 min-h-0 overflow-hidden cursor-grab active:cursor-grabbing bg-[#010816] pb-32"
+          className="canvas-backdrop relative flex-1 min-h-0 overflow-hidden cursor-grab active:cursor-grabbing bg-[#010816]"
           style={{
             backgroundImage: `
               radial-gradient(circle, rgba(0, 229, 255, 0.12) 1px, transparent 1px),
@@ -1633,22 +1637,6 @@ export default function VisualLoopsEngine() {
           }}
         >
           <NeuralCanvasBackground />
-          {/* Top-Right HUD Info Banner */}
-          <div className="absolute top-4 right-6 text-right z-20 pointer-events-none" dir="rtl">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
-                {activeLoop.categoryLabel}
-              </span>
-              <span className="text-slate-600">·</span>
-              <span className="text-xs font-bold text-white">{activeLoop.name}</span>
-            </div>
-            <div className="text-[11px] text-slate-400 mt-0.5">
-              الجدول: <span className="text-amber-300 font-mono">{activeLoop.schedule}</span> • الحالة:{" "}
-              <span className="text-emerald-400 font-mono">
-                {isRunning ? "[EXECUTING...]" : "[ACTIVE_BLUEPRINT]"}
-              </span>
-            </div>
-          </div>
 
           {/* Interactive Flow Elements Container (Transformed via Pan & Zoom) */}
           <div
@@ -1885,28 +1873,10 @@ export default function VisualLoopsEngine() {
             })}
           </div>
 
-          {/* Floating Node Palette at Bottom Center of Canvas */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-[#020b18]/95 border border-cyan-500/40 backdrop-blur-xl shadow-[0_0_30px_rgba(0,229,255,0.25)]">
-            <span className="text-[11px] font-mono font-bold text-cyan-400 ml-2">
-              [+ إضافة عقدة]:
-            </span>
-            {NODE_TEMPLATES.map((tmpl) => (
-              <button
-                key={tmpl.type}
-                type="button"
-                onClick={() => handleAddNodeFromTemplate(tmpl)}
-                className={`px-2.5 py-1 rounded-xl text-[11px] font-mono border transition-all active:scale-95 hover:shadow-md ${tmpl.badgeColor}`}
-                title={`إضافة عقدة ${tmpl.label} جديدة للكود`}
-              >
-                {tmpl.label}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* ========================================================================= */}
-        {/* 4. Right / Slide-out Node Inspector Panel (Conditional)                   */}
-        {/* ========================================================================= */}
+        </div>
+
         {inspectorOpen && (
           <div className="w-full lg:w-96 border-t lg:border-t-0 lg:border-r border-cyan-500/25 bg-[#020b18]/95 backdrop-blur-2xl flex flex-col justify-between shrink-0 h-auto lg:h-full overflow-hidden shadow-2xl transition-all">
             {selectedNode ? (
@@ -2040,6 +2010,68 @@ export default function VisualLoopsEngine() {
         </div>
       )}
       </div>
+
+      <LoopsPanelTray
+        showNavPanel={showNavPanel}
+        showSetupPanel={showSetupPanel}
+        showNodePalette={isNodeLibraryOpen}
+        inspectorOpen={inspectorOpen}
+        onRestoreNav={() => setShowNavPanel(true)}
+        onRestoreSetup={() => setShowSetupPanel(true)}
+        onRestorePalette={() => setIsNodeLibraryOpen(true)}
+        onRestoreInspector={() => setInspectorOpen(true)}
+      />
+
+      {showNavPanel && (
+        <CyberFloatingPanel
+          id="loops-nav-sidebar"
+          title="قطاعات وتدفقات الأتمتة"
+          subtitle="اسحب · طي · إخفاء"
+          width={300}
+          zIndex={STUDIO_Z.floating}
+          defaultPosition={{ x: 16, y: 96 }}
+          onClose={() => setShowNavPanel(false)}
+        >
+          {navSidebarBody}
+        </CyberFloatingPanel>
+      )}
+
+      {/* Enterprise Node Library Drawer (42 categorized nodes: Triggers, AI/DSPy, GDS/Travel, Fintech, Marketing, Logic, MCP) */}
+      <EnterpriseNodeLibraryDrawer
+        isOpen={isNodeLibraryOpen}
+        onClose={() => setIsNodeLibraryOpen(false)}
+        onAddNode={handleAddEnterpriseNode}
+      />
+
+      {showSetupPanel && (
+        <CyberFloatingPanel
+          id="loops-automation-setup"
+          title="إعداد الأتمتة"
+          subtitle={`${activeLoop.name} · اسحب · طي · إخفاء`}
+          width={320}
+          zIndex={STUDIO_Z.floating}
+          defaultPosition={{
+            x: typeof window !== "undefined" ? Math.max(16, window.innerWidth - 340) : 720,
+            y: 96,
+          }}
+          onClose={() => setShowSetupPanel(false)}
+        >
+          <div className="space-y-3 p-3 text-right" dir="rtl">
+            <div className="rounded-xl border border-cyan-500/25 bg-[#031124]/80 p-3">
+              <div className="text-xs font-mono text-cyan-300">{activeLoop.categoryLabel}</div>
+              <div className="mt-1 text-[11px] text-slate-400">
+                الجدول: <span className="font-mono text-amber-300">{activeLoop.schedule}</span>
+              </div>
+              <div className="mt-2 text-[11px] font-mono text-emerald-400">
+                {isRunning ? "EXECUTING…" : "ACTIVE_BLUEPRINT"}
+              </div>
+            </div>
+            <p className="text-[10px] leading-relaxed text-slate-400">
+              حرّك هذه اللوحة فوق الكانفاس. أغلِقها من × ثم استعدها من الشريط الناعم أسفل الشاشة (فوق قائمة الاستوديو).
+            </p>
+          </div>
+        </CyberFloatingPanel>
+      )}
 
       {/* ========================================================================= */}
       {/* 5. Slide-Out Cyber Credentials Vault Assistant Drawer                     */}

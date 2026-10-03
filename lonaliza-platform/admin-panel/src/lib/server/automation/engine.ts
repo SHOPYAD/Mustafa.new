@@ -79,7 +79,12 @@ export async function tickAutomationEngine(source: "cron" | "worker" | "manual")
           continue;
         }
       }
-      const { result } = await executeAutomationJob(job, { source });
+      // Guard against Gateway Timeout (504) by enforcing a 25s execution threshold per job in HTTP thread
+      const executionPromise = executeAutomationJob(job, { source });
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("تجاوزت المهمة حد الأمان التزامني (25 ثانية)؛ تم إيقافها لمنع خطأ 504 Gateway Timeout")), 25_000)
+      );
+      const { result } = await Promise.race([executionPromise, timeoutPromise]);
       if (result.ok) report.ran += 1;
       else report.errors += 1;
       report.jobs.push({

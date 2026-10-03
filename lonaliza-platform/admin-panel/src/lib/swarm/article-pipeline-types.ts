@@ -83,7 +83,21 @@ export function peekDestination(directive: string): { key: string; labelEn: stri
 }
 
 export function isArticleDirective(text: string): boolean {
-  return /مقال|مدون|سيو|seo|blog|article|محتوى|دليل|اكتب|فرنسا|france|باريس|paris|وجهات/.test(text.toLowerCase());
+  if (!text) return false;
+  const norm = text.toLowerCase().trim();
+
+  // If it's explicitly a briefing, report, server/system check, pricing, or operational booking query, it's NOT an article
+  const isOperationalOrSystem =
+    /سيرفر|سيرفرات|خادم|خوادم|فندق|فنادق|حجز|حجوزات|أسعار|اسعار|رحلة|رحلات|طيران|عميل|عملاء|دفع|بوابة|تقرير|جاهزية|جاهزيه|صيانة|database|server|hotel|booking|flight|price|report|readiness|analytics/i.test(
+      norm
+    );
+  if (isOperationalOrSystem) return false;
+
+  // Genuine article creation or publishing directive:
+  // Must explicitly refer to writing/publishing an article or blog post
+  return /(?:اكتب|انشر|صياغة|إنشاء|انشاء|توليد|نشر|كتابة)?\s*(?:مقال|مقالة|مدونة|تدوينة|سيو|article|blog\s*post)/i.test(
+    norm
+  );
 }
 
 const TREND_ROW_DROP =

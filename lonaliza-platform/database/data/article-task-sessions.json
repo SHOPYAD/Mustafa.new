@@ -88,47 +88,47 @@
       "threadId": "studio_sess_1790603472220",
       "articleId": "",
       "slug": "",
-      "destinationKey": "general",
-      "updatedAt": "2026-09-30T15:35:47.903Z",
-      "taskType": "general",
-      "plan": "specialist_swarm general",
-      "recordId": "general",
+      "destinationKey": "content",
+      "updatedAt": "2026-10-01T15:38:24.547Z",
+      "taskType": "article",
+      "plan": "specialist_swarm content",
+      "recordId": "content",
       "toolResults": [
-        {
-          "tool": "mcp_dashboard_bookings",
-          "ok": true,
-          "summary": "25 حجزاً · PocketBase متصل",
-          "at": "2026-09-30T15:35:34.527Z"
-        },
-        {
-          "tool": "mcp_financial_margin_audit",
-          "ok": true,
-          "summary": "تدقيق الهامش: 13% من مدفوعات 1399.52$ وربح 182.54$ (بيانات لوحة الحجوزات).",
-          "at": "2026-09-30T15:35:35.485Z"
-        },
         {
           "tool": "mcp_connector_probe",
           "ok": false,
           "summary": "غير متصل: marketing-smtp: SMTP host/credentials are not configured | callWhatsAppCloudTool: WhatsApp Cloud token or phone number id is not connected | executeGoogleFlowPipeline: Google Flow is not connected | resolveGeminiApiKey: GEMINI_API_KEY is not configured",
-          "at": "2026-09-30T15:35:34.530Z"
+          "at": "2026-10-01T15:38:19.566Z"
         },
         {
           "tool": "mcp_tourism_inventory",
           "ok": true,
           "summary": "المخزون السياحي: 111 برنامج سياحي معتمد | 42 جولة | 8 سيارة (8 نشطة)",
-          "at": "2026-09-30T15:35:34.609Z"
+          "at": "2026-10-01T15:38:19.746Z"
         },
         {
-          "tool": "mcp_meta_ads_intelligence",
-          "ok": true,
-          "summary": "Meta: غير مربوط · Google: غير مربوط",
-          "at": "2026-09-30T15:35:34.533Z"
+          "tool": "mcp_connector_probe",
+          "ok": false,
+          "summary": "غير متصل: marketing-smtp: SMTP host/credentials are not configured | callWhatsAppCloudTool: WhatsApp Cloud token or phone number id is not connected | executeGoogleFlowPipeline: Google Flow is not connected | resolveGeminiApiKey: GEMINI_API_KEY is not configured",
+          "at": "2026-10-01T15:38:19.572Z"
         },
         {
-          "tool": "mcp_dashboard_bookings",
+          "tool": "mcp_tourism_inventory",
           "ok": true,
-          "summary": "25 حجزاً · PocketBase متصل",
-          "at": "2026-09-30T15:35:34.962Z"
+          "summary": "المخزون السياحي: 111 برنامج سياحي معتمد | 42 جولة | 8 سيارة (8 نشطة)",
+          "at": "2026-10-01T15:38:19.744Z"
+        },
+        {
+          "tool": "mcp_connector_probe",
+          "ok": false,
+          "summary": "غير متصل: marketing-smtp: SMTP host/credentials are not configured | callWhatsAppCloudTool: WhatsApp Cloud token or phone number id is not connected | executeGoogleFlowPipeline: Google Flow is not connected | resolveGeminiApiKey: GEMINI_API_KEY is not configured",
+          "at": "2026-10-01T15:38:19.574Z"
+        },
+        {
+          "tool": "mcp_tourism_inventory",
+          "ok": true,
+          "summary": "المخزون السياحي: 111 برنامج سياحي معتمد | 42 جولة | 8 سيارة (8 نشطة)",
+          "at": "2026-10-01T15:38:19.743Z"
         }
       ]
     },

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { CyberFloatingPanel } from "@/components/admin/automation/hud/studio/shell/CyberFloatingPanel";
 import * as THREE from "three";
 import {
   BarChart3,
@@ -251,7 +252,8 @@ export default function HolographicCylinderStage({
   closeHubRef.current = onCloseHub;
 
   const ANGLE_STEP = (2 * Math.PI) / CARD_COUNT;
-  const CYLINDER_RADIUS = 340 + Math.max(0, CARD_COUNT - 6) * 6;
+  /** نصف قطر معقول حتى تبقى البطاقات أمام الكاميرا (92 بطاقة) */
+  const CYLINDER_RADIUS = Math.min(420, 340 + Math.max(0, CARD_COUNT - 6) * 4);
 
   const activeCard = displayCards[activeCardIndex] ?? displayCards[0];
 
@@ -612,11 +614,12 @@ export default function HolographicCylinderStage({
 
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x010712, 0.0012);
+    scene.fog = new THREE.FogExp2(0x010712, 0.00045);
 
-    const camera = new THREE.PerspectiveCamera(42, w / h, 1, 3000); // FOV 42
-    // Position camera so cylinder curves gracefully with depth
-    camera.position.set(0, 20, 560); // Z=560, Y=20
+    const camera = new THREE.PerspectiveCamera(45, w / h, 1, 8000);
+    const camZ = CYLINDER_RADIUS + 480;
+    camera.position.set(0, 28, camZ);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -658,7 +661,7 @@ export default function HolographicCylinderStage({
         const isHighlighted = idx === activeCardIndexRef.current;
         const next = createCardTexture(card, idx, isHighlighted);
         if (!next) return;
-        const mat = cardMeshes[idx]?.material as THREE.MeshPhysicalMaterial | undefined;
+        const mat = cardMeshes[idx]?.material as THREE.MeshStandardMaterial | undefined;
         if (mat?.map) mat.map.dispose();
         if (mat) mat.map = next;
         if (cardTextures[idx]) cardTextures[idx].dispose();
@@ -673,19 +676,15 @@ export default function HolographicCylinderStage({
       const texture = createCardTexture(card, idx, isHighlighted)!;
       cardTextures.push(texture);
 
-      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 176, 52, 24);
+      const cardGeo = createCurvedCardGeometry(CYLINDER_RADIUS, 192, 72, 28);
 
-      const cardMat = new THREE.MeshPhysicalMaterial({
+      const cardMat = new THREE.MeshStandardMaterial({
         map: texture,
         side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.94,
-        transmission: 0.35,
-        thickness: 0.4,
-        roughness: 0.22,
-        metalness: 0.08,
-        clearcoat: 0.6,
-        clearcoatRoughness: 0.2,
+        roughness: 0.28,
+        metalness: 0.12,
+        emissive: new THREE.Color(0x001822),
+        emissiveIntensity: 0.35,
       });
 
       const mesh = new THREE.Mesh(cardGeo, cardMat);
@@ -909,10 +908,15 @@ export default function HolographicCylinderStage({
       const nw = container.clientWidth || 1280;
       const nh = container.clientHeight || 720;
       camera.aspect = nw / nh;
+      const nextCamZ = CYLINDER_RADIUS + 480;
+      camera.position.set(0, 28, nextCamZ);
+      camera.lookAt(0, 0, 0);
       camera.updateProjectionMatrix();
       renderer.setSize(nw, nh);
     };
 
+    const ro = new ResizeObserver(() => handleResize());
+    ro.observe(container);
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -927,6 +931,7 @@ export default function HolographicCylinderStage({
       domEl.removeEventListener("click", handleClick);
       container.removeEventListener("wheel", handleWheel);
       window.removeEventListener("resize", handleResize);
+      ro.disconnect();
       renderer.dispose();
       cardMeshes.forEach((m) => m.geometry.dispose());
       cardTextures.forEach((t) => t.dispose());
@@ -963,46 +968,8 @@ export default function HolographicCylinderStage({
       {/* 3D WebGL Canvas Container */}
       <div ref={containerRef} className="absolute inset-0 z-0 cursor-grab active:cursor-grabbing" />
 
-      {/* Top Header Banner */}
-      <div className="absolute top-4 left-6 right-6 z-20 flex flex-wrap items-center justify-between gap-4 pointer-events-none">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/40 text-cyan-400 shadow-[0_0_20px_rgba(0,229,255,0.3)]">
-            <Sparkles className="w-5 h-5 animate-pulse text-cyan-400" />
-          </div>
-          <div className="flex flex-col text-right">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-black font-mono text-white tracking-wide">
-                معادلات هولوغرافية عائمة ثلاثية الأبعاد (NEXUS Organic Equations)
-              </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                NEXUS ORBITAL DECK v6.5
-              </span>
-            </div>
-            <span className="text-xs text-slate-400 mt-0.5">
-              مدار أسطواني متناسق · تفتيش كامل بالنقر أو ببسط الكف · تحكم باليد أو الماوس
-            </span>
-          </div>
-        </div>
-
-        {/* Live Camera & Gesture Toggle Button */}
-        <div className="flex items-center gap-2 pointer-events-auto">
-          <button
-            type="button"
-            onClick={toggleCamera}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-mono transition-all shadow-lg active:scale-95 ${
-              isHandTrackingActive
-                ? "bg-emerald-500/20 text-emerald-300 border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                : "bg-[#031124]/90 text-cyan-300 border-cyan-500/40 hover:bg-cyan-500/15"
-            }`}
-          >
-            {isHandTrackingActive ? <CameraOff size={14} /> : <Camera size={14} />}
-            <span>{isHandTrackingActive ? "إيقاف الكاميرا" : "تفعيل الكاميرا والتعقب باليد"}</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Top-Left Live Webcam Mini-Monitor with Gesture Detection Overlay */}
-      <div className="absolute top-20 left-6 z-20 pointer-events-auto flex flex-col gap-2">
+      {/* كاميرا اليد — ثابتة كما كانت (بدون لوحة مكررة) */}
+      <div className="absolute top-[72px] left-4 z-20 pointer-events-auto flex flex-col gap-2 max-w-[12rem]">
         <div className="relative w-48 h-36 rounded-2xl border-2 border-cyan-500/40 bg-black/85 backdrop-blur-xl overflow-hidden shadow-[0_0_25px_rgba(0,229,255,0.25)] flex items-center justify-center">
           <video
             ref={videoRef}
@@ -1062,73 +1029,54 @@ export default function HolographicCylinderStage({
           </div>
         )}
 
-        <div className="w-48 px-2.5 py-1.5 rounded-xl bg-[#020b18]/85 border border-cyan-500/30 text-[10px] font-mono text-cyan-300 text-center truncate shadow-sm">
+        <div className="w-48 px-2.5 py-1.5 rounded-xl bg-[#020b18]/85 border border-cyan-500/30 text-[10px] font-mono text-cyan-300 text-center truncate">
           {gestureFeedback}
         </div>
       </div>
 
-      {/* Orbit Selector Carousel Arrows */}
-      <div className="absolute top-20 right-6 z-20 pointer-events-auto flex items-center gap-2 bg-[#020b18]/90 px-3 py-1.5 rounded-2xl border border-cyan-500/30 backdrop-blur-xl shadow-lg">
-        <button
-          type="button"
-          onClick={() => rotateTo(activeCardIndex - 1)}
-          className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400 transition-colors"
-          title="المعادلة السابقة"
-        >
+      <div className="absolute top-[72px] right-4 z-20 pointer-events-auto flex items-center gap-2 bg-[#020b18]/90 px-3 py-1.5 rounded-2xl border border-cyan-500/30 backdrop-blur-xl shadow-lg">
+        <button type="button" onClick={() => rotateTo(activeCardIndex - 1)} className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400" title="السابق">
           <ChevronRight size={18} />
         </button>
-
-        <span className="text-xs font-mono font-bold text-white min-w-[80px] text-center">
-          0{activeCardIndex + 1} / 0{CARD_COUNT} • {activeCard.titleAr.slice(0, 14)}...
+        <span className="text-xs font-mono font-bold text-white min-w-[88px] text-center">
+          {String(activeCardIndex + 1).padStart(2, "0")} / {String(CARD_COUNT).padStart(2, "0")}
         </span>
-
-        <button
-          type="button"
-          onClick={() => rotateTo(activeCardIndex + 1)}
-          className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400 transition-colors"
-          title="المعادلة التالية"
-        >
+        <button type="button" onClick={() => rotateTo(activeCardIndex + 1)} className="p-1 rounded-lg hover:bg-cyan-500/20 text-cyan-400" title="التالي">
           <ChevronLeft size={18} />
         </button>
       </div>
 
-      {/* Bottom Floating Quick Directive Bar */}
-      <div className="absolute bottom-6 left-6 right-6 z-20 pointer-events-auto flex flex-wrap items-center justify-between gap-4 p-3 rounded-2xl bg-[#020b18]/90 border border-cyan-500/35 backdrop-blur-2xl shadow-[0_0_35px_rgba(0,229,255,0.25)]">
-        <div className="flex items-center gap-3">
-          <div
-            className="p-2 rounded-xl text-white flex items-center justify-center"
-            style={{ backgroundColor: `${activeCard.color}25`, border: `1px solid ${activeCard.color}50` }}
-          >
-            <activeCard.icon size={20} style={{ color: activeCard.color }} />
-          </div>
-          <div className="flex flex-col text-right">
-            <span className="text-xs font-bold text-white">{activeCard.titleAr}</span>
-            <span className="text-[11px] font-mono text-slate-400 truncate max-w-md">
-              {activeCard.description}
-            </span>
+      <CyberFloatingPanel
+        id="nexus-sector-actions"
+        title={activeCard.titleAr}
+        subtitle="إجراءات القطاع النشط · اسحب · طي · إخفاء"
+        width={420}
+        fitContent
+        anchor="bottom-center"
+        defaultPosition={{ x: 24, y: typeof window !== "undefined" ? window.innerHeight - 200 : 520 }}
+      >
+        <div className="p-3 space-y-3 text-right">
+          <p className="text-[11px] text-slate-400 leading-relaxed">{activeCard.description}</p>
+          <div className="flex flex-wrap gap-2 justify-end">
+            <button
+              type="button"
+              onClick={openActiveHub}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 text-xs font-mono"
+            >
+              <Maximize2 size={13} />
+              <span>فتح القسم</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleQuickDirective}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white text-xs font-mono border border-amber-400/40"
+            >
+              <Zap size={13} className="fill-white" />
+              <span>توجيه فوري</span>
+            </button>
           </div>
         </div>
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={openActiveHub}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold transition-all active:scale-95"
-          >
-            <Maximize2 size={13} />
-            <span>فتح نافذة القسم بالتفصيل</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleQuickDirective}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white text-xs font-mono font-bold shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all active:scale-95 border border-amber-400/40"
-          >
-            <Zap size={13} className="fill-white" />
-            <span>تنفيذ التوجيه الفوري لهذا القطاع</span>
-          </button>
-        </div>
-      </div>
+      </CyberFloatingPanel>
 
       {/* ========================================================================= */}
       {/* Expanded Full-Screen Deep Inspection Modal                                */}
